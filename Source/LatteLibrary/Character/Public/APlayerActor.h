@@ -1,4 +1,5 @@
-﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+
 
 
 #pragma once
@@ -7,6 +8,9 @@
 #include "AGameCharacter.h"
 #include "IControllable.h"
 #include "APlayerActor.generated.h"
+
+class USpringArmComponent;
+class UCameraComponent;
 
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Dopple))
 class LATTELIBRARY_API APlayerActor : public AGameCharacter, public IControllable
@@ -19,14 +23,19 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-
 public:
-
 	virtual void Landed(const FHitResult& Hit) override;
 
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Enemy")
 	TObjectPtr<class UCameraShakeSystem> CameraShakeSystem;
+
+protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta=(AllowPrivateAccess="true"))
+	TObjectPtr<USpringArmComponent> SpringArmComp;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta=(AllowPrivateAccess="true"))
+	TObjectPtr<UCameraComponent> FollowCamera;
 
 public: // Control Interface
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")

@@ -1,4 +1,5 @@
-﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+
 
 
 #include "APlayerActor.h"
@@ -15,12 +16,26 @@
 // Shared
 #include "Macro.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "Camera/CameraComponent.h"
+#include "Components/CapsuleComponent.h"
 
 APlayerActor::APlayerActor()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
 	CameraShakeSystem = CreateDefaultSubobject<UCameraShakeSystem>(TEXT("CameraShakeSystem"));
+
+	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
+	SpringArmComp->SetupAttachment(GetCapsuleComponent());
+	SpringArmComp->TargetArmLength = 400.f;
+	SpringArmComp->bUsePawnControlRotation = true;
+	SpringArmComp->bInheritPitch = false;
+	SpringArmComp->bInheritRoll = false;
+
+	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
+	FollowCamera->SetupAttachment(SpringArmComp, USpringArmComponent::SocketName);
+	FollowCamera->bUsePawnControlRotation = false;
 }
 
 void APlayerActor::BeginPlay()
@@ -34,7 +49,7 @@ void APlayerActor::BeginPlay()
 
 	bIsCombatStart = true;
 
-	// ActorComponent 초기화
+	// ActorComponent initialization
 	StatSystem->InitStat(true, CharacterType);
 	KnockbackSystem->InitSystem(this);
 	FlySystem->InitSystem(this, BIND_DYNAMIC_DELEGATE(FEndCallback, this, APlayerActor, OnFlyEnd));

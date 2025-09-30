@@ -13,7 +13,7 @@ class LATTELIBRARY_API UCharacterData : public UDataAsset
 
 public:
 	bool LoadIdleMontage( TSoftObjectPtr<UAnimMontage>& OutMontage) const;
-
+	
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Skeletal)
 	TSoftObjectPtr<class USkeletalMesh> MeshData;

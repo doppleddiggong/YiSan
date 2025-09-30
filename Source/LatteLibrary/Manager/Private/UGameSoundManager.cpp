@@ -6,7 +6,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "FComponentHelper.h"
 
-#define SOUND_DATA_PATH TEXT("/Game/CustomContents/MasterData/Sound_Data.Sound_Data")
+#define SOUND_DATA_PATH TEXT("/Game/CustomContents/MasterData/DA_Sound.DA_Sound")
 
 UGameSoundManager::UGameSoundManager()
 {
