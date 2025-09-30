@@ -34,6 +34,12 @@
   - 자동 완화: 백오프 확대·회로열기(circuit-open)·캐시 fallback 중 하나 제안 및 근거 1줄
 - 테스트에서 로그 캡처/검증을 수행하라. (로거 더블/스코프 포함)
 - 로그 레벨 기준: 정보(성공 요약), 경고(재시도), 오류(최종 실패), 중요/치명(데이터 손실 가능)
+- **네트워크 로그 규칙**:
+  - 네트워크 요청 시, URL과 전송 데이터를 `[REQ]` 접두사와 함께 `NETWORK_LOG` 카테고리에 기록한다.
+    - 예: `UE_LOG(NETWORK_LOG, Log, TEXT("[REQ] URL: %s, Data: %s"), *Url, *RequestData);`
+  - 네트워크 응답 수신 시, 파싱 전 원본 데이터를 `[RES]` 접두사와 함께 `NETWORK_LOG` 카테고리에 기록한다.
+    - 예: `UE_LOG(NETWORK_LOG, Log, TEXT("[RES] Data: %s"), *ResponseData);`
+  - `NETWORK_LOG` 카테고리는 `CoffeeLibrary/Public/Shared/NetworkLog.h`에 정의된 것을 사용한다.
 
 ---
 
