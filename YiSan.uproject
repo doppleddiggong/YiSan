@@ -9,6 +9,11 @@
             "Type": "Runtime",
             "LoadingPhase": "Default"
         },
+        {
+          "Name": "LatteLibrary",
+          "Type": "Runtime",
+          "LoadingPhase": "Default"
+        },
 		{
 			"Name": "YiSan",
 			"Type": "Runtime",

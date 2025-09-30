@@ -1,6 +1,7 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 using UnrealBuildTool;
+using System.IO;
 
 public class YiSan : ModuleRules
 {
@@ -12,29 +13,21 @@ public class YiSan : ModuleRules
 			"Core",
 			"CoreUObject",
 			"Engine",
-			"CoffeeLibrary",
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
 			"InputCore",
-			"EnhancedInput",
-			"AIModule",
-			"StateTreeModule",
-			"GameplayStateTreeModule",
 			"UMG",
 			"Slate",
-			"Niagara",
-			"HTTP",
-			"Json",
-			"JsonUtilities",
-			"WebSockets",
-			"DeveloperSettings"
+			"SlateCore",
+			"CoffeeLibrary",
+			"LatteLibrary",
 		});
-
+		
 		PublicIncludePaths.AddRange(new string[] {
-			"YiSan",
-			"YiSan/Template",
+			Path.Combine(ModuleDirectory, "Environment", "Public"),
 		});
 	}
 }
+
