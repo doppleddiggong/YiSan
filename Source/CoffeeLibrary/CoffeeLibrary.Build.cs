@@ -1,6 +1,7 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 using UnrealBuildTool;
+using System.IO;
 
 public class CoffeeLibrary : ModuleRules
 {
@@ -23,5 +24,13 @@ public class CoffeeLibrary : ModuleRules
 				"EditorSubsystem"
 			});
 		}
+		
+		PublicIncludePaths.AddRange(new string[] {
+			Path.Combine(ModuleDirectory, "Actor", "Public"),
+			Path.Combine(ModuleDirectory, "Core", "Public"),	
+			Path.Combine(ModuleDirectory, "Features", "Public"),	
+			Path.Combine(ModuleDirectory, "Shared", "Public"),	
+		});
+		
 	}
 }

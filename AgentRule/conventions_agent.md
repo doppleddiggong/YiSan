@@ -6,7 +6,7 @@
 
 ## 1. 네이밍 규칙 (Naming Conventions)
 
-### 1.1. 클래스 (Classes)
+### 1.1. 클래스 및 파일명 (Classes and Filenames)
 
 - **접두사**: 모든 클래스는 역할에 맞는 접두사를 사용해야 합니다.
   - `A`: `AActor`를 상속하는 클래스 (예: `APlayerActor`)
@@ -15,6 +15,9 @@
   - `F`: 구조체 또는 `UObject` 외의 일반 클래스 (예: `FHitResult`, `FMathHelper`)
   - `E`: 열거형 (예: `ECharacterType`)
   - `T`: 템플릿 클래스 (예: `TArray`, `TSubclassOf`)
+
+- **파일명 일치**: 클래스 이름은 해당 클래스를 정의하는 파일의 이름과 정확히 일치해야 합니다.
+  - 예: `class UStatSystem`은 `UStatSystem.h` 및 `UStatSystem.cpp` 파일에 정의되어야 합니다.
 
 ### 1.2. 변수 (Variables)
 
