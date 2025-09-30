@@ -1,0 +1,44 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "5.6",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+            "Name": "CoffeeLibrary",
+            "Type": "Runtime",
+            "LoadingPhase": "Default"
+        },
+        {
+            "Name": "LatteLibrary",
+            "Type": "Runtime",
+            "LoadingPhase": "Default"
+        },
+		{
+			"Name": "YiSan",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		},
+		{
+			"Name": "StateTree",
+			"Enabled": true
+		},
+		{
+			"Name": "GameplayStateTree",
+			"Enabled": true
+		},
+		{
+            "Name": "CoffeeToolbar",
+            "Enabled": true
+        }
+	]
+}

@@ -1,0 +1,18 @@
+﻿feat(Character): 시야기반 공격/룩타겟 질의화/오토트래킹 (+272/-167, 5 files)
+
+# 요약
+# - 요약: C++ 코드 중심 변경, UE 매크로/타입 변경 포함
+# - 총 변경량: +272/-167, 파일: 5
+# - 주요 파일: Source/DragonBallSZ/Character/Private/URushAttackSystem.cpp, Source/DragonBallSZ/Character/Private/APlayerActor.cpp, Source/DragonBallSZ/Character/Public/URushAttackSystem.h
+# - 영향 경로 상위: Source/DragonBallSZ
+# - 변경 확장자 상위: ., c, p, p
+# - 코드 토큰: UFUNCTION:12, UPROPERTY:6, CLASS:0, ENUM:0, STRUCT:0
+
+# 변경 내역 상위 10개
+# - M Source/DragonBallSZ/Character/Private/URushAttackSystem.cpp (+139/-119)
+# - M Source/DragonBallSZ/Character/Private/APlayerActor.cpp (+86/-18)
+# - M Source/DragonBallSZ/Character/Public/URushAttackSystem.h (+29/-18)
+# - M Source/DragonBallSZ/Character/Public/APlayerActor.h (+18/-11)
+# - M Source/DragonBallSZ/Character/Public/AEnemyActor.h (+0/-1)
+
+# 브랜치: dopple
