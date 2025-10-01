@@ -13,11 +13,11 @@ jobs:
     - name: Install Doxygen
       run: sudo apt-get update && sudo apt-get install -y doxygen graphviz
 
-    - name: Download Awesome Doxygen CSS
-      run: |
-        wget https://raw.githubusercontent.com/jothepro/awesome-doxygen-css/main/awesome-doxygen.css
+    - name: Download Doxygen Awesome CSS
+      run: |-
+        wget https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/main/doxygen-awesome.css
         mkdir -p docs/html
-        mv awesome-doxygen.css docs/html/
+        mv doxygen-awesome.css docs/html/
 
     - name: Generate Doxygen documentation
       run: doxygen Doxyfile
