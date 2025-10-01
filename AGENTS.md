@@ -37,6 +37,7 @@
 ## 커밋 메시지 및 코딩 규칙
 - 커밋 메시지 작성은 `AgentRule/commit_agent.md`의 지침을 따른다.
 - 언리얼 코딩 컨벤션 및 프로젝트 고유 규칙은 `AgentRule/conventions_agent.md`를 참고한다.
+- Doxygen 관련 질문에는 `AgentRule/doxygen_setup_guide.md` 문서를 참조하여 답변한다.
 
 ---
 
