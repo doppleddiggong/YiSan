@@ -3,10 +3,13 @@
 [![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-5.6.0-blue.svg)](https://www.unrealengine.com/)
 [![Language](https://img.shields.io/badge/C%2B%2B-20-blue.svg)](https://isocpp.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Documentation](https://img.shields.io/badge/Docs-GitHub%20Pages-lightgrey.svg)](https://doppleddiggong.github.io/YiSan/)
 
 차세대 언리얼 엔진 기반 역사 체험형 게임 **YiSan**의 핵심 코드와 툴링을 담은 레포지토리입니다.
 
 ![Game Title](https://github.com/doppleddiggong/YiSan/blob/main/Documents/Reference/Title.png?raw=true)
+
+[![Wiki](https://img.shields.io/badge/Documentation-Wiki-lightgrey.svg)](https://github.com/doppleddiggong/YiSan/wiki)
 
 ## 프로젝트 개요
 - **엔진 버전**: Unreal Engine 5.6 (C++20)
