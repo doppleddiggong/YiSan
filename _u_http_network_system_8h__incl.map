@@ -1,0 +1,28 @@
+<map id="Source/LatteLibrary/Network/Public/UHttpNetworkSystem.h" name="Source/LatteLibrary/Network/Public/UHttpNetworkSystem.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="231,5,452,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="73,255,191,280"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="231,54,172,71,111,97,56,134,33,157,13,183,9,193,9,203,21,221,45,236,75,248,73,253,43,241,18,224,4,204,3,192,9,180,29,153,53,130,109,93,170,66,230,49"/>
+<area shape="rect" id="Node000003" href="$_network_data_8h.html" title=" " alt="" coords="221,108,341,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="325,62,300,98,295,95,321,59"/>
+<area shape="rect" id="Node000009" href="$_e_network_log_type_8h.html" title=" " alt="" coords="23,181,174,207"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="292,62,211,110,124,175,121,171,208,106,290,58"/>
+<area shape="rect" id="Node000010" href="$_macro_8h.html" title=" " alt="" coords="365,108,440,133"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="362,59,389,95,384,98,358,62"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="464,108,747,133"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="423,58,558,101,556,106,421,63"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="770,108,1017,133"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="453,49,807,103,806,109,452,54"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="271,136,156,247,152,243,267,132"/>
+<area shape="rect" id="Node000004" href="$_u_custom_network_settings_8h.html" title=" " alt="" coords="249,181,452,207"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="295,132,332,170,328,173,291,136"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="476,181,671,207"/>
+<area shape="poly" id="edge8_Node000003_Node000007" title=" " alt="" coords="329,131,514,175,513,181,328,136"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="695,181,886,207"/>
+<area shape="poly" id="edge9_Node000003_Node000008" title=" " alt="" coords="342,129,354,131,690,177,689,182,353,136,341,134"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="316,209,182,253,180,248,315,204"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="232,255,435,280"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="351,208,342,242,337,241,345,206"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="459,255,731,280"/>
+<area shape="poly" id="edge7_Node000004_Node000006" title=" " alt="" coords="391,204,543,248,542,253,389,209"/>
+<area shape="poly" id="edge11_Node000009_Node000002" title=" " alt="" coords="107,206,123,241,119,243,102,208"/>
+</map>

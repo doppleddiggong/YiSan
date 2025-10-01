@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,100,31"/>
+<area shape="rect" id="Node000001" href="$class_a_game_character.html" title=" " alt="" coords="148,5,281,31"/>
+<area shape="poly" id="edge3_Node000000_Node000001" title=" " alt="" coords="114,15,148,15,148,21,114,21"/>
+<area shape="rect" id="Node000002" href="$class_a_player_actor.html" title=" " alt="" coords="329,31,436,56"/>
+<area shape="poly" id="edge4_Node000001_Node000002" title=" " alt="" coords="295,27,330,33,329,38,294,33"/>
+<area shape="rect" id="Node000003" href="$class_i_controllable.html" title=" " alt="" coords="162,55,267,80"/>
+<area shape="poly" id="edge5_Node000003_Node000002" title=" " alt="" coords="281,55,328,48,329,54,281,61"/>
+</map>
