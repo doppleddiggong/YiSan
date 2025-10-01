@@ -11,6 +11,7 @@
 #endif
 
 #if WITH_EDITOR
+/** @brief 현재 에디터 선택을 기반으로 조건에 맞는 액터를 수집한다. */
 int32 UListActorComponent::GatherSelectedItem(TArray<AActor*>& Out) const
 {
 	Out.Reset();
@@ -40,6 +41,7 @@ int32 UListActorComponent::GatherSelectedItem(TArray<AActor*>& Out) const
 	return Out.Num();
 }
 
+/** @brief 선택된 액터를 배열에 추가하거나 덮어쓴다. */
 void UListActorComponent::AssignInternal(const bool bAppend)
 {
 	TArray<AActor*> Picked;
@@ -70,6 +72,7 @@ void UListActorComponent::AssignInternal(const bool bAppend)
 }
 #endif // WITH_EDITOR
 
+/** @brief 배열을 선택 항목으로 대체한다. */
 void UListActorComponent::AssignItemReplace()
 {
 #if WITH_EDITOR
@@ -77,6 +80,7 @@ void UListActorComponent::AssignItemReplace()
 #endif
 }
 
+/** @brief 선택 항목을 배열 끝에 추가한다. */
 void UListActorComponent::AssignItemAppend()
 {
 #if WITH_EDITOR
@@ -85,6 +89,7 @@ void UListActorComponent::AssignItemAppend()
 }
 
 
+/** @brief 액터 라벨을 기준으로 오름차순 정렬한다. */
 void UListActorComponent::SortByNameAsc()
 {
 #if WITH_EDITOR
@@ -104,6 +109,7 @@ void UListActorComponent::SortByNameAsc()
 #endif
 }
 
+/** @brief 액터 라벨을 기준으로 내림차순 정렬한다. */
 void UListActorComponent::SortByNameDesc()
 {
 #if WITH_EDITOR

@@ -10,6 +10,7 @@
 #endif
 
 #if WITH_EDITOR
+/** @brief 현재 에디터 선택에서 조건을 만족하는 액터를 수집한다. */
 int32 AListActorManager::GatherSelectedItem(TArray<AActor*>& Out) const
 {
 	Out.Reset();
@@ -39,6 +40,7 @@ int32 AListActorManager::GatherSelectedItem(TArray<AActor*>& Out) const
 	return Out.Num();
 }
 
+/** @brief 선택된 액터를 배열에 추가하거나 교체한다. */
 void AListActorManager::AssignInternal(const bool bAppend)
 {
 	TArray<AActor*> Picked;
@@ -69,6 +71,7 @@ void AListActorManager::AssignInternal(const bool bAppend)
 }
 #endif // WITH_EDITOR
 
+/** @brief 배열을 선택 항목으로 대체한다. */
 void AListActorManager::AssignItemReplace()
 {
 #if WITH_EDITOR
@@ -76,6 +79,7 @@ void AListActorManager::AssignItemReplace()
 #endif
 }
 
+/** @brief 선택 항목을 배열 끝에 추가한다. */
 void AListActorManager::AssignItemAppend()
 {
 #if WITH_EDITOR
@@ -84,6 +88,7 @@ void AListActorManager::AssignItemAppend()
 }
 
 
+/** @brief 액터 라벨을 기준으로 오름차순 정렬한다. */
 void AListActorManager::SortByNameAsc()
 {
 #if WITH_EDITOR
@@ -103,6 +108,7 @@ void AListActorManager::SortByNameAsc()
 #endif
 }
 
+/** @brief 액터 라벨을 기준으로 내림차순 정렬한다. */
 void AListActorManager::SortByNameDesc()
 {
 #if WITH_EDITOR
