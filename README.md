@@ -9,8 +9,6 @@
 
 ![Game Title](https://github.com/doppleddiggong/YiSan/blob/main/Documents/Reference/Title.png?raw=true)
 
-[![Wiki](https://img.shields.io/badge/Documentation-Wiki-lightgrey.svg)](https://github.com/doppleddiggong/YiSan/wiki)
-
 ## 프로젝트 개요
 - **엔진 버전**: Unreal Engine 5.6 (C++20)
 - **핵심 목표**: 고밀도 NPC 상호작용과 실시간 이벤트 연동, 커스텀 라이브러리를 통한 게임플레이 확장
