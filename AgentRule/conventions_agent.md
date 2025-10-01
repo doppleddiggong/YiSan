@@ -12,7 +12,7 @@
   - `A`: `AActor`를 상속하는 클래스 (예: `APlayerActor`)
   - `U`: `UObject`를 상속하는 클래스 (예: `UStatSystem`)
   - `I`: 인터페이스 클래스 (예: `IControllable`)
-  - `F`: 구조체 또는 `UObject` 외의 일반 클래스 (예: `FHitResult`, `FMathHelper`)
+  - `F`: 구조체, `UObject` 외의 일반 클래스 또는 델리게이트 (예: `FHitResult`, `FMathHelper`, `FResponseHealthDelegate`)
   - `E`: 열거형 (예: `ECharacterType`)
   - `T`: 템플릿 클래스 (예: `TArray`, `TSubclassOf`)
 
@@ -82,7 +82,7 @@ void Cmd_Jump() override;
 
 ### 3.2. 주석 (Comments)
 
-- **파일 헤더**: 모든 소스 파일 상단에 저작권 및 라이선스 정보를 포함한 주석을 추가합니다.
+- **파일 헤더**: 모든 소스 파일 상단에 저작권 및 라이선스 정보를 포함한 주석을 추가합니다. (예: `// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.`)
 - **기능 그룹**: `public:`, `protected:`와 같은 접근 지정자 뒤에 해당 섹션의 역할을 설명하는 주석을 추가하는 것을 권장합니다. (예: `public: // Control Interface`)
 - **코드 설명**: 복잡한 로직이나 특정 결정의 이유를 설명하는 주석을 작성합니다. "무엇을" 하는지보다 "왜" 그렇게 했는지를 설명하는 데 집중합니다.
 
@@ -90,6 +90,27 @@ void Cmd_Jump() override;
 
 ## 4. 기타 규칙
 
+### 4.1. 로깅 (Logging)
+
+- **일반 로깅**: `PRINTLOG` 매크로를 사용하여 일반적인 디버그 및 정보성 메시지를 기록합니다.
+- **네트워크 로깅**: `NETWORK_LOG` 매크로를 사용하여 네트워크 통신 관련 로그를 기록하며, `ENetworkLogType` 열거형과 `[GET]`, `[POST]`, `[WS]`와 같은 접두사를 활용하여 로그의 종류를 명확히 구분합니다.
+
+### 4.2. 기타
+
 - **에디터 코드**: 에디터에서만 사용되는 코드는 `#if WITH_EDITOR` ... `#endif` 블록으로 감싸서 패키지 빌드 시 제외되도록 합니다.
 - **상수**: `const`와 `constexpr`를 적절히 사용하여 불변 데이터를 명시합니다.
 - **강제 형변환**: C-style 캐스팅 대신 `static_cast`, `const_cast`, `reinterpret_cast`를 사용합니다.
+
+---
+
+## 5. 네트워크 모듈 컨벤션 (Network Module Conventions)
+
+- **서브시스템 활용**: `UGameInstanceSubsystem`을 상속받아 네트워크 시스템을 구현하며, `DEFINE_SUBSYSTEM_GETTER_INLINE` 매크로를 사용하여 전역 접근을 용이하게 합니다.
+- **서버 설정 관리**: `UCustomNetworkSettings` (UDeveloperSettings 파생)를 사용하여 개발, 스테이지, 라이브 환경별 서버 주소 및 포트 설정을 관리합니다. 명령줄 인수를 통해 서버 모드를 동적으로 변경할 수 있습니다.
+- **API 엔드포인트 정의**: `RequestAPI` 네임스페이스 내에 정적 `FString` 변수로 각 API 엔드포인트를 정의하여 일관성을 유지합니다.
+- **URL 구성**: `NetworkConfig` 네임스페이스의 정적 함수를 통해 `UCustomNetworkSettings`에서 현재 서버 모드에 맞는 `BaseUrl`과 `Port`를 가져와 전체 URL을 구성합니다.
+- **HTTP 요청**: `FHttpModule`을 사용하여 HTTP GET/POST 요청을 처리하며, `FJsonObjectConverter`를 통해 USTRUCT와 JSON 간의 데이터 변환을 수행합니다.
+- **WebSocket 통신**: `FWebSocketsModule`을 사용하여 WebSocket 연결, 메시지 송수신, 연결 상태 관리를 처리합니다.
+- **응답 데이터 구조**: 서버 응답 데이터를 위한 `USTRUCT` (예: `FResponseHealth`, `FResponseHelpChat`)를 정의하고, `SetFromHttpResponse` 및 `PrintData`와 같은 헬퍼 메서드를 포함하여 응답 처리 및 로깅을 표준화합니다.
+- **네트워크 로깅**: `NETWORK_LOG` 매크로를 사용하여 네트워크 통신 관련 로그를 기록하며, `ENetworkLogType` 열거형과 `[GET]`, `[POST]`, `[WS]`와 같은 접두사를 활용하여 로그의 종류를 명확히 구분합니다.
+- **델리게이트 사용**: 비동기 네트워크 응답 처리를 위해 `DECLARE_DELEGATE_TwoParams`를 사용하여 C++ 콜백을 정의하고, `DECLARE_DYNAMIC_MULTICAST_DELEGATE`를 사용하여 블루프린트에서 바인딩 가능한 이벤트를 제공합니다.
