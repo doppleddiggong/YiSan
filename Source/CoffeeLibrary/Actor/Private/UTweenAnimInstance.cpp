@@ -3,6 +3,7 @@
 #include "UTweenAnimInstance.h"
 #include "Kismet/KismetMathLibrary.h"
 
+/** @brief 알파를 0~1 범위에서 증가 또는 감소시키며 트윈 상태를 업데이트한다. */
 void UTweenAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 {
 	const float AlphaStep  = DeltaSeconds / TweenDuration;
@@ -11,6 +12,7 @@ void UTweenAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 	TweenAlpha = FMath::Clamp(TweenAlpha + AlphaStep * Dir, 0.f, 1.f);
 }
 
+/** @brief Ease 커브가 유효하면 값을 보간하여 반환한다. */
 float UTweenAnimInstance::GetEasedAlpha() const
 {
 	if (EaseCurve)

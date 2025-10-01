@@ -3,11 +3,13 @@
 #include "UOrbitalBehaviorComponent.h"
 #include "GameFramework/Actor.h"
 
+/** @brief Tick 활성화를 설정한다. */
 UOrbitalBehaviorComponent::UOrbitalBehaviorComponent()
 {
 	PrimaryComponentTick.bCanEverTick = true;
 }
 
+/** @brief 초기 타겟 위치를 저장해 자연스러운 공전을 시작한다. */
 void UOrbitalBehaviorComponent::BeginPlay()
 {
 	Super::BeginPlay();
@@ -18,12 +20,14 @@ void UOrbitalBehaviorComponent::BeginPlay()
 	}
 }
 
+/** @brief 매 프레임 공전 처리를 실행한다. */
 void UOrbitalBehaviorComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 	Tick_TargetFloat(DeltaTime);
 }
 
+/** @brief 타겟을 따라 공전하며 보간 로직을 처리한다. */
 void UOrbitalBehaviorComponent::Tick_TargetFloat(float DeltaTime)
 {
 	AActor* Owner = GetOwner();
@@ -74,6 +78,7 @@ void UOrbitalBehaviorComponent::Tick_TargetFloat(float DeltaTime)
 	}
 }
 
+/** @brief 공전 대상 변경 시 내부 상태를 재설정한다. */
 void UOrbitalBehaviorComponent::SetTargetActor(AActor* NewTarget, bool bSnapAnchor, bool bPreserveOrbitPhase)
 {
 	// 동일 대상이면 무시

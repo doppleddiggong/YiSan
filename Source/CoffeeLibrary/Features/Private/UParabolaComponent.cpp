@@ -2,11 +2,13 @@
 #include "DrawDebugHelpers.h"
 #include "GameFramework/Actor.h"
 
+/** @brief Tick 활성화를 설정한다. */
 UParabolaComponent::UParabolaComponent()
 {
 	PrimaryComponentTick.bCanEverTick = true;
 }
 
+/** @brief 초기화 시 모든 트랙의 시간을 리셋한다. */
 void UParabolaComponent::BeginPlay()
 {
 	Super::BeginPlay();
@@ -17,12 +19,14 @@ void UParabolaComponent::BeginPlay()
 		P.Value.ResetTime();
 }
 
+/** @brief Tick마다 트랙을 갱신한다. */
 void UParabolaComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 	UpdateTracks(DeltaTime);
 }
 
+/** @brief 모든 포물선 트랙의 시간을 진행시킨다. */
 void UParabolaComponent::UpdateTracks(float DeltaTime)
 {
 	for (auto& P : BallisticTracks)
@@ -33,7 +37,8 @@ void UParabolaComponent::UpdateTracks(float DeltaTime)
 
 
 
-FRotator UParabolaComponent::GetParabolaFacing( FName TrackName, bool bYawOnly, EForwardAxis ForwardAxis ) const
+/** @brief 지정된 트랙의 진행 방향을 기반으로 회전을 계산한다. */
+FRotator UParabolaComponent::GetParabolaFacing(FName TrackName, bool bYawOnly, EForwardAxis ForwardAxis) const
 {
 	if (const FParabolaBallisticTrack* Ballistic = BallisticTracks.Find(TrackName))
 	{
@@ -65,6 +70,7 @@ FRotator UParabolaComponent::GetParabolaFacing( FName TrackName, bool bYawOnly, 
 	return GetOwner()->GetActorRotation();
 }
 
+/** @brief 방향 벡터에서 회전 값을 생성한다. */
 FRotator UParabolaComponent::MakeFacingFromDir(const FVector& Direction, const bool bYawOnly, const EForwardAxis ForwardAxis) const
 {
 	FVector Dir = Direction;
@@ -106,6 +112,7 @@ FRotator UParabolaComponent::MakeFacingFromDir(const FVector& Direction, const b
 }
 
 // ---- Ballistic ----
+/** @brief 탄도 트랙을 등록하고 시간을 초기화한다. */
 void UParabolaComponent::SetBallisticParabolaTrack(FName TrackName, const FParabolaBallisticTrack& Track)
 {
 	FParabolaBallisticTrack Copy = Track;
@@ -113,6 +120,7 @@ void UParabolaComponent::SetBallisticParabolaTrack(FName TrackName, const FParab
 	BallisticTracks.FindOrAdd(TrackName) = Copy;
 }
 
+/** @brief 탄도 트랙의 현재 위치를 반환한다. */
 FVector UParabolaComponent::GetBallisticParabolaVectorTrack(FName TrackName) const
 {
 	if (const FParabolaBallisticTrack* T = BallisticTracks.Find(TrackName))
@@ -122,6 +130,7 @@ FVector UParabolaComponent::GetBallisticParabolaVectorTrack(FName TrackName) con
 	return FVector::ZeroVector;
 }
 
+/** @brief 탄도 트랙에서 특정 알파의 위치를 계산한다. */
 FVector UParabolaComponent::GetBallisticVectorAtAlphaFromTrack(FName TrackName, float Alpha) const
 {
 	if (const FParabolaBallisticTrack* T = BallisticTracks.Find(TrackName))
@@ -131,6 +140,7 @@ FVector UParabolaComponent::GetBallisticVectorAtAlphaFromTrack(FName TrackName, 
 	return FVector::ZeroVector;
 }
 
+/** @brief 탄도 트랙을 디버그 라인으로 그린다. */
 void UParabolaComponent::DrawBallisticPath(FName TrackName, int32 NumSegments, FColor Color, float LifeTime) const
 {
 	if (const FParabolaBallisticTrack* T = BallisticTracks.Find(TrackName))
@@ -162,6 +172,7 @@ void UParabolaComponent::DrawBallisticPath(FName TrackName, int32 NumSegments, F
 
 
 // ---- Geometric ----
+/** @brief 기하학 트랙을 등록하고 시간을 초기화한다. */
 void UParabolaComponent::SetGeometricParabolaTrack(FName TrackName, const FParabolaGeometricTrack& Track)
 {
 	FParabolaGeometricTrack Copy = Track;
@@ -169,6 +180,7 @@ void UParabolaComponent::SetGeometricParabolaTrack(FName TrackName, const FParab
 	GeometricTracks.FindOrAdd(TrackName) = Copy;
 }
 
+/** @brief 기하학 트랙의 현재 위치를 반환한다. */
 FVector UParabolaComponent::GetGeometricParabolaVectorTrack(FName TrackName) const
 {
 	if (const FParabolaGeometricTrack* T = GeometricTracks.Find(TrackName))
@@ -178,6 +190,7 @@ FVector UParabolaComponent::GetGeometricParabolaVectorTrack(FName TrackName) con
 	return FVector::ZeroVector;
 }
 
+/** @brief 기하학 트랙에서 특정 알파의 위치를 계산한다. */
 FVector UParabolaComponent::GetGeometricVectorAtAlphaFromTrack(FName TrackName, float Alpha) const
 {
 	if (const FParabolaGeometricTrack* T = GeometricTracks.Find(TrackName))
@@ -187,7 +200,8 @@ FVector UParabolaComponent::GetGeometricVectorAtAlphaFromTrack(FName TrackName, 
 	return FVector::ZeroVector;
 }
 
-void UParabolaComponent::DrawGeometricPath(FName TrackName, int32 NumSegments, FColor Color, float LifeTime ) const
+/** @brief 기하학 트랙을 디버그 라인으로 그린다. */
+void UParabolaComponent::DrawGeometricPath(FName TrackName, int32 NumSegments, FColor Color, float LifeTime) const
 {
 	if (const FParabolaGeometricTrack* T = GeometricTracks.Find(TrackName))
 	{
