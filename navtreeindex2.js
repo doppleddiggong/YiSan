@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"classAPlayerActor.html#afa5996b3ec43069697f1d9ec2d5ac220":[13,2,0,28],
 "classAPlayerActor.html#afc3ace6de521cfc26c3a4395215e7ce9":[13,2,0,1],
 "classAPlayerActor.html#afdc58f425b86bc8f21c701904266f35b":[13,2,0,19],
 "classAPlayerControl.html":[15,0,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "dir_74389ed8173ad57b461b9d623a1f3867.html":[16,0,2],
 "dir_79bdea5ad0e8114ad0e13f8b69f90228.html":[16,0,2,2,1,1],
 "dir_7b9937ea1401d072157412173f027791.html":[16,0,2,0,1,0],
-"dir_860edcf92ecb7bfc151245653fe6958b.html":[16,0,2,0,0,1],
-"dir_91f3f4f018939627454e0787c2010dec.html":[16,0,2,0,2]
+"dir_860edcf92ecb7bfc151245653fe6958b.html":[16,0,2,0,0,1]
 };

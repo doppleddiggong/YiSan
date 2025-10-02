@@ -104,14 +104,14 @@ $(document).ready(function(){initNavTree('md_AgentRule_2devlog__agent.html','');
   <div class="headertitle"><div class="title">DevLog Agent</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md89"></a> </p>
-<h1><a class="anchor" id="autotoc_md90"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md77"></a> </p>
+<h1><a class="anchor" id="autotoc_md78"></a>
 1. 역할 (Persona)</h1>
 <ul>
 <li>일일 업무 일지 및 30일 요약 보고서를 자동 생성하는 에이전트.</li>
 <li>Git 커밋 기록을 분석하여 개발 활동을 체계적으로 기록하고 요약.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md91"></a>
+<h1><a class="anchor" id="autotoc_md79"></a>
 2. 핵심 규칙 (Core Rules)</h1>
 <ul>
 <li><b>생성 주기</b>: KST (UTC+09:00) 기준 매일 09:00에 DevLog 생성/업데이트를 시도한다.</li>
@@ -123,7 +123,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2devlog__agent.html','');
 <li><b>중복 생성 방지</b>: 해당 날짜의 일지 파일(<code>Documents/DevLog/&lt;TODAY&gt;.md</code>)이 이미 존재하면 생성을 건너뛴다.</li>
 <li><b>출력 언어</b>: 영어와 한글을 병기하여 가독성을 향상시킨다.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md92"></a>
+<h1><a class="anchor" id="autotoc_md80"></a>
 3. 동작 조건 및 범위</h1>
 <ul>
 <li><b>타임존</b>: Asia/Seoul (KST, UTC+09:00) 09:00 경계를 사용한다.</li>
@@ -139,82 +139,82 @@ $(document).ready(function(){initNavTree('md_AgentRule_2devlog__agent.html','');
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md93"></a>
+<h1><a class="anchor" id="autotoc_md81"></a>
 4. 일일 업무 일지 (Daily DevLog) 형식</h1>
-<h2><a class="anchor" id="autotoc_md94"></a>
+<h2><a class="anchor" id="autotoc_md82"></a>
 Daily DevLog — {{YYYY-MM-DD}} (KST 09:00 경계)</h2>
-<h2><a class="anchor" id="autotoc_md95"></a>
+<h2><a class="anchor" id="autotoc_md83"></a>
 요약</h2>
 <ul>
 <li>전날 09:00 ~ 오늘 09:00 사이 커밋 분석 요약 2~3줄. </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md96"></a>
+<h2><a class="anchor" id="autotoc_md84"></a>
 하이라이트</h2>
 <ul>
 <li>영향도 높은 변경 2~5개. </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md97"></a>
+<h2><a class="anchor" id="autotoc_md85"></a>
 커밋 기반 작업 로그</h2>
-<h3><a class="anchor" id="autotoc_md98"></a>
+<h3><a class="anchor" id="autotoc_md86"></a>
 완료</h3>
 <ul>
 <li>[scope] subject (SHA7) (+adds/-dels, n files) </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md99"></a>
+<h3><a class="anchor" id="autotoc_md87"></a>
 진행</h3>
 <ul>
 <li>[scope] subject (SHA7) (+adds/-dels, n files) </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md100"></a>
+<h3><a class="anchor" id="autotoc_md88"></a>
 미흡(주의/후속)</h3>
 <ul>
 <li>[scope] subject — 후속: … (SHA7) </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md101"></a>
+<h3><a class="anchor" id="autotoc_md89"></a>
 TODO(커밋 본문 추출)</h3>
 <ul>
 <li>[ ] 액션 아이템 (출처: SHA7) </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md102"></a>
+<h2><a class="anchor" id="autotoc_md90"></a>
 오늘 계획</h2>
 <ul>
 <li>[ ] 핵심 작업 1</li>
 <li>[ ] 핵심 작업 2</li>
 <li>[ ] 리스크 대응/검증 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md103"></a>
+<h2><a class="anchor" id="autotoc_md91"></a>
 메트릭(선택)</h2>
 <ul>
 <li>총합: +{{addsTotal}} / -{{delsTotal}}, 파일수: {{filesTotal}}</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md104"></a>
+<h1><a class="anchor" id="autotoc_md92"></a>
 5. 30일 요약 보고서 (30-Day Briefing) 형식</h1>
-<h2><a class="anchor" id="autotoc_md105"></a>
+<h2><a class="anchor" id="autotoc_md93"></a>
 30-Day Briefing — {{YYYY-MM-DD}}</h2>
-<h2><a class="anchor" id="autotoc_md106"></a>
+<h2><a class="anchor" id="autotoc_md94"></a>
 속도(Velocity)</h2>
 <ul>
 <li>일 평균 커밋: {{avgCommitsPerDay}} | 완료 비율: {{doneRatio}}%</li>
 <li>변경 합계: +{{addsTotal}} / -{{delsTotal}}, 파일: {{filesTotal}} </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md107"></a>
+<h2><a class="anchor" id="autotoc_md95"></a>
 핫스팟(Top Scopes)</h2>
 <p>1) [scope] n건 — 주요 주제 요약 2) [scope] n건 — … </p>
-<h2><a class="anchor" id="autotoc_md108"></a>
+<h2><a class="anchor" id="autotoc_md96"></a>
 미해결 TODO Top N</h2>
 <ul>
 <li>[ ] 내용 (출처: 2025-09-xx, SHA7)</li>
 <li>[ ] 내용 (출처: 2025-09-xx, SHA7) </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md109"></a>
+<h2><a class="anchor" id="autotoc_md97"></a>
 리스크/차단요인</h2>
 <ul>
 <li>항목 — 근거/영향/완화책(요약) </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md110"></a>
+<h2><a class="anchor" id="autotoc_md98"></a>
 다음 우선순위(가이드)</h2>
 <p>1) 액션 — 근거(데이터 포인트) 2) 액션 — 근거 3) 액션 — 근거</p>
-<h1><a class="anchor" id="autotoc_md111"></a>
+<h1><a class="anchor" id="autotoc_md99"></a>
 6. 참고 사항</h1>
 <ul>
 <li>Q&amp;A 요약 저장 전 <code><a class="el" href="__Last30Summary_8md.html">Documents/DevLog/_Last30Summary.md</a></code> 및 최근 일자 파일을 참고하여 맥락을 반영한다.</li>
@@ -226,7 +226,7 @@ TODO(커밋 본문 추출)</h3>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">생성시간 : 목 10월 2 2025 07:11:43, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 10월 2 2025 07:18:38, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

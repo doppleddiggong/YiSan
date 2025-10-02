@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['프로젝트_20소개_0',['프로젝트 소개',['../index.html#autotoc_md114',1,'']]],
-  ['프로젝트_20정보_1',['1) 프로젝트 정보',['../md_GEMINI.html#autotoc_md30',1,'']]]
+  ['프로젝트_20소개_0',['프로젝트 소개',['../index.html#autotoc_md105',1,'']]],
+  ['프로젝트_20정보_1',['1) 프로젝트 정보',['../md_GEMINI.html#autotoc_md24',1,'']]]
 ];
