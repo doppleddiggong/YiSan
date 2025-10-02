@@ -1,5 +1,8 @@
 var NAVTREEINDEX1 =
 {
+"UGameDataManager_8cpp.html#a14bf9bb7e6c71e7c6c887cc0054c0607":[16,0,2,1,3,0,2,3],
+"UGameDataManager_8cpp.html#aa424faa8ab60408aef25c49c7ebf0bb2":[16,0,2,1,3,0,2,1],
+"UGameDataManager_8cpp_source.html":[16,0,2,1,3,0,2],
 "UGameDataManager_8h.html":[16,0,2,1,3,1,3],
 "UGameDataManager_8h_source.html":[16,0,2,1,3,1,3],
 "UGameFunctionLibrary_8cpp.html":[16,0,2,1,1,0,0],
@@ -91,14 +94,10 @@ var NAVTREEINDEX1 =
 "UWebSocketSystem_8h.html#ac73879dc7ac2281c0a22d6979254769f":[16,0,2,1,4,1,5,4],
 "UWebSocketSystem_8h.html#ae226cc703074c5cb75bf9933ff98f084":[16,0,2,1,4,1,5,1],
 "UWebSocketSystem_8h_source.html":[16,0,2,1,4,1,5],
-"YiSanGameMode_8cpp.html":[16,0,2,2,0,0,0],
-"YiSanGameMode_8cpp_source.html":[16,0,2,2,0,0,0],
-"YiSanGameMode_8h.html":[16,0,2,2,0,1,0],
-"YiSanGameMode_8h_source.html":[16,0,2,2,0,1,0],
-"YiSanVoiceConsoleSubsystem_8cpp.html":[16,0,2,2,0,0,1],
-"YiSanVoiceConsoleSubsystem_8cpp_source.html":[16,0,2,2,0,0,1],
-"YiSanVoiceConsoleSubsystem_8h.html":[16,0,2,2,0,1,1],
-"YiSanVoiceConsoleSubsystem_8h_source.html":[16,0,2,2,0,1,1],
+"UYiSanVoiceConsoleSubsystem_8cpp.html":[16,0,2,2,0,0,1],
+"UYiSanVoiceConsoleSubsystem_8cpp_source.html":[16,0,2,2,0,0,1],
+"UYiSanVoiceConsoleSubsystem_8h.html":[16,0,2,2,0,1,1],
+"UYiSanVoiceConsoleSubsystem_8h_source.html":[16,0,2,2,0,1,1],
 "YiSan_8cpp.html":[16,0,2,2,2],
 "YiSan_8cpp.html#ab89e713fef70b3b5ae4e3f648a6b01b9":[16,0,2,2,2,0],
 "YiSan_8cpp_source.html":[16,0,2,2,2],
@@ -249,5 +248,6 @@ var NAVTREEINDEX1 =
 "classAPlayerActor.html#adb3de42108c699ccda8a66cf936d097c":[13,2,0,68],
 "classAPlayerActor.html#addb91f2966d3e68a79699ba89be0a659":[13,2,0,0],
 "classAPlayerActor.html#ade41e148a35a605a16ff10d17dd32452":[13,2,0,49],
-"classAPlayerActor.html#ae6d44ec6fe6c6dcd5a7c608d0b0dc476":[13,2,0,55]
+"classAPlayerActor.html#ae6d44ec6fe6c6dcd5a7c608d0b0dc476":[13,2,0,55],
+"classAPlayerActor.html#ae7ea1c9e16d4110e77104a2b80364579":[13,2,0,58]
 };

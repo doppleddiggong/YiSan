@@ -55,5 +55,7 @@ var searchData=
   ['utweenaniminstance_2eh_52',['UTweenAnimInstance.h',['../UTweenAnimInstance_8h.html',1,'']]],
   ['uvfxdataasset_2eh_53',['UVFXDataAsset.h',['../UVFXDataAsset_8h.html',1,'']]],
   ['uwebsocketsystem_2ecpp_54',['UWebSocketSystem.cpp',['../UWebSocketSystem_8cpp.html',1,'']]],
-  ['uwebsocketsystem_2eh_55',['UWebSocketSystem.h',['../UWebSocketSystem_8h.html',1,'']]]
+  ['uwebsocketsystem_2eh_55',['UWebSocketSystem.h',['../UWebSocketSystem_8h.html',1,'']]],
+  ['uyisanvoiceconsolesubsystem_2ecpp_56',['UYiSanVoiceConsoleSubsystem.cpp',['../UYiSanVoiceConsoleSubsystem_8cpp.html',1,'']]],
+  ['uyisanvoiceconsolesubsystem_2eh_57',['UYiSanVoiceConsoleSubsystem.h',['../UYiSanVoiceConsoleSubsystem_8h.html',1,'']]]
 ];

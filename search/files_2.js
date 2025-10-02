@@ -10,5 +10,7 @@ var searchData=
   ['aplayeractor_2ecpp_7',['APlayerActor.cpp',['../APlayerActor_8cpp.html',1,'']]],
   ['aplayeractor_2eh_8',['APlayerActor.h',['../APlayerActor_8h.html',1,'']]],
   ['aplayercontrol_2ecpp_9',['APlayerControl.cpp',['../APlayerControl_8cpp.html',1,'']]],
-  ['aplayercontrol_2eh_10',['APlayerControl.h',['../APlayerControl_8h.html',1,'']]]
+  ['aplayercontrol_2eh_10',['APlayerControl.h',['../APlayerControl_8h.html',1,'']]],
+  ['ayisangamemode_2ecpp_11',['AYiSanGameMode.cpp',['../AYiSanGameMode_8cpp.html',1,'']]],
+  ['ayisangamemode_2eh_12',['AYiSanGameMode.h',['../AYiSanGameMode_8h.html',1,'']]]
 ];
