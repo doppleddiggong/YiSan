@@ -12,6 +12,7 @@ var namespaces_dup =
       [ "CombatStart", "namespaceGameEvent.html#a6d65980511aabdb7b4e3f3d5e88ee3b2", null ],
       [ "GameStart", "namespaceGameEvent.html#a8895f0bab8d1a159afd86d6b287ad172", null ]
     ] ],
+    [ "GoogleSpeechService", "namespaceGoogleSpeechService.html", "namespaceGoogleSpeechService" ],
     [ "NetworkConfig", "namespaceNetworkConfig.html", [
       [ "GetFullUrl", "namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246", null ]
     ] ],
