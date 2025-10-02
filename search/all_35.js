@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['다음_20우선순위_20가이드_0',['다음 우선순위(가이드)',['../md_AgentRule_2devlog__agent.html#autotoc_md110',1,'']]]
+  ['누락_0',['8.1. 문제: &lt;tt&gt;git commit -m&lt;/tt&gt; 사용 시 한글 본문 누락',['../md_AgentRule_2commit__agent.html#autotoc_md52',1,'']]]
 ];

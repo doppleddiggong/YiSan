@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['빠른_20시작_0',['빠른 시작',['../index.html#autotoc_md142',1,'']]]
+  ['분석_20규칙_20추가_0',['4. 로그 파일 자동 분석 (규칙 추가)',['../md_AgentRule_2debug__guide.html#autotoc_md196',1,'']]],
+  ['분석_20analyzing_20logs_1',['2.4. 로그 분석 (Analyzing Logs)',['../md_AgentRule_2debug__guide.html#autotoc_md191',1,'']]],
+  ['분할_20고려사항_2',['8.5. 파일 분할 고려사항',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md131',1,'']]]
 ];

@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['핵심_20규칙_20core_20rules_0',['핵심 규칙 core rules',['../md_AgentRule_2commit__agent.html#autotoc_md28',1,'2. 핵심 규칙 (Core Rules)'],['../md_AgentRule_2devlog__agent.html#autotoc_md91',1,'2. 핵심 규칙 (Core Rules)']]],
-  ['핵심_20시스템_20게임_20모듈_20및_20서브_20모듈_20기준_1',['5) 핵심 시스템 (게임 모듈 및 서브 모듈 기준)',['../md_GEMINI.html#autotoc_md47',1,'']]],
-  ['핵심_20시스템_20core_20systems_2',['핵심 시스템 (Core Systems)',['../index.html#autotoc_md133',1,'']]],
-  ['핵심_20원칙_3',['2. 핵심 원칙',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md2',1,'']]]
+  ['함수_20주석_20예시_0',['함수 주석 예시',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md129',1,'']]],
+  ['함수_20functions_1',['1.3. 함수 (Functions)',['../md_AgentRule_2conventions__agent.html#autotoc_md82',1,'']]]
 ];

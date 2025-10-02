@@ -1,5 +1,16 @@
 var NAVTREEINDEX4 =
 {
+"namespaceGameColor.html#a347e21752e1aecee7916040063b5915a":[14,0,0,1],
+"namespaceGameColor.html#a85944ad816eb9238756d535533eac5d0":[14,0,0,3],
+"namespaceGameColor.html#aba495ad0b2bb0e48100c5ad01c51fd01":[14,0,0,0],
+"namespaceGameColor.html#ad8c643df28a67f8c2c5f50ec7594997b":[14,0,0,4],
+"namespaceGameColor.html#af7d073693f762258d28d399fbb63562f":[14,0,0,2],
+"namespaceGameEvent.html":[14,0,1],
+"namespaceGameEvent.html#a1cddba91491fef77c068145a6ad7aa05":[14,0,1,0],
+"namespaceGameEvent.html#a6d65980511aabdb7b4e3f3d5e88ee3b2":[14,0,1,1],
+"namespaceGameEvent.html#a8895f0bab8d1a159afd86d6b287ad172":[14,0,1,2],
+"namespaceNetworkConfig.html":[14,0,2],
+"namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246":[14,0,2,0],
 "namespaceRequestAPI.html":[14,0,3],
 "namespaceRequestAPI.html#a1ebbd90e6ac492f5fd6648e666fb2699":[14,0,3,1],
 "namespaceRequestAPI.html#ae1061ff9836b3127b56024d0a0f6fd65":[14,0,3,0],

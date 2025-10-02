@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['아트_20에셋_20파이프라인_0',['8) 아트/에셋 파이프라인',['../md_GEMINI.html#autotoc_md50',1,'']]]
+  ['식별_20identifying_20debug_20points_0',['2.2. 디버그 포인트 식별 (Identifying Debug Points)',['../md_AgentRule_2debug__guide.html#autotoc_md189',1,'']]]
 ];

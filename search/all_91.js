@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['페르소나_20persona_0',['AI 에이전트 페르소나 (Persona)',['../md_GEMINI.html#autotoc_md14',1,'']]]
+  ['태그_20및_20예시_0',['6.2. 필수 태그 및 예시',['../md_AgentRule_2conventions__agent.html#autotoc_md98',1,'']]]
 ];

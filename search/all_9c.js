@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['헤더_20파일_0',['3.1. 헤더 파일',['../md_AgentRule_2conventions__agent.html#autotoc_md76',1,'']]]
+  ['핫스팟_20top_20scopes_0',['핫스팟(Top Scopes)',['../md_AgentRule_2devlog__agent.html#autotoc_md72',1,'']]]
 ];

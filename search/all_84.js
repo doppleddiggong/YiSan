@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['참고_0',['7. 참고',['../md_AgentRule_2commit__agent.html#autotoc_md38',1,'']]],
-  ['참고_20사항_1',['6. 참고 사항',['../md_AgentRule_2devlog__agent.html#autotoc_md111',1,'']]],
-  ['참조_2',['3.3. 기존 코드/컨벤션 참조',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md7',1,'']]]
+  ['진행_0',['진행',['../md_AgentRule_2devlog__agent.html#autotoc_md64',1,'진행'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md158',1,'진행'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md176',1,'진행']]],
+  ['진행_20중_1',['진행 중',['../md_Documents_2DevLog_22025-09-30.html#autotoc_md140',1,'']]]
 ];

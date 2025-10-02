@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['목적_0',['목적',['../md_Documents_2Reference_2DoxygenWorkflow.html#autotoc_md192',1,'']]],
-  ['목적_20purpose_1',['1. 목적 (Purpose)',['../md_AgentRule_2debug__guide.html#autotoc_md56',1,'']]],
-  ['목표_20명확화_2',['3.1. 작업 목표 명확화',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md5',1,'']]]
+  ['명령어_0',['8.3. 주요 Doxygen 명령어',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md126',1,'']]],
+  ['명확화_1',['3.1. 작업 목표 명확화',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md36',1,'']]]
 ];

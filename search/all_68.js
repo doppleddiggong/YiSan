@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['역할_20persona_0',['역할 persona',['../md_AgentRule_2commit__agent.html#autotoc_md27',1,'1. 역할 (Persona)'],['../md_AgentRule_2devlog__agent.html#autotoc_md90',1,'1. 역할 (Persona)']]]
+  ['업무_20일지_20daily_20devlog_20형식_0',['4. 일일 업무 일지 (Daily DevLog) 형식',['../md_AgentRule_2devlog__agent.html#autotoc_md58',1,'']]]
 ];

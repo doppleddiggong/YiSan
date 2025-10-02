@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['수정_20방안_20제안_20proposing_20solutions_0',['2.5. 수정 방안 제안 (Proposing Solutions)',['../md_AgentRule_2debug__guide.html#autotoc_md62',1,'']]]
+  ['소개_0',['프로젝트 소개',['../index.html#autotoc_md101',1,'']]],
+  ['소스_20설정_1',['5.2. GitHub Pages 소스 설정',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md115',1,'']]]
 ];

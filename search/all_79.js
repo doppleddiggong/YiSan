@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['전략_20debugging_20strategy_0',['2. 디버깅 전략 (Debugging Strategy)',['../md_AgentRule_2debug__guide.html#autotoc_md57',1,'']]],
-  ['전제_20조건_1',['2. 전제 조건',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md114',1,'']]]
+  ['자동_20분석_20규칙_20추가_0',['4. 로그 파일 자동 분석 (규칙 추가)',['../md_AgentRule_2debug__guide.html#autotoc_md196',1,'']]]
 ];

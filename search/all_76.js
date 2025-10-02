@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['자동_20분석_20규칙_20추가_0',['4. 로그 파일 자동 분석 (규칙 추가)',['../md_AgentRule_2debug__guide.html#autotoc_md66',1,'']]]
+  ['이산_20개발_20문서_0',['Project YiSan (이산) - 개발 문서',['../index.html',1,'']]],
+  ['이해_20understanding_20the_20problem_1',['2.1. 문제 이해 (Understanding the Problem)',['../md_AgentRule_2debug__guide.html#autotoc_md188',1,'']]]
 ];

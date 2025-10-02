@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['설정_0',['설정',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md115',1,'3. Doxyfile 생성 및 설정'],['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md116',1,'4. GitHub Actions 워크플로우 (&lt;tt&gt;doxygen.yml&lt;/tt&gt;) 설정'],['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md117',1,'5. GitHub 저장소 설정'],['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md118',1,'5.1. GitHub Actions 권한 설정'],['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md119',1,'5.2. GitHub Pages 소스 설정'],['../md_GEMINI.html#autotoc_md48',1,'6) 빌드/타깃 설정']]],
-  ['설정_20가이드_20project_20yisan_1',['Doxygen 문서화 및 GitHub Pages 배포 설정 가이드 (Project YiSan)',['../md_AgentRule_2doxygen__setup__guide.html',1,'']]]
+  ['서브_20모듈_20기준_0',['5) 핵심 시스템 (게임 모듈 및 서브 모듈 기준)',['../md_GEMINI.html#autotoc_md26',1,'']]],
+  ['서브_20모듈_3a_20tt_20coffeelibrary_20tt_20runtime_1',['4-2) 서브 모듈: &lt;tt&gt;CoffeeLibrary&lt;/tt&gt; (Runtime)',['../md_GEMINI.html#autotoc_md23',1,'']]],
+  ['서브_20모듈_3a_20tt_20lattelibrary_20tt_20runtime_2',['4-3) 서브 모듈: &lt;tt&gt;LatteLibrary&lt;/tt&gt; (Runtime)',['../md_GEMINI.html#autotoc_md24',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['알려진_20문제_20및_20해결책_0',['8. 알려진 문제 및 해결책',['../md_AgentRule_2commit__agent.html#autotoc_md40',1,'']]]
+  ['안_20보임_0',['6.4. 문제 4: GitHub Pages 404 오류 (사이트 주소는 맞는데 내용이 안 보임)',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md120',1,'']]]
 ];

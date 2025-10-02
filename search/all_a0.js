@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['효과적으로_20상호작용하는_20가이드_0',['AI 에이전트와 효과적으로 상호작용하는 가이드',['../md_AgentRule_2agent__interaction__guide.html',1,'']]],
-  ['효율적인_20요청_20방법_1',['3. 효율적인 요청 방법',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md4',1,'']]]
+  ['형식_0',['형식',['../md_AgentRule_2devlog__agent.html#autotoc_md58',1,'4. 일일 업무 일지 (Daily DevLog) 형식'],['../md_AgentRule_2devlog__agent.html#autotoc_md69',1,'5. 30일 요약 보고서 (30-Day Briefing) 형식'],['../md_AgentRule_2conventions__agent.html#autotoc_md97',1,'6.1. 주석 형식']]]
 ];

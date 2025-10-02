@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['권장_20가이드_20요약_0',['Suggested Focus / 권장 가이드(요약)',['../md_Documents_2DevLog_2__Last30Summary.html#autotoc_md190',1,'']]],
-  ['권한_20설정_1',['5.1. GitHub Actions 권한 설정',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md118',1,'']]]
+  ['구성_20파일_0',['구성 파일',['../md_Documents_2Reference_2DoxygenWorkflow.html#autotoc_md204',1,'']]],
+  ['구조_1',['4) 모듈 구조',['../md_GEMINI.html#autotoc_md20',1,'']]],
+  ['구조_20및_20주석_2',['3. 파일 구조 및 주석',['../md_AgentRule_2conventions__agent.html#autotoc_md86',1,'']]]
 ];

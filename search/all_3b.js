@@ -1,12 +1,8 @@
 var searchData=
 [
-  ['로그_0',['로그',['../md_AgentRule_2devlog__agent.html#autotoc_md97',1,'커밋 기반 작업 로그'],['../md_Documents_2DevLog_22025-09-30.html#autotoc_md137',1,'커밋 기반 작업 로그'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md158',1,'커밋 기반 작업 로그'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md173',1,'커밋 기반 작업 로그']]],
-  ['로그_20분석_20analyzing_20logs_1',['2.4. 로그 분석 (Analyzing Logs)',['../md_AgentRule_2debug__guide.html#autotoc_md61',1,'']]],
-  ['로그_20정책_2',['Agent QA 로그 정책',['../md_GEMINI.html#autotoc_md53',1,'']]],
-  ['로그_20텔레메트리_20정책_20observability_20logging_3',['관찰 로그/텔레메트리 정책 (Observability &amp; Logging)',['../md_GEMINI.html#autotoc_md20',1,'']]],
-  ['로그_20파일_20자동_20분석_20규칙_20추가_4',['4. 로그 파일 자동 분석 (규칙 추가)',['../md_AgentRule_2debug__guide.html#autotoc_md66',1,'']]],
-  ['로그_202025_2009_2030_20kst_2009_3a00_20경계_5',['일일 개발 로그 2025-09-30 (KST 09:00 경계)',['../md_Documents_2DevLog_22025-09-30.html#autotoc_md132',1,'']]],
-  ['로그_202025_2010_2001_20kst_2009_3a00_20경계_6',['일일 개발 로그 2025-10-01 (KST 09:00 경계)',['../md_Documents_2DevLog_22025-10-01.html#autotoc_md154',1,'']]],
-  ['로그_202025_2010_2002_20kst_2009_3a00_20경계_7',['일일 개발 로그 2025-10-02 (KST 09:00 경계)',['../md_Documents_2DevLog_22025-10-02.html#autotoc_md163',1,'']]],
-  ['로깅_20logging_8',['4.1. 로깅 (Logging)',['../md_AgentRule_2conventions__agent.html#autotoc_md80',1,'']]]
+  ['디버그_20에이전트_20워크플로우_20debug_20agent_20workflow_0',['디버그 에이전트 워크플로우 (Debug Agent Workflow)',['../md_GEMINI.html#autotoc_md12',1,'']]],
+  ['디버그_20코드_20삽입_20inserting_20debug_20code_1',['2.3. 디버그 코드 삽입 (Inserting Debug Code)',['../md_AgentRule_2debug__guide.html#autotoc_md190',1,'']]],
+  ['디버그_20코드_20정리_20cleaning_20up_20debug_20code_2',['2.6. 디버그 코드 정리 (Cleaning Up Debug Code)',['../md_AgentRule_2debug__guide.html#autotoc_md193',1,'']]],
+  ['디버그_20포인트_20식별_20identifying_20debug_20points_3',['2.2. 디버그 포인트 식별 (Identifying Debug Points)',['../md_AgentRule_2debug__guide.html#autotoc_md189',1,'']]],
+  ['디버깅_20전략_20debugging_20strategy_4',['2. 디버깅 전략 (Debugging Strategy)',['../md_AgentRule_2debug__guide.html#autotoc_md187',1,'']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['형식_0',['형식',['../md_AgentRule_2devlog__agent.html#autotoc_md93',1,'4. 일일 업무 일지 (Daily DevLog) 형식'],['../md_AgentRule_2devlog__agent.html#autotoc_md104',1,'5. 30일 요약 보고서 (30-Day Briefing) 형식'],['../md_AgentRule_2conventions__agent.html#autotoc_md86',1,'6.1. 주석 형식']]]
+  ['해결책_0',['8. 알려진 문제 및 해결책',['../md_AgentRule_2commit__agent.html#autotoc_md51',1,'']]],
+  ['해결_20troubleshooting_1',['6. 배포 확인 및 문제 해결 (Troubleshooting)',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md116',1,'']]]
 ];

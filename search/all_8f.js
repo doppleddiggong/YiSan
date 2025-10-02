@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['텔레메트리_20정책_20observability_20logging_0',['관찰 로그/텔레메트리 정책 (Observability &amp; Logging)',['../md_GEMINI.html#autotoc_md20',1,'']]]
+  ['타깃_20설정_0',['6) 빌드/타깃 설정',['../md_GEMINI.html#autotoc_md27',1,'']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['미들웨어_20api_0',['3) 사용 언어 / 미들웨어 / API',['../md_GEMINI.html#autotoc_md37',1,'']]],
-  ['미해결_20todo_20top_20n_1',['미해결 TODO Top N',['../md_AgentRule_2devlog__agent.html#autotoc_md108',1,'']]],
-  ['미흡_20주의_20후속_2',['미흡(주의/후속)',['../md_AgentRule_2devlog__agent.html#autotoc_md100',1,'']]]
+  ['목적_0',['목적',['../md_Documents_2Reference_2DoxygenWorkflow.html#autotoc_md201',1,'']]],
+  ['목적_20purpose_1',['1. 목적 (Purpose)',['../md_AgentRule_2debug__guide.html#autotoc_md186',1,'']]],
+  ['목표_20명확화_2',['3.1. 작업 목표 명확화',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md36',1,'']]]
 ];

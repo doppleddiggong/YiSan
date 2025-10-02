@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['저장소_20설정_0',['5. GitHub 저장소 설정',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md117',1,'']]]
+  ['입력_20맵_20게임모드_20기본값_0',['7) 입력 / 맵 / 게임모드 기본값',['../md_GEMINI.html#autotoc_md28',1,'']]],
+  ['입력_20포맷_1',['4. 입력 포맷',['../md_AgentRule_2commit__agent.html#autotoc_md47',1,'']]]
 ];

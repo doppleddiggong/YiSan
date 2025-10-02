@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['컨벤션_20가이드_20project_20yisan_0',['Unreal Engine C++ 코딩 컨벤션 가이드 (Project YiSan)',['../md_AgentRule_2conventions__agent.html',1,'']]],
-  ['컨벤션_20참조_1',['3.3. 기존 코드/컨벤션 참조',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md7',1,'']]],
-  ['컨벤션_20network_20module_20conventions_2',['5. 네트워크 모듈 컨벤션 (Network Module Conventions)',['../md_AgentRule_2conventions__agent.html#autotoc_md83',1,'']]]
+  ['추가_0',['4. 로그 파일 자동 분석 (규칙 추가)',['../md_AgentRule_2debug__guide.html#autotoc_md196',1,'']]],
+  ['추정_1',['추정',['../md_Documents_2DevLog_22025-09-30.html#autotoc_md148',1,'메트릭(추정)'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md184',1,'메트릭(추정)'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md167',1,'메트릭(추정)']]],
+  ['추출_2',['TODO(커밋 본문 추출)',['../md_AgentRule_2devlog__agent.html#autotoc_md66',1,'']]]
 ];

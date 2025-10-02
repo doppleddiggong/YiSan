@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['빌드_20실행_0',['9) 빌드 / 실행',['../md_GEMINI.html#autotoc_md51',1,'']]],
-  ['빌드_20타깃_20설정_1',['6) 빌드/타깃 설정',['../md_GEMINI.html#autotoc_md48',1,'']]]
+  ['본문_20누락_0',['8.1. 문제: &lt;tt&gt;git commit -m&lt;/tt&gt; 사용 시 한글 본문 누락',['../md_AgentRule_2commit__agent.html#autotoc_md52',1,'']]],
+  ['본문_20추출_1',['TODO(커밋 본문 추출)',['../md_AgentRule_2devlog__agent.html#autotoc_md66',1,'']]]
 ];

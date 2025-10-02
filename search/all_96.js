@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['하이라이트_0',['하이라이트',['../md_AgentRule_2devlog__agent.html#autotoc_md96',1,'하이라이트'],['../md_Documents_2DevLog_22025-09-30.html#autotoc_md135',1,'Highlights / 하이라이트'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md156',1,'Highlights / 하이라이트'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md165',1,'Highlights / 하이라이트']]]
+  ['프로젝트_20소개_0',['프로젝트 소개',['../index.html#autotoc_md101',1,'']]],
+  ['프로젝트_20정보_1',['1) 프로젝트 정보',['../md_GEMINI.html#autotoc_md17',1,'']]]
 ];

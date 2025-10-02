@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['해결책_0',['8. 알려진 문제 및 해결책',['../md_AgentRule_2commit__agent.html#autotoc_md40',1,'']]],
-  ['해결_20troubleshooting_1',['6. 배포 확인 및 문제 해결 (Troubleshooting)',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md120',1,'']]]
+  ['한글_20본문_20누락_0',['8.1. 문제: &lt;tt&gt;git commit -m&lt;/tt&gt; 사용 시 한글 본문 누락',['../md_AgentRule_2commit__agent.html#autotoc_md52',1,'']]]
 ];
