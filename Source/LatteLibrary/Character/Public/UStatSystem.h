@@ -11,6 +11,7 @@
  * @brief 체력, 공격력, 시야 등 캐릭터 기본 스탯을 관리하는 시스템.
  *
  * 스탯 초기화와 증감 로직을 블루프린트에 노출하여 캐릭터 성장과 피해 처리를 담당한다.
+ * @ingroup Character
  */
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Dopple), meta=(BlueprintSpawnableComponent) )
 class LATTELIBRARY_API UStatSystem : public UActorComponent

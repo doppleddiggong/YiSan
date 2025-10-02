@@ -12,6 +12,7 @@
  * @brief 피격 방향으로 캐릭터를 밀어내고 복구하는 넉백 시스템.
  *
  * 데미지 이벤트를 구독해 방향, 저항 값을 계산하고 이동 컴포넌트에 힘을 적용한다.
+ * @ingroup Character
  */
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Dopple), meta=(BlueprintSpawnableComponent) )
 class LATTELIBRARY_API UKnockbackSystem : public UActorComponent

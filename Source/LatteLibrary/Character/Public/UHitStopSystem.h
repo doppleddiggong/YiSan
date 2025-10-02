@@ -11,6 +11,7 @@
  * @brief 피격 시 커스텀 타임 딜레이션을 적용해 타격감을 강화하는 시스템.
  *
  * 소유 캐릭터의 피격 이벤트를 감지하여 일정 시간 동안 움직임과 애니메이션을 정지시킨다.
+ * @ingroup Character
  */
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Dopple),  meta=(BlueprintSpawnableComponent) )
 class LATTELIBRARY_API UHitStopSystem : public UActorComponent

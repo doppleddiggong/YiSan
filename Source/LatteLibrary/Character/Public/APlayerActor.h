@@ -12,6 +12,11 @@
 class USpringArmComponent;
 class UCameraComponent;
 
+/**
+ * @brief 플레이어가 직접 조종하는 메인 캐릭터 액터입니다.
+ * @details AGameCharacter를 상속받아 플레이어에 특화된 입력 처리 및 카메라 로직을 구현합니다.
+ * @ingroup Character
+ */
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Dopple))
 class LATTELIBRARY_API APlayerActor : public AGameCharacter, public IControllable
 {
