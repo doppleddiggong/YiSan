@@ -44,8 +44,14 @@ jobs:
             # Pull Request: 베이스 브랜치와 현재 PR 헤드 간의 차이를 계산합니다.
             git diff origin/${{ github.base_ref }}...HEAD > changes.patch
           else
-            # Push: 기본 브랜치와 푸시된 커밋 간의 차이를 계산합니다.
-            git diff origin/${{ github.repository.default_branch }}...${{ github.sha }} > changes.patch
+            # Push: 'before'와 'after' 커밋을 기반으로 diff를 생성합니다.
+            if [ "${{ github.event.before }}" == "0000000000000000000000000000000000000000" ]; then
+              # 새 브랜치 생성: 첫 커밋의 모든 파일을 diff로 생성합니다.
+              git diff 4b825dc642cb6eb9a060e54bf8d69288fbee4904 ${{ github.sha }} > changes.patch
+            else
+              # 기존 브랜치에 푸시: 푸시 전후의 변경사항을 diff합니다.
+              git diff ${{ github.event.before }}..${{ github.sha }} > changes.patch
+            fi
           fi
 
       # 3. GPT를 호출하여 코드 리뷰 수행
