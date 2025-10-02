@@ -91,12 +91,11 @@ void UGoogleSpeechService::RequestSpeechToText(const FString& CorrelationId, con
 	Request->SetContentAsString(JsonPayload);
 	Request->OnProcessRequestComplete().BindUObject(this, &UGoogleSpeechService::HandleSpeechToTextResponse);
 
-	FPendingSpeechToTextRequest Pending;
+	FPendingSpeechToTextRequest& Pending = PendingSpeechToText.FindOrAdd(&*Request);
 	Pending.CorrelationId = CorrelationId;
 	Pending.Delegate = Delegate;
 	Pending.SampleRate = SampleRate;
 	Pending.NumChannels = NumChannels;
-	PendingSpeechToText.Add(Request.Get(), Pending);
 
 	NETWORK_LOG(TEXT("[REQ][GoogleSTT] CorrelationId=%s PayloadBytes=%d"), *CorrelationId, AudioPayload.Num());
 	Request->ProcessRequest();
@@ -144,12 +143,11 @@ void UGoogleSpeechService::RequestTextToSpeech(const FString& CorrelationId, con
 	Request->SetContentAsString(JsonPayload);
 	Request->OnProcessRequestComplete().BindUObject(this, &UGoogleSpeechService::HandleTextToSpeechResponse);
 
-	FPendingTextToSpeechRequest Pending;
+	FPendingTextToSpeechRequest& Pending = PendingTextToSpeech.FindOrAdd(&*Request);
 	Pending.CorrelationId = CorrelationId;
 	Pending.Delegate = Delegate;
 	Pending.SampleRate = SampleRate;
 	Pending.Text = Text;
-	PendingTextToSpeech.Add(Request.Get(), Pending);
 
 	NETWORK_LOG(TEXT("[REQ][GoogleTTS] CorrelationId=%s TextBytes=%d"), *CorrelationId, Text.Len());
 	Request->ProcessRequest();
