@@ -1,6 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
-#include "YiSanVoiceConsoleSubsystem.h"
+#include "UYiSanVoiceConsoleSubsystem.h"
 
 #include "YiSan.h"
 #include "Templates/UniquePtr.h"

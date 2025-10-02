@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "YiSanGameMode.generated.h"
+#include "AYiSanGameMode.generated.h"
 
 /**
  * @brief 간단한 서드 퍼슨 게임을 위한 기본 게임 모드.
@@ -15,7 +15,6 @@ UCLASS(abstract)
 class AYiSanGameMode : public AGameModeBase
 {
         GENERATED_BODY()
-
 public:
 
         /** @brief GameMode 기본 생성자. */

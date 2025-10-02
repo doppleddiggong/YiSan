@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "Templates/UniquePtr.h"
-#include "YiSanVoiceConsoleSubsystem.generated.h"
+#include "UYiSanVoiceConsoleSubsystem.generated.h"
 
 struct FAutoConsoleCommandWithWorldAndArgs;
 
