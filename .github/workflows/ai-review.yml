@@ -1,104 +1,84 @@
-# 워크플로우 이름 설정
 name: AI Code Review
 
-# 워크플로우 트리거 조건 설정
 on:
   push:
     paths:
-      - 'Source/**' # Source 디렉토리 내 모든 파일 변경 시 트리거
-
-
-  # pull_request 이벤트가 발생했을 때 워크플로우 실행
-  # types: [opened, synchronize]는 PR이 열리거나(opened) 새로운 커밋으로 동기화될 때(synchronize) 트리거됩니다.
+      - 'Source/**'
   pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
     paths:
-      - 'Source/**' # Source 디렉토리 내 모든 파일 변경 시 트리거
+      - 'Source/**'
 
-# 작업(Jobs) 정의
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   review:
-    # 이 작업은 최신 Ubuntu 환경에서 실행됩니다.
     runs-on: ubuntu-latest
 
-    # 워크플로우 실행에 필요한 권한을 설정합니다.
-    # contents: read - 저장소 콘텐츠를 읽고 체크아웃하기 위해 필요합니다.
-    # pull-requests: write - PR에 코멘트를 작성하기 위해 필요합니다.
-    permissions:
-      contents: read
-      pull-requests: write
-
-    # 작업 단계(Steps) 정의
     steps:
-      # 1. 저장소 체크아웃
-      # PR의 최신 코드를 워크플로우 러너로 가져옵니다.
-      # diff 생성을 위해 fetch-depth: 0으로 전체 히스토리를 가져옵니다.
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # 전체 히스토리를 받아야 git diff 정확히 작동
 
-      # 2. 변경사항(Diff) 추출
-      # 이벤트(pull_request 또는 push)에 따라 적절한 diff를 생성합니다.
       - name: Extract Diff
+        id: diff
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
-            # Pull Request: 베이스 브랜치와 현재 PR 헤드 간의 차이를 계산합니다.
+            echo "🔍 PR 기반 diff 생성 중..."
+            git fetch origin ${{ github.base_ref }}
             git diff origin/${{ github.base_ref }}...HEAD > changes.patch
           else
-            # Push: 'before'와 'after' 커밋을 기반으로 diff를 생성합니다.
+            echo "🔍 Push 기반 diff 생성 중..."
             if [ "${{ github.event.before }}" == "0000000000000000000000000000000000000000" ]; then
-              # 새 브랜치 생성: 첫 커밋의 모든 파일을 diff로 생성합니다.
+              echo "🆕 새 브랜치 푸시 → 전체 파일 diff"
               git diff 4b825dc642cb6eb9a060e54bf8d69288fbee4904 ${{ github.sha }} > changes.patch
             else
-              # 기존 브랜치에 푸시: 푸시 전후의 변경사항을 diff합니다.
               git diff ${{ github.event.before }}..${{ github.sha }} > changes.patch
             fi
           fi
 
-      # 3. GPT를 호출하여 코드 리뷰 수행
-      # OpenAI API를 사용하여 changes.patch 파일의 내용을 기반으로 코드 리뷰를 요청합니다.
+          echo "--- 변경된 코드 ---"
+          cat changes.patch || echo "변경사항 없음"
+
       - name: Call GPT for Review
-        id: ai_review # 이 스텝의 출력을 참조하기 위한 ID
+        id: ai_review
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }} # GitHub Secrets에 저장된 OpenAI API 키 사용
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          # curl 명령어를 사용하여 OpenAI Chat Completions API 호출
           REVIEW=$(curl https://api.openai.com/v1/chat/completions \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer $OPENAI_API_KEY" \
             -d "{
-              \"model\": \"gpt-4o\", # 사용할 OpenAI 모델 지정
+              \"model\": \"gpt-4o\",
               \"messages\": [
-                {\"role\": \"system\", \"content\": \"You are a strict and pragmatic senior C++/C# code reviewer. Focus on performance, memory safety, const correctness, Unreal Engine coding conventions, and any possible bugs. Be concise and direct.\"}, # AI의 역할 및 지시사항 설정
+                {\"role\": \"system\", \"content\": \"You are a strict and pragmatic senior C++/C# code reviewer. Focus on performance, memory safety, const correctness, Unreal Engine coding conventions, and any possible bugs. Be concise and direct.\"},
                 {\"role\": \"user\", \"content\": \"Review this code diff and suggest improvements:\\n$(cat changes.patch)\"}
               ]
-            }" | jq -r '.choices[0].message.content') # jq를 사용하여 JSON 응답에서 리뷰 내용 추출
+            }" | jq -r '.choices[0].message.content')
 
-          echo "$REVIEW" > review.txt # 추출된 리뷰 내용을 review.txt 파일로 저장
-          echo "review_body=$REVIEW" >> $GITHUB_OUTPUT # 리뷰 내용을 워크플로우 출력으로 설정
+          echo "$REVIEW" > review.txt
+          echo "review_body=$REVIEW" >> $GITHUB_OUTPUT
 
-      # 4. PR에 리뷰 코멘트 게시
-      # AI가 생성한 리뷰 내용을 Pull Request에 코멘트로 게시합니다.
-      # marocchino/sticky-pull-request-comment@v2 액션은 기존 코멘트를 업데이트하여 중복을 방지합니다.
-      # 이 스텝은 pull_request 이벤트일 때만 실행됩니다.
-      - name: Post Comment to PR
+      - name: Post PR Comment
         if: github.event_name == 'pull_request'
         uses: marocchino/sticky-pull-request-comment@v2
         with:
-          header: "🤖 AI Code Review" # 코멘트 헤더
-          message: ${{ steps.ai_review.outputs.review_body }} # 이전 스텝에서 생성된 리뷰 내용을 코멘트 메시지로 사용
+          header: "🤖 AI Code Review"
+          message: ${{ steps.ai_review.outputs.review_body }}
 
-      # 5. Discord로 리뷰 결과 전송
-      # AI 코드 리뷰 결과를 Discord 웹훅을 통해 특정 채널로 전송합니다.
-      - name: Send Review to Discord
-        if: always()  # 이전 스텝의 성공/실패 여부와 관계없이 항상 실행
+      - name: Send Discord Notification
+        if: always()
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }} # GitHub Secrets에 저장된 Discord 웹훅 URL 사용
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
-          # Markdown 및 따옴표를 이스케이프하여 JSON 유효성 확보
           ESCAPED_REVIEW=$(echo "${{ steps.ai_review.outputs.review_body }}" | jq -Rs .)
 
           if [ "${{ github.event_name }}" == "pull_request" ]; then
-            # Pull Request용 Discord 메시지 생성
             JSON_PAYLOAD=$(cat <<EOF
           {
             "username": "AI Reviewer 🤖",
@@ -115,10 +95,9 @@ jobs:
               "timestamp": "$(date --iso-8601=seconds)"
             }]
           }
-          EOF
-          )
+EOF
+            )
           else
-            # Push용 Discord 메시지 생성
             JSON_PAYLOAD=$(cat <<EOF
           {
             "username": "AI Reviewer 🤖",
@@ -135,10 +114,8 @@ jobs:
               "timestamp": "$(date --iso-8601=seconds)"
             }]
           }
-          EOF
-          )
+EOF
+            )
           fi
 
-          # Discord 웹훅으로 메시지 전송
           curl -H "Content-Type: application/json" -X POST -d "$JSON_PAYLOAD" $DISCORD_WEBHOOK
-    
