@@ -1,12 +1,11 @@
 var NAVTREEINDEX4 =
 {
-"md_GEMINI.html#autotoc_md41":[1,7,2],
-"md_GEMINI.html#autotoc_md42":[1,7,3],
-"md_GEMINI.html#autotoc_md43":[1,7,3,0],
-"md_GEMINI.html#autotoc_md44":[1,7,3,1],
-"md_GEMINI.html#autotoc_md45":[1,7,3,2],
-"md_GEMINI.html#autotoc_md46":[1,7,3,3],
-"md_GEMINI.html#autotoc_md47":[1,7,4],
+"md_GEMINI.html#autotoc_md35":[1,7,3],
+"md_GEMINI.html#autotoc_md37":[1,7,3,0],
+"md_GEMINI.html#autotoc_md40":[1,7,3,1],
+"md_GEMINI.html#autotoc_md42":[1,7,3,2],
+"md_GEMINI.html#autotoc_md44":[1,7,3,3],
+"md_GEMINI.html#autotoc_md46":[1,7,4],
 "md_GEMINI.html#autotoc_md48":[1,7,5],
 "md_GEMINI.html#autotoc_md49":[1,7,6],
 "md_GEMINI.html#autotoc_md50":[1,7,7],
