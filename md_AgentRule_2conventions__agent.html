@@ -104,11 +104,11 @@ $(document).ready(function(){initNavTree('md_AgentRule_2conventions__agent.html'
   <div class="headertitle"><div class="title">Unreal Engine C++ 코딩 컨벤션 가이드 (Project YiSan)</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md55"></a> 이 문서는 <code>YiSan</code> 프로젝트의 C++ 코드 작성 시 일관성을 유지하기 위한 코딩 컨벤션을 정의합니다. 모든 코드는 언리얼 엔진 공식 코딩 표준을 기반으로 하며, 프로젝트의 특성을 반영한 추가 규칙을 포함합니다.</p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md19"></a> 이 문서는 <code>YiSan</code> 프로젝트의 C++ 코드 작성 시 일관성을 유지하기 위한 코딩 컨벤션을 정의합니다. 모든 코드는 언리얼 엔진 공식 코딩 표준을 기반으로 하며, 프로젝트의 특성을 반영한 추가 규칙을 포함합니다.</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md68"></a>
+<h1><a class="anchor" id="autotoc_md22"></a>
 1. 네이밍 규칙 (Naming Conventions)</h1>
-<h2><a class="anchor" id="autotoc_md69"></a>
+<h2><a class="anchor" id="autotoc_md23"></a>
 1.1. 클래스 및 파일명 (Classes and Filenames)</h2>
 <ul>
 <li><b>접두사</b>: 모든 클래스는 역할에 맞는 접두사를 사용해야 합니다.<ul>
@@ -125,7 +125,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2conventions__agent.html'
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md70"></a>
+<h2><a class="anchor" id="autotoc_md24"></a>
 1.2. 변수 (Variables)</h2>
 <ul>
 <li><b>형식</b>: <code>camelCase</code>를 사용합니다. (예: <code>maxHealth</code>, <code>currentAmmo</code>)</li>
@@ -144,7 +144,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2conventions__agent.html'
 <div class="line"> </div>
 <div class="line">    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Enemy&quot;)</div>
 <div class="line">    TObjectPtr&lt;class UCameraShakeSystem&gt; cameraShakeSystem;</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md71"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md25"></a>
 1.3. 함수 (Functions)</h2>
 <ul>
 <li><b>형식</b>: <code>PascalCase</code>를 사용합니다.</li>
@@ -160,7 +160,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2conventions__agent.html'
 <div class="line">UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=<span class="stringliteral">&quot;Command&quot;</span>)</div>
 <div class="line">void Cmd_Jump() override;</div>
 </div><!-- fragment --><hr  />
-<h1><a class="anchor" id="autotoc_md73"></a>
+<h1><a class="anchor" id="autotoc_md27"></a>
 2. UPROPERTY / UFUNCTION 매크로</h1>
 <ul>
 <li><b>Category</b>: 기능별로 명확하게 그룹화하고, <code>|</code> 문자를 사용하여 하위 카테고리를 지정합니다. (예: <code>Category="Stats|HP"</code>)</li>
@@ -169,9 +169,9 @@ $(document).ready(function(){initNavTree('md_AgentRule_2conventions__agent.html'
 <li><b>Blueprint 이벤트</b>: <code>BlueprintNativeEvent</code>는 C++ 기본 구현과 블루프린트 재정의가 모두 필요할 때, <code>BlueprintImplementableEvent</code>는 블루프린트에서만 구현할 때 사용합니다.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md75"></a>
+<h1><a class="anchor" id="autotoc_md32"></a>
 3. 파일 구조 및 주석</h1>
-<h2><a class="anchor" id="autotoc_md76"></a>
+<h2><a class="anchor" id="autotoc_md34"></a>
 3.1. 헤더 파일</h2>
 <ul>
 <li><b>중복 포함 방지</b>: 모든 헤더 파일 상단에 <code>#pragma once</code>를 사용합니다.</li>
@@ -184,7 +184,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2conventions__agent.html'
 </li>
 <li>**.generated.h**: 항상 파일의 마지막 <code>#include</code> 문이어야 합니다.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md77"></a>
+<h2><a class="anchor" id="autotoc_md36"></a>
 3.2. 주석 (Comments)</h2>
 <ul>
 <li><b>파일 헤더</b>: 모든 소스 파일 상단에 저작권 및 라이선스 정보를 포함한 주석을 추가합니다. (예: <code>// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</code>)</li>
@@ -192,15 +192,15 @@ $(document).ready(function(){initNavTree('md_AgentRule_2conventions__agent.html'
 <li><b>코드 설명</b>: 복잡한 로직이나 특정 결정의 이유를 설명하는 주석을 작성합니다. "무엇을" 하는지보다 "왜" 그렇게 했는지를 설명하는 데 집중합니다.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md79"></a>
+<h1><a class="anchor" id="autotoc_md39"></a>
 4. 기타 규칙</h1>
-<h2><a class="anchor" id="autotoc_md80"></a>
+<h2><a class="anchor" id="autotoc_md40"></a>
 4.1. 로깅 (Logging)</h2>
 <ul>
 <li><b>일반 로깅</b>: <code>PRINTLOG</code> 매크로를 사용하여 일반적인 디버그 및 정보성 메시지를 기록합니다.</li>
 <li><b>네트워크 로깅</b>: <code>NETWORK_LOG</code> 매크로를 사용하여 네트워크 통신 관련 로그를 기록하며, <code>ENetworkLogType</code> 열거형과 <code>[GET]</code>, <code>[POST]</code>, <code>[WS]</code>와 같은 접두사를 활용하여 로그의 종류를 명확히 구분합니다.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md81"></a>
+<h2><a class="anchor" id="autotoc_md42"></a>
 4.2. 기타</h2>
 <ul>
 <li><b>에디터 코드</b>: 에디터에서만 사용되는 코드는 <code>#if WITH_EDITOR</code> ... <code>#endif</code> 블록으로 감싸서 패키지 빌드 시 제외되도록 합니다.</li>
@@ -208,7 +208,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2conventions__agent.html'
 <li><b>강제 형변환</b>: C-style 캐스팅 대신 <code>static_cast</code>, <code>const_cast</code>, <code>reinterpret_cast</code>를 사용합니다.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md83"></a>
+<h1><a class="anchor" id="autotoc_md47"></a>
 5. 네트워크 모듈 컨벤션 (Network Module Conventions)</h1>
 <ul>
 <li><b>서브시스템 활용</b>: <code>UGameInstanceSubsystem</code>을 상속받아 네트워크 시스템을 구현하며, <code>DEFINE_SUBSYSTEM_GETTER_INLINE</code> 매크로를 사용하여 전역 접근을 용이하게 합니다.</li>
@@ -222,16 +222,16 @@ $(document).ready(function(){initNavTree('md_AgentRule_2conventions__agent.html'
 <li><b>델리게이트 사용</b>: 비동기 네트워크 응답 처리를 위해 <code>DECLARE_DELEGATE_TwoParams</code>를 사용하여 C++ 콜백을 정의하고, <code>DECLARE_DYNAMIC_MULTICAST_DELEGATE</code>를 사용하여 블루프린트에서 바인딩 가능한 이벤트를 제공합니다.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md85"></a>
+<h1><a class="anchor" id="autotoc_md50"></a>
 6. Doxygen 주석 스타일 가이드 (Doxygen Comment Style Guide)</h1>
 <p>일관성 있고 가독성 높은 문서 자동화를 위해 모든 C++ 코드의 주석은 Doxygen 스타일을 따릅니다.</p>
-<h2><a class="anchor" id="autotoc_md86"></a>
+<h2><a class="anchor" id="autotoc_md51"></a>
 6.1. 주석 형식</h2>
 <ul>
 <li><b>C++ 스타일</b>: <code>///</code> (세 개의 슬래시) 또는 <code>/** ... */</code> 형식을 사용합니다. <code>///</code>를 권장합니다.</li>
 <li><b>배치</b>: 클래스, 함수, 변수, 열거형 등 문서화가 필요한 선언 바로 위에 주석을 작성합니다.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md87"></a>
+<h2><a class="anchor" id="autotoc_md52"></a>
 6.2. 필수 태그 및 예시</h2>
 <ul>
 <li><b>간단한 설명</b>: <code>@brief</code> 태그를 사용하여 한 줄로 요약된 설명을 작성합니다.</li>
@@ -240,7 +240,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2conventions__agent.html'
 <li><b>반환값</b>: <code>@return 설명</code> 형식으로 함수의 반환값을 설명합니다.</li>
 <li><b>참고</b>: <code>@note</code> 태그를 사용하여 특별히 주의해야 할 사항이나 참고 정보를 기재합니다.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md88"></a>
+<h2><a class="anchor" id="autotoc_md53"></a>
 6.3. 코드 예시</h2>
 <p>다음은 Doxygen 주석 스타일을 적용한 함수 예시입니다.</p>
 <div class="fragment"><div class="line"> </div>
@@ -263,7 +263,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2conventions__agent.html'
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">생성시간 : 목 10월 2 2025 07:25:56, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 10월 2 2025 07:28:30, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
