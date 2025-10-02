@@ -84,101 +84,101 @@ $(document).ready(function() { init_codefold(0); });
 <div class="contents">
 <a href="_network_data_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="_u_custom_network_settings_8h.html">UCustomNetworkSettings.h</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;Templates/SharedPointer.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;NetworkData.generated.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">class </span>IHttpResponse;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// =================================================================================</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">// Network Configuration</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">// 서버 주소와 포트를 설정합니다.</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// =================================================================================</span></div>
-<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="namespace_network_config.html">   16</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_network_config.html">NetworkConfig</a></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
-<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="namespace_network_config.html#ab5ac57e8f51de6d1740c7a88534a7246">   18</a></span>    <span class="keyword">static</span> FString <a class="code hl_function" href="namespace_network_config.html#ab5ac57e8f51de6d1740c7a88534a7246">GetFullUrl</a>(<span class="keyword">const</span> FString&amp; Endpoint)</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keyword">const</span> <a class="code hl_enumeration" href="_u_custom_network_settings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577">EServerMode</a> Mode = <a class="code hl_function" href="class_u_custom_network_settings.html#aa089b67ac992ff3aee3dd62629c0df0a">UCustomNetworkSettings::GetCurrentServerMode</a>();</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keyword">const</span> <a class="code hl_struct" href="struct_f_server_config.html">FServerConfig</a>&amp; Config = GetDefault&lt;UCustomNetworkSettings&gt;()-&gt;GetConfig(Mode);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordflow">return</span> Config.<a class="code hl_function" href="struct_f_server_config.html#ab65e0b73b4679e5efb155dd6f98bac3d">GetFullUrl</a>(Endpoint);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    }</div>
-</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>}</div>
-</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="_u_custom_network_settings_8h.html">UCustomNetworkSettings.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;Templates/SharedPointer.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;NetworkData.generated.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">class </span>IHttpResponse;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// =================================================================================</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">// Network Configuration</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">// 서버 주소와 포트를 설정합니다.</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// =================================================================================</span></div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="namespace_network_config.html">   20</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_network_config.html">NetworkConfig</a></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="namespace_network_config.html#ab5ac57e8f51de6d1740c7a88534a7246">   22</a></span>    <span class="keyword">static</span> FString <a class="code hl_function" href="namespace_network_config.html#ab5ac57e8f51de6d1740c7a88534a7246">GetFullUrl</a>(<span class="keyword">const</span> FString&amp; Endpoint)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keyword">const</span> <a class="code hl_enumeration" href="_u_custom_network_settings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577">EServerMode</a> Mode = <a class="code hl_function" href="class_u_custom_network_settings.html#aa089b67ac992ff3aee3dd62629c0df0a">UCustomNetworkSettings::GetCurrentServerMode</a>();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">const</span> <a class="code hl_struct" href="struct_f_server_config.html">FServerConfig</a>&amp; Config = GetDefault&lt;UCustomNetworkSettings&gt;()-&gt;GetConfig(Mode);</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="namespace_request_a_p_i.html">   27</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_request_a_p_i.html">RequestAPI</a></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>{</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="namespace_request_a_p_i.html#ae1061ff9836b3127b56024d0a0f6fd65">   29</a></span>    <span class="keyword">static</span> FString <a class="code hl_variable" href="namespace_request_a_p_i.html#ae1061ff9836b3127b56024d0a0f6fd65">Health</a> = FString(<span class="stringliteral">&quot;/health&quot;</span>);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="namespace_request_a_p_i.html#a1ebbd90e6ac492f5fd6648e666fb2699">   30</a></span>    <span class="keyword">static</span> FString <a class="code hl_variable" href="namespace_request_a_p_i.html#a1ebbd90e6ac492f5fd6648e666fb2699">HelpChat</a> = FString(<span class="stringliteral">&quot;/help_chat&quot;</span>);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>}</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordflow">return</span> Config.<a class="code hl_function" href="struct_f_server_config.html#ab65e0b73b4679e5efb155dd6f98bac3d">GetFullUrl</a>(Endpoint);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    }</div>
 </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="_network_data_8h.html#a176f0d72d06ab65295baec529c15ad9f">   33</a></span><a class="code hl_function" href="_network_data_8h.html#a176f0d72d06ab65295baec529c15ad9f">DECLARE_DELEGATE_TwoParams</a>( FResponseHealthDelegate, <a class="code hl_struct" href="struct_f_response_health.html">FResponseHealth</a>&amp;, <span class="keywordtype">bool</span> );</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>USTRUCT(BlueprintType)</div>
-<div class="foldopen" id="foldopen00035" data-start="{" data-end="};">
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="struct_f_response_health.html">   35</a></span>struct <a class="code hl_struct" href="struct_f_response_health.html">FResponseHealth</a></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    UPROPERTY(BlueprintReadWrite)</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="struct_f_response_health.html#a21bcca6ff52ce04957bebbde5e67174e">   40</a></span>    int32 status = 0;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> PrintData();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>};</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
 </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="_network_data_8h.html#a0abc3ca6aa817e448dec8e8b9c89af3f">   47</a></span><a class="code hl_function" href="_network_data_8h.html#a176f0d72d06ab65295baec529c15ad9f">DECLARE_DELEGATE_TwoParams</a>( FResponseHelpChatDelegate, <a class="code hl_struct" href="struct_f_response_help_chat.html">FResponseHelpChat</a>&amp;, <span class="keywordtype">bool</span> );</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>USTRUCT(BlueprintType)</div>
-<div class="foldopen" id="foldopen00049" data-start="{" data-end="};">
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="struct_f_request_help_chat.html">   49</a></span>struct <a class="code hl_struct" href="struct_f_request_help_chat.html">FRequestHelpChat</a></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>{</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    UPROPERTY(BlueprintReadWrite)</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="struct_f_request_help_chat.html#a9b07b5a6812aa7d662c59192a177a34c">   54</a></span>    FString question;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>};</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="}">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="namespace_request_a_p_i.html">   31</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_request_a_p_i.html">RequestAPI</a></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>{</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="namespace_request_a_p_i.html#ae1061ff9836b3127b56024d0a0f6fd65">   33</a></span>    <span class="keyword">static</span> FString <a class="code hl_variable" href="namespace_request_a_p_i.html#ae1061ff9836b3127b56024d0a0f6fd65">Health</a> = FString(<span class="stringliteral">&quot;/health&quot;</span>);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="namespace_request_a_p_i.html#a1ebbd90e6ac492f5fd6648e666fb2699">   34</a></span>    <span class="keyword">static</span> FString <a class="code hl_variable" href="namespace_request_a_p_i.html#a1ebbd90e6ac492f5fd6648e666fb2699">HelpChat</a> = FString(<span class="stringliteral">&quot;/help_chat&quot;</span>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
 </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="_network_data_8h.html#a176f0d72d06ab65295baec529c15ad9f">   37</a></span><a class="code hl_function" href="_network_data_8h.html#a176f0d72d06ab65295baec529c15ad9f">DECLARE_DELEGATE_TwoParams</a>( FResponseHealthDelegate, <a class="code hl_struct" href="struct_f_response_health.html">FResponseHealth</a>&amp;, <span class="keywordtype">bool</span> );</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen00039" data-start="{" data-end="};">
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="struct_f_response_health.html">   39</a></span>struct <a class="code hl_struct" href="struct_f_response_health.html">FResponseHealth</a></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>{</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    UPROPERTY(BlueprintReadWrite)</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="struct_f_response_health.html#a21bcca6ff52ce04957bebbde5e67174e">   44</a></span>    int32 status = 0;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> PrintData();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>};</div>
+</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="_network_data_8h.html#a0abc3ca6aa817e448dec8e8b9c89af3f">   51</a></span><a class="code hl_function" href="_network_data_8h.html#a176f0d72d06ab65295baec529c15ad9f">DECLARE_DELEGATE_TwoParams</a>( FResponseHelpChatDelegate, <a class="code hl_struct" href="struct_f_response_help_chat.html">FResponseHelpChat</a>&amp;, <span class="keywordtype">bool</span> );</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen00053" data-start="{" data-end="};">
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="struct_f_request_help_chat.html">   53</a></span>struct <a class="code hl_struct" href="struct_f_request_help_chat.html">FRequestHelpChat</a></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>{</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    GENERATED_BODY()</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>USTRUCT(BlueprintType)</div>
-<div class="foldopen" id="foldopen00058" data-start="{" data-end="};">
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="struct_f_response_help_chat.html">   58</a></span>struct <a class="code hl_struct" href="struct_f_response_help_chat.html">FResponseHelpChat</a></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>{</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    UPROPERTY(BlueprintReadOnly)</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="struct_f_response_help_chat.html#aca65f39d36b5741de6a8765e1e788ffb">   63</a></span>    FString ai_message;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">void</span> PrintData();</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>};</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    UPROPERTY(BlueprintReadWrite)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="struct_f_request_help_chat.html#a9b07b5a6812aa7d662c59192a177a34c">   58</a></span>    FString question;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>};</div>
+</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="};">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="struct_f_response_help_chat.html">   62</a></span>struct <a class="code hl_struct" href="struct_f_response_help_chat.html">FResponseHelpChat</a></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>{</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    UPROPERTY(BlueprintReadOnly)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="struct_f_response_help_chat.html#aca65f39d36b5741de6a8765e1e788ffb">   67</a></span>    FString ai_message;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">void</span> PrintData();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>};</div>
 </div>
 <div class="ttc" id="a_network_data_8h_html_a176f0d72d06ab65295baec529c15ad9f"><div class="ttname"><a href="_network_data_8h.html#a176f0d72d06ab65295baec529c15ad9f">DECLARE_DELEGATE_TwoParams</a></div><div class="ttdeci">DECLARE_DELEGATE_TwoParams(FResponseHealthDelegate, FResponseHealth &amp;, bool)</div></div>
-<div class="ttc" id="a_u_custom_network_settings_8h_html"><div class="ttname"><a href="_u_custom_network_settings_8h.html">UCustomNetworkSettings.h</a></div></div>
-<div class="ttc" id="a_u_custom_network_settings_8h_html_a79cfeb7c9f94018b98c2415dc06d4577"><div class="ttname"><a href="_u_custom_network_settings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577">EServerMode</a></div><div class="ttdeci">EServerMode</div><div class="ttdef"><b>Definition</b> UCustomNetworkSettings.h:11</div></div>
-<div class="ttc" id="aclass_u_custom_network_settings_html_aa089b67ac992ff3aee3dd62629c0df0a"><div class="ttname"><a href="class_u_custom_network_settings.html#aa089b67ac992ff3aee3dd62629c0df0a">UCustomNetworkSettings::GetCurrentServerMode</a></div><div class="ttdeci">static EServerMode GetCurrentServerMode()</div><div class="ttdef"><b>Definition</b> UCustomNetworkSettings.cpp:6</div></div>
-<div class="ttc" id="anamespace_network_config_html"><div class="ttname"><a href="namespace_network_config.html">NetworkConfig</a></div><div class="ttdef"><b>Definition</b> NetworkData.h:17</div></div>
-<div class="ttc" id="anamespace_network_config_html_ab5ac57e8f51de6d1740c7a88534a7246"><div class="ttname"><a href="namespace_network_config.html#ab5ac57e8f51de6d1740c7a88534a7246">NetworkConfig::GetFullUrl</a></div><div class="ttdeci">static FString GetFullUrl(const FString &amp;Endpoint)</div><div class="ttdef"><b>Definition</b> NetworkData.h:18</div></div>
-<div class="ttc" id="anamespace_request_a_p_i_html"><div class="ttname"><a href="namespace_request_a_p_i.html">RequestAPI</a></div><div class="ttdef"><b>Definition</b> NetworkData.h:28</div></div>
-<div class="ttc" id="anamespace_request_a_p_i_html_a1ebbd90e6ac492f5fd6648e666fb2699"><div class="ttname"><a href="namespace_request_a_p_i.html#a1ebbd90e6ac492f5fd6648e666fb2699">RequestAPI::HelpChat</a></div><div class="ttdeci">static FString HelpChat</div><div class="ttdef"><b>Definition</b> NetworkData.h:30</div></div>
-<div class="ttc" id="anamespace_request_a_p_i_html_ae1061ff9836b3127b56024d0a0f6fd65"><div class="ttname"><a href="namespace_request_a_p_i.html#ae1061ff9836b3127b56024d0a0f6fd65">RequestAPI::Health</a></div><div class="ttdeci">static FString Health</div><div class="ttdef"><b>Definition</b> NetworkData.h:29</div></div>
-<div class="ttc" id="astruct_f_request_help_chat_html"><div class="ttname"><a href="struct_f_request_help_chat.html">FRequestHelpChat</a></div><div class="ttdef"><b>Definition</b> NetworkData.h:50</div></div>
-<div class="ttc" id="astruct_f_response_health_html"><div class="ttname"><a href="struct_f_response_health.html">FResponseHealth</a></div><div class="ttdef"><b>Definition</b> NetworkData.h:36</div></div>
-<div class="ttc" id="astruct_f_response_help_chat_html"><div class="ttname"><a href="struct_f_response_help_chat.html">FResponseHelpChat</a></div><div class="ttdef"><b>Definition</b> NetworkData.h:59</div></div>
-<div class="ttc" id="astruct_f_server_config_html"><div class="ttname"><a href="struct_f_server_config.html">FServerConfig</a></div><div class="ttdef"><b>Definition</b> UCustomNetworkSettings.h:19</div></div>
-<div class="ttc" id="astruct_f_server_config_html_ab65e0b73b4679e5efb155dd6f98bac3d"><div class="ttname"><a href="struct_f_server_config.html#ab65e0b73b4679e5efb155dd6f98bac3d">FServerConfig::GetFullUrl</a></div><div class="ttdeci">FString GetFullUrl(const FString &amp;Endpoint) const</div><div class="ttdef"><b>Definition</b> UCustomNetworkSettings.h:28</div></div>
+<div class="ttc" id="a_u_custom_network_settings_8h_html"><div class="ttname"><a href="_u_custom_network_settings_8h.html">UCustomNetworkSettings.h</a></div><div class="ttdoc">UCustomNetworkSettings 선언에 대한 Doxygen 주석을 제공합니다.</div></div>
+<div class="ttc" id="a_u_custom_network_settings_8h_html_a79cfeb7c9f94018b98c2415dc06d4577"><div class="ttname"><a href="_u_custom_network_settings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577">EServerMode</a></div><div class="ttdeci">EServerMode</div><div class="ttdef"><b>Definition</b> UCustomNetworkSettings.h:15</div></div>
+<div class="ttc" id="aclass_u_custom_network_settings_html_aa089b67ac992ff3aee3dd62629c0df0a"><div class="ttname"><a href="class_u_custom_network_settings.html#aa089b67ac992ff3aee3dd62629c0df0a">UCustomNetworkSettings::GetCurrentServerMode</a></div><div class="ttdeci">static EServerMode GetCurrentServerMode()</div><div class="ttdef"><b>Definition</b> UCustomNetworkSettings.cpp:10</div></div>
+<div class="ttc" id="anamespace_network_config_html"><div class="ttname"><a href="namespace_network_config.html">NetworkConfig</a></div><div class="ttdef"><b>Definition</b> NetworkData.h:21</div></div>
+<div class="ttc" id="anamespace_network_config_html_ab5ac57e8f51de6d1740c7a88534a7246"><div class="ttname"><a href="namespace_network_config.html#ab5ac57e8f51de6d1740c7a88534a7246">NetworkConfig::GetFullUrl</a></div><div class="ttdeci">static FString GetFullUrl(const FString &amp;Endpoint)</div><div class="ttdef"><b>Definition</b> NetworkData.h:22</div></div>
+<div class="ttc" id="anamespace_request_a_p_i_html"><div class="ttname"><a href="namespace_request_a_p_i.html">RequestAPI</a></div><div class="ttdef"><b>Definition</b> NetworkData.h:32</div></div>
+<div class="ttc" id="anamespace_request_a_p_i_html_a1ebbd90e6ac492f5fd6648e666fb2699"><div class="ttname"><a href="namespace_request_a_p_i.html#a1ebbd90e6ac492f5fd6648e666fb2699">RequestAPI::HelpChat</a></div><div class="ttdeci">static FString HelpChat</div><div class="ttdef"><b>Definition</b> NetworkData.h:34</div></div>
+<div class="ttc" id="anamespace_request_a_p_i_html_ae1061ff9836b3127b56024d0a0f6fd65"><div class="ttname"><a href="namespace_request_a_p_i.html#ae1061ff9836b3127b56024d0a0f6fd65">RequestAPI::Health</a></div><div class="ttdeci">static FString Health</div><div class="ttdef"><b>Definition</b> NetworkData.h:33</div></div>
+<div class="ttc" id="astruct_f_request_help_chat_html"><div class="ttname"><a href="struct_f_request_help_chat.html">FRequestHelpChat</a></div><div class="ttdef"><b>Definition</b> NetworkData.h:54</div></div>
+<div class="ttc" id="astruct_f_response_health_html"><div class="ttname"><a href="struct_f_response_health.html">FResponseHealth</a></div><div class="ttdef"><b>Definition</b> NetworkData.h:40</div></div>
+<div class="ttc" id="astruct_f_response_help_chat_html"><div class="ttname"><a href="struct_f_response_help_chat.html">FResponseHelpChat</a></div><div class="ttdef"><b>Definition</b> NetworkData.h:63</div></div>
+<div class="ttc" id="astruct_f_server_config_html"><div class="ttname"><a href="struct_f_server_config.html">FServerConfig</a></div><div class="ttdef"><b>Definition</b> UCustomNetworkSettings.h:23</div></div>
+<div class="ttc" id="astruct_f_server_config_html_ab65e0b73b4679e5efb155dd6f98bac3d"><div class="ttname"><a href="struct_f_server_config.html#ab65e0b73b4679e5efb155dd6f98bac3d">FServerConfig::GetFullUrl</a></div><div class="ttdeci">FString GetFullUrl(const FString &amp;Endpoint) const</div><div class="ttdef"><b>Definition</b> UCustomNetworkSettings.h:32</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 1 2025 09:48:19 for YiSan Project Documentation by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Thu Oct 2 2025 00:10:01 for YiSan Project Documentation by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

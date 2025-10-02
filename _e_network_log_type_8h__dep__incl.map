@@ -1,15 +1,15 @@
 <map id="Source/LatteLibrary/Network/Public/ENetworkLogType.h" name="Source/LatteLibrary/Network/Public/ENetworkLogType.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="304,5,519,60"/>
-<area shape="rect" id="Node000002" href="$_u_http_network_system_8cpp.html" title=" " alt="" coords="5,211,233,265"/>
+<area shape="rect" id="Node000001" title="ENetworkLogType 열거형에 대한 Doxygen 주석을 제공합니다." alt="" coords="304,5,519,60"/>
+<area shape="rect" id="Node000002" href="$_u_http_network_system_8cpp.html" title="UHttpNetworkSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="5,211,233,265"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="298,67,256,86,217,110,191,134,168,160,135,212,131,209,164,157,187,130,214,106,253,81,296,62"/>
-<area shape="rect" id="Node000003" href="$_u_web_socket_system_8cpp.html" title=" " alt="" coords="521,211,737,265"/>
+<area shape="rect" id="Node000003" href="$_u_web_socket_system_8cpp.html" title="UWebSocketSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="521,211,737,265"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="438,70,472,115,514,161,547,186,581,208,578,213,544,191,511,165,468,119,434,73"/>
-<area shape="rect" id="Node000004" href="$_u_http_network_system_8h.html" title=" " alt="" coords="227,108,449,163"/>
+<area shape="rect" id="Node000004" href="$_u_http_network_system_8h.html" title="UHttpNetworkSystem 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="227,108,449,163"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="386,73,359,109,355,106,382,70"/>
-<area shape="rect" id="Node000006" href="$_u_web_socket_system_8h.html" title=" " alt="" coords="524,108,733,163"/>
+<area shape="rect" id="Node000006" href="$_u_web_socket_system_8h.html" title="UWebSocketSystem 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="524,108,733,163"/>
 <area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="481,63,573,106,571,110,479,68"/>
 <area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="270,171,177,213,175,208,268,166"/>
-<area shape="rect" id="Node000005" href="$_a_network_tester_actor_8cpp.html" title=" " alt="" coords="257,211,496,265"/>
+<area shape="rect" id="Node000005" href="$_a_network_tester_actor_8cpp.html" title="ANetworkTesterActor 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="257,211,496,265"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="356,175,369,210,364,212,351,177"/>
 <area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="631,176,631,211,626,211,626,176"/>
 </map>

@@ -1,10 +1,10 @@
 <map id="Source/LatteLibrary/Manager/Public/UGameSoundManager.h" name="Source/LatteLibrary/Manager/Public/UGameSoundManager.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="212,5,431,60"/>
+<area shape="rect" id="Node000001" title="UGameSoundManager 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="212,5,431,60"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,108,123,133"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="244,63,112,106,110,101,242,58"/>
-<area shape="rect" id="Node000003" href="$_macro_8h.html" title=" " alt="" coords="147,108,221,133"/>
+<area shape="rect" id="Node000003" href="$_macro_8h.html" title="Manager 모듈에서 공통으로 사용하는 매크로 정의에 대한 Doxygen 주석을 제공합니다." alt="" coords="147,108,221,133"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="281,62,215,103,213,98,278,58"/>
-<area shape="rect" id="Node000004" href="$_e_game_sound_type_8h.html" title=" " alt="" coords="246,108,397,133"/>
+<area shape="rect" id="Node000004" href="$_e_game_sound_type_8h.html" title="EGameSoundType 열거형에 대한 Doxygen 주석을 제공합니다." alt="" coords="246,108,397,133"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="324,60,324,94,319,94,319,60"/>
 <area shape="rect" id="Node000005" title=" " alt="" coords="421,108,704,133"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="396,58,518,101,516,106,394,63"/>

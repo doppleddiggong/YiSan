@@ -1,6 +1,6 @@
 <map id="Source/LatteLibrary/Network/Private/UCustomNetworkSettings.cpp" name="Source/LatteLibrary/Network/Private/UCustomNetworkSettings.cpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="225,5,476,60"/>
-<area shape="rect" id="Node000002" href="$_u_custom_network_settings_8h.html" title=" " alt="" coords="147,108,349,133"/>
+<area shape="rect" id="Node000001" title="UCustomNetworkSettings 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="225,5,476,60"/>
+<area shape="rect" id="Node000002" href="$_u_custom_network_settings_8h.html" title="UCustomNetworkSettings 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="147,108,349,133"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="321,62,274,101,271,97,318,58"/>
 <area shape="rect" id="Node000006" title=" " alt="" coords="373,108,536,133"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="384,58,432,97,428,101,381,62"/>

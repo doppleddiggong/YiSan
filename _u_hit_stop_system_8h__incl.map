@@ -1,15 +1,15 @@
 <map id="Source/LatteLibrary/Character/Public/UHitStopSystem.h" name="Source/LatteLibrary/Character/Public/UHitStopSystem.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="196,5,391,60"/>
+<area shape="rect" id="Node000001" title="UHitStopSystem 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="196,5,391,60"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,181,123,207"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,43,161,52,126,65,95,84,69,110,62,123,59,138,60,168,55,168,54,137,57,121,65,106,91,80,124,60,159,47,195,38"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="79,108,308,133"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="265,62,219,101,216,97,261,58"/>
-<area shape="rect" id="Node000004" href="$_f_hit_stop_data_8h.html" title=" " alt="" coords="333,108,454,133"/>
+<area shape="rect" id="Node000004" href="$_f_hit_stop_data_8h.html" title="FHitStopData 구조체에 대한 Doxygen 주석을 제공합니다." alt="" coords="333,108,454,133"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="326,58,371,97,367,101,322,62"/>
 <area shape="rect" id="Node000008" title=" " alt="" coords="479,108,689,133"/>
 <area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="383,58,533,102,532,107,381,63"/>
 <area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="341,136,131,181,130,176,340,131"/>
-<area shape="rect" id="Node000005" href="$_e_damage_type_8h.html" title=" " alt="" coords="169,181,295,207"/>
+<area shape="rect" id="Node000005" href="$_e_damage_type_8h.html" title="EDamageType 열거형에 대한 Doxygen 주석을 제공합니다." alt="" coords="169,181,295,207"/>
 <area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="368,136,272,178,270,173,366,131"/>
 <area shape="rect" id="Node000006" title=" " alt="" coords="320,181,467,207"/>
 <area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="396,134,396,168,391,168,391,134"/>

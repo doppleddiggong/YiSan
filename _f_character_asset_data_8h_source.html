@@ -82,35 +82,36 @@ $(document).ready(function() { init_codefold(0); });
   <div class="headertitle"><div class="title">FCharacterAssetData.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_f_character_asset_data_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="_e_character_type_8h.html">ECharacterType.h</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;Engine/DataTable.h&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;FCharacterAssetData.generated.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>USTRUCT(BlueprintType)</div>
-<div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="struct_f_character_asset_data.html">    9</a></span>struct <a class="code hl_struct" href="struct_f_character_asset_data.html">FCharacterAssetData</a>: public FTableRowBase</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Asset)</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="struct_f_character_asset_data.html#a362cc588b38ccc414d39f9de87a39cef">   14</a></span>    <a class="code hl_enumeration" href="_e_character_type_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a> CharacterType = <a class="code hl_enumeration" href="_e_character_type_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a>::<a class="code hl_enumvalue" href="_e_character_type_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3a078a2ec78f40996aca46032fb42b0c84">Type01</a>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Asset)</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="struct_f_character_asset_data.html#a4ecdebf4e3a12bbae1a769206a9b6168">   17</a></span>    TSoftObjectPtr&lt;class <a class="code hl_class" href="class_u_character_data.html">UCharacterData</a>&gt; CharacterDataAsset;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>};</div>
+<a href="_f_character_asset_data_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="_e_character_type_8h.html">ECharacterType.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;Engine/DataTable.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;FCharacterAssetData.generated.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="struct_f_character_asset_data.html">   13</a></span>struct <a class="code hl_struct" href="struct_f_character_asset_data.html">FCharacterAssetData</a>: public FTableRowBase</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Asset)</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="struct_f_character_asset_data.html#a362cc588b38ccc414d39f9de87a39cef">   18</a></span>    <a class="code hl_enumeration" href="_e_character_type_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a> CharacterType = <a class="code hl_enumeration" href="_e_character_type_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a>::<a class="code hl_enumvalue" href="_e_character_type_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3a078a2ec78f40996aca46032fb42b0c84">Type01</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Asset)</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="struct_f_character_asset_data.html#a4ecdebf4e3a12bbae1a769206a9b6168">   21</a></span>    TSoftObjectPtr&lt;class <a class="code hl_class" href="class_u_character_data.html">UCharacterData</a>&gt; CharacterDataAsset;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>};</div>
 </div>
-<div class="ttc" id="a_e_character_type_8h_html"><div class="ttname"><a href="_e_character_type_8h.html">ECharacterType.h</a></div></div>
-<div class="ttc" id="a_e_character_type_8h_html_ad34afea9f542b01a1f4e6d48fdfe1be3"><div class="ttname"><a href="_e_character_type_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a></div><div class="ttdeci">ECharacterType</div><div class="ttdef"><b>Definition</b> ECharacterType.h:5</div></div>
+<div class="ttc" id="a_e_character_type_8h_html"><div class="ttname"><a href="_e_character_type_8h.html">ECharacterType.h</a></div><div class="ttdoc">ECharacterType 열거형에 대한 Doxygen 주석을 제공합니다.</div></div>
+<div class="ttc" id="a_e_character_type_8h_html_ad34afea9f542b01a1f4e6d48fdfe1be3"><div class="ttname"><a href="_e_character_type_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a></div><div class="ttdeci">ECharacterType</div><div class="ttdef"><b>Definition</b> ECharacterType.h:9</div></div>
 <div class="ttc" id="a_e_character_type_8h_html_ad34afea9f542b01a1f4e6d48fdfe1be3a078a2ec78f40996aca46032fb42b0c84"><div class="ttname"><a href="_e_character_type_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3a078a2ec78f40996aca46032fb42b0c84">ECharacterType::Type01</a></div><div class="ttdeci">@ Type01</div></div>
-<div class="ttc" id="aclass_u_character_data_html"><div class="ttname"><a href="class_u_character_data.html">UCharacterData</a></div><div class="ttdef"><b>Definition</b> UCharacterData.h:11</div></div>
-<div class="ttc" id="astruct_f_character_asset_data_html"><div class="ttname"><a href="struct_f_character_asset_data.html">FCharacterAssetData</a></div><div class="ttdef"><b>Definition</b> FCharacterAssetData.h:10</div></div>
+<div class="ttc" id="aclass_u_character_data_html"><div class="ttname"><a href="class_u_character_data.html">UCharacterData</a></div><div class="ttdef"><b>Definition</b> UCharacterData.h:15</div></div>
+<div class="ttc" id="astruct_f_character_asset_data_html"><div class="ttname"><a href="struct_f_character_asset_data.html">FCharacterAssetData</a></div><div class="ttdef"><b>Definition</b> FCharacterAssetData.h:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 1 2025 09:48:19 for YiSan Project Documentation by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Thu Oct 2 2025 00:10:01 for YiSan Project Documentation by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

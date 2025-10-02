@@ -84,32 +84,32 @@ $(document).ready(function() { init_codefold(0); });
 <div class="contents">
 <a href="_u_sound_data_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="_e_game_sound_type_8h.html">EGameSoundType.h</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;Engine/DataAsset.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;USoundData.generated.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>UCLASS()</div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="class_u_sound_data.html">   12</a></span>class LATTELIBRARY_API <a class="code hl_class" href="class_u_sound_data.html">USoundData</a> : public UDataAsset</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    UPROPERTY(EditAnywhere, Category = <span class="stringliteral">&quot;Sound&quot;</span>)</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="class_u_sound_data.html#aa9ffe49c229532cf8a79e3e1353e6c55">   18</a></span>    TMap&lt;<a class="code hl_enumeration" href="_e_game_sound_type_8h.html#af4a7536fe94049720d6e9d21c1b2ec80">EGameSoundType</a>, TObjectPtr&lt;class USoundBase&gt;&gt; SoundData;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>};</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="_e_game_sound_type_8h.html">EGameSoundType.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;Engine/DataAsset.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;USoundData.generated.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>UCLASS()</div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="class_u_sound_data.html">   16</a></span>class LATTELIBRARY_API <a class="code hl_class" href="class_u_sound_data.html">USoundData</a> : public UDataAsset</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    UPROPERTY(EditAnywhere, Category = <span class="stringliteral">&quot;Sound&quot;</span>)</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="class_u_sound_data.html#aa9ffe49c229532cf8a79e3e1353e6c55">   22</a></span>    TMap&lt;<a class="code hl_enumeration" href="_e_game_sound_type_8h.html#af4a7536fe94049720d6e9d21c1b2ec80">EGameSoundType</a>, TObjectPtr&lt;class USoundBase&gt;&gt; SoundData;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>};</div>
 </div>
-<div class="ttc" id="a_e_game_sound_type_8h_html"><div class="ttname"><a href="_e_game_sound_type_8h.html">EGameSoundType.h</a></div></div>
-<div class="ttc" id="a_e_game_sound_type_8h_html_af4a7536fe94049720d6e9d21c1b2ec80"><div class="ttname"><a href="_e_game_sound_type_8h.html#af4a7536fe94049720d6e9d21c1b2ec80">EGameSoundType</a></div><div class="ttdeci">EGameSoundType</div><div class="ttdef"><b>Definition</b> EGameSoundType.h:5</div></div>
-<div class="ttc" id="aclass_u_sound_data_html"><div class="ttname"><a href="class_u_sound_data.html">USoundData</a></div><div class="ttdef"><b>Definition</b> USoundData.h:13</div></div>
+<div class="ttc" id="a_e_game_sound_type_8h_html"><div class="ttname"><a href="_e_game_sound_type_8h.html">EGameSoundType.h</a></div><div class="ttdoc">EGameSoundType 열거형에 대한 Doxygen 주석을 제공합니다.</div></div>
+<div class="ttc" id="a_e_game_sound_type_8h_html_af4a7536fe94049720d6e9d21c1b2ec80"><div class="ttname"><a href="_e_game_sound_type_8h.html#af4a7536fe94049720d6e9d21c1b2ec80">EGameSoundType</a></div><div class="ttdeci">EGameSoundType</div><div class="ttdef"><b>Definition</b> EGameSoundType.h:9</div></div>
+<div class="ttc" id="aclass_u_sound_data_html"><div class="ttname"><a href="class_u_sound_data.html">USoundData</a></div><div class="ttdef"><b>Definition</b> USoundData.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 1 2025 09:48:19 for YiSan Project Documentation by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Thu Oct 2 2025 00:10:01 for YiSan Project Documentation by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

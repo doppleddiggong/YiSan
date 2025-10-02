@@ -84,273 +84,273 @@ $(document).ready(function() { init_codefold(0); });
 <div class="contents">
 <a href="_u_parabola_component_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="_f_math_helper_8h.html">FMathHelper.h</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;Components/ActorComponent.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;UParabolaComponent.generated.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="_u_parabola_component_8h.html#acb24f37a1795b5e9dfdbb98be4898712">   11</a></span><span class="keyword">enum class</span> <a class="code hl_enumeration" href="_u_parabola_component_8h.html#acb24f37a1795b5e9dfdbb98be4898712">EParabolaType</a> : uint8</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="comment">// 초기속도·중력 사용하는 물리식임이 즉시 읽힘.</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    Ballistic       <a class="code hl_enumvalue" href="_u_parabola_component_8h.html#acb24f37a1795b5e9dfdbb98be4898712aa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName=<span class="stringliteral">&quot;Physics (Ballistic)&quot;</span>,        ToolTip=<span class="stringliteral">&quot;Start + V0*t + 0.5*g*t^2&quot;</span>),</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="comment">// 도착점 고정 + 정점높이로 기하적 아치 생성.</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    Geometric       <a class="code hl_enumvalue" href="_u_parabola_component_8h.html#acb24f37a1795b5e9dfdbb98be4898712aa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName=<span class="stringliteral">&quot;Geometric (Apex Height)&quot;</span>,    ToolTip=<span class="stringliteral">&quot;Lerp(Start,Target,a) + UpAxis * 4*H*a*(1-a)&quot;</span>)</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>};</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="_f_math_helper_8h.html">FMathHelper.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;Components/ActorComponent.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;UParabolaComponent.generated.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="_u_parabola_component_8h.html#acb24f37a1795b5e9dfdbb98be4898712">   15</a></span><span class="keyword">enum class</span> <a class="code hl_enumeration" href="_u_parabola_component_8h.html#acb24f37a1795b5e9dfdbb98be4898712">EParabolaType</a> : uint8</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="comment">// 초기속도·중력 사용하는 물리식임이 즉시 읽힘.</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    Ballistic       <a class="code hl_enumvalue" href="_u_parabola_component_8h.html#acb24f37a1795b5e9dfdbb98be4898712aa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName=<span class="stringliteral">&quot;Physics (Ballistic)&quot;</span>,        ToolTip=<span class="stringliteral">&quot;Start + V0*t + 0.5*g*t^2&quot;</span>),</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="comment">// 도착점 고정 + 정점높이로 기하적 아치 생성.</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    Geometric       <a class="code hl_enumvalue" href="_u_parabola_component_8h.html#acb24f37a1795b5e9dfdbb98be4898712aa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName=<span class="stringliteral">&quot;Geometric (Apex Height)&quot;</span>,    ToolTip=<span class="stringliteral">&quot;Lerp(Start,Target,a) + UpAxis * 4*H*a*(1-a)&quot;</span>)</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>};</div>
 </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>UENUM(BlueprintType)</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594f">   21</a></span>enum class <a class="code hl_enumeration" href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594f">EForwardAxis</a> : uint8 { <a class="code hl_enumvalue" href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594fa02129bb861061d1a052c592e2dc6b383">X</a>, <a class="code hl_enumvalue" href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594fa57cec4137b614c87cb4e24a3d003a3e0">Y</a>, <a class="code hl_enumvalue" href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594fa21c2e59531c8710156d34a3c30ac81d5">Z</a> };</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>USTRUCT(BlueprintType)</div>
-<div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html">   25</a></span>struct <a class="code hl_struct" href="struct_f_parabola_ballistic_track.html">FParabolaBallisticTrack</a></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>{</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        GENERATED_BODY()</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// 입력 파라미터</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#ac047e649c24f9cd4f332c35dd4329d72">   30</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite) FVector Start = FVector::ZeroVector;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a3e3d3eadf7f35903f312c6094d8e0823">   31</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(ClampMin=&quot;0.001&quot;)) <span class="keywordtype">float</span> Duration = 1.0f;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a542d387751e72da00473d9e159e6de77">   32</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite) <span class="keywordtype">float</span> GravityZ = -980.f; <span class="comment">// UE 기본 cm/s^2</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a02b3b24cea599434e465d3870ee72df8">   33</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite) FVector Direction = FVector(1,0,0); <span class="comment">// 자동 정규화</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a17a23c17599103219673674299575996">   34</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(ClampMin=&quot;0.0&quot;)) <span class="keywordtype">float</span> Power = 1200.f; <span class="comment">// cm/s</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">// 평면 고정(선택)</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a275a89d8e4edfc180eb1b406a8226b6a">   37</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite) <span class="keywordtype">bool</span> bLockZ = false;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a1bea1704c95c3e9ee7d3990461d3445e">   38</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(EditCondition=&quot;bLockZ&quot;)) <span class="keywordtype">float</span> LockedZ = 0.f;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>UENUM(BlueprintType)</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594f">   25</a></span>enum class <a class="code hl_enumeration" href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594f">EForwardAxis</a> : uint8 { <a class="code hl_enumvalue" href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594fa02129bb861061d1a052c592e2dc6b383">X</a>, <a class="code hl_enumvalue" href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594fa57cec4137b614c87cb4e24a3d003a3e0">Y</a>, <a class="code hl_enumvalue" href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594fa21c2e59531c8710156d34a3c30ac81d5">Z</a> };</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html">   29</a></span>struct <a class="code hl_struct" href="struct_f_parabola_ballistic_track.html">FParabolaBallisticTrack</a></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        GENERATED_BODY()</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">// 입력 파라미터</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#ac047e649c24f9cd4f332c35dd4329d72">   34</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite) FVector Start = FVector::ZeroVector;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a3e3d3eadf7f35903f312c6094d8e0823">   35</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(ClampMin=&quot;0.001&quot;)) <span class="keywordtype">float</span> Duration = 1.0f;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a542d387751e72da00473d9e159e6de77">   36</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite) <span class="keywordtype">float</span> GravityZ = -980.f; <span class="comment">// UE 기본 cm/s^2</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a02b3b24cea599434e465d3870ee72df8">   37</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite) FVector Direction = FVector(1,0,0); <span class="comment">// 자동 정규화</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a17a23c17599103219673674299575996">   38</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(ClampMin=&quot;0.0&quot;)) <span class="keywordtype">float</span> Power = 1200.f; <span class="comment">// cm/s</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// 런타임 상태</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#ac648a15bfb893c29d10c7dfc2981ba7b">   41</a></span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Transient) <span class="keywordtype">float</span> CurrentTime = 0.f;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="comment">// 타임 유틸</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a4cd7e41336c1ec97bd84e09b8d393940">   45</a></span>        FORCEINLINE <span class="keywordtype">void</span> ResetTime() { CurrentTime = 0.f; }</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#ac65c16642b530fa41f8b174e6cb9ccf5">   47</a></span>        FORCEINLINE <span class="keywordtype">float</span> <a class="code hl_function" href="struct_f_parabola_ballistic_track.html#ac65c16642b530fa41f8b174e6cb9ccf5">GetAlpha</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> FMath::Clamp(CurrentTime / FMath::Max(0.001f, Duration), 0.f, 1.f); }</div>
-<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#addb0dcba71a55d25e4059695fc5da8d2">   49</a></span>        FORCEINLINE <span class="keywordtype">void</span> <a class="code hl_function" href="struct_f_parabola_ballistic_track.html#addb0dcba71a55d25e4059695fc5da8d2">Advance</a>(<span class="keywordtype">float</span> DeltaTime)</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        {</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                CurrentTime = FMath::Min(CurrentTime + FMath::Max(0.f, DeltaTime), FMath::Max(0.001f, Duration));</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// 평면 고정(선택)</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a275a89d8e4edfc180eb1b406a8226b6a">   41</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite) <span class="keywordtype">bool</span> bLockZ = false;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a1bea1704c95c3e9ee7d3990461d3445e">   42</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(EditCondition=&quot;bLockZ&quot;)) <span class="keywordtype">float</span> LockedZ = 0.f;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">// 런타임 상태</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#ac648a15bfb893c29d10c7dfc2981ba7b">   45</a></span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Transient) <span class="keywordtype">float</span> CurrentTime = 0.f;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="comment">// 타임 유틸</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a4cd7e41336c1ec97bd84e09b8d393940">   49</a></span>        FORCEINLINE <span class="keywordtype">void</span> ResetTime() { CurrentTime = 0.f; }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#ac65c16642b530fa41f8b174e6cb9ccf5">   51</a></span>        FORCEINLINE <span class="keywordtype">float</span> <a class="code hl_function" href="struct_f_parabola_ballistic_track.html#ac65c16642b530fa41f8b174e6cb9ccf5">GetAlpha</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> FMath::Clamp(CurrentTime / FMath::Max(0.001f, Duration), 0.f, 1.f); }</div>
+<div class="foldopen" id="foldopen00053" data-start="{" data-end="}">
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#addb0dcba71a55d25e4059695fc5da8d2">   53</a></span>        FORCEINLINE <span class="keywordtype">void</span> <a class="code hl_function" href="struct_f_parabola_ballistic_track.html#addb0dcba71a55d25e4059695fc5da8d2">Advance</a>(<span class="keywordtype">float</span> DeltaTime)</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                CurrentTime = FMath::Min(CurrentTime + FMath::Max(0.f, DeltaTime), FMath::Max(0.001f, Duration));</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }</div>
 </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="comment">// 속도/평가</span></div>
-<div class="foldopen" id="foldopen00056" data-start="{" data-end="}">
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a00c7872516024789a06bd7ab1bcf1e4d">   56</a></span>        FORCEINLINE FVector <a class="code hl_function" href="struct_f_parabola_ballistic_track.html#a00c7872516024789a06bd7ab1bcf1e4d">GetInitialVelocity</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                <span class="keywordflow">return</span> Direction.GetSafeNormal() * Power;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="comment">// 속도/평가</span></div>
+<div class="foldopen" id="foldopen00060" data-start="{" data-end="}">
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a00c7872516024789a06bd7ab1bcf1e4d">   60</a></span>        FORCEINLINE FVector <a class="code hl_function" href="struct_f_parabola_ballistic_track.html#a00c7872516024789a06bd7ab1bcf1e4d">GetInitialVelocity</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                <span class="keywordflow">return</span> Direction.GetSafeNormal() * Power;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        }</div>
 </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a28a0d47aa6a5873d199c693898bcb35e">   62</a></span>        FVector <a class="code hl_function" href="struct_f_parabola_ballistic_track.html#a28a0d47aa6a5873d199c693898bcb35e">EvaluateAtTime</a>(<span class="keyword">const</span> AActor* <span class="comment">/*Owner*/</span>, <span class="keywordtype">float</span> TimeSec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> t = FMath::Clamp(TimeSec, 0.f, FMath::Max(0.001f, Duration));</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keyword">const</span> FVector g(0,0,GravityZ);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keyword">const</span> FVector V0 = GetInitialVelocity();</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        FVector P = Start + V0 * t + 0.5f * g * t * t;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordflow">if</span> (bLockZ)</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            P.Z = LockedZ;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">return</span> P;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a28a0d47aa6a5873d199c693898bcb35e">   66</a></span>        FVector <a class="code hl_function" href="struct_f_parabola_ballistic_track.html#a28a0d47aa6a5873d199c693898bcb35e">EvaluateAtTime</a>(<span class="keyword">const</span> AActor* <span class="comment">/*Owner*/</span>, <span class="keywordtype">float</span> TimeSec)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> t = FMath::Clamp(TimeSec, 0.f, FMath::Max(0.001f, Duration));</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keyword">const</span> FVector g(0,0,GravityZ);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keyword">const</span> FVector V0 = GetInitialVelocity();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        FVector P = Start + V0 * t + 0.5f * g * t * t;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordflow">if</span> (bLockZ)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            P.Z = LockedZ;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keywordflow">return</span> P;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    }</div>
 </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="foldopen" id="foldopen00075" data-start="{" data-end="}">
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a59931fa612a2dc3bcfd43cdd60233221">   75</a></span>        FORCEINLINE FVector <a class="code hl_function" href="struct_f_parabola_ballistic_track.html#a59931fa612a2dc3bcfd43cdd60233221">EvaluateAtAlpha</a>(<span class="keyword">const</span> AActor* Owner, <span class="keywordtype">float</span> Alpha)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                <span class="keywordflow">return</span> EvaluateAtTime(Owner, Alpha * FMath::Max(0.001f, Duration));</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a59931fa612a2dc3bcfd43cdd60233221">   79</a></span>        FORCEINLINE FVector <a class="code hl_function" href="struct_f_parabola_ballistic_track.html#a59931fa612a2dc3bcfd43cdd60233221">EvaluateAtAlpha</a>(<span class="keyword">const</span> AActor* Owner, <span class="keywordtype">float</span> Alpha)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                <span class="keywordflow">return</span> EvaluateAtTime(Owner, Alpha * FMath::Max(0.001f, Duration));</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        }</div>
 </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="foldopen" id="foldopen00081" data-start="{" data-end="}">
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a27ada145754ed3e1ed4dc78b50ccabfd">   81</a></span>        FORCEINLINE FVector <a class="code hl_function" href="struct_f_parabola_ballistic_track.html#a27ada145754ed3e1ed4dc78b50ccabfd">EvaluateAtCurrent</a>(<span class="keyword">const</span> AActor* Owner)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                <span class="keywordflow">return</span> EvaluateAtTime(Owner, CurrentTime);</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="foldopen" id="foldopen00085" data-start="{" data-end="}">
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a27ada145754ed3e1ed4dc78b50ccabfd">   85</a></span>        FORCEINLINE FVector <a class="code hl_function" href="struct_f_parabola_ballistic_track.html#a27ada145754ed3e1ed4dc78b50ccabfd">EvaluateAtCurrent</a>(<span class="keyword">const</span> AActor* Owner)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                <span class="keywordflow">return</span> EvaluateAtTime(Owner, CurrentTime);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        }</div>
 </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="comment">// 목표점+시간으로 V0 역산 → Direction/Power 세팅</span></div>
-<div class="foldopen" id="foldopen00088" data-start="{" data-end="}">
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#ad24e4c8b8e959f1f789fbdda881dbf88">   88</a></span>        <span class="keyword">static</span> FVector <a class="code hl_function" href="struct_f_parabola_ballistic_track.html#ad24e4c8b8e959f1f789fbdda881dbf88">SolveV0ForArc</a>(<span class="keyword">const</span> FVector&amp; InStart, <span class="keyword">const</span> FVector&amp; InEnd, <span class="keywordtype">float</span> t, <span class="keywordtype">float</span> InGravityZ=-980.f)</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        {</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                <span class="keywordflow">return</span> <a class="code hl_function" href="struct_f_math_helper.html#af785a923a1e6a2f0601649e37cb28cf3">FMathHelper::SolveV0ForProjectile</a>( InStart, InEnd, t, InGravityZ );</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="comment">// 목표점+시간으로 V0 역산 → Direction/Power 세팅</span></div>
+<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#ad24e4c8b8e959f1f789fbdda881dbf88">   92</a></span>        <span class="keyword">static</span> FVector <a class="code hl_function" href="struct_f_parabola_ballistic_track.html#ad24e4c8b8e959f1f789fbdda881dbf88">SolveV0ForArc</a>(<span class="keyword">const</span> FVector&amp; InStart, <span class="keyword">const</span> FVector&amp; InEnd, <span class="keywordtype">float</span> t, <span class="keywordtype">float</span> InGravityZ=-980.f)</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                <span class="keywordflow">return</span> <a class="code hl_function" href="struct_f_math_helper.html#af785a923a1e6a2f0601649e37cb28cf3">FMathHelper::SolveV0ForProjectile</a>( InStart, InEnd, t, InGravityZ );</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        }</div>
 </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="foldopen" id="foldopen00094" data-start="{" data-end="}">
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a0eff2e2a1c56f5ee30dfc2ff46e15c4b">   94</a></span>        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="struct_f_parabola_ballistic_track.html#a0eff2e2a1c56f5ee30dfc2ff46e15c4b">SplitVelocity</a>(<span class="keyword">const</span> FVector&amp; V0, FVector&amp; OutDir, <span class="keywordtype">float</span>&amp; OutPow)</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        {</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                OutPow = V0.Length();</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                OutDir = (OutPow &gt; SMALL_NUMBER) ? V0 / OutPow : FVector(1,0,0);</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        }</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="foldopen" id="foldopen00098" data-start="{" data-end="}">
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a0eff2e2a1c56f5ee30dfc2ff46e15c4b">   98</a></span>        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="struct_f_parabola_ballistic_track.html#a0eff2e2a1c56f5ee30dfc2ff46e15c4b">SplitVelocity</a>(<span class="keyword">const</span> FVector&amp; V0, FVector&amp; OutDir, <span class="keywordtype">float</span>&amp; OutPow)</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                OutPow = V0.Length();</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                OutDir = (OutPow &gt; SMALL_NUMBER) ? V0 / OutPow : FVector(1,0,0);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        }</div>
 </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="foldopen" id="foldopen00101" data-start="{" data-end="}">
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a37af96db8c53c5e99ea5e0634cc6ef17">  101</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="struct_f_parabola_ballistic_track.html#a37af96db8c53c5e99ea5e0634cc6ef17">ApplyArcSolution</a>(<span class="keyword">const</span> FVector&amp; InStart, <span class="keyword">const</span> FVector&amp; InEnd, <span class="keywordtype">float</span> t)</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        {</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                Start = InStart;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                Duration = FMath::Max(0.001f, t);</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                <span class="keyword">const</span> FVector V0 = SolveV0ForArc(InStart, InEnd, Duration, GravityZ);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                SplitVelocity(V0, Direction, Power);</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                ResetTime();</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="foldopen" id="foldopen00105" data-start="{" data-end="}">
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="struct_f_parabola_ballistic_track.html#a37af96db8c53c5e99ea5e0634cc6ef17">  105</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="struct_f_parabola_ballistic_track.html#a37af96db8c53c5e99ea5e0634cc6ef17">ApplyArcSolution</a>(<span class="keyword">const</span> FVector&amp; InStart, <span class="keyword">const</span> FVector&amp; InEnd, <span class="keywordtype">float</span> t)</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        {</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                Start = InStart;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                Duration = FMath::Max(0.001f, t);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                <span class="keyword">const</span> FVector V0 = SolveV0ForArc(InStart, InEnd, Duration, GravityZ);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                SplitVelocity(V0, Direction, Power);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                ResetTime();</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        }</div>
 </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>};</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>};</div>
 </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>USTRUCT(BlueprintType)</div>
-<div class="foldopen" id="foldopen00113" data-start="{" data-end="};">
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html">  113</a></span>struct <a class="code hl_struct" href="struct_f_parabola_geometric_track.html">FParabolaGeometricTrack</a></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>{</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        GENERATED_BODY()</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="comment">// 입력 파라미터</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#a2aab62034b1563e7cadb7c0855529b47">  118</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite) FVector Start = FVector::ZeroVector;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#accf62025f46c3bdd862a22ac547f9775">  119</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite) FVector Target = FVector::ZeroVector;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#a73e0c6c98ec20f2989d1573bb3cee73d">  120</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(ClampMin=&quot;0.001&quot;)) <span class="keywordtype">float</span> Duration = 1.0f;</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#a77cbd3fd719344282b69d0b58760c19f">  121</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(ClampMin=&quot;0.0&quot;)) <span class="keywordtype">float</span> ApexHeight = 200.f; <span class="comment">// 정점에서 +H</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#ab50f2201e8787e9d1469172a08fcfa12">  122</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite) FVector UpAxis = FVector::UpVector;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="comment">// 평면 고정(선택)</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#ad95470506999c305395eb2d9d52aa18f">  125</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite) <span class="keywordtype">bool</span> bLockZ = false;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#af766c9fb3b7ee8fb6748fcb4cd3f8e3a">  126</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(EditCondition=&quot;bLockZ&quot;)) <span class="keywordtype">float</span> LockedZ = 0.f;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen00117" data-start="{" data-end="};">
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html">  117</a></span>struct <a class="code hl_struct" href="struct_f_parabola_geometric_track.html">FParabolaGeometricTrack</a></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>{</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        GENERATED_BODY()</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="comment">// 입력 파라미터</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#a2aab62034b1563e7cadb7c0855529b47">  122</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite) FVector Start = FVector::ZeroVector;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#accf62025f46c3bdd862a22ac547f9775">  123</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite) FVector Target = FVector::ZeroVector;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#a73e0c6c98ec20f2989d1573bb3cee73d">  124</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(ClampMin=&quot;0.001&quot;)) <span class="keywordtype">float</span> Duration = 1.0f;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#a77cbd3fd719344282b69d0b58760c19f">  125</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(ClampMin=&quot;0.0&quot;)) <span class="keywordtype">float</span> ApexHeight = 200.f; <span class="comment">// 정점에서 +H</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#ab50f2201e8787e9d1469172a08fcfa12">  126</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite) FVector UpAxis = FVector::UpVector;</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="comment">// 런타임 상태</span></div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#a74ef294fa487ce911d2f892bde6de4ef">  129</a></span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Transient) <span class="keywordtype">float</span> CurrentTime = 0.f;</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <span class="comment">// 타임 유틸</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#a1d6bf654452ae75c299eacb5d635ae70">  133</a></span>        FORCEINLINE <span class="keywordtype">void</span> ResetTime() { CurrentTime = 0.f; }</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#ae4f290f68053d4ecf8fa3183681dac95">  135</a></span>        FORCEINLINE <span class="keywordtype">float</span> <a class="code hl_function" href="struct_f_parabola_geometric_track.html#ae4f290f68053d4ecf8fa3183681dac95">GetAlpha</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> FMath::Clamp(CurrentTime / FMath::Max(0.001f, Duration), 0.f, 1.f); }</div>
-<div class="foldopen" id="foldopen00137" data-start="{" data-end="}">
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#a615f2e19d8ee6d8ff5b391f7c171b52a">  137</a></span>        FORCEINLINE <span class="keywordtype">void</span> <a class="code hl_function" href="struct_f_parabola_geometric_track.html#a615f2e19d8ee6d8ff5b391f7c171b52a">Advance</a>(<span class="keywordtype">float</span> DeltaTime)</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        {</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>                CurrentTime = FMath::Min(CurrentTime + FMath::Max(0.f, DeltaTime), FMath::Max(0.001f, Duration));</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        }</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="comment">// 평면 고정(선택)</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#ad95470506999c305395eb2d9d52aa18f">  129</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite) <span class="keywordtype">bool</span> bLockZ = false;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#af766c9fb3b7ee8fb6748fcb4cd3f8e3a">  130</a></span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(EditCondition=&quot;bLockZ&quot;)) <span class="keywordtype">float</span> LockedZ = 0.f;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="comment">// 런타임 상태</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#a74ef294fa487ce911d2f892bde6de4ef">  133</a></span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Transient) <span class="keywordtype">float</span> CurrentTime = 0.f;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="comment">// 타임 유틸</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#a1d6bf654452ae75c299eacb5d635ae70">  137</a></span>        FORCEINLINE <span class="keywordtype">void</span> ResetTime() { CurrentTime = 0.f; }</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#ae4f290f68053d4ecf8fa3183681dac95">  139</a></span>        FORCEINLINE <span class="keywordtype">float</span> <a class="code hl_function" href="struct_f_parabola_geometric_track.html#ae4f290f68053d4ecf8fa3183681dac95">GetAlpha</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> FMath::Clamp(CurrentTime / FMath::Max(0.001f, Duration), 0.f, 1.f); }</div>
+<div class="foldopen" id="foldopen00141" data-start="{" data-end="}">
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#a615f2e19d8ee6d8ff5b391f7c171b52a">  141</a></span>        FORCEINLINE <span class="keywordtype">void</span> <a class="code hl_function" href="struct_f_parabola_geometric_track.html#a615f2e19d8ee6d8ff5b391f7c171b52a">Advance</a>(<span class="keywordtype">float</span> DeltaTime)</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        {</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                CurrentTime = FMath::Min(CurrentTime + FMath::Max(0.f, DeltaTime), FMath::Max(0.001f, Duration));</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        }</div>
 </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <span class="comment">// 평가(직선보간 + 4Ha(1-a) 버프)</span></div>
-<div class="foldopen" id="foldopen00144" data-start="{" data-end="}">
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#a503bcee9414a24c1e70663a236639092">  144</a></span>        FVector <a class="code hl_function" href="struct_f_parabola_geometric_track.html#a503bcee9414a24c1e70663a236639092">EvaluateAtTime</a>(<span class="keyword">const</span> AActor* <span class="comment">/*Owner*/</span>, <span class="keywordtype">float</span> TimeSec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> D = FMath::Max(0.001f, Duration);</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> t = FMath::Clamp(TimeSec, 0.f, D);</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> a = t / D;</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="struct_f_math_helper.html#acdb08b61cfe310f5684d30ebb69204d2">FMathHelper::InterpArcSin</a>(Start, Target, ApexHeight, a);</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    }</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="comment">// 평가(직선보간 + 4Ha(1-a) 버프)</span></div>
+<div class="foldopen" id="foldopen00148" data-start="{" data-end="}">
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#a503bcee9414a24c1e70663a236639092">  148</a></span>        FVector <a class="code hl_function" href="struct_f_parabola_geometric_track.html#a503bcee9414a24c1e70663a236639092">EvaluateAtTime</a>(<span class="keyword">const</span> AActor* <span class="comment">/*Owner*/</span>, <span class="keywordtype">float</span> TimeSec)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> D = FMath::Max(0.001f, Duration);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> t = FMath::Clamp(TimeSec, 0.f, D);</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> a = t / D;</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="struct_f_math_helper.html#acdb08b61cfe310f5684d30ebb69204d2">FMathHelper::InterpArcSin</a>(Start, Target, ApexHeight, a);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    }</div>
 </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
-<div class="foldopen" id="foldopen00154" data-start="{" data-end="}">
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#a36598782e6b390e958e2d7718eb9a4a4">  154</a></span>        FORCEINLINE FVector <a class="code hl_function" href="struct_f_parabola_geometric_track.html#a36598782e6b390e958e2d7718eb9a4a4">EvaluateAtAlpha</a>(<span class="keyword">const</span> AActor* Owner, <span class="keywordtype">float</span> Alpha)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                <span class="keywordflow">return</span> EvaluateAtTime(Owner, Alpha * FMath::Max(0.001f, Duration));</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        }</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="foldopen" id="foldopen00158" data-start="{" data-end="}">
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#a36598782e6b390e958e2d7718eb9a4a4">  158</a></span>        FORCEINLINE FVector <a class="code hl_function" href="struct_f_parabola_geometric_track.html#a36598782e6b390e958e2d7718eb9a4a4">EvaluateAtAlpha</a>(<span class="keyword">const</span> AActor* Owner, <span class="keywordtype">float</span> Alpha)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>                <span class="keywordflow">return</span> EvaluateAtTime(Owner, Alpha * FMath::Max(0.001f, Duration));</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        }</div>
 </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
-<div class="foldopen" id="foldopen00160" data-start="{" data-end="}">
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#af0fef7dd3c2bd2470c11ed6e985f360d">  160</a></span>        FORCEINLINE FVector <a class="code hl_function" href="struct_f_parabola_geometric_track.html#af0fef7dd3c2bd2470c11ed6e985f360d">EvaluateAtCurrent</a>(<span class="keyword">const</span> AActor* Owner)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>                <span class="keywordflow">return</span> EvaluateAtTime(Owner, CurrentTime);</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        }</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="foldopen" id="foldopen00164" data-start="{" data-end="}">
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#af0fef7dd3c2bd2470c11ed6e985f360d">  164</a></span>        FORCEINLINE FVector <a class="code hl_function" href="struct_f_parabola_geometric_track.html#af0fef7dd3c2bd2470c11ed6e985f360d">EvaluateAtCurrent</a>(<span class="keyword">const</span> AActor* Owner)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>                <span class="keywordflow">return</span> EvaluateAtTime(Owner, CurrentTime);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        }</div>
 </div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
-<div class="foldopen" id="foldopen00166" data-start="{" data-end="}">
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#ad11200fe6fac153fe60c04cdaf02afe9">  166</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="struct_f_parabola_geometric_track.html#ad11200fe6fac153fe60c04cdaf02afe9">ApplyArcSolution</a>(<span class="keyword">const</span> FVector&amp; InStart, <span class="keyword">const</span> FVector&amp; InTarget, <span class="keyword">const</span> <span class="keywordtype">float</span> InApexHeight, <span class="keywordtype">float</span> t, <span class="keyword">const</span> FVector&amp; InUpAxis = FVector::UpVector)</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        {</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>                Start = InStart;</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                Target = InTarget;</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                ApexHeight = FMath::Max(0.f, InApexHeight);</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>                UpAxis = InUpAxis;</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>                Duration = FMath::Max(0.001f, t);</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                ResetTime();</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        }</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="foldopen" id="foldopen00170" data-start="{" data-end="}">
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="struct_f_parabola_geometric_track.html#ad11200fe6fac153fe60c04cdaf02afe9">  170</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="struct_f_parabola_geometric_track.html#ad11200fe6fac153fe60c04cdaf02afe9">ApplyArcSolution</a>(<span class="keyword">const</span> FVector&amp; InStart, <span class="keyword">const</span> FVector&amp; InTarget, <span class="keyword">const</span> <span class="keywordtype">float</span> InApexHeight, <span class="keywordtype">float</span> t, <span class="keyword">const</span> FVector&amp; InUpAxis = FVector::UpVector)</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        {</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>                Start = InStart;</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                Target = InTarget;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                ApexHeight = FMath::Max(0.f, InApexHeight);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>                UpAxis = InUpAxis;</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                Duration = FMath::Max(0.001f, t);</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                ResetTime();</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        }</div>
 </div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>};</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>};</div>
 </div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="keyword">class </span>COFFEELIBRARY_API UParabolaComponent : <span class="keyword">public</span> UActorComponent</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>{</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        GENERATED_BODY()</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>public:</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        UParabolaComponent();</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>protected:</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        virtual <span class="keywordtype">void</span> BeginPlay() override;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="keyword">class </span>COFFEELIBRARY_API UParabolaComponent : <span class="keyword">public</span> UActorComponent</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>{</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        GENERATED_BODY()</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>public:</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        UParabolaComponent();</div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>public:</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        virtual <span class="keywordtype">void</span> TickComponent(<span class="keywordtype">float</span> DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        <span class="keywordtype">void</span> UpdateTracks(<span class="keywordtype">float</span> DeltaTime);</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        UFUNCTION(BlueprintCallable, Category=&quot;Parabola&quot;)</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        FRotator GetParabolaFacing(FName TrackName, <span class="keywordtype">bool</span> bYawOnly, <a class="code hl_enumeration" href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594f">EForwardAxis</a> ForwardAxis) const;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>protected:</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        virtual <span class="keywordtype">void</span> BeginPlay() override;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>public:</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        virtual <span class="keywordtype">void</span> TickComponent(<span class="keywordtype">float</span> DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <span class="keywordtype">void</span> UpdateTracks(<span class="keywordtype">float</span> DeltaTime);</div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
 <div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        UFUNCTION(BlueprintCallable, Category=&quot;Parabola&quot;)</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        FRotator MakeFacingFromDir(const FVector&amp; Direction, const <span class="keywordtype">bool</span> bYawOnly, const <a class="code hl_enumeration" href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594f">EForwardAxis</a> ForwardAxis) const;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        FRotator GetParabolaFacing(FName TrackName, <span class="keywordtype">bool</span> bYawOnly, <a class="code hl_enumeration" href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594f">EForwardAxis</a> ForwardAxis) const;</div>
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        <span class="comment">// --- Ballistic ---</span></div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        UFUNCTION(BlueprintCallable, Category=&quot;Parabola|Ballistic&quot;)</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        <span class="keywordtype">void</span> SetBallisticParabolaTrack(FName TrackName, const <a class="code hl_struct" href="struct_f_parabola_ballistic_track.html">FParabolaBallisticTrack</a>&amp; Track);</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        UFUNCTION(BlueprintPure, Category=&quot;Parabola|Ballistic&quot;)</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        FVector GetBallisticParabolaVectorTrack(FName TrackName) const;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        UFUNCTION(BlueprintCallable, Category=&quot;Parabola&quot;)</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        FRotator MakeFacingFromDir(const FVector&amp; Direction, const <span class="keywordtype">bool</span> bYawOnly, const <a class="code hl_enumeration" href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594f">EForwardAxis</a> ForwardAxis) const;</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        <span class="comment">// --- Ballistic ---</span></div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        UFUNCTION(BlueprintCallable, Category=&quot;Parabola|Ballistic&quot;)</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        <span class="keywordtype">void</span> SetBallisticParabolaTrack(FName TrackName, const <a class="code hl_struct" href="struct_f_parabola_ballistic_track.html">FParabolaBallisticTrack</a>&amp; Track);</div>
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
 <div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        UFUNCTION(BlueprintPure, Category=&quot;Parabola|Ballistic&quot;)</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        FVector GetBallisticVectorAtAlphaFromTrack(FName TrackName, <span class="keywordtype">float</span> Alpha) const;</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        FVector GetBallisticParabolaVectorTrack(FName TrackName) const;</div>
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        UFUNCTION(BlueprintCallable, Category=&quot;Parabola|Ballistic&quot;)</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <span class="keywordtype">void</span> DrawBallisticPath(FName TrackName, int32 NumSegments, FColor Color, <span class="keywordtype">float</span> LifeTime) const;</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        UFUNCTION(BlueprintPure, Category=&quot;Parabola|Ballistic&quot;)</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        FVector GetBallisticVectorAtAlphaFromTrack(FName TrackName, <span class="keywordtype">float</span> Alpha) const;</div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <span class="comment">// --- Geometric ---</span></div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        UFUNCTION(BlueprintCallable, Category=&quot;Parabola|Geometric&quot;)</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        <span class="keywordtype">void</span> SetGeometricParabolaTrack(FName TrackName, const <a class="code hl_struct" href="struct_f_parabola_geometric_track.html">FParabolaGeometricTrack</a>&amp; Track);</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        UFUNCTION(BlueprintPure, Category=&quot;Parabola|Geometric&quot;)</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        FVector GetGeometricParabolaVectorTrack(FName TrackName) const;</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        UFUNCTION(BlueprintCallable, Category=&quot;Parabola|Ballistic&quot;)</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        <span class="keywordtype">void</span> DrawBallisticPath(FName TrackName, int32 NumSegments, FColor Color, <span class="keywordtype">float</span> LifeTime) const;</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        <span class="comment">// --- Geometric ---</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        UFUNCTION(BlueprintCallable, Category=&quot;Parabola|Geometric&quot;)</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        <span class="keywordtype">void</span> SetGeometricParabolaTrack(FName TrackName, const <a class="code hl_struct" href="struct_f_parabola_geometric_track.html">FParabolaGeometricTrack</a>&amp; Track);</div>
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
 <div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        UFUNCTION(BlueprintPure, Category=&quot;Parabola|Geometric&quot;)</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        FVector GetGeometricVectorAtAlphaFromTrack(FName TrackName, <span class="keywordtype">float</span> Alpha) const;</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        FVector GetGeometricParabolaVectorTrack(FName TrackName) const;</div>
 <div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        UFUNCTION(BlueprintCallable, Category=&quot;Parabola|Geometric&quot;)</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        <span class="keywordtype">void</span> DrawGeometricPath(FName TrackName, int32 NumSegments, FColor Color, <span class="keywordtype">float</span> LifeTime) const;</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        UFUNCTION(BlueprintPure, Category=&quot;Parabola|Geometric&quot;)</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        FVector GetGeometricVectorAtAlphaFromTrack(FName TrackName, <span class="keywordtype">float</span> Alpha) const;</div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>private:</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    TMap&lt;FName, <a class="code hl_struct" href="struct_f_parabola_ballistic_track.html">FParabolaBallisticTrack</a>&gt; BallisticTracks;</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    TMap&lt;FName, <a class="code hl_struct" href="struct_f_parabola_geometric_track.html">FParabolaGeometricTrack</a>&gt; GeometricTracks;</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>};</div>
-<div class="ttc" id="a_f_math_helper_8h_html"><div class="ttname"><a href="_f_math_helper_8h.html">FMathHelper.h</a></div></div>
-<div class="ttc" id="a_u_parabola_component_8h_html_a160b3db1967ea71bee24abc7f977594f"><div class="ttname"><a href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594f">EForwardAxis</a></div><div class="ttdeci">EForwardAxis</div><div class="ttdoc">정면 방향 축을 지정한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:21</div></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        UFUNCTION(BlueprintCallable, Category=&quot;Parabola|Geometric&quot;)</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        <span class="keywordtype">void</span> DrawGeometricPath(FName TrackName, int32 NumSegments, FColor Color, <span class="keywordtype">float</span> LifeTime) const;</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>private:</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    TMap&lt;FName, <a class="code hl_struct" href="struct_f_parabola_ballistic_track.html">FParabolaBallisticTrack</a>&gt; BallisticTracks;</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    TMap&lt;FName, <a class="code hl_struct" href="struct_f_parabola_geometric_track.html">FParabolaGeometricTrack</a>&gt; GeometricTracks;</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>};</div>
+<div class="ttc" id="a_f_math_helper_8h_html"><div class="ttname"><a href="_f_math_helper_8h.html">FMathHelper.h</a></div><div class="ttdoc">CoffeeLibrary 전반에서 사용하는 수학 헬퍼를 선언합니다.</div></div>
+<div class="ttc" id="a_u_parabola_component_8h_html_a160b3db1967ea71bee24abc7f977594f"><div class="ttname"><a href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594f">EForwardAxis</a></div><div class="ttdeci">EForwardAxis</div><div class="ttdoc">정면 방향 축을 지정한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:25</div></div>
 <div class="ttc" id="a_u_parabola_component_8h_html_a160b3db1967ea71bee24abc7f977594fa02129bb861061d1a052c592e2dc6b383"><div class="ttname"><a href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594fa02129bb861061d1a052c592e2dc6b383">EForwardAxis::X</a></div><div class="ttdeci">@ X</div></div>
 <div class="ttc" id="a_u_parabola_component_8h_html_a160b3db1967ea71bee24abc7f977594fa21c2e59531c8710156d34a3c30ac81d5"><div class="ttname"><a href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594fa21c2e59531c8710156d34a3c30ac81d5">EForwardAxis::Z</a></div><div class="ttdeci">@ Z</div></div>
 <div class="ttc" id="a_u_parabola_component_8h_html_a160b3db1967ea71bee24abc7f977594fa57cec4137b614c87cb4e24a3d003a3e0"><div class="ttname"><a href="_u_parabola_component_8h.html#a160b3db1967ea71bee24abc7f977594fa57cec4137b614c87cb4e24a3d003a3e0">EForwardAxis::Y</a></div><div class="ttdeci">@ Y</div></div>
-<div class="ttc" id="a_u_parabola_component_8h_html_acb24f37a1795b5e9dfdbb98be4898712"><div class="ttname"><a href="_u_parabola_component_8h.html#acb24f37a1795b5e9dfdbb98be4898712">EParabolaType</a></div><div class="ttdeci">EParabolaType</div><div class="ttdoc">포물선 트랙 계산 방식을 정의한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:12</div></div>
+<div class="ttc" id="a_u_parabola_component_8h_html_acb24f37a1795b5e9dfdbb98be4898712"><div class="ttname"><a href="_u_parabola_component_8h.html#acb24f37a1795b5e9dfdbb98be4898712">EParabolaType</a></div><div class="ttdeci">EParabolaType</div><div class="ttdoc">포물선 트랙 계산 방식을 정의한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:16</div></div>
 <div class="ttc" id="a_u_parabola_component_8h_html_acb24f37a1795b5e9dfdbb98be4898712aa3f80d8f0f1b4ffa8c475f5d60ea5635"><div class="ttname"><a href="_u_parabola_component_8h.html#acb24f37a1795b5e9dfdbb98be4898712aa3f80d8f0f1b4ffa8c475f5d60ea5635">EParabolaType::UMETA</a></div><div class="ttdeci">@ UMETA</div></div>
-<div class="ttc" id="astruct_f_math_helper_html_acdb08b61cfe310f5684d30ebb69204d2"><div class="ttname"><a href="struct_f_math_helper.html#acdb08b61cfe310f5684d30ebb69204d2">FMathHelper::InterpArcSin</a></div><div class="ttdeci">static FVector InterpArcSin(const FVector &amp;Start, const FVector &amp;End, float Height, float Alpha)</div><div class="ttdoc">선형 보간 경로에 사인 함수를 더해 아치 형태의 곡선을 생성합니다. (시각 효과 기반)</div><div class="ttdef"><b>Definition</b> FMathHelper.h:48</div></div>
-<div class="ttc" id="astruct_f_math_helper_html_af785a923a1e6a2f0601649e37cb28cf3"><div class="ttname"><a href="struct_f_math_helper.html#af785a923a1e6a2f0601649e37cb28cf3">FMathHelper::SolveV0ForProjectile</a></div><div class="ttdeci">static FVector SolveV0ForProjectile(const FVector &amp;Start, const FVector &amp;End, float Time, float GravityZ=-980.f)</div><div class="ttdoc">주어진 시간 안에 목표 지점에 도달하기 위한 초기 속도를 계산합니다. (운동 방정식 기반)</div><div class="ttdef"><b>Definition</b> FMathHelper.h:20</div></div>
-<div class="ttc" id="astruct_f_parabola_ballistic_track_html"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html">FParabolaBallisticTrack</a></div><div class="ttdoc">물리 기반(초기 속도/중력) 포물선을 계산하는 트랙.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:26</div></div>
-<div class="ttc" id="astruct_f_parabola_ballistic_track_html_a00c7872516024789a06bd7ab1bcf1e4d"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html#a00c7872516024789a06bd7ab1bcf1e4d">FParabolaBallisticTrack::GetInitialVelocity</a></div><div class="ttdeci">FORCEINLINE FVector GetInitialVelocity() const</div><div class="ttdoc">방향/파워 조합으로부터 초기 속도를 계산한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:56</div></div>
-<div class="ttc" id="astruct_f_parabola_ballistic_track_html_a0eff2e2a1c56f5ee30dfc2ff46e15c4b"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html#a0eff2e2a1c56f5ee30dfc2ff46e15c4b">FParabolaBallisticTrack::SplitVelocity</a></div><div class="ttdeci">static void SplitVelocity(const FVector &amp;V0, FVector &amp;OutDir, float &amp;OutPow)</div><div class="ttdoc">속도를 방향과 크기로 분해한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:94</div></div>
-<div class="ttc" id="astruct_f_parabola_ballistic_track_html_a27ada145754ed3e1ed4dc78b50ccabfd"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html#a27ada145754ed3e1ed4dc78b50ccabfd">FParabolaBallisticTrack::EvaluateAtCurrent</a></div><div class="ttdeci">FORCEINLINE FVector EvaluateAtCurrent(const AActor *Owner) const</div><div class="ttdoc">현재 시간 기준 위치를 계산한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:81</div></div>
-<div class="ttc" id="astruct_f_parabola_ballistic_track_html_a28a0d47aa6a5873d199c693898bcb35e"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html#a28a0d47aa6a5873d199c693898bcb35e">FParabolaBallisticTrack::EvaluateAtTime</a></div><div class="ttdeci">FVector EvaluateAtTime(const AActor *, float TimeSec) const</div><div class="ttdoc">시간값을 받아 포물선 위치를 계산한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:62</div></div>
-<div class="ttc" id="astruct_f_parabola_ballistic_track_html_a37af96db8c53c5e99ea5e0634cc6ef17"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html#a37af96db8c53c5e99ea5e0634cc6ef17">FParabolaBallisticTrack::ApplyArcSolution</a></div><div class="ttdeci">void ApplyArcSolution(const FVector &amp;InStart, const FVector &amp;InEnd, float t)</div><div class="ttdoc">시작/도착점과 시간으로 트랙 파라미터를 초기화한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:101</div></div>
-<div class="ttc" id="astruct_f_parabola_ballistic_track_html_a59931fa612a2dc3bcfd43cdd60233221"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html#a59931fa612a2dc3bcfd43cdd60233221">FParabolaBallisticTrack::EvaluateAtAlpha</a></div><div class="ttdeci">FORCEINLINE FVector EvaluateAtAlpha(const AActor *Owner, float Alpha) const</div><div class="ttdoc">알파값 기반 위치를 계산한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:75</div></div>
-<div class="ttc" id="astruct_f_parabola_ballistic_track_html_ac65c16642b530fa41f8b174e6cb9ccf5"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html#ac65c16642b530fa41f8b174e6cb9ccf5">FParabolaBallisticTrack::GetAlpha</a></div><div class="ttdeci">FORCEINLINE float GetAlpha() const</div><div class="ttdoc">현재 경과 시간의 알파를 반환한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:47</div></div>
-<div class="ttc" id="astruct_f_parabola_ballistic_track_html_ad24e4c8b8e959f1f789fbdda881dbf88"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html#ad24e4c8b8e959f1f789fbdda881dbf88">FParabolaBallisticTrack::SolveV0ForArc</a></div><div class="ttdeci">static FVector SolveV0ForArc(const FVector &amp;InStart, const FVector &amp;InEnd, float t, float InGravityZ=-980.f)</div><div class="ttdoc">목표 위치와 비행 시간으로 초기 속도를 역산한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:88</div></div>
-<div class="ttc" id="astruct_f_parabola_ballistic_track_html_addb0dcba71a55d25e4059695fc5da8d2"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html#addb0dcba71a55d25e4059695fc5da8d2">FParabolaBallisticTrack::Advance</a></div><div class="ttdeci">FORCEINLINE void Advance(float DeltaTime)</div><div class="ttdoc">지정한 델타만큼 시간을 진행한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:49</div></div>
-<div class="ttc" id="astruct_f_parabola_geometric_track_html"><div class="ttname"><a href="struct_f_parabola_geometric_track.html">FParabolaGeometricTrack</a></div><div class="ttdoc">정점 높이를 지정해 기하학적 포물선을 계산하는 트랙.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:114</div></div>
-<div class="ttc" id="astruct_f_parabola_geometric_track_html_a36598782e6b390e958e2d7718eb9a4a4"><div class="ttname"><a href="struct_f_parabola_geometric_track.html#a36598782e6b390e958e2d7718eb9a4a4">FParabolaGeometricTrack::EvaluateAtAlpha</a></div><div class="ttdeci">FORCEINLINE FVector EvaluateAtAlpha(const AActor *Owner, float Alpha) const</div><div class="ttdoc">알파값 기반 위치를 계산한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:154</div></div>
-<div class="ttc" id="astruct_f_parabola_geometric_track_html_a503bcee9414a24c1e70663a236639092"><div class="ttname"><a href="struct_f_parabola_geometric_track.html#a503bcee9414a24c1e70663a236639092">FParabolaGeometricTrack::EvaluateAtTime</a></div><div class="ttdeci">FVector EvaluateAtTime(const AActor *, float TimeSec) const</div><div class="ttdoc">시간값을 받아 포물선 위치를 계산한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:144</div></div>
-<div class="ttc" id="astruct_f_parabola_geometric_track_html_a615f2e19d8ee6d8ff5b391f7c171b52a"><div class="ttname"><a href="struct_f_parabola_geometric_track.html#a615f2e19d8ee6d8ff5b391f7c171b52a">FParabolaGeometricTrack::Advance</a></div><div class="ttdeci">FORCEINLINE void Advance(float DeltaTime)</div><div class="ttdoc">지정한 델타만큼 시간을 진행한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:137</div></div>
-<div class="ttc" id="astruct_f_parabola_geometric_track_html_ad11200fe6fac153fe60c04cdaf02afe9"><div class="ttname"><a href="struct_f_parabola_geometric_track.html#ad11200fe6fac153fe60c04cdaf02afe9">FParabolaGeometricTrack::ApplyArcSolution</a></div><div class="ttdeci">void ApplyArcSolution(const FVector &amp;InStart, const FVector &amp;InTarget, const float InApexHeight, float t, const FVector &amp;InUpAxis=FVector::UpVector)</div><div class="ttdoc">시작/도착점과 정점 높이로 트랙 파라미터를 초기화한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:166</div></div>
-<div class="ttc" id="astruct_f_parabola_geometric_track_html_ae4f290f68053d4ecf8fa3183681dac95"><div class="ttname"><a href="struct_f_parabola_geometric_track.html#ae4f290f68053d4ecf8fa3183681dac95">FParabolaGeometricTrack::GetAlpha</a></div><div class="ttdeci">FORCEINLINE float GetAlpha() const</div><div class="ttdoc">현재 경과 시간의 알파를 반환한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:135</div></div>
-<div class="ttc" id="astruct_f_parabola_geometric_track_html_af0fef7dd3c2bd2470c11ed6e985f360d"><div class="ttname"><a href="struct_f_parabola_geometric_track.html#af0fef7dd3c2bd2470c11ed6e985f360d">FParabolaGeometricTrack::EvaluateAtCurrent</a></div><div class="ttdeci">FORCEINLINE FVector EvaluateAtCurrent(const AActor *Owner) const</div><div class="ttdoc">현재 시간 기준 위치를 계산한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:160</div></div>
+<div class="ttc" id="astruct_f_math_helper_html_acdb08b61cfe310f5684d30ebb69204d2"><div class="ttname"><a href="struct_f_math_helper.html#acdb08b61cfe310f5684d30ebb69204d2">FMathHelper::InterpArcSin</a></div><div class="ttdeci">static FVector InterpArcSin(const FVector &amp;Start, const FVector &amp;End, float Height, float Alpha)</div><div class="ttdoc">선형 보간 경로에 사인 함수를 더해 아치 형태의 곡선을 생성합니다. (시각 효과 기반)</div><div class="ttdef"><b>Definition</b> FMathHelper.h:52</div></div>
+<div class="ttc" id="astruct_f_math_helper_html_af785a923a1e6a2f0601649e37cb28cf3"><div class="ttname"><a href="struct_f_math_helper.html#af785a923a1e6a2f0601649e37cb28cf3">FMathHelper::SolveV0ForProjectile</a></div><div class="ttdeci">static FVector SolveV0ForProjectile(const FVector &amp;Start, const FVector &amp;End, float Time, float GravityZ=-980.f)</div><div class="ttdoc">주어진 시간 안에 목표 지점에 도달하기 위한 초기 속도를 계산합니다. (운동 방정식 기반)</div><div class="ttdef"><b>Definition</b> FMathHelper.h:24</div></div>
+<div class="ttc" id="astruct_f_parabola_ballistic_track_html"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html">FParabolaBallisticTrack</a></div><div class="ttdoc">물리 기반(초기 속도/중력) 포물선을 계산하는 트랙.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:30</div></div>
+<div class="ttc" id="astruct_f_parabola_ballistic_track_html_a00c7872516024789a06bd7ab1bcf1e4d"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html#a00c7872516024789a06bd7ab1bcf1e4d">FParabolaBallisticTrack::GetInitialVelocity</a></div><div class="ttdeci">FORCEINLINE FVector GetInitialVelocity() const</div><div class="ttdoc">방향/파워 조합으로부터 초기 속도를 계산한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:60</div></div>
+<div class="ttc" id="astruct_f_parabola_ballistic_track_html_a0eff2e2a1c56f5ee30dfc2ff46e15c4b"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html#a0eff2e2a1c56f5ee30dfc2ff46e15c4b">FParabolaBallisticTrack::SplitVelocity</a></div><div class="ttdeci">static void SplitVelocity(const FVector &amp;V0, FVector &amp;OutDir, float &amp;OutPow)</div><div class="ttdoc">속도를 방향과 크기로 분해한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:98</div></div>
+<div class="ttc" id="astruct_f_parabola_ballistic_track_html_a27ada145754ed3e1ed4dc78b50ccabfd"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html#a27ada145754ed3e1ed4dc78b50ccabfd">FParabolaBallisticTrack::EvaluateAtCurrent</a></div><div class="ttdeci">FORCEINLINE FVector EvaluateAtCurrent(const AActor *Owner) const</div><div class="ttdoc">현재 시간 기준 위치를 계산한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:85</div></div>
+<div class="ttc" id="astruct_f_parabola_ballistic_track_html_a28a0d47aa6a5873d199c693898bcb35e"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html#a28a0d47aa6a5873d199c693898bcb35e">FParabolaBallisticTrack::EvaluateAtTime</a></div><div class="ttdeci">FVector EvaluateAtTime(const AActor *, float TimeSec) const</div><div class="ttdoc">시간값을 받아 포물선 위치를 계산한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:66</div></div>
+<div class="ttc" id="astruct_f_parabola_ballistic_track_html_a37af96db8c53c5e99ea5e0634cc6ef17"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html#a37af96db8c53c5e99ea5e0634cc6ef17">FParabolaBallisticTrack::ApplyArcSolution</a></div><div class="ttdeci">void ApplyArcSolution(const FVector &amp;InStart, const FVector &amp;InEnd, float t)</div><div class="ttdoc">시작/도착점과 시간으로 트랙 파라미터를 초기화한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:105</div></div>
+<div class="ttc" id="astruct_f_parabola_ballistic_track_html_a59931fa612a2dc3bcfd43cdd60233221"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html#a59931fa612a2dc3bcfd43cdd60233221">FParabolaBallisticTrack::EvaluateAtAlpha</a></div><div class="ttdeci">FORCEINLINE FVector EvaluateAtAlpha(const AActor *Owner, float Alpha) const</div><div class="ttdoc">알파값 기반 위치를 계산한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:79</div></div>
+<div class="ttc" id="astruct_f_parabola_ballistic_track_html_ac65c16642b530fa41f8b174e6cb9ccf5"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html#ac65c16642b530fa41f8b174e6cb9ccf5">FParabolaBallisticTrack::GetAlpha</a></div><div class="ttdeci">FORCEINLINE float GetAlpha() const</div><div class="ttdoc">현재 경과 시간의 알파를 반환한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:51</div></div>
+<div class="ttc" id="astruct_f_parabola_ballistic_track_html_ad24e4c8b8e959f1f789fbdda881dbf88"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html#ad24e4c8b8e959f1f789fbdda881dbf88">FParabolaBallisticTrack::SolveV0ForArc</a></div><div class="ttdeci">static FVector SolveV0ForArc(const FVector &amp;InStart, const FVector &amp;InEnd, float t, float InGravityZ=-980.f)</div><div class="ttdoc">목표 위치와 비행 시간으로 초기 속도를 역산한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:92</div></div>
+<div class="ttc" id="astruct_f_parabola_ballistic_track_html_addb0dcba71a55d25e4059695fc5da8d2"><div class="ttname"><a href="struct_f_parabola_ballistic_track.html#addb0dcba71a55d25e4059695fc5da8d2">FParabolaBallisticTrack::Advance</a></div><div class="ttdeci">FORCEINLINE void Advance(float DeltaTime)</div><div class="ttdoc">지정한 델타만큼 시간을 진행한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:53</div></div>
+<div class="ttc" id="astruct_f_parabola_geometric_track_html"><div class="ttname"><a href="struct_f_parabola_geometric_track.html">FParabolaGeometricTrack</a></div><div class="ttdoc">정점 높이를 지정해 기하학적 포물선을 계산하는 트랙.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:118</div></div>
+<div class="ttc" id="astruct_f_parabola_geometric_track_html_a36598782e6b390e958e2d7718eb9a4a4"><div class="ttname"><a href="struct_f_parabola_geometric_track.html#a36598782e6b390e958e2d7718eb9a4a4">FParabolaGeometricTrack::EvaluateAtAlpha</a></div><div class="ttdeci">FORCEINLINE FVector EvaluateAtAlpha(const AActor *Owner, float Alpha) const</div><div class="ttdoc">알파값 기반 위치를 계산한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:158</div></div>
+<div class="ttc" id="astruct_f_parabola_geometric_track_html_a503bcee9414a24c1e70663a236639092"><div class="ttname"><a href="struct_f_parabola_geometric_track.html#a503bcee9414a24c1e70663a236639092">FParabolaGeometricTrack::EvaluateAtTime</a></div><div class="ttdeci">FVector EvaluateAtTime(const AActor *, float TimeSec) const</div><div class="ttdoc">시간값을 받아 포물선 위치를 계산한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:148</div></div>
+<div class="ttc" id="astruct_f_parabola_geometric_track_html_a615f2e19d8ee6d8ff5b391f7c171b52a"><div class="ttname"><a href="struct_f_parabola_geometric_track.html#a615f2e19d8ee6d8ff5b391f7c171b52a">FParabolaGeometricTrack::Advance</a></div><div class="ttdeci">FORCEINLINE void Advance(float DeltaTime)</div><div class="ttdoc">지정한 델타만큼 시간을 진행한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:141</div></div>
+<div class="ttc" id="astruct_f_parabola_geometric_track_html_ad11200fe6fac153fe60c04cdaf02afe9"><div class="ttname"><a href="struct_f_parabola_geometric_track.html#ad11200fe6fac153fe60c04cdaf02afe9">FParabolaGeometricTrack::ApplyArcSolution</a></div><div class="ttdeci">void ApplyArcSolution(const FVector &amp;InStart, const FVector &amp;InTarget, const float InApexHeight, float t, const FVector &amp;InUpAxis=FVector::UpVector)</div><div class="ttdoc">시작/도착점과 정점 높이로 트랙 파라미터를 초기화한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:170</div></div>
+<div class="ttc" id="astruct_f_parabola_geometric_track_html_ae4f290f68053d4ecf8fa3183681dac95"><div class="ttname"><a href="struct_f_parabola_geometric_track.html#ae4f290f68053d4ecf8fa3183681dac95">FParabolaGeometricTrack::GetAlpha</a></div><div class="ttdeci">FORCEINLINE float GetAlpha() const</div><div class="ttdoc">현재 경과 시간의 알파를 반환한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:139</div></div>
+<div class="ttc" id="astruct_f_parabola_geometric_track_html_af0fef7dd3c2bd2470c11ed6e985f360d"><div class="ttname"><a href="struct_f_parabola_geometric_track.html#af0fef7dd3c2bd2470c11ed6e985f360d">FParabolaGeometricTrack::EvaluateAtCurrent</a></div><div class="ttdeci">FORCEINLINE FVector EvaluateAtCurrent(const AActor *Owner) const</div><div class="ttdoc">현재 시간 기준 위치를 계산한다.</div><div class="ttdef"><b>Definition</b> UParabolaComponent.h:164</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 1 2025 09:48:19 for YiSan Project Documentation by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Thu Oct 2 2025 00:10:01 for YiSan Project Documentation by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

@@ -1,8 +1,8 @@
 <map id="Source/LatteLibrary/Manager/Private/USequenceManager.cpp" name="Source/LatteLibrary/Manager/Private/USequenceManager.cpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="489,5,700,60"/>
-<area shape="rect" id="Node000002" href="$_u_sequence_manager_8h.html" title=" " alt="" coords="429,108,592,133"/>
+<area shape="rect" id="Node000001" title="USequenceManager 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="489,5,700,60"/>
+<area shape="rect" id="Node000002" href="$_u_sequence_manager_8h.html" title="USequenceManager 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="429,108,592,133"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="571,62,534,100,530,96,567,58"/>
-<area shape="rect" id="Node000006" href="$_u_sequence_activatable_8h.html" title=" " alt="" coords="224,108,405,133"/>
+<area shape="rect" id="Node000006" href="$_u_sequence_activatable_8h.html" title="USequenceActivatable 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="224,108,405,133"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="510,63,366,107,364,102,508,58"/>
 <area shape="rect" id="Node000008" title=" " alt="" coords="616,108,744,133"/>
 <area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="623,58,661,96,657,100,619,62"/>

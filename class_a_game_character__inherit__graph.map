@@ -1,5 +1,5 @@
 <map id="AGameCharacter" name="AGameCharacter">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,79,139,104"/>
+<area shape="rect" id="Node000001" title="전투, 능력치, 애니메이션 헬퍼를 연결하는 기반 캐릭터 구현입니다." alt="" coords="5,79,139,104"/>
 <area shape="rect" id="Node000003" href="$class_a_player_actor.html" title=" " alt="" coords="19,152,125,177"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="75,118,75,152,69,152,69,118"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="25,5,119,31"/>

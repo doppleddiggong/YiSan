@@ -80,13 +80,16 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>전투, 능력치, 애니메이션 헬퍼를 연결하는 기반 캐릭터 구현입니다.  
+ <a href="class_a_game_character.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_a_game_character_8h_source.html">AGameCharacter.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for AGameCharacter:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_a_game_character__inherit__graph.png" border="0" usemap="#a_a_game_character_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_a_game_character_inherit__map" id="a_a_game_character_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,79,139,104"/>
+<area shape="rect" title="전투, 능력치, 애니메이션 헬퍼를 연결하는 기반 캐릭터 구현입니다." alt="" coords="5,79,139,104"/>
 <area shape="rect" href="class_a_player_actor.html" title=" " alt="" coords="19,152,125,177"/>
 <area shape="poly" title=" " alt="" coords="75,118,75,152,69,152,69,118"/>
 <area shape="rect" title=" " alt="" coords="25,5,119,31"/>
@@ -98,7 +101,7 @@ Collaboration diagram for AGameCharacter:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_a_game_character__coll__graph.png" border="0" usemap="#a_a_game_character_coll__map" alt="Collaboration graph"/></div>
 <map name="a_a_game_character_coll__map" id="a_a_game_character_coll__map">
-<area shape="rect" title=" " alt="" coords="5,79,139,104"/>
+<area shape="rect" title="전투, 능력치, 애니메이션 헬퍼를 연결하는 기반 캐릭터 구현입니다." alt="" coords="5,79,139,104"/>
 <area shape="rect" title=" " alt="" coords="25,5,119,31"/>
 <area shape="poly" title=" " alt="" coords="75,44,75,79,69,79,69,44"/>
 </map>
@@ -107,6 +110,7 @@ Collaboration diagram for AGameCharacter:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a87cbc7cdbb4010f782f99286e4cc62f6" id="r_a87cbc7cdbb4010f782f99286e4cc62f6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_game_character.html#a87cbc7cdbb4010f782f99286e4cc62f6">AGameCharacter</a> ()</td></tr>
+<tr class="memdesc:a87cbc7cdbb4010f782f99286e4cc62f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">기본 구성 요소와 서브 시스템을 초기화합니다.  <br /></td></tr>
 <tr class="separator:a87cbc7cdbb4010f782f99286e4cc62f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b09bd6a3e026a0c7fae9ee9e194b848" id="r_a0b09bd6a3e026a0c7fae9ee9e194b848"><td class="memItemLeft" align="right" valign="top">FORCEINLINE UArrowComponent *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_game_character.html#a0b09bd6a3e026a0c7fae9ee9e194b848">GetBodyPart</a> (<a class="el" href="_e_body_part_type_8h.html#a69a09297e20131de3e863c109dd59454">EBodyPartType</a> Part) const</td></tr>
 <tr class="separator:a0b09bd6a3e026a0c7fae9ee9e194b848"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,8 +191,10 @@ Public Attributes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a86daf7483d1c4e9f33692cdd6590517a" id="r_a86daf7483d1c4e9f33692cdd6590517a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_game_character.html#a86daf7483d1c4e9f33692cdd6590517a">BeginPlay</a> () override</td></tr>
+<tr class="memdesc:a86daf7483d1c4e9f33692cdd6590517a"><td class="mdescLeft">&#160;</td><td class="mdescRight">게임 시작 시 서브 시스템을 연결합니다.  <br /></td></tr>
 <tr class="separator:a86daf7483d1c4e9f33692cdd6590517a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a843e2c23cabd6a5b956ae4f7178276b0" id="r_a843e2c23cabd6a5b956ae4f7178276b0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_game_character.html#a843e2c23cabd6a5b956ae4f7178276b0">EndPlay</a> (const EEndPlayReason::Type EndPlayReason) override</td></tr>
+<tr class="memdesc:a843e2c23cabd6a5b956ae4f7178276b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">플레이 종료 시 리소스를 해제합니다.  <br /></td></tr>
 <tr class="separator:a843e2c23cabd6a5b956ae4f7178276b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
@@ -234,7 +240,9 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a4bdd4b097a2dc7d279152db10554a55d" id="r_a4bdd4b097a2dc7d279152db10554a55d"><td class="memItemLeft" align="right" valign="top">TEnumAsByte&lt; EMovementMode &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_game_character.html#a4bdd4b097a2dc7d279152db10554a55d">PrevMoveMode</a></td></tr>
 <tr class="separator:a4bdd4b097a2dc7d279152db10554a55d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>전투, 능력치, 애니메이션 헬퍼를 연결하는 기반 캐릭터 구현입니다. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a87cbc7cdbb4010f782f99286e4cc62f6" name="a87cbc7cdbb4010f782f99286e4cc62f6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a87cbc7cdbb4010f782f99286e4cc62f6">&#9670;&#160;</a></span>AGameCharacter()</h2>
 
@@ -249,6 +257,8 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>기본 구성 요소와 서브 시스템을 초기화합니다. </p>
 
 <p class="reference">References <a class="el" href="class_a_game_character.html#a987553b90de3040baa0adc9cac363b85">FlySystem</a>, <a class="el" href="class_a_game_character.html#ae6d44ec6fe6c6dcd5a7c608d0b0dc476">HitStopSystem</a>, <a class="el" href="class_a_game_character.html#a159e5b121637118fb0dec114a3fb42d1">KnockbackSystem</a>, <a class="el" href="class_a_game_character.html#ae7ea1c9e16d4110e77104a2b80364579">LeftFootComp</a>, <a class="el" href="class_a_game_character.html#a131669393a37a8a98f5344956ed51205">LeftHandComp</a>, <a class="el" href="class_a_game_character.html#a37484b105b63c3a1c182276a34f5b678">RightFootComp</a>, <a class="el" href="class_a_game_character.html#ab4328ba4d9c37d357bc49062677981de">RightHandComp</a>, and <a class="el" href="class_a_game_character.html#adb3de42108c699ccda8a66cf936d097c">StatSystem</a>.</p>
 
@@ -277,6 +287,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>게임 시작 시 서브 시스템을 연결합니다. </p>
 
 <p>Reimplemented in <a class="el" href="class_a_player_actor.html#afc3ace6de521cfc26c3a4395215e7ce9">APlayerActor</a>.</p>
 
@@ -333,6 +345,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>플레이 종료 시 리소스를 해제합니다. </p>
 
 <p class="reference">References <a class="el" href="class_a_game_character.html#abc079621e0064c235eb7bd5a25225877">AnimInstance</a>, and <a class="el" href="class_a_game_character.html#ad8994b5da7f4022cf3f3ae1dc5447886">bDelegatesBound</a>.</p>
 
@@ -1540,7 +1554,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 1 2025 09:48:19 for YiSan Project Documentation by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Thu Oct 2 2025 00:10:01 for YiSan Project Documentation by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

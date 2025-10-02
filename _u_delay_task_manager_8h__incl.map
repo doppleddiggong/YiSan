@@ -1,8 +1,8 @@
 <map id="Source/LatteLibrary/Manager/Public/UDelayTaskManager.h" name="Source/LatteLibrary/Manager/Public/UDelayTaskManager.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="283,5,490,60"/>
+<area shape="rect" id="Node000001" title="UDelayTaskManager 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="283,5,490,60"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,108,123,133"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="289,63,121,107,119,102,287,57"/>
-<area shape="rect" id="Node000003" href="$_macro_8h.html" title=" " alt="" coords="147,108,221,133"/>
+<area shape="rect" id="Node000003" href="$_macro_8h.html" title="Manager 모듈에서 공통으로 사용하는 매크로 정의에 대한 Doxygen 주석을 제공합니다." alt="" coords="147,108,221,133"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="326,63,225,105,223,100,324,58"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="245,108,528,133"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="389,60,389,94,384,94,384,60"/>
