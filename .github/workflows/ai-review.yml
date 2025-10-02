@@ -4,12 +4,22 @@ on:
   push:
     paths:
       - 'Source/**'
+
   pull_request:
     types: [opened, synchronize]
     branches:
       - main
     paths:
       - 'Source/**'
+
+  workflow_dispatch:
+    inputs:
+      base:
+        description: '기준 커밋 (예: abc1234)'
+        required: false
+      head:
+        description: '비교 대상 커밋 (예: def5678)'
+        required: false
 
 permissions:
   contents: read
@@ -23,7 +33,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 전체 히스토리를 받아야 git diff 정확히 작동
+          fetch-depth: 0
 
       - name: Extract Diff
         id: diff
@@ -32,18 +42,31 @@ jobs:
             echo "🔍 PR 기반 diff 생성 중..."
             git fetch origin ${{ github.base_ref }}
             git diff origin/${{ github.base_ref }}...HEAD > changes.patch
-          else
+
+          elif [ "${{ github.event_name }}" == "push" ]; then
             echo "🔍 Push 기반 diff 생성 중..."
             if [ "${{ github.event.before }}" == "0000000000000000000000000000000000000000" ]; then
-              echo "🆕 새 브랜치 푸시 → 전체 파일 diff"
+              echo "🆕 새 브랜치 → 전체 파일 diff"
               git diff 4b825dc642cb6eb9a060e54bf8d69288fbee4904 ${{ github.sha }} > changes.patch
             else
               git diff ${{ github.event.before }}..${{ github.sha }} > changes.patch
             fi
+
+          elif [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "⚙️ 수동 실행: 입력 커밋 범위 비교"
+            BASE=${{ github.event.inputs.base }}
+            HEAD=${{ github.event.inputs.head }}
+
+            if [[ -n "$BASE" && -n "$HEAD" ]]; then
+              git diff "$BASE" "$HEAD" > changes.patch
+            else
+              echo "⚠️ base/head 미입력: 기본 HEAD~1..HEAD 비교"
+              git diff HEAD~1 HEAD > changes.patch
+            fi
           fi
 
           echo "--- 변경된 코드 ---"
-          cat changes.patch || echo "변경사항 없음"
+          cat changes.patch || echo "⚠️ 변경사항 없음"
 
       - name: Call GPT for Review
         id: ai_review
@@ -83,11 +106,16 @@ jobs:
             AUTHOR="${{ github.event.pull_request.user.login }}"
             TITLE="AI Code Review on PR #${{ github.event.pull_request.number }}"
             URL="${{ github.event.pull_request.html_url }}"
-          else
+          elif [ "${{ github.event_name }}" == "push" ]; then
             BRANCH_INFO="${{ github.ref_name }}"
             AUTHOR="${{ github.event.pusher.name }}"
             TITLE="AI Code Review on push to ${GITHUB_REF_NAME}"
             URL="${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
+          else
+            BRANCH_INFO="manual"
+            AUTHOR="${{ github.actor }}"
+            TITLE="AI Code Review (Manual Trigger)"
+            URL="${{ github.server_url }}/${{ github.repository }}"
           fi
 
           TIMESTAMP=$(date --iso-8601=seconds)
