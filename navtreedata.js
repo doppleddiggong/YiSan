@@ -53,22 +53,22 @@ var NAVTREE =
       [ "Agent QA 로그 정책", "md_GEMINI.html#autotoc_md46", null ]
     ] ],
     [ "AI 에이전트와 효과적으로 상호작용하는 가이드", "md_AgentRule_2agent__interaction__guide.html", [
-      [ "1. 개요", "md_AgentRule_2agent__interaction__guide.html#autotoc_md6", null ],
-      [ "2. 핵심 원칙", "md_AgentRule_2agent__interaction__guide.html#autotoc_md7", null ],
-      [ "3. 효율적인 요청 방법", "md_AgentRule_2agent__interaction__guide.html#autotoc_md8", [
-        [ "3.1. 작업 목표 명확화", "md_AgentRule_2agent__interaction__guide.html#autotoc_md9", null ],
-        [ "3.2. 관련 파일/경로 지정", "md_AgentRule_2agent__interaction__guide.html#autotoc_md10", null ],
-        [ "3.3. 기존 코드/컨벤션 참조", "md_AgentRule_2agent__interaction__guide.html#autotoc_md11", null ],
-        [ "3.4. 예상 결과 제시", "md_AgentRule_2agent__interaction__guide.html#autotoc_md12", null ],
-        [ "3.5. 문제 발생 시 상세 정보 제공", "md_AgentRule_2agent__interaction__guide.html#autotoc_md13", null ]
+      [ "1. 개요", "md_AgentRule_2agent__interaction__guide.html#autotoc_md2", null ],
+      [ "2. 핵심 원칙", "md_AgentRule_2agent__interaction__guide.html#autotoc_md3", null ],
+      [ "3. 효율적인 요청 방법", "md_AgentRule_2agent__interaction__guide.html#autotoc_md5", [
+        [ "3.1. 작업 목표 명확화", "md_AgentRule_2agent__interaction__guide.html#autotoc_md6", null ],
+        [ "3.2. 관련 파일/경로 지정", "md_AgentRule_2agent__interaction__guide.html#autotoc_md7", null ],
+        [ "3.3. 기존 코드/컨벤션 참조", "md_AgentRule_2agent__interaction__guide.html#autotoc_md8", null ],
+        [ "3.4. 예상 결과 제시", "md_AgentRule_2agent__interaction__guide.html#autotoc_md9", null ],
+        [ "3.5. 문제 발생 시 상세 정보 제공", "md_AgentRule_2agent__interaction__guide.html#autotoc_md10", null ]
       ] ],
-      [ "4. 에이전트의 질문에 대한 응답", "md_AgentRule_2agent__interaction__guide.html#autotoc_md14", null ],
-      [ "5. 커밋 메시지 작성 요청 시", "md_AgentRule_2agent__interaction__guide.html#autotoc_md15", null ]
+      [ "4. 에이전트의 질문에 대한 응답", "md_AgentRule_2agent__interaction__guide.html#autotoc_md11", null ],
+      [ "5. 커밋 메시지 작성 요청 시", "md_AgentRule_2agent__interaction__guide.html#autotoc_md13", null ]
     ] ],
     [ "코드 생성 규칙 (code_generate.md)", "md_AgentRule_2code__generate.html", [
-      [ "목적", "md_AgentRule_2code__generate.html#autotoc_md3", null ],
-      [ "워크플로", "md_AgentRule_2code__generate.html#autotoc_md4", null ],
-      [ "참조", "md_AgentRule_2code__generate.html#autotoc_md5", null ]
+      [ "목적", "md_AgentRule_2code__generate.html#autotoc_md12", null ],
+      [ "워크플로", "md_AgentRule_2code__generate.html#autotoc_md14", null ],
+      [ "참조", "md_AgentRule_2code__generate.html#autotoc_md15", null ]
     ] ],
     [ "Commit Message Agent", "md_AgentRule_2commit__agent.html", [
       [ "1. 역할 (Persona)", "md_AgentRule_2commit__agent.html#autotoc_md48", null ],
@@ -84,39 +84,39 @@ var NAVTREE =
       [ "9. 커밋 메시지 생성 방식 개선 (Commit Message Generation Improvement)", "md_AgentRule_2commit__agent.html#autotoc_md57", null ]
     ] ],
     [ "Unreal Engine C++ 코딩 컨벤션 가이드 (Project YiSan)", "md_AgentRule_2conventions__agent.html", [
-      [ "1. 네이밍 규칙 (Naming Conventions)", "md_AgentRule_2conventions__agent.html#autotoc_md61", [
-        [ "1.1. 클래스 및 파일명 (Classes and Filenames)", "md_AgentRule_2conventions__agent.html#autotoc_md62", null ],
-        [ "1.2. 변수 (Variables)", "md_AgentRule_2conventions__agent.html#autotoc_md65", null ],
-        [ "1.3. 함수 (Functions)", "md_AgentRule_2conventions__agent.html#autotoc_md69", null ]
+      [ "1. 네이밍 규칙 (Naming Conventions)", "md_AgentRule_2conventions__agent.html#autotoc_md60", [
+        [ "1.1. 클래스 및 파일명 (Classes and Filenames)", "md_AgentRule_2conventions__agent.html#autotoc_md61", null ],
+        [ "1.2. 변수 (Variables)", "md_AgentRule_2conventions__agent.html#autotoc_md62", null ],
+        [ "1.3. 함수 (Functions)", "md_AgentRule_2conventions__agent.html#autotoc_md64", null ]
       ] ],
-      [ "2. UPROPERTY / UFUNCTION 매크로", "md_AgentRule_2conventions__agent.html#autotoc_md77", null ],
-      [ "3. 파일 구조 및 주석", "md_AgentRule_2conventions__agent.html#autotoc_md79", [
-        [ "3.1. 헤더 파일", "md_AgentRule_2conventions__agent.html#autotoc_md80", null ],
-        [ "3.2. 주석 (Comments)", "md_AgentRule_2conventions__agent.html#autotoc_md81", null ]
+      [ "2. UPROPERTY / UFUNCTION 매크로", "md_AgentRule_2conventions__agent.html#autotoc_md66", null ],
+      [ "3. 파일 구조 및 주석", "md_AgentRule_2conventions__agent.html#autotoc_md68", [
+        [ "3.1. 헤더 파일", "md_AgentRule_2conventions__agent.html#autotoc_md69", null ],
+        [ "3.2. 주석 (Comments)", "md_AgentRule_2conventions__agent.html#autotoc_md70", null ]
       ] ],
-      [ "4. 기타 규칙", "md_AgentRule_2conventions__agent.html#autotoc_md83", [
-        [ "4.1. 로깅 (Logging)", "md_AgentRule_2conventions__agent.html#autotoc_md84", null ],
-        [ "4.2. 기타", "md_AgentRule_2conventions__agent.html#autotoc_md85", null ]
+      [ "4. 기타 규칙", "md_AgentRule_2conventions__agent.html#autotoc_md72", [
+        [ "4.1. 로깅 (Logging)", "md_AgentRule_2conventions__agent.html#autotoc_md73", null ],
+        [ "4.2. 기타", "md_AgentRule_2conventions__agent.html#autotoc_md74", null ]
       ] ],
-      [ "5. 네트워크 모듈 컨벤션 (Network Module Conventions)", "md_AgentRule_2conventions__agent.html#autotoc_md87", null ],
-      [ "6. Doxygen 주석 스타일 가이드 (Doxygen Comment Style Guide)", "md_AgentRule_2conventions__agent.html#autotoc_md89", [
-        [ "6.1. 주석 형식", "md_AgentRule_2conventions__agent.html#autotoc_md90", null ],
-        [ "6.2. 필수 태그 및 예시", "md_AgentRule_2conventions__agent.html#autotoc_md91", null ],
-        [ "6.3. 코드 예시", "md_AgentRule_2conventions__agent.html#autotoc_md92", null ]
+      [ "5. 네트워크 모듈 컨벤션 (Network Module Conventions)", "md_AgentRule_2conventions__agent.html#autotoc_md77", null ],
+      [ "6. Doxygen 주석 스타일 가이드 (Doxygen Comment Style Guide)", "md_AgentRule_2conventions__agent.html#autotoc_md83", [
+        [ "6.1. 주석 형식", "md_AgentRule_2conventions__agent.html#autotoc_md85", null ],
+        [ "6.2. 필수 태그 및 예시", "md_AgentRule_2conventions__agent.html#autotoc_md87", null ],
+        [ "6.3. 코드 예시", "md_AgentRule_2conventions__agent.html#autotoc_md90", null ]
       ] ]
     ] ],
     [ "Debug Agent Guide", "md_AgentRule_2debug__guide.html", [
-      [ "1. 목적 (Purpose)", "md_AgentRule_2debug__guide.html#autotoc_md63", null ],
-      [ "2. 디버깅 전략 (Debugging Strategy)", "md_AgentRule_2debug__guide.html#autotoc_md64", [
-        [ "2.1. 문제 이해 (Understanding the Problem)", "md_AgentRule_2debug__guide.html#autotoc_md66", null ],
-        [ "2.2. 디버그 포인트 식별 (Identifying Debug Points)", "md_AgentRule_2debug__guide.html#autotoc_md67", null ],
-        [ "2.3. 디버그 코드 삽입 (Inserting Debug Code)", "md_AgentRule_2debug__guide.html#autotoc_md68", null ],
-        [ "2.4. 로그 분석 (Analyzing Logs)", "md_AgentRule_2debug__guide.html#autotoc_md71", null ],
-        [ "2.5. 수정 방안 제안 (Proposing Solutions)", "md_AgentRule_2debug__guide.html#autotoc_md72", null ],
-        [ "2.6. 디버그 코드 정리 (Cleaning Up Debug Code)", "md_AgentRule_2debug__guide.html#autotoc_md73", null ]
+      [ "1. 목적 (Purpose)", "md_AgentRule_2debug__guide.html#autotoc_md76", null ],
+      [ "2. 디버깅 전략 (Debugging Strategy)", "md_AgentRule_2debug__guide.html#autotoc_md78", [
+        [ "2.1. 문제 이해 (Understanding the Problem)", "md_AgentRule_2debug__guide.html#autotoc_md79", null ],
+        [ "2.2. 디버그 포인트 식별 (Identifying Debug Points)", "md_AgentRule_2debug__guide.html#autotoc_md80", null ],
+        [ "2.3. 디버그 코드 삽입 (Inserting Debug Code)", "md_AgentRule_2debug__guide.html#autotoc_md81", null ],
+        [ "2.4. 로그 분석 (Analyzing Logs)", "md_AgentRule_2debug__guide.html#autotoc_md84", null ],
+        [ "2.5. 수정 방안 제안 (Proposing Solutions)", "md_AgentRule_2debug__guide.html#autotoc_md86", null ],
+        [ "2.6. 디버그 코드 정리 (Cleaning Up Debug Code)", "md_AgentRule_2debug__guide.html#autotoc_md88", null ]
       ] ],
-      [ "3. 반복적인 문제 처리 (Handling Recurring Issues)", "md_AgentRule_2debug__guide.html#autotoc_md74", null ],
-      [ "4. 로그 파일 자동 분석 (규칙 추가)", "md_AgentRule_2debug__guide.html#autotoc_md76", null ]
+      [ "3. 반복적인 문제 처리 (Handling Recurring Issues)", "md_AgentRule_2debug__guide.html#autotoc_md89", null ],
+      [ "4. 로그 파일 자동 분석 (규칙 추가)", "md_AgentRule_2debug__guide.html#autotoc_md92", null ]
     ] ],
     [ "DevLog Agent", "md_AgentRule_2devlog__agent.html", [
       [ "1. 역할 (Persona)", "md_AgentRule_2devlog__agent.html#autotoc_md94", null ],
@@ -149,28 +149,28 @@ var NAVTREE =
       [ "1. 개요", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md125", null ],
       [ "2. 전제 조건", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md126", null ],
       [ "3. Doxyfile 생성 및 설정", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md127", null ],
-      [ "4. GitHub Actions 워크플로우 (<tt>doxygen.yml</tt>) 설정", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md128", null ],
-      [ "5. GitHub 저장소 설정", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md129", [
-        [ "5.1. GitHub Actions 권한 설정", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md130", null ],
-        [ "5.2. GitHub Pages 소스 설정", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md131", null ]
+      [ "4. GitHub Actions 워크플로우 (<tt>doxygen.yml</tt>) 설정", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md129", null ],
+      [ "5. GitHub 저장소 설정", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md130", [
+        [ "5.1. GitHub Actions 권한 설정", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md131", null ],
+        [ "5.2. GitHub Pages 소스 설정", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md132", null ]
       ] ],
-      [ "6. 배포 확인 및 문제 해결 (Troubleshooting)", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md132", [
-        [ "6.1. 문제 1: <tt>wget</tt> 404 Not Found 오류", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md133", null ],
-        [ "6.2. 문제 2: \"Deploy to GitHub Pages\" 단계가 실행되지 않음", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md134", null ],
-        [ "6.3. 문제 3: <tt>Permission denied</tt> 오류 (403 Forbidden)", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md135", null ],
-        [ "6.4. 문제 4: GitHub Pages 404 오류 (사이트 주소는 맞는데 내용이 안 보임)", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md136", null ]
+      [ "6. 배포 확인 및 문제 해결 (Troubleshooting)", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md133", [
+        [ "6.1. 문제 1: <tt>wget</tt> 404 Not Found 오류", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md134", null ],
+        [ "6.2. 문제 2: \"Deploy to GitHub Pages\" 단계가 실행되지 않음", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md135", null ],
+        [ "6.3. 문제 3: <tt>Permission denied</tt> 오류 (403 Forbidden)", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md136", null ],
+        [ "6.4. 문제 4: GitHub Pages 404 오류 (사이트 주소는 맞는데 내용이 안 보임)", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md137", null ]
       ] ],
-      [ "7. 결론", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md137", null ],
-      [ "8. Doxygen 주석 가이드라인 (Doxygen Commenting Guidelines)", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md138", [
-        [ "8.1. 일반 원칙", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md139", null ],
-        [ "8.2. 주석 스타일 및 위치", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md140", null ],
-        [ "8.3. 주요 Doxygen 명령어", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md141", null ],
-        [ "8.4. 예시", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md142", [
-          [ "클래스 주석 예시", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md143", null ],
-          [ "함수 주석 예시", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md145", null ],
-          [ "멤버 변수 주석 예시", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md146", null ]
+      [ "7. 결론", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md139", null ],
+      [ "8. Doxygen 주석 가이드라인 (Doxygen Commenting Guidelines)", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md140", [
+        [ "8.1. 일반 원칙", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md141", null ],
+        [ "8.2. 주석 스타일 및 위치", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md142", null ],
+        [ "8.3. 주요 Doxygen 명령어", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md143", null ],
+        [ "8.4. 예시", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md144", [
+          [ "클래스 주석 예시", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md145", null ],
+          [ "함수 주석 예시", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md146", null ],
+          [ "멤버 변수 주석 예시", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md147", null ]
         ] ],
-        [ "8.5. 파일 분할 고려사항", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md147", null ]
+        [ "8.5. 파일 분할 고려사항", "md_AgentRule_2doxygen__setup__guide.html#autotoc_md148", null ]
       ] ]
     ] ],
     [ "UVoiceSystem", "md_Documents_2DoxygenPage_2UVoiceSystem.html", null ],
@@ -217,24 +217,24 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Daily DevLog 2025-10-02 (KST 09:00 boundary)", "md_Documents_2DevLog_22025-10-02.html", [
-      [ "일일 개발 로그 2025-10-02 (KST 09:00 경계)", "md_Documents_2DevLog_22025-10-02.html#autotoc_md186", [
-        [ "Summary / 요약", "md_Documents_2DevLog_22025-10-02.html#autotoc_md187", null ],
-        [ "Highlights / 하이라이트", "md_Documents_2DevLog_22025-10-02.html#autotoc_md188", null ],
-        [ "Commit-based Work Log", "md_Documents_2DevLog_22025-10-02.html#autotoc_md189", null ],
-        [ "커밋 기반 작업 로그", "md_Documents_2DevLog_22025-10-02.html#autotoc_md190", [
-          [ "Done", "md_Documents_2DevLog_22025-10-02.html#autotoc_md191", null ],
-          [ "완료", "md_Documents_2DevLog_22025-10-02.html#autotoc_md192", null ],
-          [ "In Progress", "md_Documents_2DevLog_22025-10-02.html#autotoc_md193", null ],
-          [ "진행", "md_Documents_2DevLog_22025-10-02.html#autotoc_md194", null ],
-          [ "Needs Attention", "md_Documents_2DevLog_22025-10-02.html#autotoc_md197", null ],
-          [ "주의 필요", "md_Documents_2DevLog_22025-10-02.html#autotoc_md198", null ],
-          [ "TODO (from commits)", "md_Documents_2DevLog_22025-10-02.html#autotoc_md199", null ],
-          [ "커밋 기반 TODO", "md_Documents_2DevLog_22025-10-02.html#autotoc_md200", null ]
+      [ "일일 개발 로그 2025-10-02 (KST 09:00 경계)", "md_Documents_2DevLog_22025-10-02.html#autotoc_md185", [
+        [ "Summary / 요약", "md_Documents_2DevLog_22025-10-02.html#autotoc_md186", null ],
+        [ "Highlights / 하이라이트", "md_Documents_2DevLog_22025-10-02.html#autotoc_md187", null ],
+        [ "Commit-based Work Log", "md_Documents_2DevLog_22025-10-02.html#autotoc_md188", null ],
+        [ "커밋 기반 작업 로그", "md_Documents_2DevLog_22025-10-02.html#autotoc_md189", [
+          [ "Done", "md_Documents_2DevLog_22025-10-02.html#autotoc_md190", null ],
+          [ "완료", "md_Documents_2DevLog_22025-10-02.html#autotoc_md191", null ],
+          [ "In Progress", "md_Documents_2DevLog_22025-10-02.html#autotoc_md192", null ],
+          [ "진행", "md_Documents_2DevLog_22025-10-02.html#autotoc_md193", null ],
+          [ "Needs Attention", "md_Documents_2DevLog_22025-10-02.html#autotoc_md194", null ],
+          [ "주의 필요", "md_Documents_2DevLog_22025-10-02.html#autotoc_md195", null ],
+          [ "TODO (from commits)", "md_Documents_2DevLog_22025-10-02.html#autotoc_md196", null ],
+          [ "커밋 기반 TODO", "md_Documents_2DevLog_22025-10-02.html#autotoc_md197", null ]
         ] ],
-        [ "Commit Details", "md_Documents_2DevLog_22025-10-02.html#autotoc_md201", null ],
-        [ "커밋 상세", "md_Documents_2DevLog_22025-10-02.html#autotoc_md202", null ],
-        [ "Metrics (approx)", "md_Documents_2DevLog_22025-10-02.html#autotoc_md203", null ],
-        [ "메트릭(추정)", "md_Documents_2DevLog_22025-10-02.html#autotoc_md204", null ]
+        [ "Commit Details", "md_Documents_2DevLog_22025-10-02.html#autotoc_md198", null ],
+        [ "커밋 상세", "md_Documents_2DevLog_22025-10-02.html#autotoc_md199", null ],
+        [ "Metrics (approx)", "md_Documents_2DevLog_22025-10-02.html#autotoc_md200", null ],
+        [ "메트릭(추정)", "md_Documents_2DevLog_22025-10-02.html#autotoc_md201", null ]
       ] ]
     ] ],
     [ "30-Day Briefing 2025-10-02", "md_Documents_2DevLog_2__Last30Summary.html", null ],
@@ -282,8 +282,8 @@ var NAVTREEINDEX =
 [
 "AGameCharacter_8cpp.html",
 "UEaseFunctionLibrary_8h.html",
-"classAPlayerActor.html#a843e2c23cabd6a5b956ae4f7178276b0",
-"classUObjectPoolManager.html#a727b94727756e4ad008e81c42f1e431a",
+"classAPlayerActor.html#a7ece1238a467e17ef715ddb35931a275",
+"classUObjectPoolManager.html#a4fc3433c9a3c2fa5f885d391fe920f13",
 "md_AgentRule_2doxygen__setup__guide.html#autotoc_md145"
 ];
 

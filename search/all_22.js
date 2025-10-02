@@ -10,7 +10,7 @@ var searchData=
   ['yisan_20tt_20runtime_7',['4-1) 게임 모듈: &lt;tt&gt;YiSan&lt;/tt&gt; (Runtime)',['../md_GEMINI.html#autotoc_md36',1,'']]],
   ['yisan_2ecpp_8',['YiSan.cpp',['../YiSan_8cpp.html',1,'']]],
   ['yisan_2eh_9',['YiSan.h',['../YiSan_8h.html',1,'']]],
-  ['yml_20tt_20설정_10',['4. GitHub Actions 워크플로우 (&lt;tt&gt;doxygen.yml&lt;/tt&gt;) 설정',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md128',1,'']]],
+  ['yml_20tt_20설정_10',['4. GitHub Actions 워크플로우 (&lt;tt&gt;doxygen.yml&lt;/tt&gt;) 설정',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md129',1,'']]],
   ['yyyy_20mm_20dd_11',['30-Day Briefing — {{YYYY-MM-DD}}',['../md_AgentRule_2devlog__agent.html#autotoc_md109',1,'']]],
   ['yyyy_20mm_20dd_20kst_2009_3a00_20경계_12',['Daily DevLog — {{YYYY-MM-DD}} (KST 09:00 경계)',['../md_AgentRule_2devlog__agent.html#autotoc_md98',1,'']]]
 ];

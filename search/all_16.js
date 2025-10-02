@@ -13,11 +13,11 @@ var searchData=
   ['meshdata_10',['MeshData',['../classUCharacterData.html#a966a54d6374a96cdae3e6dac53e260de',1,'UCharacterData']]],
   ['message_20agent_11',['Commit Message Agent',['../md_AgentRule_2commit__agent.html',1,'']]],
   ['message_20generation_20improvement_12',['9. 커밋 메시지 생성 방식 개선 (Commit Message Generation Improvement)',['../md_AgentRule_2commit__agent.html#autotoc_md57',1,'']]],
-  ['metrics_20approx_13',['metrics approx',['../md_Documents_2DevLog_22025-09-30.html#autotoc_md164',1,'Metrics (approx)'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md182',1,'Metrics (approx)'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md203',1,'Metrics (approx)']]],
+  ['metrics_20approx_13',['metrics approx',['../md_Documents_2DevLog_22025-09-30.html#autotoc_md164',1,'Metrics (approx)'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md182',1,'Metrics (approx)'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md200',1,'Metrics (approx)']]],
   ['min_5fdmg_5fmul_14',['MIN_DMG_MUL',['../UStatSystem_8cpp.html#ac62819c783a533296aa4a7e38d33fe59',1,'UStatSystem.cpp']]],
   ['mm_20dd_15',['30-Day Briefing — {{YYYY-MM-DD}}',['../md_AgentRule_2devlog__agent.html#autotoc_md109',1,'']]],
   ['mm_20dd_20kst_2009_3a00_20경계_16',['Daily DevLog — {{YYYY-MM-DD}} (KST 09:00 경계)',['../md_AgentRule_2devlog__agent.html#autotoc_md98',1,'']]],
   ['mode_17',['문서화 모드 (Documentation Mode)',['../md_GEMINI.html#autotoc_md21',1,'']]],
-  ['module_20conventions_18',['5. 네트워크 모듈 컨벤션 (Network Module Conventions)',['../md_AgentRule_2conventions__agent.html#autotoc_md87',1,'']]],
+  ['module_20conventions_18',['5. 네트워크 모듈 컨벤션 (Network Module Conventions)',['../md_AgentRule_2conventions__agent.html#autotoc_md77',1,'']]],
   ['movecomp_19',['MoveComp',['../classAGameCharacter.html#ac397b57a06cb6318498d503bae59090c',1,'AGameCharacter']]]
 ];
