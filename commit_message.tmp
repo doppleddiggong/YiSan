@@ -1,0 +1,17 @@
+feat(DevTools): Doxygen 및 DevLog 생성 기능 개선
+
+문서 품질을 높이고 DevLog 생성 로직을 견고하게 만들기 위해 여러 개발 도구 및 관련 규칙을 개선합니다.
+
+### 주요 변경 사항
+
+- **Doxygen 설정 강화**
+    - 함수 호출 관계를 시각화하는 `CALL_GRAPH` 및 `CALLER_GRAPH` 활성화
+    - 문서 경고를 빌드 에러로 처리(`WARN_AS_ERROR`)하여 문서화 품질 기준 강제
+    - `AgentRule`, `GEMINI.md`, `Documents/DevLog`를 문서 생성 대상에 포함하여 범위 확장
+
+- **DevLog 생성 스크립트 개선**
+    - 프로젝트 시작일을 하드코딩하는 대신, Git의 첫 커밋 날짜를 동적으로 조회하여 설정하도록 변경
+    - 커밋이 없는 날에는 빈 로그 파일이 생성되지 않도록 수정
+
+- **문서화 규칙 추가**
+    - `conventions_agent.md`에 Doxygen 주석 스타일 가이드를 추가하여 일관된 문서 작성 기준 마련

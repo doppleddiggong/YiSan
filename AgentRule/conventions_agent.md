@@ -114,3 +114,46 @@ void Cmd_Jump() override;
 - **응답 데이터 구조**: 서버 응답 데이터를 위한 `USTRUCT` (예: `FResponseHealth`, `FResponseHelpChat`)를 정의하고, `SetFromHttpResponse` 및 `PrintData`와 같은 헬퍼 메서드를 포함하여 응답 처리 및 로깅을 표준화합니다.
 - **네트워크 로깅**: `NETWORK_LOG` 매크로를 사용하여 네트워크 통신 관련 로그를 기록하며, `ENetworkLogType` 열거형과 `[GET]`, `[POST]`, `[WS]`와 같은 접두사를 활용하여 로그의 종류를 명확히 구분합니다.
 - **델리게이트 사용**: 비동기 네트워크 응답 처리를 위해 `DECLARE_DELEGATE_TwoParams`를 사용하여 C++ 콜백을 정의하고, `DECLARE_DYNAMIC_MULTICAST_DELEGATE`를 사용하여 블루프린트에서 바인딩 가능한 이벤트를 제공합니다.
+
+---
+
+## 6. Doxygen 주석 스타일 가이드 (Doxygen Comment Style Guide)
+
+일관성 있고 가독성 높은 문서 자동화를 위해 모든 C++ 코드의 주석은 Doxygen 스타일을 따릅니다.
+
+### 6.1. 주석 형식
+
+- **C++ 스타일**: `///` (세 개의 슬래시) 또는 `/** ... */` 형식을 사용합니다. `///`를 권장합니다.
+- **배치**: 클래스, 함수, 변수, 열거형 등 문서화가 필요한 선언 바로 위에 주석을 작성합니다.
+
+### 6.2. 필수 태그 및 예시
+
+- **간단한 설명**: `@brief` 태그를 사용하여 한 줄로 요약된 설명을 작성합니다.
+- **상세 설명**: `@brief` 다음에 한 줄을 띄고 상세한 설명을 작성합니다.
+- **파라미터**: `@param [in/out] 파라미터명 설명` 형식으로 함수의 모든 파라미터를 설명합니다. `[in]`, `[out]`을 명시하여 데이터 흐름을 나타냅니다.
+- **반환값**: `@return 설명` 형식으로 함수의 반환값을 설명합니다.
+- **참고**: `@note` 태그를 사용하여 특별히 주의해야 할 사항이나 참고 정보를 기재합니다.
+
+### 6.3. 코드 예시
+
+다음은 Doxygen 주석 스타일을 적용한 함수 예시입니다.
+
+```cpp
+/// @brief 캐릭터의 현재 체력을 변경하고, 변경 결과를 브로드캐스트합니다.
+/// @param InDamage 적용할 데미지 또는 치유량. 양수이면 데미지, 음수이면 치유입니다.
+/// @param DamageType 데미지의 유형 (예: 물리, 화염).
+/// @return 최종적으로 적용된 후의 체력을 반환합니다.
+/// @note 이 함수는 서버에서만 호출되어야 합니다. 클라이언트에서의 호출은 무시됩니다.
+float AMyCharacter::TakeDamage(float InDamage, EDamageType DamageType)
+{
+    // ... 함수 본문 ...
+    
+    float FinalHealth = CurrentHealth - InDamage;
+    
+    // ... 체력 변경 및 사망 처리 로직 ...
+
+    OnHealthChanged.Broadcast(FinalHealth);
+
+    return FinalHealth;
+}
+```

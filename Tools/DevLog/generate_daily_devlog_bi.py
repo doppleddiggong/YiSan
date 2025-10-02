@@ -23,6 +23,15 @@ def project_root(start_dir):
 def get_kst_now():
     return datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc).astimezone(KST())
 
+def get_project_start_date(root):
+    try:
+        # Get the date of the first commit in YYYY-MM-DD format
+        date_str = run_git(["log", "--reverse", "--pretty=format:%ad", "--date=short"], root).splitlines()[0].strip()
+        return datetime.datetime.strptime(date_str, '%Y-%m-%d').date()
+    except Exception:
+        # Fallback to a reasonable default if git command fails
+        return datetime.date(2025, 1, 1)
+
 def day_bounds_kst(now_kst):
     d = now_kst.date()
     today9 = datetime.datetime(d.year, d.month, d.day, 9, 0, 0, tzinfo=KST())
@@ -53,7 +62,8 @@ def git_log_commits(root, since_iso, until_iso, no_merges=True):
             cur = {"sha":m.group('sha'),"date":m.group('date'),"author":m.group('author'),
                    "subject":m.group('sub'),"body":[],"adds":0,"dels":0,"files":0}
             continue
-        m2 = re.match(r"^(?P<adds>\d+|-)\t(?P<dels>\d+|-)\t(?P<path>.+)$", line)
+        m2 = re.match(r"^(?P<adds>\d+|-)\t(?P<dels>\d+|-)\t(?P<path>.+)$
+", line)
         if m2 and cur:
             adds = 0 if m2.group('adds')=='-' else int(m2.group('adds'))
             dels = 0 if m2.group('dels')=='-' else int(m2.group('dels'))
@@ -125,7 +135,7 @@ def render_day_md(root, date_str, commits, out_path, template_tools, template_do
     todo_body = "(none) / (없음)" if not todos_list else "\r\n".join(todos_list)
 
     details_head_en, details_head_ko = '## Commit Details','## 커밋 상세'
-    details_body = "(none) / (?�음)" if not details_lines else "\r\n".join(details_lines)
+    details_body = "(none) / (없음)" if not details_lines else "\r\n".join(details_lines)
 
     metrics_en = "\r\n".join([
         f"Commits: {len(commits)}",
@@ -177,7 +187,7 @@ def render_day_md(root, date_str, commits, out_path, template_tools, template_do
         }
         md = tpl
         for k,v in tokens.items():
-            md = md.replace("{{"+k+"}}", v)
+            md = md.replace("{{ "+k+" }}", v)
     else:
         parts = [
             title_en, title_ko, "", "## Summary / 요약", summary_en, summary_ko, "",
@@ -220,7 +230,7 @@ def build_last30_summary(root, out_dir):
         done += len(re.findall(r"(?m)^### Done", t))
         prog += len(re.findall(r"(?m)^### In Progress", t))
         need += len(re.findall(r"(?m)^### Needs Attention", t))
-        todo += len(re.findall(r"(?m)^- \[ \]", t))
+        todo += len(re.findall(r"(?m)^- [ ] ", t))
     lines=[f"## 30-Day Briefing {now.strftime('%Y-%m-%d')}", "",
            "### Overview / 개요",
            f"- Daily files: {len(texts)} (last 30 days)",
@@ -261,6 +271,7 @@ def main():
 
     start = os.getcwd()
     root = project_root(start)
+    PROJECT_START_DATE = get_project_start_date(root)
     out_dir = os.path.join(root, 'Documents', 'DevLog')
     tools_tpl = os.path.join(root, 'Tools', 'template.md')
     doc_tpl = os.path.join(out_dir, 'template.md')
@@ -270,19 +281,25 @@ def main():
     today_path = os.path.join(out_dir, today_str + '.md')
     if not os.path.isfile(today_path):
         commits = git_log_commits(root, start_iso, end_iso, no_merges)
-        render_day_md(root, today_str, commits, today_path, tools_tpl, doc_tpl)
+        if commits:
+            render_day_md(root, today_str, commits, today_path, tools_tpl, doc_tpl)
 
     # backfill
     if backfill > 0:
         now = get_kst_now().date()
         for i in range(1, backfill+1):
             d = now - datetime.timedelta(days=i)
+            if d < PROJECT_START_DATE:
+                continue # Don't backfill for dates before the project started
+
             date_str, s_iso, e_iso = bounds_for_date_kst(d)
             out_path = os.path.join(out_dir, date_str + '.md')
             if os.path.isfile(out_path):
                 continue
+            
             commits = git_log_commits(root, s_iso, e_iso, no_merges)
-            render_day_md(root, date_str, commits, out_path, tools_tpl, doc_tpl)
+            if commits:
+                render_day_md(root, date_str, commits, out_path, tools_tpl, doc_tpl)
 
     if build_summary:
         build_last30_summary(root, out_dir)
@@ -290,4 +307,3 @@ def main():
 
 if __name__ == '__main__':
     sys.exit(main())
-
