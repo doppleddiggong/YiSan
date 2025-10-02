@@ -1,6 +1,5 @@
 #include "UMainWdget.h"
 
-#include "YiSan.h"
 #include "GameLogging.h"
 #include "Components/EditableTextBox.h"
 #include "LatteLibrary/Character/Public/APlayerActor.h"
@@ -15,7 +14,7 @@ void UMainWdget::NativeConstruct()
 		VoiceInputBox->OnTextCommitted.AddDynamic(this, &UMainWdget::HandleTextCommitted);
 	}
 
-	UE_LOG(LogYiSan, Verbose, TEXT("UMainWdget::NativeConstruct"));
+	PRINTLOG( TEXT("UMainWdget::NativeConstruct"));
 }
 
 void UMainWdget::HandleTextCommitted(const FText& Text, ETextCommit::Type CommitMethod)

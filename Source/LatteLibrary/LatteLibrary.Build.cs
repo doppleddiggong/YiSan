@@ -11,22 +11,27 @@ public class LatteLibrary : ModuleRules
 		{
 			"Core",
 			"CoreUObject",
-			"Engine"
+			"Engine",
+			
+			"HTTP",
+			"Json",
+			"JsonUtilities",
+
+			"Voice",     
+			"AudioMixer" 
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
 			"CoffeeLibrary",
+
 			"EnhancedInput",
 			"Niagara",
-			"HTTP",
-			"Json",
-			"JsonUtilities",
-			"Voice",
-			"AudioMixer",
-			"AudioCapture",
-			"AudioPlatformConfiguration",
+
 			"WebSockets",
+			"AudioCapture",    
+			"AudioCaptureCore",
+			"AudioPlatformConfiguration",
 			"DeveloperSettings"
 		});
 		

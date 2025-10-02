@@ -36,6 +36,10 @@
 			"Name": "GameplayStateTree",
 			"Enabled": true
 		},
+		{ 
+			"Name": "AudioCapture", 
+			"Enabled": true
+		},
 		{
             "Name": "CoffeeToolbar",
             "Enabled": true

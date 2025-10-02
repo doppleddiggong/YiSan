@@ -2,9 +2,8 @@
 
 /**
  * @file APlayerActor.cpp
- * @brief APlayerActor 구현에 대한 Doxygen 주석을 제공합니다.
+ * @brief Provides Doxygen annotations for APlayerActor implementation.
  */
-
 
 #include "APlayerActor.h"
 
@@ -13,12 +12,17 @@
 #include "UHitStopSystem.h"
 #include "UKnockbackSystem.h"
 #include "UFlySystem.h"
+#include "USightSystem.h"
+#include "UVoiceSystem.h"
+#include "UVoiceCaptureComponent.h"
 
 // PlayerActor Only
 #include "UCameraShakeSystem.h"
 
 // Shared
 #include "Macro.h"
+#include "Components/InputComponent.h"
+#include "InputCoreTypes.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
@@ -29,6 +33,8 @@ APlayerActor::APlayerActor()
 	PrimaryActorTick.bCanEverTick = true;
 
 	CameraShakeSystem = CreateDefaultSubobject<UCameraShakeSystem>(TEXT("CameraShakeSystem"));
+	VoiceSystem = CreateDefaultSubobject<UVoiceSystem>(TEXT("VoiceSystem"));
+	VoiceCaptureComponent = CreateDefaultSubobject<UVoiceCaptureComponent>(TEXT("VoiceCaptureComponent"));
 
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArmComp->SetupAttachment(GetCapsuleComponent());
@@ -48,6 +54,17 @@ void APlayerActor::BeginPlay()
 
 	CameraShakeSystem->InitSystem(this);
 
+	if (VoiceSystem)
+	{
+		USightSystem* SightSystem = FindComponentByClass<USightSystem>();
+		VoiceSystem->SetDependencies(StatSystem, SightSystem, HitStopSystem);
+	}
+
+	if (VoiceCaptureComponent)
+	{
+		VoiceCaptureComponent->SetVoiceSystem(VoiceSystem);
+	}
+
 	// --- Architecture Demo Start ---
 	UE_LOG(LogTemp, Log, TEXT("APlayerActor: Setting up one-way dependency demo."));
 
@@ -60,13 +77,27 @@ void APlayerActor::BeginPlay()
 	HitStopSystem->InitSystem(this);
 }
 
+void APlayerActor::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+	if (!PlayerInputComponent)
+	{
+		return;
+	}
+
+	// PlayerInputComponent->BindKey(EKeys::SpaceBar, IE_Pressed, this, &APlayerActor::Cmd_VoicePushToTalkPressed);
+	// PlayerInputComponent->BindKey(EKeys::SpaceBar, IE_Released, this, &APlayerActor::Cmd_VoicePushToTalkReleased);
+}
+
+
 void APlayerActor::Landed(const FHitResult& Hit)
 {
 	Super::Landed(Hit);
 
 	if (FlySystem)
 		FlySystem->OnLand(Hit);
-} 
+}
 
 void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
 {
@@ -149,4 +180,28 @@ void APlayerActor::Cmd_Landing_Implementation()
 
 	FHitResult HitResult;
 	FlySystem->OnLand(HitResult);
+}
+
+// void APlayerActor::Cmd_VoicePushToTalkPressed_Implementation()
+// {
+// 	if (VoiceCaptureComponent)
+// 	{
+// 		VoiceCaptureComponent->HandlePushToTalkPressed(TEXT("PushToTalk"));
+// 	}
+// }
+//
+// void APlayerActor::Cmd_VoicePushToTalkReleased_Implementation()
+// {
+// 	if (VoiceCaptureComponent)
+// 	{
+// 		VoiceCaptureComponent->HandlePushToTalkReleased();
+// 	}
+// }
+
+void APlayerActor::Cmd_SpeakText(const FString& Text)
+{
+	if (VoiceCaptureComponent)
+	{
+		VoiceCaptureComponent->RequestSynthesis(Text);
+	}
 }
