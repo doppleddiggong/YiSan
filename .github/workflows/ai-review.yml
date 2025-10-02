@@ -4,21 +4,19 @@ on:
   push:
     paths:
       - 'Source/**'
-
   pull_request:
     types: [opened, synchronize]
     branches:
       - main
     paths:
       - 'Source/**'
-
   workflow_dispatch:
     inputs:
       base:
         description: '기준 커밋 (예: abc1234)'
         required: false
       head:
-        description: '비교 대상 커밋 (예: def5678)'
+        description: '비교 커밋 (예: def5678)'
         required: false
 
 permissions:
@@ -46,21 +44,19 @@ jobs:
           elif [ "${{ github.event_name }}" == "push" ]; then
             echo "🔍 Push 기반 diff 생성 중..."
             if [ "${{ github.event.before }}" == "0000000000000000000000000000000000000000" ]; then
-              echo "🆕 새 브랜치 → 전체 파일 diff"
               git diff 4b825dc642cb6eb9a060e54bf8d69288fbee4904 ${{ github.sha }} > changes.patch
             else
               git diff ${{ github.event.before }}..${{ github.sha }} > changes.patch
             fi
 
           elif [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
-            echo "⚙️ 수동 실행: 입력 커밋 범위 비교"
-            BASE=${{ github.event.inputs.base }}
-            HEAD=${{ github.event.inputs.head }}
-
+            echo "⚙️ 수동 실행: base/head 커밋 비교"
+            BASE="${{ github.event.inputs.base }}"
+            HEAD="${{ github.event.inputs.head }}"
             if [[ -n "$BASE" && -n "$HEAD" ]]; then
               git diff "$BASE" "$HEAD" > changes.patch
             else
-              echo "⚠️ base/head 미입력: 기본 HEAD~1..HEAD 비교"
+              echo "❗ base/head 미입력 → HEAD~1 비교"
               git diff HEAD~1 HEAD > changes.patch
             fi
           fi
@@ -74,33 +70,41 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           if [ ! -s changes.patch ]; then
-            echo "⚠️ 변경된 코드가 없습니다. 리뷰 생략."
+            echo "⚠️ 변경된 코드가 없습니다. 리뷰 생략됨."
             echo "review_body=⚠️ 변경된 코드가 없습니다. 리뷰 생략됨." >> $GITHUB_OUTPUT
             exit 0
           fi
-      
-          # changes.patch 내용을 JSON-safe하게 escape
+
           PATCH_CONTENT=$(jq -Rs . < changes.patch)
-      
+
+          REQUEST=$(jq -n \
+            --arg model "gpt-4o" \
+            --arg sys_prompt "You are a strict and pragmatic senior C++/C# code reviewer. Focus on performance, memory safety, const correctness, Unreal Engine coding conventions, and any possible bugs. Be concise and direct." \
+            --arg user_prompt "Review this code diff and suggest improvements:\n" \
+            --arg diff "$PATCH_CONTENT" \
+            '{
+              model: $model,
+              messages: [
+                { role: "system", content: $sys_prompt },
+                { role: "user", content: ($user_prompt + $diff) }
+              ]
+            }'
+          )
+
           echo "📤 OpenAI API 호출 중..."
-      
+          echo "$REQUEST"
+
           RESPONSE=$(curl -s https://api.openai.com/v1/chat/completions \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer $OPENAI_API_KEY" \
-            -d "{
-              \"model\": \"gpt-4o\",
-              \"messages\": [
-                {\"role\": \"system\", \"content\": \"You are a strict and pragmatic senior C++/C# code reviewer. Focus on performance, memory safety, const correctness, Unreal Engine coding conventions, and any possible bugs. Be concise and direct.\"},
-                {\"role\": \"user\", \"content\": \"Review this code diff and suggest improvements:\n\" + $PATCH_CONTENT}
-              ]
-            }"
+            -d "$REQUEST"
           )
-      
-          echo "📥 OpenAI 응답 원본:"
+
+          echo "📥 GPT 응답:"
           echo "$RESPONSE"
-      
+
           REVIEW=$(echo "$RESPONSE" | jq -r '.choices[0].message.content // "⚠️ GPT 응답이 없습니다."')
-      
+
           echo "$REVIEW" > review.txt
           echo "review_body=$REVIEW" >> $GITHUB_OUTPUT
 
