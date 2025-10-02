@@ -1,0 +1,198 @@
+name: AI Code Review
+
+on:
+  push:
+    paths:
+      - 'Source/**'
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+    paths:
+      - 'Source/**'
+  workflow_dispatch:
+    inputs:
+      base:
+        description: '기준 커밋 (예: abc1234)'
+        required: false
+      head:
+        description: '비교 커밋 (예: def5678)'
+        required: false
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2. 변경사항 추출
+      - name: Extract Diff
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            echo "🔍 PR 기반 diff 생성 중..."
+            git fetch origin ${{ github.base_ref }}
+            git diff origin/${{ github.base_ref }}...HEAD > changes.patch
+
+          elif [ "${{ github.event_name }}" == "push" ]; then
+            echo "🔍 Push 기반 diff 생성 중..."
+            if [ "${{ github.event.before }}" == "0000000000000000000000000000000000000000" ]; then
+              git diff 4b825dc642cb6eb9a060e54bf8d69288fbee4904 ${{ github.sha }} > changes.patch
+            else
+              git diff ${{ github.event.before }}..${{ github.sha }} > changes.patch
+            fi
+
+          elif [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "⚙️ 수동 실행: base/head 커밋 비교"
+            BASE="${{ github.event.inputs.base }}"
+            HEAD="${{ github.event.inputs.head }}"
+            if [[ -n "$BASE" && -n "$HEAD" ]]; then
+              git diff "$BASE" "$HEAD" > changes.patch
+            else
+              git diff HEAD~1 HEAD > changes.patch
+            fi
+          fi
+
+          echo "--- 변경된 코드 ---"
+          cat changes.patch || echo "⚠️ 변경사항 없음"
+
+      # 3. GPT 코드 리뷰
+      - name: GPT 코드 리뷰 호출
+        id: ai_review
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [ ! -s changes.patch ]; then
+            echo "변경 사항이 없어 GPT 호출을 생략합니다."
+            echo "review_body=변경된 코드가 없습니다." >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # C++/C# 파일만 필터링
+          grep -E '\.(cpp|h|cs)' changes.patch > filtered.patch || true
+          if [ ! -s filtered.patch ]; then
+            echo "소스코드 변경이 없어 GPT 호출을 생략합니다."
+            echo "review_body=리뷰할 C++/C# 코드 변경이 없습니다." >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # 라인 수 제한 (300줄)
+          head -n 300 filtered.patch > trimmed.patch
+
+          DIFF_CONTENT=$(jq -Rs . < trimmed.patch)
+
+          REQUEST=$(jq -n \
+            --arg model "gpt-4o-mini" \
+            --arg sys "당신은 신중하고 성능 중심적인 시니어 C++/C# 코드 리뷰어입니다. Unreal Engine 코딩 규칙을 따르며, 반드시 한국어로 답변하세요." \
+            --arg user "다음 코드 diff를 리뷰하고 개선점을 알려주세요. 반드시 한국어로 작성하세요:\n" \
+            --arg diff "$DIFF_CONTENT" \
+            '{
+              model: $model,
+              messages: [
+                { role: "system", content: $sys },
+                { role: "user", content: ($user + $diff) }
+              ]
+            }'
+          )
+
+          echo "📤 OpenAI API 요청 본문:"
+          echo "$REQUEST"
+
+          RESPONSE=$(curl -s https://api.openai.com/v1/chat/completions \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $OPENAI_API_KEY" \
+            -d "$REQUEST"
+          )
+
+          echo "📥 GPT 응답 원본:"
+          echo "$RESPONSE"
+
+          REVIEW=$(echo "$RESPONSE" | jq -r '.choices[0].message.content // empty')
+
+          if [ -z "$REVIEW" ]; then
+            ERROR_MSG=$(echo "$RESPONSE" | jq -r '.error.message // empty')
+            if [ -n "$ERROR_MSG" ]; then
+              REVIEW="⚠️ GPT 응답 없음. 오류 메시지: $ERROR_MSG"
+            else
+              REVIEW="⚠️ GPT 응답 없음. 응답: $RESPONSE"
+            fi
+          fi
+
+          echo "$REVIEW" > review.txt
+
+          {
+            echo "review_body<<EOF"
+            echo "$REVIEW"
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
+
+      # 4. PR 코멘트
+      - name: Post PR Comment
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: "🤖 AI Code Review"
+          message: ${{ steps.ai_review.outputs.review_body }}
+
+      # 5. Discord 전송
+      - name: Send Discord Notification
+        if: always()
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          ESCAPED_REVIEW=$(echo "${{ steps.ai_review.outputs.review_body }}" | jq -Rs .)
+
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            BRANCH_INFO="${{ github.head_ref }} → ${{ github.base_ref }}"
+            AUTHOR="${{ github.event.pull_request.user.login }}"
+            TITLE="AI Code Review on PR #${{ github.event.pull_request.number }}"
+            URL="${{ github.event.pull_request.html_url }}"
+          elif [ "${{ github.event_name }}" == "push" ]; then
+            BRANCH_INFO="${{ github.ref_name }}"
+            AUTHOR="${{ github.event.pusher.name }}"
+            TITLE="AI Code Review on push to ${GITHUB_REF_NAME}"
+            URL="${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
+          else
+            BRANCH_INFO="manual"
+            AUTHOR="${{ github.actor }}"
+            TITLE="AI Code Review (Manual Trigger)"
+            URL="${{ github.server_url }}/${{ github.repository }}"
+          fi
+
+          TIMESTAMP=$(date --iso-8601=seconds)
+
+          JSON=$(jq -n \
+            --arg username "AI Reviewer 🤖" \
+            --arg title "$TITLE" \
+            --arg url "$URL" \
+            --arg description "$ESCAPED_REVIEW" \
+            --arg branch "$BRANCH_INFO" \
+            --arg author "$AUTHOR" \
+            --arg timestamp "$TIMESTAMP" \
+            '{
+              username: $username,
+              embeds: [{
+                title: $title,
+                url: $url,
+                description: $description,
+                color: 5814783,
+                fields: [
+                  { name: "🔀 Branch", value: $branch, inline: true },
+                  { name: "🧠 Author", value: $author, inline: true }
+                ],
+                footer: { text: "Generated by GPT via GitHub Actions" },
+                timestamp: $timestamp
+              }]
+            }'
+          )
+
+          echo "✅ Discord 메시지 전송 중..."
+          curl -H "Content-Type: application/json" -X POST -d "$JSON" "$DISCORD_WEBHOOK"
