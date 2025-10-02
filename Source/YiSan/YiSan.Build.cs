@@ -27,6 +27,7 @@ public class YiSan : ModuleRules
 		
 		PublicIncludePaths.AddRange(new string[] {
 			Path.Combine(ModuleDirectory, "Environment", "Public"),
+			Path.Combine(ModuleDirectory, "UI", "Public"),
 		});
 	}
 }
