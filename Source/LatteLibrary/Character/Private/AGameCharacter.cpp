@@ -148,6 +148,7 @@ void AGameCharacter::OnMontageNotifyBegin(FName NotifyName, const FBranchingPoin
 	UE_LOG(LogTemp, Warning, TEXT("Notify Fired: %s"), *NotifyName.ToString());
 }
 
+/** @copydoc IsControlEnable */
 bool AGameCharacter::IsControlEnable_Implementation()
 {
 	if ( this->IsHolding() )

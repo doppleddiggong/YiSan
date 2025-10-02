@@ -123,6 +123,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Setup")
 	void SetupCharacterFromType(const ECharacterType Type, const bool bIsAnother);
 	
+	/**
+	 * @brief 캐릭터의 조작 가능 상태를 확인합니다.
+	 * @details 캐릭터가 피격, 사망, 또는 다른 행동으로 인해 조종 불가능한 상태인지 확인합니다.
+	 * @return 조작 가능하면 true, 아니면 false를 반환합니다.
+	 */
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, BlueprintPure, Category="Command")
 	bool IsControlEnable();
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, BlueprintPure, Category="Command")
