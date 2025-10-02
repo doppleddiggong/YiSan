@@ -5,15 +5,15 @@
 	"Description": "",
 	"Modules": [
 		{
-            "Name": "CoffeeLibrary",
-            "Type": "Runtime",
-            "LoadingPhase": "Default"
-        },
-        {
-          "Name": "LatteLibrary",
-          "Type": "Runtime",
-          "LoadingPhase": "Default"
-        },
+			"Name": "CoffeeLibrary",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "LatteLibrary",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
 		{
 			"Name": "YiSan",
 			"Type": "Runtime",
@@ -41,13 +41,18 @@
 			"Enabled": true
 		},
 		{
-            "Name": "CoffeeToolbar",
-            "Enabled": true
-        }
+			"Name": "CoffeeToolbar",
+			"Enabled": true
+		},
+		{
+			"Name": "HDRIBackdrop",
+			"Enabled": true
+		}
 	],
-  "PreBuildSteps": {
-    "Windows": [
-      "powershell -NoProfile -ExecutionPolicy Bypass -File \"$(ProjectDir)Tools\\run_generate_daily_devlog_once.ps1\" -BackfillDays 30 -BuildSummary"
-    ]
-  }
+	"PreBuildSteps":
+	{
+		"Windows": [
+			"powershell -NoProfile -ExecutionPolicy Bypass -File \"$(ProjectDir)Tools\\run_generate_daily_devlog_once.ps1\" -BackfillDays 30 -BuildSummary"
+		]
+	}
 }
