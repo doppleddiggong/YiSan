@@ -75,12 +75,18 @@ jobs:
             exit 0
           fi
 
-          PATCH_CONTENT=$(jq -Rs . < changes.patch)
+          echo "📉 changes.patch → 상위 300줄만 GPT에 전달"
+          head -n 300 changes.patch > changes_limited.patch
+
+          PATCH_CONTENT=$(jq -Rs . < changes_limited.patch)
+
+          # 요약 지시를 포함한 사용자 프롬프트 설정
+          USER_PROMPT="The following code diff may be large. Please summarize key changes and suggest improvements for performance, memory safety, const correctness, Unreal Engine standards, and possible bugs:\n"
 
           REQUEST=$(jq -n \
             --arg model "gpt-4o" \
             --arg sys_prompt "You are a strict and pragmatic senior C++/C# code reviewer. Focus on performance, memory safety, const correctness, Unreal Engine coding conventions, and any possible bugs. Be concise and direct." \
-            --arg user_prompt "Review this code diff and suggest improvements:\n" \
+            --arg user_prompt "$USER_PROMPT" \
             --arg diff "$PATCH_CONTENT" \
             '{
               model: $model,
