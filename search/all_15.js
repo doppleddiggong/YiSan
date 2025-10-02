@@ -21,9 +21,9 @@ var searchData=
   ['loaddata_5fknockbacktable_18',['LoadData_KnockbackTable',['../classUGameDataManager.html#ac3bde7d40542b59a0ce72d0b070d3a8e',1,'UGameDataManager']]],
   ['loadidlemontage_19',['LoadIdleMontage',['../classUCharacterData.html#aeabaaf3e50039a6dd4cbe39ac32d77b1',1,'UCharacterData']]],
   ['locationoffset_20',['LocationOffset',['../structFVFXData.html#a945ead1eeb298be70cd434019b8ce9ba',1,'FVFXData']]],
-  ['log_21',['log',['../md_Documents_2DevLog_22025-09-30.html#autotoc_md147',1,'Commit-based Work Log'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md165',1,'Commit-based Work Log'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md186',1,'Commit-based Work Log']]],
+  ['log_21',['log',['../md_Documents_2DevLog_22025-09-30.html#autotoc_md147',1,'Commit-based Work Log'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md165',1,'Commit-based Work Log'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md183',1,'Commit-based Work Log']]],
   ['logfile_22',['LogFile',['../classFLogWriter.html#a6a31f068b9e74fb899ae061d250b9913',1,'FLogWriter']]],
   ['logging_23',['logging',['../md_GEMINI.html#autotoc_md30',1,'관찰 로그/텔레메트리 정책 (Observability &amp; Logging)'],['../md_AgentRule_2conventions__agent.html#autotoc_md80',1,'4.1. 로깅 (Logging)']]],
-  ['lognetwork_24',['lognetwork',['../classUWebSocketSystem.html#a864f4f7d23c89554fbe9a6ddad5aedf1',1,'UWebSocketSystem::LogNetwork()'],['../classUHttpNetworkSystem.html#a7e1c4594cecb3e83131e17106e654d07',1,'UHttpNetworkSystem::LogNetwork()']]],
-  ['logs_25',['2.4. 로그 분석 (Analyzing Logs)',['../md_AgentRule_2debug__guide.html#autotoc_md60',1,'']]]
+  ['lognetwork_24',['lognetwork',['../classUHttpNetworkSystem.html#a7e1c4594cecb3e83131e17106e654d07',1,'UHttpNetworkSystem::LogNetwork()'],['../classUWebSocketSystem.html#a864f4f7d23c89554fbe9a6ddad5aedf1',1,'UWebSocketSystem::LogNetwork()']]],
+  ['logs_25',['2.4. 로그 분석 (Analyzing Logs)',['../md_AgentRule_2debug__guide.html#autotoc_md61',1,'']]]
 ];

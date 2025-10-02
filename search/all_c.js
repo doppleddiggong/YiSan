@@ -2,11 +2,11 @@ var searchData=
 [
   ['b_0',['b',['../classUEaseFunctionLibrary.html#a43bd2c3ccefdcd967ff3bd4e020162a6',1,'UEaseFunctionLibrary::B'],['../classUEaseFunctionLibrary.html#a4ada9b43518dc1b3a343c5037571ffa8',1,'UEaseFunctionLibrary::B']]],
   ['bactivate_1',['bactivate',['../classUTweenAnimInstance.html#ac0afcfa1ddcfd570f98752ab7550ac07',1,'UTweenAnimInstance::bActivate'],['../structFSequenceCommand.html#a6180c56cf5a536855f4c4d586a91cbe1',1,'FSequenceCommand::bActivate']]],
-  ['based_20work_20log_2',['based work log',['../md_Documents_2DevLog_22025-10-02.html#autotoc_md186',1,'Commit-based Work Log'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md165',1,'Commit-based Work Log'],['../md_Documents_2DevLog_22025-09-30.html#autotoc_md147',1,'Commit-based Work Log']]],
+  ['based_20work_20log_2',['based work log',['../md_Documents_2DevLog_22025-10-02.html#autotoc_md183',1,'Commit-based Work Log'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md165',1,'Commit-based Work Log'],['../md_Documents_2DevLog_22025-09-30.html#autotoc_md147',1,'Commit-based Work Log']]],
   ['baseurl_3',['BaseUrl',['../structFServerConfig.html#a8abeabc5af6396f784929d66d0bd6ce7',1,'FServerConfig']]],
   ['bdelegatesbound_4',['bDelegatesBound',['../classAGameCharacter.html#ad8994b5da7f4022cf3f3ae1dc5447886',1,'AGameCharacter']]],
   ['beginplay_5',['beginplay',['../classAPlayerControl.html#a4cf368d1cfadfd50d83c8af1b10cc623',1,'APlayerControl::BeginPlay()'],['../classAGameCharacter.html#a86daf7483d1c4e9f33692cdd6590517a',1,'AGameCharacter::BeginPlay()'],['../classAPlayerActor.html#afc3ace6de521cfc26c3a4395215e7ce9',1,'APlayerActor::BeginPlay()']]],
-  ['bind_5fdynamic_5fdelegate_6',['bind_dynamic_delegate',['../UBroadcastManger_8h.html#a07b4fc90b0e9c2eda0d2f632d01954c4',1,'BIND_DYNAMIC_DELEGATE:&#160;UBroadcastManger.h'],['../Macro_8h.html#a07b4fc90b0e9c2eda0d2f632d01954c4',1,'BIND_DYNAMIC_DELEGATE:&#160;Macro.h']]],
+  ['bind_5fdynamic_5fdelegate_6',['bind_dynamic_delegate',['../UDelayTaskManager_8h.html#a07b4fc90b0e9c2eda0d2f632d01954c4',1,'BIND_DYNAMIC_DELEGATE:&#160;UDelayTaskManager.h'],['../UBroadcastManger_8h.html#a07b4fc90b0e9c2eda0d2f632d01954c4',1,'BIND_DYNAMIC_DELEGATE:&#160;UBroadcastManger.h'],['../Macro_8h.html#a07b4fc90b0e9c2eda0d2f632d01954c4',1,'BIND_DYNAMIC_DELEGATE:&#160;Macro.h']]],
   ['bindmontagedelegates_7',['BindMontageDelegates',['../classAGameCharacter.html#a1758a3c8506ae6cab77731a1890dc00d',1,'AGameCharacter']]],
   ['biscombatresult_8',['bIsCombatResult',['../classAGameCharacter.html#af17dc3e694e990d7ae9753c8d8d19b41',1,'AGameCharacter']]],
   ['biscombatstart_9',['bIsCombatStart',['../classAGameCharacter.html#ac7bed8c4bfb5bac698e289e6ab86925d',1,'AGameCharacter']]],
