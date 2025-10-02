@@ -18,10 +18,10 @@ PROJECT_NUMBER         = 1.0.0
 PROJECT_BRIEF          = "Unreal Engine 5.6 C++ Project Documentation"
 
 # 문서 상단에 표시할 로고 경로
-PROJECT_LOGO           = Documents/Reference/Icon_64.png
+PROJECT_LOGO           = 
 
 # 브라우저 탭에 사용할 아이콘 경로
-PROJECT_ICON           = Documents/Reference/Icon_64.png
+PROJECT_ICON           = 
 
 # 문서가 생성될 출력 디렉터리
 OUTPUT_DIRECTORY       = docs
@@ -353,9 +353,9 @@ WARN_LOGFILE           = doxygen_warnings.log
 
 # 입력 소스 경로 목록
 INPUT                  = Source \
-                         mainpage.md \
                          GEMINI.md \
                          AgentRule \
+  					     Documents/DoxygenPage \
                          Documents/DevLog \
                          Documents/Reference \
 	      				 Documents/Planning \
@@ -417,7 +417,7 @@ FILTER_SOURCE_FILES    = NO
 FILTER_SOURCE_PATTERNS =
 
 # 마크다운 파일을 메인 페이지로 사용
-USE_MDFILE_AS_MAINPAGE = mainpage.md
+USE_MDFILE_AS_MAINPAGE = MainPage.md
 
 # 디렉터리 설명 자동 생성
 IMPLICIT_DIR_DOCS      = YES
