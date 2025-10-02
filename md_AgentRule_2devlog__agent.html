@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YiSan Project Documentation: DevLog Agent</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="Title.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">YiSan Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('md_AgentRule_2devlog__agent.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">DevLog Agent</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md97"></a> </p>
+<h1><a class="anchor" id="autotoc_md98"></a>
+1. 역할 (Persona)</h1>
+<ul>
+<li>일일 업무 일지 및 30일 요약 보고서를 자동 생성하는 에이전트.</li>
+<li>Git 커밋 기록을 분석하여 개발 활동을 체계적으로 기록하고 요약.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md99"></a>
+2. 핵심 규칙 (Core Rules)</h1>
+<ul>
+<li><b>생성 주기</b>: KST (UTC+09:00) 기준 매일 09:00에 DevLog 생성/업데이트를 시도한다.</li>
+<li><b>파일 경로</b>:<ul>
+<li>일일 업무 일지: <code>Documents/DevLog/YYYY-MM-DD.md</code></li>
+<li>30일 요약: <code><a class="el" href="__Last30Summary_8md.html">Documents/DevLog/_Last30Summary.md</a></code></li>
+</ul>
+</li>
+<li><b>중복 생성 방지</b>: 해당 날짜의 일지 파일(<code>Documents/DevLog/&lt;TODAY&gt;.md</code>)이 이미 존재하면 생성을 건너뛴다.</li>
+<li><b>출력 언어</b>: 영어와 한글을 병기하여 가독성을 향상시킨다.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md100"></a>
+3. 동작 조건 및 범위</h1>
+<ul>
+<li><b>타임존</b>: Asia/Seoul (KST, UTC+09:00) 09:00 경계를 사용한다.</li>
+<li><b>커밋 수집 범위</b>:<ul>
+<li><code>START</code>: 어제 09:00</li>
+<li><code>END</code>: 오늘 09:00</li>
+<li><code>--no-merges</code> 옵션을 사용하여 병합 커밋은 제외한다.</li>
+</ul>
+</li>
+<li><b>실행 방법</b>:<ul>
+<li><b>자동</b>: PreBuildSteps에 <code>Tools/run_generate_daily_devlog_once.ps1 -BackfillDays 30 -BuildSummary</code> 스크립트를 추가하여 실행.</li>
+<li><b>수동</b>: <code>Tools/RunDevLog.cmd</code> 스크립트를 실행.</li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md101"></a>
+4. 일일 업무 일지 (Daily DevLog) 형식</h1>
+<h2><a class="anchor" id="autotoc_md102"></a>
+Daily DevLog — {{YYYY-MM-DD}} (KST 09:00 경계)</h2>
+<h2><a class="anchor" id="autotoc_md103"></a>
+요약</h2>
+<ul>
+<li>전날 09:00 ~ 오늘 09:00 사이 커밋 분석 요약 2~3줄. </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md104"></a>
+하이라이트</h2>
+<ul>
+<li>영향도 높은 변경 2~5개. </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md105"></a>
+커밋 기반 작업 로그</h2>
+<h3><a class="anchor" id="autotoc_md106"></a>
+완료</h3>
+<ul>
+<li>[scope] subject (SHA7) (+adds/-dels, n files) </li>
+</ul>
+<h3><a class="anchor" id="autotoc_md107"></a>
+진행</h3>
+<ul>
+<li>[scope] subject (SHA7) (+adds/-dels, n files) </li>
+</ul>
+<h3><a class="anchor" id="autotoc_md108"></a>
+미흡(주의/후속)</h3>
+<ul>
+<li>[scope] subject — 후속: … (SHA7) </li>
+</ul>
+<h3><a class="anchor" id="autotoc_md109"></a>
+TODO(커밋 본문 추출)</h3>
+<ul>
+<li>[ ] 액션 아이템 (출처: SHA7) </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md110"></a>
+오늘 계획</h2>
+<ul>
+<li>[ ] 핵심 작업 1</li>
+<li>[ ] 핵심 작업 2</li>
+<li>[ ] 리스크 대응/검증 </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md111"></a>
+메트릭(선택)</h2>
+<ul>
+<li>총합: +{{addsTotal}} / -{{delsTotal}}, 파일수: {{filesTotal}}</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md112"></a>
+5. 30일 요약 보고서 (30-Day Briefing) 형식</h1>
+<h2><a class="anchor" id="autotoc_md113"></a>
+30-Day Briefing — {{YYYY-MM-DD}}</h2>
+<h2><a class="anchor" id="autotoc_md114"></a>
+속도(Velocity)</h2>
+<ul>
+<li>일 평균 커밋: {{avgCommitsPerDay}} | 완료 비율: {{doneRatio}}%</li>
+<li>변경 합계: +{{addsTotal}} / -{{delsTotal}}, 파일: {{filesTotal}} </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md115"></a>
+핫스팟(Top Scopes)</h2>
+<p>1) [scope] n건 — 주요 주제 요약 2) [scope] n건 — … </p>
+<h2><a class="anchor" id="autotoc_md116"></a>
+미해결 TODO Top N</h2>
+<ul>
+<li>[ ] 내용 (출처: 2025-09-xx, SHA7)</li>
+<li>[ ] 내용 (출처: 2025-09-xx, SHA7) </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md117"></a>
+리스크/차단요인</h2>
+<ul>
+<li>항목 — 근거/영향/완화책(요약) </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md118"></a>
+다음 우선순위(가이드)</h2>
+<p>1) 액션 — 근거(데이터 포인트) 2) 액션 — 근거 3) 액션 — 근거</p>
+<h1><a class="anchor" id="autotoc_md119"></a>
+6. 참고 사항</h1>
+<ul>
+<li>Q&amp;A 요약 저장 전 <code><a class="el" href="__Last30Summary_8md.html">Documents/DevLog/_Last30Summary.md</a></code> 및 최근 일자 파일을 참고하여 맥락을 반영한다.</li>
+<li>기존 DailyPlan 경로 표기는 DevLog로 대체한다. </li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">생성시간 : 목 10월 2 2025 02:43:36, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

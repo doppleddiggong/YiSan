@@ -1,0 +1,13 @@
+<map id="UGameDataManager::Initialize" name="UGameDataManager::Initialize">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,109,228,134"/>
+<area shape="rect" id="Node000002" href="$classUGameDataManager.html#a1ef2615c011d32aff77fff4d5ccaf627" title=" " alt="" coords="276,101,488,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,119,262,119,262,124,228,124"/>
+<area shape="rect" id="Node000003" href="$classUGameDataManager.html#a17795ed84fef2f5fbb76d7da26d52447" title=" " alt="" coords="536,5,765,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="427,99,535,55,560,47,561,52,537,60,429,104"/>
+<area shape="rect" id="Node000004" href="$classUGameDataManager.html#ad849e286b5e7c53cb21b2d193eb58dbe" title=" " alt="" coords="536,69,765,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="488,106,522,102,523,107,488,111"/>
+<area shape="rect" id="Node000005" href="$classUGameDataManager.html#adf72cf62298bc613581042c7e86bfbde" title=" " alt="" coords="536,133,765,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="488,131,523,135,522,141,488,137"/>
+<area shape="rect" id="Node000006" href="$classUGameDataManager.html#ac3bde7d40542b59a0ce72d0b070d3a8e" title=" " alt="" coords="536,197,765,237"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="429,139,537,183,561,191,560,196,535,188,427,144"/>
+</map>

@@ -1,0 +1,25 @@
+<map id="Source/CoffeeLibrary/Shared/Public/NetworkLog.h" name="Source/CoffeeLibrary/Shared/Public/NetworkLog.h">
+<area shape="rect" id="Node000001" title="NetworkLog 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="979,5,1187,45"/>
+<area shape="rect" id="Node000002" href="$NetworkLog_8cpp.html" title="NetworkLog 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="459,101,690,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="966,49,702,96,665,103,664,98,701,91,965,44"/>
+<area shape="rect" id="Node000003" href="$GameLogging_8h.html" title="GameLogging 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="714,101,934,141"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1018,53,877,103,875,98,1016,48"/>
+<area shape="rect" id="Node000010" href="$NetworkData_8cpp.html" title="NetworkData 구조 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="959,101,1207,141"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1085,59,1085,101,1080,101,1080,59"/>
+<area shape="rect" id="Node000011" href="$UHttpNetworkSystem_8cpp.html" title="UHttpNetworkSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="1231,93,1459,148"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1149,47,1272,91,1270,96,1148,52"/>
+<area shape="rect" id="Node000012" href="$UWebSocketSystem_8cpp.html" title="UWebSocketSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="1484,93,1700,148"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="1201,43,1472,91,1484,93,1483,98,1472,96,1200,48"/>
+<area shape="rect" id="Node000004" href="$GameLogging_8cpp.html" title="GameLogging 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="5,203,248,243"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="728,146,702,151,578,167,481,175,384,183,260,199,218,206,217,201,260,193,384,178,481,170,577,162,701,145,727,141"/>
+<area shape="rect" id="Node000005" href="$AGameCharacter_8cpp.html" title="AGameCharacter 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="272,203,552,243"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="734,147,490,206,488,201,733,141"/>
+<area shape="rect" id="Node000006" href="$UCharacterData_8cpp.html" title="UCharacterData 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="576,203,819,243"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="791,151,723,205,719,201,788,147"/>
+<area shape="rect" id="Node000007" href="$UGameDataManager_8cpp.html" title="UGameDataManager 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="843,196,1061,251"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="861,147,920,194,917,198,857,151"/>
+<area shape="rect" id="Node000008" href="$UGameVFXManager_8cpp.html" title="UGameVFXManager 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="1085,203,1379,243"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="914,141,1156,201,1155,206,913,147"/>
+<area shape="rect" id="Node000009" href="$ANetworkTesterActor_8cpp.html" title="ANetworkTesterActor 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="1403,196,1642,251"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="921,141,947,145,1072,162,1169,170,1267,178,1392,193,1404,195,1403,200,1392,199,1267,183,1169,175,1071,167,946,151,920,146"/>
+</map>

@@ -1,0 +1,23 @@
+<map id="Source/LatteLibrary/Network/Public/ANetworkTesterActor.h" name="Source/LatteLibrary/Network/Public/ANetworkTesterActor.h">
+<area shape="rect" id="Node000001" title="ANetworkTesterActor 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="161,5,391,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,255,123,280"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,59,120,79,102,93,86,110,69,141,62,177,60,211,63,241,57,241,55,211,56,176,64,139,82,106,98,89,117,75,159,54"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="97,108,279,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="251,62,211,100,208,96,247,58"/>
+<area shape="rect" id="Node000004" href="$NetworkData_8h.html" title="NetworkData 구조체 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="304,108,424,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="305,58,344,96,341,100,301,62"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="448,108,688,133"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="366,58,517,102,516,107,364,63"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="304,136,209,158,166,171,136,184,104,212,80,244,75,241,100,209,133,179,164,166,207,152,303,131"/>
+<area shape="rect" id="Node000005" href="$UCustomNetworkSettings_8h.html" title="UCustomNetworkSettings 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="147,181,349,207"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="347,136,280,176,277,172,344,131"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="373,181,568,207"/>
+<area shape="poly" id="edge9_Node000004_Node000008" title=" " alt="" coords="383,131,443,171,440,176,380,136"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="593,181,783,207"/>
+<area shape="poly" id="edge10_Node000004_Node000009" title=" " alt="" coords="417,131,623,176,622,181,415,136"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="219,209,108,252,106,247,217,204"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="147,255,349,280"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="251,207,251,241,245,241,245,207"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="373,255,645,280"/>
+<area shape="poly" id="edge8_Node000005_Node000007" title=" " alt="" coords="291,204,454,248,453,254,289,209"/>
+</map>

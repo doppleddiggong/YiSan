@@ -1,0 +1,5 @@
+<map id="APlayerActor::BeginPlay" name="APlayerActor::BeginPlay">
+<area shape="rect" id="Node000001" title="게임 시작 시 서브 시스템을 연결합니다." alt="" coords="5,5,184,31"/>
+<area shape="rect" id="Node000002" href="$classAGameCharacter.html#a1a36cdd8573aed9d2d2d264de949bb64" title=" " alt="" coords="232,5,435,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,15,219,15,219,21,184,21"/>
+</map>

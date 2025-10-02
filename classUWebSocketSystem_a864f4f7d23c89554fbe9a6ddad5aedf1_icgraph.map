@@ -1,0 +1,19 @@
+<map id="UWebSocketSystem::LogNetwork" name="UWebSocketSystem::LogNetwork">
+<area shape="rect" id="Node000001" title=" " alt="" coords="565,146,804,171"/>
+<area shape="rect" id="Node000002" href="$classUWebSocketSystem.html#aa72ee8bc548882770c3d47bbba4d3086" title=" " alt="" coords="5,114,219,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="661,138,601,81,561,54,516,33,448,14,393,8,337,15,267,33,226,50,187,72,129,116,126,112,184,68,223,45,266,28,336,10,393,3,449,9,518,28,563,49,604,77,665,134"/>
+<area shape="rect" id="Node000003" href="$classUWebSocketSystem.html#a7a88c6a90e78c24cb49759a99f461820" title=" " alt="" coords="281,43,503,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="640,143,516,97,476,85,477,80,518,92,642,138"/>
+<area shape="rect" id="Node000004" href="$classUWebSocketSystem.html#a7f1b915b47d4df8053b658927e948009" title=" " alt="" coords="269,107,515,147"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="554,147,515,143,516,137,555,142"/>
+<area shape="rect" id="Node000005" href="$classUWebSocketSystem.html#a8ff6b512e809cc1065ddd3186bc4372f" title=" " alt="" coords="267,171,517,211"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="555,175,518,180,517,174,555,170"/>
+<area shape="rect" id="Node000006" href="$classUWebSocketSystem.html#aa701952031766e47200a838dd214c905" title=" " alt="" coords="274,235,510,275"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="642,179,518,225,477,237,476,232,516,220,640,174"/>
+<area shape="rect" id="Node000007" href="$classUWebSocketSystem.html#acdc8c5a1c2cecee29544b844649eb52e" title=" " alt="" coords="267,299,517,325"/>
+<area shape="poly" id="edge10_Node000001_Node000007" title=" " alt="" coords="663,183,601,237,561,265,518,289,482,302,480,297,516,284,559,261,598,233,659,179"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="291,88,169,117,168,111,290,83"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="255,129,219,129,219,124,255,124"/>
+<area shape="poly" id="edge7_Node000005_Node000002" title=" " alt="" coords="290,170,168,142,169,137,291,165"/>
+<area shape="poly" id="edge9_Node000006_Node000002" title=" " alt="" coords="285,233,266,225,225,205,187,182,128,142,131,137,190,178,228,201,268,220,287,228"/>
+</map>

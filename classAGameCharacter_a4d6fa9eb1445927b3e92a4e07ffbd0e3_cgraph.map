@@ -1,0 +1,5 @@
+<map id="AGameCharacter::UnbindMontageDelegates" name="AGameCharacter::UnbindMontageDelegates">
+<area shape="rect" id="Node000001" title="몽타주 알림 델리게이트 연결을 해제합니다." alt="" coords="5,5,249,45"/>
+<area shape="rect" id="Node000002" href="$classAGameCharacter.html#ad257873cd2be805e3f5ff94f199da294" title="몽타주 노티파이 시작 시 호출되는 콜백입니다." alt="" coords="297,5,513,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="249,23,283,23,283,28,249,28"/>
+</map>

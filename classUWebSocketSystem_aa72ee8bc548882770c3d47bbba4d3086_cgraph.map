@@ -1,0 +1,17 @@
+<map id="UWebSocketSystem::Connect" name="UWebSocketSystem::Connect">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,111,219,136"/>
+<area shape="rect" id="Node000002" href="$classUWebSocketSystem.html#a864f4f7d23c89554fbe9a6ddad5aedf1" title=" " alt="" coords="565,111,804,136"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,109,184,65,223,42,266,25,335,8,392,3,448,9,518,25,559,40,597,59,658,100,655,105,594,64,556,45,517,30,447,14,392,8,336,13,267,30,226,47,187,69,129,113"/>
+<area shape="rect" id="Node000003" href="$classUWebSocketSystem.html#a7a88c6a90e78c24cb49759a99f461820" title=" " alt="" coords="281,40,503,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="168,108,290,80,291,86,169,114"/>
+<area shape="rect" id="Node000004" href="$classUWebSocketSystem.html#a7f1b915b47d4df8053b658927e948009" title=" " alt="" coords="269,104,515,144"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="219,121,255,121,255,126,219,126"/>
+<area shape="rect" id="Node000005" href="$classUWebSocketSystem.html#a8ff6b512e809cc1065ddd3186bc4372f" title=" " alt="" coords="267,168,517,208"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="169,134,291,162,290,167,168,139"/>
+<area shape="rect" id="Node000006" href="$classUWebSocketSystem.html#aa701952031766e47200a838dd214c905" title=" " alt="" coords="274,232,510,272"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="131,134,190,175,228,198,268,217,287,225,285,230,266,222,225,202,187,179,128,139"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="485,77,613,106,612,111,484,82"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="515,121,552,121,552,126,515,126"/>
+<area shape="poly" id="edge7_Node000005_Node000002" title=" " alt="" coords="484,165,612,137,613,142,485,170"/>
+<area shape="poly" id="edge9_Node000006_Node000002" title=" " alt="" coords="482,229,516,217,591,180,653,142,655,146,594,185,518,222,484,234"/>
+</map>
