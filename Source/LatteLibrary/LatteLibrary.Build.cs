@@ -22,6 +22,10 @@ public class LatteLibrary : ModuleRules
 			"HTTP",
 			"Json",
 			"JsonUtilities",
+			"Voice",
+			"AudioMixer",
+			"AudioCapture",
+			"AudioPlatformConfiguration",
 			"WebSockets",
 			"DeveloperSettings"
 		});
