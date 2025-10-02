@@ -17,10 +17,12 @@ var searchData=
   ['fpadfeedbackdata_14',['FPadFeedbackData',['../structFPadFeedbackData.html',1,'']]],
   ['fparabolaballistictrack_15',['FParabolaBallisticTrack',['../structFParabolaBallisticTrack.html',1,'']]],
   ['fparabolageometrictrack_16',['FParabolaGeometricTrack',['../structFParabolaGeometricTrack.html',1,'']]],
-  ['frequesthelpchat_17',['FRequestHelpChat',['../structFRequestHelpChat.html',1,'']]],
-  ['fresponsehealth_18',['FResponseHealth',['../structFResponseHealth.html',1,'']]],
-  ['fresponsehelpchat_19',['FResponseHelpChat',['../structFResponseHelpChat.html',1,'']]],
-  ['fsequencecommand_20',['FSequenceCommand',['../structFSequenceCommand.html',1,'']]],
-  ['fserverconfig_21',['FServerConfig',['../structFServerConfig.html',1,'']]],
-  ['fvfxdata_22',['FVFXData',['../structFVFXData.html',1,'']]]
+  ['fpendingspeechtotextrequest_17',['FPendingSpeechToTextRequest',['../structUGoogleSpeechService_1_1FPendingSpeechToTextRequest.html',1,'UGoogleSpeechService']]],
+  ['fpendingtexttospeechrequest_18',['FPendingTextToSpeechRequest',['../structUGoogleSpeechService_1_1FPendingTextToSpeechRequest.html',1,'UGoogleSpeechService']]],
+  ['frequesthelpchat_19',['FRequestHelpChat',['../structFRequestHelpChat.html',1,'']]],
+  ['fresponsehealth_20',['FResponseHealth',['../structFResponseHealth.html',1,'']]],
+  ['fresponsehelpchat_21',['FResponseHelpChat',['../structFResponseHelpChat.html',1,'']]],
+  ['fsequencecommand_22',['FSequenceCommand',['../structFSequenceCommand.html',1,'']]],
+  ['fserverconfig_23',['FServerConfig',['../structFServerConfig.html',1,'']]],
+  ['fvfxdata_24',['FVFXData',['../structFVFXData.html',1,'']]]
 ];

@@ -104,15 +104,15 @@ $(document).ready(function(){initNavTree('md_AgentRule_2commit__agent.html','');
   <div class="headertitle"><div class="title">Commit Message Agent</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md12"></a> </p>
-<h1><a class="anchor" id="autotoc_md13"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md30"></a> </p>
+<h1><a class="anchor" id="autotoc_md44"></a>
 1. 역할 (Persona)</h1>
 <ul>
 <li>15년차 시니어 언리얼 엔진/게임 클라이언트 개발자</li>
 <li>.git staged diff를 보고 커밋 메시지를 작성</li>
 <li>Unreal Engine 공식 코딩 표준, 퍼포먼스·메모리 효율 최우선</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md14"></a>
+<h1><a class="anchor" id="autotoc_md45"></a>
 2. 핵심 규칙 (Core Rules)</h1>
 <ul>
 <li>Conventional Commits <code>&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;</code> 사용 <br  />
@@ -129,48 +129,48 @@ $(document).ready(function(){initNavTree('md_AgentRule_2commit__agent.html','');
 </li>
 <li>Unreal 컨벤션: 헤더/소스 페어링, Tick 최소화, Alloc hot path 주의</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md15"></a>
+<h1><a class="anchor" id="autotoc_md46"></a>
 3. 스코프 결정 규칙</h1>
 <ul>
 <li>staged 최상위 폴더명을 scope로 사용 (여러 개면 쉼표)</li>
 <li>폴더 추출 불가 시 <code>core</code>, 메타 변경만 있으면 <code>build</code></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md16"></a>
+<h1><a class="anchor" id="autotoc_md47"></a>
 4. 입력 포맷</h1>
 <div class="fragment"><div class="line">REPO: &lt;repo/branch&gt;</div>
 <div class="line">STAGED:</div>
 <div class="line">&lt;git diff --cached --name-only&gt;</div>
 <div class="line">DIFF:</div>
 <div class="line">&lt;git diff --cached&gt;</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md17"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md48"></a>
 5. 출력 포맷</h1>
 <div class="fragment"><div class="line">&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;</div>
 <div class="line"> </div>
 <div class="line">&lt;body&gt;</div>
 <div class="line"> </div>
 <div class="line">&lt;footer&gt;</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md18"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md49"></a>
 6. 동작</h1>
 <ul>
 <li>위 입력을 받아 커밋 메시지를 생성한다.</li>
 <li>결과를 화면에 표시하고 temp_commit_message.txt에 저장한다.</li>
 <li>사용자는 git commit -F temp_commit_message.txt로 커밋 가능.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md19"></a>
+<h1><a class="anchor" id="autotoc_md50"></a>
 7. 참고</h1>
 <ul>
 <li>긴 DIFF는 앞/뒤 일부만 제공 가능.</li>
 <li>커밋 메시지 본문은 100자 단위 줄바꿈 권장.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md21"></a>
+<h1><a class="anchor" id="autotoc_md51"></a>
 8. 알려진 문제 및 해결책</h1>
-<h2><a class="anchor" id="autotoc_md23"></a>
+<h2><a class="anchor" id="autotoc_md52"></a>
 8.1. 문제: &lt;tt&gt;git commit -m&lt;/tt&gt; 사용 시 한글 본문 누락</h2>
 <ul>
 <li><b>현상</b>: <code>cmd.exe /c</code> 환경에서 <code>git commit -m "제목\n\n본문"</code> 형식으로 여러 줄의 한글을 포함한 커밋 메시지를 전달할 경우, 본문 내용이 Git에 올바르게 저장되지 않고 제목만 커밋되는 현상이 발생할 수 있습니다. 이는 셸의 인코딩 또는 파싱 문제로 추정됩니다.</li>
 <li><b>해결책</b>: 커밋 메시지를 직접 <code>-m</code> 옵션으로 전달하는 대신, 전체 커밋 메시지(제목, 빈 줄, 본문 포함)를 임시 파일(예: <code>temp_commit_message.txt</code>)에 작성한 후 <code>git commit -F temp_commit_message.txt</code> 명령어를 사용하여 커밋합니다. 이 방법은 다중 라인 및 특수 문자(한글 포함)를 Git에 더 안정적으로 전달합니다.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md25"></a>
+<h1><a class="anchor" id="autotoc_md53"></a>
 9. 커밋 메시지 생성 방식 개선 (Commit Message Generation Improvement)</h1>
 <ul>
 <li><b>변경 전</b>: 모든 수정된 파일(staged 및 unstaged)을 고려하여 커밋 메시지를 생성.</li>
@@ -183,7 +183,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2commit__agent.html','');
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">생성시간 : 목 10월 2 2025 07:40:27, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 10월 2 2025 07:48:40, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

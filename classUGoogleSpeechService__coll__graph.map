@@ -1,0 +1,9 @@
+<map id="UGoogleSpeechService" name="UGoogleSpeechService">
+<area shape="rect" id="Node000001" title="Thin Google Speech (STT/TTS) client." alt="" coords="5,388,241,753"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="7,190,197,255"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,269,115,388,109,388,102,269"/>
+<area shape="rect" id="Node000003" href="$classUGoogleSpeechServiceSettings.html" title="Developer settings for Google Speech services." alt="" coords="222,120,465,325"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="281,327,250,375,246,373,276,324"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="271,5,415,71"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="346,85,346,120,341,120,341,85"/>
+</map>

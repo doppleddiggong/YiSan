@@ -42,6 +42,8 @@ var annotated_dup =
     [ "UGameFunctionLibrary", "classUGameFunctionLibrary.html", "classUGameFunctionLibrary" ],
     [ "UGameSoundManager", "classUGameSoundManager.html", "classUGameSoundManager" ],
     [ "UGameVFXManager", "classUGameVFXManager.html", "classUGameVFXManager" ],
+    [ "UGoogleSpeechService", "classUGoogleSpeechService.html", "classUGoogleSpeechService" ],
+    [ "UGoogleSpeechServiceSettings", "classUGoogleSpeechServiceSettings.html", "classUGoogleSpeechServiceSettings" ],
     [ "UHttpNetworkSystem", "classUHttpNetworkSystem.html", "classUHttpNetworkSystem" ],
     [ "UMainWdget", "classUMainWdget.html", "classUMainWdget" ],
     [ "UObjectPoolManager", "classUObjectPoolManager.html", "classUObjectPoolManager" ],

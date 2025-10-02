@@ -1,0 +1,16 @@
+<map id="Source/LatteLibrary/Network/Public/GoogleSpeechService.h" name="Source/LatteLibrary/Network/Public/GoogleSpeechService.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="194,5,416,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="65,181,182,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,50,139,61,85,74,41,90,14,110,9,119,9,128,21,146,44,161,73,174,71,179,42,166,17,149,4,130,4,118,10,106,38,86,83,69,137,55,194,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="24,108,306,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="264,62,197,103,194,98,261,58"/>
+<area shape="rect" id="Node000004" href="$GoogleSpeechServiceSettings_8h.html" title=" " alt="" coords="331,108,559,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="349,58,416,98,413,103,347,62"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="584,108,829,133"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="416,55,640,103,639,108,415,60"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="394,136,190,181,188,176,393,131"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="274,181,477,207"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="436,136,398,173,395,170,432,132"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="501,181,800,207"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="479,131,605,174,603,179,477,136"/>
+</map>

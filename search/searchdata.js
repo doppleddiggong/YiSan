@@ -6,11 +6,12 @@ var indexSectionsWithContent =
   3: "2_acdefgilmnuy",
   4: "abcdefghilmnoprstuwy~",
   5: "abcdefghiklmnopqrstvw",
-  6: "e",
-  7: "cdeghilmnpstuwxyz",
-  8: "bcdhiklmnpsv",
-  9: "acfgils",
-  10: "0123abcdegkmpuy–가개문및배상설에워이컨코효"
+  6: "f",
+  7: "e",
+  8: "cdeghilmnpstuwxyz",
+  9: "bcdhiklmnpsv",
+  10: "acfgils",
+  11: "0123abcdegkmpuy–가개문및배상설에워이컨코효"
 };
 
 var indexSectionNames =
@@ -21,11 +22,12 @@ var indexSectionNames =
   3: "files",
   4: "functions",
   5: "variables",
-  6: "enums",
-  7: "enumvalues",
-  8: "defines",
-  9: "groups",
-  10: "pages"
+  6: "typedefs",
+  7: "enums",
+  8: "enumvalues",
+  9: "defines",
+  10: "groups",
+  11: "pages"
 };
 
 var indexSectionLabels =
@@ -36,10 +38,11 @@ var indexSectionLabels =
   3: "파일들",
   4: "함수",
   5: "변수",
-  6: "열거형 타입",
-  7: "열거형 멤버",
-  8: "매크로",
-  9: "그룹들",
-  10: "페이지들"
+  6: "타입정의",
+  7: "열거형 타입",
+  8: "열거형 멤버",
+  9: "매크로",
+  10: "그룹들",
+  11: "페이지들"
 };
 

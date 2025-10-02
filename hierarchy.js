@@ -28,6 +28,8 @@ var hierarchy =
     [ "FPadFeedbackData", "structFPadFeedbackData.html", null ],
     [ "FParabolaBallisticTrack", "structFParabolaBallisticTrack.html", null ],
     [ "FParabolaGeometricTrack", "structFParabolaGeometricTrack.html", null ],
+    [ "UGoogleSpeechService::FPendingSpeechToTextRequest", "structUGoogleSpeechService_1_1FPendingSpeechToTextRequest.html", null ],
+    [ "UGoogleSpeechService::FPendingTextToSpeechRequest", "structUGoogleSpeechService_1_1FPendingTextToSpeechRequest.html", null ],
     [ "FRequestHelpChat", "structFRequestHelpChat.html", null ],
     [ "FResponseHealth", "structFResponseHealth.html", null ],
     [ "FResponseHelpChat", "structFResponseHelpChat.html", null ],
@@ -61,7 +63,8 @@ var hierarchy =
       [ "UVFXDataAsset", "classUVFXDataAsset.html", null ]
     ] ],
     [ "UDeveloperSettings", null, [
-      [ "UCustomNetworkSettings", "classUCustomNetworkSettings.html", null ]
+      [ "UCustomNetworkSettings", "classUCustomNetworkSettings.html", null ],
+      [ "UGoogleSpeechServiceSettings", "classUGoogleSpeechServiceSettings.html", null ]
     ] ],
     [ "UGameInstanceSubsystem", null, [
       [ "UBroadcastManger", "classUBroadcastManger.html", null ],
@@ -69,6 +72,7 @@ var hierarchy =
       [ "UGameDataManager", "classUGameDataManager.html", null ],
       [ "UGameSoundManager", "classUGameSoundManager.html", null ],
       [ "UGameVFXManager", "classUGameVFXManager.html", null ],
+      [ "UGoogleSpeechService", "classUGoogleSpeechService.html", null ],
       [ "UHttpNetworkSystem", "classUHttpNetworkSystem.html", null ],
       [ "UObjectPoolManager", "classUObjectPoolManager.html", null ],
       [ "USequenceManager", "classUSequenceManager.html", null ],

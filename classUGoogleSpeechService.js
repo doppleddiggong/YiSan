@@ -1,0 +1,25 @@
+var classUGoogleSpeechService =
+[
+    [ "FPendingSpeechToTextRequest", "structUGoogleSpeechService_1_1FPendingSpeechToTextRequest.html", "structUGoogleSpeechService_1_1FPendingSpeechToTextRequest" ],
+    [ "FPendingTextToSpeechRequest", "structUGoogleSpeechService_1_1FPendingTextToSpeechRequest.html", "structUGoogleSpeechService_1_1FPendingTextToSpeechRequest" ],
+    [ "FSpeechToTextMap", "classUGoogleSpeechService.html#a82b81795d501ec2690dd1685efcd8e8d", null ],
+    [ "FTextToSpeechMap", "classUGoogleSpeechService.html#ae896392e7b4b2c7a93eb7c3ac28833f6", null ],
+    [ "BuildSpeechToTextUrl", "classUGoogleSpeechService.html#ab6072b63787068d65e9d5e103d845728", null ],
+    [ "BuildTextToSpeechUrl", "classUGoogleSpeechService.html#a91e9db7f9c3a31bd8780eabe1883f796", null ],
+    [ "Get", "classUGoogleSpeechService.html#a5f5c5064b82815b8e74495814a2c8984", null ],
+    [ "HandleSpeechToTextResponse", "classUGoogleSpeechService.html#a463ca5048eee5af023008f0a1c9f5940", null ],
+    [ "HandleTextToSpeechResponse", "classUGoogleSpeechService.html#a62e68600287b81778645eaed329a4a27", null ],
+    [ "Initialize", "classUGoogleSpeechService.html#a65b0adba55287739c81abb5266b53323", null ],
+    [ "RequestSpeechToText", "classUGoogleSpeechService.html#a149b74f6b5a9835993a62fc5aa796306", null ],
+    [ "RequestTextToSpeech", "classUGoogleSpeechService.html#a0e622635d0b25c40538e1263d4473e6c", null ],
+    [ "ApiKey", "classUGoogleSpeechService.html#adac0a4a157526db06c15ec03a9aea50b", null ],
+    [ "AudioEncoding", "classUGoogleSpeechService.html#ad33c640d72432f8be5df4ddbf32ee387", null ],
+    [ "DefaultSpeechSampleRate", "classUGoogleSpeechService.html#a502fc694a2388b57476a78f59a2e2f7b", null ],
+    [ "DefaultTtsSampleRate", "classUGoogleSpeechService.html#a981e6c0c323adeee1bf75f19a7f878d6", null ],
+    [ "LanguageCode", "classUGoogleSpeechService.html#ae9ed41295a1ab391bfae7c574c08e50d", null ],
+    [ "PendingSpeechToText", "classUGoogleSpeechService.html#a29be215ecc33726e30b681de9032196e", null ],
+    [ "PendingTextToSpeech", "classUGoogleSpeechService.html#acc115f8d640082decea051e35ce009eb", null ],
+    [ "Settings", "classUGoogleSpeechService.html#a4ef692aecd11bac3edb41b773bebcd67", null ],
+    [ "VoiceGender", "classUGoogleSpeechService.html#a1f979d0a5a2b75d0268c82b6314edd36", null ],
+    [ "VoiceName", "classUGoogleSpeechService.html#afc9df755954e582c4649a6cf4c266f0f", null ]
+];

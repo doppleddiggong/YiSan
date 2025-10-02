@@ -102,7 +102,8 @@ var menudata={children:[
 {text:"s",url:"functions_vars.html#index_s"},
 {text:"t",url:"functions_vars.html#index_t"},
 {text:"v",url:"functions_vars.html#index_v"},
-{text:"w",url:"functions_vars.html#index_w"}]}]}]},
+{text:"w",url:"functions_vars.html#index_w"}]},
+{text:"타입정의",url:"functions_type.html"}]}]},
 {text:"파일들",url:"files.html",children:[
 {text:"파일 목록",url:"files.html"},
 {text:"파일 멤버",url:"globals.html",children:[
