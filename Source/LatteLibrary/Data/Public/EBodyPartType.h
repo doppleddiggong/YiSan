@@ -1,4 +1,8 @@
-﻿#pragma once
+/**
+ * @file EBodyPartType.h
+ * @brief EBodyPartType 열거형에 대한 Doxygen 주석을 제공합니다.
+ */
+#pragma once
 
 UENUM(BlueprintType)
 enum class EBodyPartType : uint8

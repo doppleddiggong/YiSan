@@ -1,5 +1,9 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
+/**
+ * @file UOrbitalBehaviorComponent.h
+ * @brief UOrbitalBehaviorComponent 선언에 대한 Doxygen 주석을 제공합니다.
+ */
 #pragma once
 
 #include "CoreMinimal.h"
@@ -17,6 +21,7 @@ class COFFEELIBRARY_API UOrbitalBehaviorComponent : public UActorComponent
         GENERATED_BODY()
 
 public:
+        /** @brief 기본 속성값을 초기화합니다. */
         UOrbitalBehaviorComponent();
 
         /** @brief 타겟 중심(앵커) 보간 속도. 0이면 즉시 스냅. */
@@ -79,9 +84,10 @@ protected:
 
 private:
         // 내부 상태
-	float   AngleDeg  = 0.f;
-	float   TimeAcc   = 0.f;
-	FVector AnchorLoc = FVector::ZeroVector;
+        float   AngleDeg  = 0.f;
+        float   TimeAcc   = 0.f;
+        FVector AnchorLoc = FVector::ZeroVector;
 
-	void Tick_TargetFloat(float DeltaTime);
+        /** @brief 타겟 추적 및 위치 보간을 처리하는 내부 함수입니다. */
+        void Tick_TargetFloat(float DeltaTime);
 };

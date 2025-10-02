@@ -1,3 +1,7 @@
+/**
+ * @file FLevelFeature.cpp
+ * @brief Coffee Toolbar에서 레벨 선택을 돕는 헬퍼 기능을 구현합니다.
+ */
 #include "Level/FLevelFeature.h"
 #include "Settings/UToolbarSettings.h" // For UCoffeeToolbarSettings::GetSearchRoots
 #include "Common/FCommon.h" // For GetActiveTargetWorld
@@ -12,10 +16,12 @@
 #include "Editor/UnrealEdEngine.h"
 #include "Modules/ModuleManager.h"
 
+/** @brief 레벨 선택을 위한 기본 상태를 초기화합니다. */
 FLevelFeature::FLevelFeature()
 {
 }
 
+/** @brief 툴바 초기화 시 유효한 레벨이 선택되도록 보장합니다. */
 void FLevelFeature::EnsureDefaultSelection()
 {
     if (!SelectedMapPackage.IsEmpty())
@@ -28,6 +34,7 @@ void FLevelFeature::EnsureDefaultSelection()
     SelectedMapPackage = Worlds[0].PackageName.ToString();
 }
 
+/** @brief 설정된 검색 경로를 사용해 월드 에셋 목록을 수집합니다. */
 bool FLevelFeature::CollectWorlds(TArray<FAssetData>& OutWorlds) const
 {
     const TArray<FName> Roots = UToolbarSettings::GetSearchRoots();
@@ -59,6 +66,7 @@ bool FLevelFeature::CollectWorlds(TArray<FAssetData>& OutWorlds) const
     return OutWorlds.Num() > 0;
 }
 
+/** @brief 현재 선택된 레벨이 존재하는 패키지를 가리키는지 검증합니다. */
 bool FLevelFeature::EnsureValidSelectedMap() const
 {
     if (SelectedMapPackage.IsEmpty())
@@ -79,6 +87,7 @@ bool FLevelFeature::EnsureValidSelectedMap() const
     return true;
 }
 
+/** @brief 더티 패키지 저장을 유도한 뒤 선택된 맵을 에디터에 로드합니다. */
 bool FLevelFeature::LoadSelectedMap() const
 {
     if (!EnsureValidSelectedMap())
@@ -95,6 +104,7 @@ bool FLevelFeature::LoadSelectedMap() const
     return true;
 }
 
+/** @brief 사용 가능한 레벨 에셋을 나열하는 메뉴를 구성합니다. */
 TSharedRef<SWidget> FLevelFeature::GenerateLevelMenu()
 {
     const TArray<FName> Roots = UToolbarSettings::GetSearchRoots();
@@ -147,6 +157,7 @@ TSharedRef<SWidget> FLevelFeature::GenerateLevelMenu()
     return MenuBuilder.MakeWidget();
 }
 
+/** @brief 메뉴에서 새로운 맵을 선택했을 때의 처리를 담당합니다. */
 void FLevelFeature::OnSelectedMap(FString InLongPackageName)
 {
     this->SelectedMapPackage = MoveTemp(InLongPackageName);
@@ -155,12 +166,14 @@ void FLevelFeature::OnSelectedMap(FString InLongPackageName)
     UE_LOG(LogTemp, Log, TEXT("Selected Level: %s"), *InLongPackageName);
 }
 
+/** @brief 선택된 맵 에셋을 에디터에서 엽니다. */
 void FLevelFeature::OnSelectedMap_Open()
 {
     if (LoadSelectedMap())
         UE_LOG(LogTemp, Log, TEXT("Opened: %s"), *SelectedMapPackage);
 }
 
+/** @brief 현재 활성화된 뷰포트에서 선택된 레벨을 실행합니다. */
 void FLevelFeature::OnSelectedMap_PlaySelectedViewport()
 {
     if (!LoadSelectedMap())
@@ -184,6 +197,7 @@ void FLevelFeature::OnSelectedMap_PlaySelectedViewport()
     }
 }
 
+/** @brief 선택된 맵으로 새로운 뷰포트에서 PIE를 실행합니다. */
 void FLevelFeature::OnSelectedMap_PlayInEditor()
 {
     if (!EnsureValidSelectedMap())

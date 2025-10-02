@@ -1,5 +1,9 @@
-﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
+/**
+ * @file Macro.h
+ * @brief Manager 모듈에서 공통으로 사용하는 매크로 정의에 대한 Doxygen 주석을 제공합니다.
+ */
 #pragma once
 
 

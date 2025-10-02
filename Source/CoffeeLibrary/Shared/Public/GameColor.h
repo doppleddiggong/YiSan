@@ -1,4 +1,8 @@
-﻿#pragma once
+/**
+ * @file GameColor.h
+ * @brief CoffeeLibrary에서 공유하는 색상 상수를 정의합니다.
+ */
+#pragma once
 
 namespace GameColor
 {

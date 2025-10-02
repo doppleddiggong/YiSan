@@ -1,4 +1,8 @@
-﻿#pragma once
+/**
+ * @file FCharacterInfoData.h
+ * @brief FCharacterInfoData 구조체에 대한 Doxygen 주석을 제공합니다.
+ */
+#pragma once
 
 #include "CoreMinimal.h"
 #include "ECharacterType.h"
