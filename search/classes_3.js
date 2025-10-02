@@ -20,5 +20,6 @@ var searchData=
   ['usounddata_17',['USoundData',['../classUSoundData.html',1,'']]],
   ['utweenaniminstance_18',['UTweenAnimInstance',['../classUTweenAnimInstance.html',1,'']]],
   ['uvfxdataasset_19',['UVFXDataAsset',['../classUVFXDataAsset.html',1,'']]],
-  ['uwebsocketsystem_20',['UWebSocketSystem',['../classUWebSocketSystem.html',1,'']]]
+  ['uwebsocketsystem_20',['UWebSocketSystem',['../classUWebSocketSystem.html',1,'']]],
+  ['uyisanvoiceconsolesubsystem_21',['UYiSanVoiceConsoleSubsystem',['../classUYiSanVoiceConsoleSubsystem.html',1,'']]]
 ];

@@ -50,5 +50,6 @@ var annotated_dup =
     [ "USoundData", "classUSoundData.html", "classUSoundData" ],
     [ "UTweenAnimInstance", "classUTweenAnimInstance.html", "classUTweenAnimInstance" ],
     [ "UVFXDataAsset", "classUVFXDataAsset.html", "classUVFXDataAsset" ],
-    [ "UWebSocketSystem", "classUWebSocketSystem.html", "classUWebSocketSystem" ]
+    [ "UWebSocketSystem", "classUWebSocketSystem.html", "classUWebSocketSystem" ],
+    [ "UYiSanVoiceConsoleSubsystem", "classUYiSanVoiceConsoleSubsystem.html", "classUYiSanVoiceConsoleSubsystem" ]
 ];

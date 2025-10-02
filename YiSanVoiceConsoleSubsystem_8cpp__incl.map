@@ -1,0 +1,56 @@
+<map id="Source/YiSan/Environment/Private/YiSanVoiceConsoleSubsystem.cpp" name="Source/YiSan/Environment/Private/YiSanVoiceConsoleSubsystem.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1455,5,1754,45"/>
+<area shape="rect" id="Node000002" href="$YiSanVoiceConsoleSubsystem_8h.html" title=" " alt="" coords="1290,101,1519,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1562,48,1445,98,1443,93,1560,43"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="1893,181,2061,207"/>
+<area shape="poly" id="edge8_Node000001_Node000005" title=" " alt="" coords="1595,47,1585,67,1578,89,1577,112,1585,131,1690,150,1879,177,1878,182,1689,155,1582,135,1571,113,1572,89,1580,65,1590,44"/>
+<area shape="rect" id="Node000007" href="$YiSan_8h.html" title=" " alt="" coords="5,181,76,207"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1455,34,898,56,610,74,491,84,400,96,312,114,225,136,87,179,85,174,224,131,311,109,399,91,490,79,609,68,898,50,1455,28"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="1595,101,1713,126"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="1618,44,1643,87,1638,90,1613,47"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="1737,101,1845,126"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="1647,43,1755,92,1753,97,1645,48"/>
+<area shape="rect" id="Node000010" href="$APlayerActor_8h.html" title="APlayerActor 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="412,93,579,133"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="1455,41,592,107,592,102,1455,36"/>
+<area shape="rect" id="Node000023" title=" " alt="" coords="1869,93,2121,133"/>
+<area shape="poly" id="edge29_Node000001_Node000023" title=" " alt="" coords="1691,43,1897,88,1896,93,1690,48"/>
+<area shape="rect" id="Node000024" title=" " alt="" coords="2146,101,2322,126"/>
+<area shape="poly" id="edge30_Node000001_Node000024" title=" " alt="" coords="1755,40,1937,63,2134,91,2164,96,2163,101,2134,96,1936,68,1754,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="462,328,579,353"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1358,129,1304,149,1277,165,1253,183,1243,196,1237,208,1230,234,1223,259,1215,271,1202,282,1168,294,1108,305,940,321,751,333,593,340,593,334,750,328,940,316,1108,299,1166,289,1199,278,1211,267,1218,257,1225,232,1231,206,1238,193,1249,179,1274,160,1302,145,1356,124"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="1263,181,1546,207"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="1407,126,1407,167,1402,167,1402,126"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="1486,123,1538,131,1880,177,1879,182,1538,136,1485,129"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="1570,181,1869,207"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="1451,123,1661,175,1660,181,1450,129"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="38,208,28,243,29,262,37,278,57,288,94,298,204,314,449,333,448,338,203,319,93,303,55,293,33,282,24,263,23,242,33,206"/>
+<area shape="poly" id="edge12_Node000010_Node000003" title=" " alt="" coords="500,133,520,314,515,315,495,134"/>
+<area shape="rect" id="Node000011" href="$AGameCharacter_8h.html" title="LatteLibrary 전반에서 사용하는 기반 캐릭터 클래스를 선언합니다." alt="" coords="857,181,1001,207"/>
+<area shape="poly" id="edge13_Node000010_Node000011" title=" " alt="" coords="579,127,852,176,851,181,578,132"/>
+<area shape="rect" id="Node000019" href="$IControllable_8h.html" title="IControllable 인터페이스 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="341,181,458,207"/>
+<area shape="poly" id="edge24_Node000010_Node000019" title=" " alt="" coords="474,136,426,175,422,170,470,131"/>
+<area shape="rect" id="Node000022" title=" " alt="" coords="130,181,317,207"/>
+<area shape="poly" id="edge28_Node000010_Node000022" title=" " alt="" coords="431,136,277,180,275,175,429,131"/>
+<area shape="poly" id="edge14_Node000011_Node000003" title=" " alt="" coords="857,203,697,221,623,237,594,246,573,257,559,269,547,284,531,316,526,314,543,282,555,266,570,252,592,241,622,232,696,216,856,198"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="823,255,1035,280"/>
+<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="931,207,931,241,926,241,926,207"/>
+<area shape="rect" id="Node000013" href="$EBodyPartType_8h.html" title="EBodyPartType 열거형에 대한 Doxygen 주석을 제공합니다." alt="" coords="1058,255,1189,280"/>
+<area shape="poly" id="edge16_Node000011_Node000013" title=" " alt="" coords="961,204,1080,247,1078,252,959,209"/>
+<area shape="rect" id="Node000014" href="$ECharacterType_8h.html" title="ECharacterType 열거형에 대한 Doxygen 주석을 제공합니다." alt="" coords="1435,328,1569,353"/>
+<area shape="poly" id="edge17_Node000011_Node000014" title=" " alt="" coords="1001,197,1215,216,1321,232,1396,252,1422,265,1446,282,1484,316,1480,320,1442,286,1419,270,1394,257,1320,237,1214,222,1001,202"/>
+<area shape="rect" id="Node000015" href="$UStatSystem_8h.html" title="UStatSystem 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="1264,255,1383,280"/>
+<area shape="poly" id="edge18_Node000011_Node000015" title=" " alt="" coords="993,204,1251,250,1250,256,992,209"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="584,255,799,280"/>
+<area shape="poly" id="edge23_Node000011_Node000018" title=" " alt="" coords="891,209,744,253,742,248,890,204"/>
+<area shape="poly" id="edge19_Node000015_Node000003" title=" " alt="" coords="1264,280,1245,283,879,317,593,338,593,332,878,312,1244,277,1263,275"/>
+<area shape="poly" id="edge20_Node000015_Node000014" title=" " alt="" coords="1353,278,1461,320,1459,325,1351,283"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="1181,328,1410,353"/>
+<area shape="poly" id="edge21_Node000015_Node000016" title=" " alt="" coords="1321,281,1307,316,1302,314,1316,279"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="967,328,1157,353"/>
+<area shape="poly" id="edge22_Node000015_Node000017" title=" " alt="" coords="1282,283,1118,327,1117,322,1281,277"/>
+<area shape="poly" id="edge25_Node000019_Node000003" title=" " alt="" coords="411,205,504,316,500,319,407,209"/>
+<area shape="rect" id="Node000020" title=" " alt="" coords="259,255,407,280"/>
+<area shape="poly" id="edge26_Node000019_Node000020" title=" " alt="" coords="390,209,355,246,351,243,386,205"/>
+<area shape="rect" id="Node000021" title=" " alt="" coords="47,255,234,280"/>
+<area shape="poly" id="edge27_Node000019_Node000021" title=" " alt="" coords="358,209,196,254,195,248,357,204"/>
+</map>

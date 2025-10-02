@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['역할_20persona_0',['역할 persona',['../md_AgentRule_2commit__agent.html#autotoc_md27',1,'1. 역할 (Persona)'],['../md_AgentRule_2devlog__agent.html#autotoc_md78',1,'1. 역할 (Persona)']]]
+  ['역할_20persona_0',['역할 persona',['../md_AgentRule_2commit__agent.html#autotoc_md26',1,'1. 역할 (Persona)'],['../md_AgentRule_2devlog__agent.html#autotoc_md90',1,'1. 역할 (Persona)']]]
 ];

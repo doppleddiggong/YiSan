@@ -46,7 +46,7 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 1199;
+var viewWidth = 1317;
 var viewHeight = 258;
 var sectionId = 'dynsection-0';
 </script>
@@ -204,10 +204,10 @@ var sectionId = 'dynsection-0';
 <g id="Node000009" class="node">
 <title>Node9</title>
 <g id="a_Node000009"><a xlink:href="APlayerActor_8cpp.html" target="_top" xlink:title="APlayerActor 구현에 대한 Doxygen 주석을 제공합니다.">
-<polygon fill="white" stroke="#666666" points="1041.5,-41 896.5,-41 896.5,0 1041.5,0 1041.5,-41"/>
-<text text-anchor="start" x="904.5" y="-29" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
-<text text-anchor="start" x="904.5" y="-18" font-family="Malgun Gothic" font-size="10.00">/Character/Private/APlayer</text>
-<text text-anchor="middle" x="969" y="-7" font-family="Malgun Gothic" font-size="10.00">Actor.cpp</text>
+<polygon fill="white" stroke="#666666" points="916.5,-41 771.5,-41 771.5,0 916.5,0 916.5,-41"/>
+<text text-anchor="start" x="779.5" y="-29" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
+<text text-anchor="start" x="779.5" y="-18" font-family="Malgun Gothic" font-size="10.00">/Character/Private/APlayer</text>
+<text text-anchor="middle" x="844" y="-7" font-family="Malgun Gothic" font-size="10.00">Actor.cpp</text>
 </a>
 </g>
 </g>
@@ -215,18 +215,18 @@ var sectionId = 'dynsection-0';
 <g id="edge8_Node000008_Node000009" class="edge">
 <title>Node8&#45;&gt;Node9</title>
 <g id="a_edge8_Node000008_Node000009"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1025.04,-75.38C1013.89,-64.66 1000.43,-51.72 989.49,-41.2"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1022.69,-77.98 1032.33,-82.39 1027.55,-72.94 1022.69,-77.98"/>
+<path fill="none" stroke="#63b8ff" d="M999.2,-78.84C968.5,-67.5 928.6,-52.76 896.95,-41.06"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="998.22,-82.21 1008.82,-82.39 1000.65,-75.64 998.22,-82.21"/>
 </a>
 </g>
 </g>
 <!-- Node10 -->
 <g id="Node000010" class="node">
 <title>Node10</title>
-<g id="a_Node000010"><a xlink:href="UMainWdget_8cpp.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1190.5,-35.5 1059.5,-35.5 1059.5,-5.5 1190.5,-5.5 1190.5,-35.5"/>
-<text text-anchor="start" x="1067.5" y="-23.5" font-family="Malgun Gothic" font-size="10.00">Source/YiSan/UI/Private</text>
-<text text-anchor="middle" x="1125" y="-12.5" font-family="Malgun Gothic" font-size="10.00">/UMainWdget.cpp</text>
+<g id="a_Node000010"><a xlink:href="YiSanVoiceConsoleSubsystem_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1159,-35.5 935,-35.5 935,-5.5 1159,-5.5 1159,-35.5"/>
+<text text-anchor="start" x="943" y="-23.5" font-family="Malgun Gothic" font-size="10.00">Source/YiSan/Environment</text>
+<text text-anchor="middle" x="1047" y="-12.5" font-family="Malgun Gothic" font-size="10.00">/Private/YiSanVoiceConsoleSubsystem.cpp</text>
 </a>
 </g>
 </g>
@@ -234,8 +234,27 @@ var sectionId = 'dynsection-0';
 <g id="edge9_Node000008_Node000010" class="edge">
 <title>Node8&#45;&gt;Node10</title>
 <g id="a_edge9_Node000008_Node000010"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1069.03,-75.32C1082.27,-62.58 1098.76,-46.74 1110.39,-35.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1066.45,-72.94 1061.67,-82.39 1071.31,-77.98 1066.45,-72.94"/>
+<path fill="none" stroke="#63b8ff" d="M1047,-72.04C1047,-59.95 1047,-45.79 1047,-35.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1043.5,-72.39 1047,-82.39 1050.5,-72.39 1043.5,-72.39"/>
+</a>
+</g>
+</g>
+<!-- Node11 -->
+<g id="Node000011" class="node">
+<title>Node11</title>
+<g id="a_Node000011"><a xlink:href="UMainWdget_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1308.5,-35.5 1177.5,-35.5 1177.5,-5.5 1308.5,-5.5 1308.5,-35.5"/>
+<text text-anchor="start" x="1185.5" y="-23.5" font-family="Malgun Gothic" font-size="10.00">Source/YiSan/UI/Private</text>
+<text text-anchor="middle" x="1243" y="-12.5" font-family="Malgun Gothic" font-size="10.00">/UMainWdget.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node8&#45;&gt;Node11 -->
+<g id="edge10_Node000008_Node000011" class="edge">
+<title>Node8&#45;&gt;Node11</title>
+<g id="a_edge10_Node000008_Node000011"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1093.26,-78.8C1127.79,-65.59 1174.32,-47.78 1206.3,-35.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1091.95,-75.55 1083.87,-82.39 1094.46,-82.09 1091.95,-75.55"/>
 </a>
 </g>
 </g>

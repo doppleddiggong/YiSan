@@ -72,7 +72,8 @@ var hierarchy =
       [ "UHttpNetworkSystem", "classUHttpNetworkSystem.html", null ],
       [ "UObjectPoolManager", "classUObjectPoolManager.html", null ],
       [ "USequenceManager", "classUSequenceManager.html", null ],
-      [ "UWebSocketSystem", "classUWebSocketSystem.html", null ]
+      [ "UWebSocketSystem", "classUWebSocketSystem.html", null ],
+      [ "UYiSanVoiceConsoleSubsystem", "classUYiSanVoiceConsoleSubsystem.html", null ]
     ] ],
     [ "UInterface", null, [
       [ "UControllable", "classUControllable.html", null ],
