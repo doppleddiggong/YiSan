@@ -1,4 +1,8 @@
-﻿#include "UParabolaComponent.h"
+/**
+ * @file UParabolaComponent.cpp
+ * @brief UParabolaComponent 구현에 대한 Doxygen 주석을 제공합니다.
+ */
+#include "UParabolaComponent.h"
 #include "DrawDebugHelpers.h"
 #include "GameFramework/Actor.h"
 

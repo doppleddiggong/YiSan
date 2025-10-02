@@ -1,3 +1,7 @@
+/**
+ * @file UWebSocketSystem.cpp
+ * @brief UWebSocketSystem 구현에 대한 Doxygen 주석을 제공합니다.
+ */
 #include "UWebSocketSystem.h"
 #include "NetworkLog.h"
 #include "ENetworkLogType.h"

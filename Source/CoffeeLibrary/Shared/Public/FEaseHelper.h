@@ -1,4 +1,8 @@
-﻿#pragma once
+/**
+ * @file FEaseHelper.h
+ * @brief FEaseHelper 선언에 대한 Doxygen 주석을 제공합니다.
+ */
+#pragma once
 
 UENUM(BlueprintType)
 enum class EEaseType : uint8

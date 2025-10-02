@@ -1,3 +1,7 @@
+/**
+ * @file FLogWriter.cpp
+ * @brief FLogWriter 구현에 대한 Doxygen 주석을 제공합니다.
+ */
 #include "FLogWriter.h"
 
 #include "HAL/PlatformFileManager.h"

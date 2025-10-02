@@ -8,3 +8,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
+/**
+ * @file CoffeeLibrary.h
+ * @brief CoffeeLibrary 모듈의 기본 헤더입니다.
+ */

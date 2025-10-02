@@ -1,3 +1,7 @@
+/**
+ * @file UListActorComponent.cpp
+ * @brief 액터 수집을 돕는 에디터 헬퍼 컴포넌트 구현을 제공합니다.
+ */
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 

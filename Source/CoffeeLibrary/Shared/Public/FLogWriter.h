@@ -1,4 +1,7 @@
-
+/**
+ * @file FLogWriter.h
+ * @brief FLogWriter 선언에 대한 Doxygen 주석을 제공합니다.
+ */
 #pragma once
 
 #include "CoreMinimal.h"
