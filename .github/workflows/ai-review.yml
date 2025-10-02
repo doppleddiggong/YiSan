@@ -3,6 +3,11 @@ name: AI Code Review
 
 # 워크플로우 트리거 조건 설정
 on:
+  push:
+    paths:
+      - 'Source/**' # Source 디렉토리 내 모든 파일 변경 시 트리거
+
+
   # pull_request 이벤트가 발생했을 때 워크플로우 실행
   # types: [opened, synchronize]는 PR이 열리거나(opened) 새로운 커밋으로 동기화될 때(synchronize) 트리거됩니다.
   pull_request:
