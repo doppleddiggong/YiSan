@@ -21,8 +21,12 @@ public class YiSan : ModuleRules
 			"UMG",
 			"Slate",
 			"SlateCore",
+		});
+
+		PrivateDependencyModuleNames.AddRange(new string[]
+		{
 			"CoffeeLibrary",
-			"LatteLibrary",
+			"LatteLibrary"
 		});
 		
 		PublicIncludePaths.AddRange(new string[] {
