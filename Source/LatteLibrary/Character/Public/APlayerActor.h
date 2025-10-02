@@ -2,9 +2,8 @@
 
 /**
  * @file APlayerActor.h
- * @brief APlayerActor 선언에 대한 Doxygen 주석을 제공합니다.
+ * @brief Declares the player-controlled character actor.
  */
-
 
 #pragma once
 
@@ -15,10 +14,12 @@
 
 class USpringArmComponent;
 class UCameraComponent;
+class UVoiceSystem;
+class UVoiceCaptureComponent;
 
 /**
- * @brief 플레이어가 직접 조종하는 메인 캐릭터 액터입니다.
- * @details AGameCharacter를 상속받아 플레이어에 특화된 입력 처리 및 카메라 로직을 구현합니다.
+ * @brief Main character driven directly by the player.
+ * @details Extends AGameCharacter with player-specific input and camera handling.
  * @ingroup Character
  */
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Dopple))
@@ -31,6 +32,7 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 public:
 	virtual void Landed(const FHitResult& Hit) override;
@@ -38,6 +40,12 @@ public:
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Enemy")
 	TObjectPtr<class UCameraShakeSystem> CameraShakeSystem;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Voice", meta=(AllowPrivateAccess="true"))
+	TObjectPtr<UVoiceSystem> VoiceSystem;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Voice", meta=(AllowPrivateAccess="true"))
+	TObjectPtr<UVoiceCaptureComponent> VoiceCaptureComponent;
 
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta=(AllowPrivateAccess="true"))
@@ -63,4 +71,13 @@ public: // Control Interface
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void Cmd_Landing() override;
+
+	// UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
+	// void Cmd_VoicePushToTalkPressed();
+	//
+	// UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
+	// void Cmd_VoicePushToTalkReleased();
+
+	UFUNCTION(BlueprintCallable, Category="Command")
+	void Cmd_SpeakText(const FString& Text);
 };
