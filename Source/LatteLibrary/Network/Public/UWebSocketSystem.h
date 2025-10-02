@@ -1,3 +1,7 @@
+/**
+ * @file UWebSocketSystem.h
+ * @brief UWebSocketSystem 선언에 대한 Doxygen 주석을 제공합니다.
+ */
 #pragma once
 
 #include "CoreMinimal.h"

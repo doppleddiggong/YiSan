@@ -1,4 +1,8 @@
-﻿#pragma once
+/**
+ * @file GameEvent.h
+ * @brief GameEvent 네임스페이스에 대한 Doxygen 주석을 제공합니다.
+ */
+#pragma once
 
 namespace GameEvent
 {

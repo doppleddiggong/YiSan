@@ -1,5 +1,9 @@
-﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved.
+// Copyright (c) 2025 Doppleddiggong. All rights reserved.
 
+/**
+ * @file UCommonFunctionLibrary.cpp
+ * @brief UCommonFunctionLibrary 구현에 대한 Doxygen 주석을 제공합니다.
+ */
 #include "UCommonFunctionLibrary.h"
 
 #include "Kismet/GameplayStatics.h"

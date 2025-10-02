@@ -1,5 +1,9 @@
-﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
+/**
+ * @file FToolbar.cpp
+ * @brief Coffee Toolbar 모듈의 라이프사이클과 메뉴 등록 로직을 구현합니다.
+ */
 #include "FToolbar.h"
 #include "Common/FToolbarStyle.h"
 #include "Common/FToolbarCommands.h"
@@ -18,6 +22,7 @@
 
 #define LOCTEXT_NAMESPACE "FDoppleToolbar"
 
+/** @brief 툴바 기능들을 초기화하고 메뉴 확장을 등록합니다. */
 void FToolbar::StartupModule()
 {
 	FToolbarStyle::Initialize();
@@ -32,6 +37,7 @@ void FToolbar::StartupModule()
 	UToolMenus::RegisterStartupCallback(FSimpleMulticastDelegate::FDelegate::CreateRaw(this, &FToolbar::RegisterMenus));
 }
 
+/** @brief 툴바 콘텐츠를 등록 해제하고 기능 인스턴스를 해제합니다. */
 void FToolbar::ShutdownModule()
 {
 	UToolMenus::UnRegisterStartupCallback(this);
@@ -43,6 +49,7 @@ void FToolbar::ShutdownModule()
 	FToolbarCommands::Unregister();
 }
 
+/** @brief 레벨 에디터 툴바에 Coffee Toolbar 위젯을 추가합니다. */
 void FToolbar::RegisterMenus()
 {
 	FToolMenuOwnerScoped OwnerScoped(this);
