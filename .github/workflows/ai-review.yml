@@ -7,8 +7,6 @@ on:
   # types: [opened, synchronize]는 PR이 열리거나(opened) 새로운 커밋으로 동기화될 때(synchronize) 트리거됩니다.
   pull_request:
     types: [opened, synchronize]
-    branches:
-      - main      # 🎯 PR 대상 브랜치가 dopple일 때만 실행
     paths:
       - 'Source/**' # Source 디렉토리 내 모든 파일 변경 시 트리거
 
