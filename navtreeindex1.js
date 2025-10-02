@@ -1,6 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"UGameDataManager_8h.html":[16,0,2,1,3,1,3],
 "UGameDataManager_8h_source.html":[16,0,2,1,3,1,3],
 "UGameFunctionLibrary_8cpp.html":[16,0,2,1,1,0,0],
 "UGameFunctionLibrary_8cpp_source.html":[16,0,2,1,1,0,0],
@@ -249,5 +248,6 @@ var NAVTREEINDEX1 =
 "classAPlayerActor.html#afa5996b3ec43069697f1d9ec2d5ac220":[13,2,0,28],
 "classAPlayerActor.html#afc3ace6de521cfc26c3a4395215e7ce9":[13,2,0,1],
 "classAPlayerActor.html#afdc58f425b86bc8f21c701904266f35b":[13,2,0,19],
-"classAPlayerControl.html":[15,0,4]
+"classAPlayerControl.html":[15,0,4],
+"classAPlayerControl.html#a03c8d808ba39dcd6cb4bf6b1afb4be62":[15,0,4,5]
 };

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['빌드_20실행_0',['9) 빌드 / 실행',['../md_GEMINI.html#autotoc_md59',1,'']]],
-  ['빌드_20타깃_20설정_1',['6) 빌드/타깃 설정',['../md_GEMINI.html#autotoc_md56',1,'']]]
+  ['빌드_20실행_0',['9) 빌드 / 실행',['../md_GEMINI.html#autotoc_md53',1,'']]],
+  ['빌드_20타깃_20설정_1',['6) 빌드/타깃 설정',['../md_GEMINI.html#autotoc_md47',1,'']]]
 ];

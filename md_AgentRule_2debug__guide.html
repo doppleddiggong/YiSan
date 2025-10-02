@@ -35,7 +35,7 @@ window.MathJax = {
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Title.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Icon.png"/></td>
   <td id="projectalign">
    <div id="projectname">YiSan Project Documentation<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -105,21 +105,21 @@ $(document).ready(function(){initNavTree('md_AgentRule_2debug__guide.html',''); 
   <div class="headertitle"><div class="title">Debug Agent Guide</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md80"></a> </p>
-<h1><a class="anchor" id="autotoc_md86"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md62"></a> </p>
+<h1><a class="anchor" id="autotoc_md63"></a>
 1. 목적 (Purpose)</h1>
 <ul>
 <li>코딩 버그 발생 시 체계적인 디버깅 프로세스를 지원하여 문제 해결 효율성 증대.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md87"></a>
+<h1><a class="anchor" id="autotoc_md64"></a>
 2. 디버깅 전략 (Debugging Strategy)</h1>
-<h2><a class="anchor" id="autotoc_md88"></a>
+<h2><a class="anchor" id="autotoc_md65"></a>
 2.1. 문제 이해 (Understanding the Problem)</h2>
 <ul>
 <li>사용자로부터 문제 재현 조건, 예상 동작, 실제 동작을 명확히 확인한다.</li>
 <li>관련 코드 영역 및 시스템(예: 입력, 애니메이션, 상태 머신)을 파악한다.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md89"></a>
+<h2><a class="anchor" id="autotoc_md66"></a>
 2.2. 디버그 포인트 식별 (Identifying Debug Points)</h2>
 <ul>
 <li>문제 발생 가능성이 있는 함수 진입/종료 지점.</li>
@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2debug__guide.html',''); 
 <li>상태(State) 변경 지점.</li>
 <li>이벤트 발생/처리 지점.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md90"></a>
+<h2><a class="anchor" id="autotoc_md67"></a>
 2.3. 디버그 코드 삽입 (Inserting Debug Code)</h2>
 <ul>
 <li><code>PRINTLOG(TEXT("... "));</code> 매크로를 사용하여 콘솔에 로그를 출력한다.</li>
@@ -154,33 +154,33 @@ $(document).ready(function(){initNavTree('md_AgentRule_2debug__guide.html',''); 
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
 </div><!-- fragment --></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md91"></a>
+<h2><a class="anchor" id="autotoc_md70"></a>
 2.4. 로그 분석 (Analyzing Logs)</h2>
 <ul>
 <li>사용자로부터 제공된 로그를 시간 순서대로 분석하여 예상 동작과 실제 동작의 차이를 파악한다.</li>
 <li><code>PRINTLOG</code> 메시지를 통해 코드 실행 흐름을 추적하고, 어떤 조건이 예상과 다르게 동작하는지 식별한다.</li>
 <li>특히, <code>false</code>로 반환되어야 할 조건이 <code>true</code>로 반환되거나, 특정 함수가 호출되지 않는 경우 등을 집중적으로 확인한다.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md92"></a>
+<h2><a class="anchor" id="autotoc_md72"></a>
 2.5. 수정 방안 제안 (Proposing Solutions)</h2>
 <ul>
 <li>로그 분석 결과를 바탕으로 문제의 근본 원인을 파악한다.</li>
 <li>문제 해결을 위한 구체적인 코드 수정 방안을 제시한다.</li>
 <li>수정 방안은 기존 코드 컨벤션 및 프로젝트 구조를 따른다.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md93"></a>
+<h2><a class="anchor" id="autotoc_md73"></a>
 2.6. 디버그 코드 정리 (Cleaning Up Debug Code)</h2>
 <ul>
 <li>문제 해결 및 수정 적용 후, 삽입했던 모든 <code>PRINTLOG</code> 및 임시 디버그 코드를 제거한다.</li>
 <li><code>Core/Macro.h</code>와 같은 디버그 관련 헤더 파일 include도 제거한다.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md94"></a>
+<h1><a class="anchor" id="autotoc_md75"></a>
 3. 반복적인 문제 처리 (Handling Recurring Issues)</h1>
 <ul>
 <li>동일하거나 유사한 버그가 반복적으로 발생하는 경우, 해당 문제에 대한 디버그 가이드를 업데이트하거나 새로운 가이드를 추가하여 에이전트의 학습을 강화한다.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md96"></a>
+<h1><a class="anchor" id="autotoc_md77"></a>
 4. 로그 파일 자동 분석 (규칙 추가)</h1>
 <ul>
 <li><b>상황</b>: 디버깅이 필요하거나 사용자가 로그 확인을 요청할 경우.</li>
@@ -197,7 +197,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2debug__guide.html',''); 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">생성시간 : 목 10월 2 2025 02:43:36, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 10월 2 2025 03:00:46, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
