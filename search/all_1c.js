@@ -38,8 +38,8 @@ var searchData=
   ['stopsound2d_35',['StopSound2D',['../classUGameSoundManager.html#a1bc8389aa356e01fcdc563e01813ed02',1,'UGameSoundManager']]],
   ['stoptargetmontage_36',['StopTargetMontage',['../classAGameCharacter.html#ae9ad3a4bcc9e43741eeacebf6c398a73',1,'AGameCharacter']]],
   ['strategy_37',['2. 디버깅 전략 (Debugging Strategy)',['../md_AgentRule_2debug__guide.html#autotoc_md57',1,'']]],
-  ['style_20guide_38',['6. Doxygen 주석 스타일 가이드 (Doxygen Comment Style Guide)',['../md_AgentRule_2conventions__agent.html#autotoc_md85',1,'']]],
+  ['style_20guide_38',['6. Doxygen 주석 스타일 가이드 (Doxygen Comment Style Guide)',['../md_AgentRule_2conventions__agent.html#autotoc_md88',1,'']]],
   ['suggested_20focus_20권장_20가이드_20요약_39',['Suggested Focus / 권장 가이드(요약)',['../md_Documents_2DevLog_2__Last30Summary.html#autotoc_md199',1,'']]],
-  ['summary_20요약_40',['summary 요약',['../md_Documents_2DevLog_22025-09-30.html#autotoc_md145',1,'Summary / 요약'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md163',1,'Summary / 요약'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md181',1,'Summary / 요약']]],
-  ['systems_41',['systems',['../index.html#autotoc_md117',1,'핵심 시스템 (Core Systems)'],['../group__Interaction.html',1,'Interaction Systems']]]
+  ['summary_20요약_40',['summary 요약',['../md_Documents_2DevLog_22025-09-30.html#autotoc_md145',1,'Summary / 요약'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md164',1,'Summary / 요약'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md173',1,'Summary / 요약']]],
+  ['systems_41',['systems',['../index.html#autotoc_md141',1,'핵심 시스템 (Core Systems)'],['../group__Interaction.html',1,'Interaction Systems']]]
 ];

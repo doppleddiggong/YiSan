@@ -127,14 +127,14 @@ $(document).ready(function(){initNavTree('UMainWdget_8h_source.html',''); initRe
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    GENERATED_BODY()</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classUMainWdget.html#a35bc84d89cf4db7bedebf807bf7ede19">   21</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUMainWdget.html#a35bc84d89cf4db7bedebf807bf7ede19">NativeConstruct</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> NativeConstruct() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    UFUNCTION()</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classUMainWdget.html#a777e49f8b3d22624c65dc94b0a03bf3d">   24</a></span>    void HandleTextCommitted(const FText&amp; Text, ETextCommit::Type CommitMethod);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">void</span> HandleTextCommitted(<span class="keyword">const</span> FText&amp; Text, ETextCommit::Type CommitMethod);</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>public:</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    UFUNCTION(BlueprintImplementableEvent, Category=&quot;Voice&quot;)</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classUMainWdget.html#ac9457ed185e9d21e149283cdc24790de">   28</a></span>    <span class="keywordtype">void</span> OnVoiceTranscriptReceived(const FString&amp; CorrelationId, const FString&amp; TranscriptText, <span class="keywordtype">float</span> Confidence);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    UFUNCTION(BlueprintImplementableEvent, Category=<span class="stringliteral">&quot;Voice&quot;</span>)</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classUMainWdget.html#ac9457ed185e9d21e149283cdc24790de">   28</a></span>    void OnVoiceTranscriptReceived(const FString&amp; CorrelationId, const FString&amp; TranscriptText, <span class="keywordtype">float</span> Confidence);</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    UFUNCTION(BlueprintImplementableEvent, Category=&quot;Voice&quot;)</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classUMainWdget.html#ac9d95207f5f069b5f986f0a1dfbbfc39">   31</a></span>    <span class="keywordtype">void</span> OnVoiceSynthesisReady(const FString&amp; CorrelationId, USoundWave* SynthesizedSound);</div>
@@ -145,14 +145,13 @@ $(document).ready(function(){initNavTree('UMainWdget_8h_source.html',''); initRe
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>};</div>
 </div>
 <div class="ttc" id="aclassUMainWdget_html"><div class="ttname"><a href="classUMainWdget.html">UMainWdget</a></div><div class="ttdoc">Simple root widget that can host voice controls and status text.</div><div class="ttdef"><b>Definition</b> <a href="UMainWdget_8h_source.html#l00016">UMainWdget.h:17</a></div></div>
-<div class="ttc" id="aclassUMainWdget_html_a35bc84d89cf4db7bedebf807bf7ede19"><div class="ttname"><a href="classUMainWdget.html#a35bc84d89cf4db7bedebf807bf7ede19">UMainWdget::NativeConstruct</a></div><div class="ttdeci">virtual void NativeConstruct() override</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_9a481a88fca7fb2428f2795f507e855b.html">YiSan</a></li><li class="navelem"><a class="el" href="dir_082c221e7eea3847d25ff2604012feae.html">UI</a></li><li class="navelem"><a class="el" href="dir_79bdea5ad0e8114ad0e13f8b69f90228.html">Public</a></li><li class="navelem"><a class="el" href="UMainWdget_8h.html">UMainWdget.h</a></li>
-    <li class="footer">생성시간 : 목 10월 2 2025 06:50:23, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 10월 2 2025 07:06:25, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

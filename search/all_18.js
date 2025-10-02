@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['observability_20logging_0',['관찰 로그/텔레메트리 정책 (Observability &amp; Logging)',['../md_GEMINI.html#autotoc_md10',1,'']]],
+  ['observability_20logging_0',['관찰 로그/텔레메트리 정책 (Observability &amp; Logging)',['../md_GEMINI.html#autotoc_md30',1,'']]],
   ['onaltitudedown_1',['OnAltitudeDown',['../classAPlayerControl.html#af8425558108277d10a994f61be0455b7',1,'APlayerControl']]],
   ['onaltitudereleased_2',['OnAltitudeReleased',['../classAPlayerControl.html#afb5a7979f52fbc43b228e42d8b32300e',1,'APlayerControl']]],
   ['onaltitudeup_3',['OnAltitudeUp',['../classAPlayerControl.html#a03c8d808ba39dcd6cb4bf6b1afb4be62',1,'APlayerControl']]],

@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"classAPlayerActor.html#afa5996b3ec43069697f1d9ec2d5ac220":[13,2,0,28],
+"classAPlayerActor.html#afc3ace6de521cfc26c3a4395215e7ce9":[13,2,0,1],
 "classAPlayerActor.html#afdc58f425b86bc8f21c701904266f35b":[13,2,0,19],
 "classAPlayerControl.html":[15,0,4],
 "classAPlayerControl.html#a03c8d808ba39dcd6cb4bf6b1afb4be62":[15,0,4,5],
@@ -173,8 +175,8 @@ var NAVTREEINDEX2 =
 "classUHttpNetworkSystem.html#ad0532c935c7c2cde0c4cd6e8a42f0c07":[15,0,42,1],
 "classUHttpNetworkSystem.html#ad917e50a0d45ca6be25421192238aab3":[15,0,42,0],
 "classUMainWdget.html":[15,0,43],
-"classUMainWdget.html#a35bc84d89cf4db7bedebf807bf7ede19":[15,0,43,1],
 "classUMainWdget.html#a47575b06ac1fe7271c59edeafa0fa0f1":[15,0,43,4],
+"classUMainWdget.html#a5bfd5c5fa14d794c909c56e8a21a7e7e":[15,0,43,1],
 "classUMainWdget.html#a777e49f8b3d22624c65dc94b0a03bf3d":[15,0,43,0],
 "classUMainWdget.html#ac9457ed185e9d21e149283cdc24790de":[15,0,43,3],
 "classUMainWdget.html#ac9d95207f5f069b5f986f0a1dfbbfc39":[15,0,43,2],
@@ -228,6 +230,7 @@ var NAVTREEINDEX2 =
 "classUWebSocketSystem.html#acdc8c5a1c2cecee29544b844649eb52e":[15,0,50,11],
 "classes.html":[15,1],
 "dir_03408e5f9ddef377a4f13f94001e2629.html":[16,0,2,2,0,0],
+"dir_0512921187fc95a41b812c47620b2d43.html":[16,0,2,2,1,0],
 "dir_082c221e7eea3847d25ff2604012feae.html":[16,0,2,2,1],
 "dir_19ea1ac9b5b338e28fa11a2df8a2b715.html":[16,0,2,1,1,1],
 "dir_2270f6753238979635db772f09123181.html":[16,0,2,0],
@@ -244,10 +247,7 @@ var NAVTREEINDEX2 =
 "dir_5341a4c9e00afc4de44fb078fa4a92fa.html":[16,0,2,0,2,0],
 "dir_5e0ce1c334f2ad18913db01d203ec301.html":[16,0,2,1,4,0],
 "dir_74389ed8173ad57b461b9d623a1f3867.html":[16,0,2],
-"dir_79bdea5ad0e8114ad0e13f8b69f90228.html":[16,0,2,2,1,0],
+"dir_79bdea5ad0e8114ad0e13f8b69f90228.html":[16,0,2,2,1,1],
 "dir_7b9937ea1401d072157412173f027791.html":[16,0,2,0,1,0],
-"dir_860edcf92ecb7bfc151245653fe6958b.html":[16,0,2,0,0,1],
-"dir_91f3f4f018939627454e0787c2010dec.html":[16,0,2,0,2],
-"dir_9a481a88fca7fb2428f2795f507e855b.html":[16,0,2,2],
-"dir_a2886c9b9adb6fb89ba923e7f78b86f6.html":[16,0,2,2,0,1]
+"dir_860edcf92ecb7bfc151245653fe6958b.html":[16,0,2,0,0,1]
 };
