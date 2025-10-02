@@ -104,18 +104,18 @@ $(document).ready(function(){initNavTree('md_AgentRule_2doxygen__setup__guide.ht
   <div class="headertitle"><div class="title">Doxygen 문서화 및 GitHub Pages 배포 설정 가이드 (Project YiSan)</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md108"></a> </p>
-<h1><a class="anchor" id="autotoc_md109"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md120"></a> </p>
+<h1><a class="anchor" id="autotoc_md121"></a>
 1. 개요</h1>
 <p>이 가이드는 Unreal Engine C++ 프로젝트(<code>Project YiSan</code>)에서 Doxygen을 사용하여 코드 문서를 생성하고, "Awesome Doxygen Theme"을 적용하며, GitHub Actions를 통해 자동으로 GitHub Pages에 배포하는 방법을 설명합니다. 실제 설정 과정에서 발생할 수 있는 문제점과 해결책을 포함하여, 처음부터 끝까지 성공적인 문서화 시스템을 구축하는 데 도움을 드립니다.</p>
-<h1><a class="anchor" id="autotoc_md110"></a>
+<h1><a class="anchor" id="autotoc_md122"></a>
 2. 전제 조건</h1>
 <ul>
 <li><b>GitHub 저장소:</b> <code>Project YiSan</code> 코드가 푸시되어 있는 GitHub 저장소.</li>
 <li><b>Doxygen:</b> 로컬에서 Doxygen을 테스트하려면 설치가 필요합니다. (예: <code>sudo apt-get install doxygen</code>)</li>
 <li><b>Graphviz:</b> 클래스 다이어그램 등 그래프 생성을 위해 필요합니다. (예: <code>sudo apt-get install graphviz</code>)</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md111"></a>
+<h1><a class="anchor" id="autotoc_md123"></a>
 3. Doxyfile 생성 및 설정</h1>
 <p><code>Doxyfile</code>은 Doxygen이 문서를 생성하는 방법을 정의하는 설정 파일입니다. 프로젝트 루트에 <code>Doxyfile</code>을 생성합니다.</p>
 <div class="fragment"><div class="line"><span class="preprocessor"># Doxyfile for YiSan Project Documentation</span></div>
@@ -297,7 +297,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2doxygen__setup__guide.ht
 <div class="line">CALLER_GRAPH           = NO</div>
 <div class="line">GRAPHICAL_HIERARCHY    = YES</div>
 <div class="line">DIRECTORY_GRAPH        = YES</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md112"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md124"></a>
 4. GitHub Actions 워크플로우 (&lt;tt&gt;doxygen.yml&lt;/tt&gt;) 설정</h1>
 <p><code>.github/workflows/doxygen.yml</code> 파일을 생성하여 Doxygen 문서 생성 및 GitHub Pages 배포를 자동화합니다.</p>
 <div class="fragment"><div class="line">name: Generate Doxygen Documentation</div>
@@ -337,9 +337,9 @@ $(document).ready(function(){initNavTree('md_AgentRule_2doxygen__setup__guide.ht
 <div class="line">        github_token: ${{ secrets.GITHUB_TOKEN }}</div>
 <div class="line">        publish_dir: ./docs/html</div>
 <div class="line">        destination_dir: .</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md113"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md125"></a>
 5. GitHub 저장소 설정</h1>
-<h2><a class="anchor" id="autotoc_md114"></a>
+<h2><a class="anchor" id="autotoc_md126"></a>
 5.1. GitHub Actions 권한 설정</h2>
 <p><code>github-actions[bot]</code>이 <code>gh-pages</code> 브랜치에 푸시할 수 있도록 권한을 부여해야 합니다.</p>
 <ol type="1">
@@ -350,7 +350,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2doxygen__setup__guide.ht
 <li>**"Read and write permissions" (읽기 및 쓰기 권한)** 옵션을 선택합니다.</li>
 <li>**"Save" (저장)** 버튼을 클릭합니다.</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md115"></a>
+<h2><a class="anchor" id="autotoc_md127"></a>
 5.2. GitHub Pages 소스 설정</h2>
 <p>GitHub Pages가 <code>gh-pages</code> 브랜치에서 문서를 제공하도록 설정합니다.</p>
 <ol type="1">
@@ -362,28 +362,28 @@ $(document).ready(function(){initNavTree('md_AgentRule_2doxygen__setup__guide.ht
 <li>폴더는 **<code>/ (root)</code>**로 그대로 둡니다.</li>
 <li>**"Save" (저장)** 버튼을 클릭합니다.</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md116"></a>
+<h1><a class="anchor" id="autotoc_md128"></a>
 6. 배포 확인 및 문제 해결 (Troubleshooting)</h1>
 <p>설정 과정에서 발생할 수 있는 일반적인 문제와 해결책입니다.</p>
-<h2><a class="anchor" id="autotoc_md117"></a>
+<h2><a class="anchor" id="autotoc_md129"></a>
 6.1. 문제 1: &lt;tt&gt;wget&lt;/tt&gt; 404 Not Found 오류</h2>
 <ul>
 <li><b>원인:</b> <code>awesome-doxygen-css</code> 테마 파일의 GitHub Raw URL이 변경되었을 수 있습니다.</li>
 <li><b>해결:</b> <code>.github/workflows/doxygen.yml</code> 파일 내의 <code>wget</code> URL을 최신 URL로 업데이트합니다. (현재는 <code><a href="https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/main/doxygen-awesome.css">https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/main/doxygen-awesome.css</a></code>가 올바릅니다.)</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md118"></a>
+<h2><a class="anchor" id="autotoc_md130"></a>
 6.2. 문제 2: "Deploy to GitHub Pages" 단계가 실행되지 않음</h2>
 <ul>
 <li><b>원인:</b> <code>doxygen.yml</code> 워크플로우의 <code>Deploy to GitHub Pages</code> 단계에 &lsquo;if: ${{ github.ref == 'refs/heads/main&rsquo; }}<code>조건이 있어,</code>main<code>브랜치가 아닌 다른 브랜치에서 푸시가 발생하면 해당 단계가 건너뛰어집니다.</code></li>
 <li><code> **해결:** 변경사항을</code>main<code>브랜치로 푸시하거나,</code>main` 브랜치로 병합합니다.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md119"></a>
+<h2><a class="anchor" id="autotoc_md131"></a>
 6.3. 문제 3: &lt;tt&gt;Permission denied&lt;/tt&gt; 오류 (403 Forbidden)</h2>
 <ul>
 <li><b>원인:</b> <code>github-actions[bot]</code>에 저장소에 변경사항을 푸시할 권한이 부족합니다.</li>
 <li><b>해결:</b> GitHub 저장소 설정 -&gt; Actions -&gt; General -&gt; Workflow permissions에서 "Read and write permissions" 옵션을 선택하고 저장합니다.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md120"></a>
+<h2><a class="anchor" id="autotoc_md132"></a>
 6.4. 문제 4: GitHub Pages 404 오류 (사이트 주소는 맞는데 내용이 안 보임)</h2>
 <ul>
 <li><b>원인 1: GitHub Pages "Source" 설정이 "GitHub Actions"로 되어 있음.</b><ul>
@@ -399,20 +399,20 @@ $(document).ready(function(){initNavTree('md_AgentRule_2doxygen__setup__guide.ht
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md121"></a>
+<h1><a class="anchor" id="autotoc_md133"></a>
 7. 결론</h1>
 <p>모든 설정이 완료되고 워크플로우가 성공적으로 실행되면, 다음 주소에서 Doxygen 문서를 확인할 수 있습니다: <code><a href="https://">https://</a>[사용자이름].github.io/[저장소이름]/</code></p>
-<h1><a class="anchor" id="autotoc_md122"></a>
+<h1><a class="anchor" id="autotoc_md134"></a>
 8. Doxygen 주석 가이드라인 (Doxygen Commenting Guidelines)</h1>
 <p>Doxygen을 통해 일관되고 유용한 문서를 생성하기 위해 다음 주석 가이드라인을 준수합니다.</p>
-<h2><a class="anchor" id="autotoc_md124"></a>
+<h2><a class="anchor" id="autotoc_md135"></a>
 8.1. 일반 원칙</h2>
 <ul>
 <li>모든 공개(Public) 클래스, 구조체, 열거형, 함수, 멤버 변수에는 Doxygen 주석을 추가합니다.</li>
 <li>주석은 코드의 목적, 사용법, 중요한 세부 사항을 명확하게 설명해야 합니다.</li>
 <li>간결하면서도 정보가 풍부하도록 작성합니다.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md125"></a>
+<h2><a class="anchor" id="autotoc_md136"></a>
 8.2. 주석 스타일 및 위치</h2>
 <ul>
 <li><b>블록 주석 (Block Comments):</b> <code>/** ... */</code> 스타일을 사용하며, 여러 줄에 걸친 설명이나 Doxygen 명령어를 포함할 때 사용합니다.<ul>
@@ -421,7 +421,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2doxygen__setup__guide.ht
 </li>
 <li><b>한 줄 주석 (Brief Comments):</b> <code>///</code> 스타일을 사용하며, 짧은 설명이나 멤버 변수 옆에 인라인으로 사용할 때 유용합니다.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md126"></a>
+<h2><a class="anchor" id="autotoc_md137"></a>
 8.3. 주요 Doxygen 명령어</h2>
 <ul>
 <li><code>@brief &lt;설명&gt;</code>: 요소에 대한 간결한 한 줄 요약입니다. 모든 주요 요소(클래스, 함수 등)에 포함되어야 합니다.</li>
@@ -434,9 +434,9 @@ $(document).ready(function(){initNavTree('md_AgentRule_2doxygen__setup__guide.ht
 <li><code>@todo &lt;내용&gt;</code>: 향후 구현 또는 개선이 필요한 사항을 기록합니다.</li>
 <li><code>@file &lt;파일명&gt;</code>: 헤더 파일의 최상단에 파일의 목적을 설명할 때 사용합니다. (예: <code>/** @file <a class="el" href="APlayerActor_8h.html" title="APlayerActor 선언에 대한 Doxygen 주석을 제공합니다.">APlayerActor.h</a> */</code>)</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md127"></a>
+<h2><a class="anchor" id="autotoc_md139"></a>
 8.4. 예시</h2>
-<h3><a class="anchor" id="autotoc_md128"></a>
+<h3><a class="anchor" id="autotoc_md140"></a>
 클래스 주석 예시</h3>
 <div class="fragment"><div class="line"> </div>
 <div class="line">UCLASS()</div>
@@ -445,15 +445,15 @@ $(document).ready(function(){initNavTree('md_AgentRule_2doxygen__setup__guide.ht
 <div class="line">    <span class="comment">// ...</span></div>
 <div class="line">};</div>
 <div class="ttc" id="aclassAPlayerActor_html"><div class="ttname"><a href="classAPlayerActor.html">APlayerActor</a></div><div class="ttdoc">플레이어가 직접 조종하는 메인 캐릭터 액터입니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00025">APlayerActor.h:26</a></div></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md129"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md141"></a>
 함수 주석 예시</h3>
 <div class="fragment"><div class="line"> </div>
 <div class="line"><span class="keywordtype">float</span> GetCurrentHealth(<span class="keywordtype">bool</span> bIncludeTemporaryHealth) <span class="keyword">const</span>;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md130"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md142"></a>
 멤버 변수 주석 예시</h3>
 <div class="fragment"><div class="line">UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = <span class="stringliteral">&quot;Stats&quot;</span>)</div>
 <div class="line">float MaxHealth; </div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md131"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md143"></a>
 8.5. 파일 분할 고려사항</h2>
 <ul>
 <li><b>단일 책임 원칙 (Single Responsibility Principle):</b> 하나의 헤더 파일은 하나의 주요 클래스 또는 밀접하게 관련된 소수의 엔티티만을 포함하도록 노력합니다.</li>
@@ -465,7 +465,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2doxygen__setup__guide.ht
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">생성시간 : 목 10월 2 2025 04:39:10, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 10월 2 2025 06:50:23, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -43,6 +43,7 @@ var annotated_dup =
     [ "UGameSoundManager", "classUGameSoundManager.html", "classUGameSoundManager" ],
     [ "UGameVFXManager", "classUGameVFXManager.html", "classUGameVFXManager" ],
     [ "UHttpNetworkSystem", "classUHttpNetworkSystem.html", "classUHttpNetworkSystem" ],
+    [ "UMainWdget", "classUMainWdget.html", "classUMainWdget" ],
     [ "UObjectPoolManager", "classUObjectPoolManager.html", "classUObjectPoolManager" ],
     [ "USequenceActivatable", "classUSequenceActivatable.html", null ],
     [ "USequenceManager", "classUSequenceManager.html", "classUSequenceManager" ],

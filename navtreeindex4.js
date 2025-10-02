@@ -1,5 +1,15 @@
 var NAVTREEINDEX4 =
 {
+"md_GEMINI.html#autotoc_md46":[1,7,3,3],
+"md_GEMINI.html#autotoc_md47":[1,7,4],
+"md_GEMINI.html#autotoc_md48":[1,7,5],
+"md_GEMINI.html#autotoc_md49":[1,7,6],
+"md_GEMINI.html#autotoc_md50":[1,7,7],
+"md_GEMINI.html#autotoc_md51":[1,7,8],
+"md_GEMINI.html#autotoc_md53":[1,8],
+"md_GEMINI.html#autotoc_md6":[1,1],
+"md_GEMINI.html#autotoc_md8":[1,2],
+"namespaceGameColor.html":[14,0,0],
 "namespaceGameColor.html#a347e21752e1aecee7916040063b5915a":[14,0,0,1],
 "namespaceGameColor.html#a85944ad816eb9238756d535533eac5d0":[14,0,0,3],
 "namespaceGameColor.html#aba495ad0b2bb0e48100c5ad01c51fd01":[14,0,0,0],

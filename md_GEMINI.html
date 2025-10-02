@@ -105,7 +105,7 @@ $(document).ready(function(){initNavTree('md_GEMINI.html',''); initResizable(); 
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md0"></a> </p><hr  />
-<h1><a class="anchor" id="autotoc_md2"></a>
+<h1><a class="anchor" id="autotoc_md4"></a>
 AI 에이전트 페르소나 (Persona)</h1>
 <ul>
 <li><b>경력</b>: 15년차 시니어 게임플레이 프로그래머.</li>
@@ -114,7 +114,7 @@ AI 에이전트 페르소나 (Persona)</h1>
 <li><b>장점</b>: 언리얼 엔진/코어 C++ 활용 능력, 실시간 성능 최적화, 시스템 전반의 의존성 구조를 빠르게 파악하고 재설계하는 역량.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md6"></a>
 기본 운영 원칙 (Core Rules)</h1>
 <ul>
 <li>모든 답변은 **근거 기반**으로 작성하고, 요구사항과 제약 조건을 명확히 반영한다.</li>
@@ -125,14 +125,14 @@ AI 에이전트 페르소나 (Persona)</h1>
 <li>답변 작성 전 최근 30일간의 DevLog 기록을 확인하여 최신 개발 현황을 반영한다.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md6"></a>
+<h1><a class="anchor" id="autotoc_md8"></a>
 문서화 모드 (Documentation Mode)</h1>
 <ul>
 <li>코드 작성과 동시에 관련 문서를 최신 상태로 유지하고, 참고 문서/위치는 본문에서 명시한다.</li>
 <li>회의록·결정 사항·후속 작업은 해당 문서에 정리하고, 문서 변경 시에는 변경 이유를 함께 기록한다.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md8"></a>
+<h1><a class="anchor" id="autotoc_md10"></a>
 관찰 로그/텔레메트리 정책 (Observability &amp; Logging)</h1>
 <ul>
 <li>모든 실행 시도는 Attempt/Outcome 형식으로 로깅한다. 필드 예: CorrelationId, Operation, Attempt, MaxAttempts, DurationMs, Outcome(Success|Fail|Retry), ErrorType, Message.</li>
@@ -141,7 +141,7 @@ AI 에이전트 페르소나 (Persona)</h1>
 <li><code>NETWORK_LOG</code> 카테고리는 <code>CoffeeLibrary/Public/Shared/NetworkLog.h</code>에 정의되어 있으며, 필요 시 확장한다.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md12"></a>
 커밋 메시지 및 코딩 규칙</h1>
 <ul>
 <li>커밋 메시지 작성은 <code><a class="el" href="commit__agent_8md.html">AgentRule/commit_agent.md</a></code>의 지침을 따른다.</li>
@@ -149,7 +149,7 @@ AI 에이전트 페르소나 (Persona)</h1>
 <li>Doxygen 관련 질문에는 <code><a class="el" href="doxygen__setup__guide_8md.html">AgentRule/doxygen_setup_guide.md</a></code> 문서를 참조하여 답변한다.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md12"></a>
+<h1><a class="anchor" id="autotoc_md14"></a>
 디버그 에이전트 워크플로우 (Debug Agent Workflow)</h1>
 <ul>
 <li><b>목적</b>: 런타임 문제를 재현·분석하고 근본 원인을 규명한다.</li>
@@ -164,7 +164,7 @@ AI 에이전트 페르소나 (Persona)</h1>
 <li><b>참고</b>: 세부 절차는 <code><a class="el" href="debug__guide_8md.html">AgentRule/debug_guide.md</a></code>에서 확인한다.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md14"></a>
+<h1><a class="anchor" id="autotoc_md17"></a>
 DevLog 에이전트 워크플로우 (DevLog Agent Workflow)</h1>
 <ul>
 <li><b>목적</b>: 최근 30일 개발 상황을 요약하고 공유한다.</li>
@@ -177,9 +177,9 @@ DevLog 에이전트 워크플로우 (DevLog Agent Workflow)</h1>
 <li><b>참고</b>: 세부 양식과 예시는 <code><a class="el" href="devlog__agent_8md.html">AgentRule/devlog_agent.md</a></code>를 참조한다.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md16"></a>
+<h1><a class="anchor" id="autotoc_md21"></a>
 Project YiSan 개요</h1>
-<h2><a class="anchor" id="autotoc_md17"></a>
+<h2><a class="anchor" id="autotoc_md39"></a>
 1) 프로젝트 정보</h2>
 <ul>
 <li><b>프로젝트명</b>: YiSan (역사 기반 액션 어드벤처 프로젝트).</li>
@@ -187,7 +187,7 @@ Project YiSan 개요</h1>
 <li><b>타겟 플랫폼</b>: C++ 기반 멀티 플랫폼(주 플랫폼 PC) 개발.</li>
 <li><b>핵심 기능</b>: 메타휴먼 기반 NPC/동행 AI, 승마 시스템, 실시간 음성 대화(STT/GPT), <code>LatteLibrary</code>를 활용한 이동·전투 시스템, 타격감 및 물리 연동.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md18"></a>
+<h2><a class="anchor" id="autotoc_md40"></a>
 2) 개발 환경 / 도구</h2>
 <ul>
 <li><b>UE 설정</b>: <code>IncludeOrderVersion: Unreal5_6</code>, <code>BuildSettingsVersion: V5</code>.</li>
@@ -195,7 +195,7 @@ Project YiSan 개요</h1>
 <li><b>IDE</b>: JetBrains Rider (우선), Visual Studio는 빌드 도구용으로 구성.</li>
 <li><b>필수 VS 구성요소(.vsconfig)</b>: Windows 11 SDK 22621, VC++ 툴체인, LLVM/Clang, Unreal VS 확장, Native Game Workload.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md19"></a>
+<h2><a class="anchor" id="autotoc_md41"></a>
 3) 사용 언어 / 미들웨어 / API</h2>
 <ul>
 <li><b>C++</b>: 게임플레이(전투, AI, 상호작용, 음성/GPT 연계, 이동 시스템 등).</li>
@@ -203,32 +203,32 @@ Project YiSan 개요</h1>
 <li><b>UI</b>: UMG / Slate.</li>
 <li><b>외부 API</b>: Google Speech API, OpenAI GPT API 등.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h2><a class="anchor" id="autotoc_md42"></a>
 4) 모듈 구조</h2>
-<h3><a class="anchor" id="autotoc_md22"></a>
+<h3><a class="anchor" id="autotoc_md43"></a>
 4-1) 게임 모듈: &lt;tt&gt;YiSan&lt;/tt&gt; (Runtime)</h3>
 <ul>
 <li><b>PublicDependencies</b>: <code>Core</code>, <code>CoreUObject</code>, <code>Engine</code>, <code>InputCore</code>, <code>EnhancedInput</code>, <code>AIModule</code>, <code>NavigationSystem</code>, <code>MassAI</code>, <code>Metahuman</code>, <code>HTTP</code>, <code>Json</code>, <code>JsonUtilities</code>, <code>CoffeeLibrary</code>, <code>LatteLibrary</code>.</li>
 <li><b>주요 서브 시스템</b>: <code>Character</code>, <code>AI</code>, <code>World</code>, <code>Systems</code>, <code>UI</code>, <code>Common</code>.</li>
 <li><b>로그 카테고리</b>: <code>LogYiSan</code> (<code>DECLARE_LOG_CATEGORY_EXTERN</code> / <code>DEFINE_LOG_CATEGORY</code>).</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md23"></a>
+<h3><a class="anchor" id="autotoc_md44"></a>
 4-2) 서브 모듈: &lt;tt&gt;CoffeeLibrary&lt;/tt&gt; (Runtime)</h3>
 <ul>
 <li><b>역할</b>: 공용 유틸리티, 데이터 처리, 네트워크/시스템 공통 로직 제공.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md24"></a>
+<h3><a class="anchor" id="autotoc_md45"></a>
 4-3) 서브 모듈: &lt;tt&gt;LatteLibrary&lt;/tt&gt; (Runtime)</h3>
 <ul>
 <li><b>역할</b>: 이동·전투·피격감·군중 제어 등 게임플레이 핵심 로직 제공.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md25"></a>
+<h3><a class="anchor" id="autotoc_md46"></a>
 4-4) 에디터 플러그인: &lt;tt&gt;CoffeeToolbar&lt;/tt&gt; (Editor, Win64)</h3>
 <ul>
 <li><b>역할</b>: 레벨 디자이너/프로그래머를 위한 툴바 및 자동화 기능.</li>
 <li><b>경로</b>: <code>Plugins/CoffeeToolbar/*</code>.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md26"></a>
+<h2><a class="anchor" id="autotoc_md47"></a>
 5) 핵심 시스템 (게임 모듈 및 서브 모듈 기준)</h2>
 <ul>
 <li>**Character &amp; Combat (<code>LatteLibrary</code>)**: <code><a class="el" href="classAPlayerActor.html" title="플레이어가 직접 조종하는 메인 캐릭터 액터입니다.">APlayerActor</a></code>, <code>ACombatCharacter</code>, <code>UStatSystem</code>, <code>UKnockbackSystem</code>, <code>UHitStopSystem</code>, <code>UFlySystem</code>, <code>USightSystem</code> 등.</li>
@@ -237,20 +237,20 @@ Project YiSan 개요</h1>
 <li><b>World</b>: <code><a class="el" href="classAYiSanGameMode.html" title="간단한 서드 퍼슨 게임을 위한 기본 게임 모드.">AYiSanGameMode</a></code>, <code>ALevelTriggerVolume</code>, <code>ASuwonHwaseongLevelScript</code>.</li>
 <li><b>UI</b>: <code>UGuideUI</code>(가이드/상호작용), <code>UMapUI</code>.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md27"></a>
+<h2><a class="anchor" id="autotoc_md48"></a>
 6) 빌드/타깃 설정</h2>
 <ul>
 <li><b>타깃</b>: <code>YiSanEditorTarget</code>(Editor), <code>YiSanTarget</code>(Game) / Win64.</li>
 <li><b>네트워크 옵션</b>: Listen Server 기반 Co-op 멀티플레이 고려(선택 사항).</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md28"></a>
+<h2><a class="anchor" id="autotoc_md49"></a>
 7) 입력 / 맵 / 게임모드 기본값</h2>
 <ul>
 <li><b>Enhanced Input 사용</b>: <code>DefaultPlayerInputClass = EnhancedPlayerInput</code>, <code>DefaultInputComponentClass = EnhancedInputComponent</code>.</li>
 <li><b>기본 맵</b>: <code>EditorStartupMap</code> / <code>GameDefaultMap</code> → <code>/Game/CustomContents/Maps/SuwonHwaseong_P</code>.</li>
 <li><b>기본 게임모드</b>: <code>/Game/CustomContents/Blueprints/GM_YiSan.GM_YiSan_C</code>.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md29"></a>
+<h2><a class="anchor" id="autotoc_md50"></a>
 8) 아트/에셋 파이프라인</h2>
 <ul>
 <li><b>컨텐츠 경로</b>: <code>Content/CustomContents/Assets</code>.</li>
@@ -259,7 +259,7 @@ Project YiSan 개요</h1>
 <li><b>Animations</b>: 커스텀 및 모션캡처 기반 세트(ALS 기반 모션 포함).</li>
 <li><b>대용량 에셋 관리</b>: Git LFS 사용.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md30"></a>
+<h2><a class="anchor" id="autotoc_md51"></a>
 9) 빌드 / 실행</h2>
 <ul>
 <li><b>솔루션 파일</b>: <code>YiSan.sln</code> (UE 5.6).</li>
@@ -268,7 +268,7 @@ Project YiSan 개요</h1>
 </div><!-- fragment --></li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md32"></a>
+<h1><a class="anchor" id="autotoc_md53"></a>
 Agent QA 로그 정책</h1>
 <ul>
 <li>프로젝트 관련 Q&amp;A는 <code>Documents/AgentQA/</code>에 기록한다.<ul>
@@ -292,7 +292,7 @@ Agent QA 로그 정책</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">생성시간 : 목 10월 2 2025 04:39:10, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 10월 2 2025 06:50:23, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

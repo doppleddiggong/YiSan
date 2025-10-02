@@ -13,11 +13,12 @@ var searchData=
   ['ugamesoundmanager_10',['UGameSoundManager',['../classUGameSoundManager.html',1,'']]],
   ['ugamevfxmanager_11',['UGameVFXManager',['../classUGameVFXManager.html',1,'']]],
   ['uhttpnetworksystem_12',['UHttpNetworkSystem',['../classUHttpNetworkSystem.html',1,'']]],
-  ['uobjectpoolmanager_13',['UObjectPoolManager',['../classUObjectPoolManager.html',1,'']]],
-  ['usequenceactivatable_14',['USequenceActivatable',['../classUSequenceActivatable.html',1,'']]],
-  ['usequencemanager_15',['USequenceManager',['../classUSequenceManager.html',1,'']]],
-  ['usounddata_16',['USoundData',['../classUSoundData.html',1,'']]],
-  ['utweenaniminstance_17',['UTweenAnimInstance',['../classUTweenAnimInstance.html',1,'']]],
-  ['uvfxdataasset_18',['UVFXDataAsset',['../classUVFXDataAsset.html',1,'']]],
-  ['uwebsocketsystem_19',['UWebSocketSystem',['../classUWebSocketSystem.html',1,'']]]
+  ['umainwdget_13',['UMainWdget',['../classUMainWdget.html',1,'']]],
+  ['uobjectpoolmanager_14',['UObjectPoolManager',['../classUObjectPoolManager.html',1,'']]],
+  ['usequenceactivatable_15',['USequenceActivatable',['../classUSequenceActivatable.html',1,'']]],
+  ['usequencemanager_16',['USequenceManager',['../classUSequenceManager.html',1,'']]],
+  ['usounddata_17',['USoundData',['../classUSoundData.html',1,'']]],
+  ['utweenaniminstance_18',['UTweenAnimInstance',['../classUTweenAnimInstance.html',1,'']]],
+  ['uvfxdataasset_19',['UVFXDataAsset',['../classUVFXDataAsset.html',1,'']]],
+  ['uwebsocketsystem_20',['UWebSocketSystem',['../classUWebSocketSystem.html',1,'']]]
 ];

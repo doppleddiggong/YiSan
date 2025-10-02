@@ -77,5 +77,8 @@ var hierarchy =
     [ "UInterface", null, [
       [ "UControllable", "classUControllable.html", null ],
       [ "USequenceActivatable", "classUSequenceActivatable.html", null ]
+    ] ],
+    [ "UUserWidget", null, [
+      [ "UMainWdget", "classUMainWdget.html", null ]
     ] ]
 ];
