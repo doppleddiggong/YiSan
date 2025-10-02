@@ -74,3 +74,15 @@ Plugins/**/Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 /Tests
+Content/HwaseongHaenggung/Textures/T_DryGrass_BC.uasset
+Content/HwaseongHaenggung/Textures/T_DryGrass_N.uasset
+Content/HwaseongHaenggung/Textures/T_DryGrass_ORD.uasset
+Content/HwaseongHaenggung/Textures/T_KoreanTile_3_AO.uasset
+Content/HwaseongHaenggung/Textures/T_KoreanTile_3_BC.uasset
+Content/HwaseongHaenggung/Textures/T_KoreanTile_3_D.uasset
+Content/HwaseongHaenggung/Textures/T_KoreanTile_3_N.uasset
+Content/HwaseongHaenggung/Textures/T_KoreanTile_3_R.uasset
+Content/HwaseongHaenggung/Textures/T_Sand_BC.uasset
+Content/HwaseongHaenggung/Textures/T_Sand_N.uasset
+Content/HwaseongHaenggung/Textures/T_Sand_ORD.uasset
+Content/HwaseongHaenggung/Textures/T_WhiteSand_BC.uasset
