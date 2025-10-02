@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['포맷_0',['포맷',['../md_AgentRule_2commit__agent.html#autotoc_md82',1,'4. 입력 포맷'],['../md_AgentRule_2commit__agent.html#autotoc_md83',1,'5. 출력 포맷']]],
-  ['포인트_20식별_20identifying_20debug_20points_1',['2.2. 디버그 포인트 식별 (Identifying Debug Points)',['../md_AgentRule_2debug__guide.html#autotoc_md52',1,'']]]
+  ['프로젝트_20소개_0',['프로젝트 소개',['../index.html#autotoc_md118',1,'']]],
+  ['프로젝트_20정보_1',['1) 프로젝트 정보',['../md_GEMINI.html#autotoc_md32',1,'']]]
 ];

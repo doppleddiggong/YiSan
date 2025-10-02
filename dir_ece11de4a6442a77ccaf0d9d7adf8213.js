@@ -7,5 +7,6 @@ var dir_ece11de4a6442a77ccaf0d9d7adf8213 =
     [ "UGameSoundManager.h", "UGameSoundManager_8h.html", "UGameSoundManager_8h" ],
     [ "UGameVFXManager.h", "UGameVFXManager_8h.html", "UGameVFXManager_8h" ],
     [ "UObjectPoolManager.h", "UObjectPoolManager_8h.html", "UObjectPoolManager_8h" ],
-    [ "USequenceManager.h", "USequenceManager_8h.html", "USequenceManager_8h" ]
+    [ "USequenceManager.h", "USequenceManager_8h.html", "USequenceManager_8h" ],
+    [ "UYiSanVoiceConsoleSubsystem.h", "UYiSanVoiceConsoleSubsystem_8h.html", "UYiSanVoiceConsoleSubsystem_8h" ]
 ];

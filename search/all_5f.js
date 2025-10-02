@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['스코프_20결정_20규칙_0',['3. 스코프 결정 규칙',['../md_AgentRule_2commit__agent.html#autotoc_md34',1,'']]],
-  ['스타일_20가이드_20doxygen_20comment_20style_20guide_1',['6. Doxygen 주석 스타일 가이드 (Doxygen Comment Style Guide)',['../md_AgentRule_2conventions__agent.html#autotoc_md78',1,'']]],
-  ['스타일_20및_20위치_2',['8.2. 주석 스타일 및 위치',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md154',1,'']]]
+  ['시스템_20게임_20모듈_20및_20서브_20모듈_20기준_0',['5) 핵심 시스템 (게임 모듈 및 서브 모듈 기준)',['../md_GEMINI.html#autotoc_md40',1,'']]],
+  ['시스템_20core_20systems_1',['핵심 시스템 (Core Systems)',['../index.html#autotoc_md122',1,'']]],
+  ['시작_2',['빠른 시작',['../index.html#autotoc_md124',1,'']]],
+  ['시_3',['5. 커밋 메시지 작성 요청 시',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md15',1,'']]],
+  ['시_20상세_20정보_20제공_4',['3.5. 문제 발생 시 상세 정보 제공',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md13',1,'']]],
+  ['시_20한글_20본문_20누락_5',['8.1. 문제: &lt;tt&gt;git commit -m&lt;/tt&gt; 사용 시 한글 본문 누락',['../md_AgentRule_2commit__agent.html#autotoc_md56',1,'']]]
 ];

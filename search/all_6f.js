@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['우선순위_20가이드_0',['다음 우선순위(가이드)',['../md_AgentRule_2devlog__agent.html#autotoc_md110',1,'']]]
+  ['운영_20원칙_20core_20rules_0',['기본 운영 원칙 (Core Rules)',['../md_GEMINI.html#autotoc_md19',1,'']]]
 ];

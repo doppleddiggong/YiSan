@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['알려진_20문제_20및_20해결책_0',['8. 알려진 문제 및 해결책',['../md_AgentRule_2commit__agent.html#autotoc_md86',1,'']]]
+  ['언어_20미들웨어_20api_0',['3) 사용 언어 / 미들웨어 / API',['../md_GEMINI.html#autotoc_md34',1,'']]]
 ];

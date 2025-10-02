@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['samplerate_0',['samplerate',['../structUGoogleSpeechService_1_1FPendingTextToSpeechRequest.html#a925584488d1bb6c0d5fdb043bcca9191',1,'UGoogleSpeechService::FPendingTextToSpeechRequest::SampleRate'],['../structUGoogleSpeechService_1_1FPendingSpeechToTextRequest.html#a0f24f3dc359dc37e1345e7e6cf2c0fd4',1,'UGoogleSpeechService::FPendingSpeechToTextRequest::SampleRate']]],
+  ['samplerate_0',['samplerate',['../structFPendingTextToSpeechRequest.html#a317b635701568d6753c8af222f980d41',1,'FPendingTextToSpeechRequest::SampleRate'],['../structFPendingSpeechToTextRequest.html#a612b5e2d9e67d3df23d387d599fc5dee',1,'FPendingSpeechToTextRequest::SampleRate']]],
   ['scale_1',['Scale',['../structFVFXData.html#a4639a82bb96c85b413933695345392ec',1,'FVFXData']]],
   ['seqindex_2',['seqindex',['../structFDelayHandle.html#a8867e58391e5eb6a8b7567cecba6881b',1,'FDelayHandle::SeqIndex'],['../structUDelayTaskManager_1_1FEntry.html#af13e696e01602848c93ddecf7452eed5',1,'UDelayTaskManager::FEntry::SeqIndex']]],
   ['settings_3',['Settings',['../classUGoogleSpeechService.html#a4ef692aecd11bac3edb41b773bebcd67',1,'UGoogleSpeechService']]],

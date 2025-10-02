@@ -1,5 +1,5 @@
 <map id="Source/LatteLibrary/Character/Public/APlayerActor.h" name="Source/LatteLibrary/Character/Public/APlayerActor.h">
-<area shape="rect" id="Node000001" title="APlayerActor 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="867,5,1097,45"/>
+<area shape="rect" id="Node000001" title="Declares the player&#45;controlled character actor." alt="" coords="867,5,1097,45"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="850,240,967,265"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="978,47,962,94,919,228,914,226,957,92,973,45"/>
 <area shape="rect" id="Node000003" href="$AGameCharacter_8h.html" title="LatteLibrary 전반에서 사용하는 기반 캐릭터 클래스를 선언합니다." alt="" coords="431,93,575,119"/>

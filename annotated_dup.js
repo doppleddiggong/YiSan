@@ -22,6 +22,8 @@ var annotated_dup =
     [ "FPadFeedbackData", "structFPadFeedbackData.html", "structFPadFeedbackData" ],
     [ "FParabolaBallisticTrack", "structFParabolaBallisticTrack.html", "structFParabolaBallisticTrack" ],
     [ "FParabolaGeometricTrack", "structFParabolaGeometricTrack.html", "structFParabolaGeometricTrack" ],
+    [ "FPendingSpeechToTextRequest", "structFPendingSpeechToTextRequest.html", "structFPendingSpeechToTextRequest" ],
+    [ "FPendingTextToSpeechRequest", "structFPendingTextToSpeechRequest.html", "structFPendingTextToSpeechRequest" ],
     [ "FRequestHelpChat", "structFRequestHelpChat.html", "structFRequestHelpChat" ],
     [ "FResponseHealth", "structFResponseHealth.html", "structFResponseHealth" ],
     [ "FResponseHelpChat", "structFResponseHelpChat.html", "structFResponseHelpChat" ],

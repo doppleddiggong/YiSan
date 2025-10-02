@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>YiSan Project Documentation: Source/YiSan/Environment/Public/UYiSanVoiceConsoleSubsystem.h 소스 파일</title>
+<title>YiSan Project Documentation: Source/LatteLibrary/Manager/Public/UYiSanVoiceConsoleSubsystem.h 소스 파일</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -116,36 +116,35 @@ $(document).ready(function(){initNavTree('UYiSanVoiceConsoleSubsystem_8h_source.
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Subsystems/GameInstanceSubsystem.h&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;Templates/UniquePtr.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;UYiSanVoiceConsoleSubsystem.generated.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">struct </span>FAutoConsoleCommandWithWorldAndArgs;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>UCLASS()</div>
-<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classUYiSanVoiceConsoleSubsystem.html">   16</a></span>class <a class="code hl_class" href="classUYiSanVoiceConsoleSubsystem.html">UYiSanVoiceConsoleSubsystem</a> : public UGameInstanceSubsystem</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Initialize(FSubsystemCollectionBase&amp; Collection) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Deinitialize() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">void</span> HandleSpeakCommand(<span class="keyword">const</span> TArray&lt;FString&gt;&amp; Args, UWorld* World);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classUYiSanVoiceConsoleSubsystem.html#ac245a7570058d5b440befd519841a3cd">   28</a></span>    TUniquePtr&lt;FAutoConsoleCommandWithWorldAndArgs&gt; <a class="code hl_variable" href="classUYiSanVoiceConsoleSubsystem.html#ac245a7570058d5b440befd519841a3cd">SpeakCommand</a>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>};</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;HAL/IConsoleManager.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;UYiSanVoiceConsoleSubsystem.generated.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>UCLASS()</div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classUYiSanVoiceConsoleSubsystem.html">   15</a></span>class <a class="code hl_class" href="classUYiSanVoiceConsoleSubsystem.html">UYiSanVoiceConsoleSubsystem</a> : public UGameInstanceSubsystem</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Initialize(FSubsystemCollectionBase&amp; Collection) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Deinitialize() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">void</span> HandleSpeakCommand(<span class="keyword">const</span> TArray&lt;FString&gt;&amp; Args, UWorld* World);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classUYiSanVoiceConsoleSubsystem.html#ac245a7570058d5b440befd519841a3cd">   27</a></span>    TUniquePtr&lt;FAutoConsoleCommandWithWorldAndArgs&gt; <a class="code hl_variable" href="classUYiSanVoiceConsoleSubsystem.html#ac245a7570058d5b440befd519841a3cd">SpeakCommand</a>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>};</div>
 </div>
-<div class="ttc" id="aclassUYiSanVoiceConsoleSubsystem_html"><div class="ttname"><a href="classUYiSanVoiceConsoleSubsystem.html">UYiSanVoiceConsoleSubsystem</a></div><div class="ttdoc">Registers developer console commands for voice features (STT/TTS).</div><div class="ttdef"><b>Definition</b> <a href="UYiSanVoiceConsoleSubsystem_8h_source.html#l00016">UYiSanVoiceConsoleSubsystem.h:17</a></div></div>
-<div class="ttc" id="aclassUYiSanVoiceConsoleSubsystem_html_ac245a7570058d5b440befd519841a3cd"><div class="ttname"><a href="classUYiSanVoiceConsoleSubsystem.html#ac245a7570058d5b440befd519841a3cd">UYiSanVoiceConsoleSubsystem::SpeakCommand</a></div><div class="ttdeci">TUniquePtr&lt; FAutoConsoleCommandWithWorldAndArgs &gt; SpeakCommand</div><div class="ttdef"><b>Definition</b> <a href="UYiSanVoiceConsoleSubsystem_8h_source.html#l00028">UYiSanVoiceConsoleSubsystem.h:28</a></div></div>
+<div class="ttc" id="aclassUYiSanVoiceConsoleSubsystem_html"><div class="ttname"><a href="classUYiSanVoiceConsoleSubsystem.html">UYiSanVoiceConsoleSubsystem</a></div><div class="ttdoc">Registers developer console commands for voice features (STT/TTS).</div><div class="ttdef"><b>Definition</b> <a href="UYiSanVoiceConsoleSubsystem_8h_source.html#l00015">UYiSanVoiceConsoleSubsystem.h:16</a></div></div>
+<div class="ttc" id="aclassUYiSanVoiceConsoleSubsystem_html_ac245a7570058d5b440befd519841a3cd"><div class="ttname"><a href="classUYiSanVoiceConsoleSubsystem.html#ac245a7570058d5b440befd519841a3cd">UYiSanVoiceConsoleSubsystem::SpeakCommand</a></div><div class="ttdeci">TUniquePtr&lt; FAutoConsoleCommandWithWorldAndArgs &gt; SpeakCommand</div><div class="ttdef"><b>Definition</b> <a href="UYiSanVoiceConsoleSubsystem_8h_source.html#l00027">UYiSanVoiceConsoleSubsystem.h:27</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_9a481a88fca7fb2428f2795f507e855b.html">YiSan</a></li><li class="navelem"><a class="el" href="dir_33401b21ee94a88a4c3dcbc47e107729.html">Environment</a></li><li class="navelem"><a class="el" href="dir_a2886c9b9adb6fb89ba923e7f78b86f6.html">Public</a></li><li class="navelem"><a class="el" href="UYiSanVoiceConsoleSubsystem_8h.html">UYiSanVoiceConsoleSubsystem.h</a></li>
-    <li class="footer">생성시간 : 목 10월 2 2025 07:52:16, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_399370037b6f5ff6b0840148d18ec8d9.html">LatteLibrary</a></li><li class="navelem"><a class="el" href="dir_3895d977c26767e128462eaa7d00849f.html">Manager</a></li><li class="navelem"><a class="el" href="dir_ece11de4a6442a77ccaf0d9d7adf8213.html">Public</a></li><li class="navelem"><a class="el" href="UYiSanVoiceConsoleSubsystem_8h.html">UYiSanVoiceConsoleSubsystem.h</a></li>
+    <li class="footer">생성시간 : 목 10월 2 2025 09:56:47, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

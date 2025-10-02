@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['타깃_20설정_0',['6) 빌드/타깃 설정',['../md_GEMINI.html#autotoc_md41',1,'']]]
+  ['탐색_20가이드_0',['문서 탐색 가이드',['../index.html#autotoc_md120',1,'']]]
 ];

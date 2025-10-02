@@ -9,7 +9,7 @@
 <area shape="poly" id="edge5_Node000003_Node000002" title=" " alt="" coords="338,162,338,196,333,196,333,162"/>
 <area shape="rect" id="Node000004" href="$AGameCharacter_8cpp.html" title="AGameCharacter 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="471,203,751,243"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="421,150,560,201,559,206,419,155"/>
-<area shape="rect" id="Node000005" href="$APlayerActor_8cpp.html" title="APlayerActor 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="5,196,199,251"/>
+<area shape="rect" id="Node000005" href="$APlayerActor_8cpp.html" title="Provides Doxygen annotations for APlayerActor implementation." alt="" coords="5,196,199,251"/>
 <area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="263,156,164,198,162,193,261,151"/>
 <area shape="poly" id="edge9_Node000006_Node000002" title=" " alt="" coords="770,145,460,199,448,201,447,196,459,193,769,140"/>
 <area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="837,148,667,206,665,201,835,143"/>

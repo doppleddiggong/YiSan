@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['방법_0',['3. 효율적인 요청 방법',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md4',1,'']]],
-  ['방식_20개선_20commit_20message_20generation_20improvement_1',['9. 커밋 메시지 생성 방식 개선 (Commit Message Generation Improvement)',['../md_AgentRule_2commit__agent.html#autotoc_md88',1,'']]],
-  ['방안_20제안_20proposing_20solutions_2',['2.5. 수정 방안 제안 (Proposing Solutions)',['../md_AgentRule_2debug__guide.html#autotoc_md55',1,'']]]
+  ['배포_20설정_20가이드_20project_20yisan_0',['Doxygen 문서화 및 GitHub Pages 배포 설정 가이드 (Project YiSan)',['../md_AgentRule_2doxygen__setup__guide.html',1,'']]],
+  ['배포_20확인_20및_20문제_20해결_20troubleshooting_1',['6. 배포 확인 및 문제 해결 (Troubleshooting)',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md132',1,'']]]
 ];

@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['커밋_20기반_20작업_20로그_0',['커밋 기반 작업 로그',['../md_AgentRule_2devlog__agent.html#autotoc_md97',1,'커밋 기반 작업 로그'],['../md_Documents_2DevLog_22025-09-30.html#autotoc_md126',1,'커밋 기반 작업 로그'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md171',1,'커밋 기반 작업 로그'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md193',1,'커밋 기반 작업 로그']]],
-  ['커밋_20기반_20todo_1',['커밋 기반 todo',['../md_Documents_2DevLog_22025-09-30.html#autotoc_md136',1,'커밋 기반 TODO'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md179',1,'커밋 기반 TODO'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md201',1,'커밋 기반 TODO']]],
-  ['커밋_20메시지_20및_20코딩_20규칙_2',['커밋 메시지 및 코딩 규칙',['../md_GEMINI.html#autotoc_md22',1,'']]],
-  ['커밋_20메시지_20생성_20방식_20개선_20commit_20message_20generation_20improvement_3',['9. 커밋 메시지 생성 방식 개선 (Commit Message Generation Improvement)',['../md_AgentRule_2commit__agent.html#autotoc_md88',1,'']]],
-  ['커밋_20메시지_20작성_20요청_20시_4',['5. 커밋 메시지 작성 요청 시',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md11',1,'']]],
-  ['커밋_20본문_20추출_5',['TODO(커밋 본문 추출)',['../md_AgentRule_2devlog__agent.html#autotoc_md101',1,'']]],
-  ['커밋_20상세_6',['커밋 상세',['../md_Documents_2DevLog_22025-09-30.html#autotoc_md139',1,'커밋 상세'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md181',1,'커밋 상세'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md203',1,'커밋 상세']]]
+  ['컨벤션_20가이드_20project_20yisan_0',['Unreal Engine C++ 코딩 컨벤션 가이드 (Project YiSan)',['../md_AgentRule_2conventions__agent.html',1,'']]],
+  ['컨벤션_20참조_1',['3.3. 기존 코드/컨벤션 참조',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md11',1,'']]],
+  ['컨벤션_20network_20module_20conventions_2',['5. 네트워크 모듈 컨벤션 (Network Module Conventions)',['../md_AgentRule_2conventions__agent.html#autotoc_md87',1,'']]]
 ];

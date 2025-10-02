@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['범위_0',['3. 동작 조건 및 범위',['../md_AgentRule_2devlog__agent.html#autotoc_md92',1,'']]]
+  ['변수_20주석_20예시_0',['멤버 변수 주석 예시',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md146',1,'']]],
+  ['변수_20variables_1',['1.2. 변수 (Variables)',['../md_AgentRule_2conventions__agent.html#autotoc_md65',1,'']]]
 ];

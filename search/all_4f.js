@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['보고서_2030_20day_20briefing_20형식_0',['5. 30일 요약 보고서 (30-Day Briefing) 형식',['../md_AgentRule_2devlog__agent.html#autotoc_md104',1,'']]],
-  ['보임_1',['6.4. 문제 4: GitHub Pages 404 오류 (사이트 주소는 맞는데 내용이 안 보임)',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md150',1,'']]]
+  ['본문_20누락_0',['8.1. 문제: &lt;tt&gt;git commit -m&lt;/tt&gt; 사용 시 한글 본문 누락',['../md_AgentRule_2commit__agent.html#autotoc_md56',1,'']]],
+  ['본문_20추출_1',['TODO(커밋 본문 추출)',['../md_AgentRule_2devlog__agent.html#autotoc_md105',1,'']]]
 ];

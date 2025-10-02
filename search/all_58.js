@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['생성_20및_20설정_0',['3. Doxyfile 생성 및 설정',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md137',1,'']]],
-  ['생성_20방식_20개선_20commit_20message_20generation_20improvement_1',['9. 커밋 메시지 생성 방식 개선 (Commit Message Generation Improvement)',['../md_AgentRule_2commit__agent.html#autotoc_md88',1,'']]]
+  ['서브_20모듈_20기준_0',['5) 핵심 시스템 (게임 모듈 및 서브 모듈 기준)',['../md_GEMINI.html#autotoc_md40',1,'']]],
+  ['서브_20모듈_3a_20tt_20coffeelibrary_20tt_20runtime_1',['4-2) 서브 모듈: &lt;tt&gt;CoffeeLibrary&lt;/tt&gt; (Runtime)',['../md_GEMINI.html#autotoc_md37',1,'']]],
+  ['서브_20모듈_3a_20tt_20lattelibrary_20tt_20runtime_2',['4-3) 서브 모듈: &lt;tt&gt;LatteLibrary&lt;/tt&gt; (Runtime)',['../md_GEMINI.html#autotoc_md38',1,'']]]
 ];

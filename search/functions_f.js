@@ -12,10 +12,11 @@ var searchData=
   ['sethold_9',['SetHold',['../classAGameCharacter.html#a7d468e48887a5e529c0df4c9df472dc0',1,'AGameCharacter']]],
   ['setupcharacterfromtype_10',['SetupCharacterFromType',['../classAGameCharacter.html#ac1b16c52de76390cf656959518d1d795',1,'AGameCharacter']]],
   ['setupinputcomponent_11',['SetupInputComponent',['../classAPlayerControl.html#abede09a391c47bdafb3b34a507c80e9b',1,'APlayerControl']]],
-  ['showvfx_12',['ShowVFX',['../classUGameVFXManager.html#a1911c371a4f46d408add1283d701aafd',1,'UGameVFXManager']]],
-  ['solvev0forarc_13',['SolveV0ForArc',['../structFParabolaBallisticTrack.html#ad24e4c8b8e959f1f789fbdda881dbf88',1,'FParabolaBallisticTrack']]],
-  ['solvev0forprojectile_14',['SolveV0ForProjectile',['../structFMathHelper.html#af785a923a1e6a2f0601649e37cb28cf3',1,'FMathHelper']]],
-  ['splitvelocity_15',['SplitVelocity',['../structFParabolaBallisticTrack.html#a0eff2e2a1c56f5ee30dfc2ff46e15c4b',1,'FParabolaBallisticTrack']]],
-  ['stopsound2d_16',['StopSound2D',['../classUGameSoundManager.html#a1bc8389aa356e01fcdc563e01813ed02',1,'UGameSoundManager']]],
-  ['stoptargetmontage_17',['StopTargetMontage',['../classAGameCharacter.html#ae9ad3a4bcc9e43741eeacebf6c398a73',1,'AGameCharacter']]]
+  ['setupplayerinputcomponent_12',['SetupPlayerInputComponent',['../classAPlayerActor.html#a7ece1238a467e17ef715ddb35931a275',1,'APlayerActor']]],
+  ['showvfx_13',['ShowVFX',['../classUGameVFXManager.html#a1911c371a4f46d408add1283d701aafd',1,'UGameVFXManager']]],
+  ['solvev0forarc_14',['SolveV0ForArc',['../structFParabolaBallisticTrack.html#ad24e4c8b8e959f1f789fbdda881dbf88',1,'FParabolaBallisticTrack']]],
+  ['solvev0forprojectile_15',['SolveV0ForProjectile',['../structFMathHelper.html#af785a923a1e6a2f0601649e37cb28cf3',1,'FMathHelper']]],
+  ['splitvelocity_16',['SplitVelocity',['../structFParabolaBallisticTrack.html#a0eff2e2a1c56f5ee30dfc2ff46e15c4b',1,'FParabolaBallisticTrack']]],
+  ['stopsound2d_17',['StopSound2D',['../classUGameSoundManager.html#a1bc8389aa356e01fcdc563e01813ed02',1,'UGameSoundManager']]],
+  ['stoptargetmontage_18',['StopTargetMontage',['../classAGameCharacter.html#ae9ad3a4bcc9e43741eeacebf6c398a73',1,'AGameCharacter']]]
 ];

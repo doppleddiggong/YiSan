@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['fspeechtotextmap_0',['FSpeechToTextMap',['../classUGoogleSpeechService.html#a82b81795d501ec2690dd1685efcd8e8d',1,'UGoogleSpeechService']]],
-  ['ftexttospeechmap_1',['FTextToSpeechMap',['../classUGoogleSpeechService.html#ae896392e7b4b2c7a93eb7c3ac28833f6',1,'UGoogleSpeechService']]]
+  ['fspeechtotextmap_0',['FSpeechToTextMap',['../classUGoogleSpeechService.html#a2aa0a00375ce7e1fc66da40bd1b3a65b',1,'UGoogleSpeechService']]],
+  ['ftexttospeechmap_1',['FTextToSpeechMap',['../classUGoogleSpeechService.html#a3639d624511f75e521cdd9a5cd33b113',1,'UGoogleSpeechService']]]
 ];

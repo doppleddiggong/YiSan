@@ -38,7 +38,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classAPlayerActor.html" target="_top" xlink:title="플레이어가 직접 조종하는 메인 캐릭터 액터입니다.">
+<g id="a_Node000002"><a xlink:href="classAPlayerActor.html" target="_top" xlink:title="Main character driven directly by the player.">
 <polygon fill="white" stroke="#666666" points="323,-37 243,-37 243,-18 323,-18 323,-37"/>
 <text text-anchor="middle" x="283" y="-25" font-family="Malgun Gothic" font-size="10.00">APlayerActor</text>
 </a>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['태그_20및_20예시_0',['6.2. 필수 태그 및 예시',['../md_AgentRule_2conventions__agent.html#autotoc_md80',1,'']]]
+  ['텔레메트리_20정책_20observability_20logging_0',['관찰 로그/텔레메트리 정책 (Observability &amp; Logging)',['../md_GEMINI.html#autotoc_md23',1,'']]]
 ];

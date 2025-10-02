@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['필수_20태그_20및_20예시_0',['6.2. 필수 태그 및 예시',['../md_AgentRule_2conventions__agent.html#autotoc_md80',1,'']]],
-  ['필요_1',['필요',['../md_Documents_2DevLog_22025-09-30.html#autotoc_md133',1,'주의 필요'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md177',1,'주의 필요'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md199',1,'주의 필요']]]
+  ['하이라이트_0',['하이라이트',['../md_AgentRule_2devlog__agent.html#autotoc_md100',1,'하이라이트'],['../md_Documents_2DevLog_22025-09-30.html#autotoc_md151',1,'Highlights / 하이라이트'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md169',1,'Highlights / 하이라이트'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md188',1,'Highlights / 하이라이트']]]
 ];

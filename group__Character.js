@@ -11,6 +11,7 @@ var group__Character =
       [ "Cmd_Landing", "classAPlayerActor.html#a5ca6e213fdff74bd18044f39ee262930", null ],
       [ "Cmd_Look", "classAPlayerActor.html#a21a14eaae23da75b919b848aa87cb535", null ],
       [ "Cmd_Move", "classAPlayerActor.html#a0db8efea43cc28a694e55d72014642e1", null ],
+      [ "Cmd_SpeakText", "classAPlayerActor.html#a51c2af18fe73e9f75f3370e86cf2ab7d", null ],
       [ "CurHP", "classAPlayerActor.html#a892475dcc1a269661dcde922ecea4183", null ],
       [ "EndPlay", "classAPlayerActor.html#a843e2c23cabd6a5b956ae4f7178276b0", null ],
       [ "GetAnimInstance", "classAPlayerActor.html#ab83af622cfef9c372aa3a6b3b65da8fc", null ],
@@ -41,6 +42,7 @@ var group__Character =
       [ "SetFlying", "classAPlayerActor.html#a0e3b298e992b0dce1d68bf6d3cc8b865", null ],
       [ "SetHold", "classAPlayerActor.html#a7d468e48887a5e529c0df4c9df472dc0", null ],
       [ "SetupCharacterFromType", "classAPlayerActor.html#ac1b16c52de76390cf656959518d1d795", null ],
+      [ "SetupPlayerInputComponent", "classAPlayerActor.html#a7ece1238a467e17ef715ddb35931a275", null ],
       [ "StopTargetMontage", "classAPlayerActor.html#ae9ad3a4bcc9e43741eeacebf6c398a73", null ],
       [ "UnbindMontageDelegates", "classAPlayerActor.html#a4d6fa9eb1445927b3e92a4e07ffbd0e3", null ],
       [ "AnimInstance", "classAPlayerActor.html#abc079621e0064c235eb7bd5a25225877", null ],
@@ -73,6 +75,8 @@ var group__Character =
       [ "TargetActor", "classAPlayerActor.html#a7ce2f6de29b27cb594f5d92ce214f12f", null ],
       [ "TraceDrawTime", "classAPlayerActor.html#a3ffd36b5045c0e2321d2de906f549ee8", null ],
       [ "TraceLength", "classAPlayerActor.html#a16de6437ba1988f08b85285e35d4b1bd", null ],
-      [ "TraceRadius", "classAPlayerActor.html#a73978b719b9eed3623436f12e7b25f37", null ]
+      [ "TraceRadius", "classAPlayerActor.html#a73978b719b9eed3623436f12e7b25f37", null ],
+      [ "VoiceCaptureComponent", "classAPlayerActor.html#aff3efc3882f4393a9ace096ca62976b8", null ],
+      [ "VoiceSystem", "classAPlayerActor.html#aa13d79295a4337306218c953e09020cb", null ]
     ] ]
 ];

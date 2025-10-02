@@ -1,9 +1,7 @@
 var classUGoogleSpeechService =
 [
-    [ "FPendingSpeechToTextRequest", "structUGoogleSpeechService_1_1FPendingSpeechToTextRequest.html", "structUGoogleSpeechService_1_1FPendingSpeechToTextRequest" ],
-    [ "FPendingTextToSpeechRequest", "structUGoogleSpeechService_1_1FPendingTextToSpeechRequest.html", "structUGoogleSpeechService_1_1FPendingTextToSpeechRequest" ],
-    [ "FSpeechToTextMap", "classUGoogleSpeechService.html#a82b81795d501ec2690dd1685efcd8e8d", null ],
-    [ "FTextToSpeechMap", "classUGoogleSpeechService.html#ae896392e7b4b2c7a93eb7c3ac28833f6", null ],
+    [ "FSpeechToTextMap", "classUGoogleSpeechService.html#a2aa0a00375ce7e1fc66da40bd1b3a65b", null ],
+    [ "FTextToSpeechMap", "classUGoogleSpeechService.html#a3639d624511f75e521cdd9a5cd33b113", null ],
     [ "BuildSpeechToTextUrl", "classUGoogleSpeechService.html#ab6072b63787068d65e9d5e103d845728", null ],
     [ "BuildTextToSpeechUrl", "classUGoogleSpeechService.html#a91e9db7f9c3a31bd8780eabe1883f796", null ],
     [ "Get", "classUGoogleSpeechService.html#a9ba06d4b1313e632d9883fdd74acbc49", null ],

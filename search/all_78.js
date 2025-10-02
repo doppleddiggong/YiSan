@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['입력_20맵_20게임모드_20기본값_0',['7) 입력 / 맵 / 게임모드 기본값',['../md_GEMINI.html#autotoc_md42',1,'']]],
-  ['입력_20포맷_1',['4. 입력 포맷',['../md_AgentRule_2commit__agent.html#autotoc_md82',1,'']]]
+  ['자동_20분석_20규칙_20추가_0',['4. 로그 파일 자동 분석 (규칙 추가)',['../md_AgentRule_2debug__guide.html#autotoc_md76',1,'']]]
 ];

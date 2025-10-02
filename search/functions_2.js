@@ -16,6 +16,7 @@ var searchData=
   ['cmd_5flanding_13',['cmd_landing',['../classAPlayerActor.html#a5ca6e213fdff74bd18044f39ee262930',1,'APlayerActor::Cmd_Landing()'],['../classIControllable.html#adb2394ac025e2b9508d4454bc7cad56b',1,'IControllable::Cmd_Landing()']]],
   ['cmd_5flook_14',['cmd_look',['../classAPlayerActor.html#a21a14eaae23da75b919b848aa87cb535',1,'APlayerActor::Cmd_Look()'],['../classIControllable.html#a45c2124ac1edc67a18538853d12d30bb',1,'IControllable::Cmd_Look()']]],
   ['cmd_5fmove_15',['cmd_move',['../classAPlayerActor.html#a0db8efea43cc28a694e55d72014642e1',1,'APlayerActor::Cmd_Move()'],['../classIControllable.html#a19f4250db751284d9964c9a494512fa7',1,'IControllable::Cmd_Move()']]],
-  ['connect_16',['Connect',['../classUWebSocketSystem.html#aa72ee8bc548882770c3d47bbba4d3086',1,'UWebSocketSystem']]],
-  ['curhp_17',['CurHP',['../classAGameCharacter.html#a892475dcc1a269661dcde922ecea4183',1,'AGameCharacter']]]
+  ['cmd_5fspeaktext_16',['Cmd_SpeakText',['../classAPlayerActor.html#a51c2af18fe73e9f75f3370e86cf2ab7d',1,'APlayerActor']]],
+  ['connect_17',['Connect',['../classUWebSocketSystem.html#aa72ee8bc548882770c3d47bbba4d3086',1,'UWebSocketSystem']]],
+  ['curhp_18',['CurHP',['../classAGameCharacter.html#a892475dcc1a269661dcde922ecea4183',1,'AGameCharacter']]]
 ];

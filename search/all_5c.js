@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['소개_0',['프로젝트 소개',['../index.html#autotoc_md114',1,'']]],
-  ['소스_20설정_1',['5.2. GitHub Pages 소스 설정',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md145',1,'']]]
+  ['속도_20velocity_0',['속도(Velocity)',['../md_AgentRule_2devlog__agent.html#autotoc_md110',1,'']]]
 ];

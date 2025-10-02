@@ -1,6 +1,6 @@
 <map id="Source/LatteLibrary/Manager/Public/Macro.h" name="Source/LatteLibrary/Manager/Public/Macro.h">
 <area shape="rect" id="Node000001" title="Manager 모듈에서 공통으로 사용하는 매크로 정의에 대한 Doxygen 주석을 제공합니다." alt="" coords="2299,5,2481,45"/>
-<area shape="rect" id="Node000002" href="$APlayerActor_8cpp.html" title="APlayerActor 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="368,93,561,148"/>
+<area shape="rect" id="Node000002" href="$APlayerActor_8cpp.html" title="Provides Doxygen annotations for APlayerActor implementation." alt="" coords="368,93,561,148"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2285,30,1923,36,1429,48,935,67,730,80,574,96,562,98,561,93,574,91,729,75,935,62,1429,42,1923,31,2285,25"/>
 <area shape="rect" id="Node000003" href="$UBroadcastManger_8h.html" title="UBroadcastManger 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="586,93,791,148"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="2285,35,792,116,792,111,2285,30"/>

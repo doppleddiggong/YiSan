@@ -9,5 +9,7 @@ var dir_dbcfec335b82e9995c56663fd2624812 =
     [ "UHitStopSystem.h", "UHitStopSystem_8h.html", null ],
     [ "UKnockbackSystem.h", "UKnockbackSystem_8h.html", null ],
     [ "USightSystem.h", "USightSystem_8h.html", "USightSystem_8h" ],
-    [ "UStatSystem.h", "UStatSystem_8h.html", null ]
+    [ "UStatSystem.h", "UStatSystem_8h.html", null ],
+    [ "UVoiceCaptureComponent.h", "UVoiceCaptureComponent_8h.html", "UVoiceCaptureComponent_8h" ],
+    [ "UVoiceSystem.h", "UVoiceSystem_8h.html", "UVoiceSystem_8h" ]
 ];

@@ -67,7 +67,7 @@ var sectionId = 'dynsection-0';
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="APlayerActor_8cpp.html" target="_top" xlink:title="APlayerActor 구현에 대한 Doxygen 주석을 제공합니다.">
+<g id="a_Node000002"><a xlink:href="APlayerActor_8cpp.html" target="_top" xlink:title="Provides Doxygen annotations for APlayerActor implementation.">
 <polygon fill="white" stroke="#666666" points="417,-118 272,-118 272,-77 417,-77 417,-118"/>
 <text text-anchor="start" x="280" y="-106" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
 <text text-anchor="start" x="280" y="-95" font-family="Malgun Gothic" font-size="10.00">/Character/Private/APlayer</text>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['핫스팟_20top_20scopes_0',['핫스팟(Top Scopes)',['../md_AgentRule_2devlog__agent.html#autotoc_md107',1,'']]]
+  ['해결책_0',['8. 알려진 문제 및 해결책',['../md_AgentRule_2commit__agent.html#autotoc_md55',1,'']]],
+  ['해결_20troubleshooting_1',['6. 배포 확인 및 문제 해결 (Troubleshooting)',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md132',1,'']]]
 ];

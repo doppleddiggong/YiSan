@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['멤버_20변수_20주석_20예시_0',['멤버 변수 주석 예시',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md159',1,'']]]
+  ['명령어_0',['8.3. 주요 Doxygen 명령어',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md141',1,'']]],
+  ['명확화_1',['3.1. 작업 목표 명확화',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md9',1,'']]]
 ];

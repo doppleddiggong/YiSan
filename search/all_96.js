@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['프로젝트_20소개_0',['프로젝트 소개',['../index.html#autotoc_md114',1,'']]],
-  ['프로젝트_20정보_1',['1) 프로젝트 정보',['../md_GEMINI.html#autotoc_md29',1,'']]]
+  ['플러그인_3a_20tt_20coffeetoolbar_20tt_20editor_20win64_0',['4-4) 에디터 플러그인: &lt;tt&gt;CoffeeToolbar&lt;/tt&gt; (Editor, Win64)',['../md_GEMINI.html#autotoc_md39',1,'']]]
 ];

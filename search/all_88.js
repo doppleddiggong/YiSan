@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['처리_20handling_20recurring_20issues_0',['3. 반복적인 문제 처리 (Handling Recurring Issues)',['../md_AgentRule_2debug__guide.html#autotoc_md57',1,'']]]
+  ['추가_0',['4. 로그 파일 자동 분석 (규칙 추가)',['../md_AgentRule_2debug__guide.html#autotoc_md76',1,'']]],
+  ['추정_1',['추정',['../md_Documents_2DevLog_22025-09-30.html#autotoc_md165',1,'메트릭(추정)'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md183',1,'메트릭(추정)'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md204',1,'메트릭(추정)']]],
+  ['추출_2',['TODO(커밋 본문 추출)',['../md_AgentRule_2devlog__agent.html#autotoc_md105',1,'']]]
 ];

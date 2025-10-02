@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="UFlySystem 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="293,5,520,45"/>
 <area shape="rect" id="Node000002" href="$AGameCharacter_8cpp.html" title="AGameCharacter 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="5,101,285,141"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="342,52,199,103,197,98,340,47"/>
-<area shape="rect" id="Node000003" href="$APlayerActor_8cpp.html" title="APlayerActor 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="310,93,503,148"/>
+<area shape="rect" id="Node000003" href="$APlayerActor_8cpp.html" title="Provides Doxygen annotations for APlayerActor implementation." alt="" coords="310,93,503,148"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="409,59,409,93,404,93,404,59"/>
 <area shape="rect" id="Node000004" href="$UFlySystem_8cpp.html" title="UFlySystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="527,101,777,141"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="470,48,603,98,601,103,468,53"/>

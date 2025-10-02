@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('classAPlayerActor.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 
-<p>플레이어가 직접 조종하는 메인 캐릭터 액터입니다.  
+<p>Main character driven directly by the player.  
  <a href="classAPlayerActor.html#details">더 자세히 ...</a></p>
 
 <p><code>#include &lt;<a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a>&gt;</code></p>
@@ -149,6 +149,8 @@ Public 멤버 함수</h2></td></tr>
 <tr class="separator:a21a14eaae23da75b919b848aa87cb535"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0db8efea43cc28a694e55d72014642e1" id="r_a0db8efea43cc28a694e55d72014642e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a0db8efea43cc28a694e55d72014642e1">Cmd_Move</a> (const FVector2D &amp;Axis) override</td></tr>
 <tr class="separator:a0db8efea43cc28a694e55d72014642e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51c2af18fe73e9f75f3370e86cf2ab7d" id="r_a51c2af18fe73e9f75f3370e86cf2ab7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a51c2af18fe73e9f75f3370e86cf2ab7d">Cmd_SpeakText</a> (const FString &amp;Text)</td></tr>
+<tr class="separator:a51c2af18fe73e9f75f3370e86cf2ab7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a892475dcc1a269661dcde922ecea4183" id="r_a892475dcc1a269661dcde922ecea4183"><td class="memItemLeft" align="right" valign="top">FORCEINLINE float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAGameCharacter.html#a892475dcc1a269661dcde922ecea4183">CurHP</a> (float Per=1.0f)</td></tr>
 <tr class="separator:a892475dcc1a269661dcde922ecea4183"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab83af622cfef9c372aa3a6b3b65da8fc" id="r_ab83af622cfef9c372aa3a6b3b65da8fc"><td class="memItemLeft" align="right" valign="top">FORCEINLINE UAnimInstance *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAGameCharacter.html#ab83af622cfef9c372aa3a6b3b65da8fc">GetAnimInstance</a> ()</td></tr>
@@ -229,6 +231,10 @@ Public 속성</h2></td></tr>
 <tr class="separator:adb3de42108c699ccda8a66cf936d097c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ce2f6de29b27cb594f5d92ce214f12f" id="r_a7ce2f6de29b27cb594f5d92ce214f12f"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class <a class="el" href="classAGameCharacter.html">AGameCharacter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAGameCharacter.html#a7ce2f6de29b27cb594f5d92ce214f12f">TargetActor</a></td></tr>
 <tr class="separator:a7ce2f6de29b27cb594f5d92ce214f12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff3efc3882f4393a9ace096ca62976b8" id="r_aff3efc3882f4393a9ace096ca62976b8"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; UVoiceCaptureComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#aff3efc3882f4393a9ace096ca62976b8">VoiceCaptureComponent</a></td></tr>
+<tr class="separator:aff3efc3882f4393a9ace096ca62976b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa13d79295a4337306218c953e09020cb" id="r_aa13d79295a4337306218c953e09020cb"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; UVoiceSystem &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#aa13d79295a4337306218c953e09020cb">VoiceSystem</a></td></tr>
+<tr class="separator:aa13d79295a4337306218c953e09020cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected 멤버 함수</h2></td></tr>
@@ -238,6 +244,8 @@ Protected 멤버 함수</h2></td></tr>
 <tr class="memitem:a843e2c23cabd6a5b956ae4f7178276b0" id="r_a843e2c23cabd6a5b956ae4f7178276b0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAGameCharacter.html#a843e2c23cabd6a5b956ae4f7178276b0">EndPlay</a> (const EEndPlayReason::Type EndPlayReason) override</td></tr>
 <tr class="memdesc:a843e2c23cabd6a5b956ae4f7178276b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">플레이 종료 시 리소스를 해제합니다.  <br /></td></tr>
 <tr class="separator:a843e2c23cabd6a5b956ae4f7178276b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ece1238a467e17ef715ddb35931a275" id="r_a7ece1238a467e17ef715ddb35931a275"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a7ece1238a467e17ef715ddb35931a275">SetupPlayerInputComponent</a> (class UInputComponent *PlayerInputComponent) override</td></tr>
+<tr class="separator:a7ece1238a467e17ef715ddb35931a275"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected 속성</h2></td></tr>
@@ -299,10 +307,10 @@ Private 멤버 함수</h2></td></tr>
 <tr class="separator:a4d6fa9eb1445927b3e92a4e07ffbd0e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
-<div class="textblock"><p>플레이어가 직접 조종하는 메인 캐릭터 액터입니다. </p>
-<p>AGameCharacter를 상속받아 플레이어에 특화된 입력 처리 및 카메라 로직을 구현합니다. </p>
+<div class="textblock"><p>Main character driven directly by the player. </p>
+<p>Extends <a class="el" href="classAGameCharacter.html" title="전투, 능력치, 애니메이션 헬퍼를 연결하는 기반 캐릭터 구현입니다.">AGameCharacter</a> with player-specific input and camera handling. </p>
 
-<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00025">25</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00026">26</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">생성자 &amp; 소멸자 문서화</h2>
 <a id="addb91f2966d3e68a79699ba89be0a659" name="addb91f2966d3e68a79699ba89be0a659"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#addb91f2966d3e68a79699ba89be0a659">&#9670;&#160;</a></span>APlayerActor()</h2>
@@ -319,28 +327,32 @@ Private 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00027">27</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>{</div>
-<div class="line"><span class="lineno">   29</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   30</span> </div>
-<div class="line"><span class="lineno">   31</span>    <a class="code hl_variable" href="classAPlayerActor.html#a15e1aa10665d545015dc9017d62a4cd1">CameraShakeSystem</a> = CreateDefaultSubobject&lt;UCameraShakeSystem&gt;(TEXT(<span class="stringliteral">&quot;CameraShakeSystem&quot;</span>));</div>
-<div class="line"><span class="lineno">   32</span> </div>
-<div class="line"><span class="lineno">   33</span>    <a class="code hl_variable" href="classAPlayerActor.html#ad1090900fe2dea2c26b01020ad6ea5a1">SpringArmComp</a> = CreateDefaultSubobject&lt;USpringArmComponent&gt;(TEXT(<span class="stringliteral">&quot;SpringArm&quot;</span>));</div>
-<div class="line"><span class="lineno">   34</span>    <a class="code hl_variable" href="classAPlayerActor.html#ad1090900fe2dea2c26b01020ad6ea5a1">SpringArmComp</a>-&gt;SetupAttachment(GetCapsuleComponent());</div>
-<div class="line"><span class="lineno">   35</span>    <a class="code hl_variable" href="classAPlayerActor.html#ad1090900fe2dea2c26b01020ad6ea5a1">SpringArmComp</a>-&gt;TargetArmLength = 400.f;</div>
-<div class="line"><span class="lineno">   36</span>    <a class="code hl_variable" href="classAPlayerActor.html#ad1090900fe2dea2c26b01020ad6ea5a1">SpringArmComp</a>-&gt;bUsePawnControlRotation = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   37</span>    <a class="code hl_variable" href="classAPlayerActor.html#ad1090900fe2dea2c26b01020ad6ea5a1">SpringArmComp</a>-&gt;bInheritPitch = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   38</span>    <a class="code hl_variable" href="classAPlayerActor.html#ad1090900fe2dea2c26b01020ad6ea5a1">SpringArmComp</a>-&gt;bInheritRoll = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   39</span> </div>
-<div class="line"><span class="lineno">   40</span>    <a class="code hl_variable" href="classAPlayerActor.html#aa7ce94a6d4e0f08fafb727715e77d676">FollowCamera</a> = CreateDefaultSubobject&lt;UCameraComponent&gt;(TEXT(<span class="stringliteral">&quot;FollowCamera&quot;</span>));</div>
-<div class="line"><span class="lineno">   41</span>    <a class="code hl_variable" href="classAPlayerActor.html#aa7ce94a6d4e0f08fafb727715e77d676">FollowCamera</a>-&gt;SetupAttachment(<a class="code hl_variable" href="classAPlayerActor.html#ad1090900fe2dea2c26b01020ad6ea5a1">SpringArmComp</a>, USpringArmComponent::SocketName);</div>
-<div class="line"><span class="lineno">   42</span>    <a class="code hl_variable" href="classAPlayerActor.html#aa7ce94a6d4e0f08fafb727715e77d676">FollowCamera</a>-&gt;bUsePawnControlRotation = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   43</span>}</div>
-<div class="ttc" id="aclassAPlayerActor_html_a15e1aa10665d545015dc9017d62a4cd1"><div class="ttname"><a href="classAPlayerActor.html#a15e1aa10665d545015dc9017d62a4cd1">APlayerActor::CameraShakeSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UCameraShakeSystem &gt; CameraShakeSystem</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00040">APlayerActor.h:40</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_aa7ce94a6d4e0f08fafb727715e77d676"><div class="ttname"><a href="classAPlayerActor.html#aa7ce94a6d4e0f08fafb727715e77d676">APlayerActor::FollowCamera</a></div><div class="ttdeci">TObjectPtr&lt; UCameraComponent &gt; FollowCamera</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00047">APlayerActor.h:47</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_ad1090900fe2dea2c26b01020ad6ea5a1"><div class="ttname"><a href="classAPlayerActor.html#ad1090900fe2dea2c26b01020ad6ea5a1">APlayerActor::SpringArmComp</a></div><div class="ttdeci">TObjectPtr&lt; USpringArmComponent &gt; SpringArmComp</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00044">APlayerActor.h:44</a></div></div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00031">31</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>{</div>
+<div class="line"><span class="lineno">   33</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   34</span> </div>
+<div class="line"><span class="lineno">   35</span>    <a class="code hl_variable" href="classAPlayerActor.html#a15e1aa10665d545015dc9017d62a4cd1">CameraShakeSystem</a> = CreateDefaultSubobject&lt;UCameraShakeSystem&gt;(TEXT(<span class="stringliteral">&quot;CameraShakeSystem&quot;</span>));</div>
+<div class="line"><span class="lineno">   36</span>    <a class="code hl_variable" href="classAPlayerActor.html#aa13d79295a4337306218c953e09020cb">VoiceSystem</a> = CreateDefaultSubobject&lt;UVoiceSystem&gt;(TEXT(<span class="stringliteral">&quot;VoiceSystem&quot;</span>));</div>
+<div class="line"><span class="lineno">   37</span>    <a class="code hl_variable" href="classAPlayerActor.html#aff3efc3882f4393a9ace096ca62976b8">VoiceCaptureComponent</a> = CreateDefaultSubobject&lt;UVoiceCaptureComponent&gt;(TEXT(<span class="stringliteral">&quot;VoiceCaptureComponent&quot;</span>));</div>
+<div class="line"><span class="lineno">   38</span> </div>
+<div class="line"><span class="lineno">   39</span>    <a class="code hl_variable" href="classAPlayerActor.html#ad1090900fe2dea2c26b01020ad6ea5a1">SpringArmComp</a> = CreateDefaultSubobject&lt;USpringArmComponent&gt;(TEXT(<span class="stringliteral">&quot;SpringArm&quot;</span>));</div>
+<div class="line"><span class="lineno">   40</span>    <a class="code hl_variable" href="classAPlayerActor.html#ad1090900fe2dea2c26b01020ad6ea5a1">SpringArmComp</a>-&gt;SetupAttachment(GetCapsuleComponent());</div>
+<div class="line"><span class="lineno">   41</span>    <a class="code hl_variable" href="classAPlayerActor.html#ad1090900fe2dea2c26b01020ad6ea5a1">SpringArmComp</a>-&gt;TargetArmLength = 400.f;</div>
+<div class="line"><span class="lineno">   42</span>    <a class="code hl_variable" href="classAPlayerActor.html#ad1090900fe2dea2c26b01020ad6ea5a1">SpringArmComp</a>-&gt;bUsePawnControlRotation = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   43</span>    <a class="code hl_variable" href="classAPlayerActor.html#ad1090900fe2dea2c26b01020ad6ea5a1">SpringArmComp</a>-&gt;bInheritPitch = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   44</span>    <a class="code hl_variable" href="classAPlayerActor.html#ad1090900fe2dea2c26b01020ad6ea5a1">SpringArmComp</a>-&gt;bInheritRoll = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>    <a class="code hl_variable" href="classAPlayerActor.html#aa7ce94a6d4e0f08fafb727715e77d676">FollowCamera</a> = CreateDefaultSubobject&lt;UCameraComponent&gt;(TEXT(<span class="stringliteral">&quot;FollowCamera&quot;</span>));</div>
+<div class="line"><span class="lineno">   47</span>    <a class="code hl_variable" href="classAPlayerActor.html#aa7ce94a6d4e0f08fafb727715e77d676">FollowCamera</a>-&gt;SetupAttachment(<a class="code hl_variable" href="classAPlayerActor.html#ad1090900fe2dea2c26b01020ad6ea5a1">SpringArmComp</a>, USpringArmComponent::SocketName);</div>
+<div class="line"><span class="lineno">   48</span>    <a class="code hl_variable" href="classAPlayerActor.html#aa7ce94a6d4e0f08fafb727715e77d676">FollowCamera</a>-&gt;bUsePawnControlRotation = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   49</span>}</div>
+<div class="ttc" id="aclassAPlayerActor_html_a15e1aa10665d545015dc9017d62a4cd1"><div class="ttname"><a href="classAPlayerActor.html#a15e1aa10665d545015dc9017d62a4cd1">APlayerActor::CameraShakeSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UCameraShakeSystem &gt; CameraShakeSystem</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00042">APlayerActor.h:42</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_aa13d79295a4337306218c953e09020cb"><div class="ttname"><a href="classAPlayerActor.html#aa13d79295a4337306218c953e09020cb">APlayerActor::VoiceSystem</a></div><div class="ttdeci">TObjectPtr&lt; UVoiceSystem &gt; VoiceSystem</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00045">APlayerActor.h:45</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_aa7ce94a6d4e0f08fafb727715e77d676"><div class="ttname"><a href="classAPlayerActor.html#aa7ce94a6d4e0f08fafb727715e77d676">APlayerActor::FollowCamera</a></div><div class="ttdeci">TObjectPtr&lt; UCameraComponent &gt; FollowCamera</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00055">APlayerActor.h:55</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_ad1090900fe2dea2c26b01020ad6ea5a1"><div class="ttname"><a href="classAPlayerActor.html#ad1090900fe2dea2c26b01020ad6ea5a1">APlayerActor::SpringArmComp</a></div><div class="ttdeci">TObjectPtr&lt; USpringArmComponent &gt; SpringArmComp</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00052">APlayerActor.h:52</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_aff3efc3882f4393a9ace096ca62976b8"><div class="ttname"><a href="classAPlayerActor.html#aff3efc3882f4393a9ace096ca62976b8">APlayerActor::VoiceCaptureComponent</a></div><div class="ttdeci">TObjectPtr&lt; UVoiceCaptureComponent &gt; VoiceCaptureComponent</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00048">APlayerActor.h:48</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00040">CameraShakeSystem</a>, <a class="el" href="APlayerActor_8h_source.html#l00047">FollowCamera</a>, <a class="el" href="APlayerActor_8h_source.html#l00044">SpringArmComp</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00042">CameraShakeSystem</a>, <a class="el" href="APlayerActor_8h_source.html#l00055">FollowCamera</a>, <a class="el" href="APlayerActor_8h_source.html#l00052">SpringArmComp</a>, <a class="el" href="APlayerActor_8h_source.html#l00048">VoiceCaptureComponent</a>, <a class="el" href="APlayerActor_8h_source.html#l00045">VoiceSystem</a>.</p>
 
 </div>
 </div>
@@ -372,23 +384,34 @@ Private 멤버 함수</h2></td></tr>
 
 <p><a class="el" href="classAGameCharacter.html#a86daf7483d1c4e9f33692cdd6590517a">AGameCharacter</a>(으)로부터 재구현되었습니다.</p>
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00045">45</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>{</div>
-<div class="line"><span class="lineno">   47</span>    Super::BeginPlay();</div>
-<div class="line"><span class="lineno">   48</span> </div>
-<div class="line"><span class="lineno">   49</span>    <a class="code hl_variable" href="classAPlayerActor.html#a15e1aa10665d545015dc9017d62a4cd1">CameraShakeSystem</a>-&gt;InitSystem(<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   50</span> </div>
-<div class="line"><span class="lineno">   51</span>    <span class="comment">// --- Architecture Demo Start ---</span></div>
-<div class="line"><span class="lineno">   52</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;APlayerActor: Setting up one-way dependency demo.&quot;</span>));</div>
-<div class="line"><span class="lineno">   53</span> </div>
-<div class="line"><span class="lineno">   54</span>    <a class="code hl_variable" href="classAGameCharacter.html#ac7bed8c4bfb5bac698e289e6ab86925d">bIsCombatStart</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>    <span class="comment">// ActorComponent initialization</span></div>
-<div class="line"><span class="lineno">   57</span>    <a class="code hl_variable" href="classAGameCharacter.html#adb3de42108c699ccda8a66cf936d097c">StatSystem</a>-&gt;InitStat(<span class="keyword">true</span>, <a class="code hl_variable" href="classAGameCharacter.html#a653e94ebfb4341c25b7b3826c8e98fb7">CharacterType</a>);</div>
-<div class="line"><span class="lineno">   58</span>    <a class="code hl_variable" href="classAGameCharacter.html#a159e5b121637118fb0dec114a3fb42d1">KnockbackSystem</a>-&gt;InitSystem(<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   59</span>    <a class="code hl_variable" href="classAGameCharacter.html#a987553b90de3040baa0adc9cac363b85">FlySystem</a>-&gt;InitSystem(<span class="keyword">this</span>, <a class="code hl_define" href="Macro_8h.html#a07b4fc90b0e9c2eda0d2f632d01954c4">BIND_DYNAMIC_DELEGATE</a>(FEndCallback, <span class="keyword">this</span>, <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>, <a class="code hl_function" href="classAGameCharacter.html#a1a36cdd8573aed9d2d2d264de949bb64">OnFlyEnd</a>));</div>
-<div class="line"><span class="lineno">   60</span>    <a class="code hl_variable" href="classAGameCharacter.html#ae6d44ec6fe6c6dcd5a7c608d0b0dc476">HitStopSystem</a>-&gt;InitSystem(<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   61</span>}</div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00051">51</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   52</span>{</div>
+<div class="line"><span class="lineno">   53</span>    Super::BeginPlay();</div>
+<div class="line"><span class="lineno">   54</span> </div>
+<div class="line"><span class="lineno">   55</span>    <a class="code hl_variable" href="classAPlayerActor.html#a15e1aa10665d545015dc9017d62a4cd1">CameraShakeSystem</a>-&gt;InitSystem(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#aa13d79295a4337306218c953e09020cb">VoiceSystem</a>)</div>
+<div class="line"><span class="lineno">   58</span>    {</div>
+<div class="line"><span class="lineno">   59</span>        USightSystem* SightSystem = FindComponentByClass&lt;USightSystem&gt;();</div>
+<div class="line"><span class="lineno">   60</span>        <a class="code hl_variable" href="classAPlayerActor.html#aa13d79295a4337306218c953e09020cb">VoiceSystem</a>-&gt;SetDependencies(<a class="code hl_variable" href="classAGameCharacter.html#adb3de42108c699ccda8a66cf936d097c">StatSystem</a>, SightSystem, <a class="code hl_variable" href="classAGameCharacter.html#ae6d44ec6fe6c6dcd5a7c608d0b0dc476">HitStopSystem</a>);</div>
+<div class="line"><span class="lineno">   61</span>    }</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#aff3efc3882f4393a9ace096ca62976b8">VoiceCaptureComponent</a>)</div>
+<div class="line"><span class="lineno">   64</span>    {</div>
+<div class="line"><span class="lineno">   65</span>        <a class="code hl_variable" href="classAPlayerActor.html#aff3efc3882f4393a9ace096ca62976b8">VoiceCaptureComponent</a>-&gt;SetVoiceSystem(<a class="code hl_variable" href="classAPlayerActor.html#aa13d79295a4337306218c953e09020cb">VoiceSystem</a>);</div>
+<div class="line"><span class="lineno">   66</span>    }</div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>    <span class="comment">// --- Architecture Demo Start ---</span></div>
+<div class="line"><span class="lineno">   69</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;APlayerActor: Setting up one-way dependency demo.&quot;</span>));</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>    <a class="code hl_variable" href="classAGameCharacter.html#ac7bed8c4bfb5bac698e289e6ab86925d">bIsCombatStart</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   72</span> </div>
+<div class="line"><span class="lineno">   73</span>    <span class="comment">// ActorComponent initialization</span></div>
+<div class="line"><span class="lineno">   74</span>    <a class="code hl_variable" href="classAGameCharacter.html#adb3de42108c699ccda8a66cf936d097c">StatSystem</a>-&gt;InitStat(<span class="keyword">true</span>, <a class="code hl_variable" href="classAGameCharacter.html#a653e94ebfb4341c25b7b3826c8e98fb7">CharacterType</a>);</div>
+<div class="line"><span class="lineno">   75</span>    <a class="code hl_variable" href="classAGameCharacter.html#a159e5b121637118fb0dec114a3fb42d1">KnockbackSystem</a>-&gt;InitSystem(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   76</span>    <a class="code hl_variable" href="classAGameCharacter.html#a987553b90de3040baa0adc9cac363b85">FlySystem</a>-&gt;InitSystem(<span class="keyword">this</span>, <a class="code hl_define" href="Macro_8h.html#a07b4fc90b0e9c2eda0d2f632d01954c4">BIND_DYNAMIC_DELEGATE</a>(FEndCallback, <span class="keyword">this</span>, <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>, <a class="code hl_function" href="classAGameCharacter.html#a1a36cdd8573aed9d2d2d264de949bb64">OnFlyEnd</a>));</div>
+<div class="line"><span class="lineno">   77</span>    <a class="code hl_variable" href="classAGameCharacter.html#ae6d44ec6fe6c6dcd5a7c608d0b0dc476">HitStopSystem</a>-&gt;InitSystem(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   78</span>}</div>
 <div class="ttc" id="aMacro_8h_html_a07b4fc90b0e9c2eda0d2f632d01954c4"><div class="ttname"><a href="Macro_8h.html#a07b4fc90b0e9c2eda0d2f632d01954c4">BIND_DYNAMIC_DELEGATE</a></div><div class="ttdeci">#define BIND_DYNAMIC_DELEGATE(DelegateType, Obj, ClassType, FuncName)</div><div class="ttdef"><b>Definition</b> <a href="Macro_8h_source.html#l00038">Macro.h:38</a></div></div>
 <div class="ttc" id="aclassAGameCharacter_html_a159e5b121637118fb0dec114a3fb42d1"><div class="ttname"><a href="classAGameCharacter.html#a159e5b121637118fb0dec114a3fb42d1">AGameCharacter::KnockbackSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UKnockbackSystem &gt; KnockbackSystem</div><div class="ttdef"><b>Definition</b> <a href="AGameCharacter_8h_source.html#l00189">AGameCharacter.h:189</a></div></div>
 <div class="ttc" id="aclassAGameCharacter_html_a1a36cdd8573aed9d2d2d264de949bb64"><div class="ttname"><a href="classAGameCharacter.html#a1a36cdd8573aed9d2d2d264de949bb64">AGameCharacter::OnFlyEnd</a></div><div class="ttdeci">void OnFlyEnd()</div></div>
@@ -397,9 +420,9 @@ Private 멤버 함수</h2></td></tr>
 <div class="ttc" id="aclassAGameCharacter_html_ac7bed8c4bfb5bac698e289e6ab86925d"><div class="ttname"><a href="classAGameCharacter.html#ac7bed8c4bfb5bac698e289e6ab86925d">AGameCharacter::bIsCombatStart</a></div><div class="ttdeci">bool bIsCombatStart</div><div class="ttdef"><b>Definition</b> <a href="AGameCharacter_8h_source.html#l00228">AGameCharacter.h:228</a></div></div>
 <div class="ttc" id="aclassAGameCharacter_html_adb3de42108c699ccda8a66cf936d097c"><div class="ttname"><a href="classAGameCharacter.html#adb3de42108c699ccda8a66cf936d097c">AGameCharacter::StatSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UStatSystem &gt; StatSystem</div><div class="ttdef"><b>Definition</b> <a href="AGameCharacter_8h_source.html#l00185">AGameCharacter.h:185</a></div></div>
 <div class="ttc" id="aclassAGameCharacter_html_ae6d44ec6fe6c6dcd5a7c608d0b0dc476"><div class="ttname"><a href="classAGameCharacter.html#ae6d44ec6fe6c6dcd5a7c608d0b0dc476">AGameCharacter::HitStopSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UHitStopSystem &gt; HitStopSystem</div><div class="ttdef"><b>Definition</b> <a href="AGameCharacter_8h_source.html#l00187">AGameCharacter.h:187</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html"><div class="ttname"><a href="classAPlayerActor.html">APlayerActor</a></div><div class="ttdoc">플레이어가 직접 조종하는 메인 캐릭터 액터입니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00025">APlayerActor.h:26</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html"><div class="ttname"><a href="classAPlayerActor.html">APlayerActor</a></div><div class="ttdoc">Main character driven directly by the player.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00026">APlayerActor.h:27</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="Macro_8h_source.html#l00038">BIND_DYNAMIC_DELEGATE</a>, <a class="el" href="AGameCharacter_8h_source.html#l00228">AGameCharacter::bIsCombatStart</a>, <a class="el" href="APlayerActor_8h_source.html#l00040">CameraShakeSystem</a>, <a class="el" href="AGameCharacter_8h_source.html#l00255">AGameCharacter::CharacterType</a>, <a class="el" href="AGameCharacter_8h_source.html#l00191">AGameCharacter::FlySystem</a>, <a class="el" href="AGameCharacter_8h_source.html#l00187">AGameCharacter::HitStopSystem</a>, <a class="el" href="AGameCharacter_8h_source.html#l00189">AGameCharacter::KnockbackSystem</a>, <a class="el" href="classAGameCharacter.html#a1a36cdd8573aed9d2d2d264de949bb64">AGameCharacter::OnFlyEnd()</a>, <a class="el" href="AGameCharacter_8h_source.html#l00185">AGameCharacter::StatSystem</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="Macro_8h_source.html#l00038">BIND_DYNAMIC_DELEGATE</a>, <a class="el" href="AGameCharacter_8h_source.html#l00228">AGameCharacter::bIsCombatStart</a>, <a class="el" href="APlayerActor_8h_source.html#l00042">CameraShakeSystem</a>, <a class="el" href="AGameCharacter_8h_source.html#l00255">AGameCharacter::CharacterType</a>, <a class="el" href="AGameCharacter_8h_source.html#l00191">AGameCharacter::FlySystem</a>, <a class="el" href="AGameCharacter_8h_source.html#l00187">AGameCharacter::HitStopSystem</a>, <a class="el" href="AGameCharacter_8h_source.html#l00189">AGameCharacter::KnockbackSystem</a>, <a class="el" href="classAGameCharacter.html#a1a36cdd8573aed9d2d2d264de949bb64">AGameCharacter::OnFlyEnd()</a>, <a class="el" href="AGameCharacter_8h_source.html#l00185">AGameCharacter::StatSystem</a>, <a class="el" href="APlayerActor_8h_source.html#l00048">VoiceCaptureComponent</a>, <a class="el" href="APlayerActor_8h_source.html#l00045">VoiceSystem</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -657,6 +680,34 @@ Private 멤버 함수</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="classIControllable.html#a19f4250db751284d9964c9a494512fa7">IControllable</a>를 구현.</p>
+
+</div>
+</div>
+<a id="a51c2af18fe73e9f75f3370e86cf2ab7d" name="a51c2af18fe73e9f75f3370e86cf2ab7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51c2af18fe73e9f75f3370e86cf2ab7d">&#9670;&#160;</a></span>Cmd_SpeakText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::Cmd_SpeakText </td>
+          <td>(</td>
+          <td class="paramtype">const FString &amp;&#160;</td>
+          <td class="paramname"><em>Text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00201">201</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  202</span>{</div>
+<div class="line"><span class="lineno">  203</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#aff3efc3882f4393a9ace096ca62976b8">VoiceCaptureComponent</a>)</div>
+<div class="line"><span class="lineno">  204</span>    {</div>
+<div class="line"><span class="lineno">  205</span>        <a class="code hl_variable" href="classAPlayerActor.html#aff3efc3882f4393a9ace096ca62976b8">VoiceCaptureComponent</a>-&gt;RequestSynthesis(Text);</div>
+<div class="line"><span class="lineno">  206</span>    }</div>
+<div class="line"><span class="lineno">  207</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00048">VoiceCaptureComponent</a>.</p>
 
 </div>
 </div>
@@ -1270,13 +1321,13 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00063">63</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   64</span>{</div>
-<div class="line"><span class="lineno">   65</span>    Super::Landed(<a class="code hl_enumvalue" href="EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d">Hit</a>);</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAGameCharacter.html#a987553b90de3040baa0adc9cac363b85">FlySystem</a>)</div>
-<div class="line"><span class="lineno">   68</span>        <a class="code hl_variable" href="classAGameCharacter.html#a987553b90de3040baa0adc9cac363b85">FlySystem</a>-&gt;OnLand(<a class="code hl_enumvalue" href="EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d">Hit</a>);</div>
-<div class="line"><span class="lineno">   69</span>} </div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00094">94</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   95</span>{</div>
+<div class="line"><span class="lineno">   96</span>    Super::Landed(<a class="code hl_enumvalue" href="EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d">Hit</a>);</div>
+<div class="line"><span class="lineno">   97</span> </div>
+<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAGameCharacter.html#a987553b90de3040baa0adc9cac363b85">FlySystem</a>)</div>
+<div class="line"><span class="lineno">   99</span>        <a class="code hl_variable" href="classAGameCharacter.html#a987553b90de3040baa0adc9cac363b85">FlySystem</a>-&gt;OnLand(<a class="code hl_enumvalue" href="EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d">Hit</a>);</div>
+<div class="line"><span class="lineno">  100</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="AGameCharacter_8h_source.html#l00191">AGameCharacter::FlySystem</a>, <a class="el" href="EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d">Hit</a>.</p>
 
@@ -1336,7 +1387,7 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00045">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00051">BeginPlay()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -1809,6 +1860,45 @@ Private 멤버 함수</h2></td></tr>
 
 </div>
 </div>
+<a id="a7ece1238a467e17ef715ddb35931a275" name="a7ece1238a467e17ef715ddb35931a275"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ece1238a467e17ef715ddb35931a275">&#9670;&#160;</a></span>SetupPlayerInputComponent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::SetupPlayerInputComponent </td>
+          <td>(</td>
+          <td class="paramtype">class UInputComponent *&#160;</td>
+          <td class="paramname"><em>PlayerInputComponent</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00080">80</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   81</span>{</div>
+<div class="line"><span class="lineno">   82</span>    Super::SetupPlayerInputComponent(PlayerInputComponent);</div>
+<div class="line"><span class="lineno">   83</span> </div>
+<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">if</span> (!PlayerInputComponent)</div>
+<div class="line"><span class="lineno">   85</span>    {</div>
+<div class="line"><span class="lineno">   86</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   87</span>    }</div>
+<div class="line"><span class="lineno">   88</span> </div>
+<div class="line"><span class="lineno">   89</span>    <span class="comment">// PlayerInputComponent-&gt;BindKey(EKeys::SpaceBar, IE_Pressed, this, &amp;APlayerActor::Cmd_VoicePushToTalkPressed);</span></div>
+<div class="line"><span class="lineno">   90</span>    <span class="comment">// PlayerInputComponent-&gt;BindKey(EKeys::SpaceBar, IE_Released, this, &amp;APlayerActor::Cmd_VoicePushToTalkReleased);</span></div>
+<div class="line"><span class="lineno">   91</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="ae9ad3a4bcc9e43741eeacebf6c398a73" name="ae9ad3a4bcc9e43741eeacebf6c398a73"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae9ad3a4bcc9e43741eeacebf6c398a73">&#9670;&#160;</a></span>StopTargetMontage()</h2>
 
@@ -2016,7 +2106,7 @@ Private 멤버 함수</h2></td></tr>
 
 <p class="definition"><a class="el" href="AGameCharacter_8h_source.html">AGameCharacter.h</a> 파일의 <a class="el" href="AGameCharacter_8h_source.html#l00228">228</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00045">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00051">BeginPlay()</a>.</p>
 
 </div>
 </div>
@@ -2080,9 +2170,9 @@ Private 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00040">40</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00042">42</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00027">APlayerActor()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00045">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00031">APlayerActor()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00051">BeginPlay()</a>.</p>
 
 </div>
 </div>
@@ -2134,7 +2224,7 @@ Private 멤버 함수</h2></td></tr>
 
 <p class="definition"><a class="el" href="AGameCharacter_8h_source.html">AGameCharacter.h</a> 파일의 <a class="el" href="AGameCharacter_8h_source.html#l00255">255</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00045">BeginPlay()</a>, <a class="el" href="AGameCharacter_8cpp_source.html#l00060">AGameCharacter::SetupCharacterFromType()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00051">BeginPlay()</a>, <a class="el" href="AGameCharacter_8cpp_source.html#l00060">AGameCharacter::SetupCharacterFromType()</a>.</p>
 
 </div>
 </div>
@@ -2186,7 +2276,7 @@ Private 멤버 함수</h2></td></tr>
 
 <p class="definition"><a class="el" href="AGameCharacter_8h_source.html">AGameCharacter.h</a> 파일의 <a class="el" href="AGameCharacter_8h_source.html#l00191">191</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AGameCharacter_8cpp_source.html#l00026">AGameCharacter::AGameCharacter()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00045">BeginPlay()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00063">Landed()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AGameCharacter_8cpp_source.html#l00026">AGameCharacter::AGameCharacter()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00051">BeginPlay()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00094">Landed()</a>.</p>
 
 </div>
 </div>
@@ -2210,9 +2300,9 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00047">47</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00055">55</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00027">APlayerActor()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00031">APlayerActor()</a>.</p>
 
 </div>
 </div>
@@ -2262,7 +2352,7 @@ Private 멤버 함수</h2></td></tr>
 
 <p class="definition"><a class="el" href="AGameCharacter_8h_source.html">AGameCharacter.h</a> 파일의 <a class="el" href="AGameCharacter_8h_source.html#l00187">187</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AGameCharacter_8cpp_source.html#l00026">AGameCharacter::AGameCharacter()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00045">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AGameCharacter_8cpp_source.html#l00026">AGameCharacter::AGameCharacter()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00051">BeginPlay()</a>.</p>
 
 </div>
 </div>
@@ -2312,7 +2402,7 @@ Private 멤버 함수</h2></td></tr>
 
 <p class="definition"><a class="el" href="AGameCharacter_8h_source.html">AGameCharacter.h</a> 파일의 <a class="el" href="AGameCharacter_8h_source.html#l00189">189</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AGameCharacter_8cpp_source.html#l00026">AGameCharacter::AGameCharacter()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00045">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AGameCharacter_8cpp_source.html#l00026">AGameCharacter::AGameCharacter()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00051">BeginPlay()</a>.</p>
 
 </div>
 </div>
@@ -2570,9 +2660,9 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00044">44</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00052">52</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00027">APlayerActor()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00031">APlayerActor()</a>.</p>
 
 </div>
 </div>
@@ -2598,7 +2688,7 @@ Private 멤버 함수</h2></td></tr>
 
 <p class="definition"><a class="el" href="AGameCharacter_8h_source.html">AGameCharacter.h</a> 파일의 <a class="el" href="AGameCharacter_8h_source.html#l00185">185</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AGameCharacter_8cpp_source.html#l00026">AGameCharacter::AGameCharacter()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00045">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AGameCharacter_8cpp_source.html#l00026">AGameCharacter::AGameCharacter()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00051">BeginPlay()</a>.</p>
 
 </div>
 </div>
@@ -2698,6 +2788,42 @@ Private 멤버 함수</h2></td></tr>
 
 </div>
 </div>
+<a id="aff3efc3882f4393a9ace096ca62976b8" name="aff3efc3882f4393a9ace096ca62976b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff3efc3882f4393a9ace096ca62976b8">&#9670;&#160;</a></span>VoiceCaptureComponent</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;UVoiceCaptureComponent&gt; APlayerActor::VoiceCaptureComponent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00048">48</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00031">APlayerActor()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00051">BeginPlay()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00201">Cmd_SpeakText()</a>.</p>
+
+</div>
+</div>
+<a id="aa13d79295a4337306218c953e09020cb" name="aa13d79295a4337306218c953e09020cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa13d79295a4337306218c953e09020cb">&#9670;&#160;</a></span>VoiceSystem</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;UVoiceSystem&gt; APlayerActor::VoiceSystem</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00045">45</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00031">APlayerActor()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00051">BeginPlay()</a>.</p>
+
+</div>
+</div>
 <hr/>이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.:<ul>
 <li>Source/LatteLibrary/Character/Public/<a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a></li>
 <li>Source/LatteLibrary/Character/Private/<a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a></li>
@@ -2708,7 +2834,7 @@ Private 멤버 함수</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAPlayerActor.html">APlayerActor</a></li>
-    <li class="footer">생성시간 : 목 10월 2 2025 07:52:16, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 10월 2 2025 09:56:47, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

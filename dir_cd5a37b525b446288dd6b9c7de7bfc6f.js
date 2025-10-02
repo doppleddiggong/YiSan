@@ -6,5 +6,6 @@ var dir_cd5a37b525b446288dd6b9c7de7bfc6f =
     [ "UGameSoundManager.cpp", "UGameSoundManager_8cpp.html", "UGameSoundManager_8cpp" ],
     [ "UGameVFXManager.cpp", "UGameVFXManager_8cpp.html", "UGameVFXManager_8cpp" ],
     [ "UObjectPoolManager.cpp", "UObjectPoolManager_8cpp.html", null ],
-    [ "USequenceManager.cpp", "USequenceManager_8cpp.html", null ]
+    [ "USequenceManager.cpp", "USequenceManager_8cpp.html", null ],
+    [ "UYiSanVoiceConsoleSubsystem.cpp", "UYiSanVoiceConsoleSubsystem_8cpp.html", null ]
 ];

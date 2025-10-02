@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['언어_20미들웨어_20api_0',['3) 사용 언어 / 미들웨어 / API',['../md_GEMINI.html#autotoc_md33',1,'']]]
+  ['업무_20일지_20daily_20devlog_20형식_0',['4. 일일 업무 일지 (Daily DevLog) 형식',['../md_AgentRule_2devlog__agent.html#autotoc_md97',1,'']]]
 ];

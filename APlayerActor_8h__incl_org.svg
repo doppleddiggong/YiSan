@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="APlayerActor 선언에 대한 Doxygen 주석을 제공합니다.">
+<g id="a_Node000001"><a xlink:title="Declares the player&#45;controlled character actor.">
 <polygon fill="#999999" stroke="#666666" points="819,-195 646,-195 646,-165 819,-165 819,-195"/>
 <text text-anchor="start" x="654" y="-183" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
 <text text-anchor="middle" x="732.5" y="-172" font-family="Malgun Gothic" font-size="10.00">/Character/Public/APlayerActor.h</text>
