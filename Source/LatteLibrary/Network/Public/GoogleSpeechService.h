@@ -3,6 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Interfaces/IHttpRequest.h"
+#include "Interfaces/IHttpResponse.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "GoogleSpeechServiceSettings.h"
 #include "GoogleSpeechService.generated.h"
@@ -10,8 +12,29 @@
 class IHttpRequest;
 class IHttpResponse;
 
+
 DECLARE_DELEGATE_FourParams(FGoogleSpeechToTextDelegate, bool /*bSuccess*/, const FString& /*CorrelationId*/, const FString& /*Transcript*/, float /*Confidence*/);
 DECLARE_DELEGATE_FiveParams(FGoogleTextToSpeechDelegate, bool /*bSuccess*/, const FString& /*CorrelationId*/, const FString& /*Text*/, const TArray<uint8>& /*AudioData*/, int32 /*SampleRate*/);
+
+
+// 1. Internal data structures
+struct FPendingSpeechToTextRequest
+{
+	FString CorrelationId;
+	FGoogleSpeechToTextDelegate Delegate;
+	int32 SampleRate = 16000;
+	int32 NumChannels = 1;
+};
+
+struct FPendingTextToSpeechRequest
+{
+	FString CorrelationId;
+	FString Text;
+	FGoogleTextToSpeechDelegate Delegate;
+	int32 SampleRate = 22050;
+};
+
+
 
 /**
  * @brief Thin Google Speech (STT/TTS) client.
@@ -30,33 +53,19 @@ public:
 	void RequestTextToSpeech(const FString& CorrelationId, const FString& Text, int32 SampleRate, const FGoogleTextToSpeechDelegate& Delegate);
 
 private:
+	// 2. Typedefs for containers
+	typedef TMap<IHttpRequest*, FPendingSpeechToTextRequest> FSpeechToTextMap;
+	typedef TMap<IHttpRequest*, FPendingTextToSpeechRequest> FTextToSpeechMap;
+
+	// 3. Handler methods
 	void HandleSpeechToTextResponse(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
 	void HandleTextToSpeechResponse(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
 
+	// 4. Helper methods
 	FString BuildSpeechToTextUrl() const;
 	FString BuildTextToSpeechUrl() const;
 
-private:
-	typedef TMap<IHttpRequest*, struct FPendingSpeechToTextRequest> FSpeechToTextMap;
-	typedef TMap<IHttpRequest*, struct FPendingTextToSpeechRequest> FTextToSpeechMap;
-
-	struct FPendingSpeechToTextRequest
-	{
-		FString CorrelationId;
-		FGoogleSpeechToTextDelegate Delegate;
-		int32 SampleRate = 16000;
-		int32 NumChannels = 1;
-	};
-
-	struct FPendingTextToSpeechRequest
-	{
-		FString CorrelationId;
-		FString Text;
-		FGoogleTextToSpeechDelegate Delegate;
-		int32 SampleRate = 22050;
-	};
-
-private:
+	// 5. Member variables
 	const UGoogleSpeechServiceSettings* Settings = nullptr;
 	FString ApiKey;
 	FString LanguageCode;
@@ -67,5 +76,4 @@ private:
 	FString AudioEncoding;
 
 	FSpeechToTextMap PendingSpeechToText;
-	FTextToSpeechMap PendingTextToSpeech;
-};
+	FTextToSpeechMap PendingTextToSpeech;};

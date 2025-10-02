@@ -5,9 +5,8 @@
 #include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "Templates/UniquePtr.h"
+#include "HAL/IConsoleManager.h"
 #include "UYiSanVoiceConsoleSubsystem.generated.h"
-
-struct FAutoConsoleCommandWithWorldAndArgs;
 
 /**
  * @brief Registers developer console commands for voice features (STT/TTS).
