@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['규칙_0',['규칙',['../md_GEMINI.html#autotoc_md25',1,'커밋 메시지 및 코딩 규칙'],['../md_AgentRule_2commit__agent.html#autotoc_md50',1,'3. 스코프 결정 규칙'],['../md_AgentRule_2conventions__agent.html#autotoc_md72',1,'4. 기타 규칙']]],
-  ['규칙_20추가_1',['4. 로그 파일 자동 분석 (규칙 추가)',['../md_AgentRule_2debug__guide.html#autotoc_md92',1,'']]],
-  ['규칙_20code_5fgenerate_20md_2',['코드 생성 규칙 (code_generate.md)',['../md_AgentRule_2code__generate.html',1,'']]],
-  ['규칙_20core_20rules_3',['규칙 core rules',['../md_AgentRule_2commit__agent.html#autotoc_md49',1,'2. 핵심 규칙 (Core Rules)'],['../md_AgentRule_2devlog__agent.html#autotoc_md95',1,'2. 핵심 규칙 (Core Rules)']]],
-  ['규칙_20naming_20conventions_4',['1. 네이밍 규칙 (Naming Conventions)',['../md_AgentRule_2conventions__agent.html#autotoc_md60',1,'']]]
+  ['구성_20파일_0',['구성 파일',['../md_Documents_2Reference_2DoxygenWorkflow.html#autotoc_md285',1,'']]],
+  ['구조_1',['구조',['../md_AgentRule_2PERSONA.html#autotoc_md181',1,'4) 모듈 구조'],['../md_GEMINI.html#autotoc_md35',1,'4) 모듈 구조']]],
+  ['구조_20및_20주석_2',['3. 파일 구조 및 주석',['../md_AgentRule_2conventions__agent.html#autotoc_md86',1,'']]],
+  ['구축_20strong_3',['1. &lt;strong&gt;Doxygen 문서화 시스템 구축&lt;/strong&gt;',['../md_Documents_2DevLog_2Monthly_22025-10.html#autotoc_md290',1,'']]]
 ];

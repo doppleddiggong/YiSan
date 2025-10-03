@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['중_0',['진행 중',['../md_Documents_2DevLog_22025-09-30.html#autotoc_md157',1,'']]]
+  ['자동_20분석_20규칙_20추가_0',['4. 로그 파일 자동 분석 (규칙 추가)',['../md_AgentRule_2debug__guide.html#autotoc_md73',1,'']]]
 ];

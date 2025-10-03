@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['제공_0',['3.5. 문제 발생 시 상세 정보 제공',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md10',1,'']]],
-  ['제시_1',['3.4. 예상 결과 제시',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md9',1,'']]],
-  ['제안_20proposing_20solutions_2',['2.5. 수정 방안 제안 (Proposing Solutions)',['../md_AgentRule_2debug__guide.html#autotoc_md86',1,'']]]
+  ['인식_20및_20합성_20시스템_20lattelibrary_20strong_0',['2. &lt;strong&gt;음성 인식 및 합성 시스템 (LatteLibrary)&lt;/strong&gt;',['../md_Documents_2DevLog_2Monthly_22025-10.html#autotoc_md291',1,'']]]
 ];

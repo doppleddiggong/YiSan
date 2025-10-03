@@ -1,0 +1,500 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YiSan Project Documentation: Project Report Agent</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YiSan Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('md_AgentRule_2project__report__agent.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Project Report Agent</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md200"></a> </p>
+<h1><a class="anchor" id="autotoc_md201"></a>
+1. 역할 (Persona)</h1>
+<ul>
+<li>프로젝트 전체 상태를 분석하고 종합 보고서를 생성하는 에이전트.</li>
+<li>Git 기록, DevLog, 코드베이스 구조를 분석하여 프로젝트 건강도, 진행률, 주요 메트릭 제공.</li>
+<li>프로젝트 관리자 및 이해관계자를 위한 고수준 인사이트 제공.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md202"></a>
+2. 핵심 규칙 (Core Rules)</h1>
+<ul>
+<li><b>생성 주기</b>: 요청 시 또는 주요 마일스톤 완료 시 생성.</li>
+<li><b>파일 경로</b>:<ul>
+<li>프로젝트 보고서: <code>Documents/Reports/ProjectReport_YYYY-MM-DD.md</code></li>
+<li>최신 보고서 링크: <code>Documents/Reports/LatestReport.md</code> (심볼릭 링크 또는 최신 보고서 경로 포함)</li>
+</ul>
+</li>
+<li><b>출력 언어</b>: 영어와 한글을 병기하여 가독성 향상.</li>
+<li><b>데이터 소스</b>:<ul>
+<li>Git 커밋 히스토리 (전체 기간 또는 지정 기간)</li>
+<li>DevLog 파일들 (일일 및 월간)</li>
+<li>코드베이스 구조 분석 (파일 수, 라인 수, 언어별 분포)</li>
+<li>이슈 트래커 (선택 사항)</li>
+<li>문서화 현황 (Doxygen, README 등)</li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md203"></a>
+3. 동작 조건 및 범위</h1>
+<ul>
+<li><b>타임존</b>: Asia/Seoul (KST, UTC+09:00).</li>
+<li><b>분석 기간</b>: 기본값은 프로젝트 시작부터 현재까지, 사용자 지정 기간 가능.</li>
+<li><b>실행 방법</b>:<ul>
+<li><b>수동</b>: AI 에이전트에게 "프로젝트 보고서 생성해줘" 요청.</li>
+<li><b>자동</b>: 주요 마일스톤 또는 월말에 자동 생성 (선택 사항).</li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md204"></a>
+4. 프로젝트 보고서 (Project Report) 형식</h1>
+<div class="fragment"><div class="line"># Project Report — YiSan</div>
+<div class="line">**생성 일시 (Generated)**: {{YYYY-MM-DD HH:MM KST}}</div>
+<div class="line">**보고 기간 (Report Period)**: {{StartDate}} ~ {{EndDate}}</div>
+<div class="line">**프로젝트 버전 (Version)**: {{ProjectVersion}}</div>
+<div class="line">**엔진 버전 (Engine)**: Unreal Engine {{EngineVersion}}</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">## 1. 전체 요약 (Executive Summary)</div>
+<div class="line">- **프로젝트 상태 (Status)**: {{Active/OnTrack/AtRisk/Completed}}</div>
+<div class="line">- **전체 진행률 (Overall Progress)**: {{ProgressPercentage}}%</div>
+<div class="line">- **총 커밋 수 (Total Commits)**: {{totalCommits}}건</div>
+<div class="line">- **활동 기간 (Active Period)**: {{activeDays}}일</div>
+<div class="line">- **참여 개발자 (Contributors)**: {{contributorCount}}명</div>
+<div class="line">- **주요 성과 (Key Achievements)**: {{topAchievements}}</div>
+<div class="line"> </div>
+<div class="line">**한 줄 요약**: {{oneLineSummary}}</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">## 2. 프로젝트 메트릭 (Project Metrics)</div>
+<div class="line"> </div>
+<div class="line">### 2.1. 코드베이스 현황 (Codebase Status)</div>
+<div class="line">- **총 파일 수 (Total Files)**: {{totalFiles}}개</div>
+<div class="line">- **총 코드 라인 수 (Total Lines of Code)**: {{totalLOC}}줄</div>
+<div class="line">- **언어별 분포 (Language Distribution)**:</div>
+<div class="line">  - C++: {{cppPercentage}}% ({{cppLOC}}줄)</div>
+<div class="line">  - Blueprint: {{bpPercentage}}% ({{bpAssets}}개 에셋)</div>
+<div class="line">  - Python: {{pyPercentage}}% ({{pyLOC}}줄)</div>
+<div class="line">  - Markdown: {{mdPercentage}}% ({{mdLOC}}줄)</div>
+<div class="line"> </div>
+<div class="line">### 2.2. 커밋 통계 (Commit Statistics)</div>
+<div class="line">- **총 커밋 수 (Total Commits)**: {{totalCommits}}건</div>
+<div class="line">- **일 평균 커밋 (Daily Average)**: {{avgCommitsPerDay}}건</div>
+<div class="line">- **주 평균 커밋 (Weekly Average)**: {{avgCommitsPerWeek}}건</div>
+<div class="line">- **월 평균 커밋 (Monthly Average)**: {{avgCommitsPerMonth}}건</div>
+<div class="line">- **최초 커밋 (First Commit)**: {{firstCommitDate}} ({{firstCommitSHA}})</div>
+<div class="line">- **최근 커밋 (Latest Commit)**: {{latestCommitDate}} ({{latestCommitSHA}})</div>
+<div class="line"> </div>
+<div class="line">### 2.3. 타입별 커밋 분포 (Commit Type Distribution)</div>
+<div class="line">- **feat (기능 추가)**: {{featCount}}건 ({{featPercentage}}%)</div>
+<div class="line">- **fix (버그 수정)**: {{fixCount}}건 ({{fixPercentage}}%)</div>
+<div class="line">- **refactor (리팩토링)**: {{refactorCount}}건 ({{refactorPercentage}}%)</div>
+<div class="line">- **docs (문서화)**: {{docsCount}}건 ({{docsPercentage}}%)</div>
+<div class="line">- **chore (기타)**: {{choreCount}}건 ({{chorePercentage}}%)</div>
+<div class="line">- **test (테스트)**: {{testCount}}건 ({{testPercentage}}%)</div>
+<div class="line">- **perf (성능 개선)**: {{perfCount}}건 ({{perfPercentage}}%)</div>
+<div class="line"> </div>
+<div class="line">### 2.4. 스코프별 활동 (Scope Activity)</div>
+<div class="line">1. **[{{scope1}}]**: {{scope1Count}}건 ({{scope1Percentage}}%)</div>
+<div class="line">2. **[{{scope2}}]**: {{scope2Count}}건 ({{scope2Percentage}}%)</div>
+<div class="line">3. **[{{scope3}}]**: {{scope3Count}}건 ({{scope3Percentage}}%)</div>
+<div class="line">4. **[{{scope4}}]**: {{scope4Count}}건 ({{scope4Percentage}}%)</div>
+<div class="line">5. **[{{scope5}}]**: {{scope5Count}}건 ({{scope5Percentage}}%)</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">## 3. 모듈별 현황 (Module Status)</div>
+<div class="line"> </div>
+<div class="line">### 3.1. YiSan (Game Module)</div>
+<div class="line">- **파일 수 (Files)**: {{yisanFiles}}개</div>
+<div class="line">- **코드 라인 수 (LOC)**: {{yisanLOC}}줄</div>
+<div class="line">- **최근 변경 (Recent Changes)**: {{yisanRecentChanges}}</div>
+<div class="line">- **주요 기능 (Key Features)**:</div>
+<div class="line">  - {{feature1}}</div>
+<div class="line">  - {{feature2}}</div>
+<div class="line">  - {{feature3}}</div>
+<div class="line">- **상태 (Status)**: {{yisanStatus}}</div>
+<div class="line"> </div>
+<div class="line">### 3.2. CoffeeLibrary (Utility Module)</div>
+<div class="line">- **파일 수 (Files)**: {{coffeeFiles}}개</div>
+<div class="line">- **코드 라인 수 (LOC)**: {{coffeeLOC}}줄</div>
+<div class="line">- **최근 변경 (Recent Changes)**: {{coffeeRecentChanges}}</div>
+<div class="line">- **주요 기능 (Key Features)**:</div>
+<div class="line">  - {{feature1}}</div>
+<div class="line">  - {{feature2}}</div>
+<div class="line">- **상태 (Status)**: {{coffeeStatus}}</div>
+<div class="line"> </div>
+<div class="line">### 3.3. LatteLibrary (Gameplay Module)</div>
+<div class="line">- **파일 수 (Files)**: {{latteFiles}}개</div>
+<div class="line">- **코드 라인 수 (LOC)**: {{latteLOC}}줄</div>
+<div class="line">- **최근 변경 (Recent Changes)**: {{latteRecentChanges}}</div>
+<div class="line">- **주요 기능 (Key Features)**:</div>
+<div class="line">  - {{feature1}}</div>
+<div class="line">  - {{feature2}}</div>
+<div class="line">  - {{feature3}}</div>
+<div class="line">- **상태 (Status)**: {{latteStatus}}</div>
+<div class="line"> </div>
+<div class="line">### 3.4. CoffeeToolbar (Editor Plugin)</div>
+<div class="line">- **파일 수 (Files)**: {{toolbarFiles}}개</div>
+<div class="line">- **코드 라인 수 (LOC)**: {{toolbarLOC}}줄</div>
+<div class="line">- **최근 변경 (Recent Changes)**: {{toolbarRecentChanges}}</div>
+<div class="line">- **주요 기능 (Key Features)**:</div>
+<div class="line">  - {{feature1}}</div>
+<div class="line">- **상태 (Status)**: {{toolbarStatus}}</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">## 4. 주요 성과 및 마일스톤 (Key Achievements &amp; Milestones)</div>
+<div class="line"> </div>
+<div class="line">### 4.1. 완료된 주요 기능 (Completed Features)</div>
+<div class="line">1. **{{Feature1}}**</div>
+<div class="line">   - 완료 일자: {{date}}</div>
+<div class="line">   - 설명: {{description}}</div>
+<div class="line">   - 관련 커밋: {{commits}}</div>
+<div class="line"> </div>
+<div class="line">2. **{{Feature2}}**</div>
+<div class="line">   - 완료 일자: {{date}}</div>
+<div class="line">   - 설명: {{description}}</div>
+<div class="line">   - 관련 커밋: {{commits}}</div>
+<div class="line"> </div>
+<div class="line">3. **{{Feature3}}**</div>
+<div class="line">   - 완료 일자: {{date}}</div>
+<div class="line">   - 설명: {{description}}</div>
+<div class="line">   - 관련 커밋: {{commits}}</div>
+<div class="line"> </div>
+<div class="line">### 4.2. 주요 버그 수정 (Major Bug Fixes)</div>
+<div class="line">1. **{{BugFix1}}** ({{date}})</div>
+<div class="line">2. **{{BugFix2}}** ({{date}})</div>
+<div class="line">3. **{{BugFix3}}** ({{date}})</div>
+<div class="line"> </div>
+<div class="line">### 4.3. 성능 개선 (Performance Improvements)</div>
+<div class="line">1. **{{PerfImprovement1}}** ({{date}})</div>
+<div class="line">2. **{{PerfImprovement2}}** ({{date}})</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">## 5. 문서화 현황 (Documentation Status)</div>
+<div class="line"> </div>
+<div class="line">### 5.1. 코드 문서화 (Code Documentation)</div>
+<div class="line">- **Doxygen 문서**: {{doxygenStatus}}</div>
+<div class="line">  - 경로: `{{doxygenUrl}}`</div>
+<div class="line">  - 마지막 업데이트: {{doxygenLastUpdate}}</div>
+<div class="line">- **문서화율 (Documentation Coverage)**: {{docCoveragePercentage}}%</div>
+<div class="line"> </div>
+<div class="line">### 5.2. 프로젝트 문서 (Project Documentation)</div>
+<div class="line">- **README.md**: {{readmeStatus}}</div>
+<div class="line">- **AGENTS.md**: {{agentsStatus}}</div>
+<div class="line">- **AgentRule 가이드**: {{agentRuleCount}}개</div>
+<div class="line">- **DevLog**: {{devLogCount}}개 (일일), {{monthlyLogCount}}개 (월간)</div>
+<div class="line">- **기타 문서**: {{otherDocsCount}}개</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">## 6. 기술 부채 및 리스크 (Technical Debt &amp; Risks)</div>
+<div class="line"> </div>
+<div class="line">### 6.1. 식별된 기술 부채 (Identified Technical Debt)</div>
+<div class="line">1. **{{TechDebt1}}**</div>
+<div class="line">   - 설명: {{description}}</div>
+<div class="line">   - 영향도: {{impact}}</div>
+<div class="line">   - 우선순위: {{priority}}</div>
+<div class="line">   - 예상 해결 시간: {{estimatedTime}}</div>
+<div class="line"> </div>
+<div class="line">2. **{{TechDebt2}}**</div>
+<div class="line">   - 설명: {{description}}</div>
+<div class="line">   - 영향도: {{impact}}</div>
+<div class="line">   - 우선순위: {{priority}}</div>
+<div class="line">   - 예상 해결 시간: {{estimatedTime}}</div>
+<div class="line"> </div>
+<div class="line">### 6.2. 리스크 평가 (Risk Assessment)</div>
+<div class="line">1. **{{Risk1}}**</div>
+<div class="line">   - 확률: {{probability}}</div>
+<div class="line">   - 영향: {{impact}}</div>
+<div class="line">   - 완화책: {{mitigation}}</div>
+<div class="line"> </div>
+<div class="line">2. **{{Risk2}}**</div>
+<div class="line">   - 확률: {{probability}}</div>
+<div class="line">   - 영향: {{impact}}</div>
+<div class="line">   - 완화책: {{mitigation}}</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">## 7. 품질 지표 (Quality Indicators)</div>
+<div class="line"> </div>
+<div class="line">### 7.1. 코드 품질 (Code Quality)</div>
+<div class="line">- **컨벤션 준수율 (Convention Adherence)**: {{conventionAdherencePercentage}}%</div>
+<div class="line">- **주석 비율 (Comment Ratio)**: {{commentRatioPercentage}}%</div>
+<div class="line">- **평균 함수 길이 (Avg Function Length)**: {{avgFunctionLength}}줄</div>
+<div class="line">- **평균 파일 크기 (Avg File Size)**: {{avgFileSize}}줄</div>
+<div class="line"> </div>
+<div class="line">### 7.2. 커밋 품질 (Commit Quality)</div>
+<div class="line">- **컨벤셔널 커밋 준수율 (Conventional Commit Adherence)**: {{conventionalCommitPercentage}}%</div>
+<div class="line">- **평균 커밋 크기 (Avg Commit Size)**: +{{avgAdditions}} / -{{avgDeletions}}</div>
+<div class="line">- **커밋 메시지 품질 점수 (Commit Message Quality)**: {{commitMessageQualityScore}}/10</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">## 8. 팀 협업 현황 (Team Collaboration Status)</div>
+<div class="line"> </div>
+<div class="line">### 8.1. 개발자별 기여도 (Contributor Statistics)</div>
+<div class="line">- **총 개발자 수 (Total Contributors)**: {{contributorCount}}명</div>
+<div class="line">- **활성 개발자 수 (Active Contributors)**: {{activeContributorCount}}명</div>
+<div class="line">- **기여도 상위 5명 (Top 5 Contributors)**:</div>
+<div class="line">  1. {{contributor1}}: {{commits1}}건 ({{percentage1}}%)</div>
+<div class="line">  2. {{contributor2}}: {{commits2}}건 ({{percentage2}}%)</div>
+<div class="line">  3. {{contributor3}}: {{commits3}}건 ({{percentage3}}%)</div>
+<div class="line">  4. {{contributor4}}: {{commits4}}건 ({{percentage4}}%)</div>
+<div class="line">  5. {{contributor5}}: {{commits5}}건 ({{percentage5}}%)</div>
+<div class="line"> </div>
+<div class="line">### 8.2. 협업 패턴 (Collaboration Patterns)</div>
+<div class="line">- **코드 리뷰 활동 (Code Review Activity)**: {{codeReviewCount}}건</div>
+<div class="line">- **이슈 해결 (Issue Resolution)**: {{resolvedIssues}}건 / {{totalIssues}}건</div>
+<div class="line">- **평균 이슈 해결 시간 (Avg Issue Resolution Time)**: {{avgResolutionTime}}일</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">## 9. 미해결 사항 (Outstanding Items)</div>
+<div class="line"> </div>
+<div class="line">### 9.1. TODO 목록 (TODO List)</div>
+<div class="line">- [ ] {{TODO1}} (출처: {{source}}, 우선순위: {{priority}})</div>
+<div class="line">- [ ] {{TODO2}} (출처: {{source}}, 우선순위: {{priority}})</div>
+<div class="line">- [ ] {{TODO3}} (출처: {{source}}, 우선순위: {{priority}})</div>
+<div class="line"> </div>
+<div class="line">### 9.2. 진행 중인 작업 (In-Progress Tasks)</div>
+<div class="line">- {{InProgressTask1}} (담당: {{assignee}}, 진행률: {{progress}}%)</div>
+<div class="line">- {{InProgressTask2}} (담당: {{assignee}}, 진행률: {{progress}}%)</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">## 10. 다음 단계 및 권장사항 (Next Steps &amp; Recommendations)</div>
+<div class="line"> </div>
+<div class="line">### 10.1. 단기 목표 (Short-term Goals, 1-4주)</div>
+<div class="line">1. {{ShortTermGoal1}}</div>
+<div class="line">   - 근거: {{rationale}}</div>
+<div class="line">   - 예상 효과: {{expectedOutcome}}</div>
+<div class="line"> </div>
+<div class="line">2. {{ShortTermGoal2}}</div>
+<div class="line">   - 근거: {{rationale}}</div>
+<div class="line">   - 예상 효과: {{expectedOutcome}}</div>
+<div class="line"> </div>
+<div class="line">### 10.2. 중기 목표 (Mid-term Goals, 1-3개월)</div>
+<div class="line">1. {{MidTermGoal1}}</div>
+<div class="line">   - 근거: {{rationale}}</div>
+<div class="line">   - 예상 효과: {{expectedOutcome}}</div>
+<div class="line"> </div>
+<div class="line">2. {{MidTermGoal2}}</div>
+<div class="line">   - 근거: {{rationale}}</div>
+<div class="line">   - 예상 효과: {{expectedOutcome}}</div>
+<div class="line"> </div>
+<div class="line">### 10.3. 장기 목표 (Long-term Goals, 3개월+)</div>
+<div class="line">1. {{LongTermGoal1}}</div>
+<div class="line">   - 근거: {{rationale}}</div>
+<div class="line">   - 예상 효과: {{expectedOutcome}}</div>
+<div class="line"> </div>
+<div class="line">2. {{LongTermGoal2}}</div>
+<div class="line">   - 근거: {{rationale}}</div>
+<div class="line">   - 예상 효과: {{expectedOutcome}}</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">## 11. 결론 (Conclusion)</div>
+<div class="line">{{conclusionSummary}}</div>
+<div class="line"> </div>
+<div class="line">---</div>
+<div class="line"> </div>
+<div class="line">**보고서 생성**: AI Agent (Project Report Agent)</div>
+<div class="line">**다음 보고서 예정일**: {{nextReportDate}}</div>
+</div><!-- fragment --><hr  />
+<h1><a class="anchor" id="autotoc_md206"></a>
+5. 생성 절차 (Generation Process)</h1>
+<h2><a class="anchor" id="autotoc_md207"></a>
+5.1. 데이터 수집 단계</h2>
+<ol type="1">
+<li><b>Git 데이터 수집</b>: <div class="fragment"><div class="line">git log --all --no-merges --pretty=format:&quot;%H|%an|%ae|%ad|%s&quot; --date=iso</div>
+<div class="line">git log --all --no-merges --numstat --pretty=format:&quot;%H&quot;</div>
+<div class="line">git shortlog -sn --all --no-merges</div>
+</div><!-- fragment --></li>
+<li><b>코드베이스 분석</b>: <div class="fragment"><div class="line">cloc Source/ Plugins/ --by-file --json</div>
+<div class="line">find Source/ Plugins/ -type f -name &quot;*.h&quot; -o -name &quot;*.cpp&quot; | wc -l</div>
+</div><!-- fragment --></li>
+<li><b>DevLog 분석</b>:<ul>
+<li><code><a class="el" href="__Last30Summary_8md.html">Documents/DevLog/_Last30Summary.md</a></code> 읽기</li>
+<li><code>Documents/DevLog/Monthly/*.md</code> 파일들 읽기</li>
+<li>최근 일일 DevLog 파일들 읽기</li>
+</ul>
+</li>
+<li><b>문서화 상태 확인</b>:<ul>
+<li>Doxygen 문서 생성 여부 확인</li>
+<li>README, AGENTS.md 업데이트 일자 확인</li>
+<li>AgentRule 파일들 개수 확인</li>
+</ul>
+</li>
+</ol>
+<h2><a class="anchor" id="autotoc_md208"></a>
+5.2. 분석 단계</h2>
+<ol type="1">
+<li><b>메트릭 계산</b>:<ul>
+<li>커밋 통계 (총 개수, 평균, 분포)</li>
+<li>코드 라인 수 및 언어별 분포</li>
+<li>타입별, 스코프별 커밋 분류</li>
+</ul>
+</li>
+<li><b>트렌드 분석</b>:<ul>
+<li>시간별 커밋 추세</li>
+<li>주요 활동 영역 식별</li>
+<li>진행률 계산</li>
+</ul>
+</li>
+<li><b>품질 평가</b>:<ul>
+<li>커밋 메시지 품질 점수</li>
+<li>코드 컨벤션 준수율</li>
+<li>문서화 커버리지</li>
+</ul>
+</li>
+<li><b>리스크 식별</b>:<ul>
+<li>미해결 TODO 분석</li>
+<li>기술 부채 식별</li>
+<li>차단 요인 평가</li>
+</ul>
+</li>
+</ol>
+<h2><a class="anchor" id="autotoc_md209"></a>
+5.3. 보고서 생성 단계</h2>
+<ol type="1">
+<li>위 형식에 따라 마크다운 파일 생성</li>
+<li><code>Documents/Reports/</code> 디렉토리에 저장</li>
+<li><code>Documents/Reports/LatestReport.md</code> 업데이트</li>
+</ol>
+<h2><a class="anchor" id="autotoc_md210"></a>
+5.4. 검증 단계</h2>
+<ol type="1">
+<li>모든 섹션이 채워졌는지 확인</li>
+<li>통계 수치의 정확성 검증</li>
+<li>링크 및 참조 유효성 확인</li>
+</ol>
+<hr  />
+<h1><a class="anchor" id="autotoc_md212"></a>
+6. 참고 사항</h1>
+<ul>
+<li>보고서 생성 시 <code><a class="el" href="__Last30Summary_8md.html">Documents/DevLog/_Last30Summary.md</a></code>, 월간 로그, 최근 커밋 기록을 종합 분석.</li>
+<li>프로젝트 상태는 진행률, 리스크, 활동 추세를 종합하여 결정.</li>
+<li>주요 성과는 커밋 크기, 영향 범위, 중요도를 기준으로 선정.</li>
+<li>보고서는 프로젝트 관리자 및 이해관계자가 이해하기 쉽도록 고수준 요약 중심으로 작성.</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md214"></a>
+7. 연계 에이전트</h1>
+<ul>
+<li><b>DevLog Agent</b>: 일일 로그 데이터 소스</li>
+<li><b>Monthly Log Agent</b>: 월간 통계 데이터 소스</li>
+<li><b>Commit Contributor Analysis Agent</b>: 개발자별 기여 데이터 참조</li>
+<li><b>Commit Agent</b>: 커밋 메시지 품질 평가 기준 참조 </li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">생성시간 : 금 10월 3 2025 07:45:33, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

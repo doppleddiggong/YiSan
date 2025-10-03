@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['범위_0',['3. 동작 조건 및 범위',['../md_AgentRule_2devlog__agent.html#autotoc_md96',1,'']]]
+  ['반복적인_20문제_20처리_20handling_20recurring_20issues_0',['3. 반복적인 문제 처리 (Handling Recurring Issues)',['../md_AgentRule_2debug__guide.html#autotoc_md71',1,'']]]
 ];

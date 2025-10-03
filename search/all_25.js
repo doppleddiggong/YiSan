@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['–_20doxygen_20워크플로_0',['Project YiSan – Doxygen 워크플로',['../md_Documents_2Reference_2DoxygenWorkflow.html',1,'']]]
+  ['_7eflogwriter_0',['~FLogWriter',['../classFLogWriter.html#af7d53c71504f8090cdc6e168ae224d01',1,'FLogWriter']]]
 ];

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['미들웨어_20api_0',['3) 사용 언어 / 미들웨어 / API',['../md_GEMINI.html#autotoc_md34',1,'']]],
-  ['미해결_20todo_20top_20n_1',['미해결 TODO Top N',['../md_AgentRule_2devlog__agent.html#autotoc_md112',1,'']]],
-  ['미흡_20주의_20후속_2',['미흡(주의/후속)',['../md_AgentRule_2devlog__agent.html#autotoc_md104',1,'']]]
+  ['명령어_0',['8.3. 주요 Doxygen 명령어',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md186',1,'']]],
+  ['명확화_1',['3.1. 작업 목표 명확화',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md9',1,'']]]
 ];

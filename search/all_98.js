@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['하이라이트_0',['하이라이트',['../md_AgentRule_2devlog__agent.html#autotoc_md100',1,'하이라이트'],['../md_Documents_2DevLog_22025-09-30.html#autotoc_md151',1,'Highlights / 하이라이트'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md169',1,'Highlights / 하이라이트'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md187',1,'Highlights / 하이라이트']]]
+  ['탐색_20가이드_0',['문서 탐색 가이드',['../index.html#autotoc_md219',1,'']]]
 ];

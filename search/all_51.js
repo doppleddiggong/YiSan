@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['빌드_20실행_0',['9) 빌드 / 실행',['../md_GEMINI.html#autotoc_md44',1,'']]],
-  ['빌드_20타겟_20설정_1',['6) 빌드/타겟 설정',['../md_GEMINI.html#autotoc_md41',1,'']]]
+  ['변수_20주석_20예시_0',['멤버 변수 주석 예시',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md192',1,'']]],
+  ['변수_20variables_1',['1.2. 변수 (Variables)',['../md_AgentRule_2conventions__agent.html#autotoc_md79',1,'']]]
 ];

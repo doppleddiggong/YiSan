@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['참고_0',['7. 참고',['../md_AgentRule_2commit__agent.html#autotoc_md54',1,'']]],
-  ['참고_20사항_1',['6. 참고 사항',['../md_AgentRule_2devlog__agent.html#autotoc_md115',1,'']]],
-  ['참조_2',['참조',['../md_AgentRule_2code__generate.html#autotoc_md15',1,'참조'],['../md_AgentRule_2agent__interaction__guide.html#autotoc_md8',1,'3.3. 기존 코드/컨벤션 참조']]]
+  ['정리_20cleaning_20up_20debug_20code_0',['2.6. 디버그 코드 정리 (Cleaning Up Debug Code)',['../md_AgentRule_2debug__guide.html#autotoc_md70',1,'']]],
+  ['정보_1',['정보',['../md_AgentRule_2PERSONA.html#autotoc_md175',1,'1) 프로젝트 정보'],['../md_GEMINI.html#autotoc_md32',1,'1) 프로젝트 정보']]],
+  ['정보_20제공_2',['3.5. 문제 발생 시 상세 정보 제공',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md13',1,'']]],
+  ['정책_3',['정책',['../md_AgentRule_2PERSONA.html#autotoc_md199',1,'Agent QA 로그 정책'],['../md_GEMINI.html#autotoc_md47',1,'Agent QA 로그 정책']]],
+  ['정책_20observability_20logging_4',['정책 observability logging',['../md_AgentRule_2PERSONA.html#autotoc_md160',1,'관찰 로그/텔레메트리 정책 (Observability &amp; Logging)'],['../md_GEMINI.html#autotoc_md23',1,'관찰 로그/텔레메트리 정책 (Observability &amp; Logging)']]]
 ];

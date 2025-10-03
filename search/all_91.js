@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['텔레메트리_20정책_20observability_20logging_0',['관찰 로그/텔레메트리 정책 (Observability &amp; Logging)',['../md_GEMINI.html#autotoc_md23',1,'']]]
+  ['추가_0',['4. 로그 파일 자동 분석 (규칙 추가)',['../md_AgentRule_2debug__guide.html#autotoc_md73',1,'']]],
+  ['추정_1',['추정',['../md_Documents_2DevLog_22025-09-30.html#autotoc_md241',1,'메트릭(추정)'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md275',1,'메트릭(추정)'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md277',1,'메트릭(추정)']]],
+  ['추출_2',['TODO(커밋 본문 추출)',['../md_AgentRule_2devlog__agent.html#autotoc_md126',1,'']]]
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['설정_0',['설정',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md127',1,'3. Doxyfile 생성 및 설정'],['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md129',1,'4. GitHub Actions 워크플로우 (&lt;tt&gt;doxygen.yml&lt;/tt&gt;) 설정'],['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md130',1,'5. GitHub 저장소 설정'],['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md131',1,'5.1. GitHub Actions 권한 설정'],['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md132',1,'5.2. GitHub Pages 소스 설정'],['../md_GEMINI.html#autotoc_md41',1,'6) 빌드/타겟 설정']]],
-  ['설정_20가이드_20project_20yisan_1',['Doxygen 문서화 및 GitHub Pages 배포 설정 가이드 (Project YiSan)',['../md_AgentRule_2doxygen__setup__guide.html',1,'']]]
+  ['상세_0',['상세',['../md_Documents_2DevLog_22025-09-30.html#autotoc_md239',1,'커밋 상세'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md269',1,'커밋 상세'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md273',1,'커밋 상세']]],
+  ['상세_20정보_20제공_1',['3.5. 문제 발생 시 상세 정보 제공',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md13',1,'']]],
+  ['상호작용하는_20가이드_2',['AI 에이전트와 효과적으로 상호작용하는 가이드',['../md_AgentRule_2agent__interaction__guide.html',1,'']]]
 ];

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['컨벤션_20가이드_20project_20yisan_0',['Unreal Engine C++ 코딩 컨벤션 가이드 (Project YiSan)',['../md_AgentRule_2conventions__agent.html',1,'']]],
-  ['컨벤션_20참조_1',['3.3. 기존 코드/컨벤션 참조',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md8',1,'']]],
-  ['컨벤션_20network_20module_20conventions_2',['5. 네트워크 모듈 컨벤션 (Network Module Conventions)',['../md_AgentRule_2conventions__agent.html#autotoc_md77',1,'']]]
+  ['지정_0',['3.2. 관련 파일/경로 지정',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md10',1,'']]],
+  ['지침_20gemini_20specific_20instructions_1',['Gemini 특화 지침 (Gemini-Specific Instructions)',['../md_GEMINI.html#autotoc_md49',1,'']]]
 ];

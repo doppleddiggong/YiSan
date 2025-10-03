@@ -1,9 +1,9 @@
 var indexSectionsWithContent =
 {
-  0: "0123456789_abcdefghiklmnopqrstuvwxyz~–—가개게결경계고관구권규기내네누다단대동디로리맞매맵메멤명모목문미및반발방배범변보본분빌빠사산삽상생서선설소속수스시식실아안않알언업에역예오완요우운워원위유응이일입자작저전절정제조주중지진질차참처추출커컨코클타탐태텔파페포프플필하한함핫해핵헤형확환효후",
+  0: "0123456789:_abcdefghiklmnopqrstuvwxyz~–—가개검게결경계고관구권규기내네누다단달대데동디로리맞매맵메멤명모목문미및반발방배범변보본분빌빠사산삽상생서선설성소속수스시식실아안않알언업에역연예오완요우운워원월위유음응이인일입자작저전절정제조주중지진질차참처추출커컨코클타탐태텔통특팀파페포프플필하한함합핫해핵헤현형확환활효후",
   1: "afiu",
   2: "agnrv",
-  3: "2_acdefgilmnuy",
+  3: "2_acdefgilmnpuy",
   4: "abcdefghilmnoprstuwy~",
   5: "abcdefghiklmnopqrstvw",
   6: "f",
@@ -11,7 +11,7 @@ var indexSectionsWithContent =
   8: "cdeghilmnpstuwxyz",
   9: "bcdhiklmnpsv",
   10: "acfgils",
-  11: "0123abcdegkmpuy–가개규문및배상생설에워이컨코효"
+  11: "0123abcdegklmopruy–—가개규문및배상생설에워이컨코효"
 };
 
 var indexSectionNames =

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['플러그인_3a_20tt_20coffeetoolbar_20tt_20editor_20win64_0',['4-4) 에디터 플러그인: &lt;tt&gt;CoffeeToolbar&lt;/tt&gt; (Editor, Win64)',['../md_GEMINI.html#autotoc_md39',1,'']]]
+  ['클래스_20및_20파일명_20classes_20and_20filenames_0',['1.1. 클래스 및 파일명 (Classes and Filenames)',['../md_AgentRule_2conventions__agent.html#autotoc_md77',1,'']]],
+  ['클래스_20주석_20예시_1',['클래스 주석 예시',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md189',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['핫스팟_20top_20scopes_0',['핫스팟(Top Scopes)',['../md_AgentRule_2devlog__agent.html#autotoc_md111',1,'']]]
+  ['통계_20metrics_20statistics_0',['메트릭 및 통계 (Metrics &amp; Statistics)',['../md_Documents_2DevLog_2Monthly_22025-10.html#autotoc_md307',1,'']]]
 ];

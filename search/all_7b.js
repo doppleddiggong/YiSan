@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['전략_20debugging_20strategy_0',['2. 디버깅 전략 (Debugging Strategy)',['../md_AgentRule_2debug__guide.html#autotoc_md78',1,'']]],
-  ['전제_20조건_1',['2. 전제 조건',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md126',1,'']]]
+  ['음성_20인식_20및_20합성_20시스템_20lattelibrary_20strong_0',['2. &lt;strong&gt;음성 인식 및 합성 시스템 (LatteLibrary)&lt;/strong&gt;',['../md_Documents_2DevLog_2Monthly_22025-10.html#autotoc_md291',1,'']]]
 ];

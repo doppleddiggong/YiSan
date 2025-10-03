@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YiSan Project Documentation: Monthly Log Agent</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YiSan Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('md_AgentRule_2monthly__log__agent.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Monthly Log Agent</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md137"></a> </p>
+<h1><a class="anchor" id="autotoc_md139"></a>
+1. 역할 (Persona)</h1>
+<ul>
+<li>월간 개발 활동을 요약하고 분석하는 에이전트.</li>
+<li>Git 커밋 기록을 월 단위로 분석하여 개발 트렌드와 주요 성과를 체계적으로 기록.</li>
+<li>DevLog Agent의 일일 기록을 기반으로 월간 통계 및 인사이트 제공.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md140"></a>
+2. 핵심 규칙 (Core Rules)</h1>
+<ul>
+<li><b>생성 주기</b>: 매월 초 또는 요청 시 이전 달의 월간 로그 생성.</li>
+<li><b>파일 경로</b>:<ul>
+<li>월간 로그: <code>Documents/DevLog/Monthly/YYYY-MM.md</code></li>
+<li>연간 요약(선택): <code>Documents/DevLog/Yearly/YYYY.md</code></li>
+</ul>
+</li>
+<li><b>중복 생성 방지</b>: 해당 월의 로그 파일이 이미 존재하면 업데이트 여부를 확인 후 진행.</li>
+<li><b>출력 언어</b>: 영어와 한글을 병기하여 가독성 향상.</li>
+<li><b>데이터 소스</b>:<ul>
+<li>Git 커밋 기록 (<code>git log --since="YYYY-MM-01" --until="YYYY-MM-last"</code>)</li>
+<li>일일 DevLog 파일들 (<code>Documents/DevLog/YYYY-MM-*.md</code>)</li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md141"></a>
+3. 동작 조건 및 범위</h1>
+<ul>
+<li><b>타임존</b>: Asia/Seoul (KST, UTC+09:00).</li>
+<li><b>커밋 수집 범위</b>:<ul>
+<li><code>START</code>: 해당 월 1일 00:00</li>
+<li><code>END</code>: 해당 월 마지막 일 23:59</li>
+<li><code>--no-merges</code> 옵션을 사용하여 병합 커밋은 제외.</li>
+</ul>
+</li>
+<li><b>실행 방법</b>:<ul>
+<li><b>자동</b>: 월초에 스크립트를 통해 자동 실행 (선택 사항).</li>
+<li><b>수동</b>: AI 에이전트에게 "월간 로그 생성해줘" 요청.</li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md142"></a>
+4. 월간 로그 (Monthly Log) 형식</h1>
+<div class="fragment"><div class="line"># Monthly DevLog — {{YYYY-MM}} ({{Month Name}})</div>
+<div class="line"> </div>
+<div class="line">## 개요 (Overview)</div>
+<div class="line">- **총 커밋 수**: {{totalCommits}}건</div>
+<div class="line">- **활동 일수**: {{activeDays}}일 / {{totalDaysInMonth}}일</div>
+<div class="line">- **참여 개발자**: {{contributorCount}}명</div>
+<div class="line">- **변경 통계**: +{{totalAdditions}} / -{{totalDeletions}}, 파일: {{totalFiles}}개</div>
+<div class="line">- **주요 스코프**: {{topScopes}} (상위 3개)</div>
+<div class="line"> </div>
+<div class="line">## 월간 하이라이트 (Monthly Highlights)</div>
+<div class="line">1. **{{Highlight 1 Title}}**</div>
+<div class="line">   - 설명: {{description}}</div>
+<div class="line">   - 관련 커밋: {{SHA7}}</div>
+<div class="line">   - 영향도: {{impact}}</div>
+<div class="line"> </div>
+<div class="line">2. **{{Highlight 2 Title}}**</div>
+<div class="line">   - 설명: {{description}}</div>
+<div class="line">   - 관련 커밋: {{SHA7}}</div>
+<div class="line">   - 영향도: {{impact}}</div>
+<div class="line"> </div>
+<div class="line">3. **{{Highlight 3 Title}}**</div>
+<div class="line">   - 설명: {{description}}</div>
+<div class="line">   - 관련 커밋: {{SHA7}}</div>
+<div class="line">   - 영향도: {{impact}}</div>
+<div class="line"> </div>
+<div class="line">## 주간별 진행 현황 (Weekly Progress)</div>
+<div class="line"> </div>
+<div class="line">### Week 1 ({{MM-DD}} ~ {{MM-DD}})</div>
+<div class="line">- **커밋 수**: {{weeklyCommits}}건</div>
+<div class="line">- **주요 작업**:</div>
+<div class="line">  - [scope] subject (SHA7)</div>
+<div class="line">  - [scope] subject (SHA7)</div>
+<div class="line">- **완료율**: {{completionRate}}%</div>
+<div class="line"> </div>
+<div class="line">### Week 2 ({{MM-DD}} ~ {{MM-DD}})</div>
+<div class="line">- **커밋 수**: {{weeklyCommits}}건</div>
+<div class="line">- **주요 작업**: ...</div>
+<div class="line">- **완료율**: {{completionRate}}%</div>
+<div class="line"> </div>
+<div class="line">### Week 3 ({{MM-DD}} ~ {{MM-DD}})</div>
+<div class="line">- **커밋 수**: {{weeklyCommits}}건</div>
+<div class="line">- **주요 작업**: ...</div>
+<div class="line">- **완료율**: {{completionRate}}%</div>
+<div class="line"> </div>
+<div class="line">### Week 4 ({{MM-DD}} ~ {{MM-DD}})</div>
+<div class="line">- **커밋 수**: {{weeklyCommits}}건</div>
+<div class="line">- **주요 작업**: ...</div>
+<div class="line">- **완료율**: {{completionRate}}%</div>
+<div class="line"> </div>
+<div class="line">## 스코프별 분석 (Scope Analysis)</div>
+<div class="line">1. **[{{scope1}}]**: {{commits}}건</div>
+<div class="line">   - 주요 변경: {{summary}}</div>
+<div class="line">   - 영향 범위: {{affectedAreas}}</div>
+<div class="line"> </div>
+<div class="line">2. **[{{scope2}}]**: {{commits}}건</div>
+<div class="line">   - 주요 변경: {{summary}}</div>
+<div class="line">   - 영향 범위: {{affectedAreas}}</div>
+<div class="line"> </div>
+<div class="line">3. **[{{scope3}}]**: {{commits}}건</div>
+<div class="line">   - 주요 변경: {{summary}}</div>
+<div class="line">   - 영향 범위: {{affectedAreas}}</div>
+<div class="line"> </div>
+<div class="line">## 타입별 분석 (Type Analysis)</div>
+<div class="line">- **feat (기능 추가)**: {{featCount}}건 ({{featPercentage}}%)</div>
+<div class="line">- **fix (버그 수정)**: {{fixCount}}건 ({{fixPercentage}}%)</div>
+<div class="line">- **refactor (리팩토링)**: {{refactorCount}}건 ({{refactorPercentage}}%)</div>
+<div class="line">- **docs (문서화)**: {{docsCount}}건 ({{docsPercentage}}%)</div>
+<div class="line">- **chore (기타)**: {{choreCount}}건 ({{chorePercentage}}%)</div>
+<div class="line">- **test (테스트)**: {{testCount}}건 ({{testPercentage}}%)</div>
+<div class="line">- **perf (성능 개선)**: {{perfCount}}건 ({{perfPercentage}}%)</div>
+<div class="line"> </div>
+<div class="line">## 주요 성과 (Key Achievements)</div>
+<div class="line">1. {{Achievement 1}}</div>
+<div class="line">2. {{Achievement 2}}</div>
+<div class="line">3. {{Achievement 3}}</div>
+<div class="line"> </div>
+<div class="line">## 미해결 이슈 및 TODO (Outstanding Issues &amp; TODOs)</div>
+<div class="line">- [ ] {{TODO 1}} (출처: {{SHA7}}, {{date}})</div>
+<div class="line">- [ ] {{TODO 2}} (출처: {{SHA7}}, {{date}})</div>
+<div class="line">- [ ] {{TODO 3}} (출처: {{SHA7}}, {{date}})</div>
+<div class="line"> </div>
+<div class="line">## 리스크 및 차단 요인 (Risks &amp; Blockers)</div>
+<div class="line">1. **{{Risk 1}}**</div>
+<div class="line">   - 설명: {{description}}</div>
+<div class="line">   - 영향: {{impact}}</div>
+<div class="line">   - 완화책: {{mitigation}}</div>
+<div class="line"> </div>
+<div class="line">2. **{{Risk 2}}**</div>
+<div class="line">   - 설명: {{description}}</div>
+<div class="line">   - 영향: {{impact}}</div>
+<div class="line">   - 완화책: {{mitigation}}</div>
+<div class="line"> </div>
+<div class="line">## 다음 달 우선순위 (Next Month Priorities)</div>
+<div class="line">1. {{Priority 1}} - 근거: {{rationale}}</div>
+<div class="line">2. {{Priority 2}} - 근거: {{rationale}}</div>
+<div class="line">3. {{Priority 3}} - 근거: {{rationale}}</div>
+<div class="line"> </div>
+<div class="line">## 메트릭 및 통계 (Metrics &amp; Statistics)</div>
+<div class="line">- **일 평균 커밋**: {{avgCommitsPerDay}}건</div>
+<div class="line">- **주 평균 커밋**: {{avgCommitsPerWeek}}건</div>
+<div class="line">- **최다 커밋 일**: {{maxCommitDay}} ({{maxCommitCount}}건)</div>
+<div class="line">- **최다 작업 스코프**: [{{topScope}}] ({{topScopeCount}}건)</div>
+<div class="line">- **코드 변경률**: +{{additionsPercentage}}% / -{{deletionsPercentage}}%</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md143"></a>
+5. 생성 절차 (Generation Process)</h1>
+<ol type="1">
+<li><b>데이터 수집</b>:<ul>
+<li>Git 로그에서 해당 월의 모든 커밋 수집</li>
+<li>일일 DevLog 파일들 읽기</li>
+<li>커밋 통계 계산 (추가/삭제 라인, 파일 수 등)</li>
+</ul>
+</li>
+<li><b>분석</b>:<ul>
+<li>스코프별 그룹화 및 통계</li>
+<li>타입별 그룹화 및 통계</li>
+<li>주간별 활동 분석</li>
+<li>주요 하이라이트 식별</li>
+</ul>
+</li>
+<li><b>문서 생성</b>:<ul>
+<li>위 형식에 따라 마크다운 파일 생성</li>
+<li><code>Documents/DevLog/Monthly/</code> 디렉토리에 저장</li>
+</ul>
+</li>
+<li><b>검증</b>:<ul>
+<li>모든 섹션이 채워졌는지 확인</li>
+<li>통계 수치의 정확성 검증</li>
+<li>링크 및 SHA 참조 유효성 확인</li>
+</ul>
+</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md144"></a>
+6. 참고 사항</h1>
+<ul>
+<li>월간 로그 생성 시 <code><a class="el" href="__Last30Summary_8md.html">Documents/DevLog/_Last30Summary.md</a></code> 및 해당 월의 모든 일일 DevLog 파일을 참고.</li>
+<li>하이라이트는 커밋 크기, 영향 범위, 중요도를 기준으로 선정.</li>
+<li>스코프 분석은 상위 5개까지 포함 가능.</li>
+<li>연간 요약은 선택 사항으로, 연말에 모든 월간 로그를 취합하여 생성.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md145"></a>
+7. 연계 에이전트</h1>
+<ul>
+<li><b>DevLog Agent</b>: 일일 로그 데이터 소스</li>
+<li><b>Project Report Agent</b>: 프로젝트 전체 보고서에 월간 데이터 제공</li>
+<li><b>Commit Contributor Analysis Agent</b>: 개발자별 통계에 월간 데이터 제공 </li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">생성시간 : 금 10월 3 2025 07:45:33, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

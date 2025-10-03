@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['반복적인_20문제_20처리_20handling_20recurring_20issues_0',['3. 반복적인 문제 처리 (Handling Recurring Issues)',['../md_AgentRule_2debug__guide.html#autotoc_md89',1,'']]]
+  ['목적_0',['목적',['../md_AgentRule_2code__generate.html#autotoc_md2',1,'목적'],['../md_Documents_2Reference_2DoxygenWorkflow.html#autotoc_md282',1,'목적']]],
+  ['목적_20purpose_1',['1. 목적 (Purpose)',['../md_AgentRule_2debug__guide.html#autotoc_md63',1,'']]],
+  ['목표_20명확화_2',['3.1. 작업 목표 명확화',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md9',1,'']]]
 ];

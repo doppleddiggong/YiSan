@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['식별_20identifying_20debug_20points_0',['2.2. 디버그 포인트 식별 (Identifying Debug Points)',['../md_AgentRule_2debug__guide.html#autotoc_md80',1,'']]]
+  ['소개_0',['프로젝트 소개',['../index.html#autotoc_md217',1,'']]],
+  ['소스_20설정_1',['5.2. GitHub Pages 소스 설정',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md161',1,'']]]
 ];

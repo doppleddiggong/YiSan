@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['보고서_2030_20day_20briefing_20형식_0',['5. 30일 요약 보고서 (30-Day Briefing) 형식',['../md_AgentRule_2devlog__agent.html#autotoc_md108',1,'']]],
-  ['보임_1',['6.4. 문제 4: GitHub Pages 404 오류 (사이트 주소는 맞는데 내용이 안 보임)',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md137',1,'']]]
+  ['방법_0',['3. 효율적인 요청 방법',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md8',1,'']]],
+  ['방식_20개선_20commit_20message_20generation_20improvement_1',['9. 커밋 메시지 생성 방식 개선 (Commit Message Generation Improvement)',['../md_AgentRule_2commit__agent.html#autotoc_md59',1,'']]],
+  ['방안_20제안_20proposing_20solutions_2',['2.5. 수정 방안 제안 (Proposing Solutions)',['../md_AgentRule_2debug__guide.html#autotoc_md69',1,'']]]
 ];

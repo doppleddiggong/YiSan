@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['본문_20누락_0',['8.1. 문제: &lt;tt&gt;git commit -m&lt;/tt&gt; 사용 시 한글 본문 누락',['../md_AgentRule_2commit__agent.html#autotoc_md56',1,'']]],
-  ['본문_20추출_1',['TODO(커밋 본문 추출)',['../md_AgentRule_2devlog__agent.html#autotoc_md105',1,'']]]
+  ['배포_20설정_20가이드_20project_20yisan_0',['Doxygen 문서화 및 GitHub Pages 배포 설정 가이드 (Project YiSan)',['../md_AgentRule_2doxygen__setup__guide.html',1,'']]],
+  ['배포_20확인_20및_20문제_20해결_20troubleshooting_1',['6. 배포 확인 및 문제 해결 (Troubleshooting)',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md163',1,'']]]
 ];

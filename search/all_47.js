@@ -1,14 +1,10 @@
 var searchData=
 [
-  ['및_20문제_20해결_20troubleshooting_0',['6. 배포 확인 및 문제 해결 (Troubleshooting)',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md133',1,'']]],
-  ['및_20범위_1',['3. 동작 조건 및 범위',['../md_AgentRule_2devlog__agent.html#autotoc_md96',1,'']]],
-  ['및_20서브_20모듈_20기준_2',['5) 핵심 시스템 (게임 모듈 및 서브 모듈 기준)',['../md_GEMINI.html#autotoc_md40',1,'']]],
-  ['및_20설정_3',['3. Doxyfile 생성 및 설정',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md127',1,'']]],
-  ['및_20예시_4',['6.2. 필수 태그 및 예시',['../md_AgentRule_2conventions__agent.html#autotoc_md87',1,'']]],
-  ['및_20위치_5',['8.2. 주석 스타일 및 위치',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md142',1,'']]],
-  ['및_20주석_6',['3. 파일 구조 및 주석',['../md_AgentRule_2conventions__agent.html#autotoc_md68',1,'']]],
-  ['및_20코딩_20규칙_7',['커밋 메시지 및 코딩 규칙',['../md_GEMINI.html#autotoc_md25',1,'']]],
-  ['및_20파일명_20classes_20and_20filenames_8',['1.1. 클래스 및 파일명 (Classes and Filenames)',['../md_AgentRule_2conventions__agent.html#autotoc_md61',1,'']]],
-  ['및_20해결책_9',['8. 알려진 문제 및 해결책',['../md_AgentRule_2commit__agent.html#autotoc_md55',1,'']]],
-  ['및_20github_20pages_20배포_20설정_20가이드_20project_20yisan_10',['Doxygen 문서화 및 GitHub Pages 배포 설정 가이드 (Project YiSan)',['../md_AgentRule_2doxygen__setup__guide.html',1,'']]]
+  ['모듈_20구조_0',['모듈 구조',['../md_AgentRule_2PERSONA.html#autotoc_md181',1,'4) 모듈 구조'],['../md_GEMINI.html#autotoc_md35',1,'4) 모듈 구조']]],
+  ['모듈_20및_20서브_20모듈_20기준_1',['모듈 및 서브 모듈 기준',['../md_AgentRule_2PERSONA.html#autotoc_md190',1,'5) 핵심 시스템 (게임 모듈 및 서브 모듈 기준)'],['../md_GEMINI.html#autotoc_md41',1,'5) 핵심 시스템 (게임 모듈 및 서브 모듈 기준)']]],
+  ['모듈_20컨벤션_20network_20module_20conventions_2',['5. 네트워크 모듈 컨벤션 (Network Module Conventions)',['../md_AgentRule_2conventions__agent.html#autotoc_md99',1,'']]],
+  ['모듈_3a_20tt_20coffeelibrary_20tt_20runtime_3',['모듈: tt coffeelibrary tt runtime',['../md_AgentRule_2PERSONA.html#autotoc_md184',1,'4-2) 서브 모듈: &lt;tt&gt;CoffeeLibrary&lt;/tt&gt; (Runtime)'],['../md_GEMINI.html#autotoc_md37',1,'4-2) 서브 모듈: &lt;tt&gt;CoffeeLibrary&lt;/tt&gt; (Runtime)']]],
+  ['모듈_3a_20tt_20lattelibrary_20tt_20runtime_4',['모듈: tt lattelibrary tt runtime',['../md_AgentRule_2PERSONA.html#autotoc_md185',1,'4-3) 서브 모듈: &lt;tt&gt;LatteLibrary&lt;/tt&gt; (Runtime)'],['../md_GEMINI.html#autotoc_md38',1,'4-3) 서브 모듈: &lt;tt&gt;LatteLibrary&lt;/tt&gt; (Runtime)']]],
+  ['모듈_3a_20tt_20yisan_20tt_20runtime_5',['모듈: tt yisan tt runtime',['../md_AgentRule_2PERSONA.html#autotoc_md183',1,'4-1) 게임 모듈: &lt;tt&gt;YiSan&lt;/tt&gt; (Runtime)'],['../md_GEMINI.html#autotoc_md36',1,'4-1) 게임 모듈: &lt;tt&gt;YiSan&lt;/tt&gt; (Runtime)']]],
+  ['모드_20documentation_20mode_6',['모드 documentation mode',['../md_AgentRule_2PERSONA.html#autotoc_md156',1,'문서화 모드 (Documentation Mode)'],['../md_GEMINI.html#autotoc_md21',1,'문서화 모드 (Documentation Mode)']]]
 ];

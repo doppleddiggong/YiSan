@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['unreal_20engine_20c_20코딩_20컨벤션_20가이드_20project_20yisan_0',['Unreal Engine C++ 코딩 컨벤션 가이드 (Project YiSan)',['../md_AgentRule_2conventions__agent.html',1,'']]],
-  ['uvoicesystem_1',['UVoiceSystem',['../md_Documents_2DoxygenPage_2UVoiceSystem.html',1,'']]]
+  ['october_0',['Monthly DevLog — 2025-10 (October)',['../md_Documents_2DevLog_2Monthly_22025-10.html',1,'']]]
 ];

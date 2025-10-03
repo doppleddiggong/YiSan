@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['워크플로우_20tt_20doxygen_20yml_20tt_20설정_0',['4. GitHub Actions 워크플로우 (&lt;tt&gt;doxygen.yml&lt;/tt&gt;) 설정',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md129',1,'']]],
-  ['워크플로_1',['워크플로',['../md_AgentRule_2code__generate.html#autotoc_md14',1,'워크플로'],['../md_Documents_2Reference_2DoxygenWorkflow.html',1,'Project YiSan – Doxygen 워크플로']]],
-  ['워크플로_20debug_20agent_20workflow_2',['디버그 에이전트 워크플로 (Debug Agent Workflow)',['../md_GEMINI.html#autotoc_md27',1,'']]],
-  ['워크플로_20devlog_20agent_20workflow_3',['DevLog 에이전트 워크플로 (DevLog Agent Workflow)',['../md_GEMINI.html#autotoc_md29',1,'']]]
+  ['예상_20결과_20제시_0',['3.4. 예상 결과 제시',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md12',1,'']]],
+  ['예시_1',['예시',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md192',1,'멤버 변수 주석 예시'],['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md189',1,'클래스 주석 예시'],['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md191',1,'함수 주석 예시'],['../md_AgentRule_2conventions__agent.html#autotoc_md109',1,'6.2. 필수 태그 및 예시'],['../md_AgentRule_2conventions__agent.html#autotoc_md113',1,'6.3. 코드 예시'],['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md188',1,'8.4. 예시']]]
 ];

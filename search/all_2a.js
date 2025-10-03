@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['결과_20제시_0',['3.4. 예상 결과 제시',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md9',1,'']]],
-  ['결론_1',['7. 결론',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md139',1,'']]],
-  ['결정_20규칙_2',['3. 스코프 결정 규칙',['../md_AgentRule_2commit__agent.html#autotoc_md50',1,'']]]
+  ['검증_20단계_0',['검증 단계',['../md_AgentRule_2project__report__agent.html#autotoc_md210',1,'5.4. 검증 단계'],['../md_AgentRule_2commit__contributor__analysis__agent.html#autotoc_md102',1,'6.4. 검증 단계']]]
 ];

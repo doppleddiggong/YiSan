@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['명령어_0',['8.3. 주요 Doxygen 명령어',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md143',1,'']]],
-  ['명확화_1',['3.1. 작업 목표 명확화',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md6',1,'']]]
+  ['매크로_0',['2. UPROPERTY / UFUNCTION 매크로',['../md_AgentRule_2conventions__agent.html#autotoc_md84',1,'']]]
 ];

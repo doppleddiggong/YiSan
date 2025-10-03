@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['개발_20로그_202025_2009_2030_20kst_2009_3a00_20경계_0',['일일 개발 로그 2025-09-30 (KST 09:00 경계)',['../md_Documents_2DevLog_22025-09-30.html#autotoc_md149',1,'']]],
-  ['개발_20로그_202025_2010_2001_20kst_2009_3a00_20경계_1',['일일 개발 로그 2025-10-01 (KST 09:00 경계)',['../md_Documents_2DevLog_22025-10-01.html#autotoc_md167',1,'']]],
-  ['개발_20로그_202025_2010_2002_20kst_2009_3a00_20경계_2',['일일 개발 로그 2025-10-02 (KST 09:00 경계)',['../md_Documents_2DevLog_22025-10-02.html#autotoc_md185',1,'']]],
-  ['개발_20문서_3',['Project YiSan (이산) - 개발 문서',['../index.html',1,'']]],
-  ['개발_20환경_20요구_4',['2) 개발 환경 / 요구',['../md_GEMINI.html#autotoc_md33',1,'']]],
-  ['개선_20commit_20message_20generation_20improvement_5',['9. 커밋 메시지 생성 방식 개선 (Commit Message Generation Improvement)',['../md_AgentRule_2commit__agent.html#autotoc_md57',1,'']]],
-  ['개요_6',['개요',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md2',1,'1. 개요'],['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md125',1,'1. 개요'],['../md_Documents_2DevLog_2__Last30Summary.html#autotoc_md203',1,'Overview / 개요'],['../md_GEMINI.html#autotoc_md31',1,'Project YiSan 개요']]]
+  ['가이드라인_20doxygen_20commenting_20guidelines_0',['8. Doxygen 주석 가이드라인 (Doxygen Commenting Guidelines)',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md178',1,'']]],
+  ['가이드_1',['가이드',['../md_AgentRule_2devlog__agent.html#autotoc_md135',1,'다음 우선순위(가이드)'],['../index.html#autotoc_md219',1,'문서 탐색 가이드'],['../md_AgentRule_2agent__interaction__guide.html',1,'AI 에이전트와 효과적으로 상호작용하는 가이드']]],
+  ['가이드_20요약_2',['Suggested Focus / 권장 가이드(요약)',['../md_Documents_2DevLog_2__Last30Summary.html#autotoc_md280',1,'']]],
+  ['가이드_20doxygen_20comment_20style_20guide_3',['6. Doxygen 주석 스타일 가이드 (Doxygen Comment Style Guide)',['../md_AgentRule_2conventions__agent.html#autotoc_md105',1,'']]],
+  ['가이드_20project_20yisan_4',['가이드 project yisan',['../md_AgentRule_2doxygen__setup__guide.html',1,'Doxygen 문서화 및 GitHub Pages 배포 설정 가이드 (Project YiSan)'],['../md_AgentRule_2conventions__agent.html',1,'Unreal Engine C++ 코딩 컨벤션 가이드 (Project YiSan)']]],
+  ['가이드_20project_20yisan_20agent_20guide_5',['가이드 project yisan agent guide',['../md_GEMINI.html',1,'Project YiSan 에이전트 가이드 (Project YiSan Agent Guide)'],['../md_AgentRule_2PERSONA.html',1,'Project YiSan 에이전트 가이드 (Project YiSan Agent Guide)']]]
 ];

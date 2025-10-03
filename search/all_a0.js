@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['확인_20및_20문제_20해결_20troubleshooting_0',['6. 배포 확인 및 문제 해결 (Troubleshooting)',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md133',1,'']]]
+  ['포맷_0',['포맷',['../md_AgentRule_2commit__agent.html#autotoc_md53',1,'4. 입력 포맷'],['../md_AgentRule_2commit__agent.html#autotoc_md54',1,'5. 출력 포맷']]],
+  ['포인트_20식별_20identifying_20debug_20points_1',['2.2. 디버그 포인트 식별 (Identifying Debug Points)',['../md_AgentRule_2debug__guide.html#autotoc_md66',1,'']]]
 ];

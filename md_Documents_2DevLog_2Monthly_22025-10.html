@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YiSan Project Documentation: Monthly DevLog — 2025-10 (October)</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YiSan Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('md_Documents_2DevLog_2Monthly_22025-10.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Monthly DevLog — 2025-10 (October)</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md287"></a> </p>
+<h1><a class="anchor" id="autotoc_md288"></a>
+개요 (Overview)</h1>
+<ul>
+<li><b>총 커밋 수 (Total Commits)</b>: 56건</li>
+<li><b>활동 일수 (Active Days)</b>: 3일 / 31일 (현재까지)</li>
+<li><b>참여 개발자 (Contributors)</b>: 2명 (dopple, Ju100)</li>
+<li><b>변경 통계 (Changes)</b>: +9,449 / -4,828, 파일: 234개</li>
+<li><b>주요 스코프 (Top Scopes)</b>: Docs (문서화), LatteLibrary (음성 시스템), DevTools (개발 도구)</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md289"></a>
+월간 하이라이트 (Monthly Highlights)</h1>
+<h2><a class="anchor" id="autotoc_md290"></a>
+1. &lt;strong&gt;Doxygen 문서화 시스템 구축&lt;/strong&gt;</h2>
+<ul>
+<li>설명: 프로젝트 전체 코드베이스에 Doxygen 주석 추가 및 자동 배포 시스템 구축</li>
+<li>관련 커밋: f063bcc, e0202c8, 896f999, 2a7274c, 759c67b, 256dc38</li>
+<li>영향도: 높음 - 포트폴리오 품질 향상 및 개발자 온보딩 개선</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md291"></a>
+2. &lt;strong&gt;음성 인식 및 합성 시스템 (LatteLibrary)&lt;/strong&gt;</h2>
+<ul>
+<li>설명: Google Speech API 및 OpenAI GPT 연동 음성 상호작용 시스템 추가</li>
+<li>관련 커밋: 3f67532</li>
+<li>영향도: 높음 - 새로운 핵심 게임플레이 기능 추가 (1,848줄 추가)</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md292"></a>
+3. &lt;strong&gt;GitHub Actions CI/CD 파이프라인&lt;/strong&gt;</h2>
+<ul>
+<li>설명: AI 코드 리뷰 봇 및 Doxygen 자동 배포 워크플로우 추가</li>
+<li>관련 커밋: fe1e655, f063bcc, a4e9a11</li>
+<li>영향도: 중간 - 개발 프로세스 자동화 및 품질 관리 개선</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md293"></a>
+주간별 진행 현황 (Weekly Progress)</h1>
+<h2><a class="anchor" id="autotoc_md294"></a>
+Week 1 (10-01 ~ 10-03)</h2>
+<ul>
+<li><b>커밋 수 (Commits)</b>: 56건</li>
+<li><b>주요 작업 (Key Tasks)</b>:<ul>
+<li>[docs] Doxygen 주석 정비 및 문서 시스템 구축 (896f999, e0202c8, 5ea4fa6)</li>
+<li>[feat] 음성 인식 및 합성 시스템 추가 (3f67532)</li>
+<li>[build] Doxygen 배포 자동화 (f063bcc, a4e9a11)</li>
+<li>[docs] 에이전트 가이드 문서 추가 (5ea4fa6, 2906678)</li>
+<li>[chore] 프로젝트 구조 정리 및 초기화 (다수)</li>
+</ul>
+</li>
+<li><b>완료율 (Completion Rate)</b>: 20% (문서화 기반 구축 단계)</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md295"></a>
+Week 2 (10-04 ~ 10-10)</h2>
+<ul>
+<li>예정: 음성 시스템 테스트 및 개선, 추가 기능 개발</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md296"></a>
+스코프별 분석 (Scope Analysis)</h1>
+<h2><a class="anchor" id="autotoc_md297"></a>
+1. &lt;strong&gt;[Docs/문서화]&lt;/strong&gt;: 25건</h2>
+<ul>
+<li>주요 변경: Doxygen 시스템 구축, 주석 정비, 가이드 문서 추가</li>
+<li>영향 범위: 전체 코드베이스 (CoffeeLibrary, LatteLibrary, YiSan 모듈)</li>
+<li>주요 커밋:<ul>
+<li>docs(plugins,source): 도큐먼트 주석을 한글로 갱신 (896f999)</li>
+<li>docs(Source): doxygen 주석 정비 (e0202c8)</li>
+<li>feat(Docs): Doxygen 문서 구조 및 포트폴리오 품질 개선 (759c67b)</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md298"></a>
+2. &lt;strong&gt;[LatteLibrary]&lt;/strong&gt;: 1건</h2>
+<ul>
+<li>주요 변경: 음성 인식(STT) 및 합성(TTS) 시스템 추가</li>
+<li>영향 범위: 새로운 음성 상호작용 기능</li>
+<li>주요 커밋:<ul>
+<li>feat(LatteLibrary): 음성 인식 및 합성 시스템 추가 (3f67532)</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md299"></a>
+3. &lt;strong&gt;[DevTools/개발도구]&lt;/strong&gt;: 2건</h2>
+<ul>
+<li>주요 변경: Doxygen 생성 도구 및 DevLog 자동화 개선</li>
+<li>영향 범위: 개발 워크플로우</li>
+<li>주요 커밋:<ul>
+<li>feat(DevTools): Doxygen 및 DevLog 생성 기능 개선 (2a7274c)</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md300"></a>
+4. &lt;strong&gt;[Core/코어]&lt;/strong&gt;: 3건</h2>
+<ul>
+<li>주요 변경: AGENTS.md, <a class="el" href="GEMINI_8md.html">GEMINI.md</a> 지침 문서 정비, README 업데이트</li>
+<li>영향 범위: 프로젝트 메타데이터</li>
+<li>주요 커밋:<ul>
+<li>docs(core): AGENTS와 GEMINI 지침 한글 복구 (0366c82)</li>
+<li>docs(core): Doxyfile 주석을 한글화하여 가독성 개선 (256dc38)</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md301"></a>
+5. &lt;strong&gt;[기타/Unscoped]&lt;/strong&gt;: 25건</h2>
+<ul>
+<li>주요 변경: 코드 수정, 파일명 변경, AI 리뷰 봇 설정 등</li>
+<li>영향 범위: 다양한 소규모 개선 사항</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md302"></a>
+타입별 분석 (Type Analysis)</h1>
+<ul>
+<li><b>feat (기능 추가)</b>: 3건 (5.4%)<ul>
+<li>LatteLibrary 음성 시스템, DevTools 개선, Docs 구조 개선</li>
+</ul>
+</li>
+<li><b>fix (버그 수정)</b>: 2건 (3.6%)<ul>
+<li>Doxygen 빌드 에러 수정</li>
+</ul>
+</li>
+<li><b>docs (문서화)</b>: 6건 (10.7%)<ul>
+<li>Doxygen 주석, 가이드 문서, 코드 주석 정비</li>
+</ul>
+</li>
+<li><b>build (빌드/배포)</b>: 2건 (3.6%)<ul>
+<li>Doxygen 배포 워크플로우, GitHub Actions</li>
+</ul>
+</li>
+<li><b>chore (기타)</b>: 43건 (76.8%)<ul>
+<li>코드 수정, 파일명 변경, 프로젝트 초기화, README 업데이트 등</li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md303"></a>
+주요 성과 (Key Achievements)</h1>
+<ol type="1">
+<li><b>Doxygen 문서 시스템 완성</b> - GitHub Pages에 자동 배포되는 API 문서 구축</li>
+<li><b>음성 상호작용 기능 추가</b> - Google Speech 및 OpenAI GPT 기반 음성 인식/합성 시스템</li>
+<li><b>개발 인프라 강화</b> - AI 코드 리뷰 봇, 자동 배포 파이프라인 구축</li>
+<li><b>코드 품질 개선</b> - 전체 코드베이스에 한글 주석 추가 및 가독성 향상</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md304"></a>
+미해결 이슈 및 TODO (Outstanding Issues &amp; TODOs)</h1>
+<ul>
+<li>[ ] 음성 인식 시스템 통합 테스트 필요 (출처: DevLog 분석)</li>
+<li>[ ] Doxygen 문서 추가 개선 (클래스 다이어그램, 시퀀스 다이어그램) (출처: 개발 로드맵)</li>
+<li>[ ] AI 리뷰 봇 설정 최적화 (출처: 2025-10-02)</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md305"></a>
+리스크 및 차단 요인 (Risks &amp; Blockers)</h1>
+<ol type="1">
+<li><b>문서화 우선순위 과다</b><ul>
+<li>설명: 초기 3일간 문서화 작업에 집중, 핵심 기능 개발 속도 저하 가능</li>
+<li>영향: 중간 - 마일스톤 일정 지연 가능성</li>
+<li>완화책: 다음 주부터 기능 개발에 집중, 문서화는 병행</li>
+</ul>
+</li>
+<li><b>커밋 메시지 컨벤션 불일치</b><ul>
+<li>설명: 43개 커밋이 "코드 수정", "파일명 수정" 등 불명확한 메시지</li>
+<li>영향: 낮음 - 커밋 히스토리 추적 어려움</li>
+<li>완화책: Conventional Commits 가이드 준수 강화, <a class="el" href="commit__agent_8md.html">commit_agent.md</a> 참조</li>
+</ul>
+</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md306"></a>
+다음 달 우선순위 (Next Month Priorities)</h1>
+<ol type="1">
+<li><b>음성 시스템 안정화 및 테스트</b> - 근거: 새로운 핵심 기능, 통합 검증 필요</li>
+<li><b>게임플레이 기능 개발 재개</b> - 근거: 문서화 인프라 구축 완료, 기능 개발 집중 필요</li>
+<li><b>AI/NPC 시스템 개선</b> - 근거: 프로젝트 핵심 목표 중 하나</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md307"></a>
+메트릭 및 통계 (Metrics &amp; Statistics)</h1>
+<ul>
+<li><b>일 평균 커밋 (Daily Average)</b>: 18.7건 (3일 기준)</li>
+<li><b>주 평균 커밋 (Weekly Average)</b>: 56.0건 (1주 기준)</li>
+<li><b>최다 커밋 일 (Max Commit Day)</b>: 2025-10-02 (33건)</li>
+<li><b>최다 작업 스코프 (Top Scope)</b>: [Docs] (25건, 44.6%)</li>
+<li><b>코드 변경률 (Change Rate)</b>: +66.2% / -33.8%</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md308"></a>
+개발자별 기여도 (Contributor Statistics)</h1>
+<ol type="1">
+<li><b>dopple</b>: 51건 (91.1%)<ul>
+<li>주요 작업: Doxygen 구축, 음성 시스템, 개발 도구, 프로젝트 설정</li>
+</ul>
+</li>
+<li><b>Ju100</b>: 5건 (8.9%)<ul>
+<li>주요 작업: 코드 주석 정비, README 업데이트, Doxyfile 한글화</li>
+</ul>
+</li>
+</ol>
+<hr  />
+<p><b>생성 일시</b>: 2025-10-03 (현재까지 데이터 기준) <b>다음 업데이트</b>: 2025-10-31 (월말) <b>참고</b>: 10월은 현재 진행 중이며, 이 보고서는 10월 1-3일까지의 데이터를 기반으로 작성되었습니다. </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">생성시간 : 금 10월 3 2025 07:45:33, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

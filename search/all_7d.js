@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['정리_20cleaning_20up_20debug_20code_0',['2.6. 디버그 코드 정리 (Cleaning Up Debug Code)',['../md_AgentRule_2debug__guide.html#autotoc_md88',1,'']]],
-  ['정보_1',['1) 프로젝트 정보',['../md_GEMINI.html#autotoc_md32',1,'']]],
-  ['정보_20제공_2',['3.5. 문제 발생 시 상세 정보 제공',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md10',1,'']]],
-  ['정책_3',['Agent QA 로그 정책',['../md_GEMINI.html#autotoc_md46',1,'']]],
-  ['정책_20observability_20logging_4',['관찰 로그/텔레메트리 정책 (Observability &amp; Logging)',['../md_GEMINI.html#autotoc_md23',1,'']]]
+  ['이산_20개발_20문서_0',['Project YiSan (이산) - 개발 문서',['../index.html',1,'']]],
+  ['이슈_20및_20todo_20outstanding_20issues_20todos_1',['미해결 이슈 및 TODO (Outstanding Issues &amp; TODOs)',['../md_Documents_2DevLog_2Monthly_22025-10.html#autotoc_md304',1,'']]],
+  ['이해_20understanding_20the_20problem_2',['2.1. 문제 이해 (Understanding the Problem)',['../md_AgentRule_2debug__guide.html#autotoc_md65',1,'']]]
 ];

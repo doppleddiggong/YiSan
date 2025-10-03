@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['함수_20주석_20예시_0',['함수 주석 예시',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md146',1,'']]],
-  ['함수_20functions_1',['1.3. 함수 (Functions)',['../md_AgentRule_2conventions__agent.html#autotoc_md64',1,'']]]
+  ['텔레메트리_20정책_20observability_20logging_0',['텔레메트리 정책 observability logging',['../md_AgentRule_2PERSONA.html#autotoc_md160',1,'관찰 로그/텔레메트리 정책 (Observability &amp; Logging)'],['../md_GEMINI.html#autotoc_md23',1,'관찰 로그/텔레메트리 정책 (Observability &amp; Logging)']]]
 ];

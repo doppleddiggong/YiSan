@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['형식_0',['형식',['../md_AgentRule_2devlog__agent.html#autotoc_md97',1,'4. 일일 업무 일지 (Daily DevLog) 형식'],['../md_AgentRule_2devlog__agent.html#autotoc_md108',1,'5. 30일 요약 보고서 (30-Day Briefing) 형식'],['../md_AgentRule_2conventions__agent.html#autotoc_md85',1,'6.1. 주석 형식']]]
+  ['페르소나_20persona_0',['페르소나 persona',['../md_GEMINI.html#autotoc_md17',1,'AI 에이전트 페르소나 (Persona)'],['../md_AgentRule_2PERSONA.html#autotoc_md151',1,'AI 에이전트 페르소나 (Persona)']]]
 ];

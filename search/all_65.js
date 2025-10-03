@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['알려진_20문제_20및_20해결책_0',['8. 알려진 문제 및 해결책',['../md_AgentRule_2commit__agent.html#autotoc_md55',1,'']]]
+  ['식별_20identifying_20debug_20points_0',['2.2. 디버그 포인트 식별 (Identifying Debug Points)',['../md_AgentRule_2debug__guide.html#autotoc_md66',1,'']]]
 ];
