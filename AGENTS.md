@@ -144,3 +144,9 @@
   - 민감 데이터(보안, 개인정보, 계약 정보)를 포함하거나 노출하지 않았는지.
   - 문서 분량은 4~8줄 내외로 간결하게 유지하되 핵심 결정은 빠짐없이 기술한다.
   - 태그 예시: YiSan, CoffeeLibrary, Character, AI, Riding, Voice, GPT, UI, Build, Perf, Bug, Decision 등.
+
+---
+
+## 범용 에이전트 특화 지침 (General Agent-Specific Instructions)
+
+*이 섹션에는 특정 모델에 국한되지 않는, 범용 에이전트에게 적용되는 추가 지침을 기술합니다.*
