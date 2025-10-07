@@ -1,10 +1,10 @@
-## 30-Day Briefing 2025-10-02
+## 30-Day Briefing 2025-10-08
 
 ### Overview / 개요
-- Daily files: 30 (last 30 days)
-- 일자 파일 수: 30 (최근 30일)
-- TODO outstanding (est.): 2
-- TODO 미완료(추정): 2
+- Daily files: 6 (last 30 days)
+- 일자 파일 수: 6 (최근 30일)
+- TODO outstanding (est.): 0
+- TODO 미완료(추정): 0
 
 ### Suggested Focus / 권장 가이드(요약)
 1) Prioritize open TODOs and confirm schedule

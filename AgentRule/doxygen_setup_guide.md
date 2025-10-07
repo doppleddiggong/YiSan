@@ -369,3 +369,82 @@ float MaxHealth; ///< 캐릭터의 최대 체력입니다.
 
 *   **단일 책임 원칙 (Single Responsibility Principle):** 하나의 헤더 파일은 하나의 주요 클래스 또는 밀접하게 관련된 소수의 엔티티만을 포함하도록 노력합니다.
 *   **모듈성:** 큰 클래스나 복잡한 시스템은 여러 개의 작은 클래스/컴포넌트로 분할하고, 각각의 헤더 파일에 적절한 주석을 추가하여 Doxygen이 개별적으로 문서를 생성할 수 있도록 합니다. 이는 Doxygen 문서의 가독성을 높일 뿐만 아니라 코드의 유지보수성도 향상시킵니다.
+*   
+
+
+
+
+# GitHub Actions + GitHub Pages 배포 문제 해결 기록
+
+**작성일자:** 2025-10-06  
+**대상 저장소:** `doppleddiggong/CoffeeToolbar`
+
+---
+
+## 문제 상황
+
+GitHub Actions를 사용하여 Doxygen 문서를 자동 생성 후 `gh-pages` 브랜치로 배포하려 했으나,  
+다음과 같은 에러가 발생함.
+
+```
+remote: Permission to doppleddiggong/CoffeeToolbar.git denied to github-actions[bot].
+fatal: unable to access 'https://github.com/doppleddiggong/CoffeeToolbar.git/': The requested URL returned error: 403
+Error: Action failed with "The process '/usr/bin/git' failed with exit code 128"
+```
+
+즉, GitHub Actions 봇이 `gh-pages` 브랜치에 push 권한을 가지지 못해 배포에 실패한 상태.
+
+---
+
+## 원인 분석
+
+1. 기본 제공되는 `GITHUB_TOKEN`은 **읽기 전용** 권한만 가지고 있음.
+2. `gh-pages` 브랜치에 Branch Protection Rule이 설정되어 있으면 push 불가.
+3. Pages 설정에서 Source는 `gh-pages`로 잘 잡혀 있었으나, Actions의 권한 부족으로 인해 배포가 막힘.
+
+---
+
+## 해결 과정
+
+1. **워크플로우 권한 부여**
+   - workflow yaml 상단에 다음 코드 추가:
+   ```yaml
+   permissions:
+     contents: write
+   ```
+
+2. **배포 스텝 확인**
+   - `peaceiris/actions-gh-pages@v3` 스텝에서 `github_token`을 그대로 사용:
+   ```yaml
+   - name: Deploy to GitHub Pages
+     uses: peaceiris/actions-gh-pages@v3
+     if: ${ github.ref == 'refs/heads/main' }
+     with:
+       github_token: ${ secrets.GITHUB_TOKEN }
+       publish_dir: ./docs/html
+       destination_dir: .
+   ```
+
+3. **브랜치 보호 규칙 점검**
+   - `gh-pages` 브랜치에 보호 규칙이 걸려 있으면 push 불가 → 현재는 보호 규칙 없음.
+
+4. **GitHub Pages 설정 확인**
+   - Repository Settings → Pages → Source가 `gh-pages`로 정상 지정됨.
+   - HTTPS 강제 적용됨 (doppleddiggong.github.io 도메인).
+
+---
+
+## 최종 결과
+
+- `permissions: contents: write` 추가 후 Action이 정상적으로 `gh-pages` 브랜치에 push 가능.  
+- 빌드 완료 후 https://doppleddiggong.github.io/CoffeeToolbar/ 에서 Doxygen 문서 확인 가능.
+
+---
+
+## 교훈
+
+- GitHub Actions에서 push 작업을 하려면 `permissions: contents: write`를 꼭 추가해야 한다.
+- Branch Protection Rule이 있으면 Action이 실패하므로 필요시 해제하거나 별도 규칙으로 조정한다.
+- GitHub Pages Source는 반드시 `gh-pages`로 지정되어야 하며, Custom domain 사용 시 HTTPS 설정을 별도로 확인해야 한다.
+
+---
