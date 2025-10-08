@@ -23,15 +23,51 @@ public class YiSan : ModuleRules
 			"SlateCore",
 		});
 
+						
+		
+		PublicDependencyModuleNames.AddRange(new string[]
+		{
+			"HTTP",
+			"Json",
+			"JsonUtilities",
+		});
+
+		PrivateDependencyModuleNames.AddRange(new string[]
+		{
+			"WebSockets",
+		});
+
+		
+		
+		PublicDependencyModuleNames.AddRange(new string[]
+		{
+			"Voice",     
+			"AudioMixer" 
+		});
+		
+		PrivateDependencyModuleNames.AddRange(new string[]
+		{
+			"AudioCapture",
+			"AudioCaptureCore",
+			"AudioPlatformConfiguration",
+			
+			"DeveloperSettings"
+		});
+		
+		
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
 			"CoffeeLibrary",
 			"LatteLibrary"
 		});
 		
+		
 		PublicIncludePaths.AddRange(new string[] {
+			Path.Combine(ModuleDirectory, "Character", "Public"),
 			Path.Combine(ModuleDirectory, "Environment", "Public"),
 			Path.Combine(ModuleDirectory, "UI", "Public"),
+			Path.Combine(ModuleDirectory, "Voice", "Public"),
+			Path.Combine(ModuleDirectory, "Network", "Public"),
 		});
 	}
 }

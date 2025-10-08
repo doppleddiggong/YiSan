@@ -8,7 +8,6 @@
 
 #include "CoreMinimal.h"
 #include "Macro.h"
-#include "EDamageType.h"
 #include "EVFXType.h"
 #include "UVFXDataAsset.h"
 #include "Subsystems/GameInstanceSubsystem.h"

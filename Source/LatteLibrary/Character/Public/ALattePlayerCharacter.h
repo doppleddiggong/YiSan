@@ -8,14 +8,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "AGameCharacter.h"
+#include "ALatteGameCharacter.h"
 #include "IControllable.h"
-#include "APlayerActor.generated.h"
-
-class USpringArmComponent;
-class UCameraComponent;
-class UVoiceSystem;
-class UVoiceCaptureComponent;
+#include "ALattePlayerCharacter.generated.h"
 
 /**
  * @brief Main character driven directly by the player.
@@ -23,12 +18,12 @@ class UVoiceCaptureComponent;
  * @ingroup Character
  */
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Dopple))
-class LATTELIBRARY_API APlayerActor : public AGameCharacter, public IControllable
+class LATTELIBRARY_API ALattePlayerCharacter : public ALatteGameCharacter, public IControllable
 {
 	GENERATED_BODY()
 
 public:
-	APlayerActor();
+	ALattePlayerCharacter();
 
 protected:
 	virtual void BeginPlay() override;
@@ -41,18 +36,12 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Enemy")
 	TObjectPtr<class UCameraShakeSystem> CameraShakeSystem;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Voice", meta=(AllowPrivateAccess="true"))
-	TObjectPtr<UVoiceSystem> VoiceSystem;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Voice", meta=(AllowPrivateAccess="true"))
-	TObjectPtr<UVoiceCaptureComponent> VoiceCaptureComponent;
-
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta=(AllowPrivateAccess="true"))
-	TObjectPtr<USpringArmComponent> SpringArmComp;
+	TObjectPtr<class USpringArmComponent> SpringArmComp;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta=(AllowPrivateAccess="true"))
-	TObjectPtr<UCameraComponent> FollowCamera;
+	TObjectPtr<class UCameraComponent> FollowCamera;
 
 public: // Control Interface
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
@@ -71,13 +60,4 @@ public: // Control Interface
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void Cmd_Landing() override;
-
-	// UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
-	// void Cmd_VoicePushToTalkPressed();
-	//
-	// UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
-	// void Cmd_VoicePushToTalkReleased();
-
-	UFUNCTION(BlueprintCallable, Category="Command")
-	void Cmd_SpeakText(const FString& Text);
 };

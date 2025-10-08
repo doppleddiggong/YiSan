@@ -43,7 +43,7 @@ public:
 	 * @param InOwner 피격 이벤트를 전달할 게임 캐릭터.
 	 */
 	UFUNCTION(BlueprintCallable, Category="HitStop")
-	void InitSystem(AGameCharacter* InOwner);
+	void InitSystem(ALatteGameCharacter* InOwner);
 
 	/**
 	 * @brief 피격 이벤트를 수신해 적절한 히트스톱을 적용한다.
@@ -72,7 +72,7 @@ private:
 private:
 	/** @brief 소유 게임 캐릭터 레퍼런스. */
 	UPROPERTY()
-	TObjectPtr<class AGameCharacter> Owner;
+	TObjectPtr<class ALatteGameCharacter> Owner;
 	/** @brief 타임 딜레이션을 적용할 스켈레탈 메시 컴포넌트. */
 	UPROPERTY()
 	TObjectPtr<class USkeletalMeshComponent> MeshComp;

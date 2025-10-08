@@ -1,6 +1,6 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
-#include "GoogleSpeechService.h"
+#include "UGoogleSpeechService.h"
 
 #include "NetworkLog.h"
 #include "Misc/Base64.h"
@@ -45,15 +45,15 @@ void UGoogleSpeechService::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
 
-	Settings = UGoogleSpeechServiceSettings::Get();
+	Settings = GetDefault<USpeechSettings>()->Get();
 
-	ApiKey = Settings->ApiKey;
-	LanguageCode = Settings->LanguageCode;
-	DefaultSpeechSampleRate = Settings->SpeechSampleRate;
-	VoiceName = Settings->VoiceName;
-	VoiceGender = Settings->VoiceSsmlGender;
-	DefaultTtsSampleRate = Settings->TextToSpeechSampleRate;
-	AudioEncoding = Settings->AudioEncoding;
+	ApiKey = Settings.ApiKey;
+	LanguageCode = Settings.LanguageCode;
+	DefaultSpeechSampleRate = Settings.SpeechSampleRate;
+	VoiceName = Settings.VoiceName;
+	VoiceGender = Settings.VoiceSsmlGender;
+	DefaultTtsSampleRate = Settings.TextToSpeechSampleRate;
+	AudioEncoding = Settings.AudioEncoding;
 }
 
 void UGoogleSpeechService::RequestSpeechToText(const FString& CorrelationId, const TArray<uint8>& AudioPayload, int32 SampleRate, int32 NumChannels, const FGoogleSpeechToTextDelegate& Delegate)

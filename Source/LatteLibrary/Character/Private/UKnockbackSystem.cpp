@@ -6,7 +6,7 @@
  */
 
 #include "UKnockbackSystem.h"
-#include "AGameCharacter.h"
+#include "ALatteGameCharacter.h"
 
 #include "UGameDataManager.h"
 #include "FKnockbackData.h"
@@ -33,7 +33,7 @@ void UKnockbackSystem::EndPlay(const EEndPlayReason::Type EndPlayReason)
     Super::EndPlay(EndPlayReason);
 }
 
-void UKnockbackSystem::InitSystem(AGameCharacter* InOwner)
+void UKnockbackSystem::InitSystem(ALatteGameCharacter* InOwner)
 {
     this->Owner = InOwner;
 	

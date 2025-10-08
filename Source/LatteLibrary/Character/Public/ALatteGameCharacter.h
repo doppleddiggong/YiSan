@@ -7,7 +7,7 @@
 #include "EBodyPartType.h"
 #include "ECharacterType.h"
 #include "UStatSystem.h"
-#include "AGameCharacter.generated.h"
+#include "ALatteGameCharacter.generated.h"
 
 /**
  * @file AGameCharacter.h
@@ -18,31 +18,31 @@
  * @brief 전투, 능력치, 애니메이션 헬퍼를 연결하는 기반 캐릭터 구현입니다.
  */
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Dopple))
-class LATTELIBRARY_API AGameCharacter : public ACharacter
+class LATTELIBRARY_API ALatteGameCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
-        /** @brief 기본 구성 요소와 서브 시스템을 초기화합니다. */
-        AGameCharacter();
+    /** @brief 기본 구성 요소와 서브 시스템을 초기화합니다. */
+    ALatteGameCharacter();
 
 protected:
-        /** @brief 게임 시작 시 서브 시스템을 연결합니다. */
-        virtual void BeginPlay() override;
+    /** @brief 게임 시작 시 서브 시스템을 연결합니다. */
+    virtual void BeginPlay() override;
 
-        /** @brief 플레이 종료 시 리소스를 해제합니다. */
-        virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+    /** @brief 플레이 종료 시 리소스를 해제합니다. */
+    virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 	
 private:
-        /** @brief 몽타주 알림 처리 델리게이트를 바인딩합니다. */
-        void BindMontageDelegates(UAnimInstance* Anim);
+    /** @brief 몽타주 알림 처리 델리게이트를 바인딩합니다. */
+    void BindMontageDelegates(UAnimInstance* Anim);
 
-        /** @brief 몽타주 알림 델리게이트 연결을 해제합니다. */
-        void UnbindMontageDelegates(UAnimInstance* Anim);
+    /** @brief 몽타주 알림 델리게이트 연결을 해제합니다. */
+    void UnbindMontageDelegates(UAnimInstance* Anim);
 
 	UFUNCTION()
-        /** @brief 몽타주 노티파이 시작 시 호출되는 콜백입니다. */
-        void OnMontageNotifyBegin(FName NotifyName, const FBranchingPointNotifyPayload& Payload);
+    /** @brief 몽타주 노티파이 시작 시 호출되는 콜백입니다. */
+    void OnMontageNotifyBegin(FName NotifyName, const FBranchingPointNotifyPayload& Payload);
 	
 public:
 	FORCEINLINE UArrowComponent* GetBodyPart(EBodyPartType Part) const
@@ -192,7 +192,7 @@ public: // Combat Character ShaderComp
 	
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Character")
-	TObjectPtr<class AGameCharacter> TargetActor;
+	TObjectPtr<class ALatteGameCharacter> TargetActor;
 	
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="RushAttack|Owner")

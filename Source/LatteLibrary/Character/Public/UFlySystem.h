@@ -47,7 +47,7 @@ public:
 	 * @param InCallback 비행이 종료될 때 실행할 델리게이트.
 	 */
 	UFUNCTION(BlueprintCallable, Category="Fly")
-	void InitSystem(class AGameCharacter* InOwner, FEndCallback InCallback);
+	void InitSystem(class ALatteGameCharacter* InOwner, FEndCallback InCallback);
 
 	/**
 	 * @brief 상승/하강 입력이 눌렸을 때 상태를 갱신한다.
@@ -101,7 +101,7 @@ public:
 
 	/** @brief 초기화된 소유 캐릭터. */
 	UPROPERTY(Transient, BlueprintReadOnly, Category="Fly")
-	TObjectPtr<class AGameCharacter> Owner;
+	TObjectPtr<class ALatteGameCharacter> Owner;
 	/** @brief 비행에 사용되는 이동 컴포넌트. */
 	UPROPERTY(Transient, BlueprintReadOnly, Category="Fly")
 	TObjectPtr<class UCharacterMovementComponent> MoveComp;

@@ -5,15 +5,11 @@
  * @brief Implementation of UVoiceSystem.
  */
 
-#include "UVoiceSystem.h"
+#include "UVoiceComponent.h"
 
 #include "GameLogging.h"
 #include "HAL/PlatformTime.h"
 #include "Misc/Guid.h"
-
-#include "UHitStopSystem.h"
-#include "UStatSystem.h"
-#include "USightSystem.h"
 
 namespace VoiceSystemInternal
 {
@@ -31,7 +27,6 @@ void UVoiceSystem::BeginPlay()
 {
 	Super::BeginPlay();
 
-	CacheOwnerComponents();
 	ResetVoiceState();
 
 	LogAttempt(TEXT("Voice.BeginPlay"), 1, MaxAttempts, 0.0, TEXT("Success"), TEXT("VoiceSystem ready."), TEXT("None"), GenerateCorrelationId());
@@ -39,8 +34,6 @@ void UVoiceSystem::BeginPlay()
 
 void UVoiceSystem::StartCapture(const FString& ContextTag)
 {
-	CacheOwnerComponents();
-
 	const double BeginSeconds = FPlatformTime::Seconds();
 	const double NowSeconds = GetWorld() ? GetWorld()->GetRealTimeSeconds() : BeginSeconds;
 
@@ -73,8 +66,6 @@ void UVoiceSystem::StartCapture(const FString& ContextTag)
 
 void UVoiceSystem::StopCapture()
 {
-	CacheOwnerComponents();
-
 	const double BeginSeconds = FPlatformTime::Seconds();
 	const double NowSeconds = GetWorld() ? GetWorld()->GetRealTimeSeconds() : BeginSeconds;
 
@@ -105,8 +96,6 @@ void UVoiceSystem::StopCapture()
 
 void UVoiceSystem::SubmitTranscription(const FString& TranscriptText, float Confidence)
 {
-	CacheOwnerComponents();
-
 	const double BeginSeconds = FPlatformTime::Seconds();
 	const double NowSeconds = GetWorld() ? GetWorld()->GetRealTimeSeconds() : BeginSeconds;
 	const FString CorrelationId = ActiveCorrelationId.IsEmpty() ? GenerateCorrelationId() : ActiveCorrelationId;
@@ -134,8 +123,6 @@ void UVoiceSystem::SubmitTranscription(const FString& TranscriptText, float Conf
 
 void UVoiceSystem::NotifyResponseReady(const FString& ResponseText)
 {
-	CacheOwnerComponents();
-
 	const double BeginSeconds = FPlatformTime::Seconds();
 	const double NowSeconds = GetWorld() ? GetWorld()->GetRealTimeSeconds() : BeginSeconds;
 	const FString CorrelationId = ActiveCorrelationId.IsEmpty() ? GenerateCorrelationId() : ActiveCorrelationId;
@@ -172,34 +159,6 @@ void UVoiceSystem::ResetVoiceState()
 	LastFailureDigestSeconds = 0.0;
 }
 
-void UVoiceSystem::SetDependencies(UStatSystem* InStatSystem, USightSystem* InSightSystem, UHitStopSystem* InHitStopSystem)
-{
-	StatSystem = InStatSystem;
-	SightSystem = InSightSystem;
-	HitStopSystem = InHitStopSystem;
-}
-
-void UVoiceSystem::CacheOwnerComponents()
-{
-	if (AActor* OwnerActor = GetOwner())
-	{
-		if (!StatSystem)
-		{
-			StatSystem = OwnerActor->FindComponentByClass<UStatSystem>();
-		}
-
-		if (!SightSystem)
-		{
-			SightSystem = OwnerActor->FindComponentByClass<USightSystem>();
-		}
-
-		if (!HitStopSystem)
-		{
-			HitStopSystem = OwnerActor->FindComponentByClass<UHitStopSystem>();
-		}
-	}
-}
-
 void UVoiceSystem::LogAttempt(const FString& Operation,
                               int32 Attempt,
                               int32 MaxAttemptsIn,
@@ -209,7 +168,7 @@ void UVoiceSystem::LogAttempt(const FString& Operation,
                               const FString& ErrorType,
                               const FString& CorrelationId) const
 {
-	const FString Context = BuildCharacterContext();
+	const FString Context = TEXT("Context");
 	const FString CombinedMessage = Message.IsEmpty() ? Context : FString::Printf(TEXT("%s | %s"), *Message, *Context);
 
 	const FString SanitizedMessage = CombinedMessage.Replace(TEXT("\""), TEXT("\\\""));
@@ -248,7 +207,7 @@ void UVoiceSystem::AppendToHistory(const FString& TranscriptText, float Confiden
 	if (TranscriptHistory.Num() > MaxTranscriptHistory)
 	{
 		const int32 Overflow = TranscriptHistory.Num() - MaxTranscriptHistory;
-		TranscriptHistory.RemoveAt(0, Overflow, false);
+		TranscriptHistory.RemoveAt(0, Overflow,  EAllowShrinking::No);
 	}
 }
 
@@ -269,33 +228,4 @@ void UVoiceSystem::TrackFailure(double NowSeconds, const FString& Operation)
 		const FString DigestMessage = FString::Printf(TEXT("FailureDigest | Operation=%s | Failures(5m)=%d | Consecutive=%d"), *Operation, FailureTimestamps.Num(), ConsecutiveFailureCount);
 		LogAttempt(Operation + TEXT(".FailureDigest"), ConsecutiveFailureCount, MaxAttempts, 0.0, TEXT("FailureDigest"), DigestMessage, TEXT("FailureDigest"), ActiveCorrelationId);
 	}
-}
-
-FString UVoiceSystem::BuildCharacterContext() const
-{
-	TArray<FString> Tokens;
-
-	if (StatSystem)
-	{
-		Tokens.Add(FString::Printf(TEXT("HP=%.0f/%.0f"), StatSystem->GetCurHP(), StatSystem->GetMaxHP()));
-		Tokens.Add(FString::Printf(TEXT("Player=%s"), StatSystem->IsPlayer() ? TEXT("true") : TEXT("false")));
-		Tokens.Add(FString::Printf(TEXT("Sight=%.0fcm/%.0fdeg"), StatSystem->GetSightLength(), StatSystem->GetSightAngle()));
-	}
-
-	if (SightSystem)
-	{
-		Tokens.Add(TEXT("SightSystem=Bound"));
-	}
-
-	if (HitStopSystem)
-	{
-		Tokens.Add(TEXT("HitStopSystem=Bound"));
-	}
-
-	if (Tokens.Num() == 0)
-	{
-		return TEXT("Context=N/A");
-	}
-
-	return FString::Printf(TEXT("Context={ %s }"), *FString::Join(Tokens, TEXT(", ")));
 }

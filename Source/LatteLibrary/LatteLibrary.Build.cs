@@ -12,27 +12,14 @@ public class LatteLibrary : ModuleRules
 			"Core",
 			"CoreUObject",
 			"Engine",
-			
-			"HTTP",
-			"Json",
-			"JsonUtilities",
-
-			"Voice",     
-			"AudioMixer" 
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
-			"CoffeeLibrary",
-
 			"EnhancedInput",
 			"Niagara",
-
-			"WebSockets",
-			"AudioCapture",    
-			"AudioCaptureCore",
-			"AudioPlatformConfiguration",
-			"DeveloperSettings"
+			
+			"CoffeeLibrary",
 		});
 		
 		PublicIncludePaths.AddRange(new string[] {
@@ -40,7 +27,6 @@ public class LatteLibrary : ModuleRules
 			Path.Combine(ModuleDirectory, "Common", "Public"),
 			Path.Combine(ModuleDirectory, "Data", "Public"),
 			Path.Combine(ModuleDirectory, "Manager", "Public"),
-			Path.Combine(ModuleDirectory, "Network", "Public"),
 		});
 	}
 }

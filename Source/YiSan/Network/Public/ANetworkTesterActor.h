@@ -12,7 +12,7 @@
 #include "ANetworkTesterActor.generated.h"
 
 UCLASS()
-class LATTELIBRARY_API ANetworkTesterActor : public AActor
+class YISAN_API ANetworkTesterActor : public AActor
 {
     GENERATED_BODY()
 

@@ -4,18 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "Engine/DeveloperSettings.h"
-#include "GoogleSpeechServiceSettings.generated.h"
+#include "UVoiceSettings.generated.h"
 
-/**
- * @brief Developer settings for Google Speech services.
- */
-UCLASS(Config=Game, DefaultConfig, meta=(DisplayName="Google Speech Service"))
-class LATTELIBRARY_API UGoogleSpeechServiceSettings : public UDeveloperSettings
+USTRUCT(BlueprintType)
+struct FVoiceConfig
 {
 	GENERATED_BODY()
-
-public:
-	UGoogleSpeechServiceSettings();
 
 	/** @brief Google Cloud API key. */
 	UPROPERTY(Config, EditAnywhere, Category="Authentication")
@@ -44,6 +38,18 @@ public:
 	/** @brief Encoding used for synthesized audio. */
 	UPROPERTY(Config, EditAnywhere, Category="TextToSpeech")
 	FString AudioEncoding;
+};
 
-	static const UGoogleSpeechServiceSettings* Get();
+UCLASS(Config=Voice, DefaultConfig, meta=(DisplayName="Speech Service"))
+class YISAN_API USpeechSettings : public UDeveloperSettings
+{
+	GENERATED_BODY()
+
+public:
+	USpeechSettings();
+
+	UPROPERTY(config, EditAnywhere, Category="Network")
+	FVoiceConfig GoogleConfig;
+
+	const FVoiceConfig& Get() const;
 };

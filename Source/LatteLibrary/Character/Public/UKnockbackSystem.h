@@ -42,7 +42,7 @@ public:
      * @param InOwner 넉백을 적용할 게임 캐릭터.
      */
     UFUNCTION(BlueprintCallable, Category="Knockback")
-    void InitSystem(AGameCharacter* InOwner);
+    void InitSystem(ALatteGameCharacter* InOwner);
 
     /**
      * @brief 넉백 이벤트를 처리하고 적절한 힘을 적용한다.
@@ -78,7 +78,7 @@ private:
 private:
 	/** @brief 넉백 기능을 담당하는 소유 캐릭터. */
 	UPROPERTY()
-	TObjectPtr<class AGameCharacter> Owner;
+	TObjectPtr<class ALatteGameCharacter> Owner;
 	/** @brief 넉백 시 애니메이션 조작을 위한 메시 컴포넌트. */
 	UPROPERTY()
 	TObjectPtr<class USkeletalMeshComponent> MeshComp;

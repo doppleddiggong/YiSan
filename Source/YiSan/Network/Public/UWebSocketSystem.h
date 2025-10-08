@@ -16,7 +16,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnWebSocketClosed, int32, Status
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnWebSocketMessageReceived, const FString&, Message);
 
 UCLASS(Blueprintable, BlueprintType)
-class LATTELIBRARY_API UWebSocketSystem : public UGameInstanceSubsystem
+class YISAN_API UWebSocketSystem : public UGameInstanceSubsystem
 {
     GENERATED_BODY()
 

@@ -1,12 +1,12 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
-#include "UVoiceCaptureComponent.h"
+#include "UAudioCaptureComponent.h"
 
 #include "GameLogging.h"
-#include "GoogleSpeechService.h"
+#include "UGoogleSpeechService.h"
 #include "Sound/SoundWaveProcedural.h"
 #include "Kismet/GameplayStatics.h"
-#include "UVoiceSystem.h"
+#include "UVoiceComponent.h"
 #include "VoiceModule.h"
 #include "VoiceModule.h"
 // #include "IVoiceCapture.h"

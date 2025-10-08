@@ -4,7 +4,7 @@
  * @file AGameCharacter.cpp
  * @brief AGameCharacter 구현에 대한 Doxygen 주석을 제공합니다.
  */
-#include "AGameCharacter.h"
+#include "ALatteGameCharacter.h"
 
 #include "UStatSystem.h"
 #include "UHitStopSystem.h"
@@ -23,7 +23,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Materials/MaterialInstanceConstant.h"
 
-AGameCharacter::AGameCharacter()
+ALatteGameCharacter::ALatteGameCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
@@ -38,7 +38,7 @@ AGameCharacter::AGameCharacter()
 	RightFootComp = CreateDefaultSubobject<UArrowComponent>(TEXT("RightFootComp"));
 }
 
-void AGameCharacter::BeginPlay()
+void ALatteGameCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
@@ -47,7 +47,7 @@ void AGameCharacter::BeginPlay()
 	this->SetFallingToWalk();
  }
 
-void AGameCharacter::EndPlay(const EEndPlayReason::Type EndPlayReason)
+void ALatteGameCharacter::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
 	if (AnimInstance && bDelegatesBound)
 		UnbindMontageDelegates(AnimInstance);
@@ -57,7 +57,7 @@ void AGameCharacter::EndPlay(const EEndPlayReason::Type EndPlayReason)
 }
 
 
-void AGameCharacter::SetupCharacterFromType(const ECharacterType Type, const bool bIsAnother)
+void ALatteGameCharacter::SetupCharacterFromType(const ECharacterType Type, const bool bIsAnother)
 {
 	this->CharacterType = Type;
 	
@@ -121,35 +121,35 @@ void AGameCharacter::SetupCharacterFromType(const ECharacterType Type, const boo
 }
 
 
-void AGameCharacter::BindMontageDelegates(UAnimInstance* Anim)
+void ALatteGameCharacter::BindMontageDelegates(UAnimInstance* Anim)
 {
 	if (!Anim || bDelegatesBound)
 		return;
 
 	// 중복 방지용으로 먼저 제거
-	Anim->OnPlayMontageNotifyBegin.RemoveDynamic(this, &AGameCharacter::OnMontageNotifyBegin);
-	Anim->OnPlayMontageNotifyBegin.AddDynamic(this, &AGameCharacter::OnMontageNotifyBegin);
+	Anim->OnPlayMontageNotifyBegin.RemoveDynamic(this, &ALatteGameCharacter::OnMontageNotifyBegin);
+	Anim->OnPlayMontageNotifyBegin.AddDynamic(this, &ALatteGameCharacter::OnMontageNotifyBegin);
 	bDelegatesBound = true;
 }
 
-void AGameCharacter::UnbindMontageDelegates(UAnimInstance* Anim)
+void ALatteGameCharacter::UnbindMontageDelegates(UAnimInstance* Anim)
 {
 	if (!Anim || !bDelegatesBound)
 		return;
 
-	Anim->OnPlayMontageNotifyBegin.RemoveDynamic(this, &AGameCharacter::OnMontageNotifyBegin);
+	Anim->OnPlayMontageNotifyBegin.RemoveDynamic(this, &ALatteGameCharacter::OnMontageNotifyBegin);
 
 	bDelegatesBound = false;
 }
 
 
-void AGameCharacter::OnMontageNotifyBegin(FName NotifyName, const FBranchingPointNotifyPayload& Payload)
+void ALatteGameCharacter::OnMontageNotifyBegin(FName NotifyName, const FBranchingPointNotifyPayload& Payload)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Notify Fired: %s"), *NotifyName.ToString());
 }
 
 /** @copydoc IsControlEnable */
-bool AGameCharacter::IsControlEnable_Implementation()
+bool ALatteGameCharacter::IsControlEnable_Implementation()
 {
 	if ( this->IsHolding() )
 		return false;
@@ -170,7 +170,7 @@ bool AGameCharacter::IsControlEnable_Implementation()
 	return true;
 }
 
-bool AGameCharacter::IsMoveEnable_Implementation()
+bool ALatteGameCharacter::IsMoveEnable_Implementation()
 {
 	if ( !IsControlEnable() )
 		return false;
@@ -178,7 +178,7 @@ bool AGameCharacter::IsMoveEnable_Implementation()
 	return true;
 }
 
-bool AGameCharacter::IsAttackEnable_Implementation()
+bool ALatteGameCharacter::IsAttackEnable_Implementation()
 {
 	if ( IsHit )
 		return false;
@@ -186,17 +186,17 @@ bool AGameCharacter::IsAttackEnable_Implementation()
 	return true;
 }
 
-bool AGameCharacter::IsDead_Implementation()
+bool ALatteGameCharacter::IsDead_Implementation()
 {
 	return StatSystem->IsDead();
 }
 
-bool AGameCharacter::IsHitting_Implementation()
+bool ALatteGameCharacter::IsHitting_Implementation()
 {
 	return IsHit;
 }
 
-bool AGameCharacter::IsInSight(const AActor* Other) const
+bool ALatteGameCharacter::IsInSight(const AActor* Other) const
 {
 	const FVector SelfLoc = GetActorLocation();
 	const FVector OtherLoc = Other->GetActorLocation();
@@ -231,7 +231,7 @@ bool AGameCharacter::IsInSight(const AActor* Other) const
 
 
 
-void AGameCharacter::OnLookTarget_Implementation()
+void ALatteGameCharacter::OnLookTarget_Implementation()
 {
 	if (!TargetActor)
 		return;
@@ -243,11 +243,11 @@ void AGameCharacter::OnLookTarget_Implementation()
 	SetActorRotation(NewRot);
 }
 
-void AGameCharacter::OnFlyEnd_Implementation()
+void ALatteGameCharacter::OnFlyEnd_Implementation()
 {
 }
 
-void AGameCharacter::SetFlying()
+void ALatteGameCharacter::SetFlying()
 {
 	MoveComp->SetMovementMode(MOVE_Flying);
 	PrevMoveMode = EMovementMode::MOVE_Flying;
@@ -257,7 +257,7 @@ void AGameCharacter::SetFlying()
 	MoveComp->bOrientRotationToMovement = false;
 }
 
-void AGameCharacter::SetFallingToWalk()
+void ALatteGameCharacter::SetFallingToWalk()
 {
 	MoveComp->SetMovementMode( EMovementMode::MOVE_Falling );
 	PrevMoveMode = EMovementMode::MOVE_Falling;
@@ -267,7 +267,7 @@ void AGameCharacter::SetFallingToWalk()
 	MoveComp->bOrientRotationToMovement = false;
 }
 
-void AGameCharacter::RecoveryMovementMode(const EMovementMode InMovementMode)
+void ALatteGameCharacter::RecoveryMovementMode(const EMovementMode InMovementMode)
 {
 	if ( InMovementMode == MOVE_None)
 		return;
@@ -290,7 +290,7 @@ void AGameCharacter::RecoveryMovementMode(const EMovementMode InMovementMode)
 	}
 }
 
-void AGameCharacter::PlayTypeMontage(const EMontageType Type)
+void ALatteGameCharacter::PlayTypeMontage(const EMontageType Type)
 {
 	UAnimMontage* AnimMontage = nullptr;
 
@@ -304,7 +304,7 @@ void AGameCharacter::PlayTypeMontage(const EMontageType Type)
 	this->PlayTargetMontage(AnimMontage);
 }
 
-void AGameCharacter::PlayTargetMontage(UAnimMontage* AnimMontage)
+void ALatteGameCharacter::PlayTargetMontage(UAnimMontage* AnimMontage)
 {
 	if ( IsValid(AnimInstance) && IsValid(AnimMontage) )
 	{
@@ -321,7 +321,7 @@ void AGameCharacter::PlayTargetMontage(UAnimMontage* AnimMontage)
 	}
 }
 
-void AGameCharacter::StopTargetMontage(const EMontageType Type, const float BlendInOutTime)
+void ALatteGameCharacter::StopTargetMontage(const EMontageType Type, const float BlendInOutTime)
 {
 	UAnimMontage* AnimMontage = nullptr;
 

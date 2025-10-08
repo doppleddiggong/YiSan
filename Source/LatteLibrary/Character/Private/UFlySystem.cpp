@@ -7,7 +7,7 @@
 
 #include "UFlySystem.h"
 
-#include "AGameCharacter.h"
+#include "ALatteGameCharacter.h"
 
 #include "FEaseHelper.h"
 #include "Components/CapsuleComponent.h"
@@ -48,7 +48,7 @@ void UFlySystem::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompo
 	}
 }
 
-void UFlySystem::InitSystem(class AGameCharacter* InOwner, FEndCallback InCallback)
+void UFlySystem::InitSystem(class ALatteGameCharacter* InOwner, FEndCallback InCallback)
 {
 	this->Owner = InOwner;
 	this->Callback = InCallback;

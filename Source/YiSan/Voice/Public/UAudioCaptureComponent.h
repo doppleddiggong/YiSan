@@ -4,16 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "UVoiceCaptureComponent.generated.h"
+#include "UAudioCaptureComponent.generated.h"
 
-class UVoiceSystem;
-class UAudioComponent;
-class USoundWaveProcedural;
-class UGoogleSpeechService;
-class IVoiceCapture;
+// class UVoiceSystem;
+// class UAudioComponent;
+// class USoundWaveProcedural;
+// class UGoogleSpeechService;
+// class IVoiceCapture;
 
-/** @brief Speech synthesis callback. */
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnVoiceSynthesisReady, const FString&, CorrelationId, USoundWaveProcedural*, SynthesizedAudio);
 
 /**
  * @brief Handles push-to-talk capture, STT dispatch, and TTS playback for a character.
@@ -23,7 +21,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnVoiceSynthesisReady, const FStri
  * @ingroup Character
  */
 UCLASS(BlueprintType, Blueprintable, ClassGroup=(Dopple), meta=(BlueprintSpawnableComponent))
-class LATTELIBRARY_API UVoiceCaptureComponent : public UActorComponent
+class YISAN_API UVoiceCaptureComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
@@ -36,7 +34,7 @@ public:
 public:
 	/** @brief Bind the character voice system explicitly (optional, will auto-discover on BeginPlay). */
 	UFUNCTION(BlueprintCallable, Category="Voice")
-	void SetVoiceSystem(UVoiceSystem* InVoiceSystem);
+	void SetVoiceSystem(class UVoiceSystem* InVoiceSystem);
 
 	/** @brief Called when push-to-talk key is pressed. */
 	UFUNCTION(BlueprintCallable, Category="Voice|Capture")
@@ -54,6 +52,8 @@ public:
 	void RequestSynthesis(const FString& Text);
 
 public:
+	/** @brief Speech synthesis callback. */
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnVoiceSynthesisReady, const FString&, CorrelationId, USoundWaveProcedural*, SynthesizedAudio);
 	/** @brief Fired when synthesized audio is ready (LINEAR16 stream wrapped into a procedural sound wave). */
 	UPROPERTY(BlueprintAssignable, Category="Voice|Delegates")
 	FOnVoiceSynthesisReady OnVoiceSynthesisReady;
@@ -71,19 +71,19 @@ private:
 	void DispatchTextToSpeech(const FString& CorrelationId, const FString& Text);
 	void HandleTextToSpeechCompleted(bool bSuccess, const FString& CorrelationId, const FString& Text, const TArray<uint8>& AudioData, int32 SampleRate);
 
-	USoundWaveProcedural* CreateSoundWaveFromPcm(const TArray<uint8>& AudioData, int32 SampleRate, int32 NumChannels) const;
+	class USoundWaveProcedural* CreateSoundWaveFromPcm(const TArray<uint8>& AudioData, int32 SampleRate, int32 NumChannels) const;
 
 private:
 	/** @brief Correlation-aware session manager component. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Voice", meta=(AllowPrivateAccess="true"))
-	TObjectPtr<UVoiceSystem> VoiceSystem;
+	TObjectPtr<class UVoiceSystem> VoiceSystem;
 
 	/** @brief Cached Google speech service reference. */
 	UPROPERTY(Transient)
-	TObjectPtr<UGoogleSpeechService> SpeechService;
+	TObjectPtr<class UGoogleSpeechService> SpeechService;
 
 	/** @brief Voice capture interface provided by VoiceModule. */
-	TSharedPtr<IVoiceCapture> VoiceCapture;
+	TSharedPtr<class IVoiceCapture> VoiceCapture;
 
 	/** @brief PCM buffer captured during the current session (16-bit little endian). */
 	TArray<uint8> CaptureBuffer;

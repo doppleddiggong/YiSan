@@ -5,7 +5,7 @@
  * @brief UCameraShakeSystem 구현에 대한 Doxygen 주석을 제공합니다.
  */
 #include "UCameraShakeSystem.h"
-#include "AGameCharacter.h"
+#include "ALatteGameCharacter.h"
 #include "FPadFeedbackData.h"
 #include "UBroadcastManger.h"
 
@@ -43,7 +43,7 @@ UCameraShakeSystem::UCameraShakeSystem()
 	}
 }
 
-void UCameraShakeSystem::InitSystem(AGameCharacter* InOwner)
+void UCameraShakeSystem::InitSystem(ALatteGameCharacter* InOwner)
 {
 	this->Owner = InOwner;
 

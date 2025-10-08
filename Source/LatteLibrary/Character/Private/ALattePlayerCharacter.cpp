@@ -5,16 +5,13 @@
  * @brief Provides Doxygen annotations for APlayerActor implementation.
  */
 
-#include "APlayerActor.h"
+#include "ALattePlayerCharacter.h"
 
 // CombatCharacter Shared
 #include "UStatSystem.h"
 #include "UHitStopSystem.h"
 #include "UKnockbackSystem.h"
 #include "UFlySystem.h"
-#include "USightSystem.h"
-#include "UVoiceSystem.h"
-#include "UVoiceCaptureComponent.h"
 
 // PlayerActor Only
 #include "UCameraShakeSystem.h"
@@ -28,14 +25,11 @@
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 
-APlayerActor::APlayerActor()
+ALattePlayerCharacter::ALattePlayerCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
 	CameraShakeSystem = CreateDefaultSubobject<UCameraShakeSystem>(TEXT("CameraShakeSystem"));
-	VoiceSystem = CreateDefaultSubobject<UVoiceSystem>(TEXT("VoiceSystem"));
-	VoiceCaptureComponent = CreateDefaultSubobject<UVoiceCaptureComponent>(TEXT("VoiceCaptureComponent"));
-
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArmComp->SetupAttachment(GetCapsuleComponent());
 	SpringArmComp->TargetArmLength = 400.f;
@@ -48,22 +42,12 @@ APlayerActor::APlayerActor()
 	FollowCamera->bUsePawnControlRotation = false;
 }
 
-void APlayerActor::BeginPlay()
+void ALattePlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
 	CameraShakeSystem->InitSystem(this);
 
-	if (VoiceSystem)
-	{
-		USightSystem* SightSystem = FindComponentByClass<USightSystem>();
-		VoiceSystem->SetDependencies(StatSystem, SightSystem, HitStopSystem);
-	}
-
-	if (VoiceCaptureComponent)
-	{
-		VoiceCaptureComponent->SetVoiceSystem(VoiceSystem);
-	}
 
 	// --- Architecture Demo Start ---
 	UE_LOG(LogTemp, Log, TEXT("APlayerActor: Setting up one-way dependency demo."));
@@ -73,11 +57,11 @@ void APlayerActor::BeginPlay()
 	// ActorComponent initialization
 	StatSystem->InitStat(true, CharacterType);
 	KnockbackSystem->InitSystem(this);
-	FlySystem->InitSystem(this, BIND_DYNAMIC_DELEGATE(FEndCallback, this, APlayerActor, OnFlyEnd));
+	FlySystem->InitSystem(this, BIND_DYNAMIC_DELEGATE(FEndCallback, this, ALattePlayerCharacter, OnFlyEnd));
 	HitStopSystem->InitSystem(this);
 }
 
-void APlayerActor::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void ALattePlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
@@ -85,13 +69,10 @@ void APlayerActor::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	{
 		return;
 	}
-
-	// PlayerInputComponent->BindKey(EKeys::SpaceBar, IE_Pressed, this, &APlayerActor::Cmd_VoicePushToTalkPressed);
-	// PlayerInputComponent->BindKey(EKeys::SpaceBar, IE_Released, this, &APlayerActor::Cmd_VoicePushToTalkReleased);
 }
 
 
-void APlayerActor::Landed(const FHitResult& Hit)
+void ALattePlayerCharacter::Landed(const FHitResult& Hit)
 {
 	Super::Landed(Hit);
 
@@ -99,7 +80,7 @@ void APlayerActor::Landed(const FHitResult& Hit)
 		FlySystem->OnLand(Hit);
 }
 
-void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
+void ALattePlayerCharacter::Cmd_Move_Implementation(const FVector2D& Axis)
 {
 	if (!IsMoveEnable() || !Controller)
 	{
@@ -135,13 +116,13 @@ void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
 	}
 }
 
-void APlayerActor::Cmd_Look_Implementation(const FVector2D& Axis)
+void ALattePlayerCharacter::Cmd_Look_Implementation(const FVector2D& Axis)
 {
 	AddControllerYawInput(Axis.X);
 	AddControllerPitchInput(Axis.Y);
 }
 
-void APlayerActor::Cmd_AltitudeUp_Implementation()
+void ALattePlayerCharacter::Cmd_AltitudeUp_Implementation()
 {
 	if ( !IsMoveEnable() )
 		return;
@@ -149,7 +130,7 @@ void APlayerActor::Cmd_AltitudeUp_Implementation()
 	FlySystem->OnAltitudePress(true);
 }
 
-void APlayerActor::Cmd_AltitudeDown_Implementation()
+void ALattePlayerCharacter::Cmd_AltitudeDown_Implementation()
 {
 	if ( !IsMoveEnable() )
 		return;
@@ -157,7 +138,7 @@ void APlayerActor::Cmd_AltitudeDown_Implementation()
 	FlySystem->OnAltitudePress(false);
 }
 
-void APlayerActor::Cmd_AltitudeReleased_Implementation()
+void ALattePlayerCharacter::Cmd_AltitudeReleased_Implementation()
 {
 	if ( !IsMoveEnable() )
 		return;
@@ -165,7 +146,7 @@ void APlayerActor::Cmd_AltitudeReleased_Implementation()
 	FlySystem->OnAltitudeRelease();
 }
 
-void APlayerActor::Cmd_Jump_Implementation()
+void ALattePlayerCharacter::Cmd_Jump_Implementation()
 {
 	if ( !IsMoveEnable() )
 		return;
@@ -173,35 +154,11 @@ void APlayerActor::Cmd_Jump_Implementation()
 	FlySystem->OnJump();
 }
 
-void APlayerActor::Cmd_Landing_Implementation()
+void ALattePlayerCharacter::Cmd_Landing_Implementation()
 {
 	if ( !IsControlEnable() )
 		return;
 
 	FHitResult HitResult;
 	FlySystem->OnLand(HitResult);
-}
-
-// void APlayerActor::Cmd_VoicePushToTalkPressed_Implementation()
-// {
-// 	if (VoiceCaptureComponent)
-// 	{
-// 		VoiceCaptureComponent->HandlePushToTalkPressed(TEXT("PushToTalk"));
-// 	}
-// }
-//
-// void APlayerActor::Cmd_VoicePushToTalkReleased_Implementation()
-// {
-// 	if (VoiceCaptureComponent)
-// 	{
-// 		VoiceCaptureComponent->HandlePushToTalkReleased();
-// 	}
-// }
-
-void APlayerActor::Cmd_SpeakText(const FString& Text)
-{
-	if (VoiceCaptureComponent)
-	{
-		VoiceCaptureComponent->RequestSynthesis(Text);
-	}
 }

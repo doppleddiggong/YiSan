@@ -37,7 +37,7 @@ struct FServerConfig
 
 
 UCLASS(config=MyNetwork, defaultconfig, meta=(DisplayName="Network Selector Setting"))
-class LATTELIBRARY_API UCustomNetworkSettings : public UDeveloperSettings
+class YISAN_API UCustomNetworkSettings : public UDeveloperSettings
 {
 	GENERATED_BODY()
 

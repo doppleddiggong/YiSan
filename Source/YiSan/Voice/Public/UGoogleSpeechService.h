@@ -6,8 +6,8 @@
 #include "Interfaces/IHttpRequest.h"
 #include "Interfaces/IHttpResponse.h"
 #include "Subsystems/GameInstanceSubsystem.h"
-#include "GoogleSpeechServiceSettings.h"
-#include "GoogleSpeechService.generated.h"
+#include "UVoiceSettings.h"
+#include "UGoogleSpeechService.generated.h"
 
 class IHttpRequest;
 class IHttpResponse;
@@ -40,7 +40,7 @@ struct FPendingTextToSpeechRequest
  * @brief Thin Google Speech (STT/TTS) client.
  */
 UCLASS()
-class LATTELIBRARY_API UGoogleSpeechService : public UGameInstanceSubsystem
+class YISAN_API UGoogleSpeechService : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
 
@@ -66,7 +66,7 @@ private:
 	FString BuildTextToSpeechUrl() const;
 
 	// 5. Member variables
-	const UGoogleSpeechServiceSettings* Settings = nullptr;
+	FVoiceConfig Settings;
 	FString ApiKey;
 	FString LanguageCode;
 	int32 DefaultSpeechSampleRate = 16000;

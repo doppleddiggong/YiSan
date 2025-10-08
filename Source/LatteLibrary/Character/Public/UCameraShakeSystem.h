@@ -29,7 +29,7 @@ public:
 	 * @brief 소유 캐릭터와 이벤트 바인딩을 초기화한다.
 	 * @param InOwner 카메라 흔들림을 전달받을 게임 캐릭터.
 	 */
-	void InitSystem(class AGameCharacter* InOwner);
+	void InitSystem(class ALatteGameCharacter* InOwner);
 
 	/** @brief 데미지 타입별 카메라 흔들림 클래스를 매핑한다. */
 	UPROPERTY(EditDefaultsOnly, Category="CameraMotion")
@@ -53,5 +53,5 @@ private:
 
 	/** @brief 초기화 시 캐시한 소유 캐릭터 레퍼런스. */
 	UPROPERTY()
-	TObjectPtr<class AGameCharacter> Owner;
+	TObjectPtr<class ALatteGameCharacter> Owner;
 };

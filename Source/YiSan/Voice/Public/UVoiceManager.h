@@ -3,20 +3,23 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Macro.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "Templates/UniquePtr.h"
 #include "HAL/IConsoleManager.h"
-#include "UYiSanVoiceConsoleSubsystem.generated.h"
+#include "UVoiceManager.generated.h"
 
 /**
  * @brief Registers developer console commands for voice features (STT/TTS).
  */
 UCLASS()
-class UYiSanVoiceConsoleSubsystem : public UGameInstanceSubsystem
+class YISAN_API UVoiceManager : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
 
 public:
+	DEFINE_SUBSYSTEM_GETTER_INLINE(UVoiceManager);
+	
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 	virtual void Deinitialize() override;
 

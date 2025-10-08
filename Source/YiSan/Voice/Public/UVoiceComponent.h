@@ -4,23 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "UVoiceSystem.generated.h"
+#include "UVoiceComponent.generated.h"
 
-class UStatSystem;
-class USightSystem;
-class UHitStopSystem;
 
-/** @brief Broadcast when voice capture starts. */
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnVoiceCaptureStarted, const FString&, CorrelationId);
 
-/** @brief Broadcast when voice capture stops. */
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnVoiceCaptureStopped, const FString&, CorrelationId);
 
-/** @brief Broadcast when a new STT transcript is available. */
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnVoiceTranscriptReceived, const FString&, CorrelationId, const FString&, TranscriptText, float, Confidence);
-
-/** @brief Broadcast when a GPT/inference response is ready. */
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnVoiceResponseReceived, const FString&, CorrelationId, const FString&, ResponseText);
 
 /**
  * @brief Actor component that orchestrates voice capture lifecycle and observability.
@@ -30,7 +18,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnVoiceResponseReceived, const FSt
  * @ingroup Character
  */
 UCLASS(BlueprintType, Blueprintable, ClassGroup=(Dopple), meta=(BlueprintSpawnableComponent))
-class LATTELIBRARY_API UVoiceSystem : public UActorComponent
+class YISAN_API UVoiceSystem : public UActorComponent
 {
 	GENERATED_BODY()
 
@@ -77,28 +65,27 @@ public:
 	UFUNCTION(BlueprintPure, Category="Voice|State")
 	FString GetActiveCorrelationId() const { return ActiveCorrelationId; }
 
-	/**
-	 * @brief Overrides automatic dependency discovery.
-	 * @param InStatSystem Stat component owned by the same character.
-	 * @param InSightSystem Sight component owned by the same character.
-	 * @param InHitStopSystem Hit-stop component owned by the same character.
-	 */
-	UFUNCTION(BlueprintCallable, Category="Voice|Dependencies")
-	void SetDependencies(UStatSystem* InStatSystem, USightSystem* InSightSystem, UHitStopSystem* InHitStopSystem);
-
 public:
+	/** @brief Broadcast when voice capture starts. */
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnVoiceCaptureStarted, const FString&, CorrelationId);
 	/** @brief Delegate fired when voice capture starts. */
 	UPROPERTY(BlueprintAssignable, Category="Voice|Delegates")
 	FOnVoiceCaptureStarted OnVoiceCaptureStarted;
 
+	/** @brief Broadcast when voice capture stops. */
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnVoiceCaptureStopped, const FString&, CorrelationId);
 	/** @brief Delegate fired when voice capture stops. */
 	UPROPERTY(BlueprintAssignable, Category="Voice|Delegates")
 	FOnVoiceCaptureStopped OnVoiceCaptureStopped;
 
+	/** @brief Broadcast when a new STT transcript is available. */
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnVoiceTranscriptReceived, const FString&, CorrelationId, const FString&, TranscriptText, float, Confidence);
 	/** @brief Delegate fired when a transcript is pushed in. */
 	UPROPERTY(BlueprintAssignable, Category="Voice|Delegates")
 	FOnVoiceTranscriptReceived OnVoiceTranscriptReceived;
 
+	/** @brief Broadcast when a GPT/inference response is ready. */
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnVoiceResponseReceived, const FString&, CorrelationId, const FString&, ResponseText);
 	/** @brief Delegate fired when an inference response is ready. */
 	UPROPERTY(BlueprintAssignable, Category="Voice|Delegates")
 	FOnVoiceResponseReceived OnVoiceResponseReceived;
@@ -108,9 +95,6 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	/** @brief Lazily resolves fellow character systems. */
-	void CacheOwnerComponents();
-
 	/** @brief Writes attempt/outcome rows using the project's observability format. */
 	void LogAttempt(const FString& Operation,
 	                int32 Attempt,
@@ -137,9 +121,6 @@ private:
 	 * @param Operation Name of the failing operation.
 	 */
 	void TrackFailure(double NowSeconds, const FString& Operation);
-
-	/** @brief Builds a short string with character context for observability. */
-	FString BuildCharacterContext() const;
 
 private:
 	/** @brief Max retry count before raising stronger signals. */
@@ -177,16 +158,4 @@ private:
 
 	/** @brief Real-time seconds when the last FailureDigest was emitted. */
 	double LastFailureDigestSeconds = 0.0;
-
-	/** @brief Cached reference to the owning character's stat system. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Voice|References", meta=(AllowPrivateAccess="true"))
-	TObjectPtr<UStatSystem> StatSystem = nullptr;
-
-	/** @brief Cached reference to the owning character's sight system. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Voice|References", meta=(AllowPrivateAccess="true"))
-	TObjectPtr<USightSystem> SightSystem = nullptr;
-
-	/** @brief Cached reference to the owning character's hit-stop system. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Voice|References", meta=(AllowPrivateAccess="true"))
-	TObjectPtr<UHitStopSystem> HitStopSystem = nullptr;
 };

@@ -7,7 +7,7 @@
 
 #include "UHitStopSystem.h"
 
-#include "AGameCharacter.h"
+#include "ALatteGameCharacter.h"
 #include "UBroadcastManger.h"
 #include "UGameDataManager.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -23,7 +23,7 @@ void UHitStopSystem::BeginPlay()
 	Super::BeginPlay();
 }
 
-void UHitStopSystem::InitSystem(AGameCharacter* InOwner )
+void UHitStopSystem::InitSystem(ALatteGameCharacter* InOwner )
 {
 	this->Owner = InOwner;
 	

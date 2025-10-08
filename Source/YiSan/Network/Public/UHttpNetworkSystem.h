@@ -14,7 +14,7 @@
 #include "UHttpNetworkSystem.generated.h"
 
 UCLASS()
-class LATTELIBRARY_API UHttpNetworkSystem : public UGameInstanceSubsystem
+class YISAN_API UHttpNetworkSystem : public UGameInstanceSubsystem
 {
     GENERATED_BODY()
 
