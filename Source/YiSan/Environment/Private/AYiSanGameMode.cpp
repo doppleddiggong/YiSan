@@ -1,9 +1,3 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "AYiSanGameMode.h"
-
-/** @brief GameMode 생성 시 필요한 최소 초기화를 수행한다. */
-AYiSanGameMode::AYiSanGameMode()
-{
-        // stub
-}
