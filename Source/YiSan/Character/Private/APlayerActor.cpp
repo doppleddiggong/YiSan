@@ -4,6 +4,7 @@
 
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 
 APlayerActor::APlayerActor()
@@ -14,12 +15,15 @@ APlayerActor::APlayerActor()
 	SpringArmComp->SetupAttachment(GetCapsuleComponent());
 	SpringArmComp->TargetArmLength = 400.f;
 	SpringArmComp->bUsePawnControlRotation = true;
-	SpringArmComp->bInheritPitch = false;
+	SpringArmComp->bInheritPitch = true;
 	SpringArmComp->bInheritRoll = false;
 
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(SpringArmComp, USpringArmComponent::SocketName);
 	FollowCamera->bUsePawnControlRotation = false;
+
+	GetCharacterMovement()->bOrientRotationToMovement = true;
+	GetCharacterMovement()->bUseControllerDesiredRotation = false;
 }
 
 void APlayerActor::BeginPlay()
