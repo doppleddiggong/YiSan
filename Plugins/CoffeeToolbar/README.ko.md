@@ -21,6 +21,7 @@
 *   **레벨 관련 기능**: 현재 레벨의 모든 액터를 빌드하거나, 라이팅을 빌드하는 등 레벨 관리에 유용한 기능들을 제공합니다.
 *   **고해상도 스크린샷**: 지정된 배율(예: 2x, 4x)로 고해상도 스크린샷을 간편하게 촬영하고 저장 폴더를 바로 열 수 있습니다.
 *   **설정 기반 확장성**: `.ini` 파일을 통해 툴바에 표시될 기능과 순서를 사용자가 직접 커스터마이징할 수 있습니다.
+*   **폴더 바로가기**: `Logs`, `Documents` 등 사전에 정의된 프로젝트 폴더를 드롭다운 메뉴에서 직접 열 수 있습니다.
 
 ## 설치 방법 (Installation)
 
@@ -103,6 +104,24 @@
 - **캡처 폴더 열기** : 저장된 스크린샷 폴더를 바로 탐색기에서 엽니다
 
 ![스크린샷 설정](https://github.com/doppleddiggong/CoffeeToolbar/blob/main/Documents/Reference/guide_screenshot.png?raw=true)
+
+### 6. 폴더 바로가기 설정 (Quick Folder Access)
+
+이 기능은 `Logs`, `Saved`, `Documents` 등 사전 정의된 프로젝트 폴더를 빠르게 열 수 있는 드롭다운 메뉴를 추가합니다.
+
+#### 설정 옵션
+- **`bEnableFolderFeature`**: 툴바에 이 기능을 활성화하거나 비활성화합니다.
+- **`FoldersToOpen`**: 목록에 표시할 폴더를 정의하는 배열입니다.
+  - **`Label`**: 드롭다운 메뉴에 표시될 이름입니다.
+  - **`Path`**: 프로젝트 루트 기준의 상대 경로입니다. (예: "Saved/Logs")
+
+#### .ini 설정 예시
+프로젝트의 `Config/DefaultToolbarSettings.ini` 파일에서 직접 설정할 수도 있습니다:
+```ini
+bEnableFolderFeature=True
++FoldersToOpen=(Label="로그",Path="Saved/Logs")
++FoldersToOpen=(Label="문서",Path="Documents")
+```
 
 ---
 

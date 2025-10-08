@@ -21,6 +21,7 @@
 * **Level management tools** – Build every actor in the current level, build lighting, and access other helpers that streamline level management.
 * **High-resolution screenshots** – Capture screenshots at preset multipliers (for example, 2× or 4×) and open the output folder instantly.
 * **Configuration-driven extensibility** – Customize which features appear in the toolbar and their order through `.ini` files.
+* **Quick Folder Access** – Open predefined project folders, such as `Logs` or `Documents`, directly from a dropdown menu.
 
 ## Installation
 
@@ -102,6 +103,24 @@ Use the **Screenshot** tools to capture high-resolution screenshots of the activ
 - **Open capture folder** – Open the folder that contains your saved screenshots.
 
 ![Screenshot settings](https://github.com/doppleddiggong/CoffeeToolbar/blob/main/Documents/Reference/guide_screenshot.png?raw=true)
+
+### 6. Quick Folder Access
+
+This feature adds a dropdown menu to quickly open predefined project folders, such as `Logs`, `Saved`, or `Documents`.
+
+#### Configuration
+- **`bEnableFolderFeature`**: Enables or disables this feature in the toolbar.
+- **`FoldersToOpen`**: An array where you can define the folders to be listed.
+  - **`Label`**: The name that will be displayed in the dropdown menu.
+  - **`Path`**: The path relative to the project root (e.g., "Saved/Logs").
+
+#### Example `.ini` Configuration
+You can also configure this directly in `YourProject/Config/DefaultToolbarSettings.ini`:
+```ini
+bEnableFolderFeature=True
++FoldersToOpen=(Label="Logs",Path="Saved/Logs")
++FoldersToOpen=(Label="Documents",Path="Documents")
+```
 
 ---
 

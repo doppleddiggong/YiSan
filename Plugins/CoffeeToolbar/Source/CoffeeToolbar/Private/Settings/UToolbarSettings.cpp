@@ -15,11 +15,15 @@ UToolbarSettings::UToolbarSettings(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
 	// 기능 활성화 기본값 설정
-	bEnableCommandFeature = true;
 	bEnableLevelFeature = true;
+	FDirectoryPath P;
+	P.Path = TEXT("Game/CustomContents/Levels");
+	ExtraSearchPaths.Add(P);
+
 	bEnableScreenshotFeature = true;
 
-	// 기본 툴바 버튼 목록 설정
+	
+	bEnableCommandFeature = true;
 	ToolbarButtons.Add(FToolbarButtonInfo{
 		FName("StatFPS"), FString("Stat FPS"), FString("Toggle Stat FPS"),
 		FString("stat fps"), FName("Icons.Monitor"), true
@@ -40,10 +44,16 @@ UToolbarSettings::UToolbarSettings(const FObjectInitializer& ObjectInitializer)
 		FName("StatSceneRendering"), FString("Stat SceneRendering"), FString("Toggle Stat SceneRendering"),
 		FString("stat scenerendering"), FName("Picto/Pictoicon_jewel_3"), true
 	});
+
 	
-	FDirectoryPath P;
-	P.Path = TEXT("Game/CustomContents/Levels");
-	ExtraSearchPaths.Add(P);
+	bEnableFolderFeature = true;
+	FoldersToOpen.Add(FFolderPathInfo {
+		FString("Documents"),
+		FString("Documents")});
+
+	FoldersToOpen.Add(FFolderPathInfo {
+		FString("Logs"),
+		FString("Saved/Logs")});
 
 	ReloadConfig(); // .ini 파일이 존재하면 C++ 기본값을 덮어씁니다.
 }
@@ -83,7 +93,7 @@ TArray<FName> UToolbarSettings::GetSearchRoots(const bool bFallbackToGame)
 	TArray<FName> Paths;
 	bool bAdded = false;
 
-	if (const UToolbarSettings* S = GetDefault<UToolbarSettings>())
+	if (const UToolbarSettings* S = GetDefault<UToolbarSettings>()) // This line has been corrected
 	{
 		for (const FDirectoryPath& Dir : S->ExtraSearchPaths)
 		{

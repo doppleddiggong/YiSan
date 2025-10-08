@@ -7,6 +7,7 @@
 #include "Command/FCommandFeature.h"
 #include "Level/FLevelFeature.h"
 #include "Screenshot/FScreenshotFeature.h"
+#include "Common/FolderFeature.h"
 
 /**
  * @file FToolbar.h
@@ -37,4 +38,7 @@ private:
 
         /** @brief 스크린샷 캡처 헬퍼를 제공하는 기능입니다. */
         TUniquePtr<FScreenshotFeature> ScreenshotFeature;
+
+        /** @brief 폴더 열기 기능을 제공하는 모듈입니다. */
+        TUniquePtr<FFolderFeature> FolderFeature;
 };

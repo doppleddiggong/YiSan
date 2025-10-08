@@ -33,6 +33,7 @@ void FToolbar::StartupModule()
 	LevelFeature = MakeUnique<FLevelFeature>();
 	ScreenshotFeature = MakeUnique<FScreenshotFeature>();
 	CommandFeature = MakeUnique<FCommandFeature>();
+	FolderFeature = MakeUnique<FFolderFeature>();
 
 	UToolMenus::RegisterStartupCallback(FSimpleMulticastDelegate::FDelegate::CreateRaw(this, &FToolbar::RegisterMenus));
 }
@@ -105,19 +106,19 @@ void FToolbar::RegisterMenus()
 		));
 	}
 
-        if (Settings->bEnableScreenshotFeature)
-        {
-                FToolMenuEntry ScreenshotCombo = FToolMenuEntry::InitComboButton(
-                        "CoffeeToolbar_Screenshot",
-                        FUIAction(),
-                        FOnGetContent::CreateRaw(ScreenshotFeature.Get(), &FScreenshotFeature::GenerateScreenshotMenu),
-                        NSLOCTEXT("CoffeeToolbar", "Screenshot", "Screenshot"),
-                        NSLOCTEXT("CoffeeToolbar", "Screenshot_Tip", "Capture the active viewport with predefined resolutions."),
-                        FSlateIconFinder::FindIconForClass(ACameraActor::StaticClass())
-                );
-                ScreenshotCombo.StyleNameOverride = "CalloutToolbar";
-                Section.AddEntry(ScreenshotCombo);
-        }
+    if (Settings->bEnableScreenshotFeature)
+    {
+        FToolMenuEntry ScreenshotCombo = FToolMenuEntry::InitComboButton(
+                "CoffeeToolbar_Screenshot",
+                FUIAction(),
+                FOnGetContent::CreateRaw(ScreenshotFeature.Get(), &FScreenshotFeature::GenerateScreenshotMenu),
+                NSLOCTEXT("CoffeeToolbar", "Screenshot", "Screenshot"),
+                NSLOCTEXT("CoffeeToolbar", "Screenshot_Tip", "Capture the active viewport with predefined resolutions."),
+                FSlateIconFinder::FindIconForClass(ACameraActor::StaticClass())
+        );
+        ScreenshotCombo.StyleNameOverride = "CalloutToolbar";
+        Section.AddEntry(ScreenshotCombo);
+    }
 
 	if (Settings->bEnableCommandFeature)
 	{
@@ -131,6 +132,20 @@ void FToolbar::RegisterMenus()
 		);
 		CommandsComboButton.StyleNameOverride = "CalloutToolbar";
 		Section.AddEntry(CommandsComboButton);
+	}
+
+	if ( Settings->bEnableFolderFeature )
+	{
+		FToolMenuEntry FolderCombo = FToolMenuEntry::InitComboButton(
+			"FolderComboButton",
+			FUIAction(),
+			FOnGetContent::CreateRaw(FolderFeature.Get(), &FFolderFeature::GenerateFolderMenu),
+			NSLOCTEXT("CoffeeToolbar", "FolderMenu", "Folders"),
+			NSLOCTEXT("CoffeeToolbar", "FolderMenu_Tooltip", "Open custom project folders"),
+			FSlateIcon(FAppStyle::GetAppStyleSetName(), "SystemWideCommands.FindInContentBrowser")
+		);
+		FolderCombo.StyleNameOverride = "CalloutToolbar";
+		Section.AddEntry(FolderCombo);
 	}
 
 	UToolMenus::Get()->RefreshAllWidgets();

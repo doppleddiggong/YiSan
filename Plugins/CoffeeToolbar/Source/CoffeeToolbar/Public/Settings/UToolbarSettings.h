@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Engine/DeveloperSettings.h"
 #include "FToolbarButtonInfo.h"
+#include "FFolderPathInfo.h"
 #include "UToolbarSettings.generated.h"
 
 /**
@@ -36,25 +37,39 @@ public:
 	 */
 	static TArray<FName> GetSearchRoots(const bool bFallbackToGame = true);
 
+
+	/** @brief true일 때 레벨 관련 툴바 기능을 활성화합니다. */
+	UPROPERTY(EditAnywhere, Config, Category="Search")
+	bool bEnableLevelFeature = true;
 	/** @brief 레벨을 탐색할 때 추가로 확인할 디렉터리 목록입니다. */
 	UPROPERTY(EditAnywhere, Config, Category="Search")
 	TArray<FDirectoryPath> ExtraSearchPaths;
 
+
+	/** @brief true일 때 스크린샷 헬퍼 기능을 활성화합니다. */
+	UPROPERTY(EditAnywhere, Config, Category="Screenshot")
+	bool bEnableScreenshotFeature = true;
+
+
+
+	
+	/** @brief true일 때 명령 버튼 기능을 활성화합니다. */
+	UPROPERTY(EditAnywhere, Config, Category="Toolbar", meta=(EditCondition="bEnableCommandFeature"))
+	bool bEnableCommandFeature = true;
 	/** @brief Slate 항목을 정의하는 툴바 버튼 설명자입니다. */
 	UPROPERTY(EditAnywhere, Config, Category="Toolbar")
 	TArray<FToolbarButtonInfo> ToolbarButtons;
 
-	/** @brief true일 때 레벨 관련 툴바 기능을 활성화합니다. */
-	UPROPERTY(EditAnywhere, Config, Category="Features")
-	bool bEnableLevelFeature = true;
 
-	/** @brief true일 때 스크린샷 헬퍼 기능을 활성화합니다. */
-	UPROPERTY(EditAnywhere, Config, Category="Features")
-	bool bEnableScreenshotFeature = true;
 
-	/** @brief true일 때 명령 버튼 기능을 활성화합니다. */
-	UPROPERTY(EditAnywhere, Config, Category="Features")
-	bool bEnableCommandFeature = true;
+	
+	/** @brief true일 때 폴더 열기 기능을 활성화합니다. */
+	UPROPERTY(EditAnywhere, Config, Category="Folder")
+	bool bEnableFolderFeature = true;
+
+	/** @brief 폴더 열기 기능에 사용될 경로 목록입니다. */
+	UPROPERTY(EditAnywhere, Config, Category="Folder", meta=(EditCondition="bEnableFolderFeature"))
+	TArray<FFolderPathInfo> FoldersToOpen;
 };
 
 	
