@@ -4,7 +4,9 @@
  * @file UToolbarSettings.cpp
  * @brief Coffee Toolbar 플러그인의 설정 헬퍼 기능을 구현합니다.
  */
+
 #include "Settings/UToolbarSettings.h"
+#include "Settings/FToolbarButtonInfo.h"
 #include "AssetRegistry/AssetRegistryModule.h"
 #include "AssetRegistry/IAssetRegistry.h"
 
@@ -12,11 +14,38 @@
 UToolbarSettings::UToolbarSettings(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
+	// 기능 활성화 기본값 설정
+	bEnableCommandFeature = true;
+	bEnableLevelFeature = true;
+	bEnableScreenshotFeature = true;
+
+	// 기본 툴바 버튼 목록 설정
+	ToolbarButtons.Add(FToolbarButtonInfo{
+		FName("StatFPS"), FString("Stat FPS"), FString("Toggle Stat FPS"),
+		FString("stat fps"), FName("Icons.Monitor"), true
+	});
+	ToolbarButtons.Add(FToolbarButtonInfo{
+		FName("StatUnit"), FString("Stat Unit"), FString("Toggle Stat Unit"),
+		FString("stat unit"), FName("Icons.Monitor"), true
+	});
+	ToolbarButtons.Add(FToolbarButtonInfo{
+		FName("ShowCollision"), FString("Show Collision"), FString("Toggle Show Collision"),
+		FString("show collision"), FName("Icons.Collision"), true
+	});
+	ToolbarButtons.Add(FToolbarButtonInfo{
+		FName("ShowDebugAI"), FString("Show Debug AI"), FString("Toggle Show Debug AI"),
+		FString("showdebug ai"), FName("Icons.AI"), true
+	});
+	ToolbarButtons.Add(FToolbarButtonInfo{
+		FName("StatSceneRendering"), FString("Stat SceneRendering"), FString("Toggle Stat SceneRendering"),
+		FString("stat scenerendering"), FName("Picto/Pictoicon_jewel_3"), true
+	});
+	
 	FDirectoryPath P;
 	P.Path = TEXT("Game/CustomContents/Levels");
 	ExtraSearchPaths.Add(P);
 
-	ReloadConfig(); // Ensure default values from INI are loaded
+	ReloadConfig(); // .ini 파일이 존재하면 C++ 기본값을 덮어씁니다.
 }
 
 /**

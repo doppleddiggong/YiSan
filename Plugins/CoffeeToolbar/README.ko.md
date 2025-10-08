@@ -126,4 +126,4 @@
 
 - GitHub: [doppleddiggong](https://github.com/doppleddiggong)  
 - LinkedIn: [주백 배](https://www.linkedin.com/in/주백-배-4a814527b/)  
-- Email: ju100.bae@gmail.com  
+- Email: ju100.bae@gmail.com

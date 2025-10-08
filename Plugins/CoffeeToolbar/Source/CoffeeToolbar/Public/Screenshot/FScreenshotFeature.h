@@ -17,9 +17,13 @@ public:
     /** @brief 기본 스크린샷 설정 상태를 구성합니다. */
     FScreenshotFeature();
 
-    /** @brief 언리얼 자동화 라이브러리를 사용해 스크린샷을 촬영합니다. */
-    void OnCaptureScreenshot();
+    /** @brief 스크린샷 옵션을 제공하는 메뉴 위젯을 생성합니다. */
+    TSharedRef<SWidget> GenerateScreenshotMenu();
 
     /** @brief 촬영된 스크린샷이 저장된 디렉터리를 엽니다. */
     void OnOpenScreenShotDir();
+
+private:
+    /** @brief 지정된 배율로 활성 뷰포트에 고해상도 캡처를 요청합니다. */
+    void CaptureActiveViewport(int32 ResolutionMultiplier);
 };

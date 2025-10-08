@@ -105,24 +105,19 @@ void FToolbar::RegisterMenus()
 		));
 	}
 
-	if (Settings->bEnableScreenshotFeature)
-	{
-		Section.AddEntry(FToolMenuEntry::InitToolBarButton(
-			"CoffeeToolbar_Screenshot",
-			FUIAction(FExecuteAction::CreateRaw(ScreenshotFeature.Get(), &FScreenshotFeature::OnCaptureScreenshot)),
-			NSLOCTEXT("CoffeeToolbar", "Screenshot", "Screenshot"),
-			NSLOCTEXT("CoffeeToolbar", "Screenshot_Tip", "Take a screenshot of the active viewport (PIE or Editor)"),
-			FSlateIconFinder::FindIconForClass(ACameraActor::StaticClass()) // ← 카메라 아이콘
-		));
-
-		Section.AddEntry(FToolMenuEntry::InitToolBarButton(
-			"DoppleToolbar_OpenShotDir",
-			FUIAction(FExecuteAction::CreateRaw(ScreenshotFeature.Get(), &FScreenshotFeature::OnOpenScreenShotDir)),
-			NSLOCTEXT("CoffeeToolbar", "OpenShotDir", "Open Screenshot Folder"),
-			NSLOCTEXT("CoffeeToolbar", "OpenShotDir_Tip", "Open the project\'s screenshot directory"),
-			FSlateIcon(FAppStyle::GetAppStyleSetName(), "Icons.FolderOpen")
-		));
-	}
+        if (Settings->bEnableScreenshotFeature)
+        {
+                FToolMenuEntry ScreenshotCombo = FToolMenuEntry::InitComboButton(
+                        "CoffeeToolbar_Screenshot",
+                        FUIAction(),
+                        FOnGetContent::CreateRaw(ScreenshotFeature.Get(), &FScreenshotFeature::GenerateScreenshotMenu),
+                        NSLOCTEXT("CoffeeToolbar", "Screenshot", "Screenshot"),
+                        NSLOCTEXT("CoffeeToolbar", "Screenshot_Tip", "Capture the active viewport with predefined resolutions."),
+                        FSlateIconFinder::FindIconForClass(ACameraActor::StaticClass())
+                );
+                ScreenshotCombo.StyleNameOverride = "CalloutToolbar";
+                Section.AddEntry(ScreenshotCombo);
+        }
 
 	if (Settings->bEnableCommandFeature)
 	{
