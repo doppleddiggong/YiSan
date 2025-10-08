@@ -36,8 +36,6 @@ public class YiSan : ModuleRules
 		{
 			"WebSockets",
 		});
-
-		
 		
 		PublicDependencyModuleNames.AddRange(new string[]
 		{
@@ -60,7 +58,6 @@ public class YiSan : ModuleRules
 			"CoffeeLibrary",
 			"LatteLibrary"
 		});
-		
 		
 		PublicIncludePaths.AddRange(new string[] {
 			Path.Combine(ModuleDirectory, "Character", "Public"),
