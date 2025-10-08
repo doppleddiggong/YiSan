@@ -23,17 +23,24 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 public:
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="RushAttack|Owner")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Owner")
 	TObjectPtr<class USkeletalMeshComponent> MeshComp;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="RushAttack|Owner")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Owner")
 	TObjectPtr<class UCharacterMovementComponent> MoveComp;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="RushAttack|Owner")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Owner")
 	TObjectPtr<class UAnimInstance> AnimInstance;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta=(AllowPrivateAccess="true"))
 	TObjectPtr<class USpringArmComponent> SpringArmComp;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta=(AllowPrivateAccess="true"))
 	TObjectPtr<class UCameraComponent> FollowCamera;
+
+
+	UPROPERTY(EditDefaultsOnly, Category = "UI")
+	TSubclassOf<class UMainWidget> MainWidgetClass;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
+	TObjectPtr<UMainWidget> MainWidgetInst;
+	
 
 public: // Control Interface
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
@@ -42,4 +49,7 @@ public: // Control Interface
 	void Cmd_Look(const FVector2D& Axis) override;
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void Cmd_Jump() override;
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
+	void Cmd_Chat() override;
 };

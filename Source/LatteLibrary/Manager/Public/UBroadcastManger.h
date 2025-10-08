@@ -8,6 +8,7 @@
 
 #include "CoreMinimal.h"
 #include "Macro.h"
+#include "EDamageType.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UBroadcastManger.generated.h"
 
@@ -27,6 +28,16 @@ public:
 	void SendMessage(const FString& InMsg);
 
 
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnToastMessage, FString, Msg);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnToastMessage OnToastMessage;
+	
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendToastMessage(const FString& InMsg);
+
+
+
+	
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHitStop, AActor*, Target, EDamageType, Type);
 	UPROPERTY(BlueprintAssignable, Category="Events")
 	FOnHitStop OnHitStop;

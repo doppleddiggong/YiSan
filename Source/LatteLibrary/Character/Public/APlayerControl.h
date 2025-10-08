@@ -31,11 +31,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Look;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_AltitudeUp;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_AltitudeDown;
-
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Jump;
-
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Landing;
-
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Chat;
 	
 	// --- Handlers ---
 	void OnMove(const FInputActionValue& Value);
@@ -45,8 +43,9 @@ protected:
 	void OnAltitudeReleased(const FInputActionValue& Value);
 	
 	void OnJump(const FInputActionValue& Value);
-
 	void OnLanding(const FInputActionValue& Value);
+
+	void OnChat(const FInputActionValue& Value);
 	
 private:
     class IControllable* GetControllable() const;

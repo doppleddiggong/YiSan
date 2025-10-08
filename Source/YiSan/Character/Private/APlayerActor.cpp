@@ -7,10 +7,17 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 
+#include "UMainWidget.h"
+#include "FComponentHelper.h"
+
+#define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_Main.WBP_Main_C")
+
 APlayerActor::APlayerActor()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
+	MainWidgetClass = FComponentHelper::LoadClass<UMainWidget>(MAINWIDGET_PATH);
+	
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArmComp->SetupAttachment(GetCapsuleComponent());
 	SpringArmComp->TargetArmLength = 400.f;
@@ -33,6 +40,13 @@ void APlayerActor::BeginPlay()
 	MeshComp = this->GetMesh();
 	MoveComp = this->GetCharacterMovement();
 	AnimInstance = MeshComp->GetAnimInstance();
+
+	if (MainWidgetClass)
+	{
+		MainWidgetInst = CreateWidget<UMainWidget>(GetWorld(), MainWidgetClass);
+		if (MainWidgetInst)
+			MainWidgetInst->AddToViewport();
+	}
 }
 
 void APlayerActor::Tick(float DeltaTime)
@@ -69,4 +83,10 @@ void APlayerActor::Cmd_Look_Implementation(const FVector2D& Axis)
 void APlayerActor::Cmd_Jump_Implementation()
 {
 	this->Jump();
+}
+
+void APlayerActor::Cmd_Chat_Implementation()
+{
+	if (MainWidgetInst)
+		MainWidgetInst->ToggleChatBox();
 }

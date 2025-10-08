@@ -11,6 +11,11 @@ void UBroadcastManger::SendMessage(const FString& InMsg)
 	OnMessage.Broadcast(InMsg);
 }
 
+void UBroadcastManger::SendToastMessage(const FString& InMsg)
+{
+	OnToastMessage.Broadcast(InMsg);
+}
+
 void UBroadcastManger::SendHitStop(AActor* Target, const EDamageType Type)
 {
 	OnHitStop.Broadcast(Target, Type);

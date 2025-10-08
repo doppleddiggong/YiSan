@@ -22,6 +22,7 @@
 #define IA_ALTITUDE_DOWN_PATH		TEXT("/Game/CustomContents/Input/IA_Game_AltitudeDown.IA_Game_AltitudeDown")
 #define IA_JUMP_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Jump.IA_Game_Jump")
 #define IA_LANDING_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Landing.IA_Game_Landing")
+#define IA_CHAT_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Chat.IA_Game_Chat")
 
 APlayerControl::APlayerControl()
 {
@@ -33,6 +34,7 @@ APlayerControl::APlayerControl()
 	IA_AltitudeDown = FComponentHelper::LoadAsset<UInputAction>(IA_ALTITUDE_DOWN_PATH);
 	IA_Jump = FComponentHelper::LoadAsset<UInputAction>(IA_JUMP_PATH);
 	IA_Landing = FComponentHelper::LoadAsset<UInputAction>(IA_LANDING_PATH);
+	IA_Chat = FComponentHelper::LoadAsset<UInputAction>(IA_CHAT_PATH);
 }
 
 void APlayerControl::BeginPlay()
@@ -69,9 +71,10 @@ void APlayerControl::SetupInputComponent()
 		EIC->BindAction(IA_AltitudeDown, ETriggerEvent::Completed, this, &APlayerControl::OnAltitudeReleased);
 		EIC->BindAction(IA_AltitudeDown, ETriggerEvent::Canceled, this, &APlayerControl::OnAltitudeReleased);
 
-		
 		EIC->BindAction(IA_Jump, ETriggerEvent::Started,    this, &APlayerControl::OnJump);
 		EIC->BindAction(IA_Landing, ETriggerEvent::Started,  this, &APlayerControl::OnLanding);
+
+		EIC->BindAction(IA_Chat, ETriggerEvent::Started, this, &APlayerControl::OnChat);
 	}
 }
 
@@ -128,4 +131,11 @@ void APlayerControl::OnLanding(const FInputActionValue&)
 {
 	if (IControllable* C = GetControllable())
 		C->Cmd_Landing();
+}
+
+
+void APlayerControl::OnChat(const FInputActionValue&)
+{
+	if (IControllable* C = GetControllable())
+		C->Cmd_Chat();
 }
