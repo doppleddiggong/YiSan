@@ -32,4 +32,7 @@ public:
 	virtual void Cmd_AltitudeReleased() {};					// 고도 조절 해제
 
 	virtual void Cmd_Chat() {};								// 챗
+
+	virtual void Cmd_RecordStart() {};						// 녹음 시작
+	virtual void Cmd_RecordEnd() {};						// 녹음 종료
 };

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "APlayerActor.h"
+#include "UVoiceRecordSystem.h"
 
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -31,6 +32,8 @@ APlayerActor::APlayerActor()
 
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->bUseControllerDesiredRotation = false;
+
+	VoiceRecordSystem = CreateDefaultSubobject<UVoiceRecordSystem>(TEXT("VoiceRecordSystem"));
 }
 
 void APlayerActor::BeginPlay()
@@ -58,6 +61,7 @@ void APlayerActor::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
+
 
 void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
 {
@@ -89,4 +93,14 @@ void APlayerActor::Cmd_Chat_Implementation()
 {
 	if (MainWidgetInst)
 		MainWidgetInst->ToggleChatBox();
+}
+
+void APlayerActor::Cmd_RecordStart_Implementation()
+{
+	VoiceRecordSystem->RecordStart();
+}
+
+void APlayerActor::Cmd_RecordEnd_Implementation()
+{
+	VoiceRecordSystem->RecordStop();
 }

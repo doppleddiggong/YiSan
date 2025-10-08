@@ -40,6 +40,11 @@ public:
 	TSubclassOf<class UMainWidget> MainWidgetClass;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
 	TObjectPtr<UMainWidget> MainWidgetInst;
+
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|System")
+	TObjectPtr<class UVoiceRecordSystem> VoiceRecordSystem;
+
 	
 
 public: // Control Interface
@@ -52,4 +57,9 @@ public: // Control Interface
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void Cmd_Chat() override;
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
+	void Cmd_RecordStart() override;
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
+	void Cmd_RecordEnd() override;
 };
