@@ -8,5 +8,5 @@ public:
     TSharedRef<class SWidget> GenerateFolderMenu();
 
 private:
-    void OpenFolder(FString Path) const;
+    void OpenFolder(FString Path);
 };
