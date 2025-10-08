@@ -86,6 +86,55 @@ void Cmd_Jump() override;
 - **기능 그룹**: `public:`, `protected:`와 같은 접근 지정자 뒤에 해당 섹션의 역할을 설명하는 주석을 추가하는 것을 권장합니다. (예: `public: // Control Interface`)
 - **코드 설명**: 복잡한 로직이나 특정 결정의 이유를 설명하는 주석을 작성합니다. "무엇을" 하는지보다 "왜" 그렇게 했는지를 설명하는 데 집중합니다.
 
+### 3.3. 전방 선언 (Forward Declaration)
+
+헤더 파일(.h)에서는 컴파일 시간 단축을 위해 다른 헤더를 직접 `#include`하는 대신 전방 선언을 사용하는 것을 원칙으로 합니다.
+
+**권장 스타일:**
+`TObjectPtr` 또는 포인터 변수 선언 시, 템플릿 인자 안에서 `class` 키워드를 사용하여 해당 위치에서 바로 전방 선언을 수행합니다. 이 방식은 선언을 사용하는 곳과 가깝게 위치시켜 가독성을 높입니다.
+
+```cpp
+// MyActor.h
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "MyActor.generated.h"
+
+UCLASS()
+class YISAN_API AMyActor : public AActor
+{
+    GENERATED_BODY()
+
+protected:
+    // 권장: TObjectPtr<class UMyComponent>와 같이 사용하여 헤더 상단에 별도 선언이 필요 없음
+    UPROPERTY(VisibleAnywhere)
+    TObjectPtr<class UStaticMeshComponent> MeshComponent;
+
+    UPROPERTY(VisibleAnywhere)
+    TObjectPtr<class USpringArmComponent> SpringArmComponent;
+};
+```
+
+**대안 스타일:**
+파일 상단에서 여러 클래스를 한 번에 전방 선언하는 전통적인 방식도 허용됩니다.
+
+```cpp
+// MyLegacyActor.h
+
+#pragma once
+
+#include "CoreMinimal.h"
+// ... other includes
+
+class UStaticMeshComponent;
+class USpringArmComponent;
+
+UCLASS()
+// ...
+```
+
 ---
 
 ## 4. 기타 규칙
