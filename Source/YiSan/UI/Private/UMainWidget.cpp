@@ -17,12 +17,11 @@ void UMainWidget::NativeConstruct()
 	
 	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
 	{
-		FInputModeGameAndUI InputMode;
-		InputMode.SetWidgetToFocus(TakeWidget());
-		InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
-		PC->SetInputMode(InputMode);
+		FInputModeGameOnly InputMode;
+		InputMode.SetConsumeCaptureMouseDown(false);
 		
-		PC->bShowMouseCursor = true;
+		PC->SetInputMode(InputMode);
+		PC->bShowMouseCursor = false;
 	}
 }
 
