@@ -1,7 +1,9 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "UMainWidget.h"
+#include "GameLogging.h"
 #include "UBroadcastManger.h"
+#include "UHttpNetworkSystem.h"
 
 #include "Components/CanvasPanel.h"
 #include "Components/EditableTextBox.h"
@@ -71,6 +73,24 @@ void UMainWidget::OnMessageComitted(const FText& Text, ETextCommit::Type CommitM
 
 void UMainWidget::SendChatMessage(const FString& InMsg)
 {
-	if (auto EventManager = UBroadcastManger::Get(this))
-		EventManager->SendToastMessage(InMsg);
+	if ( auto ReqNetwork = UHttpNetworkSystem::Get(GetWorld()) )
+	{
+		ReqNetwork->RequestTTS(InMsg, TEXT("STT_00"), false,
+			FResponseTTSDelegate::CreateUObject( this, &UMainWidget::OnResponseTTS) );
+	}
+}
+
+void UMainWidget::OnResponseTTS(FResponseTTS& ResponseData, bool bWasSuccessful)
+{
+	if (bWasSuccessful)
+	{
+		ResponseData.PrintData();
+
+		if (auto EventManager = UBroadcastManger::Get(this))
+			EventManager->SendToastMessage(ResponseData.message);
+	}
+	else
+	{
+		PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
+	}
 }

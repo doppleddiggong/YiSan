@@ -10,6 +10,8 @@
 
 #include "UMainWidget.h"
 #include "FComponentHelper.h"
+#include "GameLogging.h"
+#include "UBroadcastManger.h"
 
 #define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_Main.WBP_Main_C")
 
@@ -46,12 +48,13 @@ void APlayerActor::BeginPlay()
 	MoveComp = this->GetCharacterMovement();
 	AnimInstance = MeshComp->GetAnimInstance();
 
-	if (MainWidgetClass)
-	{
-		MainWidgetInst = CreateWidget<UMainWidget>(GetWorld(), MainWidgetClass);
-		if (MainWidgetInst)
-			MainWidgetInst->AddToViewport();
-	}
+	MainWidgetInst = CreateWidget<UMainWidget>(GetWorld(), MainWidgetClass);
+	if (MainWidgetInst)
+		MainWidgetInst->AddToViewport();
+
+	VoiceRecordSystem->OnRecordingStopped.AddDynamic(this, &APlayerActor::OnRecordingStoppedHandler);
+
+	ConnectToWebSocket();
 }
 
 void APlayerActor::Tick(float DeltaTime)
@@ -63,7 +66,6 @@ void APlayerActor::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
-
 
 void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
 {
@@ -105,4 +107,36 @@ void APlayerActor::Cmd_RecordStart_Implementation()
 void APlayerActor::Cmd_RecordEnd_Implementation()
 {
 	VoiceRecordSystem->RecordStop();
+}
+
+void APlayerActor::ConnectToWebSocket()
+{
+	if ( auto SocketNetwork = UWebSocketSystem::Get(GetWorld()) )
+	{
+		SocketNetwork->Connect( NetworkConfig::GetSocketURL());
+	}
+}
+
+void APlayerActor::OnRecordingStoppedHandler(const FString& FilePath)
+{
+	if ( auto ReqNetwork = UHttpNetworkSystem::Get(GetWorld()) )
+	{
+		ReqNetwork->RequestSTT(FilePath,
+			FResponseSTTDelegate::CreateUObject( this, &APlayerActor::OnResponseSTT));
+	}
+}
+
+void APlayerActor::OnResponseSTT(FResponseSTT& ResponseData, bool bWasSuccessful)
+{
+	if (bWasSuccessful)
+	{
+		ResponseData.PrintData();
+
+		if (auto EventManager = UBroadcastManger::Get(this))
+			EventManager->SendToastMessage(ResponseData.text);
+	}
+	else
+	{
+		PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
+	}
 }

@@ -25,8 +25,9 @@ public:
     virtual void Deinitialize() override;
 
     void RequestHealth( FResponseHealthDelegate InDelegate);
-    void RequestHelpChat( const FRequestHelpChat& RequestData, FResponseHelpChatDelegate InDelegate);
-
+    void RequestSTT(const FString& FilePath, FResponseSTTDelegate InDelegate);
+    void RequestTTS(const FString& Text, const FString& reference_index, bool bReturnAudio, FResponseTTSDelegate InDelegate);
+    
 private:
     static void LogNetwork(ENetworkLogType InLogType, const FString& URL, const FString& Body = "");
     static const TCHAR* GetLogPrefix(ENetworkLogType InLogType);

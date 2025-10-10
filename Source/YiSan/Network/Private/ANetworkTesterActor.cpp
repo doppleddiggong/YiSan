@@ -40,32 +40,3 @@ void ANetworkTesterActor::OnResponseHealth(FResponseHealth& ResponseData, bool b
         PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
     }
 }
-
-void ANetworkTesterActor::RequestHelpChat( const FString InQuestion )
-{
-    if ( auto ReqNetwork = UHttpNetworkSystem::Get(GetWorld()) )
-    {
-        FRequestHelpChat RequestData;
-        RequestData.question = InQuestion;
-        
-        ReqNetwork->RequestHelpChat(
-            RequestData,
-            FResponseHelpChatDelegate::CreateUObject( this, &ANetworkTesterActor::OnResponseHelpChat) );
-    }
-    else
-    {
-        PRINTLOG( TEXT("UNetworkSystem not found!"));
-    }
-}
-
-void ANetworkTesterActor::OnResponseHelpChat(FResponseHelpChat& ResponseData, bool bWasSuccessful)
-{
-    if (bWasSuccessful)
-    {
-        ResponseData.PrintData();
-    }
-    else
-    {
-        PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
-    }
-}

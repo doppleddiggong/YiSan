@@ -21,6 +21,6 @@ public:
 	);
 
 	UFUNCTION(BlueprintCallable, Category="Voice|Utility")
-	static void SaveWavToFile(TArray<uint8>& InWavData,
+	static FString SaveWavToFile(TArray<uint8>& InWavData,
 		const FString& InFileName = TEXT(""));
 };

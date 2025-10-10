@@ -51,7 +51,9 @@ void UVoiceRecordSystem::RecordStop()
 	PRINTLOG(TEXT("RecordEnd"));
 	
 	WAVData = UVoiceFunctionLibrary::ConvertPCM2WAV(PCMData, LastSampleRate, LastNumChannels, 16);
-	UVoiceFunctionLibrary::SaveWavToFile(WAVData);
+	LastRecordedFilePath = UVoiceFunctionLibrary::SaveWavToFile(WAVData);
+
+	OnRecordingStopped.Broadcast(LastRecordedFilePath);
 }
 
 void UVoiceRecordSystem::HandleOnCapture(const float* InAudio, int32 InNumFrames, int32 InNumChannels, int32 InSampleRate)

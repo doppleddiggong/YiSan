@@ -24,12 +24,4 @@ protected:
     UFUNCTION(CallInEditor, Category = "TEST|RequestHealth")
     void RequestHealth();
     void OnResponseHealth(FResponseHealth& ResponseData, bool bWasSuccessful);
-    
-    UFUNCTION(CallInEditor, Category = "TEST|RequestHelpChat")
-    FORCEINLINE void BP_RequestHelpChat()
-    {
-        RequestHelpChat(TEXT("산안기 실기 접수 실패!!!"));
-    }
-    void RequestHelpChat( const FString InQuestion );
-    void OnResponseHelpChat(FResponseHelpChat& ResponseData, bool bWasSuccessful);
 };

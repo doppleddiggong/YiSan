@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "IControllable.h"
 #include "GameFramework/Character.h"
+#include "UWebSocketSystem.h"
+#include "UHttpNetworkSystem.h"
 #include "APlayerActor.generated.h"
 
 UCLASS()
@@ -17,6 +19,14 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+
+private:
+	void ConnectToWebSocket();
+
+	UFUNCTION()
+	void OnRecordingStoppedHandler(const FString& FilePath);
+	UFUNCTION()
+	void OnResponseSTT(FResponseSTT& ResponseData, bool bWasSuccessful);
 
 public:
 	virtual void Tick(float DeltaTime) override;

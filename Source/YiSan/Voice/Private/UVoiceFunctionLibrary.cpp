@@ -43,12 +43,12 @@ TArray<uint8> UVoiceFunctionLibrary::ConvertPCM2WAV(
 }
 
 
-void UVoiceFunctionLibrary::SaveWavToFile(TArray<uint8>& InWavData, const FString& InFileName )
+FString UVoiceFunctionLibrary::SaveWavToFile(TArray<uint8>& InWavData, const FString& InFileName )
 {
 	if (InWavData.Num() == 0)
 	{
 		PRINTLOG( TEXT("WavData is empty, nothing to save."));
-		return;
+		return FString();
 	}
 
 	FString FileName = InFileName;
@@ -68,15 +68,13 @@ void UVoiceFunctionLibrary::SaveWavToFile(TArray<uint8>& InWavData, const FStrin
 
 	FString FullPath = FolderPath / FileName;
 	if (FFileHelper::SaveArrayToFile(InWavData, *FullPath))
+	{
 		PRINTLOG( TEXT("Saved WAV file: %s"), *FullPath);
+		return FullPath;
+	}
 	else
+	{
 		PRINTLOG( TEXT("Failed to save WAV file: %s"), *FullPath);
-	
-	//
-	// if (InWavData.Num() >= 4)
-	// {
-	// 	FString Header = FString::Printf(TEXT("%c%c%c%c"),
-	// 		InWavData[0], InWavData[1], InWavData[2], InWavData[3] );
-	// 	PRINTLOG( TEXT("WAV Header: %s"), *Header);
-	// }	
+		return FString();
+	}
 }

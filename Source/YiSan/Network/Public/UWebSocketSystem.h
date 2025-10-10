@@ -14,6 +14,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnWebSocketConnected);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnWebSocketConnectionError, const FString&, Error);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnWebSocketClosed, int32, StatusCode, const FString&, Reason, bool, bWasClean);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnWebSocketMessageReceived, const FString&, Message);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnWebSocketBinaryMessageReceived, const TArray<uint8>&, Data, int32, Size, bool, bIsLastFragment);
 
 UCLASS(Blueprintable, BlueprintType)
 class YISAN_API UWebSocketSystem : public UGameInstanceSubsystem
@@ -25,7 +26,7 @@ public:
 
     
     UFUNCTION(BlueprintCallable, Category = "WebSocket")
-    void Connect(const FString& Url, const FString& Protocol);
+    void Connect(const FString& Url);
 
     UFUNCTION(BlueprintCallable, Category = "WebSocket")
     void Close();
@@ -48,6 +49,9 @@ public:
     UPROPERTY(BlueprintAssignable, Category = "WebSocket")
     FOnWebSocketMessageReceived OnMessageReceived;
 
+    UPROPERTY(BlueprintAssignable, Category = "WebSocket")
+    FOnWebSocketBinaryMessageReceived OnBinaryMessageReceived;
+
 private:
     virtual void Initialize(FSubsystemCollectionBase& Collection) override;
     virtual void Deinitialize() override;
@@ -56,6 +60,7 @@ private:
     void OnConnectionError_Native(const FString& Error);
     void OnClosed_Native(int32 StatusCode, const FString& Reason, bool bWasClean);
     void OnMessageReceived_Native(const FString& Message);
+    void OnBinaryMessageReceived_Native(const void* Data, SIZE_T Size, bool bIsLastFragment);
 
     TSharedPtr<IWebSocket> WebSocket;
 

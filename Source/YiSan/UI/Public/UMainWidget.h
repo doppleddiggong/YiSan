@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "NetworkData.h"
 #include "UMainWidget.generated.h"
 
 UCLASS()
@@ -22,6 +23,7 @@ protected:
 	
 private:
 	void SendChatMessage(const FString& InMsg);
+	void OnResponseTTS(FResponseTTS& ResponseData, bool bWasSuccessful);
 
 protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadWrite, Category = "Chat")

@@ -29,6 +29,9 @@ struct FServerConfig
 	UPROPERTY(EditAnywhere, config, Category="Network")
 	int32 Port = 0;
 
+	UPROPERTY(EditAnywhere, config, Category="Network")
+	FString WebSocketUrl;
+
 	FString GetFullUrl(const FString& Endpoint) const
 	{
 		return FString::Printf(TEXT("%s:%d%s"), *BaseUrl, Port, *Endpoint);

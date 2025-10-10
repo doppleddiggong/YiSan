@@ -48,5 +48,5 @@ void WriteToGameLog(const FString& Message)
     FString LogLine = FString::Printf(TEXT("[%s] %s\n"), *FDateTime::Now().ToString(TEXT("%H:%M:%S")), *Message);
 
     // 파일에 로그를 추가합니다.
-    FFileHelper::SaveStringToFile(LogLine, *GLogFilePath, FFileHelper::EEncodingOptions::AutoDetect, &IFileManager::Get(), FILEWRITE_Append);
+    FFileHelper::SaveStringToFile(LogLine, *GLogFilePath, FFileHelper::EEncodingOptions::ForceUTF8, &IFileManager::Get(), FILEWRITE_Append);
 }

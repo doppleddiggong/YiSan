@@ -23,16 +23,42 @@ namespace NetworkConfig
     {
         const EServerMode Mode = UCustomNetworkSettings::GetCurrentServerMode();
         const FServerConfig& Config = GetDefault<UCustomNetworkSettings>()->GetConfig(Mode);
-
         return Config.GetFullUrl(Endpoint);
     }
+
+    static FString GetSocketURL()
+    {
+        const EServerMode Mode = UCustomNetworkSettings::GetCurrentServerMode();
+        const FServerConfig& Config = GetDefault<UCustomNetworkSettings>()->GetConfig(Mode);
+        return Config.WebSocketUrl;
+    }
+    
 }
 
 namespace RequestAPI
 {
     static FString Health = FString("/health");
     static FString HelpChat = FString("/help_chat");
+    static FString STT = FString("/stt");
+    static FString FishTTSSimple = FString("/fish/tts-simple");
+    static FString TTS = FString("/tts");
+    static FString Ask = FString("/ask");
 }
+
+USTRUCT(BlueprintType)
+struct FRequestTTS
+{
+    GENERATED_BODY()
+
+    UPROPERTY()
+    FString text;
+    
+    UPROPERTY()
+    FString reference_index;
+
+    UPROPERTY()
+    bool return_audio = false;
+};
 
 DECLARE_DELEGATE_TwoParams( FResponseHealthDelegate, FResponseHealth&, bool );
 USTRUCT(BlueprintType)
@@ -65,6 +91,49 @@ struct FResponseHelpChat
 
     UPROPERTY(BlueprintReadOnly)
     FString ai_message;
+
+    void SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response);
+    void PrintData();
+};
+
+DECLARE_DELEGATE_TwoParams( FResponseSTTDelegate, FResponseSTT&, bool );
+USTRUCT(BlueprintType)
+struct FResponseSTT
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite)
+    FString text;
+
+    void SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response);
+    void PrintData();
+};
+
+USTRUCT(BlueprintType)
+struct FRequestFishTTSSimple
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite)
+    FString text;
+};
+
+DECLARE_DELEGATE_TwoParams( FResponseTTSDelegate, FResponseTTS&, bool );
+USTRUCT(BlueprintType)
+struct FResponseTTS
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite)
+    FString message;
+    UPROPERTY(BlueprintReadWrite)
+    FString file_path;
+    UPROPERTY(BlueprintReadWrite)
+    FString requested_text;
+    UPROPERTY(BlueprintReadWrite)
+    float generation_time;
+    UPROPERTY(BlueprintReadWrite)
+    FString version;
 
     void SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response);
     void PrintData();

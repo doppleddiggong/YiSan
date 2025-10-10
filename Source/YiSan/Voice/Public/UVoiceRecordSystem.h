@@ -7,6 +7,8 @@
 #include "Components/ActorComponent.h"
 #include "UVoiceRecordSystem.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnRecordingStopped, const FString&, FilePath);
+
 UCLASS(ClassGroup=(Voice), meta=(BlueprintSpawnableComponent))
 class YISAN_API UVoiceRecordSystem : public UActorComponent
 {
@@ -19,6 +21,9 @@ public:
 	void RecordStart();
 	void RecordStop();
 
+	UPROPERTY(BlueprintAssignable, Category = "Voice")
+	FOnRecordingStopped OnRecordingStopped;
+
 private:
 	void HandleOnCapture(const float* InAudio, int32 InNumFrames, int32 InNumChannels, int32 InSampleRate);
 
@@ -30,4 +35,6 @@ private:
 	int32 LastSampleRate  = 16000;  // 기본값
 	int32 LastNumChannels = 1;
 	bool bIsRecording = false;
+
+	FString LastRecordedFilePath;
 };
