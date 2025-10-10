@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['anonymous_5fnamespace_7buvoicecapturecomponent_2ecpp_7d_0',['anonymous_namespace{UVoiceCaptureComponent.cpp}',['../namespaceanonymous__namespace_02UVoiceCaptureComponent_8cpp_03.html',1,'']]]
+  ['gamecolor_0',['GameColor',['../namespaceGameColor.html',1,'']]],
+  ['gameevent_1',['GameEvent',['../namespaceGameEvent.html',1,'']]],
+  ['gametags_2',['GameTags',['../namespaceGameTags.html',1,'']]],
+  ['googlespeechservice_3',['GoogleSpeechService',['../namespaceGoogleSpeechService.html',1,'']]],
+  ['googlespeechservice_3a_3aurls_4',['Urls',['../namespaceGoogleSpeechService_1_1Urls.html',1,'GoogleSpeechService']]]
 ];

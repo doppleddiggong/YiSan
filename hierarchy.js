@@ -1,13 +1,15 @@
 var hierarchy =
 [
     [ "AActor", null, [
+      [ "AGate", "classAGate.html", null ],
       [ "AListActorManager", "classAListActorManager.html", null ],
       [ "ANetworkTesterActor", "classANetworkTesterActor.html", null ]
     ] ],
     [ "ACharacter", null, [
-      [ "AGameCharacter", "classAGameCharacter.html", [
-        [ "APlayerActor", "classAPlayerActor.html", null ]
-      ] ]
+      [ "ALatteGameCharacter", "classALatteGameCharacter.html", [
+        [ "ALattePlayerCharacter", "classALattePlayerCharacter.html", null ]
+      ] ],
+      [ "APlayerActor", "classAPlayerActor.html", null ]
     ] ],
     [ "AGameModeBase", null, [
       [ "AYiSanGameMode", "classAYiSanGameMode.html", null ]
@@ -42,7 +44,9 @@ var hierarchy =
       [ "FKnockbackData", "structFKnockbackData.html", null ]
     ] ],
     [ "FVFXData", "structFVFXData.html", null ],
+    [ "FVoiceConfig", "structFVoiceConfig.html", null ],
     [ "IControllable", "classIControllable.html", [
+      [ "ALattePlayerCharacter", "classALattePlayerCharacter.html", null ],
       [ "APlayerActor", "classAPlayerActor.html", null ]
     ] ],
     [ "ISequenceActivatable", "classISequenceActivatable.html", null ],
@@ -52,7 +56,8 @@ var hierarchy =
     [ "UBlueprintFunctionLibrary", null, [
       [ "UCommonFunctionLibrary", "classUCommonFunctionLibrary.html", null ],
       [ "UEaseFunctionLibrary", "classUEaseFunctionLibrary.html", null ],
-      [ "UGameFunctionLibrary", "classUGameFunctionLibrary.html", null ]
+      [ "UGameFunctionLibrary", "classUGameFunctionLibrary.html", null ],
+      [ "UVoiceFunctionLibrary", "classUVoiceFunctionLibrary.html", null ]
     ] ],
     [ "UDamageType", null, [
       [ "UGameDamageType", "classUGameDamageType.html", null ]
@@ -64,7 +69,7 @@ var hierarchy =
     ] ],
     [ "UDeveloperSettings", null, [
       [ "UCustomNetworkSettings", "classUCustomNetworkSettings.html", null ],
-      [ "UGoogleSpeechServiceSettings", "classUGoogleSpeechServiceSettings.html", null ]
+      [ "USpeechSettings", "classUSpeechSettings.html", null ]
     ] ],
     [ "UGameInstanceSubsystem", null, [
       [ "UBroadcastManger", "classUBroadcastManger.html", null ],
@@ -76,14 +81,14 @@ var hierarchy =
       [ "UHttpNetworkSystem", "classUHttpNetworkSystem.html", null ],
       [ "UObjectPoolManager", "classUObjectPoolManager.html", null ],
       [ "USequenceManager", "classUSequenceManager.html", null ],
-      [ "UWebSocketSystem", "classUWebSocketSystem.html", null ],
-      [ "UYiSanVoiceConsoleSubsystem", "classUYiSanVoiceConsoleSubsystem.html", null ]
+      [ "UWebSocketSystem", "classUWebSocketSystem.html", null ]
     ] ],
     [ "UInterface", null, [
       [ "UControllable", "classUControllable.html", null ],
       [ "USequenceActivatable", "classUSequenceActivatable.html", null ]
     ] ],
     [ "UUserWidget", null, [
-      [ "UMainWdget", "classUMainWdget.html", null ]
+      [ "UDialogWidget", "classUDialogWidget.html", null ],
+      [ "UMainWidget", "classUMainWidget.html", null ]
     ] ]
 ];

@@ -113,7 +113,7 @@ $(document).ready(function(){initNavTree('UFlySystem_8cpp_source.html',''); init
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="UFlySystem_8h.html">UFlySystem.h</a>&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="AGameCharacter_8h.html">AGameCharacter.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="ALatteGameCharacter_8h.html">ALatteGameCharacter.h</a>&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="FEaseHelper_8h.html">FEaseHelper.h</a>&quot;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;Components/CapsuleComponent.h&quot;</span></div>
@@ -154,7 +154,7 @@ $(document).ready(function(){initNavTree('UFlySystem_8cpp_source.html',''); init
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keywordtype">void</span> UFlySystem::InitSystem(<span class="keyword">class</span> <a class="code hl_class" href="classAGameCharacter.html">AGameCharacter</a>* InOwner, FEndCallback InCallback)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keywordtype">void</span> UFlySystem::InitSystem(<span class="keyword">class</span> <a class="code hl_class" href="classALatteGameCharacter.html">ALatteGameCharacter</a>* InOwner, FEndCallback InCallback)</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>{</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    this-&gt;Owner = InOwner;</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    this-&gt;Callback = InCallback;</div>
@@ -174,7 +174,7 @@ $(document).ready(function(){initNavTree('UFlySystem_8cpp_source.html',''); init
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">if</span> ( bIsUp == <span class="keyword">true</span> &amp;&amp;</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>         MoveComp-&gt;MovementMode != MOVE_Flying )</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    {</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        Owner-&gt;<a class="code hl_function" href="classAGameCharacter.html#a0e3b298e992b0dce1d68bf6d3cc8b865">SetFlying</a>();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        Owner-&gt;<a class="code hl_function" href="classALatteGameCharacter.html#a405f433d7e8ab5c1f323d23434cd4df4">SetFlying</a>();</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    }</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
@@ -351,20 +351,20 @@ $(document).ready(function(){initNavTree('UFlySystem_8cpp_source.html',''); init
 <div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
 <div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <span class="keywordflow">return</span> FVector::ZeroVector;</div>
 <div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>}</div>
-<div class="ttc" id="aAGameCharacter_8h_html"><div class="ttname"><a href="AGameCharacter_8h.html">AGameCharacter.h</a></div><div class="ttdoc">LatteLibrary 전반에서 사용하는 기반 캐릭터 클래스를 선언합니다.</div></div>
+<div class="ttc" id="aALatteGameCharacter_8h_html"><div class="ttname"><a href="ALatteGameCharacter_8h.html">ALatteGameCharacter.h</a></div></div>
 <div class="ttc" id="aEVFXType_8h_html_af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d"><div class="ttname"><a href="EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d">EVFXType::Hit</a></div><div class="ttdeci">@ Hit</div></div>
 <div class="ttc" id="aFEaseHelper_8h_html"><div class="ttname"><a href="FEaseHelper_8h.html">FEaseHelper.h</a></div><div class="ttdoc">FEaseHelper 선언에 대한 Doxygen 주석을 제공합니다.</div></div>
 <div class="ttc" id="aUEaseFunctionLibrary_8h_html"><div class="ttname"><a href="UEaseFunctionLibrary_8h.html">UEaseFunctionLibrary.h</a></div><div class="ttdoc">UEaseFunctionLibrary 선언에 대한 Doxygen 주석을 제공합니다.</div></div>
 <div class="ttc" id="aUFlySystem_8h_html"><div class="ttname"><a href="UFlySystem_8h.html">UFlySystem.h</a></div><div class="ttdoc">UFlySystem 선언에 대한 Doxygen 주석을 제공합니다.</div></div>
-<div class="ttc" id="aclassAGameCharacter_html"><div class="ttname"><a href="classAGameCharacter.html">AGameCharacter</a></div><div class="ttdoc">전투, 능력치, 애니메이션 헬퍼를 연결하는 기반 캐릭터 구현입니다.</div><div class="ttdef"><b>Definition</b> <a href="AGameCharacter_8h_source.html#l00021">AGameCharacter.h:22</a></div></div>
-<div class="ttc" id="aclassAGameCharacter_html_a0e3b298e992b0dce1d68bf6d3cc8b865"><div class="ttname"><a href="classAGameCharacter.html#a0e3b298e992b0dce1d68bf6d3cc8b865">AGameCharacter::SetFlying</a></div><div class="ttdeci">void SetFlying()</div><div class="ttdef"><b>Definition</b> <a href="AGameCharacter_8cpp_source.html#l00250">AGameCharacter.cpp:250</a></div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html"><div class="ttname"><a href="classALatteGameCharacter.html">ALatteGameCharacter</a></div><div class="ttdoc">전투, 능력치, 애니메이션 헬퍼를 연결하는 기반 캐릭터 구현입니다.</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00021">ALatteGameCharacter.h:22</a></div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a405f433d7e8ab5c1f323d23434cd4df4"><div class="ttname"><a href="classALatteGameCharacter.html#a405f433d7e8ab5c1f323d23434cd4df4">ALatteGameCharacter::SetFlying</a></div><div class="ttdeci">void SetFlying()</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8cpp_source.html#l00250">ALatteGameCharacter.cpp:250</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_399370037b6f5ff6b0840148d18ec8d9.html">LatteLibrary</a></li><li class="navelem"><a class="el" href="dir_3c114e8d16f3e538cb35f2ecdad082f2.html">Character</a></li><li class="navelem"><a class="el" href="dir_f5c20ae920c5f83d16e1c5fb9563aee7.html">Private</a></li><li class="navelem"><a class="el" href="UFlySystem_8cpp.html">UFlySystem.cpp</a></li>
-    <li class="footer">생성시간 : 금 10월 3 2025 07:45:33, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 10월 10 2025 08:06:52, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

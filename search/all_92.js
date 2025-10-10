@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['출력_20포맷_0',['5. 출력 포맷',['../md_AgentRule_2commit__agent.html#autotoc_md54',1,'']]]
+  ['처리_20handling_20recurring_20issues_0',['3. 반복적인 문제 처리 (Handling Recurring Issues)',['../md_AgentRule_2debug__guide.html#autotoc_md36',1,'']]]
 ];

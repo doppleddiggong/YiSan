@@ -1,11 +1,4 @@
 var searchData=
 [
-  ['파이프라인_0',['파이프라인',['../md_AgentRule_2PERSONA.html#autotoc_md196',1,'8) 아트/에셋 파이프라인'],['../md_GEMINI.html#autotoc_md44',1,'8) 아트/에셋 파이프라인']]],
-  ['파이프라인_20strong_1',['3. &lt;strong&gt;GitHub Actions CI/CD 파이프라인&lt;/strong&gt;',['../md_Documents_2DevLog_2Monthly_22025-10.html#autotoc_md292',1,'']]],
-  ['파일명_20classes_20and_20filenames_2',['1.1. 클래스 및 파일명 (Classes and Filenames)',['../md_AgentRule_2conventions__agent.html#autotoc_md77',1,'']]],
-  ['파일_3',['파일',['../md_Documents_2Reference_2DoxygenWorkflow.html#autotoc_md285',1,'구성 파일'],['../md_AgentRule_2conventions__agent.html#autotoc_md87',1,'3.1. 헤더 파일']]],
-  ['파일_20경로_20지정_4',['3.2. 관련 파일/경로 지정',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md10',1,'']]],
-  ['파일_20구조_20및_20주석_5',['3. 파일 구조 및 주석',['../md_AgentRule_2conventions__agent.html#autotoc_md86',1,'']]],
-  ['파일_20분할_20고려사항_6',['8.5. 파일 분할 고려사항',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md194',1,'']]],
-  ['파일_20자동_20분석_20규칙_20추가_7',['4. 로그 파일 자동 분석 (규칙 추가)',['../md_AgentRule_2debug__guide.html#autotoc_md73',1,'']]]
+  ['통계_20metrics_20statistics_0',['메트릭 및 통계 (Metrics &amp; Statistics)',['../md_Documents_2DevLog_2Monthly_22025-10.html#autotoc_md600',1,'']]]
 ];

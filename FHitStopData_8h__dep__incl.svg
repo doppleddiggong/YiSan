@@ -46,7 +46,7 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 1541;
+var viewWidth = 1308;
 var viewHeight = 192;
 var sectionId = 'dynsection-1';
 </script>
@@ -58,9 +58,9 @@ var sectionId = 'dynsection-1';
 <g id="Node000001" class="node">
 <title>Node1</title>
 <g id="a_Node000001"><a xlink:title="FHitStopData 구조체에 대한 Doxygen 주석을 제공합니다.">
-<polygon fill="#999999" stroke="#666666" points="948,-184 796,-184 796,-154 948,-154 948,-184"/>
-<text text-anchor="start" x="804" y="-172" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
-<text text-anchor="middle" x="872" y="-161" font-family="Malgun Gothic" font-size="10.00">/Data/Public/FHitStopData.h</text>
+<polygon fill="#999999" stroke="#666666" points="572,-184 420,-184 420,-154 572,-154 572,-184"/>
+<text text-anchor="start" x="428" y="-172" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
+<text text-anchor="middle" x="496" y="-161" font-family="Malgun Gothic" font-size="10.00">/Data/Public/FHitStopData.h</text>
 </a>
 </g>
 </g>
@@ -68,10 +68,10 @@ var sectionId = 'dynsection-1';
 <g id="Node000002" class="node">
 <title>Node2</title>
 <g id="a_Node000002"><a xlink:href="UHitStopSystem_8h.html" target="_top" xlink:title="UHitStopSystem 선언에 대한 Doxygen 주석을 제공합니다.">
-<polygon fill="white" stroke="#666666" points="1151,-118 1005,-118 1005,-77 1151,-77 1151,-118"/>
-<text text-anchor="start" x="1013" y="-106" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
-<text text-anchor="start" x="1013" y="-95" font-family="Malgun Gothic" font-size="10.00">/Character/Public/UHitStop</text>
-<text text-anchor="middle" x="1078" y="-84" font-family="Malgun Gothic" font-size="10.00">System.h</text>
+<polygon fill="white" stroke="#666666" points="426,-118 280,-118 280,-77 426,-77 426,-118"/>
+<text text-anchor="start" x="288" y="-106" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
+<text text-anchor="start" x="288" y="-95" font-family="Malgun Gothic" font-size="10.00">/Character/Public/UHitStop</text>
+<text text-anchor="middle" x="353" y="-84" font-family="Malgun Gothic" font-size="10.00">System.h</text>
 </a>
 </g>
 </g>
@@ -79,37 +79,38 @@ var sectionId = 'dynsection-1';
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node1&#45;&gt;Node2</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M923.33,-150.68C952.68,-140.78 989.59,-128.33 1019.98,-118.07"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="922.04,-147.42 913.69,-153.94 924.28,-154.06 922.04,-147.42"/>
+<path fill="none" stroke="#63b8ff" d="M457.95,-149.51C438,-139.81 413.55,-127.93 393.27,-118.07"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="456.54,-152.71 467.06,-153.94 459.6,-146.42 456.54,-152.71"/>
 </a>
 </g>
 </g>
-<!-- Node7 -->
-<g id="Node000007" class="node">
-<title>Node7</title>
-<g id="a_Node000007"><a xlink:href="UGameDataManager_8h.html" target="_top" xlink:title="UGameDataManager 선언에 대한 Doxygen 주석을 제공합니다.">
-<polygon fill="white" stroke="#666666" points="770.5,-112.5 561.5,-112.5 561.5,-82.5 770.5,-82.5 770.5,-112.5"/>
-<text text-anchor="start" x="569.5" y="-100.5" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
-<text text-anchor="middle" x="666" y="-89.5" font-family="Malgun Gothic" font-size="10.00">/Manager/Public/UGameDataManager.h</text>
+<!-- Node6 -->
+<g id="Node000006" class="node">
+<title>Node6</title>
+<g id="a_Node000006"><a xlink:href="UGameDataManager_8h.html" target="_top" xlink:title="UGameDataManager 선언에 대한 Doxygen 주석을 제공합니다.">
+<polygon fill="white" stroke="#666666" points="744.5,-112.5 535.5,-112.5 535.5,-82.5 744.5,-82.5 744.5,-112.5"/>
+<text text-anchor="start" x="543.5" y="-100.5" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
+<text text-anchor="middle" x="640" y="-89.5" font-family="Malgun Gothic" font-size="10.00">/Manager/Public/UGameDataManager.h</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node7 -->
-<g id="edge6_Node000001_Node000007" class="edge">
-<title>Node1&#45;&gt;Node7</title>
-<g id="a_edge6_Node000001_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M820.78,-150.72C785.88,-138.95 740.28,-123.56 707.63,-112.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="819.72,-154.06 830.31,-153.94 821.96,-147.42 819.72,-154.06"/>
+<!-- Node1&#45;&gt;Node6 -->
+<g id="edge5_Node000001_Node000006" class="edge">
+<title>Node1&#45;&gt;Node6</title>
+<g id="a_edge5_Node000001_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M534.33,-149.5C558.37,-137.9 588.86,-123.18 610.9,-112.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="532.63,-146.44 525.14,-153.94 535.67,-152.74 532.63,-146.44"/>
 </a>
 </g>
 </g>
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="AGameCharacter_8cpp.html" target="_top" xlink:title="AGameCharacter 구현에 대한 Doxygen 주석을 제공합니다.">
-<polygon fill="white" stroke="#666666" points="984,-35.5 774,-35.5 774,-5.5 984,-5.5 984,-35.5"/>
-<text text-anchor="start" x="782" y="-23.5" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
-<text text-anchor="middle" x="879" y="-12.5" font-family="Malgun Gothic" font-size="10.00">/Character/Private/AGameCharacter.cpp</text>
+<g id="a_Node000003"><a xlink:href="ALatteGameCharacter_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="526,-41 358,-41 358,0 526,0 526,-41"/>
+<text text-anchor="start" x="366" y="-29" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
+<text text-anchor="start" x="366" y="-18" font-family="Malgun Gothic" font-size="10.00">/Character/Private/ALatteGame</text>
+<text text-anchor="middle" x="442" y="-7" font-family="Malgun Gothic" font-size="10.00">Character.cpp</text>
 </a>
 </g>
 </g>
@@ -117,19 +118,19 @@ var sectionId = 'dynsection-1';
 <g id="edge2_Node000002_Node000003" class="edge">
 <title>Node2&#45;&gt;Node3</title>
 <g id="a_edge2_Node000002_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1016.73,-73.41C983.93,-61.05 944.59,-46.22 916.37,-35.58"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1015.64,-76.74 1026.23,-76.99 1018.11,-70.19 1015.64,-76.74"/>
+<path fill="none" stroke="#63b8ff" d="M384.03,-70.35C395.45,-60.73 408.16,-50.01 418.77,-41.07"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="381.78,-67.67 376.38,-76.79 386.29,-73.03 381.78,-67.67"/>
 </a>
 </g>
 </g>
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="APlayerActor_8cpp.html" target="_top" xlink:title="Provides Doxygen annotations for APlayerActor implementation.">
-<polygon fill="white" stroke="#666666" points="1316.5,-41 1171.5,-41 1171.5,0 1316.5,0 1316.5,-41"/>
-<text text-anchor="start" x="1179.5" y="-29" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
-<text text-anchor="start" x="1179.5" y="-18" font-family="Malgun Gothic" font-size="10.00">/Character/Private/APlayer</text>
-<text text-anchor="middle" x="1244" y="-7" font-family="Malgun Gothic" font-size="10.00">Actor.cpp</text>
+<g id="a_Node000004"><a xlink:href="ALattePlayerCharacter_8cpp.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="170,-41 0,-41 0,0 170,0 170,-41"/>
+<text text-anchor="start" x="8" y="-29" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
+<text text-anchor="start" x="8" y="-18" font-family="Malgun Gothic" font-size="10.00">/Character/Private/ALattePlayer</text>
+<text text-anchor="middle" x="85" y="-7" font-family="Malgun Gothic" font-size="10.00">Character.cpp</text>
 </a>
 </g>
 </g>
@@ -137,8 +138,8 @@ var sectionId = 'dynsection-1';
 <g id="edge3_Node000002_Node000004" class="edge">
 <title>Node2&#45;&gt;Node4</title>
 <g id="a_edge3_Node000002_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1130.33,-72.86C1152.99,-62.62 1179.21,-50.77 1200.75,-41.04"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1128.85,-69.68 1121.18,-76.99 1131.74,-76.06 1128.85,-69.68"/>
+<path fill="none" stroke="#63b8ff" d="M273.37,-74.21C235.71,-63.68 191.15,-51.21 154.83,-41.04"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="272.71,-77.67 283.29,-76.99 274.6,-70.92 272.71,-77.67"/>
 </a>
 </g>
 </g>
@@ -146,10 +147,10 @@ var sectionId = 'dynsection-1';
 <g id="Node000005" class="node">
 <title>Node5</title>
 <g id="a_Node000005"><a xlink:href="UHitStopSystem_8cpp.html" target="_top" xlink:title="UHitStopSystem 구현에 대한 Doxygen 주석을 제공합니다.">
-<polygon fill="white" stroke="#666666" points="1153.5,-41 1002.5,-41 1002.5,0 1153.5,0 1153.5,-41"/>
-<text text-anchor="start" x="1010.5" y="-29" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
-<text text-anchor="start" x="1010.5" y="-18" font-family="Malgun Gothic" font-size="10.00">/Character/Private/UHitStop</text>
-<text text-anchor="middle" x="1078" y="-7" font-family="Malgun Gothic" font-size="10.00">System.cpp</text>
+<polygon fill="white" stroke="#666666" points="339.5,-41 188.5,-41 188.5,0 339.5,0 339.5,-41"/>
+<text text-anchor="start" x="196.5" y="-29" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
+<text text-anchor="start" x="196.5" y="-18" font-family="Malgun Gothic" font-size="10.00">/Character/Private/UHitStop</text>
+<text text-anchor="middle" x="264" y="-7" font-family="Malgun Gothic" font-size="10.00">System.cpp</text>
 </a>
 </g>
 </g>
@@ -157,124 +158,104 @@ var sectionId = 'dynsection-1';
 <g id="edge4_Node000002_Node000005" class="edge">
 <title>Node2&#45;&gt;Node5</title>
 <g id="a_edge4_Node000002_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1078,-66.69C1078,-58.08 1078,-48.9 1078,-41.07"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1074.5,-66.79 1078,-76.79 1081.5,-66.79 1074.5,-66.79"/>
+<path fill="none" stroke="#63b8ff" d="M321.97,-70.35C310.55,-60.73 297.84,-50.01 287.23,-41.07"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="319.71,-73.03 329.62,-76.79 324.22,-67.67 319.71,-73.03"/>
 </a>
 </g>
 </g>
-<!-- Node6 -->
-<g id="Node000006" class="node">
-<title>Node6</title>
-<g id="a_Node000006"><a xlink:href="UVoiceSystem_8cpp.html" target="_top" xlink:title="Implementation of UVoiceSystem.">
-<polygon fill="white" stroke="#666666" points="1533,-35.5 1335,-35.5 1335,-5.5 1533,-5.5 1533,-35.5"/>
-<text text-anchor="start" x="1343" y="-23.5" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
-<text text-anchor="middle" x="1434" y="-12.5" font-family="Malgun Gothic" font-size="10.00">/Character/Private/UVoiceSystem.cpp</text>
+<!-- Node6&#45;&gt;Node3 -->
+<g id="edge6_Node000006_Node000003" class="edge">
+<title>Node6&#45;&gt;Node3</title>
+<g id="a_edge6_Node000006_Node000003"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M593.37,-78.84C563.43,-67.5 524.52,-52.76 493.64,-41.06"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="592.17,-82.12 602.76,-82.39 594.65,-75.58 592.17,-82.12"/>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node6 -->
-<g id="edge5_Node000002_Node000006" class="edge">
-<title>Node2&#45;&gt;Node6</title>
-<g id="a_edge5_Node000002_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1161.21,-78.97C1224.01,-65.74 1309.03,-47.83 1367.37,-35.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1160.4,-75.56 1151.33,-81.05 1161.84,-82.41 1160.4,-75.56"/>
+<!-- Node6&#45;&gt;Node5 -->
+<g id="edge7_Node000006_Node000005" class="edge">
+<title>Node6&#45;&gt;Node5</title>
+<g id="a_edge7_Node000006_Node000005"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M552.5,-80.69C494.63,-70.01 417.16,-55.31 349,-41 345.89,-40.35 342.72,-39.67 339.51,-38.98"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="551.87,-84.13 562.34,-82.5 553.14,-77.24 551.87,-84.13"/>
 </a>
 </g>
 </g>
-<!-- Node7&#45;&gt;Node3 -->
-<g id="edge7_Node000007_Node000003" class="edge">
-<title>Node7&#45;&gt;Node3</title>
-<g id="a_edge7_Node000007_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M715.8,-78.97C753.36,-65.74 804.21,-47.83 839.12,-35.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="714.33,-75.77 706.06,-82.39 716.66,-82.37 714.33,-75.77"/>
+<!-- Node7 -->
+<g id="Node000007" class="node">
+<title>Node7</title>
+<g id="a_Node000007"><a xlink:href="UKnockbackSystem_8cpp.html" target="_top" xlink:title="UKnockbackSystem 구현에 대한 Doxygen 주석을 제공합니다.">
+<polygon fill="white" stroke="#666666" points="1300,-41 1132,-41 1132,0 1300,0 1300,-41"/>
+<text text-anchor="start" x="1140" y="-29" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
+<text text-anchor="start" x="1140" y="-18" font-family="Malgun Gothic" font-size="10.00">/Character/Private/UKnockback</text>
+<text text-anchor="middle" x="1216" y="-7" font-family="Malgun Gothic" font-size="10.00">System.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node7&#45;&gt;Node5 -->
-<g id="edge8_Node000007_Node000005" class="edge">
-<title>Node7&#45;&gt;Node5</title>
-<g id="a_edge8_Node000007_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M767.38,-80.83C832.1,-70.45 917.69,-56.02 993,-41 995.97,-40.41 998.99,-39.79 1002.05,-39.15"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="766.5,-77.43 757.17,-82.46 767.6,-84.34 766.5,-77.43"/>
+<!-- Node6&#45;&gt;Node7 -->
+<g id="edge8_Node000006_Node000007" class="edge">
+<title>Node6&#45;&gt;Node7</title>
+<g id="a_edge8_Node000006_Node000007"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M755.21,-86.28C853.32,-76.85 997.87,-61.26 1123,-41 1125.93,-40.53 1128.91,-40.02 1131.92,-39.49"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="754.59,-82.82 744.97,-87.26 755.25,-89.79 754.59,-82.82"/>
 </a>
 </g>
 </g>
 <!-- Node8 -->
 <g id="Node000008" class="node">
 <title>Node8</title>
-<g id="a_Node000008"><a xlink:href="UKnockbackSystem_8cpp.html" target="_top" xlink:title="UKnockbackSystem 구현에 대한 Doxygen 주석을 제공합니다.">
-<polygon fill="white" stroke="#666666" points="168,-41 0,-41 0,0 168,0 168,-41"/>
-<text text-anchor="start" x="8" y="-29" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
-<text text-anchor="start" x="8" y="-18" font-family="Malgun Gothic" font-size="10.00">/Character/Private/UKnockback</text>
-<text text-anchor="middle" x="84" y="-7" font-family="Malgun Gothic" font-size="10.00">System.cpp</text>
+<g id="a_Node000008"><a xlink:href="UStatSystem_8cpp.html" target="_top" xlink:title="UStatSystem 구현에 대한 Doxygen 주석을 제공합니다.">
+<polygon fill="white" stroke="#666666" points="735.5,-35.5 544.5,-35.5 544.5,-5.5 735.5,-5.5 735.5,-35.5"/>
+<text text-anchor="start" x="552.5" y="-23.5" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
+<text text-anchor="middle" x="640" y="-12.5" font-family="Malgun Gothic" font-size="10.00">/Character/Private/UStatSystem.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node7&#45;&gt;Node8 -->
-<g id="edge9_Node000007_Node000008" class="edge">
-<title>Node7&#45;&gt;Node8</title>
-<g id="a_edge9_Node000007_Node000008"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M551.1,-86.52C451.74,-77.17 304.42,-61.54 177,-41 174.07,-40.53 171.09,-40.02 168.08,-39.5"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="550.88,-90.02 561.16,-87.47 551.53,-83.05 550.88,-90.02"/>
+<!-- Node6&#45;&gt;Node8 -->
+<g id="edge9_Node000006_Node000008" class="edge">
+<title>Node6&#45;&gt;Node8</title>
+<g id="a_edge9_Node000006_Node000008"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M640,-72.04C640,-59.95 640,-45.79 640,-35.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="636.5,-72.39 640,-82.39 643.5,-72.39 636.5,-72.39"/>
 </a>
 </g>
 </g>
 <!-- Node9 -->
 <g id="Node000009" class="node">
 <title>Node9</title>
-<g id="a_Node000009"><a xlink:href="UStatSystem_8cpp.html" target="_top" xlink:title="UStatSystem 구현에 대한 Doxygen 주석을 제공합니다.">
-<polygon fill="white" stroke="#666666" points="377.5,-35.5 186.5,-35.5 186.5,-5.5 377.5,-5.5 377.5,-35.5"/>
-<text text-anchor="start" x="194.5" y="-23.5" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
-<text text-anchor="middle" x="282" y="-12.5" font-family="Malgun Gothic" font-size="10.00">/Character/Private/UStatSystem.cpp</text>
+<g id="a_Node000009"><a xlink:href="UGameDataManager_8cpp.html" target="_top" xlink:title="UGameDataManager 구현에 대한 Doxygen 주석을 제공합니다.">
+<polygon fill="white" stroke="#666666" points="916.5,-41 753.5,-41 753.5,0 916.5,0 916.5,-41"/>
+<text text-anchor="start" x="761.5" y="-29" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
+<text text-anchor="start" x="761.5" y="-18" font-family="Malgun Gothic" font-size="10.00">/Manager/Private/UGameData</text>
+<text text-anchor="middle" x="835" y="-7" font-family="Malgun Gothic" font-size="10.00">Manager.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node7&#45;&gt;Node9 -->
-<g id="edge10_Node000007_Node000009" class="edge">
-<title>Node7&#45;&gt;Node9</title>
-<g id="a_edge10_Node000007_Node000009"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M584.34,-80.55C515.93,-67.19 419.23,-48.3 353.75,-35.51"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="583.74,-84 594.22,-82.48 585.08,-77.13 583.74,-84"/>
+<!-- Node6&#45;&gt;Node9 -->
+<g id="edge10_Node000006_Node000009" class="edge">
+<title>Node6&#45;&gt;Node9</title>
+<g id="a_edge10_Node000006_Node000009"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M686.3,-78.69C715.74,-67.37 753.86,-52.71 784.14,-41.06"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="684.76,-75.54 676.68,-82.39 687.27,-82.07 684.76,-75.54"/>
 </a>
 </g>
 </g>
 <!-- Node10 -->
 <g id="Node000010" class="node">
 <title>Node10</title>
-<g id="a_Node000010"><a xlink:href="UGameDataManager_8cpp.html" target="_top" xlink:title="UGameDataManager 구현에 대한 Doxygen 주석을 제공합니다.">
-<polygon fill="white" stroke="#666666" points="558.5,-41 395.5,-41 395.5,0 558.5,0 558.5,-41"/>
-<text text-anchor="start" x="403.5" y="-29" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
-<text text-anchor="start" x="403.5" y="-18" font-family="Malgun Gothic" font-size="10.00">/Manager/Private/UGameData</text>
-<text text-anchor="middle" x="477" y="-7" font-family="Malgun Gothic" font-size="10.00">Manager.cpp</text>
+<g id="a_Node000010"><a xlink:href="ANetworkTesterActor_8cpp.html" target="_top" xlink:title="ANetworkTesterActor 구현에 대한 Doxygen 주석을 제공합니다.">
+<polygon fill="white" stroke="#666666" points="1113.5,-35.5 934.5,-35.5 934.5,-5.5 1113.5,-5.5 1113.5,-35.5"/>
+<text text-anchor="start" x="942.5" y="-23.5" font-family="Malgun Gothic" font-size="10.00">Source/YiSan/Network</text>
+<text text-anchor="middle" x="1024" y="-12.5" font-family="Malgun Gothic" font-size="10.00">/Private/ANetworkTesterActor.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node7&#45;&gt;Node10 -->
-<g id="edge11_Node000007_Node000010" class="edge">
-<title>Node7&#45;&gt;Node10</title>
-<g id="a_edge11_Node000007_Node000010"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M621.12,-78.69C592.59,-67.37 555.64,-52.71 526.3,-41.06"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="619.86,-81.96 630.45,-82.39 622.45,-75.45 619.86,-81.96"/>
-</a>
-</g>
-</g>
-<!-- Node11 -->
-<g id="Node000011" class="node">
-<title>Node11</title>
-<g id="a_Node000011"><a xlink:href="ANetworkTesterActor_8cpp.html" target="_top" xlink:title="ANetworkTesterActor 구현에 대한 Doxygen 주석을 제공합니다.">
-<polygon fill="white" stroke="#666666" points="755.5,-41 576.5,-41 576.5,0 755.5,0 755.5,-41"/>
-<text text-anchor="start" x="584.5" y="-29" font-family="Malgun Gothic" font-size="10.00">Source/LatteLibrary</text>
-<text text-anchor="start" x="584.5" y="-18" font-family="Malgun Gothic" font-size="10.00">/Network/Private/ANetworkTester</text>
-<text text-anchor="middle" x="666" y="-7" font-family="Malgun Gothic" font-size="10.00">Actor.cpp</text>
-</a>
-</g>
-</g>
-<!-- Node7&#45;&gt;Node11 -->
-<g id="edge12_Node000007_Node000011" class="edge">
-<title>Node7&#45;&gt;Node11</title>
-<g id="a_edge12_Node000007_Node000011"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M666,-72.23C666,-62.2 666,-50.71 666,-41.2"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="662.5,-72.39 666,-82.39 669.5,-72.39 662.5,-72.39"/>
+<!-- Node6&#45;&gt;Node10 -->
+<g id="edge11_Node000006_Node000010" class="edge">
+<title>Node6&#45;&gt;Node10</title>
+<g id="a_edge11_Node000006_Node000010"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M722.96,-80.51C780.06,-69.48 857.64,-54.43 926,-41 934.94,-39.24 944.33,-37.39 953.62,-35.55"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="722.05,-77.12 712.9,-82.45 723.38,-83.99 722.05,-77.12"/>
 </a>
 </g>
 </g>

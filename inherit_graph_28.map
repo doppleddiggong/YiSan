@@ -1,5 +1,11 @@
 <map id="그래픽컬한 클래스 계통도" name="그래픽컬한 클래스 계통도">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,123,31"/>
-<area shape="rect" id="Node000001" href="$classUGameDamageType.html" title=" " alt="" coords="171,5,327,31"/>
-<area shape="poly" id="edge16_Node000000_Node000001" title=" " alt="" coords="137,15,170,15,170,21,137,21"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,80,196,105"/>
+<area shape="rect" id="Node000001" href="$classUCommonFunctionLibrary.html" title="프로젝트 전반에서 사용하는 공통 블루프린트 함수." alt="" coords="244,5,435,31"/>
+<area shape="poly" id="edge16_Node000000_Node000001" title=" " alt="" coords="147,73,243,39,284,28,285,33,245,45,149,78"/>
+<area shape="rect" id="Node000002" href="$classUEaseFunctionLibrary.html" title=" " alt="" coords="258,55,421,80"/>
+<area shape="poly" id="edge17_Node000000_Node000002" title=" " alt="" coords="210,78,258,73,258,79,210,84"/>
+<area shape="rect" id="Node000003" href="$classUGameFunctionLibrary.html" title=" " alt="" coords="254,104,425,129"/>
+<area shape="poly" id="edge18_Node000000_Node000003" title=" " alt="" coords="210,101,254,105,254,111,209,106"/>
+<area shape="rect" id="Node000004" href="$classUVoiceFunctionLibrary.html" title=" " alt="" coords="256,153,423,179"/>
+<area shape="poly" id="edge19_Node000000_Node000004" title=" " alt="" coords="152,107,245,138,289,151,288,156,243,143,150,113"/>
 </map>

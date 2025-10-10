@@ -1,16 +1,20 @@
 var searchData=
 [
-  ['agamecharacter_2ecpp_0',['AGameCharacter.cpp',['../AGameCharacter_8cpp.html',1,'']]],
-  ['agamecharacter_2eh_1',['AGameCharacter.h',['../AGameCharacter_8h.html',1,'']]],
+  ['agate_2ecpp_0',['AGate.cpp',['../AGate_8cpp.html',1,'']]],
+  ['agate_2eh_1',['AGate.h',['../AGate_8h.html',1,'']]],
   ['agent_5finteraction_5fguide_2emd_2',['agent_interaction_guide.md',['../agent__interaction__guide_8md.html',1,'']]],
-  ['alistactormanager_2ecpp_3',['AListActorManager.cpp',['../AListActorManager_8cpp.html',1,'']]],
-  ['alistactormanager_2eh_4',['AListActorManager.h',['../AListActorManager_8h.html',1,'']]],
-  ['anetworktesteractor_2ecpp_5',['ANetworkTesterActor.cpp',['../ANetworkTesterActor_8cpp.html',1,'']]],
-  ['anetworktesteractor_2eh_6',['ANetworkTesterActor.h',['../ANetworkTesterActor_8h.html',1,'']]],
-  ['aplayeractor_2ecpp_7',['APlayerActor.cpp',['../APlayerActor_8cpp.html',1,'']]],
-  ['aplayeractor_2eh_8',['APlayerActor.h',['../APlayerActor_8h.html',1,'']]],
-  ['aplayercontrol_2ecpp_9',['APlayerControl.cpp',['../APlayerControl_8cpp.html',1,'']]],
-  ['aplayercontrol_2eh_10',['APlayerControl.h',['../APlayerControl_8h.html',1,'']]],
-  ['ayisangamemode_2ecpp_11',['AYiSanGameMode.cpp',['../AYiSanGameMode_8cpp.html',1,'']]],
-  ['ayisangamemode_2eh_12',['AYiSanGameMode.h',['../AYiSanGameMode_8h.html',1,'']]]
+  ['alattegamecharacter_2ecpp_3',['ALatteGameCharacter.cpp',['../ALatteGameCharacter_8cpp.html',1,'']]],
+  ['alattegamecharacter_2eh_4',['ALatteGameCharacter.h',['../ALatteGameCharacter_8h.html',1,'']]],
+  ['alatteplayercharacter_2ecpp_5',['ALattePlayerCharacter.cpp',['../ALattePlayerCharacter_8cpp.html',1,'']]],
+  ['alatteplayercharacter_2eh_6',['ALattePlayerCharacter.h',['../ALattePlayerCharacter_8h.html',1,'']]],
+  ['alistactormanager_2ecpp_7',['AListActorManager.cpp',['../AListActorManager_8cpp.html',1,'']]],
+  ['alistactormanager_2eh_8',['AListActorManager.h',['../AListActorManager_8h.html',1,'']]],
+  ['anetworktesteractor_2ecpp_9',['ANetworkTesterActor.cpp',['../ANetworkTesterActor_8cpp.html',1,'']]],
+  ['anetworktesteractor_2eh_10',['ANetworkTesterActor.h',['../ANetworkTesterActor_8h.html',1,'']]],
+  ['aplayeractor_2ecpp_11',['APlayerActor.cpp',['../APlayerActor_8cpp.html',1,'']]],
+  ['aplayeractor_2eh_12',['APlayerActor.h',['../APlayerActor_8h.html',1,'']]],
+  ['aplayercontrol_2ecpp_13',['APlayerControl.cpp',['../APlayerControl_8cpp.html',1,'']]],
+  ['aplayercontrol_2eh_14',['APlayerControl.h',['../APlayerControl_8h.html',1,'']]],
+  ['ayisangamemode_2ecpp_15',['AYiSanGameMode.cpp',['../AYiSanGameMode_8cpp.html',1,'']]],
+  ['ayisangamemode_2eh_16',['AYiSanGameMode.h',['../AYiSanGameMode_8h.html',1,'']]]
 ];

@@ -1,9 +1,5 @@
-<map id="Source/LatteLibrary/Character/Public/APlayerActor.h" name="Source/LatteLibrary/Character/Public/APlayerActor.h">
-<area shape="rect" id="Node000001" title="Declares the player&#45;controlled character actor." alt="" coords="217,5,448,45"/>
-<area shape="rect" id="Node000002" href="$APlayerActor_8cpp.html" title="Provides Doxygen annotations for APlayerActor implementation." alt="" coords="5,93,199,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="274,53,168,96,166,91,272,48"/>
-<area shape="rect" id="Node000003" href="$UYiSanVoiceConsoleSubsystem_8cpp.html" title=" " alt="" coords="223,93,442,148"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="335,59,335,93,330,93,330,59"/>
-<area shape="rect" id="Node000004" href="$UMainWdget_8cpp.html" title=" " alt="" coords="467,101,641,141"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="391,48,510,98,508,103,389,53"/>
+<map id="Source/YiSan/Character/Public/APlayerActor.h" name="Source/YiSan/Character/Public/APlayerActor.h">
+<area shape="rect" id="Node000001" title="Declares the player&#45;controlled character actor." alt="" coords="12,5,185,45"/>
+<area shape="rect" id="Node000002" href="$APlayerActor_8cpp.html" title="Provides Doxygen annotations for APlayerActor implementation." alt="" coords="5,93,192,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,59,101,93,96,93,96,59"/>
 </map>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['업무_20일지_20daily_20devlog_20형식_0',['4. 일일 업무 일지 (Daily DevLog) 형식',['../md_AgentRule_2devlog__agent.html#autotoc_md118',1,'']]]
+  ['알려진_20문제_20및_20해결책_0',['8. 알려진 문제 및 해결책',['../md_AgentRule_2commit__agent.html#autotoc_md62',1,'']]]
 ];

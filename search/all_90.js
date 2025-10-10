@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['처리_20handling_20recurring_20issues_0',['3. 반복적인 문제 처리 (Handling Recurring Issues)',['../md_AgentRule_2debug__guide.html#autotoc_md71',1,'']]]
+  ['차단요인_0',['리스크/차단요인',['../md_AgentRule_2devlog__agent.html#autotoc_md107',1,'']]],
+  ['차단_20요인_20risks_20blockers_1',['리스크 및 차단 요인 (Risks &amp; Blockers)',['../md_Documents_2DevLog_2Monthly_22025-10.html#autotoc_md598',1,'']]]
 ];

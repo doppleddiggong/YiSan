@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['조건_0',['2. 전제 조건',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md148',1,'']]],
-  ['조건_20및_20범위_1',['조건 및 범위',['../md_AgentRule_2commit__contributor__analysis__agent.html#autotoc_md80',1,'3. 동작 조건 및 범위'],['../md_AgentRule_2devlog__agent.html#autotoc_md117',1,'3. 동작 조건 및 범위'],['../md_AgentRule_2monthly__log__agent.html#autotoc_md141',1,'3. 동작 조건 및 범위'],['../md_AgentRule_2project__report__agent.html#autotoc_md203',1,'3. 동작 조건 및 범위']]]
+  ['정리_20cleaning_20up_20debug_20code_0',['2.6. 디버그 코드 정리 (Cleaning Up Debug Code)',['../md_AgentRule_2debug__guide.html#autotoc_md33',1,'']]],
+  ['정보_1',['1) 프로젝트 정보',['../md_AgentRule_2PERSONA.html#autotoc_md170',1,'']]],
+  ['정보_20제공_2',['3.5. 문제 발생 시 상세 정보 제공',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md15',1,'']]],
+  ['정책_3',['Agent QA 로그 정책',['../md_AgentRule_2PERSONA.html#autotoc_md184',1,'']]],
+  ['정책_20observability_20logging_4',['관찰 로그/텔레메트리 정책 (Observability &amp; Logging)',['../md_AgentRule_2PERSONA.html#autotoc_md161',1,'']]]
 ];

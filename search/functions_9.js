@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['landed_0',['Landed',['../classAPlayerActor.html#afa5996b3ec43069697f1d9ec2d5ac220',1,'APlayerActor']]],
+  ['landed_0',['Landed',['../classALattePlayerCharacter.html#ae5c16b486041c37b12f5345df3408ba8',1,'ALattePlayerCharacter']]],
   ['loadasset_1',['LoadAsset',['../structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66',1,'FComponentHelper']]],
   ['loadclass_2',['LoadClass',['../structFComponentHelper.html#a911d33e852619cbf64c86e12fbc8ffd6',1,'FComponentHelper']]],
   ['loaddata_5fcharacterassetdata_3',['LoadData_CharacterAssetData',['../classUGameDataManager.html#a17795ed84fef2f5fbb76d7da26d52447',1,'UGameDataManager']]],

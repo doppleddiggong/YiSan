@@ -1,23 +1,21 @@
 <map id="Source/CoffeeLibrary/Shared/Public/GameLogging.h" name="Source/CoffeeLibrary/Shared/Public/GameLogging.h">
-<area shape="rect" id="Node000001" title="GameLogging 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="1266,5,1486,45"/>
+<area shape="rect" id="Node000001" title="GameLogging 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="1066,5,1286,45"/>
 <area shape="rect" id="Node000002" href="$GameLogging_8cpp.html" title="GameLogging 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="5,101,248,141"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1252,31,1060,37,813,48,537,67,260,96,214,103,213,98,260,91,537,62,813,43,1060,32,1252,26"/>
-<area shape="rect" id="Node000003" href="$AGameCharacter_8cpp.html" title="AGameCharacter 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="272,101,552,141"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1252,36,939,58,752,75,564,96,514,103,514,98,564,91,751,70,939,53,1252,31"/>
-<area shape="rect" id="Node000004" href="$UVoiceCaptureComponent_8cpp.html" title=" " alt="" coords="577,93,815,148"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1253,42,1053,65,828,96,816,98,815,93,828,91,1053,59,1252,36"/>
-<area shape="rect" id="Node000005" href="$UVoiceSystem_8cpp.html" title="Implementation of UVoiceSystem." alt="" coords="840,101,1104,141"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="1282,51,1054,103,1053,98,1281,46"/>
-<area shape="rect" id="Node000006" href="$UCharacterData_8cpp.html" title="UCharacterData 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="1128,101,1371,141"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1341,56,1277,103,1273,98,1338,51"/>
-<area shape="rect" id="Node000007" href="$UGameDataManager_8cpp.html" title="UGameDataManager 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="1395,93,1613,148"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1414,51,1470,91,1466,95,1411,55"/>
-<area shape="rect" id="Node000008" href="$UGameVFXManager_8cpp.html" title="UGameVFXManager 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="1637,101,1931,141"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1472,46,1702,98,1701,103,1471,51"/>
-<area shape="rect" id="Node000009" href="$UYiSanVoiceConsoleSubsystem_8cpp.html" title=" " alt="" coords="1956,93,2175,148"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1500,35,1708,58,1944,91,1956,93,1955,98,1944,96,1708,63,1500,40"/>
-<area shape="rect" id="Node000010" href="$ANetworkTesterActor_8cpp.html" title="ANetworkTesterActor 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="2199,93,2438,148"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1500,30,1813,51,2000,68,2187,91,2200,93,2199,98,2186,96,1999,73,1812,56,1500,35"/>
-<area shape="rect" id="Node000011" href="$UMainWdget_8cpp.html" title=" " alt="" coords="2462,101,2637,141"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1500,24,1685,27,1923,37,2187,57,2320,72,2451,91,2486,98,2485,103,2450,96,2320,77,2186,63,1922,43,1685,33,1500,29"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1053,34,696,53,478,71,260,96,215,103,214,98,260,91,478,66,696,48,1052,28"/>
+<area shape="rect" id="Node000003" href="$ALatteGameCharacter_8cpp.html" title=" " alt="" coords="272,93,496,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1052,38,801,60,654,76,508,96,497,98,496,93,508,91,653,71,800,54,1052,32"/>
+<area shape="rect" id="Node000004" href="$UCharacterData_8cpp.html" title="UCharacterData 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="520,101,763,141"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1053,49,775,96,736,103,735,98,774,91,1052,44"/>
+<area shape="rect" id="Node000005" href="$UGameDataManager_8cpp.html" title="UGameDataManager 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="787,93,1005,148"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="1107,52,976,96,974,91,1105,47"/>
+<area shape="rect" id="Node000006" href="$UGameVFXManager_8cpp.html" title="UGameVFXManager 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="1029,101,1323,141"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1179,59,1179,101,1173,101,1173,59"/>
+<area shape="rect" id="Node000007" href="$ANetworkTesterActor_8cpp.html" title="ANetworkTesterActor 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="1347,101,1586,141"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1248,47,1409,98,1407,103,1247,52"/>
+<area shape="rect" id="Node000008" href="$UDialogWidget_8cpp.html" title=" " alt="" coords="1610,101,1785,141"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1300,40,1444,62,1599,91,1631,98,1630,103,1598,96,1443,67,1299,45"/>
+<area shape="rect" id="Node000009" href="$UVoiceFunctionLibrary_8cpp.html" title=" " alt="" coords="1809,101,2055,141"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1300,34,1532,57,1798,91,1841,98,1840,103,1797,96,1531,62,1300,40"/>
+<area shape="rect" id="Node000010" href="$UVoiceRecordSystem_8cpp.html" title=" " alt="" coords="2080,101,2323,141"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1300,29,1647,49,1857,67,2068,91,2114,98,2113,103,2068,96,1857,72,1646,54,1300,34"/>
 </map>

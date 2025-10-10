@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['맵_20게임모드_20기본값_0',['맵 게임모드 기본값',['../md_AgentRule_2PERSONA.html#autotoc_md195',1,'7) 입력 / 맵 / 게임모드 기본값'],['../md_GEMINI.html#autotoc_md43',1,'7) 입력 / 맵 / 게임모드 기본값']]]
+  ['맞는데_20내용이_20안_20보임_0',['6.4. 문제 4: GitHub Pages 404 오류 (사이트 주소는 맞는데 내용이 안 보임)',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md122',1,'']]]
 ];

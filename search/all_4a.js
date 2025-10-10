@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['미들웨어_20api_0',['미들웨어 api',['../md_AgentRule_2PERSONA.html#autotoc_md179',1,'3) 사용 언어 / 미들웨어 / API'],['../md_GEMINI.html#autotoc_md34',1,'3) 사용 언어 / 미들웨어 / API']]],
-  ['미해결_20이슈_20및_20todo_20outstanding_20issues_20todos_1',['미해결 이슈 및 TODO (Outstanding Issues &amp; TODOs)',['../md_Documents_2DevLog_2Monthly_22025-10.html#autotoc_md304',1,'']]],
-  ['미해결_20todo_20top_20n_2',['미해결 TODO Top N',['../md_AgentRule_2devlog__agent.html#autotoc_md133',1,'']]],
-  ['미흡_20주의_20후속_3',['미흡(주의/후속)',['../md_AgentRule_2devlog__agent.html#autotoc_md125',1,'']]]
+  ['목적_0',['목적',['../md_AgentRule_2code__generate.html#autotoc_md5',1,'목적'],['../md_Documents_2Reference_2DoxygenWorkflow.html#autotoc_md583',1,'목적']]],
+  ['목적_20purpose_1',['1. 목적 (Purpose)',['../md_AgentRule_2debug__guide.html#autotoc_md21',1,'']]],
+  ['목표_20명확화_2',['3.1. 작업 목표 명확화',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md11',1,'']]]
 ];

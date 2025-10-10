@@ -1,22 +1,22 @@
-<map id="Source/LatteLibrary/Network/Private/UWebSocketSystem.cpp" name="Source/LatteLibrary/Network/Private/UWebSocketSystem.cpp">
-<area shape="rect" id="Node000001" title="UWebSocketSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="536,5,752,60"/>
-<area shape="rect" id="Node000002" href="$UWebSocketSystem_8h.html" title="UWebSocketSystem 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="201,108,365,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="536,62,345,107,343,102,535,57"/>
-<area shape="rect" id="Node000005" href="$ENetworkLogType_8h.html" title="ENetworkLogType 열거형에 대한 Doxygen 주석을 제공합니다." alt="" coords="522,181,673,207"/>
-<area shape="poly" id="edge10_Node000001_Node000005" title=" " alt="" coords="639,61,607,169,602,167,634,59"/>
-<area shape="rect" id="Node000008" href="$NetworkLog_8h.html" title="NetworkLog 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="635,108,747,133"/>
-<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="661,59,680,95,676,97,656,61"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="771,108,931,133"/>
-<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="708,58,811,100,809,105,706,63"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="539,255,656,280"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="201,126,124,132,53,146,28,157,12,169,9,185,21,205,45,217,92,228,229,245,389,255,525,261,525,267,388,261,229,250,91,233,43,222,17,209,4,186,8,167,25,152,52,141,123,127,201,121"/>
-<area shape="rect" id="Node000004" href="$Macro_8h.html" title="Manager 모듈에서 공통으로 사용하는 매크로 정의에 대한 Doxygen 주석을 제공합니다." alt="" coords="31,181,106,207"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="249,136,117,179,115,174,248,131"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="334,131,534,176,533,181,333,136"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="130,181,239,207"/>
-<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="269,136,213,175,210,171,265,131"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="263,181,498,207"/>
-<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="300,131,355,171,351,175,297,136"/>
-<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="600,207,600,241,595,241,595,207"/>
-<area shape="poly" id="edge9_Node000008_Node000003" title=" " alt="" coords="696,134,698,168,695,189,688,208,667,233,641,250,638,246,663,229,683,205,690,187,693,168,691,134"/>
+<map id="Source/YiSan/Network/Private/UWebSocketSystem.cpp" name="Source/YiSan/Network/Private/UWebSocketSystem.cpp">
+<area shape="rect" id="Node000001" title="UWebSocketSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="528,5,761,45"/>
+<area shape="rect" id="Node000002" href="$UWebSocketSystem_8h.html" title="UWebSocketSystem 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="201,93,365,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="558,48,349,93,348,88,557,43"/>
+<area shape="rect" id="Node000005" href="$ENetworkLogType_8h.html" title="ENetworkLogType 열거형에 대한 Doxygen 주석을 제공합니다." alt="" coords="522,167,673,192"/>
+<area shape="poly" id="edge10_Node000001_Node000005" title=" " alt="" coords="640,47,625,94,607,154,602,153,620,93,635,45"/>
+<area shape="rect" id="Node000008" href="$NetworkLog_8h.html" title="NetworkLog 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="635,93,747,119"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="658,44,679,80,675,83,653,47"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="771,93,931,119"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="695,43,809,86,807,91,693,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="539,240,656,265"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="201,111,124,118,53,131,28,142,12,155,9,170,21,190,45,202,92,213,229,230,389,241,525,247,525,252,388,246,229,235,91,218,43,207,17,194,4,171,8,152,25,137,52,126,123,112,201,106"/>
+<area shape="rect" id="Node000004" href="$Macro_8h.html" title="Manager 모듈에서 공통으로 사용하는 매크로 정의에 대한 Doxygen 주석을 제공합니다." alt="" coords="31,167,106,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="249,121,117,165,115,160,248,116"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="334,116,534,161,533,166,333,121"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="130,167,239,192"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="269,121,213,161,210,156,265,117"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="263,167,498,192"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="300,117,355,156,351,160,297,121"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="600,192,600,226,595,226,595,192"/>
+<area shape="poly" id="edge9_Node000008_Node000003" title=" " alt="" coords="696,119,698,154,695,174,688,193,667,218,641,236,638,231,663,214,683,191,690,173,693,153,691,119"/>
 </map>

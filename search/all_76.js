@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['워크플로우_20tt_20doxygen_20yml_20tt_20설정_0',['4. GitHub Actions 워크플로우 (&lt;tt&gt;doxygen.yml&lt;/tt&gt;) 설정',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md153',1,'']]],
-  ['워크플로_1',['워크플로',['../md_AgentRule_2code__generate.html#autotoc_md3',1,'워크플로'],['../md_Documents_2Reference_2DoxygenWorkflow.html',1,'Project YiSan – Doxygen 워크플로']]],
-  ['워크플로_20debug_20agent_20workflow_2',['워크플로 debug agent workflow',['../md_AgentRule_2PERSONA.html#autotoc_md167',1,'디버그 에이전트 워크플로 (Debug Agent Workflow)'],['../md_GEMINI.html#autotoc_md27',1,'디버그 에이전트 워크플로 (Debug Agent Workflow)']]],
-  ['워크플로_20devlog_20agent_20workflow_3',['워크플로 devlog agent workflow',['../md_AgentRule_2PERSONA.html#autotoc_md171',1,'DevLog 에이전트 워크플로 (DevLog Agent Workflow)'],['../md_GEMINI.html#autotoc_md29',1,'DevLog 에이전트 워크플로 (DevLog Agent Workflow)']]]
+  ['우선순위_20가이드_0',['다음 우선순위(가이드)',['../md_AgentRule_2devlog__agent.html#autotoc_md108',1,'']]],
+  ['우선순위_20next_20month_20priorities_1',['다음 달 우선순위 (Next Month Priorities)',['../md_Documents_2DevLog_2Monthly_22025-10.html#autotoc_md599',1,'']]]
 ];

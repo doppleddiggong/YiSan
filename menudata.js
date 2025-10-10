@@ -25,7 +25,6 @@
 var menudata={children:[
 {text:"메인 페이지",url:"index.html"},
 {text:"관련된 페이지",url:"pages.html"},
-{text:"Topics",url:"topics.html"},
 {text:"네임스페이스",url:"namespaces.html",children:[
 {text:"네임스페이스 목록",url:"namespaces.html"},
 {text:"네임스페이스 멤버",url:"namespacemembers.html",children:[
@@ -89,6 +88,7 @@ var menudata={children:[
 {text:"d",url:"functions_vars.html#index_d"},
 {text:"e",url:"functions_vars.html#index_e"},
 {text:"f",url:"functions_vars.html#index_f"},
+{text:"g",url:"functions_vars.html#index_g"},
 {text:"h",url:"functions_vars.html#index_h"},
 {text:"i",url:"functions_vars.html#index_i"},
 {text:"k",url:"functions_vars.html#index_k"},

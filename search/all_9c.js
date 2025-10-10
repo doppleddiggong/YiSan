@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['특화_20지침_20gemini_20specific_20instructions_0',['Gemini 특화 지침 (Gemini-Specific Instructions)',['../md_GEMINI.html#autotoc_md49',1,'']]]
+  ['태그_20및_20예시_0',['6.2. 필수 태그 및 예시',['../md_AgentRule_2conventions__agent.html#autotoc_md82',1,'']]]
 ];

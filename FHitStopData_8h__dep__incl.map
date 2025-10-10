@@ -1,25 +1,23 @@
 <map id="Source/LatteLibrary/Data/Public/FHitStopData.h" name="Source/LatteLibrary/Data/Public/FHitStopData.h">
-<area shape="rect" id="Node000001" title="FHitStopData 구조체에 대한 Doxygen 주석을 제공합니다." alt="" coords="1067,5,1269,45"/>
-<area shape="rect" id="Node000002" href="$UHitStopSystem_8h.html" title="UHitStopSystem 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="1345,93,1540,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1237,47,1366,91,1364,96,1236,52"/>
-<area shape="rect" id="Node000007" href="$UGameDataManager_8h.html" title="UGameDataManager 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="754,101,1033,141"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1101,52,950,103,948,98,1099,47"/>
-<area shape="rect" id="Node000003" href="$AGameCharacter_8cpp.html" title="AGameCharacter 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="1037,203,1317,243"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1362,155,1228,206,1226,201,1360,150"/>
-<area shape="rect" id="Node000004" href="$APlayerActor_8cpp.html" title="Provides Doxygen annotations for APlayerActor implementation." alt="" coords="1567,196,1761,251"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="1514,151,1607,194,1605,198,1511,156"/>
-<area shape="rect" id="Node000005" href="$UHitStopSystem_8cpp.html" title="UHitStopSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="1342,196,1543,251"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="1445,162,1445,196,1440,196,1440,162"/>
-<area shape="rect" id="Node000006" href="$UVoiceSystem_8cpp.html" title="Implementation of UVoiceSystem." alt="" coords="1785,203,2049,243"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="1554,143,1829,201,1828,206,1553,148"/>
-<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="961,143,1125,201,1123,206,959,148"/>
-<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="1029,140,1330,193,1342,196,1341,201,1329,199,1028,146"/>
-<area shape="rect" id="Node000008" href="$UKnockbackSystem_8cpp.html" title="UKnockbackSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="5,196,229,251"/>
-<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="740,138,505,163,242,199,230,201,229,195,241,193,504,157,740,133"/>
-<area shape="rect" id="Node000009" href="$UStatSystem_8cpp.html" title="UStatSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="254,203,509,243"/>
-<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="785,146,478,206,476,201,784,141"/>
-<area shape="rect" id="Node000010" href="$UGameDataManager_8cpp.html" title="UGameDataManager 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="533,196,750,251"/>
-<area shape="poly" id="edge11_Node000007_Node000010" title=" " alt="" coords="834,148,708,198,706,193,833,143"/>
-<area shape="rect" id="Node000011" href="$ANetworkTesterActor_8cpp.html" title="ANetworkTesterActor 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="774,196,1013,251"/>
-<area shape="poly" id="edge12_Node000007_Node000011" title=" " alt="" coords="896,154,896,196,891,196,891,154"/>
+<area shape="rect" id="Node000001" title="FHitStopData 구조체에 대한 Doxygen 주석을 제공합니다." alt="" coords="565,5,768,45"/>
+<area shape="rect" id="Node000002" href="$UHitStopSystem_8h.html" title="UHitStopSystem 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="379,93,573,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="617,54,531,96,529,91,615,49"/>
+<area shape="rect" id="Node000006" href="$UGameDataManager_8h.html" title="UGameDataManager 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="719,101,998,141"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="719,49,821,98,819,103,717,54"/>
+<area shape="rect" id="Node000003" href="$ALatteGameCharacter_8cpp.html" title=" " alt="" coords="483,196,707,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="519,155,565,194,562,198,516,159"/>
+<area shape="rect" id="Node000004" href="$ALattePlayerCharacter_8cpp.html" title=" " alt="" coords="5,196,232,251"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="371,154,212,199,211,193,369,149"/>
+<area shape="rect" id="Node000005" href="$UHitStopSystem_8cpp.html" title="UHitStopSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="257,196,458,251"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="436,159,390,198,387,194,433,155"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="797,148,664,198,663,193,796,143"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="743,146,471,199,459,201,457,196,470,193,741,140"/>
+<area shape="rect" id="Node000007" href="$UKnockbackSystem_8cpp.html" title="UKnockbackSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="1515,196,1739,251"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="1013,133,1244,158,1503,193,1515,195,1514,201,1502,199,1244,163,1012,138"/>
+<area shape="rect" id="Node000008" href="$UStatSystem_8cpp.html" title="UStatSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="731,203,986,243"/>
+<area shape="poly" id="edge9_Node000006_Node000008" title=" " alt="" coords="861,155,861,203,856,203,856,155"/>
+<area shape="rect" id="Node000009" href="$UGameDataManager_8cpp.html" title="UGameDataManager 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="1010,196,1227,251"/>
+<area shape="poly" id="edge10_Node000006_Node000009" title=" " alt="" coords="921,143,1052,193,1050,198,919,148"/>
+<area shape="rect" id="Node000010" href="$ANetworkTesterActor_8cpp.html" title="ANetworkTesterActor 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="1251,203,1490,243"/>
+<area shape="poly" id="edge11_Node000006_Node000010" title=" " alt="" coords="970,141,1241,193,1277,201,1276,206,1239,199,969,146"/>
 </map>

@@ -1,4 +1,4 @@
 var AYiSanGameMode_8h =
 [
-    [ "AYiSanGameMode", "classAYiSanGameMode.html", "classAYiSanGameMode" ]
+    [ "AYiSanGameMode", "classAYiSanGameMode.html", null ]
 ];

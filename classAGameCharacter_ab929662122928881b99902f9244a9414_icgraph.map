@@ -1,5 +1,0 @@
-<map id="AGameCharacter::SetFallingToWalk" name="AGameCharacter::SetFallingToWalk">
-<area shape="rect" id="Node000001" title=" " alt="" coords="260,5,464,45"/>
-<area shape="rect" id="Node000002" href="$classAGameCharacter.html#a86daf7483d1c4e9f33692cdd6590517a" title="게임 시작 시 서브 시스템을 연결합니다." alt="" coords="5,13,212,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="246,28,212,28,212,23,246,23"/>
-</map>

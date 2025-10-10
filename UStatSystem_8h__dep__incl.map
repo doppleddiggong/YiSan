@@ -1,29 +1,23 @@
 <map id="Source/LatteLibrary/Character/Public/UStatSystem.h" name="Source/LatteLibrary/Character/Public/UStatSystem.h">
-<area shape="rect" id="Node000001" title="UStatSystem 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="158,5,392,45"/>
-<area shape="rect" id="Node000002" href="$AGameCharacter_8cpp.html" title="AGameCharacter 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="34,189,314,229"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,53,159,71,137,95,131,118,135,143,146,167,160,187,156,190,142,169,130,144,125,118,133,92,156,67,184,49"/>
-<area shape="rect" id="Node000003" href="$APlayerActor_8cpp.html" title="Provides Doxygen annotations for APlayerActor implementation." alt="" coords="262,284,456,339"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,53,127,85,88,106,54,128,28,153,12,179,10,206,15,220,24,234,38,247,60,258,120,277,192,290,262,299,262,305,191,296,119,282,58,263,35,251,20,238,10,222,5,207,7,177,24,150,51,124,86,101,125,80,203,48"/>
-<area shape="rect" id="Node000004" href="$UStatSystem_8cpp.html" title="UStatSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="148,93,402,133"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="278,59,278,93,272,93,272,59"/>
-<area shape="rect" id="Node000005" href="$UVoiceSystem_8cpp.html" title="Implementation of UVoiceSystem." alt="" coords="427,93,691,133"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="351,47,498,91,496,96,350,52"/>
-<area shape="rect" id="Node000006" href="$AGameCharacter_8h.html" title="LatteLibrary 전반에서 사용하는 기반 캐릭터 클래스를 선언합니다." alt="" coords="715,93,974,133"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="406,44,720,91,719,96,405,49"/>
-<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="702,136,513,159,327,184,281,191,280,186,327,179,512,154,701,131"/>
-<area shape="rect" id="Node000007" href="$UCameraShakeSystem_8cpp.html" title="UCameraShakeSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="1068,181,1272,236"/>
-<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="924,135,1079,179,1077,184,923,140"/>
-<area shape="rect" id="Node000008" href="$UFlySystem_8cpp.html" title="UFlySystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="1296,189,1545,229"/>
-<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="988,132,1285,179,1325,186,1325,191,1284,184,987,138"/>
-<area shape="rect" id="Node000009" href="$UHitStopSystem_8cpp.html" title="UHitStopSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="338,181,540,236"/>
-<area shape="poly" id="edge9_Node000006_Node000009" title=" " alt="" coords="750,139,553,184,540,187,539,182,552,179,748,134"/>
-<area shape="rect" id="Node000010" href="$UKnockbackSystem_8cpp.html" title="UKnockbackSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="564,181,788,236"/>
-<area shape="poly" id="edge10_Node000006_Node000010" title=" " alt="" coords="799,143,725,184,722,179,797,138"/>
-<area shape="rect" id="Node000011" href="$APlayerActor_8h.html" title="Declares the player&#45;controlled character actor." alt="" coords="813,189,1044,229"/>
-<area shape="poly" id="edge11_Node000006_Node000011" title=" " alt="" coords="873,142,913,187,909,190,869,145"/>
-<area shape="poly" id="edge12_Node000011_Node000003" title=" " alt="" coords="826,234,801,239,457,297,456,292,800,233,825,229"/>
-<area shape="rect" id="Node000012" href="$UYiSanVoiceConsoleSubsystem_8cpp.html" title=" " alt="" coords="930,284,1148,339"/>
-<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="961,236,1012,282,1008,286,958,240"/>
-<area shape="rect" id="Node000013" href="$UMainWdget_8cpp.html" title=" " alt="" coords="730,291,905,331"/>
-<area shape="poly" id="edge14_Node000011_Node000013" title=" " alt="" coords="899,240,840,293,837,289,896,236"/>
+<area shape="rect" id="Node000001" title="UStatSystem 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="112,5,346,45"/>
+<area shape="rect" id="Node000002" href="$ALatteGameCharacter_8cpp.html" title=" " alt="" coords="34,196,258,251"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="201,57,174,95,157,147,150,196,145,195,152,146,169,92,196,54"/>
+<area shape="rect" id="Node000003" href="$ALattePlayerCharacter_8cpp.html" title=" " alt="" coords="318,299,545,353"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="176,54,110,92,76,115,47,140,24,167,11,194,10,222,24,249,43,264,70,277,144,297,232,310,318,317,318,323,231,315,143,302,68,282,40,268,20,252,5,223,6,193,20,164,43,136,73,111,107,87,174,49"/>
+<area shape="rect" id="Node000004" href="$UStatSystem_8cpp.html" title="UStatSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="184,101,439,141"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="257,54,297,99,293,102,253,57"/>
+<area shape="rect" id="Node000005" href="$ALatteGameCharacter_8h.html" title=" " alt="" coords="512,93,730,148"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="322,46,513,91,511,96,321,51"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="499,150,259,201,258,196,498,145"/>
+<area shape="rect" id="Node000006" href="$UCameraShakeSystem_8cpp.html" title="UCameraShakeSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="1000,196,1204,251"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="743,143,988,193,1000,196,999,201,987,199,742,148"/>
+<area shape="rect" id="Node000007" href="$UFlySystem_8cpp.html" title="UFlySystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="1228,203,1478,243"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="743,132,964,158,1217,193,1260,201,1259,206,1216,199,964,163,743,137"/>
+<area shape="rect" id="Node000008" href="$UHitStopSystem_8cpp.html" title="UHitStopSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="283,196,484,251"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="548,156,446,198,444,193,545,151"/>
+<area shape="rect" id="Node000009" href="$UKnockbackSystem_8cpp.html" title="UKnockbackSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="509,196,733,251"/>
+<area shape="poly" id="edge9_Node000005_Node000009" title=" " alt="" coords="624,162,624,196,618,196,618,162"/>
+<area shape="rect" id="Node000010" href="$ALattePlayerCharacter_8h.html" title=" " alt="" coords="757,196,976,251"/>
+<area shape="poly" id="edge10_Node000005_Node000010" title=" " alt="" coords="698,151,803,193,801,198,696,156"/>
+<area shape="poly" id="edge11_Node000010_Node000003" title=" " alt="" coords="744,256,545,301,544,296,743,250"/>
 </map>

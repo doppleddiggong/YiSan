@@ -17,7 +17,7 @@ var classUGoogleSpeechService =
     [ "LanguageCode", "classUGoogleSpeechService.html#ae9ed41295a1ab391bfae7c574c08e50d", null ],
     [ "PendingSpeechToText", "classUGoogleSpeechService.html#a29be215ecc33726e30b681de9032196e", null ],
     [ "PendingTextToSpeech", "classUGoogleSpeechService.html#acc115f8d640082decea051e35ce009eb", null ],
-    [ "Settings", "classUGoogleSpeechService.html#a4ef692aecd11bac3edb41b773bebcd67", null ],
+    [ "Settings", "classUGoogleSpeechService.html#a03dc6772b319839ee6ac2ccf82dca90a", null ],
     [ "VoiceGender", "classUGoogleSpeechService.html#a1f979d0a5a2b75d0268c82b6314edd36", null ],
     [ "VoiceName", "classUGoogleSpeechService.html#afc9df755954e582c4649a6cf4c266f0f", null ]
 ];

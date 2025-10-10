@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['범위_0',['범위',['../md_AgentRule_2commit__contributor__analysis__agent.html#autotoc_md80',1,'3. 동작 조건 및 범위'],['../md_AgentRule_2devlog__agent.html#autotoc_md117',1,'3. 동작 조건 및 범위'],['../md_AgentRule_2monthly__log__agent.html#autotoc_md141',1,'3. 동작 조건 및 범위'],['../md_AgentRule_2project__report__agent.html#autotoc_md203',1,'3. 동작 조건 및 범위']]]
+  ['방법_0',['3. 효율적인 요청 방법',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md10',1,'']]],
+  ['방식_20개선_20commit_20message_20generation_20improvement_1',['9. 커밋 메시지 생성 방식 개선 (Commit Message Generation Improvement)',['../md_AgentRule_2commit__agent.html#autotoc_md64',1,'']]],
+  ['방안_20제안_20proposing_20solutions_2',['2.5. 수정 방안 제안 (Proposing Solutions)',['../md_AgentRule_2debug__guide.html#autotoc_md32',1,'']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['입력_20맵_20게임모드_20기본값_0',['입력 맵 게임모드 기본값',['../md_AgentRule_2PERSONA.html#autotoc_md195',1,'7) 입력 / 맵 / 게임모드 기본값'],['../md_GEMINI.html#autotoc_md43',1,'7) 입력 / 맵 / 게임모드 기본값']]],
-  ['입력_20포맷_1',['4. 입력 포맷',['../md_AgentRule_2commit__agent.html#autotoc_md53',1,'']]]
+  ['인식_20및_20합성_20시스템_20lattelibrary_20strong_0',['2. &lt;strong&gt;음성 인식 및 합성 시스템 (LatteLibrary)&lt;/strong&gt;',['../md_Documents_2DevLog_2Monthly_22025-10.html#autotoc_md579',1,'']]]
 ];

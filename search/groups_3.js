@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['game_20framework_0',['Game Framework',['../group__GameFramework.html',1,'']]]
-];

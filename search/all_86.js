@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['정리_20cleaning_20up_20debug_20code_0',['2.6. 디버그 코드 정리 (Cleaning Up Debug Code)',['../md_AgentRule_2debug__guide.html#autotoc_md70',1,'']]],
-  ['정보_1',['정보',['../md_AgentRule_2PERSONA.html#autotoc_md175',1,'1) 프로젝트 정보'],['../md_GEMINI.html#autotoc_md32',1,'1) 프로젝트 정보']]],
-  ['정보_20제공_2',['3.5. 문제 발생 시 상세 정보 제공',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md13',1,'']]],
-  ['정책_3',['정책',['../md_AgentRule_2PERSONA.html#autotoc_md199',1,'Agent QA 로그 정책'],['../md_GEMINI.html#autotoc_md47',1,'Agent QA 로그 정책']]],
-  ['정책_20observability_20logging_4',['정책 observability logging',['../md_AgentRule_2PERSONA.html#autotoc_md160',1,'관찰 로그/텔레메트리 정책 (Observability &amp; Logging)'],['../md_GEMINI.html#autotoc_md23',1,'관찰 로그/텔레메트리 정책 (Observability &amp; Logging)']]]
+  ['전략_20debugging_20strategy_0',['2. 디버깅 전략 (Debugging Strategy)',['../md_AgentRule_2debug__guide.html#autotoc_md22',1,'']]],
+  ['전방_20선언_20forward_20declaration_1',['3.3. 전방 선언 (Forward Declaration)',['../md_AgentRule_2conventions__agent.html#autotoc_md72',1,'']]],
+  ['전제_20조건_2',['2. 전제 조건',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md112',1,'']]],
+  ['전체_20커밋_20내역_20full_20commit_20history_3',['전체 커밋 내역 (Full Commit History)',['../md_Documents_2DevLog_22025-W41-Summary.html#autotoc_md569',1,'']]],
+  ['전체_20팀_20분석_20보고서_20team_20analysis_20report_20형식_4',['5. 전체 팀 분석 보고서 (Team Analysis Report) 형식',['../md_AgentRule_2commit__contributor__analysis__agent.html#autotoc_md41',1,'']]]
 ];

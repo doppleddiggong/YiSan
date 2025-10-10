@@ -1,14 +1,14 @@
-<map id="Source/LatteLibrary/Network/Public/UWebSocketSystem.h" name="Source/LatteLibrary/Network/Public/UWebSocketSystem.h">
-<area shape="rect" id="Node000001" title="UWebSocketSystem 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="92,5,302,60"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="32,181,149,207"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,54,48,76,29,91,13,109,9,118,8,126,17,143,34,159,55,173,52,177,30,163,13,146,3,127,4,117,8,107,25,87,45,71,91,50"/>
-<area shape="rect" id="Node000003" href="$Macro_8h.html" title="Manager 모듈에서 공통으로 사용하는 매크로 정의에 대한 Doxygen 주석을 제공합니다." alt="" coords="22,108,97,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="157,62,91,103,88,98,154,58"/>
-<area shape="rect" id="Node000004" href="$ENetworkLogType_8h.html" title="ENetworkLogType 열거형에 대한 Doxygen 주석을 제공합니다." alt="" coords="122,108,272,133"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="200,60,200,94,194,94,194,60"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="297,108,406,133"/>
-<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="246,58,320,99,318,104,243,62"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="430,108,665,133"/>
-<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="302,57,489,102,487,107,301,62"/>
-<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="181,136,121,176,118,171,178,131"/>
+<map id="Source/YiSan/Network/Public/UWebSocketSystem.h" name="Source/YiSan/Network/Public/UWebSocketSystem.h">
+<area shape="rect" id="Node000001" title="UWebSocketSystem 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="92,5,303,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="32,167,149,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,43,48,63,29,77,13,95,9,103,8,112,17,129,34,144,55,158,52,162,31,149,13,132,3,113,4,102,8,92,25,73,45,58,90,38"/>
+<area shape="rect" id="Node000003" href="$Macro_8h.html" title="Manager 모듈에서 공통으로 사용하는 매크로 정의에 대한 Doxygen 주석을 제공합니다." alt="" coords="23,93,97,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="166,48,93,89,91,84,163,43"/>
+<area shape="rect" id="Node000004" href="$ENetworkLogType_8h.html" title="ENetworkLogType 열거형에 대한 Doxygen 주석을 제공합니다." alt="" coords="122,93,273,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="200,46,200,79,195,79,195,46"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="297,93,407,119"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="236,43,318,85,316,89,233,48"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="431,93,665,119"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="282,43,484,88,483,93,281,48"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="182,121,121,161,118,157,179,116"/>
 </map>

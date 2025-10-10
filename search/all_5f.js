@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['성과_20key_20achievements_0',['주요 성과 (Key Achievements)',['../md_Documents_2DevLog_2Monthly_22025-10.html#autotoc_md303',1,'']]]
+  ['선언_20forward_20declaration_0',['3.3. 전방 선언 (Forward Declaration)',['../md_AgentRule_2conventions__agent.html#autotoc_md72',1,'']]],
+  ['선택_1',['메트릭(선택)',['../md_AgentRule_2devlog__agent.html#autotoc_md101',1,'']]]
 ];

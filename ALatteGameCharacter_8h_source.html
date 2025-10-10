@@ -1,0 +1,399 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YiSan Project Documentation: Source/LatteLibrary/Character/Public/ALatteGameCharacter.h 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YiSan Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('ALatteGameCharacter_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">ALatteGameCharacter.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="ALatteGameCharacter_8h.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;GameFramework/Character.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="EBodyPartType_8h.html">EBodyPartType.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="ECharacterType_8h.html">ECharacterType.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="UStatSystem_8h.html">UStatSystem.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;ALatteGameCharacter.generated.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>UCLASS(Blueprintable, BlueprintType, ClassGroup=(Dopple))</div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html">   21</a></span>class LATTELIBRARY_API <a class="code hl_class" href="classALatteGameCharacter.html">ALatteGameCharacter</a> : public ACharacter</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_class" href="classALatteGameCharacter.html">ALatteGameCharacter</a>();</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> BeginPlay() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> EndPlay(<span class="keyword">const</span> EEndPlayReason::Type EndPlayReason) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> BindMontageDelegates(UAnimInstance* Anim);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> UnbindMontageDelegates(UAnimInstance* Anim);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    UFUNCTION()</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> OnMontageNotifyBegin(FName NotifyName, <span class="keyword">const</span> FBranchingPointNotifyPayload&amp; Payload);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00048" data-start="{" data-end="}">
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#aba8755db4e0ad3fb4fc313b86d37e275">   48</a></span>    FORCEINLINE UArrowComponent* <a class="code hl_function" href="classALatteGameCharacter.html#aba8755db4e0ad3fb4fc313b86d37e275">GetBodyPart</a>(<a class="code hl_enumeration" href="EBodyPartType_8h.html#a69a09297e20131de3e863c109dd59454">EBodyPartType</a> Part)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">switch</span> (Part)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordflow">case</span> EBodyPartType::Hand_L: <span class="keywordflow">return</span> LeftHandComp;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">case</span> EBodyPartType::Hand_R: <span class="keywordflow">return</span> RightHandComp;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">case</span> EBodyPartType::Foot_L: <span class="keywordflow">return</span> LeftFootComp;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordflow">case</span> EBodyPartType::Foot_R: <span class="keywordflow">return</span> RightFootComp;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">default</span>:    <span class="keywordflow">return</span> LeftHandComp;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
+</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    UFUNCTION(BlueprintPure, Category=<span class="stringliteral">&quot;GameState&quot;</span>)</div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a1bd10da1f362bcc692c19433667df0f1">   62</a></span>    FORCEINLINE <span class="keywordtype">bool</span> IsCombatStart()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">return</span> bIsCombatStart;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    };</div>
+</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    UFUNCTION(BlueprintPure, Category=<span class="stringliteral">&quot;GameState&quot;</span>)</div>
+<div class="foldopen" id="foldopen00068" data-start="{" data-end="}">
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a470a90a3c1b1ffbf2a2369eebf792898">   68</a></span>    FORCEINLINE <span class="keywordtype">bool</span> IsCombatResult()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">return</span> bIsCombatResult;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    };</div>
+</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    UFUNCTION(BlueprintPure, Category=<span class="stringliteral">&quot;GameState&quot;</span>)</div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#addebaa1071ec33a1a98e79243d7d73c9">   74</a></span>    FORCEINLINE <span class="keywordtype">bool</span> IsPlayer()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordflow">return</span> StatSystem-&gt;IsPlayer();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    };</div>
+</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    UFUNCTION(BlueprintPure, Category=<span class="stringliteral">&quot;GameState&quot;</span>)</div>
+<div class="foldopen" id="foldopen00080" data-start="{" data-end="}">
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#af46c970a456fc7a6422dab950df4e82d">   80</a></span>    FORCEINLINE <span class="keywordtype">bool</span> IsEnemy()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">return</span> StatSystem-&gt;IsPlayer() == <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    };</div>
+</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    UFUNCTION(BlueprintCallable, Category=<span class="stringliteral">&quot;Stats&quot;</span>)</div>
+<div class="foldopen" id="foldopen00086" data-start="{" data-end="}">
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a368a07e9bce881abd7ea64e8f3a30cf8">   86</a></span>    FORCEINLINE <span class="keywordtype">float</span> CurHP(<span class="keywordtype">float</span> Per = 1.0f)</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">return</span> StatSystem-&gt;GetCurHP() * Per;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    }</div>
+</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    UFUNCTION(BlueprintCallable, Category=<span class="stringliteral">&quot;Stats&quot;</span>)</div>
+<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a1607c5c7ed6bbfe6897862a1242fd1c0">   92</a></span>    FORCEINLINE <span class="keywordtype">float</span> MaxHP(<span class="keywordtype">float</span> Per = 1.0f)</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordflow">return</span> StatSystem-&gt;GetMaxHP() * Per;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    }</div>
+</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    UFUNCTION(BlueprintPure, Category=<span class="stringliteral">&quot;GameState&quot;</span>)</div>
+<div class="foldopen" id="foldopen00098" data-start="{" data-end="}">
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#aa38df44bc1f0cf154883281fc93cd520">   98</a></span>    FORCEINLINE <span class="keywordtype">bool</span> IsWinner()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">return</span> bIsWinner;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    };</div>
+</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    UFUNCTION(BlueprintCallable, Category=<span class="stringliteral">&quot;CharacterType&quot;</span>)</div>
+<div class="foldopen" id="foldopen00104" data-start="{" data-end="}">
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a1bb2b6fd26e4f366715a936deec7f45a">  104</a></span>    FORCEINLINE <a class="code hl_enumeration" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a> GetCharacterType()</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    {</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keywordflow">return</span> CharacterType;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    }</div>
+</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    UFUNCTION(BlueprintPure, Category=<span class="stringliteral">&quot;GameState&quot;</span>)</div>
+<div class="foldopen" id="foldopen00111" data-start="{" data-end="}">
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a0e14eaf0c676199a3088582ecf9ebeca">  111</a></span>    FORCEINLINE <span class="keywordtype">bool</span> IsHolding()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keywordflow">return</span> bIsHold;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    };</div>
+</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    UFUNCTION(BlueprintCallable, Category=<span class="stringliteral">&quot;GameState&quot;</span>)</div>
+<div class="foldopen" id="foldopen00117" data-start="{" data-end="}">
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#af7b54fbe5350760d3b07a83bfa8cb13f">  117</a></span>    FORCEINLINE <span class="keywordtype">void</span> SetHold(const <span class="keywordtype">bool</span> bState)</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    {</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        this-&gt;bIsHold = bState;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    };</div>
+</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    UFUNCTION(BlueprintCallable, Category=<span class="stringliteral">&quot;Setup&quot;</span>)</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    void SetupCharacterFromType(const <a class="code hl_enumeration" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a> Type, const <span class="keywordtype">bool</span> bIsAnother);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, BlueprintPure, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a7a51994ad06ce660fdf5e1736de08fab">  132</a></span>    <span class="keywordtype">bool</span> IsControlEnable();</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, BlueprintPure, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a976fcda0f54b33a994b8b76a69b3823d">  134</a></span>    <span class="keywordtype">bool</span> IsMoveEnable();</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, BlueprintPure, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#ab2168e299bdf3c2a387eeae92f3cb67e">  136</a></span>    <span class="keywordtype">bool</span> IsAttackEnable();</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, BlueprintPure, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#ab068c2db0287bfa4a4de7d78292ad2c2">  140</a></span>    <span class="keywordtype">bool</span> IsDead();</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, BlueprintPure, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a8d3f3177604353eae9c281c916a0e65d">  142</a></span>    <span class="keywordtype">bool</span> IsHitting();</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    UFUNCTION(BlueprintPure, Category=&quot;Character|Sight&quot;)</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keywordtype">bool</span> IsInSight(const AActor* Other) const;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#af7467acbf785b4abdf6b14f0483dfb9f">  147</a></span>    <span class="keywordtype">void</span> OnLookTarget();</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#abe44066eed917effaefebedb7212d176">  149</a></span>    <span class="keywordtype">void</span> OnFlyEnd();</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    UFUNCTION(BlueprintCallable, Category=&quot;Fly&quot;)</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordtype">void</span> SetFlying();</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    UFUNCTION(BlueprintCallable, Category=&quot;Fly&quot;)</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keywordtype">void</span> SetFallingToWalk();</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    UFUNCTION(BlueprintCallable, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="keywordtype">void</span> RecoveryMovementMode(const EMovementMode InMovementMode);</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    UFUNCTION(BlueprintCallable, Category=&quot;Stat&quot;)</div>
+<div class="foldopen" id="foldopen00160" data-start="{" data-end="}">
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a492d8892a3ecec80fe8d3f0282bbc81f">  160</a></span>    FORCEINLINE <span class="keywordtype">float</span> GetAttackDamage()</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    {</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        <span class="keywordflow">return</span> StatSystem-&gt;GetAttackDamage();</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    }</div>
+</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    UFUNCTION(BlueprintCallable, Category=<span class="stringliteral">&quot;Montage&quot;</span>)</div>
+<div class="foldopen" id="foldopen00167" data-start="{" data-end="}">
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a57d3842926e5a8e4c7dabfaa010346e9">  167</a></span>    FORCEINLINE UAnimInstance* GetAnimInstance()</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    {</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        <span class="keywordflow">return</span> AnimInstance;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    }</div>
+</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    UFUNCTION(BlueprintCallable, Category=<span class="stringliteral">&quot;Montage&quot;</span>)</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    void PlayTypeMontage(const <a class="code hl_enumeration" href="EMontageType_8h.html#a33d4f5f333936ce33b59c38e89382372">EMontageType</a> Type);</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    UFUNCTION(BlueprintCallable, Category=&quot;Montage&quot;)</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <span class="keywordtype">void</span> PlayTargetMontage(UAnimMontage* AnimMontage);</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    UFUNCTION(BlueprintCallable, Category=&quot;Montage&quot;)</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keywordtype">void</span> StopTargetMontage(const <a class="code hl_enumeration" href="EMontageType_8h.html#a33d4f5f333936ce33b59c38e89382372">EMontageType</a> Type, const <span class="keywordtype">float</span> BlendInOutTime);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>public: <span class="comment">// Combat Character ShaderComp</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Components|System&quot;)</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a4c49d6c6b92026c94d8c8faf6fb7aa86">  185</a></span>    TObjectPtr&lt;class UStatSystem&gt; StatSystem;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Components|System&quot;)</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a814db96eba6db97c12bf807432c0bff6">  187</a></span>    TObjectPtr&lt;class UHitStopSystem&gt; HitStopSystem;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Components|System&quot;)</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a1e673b4d7f112e8c13a4cc2e4e56254f">  189</a></span>    TObjectPtr&lt;class UKnockbackSystem&gt; KnockbackSystem;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Components|System&quot;)</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#af4cb9228fd652dc8be152a03d0d7fc4c">  191</a></span>    TObjectPtr&lt;class UFlySystem&gt; FlySystem;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>public:</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Character&quot;)</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a5d38a68c62fd9da86cf6d9f5a7d10afe">  195</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classALatteGameCharacter.html">ALatteGameCharacter</a>&gt; TargetActor;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>protected:</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category=&quot;RushAttack|Owner&quot;)</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">  199</a></span>    TObjectPtr&lt;class USkeletalMeshComponent&gt; MeshComp;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category=&quot;RushAttack|Owner&quot;)</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a7ad6dd63de3cb7b6db9e526e67812e17">  201</a></span>    TObjectPtr&lt;class UCharacterMovementComponent&gt; MoveComp;</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category=&quot;RushAttack|Owner&quot;)</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a49f4c2f77d4cd93afbd7468dc7299a9b">  204</a></span>    TObjectPtr&lt;class UAnimInstance&gt; AnimInstance;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    </div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Components|Arrow&quot;)</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a4a4884871a0baece181eca51ac06c331">  207</a></span>    TObjectPtr&lt;class UArrowComponent&gt; LeftHandComp;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Components|Arrow&quot;)</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#ae60b022333ac3e8e6ddd9d84d5b04e6f">  209</a></span>    TObjectPtr&lt;class UArrowComponent&gt; RightHandComp;</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Components|Arrow&quot;)</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#af4cd3e4020ae563cb57d0b19378f983a">  211</a></span>    TObjectPtr&lt;class UArrowComponent&gt; LeftFootComp;</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Components|Arrow&quot;)</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a59d78c6d900a4846404ee1be745a0716">  213</a></span>    TObjectPtr&lt;class UArrowComponent&gt; RightFootComp;</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Character|Sight&quot;, meta=(ClampMin=&quot;0&quot;))</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a74611b9329afcca5a7399cf1740cbaa5">  216</a></span>    <span class="keywordtype">float</span> SightRange = 1200.0f;</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Character|Sight&quot;, meta=(ClampMin=&quot;0&quot;, ClampMax=&quot;180&quot;))</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#aae5fe34866a83b772282e9d995653238">  218</a></span>    <span class="keywordtype">float</span> SightHalfFOVDeg = 60.0f;</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Character|Trace&quot;)</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a6d8d39a0466409ebe8ca6c4029233d68">  221</a></span>    <span class="keywordtype">float</span> TraceLength  = 30.0f;</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Character|Trace&quot;)</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#ac2003c20c770e37481fade5fc821d878">  223</a></span>    <span class="keywordtype">float</span> TraceRadius  = 30.0f;</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Character|Trace&quot;)</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a439d130f54e26da70ecb80c0ea01a578">  225</a></span>    <span class="keywordtype">float</span> TraceDrawTime = 1.5f;</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Character|CombatState&quot;)</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a6de7568896e79c0d5108926c0306ab9f">  228</a></span>    <span class="keywordtype">bool</span> bIsCombatStart = false;</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Character|CombatState&quot;)</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a88a8f9a30412f9a3b54d1d401722ea37">  231</a></span>    <span class="keywordtype">bool</span> bIsCombatResult = false;</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Character|CombatState&quot;)</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#ac9ba053272760c434581a5461dc35112">  234</a></span>    <span class="keywordtype">bool</span> bIsWinner = false;</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Character&quot;)</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a6c6872fc99bcdb8c44d619cbca31c1da">  237</a></span>    <span class="keywordtype">bool</span> IsHit = false;</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=&quot;Character&quot;)</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a2e5e9fc814a34c608922c669885990e3">  240</a></span>    <span class="keywordtype">bool</span> bIsHold = false;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span> </div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>public:</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=&quot;Character|Data&quot;)</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">  244</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUCharacterData.html">UCharacterData</a>&gt; CharacterData;</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=&quot;Character|Montage&quot;)</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a09102b82644f5f304a7523be0f3e808b">  247</a></span>    TArray&lt;TObjectPtr&lt;UAnimMontage&gt;&gt; HitMontages;</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=&quot;Character|Montage&quot;)</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a8e1e9b4fd234cb2b2e627b219f9d9f84">  249</a></span>    TObjectPtr&lt;class UAnimMontage&gt; DeathMontage;</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    </div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>protected:</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#aa9c2d5e3a16d657866f98eaa539f4e16">  252</a></span>    <span class="keywordtype">bool</span> bDelegatesBound = false;</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a88853d650a94899ae90160823507e444">  255</a></span>    <a class="code hl_enumeration" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a> CharacterType;</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span> </div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno"><a class="line" href="classALatteGameCharacter.html#a04641d377d6f741356b91b1a83f75152">  258</a></span>    TEnumAsByte&lt;EMovementMode&gt; PrevMoveMode;</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>};</div>
+</div>
+<div class="ttc" id="aEBodyPartType_8h_html"><div class="ttname"><a href="EBodyPartType_8h.html">EBodyPartType.h</a></div><div class="ttdoc">EBodyPartType 열거형에 대한 Doxygen 주석을 제공합니다.</div></div>
+<div class="ttc" id="aEBodyPartType_8h_html_a69a09297e20131de3e863c109dd59454"><div class="ttname"><a href="EBodyPartType_8h.html#a69a09297e20131de3e863c109dd59454">EBodyPartType</a></div><div class="ttdeci">EBodyPartType</div><div class="ttdef"><b>Definition</b> <a href="EBodyPartType_8h_source.html#l00008">EBodyPartType.h:9</a></div></div>
+<div class="ttc" id="aECharacterType_8h_html"><div class="ttname"><a href="ECharacterType_8h.html">ECharacterType.h</a></div><div class="ttdoc">ECharacterType 열거형에 대한 Doxygen 주석을 제공합니다.</div></div>
+<div class="ttc" id="aECharacterType_8h_html_ad34afea9f542b01a1f4e6d48fdfe1be3"><div class="ttname"><a href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a></div><div class="ttdeci">ECharacterType</div><div class="ttdef"><b>Definition</b> <a href="ECharacterType_8h_source.html#l00008">ECharacterType.h:9</a></div></div>
+<div class="ttc" id="aEMontageType_8h_html_a33d4f5f333936ce33b59c38e89382372"><div class="ttname"><a href="EMontageType_8h.html#a33d4f5f333936ce33b59c38e89382372">EMontageType</a></div><div class="ttdeci">EMontageType</div><div class="ttdef"><b>Definition</b> <a href="EMontageType_8h_source.html#l00008">EMontageType.h:9</a></div></div>
+<div class="ttc" id="aUStatSystem_8h_html"><div class="ttname"><a href="UStatSystem_8h.html">UStatSystem.h</a></div><div class="ttdoc">UStatSystem 선언에 대한 Doxygen 주석을 제공합니다.</div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html"><div class="ttname"><a href="classALatteGameCharacter.html">ALatteGameCharacter</a></div><div class="ttdoc">전투, 능력치, 애니메이션 헬퍼를 연결하는 기반 캐릭터 구현입니다.</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00021">ALatteGameCharacter.h:22</a></div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html_aba8755db4e0ad3fb4fc313b86d37e275"><div class="ttname"><a href="classALatteGameCharacter.html#aba8755db4e0ad3fb4fc313b86d37e275">ALatteGameCharacter::GetBodyPart</a></div><div class="ttdeci">FORCEINLINE UArrowComponent * GetBodyPart(EBodyPartType Part) const</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00048">ALatteGameCharacter.h:48</a></div></div>
+<div class="ttc" id="aclassUCharacterData_html"><div class="ttname"><a href="classUCharacterData.html">UCharacterData</a></div><div class="ttdef"><b>Definition</b> <a href="UCharacterData_8h_source.html#l00014">UCharacterData.h:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_399370037b6f5ff6b0840148d18ec8d9.html">LatteLibrary</a></li><li class="navelem"><a class="el" href="dir_3c114e8d16f3e538cb35f2ecdad082f2.html">Character</a></li><li class="navelem"><a class="el" href="dir_dbcfec335b82e9995c56663fd2624812.html">Public</a></li><li class="navelem"><a class="el" href="ALatteGameCharacter_8h.html">ALatteGameCharacter.h</a></li>
+    <li class="footer">생성시간 : 금 10월 10 2025 08:06:52, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

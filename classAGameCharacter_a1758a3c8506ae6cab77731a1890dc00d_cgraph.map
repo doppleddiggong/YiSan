@@ -1,5 +1,0 @@
-<map id="AGameCharacter::BindMontageDelegates" name="AGameCharacter::BindMontageDelegates">
-<area shape="rect" id="Node000001" title="몽타주 알림 처리 델리게이트를 바인딩합니다." alt="" coords="5,5,232,45"/>
-<area shape="rect" id="Node000002" href="$classAGameCharacter.html#ad257873cd2be805e3f5ff94f199da294" title="몽타주 노티파이 시작 시 호출되는 콜백입니다." alt="" coords="280,5,496,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,23,266,23,266,28,232,28"/>
-</map>

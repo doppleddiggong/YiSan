@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['워크플로_0',['Project YiSan – Doxygen 워크플로',['../md_Documents_2Reference_2DoxygenWorkflow.html',1,'']]]
+  ['요약_202025_2010_2002_202025_2010_2008_0',['주간 개발 요약 (2025-10-02 ~ 2025-10-08)',['../md_Documents_2DevLog_22025-W41-Summary.html',1,'']]]
 ];

@@ -1,0 +1,2197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YiSan Project Documentation: ALatteGameCharacter 클래스 참조</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YiSan Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classALatteGameCharacter.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 멤버 함수</a> &#124;
+<a href="#pub-attribs">Public 속성</a> &#124;
+<a href="#pro-methods">Protected 멤버 함수</a> &#124;
+<a href="#pro-attribs">Protected 속성</a> &#124;
+<a href="#pri-methods">Private 멤버 함수</a> &#124;
+<a href="classALatteGameCharacter-members.html">모든 멤버 목록</a>  </div>
+  <div class="headertitle"><div class="title">ALatteGameCharacter 클래스 참조</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>전투, 능력치, 애니메이션 헬퍼를 연결하는 기반 캐릭터 구현입니다.  
+ <a href="classALatteGameCharacter.html#details">더 자세히 ...</a></p>
+
+<p><code>#include &lt;<a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> ALatteGameCharacter에 대한 상속 다이어그램 : </div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classALatteGameCharacter__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> ALatteGameCharacter에 대한 협력 다이어그램:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classALatteGameCharacter__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 멤버 함수</h2></td></tr>
+<tr class="memitem:a0bcdde1b700e151798b6924ffe04bdd7" id="r_a0bcdde1b700e151798b6924ffe04bdd7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a0bcdde1b700e151798b6924ffe04bdd7">ALatteGameCharacter</a> ()</td></tr>
+<tr class="memdesc:a0bcdde1b700e151798b6924ffe04bdd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">기본 구성 요소와 서브 시스템을 초기화합니다.  <br /></td></tr>
+<tr class="separator:a0bcdde1b700e151798b6924ffe04bdd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a368a07e9bce881abd7ea64e8f3a30cf8" id="r_a368a07e9bce881abd7ea64e8f3a30cf8"><td class="memItemLeft" align="right" valign="top">FORCEINLINE float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a368a07e9bce881abd7ea64e8f3a30cf8">CurHP</a> (float Per=1.0f)</td></tr>
+<tr class="separator:a368a07e9bce881abd7ea64e8f3a30cf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57d3842926e5a8e4c7dabfaa010346e9" id="r_a57d3842926e5a8e4c7dabfaa010346e9"><td class="memItemLeft" align="right" valign="top">FORCEINLINE UAnimInstance *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a57d3842926e5a8e4c7dabfaa010346e9">GetAnimInstance</a> ()</td></tr>
+<tr class="separator:a57d3842926e5a8e4c7dabfaa010346e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a492d8892a3ecec80fe8d3f0282bbc81f" id="r_a492d8892a3ecec80fe8d3f0282bbc81f"><td class="memItemLeft" align="right" valign="top">FORCEINLINE float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a492d8892a3ecec80fe8d3f0282bbc81f">GetAttackDamage</a> ()</td></tr>
+<tr class="separator:a492d8892a3ecec80fe8d3f0282bbc81f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba8755db4e0ad3fb4fc313b86d37e275" id="r_aba8755db4e0ad3fb4fc313b86d37e275"><td class="memItemLeft" align="right" valign="top">FORCEINLINE UArrowComponent *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#aba8755db4e0ad3fb4fc313b86d37e275">GetBodyPart</a> (<a class="el" href="EBodyPartType_8h.html#a69a09297e20131de3e863c109dd59454">EBodyPartType</a> Part) const</td></tr>
+<tr class="separator:aba8755db4e0ad3fb4fc313b86d37e275"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bb2b6fd26e4f366715a936deec7f45a" id="r_a1bb2b6fd26e4f366715a936deec7f45a"><td class="memItemLeft" align="right" valign="top">FORCEINLINE <a class="el" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a1bb2b6fd26e4f366715a936deec7f45a">GetCharacterType</a> ()</td></tr>
+<tr class="separator:a1bb2b6fd26e4f366715a936deec7f45a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2168e299bdf3c2a387eeae92f3cb67e" id="r_ab2168e299bdf3c2a387eeae92f3cb67e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#ab2168e299bdf3c2a387eeae92f3cb67e">IsAttackEnable</a> ()</td></tr>
+<tr class="separator:ab2168e299bdf3c2a387eeae92f3cb67e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a470a90a3c1b1ffbf2a2369eebf792898" id="r_a470a90a3c1b1ffbf2a2369eebf792898"><td class="memItemLeft" align="right" valign="top">FORCEINLINE bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a470a90a3c1b1ffbf2a2369eebf792898">IsCombatResult</a> () const</td></tr>
+<tr class="separator:a470a90a3c1b1ffbf2a2369eebf792898"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bd10da1f362bcc692c19433667df0f1" id="r_a1bd10da1f362bcc692c19433667df0f1"><td class="memItemLeft" align="right" valign="top">FORCEINLINE bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a1bd10da1f362bcc692c19433667df0f1">IsCombatStart</a> () const</td></tr>
+<tr class="separator:a1bd10da1f362bcc692c19433667df0f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a51994ad06ce660fdf5e1736de08fab" id="r_a7a51994ad06ce660fdf5e1736de08fab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a7a51994ad06ce660fdf5e1736de08fab">IsControlEnable</a> ()</td></tr>
+<tr class="memdesc:a7a51994ad06ce660fdf5e1736de08fab"><td class="mdescLeft">&#160;</td><td class="mdescRight">캐릭터의 조작 가능 상태를 확인합니다.  <br /></td></tr>
+<tr class="separator:a7a51994ad06ce660fdf5e1736de08fab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab068c2db0287bfa4a4de7d78292ad2c2" id="r_ab068c2db0287bfa4a4de7d78292ad2c2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#ab068c2db0287bfa4a4de7d78292ad2c2">IsDead</a> ()</td></tr>
+<tr class="separator:ab068c2db0287bfa4a4de7d78292ad2c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af46c970a456fc7a6422dab950df4e82d" id="r_af46c970a456fc7a6422dab950df4e82d"><td class="memItemLeft" align="right" valign="top">FORCEINLINE bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#af46c970a456fc7a6422dab950df4e82d">IsEnemy</a> () const</td></tr>
+<tr class="separator:af46c970a456fc7a6422dab950df4e82d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d3f3177604353eae9c281c916a0e65d" id="r_a8d3f3177604353eae9c281c916a0e65d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a8d3f3177604353eae9c281c916a0e65d">IsHitting</a> ()</td></tr>
+<tr class="separator:a8d3f3177604353eae9c281c916a0e65d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e14eaf0c676199a3088582ecf9ebeca" id="r_a0e14eaf0c676199a3088582ecf9ebeca"><td class="memItemLeft" align="right" valign="top">FORCEINLINE bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a0e14eaf0c676199a3088582ecf9ebeca">IsHolding</a> () const</td></tr>
+<tr class="separator:a0e14eaf0c676199a3088582ecf9ebeca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a539c0faef7c7b81883e728b850216885" id="r_a539c0faef7c7b81883e728b850216885"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a539c0faef7c7b81883e728b850216885">IsInSight</a> (const AActor *Other) const</td></tr>
+<tr class="separator:a539c0faef7c7b81883e728b850216885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a976fcda0f54b33a994b8b76a69b3823d" id="r_a976fcda0f54b33a994b8b76a69b3823d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a976fcda0f54b33a994b8b76a69b3823d">IsMoveEnable</a> ()</td></tr>
+<tr class="separator:a976fcda0f54b33a994b8b76a69b3823d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addebaa1071ec33a1a98e79243d7d73c9" id="r_addebaa1071ec33a1a98e79243d7d73c9"><td class="memItemLeft" align="right" valign="top">FORCEINLINE bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#addebaa1071ec33a1a98e79243d7d73c9">IsPlayer</a> () const</td></tr>
+<tr class="separator:addebaa1071ec33a1a98e79243d7d73c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa38df44bc1f0cf154883281fc93cd520" id="r_aa38df44bc1f0cf154883281fc93cd520"><td class="memItemLeft" align="right" valign="top">FORCEINLINE bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#aa38df44bc1f0cf154883281fc93cd520">IsWinner</a> () const</td></tr>
+<tr class="separator:aa38df44bc1f0cf154883281fc93cd520"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1607c5c7ed6bbfe6897862a1242fd1c0" id="r_a1607c5c7ed6bbfe6897862a1242fd1c0"><td class="memItemLeft" align="right" valign="top">FORCEINLINE float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a1607c5c7ed6bbfe6897862a1242fd1c0">MaxHP</a> (float Per=1.0f)</td></tr>
+<tr class="separator:a1607c5c7ed6bbfe6897862a1242fd1c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe44066eed917effaefebedb7212d176" id="r_abe44066eed917effaefebedb7212d176"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#abe44066eed917effaefebedb7212d176">OnFlyEnd</a> ()</td></tr>
+<tr class="separator:abe44066eed917effaefebedb7212d176"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7467acbf785b4abdf6b14f0483dfb9f" id="r_af7467acbf785b4abdf6b14f0483dfb9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#af7467acbf785b4abdf6b14f0483dfb9f">OnLookTarget</a> ()</td></tr>
+<tr class="separator:af7467acbf785b4abdf6b14f0483dfb9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99c5842026c787b3cb7dd7eb65bb69a5" id="r_a99c5842026c787b3cb7dd7eb65bb69a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a99c5842026c787b3cb7dd7eb65bb69a5">PlayTargetMontage</a> (UAnimMontage *AnimMontage)</td></tr>
+<tr class="separator:a99c5842026c787b3cb7dd7eb65bb69a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a503621b2fa4c41cad31d65b608f9a072" id="r_a503621b2fa4c41cad31d65b608f9a072"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a503621b2fa4c41cad31d65b608f9a072">PlayTypeMontage</a> (const <a class="el" href="EMontageType_8h.html#a33d4f5f333936ce33b59c38e89382372">EMontageType</a> Type)</td></tr>
+<tr class="separator:a503621b2fa4c41cad31d65b608f9a072"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a175b9432f78b5e7934249f6ff629eb92" id="r_a175b9432f78b5e7934249f6ff629eb92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a175b9432f78b5e7934249f6ff629eb92">RecoveryMovementMode</a> (const EMovementMode InMovementMode)</td></tr>
+<tr class="separator:a175b9432f78b5e7934249f6ff629eb92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abefc75095bdce2f9461e7b4341e6d734" id="r_abefc75095bdce2f9461e7b4341e6d734"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#abefc75095bdce2f9461e7b4341e6d734">SetFallingToWalk</a> ()</td></tr>
+<tr class="separator:abefc75095bdce2f9461e7b4341e6d734"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a405f433d7e8ab5c1f323d23434cd4df4" id="r_a405f433d7e8ab5c1f323d23434cd4df4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a405f433d7e8ab5c1f323d23434cd4df4">SetFlying</a> ()</td></tr>
+<tr class="separator:a405f433d7e8ab5c1f323d23434cd4df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7b54fbe5350760d3b07a83bfa8cb13f" id="r_af7b54fbe5350760d3b07a83bfa8cb13f"><td class="memItemLeft" align="right" valign="top">FORCEINLINE void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#af7b54fbe5350760d3b07a83bfa8cb13f">SetHold</a> (const bool bState)</td></tr>
+<tr class="separator:af7b54fbe5350760d3b07a83bfa8cb13f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad27fbd16937d45f4b3fde86bdc962d94" id="r_ad27fbd16937d45f4b3fde86bdc962d94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#ad27fbd16937d45f4b3fde86bdc962d94">SetupCharacterFromType</a> (const <a class="el" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a> Type, const bool bIsAnother)</td></tr>
+<tr class="separator:ad27fbd16937d45f4b3fde86bdc962d94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad124a32e535db512bbf4c48331e7e266" id="r_ad124a32e535db512bbf4c48331e7e266"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#ad124a32e535db512bbf4c48331e7e266">StopTargetMontage</a> (const <a class="el" href="EMontageType_8h.html#a33d4f5f333936ce33b59c38e89382372">EMontageType</a> Type, const float BlendInOutTime)</td></tr>
+<tr class="separator:ad124a32e535db512bbf4c48331e7e266"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 속성</h2></td></tr>
+<tr class="memitem:a8e6264c3944cae661cfafd2c93e2569c" id="r_a8e6264c3944cae661cfafd2c93e2569c"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class <a class="el" href="classUCharacterData.html">UCharacterData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a></td></tr>
+<tr class="separator:a8e6264c3944cae661cfafd2c93e2569c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e1e9b4fd234cb2b2e627b219f9d9f84" id="r_a8e1e9b4fd234cb2b2e627b219f9d9f84"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UAnimMontage &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a8e1e9b4fd234cb2b2e627b219f9d9f84">DeathMontage</a></td></tr>
+<tr class="separator:a8e1e9b4fd234cb2b2e627b219f9d9f84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4cb9228fd652dc8be152a03d0d7fc4c" id="r_af4cb9228fd652dc8be152a03d0d7fc4c"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UFlySystem &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#af4cb9228fd652dc8be152a03d0d7fc4c">FlySystem</a></td></tr>
+<tr class="separator:af4cb9228fd652dc8be152a03d0d7fc4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09102b82644f5f304a7523be0f3e808b" id="r_a09102b82644f5f304a7523be0f3e808b"><td class="memItemLeft" align="right" valign="top">TArray&lt; TObjectPtr&lt; UAnimMontage &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a09102b82644f5f304a7523be0f3e808b">HitMontages</a></td></tr>
+<tr class="separator:a09102b82644f5f304a7523be0f3e808b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a814db96eba6db97c12bf807432c0bff6" id="r_a814db96eba6db97c12bf807432c0bff6"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UHitStopSystem &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a814db96eba6db97c12bf807432c0bff6">HitStopSystem</a></td></tr>
+<tr class="separator:a814db96eba6db97c12bf807432c0bff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e673b4d7f112e8c13a4cc2e4e56254f" id="r_a1e673b4d7f112e8c13a4cc2e4e56254f"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UKnockbackSystem &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a1e673b4d7f112e8c13a4cc2e4e56254f">KnockbackSystem</a></td></tr>
+<tr class="separator:a1e673b4d7f112e8c13a4cc2e4e56254f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c49d6c6b92026c94d8c8faf6fb7aa86" id="r_a4c49d6c6b92026c94d8c8faf6fb7aa86"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UStatSystem &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a4c49d6c6b92026c94d8c8faf6fb7aa86">StatSystem</a></td></tr>
+<tr class="separator:a4c49d6c6b92026c94d8c8faf6fb7aa86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d38a68c62fd9da86cf6d9f5a7d10afe" id="r_a5d38a68c62fd9da86cf6d9f5a7d10afe"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class <a class="el" href="classALatteGameCharacter.html">ALatteGameCharacter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a5d38a68c62fd9da86cf6d9f5a7d10afe">TargetActor</a></td></tr>
+<tr class="separator:a5d38a68c62fd9da86cf6d9f5a7d10afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected 멤버 함수</h2></td></tr>
+<tr class="memitem:a1a31ffd850e57a0229a447a8e594723d" id="r_a1a31ffd850e57a0229a447a8e594723d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a1a31ffd850e57a0229a447a8e594723d">BeginPlay</a> () override</td></tr>
+<tr class="memdesc:a1a31ffd850e57a0229a447a8e594723d"><td class="mdescLeft">&#160;</td><td class="mdescRight">게임 시작 시 서브 시스템을 연결합니다.  <br /></td></tr>
+<tr class="separator:a1a31ffd850e57a0229a447a8e594723d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e257151374a9fb8dbcb056477caa983" id="r_a5e257151374a9fb8dbcb056477caa983"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a5e257151374a9fb8dbcb056477caa983">EndPlay</a> (const EEndPlayReason::Type EndPlayReason) override</td></tr>
+<tr class="memdesc:a5e257151374a9fb8dbcb056477caa983"><td class="mdescLeft">&#160;</td><td class="mdescRight">플레이 종료 시 리소스를 해제합니다.  <br /></td></tr>
+<tr class="separator:a5e257151374a9fb8dbcb056477caa983"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected 속성</h2></td></tr>
+<tr class="memitem:a49f4c2f77d4cd93afbd7468dc7299a9b" id="r_a49f4c2f77d4cd93afbd7468dc7299a9b"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UAnimInstance &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a49f4c2f77d4cd93afbd7468dc7299a9b">AnimInstance</a></td></tr>
+<tr class="separator:a49f4c2f77d4cd93afbd7468dc7299a9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9c2d5e3a16d657866f98eaa539f4e16" id="r_aa9c2d5e3a16d657866f98eaa539f4e16"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#aa9c2d5e3a16d657866f98eaa539f4e16">bDelegatesBound</a> = false</td></tr>
+<tr class="separator:aa9c2d5e3a16d657866f98eaa539f4e16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88a8f9a30412f9a3b54d1d401722ea37" id="r_a88a8f9a30412f9a3b54d1d401722ea37"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a88a8f9a30412f9a3b54d1d401722ea37">bIsCombatResult</a> = false</td></tr>
+<tr class="separator:a88a8f9a30412f9a3b54d1d401722ea37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6de7568896e79c0d5108926c0306ab9f" id="r_a6de7568896e79c0d5108926c0306ab9f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a6de7568896e79c0d5108926c0306ab9f">bIsCombatStart</a> = false</td></tr>
+<tr class="separator:a6de7568896e79c0d5108926c0306ab9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e5e9fc814a34c608922c669885990e3" id="r_a2e5e9fc814a34c608922c669885990e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a2e5e9fc814a34c608922c669885990e3">bIsHold</a> = false</td></tr>
+<tr class="separator:a2e5e9fc814a34c608922c669885990e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9ba053272760c434581a5461dc35112" id="r_ac9ba053272760c434581a5461dc35112"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#ac9ba053272760c434581a5461dc35112">bIsWinner</a> = false</td></tr>
+<tr class="separator:ac9ba053272760c434581a5461dc35112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88853d650a94899ae90160823507e444" id="r_a88853d650a94899ae90160823507e444"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a88853d650a94899ae90160823507e444">CharacterType</a></td></tr>
+<tr class="separator:a88853d650a94899ae90160823507e444"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c6872fc99bcdb8c44d619cbca31c1da" id="r_a6c6872fc99bcdb8c44d619cbca31c1da"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a6c6872fc99bcdb8c44d619cbca31c1da">IsHit</a> = false</td></tr>
+<tr class="separator:a6c6872fc99bcdb8c44d619cbca31c1da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4cd3e4020ae563cb57d0b19378f983a" id="r_af4cd3e4020ae563cb57d0b19378f983a"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UArrowComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#af4cd3e4020ae563cb57d0b19378f983a">LeftFootComp</a></td></tr>
+<tr class="separator:af4cd3e4020ae563cb57d0b19378f983a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a4884871a0baece181eca51ac06c331" id="r_a4a4884871a0baece181eca51ac06c331"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UArrowComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a4a4884871a0baece181eca51ac06c331">LeftHandComp</a></td></tr>
+<tr class="separator:a4a4884871a0baece181eca51ac06c331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8830926cd7965b0dece480e564d8f29a" id="r_a8830926cd7965b0dece480e564d8f29a"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class USkeletalMeshComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">MeshComp</a></td></tr>
+<tr class="separator:a8830926cd7965b0dece480e564d8f29a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ad6dd63de3cb7b6db9e526e67812e17" id="r_a7ad6dd63de3cb7b6db9e526e67812e17"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UCharacterMovementComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a7ad6dd63de3cb7b6db9e526e67812e17">MoveComp</a></td></tr>
+<tr class="separator:a7ad6dd63de3cb7b6db9e526e67812e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04641d377d6f741356b91b1a83f75152" id="r_a04641d377d6f741356b91b1a83f75152"><td class="memItemLeft" align="right" valign="top">TEnumAsByte&lt; EMovementMode &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a04641d377d6f741356b91b1a83f75152">PrevMoveMode</a></td></tr>
+<tr class="separator:a04641d377d6f741356b91b1a83f75152"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59d78c6d900a4846404ee1be745a0716" id="r_a59d78c6d900a4846404ee1be745a0716"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UArrowComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a59d78c6d900a4846404ee1be745a0716">RightFootComp</a></td></tr>
+<tr class="separator:a59d78c6d900a4846404ee1be745a0716"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae60b022333ac3e8e6ddd9d84d5b04e6f" id="r_ae60b022333ac3e8e6ddd9d84d5b04e6f"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UArrowComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#ae60b022333ac3e8e6ddd9d84d5b04e6f">RightHandComp</a></td></tr>
+<tr class="separator:ae60b022333ac3e8e6ddd9d84d5b04e6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae5fe34866a83b772282e9d995653238" id="r_aae5fe34866a83b772282e9d995653238"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#aae5fe34866a83b772282e9d995653238">SightHalfFOVDeg</a> = 60.0f</td></tr>
+<tr class="separator:aae5fe34866a83b772282e9d995653238"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74611b9329afcca5a7399cf1740cbaa5" id="r_a74611b9329afcca5a7399cf1740cbaa5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a74611b9329afcca5a7399cf1740cbaa5">SightRange</a> = 1200.0f</td></tr>
+<tr class="separator:a74611b9329afcca5a7399cf1740cbaa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a439d130f54e26da70ecb80c0ea01a578" id="r_a439d130f54e26da70ecb80c0ea01a578"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a439d130f54e26da70ecb80c0ea01a578">TraceDrawTime</a> = 1.5f</td></tr>
+<tr class="separator:a439d130f54e26da70ecb80c0ea01a578"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d8d39a0466409ebe8ca6c4029233d68" id="r_a6d8d39a0466409ebe8ca6c4029233d68"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a6d8d39a0466409ebe8ca6c4029233d68">TraceLength</a> = 30.0f</td></tr>
+<tr class="separator:a6d8d39a0466409ebe8ca6c4029233d68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2003c20c770e37481fade5fc821d878" id="r_ac2003c20c770e37481fade5fc821d878"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#ac2003c20c770e37481fade5fc821d878">TraceRadius</a> = 30.0f</td></tr>
+<tr class="separator:ac2003c20c770e37481fade5fc821d878"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 멤버 함수</h2></td></tr>
+<tr class="memitem:af084fe37e0028fb8b4a4f804569141fc" id="r_af084fe37e0028fb8b4a4f804569141fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#af084fe37e0028fb8b4a4f804569141fc">BindMontageDelegates</a> (UAnimInstance *Anim)</td></tr>
+<tr class="memdesc:af084fe37e0028fb8b4a4f804569141fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">몽타주 알림 처리 델리게이트를 바인딩합니다.  <br /></td></tr>
+<tr class="separator:af084fe37e0028fb8b4a4f804569141fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66a03203587c2c41452cb3b64613fc5f" id="r_a66a03203587c2c41452cb3b64613fc5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a66a03203587c2c41452cb3b64613fc5f">OnMontageNotifyBegin</a> (FName NotifyName, const FBranchingPointNotifyPayload &amp;Payload)</td></tr>
+<tr class="memdesc:a66a03203587c2c41452cb3b64613fc5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">몽타주 노티파이 시작 시 호출되는 콜백입니다.  <br /></td></tr>
+<tr class="separator:a66a03203587c2c41452cb3b64613fc5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09792ae60c1ef81d3b6dab098b0ebec2" id="r_a09792ae60c1ef81d3b6dab098b0ebec2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALatteGameCharacter.html#a09792ae60c1ef81d3b6dab098b0ebec2">UnbindMontageDelegates</a> (UAnimInstance *Anim)</td></tr>
+<tr class="memdesc:a09792ae60c1ef81d3b6dab098b0ebec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">몽타주 알림 델리게이트 연결을 해제합니다.  <br /></td></tr>
+<tr class="separator:a09792ae60c1ef81d3b6dab098b0ebec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
+<div class="textblock"><p>전투, 능력치, 애니메이션 헬퍼를 연결하는 기반 캐릭터 구현입니다. </p>
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00021">21</a> 번째 라인에서 정의되었습니다.</p>
+</div><h2 class="groupheader">생성자 &amp; 소멸자 문서화</h2>
+<a id="a0bcdde1b700e151798b6924ffe04bdd7" name="a0bcdde1b700e151798b6924ffe04bdd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bcdde1b700e151798b6924ffe04bdd7">&#9670;&#160;</a></span>ALatteGameCharacter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ALatteGameCharacter::ALatteGameCharacter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>기본 구성 요소와 서브 시스템을 초기화합니다. </p>
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8cpp_source.html">ALatteGameCharacter.cpp</a> 파일의 <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00026">26</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>{</div>
+<div class="line"><span class="lineno">   28</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#a4c49d6c6b92026c94d8c8faf6fb7aa86">StatSystem</a>          = CreateDefaultSubobject&lt;UStatSystem&gt;(TEXT(<span class="stringliteral">&quot;StatSystem&quot;</span>));</div>
+<div class="line"><span class="lineno">   31</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#a814db96eba6db97c12bf807432c0bff6">HitStopSystem</a>       = CreateDefaultSubobject&lt;UHitStopSystem&gt;(TEXT(<span class="stringliteral">&quot;HitStopSystem&quot;</span>));</div>
+<div class="line"><span class="lineno">   32</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#a1e673b4d7f112e8c13a4cc2e4e56254f">KnockbackSystem</a>     = CreateDefaultSubobject&lt;UKnockbackSystem&gt;(TEXT(<span class="stringliteral">&quot;KnockbackSystem&quot;</span>));</div>
+<div class="line"><span class="lineno">   33</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#af4cb9228fd652dc8be152a03d0d7fc4c">FlySystem</a>           = CreateDefaultSubobject&lt;UFlySystem&gt;(TEXT(<span class="stringliteral">&quot;FlySystem&quot;</span>));</div>
+<div class="line"><span class="lineno">   34</span>    </div>
+<div class="line"><span class="lineno">   35</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#a4a4884871a0baece181eca51ac06c331">LeftHandComp</a> = CreateDefaultSubobject&lt;UArrowComponent&gt;(TEXT(<span class="stringliteral">&quot;LeftHandComp&quot;</span>));</div>
+<div class="line"><span class="lineno">   36</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#ae60b022333ac3e8e6ddd9d84d5b04e6f">RightHandComp</a> = CreateDefaultSubobject&lt;UArrowComponent&gt;(TEXT(<span class="stringliteral">&quot;RightHandComp&quot;</span>));</div>
+<div class="line"><span class="lineno">   37</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#af4cd3e4020ae563cb57d0b19378f983a">LeftFootComp</a> = CreateDefaultSubobject&lt;UArrowComponent&gt;(TEXT(<span class="stringliteral">&quot;LeftFootComp&quot;</span>));</div>
+<div class="line"><span class="lineno">   38</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#a59d78c6d900a4846404ee1be745a0716">RightFootComp</a> = CreateDefaultSubobject&lt;UArrowComponent&gt;(TEXT(<span class="stringliteral">&quot;RightFootComp&quot;</span>));</div>
+<div class="line"><span class="lineno">   39</span>}</div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a1e673b4d7f112e8c13a4cc2e4e56254f"><div class="ttname"><a href="classALatteGameCharacter.html#a1e673b4d7f112e8c13a4cc2e4e56254f">ALatteGameCharacter::KnockbackSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UKnockbackSystem &gt; KnockbackSystem</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00189">ALatteGameCharacter.h:189</a></div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a4a4884871a0baece181eca51ac06c331"><div class="ttname"><a href="classALatteGameCharacter.html#a4a4884871a0baece181eca51ac06c331">ALatteGameCharacter::LeftHandComp</a></div><div class="ttdeci">TObjectPtr&lt; class UArrowComponent &gt; LeftHandComp</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00207">ALatteGameCharacter.h:207</a></div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a4c49d6c6b92026c94d8c8faf6fb7aa86"><div class="ttname"><a href="classALatteGameCharacter.html#a4c49d6c6b92026c94d8c8faf6fb7aa86">ALatteGameCharacter::StatSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UStatSystem &gt; StatSystem</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00185">ALatteGameCharacter.h:185</a></div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a59d78c6d900a4846404ee1be745a0716"><div class="ttname"><a href="classALatteGameCharacter.html#a59d78c6d900a4846404ee1be745a0716">ALatteGameCharacter::RightFootComp</a></div><div class="ttdeci">TObjectPtr&lt; class UArrowComponent &gt; RightFootComp</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00213">ALatteGameCharacter.h:213</a></div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a814db96eba6db97c12bf807432c0bff6"><div class="ttname"><a href="classALatteGameCharacter.html#a814db96eba6db97c12bf807432c0bff6">ALatteGameCharacter::HitStopSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UHitStopSystem &gt; HitStopSystem</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00187">ALatteGameCharacter.h:187</a></div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html_ae60b022333ac3e8e6ddd9d84d5b04e6f"><div class="ttname"><a href="classALatteGameCharacter.html#ae60b022333ac3e8e6ddd9d84d5b04e6f">ALatteGameCharacter::RightHandComp</a></div><div class="ttdeci">TObjectPtr&lt; class UArrowComponent &gt; RightHandComp</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00209">ALatteGameCharacter.h:209</a></div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html_af4cb9228fd652dc8be152a03d0d7fc4c"><div class="ttname"><a href="classALatteGameCharacter.html#af4cb9228fd652dc8be152a03d0d7fc4c">ALatteGameCharacter::FlySystem</a></div><div class="ttdeci">TObjectPtr&lt; class UFlySystem &gt; FlySystem</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00191">ALatteGameCharacter.h:191</a></div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html_af4cd3e4020ae563cb57d0b19378f983a"><div class="ttname"><a href="classALatteGameCharacter.html#af4cd3e4020ae563cb57d0b19378f983a">ALatteGameCharacter::LeftFootComp</a></div><div class="ttdeci">TObjectPtr&lt; class UArrowComponent &gt; LeftFootComp</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00211">ALatteGameCharacter.h:211</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ALatteGameCharacter_8h_source.html#l00191">FlySystem</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00187">HitStopSystem</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00189">KnockbackSystem</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00211">LeftFootComp</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00207">LeftHandComp</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00213">RightFootComp</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00209">RightHandComp</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00185">StatSystem</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">멤버 함수 문서화</h2>
+<a id="a1a31ffd850e57a0229a447a8e594723d" name="a1a31ffd850e57a0229a447a8e594723d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a31ffd850e57a0229a447a8e594723d">&#9670;&#160;</a></span>BeginPlay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ALatteGameCharacter::BeginPlay </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>게임 시작 시 서브 시스템을 연결합니다. </p>
+
+<p><a class="el" href="classALattePlayerCharacter.html#aa52a810690111c208bdbbb496b231460">ALattePlayerCharacter</a>에서 재구현되었습니다.</p>
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8cpp_source.html">ALatteGameCharacter.cpp</a> 파일의 <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00041">41</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   42</span>{</div>
+<div class="line"><span class="lineno">   43</span>    Super::BeginPlay();</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#a7ad6dd63de3cb7b6db9e526e67812e17">MoveComp</a> = this-&gt;GetCharacterMovement();</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>    this-&gt;<a class="code hl_function" href="classALatteGameCharacter.html#abefc75095bdce2f9461e7b4341e6d734">SetFallingToWalk</a>();</div>
+<div class="line"><span class="lineno">   48</span> }</div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a7ad6dd63de3cb7b6db9e526e67812e17"><div class="ttname"><a href="classALatteGameCharacter.html#a7ad6dd63de3cb7b6db9e526e67812e17">ALatteGameCharacter::MoveComp</a></div><div class="ttdeci">TObjectPtr&lt; class UCharacterMovementComponent &gt; MoveComp</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00201">ALatteGameCharacter.h:201</a></div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html_abefc75095bdce2f9461e7b4341e6d734"><div class="ttname"><a href="classALatteGameCharacter.html#abefc75095bdce2f9461e7b4341e6d734">ALatteGameCharacter::SetFallingToWalk</a></div><div class="ttdeci">void SetFallingToWalk()</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8cpp_source.html#l00260">ALatteGameCharacter.cpp:260</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ALatteGameCharacter_8h_source.html#l00201">MoveComp</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00260">SetFallingToWalk()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classALatteGameCharacter_a1a31ffd850e57a0229a447a8e594723d_cgraph.svg" width="392" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="af084fe37e0028fb8b4a4f804569141fc" name="af084fe37e0028fb8b4a4f804569141fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af084fe37e0028fb8b4a4f804569141fc">&#9670;&#160;</a></span>BindMontageDelegates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ALatteGameCharacter::BindMontageDelegates </td>
+          <td>(</td>
+          <td class="paramtype">UAnimInstance *&#160;</td>
+          <td class="paramname"><em>Anim</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>몽타주 알림 처리 델리게이트를 바인딩합니다. </p>
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8cpp_source.html">ALatteGameCharacter.cpp</a> 파일의 <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00124">124</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  125</span>{</div>
+<div class="line"><span class="lineno">  126</span>    <span class="keywordflow">if</span> (!Anim || <a class="code hl_variable" href="classALatteGameCharacter.html#aa9c2d5e3a16d657866f98eaa539f4e16">bDelegatesBound</a>)</div>
+<div class="line"><span class="lineno">  127</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  128</span> </div>
+<div class="line"><span class="lineno">  129</span>    <span class="comment">// 중복 방지용으로 먼저 제거</span></div>
+<div class="line"><span class="lineno">  130</span>    Anim-&gt;OnPlayMontageNotifyBegin.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classALatteGameCharacter.html#a66a03203587c2c41452cb3b64613fc5f">ALatteGameCharacter::OnMontageNotifyBegin</a>);</div>
+<div class="line"><span class="lineno">  131</span>    Anim-&gt;OnPlayMontageNotifyBegin.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classALatteGameCharacter.html#a66a03203587c2c41452cb3b64613fc5f">ALatteGameCharacter::OnMontageNotifyBegin</a>);</div>
+<div class="line"><span class="lineno">  132</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#aa9c2d5e3a16d657866f98eaa539f4e16">bDelegatesBound</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  133</span>}</div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a66a03203587c2c41452cb3b64613fc5f"><div class="ttname"><a href="classALatteGameCharacter.html#a66a03203587c2c41452cb3b64613fc5f">ALatteGameCharacter::OnMontageNotifyBegin</a></div><div class="ttdeci">void OnMontageNotifyBegin(FName NotifyName, const FBranchingPointNotifyPayload &amp;Payload)</div><div class="ttdoc">몽타주 노티파이 시작 시 호출되는 콜백입니다.</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8cpp_source.html#l00146">ALatteGameCharacter.cpp:146</a></div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html_aa9c2d5e3a16d657866f98eaa539f4e16"><div class="ttname"><a href="classALatteGameCharacter.html#aa9c2d5e3a16d657866f98eaa539f4e16">ALatteGameCharacter::bDelegatesBound</a></div><div class="ttdeci">bool bDelegatesBound</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00252">ALatteGameCharacter.h:252</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ALatteGameCharacter_8h_source.html#l00252">bDelegatesBound</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00146">OnMontageNotifyBegin()</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00060">SetupCharacterFromType()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classALatteGameCharacter_af084fe37e0028fb8b4a4f804569141fc_cgraph.svg" width="423" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classALatteGameCharacter_af084fe37e0028fb8b4a4f804569141fc_icgraph.svg" width="435" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a368a07e9bce881abd7ea64e8f3a30cf8" name="a368a07e9bce881abd7ea64e8f3a30cf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a368a07e9bce881abd7ea64e8f3a30cf8">&#9670;&#160;</a></span>CurHP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FORCEINLINE float ALatteGameCharacter::CurHP </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>Per</em> = <code>1.0f</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00086">86</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   87</span>    {</div>
+<div class="line"><span class="lineno">   88</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classALatteGameCharacter.html#a4c49d6c6b92026c94d8c8faf6fb7aa86">StatSystem</a>-&gt;GetCurHP() * Per;</div>
+<div class="line"><span class="lineno">   89</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5e257151374a9fb8dbcb056477caa983" name="a5e257151374a9fb8dbcb056477caa983"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e257151374a9fb8dbcb056477caa983">&#9670;&#160;</a></span>EndPlay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ALatteGameCharacter::EndPlay </td>
+          <td>(</td>
+          <td class="paramtype">const EEndPlayReason::Type&#160;</td>
+          <td class="paramname"><em>EndPlayReason</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>플레이 종료 시 리소스를 해제합니다. </p>
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8cpp_source.html">ALatteGameCharacter.cpp</a> 파일의 <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00050">50</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>{</div>
+<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classALatteGameCharacter.html#a49f4c2f77d4cd93afbd7468dc7299a9b">AnimInstance</a> &amp;&amp; <a class="code hl_variable" href="classALatteGameCharacter.html#aa9c2d5e3a16d657866f98eaa539f4e16">bDelegatesBound</a>)</div>
+<div class="line"><span class="lineno">   53</span>        <a class="code hl_function" href="classALatteGameCharacter.html#a09792ae60c1ef81d3b6dab098b0ebec2">UnbindMontageDelegates</a>(<a class="code hl_variable" href="classALatteGameCharacter.html#a49f4c2f77d4cd93afbd7468dc7299a9b">AnimInstance</a>);</div>
+<div class="line"><span class="lineno">   54</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#aa9c2d5e3a16d657866f98eaa539f4e16">bDelegatesBound</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   55</span>    </div>
+<div class="line"><span class="lineno">   56</span>    Super::EndPlay(EndPlayReason);</div>
+<div class="line"><span class="lineno">   57</span>}</div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a09792ae60c1ef81d3b6dab098b0ebec2"><div class="ttname"><a href="classALatteGameCharacter.html#a09792ae60c1ef81d3b6dab098b0ebec2">ALatteGameCharacter::UnbindMontageDelegates</a></div><div class="ttdeci">void UnbindMontageDelegates(UAnimInstance *Anim)</div><div class="ttdoc">몽타주 알림 델리게이트 연결을 해제합니다.</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8cpp_source.html#l00135">ALatteGameCharacter.cpp:135</a></div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a49f4c2f77d4cd93afbd7468dc7299a9b"><div class="ttname"><a href="classALatteGameCharacter.html#a49f4c2f77d4cd93afbd7468dc7299a9b">ALatteGameCharacter::AnimInstance</a></div><div class="ttdeci">TObjectPtr&lt; class UAnimInstance &gt; AnimInstance</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00204">ALatteGameCharacter.h:204</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ALatteGameCharacter_8h_source.html#l00204">AnimInstance</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00252">bDelegatesBound</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00135">UnbindMontageDelegates()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classALatteGameCharacter_a5e257151374a9fb8dbcb056477caa983_cgraph.svg" width="654" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a57d3842926e5a8e4c7dabfaa010346e9" name="a57d3842926e5a8e4c7dabfaa010346e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57d3842926e5a8e4c7dabfaa010346e9">&#9670;&#160;</a></span>GetAnimInstance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FORCEINLINE UAnimInstance * ALatteGameCharacter::GetAnimInstance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00167">167</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  168</span>    {</div>
+<div class="line"><span class="lineno">  169</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classALatteGameCharacter.html#a49f4c2f77d4cd93afbd7468dc7299a9b">AnimInstance</a>;</div>
+<div class="line"><span class="lineno">  170</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a492d8892a3ecec80fe8d3f0282bbc81f" name="a492d8892a3ecec80fe8d3f0282bbc81f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a492d8892a3ecec80fe8d3f0282bbc81f">&#9670;&#160;</a></span>GetAttackDamage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FORCEINLINE float ALatteGameCharacter::GetAttackDamage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00160">160</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  161</span>    {</div>
+<div class="line"><span class="lineno">  162</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classALatteGameCharacter.html#a4c49d6c6b92026c94d8c8faf6fb7aa86">StatSystem</a>-&gt;GetAttackDamage();</div>
+<div class="line"><span class="lineno">  163</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aba8755db4e0ad3fb4fc313b86d37e275" name="aba8755db4e0ad3fb4fc313b86d37e275"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba8755db4e0ad3fb4fc313b86d37e275">&#9670;&#160;</a></span>GetBodyPart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FORCEINLINE UArrowComponent * ALatteGameCharacter::GetBodyPart </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="EBodyPartType_8h.html#a69a09297e20131de3e863c109dd59454">EBodyPartType</a>&#160;</td>
+          <td class="paramname"><em>Part</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00048">48</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>    {</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">switch</span> (Part)</div>
+<div class="line"><span class="lineno">   51</span>        {</div>
+<div class="line"><span class="lineno">   52</span>        <span class="keywordflow">case</span> EBodyPartType::Hand_L: <span class="keywordflow">return</span> <a class="code hl_variable" href="classALatteGameCharacter.html#a4a4884871a0baece181eca51ac06c331">LeftHandComp</a>;</div>
+<div class="line"><span class="lineno">   53</span>        <span class="keywordflow">case</span> EBodyPartType::Hand_R: <span class="keywordflow">return</span> <a class="code hl_variable" href="classALatteGameCharacter.html#ae60b022333ac3e8e6ddd9d84d5b04e6f">RightHandComp</a>;</div>
+<div class="line"><span class="lineno">   54</span>        <span class="keywordflow">case</span> EBodyPartType::Foot_L: <span class="keywordflow">return</span> <a class="code hl_variable" href="classALatteGameCharacter.html#af4cd3e4020ae563cb57d0b19378f983a">LeftFootComp</a>;</div>
+<div class="line"><span class="lineno">   55</span>        <span class="keywordflow">case</span> EBodyPartType::Foot_R: <span class="keywordflow">return</span> <a class="code hl_variable" href="classALatteGameCharacter.html#a59d78c6d900a4846404ee1be745a0716">RightFootComp</a>;</div>
+<div class="line"><span class="lineno">   56</span>        <span class="keywordflow">default</span>:    <span class="keywordflow">return</span> <a class="code hl_variable" href="classALatteGameCharacter.html#a4a4884871a0baece181eca51ac06c331">LeftHandComp</a>;</div>
+<div class="line"><span class="lineno">   57</span>        }</div>
+<div class="line"><span class="lineno">   58</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1bb2b6fd26e4f366715a936deec7f45a" name="a1bb2b6fd26e4f366715a936deec7f45a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bb2b6fd26e4f366715a936deec7f45a">&#9670;&#160;</a></span>GetCharacterType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FORCEINLINE <a class="el" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a> ALatteGameCharacter::GetCharacterType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00104">104</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  105</span>    {</div>
+<div class="line"><span class="lineno">  106</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classALatteGameCharacter.html#a88853d650a94899ae90160823507e444">CharacterType</a>;</div>
+<div class="line"><span class="lineno">  107</span>    }</div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a88853d650a94899ae90160823507e444"><div class="ttname"><a href="classALatteGameCharacter.html#a88853d650a94899ae90160823507e444">ALatteGameCharacter::CharacterType</a></div><div class="ttdeci">ECharacterType CharacterType</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00255">ALatteGameCharacter.h:255</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab2168e299bdf3c2a387eeae92f3cb67e" name="ab2168e299bdf3c2a387eeae92f3cb67e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2168e299bdf3c2a387eeae92f3cb67e">&#9670;&#160;</a></span>IsAttackEnable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ALatteGameCharacter::IsAttackEnable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a470a90a3c1b1ffbf2a2369eebf792898" name="a470a90a3c1b1ffbf2a2369eebf792898"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a470a90a3c1b1ffbf2a2369eebf792898">&#9670;&#160;</a></span>IsCombatResult()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FORCEINLINE bool ALatteGameCharacter::IsCombatResult </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00068">68</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   69</span>    {</div>
+<div class="line"><span class="lineno">   70</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classALatteGameCharacter.html#a88a8f9a30412f9a3b54d1d401722ea37">bIsCombatResult</a>;</div>
+<div class="line"><span class="lineno">   71</span>    };</div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a88a8f9a30412f9a3b54d1d401722ea37"><div class="ttname"><a href="classALatteGameCharacter.html#a88a8f9a30412f9a3b54d1d401722ea37">ALatteGameCharacter::bIsCombatResult</a></div><div class="ttdeci">bool bIsCombatResult</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00231">ALatteGameCharacter.h:231</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1bd10da1f362bcc692c19433667df0f1" name="a1bd10da1f362bcc692c19433667df0f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bd10da1f362bcc692c19433667df0f1">&#9670;&#160;</a></span>IsCombatStart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FORCEINLINE bool ALatteGameCharacter::IsCombatStart </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00062">62</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   63</span>    {</div>
+<div class="line"><span class="lineno">   64</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classALatteGameCharacter.html#a6de7568896e79c0d5108926c0306ab9f">bIsCombatStart</a>;</div>
+<div class="line"><span class="lineno">   65</span>    };</div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a6de7568896e79c0d5108926c0306ab9f"><div class="ttname"><a href="classALatteGameCharacter.html#a6de7568896e79c0d5108926c0306ab9f">ALatteGameCharacter::bIsCombatStart</a></div><div class="ttdeci">bool bIsCombatStart</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00228">ALatteGameCharacter.h:228</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7a51994ad06ce660fdf5e1736de08fab" name="a7a51994ad06ce660fdf5e1736de08fab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a51994ad06ce660fdf5e1736de08fab">&#9670;&#160;</a></span>IsControlEnable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ALatteGameCharacter::IsControlEnable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>캐릭터의 조작 가능 상태를 확인합니다. </p>
+<p>캐릭터가 피격, 사망, 또는 다른 행동으로 인해 조종 불가능한 상태인지 확인합니다. </p><dl class="section return"><dt>반환값</dt><dd>조작 가능하면 true, 아니면 false를 반환합니다. </dd></dl>
+
+</div>
+</div>
+<a id="ab068c2db0287bfa4a4de7d78292ad2c2" name="ab068c2db0287bfa4a4de7d78292ad2c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab068c2db0287bfa4a4de7d78292ad2c2">&#9670;&#160;</a></span>IsDead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ALatteGameCharacter::IsDead </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af46c970a456fc7a6422dab950df4e82d" name="af46c970a456fc7a6422dab950df4e82d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af46c970a456fc7a6422dab950df4e82d">&#9670;&#160;</a></span>IsEnemy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FORCEINLINE bool ALatteGameCharacter::IsEnemy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00080">80</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   81</span>    {</div>
+<div class="line"><span class="lineno">   82</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classALatteGameCharacter.html#a4c49d6c6b92026c94d8c8faf6fb7aa86">StatSystem</a>-&gt;IsPlayer() == <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   83</span>    };</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8d3f3177604353eae9c281c916a0e65d" name="a8d3f3177604353eae9c281c916a0e65d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d3f3177604353eae9c281c916a0e65d">&#9670;&#160;</a></span>IsHitting()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ALatteGameCharacter::IsHitting </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0e14eaf0c676199a3088582ecf9ebeca" name="a0e14eaf0c676199a3088582ecf9ebeca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e14eaf0c676199a3088582ecf9ebeca">&#9670;&#160;</a></span>IsHolding()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FORCEINLINE bool ALatteGameCharacter::IsHolding </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00111">111</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  112</span>    {</div>
+<div class="line"><span class="lineno">  113</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classALatteGameCharacter.html#a2e5e9fc814a34c608922c669885990e3">bIsHold</a>;</div>
+<div class="line"><span class="lineno">  114</span>    };</div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a2e5e9fc814a34c608922c669885990e3"><div class="ttname"><a href="classALatteGameCharacter.html#a2e5e9fc814a34c608922c669885990e3">ALatteGameCharacter::bIsHold</a></div><div class="ttdeci">bool bIsHold</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00240">ALatteGameCharacter.h:240</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a539c0faef7c7b81883e728b850216885" name="a539c0faef7c7b81883e728b850216885"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a539c0faef7c7b81883e728b850216885">&#9670;&#160;</a></span>IsInSight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ALatteGameCharacter::IsInSight </td>
+          <td>(</td>
+          <td class="paramtype">const AActor *&#160;</td>
+          <td class="paramname"><em>Other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8cpp_source.html">ALatteGameCharacter.cpp</a> 파일의 <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00199">199</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  200</span>{</div>
+<div class="line"><span class="lineno">  201</span>    <span class="keyword">const</span> FVector SelfLoc = GetActorLocation();</div>
+<div class="line"><span class="lineno">  202</span>    <span class="keyword">const</span> FVector OtherLoc = Other-&gt;GetActorLocation();</div>
+<div class="line"><span class="lineno">  203</span>    <span class="keyword">const</span> FVector ToOther = OtherLoc - SelfLoc;</div>
+<div class="line"><span class="lineno">  204</span> </div>
+<div class="line"><span class="lineno">  205</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> Dist = ToOther.Size();</div>
+<div class="line"><span class="lineno">  206</span>    <span class="keywordflow">if</span> (Dist &gt; <a class="code hl_variable" href="classALatteGameCharacter.html#a74611b9329afcca5a7399cf1740cbaa5">SightRange</a>)</div>
+<div class="line"><span class="lineno">  207</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  208</span> </div>
+<div class="line"><span class="lineno">  209</span>    <span class="keyword">const</span> FVector Fwd = GetActorForwardVector();</div>
+<div class="line"><span class="lineno">  210</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> CosHalfFOV = FMath::Cos(FMath::DegreesToRadians(<a class="code hl_variable" href="classALatteGameCharacter.html#aae5fe34866a83b772282e9d995653238">SightHalfFOVDeg</a>));</div>
+<div class="line"><span class="lineno">  211</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> CosAngle = FVector::DotProduct(Fwd, ToOther.GetSafeNormal());</div>
+<div class="line"><span class="lineno">  212</span>    <span class="keywordflow">if</span> (CosAngle &lt; CosHalfFOV)</div>
+<div class="line"><span class="lineno">  213</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  214</span> </div>
+<div class="line"><span class="lineno">  215</span>    FHitResult <a class="code hl_enumvalue" href="EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d">Hit</a>;</div>
+<div class="line"><span class="lineno">  216</span>    FCollisionQueryParams Params(SCENE_QUERY_STAT(PlayerSightLOS), <span class="keyword">false</span>, <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  217</span> </div>
+<div class="line"><span class="lineno">  218</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> bBlocked = GetWorld()-&gt;LineTraceSingleByChannel(</div>
+<div class="line"><span class="lineno">  219</span>        <a class="code hl_enumvalue" href="EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d">Hit</a>,</div>
+<div class="line"><span class="lineno">  220</span>        SelfLoc + FVector(0,0,50),</div>
+<div class="line"><span class="lineno">  221</span>        OtherLoc + FVector(0,0,50),</div>
+<div class="line"><span class="lineno">  222</span>        ECC_Visibility,</div>
+<div class="line"><span class="lineno">  223</span>        Params</div>
+<div class="line"><span class="lineno">  224</span>    );</div>
+<div class="line"><span class="lineno">  225</span>    </div>
+<div class="line"><span class="lineno">  226</span>    <span class="keywordflow">if</span> (bBlocked &amp;&amp; <a class="code hl_enumvalue" href="EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d">Hit</a>.GetActor() != Other)</div>
+<div class="line"><span class="lineno">  227</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  228</span>    </div>
+<div class="line"><span class="lineno">  229</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  230</span>}</div>
+<div class="ttc" id="aEVFXType_8h_html_af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d"><div class="ttname"><a href="EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d">EVFXType::Hit</a></div><div class="ttdeci">@ Hit</div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a74611b9329afcca5a7399cf1740cbaa5"><div class="ttname"><a href="classALatteGameCharacter.html#a74611b9329afcca5a7399cf1740cbaa5">ALatteGameCharacter::SightRange</a></div><div class="ttdeci">float SightRange</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00216">ALatteGameCharacter.h:216</a></div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html_aae5fe34866a83b772282e9d995653238"><div class="ttname"><a href="classALatteGameCharacter.html#aae5fe34866a83b772282e9d995653238">ALatteGameCharacter::SightHalfFOVDeg</a></div><div class="ttdeci">float SightHalfFOVDeg</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00218">ALatteGameCharacter.h:218</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d">Hit</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00218">SightHalfFOVDeg</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00216">SightRange</a>.</p>
+
+</div>
+</div>
+<a id="a976fcda0f54b33a994b8b76a69b3823d" name="a976fcda0f54b33a994b8b76a69b3823d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a976fcda0f54b33a994b8b76a69b3823d">&#9670;&#160;</a></span>IsMoveEnable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ALatteGameCharacter::IsMoveEnable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="addebaa1071ec33a1a98e79243d7d73c9" name="addebaa1071ec33a1a98e79243d7d73c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addebaa1071ec33a1a98e79243d7d73c9">&#9670;&#160;</a></span>IsPlayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FORCEINLINE bool ALatteGameCharacter::IsPlayer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00074">74</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   75</span>    {</div>
+<div class="line"><span class="lineno">   76</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classALatteGameCharacter.html#a4c49d6c6b92026c94d8c8faf6fb7aa86">StatSystem</a>-&gt;IsPlayer();</div>
+<div class="line"><span class="lineno">   77</span>    };</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa38df44bc1f0cf154883281fc93cd520" name="aa38df44bc1f0cf154883281fc93cd520"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa38df44bc1f0cf154883281fc93cd520">&#9670;&#160;</a></span>IsWinner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FORCEINLINE bool ALatteGameCharacter::IsWinner </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00098">98</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   99</span>    {</div>
+<div class="line"><span class="lineno">  100</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classALatteGameCharacter.html#ac9ba053272760c434581a5461dc35112">bIsWinner</a>;</div>
+<div class="line"><span class="lineno">  101</span>    };</div>
+<div class="ttc" id="aclassALatteGameCharacter_html_ac9ba053272760c434581a5461dc35112"><div class="ttname"><a href="classALatteGameCharacter.html#ac9ba053272760c434581a5461dc35112">ALatteGameCharacter::bIsWinner</a></div><div class="ttdeci">bool bIsWinner</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00234">ALatteGameCharacter.h:234</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1607c5c7ed6bbfe6897862a1242fd1c0" name="a1607c5c7ed6bbfe6897862a1242fd1c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1607c5c7ed6bbfe6897862a1242fd1c0">&#9670;&#160;</a></span>MaxHP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FORCEINLINE float ALatteGameCharacter::MaxHP </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>Per</em> = <code>1.0f</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00092">92</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   93</span>    {</div>
+<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classALatteGameCharacter.html#a4c49d6c6b92026c94d8c8faf6fb7aa86">StatSystem</a>-&gt;GetMaxHP() * Per;</div>
+<div class="line"><span class="lineno">   95</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abe44066eed917effaefebedb7212d176" name="abe44066eed917effaefebedb7212d176"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe44066eed917effaefebedb7212d176">&#9670;&#160;</a></span>OnFlyEnd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ALatteGameCharacter::OnFlyEnd </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALattePlayerCharacter_8cpp_source.html#l00045">ALattePlayerCharacter::BeginPlay()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classALatteGameCharacter_abe44066eed917effaefebedb7212d176_icgraph.svg" width="394" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="af7467acbf785b4abdf6b14f0483dfb9f" name="af7467acbf785b4abdf6b14f0483dfb9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7467acbf785b4abdf6b14f0483dfb9f">&#9670;&#160;</a></span>OnLookTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ALatteGameCharacter::OnLookTarget </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a66a03203587c2c41452cb3b64613fc5f" name="a66a03203587c2c41452cb3b64613fc5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66a03203587c2c41452cb3b64613fc5f">&#9670;&#160;</a></span>OnMontageNotifyBegin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ALatteGameCharacter::OnMontageNotifyBegin </td>
+          <td>(</td>
+          <td class="paramtype">FName&#160;</td>
+          <td class="paramname"><em>NotifyName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const FBranchingPointNotifyPayload &amp;&#160;</td>
+          <td class="paramname"><em>Payload</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>몽타주 노티파이 시작 시 호출되는 콜백입니다. </p>
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8cpp_source.html">ALatteGameCharacter.cpp</a> 파일의 <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00146">146</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  147</span>{</div>
+<div class="line"><span class="lineno">  148</span>    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;Notify Fired: %s&quot;</span>), *NotifyName.ToString());</div>
+<div class="line"><span class="lineno">  149</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00124">BindMontageDelegates()</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00135">UnbindMontageDelegates()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classALatteGameCharacter_a66a03203587c2c41452cb3b64613fc5f_icgraph.svg" width="100%" height="386"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a99c5842026c787b3cb7dd7eb65bb69a5" name="a99c5842026c787b3cb7dd7eb65bb69a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99c5842026c787b3cb7dd7eb65bb69a5">&#9670;&#160;</a></span>PlayTargetMontage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ALatteGameCharacter::PlayTargetMontage </td>
+          <td>(</td>
+          <td class="paramtype">UAnimMontage *&#160;</td>
+          <td class="paramname"><em>AnimMontage</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8cpp_source.html">ALatteGameCharacter.cpp</a> 파일의 <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00307">307</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  308</span>{</div>
+<div class="line"><span class="lineno">  309</span>    <span class="keywordflow">if</span> ( IsValid(<a class="code hl_variable" href="classALatteGameCharacter.html#a49f4c2f77d4cd93afbd7468dc7299a9b">AnimInstance</a>) &amp;&amp; IsValid(AnimMontage) )</div>
+<div class="line"><span class="lineno">  310</span>    {</div>
+<div class="line"><span class="lineno">  311</span>        <a class="code hl_variable" href="classALatteGameCharacter.html#a49f4c2f77d4cd93afbd7468dc7299a9b">AnimInstance</a>-&gt;Montage_Play(</div>
+<div class="line"><span class="lineno">  312</span>            AnimMontage,</div>
+<div class="line"><span class="lineno">  313</span>            1.0f,</div>
+<div class="line"><span class="lineno">  314</span>            EMontagePlayReturnType::MontageLength,</div>
+<div class="line"><span class="lineno">  315</span>            0.f,</div>
+<div class="line"><span class="lineno">  316</span>            <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  317</span>    }</div>
+<div class="line"><span class="lineno">  318</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  319</span>    {</div>
+<div class="line"><span class="lineno">  320</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;Failed to PlayMontage&quot;</span>));</div>
+<div class="line"><span class="lineno">  321</span>    }</div>
+<div class="line"><span class="lineno">  322</span>}</div>
+<div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ALatteGameCharacter_8h_source.html#l00204">AnimInstance</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00293">PlayTypeMontage()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classALatteGameCharacter_a99c5842026c787b3cb7dd7eb65bb69a5_icgraph.svg" width="392" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a503621b2fa4c41cad31d65b608f9a072" name="a503621b2fa4c41cad31d65b608f9a072"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a503621b2fa4c41cad31d65b608f9a072">&#9670;&#160;</a></span>PlayTypeMontage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ALatteGameCharacter::PlayTypeMontage </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="EMontageType_8h.html#a33d4f5f333936ce33b59c38e89382372">EMontageType</a>&#160;</td>
+          <td class="paramname"><em>Type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8cpp_source.html">ALatteGameCharacter.cpp</a> 파일의 <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00293">293</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  294</span>{</div>
+<div class="line"><span class="lineno">  295</span>    UAnimMontage* AnimMontage = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  296</span> </div>
+<div class="line"><span class="lineno">  297</span>    <span class="keywordflow">switch</span> (Type)</div>
+<div class="line"><span class="lineno">  298</span>    {</div>
+<div class="line"><span class="lineno">  299</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="EMontageType_8h.html#a33d4f5f333936ce33b59c38e89382372a6097f89e3092d4ccd249c9d479785c1f">EMontageType::Death</a>:</div>
+<div class="line"><span class="lineno">  300</span>        AnimMontage = <a class="code hl_variable" href="classALatteGameCharacter.html#a8e1e9b4fd234cb2b2e627b219f9d9f84">DeathMontage</a>;</div>
+<div class="line"><span class="lineno">  301</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  302</span>    }</div>
+<div class="line"><span class="lineno">  303</span> </div>
+<div class="line"><span class="lineno">  304</span>    this-&gt;<a class="code hl_function" href="classALatteGameCharacter.html#a99c5842026c787b3cb7dd7eb65bb69a5">PlayTargetMontage</a>(AnimMontage);</div>
+<div class="line"><span class="lineno">  305</span>}</div>
+<div class="ttc" id="aEMontageType_8h_html_a33d4f5f333936ce33b59c38e89382372a6097f89e3092d4ccd249c9d479785c1f"><div class="ttname"><a href="EMontageType_8h.html#a33d4f5f333936ce33b59c38e89382372a6097f89e3092d4ccd249c9d479785c1f">EMontageType::Death</a></div><div class="ttdeci">@ Death</div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a8e1e9b4fd234cb2b2e627b219f9d9f84"><div class="ttname"><a href="classALatteGameCharacter.html#a8e1e9b4fd234cb2b2e627b219f9d9f84">ALatteGameCharacter::DeathMontage</a></div><div class="ttdeci">TObjectPtr&lt; class UAnimMontage &gt; DeathMontage</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00249">ALatteGameCharacter.h:249</a></div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a99c5842026c787b3cb7dd7eb65bb69a5"><div class="ttname"><a href="classALatteGameCharacter.html#a99c5842026c787b3cb7dd7eb65bb69a5">ALatteGameCharacter::PlayTargetMontage</a></div><div class="ttdeci">void PlayTargetMontage(UAnimMontage *AnimMontage)</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8cpp_source.html#l00307">ALatteGameCharacter.cpp:307</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="EMontageType_8h.html#a33d4f5f333936ce33b59c38e89382372a6097f89e3092d4ccd249c9d479785c1f">Death</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00249">DeathMontage</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00307">PlayTargetMontage()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classALatteGameCharacter_a503621b2fa4c41cad31d65b608f9a072_cgraph.svg" width="392" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a175b9432f78b5e7934249f6ff629eb92" name="a175b9432f78b5e7934249f6ff629eb92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a175b9432f78b5e7934249f6ff629eb92">&#9670;&#160;</a></span>RecoveryMovementMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ALatteGameCharacter::RecoveryMovementMode </td>
+          <td>(</td>
+          <td class="paramtype">const EMovementMode&#160;</td>
+          <td class="paramname"><em>InMovementMode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8cpp_source.html">ALatteGameCharacter.cpp</a> 파일의 <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00270">270</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  271</span>{</div>
+<div class="line"><span class="lineno">  272</span>    <span class="keywordflow">if</span> ( InMovementMode == MOVE_None)</div>
+<div class="line"><span class="lineno">  273</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  274</span>    </div>
+<div class="line"><span class="lineno">  275</span>    <span class="keyword">auto</span> Movement = this-&gt;GetCharacterMovement();</div>
+<div class="line"><span class="lineno">  276</span> </div>
+<div class="line"><span class="lineno">  277</span>    <span class="keywordflow">if</span> ( InMovementMode == MOVE_Flying )</div>
+<div class="line"><span class="lineno">  278</span>    {</div>
+<div class="line"><span class="lineno">  279</span>        Movement-&gt;SetMovementMode( EMovementMode::MOVE_Flying );</div>
+<div class="line"><span class="lineno">  280</span>        this-&gt;bUseControllerRotationYaw = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  281</span>        this-&gt;bUseControllerRotationPitch = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  282</span>        Movement-&gt;bOrientRotationToMovement = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  283</span>    }</div>
+<div class="line"><span class="lineno">  284</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  285</span>    {</div>
+<div class="line"><span class="lineno">  286</span>        Movement-&gt;SetMovementMode( InMovementMode );</div>
+<div class="line"><span class="lineno">  287</span>        this-&gt;bUseControllerRotationYaw = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  288</span>        this-&gt;bUseControllerRotationPitch = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  289</span>        Movement-&gt;bOrientRotationToMovement = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  290</span>    }</div>
+<div class="line"><span class="lineno">  291</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abefc75095bdce2f9461e7b4341e6d734" name="abefc75095bdce2f9461e7b4341e6d734"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abefc75095bdce2f9461e7b4341e6d734">&#9670;&#160;</a></span>SetFallingToWalk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ALatteGameCharacter::SetFallingToWalk </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8cpp_source.html">ALatteGameCharacter.cpp</a> 파일의 <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00260">260</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  261</span>{</div>
+<div class="line"><span class="lineno">  262</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#a7ad6dd63de3cb7b6db9e526e67812e17">MoveComp</a>-&gt;SetMovementMode( EMovementMode::MOVE_Falling );</div>
+<div class="line"><span class="lineno">  263</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#a04641d377d6f741356b91b1a83f75152">PrevMoveMode</a> = EMovementMode::MOVE_Falling;</div>
+<div class="line"><span class="lineno">  264</span> </div>
+<div class="line"><span class="lineno">  265</span>    this-&gt;bUseControllerRotationYaw = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  266</span>    this-&gt;bUseControllerRotationPitch = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  267</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#a7ad6dd63de3cb7b6db9e526e67812e17">MoveComp</a>-&gt;bOrientRotationToMovement = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  268</span>}</div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a04641d377d6f741356b91b1a83f75152"><div class="ttname"><a href="classALatteGameCharacter.html#a04641d377d6f741356b91b1a83f75152">ALatteGameCharacter::PrevMoveMode</a></div><div class="ttdeci">TEnumAsByte&lt; EMovementMode &gt; PrevMoveMode</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00258">ALatteGameCharacter.h:258</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ALatteGameCharacter_8h_source.html#l00201">MoveComp</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00258">PrevMoveMode</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00041">BeginPlay()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classALatteGameCharacter_abefc75095bdce2f9461e7b4341e6d734_icgraph.svg" width="392" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a405f433d7e8ab5c1f323d23434cd4df4" name="a405f433d7e8ab5c1f323d23434cd4df4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a405f433d7e8ab5c1f323d23434cd4df4">&#9670;&#160;</a></span>SetFlying()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ALatteGameCharacter::SetFlying </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8cpp_source.html">ALatteGameCharacter.cpp</a> 파일의 <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00250">250</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  251</span>{</div>
+<div class="line"><span class="lineno">  252</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#a7ad6dd63de3cb7b6db9e526e67812e17">MoveComp</a>-&gt;SetMovementMode(MOVE_Flying);</div>
+<div class="line"><span class="lineno">  253</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#a04641d377d6f741356b91b1a83f75152">PrevMoveMode</a> = EMovementMode::MOVE_Flying;</div>
+<div class="line"><span class="lineno">  254</span> </div>
+<div class="line"><span class="lineno">  255</span>    this-&gt;bUseControllerRotationYaw = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  256</span>    this-&gt;bUseControllerRotationPitch = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  257</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#a7ad6dd63de3cb7b6db9e526e67812e17">MoveComp</a>-&gt;bOrientRotationToMovement = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  258</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ALatteGameCharacter_8h_source.html#l00201">MoveComp</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00258">PrevMoveMode</a>.</p>
+
+</div>
+</div>
+<a id="af7b54fbe5350760d3b07a83bfa8cb13f" name="af7b54fbe5350760d3b07a83bfa8cb13f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7b54fbe5350760d3b07a83bfa8cb13f">&#9670;&#160;</a></span>SetHold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FORCEINLINE void ALatteGameCharacter::SetHold </td>
+          <td>(</td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>bState</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00117">117</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  118</span>    {</div>
+<div class="line"><span class="lineno">  119</span>        this-&gt;<a class="code hl_variable" href="classALatteGameCharacter.html#a2e5e9fc814a34c608922c669885990e3">bIsHold</a> = bState;</div>
+<div class="line"><span class="lineno">  120</span>    };</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad27fbd16937d45f4b3fde86bdc962d94" name="ad27fbd16937d45f4b3fde86bdc962d94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad27fbd16937d45f4b3fde86bdc962d94">&#9670;&#160;</a></span>SetupCharacterFromType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ALatteGameCharacter::SetupCharacterFromType </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a>&#160;</td>
+          <td class="paramname"><em>Type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>bIsAnother</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8cpp_source.html">ALatteGameCharacter.cpp</a> 파일의 <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00060">60</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   61</span>{</div>
+<div class="line"><span class="lineno">   62</span>    this-&gt;<a class="code hl_variable" href="classALatteGameCharacter.html#a88853d650a94899ae90160823507e444">CharacterType</a> = Type;</div>
+<div class="line"><span class="lineno">   63</span>    </div>
+<div class="line"><span class="lineno">   64</span>    <a class="code hl_struct" href="structFCharacterAssetData.html">FCharacterAssetData</a> Params;</div>
+<div class="line"><span class="lineno">   65</span>    UGameDataManager::Get(GetWorld())-&gt;GetCharacterAssetData(Type, Params);</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">if</span> (Params.<a class="code hl_variable" href="structFCharacterAssetData.html#a4ecdebf4e3a12bbae1a769206a9b6168">CharacterDataAsset</a>.IsValid())</div>
+<div class="line"><span class="lineno">   68</span>        this-&gt;<a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a> = Params.<a class="code hl_variable" href="structFCharacterAssetData.html#a4ecdebf4e3a12bbae1a769206a9b6168">CharacterDataAsset</a>.Get();</div>
+<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   70</span>        this-&gt;<a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a> = Params.<a class="code hl_variable" href="structFCharacterAssetData.html#a4ecdebf4e3a12bbae1a769206a9b6168">CharacterDataAsset</a>.LoadSynchronous();</div>
+<div class="line"><span class="lineno">   71</span> </div>
+<div class="line"><span class="lineno">   72</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">MeshComp</a> = GetMesh();</div>
+<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">if</span> ( IsValid(<a class="code hl_variable" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">MeshComp</a>) )</div>
+<div class="line"><span class="lineno">   74</span>    {</div>
+<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a>-&gt;MeshData.IsValid())</div>
+<div class="line"><span class="lineno">   76</span>            <a class="code hl_variable" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">MeshComp</a>-&gt;SetSkeletalMesh(<a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a>-&gt;MeshData.Get());</div>
+<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   78</span>            <a class="code hl_variable" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">MeshComp</a>-&gt;SetSkeletalMesh(<a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a>-&gt;MeshData.LoadSynchronous());</div>
+<div class="line"><span class="lineno">   79</span> </div>
+<div class="line"><span class="lineno">   80</span>        <a class="code hl_variable" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">MeshComp</a>-&gt;EmptyOverrideMaterials();</div>
+<div class="line"><span class="lineno">   81</span>        <span class="keywordflow">for</span> (int32 i = 0; i &lt; <a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a>-&gt;MaterialArray.Num(); ++i)</div>
+<div class="line"><span class="lineno">   82</span>        {</div>
+<div class="line"><span class="lineno">   83</span>            UMaterialInstanceConstant* MaterialInst = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   84</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a>-&gt;MaterialArray[i].IsValid())</div>
+<div class="line"><span class="lineno">   85</span>                MaterialInst = <a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a>-&gt;MaterialArray[i].Get();</div>
+<div class="line"><span class="lineno">   86</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   87</span>                MaterialInst = <a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a>-&gt;MaterialArray[i].LoadSynchronous();</div>
+<div class="line"><span class="lineno">   88</span> </div>
+<div class="line"><span class="lineno">   89</span>            <span class="keywordflow">if</span> (MaterialInst)</div>
+<div class="line"><span class="lineno">   90</span>            {</div>
+<div class="line"><span class="lineno">   91</span>                <span class="keyword">auto</span> DynamicMat = UMaterialInstanceDynamic::Create(MaterialInst, <a class="code hl_variable" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">MeshComp</a>);</div>
+<div class="line"><span class="lineno">   92</span>                <span class="keywordflow">if</span> (DynamicMat)</div>
+<div class="line"><span class="lineno">   93</span>                {</div>
+<div class="line"><span class="lineno">   94</span>                    <span class="comment">// 1번이 Cloth</span></div>
+<div class="line"><span class="lineno">   95</span>                    <span class="keywordflow">if</span> (i == 1)</div>
+<div class="line"><span class="lineno">   96</span>                        DynamicMat-&gt;SetScalarParameterValue(FName(<span class="stringliteral">&quot;AnotherSide&quot;</span>), bIsAnother ? 1.0f : 0.0f);</div>
+<div class="line"><span class="lineno">   97</span>                    <a class="code hl_variable" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">MeshComp</a>-&gt;SetMaterial(i, DynamicMat);</div>
+<div class="line"><span class="lineno">   98</span>                }</div>
+<div class="line"><span class="lineno">   99</span>            }</div>
+<div class="line"><span class="lineno">  100</span>        }</div>
+<div class="line"><span class="lineno">  101</span>        </div>
+<div class="line"><span class="lineno">  102</span>        <a class="code hl_variable" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">MeshComp</a>-&gt;SetRelativeLocation( <a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a>-&gt;RelativeLocation);</div>
+<div class="line"><span class="lineno">  103</span>        <a class="code hl_variable" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">MeshComp</a>-&gt;SetRelativeRotation(  <a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a>-&gt;RelativeRotator );</div>
+<div class="line"><span class="lineno">  104</span>        <a class="code hl_variable" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">MeshComp</a>-&gt;SetRelativeScale3D( <a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a>-&gt;RelativeScale );</div>
+<div class="line"><span class="lineno">  105</span>        </div>
+<div class="line"><span class="lineno">  106</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a>-&gt;AnimBluePrint.IsValid())</div>
+<div class="line"><span class="lineno">  107</span>            <a class="code hl_variable" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">MeshComp</a>-&gt;SetAnimInstanceClass(<a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a>-&gt;AnimBluePrint.Get());</div>
+<div class="line"><span class="lineno">  108</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  109</span>            <a class="code hl_variable" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">MeshComp</a>-&gt;SetAnimInstanceClass(<a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a>-&gt;AnimBluePrint.LoadSynchronous());</div>
+<div class="line"><span class="lineno">  110</span> </div>
+<div class="line"><span class="lineno">  111</span>        <span class="keyword">auto</span> Rule = FAttachmentTransformRules::SnapToTargetNotIncludingScale;</div>
+<div class="line"><span class="lineno">  112</span>        </div>
+<div class="line"><span class="lineno">  113</span>        <a class="code hl_variable" href="classALatteGameCharacter.html#a4a4884871a0baece181eca51ac06c331">LeftHandComp</a>-&gt;AttachToComponent(<a class="code hl_variable" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">MeshComp</a>, Rule, <a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a>-&gt;LeftHandSocketName);</div>
+<div class="line"><span class="lineno">  114</span>        <a class="code hl_variable" href="classALatteGameCharacter.html#ae60b022333ac3e8e6ddd9d84d5b04e6f">RightHandComp</a>-&gt;AttachToComponent(<a class="code hl_variable" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">MeshComp</a>, Rule, <a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a>-&gt;RightHandSocketName);</div>
+<div class="line"><span class="lineno">  115</span>        <a class="code hl_variable" href="classALatteGameCharacter.html#af4cd3e4020ae563cb57d0b19378f983a">LeftFootComp</a>-&gt;AttachToComponent(<a class="code hl_variable" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">MeshComp</a>, Rule, <a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a>-&gt;LeftFootSocketName);</div>
+<div class="line"><span class="lineno">  116</span>        <a class="code hl_variable" href="classALatteGameCharacter.html#a59d78c6d900a4846404ee1be745a0716">RightFootComp</a>-&gt;AttachToComponent(<a class="code hl_variable" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">MeshComp</a>, Rule, <a class="code hl_variable" href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">CharacterData</a>-&gt;RightFootSocketName);</div>
+<div class="line"><span class="lineno">  117</span> </div>
+<div class="line"><span class="lineno">  118</span>        <a class="code hl_variable" href="classALatteGameCharacter.html#a49f4c2f77d4cd93afbd7468dc7299a9b">AnimInstance</a> = <a class="code hl_variable" href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">MeshComp</a>-&gt;GetAnimInstance();</div>
+<div class="line"><span class="lineno">  119</span>        <a class="code hl_function" href="classALatteGameCharacter.html#af084fe37e0028fb8b4a4f804569141fc">BindMontageDelegates</a>(<a class="code hl_variable" href="classALatteGameCharacter.html#a49f4c2f77d4cd93afbd7468dc7299a9b">AnimInstance</a>);</div>
+<div class="line"><span class="lineno">  120</span>    }</div>
+<div class="line"><span class="lineno">  121</span>}</div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a8830926cd7965b0dece480e564d8f29a"><div class="ttname"><a href="classALatteGameCharacter.html#a8830926cd7965b0dece480e564d8f29a">ALatteGameCharacter::MeshComp</a></div><div class="ttdeci">TObjectPtr&lt; class USkeletalMeshComponent &gt; MeshComp</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00199">ALatteGameCharacter.h:199</a></div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html_a8e6264c3944cae661cfafd2c93e2569c"><div class="ttname"><a href="classALatteGameCharacter.html#a8e6264c3944cae661cfafd2c93e2569c">ALatteGameCharacter::CharacterData</a></div><div class="ttdeci">TObjectPtr&lt; class UCharacterData &gt; CharacterData</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8h_source.html#l00244">ALatteGameCharacter.h:244</a></div></div>
+<div class="ttc" id="aclassALatteGameCharacter_html_af084fe37e0028fb8b4a4f804569141fc"><div class="ttname"><a href="classALatteGameCharacter.html#af084fe37e0028fb8b4a4f804569141fc">ALatteGameCharacter::BindMontageDelegates</a></div><div class="ttdeci">void BindMontageDelegates(UAnimInstance *Anim)</div><div class="ttdoc">몽타주 알림 처리 델리게이트를 바인딩합니다.</div><div class="ttdef"><b>Definition</b> <a href="ALatteGameCharacter_8cpp_source.html#l00124">ALatteGameCharacter.cpp:124</a></div></div>
+<div class="ttc" id="astructFCharacterAssetData_html"><div class="ttname"><a href="structFCharacterAssetData.html">FCharacterAssetData</a></div><div class="ttdef"><b>Definition</b> <a href="FCharacterAssetData_8h_source.html#l00013">FCharacterAssetData.h:14</a></div></div>
+<div class="ttc" id="astructFCharacterAssetData_html_a4ecdebf4e3a12bbae1a769206a9b6168"><div class="ttname"><a href="structFCharacterAssetData.html#a4ecdebf4e3a12bbae1a769206a9b6168">FCharacterAssetData::CharacterDataAsset</a></div><div class="ttdeci">TSoftObjectPtr&lt; class UCharacterData &gt; CharacterDataAsset</div><div class="ttdef"><b>Definition</b> <a href="FCharacterAssetData_8h_source.html#l00021">FCharacterAssetData.h:21</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ALatteGameCharacter_8h_source.html#l00204">AnimInstance</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00124">BindMontageDelegates()</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00244">CharacterData</a>, <a class="el" href="FCharacterAssetData_8h_source.html#l00021">FCharacterAssetData::CharacterDataAsset</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00255">CharacterType</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00211">LeftFootComp</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00207">LeftHandComp</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00199">MeshComp</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00213">RightFootComp</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00209">RightHandComp</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classALatteGameCharacter_ad27fbd16937d45f4b3fde86bdc962d94_cgraph.svg" width="664" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ad124a32e535db512bbf4c48331e7e266" name="ad124a32e535db512bbf4c48331e7e266"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad124a32e535db512bbf4c48331e7e266">&#9670;&#160;</a></span>StopTargetMontage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ALatteGameCharacter::StopTargetMontage </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="EMontageType_8h.html#a33d4f5f333936ce33b59c38e89382372">EMontageType</a>&#160;</td>
+          <td class="paramname"><em>Type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>BlendInOutTime</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8cpp_source.html">ALatteGameCharacter.cpp</a> 파일의 <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00324">324</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  325</span>{</div>
+<div class="line"><span class="lineno">  326</span>    UAnimMontage* AnimMontage = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  327</span> </div>
+<div class="line"><span class="lineno">  328</span>    <span class="keywordflow">switch</span> (Type)</div>
+<div class="line"><span class="lineno">  329</span>    {</div>
+<div class="line"><span class="lineno">  330</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="EMontageType_8h.html#a33d4f5f333936ce33b59c38e89382372a6097f89e3092d4ccd249c9d479785c1f">EMontageType::Death</a>:</div>
+<div class="line"><span class="lineno">  331</span>        AnimMontage = <a class="code hl_variable" href="classALatteGameCharacter.html#a8e1e9b4fd234cb2b2e627b219f9d9f84">DeathMontage</a>;</div>
+<div class="line"><span class="lineno">  332</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  333</span>    }</div>
+<div class="line"><span class="lineno">  334</span>    </div>
+<div class="line"><span class="lineno">  335</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#a49f4c2f77d4cd93afbd7468dc7299a9b">AnimInstance</a>-&gt;Montage_Stop(BlendInOutTime, AnimMontage );</div>
+<div class="line"><span class="lineno">  336</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ALatteGameCharacter_8h_source.html#l00204">AnimInstance</a>, <a class="el" href="EMontageType_8h.html#a33d4f5f333936ce33b59c38e89382372a6097f89e3092d4ccd249c9d479785c1f">Death</a>, <a class="el" href="ALatteGameCharacter_8h_source.html#l00249">DeathMontage</a>.</p>
+
+</div>
+</div>
+<a id="a09792ae60c1ef81d3b6dab098b0ebec2" name="a09792ae60c1ef81d3b6dab098b0ebec2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09792ae60c1ef81d3b6dab098b0ebec2">&#9670;&#160;</a></span>UnbindMontageDelegates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ALatteGameCharacter::UnbindMontageDelegates </td>
+          <td>(</td>
+          <td class="paramtype">UAnimInstance *&#160;</td>
+          <td class="paramname"><em>Anim</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>몽타주 알림 델리게이트 연결을 해제합니다. </p>
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8cpp_source.html">ALatteGameCharacter.cpp</a> 파일의 <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00135">135</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  136</span>{</div>
+<div class="line"><span class="lineno">  137</span>    <span class="keywordflow">if</span> (!Anim || !<a class="code hl_variable" href="classALatteGameCharacter.html#aa9c2d5e3a16d657866f98eaa539f4e16">bDelegatesBound</a>)</div>
+<div class="line"><span class="lineno">  138</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  139</span> </div>
+<div class="line"><span class="lineno">  140</span>    Anim-&gt;OnPlayMontageNotifyBegin.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classALatteGameCharacter.html#a66a03203587c2c41452cb3b64613fc5f">ALatteGameCharacter::OnMontageNotifyBegin</a>);</div>
+<div class="line"><span class="lineno">  141</span> </div>
+<div class="line"><span class="lineno">  142</span>    <a class="code hl_variable" href="classALatteGameCharacter.html#aa9c2d5e3a16d657866f98eaa539f4e16">bDelegatesBound</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  143</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ALatteGameCharacter_8h_source.html#l00252">bDelegatesBound</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00146">OnMontageNotifyBegin()</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00050">EndPlay()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classALatteGameCharacter_a09792ae60c1ef81d3b6dab098b0ebec2_cgraph.svg" width="439" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classALatteGameCharacter_a09792ae60c1ef81d3b6dab098b0ebec2_icgraph.svg" width="424" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">멤버 데이터 문서화</h2>
+<a id="a49f4c2f77d4cd93afbd7468dc7299a9b" name="a49f4c2f77d4cd93afbd7468dc7299a9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49f4c2f77d4cd93afbd7468dc7299a9b">&#9670;&#160;</a></span>AnimInstance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class UAnimInstance&gt; ALatteGameCharacter::AnimInstance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00204">204</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00050">EndPlay()</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00307">PlayTargetMontage()</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00060">SetupCharacterFromType()</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00324">StopTargetMontage()</a>.</p>
+
+</div>
+</div>
+<a id="aa9c2d5e3a16d657866f98eaa539f4e16" name="aa9c2d5e3a16d657866f98eaa539f4e16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9c2d5e3a16d657866f98eaa539f4e16">&#9670;&#160;</a></span>bDelegatesBound</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ALatteGameCharacter::bDelegatesBound = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00252">252</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00124">BindMontageDelegates()</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00050">EndPlay()</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00135">UnbindMontageDelegates()</a>.</p>
+
+</div>
+</div>
+<a id="a88a8f9a30412f9a3b54d1d401722ea37" name="a88a8f9a30412f9a3b54d1d401722ea37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88a8f9a30412f9a3b54d1d401722ea37">&#9670;&#160;</a></span>bIsCombatResult</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ALatteGameCharacter::bIsCombatResult = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00231">231</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a6de7568896e79c0d5108926c0306ab9f" name="a6de7568896e79c0d5108926c0306ab9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6de7568896e79c0d5108926c0306ab9f">&#9670;&#160;</a></span>bIsCombatStart</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ALatteGameCharacter::bIsCombatStart = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00228">228</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALattePlayerCharacter_8cpp_source.html#l00045">ALattePlayerCharacter::BeginPlay()</a>.</p>
+
+</div>
+</div>
+<a id="a2e5e9fc814a34c608922c669885990e3" name="a2e5e9fc814a34c608922c669885990e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e5e9fc814a34c608922c669885990e3">&#9670;&#160;</a></span>bIsHold</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ALatteGameCharacter::bIsHold = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00240">240</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="ac9ba053272760c434581a5461dc35112" name="ac9ba053272760c434581a5461dc35112"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9ba053272760c434581a5461dc35112">&#9670;&#160;</a></span>bIsWinner</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ALatteGameCharacter::bIsWinner = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00234">234</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a8e6264c3944cae661cfafd2c93e2569c" name="a8e6264c3944cae661cfafd2c93e2569c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e6264c3944cae661cfafd2c93e2569c">&#9670;&#160;</a></span>CharacterData</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class <a class="el" href="classUCharacterData.html">UCharacterData</a>&gt; ALatteGameCharacter::CharacterData</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00244">244</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00060">SetupCharacterFromType()</a>.</p>
+
+</div>
+</div>
+<a id="a88853d650a94899ae90160823507e444" name="a88853d650a94899ae90160823507e444"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88853d650a94899ae90160823507e444">&#9670;&#160;</a></span>CharacterType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a> ALatteGameCharacter::CharacterType</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00255">255</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALattePlayerCharacter_8cpp_source.html#l00045">ALattePlayerCharacter::BeginPlay()</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00060">SetupCharacterFromType()</a>.</p>
+
+</div>
+</div>
+<a id="a8e1e9b4fd234cb2b2e627b219f9d9f84" name="a8e1e9b4fd234cb2b2e627b219f9d9f84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e1e9b4fd234cb2b2e627b219f9d9f84">&#9670;&#160;</a></span>DeathMontage</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class UAnimMontage&gt; ALatteGameCharacter::DeathMontage</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00249">249</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00293">PlayTypeMontage()</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00324">StopTargetMontage()</a>.</p>
+
+</div>
+</div>
+<a id="af4cb9228fd652dc8be152a03d0d7fc4c" name="af4cb9228fd652dc8be152a03d0d7fc4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4cb9228fd652dc8be152a03d0d7fc4c">&#9670;&#160;</a></span>FlySystem</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class UFlySystem&gt; ALatteGameCharacter::FlySystem</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00191">191</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00026">ALatteGameCharacter()</a>, <a class="el" href="ALattePlayerCharacter_8cpp_source.html#l00045">ALattePlayerCharacter::BeginPlay()</a>, <a class="el" href="ALattePlayerCharacter_8cpp_source.html#l00075">ALattePlayerCharacter::Landed()</a>.</p>
+
+</div>
+</div>
+<a id="a09102b82644f5f304a7523be0f3e808b" name="a09102b82644f5f304a7523be0f3e808b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09102b82644f5f304a7523be0f3e808b">&#9670;&#160;</a></span>HitMontages</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TArray&lt;TObjectPtr&lt;UAnimMontage&gt; &gt; ALatteGameCharacter::HitMontages</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00247">247</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a814db96eba6db97c12bf807432c0bff6" name="a814db96eba6db97c12bf807432c0bff6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a814db96eba6db97c12bf807432c0bff6">&#9670;&#160;</a></span>HitStopSystem</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class UHitStopSystem&gt; ALatteGameCharacter::HitStopSystem</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00187">187</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00026">ALatteGameCharacter()</a>, <a class="el" href="ALattePlayerCharacter_8cpp_source.html#l00045">ALattePlayerCharacter::BeginPlay()</a>.</p>
+
+</div>
+</div>
+<a id="a6c6872fc99bcdb8c44d619cbca31c1da" name="a6c6872fc99bcdb8c44d619cbca31c1da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c6872fc99bcdb8c44d619cbca31c1da">&#9670;&#160;</a></span>IsHit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ALatteGameCharacter::IsHit = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00237">237</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a1e673b4d7f112e8c13a4cc2e4e56254f" name="a1e673b4d7f112e8c13a4cc2e4e56254f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e673b4d7f112e8c13a4cc2e4e56254f">&#9670;&#160;</a></span>KnockbackSystem</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class UKnockbackSystem&gt; ALatteGameCharacter::KnockbackSystem</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00189">189</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00026">ALatteGameCharacter()</a>, <a class="el" href="ALattePlayerCharacter_8cpp_source.html#l00045">ALattePlayerCharacter::BeginPlay()</a>.</p>
+
+</div>
+</div>
+<a id="af4cd3e4020ae563cb57d0b19378f983a" name="af4cd3e4020ae563cb57d0b19378f983a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4cd3e4020ae563cb57d0b19378f983a">&#9670;&#160;</a></span>LeftFootComp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class UArrowComponent&gt; ALatteGameCharacter::LeftFootComp</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00211">211</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00026">ALatteGameCharacter()</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00060">SetupCharacterFromType()</a>.</p>
+
+</div>
+</div>
+<a id="a4a4884871a0baece181eca51ac06c331" name="a4a4884871a0baece181eca51ac06c331"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a4884871a0baece181eca51ac06c331">&#9670;&#160;</a></span>LeftHandComp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class UArrowComponent&gt; ALatteGameCharacter::LeftHandComp</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00207">207</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00026">ALatteGameCharacter()</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00060">SetupCharacterFromType()</a>.</p>
+
+</div>
+</div>
+<a id="a8830926cd7965b0dece480e564d8f29a" name="a8830926cd7965b0dece480e564d8f29a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8830926cd7965b0dece480e564d8f29a">&#9670;&#160;</a></span>MeshComp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class USkeletalMeshComponent&gt; ALatteGameCharacter::MeshComp</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00199">199</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00060">SetupCharacterFromType()</a>.</p>
+
+</div>
+</div>
+<a id="a7ad6dd63de3cb7b6db9e526e67812e17" name="a7ad6dd63de3cb7b6db9e526e67812e17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ad6dd63de3cb7b6db9e526e67812e17">&#9670;&#160;</a></span>MoveComp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class UCharacterMovementComponent&gt; ALatteGameCharacter::MoveComp</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00201">201</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00041">BeginPlay()</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00260">SetFallingToWalk()</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00250">SetFlying()</a>.</p>
+
+</div>
+</div>
+<a id="a04641d377d6f741356b91b1a83f75152" name="a04641d377d6f741356b91b1a83f75152"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04641d377d6f741356b91b1a83f75152">&#9670;&#160;</a></span>PrevMoveMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEnumAsByte&lt;EMovementMode&gt; ALatteGameCharacter::PrevMoveMode</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00258">258</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00260">SetFallingToWalk()</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00250">SetFlying()</a>.</p>
+
+</div>
+</div>
+<a id="a59d78c6d900a4846404ee1be745a0716" name="a59d78c6d900a4846404ee1be745a0716"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59d78c6d900a4846404ee1be745a0716">&#9670;&#160;</a></span>RightFootComp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class UArrowComponent&gt; ALatteGameCharacter::RightFootComp</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00213">213</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00026">ALatteGameCharacter()</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00060">SetupCharacterFromType()</a>.</p>
+
+</div>
+</div>
+<a id="ae60b022333ac3e8e6ddd9d84d5b04e6f" name="ae60b022333ac3e8e6ddd9d84d5b04e6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae60b022333ac3e8e6ddd9d84d5b04e6f">&#9670;&#160;</a></span>RightHandComp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class UArrowComponent&gt; ALatteGameCharacter::RightHandComp</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00209">209</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00026">ALatteGameCharacter()</a>, <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00060">SetupCharacterFromType()</a>.</p>
+
+</div>
+</div>
+<a id="aae5fe34866a83b772282e9d995653238" name="aae5fe34866a83b772282e9d995653238"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae5fe34866a83b772282e9d995653238">&#9670;&#160;</a></span>SightHalfFOVDeg</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ALatteGameCharacter::SightHalfFOVDeg = 60.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00218">218</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00199">IsInSight()</a>.</p>
+
+</div>
+</div>
+<a id="a74611b9329afcca5a7399cf1740cbaa5" name="a74611b9329afcca5a7399cf1740cbaa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74611b9329afcca5a7399cf1740cbaa5">&#9670;&#160;</a></span>SightRange</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ALatteGameCharacter::SightRange = 1200.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00216">216</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00199">IsInSight()</a>.</p>
+
+</div>
+</div>
+<a id="a4c49d6c6b92026c94d8c8faf6fb7aa86" name="a4c49d6c6b92026c94d8c8faf6fb7aa86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c49d6c6b92026c94d8c8faf6fb7aa86">&#9670;&#160;</a></span>StatSystem</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class UStatSystem&gt; ALatteGameCharacter::StatSystem</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00185">185</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALatteGameCharacter_8cpp_source.html#l00026">ALatteGameCharacter()</a>, <a class="el" href="ALattePlayerCharacter_8cpp_source.html#l00045">ALattePlayerCharacter::BeginPlay()</a>.</p>
+
+</div>
+</div>
+<a id="a5d38a68c62fd9da86cf6d9f5a7d10afe" name="a5d38a68c62fd9da86cf6d9f5a7d10afe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d38a68c62fd9da86cf6d9f5a7d10afe">&#9670;&#160;</a></span>TargetActor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class <a class="el" href="classALatteGameCharacter.html">ALatteGameCharacter</a>&gt; ALatteGameCharacter::TargetActor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00195">195</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a439d130f54e26da70ecb80c0ea01a578" name="a439d130f54e26da70ecb80c0ea01a578"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a439d130f54e26da70ecb80c0ea01a578">&#9670;&#160;</a></span>TraceDrawTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ALatteGameCharacter::TraceDrawTime = 1.5f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00225">225</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a6d8d39a0466409ebe8ca6c4029233d68" name="a6d8d39a0466409ebe8ca6c4029233d68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d8d39a0466409ebe8ca6c4029233d68">&#9670;&#160;</a></span>TraceLength</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ALatteGameCharacter::TraceLength = 30.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00221">221</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="ac2003c20c770e37481fade5fc821d878" name="ac2003c20c770e37481fade5fc821d878"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2003c20c770e37481fade5fc821d878">&#9670;&#160;</a></span>TraceRadius</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ALatteGameCharacter::TraceRadius = 30.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a> 파일의 <a class="el" href="ALatteGameCharacter_8h_source.html#l00223">223</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<hr/>이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.:<ul>
+<li>Source/LatteLibrary/Character/Public/<a class="el" href="ALatteGameCharacter_8h_source.html">ALatteGameCharacter.h</a></li>
+<li>Source/LatteLibrary/Character/Private/<a class="el" href="ALatteGameCharacter_8cpp_source.html">ALatteGameCharacter.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classALatteGameCharacter.html">ALatteGameCharacter</a></li>
+    <li class="footer">생성시간 : 금 10월 10 2025 08:06:52, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

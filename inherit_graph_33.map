@@ -1,7 +1,23 @@
 <map id="그래픽컬한 클래스 계통도" name="그래픽컬한 클래스 계통도">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,31,96,56"/>
-<area shape="rect" id="Node000001" href="$classUControllable.html" title=" " alt="" coords="173,5,284,31"/>
-<area shape="poly" id="edge33_Node000000_Node000001" title=" " alt="" coords="110,32,173,23,173,28,110,38"/>
-<area shape="rect" id="Node000002" href="$classUSequenceActivatable.html" title=" " alt="" coords="144,55,313,80"/>
-<area shape="poly" id="edge34_Node000000_Node000002" title=" " alt="" coords="110,49,144,53,143,59,109,54"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,228,204,253"/>
+<area shape="rect" id="Node000001" href="$classUBroadcastManger.html" title=" " alt="" coords="265,5,412,31"/>
+<area shape="poly" id="edge26_Node000000_Node000001" title=" " alt="" coords="115,214,136,176,166,128,204,81,250,40,272,28,275,33,254,44,208,84,170,132,140,178,120,217"/>
+<area shape="rect" id="Node000002" href="$classUDelayTaskManager.html" title=" " alt="" coords="261,55,417,80"/>
+<area shape="poly" id="edge27_Node000000_Node000002" title=" " alt="" coords="121,215,174,152,210,118,251,89,276,78,278,82,253,94,214,122,178,156,125,218"/>
+<area shape="rect" id="Node000003" href="$classUGameDataManager.html" title=" " alt="" coords="259,104,418,129"/>
+<area shape="poly" id="edge28_Node000000_Node000003" title=" " alt="" coords="130,217,184,177,251,138,281,127,283,132,253,143,187,182,133,221"/>
+<area shape="rect" id="Node000004" href="$classUGameSoundManager.html" title=" " alt="" coords="255,153,423,179"/>
+<area shape="poly" id="edge29_Node000000_Node000004" title=" " alt="" coords="153,221,251,187,289,176,291,181,253,193,154,226"/>
+<area shape="rect" id="Node000005" href="$classUGameVFXManager.html" title=" " alt="" coords="261,203,416,228"/>
+<area shape="poly" id="edge30_Node000000_Node000005" title=" " alt="" coords="217,226,261,221,261,226,218,231"/>
+<area shape="rect" id="Node000006" href="$classUGoogleSpeechService.html" title="Thin Google Speech (STT/TTS) client." alt="" coords="252,252,425,277"/>
+<area shape="poly" id="edge31_Node000000_Node000006" title=" " alt="" coords="218,250,252,253,252,258,217,255"/>
+<area shape="rect" id="Node000007" href="$classUHttpNetworkSystem.html" title=" " alt="" coords="257,301,421,327"/>
+<area shape="poly" id="edge32_Node000000_Node000007" title=" " alt="" coords="157,255,253,286,294,299,293,304,251,291,156,260"/>
+<area shape="rect" id="Node000008" href="$classUObjectPoolManager.html" title=" " alt="" coords="259,351,418,376"/>
+<area shape="poly" id="edge33_Node000000_Node000008" title=" " alt="" coords="134,260,187,298,253,336,286,348,284,353,251,340,184,302,131,264"/>
+<area shape="rect" id="Node000009" href="$classUSequenceManager.html" title=" " alt="" coords="263,400,415,425"/>
+<area shape="poly" id="edge34_Node000000_Node000009" title=" " alt="" coords="125,263,178,324,214,357,253,385,281,397,279,402,251,390,211,361,175,328,121,266"/>
+<area shape="rect" id="Node000010" href="$classUWebSocketSystem.html" title=" " alt="" coords="263,449,415,475"/>
+<area shape="poly" id="edge35_Node000000_Node000010" title=" " alt="" coords="120,265,141,302,171,348,209,395,254,434,278,447,275,452,250,439,205,399,166,352,136,305,116,267"/>
 </map>

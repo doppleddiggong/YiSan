@@ -4,8 +4,8 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="395,74,395,108,389,108,389,74"/>
 <area shape="rect" id="Node000003" href="$UGameFunctionLibrary_8cpp.html" title="UGameFunctionLibrary 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="5,211,248,265"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="311,170,197,213,195,208,309,165"/>
-<area shape="rect" id="Node000004" href="$ANetworkTesterActor_8cpp.html" title="ANetworkTesterActor 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="273,211,511,265"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="395,176,395,211,389,211,389,176"/>
-<area shape="rect" id="Node000005" href="$NetworkData_8cpp.html" title="NetworkData 구조 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="536,218,784,258"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="475,165,611,215,609,220,474,170"/>
+<area shape="rect" id="Node000004" href="$ANetworkTesterActor_8cpp.html" title="ANetworkTesterActor 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="273,218,511,258"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="395,177,395,218,389,218,389,177"/>
+<area shape="rect" id="Node000005" href="$NetworkData_8cpp.html" title="NetworkData 구조 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="536,218,725,258"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="468,165,587,215,585,220,465,170"/>
 </map>

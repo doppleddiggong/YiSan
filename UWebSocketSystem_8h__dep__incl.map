@@ -1,5 +1,5 @@
-<map id="Source/LatteLibrary/Network/Public/UWebSocketSystem.h" name="Source/LatteLibrary/Network/Public/UWebSocketSystem.h">
-<area shape="rect" id="Node000001" title="UWebSocketSystem 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="9,5,218,60"/>
-<area shape="rect" id="Node000002" href="$UWebSocketSystem_8cpp.html" title="UWebSocketSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="5,108,221,163"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,74,116,108,111,108,111,74"/>
+<map id="Source/YiSan/Network/Public/UWebSocketSystem.h" name="Source/YiSan/Network/Public/UWebSocketSystem.h">
+<area shape="rect" id="Node000001" title="UWebSocketSystem 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="17,5,227,45"/>
+<area shape="rect" id="Node000002" href="$UWebSocketSystem_8cpp.html" title="UWebSocketSystem 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="5,93,239,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,59,125,93,119,93,119,59"/>
 </map>

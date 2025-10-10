@@ -1,5 +1,7 @@
 <map id="IControllable" name="IControllable">
-<area shape="rect" id="Node000001" title=" " alt="" coords="25,5,211,191"/>
-<area shape="rect" id="Node000002" href="$classAPlayerActor.html" title="Main character driven directly by the player." alt="" coords="5,239,231,604"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,204,121,238,115,238,115,204"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="149,5,335,251"/>
+<area shape="rect" id="Node000002" href="$classALattePlayerCharacter.html" title="Main character driven directly by the player." alt="" coords="5,339,231,644"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,265,173,339,168,337,193,263"/>
+<area shape="rect" id="Node000003" href="$classAPlayerActor.html" title=" " alt="" coords="255,299,480,684"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="291,263,303,297,298,299,286,265"/>
 </map>

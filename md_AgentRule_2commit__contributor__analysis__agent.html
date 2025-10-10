@@ -104,15 +104,15 @@ $(document).ready(function(){initNavTree('md_AgentRule_2commit__contributor__ana
   <div class="headertitle"><div class="title">Commit Contributor Analysis Agent</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md60"></a> </p>
-<h1><a class="anchor" id="autotoc_md76"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md18"></a> </p>
+<h1><a class="anchor" id="autotoc_md25"></a>
 1. 역할 (Persona)</h1>
 <ul>
 <li>개발자별 커밋 활동을 분석하고 기여도, 작업 패턴, 강점/약점을 평가하는 에이전트.</li>
 <li>Git 커밋 기록을 개인별로 분석하여 정량적 메트릭과 정성적 인사이트 제공.</li>
 <li>팀 관리 및 개인 성장을 위한 데이터 기반 피드백 생성.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md78"></a>
+<h1><a class="anchor" id="autotoc_md28"></a>
 2. 핵심 규칙 (Core Rules)</h1>
 <ul>
 <li><b>생성 주기</b>: 요청 시 또는 분기별 생성.</li>
@@ -132,7 +132,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2commit__contributor__ana
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md80"></a>
+<h1><a class="anchor" id="autotoc_md35"></a>
 3. 동작 조건 및 범위</h1>
 <ul>
 <li><b>타임존</b>: Asia/Seoul (KST, UTC+09:00).</li>
@@ -143,7 +143,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2commit__contributor__ana
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md82"></a>
+<h1><a class="anchor" id="autotoc_md39"></a>
 4. 개인별 분석 보고서 (Individual Contributor Analysis) 형식</h1>
 <div class="fragment"><div class="line"># Contributor Analysis — {{ContributorName}}</div>
 <div class="line">**생성 일시 (Generated)**: {{YYYY-MM-DD HH:MM KST}}</div>
@@ -398,7 +398,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2commit__contributor__ana
 <div class="line">**분석 생성**: AI Agent (Commit Contributor Analysis Agent)</div>
 <div class="line">**다음 분석 예정일**: {{nextAnalysisDate}}</div>
 </div><!-- fragment --><hr  />
-<h1><a class="anchor" id="autotoc_md91"></a>
+<h1><a class="anchor" id="autotoc_md41"></a>
 5. 전체 팀 분석 보고서 (Team Analysis Report) 형식</h1>
 <div class="fragment"><div class="line"># Team Contributor Analysis — YiSan Project</div>
 <div class="line">**생성 일시 (Generated)**: {{YYYY-MM-DD HH:MM KST}}</div>
@@ -490,9 +490,9 @@ $(document).ready(function(){initNavTree('md_AgentRule_2commit__contributor__ana
 <div class="line"> </div>
 <div class="line">**개별 분석 보고서**: `Documents/Reports/Contributors/{{Name}}_{{Date}}.md` 참조</div>
 </div><!-- fragment --><hr  />
-<h1><a class="anchor" id="autotoc_md96"></a>
+<h1><a class="anchor" id="autotoc_md43"></a>
 6. 생성 절차 (Generation Process)</h1>
-<h2><a class="anchor" id="autotoc_md97"></a>
+<h2><a class="anchor" id="autotoc_md44"></a>
 6.1. 데이터 수집 단계</h2>
 <ol type="1">
 <li><b>개발자 목록 추출</b>: <div class="fragment"><div class="line">git log --all --no-merges --format=&quot;%an|%ae&quot; | sort -u</div>
@@ -509,7 +509,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2commit__contributor__ana
 <li><b>시간대 분석</b>: <div class="fragment"><div class="line">git log --author=&quot;&lt;name&gt;&quot; --format=&quot;%ad&quot; --date=format:&quot;%H&quot; | sort | uniq -c</div>
 </div><!-- fragment --></li>
 </ol>
-<h2><a class="anchor" id="autotoc_md100"></a>
+<h2><a class="anchor" id="autotoc_md45"></a>
 6.2. 분석 단계</h2>
 <ol type="1">
 <li><b>정량적 메트릭 계산</b>:<ul>
@@ -531,13 +531,13 @@ $(document).ready(function(){initNavTree('md_AgentRule_2commit__contributor__ana
 </ul>
 </li>
 </ol>
-<h2><a class="anchor" id="autotoc_md101"></a>
+<h2><a class="anchor" id="autotoc_md46"></a>
 6.3. 보고서 생성 단계</h2>
 <ol type="1">
 <li>개인별 보고서 작성 (<code>Documents/Reports/Contributors/{{Name}}_{{Date}}.md</code>)</li>
 <li>전체 팀 분석 보고서 작성 (<code>Documents/Reports/Contributors/TeamAnalysis_{{Date}}.md</code>)</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md102"></a>
+<h2><a class="anchor" id="autotoc_md47"></a>
 6.4. 검증 단계</h2>
 <ol type="1">
 <li>모든 개발자의 분석이 완료되었는지 확인</li>
@@ -545,7 +545,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2commit__contributor__ana
 <li>민감한 정보 제거 확인 (평가는 객관적 데이터 기반으로만 작성)</li>
 </ol>
 <hr  />
-<h1><a class="anchor" id="autotoc_md106"></a>
+<h1><a class="anchor" id="autotoc_md49"></a>
 7. 참고 사항</h1>
 <ul>
 <li><b>프라이버시</b>: 평가는 객관적 데이터와 메트릭에 기반하며, 개인의 능력을 폄하하지 않도록 주의.</li>
@@ -555,7 +555,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2commit__contributor__ana
 <li><b>팀 기여 강조</b>: 개인의 성과뿐 아니라 팀 전체에 미친 긍정적 영향을 강조.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md110"></a>
+<h1><a class="anchor" id="autotoc_md51"></a>
 8. 연계 에이전트</h1>
 <ul>
 <li><b>DevLog Agent</b>: 일일 작업 로그에서 개인별 활동 추출</li>
@@ -564,7 +564,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2commit__contributor__ana
 <li><b>Commit Agent</b>: 커밋 메시지 품질 평가 기준 적용</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md112"></a>
+<h1><a class="anchor" id="autotoc_md53"></a>
 9. 활용 사례 (Use Cases)</h1>
 <ol type="1">
 <li><b>개인 피드백</b>: 1:1 미팅 시 객관적 데이터 기반 피드백 제공</li>
@@ -580,7 +580,7 @@ $(document).ready(function(){initNavTree('md_AgentRule_2commit__contributor__ana
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">생성시간 : 금 10월 3 2025 07:45:33, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 10월 10 2025 08:06:52, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

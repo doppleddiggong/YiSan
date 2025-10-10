@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['추가_0',['4. 로그 파일 자동 분석 (규칙 추가)',['../md_AgentRule_2debug__guide.html#autotoc_md73',1,'']]],
-  ['추정_1',['추정',['../md_Documents_2DevLog_22025-09-30.html#autotoc_md241',1,'메트릭(추정)'],['../md_Documents_2DevLog_22025-10-01.html#autotoc_md275',1,'메트릭(추정)'],['../md_Documents_2DevLog_22025-10-02.html#autotoc_md277',1,'메트릭(추정)']]],
-  ['추출_2',['TODO(커밋 본문 추출)',['../md_AgentRule_2devlog__agent.html#autotoc_md126',1,'']]]
+  ['참고_0',['7. 참고',['../md_AgentRule_2commit__agent.html#autotoc_md61',1,'']]],
+  ['참고_20사항_1',['참고 사항',['../md_AgentRule_2devlog__agent.html#autotoc_md109',1,'6. 참고 사항'],['../md_AgentRule_2monthly__log__agent.html#autotoc_md152',1,'6. 참고 사항'],['../md_AgentRule_2project__report__agent.html#autotoc_md230',1,'6. 참고 사항'],['../md_AgentRule_2commit__contributor__analysis__agent.html#autotoc_md49',1,'7. 참고 사항']]],
+  ['참고_20notes_2',['참고 (Notes)',['../md_Documents_2DevLog_22025-W41-Summary.html#autotoc_md570',1,'']]],
+  ['참조_3',['참조',['../md_AgentRule_2code__generate.html#autotoc_md7',1,'참조'],['../md_AgentRule_2agent__interaction__guide.html#autotoc_md13',1,'3.3. 기존 코드/컨벤션 참조']]]
 ];

@@ -1,11 +1,5 @@
 var searchData=
 [
-  ['시스템_20게임_20모듈_20및_20서브_20모듈_20기준_0',['시스템 게임 모듈 및 서브 모듈 기준',['../md_AgentRule_2PERSONA.html#autotoc_md190',1,'5) 핵심 시스템 (게임 모듈 및 서브 모듈 기준)'],['../md_GEMINI.html#autotoc_md41',1,'5) 핵심 시스템 (게임 모듈 및 서브 모듈 기준)']]],
-  ['시스템_20구축_20strong_1',['1. &lt;strong&gt;Doxygen 문서화 시스템 구축&lt;/strong&gt;',['../md_Documents_2DevLog_2Monthly_22025-10.html#autotoc_md290',1,'']]],
-  ['시스템_20core_20systems_2',['핵심 시스템 (Core Systems)',['../index.html#autotoc_md221',1,'']]],
-  ['시스템_20lattelibrary_20strong_3',['2. &lt;strong&gt;음성 인식 및 합성 시스템 (LatteLibrary)&lt;/strong&gt;',['../md_Documents_2DevLog_2Monthly_22025-10.html#autotoc_md291',1,'']]],
-  ['시작_4',['빠른 시작',['../index.html#autotoc_md223',1,'']]],
-  ['시_5',['5. 커밋 메시지 작성 요청 시',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md15',1,'']]],
-  ['시_20상세_20정보_20제공_6',['3.5. 문제 발생 시 상세 정보 제공',['../md_AgentRule_2agent__interaction__guide.html#autotoc_md13',1,'']]],
-  ['시_20한글_20본문_20누락_7',['8.1. 문제: &lt;tt&gt;git commit -m&lt;/tt&gt; 사용 시 한글 본문 누락',['../md_AgentRule_2commit__agent.html#autotoc_md58',1,'']]]
+  ['수정_20방안_20제안_20proposing_20solutions_0',['2.5. 수정 방안 제안 (Proposing Solutions)',['../md_AgentRule_2debug__guide.html#autotoc_md32',1,'']]],
+  ['수집_20단계_1',['수집 단계',['../md_AgentRule_2project__report__agent.html#autotoc_md221',1,'5.1. 데이터 수집 단계'],['../md_AgentRule_2commit__contributor__analysis__agent.html#autotoc_md44',1,'6.1. 데이터 수집 단계']]]
 ];

@@ -1,9 +1,0 @@
-<map id="Source/LatteLibrary/Character/Public/UVoiceSystem.h" name="Source/LatteLibrary/Character/Public/UVoiceSystem.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="221,5,463,45"/>
-<area shape="rect" id="Node000002" href="$APlayerActor_8cpp.html" title="Provides Doxygen annotations for APlayerActor implementation." alt="" coords="5,93,199,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="282,53,171,96,169,91,280,48"/>
-<area shape="rect" id="Node000003" href="$UVoiceCaptureComponent_8cpp.html" title=" " alt="" coords="223,93,461,148"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="345,59,345,93,339,93,339,59"/>
-<area shape="rect" id="Node000004" href="$UVoiceSystem_8cpp.html" title="Implementation of UVoiceSystem." alt="" coords="486,101,750,141"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="411,47,563,98,561,103,410,52"/>
-</map>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['속도_20velocity_0',['속도(Velocity)',['../md_AgentRule_2devlog__agent.html#autotoc_md131',1,'']]]
+  ['성과_20key_20achievements_0',['주요 성과 (Key Achievements)',['../md_Documents_2DevLog_2Monthly_22025-10.html#autotoc_md594',1,'']]]
 ];

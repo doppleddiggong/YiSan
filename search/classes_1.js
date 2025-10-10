@@ -24,5 +24,6 @@ var searchData=
   ['fresponsehelpchat_21',['FResponseHelpChat',['../structFResponseHelpChat.html',1,'']]],
   ['fsequencecommand_22',['FSequenceCommand',['../structFSequenceCommand.html',1,'']]],
   ['fserverconfig_23',['FServerConfig',['../structFServerConfig.html',1,'']]],
-  ['fvfxdata_24',['FVFXData',['../structFVFXData.html',1,'']]]
+  ['fvfxdata_24',['FVFXData',['../structFVFXData.html',1,'']]],
+  ['fvoiceconfig_25',['FVoiceConfig',['../structFVoiceConfig.html',1,'']]]
 ];

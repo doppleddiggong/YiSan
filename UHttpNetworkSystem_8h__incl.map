@@ -1,28 +1,28 @@
-<map id="Source/LatteLibrary/Network/Public/UHttpNetworkSystem.h" name="Source/LatteLibrary/Network/Public/UHttpNetworkSystem.h">
-<area shape="rect" id="Node000001" title="UHttpNetworkSystem 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="231,5,452,60"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="73,255,191,280"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="231,54,172,71,111,97,56,134,33,157,13,183,9,193,9,203,21,221,45,236,75,248,73,253,43,241,18,224,4,204,3,192,9,180,29,153,53,130,109,93,170,66,230,49"/>
-<area shape="rect" id="Node000003" href="$NetworkData_8h.html" title="NetworkData 구조체 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="221,108,341,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="325,62,300,98,295,95,321,59"/>
-<area shape="rect" id="Node000009" href="$ENetworkLogType_8h.html" title="ENetworkLogType 열거형에 대한 Doxygen 주석을 제공합니다." alt="" coords="23,181,174,207"/>
-<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="292,62,211,110,124,175,121,171,208,106,290,58"/>
-<area shape="rect" id="Node000010" href="$Macro_8h.html" title="Manager 모듈에서 공통으로 사용하는 매크로 정의에 대한 Doxygen 주석을 제공합니다." alt="" coords="365,108,440,133"/>
-<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="362,59,389,95,384,98,358,62"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="464,108,747,133"/>
-<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="423,58,558,101,556,106,421,63"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="770,108,1017,133"/>
-<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="453,49,807,103,806,109,452,54"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="271,136,156,247,152,243,267,132"/>
-<area shape="rect" id="Node000004" href="$UCustomNetworkSettings_8h.html" title="UCustomNetworkSettings 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="249,181,452,207"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="295,132,332,170,328,173,291,136"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="476,181,671,207"/>
-<area shape="poly" id="edge8_Node000003_Node000007" title=" " alt="" coords="329,131,514,175,513,181,328,136"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="695,181,886,207"/>
-<area shape="poly" id="edge9_Node000003_Node000008" title=" " alt="" coords="342,129,354,131,690,177,689,182,353,136,341,134"/>
-<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="316,209,182,253,180,248,315,204"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="232,255,435,280"/>
-<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="351,208,342,242,337,241,345,206"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="459,255,731,280"/>
-<area shape="poly" id="edge7_Node000004_Node000006" title=" " alt="" coords="391,204,543,248,542,253,389,209"/>
-<area shape="poly" id="edge11_Node000009_Node000002" title=" " alt="" coords="107,206,123,241,119,243,102,208"/>
+<map id="Source/YiSan/Network/Public/UHttpNetworkSystem.h" name="Source/YiSan/Network/Public/UHttpNetworkSystem.h">
+<area shape="rect" id="Node000001" title="UHttpNetworkSystem 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="230,5,453,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="73,240,191,265"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="231,44,171,60,111,85,56,120,33,142,13,168,9,179,9,188,21,206,45,221,75,233,73,238,43,226,18,210,4,190,3,178,8,165,29,139,53,116,108,80,169,55,229,39"/>
+<area shape="rect" id="Node000003" href="$NetworkData_8h.html" title="NetworkData 구조체 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="221,93,341,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="329,47,301,84,297,81,325,44"/>
+<area shape="rect" id="Node000009" href="$ENetworkLogType_8h.html" title="ENetworkLogType 열거형에 대한 Doxygen 주석을 제공합니다." alt="" coords="23,167,174,192"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="301,48,211,96,164,128,124,160,121,156,161,124,208,91,298,43"/>
+<area shape="rect" id="Node000010" href="$Macro_8h.html" title="Manager 모듈에서 공통으로 사용하는 매크로 정의에 대한 Doxygen 주석을 제공합니다." alt="" coords="365,93,440,119"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="358,44,387,81,383,84,354,47"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="464,93,747,119"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="405,43,554,87,553,92,404,48"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="770,93,1017,119"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="454,40,800,89,799,94,453,45"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="271,121,156,232,152,229,267,117"/>
+<area shape="rect" id="Node000004" href="$UCustomNetworkSettings_8h.html" title="UCustomNetworkSettings 선언에 대한 Doxygen 주석을 제공합니다." alt="" coords="249,167,452,192"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="295,117,332,155,328,159,291,121"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="476,167,671,192"/>
+<area shape="poly" id="edge8_Node000003_Node000007" title=" " alt="" coords="329,116,514,161,513,166,328,121"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="695,167,886,192"/>
+<area shape="poly" id="edge9_Node000003_Node000008" title=" " alt="" coords="342,114,354,116,690,162,689,168,353,121,341,120"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="316,195,182,238,180,233,315,189"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="232,240,435,265"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="351,193,342,228,337,226,345,192"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="459,240,731,265"/>
+<area shape="poly" id="edge7_Node000004_Node000006" title=" " alt="" coords="391,189,543,234,542,239,389,195"/>
+<area shape="poly" id="edge11_Node000009_Node000002" title=" " alt="" coords="107,191,123,227,119,229,102,193"/>
 </map>

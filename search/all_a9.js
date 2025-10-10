@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['해결책_0',['8. 알려진 문제 및 해결책',['../md_AgentRule_2commit__agent.html#autotoc_md57',1,'']]],
-  ['해결_20troubleshooting_1',['6. 배포 확인 및 문제 해결 (Troubleshooting)',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md163',1,'']]]
+  ['함수_20주석_20예시_0',['함수 주석 예시',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md130',1,'']]],
+  ['함수_20functions_1',['1.3. 함수 (Functions)',['../md_AgentRule_2conventions__agent.html#autotoc_md65',1,'']]]
 ];

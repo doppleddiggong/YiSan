@@ -1,7 +1,25 @@
 var searchData=
 [
   ['10_2001_20kst_2009_3a00_20boundary_0',['Daily DevLog 2025-10-01 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-10-01.html',1,'']]],
-  ['10_2002_1',['30-Day Briefing 2025-10-02',['../md_Documents_2DevLog_2__Last30Summary.html',1,'']]],
+  ['10_2002_202025_2010_2008_1',['주간 개발 요약 (2025-10-02 ~ 2025-10-08)',['../md_Documents_2DevLog_22025-W41-Summary.html',1,'']]],
   ['10_2002_20kst_2009_3a00_20boundary_2',['Daily DevLog 2025-10-02 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-10-02.html',1,'']]],
-  ['10_20october_3',['Monthly DevLog — 2025-10 (October)',['../md_Documents_2DevLog_2Monthly_22025-10.html',1,'']]]
+  ['10_2003_20kst_2009_3a00_20boundary_3',['Daily DevLog 2025-10-03 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-10-03.html',1,'']]],
+  ['10_2004_20kst_2009_3a00_20boundary_4',['Daily DevLog 2025-10-04 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-10-04.html',1,'']]],
+  ['10_2005_20kst_2009_3a00_20boundary_5',['Daily DevLog 2025-10-05 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-10-05.html',1,'']]],
+  ['10_2006_20kst_2009_3a00_20boundary_6',['Daily DevLog 2025-10-06 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-10-06.html',1,'']]],
+  ['10_2007_20kst_2009_3a00_20boundary_7',['Daily DevLog 2025-10-07 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-10-07.html',1,'']]],
+  ['10_2008_20kst_2009_3a00_20boundary_8',['Daily DevLog 2025-10-08 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-10-08.html',1,'']]],
+  ['10_2009_9',['30-Day Briefing 2025-10-09',['../md_Documents_2DevLog_2__Last30Summary.html',1,'']]],
+  ['10_2009_20kst_2009_3a00_20boundary_10',['Daily DevLog 2025-10-09 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-10-09.html',1,'']]],
+  ['10_20kst_2009_3a00_20boundary_11',['Daily DevLog 2025-09-10 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-09-10.html',1,'']]],
+  ['10_20october_12',['Monthly DevLog — 2025-10 (October)',['../md_Documents_2DevLog_2Monthly_22025-10.html',1,'']]],
+  ['11_20kst_2009_3a00_20boundary_13',['Daily DevLog 2025-09-11 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-09-11.html',1,'']]],
+  ['12_20kst_2009_3a00_20boundary_14',['Daily DevLog 2025-09-12 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-09-12.html',1,'']]],
+  ['13_20kst_2009_3a00_20boundary_15',['Daily DevLog 2025-09-13 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-09-13.html',1,'']]],
+  ['14_20kst_2009_3a00_20boundary_16',['Daily DevLog 2025-09-14 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-09-14.html',1,'']]],
+  ['15_20kst_2009_3a00_20boundary_17',['Daily DevLog 2025-09-15 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-09-15.html',1,'']]],
+  ['16_20kst_2009_3a00_20boundary_18',['Daily DevLog 2025-09-16 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-09-16.html',1,'']]],
+  ['17_20kst_2009_3a00_20boundary_19',['Daily DevLog 2025-09-17 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-09-17.html',1,'']]],
+  ['18_20kst_2009_3a00_20boundary_20',['Daily DevLog 2025-09-18 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-09-18.html',1,'']]],
+  ['19_20kst_2009_3a00_20boundary_21',['Daily DevLog 2025-09-19 (KST 09:00 boundary)',['../md_Documents_2DevLog_22025-09-19.html',1,'']]]
 ];

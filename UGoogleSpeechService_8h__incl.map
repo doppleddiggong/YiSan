@@ -1,0 +1,20 @@
+<map id="Source/YiSan/Voice/Public/UGoogleSpeechService.h" name="Source/YiSan/Voice/Public/UGoogleSpeechService.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="351,5,583,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="257,167,375,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="351,30,253,34,152,45,66,65,34,79,13,95,8,106,13,117,27,129,49,139,108,155,178,165,244,172,243,177,177,171,107,160,47,144,24,133,9,120,3,106,9,92,31,74,64,60,151,40,253,29,351,24"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="23,93,211,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="384,48,182,93,181,88,383,43"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="235,93,434,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="437,48,368,88,365,84,434,43"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="457,93,740,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="500,43,569,84,566,88,497,48"/>
+<area shape="rect" id="Node000006" href="$UVoiceSettings_8h.html" title=" " alt="" coords="765,93,897,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="555,43,765,88,764,93,553,48"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="921,93,1175,119"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="583,40,951,89,950,94,583,45"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="765,120,753,121,389,171,388,166,752,116,764,114"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="616,167,819,192"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="814,121,749,162,746,157,811,116"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="843,167,1045,192"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="850,116,916,157,913,162,848,121"/>
+</map>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['한글_20본문_20누락_0',['8.1. 문제: &lt;tt&gt;git commit -m&lt;/tt&gt; 사용 시 한글 본문 누락',['../md_AgentRule_2commit__agent.html#autotoc_md58',1,'']]]
+  ['플러그인_3a_20tt_20coffeetoolbar_20tt_20editor_20win64_0',['4-4) 에디터 플러그인: &lt;tt&gt;CoffeeToolbar&lt;/tt&gt; (Editor, Win64)',['../md_AgentRule_2PERSONA.html#autotoc_md177',1,'']]]
 ];

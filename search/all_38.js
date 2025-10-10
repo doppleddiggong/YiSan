@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['다음_20달_20우선순위_20next_20month_20priorities_0',['다음 달 우선순위 (Next Month Priorities)',['../md_Documents_2DevLog_2Monthly_22025-10.html#autotoc_md306',1,'']]],
-  ['다음_20우선순위_20가이드_1',['다음 우선순위(가이드)',['../md_AgentRule_2devlog__agent.html#autotoc_md135',1,'']]]
+  ['네이밍_20규칙_20naming_20conventions_0',['1. 네이밍 규칙 (Naming Conventions)',['../md_AgentRule_2conventions__agent.html#autotoc_md29',1,'']]],
+  ['네트워크_20모듈_20컨벤션_20network_20module_20conventions_1',['5. 네트워크 모듈 컨벤션 (Network Module Conventions)',['../md_AgentRule_2conventions__agent.html#autotoc_md78',1,'']]]
 ];

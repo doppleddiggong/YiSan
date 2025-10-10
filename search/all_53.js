@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['본문_20누락_0',['8.1. 문제: &lt;tt&gt;git commit -m&lt;/tt&gt; 사용 시 한글 본문 누락',['../md_AgentRule_2commit__agent.html#autotoc_md58',1,'']]],
-  ['본문_20추출_1',['TODO(커밋 본문 추출)',['../md_AgentRule_2devlog__agent.html#autotoc_md126',1,'']]]
+  ['변수_20주석_20예시_0',['멤버 변수 주석 예시',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md131',1,'']]],
+  ['변수_20variables_1',['1.2. 변수 (Variables)',['../md_AgentRule_2conventions__agent.html#autotoc_md34',1,'']]]
 ];

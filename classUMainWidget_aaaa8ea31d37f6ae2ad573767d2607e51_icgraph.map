@@ -1,0 +1,9 @@
+<map id="UMainWidget::SendChatMessage" name="UMainWidget::SendChatMessage">
+<area shape="rect" id="Node000001" title=" " alt="" coords="841,5,1080,31"/>
+<area shape="rect" id="Node000002" href="$classUMainWidget.html#ad42dcc2d64ab7793c67ecd9da8d49445" title=" " alt="" coords="579,5,793,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="828,21,793,21,793,15,828,15"/>
+<area shape="rect" id="Node000003" href="$classUMainWidget.html#a3998cad132a8e6d11ce6c55262c07b05" title=" " alt="" coords="276,5,531,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="565,21,531,21,531,15,565,15"/>
+<area shape="rect" id="Node000004" href="$classUMainWidget.html#ab5b82b602efb97c7b4cd7a3c2d99d6e8" title=" " alt="" coords="5,5,228,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="262,21,228,21,228,15,262,15"/>
+</map>

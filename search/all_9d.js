@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['팀_20분석_20보고서_20team_20analysis_20report_20형식_0',['5. 전체 팀 분석 보고서 (Team Analysis Report) 형식',['../md_AgentRule_2commit__contributor__analysis__agent.html#autotoc_md91',1,'']]]
+  ['텔레메트리_20정책_20observability_20logging_0',['관찰 로그/텔레메트리 정책 (Observability &amp; Logging)',['../md_AgentRule_2PERSONA.html#autotoc_md161',1,'']]]
 ];

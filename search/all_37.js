@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['누락_0',['8.1. 문제: &lt;tt&gt;git commit -m&lt;/tt&gt; 사용 시 한글 본문 누락',['../md_AgentRule_2commit__agent.html#autotoc_md58',1,'']]]
+  ['내역_20full_20commit_20history_0',['전체 커밋 내역 (Full Commit History)',['../md_Documents_2DevLog_22025-W41-Summary.html#autotoc_md569',1,'']]],
+  ['내용이_20안_20보임_1',['6.4. 문제 4: GitHub Pages 404 오류 (사이트 주소는 맞는데 내용이 안 보임)',['../md_AgentRule_2doxygen__setup__guide.html#autotoc_md122',1,'']]]
 ];

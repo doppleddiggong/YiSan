@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['텔레메트리_20정책_20observability_20logging_0',['텔레메트리 정책 observability logging',['../md_AgentRule_2PERSONA.html#autotoc_md160',1,'관찰 로그/텔레메트리 정책 (Observability &amp; Logging)'],['../md_GEMINI.html#autotoc_md23',1,'관찰 로그/텔레메트리 정책 (Observability &amp; Logging)']]]
+  ['타겟_20설정_0',['6) 빌드/타겟 설정',['../md_AgentRule_2PERSONA.html#autotoc_md179',1,'']]],
+  ['타입별_20분석_20type_20analysis_1',['타입별 분석 (Type Analysis)',['../md_Documents_2DevLog_2Monthly_22025-10.html#autotoc_md592',1,'']]]
 ];
