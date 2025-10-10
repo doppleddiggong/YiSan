@@ -206,3 +206,31 @@ float AMyCharacter::TakeDamage(float InDamage, EDamageType DamageType)
     return FinalHealth;
 }
 ```
+
+---
+
+## 7. UObject 포인터 사용 규칙
+
+- **TObjectPtr 사용**: Unreal Engine 5부터 도입된 `TObjectPtr`를 사용하여 UObject에 대한 소유권 및 참조를 명확하게 표현하는 것을 선호합니다. 이는 메모리 관리 및 안정성 향상에 도움이 됩니다.
+
+### 예시
+
+**선호하는 방식:**
+```cpp
+// 헤더 파일 (.h)
+UPROPERTY()
+TObjectPtr<UStaticMeshComponent> Door_Right;
+
+// 전방 선언 시
+TObjectPtr<class UBoxComponent> BoxCollision;
+```
+
+**비선호하는 방식:**
+```cpp
+// 헤더 파일 (.h)
+UPROPERTY()
+UStaticMeshComponent* Door_Right;
+
+// 전방 선언 시
+class UBoxComponent;
+```
