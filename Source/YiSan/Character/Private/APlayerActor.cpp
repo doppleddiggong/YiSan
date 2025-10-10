@@ -17,6 +17,8 @@ APlayerActor::APlayerActor()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
+	Tags.Add(FName("Player"));
+
 	MainWidgetClass = FComponentHelper::LoadClass<UMainWidget>(MAINWIDGET_PATH);
 	
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));

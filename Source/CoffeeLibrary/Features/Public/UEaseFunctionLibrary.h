@@ -24,4 +24,7 @@ public:
 
 	UFUNCTION(BlueprintPure, Category="Ease", meta=(DisplayName="Lerp (Vector, Custom Ease)", Keywords="Lerp Ease"))
 	static FVector LerpVectorEase(const FVector& A, const FVector& B, float Alpha, EEaseType Type);
+
+	UFUNCTION(BlueprintPure, Category="Ease", meta=(DisplayName="Lerp (Rotator, Custom Ease)", Keywords="Lerp Ease"))
+	static FRotator LerpRotatorEase(const FRotator& A, const FRotator& B, float Alpha, EEaseType Type);
 };

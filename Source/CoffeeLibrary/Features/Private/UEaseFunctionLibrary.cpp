@@ -29,3 +29,9 @@ FVector UEaseFunctionLibrary::LerpVectorEase(const FVector& A, const FVector& B,
 	const float T = ApplyEase(Alpha, Type);
 	return FMath::Lerp(A, B, T);
 }
+
+FRotator UEaseFunctionLibrary::LerpRotatorEase(const FRotator& A, const FRotator& B, float Alpha, EEaseType Type)
+{
+	const float T = ApplyEase(Alpha, Type);
+	return FMath::Lerp(A, B, T);
+}

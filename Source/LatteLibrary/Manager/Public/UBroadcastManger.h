@@ -37,6 +37,17 @@ public:
 
 
 
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDoorMessage, int32, GateID, bool, Open );
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnDoorMessage OnDoorMessage;
+	
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendOnDoorMessage(const int32 GateID, const bool Open);
+
+
+	
+
+
 	
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHitStop, AActor*, Target, EDamageType, Type);
 	UPROPERTY(BlueprintAssignable, Category="Events")

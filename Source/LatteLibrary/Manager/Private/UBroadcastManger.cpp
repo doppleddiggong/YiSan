@@ -16,6 +16,11 @@ void UBroadcastManger::SendToastMessage(const FString& InMsg)
 	OnToastMessage.Broadcast(InMsg);
 }
 
+void UBroadcastManger::SendOnDoorMessage(const int32 GateID, const bool Open)
+{
+	OnDoorMessage.Broadcast(GateID, Open);	
+}
+
 void UBroadcastManger::SendHitStop(AActor* Target, const EDamageType Type)
 {
 	OnHitStop.Broadcast(Target, Type);
