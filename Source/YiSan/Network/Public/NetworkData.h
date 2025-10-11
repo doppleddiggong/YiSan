@@ -38,29 +38,11 @@ namespace NetworkConfig
 namespace RequestAPI
 {
     static FString Health = FString("/health");
-    static FString HelpChat = FString("/help_chat");
-    static FString STT = FString("/stt");
-    static FString FishTTSSimple = FString("/fish/tts-simple");
-    static FString TTS = FString("/tts");
-    static FString Ask = FString("/ask");
-    static FString TestGPT = FString("/test/gpt");
-    static FString TestTTS = FString("/test/tts");
-}
-
-USTRUCT(BlueprintType)
-struct FRequestTTS
-{
-    GENERATED_BODY()
-
-    UPROPERTY()
-    FString text;
     
-    UPROPERTY()
-    FString reference_index;
-
-    UPROPERTY()
-    bool return_audio = false;
-};
+    static FString STT = FString("/stt");
+    static FString TestTTS = FString("/test/tts");
+    static FString TestGPT = FString("/test/gpt");
+}
 
 DECLARE_DELEGATE_TwoParams( FResponseHealthDelegate, FResponseHealth&, bool );
 USTRUCT(BlueprintType)
@@ -73,28 +55,6 @@ struct FResponseHealth
 
     void SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response);
 
-    void PrintData();
-};
-
-DECLARE_DELEGATE_TwoParams( FResponseHelpChatDelegate, FResponseHelpChat&, bool );
-USTRUCT(BlueprintType)
-struct FRequestHelpChat
-{
-    GENERATED_BODY()
-
-    UPROPERTY(BlueprintReadWrite)
-    FString question;
-};
-
-USTRUCT(BlueprintType)
-struct FResponseHelpChat
-{
-    GENERATED_BODY()
-
-    UPROPERTY(BlueprintReadOnly)
-    FString ai_message;
-
-    void SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response);
     void PrintData();
 };
 
@@ -111,37 +71,36 @@ struct FResponseSTT
     void PrintData();
 };
 
+// --- Test Endpoints ---
+
 USTRUCT(BlueprintType)
-struct FRequestFishTTSSimple
+struct FRequestTestTTS
 {
     GENERATED_BODY()
 
     UPROPERTY(BlueprintReadWrite)
     FString text;
+
+    UPROPERTY(BlueprintReadWrite)
+    float speaking_rate = 0.88f;
+
+    UPROPERTY(BlueprintReadWrite)
+    float pitch = -3.0f;
 };
 
-DECLARE_DELEGATE_TwoParams( FResponseTTSDelegate, FResponseTTS&, bool );
+DECLARE_DELEGATE_TwoParams( FResponseTestTTSDelegate, FResponseTestTTS&, bool );
 USTRUCT(BlueprintType)
-struct FResponseTTS
+struct FResponseTestTTS
 {
     GENERATED_BODY()
 
     UPROPERTY(BlueprintReadWrite)
-    FString message;
-    UPROPERTY(BlueprintReadWrite)
-    FString file_path;
-    UPROPERTY(BlueprintReadWrite)
-    FString requested_text;
-    UPROPERTY(BlueprintReadWrite)
-    float generation_time;
-    UPROPERTY(BlueprintReadWrite)
-    FString version;
+    TArray<uint8> audio_data;
 
     void SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response);
     void PrintData();
 };
 
-// --- Test Endpoints ---
 
 USTRUCT(BlueprintType)
 struct FRequestTestGPT
@@ -160,34 +119,6 @@ struct FResponseTestGPT
 
     UPROPERTY(BlueprintReadWrite)
     FString response;
-
-    void SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response);
-    void PrintData();
-};
-
-USTRUCT(BlueprintType)
-struct FRequestTestTTS
-{
-    GENERATED_BODY()
-
-    UPROPERTY(BlueprintReadWrite)
-    FString text;
-
-    UPROPERTY(BlueprintReadWrite)
-    float speaking_rate = 0.88f;
-
-    UPROPERTY(BlueprintReadWrite)
-    float pitch = -3.0f;
-};
-
-DECLARE_DELEGATE_TwoParams( FResponseTestTTSDelegate, TArray<uint8>&, bool );
-USTRUCT(BlueprintType)
-struct FResponseTestTTS
-{
-    GENERATED_BODY()
-
-    UPROPERTY(BlueprintReadWrite)
-    TArray<uint8> audio_data;
 
     void SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response);
     void PrintData();

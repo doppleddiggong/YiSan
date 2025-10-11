@@ -23,7 +23,9 @@ protected:
 	
 private:
 	void SendChatMessage(const FString& InMsg);
-	void OnResponseTTS(FResponseTTS& ResponseData, bool bWasSuccessful);
+
+	UFUNCTION()
+	void OnResponseTestGPT(FResponseTestGPT& Response, bool bSuccess);
 
 protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadWrite, Category = "Chat")

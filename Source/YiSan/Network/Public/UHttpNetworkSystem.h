@@ -26,13 +26,9 @@ public:
 
     void RequestHealth( FResponseHealthDelegate InDelegate);
     void RequestSTT(const FString& FilePath, FResponseSTTDelegate InDelegate);
-    void RequestTTS(const FString& Text, const FString& reference_index, bool bReturnAudio, FResponseTTSDelegate InDelegate);
 
-    /** Test GPT: POST /test/gpt */
+    void RequestTestTTS(const FString& Text, const float SpeakingRate, const float Pitch, FResponseTestTTSDelegate InDelegate);
     void RequestTestGPT(const FString& Text, FResponseTestGPTDelegate InDelegate);
-
-    /** Test TTS (Binary WAV): POST /test/tts */
-    void RequestTestTTS(const FString& Text, float SpeakingRate, float Pitch, FResponseTestTTSDelegate InDelegate);
 
 private:
     static void LogNetwork(ENetworkLogType InLogType, const FString& URL, const FString& Body = "");

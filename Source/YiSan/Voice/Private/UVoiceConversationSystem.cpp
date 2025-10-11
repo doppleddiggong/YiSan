@@ -2,12 +2,11 @@
 
 #include "UVoiceConversationSystem.h"
 
+#include "GameLogging.h"
 #include "UHttpNetworkSystem.h"
 #include "UVoiceRecordSystem.h"
 #include "UVoiceListenSystem.h"
 #include "UWebSocketSystem.h"
-#include "Components/AudioComponent.h"
-#include "Sound/SoundWaveProcedural.h"
 #include "GameFramework/GameModeBase.h"
 
 // --- Subsystem Lifecycle ---
@@ -199,27 +198,21 @@ void UVoiceConversationSystem::OnGPTResponse(FResponseTestGPT& Response, bool bS
 
 	OnTTSStarted.Broadcast();
 
-	HttpSystem->RequestTestTTS(Response.response, 0.88f, -3.0f, FResponseTestTTSDelegate::CreateUObject(
-		this, &UVoiceConversationSystem::OnTTSResponse
-	));
+	HttpSystem->RequestTestTTS(Response.response, 0.88f, -3.0f,
+		FResponseTestTTSDelegate::CreateUObject( this, &UVoiceConversationSystem::OnResponseTestTTS ));
 }
 
-void UVoiceConversationSystem::OnTTSResponse(TArray<uint8>& AudioData, bool bSuccess)
+void UVoiceConversationSystem::OnResponseTestTTS(FResponseTestTTS& Response, bool bSuccess)
 {
-	bIsProcessing = false;
-
-	if (!bSuccess || AudioData.Num() == 0)
+	if (bSuccess)
 	{
-		OnError.Broadcast(TEXT("TTS 처리에 실패했습니다."));
-		return;
+		// if (auto EventManager = UBroadcastManger::Get(this))
+		// 	EventManager->SendToastMessage(ResponseData.message);
 	}
-
-	UE_LOG(LogTemp, Log, TEXT("[VoiceConversation] TTS: Received %d bytes of audio data."), AudioData.Num());
-
-	// TODO: 오디오 재생 기능 구현
-	// USoundWave를 생성하고 AudioComponent로 재생하는 로직 추가 필요
-
-	OnCompleted.Broadcast();
+	else
+	{
+		PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
+	}
 }
 
 // --- WebSocket 방식 실시간 음성 대화 ---

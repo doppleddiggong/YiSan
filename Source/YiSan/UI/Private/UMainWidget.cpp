@@ -75,19 +75,16 @@ void UMainWidget::SendChatMessage(const FString& InMsg)
 {
 	if ( auto ReqNetwork = UHttpNetworkSystem::Get(GetWorld()) )
 	{
-		ReqNetwork->RequestTTS(InMsg, TEXT("STT_00"), false,
-			FResponseTTSDelegate::CreateUObject( this, &UMainWidget::OnResponseTTS) );
+		ReqNetwork->RequestTestGPT(InMsg, FResponseTestGPTDelegate::CreateUObject( this, &UMainWidget::OnResponseTestGPT) );
 	}
 }
 
-void UMainWidget::OnResponseTTS(FResponseTTS& ResponseData, bool bWasSuccessful)
+void UMainWidget::OnResponseTestGPT(FResponseTestGPT& Response, bool bSuccess)
 {
-	if (bWasSuccessful)
+	if (bSuccess)
 	{
-		ResponseData.PrintData();
-
 		if (auto EventManager = UBroadcastManger::Get(this))
-			EventManager->SendToastMessage(ResponseData.message);
+			EventManager->SendToastMessage(Response.response);
 	}
 	else
 	{

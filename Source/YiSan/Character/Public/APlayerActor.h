@@ -22,17 +22,6 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
-private:
-	// UFUNCTION()
-	// void OnRecordingStoppedHandler(const FString& FilePath);
-	// UFUNCTION()
-	// void OnResponseSTT(FResponseSTT& ResponseData, bool bWasSuccessful);
-
-	UFUNCTION(CallInEditor, Category = "TEST|RequestHealth")
-	void RequestHealth();
-	UFUNCTION()
-	void OnResponseHealth(FResponseHealth& ResponseData, bool bWasSuccessful);
-	
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Owner")
 	TObjectPtr<class USkeletalMeshComponent> MeshComp;
@@ -52,12 +41,7 @@ public:
 	TObjectPtr<UMainWidget> MainWidgetInst;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|System")
-	TObjectPtr<class UVoiceConversationSystem>  VoiceConversationSystem;
-	
-	// UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|System")
-	// TObjectPtr<class UVoiceRecordSystem> VoiceRecordSystem;
-	// UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|System")
-	// TObjectPtr<class UVoiceListenSystem> VoiceListenSystem;
+	TObjectPtr<class UVoiceConversationSystem> VoiceConversationSystem;
 
 public: // Control Interface
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")

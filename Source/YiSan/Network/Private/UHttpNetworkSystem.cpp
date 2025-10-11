@@ -104,24 +104,23 @@ void UHttpNetworkSystem::RequestSTT(const FString& FilePath, FResponseSTTDelegat
     HttpRequest->ProcessRequest();
 }
 
-void UHttpNetworkSystem::RequestTTS(const FString& Text, const FString& reference_index, bool bReturnAudio, FResponseTTSDelegate InDelegate)
+void UHttpNetworkSystem::RequestTestTTS(const FString& Text, const float SpeakingRate, const float Pitch, FResponseTestTTSDelegate InDelegate)
 {
     auto HttpRequest = FHttpModule::Get().CreateRequest();
 
     HttpRequest->SetVerb(NETWORK_POST);
-    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::TTS));
+    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::TestTTS));
     HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
-    HttpRequest->SetHeader(TEXT("Accept"), TEXT("application/json"));
 
-    FRequestTTS RequestData;
+    FRequestTestTTS RequestData;
     RequestData.text = Text;
-    RequestData.reference_index = reference_index;
-    RequestData.return_audio = bReturnAudio;
+    RequestData.speaking_rate = SpeakingRate;
+    RequestData.pitch = Pitch;
 
     FString RequestBody;
     if (!FJsonObjectConverter::UStructToJsonObjectString(RequestData, RequestBody))
     {
-        NETWORK_LOG(TEXT("Failed to convert FRequestTTS to JSON"));
+        NETWORK_LOG(TEXT("Failed to convert FRequestTestTTS to JSON"));
         return;
     }
 
@@ -132,12 +131,14 @@ void UHttpNetworkSystem::RequestTTS(const FString& Text, const FString& referenc
     HttpRequest->OnProcessRequestComplete().BindLambda(
         [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
-            FResponseTTS ResponseData;
+            FResponseTestTTS ResponseData;
             if (bWasSuccessful && ResPtr.IsValid())
             {
                 NETWORK_LOG(TEXT("[RES] %s"), *ResPtr->GetContentAsString());
+                
                 ResponseData.SetFromHttpResponse(ResPtr);
             }
+
             InDelegate.ExecuteIfBound(ResponseData, bWasSuccessful);
         });
 
@@ -177,46 +178,6 @@ void UHttpNetworkSystem::RequestTestGPT(const FString& Text, FResponseTestGPTDel
                 ResponseData.SetFromHttpResponse(ResPtr);
             }
             InDelegate.ExecuteIfBound(ResponseData, bWasSuccessful);
-        });
-
-    HttpRequest->ProcessRequest();
-}
-
-void UHttpNetworkSystem::RequestTestTTS(const FString& Text, float SpeakingRate, float Pitch, FResponseTestTTSDelegate InDelegate)
-{
-    auto HttpRequest = FHttpModule::Get().CreateRequest();
-
-    HttpRequest->SetVerb(NETWORK_POST);
-    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::TestTTS));
-    HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
-
-    FRequestTestTTS RequestData;
-    RequestData.text = Text;
-    RequestData.speaking_rate = SpeakingRate;
-    RequestData.pitch = Pitch;
-
-    FString RequestBody;
-    if (!FJsonObjectConverter::UStructToJsonObjectString(RequestData, RequestBody))
-    {
-        NETWORK_LOG(TEXT("Failed to convert FRequestTestTTS to JSON"));
-        return;
-    }
-
-    HttpRequest->SetContentAsString(RequestBody);
-
-    LogNetwork(ENetworkLogType::Post, *HttpRequest->GetURL(), RequestBody);
-
-    HttpRequest->OnProcessRequestComplete().BindLambda(
-        [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
-        {
-            TArray<uint8> AudioData;
-            if (bWasSuccessful && ResPtr.IsValid())
-            {
-                // TestTTS returns binary WAV data
-                AudioData = ResPtr->GetContent();
-                NETWORK_LOG(TEXT("[RES] TestTTS: Received %d bytes of audio data"), AudioData.Num());
-            }
-            InDelegate.ExecuteIfBound(AudioData, bWasSuccessful);
         });
 
     HttpRequest->ProcessRequest();

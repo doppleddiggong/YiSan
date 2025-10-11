@@ -116,8 +116,8 @@ private:
 	void OnRecordingStopped(const FString& FilePath);
 	void OnSTTResponse(FResponseSTT& Response, bool bSuccess);
 	void OnGPTResponse(FResponseTestGPT& Response, bool bSuccess);
-	void OnTTSResponse(TArray<uint8>& AudioData, bool bSuccess);
-
+	void OnResponseTestTTS(FResponseTestTTS& Response, bool bSuccess);
+	
 	// --- WebSocket 방식 콜백 ---
 	UFUNCTION()
 	void OnWebSocketConnected();

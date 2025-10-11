@@ -80,7 +80,7 @@ void APlayerControl::SetupInputComponent()
 
 		EIC->BindAction(IA_Record, ETriggerEvent::Started, this, &APlayerControl::OnRecordPressed);
 		EIC->BindAction(IA_Record, ETriggerEvent::Completed, this, &APlayerControl::OnRecordReleased);
-		EIC->BindAction(IA_Record, ETriggerEvent::Completed, this, &APlayerControl::OnRecordReleased);
+		EIC->BindAction(IA_Record, ETriggerEvent::Canceled, this, &APlayerControl::OnRecordReleased);
 	}
 }
 
