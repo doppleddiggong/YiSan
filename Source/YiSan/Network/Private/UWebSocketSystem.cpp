@@ -6,6 +6,7 @@
 #include "Json.h"
 #include "JsonUtilities.h"
 #include "NetworkLog.h"
+#include "UBroadcastManger.h"
 #include "Misc/Base64.h"
 
 // --- Subsystem Lifecycle ---
@@ -126,7 +127,7 @@ void UWebSocketSystem::SendAudio(const TArray<uint8>& AudioData)
 		LogNetwork(TEXT("Cannot send audio. Not connected."));
 		return;
 	}
-	LogNetwork(FString::Printf(TEXT("Sending binary audio data (%d bytes)"), AudioData.Num()));
+	// LogNetwork(FString::Printf(TEXT("Sending binary audio data (%d bytes)"), AudioData.Num()));
 	WebSocket->Send(AudioData.GetData(), AudioData.Num(), true);
 }
 
@@ -290,8 +291,6 @@ void UWebSocketSystem::OnClosed_Native(int32 StatusCode, const FString& Reason, 
 
 void UWebSocketSystem::OnMessage_Native(const FString& InMessage)
 {
-	LogNetwork(FString::Printf(TEXT("Received message: %s"), *InMessage));
-
 	TSharedPtr<FJsonObject> JsonObject;
 	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(InMessage);
 
@@ -310,29 +309,39 @@ void UWebSocketSystem::OnMessage_Native(const FString& InMessage)
 
 	if (MessageType == TEXT("transcription"))
 	{
-		FString TranscribedText;
-		if (JsonObject->TryGetStringField(TEXT("text"), TranscribedText))
-		{
-			OnTranscriptionReceived.Broadcast(TranscribedText);
-		}
+		LogNetwork(FString::Printf(TEXT("Received message: %s"), *InMessage));
+
+		// FString TranscribedText;
+		// if (JsonObject->TryGetStringField(TEXT("text"), TranscribedText))
+		// {
+		// 	OnTranscriptionReceived.Broadcast(TranscribedText);
+		// }
 	}
 	else if (MessageType == TEXT("agent_response"))
 	{
+		LogNetwork(FString::Printf(TEXT("Received message: %s"), *InMessage));
+		
 		FString GPTResponse;
 		if (JsonObject->TryGetStringField(TEXT("text"), GPTResponse))
 		{
 			LogNetwork(FString::Printf(TEXT("GPT Response: %s"), *GPTResponse));
 			OnAgentResponse.Broadcast(GPTResponse);
+
+			if (auto EventManager = UBroadcastManger::Get(this))
+				EventManager->SendToastMessage(GPTResponse);
 		}
 	}
 	else if (MessageType == TEXT("audio_start"))
 	{
+		LogNetwork(FString::Printf(TEXT("Received message: %s"), *InMessage));
+		
 		bIsExpectingAudio = true;
 		OnAudioStart.Broadcast();
 	}
 	else if (MessageType == TEXT("audio_data"))
 	{
-		// Base64 encoded audio data
+		// LogNetwork(FString::Printf(TEXT("Received message: %s"), *InMessage));
+		
 		FString Base64Data;
 		if (JsonObject->TryGetStringField(TEXT("data"), Base64Data))
 		{
@@ -350,11 +359,15 @@ void UWebSocketSystem::OnMessage_Native(const FString& InMessage)
 	}
 	else if (MessageType == TEXT("audio_end"))
 	{
+		LogNetwork(FString::Printf(TEXT("Received message: %s"), *InMessage));
+		
 		bIsExpectingAudio = false;
 		OnAudioEnd.Broadcast();
 	}
 	else if (MessageType == TEXT("completed"))
 	{
+		LogNetwork(FString::Printf(TEXT("Received message: %s"), *InMessage));
+		
 		OnCompleted.Broadcast();
 	}
 	else if (MessageType == TEXT("pong"))
@@ -364,20 +377,24 @@ void UWebSocketSystem::OnMessage_Native(const FString& InMessage)
 	}
 	else if (MessageType == TEXT("config_ack"))
 	{
+		LogNetwork(FString::Printf(TEXT("Received message: %s"), *InMessage));
+		
 		FString TempMessage;
 		JsonObject->TryGetStringField(TEXT("message"), TempMessage);
-		LogNetwork(FString::Printf(TEXT("Config Updated: %s"), *TempMessage));
 		OnConfigAck.Broadcast(TempMessage);
 	}
 	else if (MessageType == TEXT("ack_start_recording"))
 	{
+		LogNetwork(FString::Printf(TEXT("Received message: %s"), *InMessage));
+		
 		FString TempMessage;
 		JsonObject->TryGetStringField(TEXT("message"), TempMessage);
-		LogNetwork(FString::Printf(TEXT("Start Recording Ack: %s"), *TempMessage));
 		OnStartRecordingAck.Broadcast(TempMessage);
 	}
 	else if (MessageType == TEXT("error"))
 	{
+		LogNetwork(FString::Printf(TEXT("Received message: %s"), *InMessage));
+		
 		FString ErrorMessage;
 		if (JsonObject->TryGetStringField(TEXT("message"), ErrorMessage))
 		{

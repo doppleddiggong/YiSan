@@ -47,11 +47,11 @@ void UVoiceConversationSystem::Initialize(FSubsystemCollectionBase& Collection)
 			if (!WebSocketSystem->OnConnected.Contains(this, FUNCTION_NAME))
 				WebSocketSystem->OnConnected.AddDynamic(this, &UVoiceConversationSystem::OnWebSocketConnected);
 		}
-		{
-			const FName FUNCTION_NAME = GET_FUNCTION_NAME_CHECKED(UVoiceConversationSystem, OnWebSocketTranscription);
-			if (!WebSocketSystem->OnTranscriptionReceived.Contains(this, FUNCTION_NAME))
-				WebSocketSystem->OnTranscriptionReceived.AddDynamic(this, &UVoiceConversationSystem::OnWebSocketTranscription);
-		}
+		// {
+		// 	const FName FUNCTION_NAME = GET_FUNCTION_NAME_CHECKED(UVoiceConversationSystem, OnWebSocketTranscription);
+		// 	if (!WebSocketSystem->OnTranscriptionReceived.Contains(this, FUNCTION_NAME))
+		// 		WebSocketSystem->OnTranscriptionReceived.AddDynamic(this, &UVoiceConversationSystem::OnWebSocketTranscription);
+		// }
 
 		{
 			const FName FUNCTION_NAME = GET_FUNCTION_NAME_CHECKED(UVoiceConversationSystem, OnWebSocketAudioStart);
@@ -289,22 +289,22 @@ void UVoiceConversationSystem::OnWebSocketConnected()
 	if (UBroadcastManger* EventManager = UBroadcastManger::Get(this))
 		EventManager->SendToastMessage(TEXT("실시간 음성 서버에 연결되었습니다."));
 }
-
-void UVoiceConversationSystem::OnWebSocketTranscription(const FString& TranscribedText)
-{
-	if (TranscribedText.IsEmpty())
-	{
-		PRINTLOG(TEXT("[VoiceConversation] WebSocket STT: (empty)"));
-		return;
-	}
-
-	PRINTLOG(TEXT("[VoiceConversation] WebSocket STT: %s"), *TranscribedText);
-
-	if (UBroadcastManger* EventManager = UBroadcastManger::Get(this))
-	{
-		EventManager->SendToastMessage(TranscribedText);
-	}
-}
+//
+// void UVoiceConversationSystem::OnWebSocketTranscription(const FString& TranscribedText)
+// {
+// 	if (TranscribedText.IsEmpty())
+// 	{
+// 		PRINTLOG(TEXT("[VoiceConversation] WebSocket STT: (empty)"));
+// 		return;
+// 	}
+//
+// 	PRINTLOG(TEXT("[VoiceConversation] WebSocket STT: %s"), *TranscribedText);
+//
+// 	if (UBroadcastManger* EventManager = UBroadcastManger::Get(this))
+// 	{
+// 		EventManager->SendToastMessage(TranscribedText);
+// 	}
+// }
 
 void UVoiceConversationSystem::OnWebSocketAudioStart()
 {

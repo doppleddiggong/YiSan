@@ -89,7 +89,7 @@ void UStreamingRecordSystem::HandleOnCapture(const float* InAudio, const int32 I
 		PcmChunk.Append(SampleBytes, sizeof(int16));
 	}
 
-	NETWORK_LOG( TEXT("HandleOnCapture called. PcmChunk size: %d"), PcmChunk.Num());
+	// NETWORK_LOG( TEXT("HandleOnCapture called. PcmChunk size: %d"), PcmChunk.Num());
 
 	if (OnAudioChunkReady.IsBound())
 	{
