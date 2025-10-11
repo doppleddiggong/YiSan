@@ -25,7 +25,7 @@ public:
     virtual void Deinitialize() override;
 
     void RequestHealth( FResponseHealthDelegate InDelegate);
-    void RequestSTT(const FString& FilePath, FResponseSTTDelegate InDelegate);
+    void RequestTestSTT(const FString& FilePath, FResponseTestSTTDelegate InDelegate);
 
     void RequestTestTTS(const FString& Text, const float SpeakingRate, const float Pitch, FResponseTestTTSDelegate InDelegate);
     void RequestTestGPT(const FString& Text, FResponseTestGPTDelegate InDelegate);

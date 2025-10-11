@@ -32,7 +32,7 @@ void FResponseHealth::PrintData()
     NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
 }
 
-void FResponseSTT::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+void FResponseTestSTT::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
 {
     if (!Response.IsValid())
     {
@@ -50,7 +50,7 @@ void FResponseSTT::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::
     }
 }
 
-void FResponseSTT::PrintData()
+void FResponseTestSTT::PrintData()
 {
     FString OutputString;
     FJsonObjectConverter::UStructToJsonObjectString(

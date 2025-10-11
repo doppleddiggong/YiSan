@@ -39,7 +39,7 @@ namespace RequestAPI
 {
     static FString Health = FString("/health");
     
-    static FString STT = FString("/stt");
+    static FString TestSTT = FString("/test/stt");
     static FString TestTTS = FString("/test/tts");
     static FString TestGPT = FString("/test/gpt");
 }
@@ -58,9 +58,9 @@ struct FResponseHealth
     void PrintData();
 };
 
-DECLARE_DELEGATE_TwoParams( FResponseSTTDelegate, FResponseSTT&, bool );
+DECLARE_DELEGATE_TwoParams( FResponseTestSTTDelegate, FResponseTestSTT&, bool );
 USTRUCT(BlueprintType)
-struct FResponseSTT
+struct FResponseTestSTT
 {
     GENERATED_BODY()
 

@@ -110,10 +110,12 @@ void APlayerActor::Cmd_Chat_Implementation()
 
 void APlayerActor::Cmd_RecordStart_Implementation()
 {
+	PRINT_STRING(TEXT("Cmd_RecordStart_Implementation"));
 	VoiceConversationSystem->StartRecording();
 }
 
 void APlayerActor::Cmd_RecordEnd_Implementation()
 {
+	PRINT_STRING(TEXT("Cmd_RecordEnd_Implementation"));
 	VoiceConversationSystem->StopRecording();
 }

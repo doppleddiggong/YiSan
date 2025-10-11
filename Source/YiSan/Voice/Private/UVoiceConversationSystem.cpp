@@ -3,6 +3,7 @@
 #include "UVoiceConversationSystem.h"
 
 #include "GameLogging.h"
+#include "UBroadcastManger.h"
 #include "UHttpNetworkSystem.h"
 #include "UVoiceRecordSystem.h"
 #include "UVoiceListenSystem.h"
@@ -18,13 +19,14 @@ void UVoiceConversationSystem::Initialize(FSubsystemCollectionBase& Collection)
 	// VoiceRecordSystem 생성
 	if (UWorld* World = GetWorld())
 	{
-		if (AGameModeBase* GameMode = World->GetAuthGameMode())
+		// GameInstance를 Owner로 사용 (클라이언트/서버 모두 작동)
+		if (UGameInstance* GameInstance = World->GetGameInstance())
 		{
-			VoiceRecordSystem = NewObject<UVoiceRecordSystem>(GameMode);
+			VoiceRecordSystem = NewObject<UVoiceRecordSystem>(GameInstance);
 			VoiceRecordSystem->RegisterComponent();
-			VoiceRecordSystem->OnRecordingStopped.AddDynamic(this, &UVoiceConversationSystem::OnRecordingStopped);
+			// VoiceRecordSystem->OnRecordingStopped.AddDynamic(this, &UVoiceConversationSystem::OnRecordingStopped);
 
-			VoiceListenSystem = NewObject<UVoiceListenSystem>(GameMode);
+			VoiceListenSystem = NewObject<UVoiceListenSystem>(GameInstance);
 			VoiceListenSystem->RegisterComponent();
 			VoiceListenSystem->InitSystem();
 		}
@@ -38,14 +40,14 @@ void UVoiceConversationSystem::Initialize(FSubsystemCollectionBase& Collection)
 		WebSocketSystem->OnAudioStart.AddDynamic(this, &UVoiceConversationSystem::OnWebSocketAudioStart);
 	}
 
-	UE_LOG(LogTemp, Log, TEXT("[VoiceConversation] System initialized."));
+	PRINTLOG(TEXT("[VoiceConversation] System initialized."));
 }
 
 void UVoiceConversationSystem::Deinitialize()
 {
 	if (VoiceRecordSystem && VoiceRecordSystem->IsValidLowLevel())
 	{
-		VoiceRecordSystem->OnRecordingStopped.RemoveAll(this);
+		// VoiceRecordSystem->OnRecordingStopped.RemoveAll(this);
 		VoiceRecordSystem->DestroyComponent();
 	}
 
@@ -70,55 +72,62 @@ void UVoiceConversationSystem::StartRecording()
 {
 	if (bIsRecording || bIsProcessing)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("[VoiceConversation] Already recording or processing."));
+		PRINTLOG( TEXT("[VoiceConversation] Already recording or processing."));
 		return;
 	}
 
 	if (!VoiceRecordSystem)
 	{
-		OnError.Broadcast(TEXT("VoiceRecordSystem이 초기화되지 않았습니다."));
+		PRINTLOG( TEXT("VoiceRecordSystem이 초기화되지 않았습니다."));
+		// OnError.Broadcast(TEXT("VoiceRecordSystem이 초기화되지 않았습니다."));
 		return;
 	}
 
+	PRINT_STRING(TEXT("Cmd_RecordStart_Implementation"));
+
+	
 	bIsRecording = true;
 	VoiceRecordSystem->RecordStart();
-	OnRecordingStarted.Broadcast();
+	// OnRecordingStarted.Broadcast();
 
-	UE_LOG(LogTemp, Log, TEXT("[VoiceConversation] Recording started."));
+	PRINTLOG( TEXT("[VoiceConversation] Recording started."));
 }
 
 void UVoiceConversationSystem::StopRecording()
 {
 	if (!bIsRecording)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("[VoiceConversation] Not currently recording."));
+		PRINTLOG( TEXT("[VoiceConversation] Not currently recording."));
 		return;
 	}
 
 	bIsRecording = false;
 	bIsProcessing = true;
-	VoiceRecordSystem->RecordStop();
+	auto FilePath = VoiceRecordSystem->RecordStop();
 
-	UE_LOG(LogTemp, Log, TEXT("[VoiceConversation] Recording stopped. Processing..."));
+	PRINTLOG( TEXT("[VoiceConversation] Recording stopped. Processing...") );
+
+	OnRecordingStopped( FilePath );
 }
 
 void UVoiceConversationSystem::AskGPTDirectly(const FString& Question)
 {
 	if (bIsProcessing)
 	{
-		OnError.Broadcast(TEXT("이미 처리 중입니다."));
+		PRINTLOG( TEXT("이미 처리 중입니다."));
+		// OnError.Broadcast(TEXT("이미 처리 중입니다."));
 		return;
 	}
 
 	bIsProcessing = true;
-	CurrentTranscribedText = Question;
-	OnTranscriptionReceived.Broadcast(Question);
+	// CurrentTranscribedText = Question;
+	// OnTranscriptionReceived.Broadcast(Question);
 
 	// GPT 요청
 	UHttpNetworkSystem* HttpSystem = UHttpNetworkSystem::Get(GetWorld());
 	if (!HttpSystem)
 	{
-		OnError.Broadcast(TEXT("HttpSystem을 찾을 수 없습니다."));
+		// OnError.Broadcast(TEXT("HttpSystem을 찾을 수 없습니다."));
 		bIsProcessing = false;
 		return;
 	}
@@ -130,60 +139,52 @@ void UVoiceConversationSystem::AskGPTDirectly(const FString& Question)
 
 void UVoiceConversationSystem::OnRecordingStopped(const FString& FilePath)
 {
-	UE_LOG(LogTemp, Log, TEXT("[VoiceConversation] Recording saved to: %s"), *FilePath);
+	PRINTLOG( TEXT("[VoiceConversation] Recording saved to: %s"), *FilePath);
 
+	if (FilePath.IsEmpty())
+	{
+		PRINTLOG( TEXT("[VoiceConversation] FilePath is Empty") );
+		return;
+	}
+	
 	// STT 요청
 	UHttpNetworkSystem* HttpSystem = UHttpNetworkSystem::Get(GetWorld());
 	if (!HttpSystem)
 	{
-		OnError.Broadcast(TEXT("HttpSystem을 찾을 수 없습니다."));
+		PRINTLOG( TEXT("HttpSystem을 찾을 수 없습니다."));
+		// OnError.Broadcast(TEXT("HttpSystem을 찾을 수 없습니다."));
 		bIsProcessing = false;
 		return;
 	}
 
-	HttpSystem->RequestSTT(FilePath, FResponseSTTDelegate::CreateUObject(
-		this, &UVoiceConversationSystem::OnSTTResponse
+	HttpSystem->RequestTestSTT(FilePath, FResponseTestSTTDelegate::CreateUObject(
+		this, &UVoiceConversationSystem::OnResponseTestSTT
 	));
 }
 
-void UVoiceConversationSystem::OnSTTResponse(FResponseSTT& Response, bool bSuccess)
+void UVoiceConversationSystem::OnResponseTestSTT(FResponseTestSTT& Response, bool bSuccess)
 {
-	if (!bSuccess || Response.text.IsEmpty())
+	bIsProcessing = false;
+
+	if (bSuccess)
 	{
-		OnError.Broadcast(TEXT("STT 처리에 실패했습니다."));
-		bIsProcessing = false;
-		return;
+		if (auto EventManager = UBroadcastManger::Get(this))
+			EventManager->SendToastMessage(Response.text);
 	}
-
-	CurrentTranscribedText = Response.text;
-	OnTranscriptionReceived.Broadcast(Response.text);
-
-	UE_LOG(LogTemp, Log, TEXT("[VoiceConversation] STT: %s"), *Response.text);
-
-	// GPT 요청
-	UHttpNetworkSystem* HttpSystem = UHttpNetworkSystem::Get(GetWorld());
-	if (!HttpSystem)
+	else
 	{
-		OnError.Broadcast(TEXT("HttpSystem을 찾을 수 없습니다."));
-		bIsProcessing = false;
-		return;
+		PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
 	}
-
-	HttpSystem->RequestTestGPT(Response.text, FResponseTestGPTDelegate::CreateUObject(
-		this, &UVoiceConversationSystem::OnGPTResponse
-	));
 }
 
 void UVoiceConversationSystem::OnGPTResponse(FResponseTestGPT& Response, bool bSuccess)
 {
 	if (!bSuccess || Response.response.IsEmpty())
 	{
-		OnError.Broadcast(TEXT("GPT 처리에 실패했습니다."));
+		PRINTLOG( TEXT("GPT 처리에 실패했습니다."));
 		bIsProcessing = false;
 		return;
 	}
-
-	OnGPTResponseReceived.Broadcast(Response.response);
 
 	UE_LOG(LogTemp, Log, TEXT("[VoiceConversation] GPT: %s"), *Response.response);
 
@@ -191,12 +192,10 @@ void UVoiceConversationSystem::OnGPTResponse(FResponseTestGPT& Response, bool bS
 	UHttpNetworkSystem* HttpSystem = UHttpNetworkSystem::Get(GetWorld());
 	if (!HttpSystem)
 	{
-		OnError.Broadcast(TEXT("HttpSystem을 찾을 수 없습니다."));
+		PRINTLOG( TEXT("HttpSystem을 찾을 수 없습니다."));
 		bIsProcessing = false;
 		return;
 	}
-
-	OnTTSStarted.Broadcast();
 
 	HttpSystem->RequestTestTTS(Response.response, 0.88f, -3.0f,
 		FResponseTestTTSDelegate::CreateUObject( this, &UVoiceConversationSystem::OnResponseTestTTS ));
@@ -206,8 +205,15 @@ void UVoiceConversationSystem::OnResponseTestTTS(FResponseTestTTS& Response, boo
 {
 	if (bSuccess)
 	{
-		// if (auto EventManager = UBroadcastManger::Get(this))
-		// 	EventManager->SendToastMessage(ResponseData.message);
+		if (Response.audio_data.Num() == 0)
+		{
+			PRINTLOG(TEXT("TTS 응답은 성공했으나 audio_data가 비어있습니다."));
+			return;
+		}
+
+		PRINTLOG(TEXT("TTS 응답 수신: %d bytes"), Response.audio_data.Num());
+
+		VoiceListenSystem->HandleTTSOutput(Response.audio_data);
 	}
 	else
 	{
@@ -222,7 +228,7 @@ void UVoiceConversationSystem::ConnectWebSocket()
 	UWebSocketSystem* WebSocketSystem = UWebSocketSystem::Get(GetWorld());
 	if (!WebSocketSystem)
 	{
-		OnError.Broadcast(TEXT("WebSocketSystem을 찾을 수 없습니다."));
+		PRINTLOG( TEXT("WebSocketSystem을 찾을 수 없습니다."));
 		return;
 	}
 
@@ -245,7 +251,7 @@ void UVoiceConversationSystem::SendAudioToWebSocket(const TArray<uint8>& AudioDa
 	UWebSocketSystem* WebSocketSystem = UWebSocketSystem::Get(GetWorld());
 	if (!WebSocketSystem || !WebSocketSystem->IsConnected())
 	{
-		OnError.Broadcast(TEXT("WebSocket이 연결되지 않았습니다."));
+		PRINTLOG( TEXT("WebSocket이 연결되지 않았습니다."));
 		return;
 	}
 
@@ -257,7 +263,7 @@ void UVoiceConversationSystem::RequestTTSViaWebSocket(const FString& Text)
 	UWebSocketSystem* WebSocketSystem = UWebSocketSystem::Get(GetWorld());
 	if (!WebSocketSystem || !WebSocketSystem->IsConnected())
 	{
-		OnError.Broadcast(TEXT("WebSocket이 연결되지 않았습니다."));
+		PRINTLOG( TEXT("WebSocket이 연결되지 않았습니다."));
 		return;
 	}
 
@@ -274,20 +280,15 @@ bool UVoiceConversationSystem::IsWebSocketConnected() const
 
 void UVoiceConversationSystem::OnWebSocketConnected()
 {
-	UE_LOG(LogTemp, Log, TEXT("[VoiceConversation] WebSocket connected."));
+	PRINTLOG(TEXT("[VoiceConversation] WebSocket connected."));
 }
 
 void UVoiceConversationSystem::OnWebSocketTranscription(const FString& TranscribedText)
 {
-	CurrentTranscribedText = TranscribedText;
-	OnTranscriptionReceived.Broadcast(TranscribedText);
-
-	UE_LOG(LogTemp, Log, TEXT("[VoiceConversation] WebSocket STT: %s"), *TranscribedText);
+	PRINTLOG( TEXT("[VoiceConversation] WebSocket STT: %s"), *TranscribedText );
 }
 
 void UVoiceConversationSystem::OnWebSocketAudioStart()
 {
-	OnTTSStarted.Broadcast();
-
-	UE_LOG(LogTemp, Log, TEXT("[VoiceConversation] WebSocket TTS streaming started."));
+	PRINTLOG( TEXT("[VoiceConversation] WebSocket TTS streaming started."));
 }

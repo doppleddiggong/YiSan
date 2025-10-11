@@ -2,9 +2,13 @@
 
 
 #include "UVoiceListenSystem.h"
+
+#include "GameLogging.h"
+#include "UVoiceFunctionLibrary.h"
 #include "UWebSocketSystem.h"
 #include "Sound/SoundWaveProcedural.h"
 #include "Components/AudioComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 UVoiceListenSystem::UVoiceListenSystem()
 {
@@ -58,6 +62,32 @@ void UVoiceListenSystem::HandleAudioChunk(const TArray<uint8>& AudioData)
 
 void UVoiceListenSystem::HandleAudioEnd()
 {
-	UE_LOG(LogTemp, Warning, TEXT("HandleAudioEnd: 오디오 스트림이 종료되었습니다."));
+	PRINTLOG( TEXT("HandleAudioEnd: 오디오 스트림이 종료되었습니다."));
 	// 큐에 데이터가 더 이상 추가되지 않으면 재생이 자연스럽게 멈춥니다.
+}
+
+void UVoiceListenSystem::HandleTTSOutput(const TArray<uint8>& AudioData)
+{
+	const FString SavePath = FPaths::ProjectSavedDir() / TEXT("TTS_Output.wav");
+
+	if (FFileHelper::SaveArrayToFile(AudioData, *SavePath))
+	{
+		PRINTLOG(TEXT("TTS WAV 저장 완료: %s"), *SavePath);
+
+		// 언리얼에서 재생하려면 SoundWave로 로드
+		USoundWave* Sound = UVoiceFunctionLibrary::CreateSoundWaveFromWavData(AudioData);
+
+		if (Sound)
+		{
+			UGameplayStatics::PlaySound2D(GetWorld(), Sound);
+		}
+		else
+		{
+			PRINTLOG(TEXT("SoundWave 생성 실패"));
+		}
+	}
+	else
+	{
+		PRINTLOG(TEXT("TTS WAV 저장 실패"));
+	}
 }

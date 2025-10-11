@@ -78,3 +78,94 @@ FString UVoiceFunctionLibrary::SaveWavToFile(TArray<uint8>& InWavData, const FSt
 		return FString();
 	}
 }
+
+
+
+
+
+
+
+static uint32 ReadUInt32(const uint8* Data, int32 Offset)
+{
+    return Data[Offset] |
+           (Data[Offset + 1] << 8) |
+           (Data[Offset + 2] << 16) |
+           (Data[Offset + 3] << 24);
+}
+
+static uint16 ReadUInt16(const uint8* Data, int32 Offset)
+{
+    return Data[Offset] | (Data[Offset + 1] << 8);
+}
+
+USoundWave* UVoiceFunctionLibrary::CreateSoundWaveFromWavData(const TArray<uint8>& WavData)
+{
+    if (WavData.Num() < 44)
+    {
+        PRINTLOG( TEXT("Invalid WAV data (too small)"));
+        return nullptr;
+    }
+
+    const uint8* RawData = WavData.GetData();
+
+    // WAV Header Parsing
+    // ChunkID "RIFF" (0~3)
+    // Format "WAVE" (8~11)
+    // Subchunk1ID "fmt " (12~15)
+    // AudioFormat, NumChannels, SampleRate, ByteRate, BlockAlign, BitsPerSample
+    uint16 AudioFormat  = ReadUInt16(RawData, 20);
+    uint16 NumChannels  = ReadUInt16(RawData, 22);
+    uint32 SampleRate   = ReadUInt32(RawData, 24);
+    uint16 BitsPerSample = ReadUInt16(RawData, 34);
+
+    // Subchunk2ID "data"는 고정 위치가 아니므로 탐색
+    int32 DataChunkOffset = 36;
+    while (DataChunkOffset + 8 < WavData.Num())
+    {
+        uint32 ChunkID =
+            RawData[DataChunkOffset] |
+            (RawData[DataChunkOffset + 1] << 8) |
+            (RawData[DataChunkOffset + 2] << 16) |
+            (RawData[DataChunkOffset + 3] << 24);
+
+        uint32 ChunkSize = ReadUInt32(RawData, DataChunkOffset + 4);
+
+        // 'data' 체크
+        if (ChunkID == 'atad') // 'data'를 리틀엔디언 'atad'로 읽음
+        {
+            break;
+        }
+
+        // 다음 Chunk로 이동
+        DataChunkOffset += (8 + ChunkSize);
+    }
+
+    if (DataChunkOffset + 8 >= WavData.Num())
+    {
+        PRINTLOG( TEXT("WAV data chunk not found"));
+        return nullptr;
+    }
+
+    const int32 DataStart = DataChunkOffset + 8;
+    const int32 DataSize = WavData.Num() - DataStart;
+
+    // SoundWave 생성
+    USoundWave* SoundWave = NewObject<USoundWave>(USoundWave::StaticClass());
+    if (!SoundWave)
+    {
+        PRINTLOG( TEXT("Failed to create USoundWave"));
+        return nullptr;
+    }
+
+    SoundWave->NumChannels   = NumChannels;
+    SoundWave->Duration      = (float)DataSize / (SampleRate * NumChannels * (BitsPerSample / 8));
+    SoundWave->SetSampleRate(SampleRate);
+    SoundWave->RawPCMDataSize = DataSize;
+
+    // RawPCMData에 복사
+    uint8* PCMData = (uint8*)FMemory::Malloc(DataSize);
+    FMemory::Memcpy(PCMData, RawData + DataStart, DataSize);
+    SoundWave->RawPCMData = PCMData;
+
+    return SoundWave;
+}

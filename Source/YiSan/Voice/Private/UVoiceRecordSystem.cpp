@@ -39,10 +39,10 @@ void UVoiceRecordSystem::RecordStart()
 	PRINTLOG(TEXT("RecordStart"));
 }
 
-void UVoiceRecordSystem::RecordStop()
+FString UVoiceRecordSystem::RecordStop()
 {
 	if (!bIsRecording)
-		return;
+		return TEXT("");
 
 	bIsRecording = false;
 	
@@ -52,8 +52,7 @@ void UVoiceRecordSystem::RecordStop()
 	
 	WAVData = UVoiceFunctionLibrary::ConvertPCM2WAV(PCMData, LastSampleRate, LastNumChannels, 16);
 	LastRecordedFilePath = UVoiceFunctionLibrary::SaveWavToFile(WAVData);
-
-	OnRecordingStopped.Broadcast(LastRecordedFilePath);
+	return LastRecordedFilePath;
 }
 
 void UVoiceRecordSystem::HandleOnCapture(const float* InAudio, int32 InNumFrames, int32 InNumChannels, int32 InSampleRate)

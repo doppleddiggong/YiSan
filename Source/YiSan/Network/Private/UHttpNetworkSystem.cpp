@@ -72,11 +72,11 @@ void UHttpNetworkSystem::RequestHealth( FResponseHealthDelegate InDelegate )
     HttpRequest->ProcessRequest();
 }
 
-void UHttpNetworkSystem::RequestSTT(const FString& FilePath, FResponseSTTDelegate InDelegate)
+void UHttpNetworkSystem::RequestTestSTT(const FString& FilePath, FResponseTestSTTDelegate InDelegate)
 {
     auto HttpRequest = FHttpModule::Get().CreateRequest();
     HttpRequest->SetVerb(NETWORK_POST);
-    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::STT));
+    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::TestSTT));
     HttpRequest->SetHeader(TEXT("Accept"), TEXT("application/json"));
 
     FHttpMultipartFormData Form;
@@ -92,7 +92,7 @@ void UHttpNetworkSystem::RequestSTT(const FString& FilePath, FResponseSTTDelegat
     HttpRequest->OnProcessRequestComplete().BindLambda(
         [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
-            FResponseSTT ResponseData;
+            FResponseTestSTT ResponseData;
             if (bWasSuccessful && ResPtr.IsValid())
             {
                 NETWORK_LOG(TEXT("[RES] %s"), *ResPtr->GetContentAsString());
