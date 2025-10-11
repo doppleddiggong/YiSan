@@ -36,9 +36,6 @@ APlayerActor::APlayerActor()
 
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->bUseControllerDesiredRotation = false;
-
-	// VoiceRecordSystem = CreateDefaultSubobject<UVoiceRecordSystem>(TEXT("VoiceRecordSystem"));
-	// VoiceListenSystem = CreateDefaultSubobject<UVoiceListenSystem>(TEXT("VoiceListenSystem"));
 }
 
 void APlayerActor::BeginPlay()
@@ -53,11 +50,6 @@ void APlayerActor::BeginPlay()
 	if (MainWidgetInst)
 		MainWidgetInst->AddToViewport();
 
-	// VoiceRecordSystem->OnRecordingStopped.AddDynamic(this, &APlayerActor::OnRecordingStoppedHandler);
-	// VoiceListenSystem->InitSystem();
-
-	VoiceConversationSystem = UVoiceConversationSystem::Get(GetWorld());
-	
 	if (auto WebSocketSystem = UWebSocketSystem::Get(GetWorld()))
 		WebSocketSystem->Connect();
 }
@@ -114,4 +106,16 @@ void APlayerActor::Cmd_RecordEnd_Implementation()
 {
 	PRINT_STRING(TEXT("Cmd_RecordEnd_Implementation"));
 	VoiceConversationSystem->StopRecording();
+}
+
+void APlayerActor::Cmd_StreamingStart_Implementation()
+{
+	PRINT_STRING(TEXT("Cmd_StreamingStart_Implementation"));
+	VoiceConversationSystem->StartStreaming();
+}
+
+void APlayerActor::Cmd_StreamingEnd_Implementation()
+{
+	PRINT_STRING(TEXT("Cmd_StreamingEnd_Implementation"));
+	VoiceConversationSystem->StopStreaming();
 }

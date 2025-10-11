@@ -24,6 +24,7 @@ void UVoiceListenSystem::InitSystem()
 	if (auto WebSocketSystem = UWebSocketSystem::Get(GetWorld()))
 	{
 		WebSocketSystem->OnAudioStart.AddDynamic(this, &UVoiceListenSystem::HandleAudioStart);
+		WebSocketSystem->OnAudioDataReceived.AddDynamic(this, &UVoiceListenSystem::HandleAudioChunk);
 		WebSocketSystem->OnAudioChunkReceived.AddDynamic(this, &UVoiceListenSystem::HandleAudioChunk);
 		WebSocketSystem->OnAudioEnd.AddDynamic(this, &UVoiceListenSystem::HandleAudioEnd);
 	}
@@ -67,95 +68,11 @@ void UVoiceListenSystem::HandleAudioEnd()
 }
 
 
-// Static helper functions for WAV parsing
-static uint32 ReadUInt32(const uint8* Data, int32 Offset)
-{
-    return Data[Offset] |
-           (Data[Offset + 1] << 8) |
-           (Data[Offset + 2] << 16) |
-           (Data[Offset + 3] << 24);
-}
-
-static uint16 ReadUInt16(const uint8* Data, int32 Offset)
-{
-    return Data[Offset] | (Data[Offset + 1] << 8);
-}
-
 void UVoiceListenSystem::HandleTTSOutput(const TArray<uint8>& AudioData, UObject* WorldContextObject)
 {
-	const FString SavePath = FPaths::ProjectSavedDir() / TEXT("TTS_Output.wav");
-
-	if (FFileHelper::SaveArrayToFile(AudioData, *SavePath))
+	auto SoundWave = UVoiceFunctionLibrary::CreateSoundWaveFromWavData2(AudioData);
+	if ( IsValid(SoundWave))
 	{
-		PRINTLOG(TEXT("TTS WAV 저장 완료: %s"), *SavePath);
-
-		if (AudioData.Num() < 44)
-		{
-			PRINTLOG(TEXT("Invalid WAV data (too small)"));
-			return;
-		}
-
-		const uint8* RawData = AudioData.GetData();
-
-		// --- WAV Header Parsing ---
-		uint16 NumChannels = ReadUInt16(RawData, 22);
-		uint32 SampleRate = ReadUInt32(RawData, 24);
-
-		// Find the 'data' chunk, as it's not always at a fixed position.
-		int32 DataChunkOffset = 36; // Typically after the 'fmt ' chunk.
-		while (DataChunkOffset + 8 < AudioData.Num())
-		{
-			// Read ChunkID as a 4-character string
-			const char* ChunkIDStr = (const char*)(RawData + DataChunkOffset);
-			
-			if (strncmp(ChunkIDStr, "data", 4) == 0)
-			{
-				break; // Found it
-			}
-
-			// If not 'data', skip to the next chunk
-			uint32 ChunkSize = ReadUInt32(RawData, DataChunkOffset + 4);
-			DataChunkOffset += (8 + ChunkSize);
-		}
-
-		if (DataChunkOffset + 8 >= AudioData.Num())
-		{
-			PRINTLOG(TEXT("WAV 'data' chunk not found"));
-			return;
-		}
-
-		const uint32 DataSize = ReadUInt32(RawData, DataChunkOffset + 4);
-		const int32 DataStart = DataChunkOffset + 8;
-
-		if (DataStart +  (int32)DataSize > AudioData.Num())
-		{
-			PRINTLOG(TEXT("Invalid WAV data chunk size"));
-			return;
-		}
-		// --- End of WAV Header Parsing ---
-
-		USoundWaveProcedural* SoundWave = NewObject<USoundWaveProcedural>();
-		if (SoundWave)
-		{
-			SoundWave->SetSampleRate(SampleRate);
-			SoundWave->NumChannels = NumChannels;
-			SoundWave->Duration = INDEFINITELY_LOOPING_DURATION;
-			SoundWave->SoundGroup = ESoundGroup::SOUNDGROUP_Voice;
-			SoundWave->bLooping = false;
-
-			// Queue the raw PCM data for playback
-			SoundWave->QueueAudio(RawData + DataStart, DataSize);
-
-			// Play the sound
-			UGameplayStatics::PlaySound2D(WorldContextObject, SoundWave);
-		}
-		else
-		{
-			PRINTLOG(TEXT("Failed to create USoundWaveProcedural"));
-		}
-	}
-	else
-	{
-		PRINTLOG(TEXT("TTS WAV 저장 실패"));
+		UGameplayStatics::PlaySound2D(WorldContextObject, SoundWave);
 	}
 }

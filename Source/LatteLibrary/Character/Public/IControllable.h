@@ -35,4 +35,7 @@ public:
 
 	virtual void Cmd_RecordStart() {};						// 녹음 시작
 	virtual void Cmd_RecordEnd() {};						// 녹음 종료
+
+	virtual void Cmd_StreamingStart() {};					// 스트리밍 시작
+	virtual void Cmd_StreamingEnd() {};						// 스트리밍 종료
 };

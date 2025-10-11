@@ -37,6 +37,9 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnWebSocketClosed, int32, Status
 // 서버 에러 메시지
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnWebSocketError, const FString&, ErrorMessage);
 
+// 실시간 녹음 시작 확인
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnWebSocketStartRecordingAck, const FString&, Message);
+
 // TTS 설정 확인
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnWebSocketConfigAck, const FString&, Message);
 
@@ -87,6 +90,12 @@ public:
 	);
 
 	UFUNCTION(BlueprintCallable, Category = "WebSocket")
+	void SendStartRecordingMessage();
+
+	UFUNCTION(BlueprintCallable, Category = "WebSocket")
+	void SendStopRecordingMessage();
+
+	UFUNCTION(BlueprintCallable, Category = "WebSocket")
 	void SendPing();
 
 	UFUNCTION(BlueprintPure, Category = "WebSocket")
@@ -105,6 +114,9 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = "WebSocket|Events")
 	FOnWebSocketError OnError;
+
+	UPROPERTY(BlueprintAssignable, Category = "WebSocket|Events")
+	FOnWebSocketStartRecordingAck OnStartRecordingAck;
 
 	UPROPERTY(BlueprintAssignable, Category = "WebSocket|Events")
 	FOnWebSocketConfigAck OnConfigAck;

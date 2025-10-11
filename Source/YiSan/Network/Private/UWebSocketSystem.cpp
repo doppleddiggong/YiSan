@@ -241,6 +241,30 @@ void UWebSocketSystem::SendPing()
 	WebSocket->Send(TEXT("{\"type\":\"ping\"}"));
 }
 
+void UWebSocketSystem::SendStartRecordingMessage()
+{
+	if (!IsConnected())
+	{
+		LogNetwork(TEXT("Cannot send start_recording message. Not connected."));
+		return;
+	}
+    
+	LogNetwork(TEXT("Sending start_recording message"));
+	WebSocket->Send(TEXT("{\"type\":\"start_recording\"}"));
+}
+
+void UWebSocketSystem::SendStopRecordingMessage()
+{
+	if (!IsConnected())
+	{
+		LogNetwork(TEXT("Cannot send stop_recording message. Not connected."));
+		return;
+	}
+    
+	LogNetwork(TEXT("Sending stop_recording message"));
+	WebSocket->Send(TEXT("{\"type\":\"stop_recording\"}"));
+}
+
 
 // --- Native WebSocket Callbacks ---
 
@@ -344,6 +368,13 @@ void UWebSocketSystem::OnMessage_Native(const FString& InMessage)
 		JsonObject->TryGetStringField(TEXT("message"), TempMessage);
 		LogNetwork(FString::Printf(TEXT("Config Updated: %s"), *TempMessage));
 		OnConfigAck.Broadcast(TempMessage);
+	}
+	else if (MessageType == TEXT("ack_start_recording"))
+	{
+		FString TempMessage;
+		JsonObject->TryGetStringField(TEXT("message"), TempMessage);
+		LogNetwork(FString::Printf(TEXT("Start Recording Ack: %s"), *TempMessage));
+		OnStartRecordingAck.Broadcast(TempMessage);
 	}
 	else if (MessageType == TEXT("error"))
 	{

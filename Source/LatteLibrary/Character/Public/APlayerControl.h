@@ -35,6 +35,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Landing;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Chat;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Record;
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Streaming;
 	
 	// --- Handlers ---
 	void OnMove(const FInputActionValue& Value);
@@ -49,6 +50,9 @@ protected:
 	void OnChat(const FInputActionValue& Value);
 	void OnRecordPressed(const FInputActionValue& Value);
 	void OnRecordReleased(const FInputActionValue& Value);
+
+	void OnStreamingPressed(const FInputActionValue& Value);
+	void OnStreamingReleased(const FInputActionValue& Value);
 	
 private:
     class IControllable* GetControllable() const;

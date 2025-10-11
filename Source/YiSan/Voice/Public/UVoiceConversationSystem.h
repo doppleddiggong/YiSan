@@ -47,25 +47,19 @@ public:
 	void StopRecording();
 
 	// --- WebSocket 방식 실시간 음성 대화 ---
-
-	/** WebSocket 연결 */
+	/** 실시간 음성 스트리밍 시작 */
 	UFUNCTION(BlueprintCallable, Category = "Voice|Conversation|WebSocket")
-	void ConnectWebSocket();
+	void StartStreaming();
 
-	/** WebSocket 연결 해제 */
+	/** 실시간 음성 스트리밍 중지 */
 	UFUNCTION(BlueprintCallable, Category = "Voice|Conversation|WebSocket")
-	void DisconnectWebSocket();
+	void StopStreaming();
 
 	/** WebSocket으로 오디오 전송 (실시간 스트리밍) */
 	UFUNCTION(BlueprintCallable, Category = "Voice|Conversation|WebSocket")
-	void SendAudioToWebSocket(const TArray<uint8>& AudioData);
-
-	/** WebSocket으로 TTS 요청 */
-	UFUNCTION(BlueprintCallable, Category = "Voice|Conversation|WebSocket")
-	void RequestTTSViaWebSocket(const FString& Text);
+	void SendStreamAudio(const TArray<uint8>& AudioData);
 
 	// --- 상태 확인 ---
-
 	UFUNCTION(BlueprintPure, Category = "Voice|Conversation")
 	bool IsRecording() const { return bIsRecording; }
 
@@ -81,18 +75,21 @@ private:
 
 	// --- HTTP 방식 콜백 ---
 	UFUNCTION()
-	void OnRecordingStopped(const FString& FilePath);
+	void SendAskFromCaptureData(const FString& FilePath);
 	
 	void OnResponseAsk(FResponseAsk& Response, bool bSuccess);
-	void OnResponseTestTTS(FResponseTestTTS& Response, bool bSuccess);
-	
+
 	// --- WebSocket 방식 콜백 ---
+	UFUNCTION()
+	void OnAudioChunkReady(const TArray<uint8>& PcmData);
 	UFUNCTION()
 	void OnWebSocketConnected();
 	UFUNCTION()
 	void OnWebSocketTranscription(const FString& TranscribedText);
 	UFUNCTION()
 	void OnWebSocketAudioStart();
+	UFUNCTION()
+	void OnWebSocketStartRecordingAck(const FString& Message);
 
 	// --- 컴포넌트 참조 ---
 	UPROPERTY()
@@ -101,7 +98,11 @@ private:
 	UPROPERTY()
 	TObjectPtr<class UVoiceListenSystem> VoiceListenSystem;
 
+	UPROPERTY()
+	TObjectPtr<class UStreamingRecordSystem> StreamingRecordSystem;
+
 	// --- 상태 변수 ---
 	bool bIsRecording = false;
 	bool bIsProcessing = false;
+    bool bIsStreamingActive = false;
 };

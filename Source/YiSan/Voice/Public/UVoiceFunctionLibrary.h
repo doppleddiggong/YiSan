@@ -27,4 +27,7 @@ public:
 	// WAV 데이터를 기반으로 USoundWave 생성
 	UFUNCTION(BlueprintCallable, Category = "Voice|Utility")
 	static USoundWave* CreateSoundWaveFromWavData(const TArray<uint8>& WavData);
+
+	UFUNCTION(BlueprintCallable, Category = "Voice|Utility")
+	static USoundWaveProcedural* CreateSoundWaveFromWavData2(const TArray<uint8>& AudioData);
 };

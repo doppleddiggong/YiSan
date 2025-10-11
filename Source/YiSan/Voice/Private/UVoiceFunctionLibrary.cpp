@@ -2,8 +2,22 @@
 
 #include "UVoiceFunctionLibrary.h"
 #include "GameLogging.h"
+#include "Sound/SoundWaveProcedural.h"
 
 #define VOICE_LOG TEXT("VoiceLogs")
+
+static uint32 ReadUInt32(const uint8* Data, int32 Offset)
+{
+	return Data[Offset] |
+		   (Data[Offset + 1] << 8) |
+		   (Data[Offset + 2] << 16) |
+		   (Data[Offset + 3] << 24);
+}
+
+static uint16 ReadUInt16(const uint8* Data, int32 Offset)
+{
+	return Data[Offset] | (Data[Offset + 1] << 8);
+}
 
 TArray<uint8> UVoiceFunctionLibrary::ConvertPCM2WAV(
 	const TArray<uint8>& InPCMData,
@@ -77,25 +91,6 @@ FString UVoiceFunctionLibrary::SaveWavToFile(TArray<uint8>& InWavData, const FSt
 		PRINTLOG( TEXT("Failed to save WAV file: %s"), *FullPath);
 		return FString();
 	}
-}
-
-
-
-
-
-
-
-static uint32 ReadUInt32(const uint8* Data, int32 Offset)
-{
-    return Data[Offset] |
-           (Data[Offset + 1] << 8) |
-           (Data[Offset + 2] << 16) |
-           (Data[Offset + 3] << 24);
-}
-
-static uint16 ReadUInt16(const uint8* Data, int32 Offset)
-{
-    return Data[Offset] | (Data[Offset + 1] << 8);
 }
 
 USoundWave* UVoiceFunctionLibrary::CreateSoundWaveFromWavData(const TArray<uint8>& WavData)
@@ -172,4 +167,84 @@ USoundWave* UVoiceFunctionLibrary::CreateSoundWaveFromWavData(const TArray<uint8
     SoundWave->RawPCMData = PCMData;
 
     return SoundWave;
+}
+
+USoundWaveProcedural* UVoiceFunctionLibrary::CreateSoundWaveFromWavData2(const TArray<uint8>& AudioData)
+{
+	const FString SavePath = FPaths::ProjectSavedDir() / TEXT("TTS_Output.wav");
+
+	if (FFileHelper::SaveArrayToFile(AudioData, *SavePath))
+	{
+		PRINTLOG(TEXT("TTS WAV 저장 완료: %s"), *SavePath);
+
+		if (AudioData.Num() < 44)
+		{
+			PRINTLOG(TEXT("Invalid WAV data (too small)"));
+			return nullptr;
+		}
+
+		const uint8* RawData = AudioData.GetData();
+
+		// --- WAV Header Parsing ---
+		uint16 NumChannels = ReadUInt16(RawData, 22);
+		uint32 SampleRate = ReadUInt32(RawData, 24);
+
+		// Find the 'data' chunk, as it's not always at a fixed position.
+		int32 DataChunkOffset = 36; // Typically after the 'fmt ' chunk.
+		while (DataChunkOffset + 8 < AudioData.Num())
+		{
+			// Read ChunkID as a 4-character string
+			const char* ChunkIDStr = (const char*)(RawData + DataChunkOffset);
+			
+			if (strncmp(ChunkIDStr, "data", 4) == 0)
+			{
+				break; // Found it
+			}
+
+			// If not 'data', skip to the next chunk
+			uint32 ChunkSize = ReadUInt32(RawData, DataChunkOffset + 4);
+			DataChunkOffset += (8 + ChunkSize);
+		}
+
+		if (DataChunkOffset + 8 >= AudioData.Num())
+		{
+			PRINTLOG(TEXT("WAV 'data' chunk not found"));
+			return nullptr;
+		}
+
+		const uint32 DataSize = ReadUInt32(RawData, DataChunkOffset + 4);
+		const int32 DataStart = DataChunkOffset + 8;
+
+		if (DataStart +  (int32)DataSize > AudioData.Num())
+		{
+			PRINTLOG(TEXT("Invalid WAV data chunk size"));
+			return nullptr;
+		}
+		// --- End of WAV Header Parsing ---
+
+		USoundWaveProcedural* SoundWave = NewObject<USoundWaveProcedural>();
+		if (SoundWave)
+		{
+			SoundWave->SetSampleRate(SampleRate);
+			SoundWave->NumChannels = NumChannels;
+			SoundWave->Duration = INDEFINITELY_LOOPING_DURATION;
+			SoundWave->SoundGroup = ESoundGroup::SOUNDGROUP_Voice;
+			SoundWave->bLooping = false;
+
+			// Queue the raw PCM data for playback
+			SoundWave->QueueAudio(RawData + DataStart, DataSize);
+
+			return SoundWave;
+		}
+		else
+		{
+			PRINTLOG(TEXT("Failed to create USoundWaveProcedural"));
+		}
+	}
+	else
+	{
+		PRINTLOG(TEXT("TTS WAV 저장 실패"));
+	}
+
+	return nullptr;
 }
