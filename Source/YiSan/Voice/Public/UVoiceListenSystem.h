@@ -15,7 +15,6 @@ public:
 	UVoiceListenSystem();
 	
 	void InitSystem();
-	void HandleTTSOutput(const TArray<uint8>& AudioData, UObject* WorldContextObject);
 
 protected:
 	UFUNCTION()
@@ -24,8 +23,6 @@ protected:
 	void HandleAudioChunk(const TArray<uint8>& AudioData);
 	UFUNCTION()
 	void HandleAudioEnd();
-
-
 
 private:
 	UPROPERTY()

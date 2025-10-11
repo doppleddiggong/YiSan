@@ -46,6 +46,8 @@ void APlayerActor::BeginPlay()
 	MoveComp = this->GetCharacterMovement();
 	AnimInstance = MeshComp->GetAnimInstance();
 
+	VoiceConversationSystem = UVoiceConversationSystem::Get(GetWorld());
+	
 	MainWidgetInst = CreateWidget<UMainWidget>(GetWorld(), MainWidgetClass);
 	if (MainWidgetInst)
 		MainWidgetInst->AddToViewport();

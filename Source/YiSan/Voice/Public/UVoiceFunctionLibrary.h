@@ -29,5 +29,5 @@ public:
 	static USoundWave* CreateSoundWaveFromWavData(const TArray<uint8>& WavData);
 
 	UFUNCTION(BlueprintCallable, Category = "Voice|Utility")
-	static USoundWaveProcedural* CreateSoundWaveFromWavData2(const TArray<uint8>& AudioData);
+	static USoundWaveProcedural* CreateProceduralSoundWaveFromWavData(const TArray<uint8>& AudioData);
 };

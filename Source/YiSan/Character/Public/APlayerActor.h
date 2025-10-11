@@ -40,6 +40,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
 	TObjectPtr<UMainWidget> MainWidgetInst;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Voice")
+	TObjectPtr<class UVoiceConversationSystem> VoiceConversationSystem;
+	
 public: // Control Interface
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void Cmd_Move(const FVector2D& Axis) override;

@@ -82,15 +82,9 @@ void APlayerControl::SetupInputComponent()
 
 		EIC->BindAction(IA_Record, ETriggerEvent::Started, this, &APlayerControl::OnRecordPressed);
 		EIC->BindAction(IA_Record, ETriggerEvent::Completed, this, &APlayerControl::OnRecordReleased);
-		EIC->BindAction(IA_Record, ETriggerEvent::Canceled, this, &APlayerControl::OnRecordReleased);
-
-		EIC->BindAction(IA_Record, ETriggerEvent::Started, this, &APlayerControl::OnRecordPressed);
-		EIC->BindAction(IA_Record, ETriggerEvent::Completed, this, &APlayerControl::OnRecordReleased);
-		EIC->BindAction(IA_Record, ETriggerEvent::Canceled, this, &APlayerControl::OnRecordReleased);
 
 		EIC->BindAction(IA_Streaming, ETriggerEvent::Started, this, &APlayerControl::OnStreamingPressed);
 		EIC->BindAction(IA_Streaming, ETriggerEvent::Completed, this, &APlayerControl::OnStreamingReleased);
-		EIC->BindAction(IA_Streaming, ETriggerEvent::Canceled, this, &APlayerControl::OnStreamingReleased);
 	}
 }
 

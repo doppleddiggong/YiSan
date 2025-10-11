@@ -9,6 +9,9 @@
 #include "UVoiceListenSystem.h"
 #include "UVoiceRecordSystem.h"
 #include "UStreamingRecordSystem.h"
+#include "UVoiceFunctionLibrary.h"
+#include "Kismet/GameplayStatics.h"
+#include "Sound/SoundWaveProcedural.h"
 
 // --- Subsystem Lifecycle ---
 
@@ -167,7 +170,9 @@ void UVoiceConversationSystem::OnResponseAsk(FResponseAsk& Response, bool bSucce
 		if (auto EventManager = UBroadcastManger::Get(this))
 			EventManager->SendToastMessage(Response.gpt_response_text);
 		
-		VoiceListenSystem->HandleTTSOutput(Response.audio_data, this);
+		auto SoundWave = UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData(Response.audio_data);
+		if ( IsValid(SoundWave))
+			UGameplayStatics::PlaySound2D(this, SoundWave);
 	}
 	else
 	{
@@ -200,7 +205,7 @@ void UVoiceConversationSystem::StartStreaming()
 
     if (!WebSocketSystem->IsConnected())
     {
-        PRINTLOG(TEXT("[VoiceConversation] Cannot start real-time recording. WebSocket not connected."));
+        PRINTLOG(TEXT("[VoiceConversation] Cannot start StartStream recording. WebSocket not connected."));
         bIsRecording = false;
         return;
     }
@@ -226,7 +231,7 @@ void UVoiceConversationSystem::StopStreaming()
 {
     if (!bIsStreamingActive)
     {
-    	PRINTLOG(TEXT("RealTimeVoiceRecordSystem is not Streaming Active"));
+    	PRINTLOG(TEXT("StreamingRecordSystem is not Streaming Active"));
         return;
     }
 
@@ -250,7 +255,7 @@ void UVoiceConversationSystem::StopStreaming()
         }
     }
     
-    PRINTLOG(TEXT("[VoiceConversation] Real-time recording stopped."));
+    PRINTLOG(TEXT("[VoiceConversation] StreamingRecordSystem recording stopped."));
 }
 
 void UVoiceConversationSystem::SendStreamAudio(const TArray<uint8>& AudioData)
@@ -262,7 +267,7 @@ void UVoiceConversationSystem::SendStreamAudio(const TArray<uint8>& AudioData)
 		return;
 	}
 
-	PRINTLOG(TEXT("[VoiceConversation] Sending audio chunk to WebSocket (%d bytes)"), AudioData.Num());
+	// PRINTLOG(TEXT("[VoiceConversation] Sending audio chunk to WebSocket (%d bytes)"), AudioData.Num());
 	WebSocketSystem->SendAudio(AudioData);
 }
 
@@ -320,12 +325,12 @@ void UVoiceConversationSystem::OnWebSocketStartRecordingAck(const FString& Messa
 {
     if (!StreamingRecordSystem)
     {
-        PRINTLOG(TEXT("RealTimeVoiceRecordSystem is not initialized."));
+        PRINTLOG(TEXT("StreamingRecordSystem is not initialized."));
         return;
     }
 
 	// Start actual recording
     bIsRecording = true;
     StreamingRecordSystem->StartRecording();
-    PRINTLOG(TEXT("[VoiceConversation] Real-time recording started by server ack: %s"), *Message);
+    PRINTLOG(TEXT("[VoiceConversation] Stream recording started by server ack: %s"), *Message);
 }

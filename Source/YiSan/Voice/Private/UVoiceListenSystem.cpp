@@ -66,13 +66,3 @@ void UVoiceListenSystem::HandleAudioEnd()
 	PRINTLOG( TEXT("HandleAudioEnd: 오디오 스트림이 종료되었습니다."));
 	// 큐에 데이터가 더 이상 추가되지 않으면 재생이 자연스럽게 멈춥니다.
 }
-
-
-void UVoiceListenSystem::HandleTTSOutput(const TArray<uint8>& AudioData, UObject* WorldContextObject)
-{
-	auto SoundWave = UVoiceFunctionLibrary::CreateSoundWaveFromWavData2(AudioData);
-	if ( IsValid(SoundWave))
-	{
-		UGameplayStatics::PlaySound2D(WorldContextObject, SoundWave);
-	}
-}
