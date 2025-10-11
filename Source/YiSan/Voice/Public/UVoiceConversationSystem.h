@@ -85,18 +85,15 @@ private:
 	UFUNCTION()
 	void OnWebSocketConnected();
 	UFUNCTION()
-	void OnWebSocketTranscription(const FString& TranscribedText);
-	UFUNCTION()
 	void OnWebSocketAudioStart();
 	UFUNCTION()
 	void OnWebSocketStartRecordingAck(const FString& Message);
+	UFUNCTION()
+	void OnWebSocketAudioDataReceived(const TArray<uint8>& AudioData);
 
 	// --- 컴포넌트 참조 ---
 	UPROPERTY()
 	TObjectPtr<class UVoiceRecordSystem> VoiceRecordSystem;
-
-	UPROPERTY()
-	TObjectPtr<class UVoiceListenSystem> VoiceListenSystem;
 
 	UPROPERTY()
 	TObjectPtr<class UStreamingRecordSystem> StreamingRecordSystem;
@@ -105,4 +102,8 @@ private:
 	bool bIsRecording = false;
 	bool bIsProcessing = false;
     bool bIsStreamingActive = false;
+	bool bIsWaitingForServerAck = false;
+
+	// 서버 ACK 전까지 오디오 데이터를 버퍼링
+	TArray<TArray<uint8>> AudioBuffer;
 };

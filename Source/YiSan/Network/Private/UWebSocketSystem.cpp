@@ -131,72 +131,6 @@ void UWebSocketSystem::SendAudio(const TArray<uint8>& AudioData)
 	WebSocket->Send(AudioData.GetData(), AudioData.Num(), true);
 }
 
-void UWebSocketSystem::SendAudioAsJson(const TArray<uint8>& AudioData)
-{
-	if (!IsConnected())
-	{
-		LogNetwork(TEXT("Cannot send audio. Not connected."));
-		return;
-	}
-
-	// Encode audio data to Base64
-	FString Base64Audio = FBase64::Encode(AudioData);
-
-	TSharedPtr<FJsonObject> JsonObject = MakeShared<FJsonObject>();
-	JsonObject->SetStringField(TEXT("type"), TEXT("ask"));
-	JsonObject->SetStringField(TEXT("audio_data"), Base64Audio);
-
-	FString OutputString;
-	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutputString);
-	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
-
-	LogNetwork(FString::Printf(TEXT("Sending JSON audio data (%d bytes encoded to Base64)"), AudioData.Num()));
-	WebSocket->Send(OutputString);
-}
-
-void UWebSocketSystem::RequestSTT(const TArray<uint8>& AudioData)
-{
-	if (!IsConnected())
-	{
-		LogNetwork(TEXT("Cannot send STT request. Not connected."));
-		return;
-	}
-
-	// Encode audio data to Base64
-	FString Base64Audio = FBase64::Encode(AudioData);
-
-	TSharedPtr<FJsonObject> JsonObject = MakeShared<FJsonObject>();
-	JsonObject->SetStringField(TEXT("type"), TEXT("stt"));
-	JsonObject->SetStringField(TEXT("audio_data"), Base64Audio);
-
-	FString OutputString;
-	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutputString);
-	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
-
-	LogNetwork(FString::Printf(TEXT("Sending STT request (%d bytes audio)"), AudioData.Num()));
-	WebSocket->Send(OutputString);
-}
-
-void UWebSocketSystem::RequestGPT(const FString& Text)
-{
-	if (!IsConnected())
-	{
-		LogNetwork(TEXT("Cannot send GPT request. Not connected."));
-		return;
-	}
-
-	TSharedPtr<FJsonObject> JsonObject = MakeShared<FJsonObject>();
-	JsonObject->SetStringField(TEXT("type"), TEXT("gpt"));
-	JsonObject->SetStringField(TEXT("text"), Text);
-
-	FString OutputString;
-	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutputString);
-	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
-
-	LogNetwork(FString::Printf(TEXT("Sending GPT request: %s"), *Text));
-	WebSocket->Send(OutputString);
-}
-
 void UWebSocketSystem::SetTTSConfig(const FString& VoiceName, float SpeakingRate, float Pitch)
 {
 	if (!IsConnected())
@@ -310,12 +244,7 @@ void UWebSocketSystem::OnMessage_Native(const FString& InMessage)
 	if (MessageType == TEXT("transcription"))
 	{
 		LogNetwork(FString::Printf(TEXT("Received message: %s"), *InMessage));
-
-		// FString TranscribedText;
-		// if (JsonObject->TryGetStringField(TEXT("text"), TranscribedText))
-		// {
-		// 	OnTranscriptionReceived.Broadcast(TranscribedText);
-		// }
+		// 현재는 transcription을 따로 처리하지 않음
 	}
 	else if (MessageType == TEXT("agent_response"))
 	{
@@ -360,28 +289,22 @@ void UWebSocketSystem::OnMessage_Native(const FString& InMessage)
 	else if (MessageType == TEXT("audio_end"))
 	{
 		LogNetwork(FString::Printf(TEXT("Received message: %s"), *InMessage));
-		
 		bIsExpectingAudio = false;
-		OnAudioEnd.Broadcast();
+		// 오디오 종료는 로그만 남김
 	}
 	else if (MessageType == TEXT("completed"))
 	{
 		LogNetwork(FString::Printf(TEXT("Received message: %s"), *InMessage));
-		
-		OnCompleted.Broadcast();
+		// 완료 메시지는 로그만 남김
 	}
 	else if (MessageType == TEXT("pong"))
 	{
 		LogNetwork(TEXT("Received Pong"));
-		// Optionally, broadcast a pong delegate
 	}
 	else if (MessageType == TEXT("config_ack"))
 	{
 		LogNetwork(FString::Printf(TEXT("Received message: %s"), *InMessage));
-		
-		FString TempMessage;
-		JsonObject->TryGetStringField(TEXT("message"), TempMessage);
-		OnConfigAck.Broadcast(TempMessage);
+		// Config 확인 메시지는 로그만 남김
 	}
 	else if (MessageType == TEXT("ack_start_recording"))
 	{
@@ -415,12 +338,8 @@ void UWebSocketSystem::OnMessage_Native(const FString& InMessage)
 
 void UWebSocketSystem::OnBinaryMessage_Native(const void* Data, SIZE_T Size, bool bIsLastFragment)
 {
-	LogNetwork(FString::Printf(TEXT("Received binary message (%d bytes)"), Size));
-    
-	TArray<uint8> DataArray;
-	DataArray.Append(static_cast<const uint8*>(Data), Size);
-    
-	OnAudioChunkReceived.Broadcast(DataArray);
+	LogNetwork(FString::Printf(TEXT("Received binary message (%d bytes) - Currently not supported"), Size));
+	// 바이너리 메시지는 현재 사용하지 않음 (모든 오디오는 JSON의 Base64로 전송됨)
 }
 
 // --- Logging ---

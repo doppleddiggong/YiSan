@@ -192,6 +192,7 @@ USoundWaveProcedural* UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavDat
 	// --- WAV Header Parsing ---
 	uint16 NumChannels = ReadUInt16(RawData, 22);
 	uint32 SampleRate = ReadUInt32(RawData, 24);
+	uint16 BitsPerSample = ReadUInt16(RawData, 34);
 
 	// Find the 'data' chunk, as it's not always at a fixed position.
 	int32 DataChunkOffset = 36; // Typically after the 'fmt ' chunk.
@@ -199,7 +200,7 @@ USoundWaveProcedural* UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavDat
 	{
 		// Read ChunkID as a 4-character string
 		const char* ChunkIDStr = (const char*)(RawData + DataChunkOffset);
-		
+
 		if (strncmp(ChunkIDStr, "data", 4) == 0)
 		{
 			break; // Found it
@@ -233,9 +234,13 @@ USoundWaveProcedural* UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavDat
 		return nullptr;
 	}
 
+	// Calculate actual duration for one-shot playback
+	const float BytesPerSample = BitsPerSample / 8.0f;
+	const float ActualDuration = (float)DataSize / (SampleRate * NumChannels * BytesPerSample);
+
 	SoundWave->SetSampleRate(SampleRate);
 	SoundWave->NumChannels = NumChannels;
-	SoundWave->Duration = INDEFINITELY_LOOPING_DURATION;
+	SoundWave->Duration = ActualDuration;
 	SoundWave->SoundGroup = ESoundGroup::SOUNDGROUP_Voice;
 	SoundWave->bLooping = false;
 

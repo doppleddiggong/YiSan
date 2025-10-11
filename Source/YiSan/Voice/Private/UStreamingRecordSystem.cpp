@@ -3,14 +3,13 @@
 #include "UStreamingRecordSystem.h"
 #include "GameLogging.h"
 #include "Logging/LogMacros.h"
-#include "UWebSocketSystem.h"
 
 UStreamingRecordSystem::UStreamingRecordSystem()
 {
 	PrimaryComponentTick.bCanEverTick = false;
 }
 
-void UStreamingRecordSystem::StartRecording()
+void UStreamingRecordSystem::StartStreaming()
 {
 	if (bIsRecording)
 		return;
@@ -35,7 +34,7 @@ void UStreamingRecordSystem::StartRecording()
 
 	if (!bOpenSuccess)
 	{
-		NETWORK_LOG(TEXT("RealTime Recording: Failed to open audio capture stream."));
+		NETWORK_LOG(TEXT("StartStreaming: Failed to open audio capture stream."));
 		bIsRecording = false;
 		return;
 	}
@@ -44,17 +43,17 @@ void UStreamingRecordSystem::StartRecording()
 
 	if (!bStartSuccess)
 	{
-		NETWORK_LOG(TEXT("RealTime Recording: Failed to start audio capture stream."));
+		NETWORK_LOG(TEXT("StartStreaming: Failed to start audio capture stream."));
 
 		bIsRecording = false;
 		AudioCapture->CloseStream();
 		return;
 	}
 
-	NETWORK_LOG(TEXT("RealTime Recording Start"));
+	NETWORK_LOG(TEXT("StartStreaming"));
 }
 
-void UStreamingRecordSystem::StopRecording()
+void UStreamingRecordSystem::StopStreaming()
 {
 	if (!bIsRecording)
 		return;
@@ -64,7 +63,7 @@ void UStreamingRecordSystem::StopRecording()
 	AudioCapture->StopStream();
 	AudioCapture->CloseStream();
 	
-	NETWORK_LOG(TEXT("RealTime Recording End"));
+	NETWORK_LOG(TEXT("StopStreaming"));
 }
 
 void UStreamingRecordSystem::HandleOnCapture(const float* InAudio, const int32 InNumFrames, const int32 InNumChannels, const int32 InSampleRate)

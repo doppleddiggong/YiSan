@@ -6,7 +6,6 @@
 #include "UBroadcastManger.h"
 #include "UHttpNetworkSystem.h"
 #include "UWebSocketSystem.h"
-#include "UVoiceListenSystem.h"
 #include "UVoiceRecordSystem.h"
 #include "UStreamingRecordSystem.h"
 #include "UVoiceFunctionLibrary.h"
@@ -33,9 +32,7 @@ void UVoiceConversationSystem::Initialize(FSubsystemCollectionBase& Collection)
 			StreamingRecordSystem = NewObject<UStreamingRecordSystem>(GameInstance);
 			StreamingRecordSystem->RegisterComponent();
 
-			VoiceListenSystem = NewObject<UVoiceListenSystem>(GameInstance);
-			VoiceListenSystem->RegisterComponent();
-			VoiceListenSystem->InitSystem();
+			PRINTLOG(TEXT("[VoiceConversation] Voice systems initialized"));
 		}
 	}
 
@@ -47,11 +44,6 @@ void UVoiceConversationSystem::Initialize(FSubsystemCollectionBase& Collection)
 			if (!WebSocketSystem->OnConnected.Contains(this, FUNCTION_NAME))
 				WebSocketSystem->OnConnected.AddDynamic(this, &UVoiceConversationSystem::OnWebSocketConnected);
 		}
-		// {
-		// 	const FName FUNCTION_NAME = GET_FUNCTION_NAME_CHECKED(UVoiceConversationSystem, OnWebSocketTranscription);
-		// 	if (!WebSocketSystem->OnTranscriptionReceived.Contains(this, FUNCTION_NAME))
-		// 		WebSocketSystem->OnTranscriptionReceived.AddDynamic(this, &UVoiceConversationSystem::OnWebSocketTranscription);
-		// }
 
 		{
 			const FName FUNCTION_NAME = GET_FUNCTION_NAME_CHECKED(UVoiceConversationSystem, OnWebSocketAudioStart);
@@ -62,6 +54,11 @@ void UVoiceConversationSystem::Initialize(FSubsystemCollectionBase& Collection)
 			const FName FUNCTION_NAME = GET_FUNCTION_NAME_CHECKED(UVoiceConversationSystem, OnWebSocketStartRecordingAck);
 			if (!WebSocketSystem->OnStartRecordingAck.Contains(this, FUNCTION_NAME))
 				WebSocketSystem->OnStartRecordingAck.AddDynamic(this, &UVoiceConversationSystem::OnWebSocketStartRecordingAck);
+		}
+		{
+			const FName FUNCTION_NAME = GET_FUNCTION_NAME_CHECKED(UVoiceConversationSystem, OnWebSocketAudioDataReceived);
+			if (!WebSocketSystem->OnAudioDataReceived.Contains(this, FUNCTION_NAME))
+				WebSocketSystem->OnAudioDataReceived.AddDynamic(this, &UVoiceConversationSystem::OnWebSocketAudioDataReceived);
 		}
 	}
 	else
@@ -79,11 +76,6 @@ void UVoiceConversationSystem::Deinitialize()
 		VoiceRecordSystem->DestroyComponent();
 	}
 
-	if (VoiceListenSystem && VoiceListenSystem->IsValidLowLevel())
-	{
-		VoiceListenSystem->DestroyComponent();
-	}
-
 	if (StreamingRecordSystem && StreamingRecordSystem->IsValidLowLevel())
 	{
 		StreamingRecordSystem->DestroyComponent();
@@ -92,8 +84,8 @@ void UVoiceConversationSystem::Deinitialize()
 	if (UWebSocketSystem* WebSocketSystem = UWebSocketSystem::Get(GetWorld()))
 	{
 		WebSocketSystem->OnConnected.RemoveAll(this);
-		WebSocketSystem->OnTranscriptionReceived.RemoveAll(this);
 		WebSocketSystem->OnAudioStart.RemoveAll(this);
+		WebSocketSystem->OnAudioDataReceived.RemoveAll(this);
 	}
 
 	Super::Deinitialize();
@@ -210,20 +202,31 @@ void UVoiceConversationSystem::StartStreaming()
         return;
     }
 
-    const FName AckDelegateName = GET_FUNCTION_NAME_CHECKED(UVoiceConversationSystem, OnWebSocketStartRecordingAck);
-    if (!WebSocketSystem->OnStartRecordingAck.Contains(this, AckDelegateName))
-    {
-        PRINTLOG(TEXT("Binding OnStartRecordingAck delegate before starting streaming."));
-        WebSocketSystem->OnStartRecordingAck.AddDynamic(this, &UVoiceConversationSystem::OnWebSocketStartRecordingAck);
-    }
+	{
+		const FName FUNCTION_NAME = GET_FUNCTION_NAME_CHECKED(UVoiceConversationSystem, OnWebSocketStartRecordingAck);
+    	if (!WebSocketSystem->OnStartRecordingAck.Contains(this, FUNCTION_NAME))
+    		WebSocketSystem->OnStartRecordingAck.AddDynamic(this, &UVoiceConversationSystem::OnWebSocketStartRecordingAck);
+	}
 
-    const FName ChunkDelegateName = GET_FUNCTION_NAME_CHECKED(UVoiceConversationSystem, OnAudioChunkReady);
-    if (!StreamingRecordSystem->OnAudioChunkReady.Contains(this, ChunkDelegateName))
-    {
-        StreamingRecordSystem->OnAudioChunkReady.AddDynamic(this, &UVoiceConversationSystem::OnAudioChunkReady);
-    }
+	{
+		const FName FUNCTION_NAME = GET_FUNCTION_NAME_CHECKED(UVoiceConversationSystem, OnAudioChunkReady);
+    	if (!StreamingRecordSystem->OnAudioChunkReady.Contains(this, FUNCTION_NAME))
+    	{
+    		StreamingRecordSystem->OnAudioChunkReady.AddDynamic(this, &UVoiceConversationSystem::OnAudioChunkReady);
+    	}
+	}
 
-    bIsStreamingActive = true; // Set to true immediately to prevent multiple calls
+	// 버퍼 초기화 및 버퍼링 모드 활성화
+	AudioBuffer.Empty();
+	bIsWaitingForServerAck = true;
+	bIsStreamingActive = true;
+	bIsRecording = true;
+
+	// 즉시 녹음 시작 (서버 ACK를 기다리지 않음)
+	StreamingRecordSystem->StartStreaming();
+	PRINTLOG(TEXT("[VoiceConversation] Recording started immediately (buffering until server ACK)"));
+
+	// 서버에 시작 메시지 전송
     WebSocketSystem->SendStartRecordingMessage();
 }
 
@@ -236,9 +239,21 @@ void UVoiceConversationSystem::StopStreaming()
     }
 
     // Stop the audio capture
-    StreamingRecordSystem->StopRecording();
+    StreamingRecordSystem->StopStreaming();
     bIsRecording = false;
     bIsStreamingActive = false;
+	bIsWaitingForServerAck = false;
+
+	// 버퍼에 남은 데이터 전송 (녹음 중지 직전에 쌓인 데이터)
+	if (AudioBuffer.Num() > 0)
+	{
+		PRINTLOG(TEXT("[VoiceConversation] Sending remaining buffered audio chunks (%d chunks) before stopping"), AudioBuffer.Num());
+		for (const TArray<uint8>& BufferedChunk : AudioBuffer)
+		{
+			SendStreamAudio(BufferedChunk);
+		}
+		AudioBuffer.Empty();
+	}
 
     // Unbind the delegate
     if(StreamingRecordSystem->OnAudioChunkReady.IsBound())
@@ -254,7 +269,7 @@ void UVoiceConversationSystem::StopStreaming()
             WebSocketSystem->SendStopRecordingMessage();
         }
     }
-    
+
     PRINTLOG(TEXT("[VoiceConversation] StreamingRecordSystem recording stopped."));
 }
 
@@ -285,26 +300,12 @@ void UVoiceConversationSystem::OnWebSocketConnected()
 	bIsStreamingActive = false;
 	bIsRecording = false;
 	bIsProcessing = false;
+	bIsWaitingForServerAck = false;
+	AudioBuffer.Empty();
 
 	if (UBroadcastManger* EventManager = UBroadcastManger::Get(this))
 		EventManager->SendToastMessage(TEXT("실시간 음성 서버에 연결되었습니다."));
 }
-//
-// void UVoiceConversationSystem::OnWebSocketTranscription(const FString& TranscribedText)
-// {
-// 	if (TranscribedText.IsEmpty())
-// 	{
-// 		PRINTLOG(TEXT("[VoiceConversation] WebSocket STT: (empty)"));
-// 		return;
-// 	}
-//
-// 	PRINTLOG(TEXT("[VoiceConversation] WebSocket STT: %s"), *TranscribedText);
-//
-// 	if (UBroadcastManger* EventManager = UBroadcastManger::Get(this))
-// 	{
-// 		EventManager->SendToastMessage(TranscribedText);
-// 	}
-// }
 
 void UVoiceConversationSystem::OnWebSocketAudioStart()
 {
@@ -318,19 +319,64 @@ void UVoiceConversationSystem::OnWebSocketAudioStart()
 
 void UVoiceConversationSystem::OnAudioChunkReady(const TArray<uint8>& PcmData)
 {
-	SendStreamAudio(PcmData);
+	if (bIsWaitingForServerAck)
+	{
+		// 서버 ACK 전: 버퍼에 쌓기
+		AudioBuffer.Add(PcmData);
+		// PRINTLOG(TEXT("[VoiceConversation] Buffering audio chunk (%d bytes, total: %d chunks)"), PcmData.Num(), AudioBuffer.Num());
+	}
+	else
+	{
+		// 서버 ACK 후: 즉시 전송
+		SendStreamAudio(PcmData);
+	}
 }
 
 void UVoiceConversationSystem::OnWebSocketStartRecordingAck(const FString& Message)
 {
-    if (!StreamingRecordSystem)
-    {
-        PRINTLOG(TEXT("StreamingRecordSystem is not initialized."));
-        return;
-    }
+	PRINTLOG(TEXT("[VoiceConversation] Server ACK received: %s"), *Message);
 
-	// Start actual recording
-    bIsRecording = true;
-    StreamingRecordSystem->StartRecording();
-    PRINTLOG(TEXT("[VoiceConversation] Stream recording started by server ack: %s"), *Message);
+	// 버퍼링 모드 해제
+	bIsWaitingForServerAck = false;
+
+	// 버퍼에 쌓인 데이터 전송
+	if (AudioBuffer.Num() > 0)
+	{
+		PRINTLOG(TEXT("[VoiceConversation] Sending buffered audio chunks (%d chunks)"), AudioBuffer.Num());
+
+		for (const TArray<uint8>& BufferedChunk : AudioBuffer)
+		{
+			SendStreamAudio(BufferedChunk);
+		}
+
+		AudioBuffer.Empty();
+		PRINTLOG(TEXT("[VoiceConversation] All buffered audio sent"));
+	}
+	else
+	{
+		PRINTLOG(TEXT("[VoiceConversation] No buffered audio to send"));
+	}
+}
+
+void UVoiceConversationSystem::OnWebSocketAudioDataReceived(const TArray<uint8>& AudioData)
+{
+	PRINTLOG(TEXT("[VoiceConversation] Received audio data: %d bytes"), AudioData.Num());
+
+	if (AudioData.Num() < 44)
+	{
+		PRINTLOG(TEXT("[VoiceConversation] Audio data too small, ignoring"));
+		return;
+	}
+
+	// WAV 파일 생성 및 재생
+	USoundWaveProcedural* SoundWave = UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData(AudioData);
+	if (SoundWave)
+	{
+		UGameplayStatics::PlaySound2D(this, SoundWave);
+		PRINTLOG(TEXT("[VoiceConversation] Audio playback started"));
+	}
+	else
+	{
+		PRINTLOG(TEXT("[VoiceConversation] Failed to create sound wave"));
+	}
 }

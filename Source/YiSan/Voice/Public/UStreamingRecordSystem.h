@@ -21,8 +21,8 @@ public:
 	FOnAudioChunkReady OnAudioChunkReady;
 
 public:
-	void StartRecording();
-	void StopRecording();
+	void StartStreaming();
+	void StopStreaming();
 
 private:
 	void HandleOnCapture(const float* InAudio, const int32 InNumFrames, const int32 InNumChannels, const int32 InSampleRate);
