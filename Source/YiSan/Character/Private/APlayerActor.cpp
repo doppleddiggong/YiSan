@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "APlayerActor.h"
 #include "UVoiceRecordSystem.h"
@@ -12,6 +12,9 @@
 #include "FComponentHelper.h"
 #include "GameLogging.h"
 #include "UBroadcastManger.h"
+#include "UHttpNetworkSystem.h"
+#include "UVoiceListenSystem.h"
+#include "UWebSocketSystem.h"
 
 #define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_Main.WBP_Main_C")
 
@@ -38,6 +41,7 @@ APlayerActor::APlayerActor()
 	GetCharacterMovement()->bUseControllerDesiredRotation = false;
 
 	VoiceRecordSystem = CreateDefaultSubobject<UVoiceRecordSystem>(TEXT("VoiceRecordSystem"));
+	VoiceListenSystem = CreateDefaultSubobject<UVoiceListenSystem>(TEXT("VoiceListenSystem"));
 }
 
 void APlayerActor::BeginPlay()
@@ -53,8 +57,10 @@ void APlayerActor::BeginPlay()
 		MainWidgetInst->AddToViewport();
 
 	VoiceRecordSystem->OnRecordingStopped.AddDynamic(this, &APlayerActor::OnRecordingStoppedHandler);
+	VoiceListenSystem->InitSystem();
 
-	ConnectToWebSocket();
+	if (auto WebSocketSystem = UWebSocketSystem::Get(GetWorld()))
+		WebSocketSystem->Connect();
 }
 
 void APlayerActor::Tick(float DeltaTime)
@@ -109,14 +115,6 @@ void APlayerActor::Cmd_RecordEnd_Implementation()
 	VoiceRecordSystem->RecordStop();
 }
 
-void APlayerActor::ConnectToWebSocket()
-{
-	if ( auto SocketNetwork = UWebSocketSystem::Get(GetWorld()) )
-	{
-		SocketNetwork->Connect( NetworkConfig::GetSocketURL());
-	}
-}
-
 void APlayerActor::OnRecordingStoppedHandler(const FString& FilePath)
 {
 	if ( auto ReqNetwork = UHttpNetworkSystem::Get(GetWorld()) )
@@ -134,6 +132,32 @@ void APlayerActor::OnResponseSTT(FResponseSTT& ResponseData, bool bWasSuccessful
 
 		if (auto EventManager = UBroadcastManger::Get(this))
 			EventManager->SendToastMessage(ResponseData.text);
+	}
+	else
+	{
+		PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
+	}
+}
+
+
+
+void APlayerActor::RequestHealth()
+{
+	if ( auto ReqNetwork = UHttpNetworkSystem::Get(GetWorld()) )
+	{
+		ReqNetwork->RequestHealth( FResponseHealthDelegate::CreateUObject( this, &APlayerActor::OnResponseHealth));
+	}
+	else
+	{
+		PRINTLOG( TEXT("UNetworkSystem not found!"));
+	}
+}
+
+void APlayerActor::OnResponseHealth(FResponseHealth& ResponseData, bool bWasSuccessful)
+{
+	if (bWasSuccessful)
+	{
+		ResponseData.PrintData();
 	}
 	else
 	{

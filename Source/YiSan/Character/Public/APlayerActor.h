@@ -1,12 +1,10 @@
-﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #pragma once
 
 #include "CoreMinimal.h"
 #include "IControllable.h"
 #include "GameFramework/Character.h"
-#include "UWebSocketSystem.h"
-#include "UHttpNetworkSystem.h"
 #include "APlayerActor.generated.h"
 
 UCLASS()
@@ -20,18 +18,21 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
+public:
+	virtual void Tick(float DeltaTime) override;
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	
 private:
-	void ConnectToWebSocket();
-
 	UFUNCTION()
 	void OnRecordingStoppedHandler(const FString& FilePath);
 	UFUNCTION()
 	void OnResponseSTT(FResponseSTT& ResponseData, bool bWasSuccessful);
 
-public:
-	virtual void Tick(float DeltaTime) override;
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
+	UFUNCTION(CallInEditor, Category = "TEST|RequestHealth")
+	void RequestHealth();
+	UFUNCTION()
+	void OnResponseHealth(FResponseHealth& ResponseData, bool bWasSuccessful);
+	
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Owner")
 	TObjectPtr<class USkeletalMeshComponent> MeshComp;
@@ -45,17 +46,15 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta=(AllowPrivateAccess="true"))
 	TObjectPtr<class UCameraComponent> FollowCamera;
 
-
 	UPROPERTY(EditDefaultsOnly, Category = "UI")
 	TSubclassOf<class UMainWidget> MainWidgetClass;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
 	TObjectPtr<UMainWidget> MainWidgetInst;
-
-
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|System")
 	TObjectPtr<class UVoiceRecordSystem> VoiceRecordSystem;
-
-	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|System")
+	TObjectPtr<class UVoiceListenSystem> VoiceListenSystem;
 
 public: // Control Interface
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")

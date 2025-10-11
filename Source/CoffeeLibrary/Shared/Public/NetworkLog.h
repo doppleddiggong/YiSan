@@ -15,9 +15,10 @@ COFFEELIBRARY_API void WriteToGameLog(const FString& Message);
 #define NET_CALLINFO FString::Printf(TEXT("[%s:%d] %s"), *FString(__FILE__).Right(FString(__FILE__).Find(TEXT("\\Source\\")) ? FString(__FILE__).Len() - FString(__FILE__).Find(TEXT("\\Source\\")) - 8 : FString(__FILE__).Len()), __LINE__, *FString(__FUNCTION__))
 
 #define NETWORK_LOG(fmt, ...) \
-    do { \
-        const FString __LogMessage__ = FString::Printf(fmt, ##__VA_ARGS__); \
-        const FString __FullMessage__ = FString::Printf(TEXT("%s : %s"), *NET_CALLINFO, *__LogMessage__); \
-        UE_LOG(LogCoffeeNetwork, Warning, TEXT("%s"), *__FullMessage__); \
-        WriteToGameLog(__FullMessage__); \
-    } while(0)
+	do { \
+		const FString __LogMessage__ = FString::Printf(fmt, ##__VA_ARGS__); \
+		const FString __Timestamp__ = FDateTime::Now().ToString(TEXT("%Y-%m-%d %H:%M:%S")); \
+		const FString __FullMessage__ = FString::Printf(TEXT("[%s] %s : %s"), *__Timestamp__, *NET_CALLINFO, *__LogMessage__); \
+		UE_LOG(LogCoffeeNetwork, Warning, TEXT("%s"), *__FullMessage__); \
+		WriteToGameLog(__FullMessage__); \
+	} while(0)

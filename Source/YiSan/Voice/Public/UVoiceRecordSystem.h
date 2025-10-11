@@ -27,7 +27,6 @@ public:
 private:
 	void HandleOnCapture(const float* InAudio, int32 InNumFrames, int32 InNumChannels, int32 InSampleRate);
 
-	
 	TUniquePtr<Audio::FAudioCapture> AudioCapture;
 	TArray<uint8> WAVData;
 	TArray<uint8> PCMData;

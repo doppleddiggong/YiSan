@@ -43,6 +43,8 @@ namespace RequestAPI
     static FString FishTTSSimple = FString("/fish/tts-simple");
     static FString TTS = FString("/tts");
     static FString Ask = FString("/ask");
+    static FString TestGPT = FString("/test/gpt");
+    static FString TestTTS = FString("/test/tts");
 }
 
 USTRUCT(BlueprintType)
