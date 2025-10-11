@@ -38,7 +38,8 @@ namespace NetworkConfig
 namespace RequestAPI
 {
     static FString Health = FString("/health");
-    
+
+    static FString Ask = FString("/ask");
     static FString TestSTT = FString("/test/stt");
     static FString TestTTS = FString("/test/tts");
     static FString TestGPT = FString("/test/gpt");
@@ -55,6 +56,27 @@ struct FResponseHealth
 
     void SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response);
 
+    void PrintData();
+};
+
+// --- Ask Endpoint (Integrated Pipeline: STT -> GPT -> TTS) ---
+
+DECLARE_DELEGATE_TwoParams( FResponseAskDelegate, FResponseAsk&, bool );
+USTRUCT(BlueprintType)
+struct FResponseAsk
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite)
+    FString transcribed_text;
+
+    UPROPERTY(BlueprintReadWrite)
+    FString gpt_response_text;
+
+    UPROPERTY(BlueprintReadWrite)
+    FString audio_content;  // Base64 encoded WAV audio
+
+    void SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response);
     void PrintData();
 };
 
@@ -86,6 +108,9 @@ struct FRequestTestTTS
 
     UPROPERTY(BlueprintReadWrite)
     float pitch = -3.0f;
+
+    UPROPERTY(BlueprintReadWrite)
+    FString voice_name = TEXT("ko-KR-Wavenet-D");
 };
 
 DECLARE_DELEGATE_TwoParams( FResponseTestTTSDelegate, FResponseTestTTS&, bool );

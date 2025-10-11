@@ -32,6 +32,40 @@ void FResponseHealth::PrintData()
     NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
 }
 
+// --- Ask Endpoint Implementation ---
+
+void FResponseAsk::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+    if (!Response.IsValid())
+    {
+        return;
+    }
+
+    FString ResponseBody = Response->GetContentAsString();
+
+    TSharedPtr<FJsonObject> JsonObject;
+    TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(ResponseBody);
+
+    if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+    {
+        JsonObject->TryGetStringField(TEXT("transcribed_text"), transcribed_text);
+        JsonObject->TryGetStringField(TEXT("gpt_response_text"), gpt_response_text);
+        JsonObject->TryGetStringField(TEXT("audio_content"), audio_content);
+    }
+}
+
+void FResponseAsk::PrintData()
+{
+    FString OutputString;
+    FJsonObjectConverter::UStructToJsonObjectString(
+        *this,
+        OutputString,
+        0,
+        0
+    );
+    NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+
 void FResponseTestSTT::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
 {
     if (!Response.IsValid())

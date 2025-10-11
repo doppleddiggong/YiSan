@@ -31,5 +31,4 @@ void UDialogWidget::ShowDialog(FString InString)
 		DialogText->SetText(FText::GetEmpty());
 		DialogBorder->SetBrushColor(DeactivateColor);
 	});
-};
-
+}

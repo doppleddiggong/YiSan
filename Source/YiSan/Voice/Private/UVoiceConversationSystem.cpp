@@ -197,7 +197,7 @@ void UVoiceConversationSystem::OnGPTResponse(FResponseTestGPT& Response, bool bS
 		return;
 	}
 
-	HttpSystem->RequestTestTTS(Response.response, 0.88f, -3.0f,
+	HttpSystem->RequestTestTTS(Response.response, 0.88f, -3.0f, TEXT("ko-KR-Wavenet-D"),
 		FResponseTestTTSDelegate::CreateUObject( this, &UVoiceConversationSystem::OnResponseTestTTS ));
 }
 
@@ -267,7 +267,7 @@ void UVoiceConversationSystem::RequestTTSViaWebSocket(const FString& Text)
 		return;
 	}
 
-	WebSocketSystem->RequestTTS(Text, TEXT("STT_00"), true);
+	WebSocketSystem->RequestTTS(Text, TEXT("ko-KR-Wavenet-D"), 1.0f, 0.0f, TEXT("STT_00"), true);
 }
 
 bool UVoiceConversationSystem::IsWebSocketConnected() const

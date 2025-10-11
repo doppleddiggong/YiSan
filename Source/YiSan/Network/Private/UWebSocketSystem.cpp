@@ -6,6 +6,7 @@
 #include "Json.h"
 #include "JsonUtilities.h"
 #include "NetworkLog.h"
+#include "Misc/Base64.h"
 
 // --- Subsystem Lifecycle ---
 
@@ -80,7 +81,13 @@ bool UWebSocketSystem::IsConnected() const
 	return WebSocket.IsValid() && WebSocket->IsConnected();
 }
 
-void UWebSocketSystem::RequestTTS(const FString& Text, const FString& ReferenceIndex, bool bUseCache)
+void UWebSocketSystem::RequestTTS(
+	const FString& Text,
+	const FString& VoiceName,
+	float SpeakingRate,
+	float Pitch,
+	const FString& ReferenceIndex,
+	bool bUseCache)
 {
 	if (!IsConnected())
 	{
@@ -91,6 +98,16 @@ void UWebSocketSystem::RequestTTS(const FString& Text, const FString& ReferenceI
 	TSharedPtr<FJsonObject> JsonObject = MakeShared<FJsonObject>();
 	JsonObject->SetStringField(TEXT("type"), TEXT("tts"));
 	JsonObject->SetStringField(TEXT("text"), Text);
+
+	// TTS voice parameters
+	if (!VoiceName.IsEmpty())
+	{
+		JsonObject->SetStringField(TEXT("voice_name"), VoiceName);
+	}
+	JsonObject->SetNumberField(TEXT("speaking_rate"), SpeakingRate);
+	JsonObject->SetNumberField(TEXT("pitch"), Pitch);
+
+	// Cache parameters
 	JsonObject->SetStringField(TEXT("reference_index"), ReferenceIndex);
 	JsonObject->SetBoolField(TEXT("use_cache"), bUseCache);
 
@@ -111,6 +128,105 @@ void UWebSocketSystem::SendAudio(const TArray<uint8>& AudioData)
 	}
 	LogNetwork(FString::Printf(TEXT("Sending binary audio data (%d bytes)"), AudioData.Num()));
 	WebSocket->Send(AudioData.GetData(), AudioData.Num(), true);
+}
+
+void UWebSocketSystem::SendAudioAsJson(const TArray<uint8>& AudioData)
+{
+	if (!IsConnected())
+	{
+		LogNetwork(TEXT("Cannot send audio. Not connected."));
+		return;
+	}
+
+	// Encode audio data to Base64
+	FString Base64Audio = FBase64::Encode(AudioData);
+
+	TSharedPtr<FJsonObject> JsonObject = MakeShared<FJsonObject>();
+	JsonObject->SetStringField(TEXT("type"), TEXT("ask"));
+	JsonObject->SetStringField(TEXT("audio_data"), Base64Audio);
+
+	FString OutputString;
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutputString);
+	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+
+	LogNetwork(FString::Printf(TEXT("Sending JSON audio data (%d bytes encoded to Base64)"), AudioData.Num()));
+	WebSocket->Send(OutputString);
+}
+
+void UWebSocketSystem::RequestSTT(const TArray<uint8>& AudioData)
+{
+	if (!IsConnected())
+	{
+		LogNetwork(TEXT("Cannot send STT request. Not connected."));
+		return;
+	}
+
+	// Encode audio data to Base64
+	FString Base64Audio = FBase64::Encode(AudioData);
+
+	TSharedPtr<FJsonObject> JsonObject = MakeShared<FJsonObject>();
+	JsonObject->SetStringField(TEXT("type"), TEXT("stt"));
+	JsonObject->SetStringField(TEXT("audio_data"), Base64Audio);
+
+	FString OutputString;
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutputString);
+	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+
+	LogNetwork(FString::Printf(TEXT("Sending STT request (%d bytes audio)"), AudioData.Num()));
+	WebSocket->Send(OutputString);
+}
+
+void UWebSocketSystem::RequestGPT(const FString& Text)
+{
+	if (!IsConnected())
+	{
+		LogNetwork(TEXT("Cannot send GPT request. Not connected."));
+		return;
+	}
+
+	TSharedPtr<FJsonObject> JsonObject = MakeShared<FJsonObject>();
+	JsonObject->SetStringField(TEXT("type"), TEXT("gpt"));
+	JsonObject->SetStringField(TEXT("text"), Text);
+
+	FString OutputString;
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutputString);
+	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+
+	LogNetwork(FString::Printf(TEXT("Sending GPT request: %s"), *Text));
+	WebSocket->Send(OutputString);
+}
+
+void UWebSocketSystem::SetTTSConfig(const FString& VoiceName, float SpeakingRate, float Pitch)
+{
+	if (!IsConnected())
+	{
+		LogNetwork(TEXT("Cannot set TTS config. Not connected."));
+		return;
+	}
+
+	TSharedPtr<FJsonObject> JsonObject = MakeShared<FJsonObject>();
+	JsonObject->SetStringField(TEXT("type"), TEXT("config"));
+
+	// Only set fields that are not default values (indicating user wants to change them)
+	if (!VoiceName.IsEmpty())
+	{
+		JsonObject->SetStringField(TEXT("voice_name"), VoiceName);
+	}
+	if (SpeakingRate >= 0.0f)
+	{
+		JsonObject->SetNumberField(TEXT("speaking_rate"), SpeakingRate);
+	}
+	if (Pitch != 999.0f)  // Use 999.0f as sentinel value to skip
+	{
+		JsonObject->SetNumberField(TEXT("pitch"), Pitch);
+	}
+
+	FString OutputString;
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutputString);
+	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+
+	LogNetwork(FString::Printf(TEXT("Sending TTS config: %s"), *OutputString));
+	WebSocket->Send(OutputString);
 }
 
 void UWebSocketSystem::SendPing()
@@ -176,10 +292,37 @@ void UWebSocketSystem::OnMessage_Native(const FString& Message)
 			OnTranscriptionReceived.Broadcast(TranscribedText);
 		}
 	}
+	else if (MessageType == TEXT("agent_response"))
+	{
+		FString GPTResponse;
+		if (JsonObject->TryGetStringField(TEXT("text"), GPTResponse))
+		{
+			LogNetwork(FString::Printf(TEXT("GPT Response: %s"), *GPTResponse));
+			OnAgentResponse.Broadcast(GPTResponse);
+		}
+	}
 	else if (MessageType == TEXT("audio_start"))
 	{
 		bIsExpectingAudio = true;
 		OnAudioStart.Broadcast();
+	}
+	else if (MessageType == TEXT("audio_data"))
+	{
+		// Base64 encoded audio data
+		FString Base64Data;
+		if (JsonObject->TryGetStringField(TEXT("data"), Base64Data))
+		{
+			TArray<uint8> DecodedAudio;
+			if (FBase64::Decode(Base64Data, DecodedAudio))
+			{
+				LogNetwork(FString::Printf(TEXT("Received audio_data (%d bytes decoded)"), DecodedAudio.Num()));
+				OnAudioDataReceived.Broadcast(DecodedAudio);
+			}
+			else
+			{
+				LogNetwork(TEXT("Failed to decode Base64 audio data"));
+			}
+		}
 	}
 	else if (MessageType == TEXT("audio_end"))
 	{
@@ -194,6 +337,27 @@ void UWebSocketSystem::OnMessage_Native(const FString& Message)
 	{
 		LogNetwork(TEXT("Received Pong"));
 		// Optionally, broadcast a pong delegate
+	}
+	else if (MessageType == TEXT("config_ack"))
+	{
+		FString Message;
+		JsonObject->TryGetStringField(TEXT("message"), Message);
+		LogNetwork(FString::Printf(TEXT("Config Updated: %s"), *Message));
+		OnConfigAck.Broadcast(Message);
+	}
+	else if (MessageType == TEXT("error"))
+	{
+		FString ErrorMessage;
+		if (JsonObject->TryGetStringField(TEXT("message"), ErrorMessage))
+		{
+			LogNetwork(FString::Printf(TEXT("Server Error: %s"), *ErrorMessage));
+			OnError.Broadcast(ErrorMessage);
+		}
+		else
+		{
+			LogNetwork(TEXT("Server Error: (no message field)"));
+			OnError.Broadcast(TEXT("Unknown server error"));
+		}
 	}
 	else
 	{

@@ -72,6 +72,38 @@ void UHttpNetworkSystem::RequestHealth( FResponseHealthDelegate InDelegate )
     HttpRequest->ProcessRequest();
 }
 
+void UHttpNetworkSystem::RequestAsk(const FString& FilePath, FResponseAskDelegate InDelegate)
+{
+    auto HttpRequest = FHttpModule::Get().CreateRequest();
+    HttpRequest->SetVerb(NETWORK_POST);
+    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::Ask));
+    HttpRequest->SetHeader(TEXT("Accept"), TEXT("application/json"));
+
+    FHttpMultipartFormData Form;
+    if (!Form.AddFile(TEXT("file"), FilePath))
+    {
+        NETWORK_LOG(TEXT("Ask: file load failed: %s"), *FilePath);
+        return;
+    }
+    Form.SetupHttpRequest(HttpRequest);
+
+    LogNetwork(ENetworkLogType::Post, *HttpRequest->GetURL(), TEXT("Ask (STT->GPT->TTS)"));
+
+    HttpRequest->OnProcessRequestComplete().BindLambda(
+        [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+        {
+            FResponseAsk ResponseData;
+            if (bWasSuccessful && ResPtr.IsValid())
+            {
+                NETWORK_LOG(TEXT("[RES] Ask completed: transcribed_text, gpt_response_text, audio_content"));
+                ResponseData.SetFromHttpResponse(ResPtr);
+            }
+            InDelegate.ExecuteIfBound(ResponseData, bWasSuccessful);
+        });
+
+    HttpRequest->ProcessRequest();
+}
+
 void UHttpNetworkSystem::RequestTestSTT(const FString& FilePath, FResponseTestSTTDelegate InDelegate)
 {
     auto HttpRequest = FHttpModule::Get().CreateRequest();
@@ -104,7 +136,12 @@ void UHttpNetworkSystem::RequestTestSTT(const FString& FilePath, FResponseTestST
     HttpRequest->ProcessRequest();
 }
 
-void UHttpNetworkSystem::RequestTestTTS(const FString& Text, const float SpeakingRate, const float Pitch, FResponseTestTTSDelegate InDelegate)
+void UHttpNetworkSystem::RequestTestTTS(
+    const FString& Text,
+    const float SpeakingRate,
+    const float Pitch,
+    const FString& VoiceName,
+    FResponseTestTTSDelegate InDelegate)
 {
     auto HttpRequest = FHttpModule::Get().CreateRequest();
 
@@ -116,6 +153,7 @@ void UHttpNetworkSystem::RequestTestTTS(const FString& Text, const float Speakin
     RequestData.text = Text;
     RequestData.speaking_rate = SpeakingRate;
     RequestData.pitch = Pitch;
+    RequestData.voice_name = VoiceName;
 
     FString RequestBody;
     if (!FJsonObjectConverter::UStructToJsonObjectString(RequestData, RequestBody))
@@ -135,7 +173,7 @@ void UHttpNetworkSystem::RequestTestTTS(const FString& Text, const float Speakin
             if (bWasSuccessful && ResPtr.IsValid())
             {
                 NETWORK_LOG(TEXT("[RES] %s"), *ResPtr->GetContentAsString());
-                
+
                 ResponseData.SetFromHttpResponse(ResPtr);
             }
 

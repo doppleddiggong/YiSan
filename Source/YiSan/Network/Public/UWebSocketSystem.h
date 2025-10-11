@@ -17,8 +17,12 @@
 // STT->TTS 흐름에서 STT 결과를 받았을 때
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnWebSocketTranscriptionReceived, const FString&, TranscribedText);
 
+// GPT Agent 응답
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnWebSocketAgentResponse, const FString&, GPTResponse);
+
 // TTS 흐름 (직접 또는 STT로부터)
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnWebSocketAudioStart);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnWebSocketAudioDataReceived, const TArray<uint8>&, AudioData);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnWebSocketAudioChunkReceived, const TArray<uint8>&, AudioData);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnWebSocketAudioEnd);
 
@@ -29,6 +33,12 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnWebSocketCompleted);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnWebSocketConnected);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnWebSocketConnectionError, const FString&, Error);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnWebSocketClosed, int32, StatusCode, const FString&, Reason, bool, bWasClean);
+
+// 서버 에러 메시지
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnWebSocketError, const FString&, ErrorMessage);
+
+// TTS 설정 확인
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnWebSocketConfigAck, const FString&, Message);
 
 
 UCLASS(Blueprintable, BlueprintType)
@@ -48,10 +58,33 @@ public:
 	void Disconnect();
 
 	UFUNCTION(BlueprintCallable, Category = "WebSocket")
-	void RequestTTS(const FString& Text, const FString& ReferenceIndex = TEXT("STT_00"), bool bUseCache = true);
+	void RequestTTS(
+		const FString& Text,
+		const FString& VoiceName = TEXT("ko-KR-Wavenet-D"),
+		float SpeakingRate = 1.0f,
+		float Pitch = 0.0f,
+		const FString& ReferenceIndex = TEXT("STT_00"),
+		bool bUseCache = true
+	);
 
 	UFUNCTION(BlueprintCallable, Category = "WebSocket")
 	void SendAudio(const TArray<uint8>& AudioData);
+
+	UFUNCTION(BlueprintCallable, Category = "WebSocket")
+	void SendAudioAsJson(const TArray<uint8>& AudioData);
+
+	UFUNCTION(BlueprintCallable, Category = "WebSocket")
+	void RequestSTT(const TArray<uint8>& AudioData);
+
+	UFUNCTION(BlueprintCallable, Category = "WebSocket")
+	void RequestGPT(const FString& Text);
+
+	UFUNCTION(BlueprintCallable, Category = "WebSocket")
+	void SetTTSConfig(
+		const FString& VoiceName = TEXT(""),
+		float SpeakingRate = -1.0f,
+		float Pitch = 999.0f
+	);
 
 	UFUNCTION(BlueprintCallable, Category = "WebSocket")
 	void SendPing();
@@ -71,10 +104,22 @@ public:
 	FOnWebSocketClosed OnClosed;
 
 	UPROPERTY(BlueprintAssignable, Category = "WebSocket|Events")
+	FOnWebSocketError OnError;
+
+	UPROPERTY(BlueprintAssignable, Category = "WebSocket|Events")
+	FOnWebSocketConfigAck OnConfigAck;
+
+	UPROPERTY(BlueprintAssignable, Category = "WebSocket|Events")
 	FOnWebSocketTranscriptionReceived OnTranscriptionReceived;
 
 	UPROPERTY(BlueprintAssignable, Category = "WebSocket|Events")
+	FOnWebSocketAgentResponse OnAgentResponse;
+
+	UPROPERTY(BlueprintAssignable, Category = "WebSocket|Events")
 	FOnWebSocketAudioStart OnAudioStart;
+
+	UPROPERTY(BlueprintAssignable, Category = "WebSocket|Events")
+	FOnWebSocketAudioDataReceived OnAudioDataReceived;
 
 	UPROPERTY(BlueprintAssignable, Category = "WebSocket|Events")
 	FOnWebSocketAudioChunkReceived OnAudioChunkReceived;

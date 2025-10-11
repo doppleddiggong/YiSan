@@ -25,9 +25,18 @@ public:
     virtual void Deinitialize() override;
 
     void RequestHealth( FResponseHealthDelegate InDelegate);
-    void RequestTestSTT(const FString& FilePath, FResponseTestSTTDelegate InDelegate);
 
-    void RequestTestTTS(const FString& Text, const float SpeakingRate, const float Pitch, FResponseTestTTSDelegate InDelegate);
+    // Integrated pipeline: STT -> GPT -> TTS in one request
+    void RequestAsk(const FString& FilePath, FResponseAskDelegate InDelegate);
+
+    void RequestTestSTT(const FString& FilePath, FResponseTestSTTDelegate InDelegate);
+    void RequestTestTTS(
+        const FString& Text,
+        const float SpeakingRate,
+        const float Pitch,
+        const FString& VoiceName,
+        FResponseTestTTSDelegate InDelegate
+    );
     void RequestTestGPT(const FString& Text, FResponseTestGPTDelegate InDelegate);
 
 private:
