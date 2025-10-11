@@ -55,6 +55,37 @@ UToolbarSettings::UToolbarSettings(const FObjectInitializer& ObjectInitializer)
 		FString("Logs"),
 		FString("Saved/Logs")});
 
+
+	bEnableNetworkTestFeature = true;
+	NetworkTestUrl = TEXT("http://127.0.0.1:8000");
+
+	// API 문서 기반 기본값
+	// 1. GET /health - 서버 상태 확인
+	FApiSendInfo HealthCheck;
+	HealthCheck.Label = TEXT("Health Check");
+	HealthCheck.Method = EApiHttpMethod::GET;
+	HealthCheck.Endpoint = TEXT("/health");
+	NetworkTests.Add(HealthCheck);
+
+	// 2. POST /test/gpt - GPT 텍스트 질의응답
+	FApiSendInfo GptTest;
+	GptTest.Label = TEXT("GPT Test");
+	GptTest.Method = EApiHttpMethod::POST;
+	GptTest.Endpoint = TEXT("/test/gpt");
+	GptTest.BodyParams.Add(TEXT("text"), TEXT("안녕하세요, 테스트입니다."));
+	NetworkTests.Add(GptTest);
+
+	// 3. POST /test/tts - 텍스트를 음성으로 변환
+	FApiSendInfo TtsTest;
+	TtsTest.Label = TEXT("TTS Test");
+	TtsTest.Method = EApiHttpMethod::POST;
+	TtsTest.Endpoint = TEXT("/test/tts");
+	TtsTest.BodyParams.Add(TEXT("text"), TEXT("안녕하세요, TTS 테스트입니다."));
+	TtsTest.BodyParams.Add(TEXT("speaking_rate"), TEXT("0.9"));
+	TtsTest.BodyParams.Add(TEXT("pitch"), TEXT("-2.0"));
+	TtsTest.BodyParams.Add(TEXT("voice_name"), TEXT("ko-KR-Wavenet-D"));
+	NetworkTests.Add(TtsTest);
+
 	ReloadConfig(); // .ini 파일이 존재하면 C++ 기본값을 덮어씁니다.
 }
 

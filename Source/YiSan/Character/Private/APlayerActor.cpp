@@ -1,21 +1,17 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "APlayerActor.h"
-#include "UVoiceRecordSystem.h"
+
+#include "UMainWidget.h"
+#include "GameLogging.h"
+#include "UVoiceConversationSystem.h"
+#include "UWebSocketSystem.h"
+#include "FComponentHelper.h"
 
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
-
-#include "UMainWidget.h"
-#include "FComponentHelper.h"
-#include "GameLogging.h"
-#include "UBroadcastManger.h"
-#include "UHttpNetworkSystem.h"
-#include "UVoiceConversationSystem.h"
-#include "UVoiceListenSystem.h"
-#include "UWebSocketSystem.h"
 
 #define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_Main.WBP_Main_C")
 

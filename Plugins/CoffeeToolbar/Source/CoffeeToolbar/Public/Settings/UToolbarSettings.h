@@ -3,9 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "FToolbarButtonInfo.h"
 #include "Engine/DeveloperSettings.h"
 #include "FToolbarButtonInfo.h"
-#include "FFolderPathInfo.h"
+#include "Folder/FFolderPathInfo.h"
+#include "NetworkTest/FApiSendInfo.h"
 #include "UToolbarSettings.generated.h"
 
 /**
@@ -70,6 +72,20 @@ public:
 	/** @brief 폴더 열기 기능에 사용될 경로 목록입니다. */
 	UPROPERTY(EditAnywhere, Config, Category="Folder", meta=(EditCondition="bEnableFolderFeature"))
 	TArray<FFolderPathInfo> FoldersToOpen;
+
+
+
+
+	/** @brief true일 때 네트워크 테스트 기능을 활성화합니다. */
+	UPROPERTY(EditAnywhere, Config, Category="Network Test")
+	bool bEnableNetworkTestFeature = true;
+
+	UPROPERTY(EditAnywhere, Config, Category="Network Test", meta=(EditCondition="bEnableNetworkTestFeature"))
+	FString NetworkTestUrl = TEXT("http://127.0.0.1:8000");
+	
+	/** @brief 네트워크 테스트에 사용될 API 요청 목록입니다. */
+	UPROPERTY(EditAnywhere, Config, Category="Network Test", meta=(EditCondition="bEnableNetworkTestFeature"))
+	TArray<FApiSendInfo> NetworkTests;
 };
 
-	
+

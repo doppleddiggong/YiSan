@@ -8,7 +8,6 @@
 #include "UVoiceRecordSystem.h"
 #include "UVoiceListenSystem.h"
 #include "UWebSocketSystem.h"
-#include "GameFramework/GameModeBase.h"
 
 // --- Subsystem Lifecycle ---
 
@@ -24,7 +23,6 @@ void UVoiceConversationSystem::Initialize(FSubsystemCollectionBase& Collection)
 		{
 			VoiceRecordSystem = NewObject<UVoiceRecordSystem>(GameInstance);
 			VoiceRecordSystem->RegisterComponent();
-			// VoiceRecordSystem->OnRecordingStopped.AddDynamic(this, &UVoiceConversationSystem::OnRecordingStopped);
 
 			VoiceListenSystem = NewObject<UVoiceListenSystem>(GameInstance);
 			VoiceListenSystem->RegisterComponent();
@@ -47,7 +45,6 @@ void UVoiceConversationSystem::Deinitialize()
 {
 	if (VoiceRecordSystem && VoiceRecordSystem->IsValidLowLevel())
 	{
-		// VoiceRecordSystem->OnRecordingStopped.RemoveAll(this);
 		VoiceRecordSystem->DestroyComponent();
 	}
 
@@ -79,7 +76,6 @@ void UVoiceConversationSystem::StartRecording()
 	if (!VoiceRecordSystem)
 	{
 		PRINTLOG( TEXT("VoiceRecordSystem이 초기화되지 않았습니다."));
-		// OnError.Broadcast(TEXT("VoiceRecordSystem이 초기화되지 않았습니다."));
 		return;
 	}
 
@@ -88,7 +84,6 @@ void UVoiceConversationSystem::StartRecording()
 	
 	bIsRecording = true;
 	VoiceRecordSystem->RecordStart();
-	// OnRecordingStarted.Broadcast();
 
 	PRINTLOG( TEXT("[VoiceConversation] Recording started."));
 }
@@ -103,38 +98,10 @@ void UVoiceConversationSystem::StopRecording()
 
 	bIsRecording = false;
 	bIsProcessing = true;
-	auto FilePath = VoiceRecordSystem->RecordStop();
 
 	PRINTLOG( TEXT("[VoiceConversation] Recording stopped. Processing...") );
 
-	OnRecordingStopped( FilePath );
-}
-
-void UVoiceConversationSystem::AskGPTDirectly(const FString& Question)
-{
-	if (bIsProcessing)
-	{
-		PRINTLOG( TEXT("이미 처리 중입니다."));
-		// OnError.Broadcast(TEXT("이미 처리 중입니다."));
-		return;
-	}
-
-	bIsProcessing = true;
-	// CurrentTranscribedText = Question;
-	// OnTranscriptionReceived.Broadcast(Question);
-
-	// GPT 요청
-	UHttpNetworkSystem* HttpSystem = UHttpNetworkSystem::Get(GetWorld());
-	if (!HttpSystem)
-	{
-		// OnError.Broadcast(TEXT("HttpSystem을 찾을 수 없습니다."));
-		bIsProcessing = false;
-		return;
-	}
-
-	HttpSystem->RequestTestGPT(Question, FResponseTestGPTDelegate::CreateUObject(
-		this, &UVoiceConversationSystem::OnGPTResponse
-	));
+	OnRecordingStopped( VoiceRecordSystem->RecordStop() );
 }
 
 void UVoiceConversationSystem::OnRecordingStopped(const FString& FilePath)
@@ -152,68 +119,24 @@ void UVoiceConversationSystem::OnRecordingStopped(const FString& FilePath)
 	if (!HttpSystem)
 	{
 		PRINTLOG( TEXT("HttpSystem을 찾을 수 없습니다."));
-		// OnError.Broadcast(TEXT("HttpSystem을 찾을 수 없습니다."));
 		bIsProcessing = false;
 		return;
 	}
 
-	HttpSystem->RequestTestSTT(FilePath, FResponseTestSTTDelegate::CreateUObject(
-		this, &UVoiceConversationSystem::OnResponseTestSTT
+	HttpSystem->RequestAsk(FilePath, FResponseAskDelegate::CreateUObject(
+		this, &UVoiceConversationSystem::OnResponseAsk
 	));
 }
 
-void UVoiceConversationSystem::OnResponseTestSTT(FResponseTestSTT& Response, bool bSuccess)
+void UVoiceConversationSystem::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
 {
 	bIsProcessing = false;
 
 	if (bSuccess)
 	{
 		if (auto EventManager = UBroadcastManger::Get(this))
-			EventManager->SendToastMessage(Response.text);
-	}
-	else
-	{
-		PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
-	}
-}
-
-void UVoiceConversationSystem::OnGPTResponse(FResponseTestGPT& Response, bool bSuccess)
-{
-	if (!bSuccess || Response.response.IsEmpty())
-	{
-		PRINTLOG( TEXT("GPT 처리에 실패했습니다."));
-		bIsProcessing = false;
-		return;
-	}
-
-	UE_LOG(LogTemp, Log, TEXT("[VoiceConversation] GPT: %s"), *Response.response);
-
-	// TTS 요청
-	UHttpNetworkSystem* HttpSystem = UHttpNetworkSystem::Get(GetWorld());
-	if (!HttpSystem)
-	{
-		PRINTLOG( TEXT("HttpSystem을 찾을 수 없습니다."));
-		bIsProcessing = false;
-		return;
-	}
-
-	HttpSystem->RequestTestTTS(Response.response, 0.88f, -3.0f, TEXT("ko-KR-Wavenet-D"),
-		FResponseTestTTSDelegate::CreateUObject( this, &UVoiceConversationSystem::OnResponseTestTTS ));
-}
-
-void UVoiceConversationSystem::OnResponseTestTTS(FResponseTestTTS& Response, bool bSuccess)
-{
-	if (bSuccess)
-	{
-		if (Response.audio_data.Num() == 0)
-		{
-			PRINTLOG(TEXT("TTS 응답은 성공했으나 audio_data가 비어있습니다."));
-			return;
-		}
-
-		PRINTLOG(TEXT("TTS 응답 수신: %d bytes"), Response.audio_data.Num());
-
-		VoiceListenSystem->HandleTTSOutput(Response.audio_data);
+			EventManager->SendToastMessage(Response.gpt_response_text);
+		VoiceListenSystem->HandleTTSOutput(Response.audio_data, this);
 	}
 	else
 	{

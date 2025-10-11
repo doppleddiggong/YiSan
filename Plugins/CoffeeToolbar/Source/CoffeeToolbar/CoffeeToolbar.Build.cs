@@ -10,7 +10,8 @@ public class CoffeeToolbar : ModuleRules
 		
 		PublicDependencyModuleNames.AddRange(
 			new string[] {
-				"Core", "CoreUObject", "Engine"
+				"Core", "CoreUObject", "Engine",
+				"HTTP", "Json", "JsonUtilities"
 			});
 			
 		

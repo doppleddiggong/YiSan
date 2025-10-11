@@ -34,6 +34,7 @@ void FToolbar::StartupModule()
 	ScreenshotFeature = MakeUnique<FScreenshotFeature>();
 	CommandFeature = MakeUnique<FCommandFeature>();
 	FolderFeature = MakeUnique<FFolderFeature>();
+	NetworkTestFeature = MakeUnique<FNetworkTestFeature>();
 
 	UToolMenus::RegisterStartupCallback(FSimpleMulticastDelegate::FDelegate::CreateRaw(this, &FToolbar::RegisterMenus));
 }
@@ -146,6 +147,20 @@ void FToolbar::RegisterMenus()
 		);
 		FolderCombo.StyleNameOverride = "CalloutToolbar";
 		Section.AddEntry(FolderCombo);
+	}
+
+	if ( Settings->bEnableNetworkTestFeature )
+	{
+		FToolMenuEntry NetworkTestCombo = FToolMenuEntry::InitComboButton(
+			"NetworkTestComboButton",
+			FUIAction(),
+			FOnGetContent::CreateRaw(NetworkTestFeature.Get(), &FNetworkTestFeature::GenerateNetworkTestMenu),
+			NSLOCTEXT("CoffeeToolbar", "NetworkTestMenu", "Network Tests"),
+			NSLOCTEXT("CoffeeToolbar", "NetworkTestMenu_Tooltip", "Execute API network tests"),
+			FSlateIcon(FAppStyle::GetAppStyleSetName(), "Icons.Download")
+		);
+		NetworkTestCombo.StyleNameOverride = "CalloutToolbar";
+		Section.AddEntry(NetworkTestCombo);
 	}
 
 	UToolMenus::Get()->RefreshAllWidgets();

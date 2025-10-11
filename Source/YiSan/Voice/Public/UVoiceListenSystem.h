@@ -15,7 +15,7 @@ public:
 	UVoiceListenSystem();
 	
 	void InitSystem();
-	void HandleTTSOutput(const TArray<uint8>& AudioData);
+	void HandleTTSOutput(const TArray<uint8>& AudioData, UObject* WorldContextObject);
 
 protected:
 	UFUNCTION()

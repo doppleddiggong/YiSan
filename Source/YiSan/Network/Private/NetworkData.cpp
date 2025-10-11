@@ -8,7 +8,7 @@
 
 #include "JsonObjectConverter.h"
 #include "NetworkLog.h"
-#include "UGameFunctionLibrary.h"
+#include "Misc/Base64.h"
 #include "Interfaces/IHttpResponse.h"
 
 
@@ -50,7 +50,10 @@ void FResponseAsk::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::
     {
         JsonObject->TryGetStringField(TEXT("transcribed_text"), transcribed_text);
         JsonObject->TryGetStringField(TEXT("gpt_response_text"), gpt_response_text);
+
+        FString audio_content;
         JsonObject->TryGetStringField(TEXT("audio_content"), audio_content);
+        FBase64::Decode(audio_content, audio_data);
     }
 }
 

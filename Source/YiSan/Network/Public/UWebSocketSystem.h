@@ -138,7 +138,7 @@ private:
 	void OnConnected_Native();
 	void OnConnectionError_Native(const FString& Error);
 	void OnClosed_Native(int32 StatusCode, const FString& Reason, bool bWasClean);
-	void OnMessage_Native(const FString& Message);
+	void OnMessage_Native(const FString& InMessage);
 	void OnBinaryMessage_Native(const void* Data, SIZE_T Size, bool bIsLastFragment);
 
 	TSharedPtr<IWebSocket> WebSocket;

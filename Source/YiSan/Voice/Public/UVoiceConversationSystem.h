@@ -12,15 +12,6 @@
 #include "Macro.h"
 #include "UVoiceConversationSystem.generated.h"
 
-// --- 대화 이벤트 델리게이트 ---
-
-// DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnConversationRecordingStarted);
-// // DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnConversationTranscriptionReceived, const FString&, TranscribedText);
-// DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnConversationGPTResponseReceived, const FString&, GPTResponse);
-// DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnConversationTTSStarted);
-// DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnConversationCompleted);
-// DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnConversationError, const FString&, ErrorMessage);
-
 /**
  * @brief 음성 대화 통합 시스템
  *
@@ -51,13 +42,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Voice|Conversation")
 	void StartRecording();
 
-	/** 음성 녹음 중지 및 STT 처리 시작 */
+	/** 음성 녹음 중지 및 ASK 처리 시작 */
 	UFUNCTION(BlueprintCallable, Category = "Voice|Conversation")
 	void StopRecording();
-
-	/** GPT에게 텍스트로 직접 질문 (음성 녹음 없이) */
-	UFUNCTION(BlueprintCallable, Category = "Voice|Conversation")
-	void AskGPTDirectly(const FString& Question);
 
 	// --- WebSocket 방식 실시간 음성 대화 ---
 
@@ -88,26 +75,6 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Voice|Conversation")
 	bool IsWebSocketConnected() const;
 
-	// --- 이벤트 ---
-	//
-	// UPROPERTY(BlueprintAssignable, Category = "Voice|Conversation|Events")
-	// FOnConversationRecordingStarted OnRecordingStarted;
-	//
-	// // UPROPERTY(BlueprintAssignable, Category = "Voice|Conversation|Events")
-	// // FOnConversationTranscriptionReceived OnTranscriptionReceived;
-	//
-	// UPROPERTY(BlueprintAssignable, Category = "Voice|Conversation|Events")
-	// FOnConversationGPTResponseReceived OnGPTResponseReceived;
-	//
-	// UPROPERTY(BlueprintAssignable, Category = "Voice|Conversation|Events")
-	// FOnConversationTTSStarted OnTTSStarted;
-	//
-	// UPROPERTY(BlueprintAssignable, Category = "Voice|Conversation|Events")
-	// FOnConversationCompleted OnCompleted;
-	//
-	// UPROPERTY(BlueprintAssignable, Category = "Voice|Conversation|Events")
-	// FOnConversationError OnError;
-
 private:
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 	virtual void Deinitialize() override;
@@ -116,8 +83,7 @@ private:
 	UFUNCTION()
 	void OnRecordingStopped(const FString& FilePath);
 	
-	void OnResponseTestSTT(FResponseTestSTT& Response, bool bSuccess);
-	void OnGPTResponse(FResponseTestGPT& Response, bool bSuccess);
+	void OnResponseAsk(FResponseAsk& Response, bool bSuccess);
 	void OnResponseTestTTS(FResponseTestTTS& Response, bool bSuccess);
 	
 	// --- WebSocket 방식 콜백 ---

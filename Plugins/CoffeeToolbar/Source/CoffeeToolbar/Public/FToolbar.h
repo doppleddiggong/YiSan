@@ -4,10 +4,11 @@
 
 #include "Modules/ModuleManager.h"
 
-#include "Command/FCommandFeature.h"
 #include "Level/FLevelFeature.h"
 #include "Screenshot/FScreenshotFeature.h"
-#include "Common/FolderFeature.h"
+#include "Command/FCommandFeature.h"
+#include "Folder/FolderFeature.h"
+#include "NetworkTest/FNetworkTestFeature.h"
 
 /**
  * @file FToolbar.h
@@ -20,25 +21,28 @@
 class FToolbar : public IModuleInterface
 {
 public:
-        /** @brief 툴바 기능을 초기화하고 Slate 메뉴 확장을 등록합니다. */
-        virtual void StartupModule() override;
+	/** @brief 툴바 기능을 초기화하고 Slate 메뉴 확장을 등록합니다. */
+	virtual void StartupModule() override;
 
-        /** @brief 등록된 메뉴를 해제하고 툴바 기능을 정리합니다. */
-        virtual void ShutdownModule() override;
+	/** @brief 등록된 메뉴를 해제하고 툴바 기능을 정리합니다. */
+	virtual void ShutdownModule() override;
 
 private:
-        /** @brief 에디터 확장 프레임워크에 툴바 메뉴와 버튼을 등록합니다. */
-        void RegisterMenus();
+	/** @brief 에디터 확장 프레임워크에 툴바 메뉴와 버튼을 등록합니다. */
+	void RegisterMenus();
 
-        /** @brief 툴바에서 명령 단축 기능을 제공하는 모듈입니다. */
-        TUniquePtr<FCommandFeature> CommandFeature;
+    /** @brief 툴바에서 명령 단축 기능을 제공하는 모듈입니다. */
+    TUniquePtr<FCommandFeature> CommandFeature;
 
-        /** @brief 레벨 관련 유틸리티 버튼을 제공하는 기능입니다. */
-        TUniquePtr<FLevelFeature> LevelFeature;
+    /** @brief 레벨 관련 유틸리티 버튼을 제공하는 기능입니다. */
+    TUniquePtr<FLevelFeature> LevelFeature;
 
-        /** @brief 스크린샷 캡처 헬퍼를 제공하는 기능입니다. */
-        TUniquePtr<FScreenshotFeature> ScreenshotFeature;
+    /** @brief 스크린샷 캡처 헬퍼를 제공하는 기능입니다. */
+    TUniquePtr<FScreenshotFeature> ScreenshotFeature;
 
-        /** @brief 폴더 열기 기능을 제공하는 모듈입니다. */
-        TUniquePtr<FFolderFeature> FolderFeature;
+    /** @brief 폴더 열기 기능을 제공하는 모듈입니다. */
+	TUniquePtr<FFolderFeature> FolderFeature;
+
+	/** @brief 네트워크 API 테스트 기능을 제공하는 모듈입니다. */
+	TUniquePtr<FNetworkTestFeature> NetworkTestFeature;
 };

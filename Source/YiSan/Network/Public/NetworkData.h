@@ -74,7 +74,7 @@ struct FResponseAsk
     FString gpt_response_text;
 
     UPROPERTY(BlueprintReadWrite)
-    FString audio_content;  // Base64 encoded WAV audio
+    TArray<uint8> audio_data;
 
     void SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response);
     void PrintData();

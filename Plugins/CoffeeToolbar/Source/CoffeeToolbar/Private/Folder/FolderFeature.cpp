@@ -1,4 +1,4 @@
-#include "Common/FolderFeature.h"
+#include "Folder/FolderFeature.h"
 #include "Settings/UToolbarSettings.h"
 #include "Framework/MultiBox/MultiBoxBuilder.h"
 #include "HAL/PlatformProcess.h"
@@ -7,6 +7,8 @@
 #include "Misc/Paths.h"
 
 #define LOCTEXT_NAMESPACE "FFolderFeature"
+
+DEFINE_LOG_CATEGORY_STATIC(LogCoffeeToolbarFolderFeature, Log, All);
 
 TSharedRef<SWidget> FFolderFeature::GenerateFolderMenu()
 {

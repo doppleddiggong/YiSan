@@ -22,6 +22,7 @@
 *   **고해상도 스크린샷**: 지정된 배율(예: 2x, 4x)로 고해상도 스크린샷을 간편하게 촬영하고 저장 폴더를 바로 열 수 있습니다.
 *   **설정 기반 확장성**: `.ini` 파일을 통해 툴바에 표시될 기능과 순서를 사용자가 직접 커스터마이징할 수 있습니다.
 *   **폴더 바로가기**: `Logs`, `Documents` 등 사전에 정의된 프로젝트 폴더를 드롭다운 메뉴에서 직접 열 수 있습니다.
+*   **네트워크 API 테스트**: HTTP API 요청을 에디터에서 직접 실행하고 결과를 로그로 확인할 수 있는 네트워크 테스터 기능을 제공합니다.
 
 ## 설치 방법 (Installation)
 
@@ -121,6 +122,41 @@
 bEnableFolderFeature=True
 +FoldersToOpen=(Label="로그",Path="Saved/Logs")
 +FoldersToOpen=(Label="문서",Path="Documents")
+```
+
+### 7. 네트워크 API 테스트 (Network Test Feature)
+
+**Network Tests** 기능을 통해 HTTP API 요청을 에디터에서 직접 실행하고, 응답 결과를 Output Log에서 확인할 수 있습니다.
+
+#### 제공 기능
+- **GET/POST 요청**: HTTP GET 및 POST 메서드를 지원합니다.
+- **JSON Body 지원**: POST 요청 시 JSON 형식의 바디 파라미터를 전송할 수 있습니다.
+- **콘솔 커맨드**: `curl` 명령어를 통해 콘솔에서도 API 테스트가 가능합니다.
+
+#### 설정 옵션
+- **`bEnableNetworkTestFeature`**: 툴바에 이 기능을 활성화하거나 비활성화합니다.
+- **`NetworkTestUrl`**: API 서버의 기본 URL을 설정합니다. (예: "http://127.0.0.1:8000")
+- **`NetworkTests`**: 실행할 API 테스트 목록을 정의하는 배열입니다.
+  - **`Label`**: 드롭다운 메뉴에 표시될 이름입니다.
+  - **`Method`**: HTTP 메서드 (GET 또는 POST)입니다.
+  - **`Endpoint`**: API 엔드포인트 경로입니다. (예: "/health", "/test/gpt")
+  - **`BodyParams`**: POST 요청 시 전송할 JSON 바디 파라미터입니다.
+
+#### .ini 설정 예시
+프로젝트의 `Config/DefaultToolbarSettings.ini` 파일에서 직접 설정할 수도 있습니다:
+```ini
+bEnableNetworkTestFeature=True
+NetworkTestUrl="http://127.0.0.1:8000"
+
++NetworkTests=(Label="Health Check",Method=GET,Endpoint="/health")
++NetworkTests=(Label="GPT Test",Method=POST,Endpoint="/test/gpt",BodyParams=((Key="text",Value="안녕하세요")))
+```
+
+#### 콘솔 커맨드 사용법
+에디터의 **Output Log** 창에서 `curl` 명령어를 사용할 수 있습니다:
+```
+curl get /health
+curl post /test/gpt {"text":"안녕하세요"}
 ```
 
 ---

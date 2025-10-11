@@ -264,23 +264,23 @@ void UWebSocketSystem::OnClosed_Native(int32 StatusCode, const FString& Reason, 
 	OnClosed.Broadcast(StatusCode, Reason, bWasClean);
 }
 
-void UWebSocketSystem::OnMessage_Native(const FString& Message)
+void UWebSocketSystem::OnMessage_Native(const FString& InMessage)
 {
-	LogNetwork(FString::Printf(TEXT("Received message: %s"), *Message));
+	LogNetwork(FString::Printf(TEXT("Received message: %s"), *InMessage));
 
 	TSharedPtr<FJsonObject> JsonObject;
-	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Message);
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(InMessage);
 
 	if (!FJsonSerializer::Deserialize(Reader, JsonObject) || !JsonObject.IsValid())
 	{
-		LogNetwork(FString::Printf(TEXT("Failed to parse incoming JSON message: %s"), *Message));
+		LogNetwork(FString::Printf(TEXT("Failed to parse incoming JSON message: %s"), *InMessage));
 		return;
 	}
 
 	FString MessageType;
 	if (!JsonObject->TryGetStringField(TEXT("type"), MessageType))
 	{
-		LogNetwork(FString::Printf(TEXT("Incoming JSON has no 'type' field: %s"), *Message));
+		LogNetwork(FString::Printf(TEXT("Incoming JSON has no 'type' field: %s"), *InMessage));
 		return;
 	}
 
@@ -340,10 +340,10 @@ void UWebSocketSystem::OnMessage_Native(const FString& Message)
 	}
 	else if (MessageType == TEXT("config_ack"))
 	{
-		FString Message;
-		JsonObject->TryGetStringField(TEXT("message"), Message);
-		LogNetwork(FString::Printf(TEXT("Config Updated: %s"), *Message));
-		OnConfigAck.Broadcast(Message);
+		FString TempMessage;
+		JsonObject->TryGetStringField(TEXT("message"), TempMessage);
+		LogNetwork(FString::Printf(TEXT("Config Updated: %s"), *TempMessage));
+		OnConfigAck.Broadcast(TempMessage);
 	}
 	else if (MessageType == TEXT("error"))
 	{

@@ -150,12 +150,16 @@ USoundWave* UVoiceFunctionLibrary::CreateSoundWaveFromWavData(const TArray<uint8
     const int32 DataSize = WavData.Num() - DataStart;
 
     // SoundWave 생성
-    USoundWave* SoundWave = NewObject<USoundWave>(USoundWave::StaticClass());
+    USoundWave* SoundWave = NewObject<USoundWave>();
     if (!SoundWave)
     {
         PRINTLOG( TEXT("Failed to create USoundWave"));
         return nullptr;
     }
+
+    SoundWave->SoundGroup = ESoundGroup::SOUNDGROUP_Voice;
+    SoundWave->DecompressionType = EDecompressionType::DTYPE_Procedural;
+    SoundWave->bLooping = false;
 
     SoundWave->NumChannels   = NumChannels;
     SoundWave->Duration      = (float)DataSize / (SampleRate * NumChannels * (BitsPerSample / 8));
