@@ -23,10 +23,10 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
 private:
-	UFUNCTION()
-	void OnRecordingStoppedHandler(const FString& FilePath);
-	UFUNCTION()
-	void OnResponseSTT(FResponseSTT& ResponseData, bool bWasSuccessful);
+	// UFUNCTION()
+	// void OnRecordingStoppedHandler(const FString& FilePath);
+	// UFUNCTION()
+	// void OnResponseSTT(FResponseSTT& ResponseData, bool bWasSuccessful);
 
 	UFUNCTION(CallInEditor, Category = "TEST|RequestHealth")
 	void RequestHealth();
@@ -50,11 +50,14 @@ public:
 	TSubclassOf<class UMainWidget> MainWidgetClass;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
 	TObjectPtr<UMainWidget> MainWidgetInst;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|System")
+	TObjectPtr<class UVoiceConversationSystem>  VoiceConversationSystem;
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|System")
-	TObjectPtr<class UVoiceRecordSystem> VoiceRecordSystem;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|System")
-	TObjectPtr<class UVoiceListenSystem> VoiceListenSystem;
+	// UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|System")
+	// TObjectPtr<class UVoiceRecordSystem> VoiceRecordSystem;
+	// UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|System")
+	// TObjectPtr<class UVoiceListenSystem> VoiceListenSystem;
 
 public: // Control Interface
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")

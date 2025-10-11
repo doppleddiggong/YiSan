@@ -143,3 +143,81 @@ void UHttpNetworkSystem::RequestTTS(const FString& Text, const FString& referenc
 
     HttpRequest->ProcessRequest();
 }
+
+void UHttpNetworkSystem::RequestTestGPT(const FString& Text, FResponseTestGPTDelegate InDelegate)
+{
+    auto HttpRequest = FHttpModule::Get().CreateRequest();
+
+    HttpRequest->SetVerb(NETWORK_POST);
+    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::TestGPT));
+    HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
+    HttpRequest->SetHeader(TEXT("Accept"), TEXT("application/json"));
+
+    FRequestTestGPT RequestData;
+    RequestData.text = Text;
+
+    FString RequestBody;
+    if (!FJsonObjectConverter::UStructToJsonObjectString(RequestData, RequestBody))
+    {
+        NETWORK_LOG(TEXT("Failed to convert FRequestTestGPT to JSON"));
+        return;
+    }
+
+    HttpRequest->SetContentAsString(RequestBody);
+
+    LogNetwork(ENetworkLogType::Post, *HttpRequest->GetURL(), RequestBody);
+
+    HttpRequest->OnProcessRequestComplete().BindLambda(
+        [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+        {
+            FResponseTestGPT ResponseData;
+            if (bWasSuccessful && ResPtr.IsValid())
+            {
+                NETWORK_LOG(TEXT("[RES] %s"), *ResPtr->GetContentAsString());
+                ResponseData.SetFromHttpResponse(ResPtr);
+            }
+            InDelegate.ExecuteIfBound(ResponseData, bWasSuccessful);
+        });
+
+    HttpRequest->ProcessRequest();
+}
+
+void UHttpNetworkSystem::RequestTestTTS(const FString& Text, float SpeakingRate, float Pitch, FResponseTestTTSDelegate InDelegate)
+{
+    auto HttpRequest = FHttpModule::Get().CreateRequest();
+
+    HttpRequest->SetVerb(NETWORK_POST);
+    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::TestTTS));
+    HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
+
+    FRequestTestTTS RequestData;
+    RequestData.text = Text;
+    RequestData.speaking_rate = SpeakingRate;
+    RequestData.pitch = Pitch;
+
+    FString RequestBody;
+    if (!FJsonObjectConverter::UStructToJsonObjectString(RequestData, RequestBody))
+    {
+        NETWORK_LOG(TEXT("Failed to convert FRequestTestTTS to JSON"));
+        return;
+    }
+
+    HttpRequest->SetContentAsString(RequestBody);
+
+    LogNetwork(ENetworkLogType::Post, *HttpRequest->GetURL(), RequestBody);
+
+    HttpRequest->OnProcessRequestComplete().BindLambda(
+        [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+        {
+            TArray<uint8> AudioData;
+            if (bWasSuccessful && ResPtr.IsValid())
+            {
+                // TestTTS returns binary WAV data
+                AudioData = ResPtr->GetContent();
+                NETWORK_LOG(TEXT("[RES] TestTTS: Received %d bytes of audio data"), AudioData.Num());
+            }
+            InDelegate.ExecuteIfBound(AudioData, bWasSuccessful);
+        });
+
+    HttpRequest->ProcessRequest();
+}

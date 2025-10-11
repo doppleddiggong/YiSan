@@ -13,6 +13,7 @@
 #include "GameLogging.h"
 #include "UBroadcastManger.h"
 #include "UHttpNetworkSystem.h"
+#include "UVoiceConversationSystem.h"
 #include "UVoiceListenSystem.h"
 #include "UWebSocketSystem.h"
 
@@ -40,8 +41,8 @@ APlayerActor::APlayerActor()
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->bUseControllerDesiredRotation = false;
 
-	VoiceRecordSystem = CreateDefaultSubobject<UVoiceRecordSystem>(TEXT("VoiceRecordSystem"));
-	VoiceListenSystem = CreateDefaultSubobject<UVoiceListenSystem>(TEXT("VoiceListenSystem"));
+	// VoiceRecordSystem = CreateDefaultSubobject<UVoiceRecordSystem>(TEXT("VoiceRecordSystem"));
+	// VoiceListenSystem = CreateDefaultSubobject<UVoiceListenSystem>(TEXT("VoiceListenSystem"));
 }
 
 void APlayerActor::BeginPlay()
@@ -56,9 +57,11 @@ void APlayerActor::BeginPlay()
 	if (MainWidgetInst)
 		MainWidgetInst->AddToViewport();
 
-	VoiceRecordSystem->OnRecordingStopped.AddDynamic(this, &APlayerActor::OnRecordingStoppedHandler);
-	VoiceListenSystem->InitSystem();
+	// VoiceRecordSystem->OnRecordingStopped.AddDynamic(this, &APlayerActor::OnRecordingStoppedHandler);
+	// VoiceListenSystem->InitSystem();
 
+	VoiceConversationSystem = UVoiceConversationSystem::Get(GetWorld());
+	
 	if (auto WebSocketSystem = UWebSocketSystem::Get(GetWorld()))
 		WebSocketSystem->Connect();
 }
@@ -107,37 +110,37 @@ void APlayerActor::Cmd_Chat_Implementation()
 
 void APlayerActor::Cmd_RecordStart_Implementation()
 {
-	VoiceRecordSystem->RecordStart();
+	VoiceConversationSystem->StartRecording();
 }
 
 void APlayerActor::Cmd_RecordEnd_Implementation()
 {
-	VoiceRecordSystem->RecordStop();
+	VoiceConversationSystem->StopRecording();
 }
 
-void APlayerActor::OnRecordingStoppedHandler(const FString& FilePath)
-{
-	if ( auto ReqNetwork = UHttpNetworkSystem::Get(GetWorld()) )
-	{
-		ReqNetwork->RequestSTT(FilePath,
-			FResponseSTTDelegate::CreateUObject( this, &APlayerActor::OnResponseSTT));
-	}
-}
-
-void APlayerActor::OnResponseSTT(FResponseSTT& ResponseData, bool bWasSuccessful)
-{
-	if (bWasSuccessful)
-	{
-		ResponseData.PrintData();
-
-		if (auto EventManager = UBroadcastManger::Get(this))
-			EventManager->SendToastMessage(ResponseData.text);
-	}
-	else
-	{
-		PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
-	}
-}
+// void APlayerActor::OnRecordingStoppedHandler(const FString& FilePath)
+// {
+// 	if ( auto ReqNetwork = UHttpNetworkSystem::Get(GetWorld()) )
+// 	{
+// 		ReqNetwork->RequestSTT(FilePath,
+// 			FResponseSTTDelegate::CreateUObject( this, &APlayerActor::OnResponseSTT));
+// 	}
+// }
+//
+// void APlayerActor::OnResponseSTT(FResponseSTT& ResponseData, bool bWasSuccessful)
+// {
+// 	if (bWasSuccessful)
+// 	{
+// 		ResponseData.PrintData();
+//
+// 		if (auto EventManager = UBroadcastManger::Get(this))
+// 			EventManager->SendToastMessage(ResponseData.text);
+// 	}
+// 	else
+// 	{
+// 		PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
+// 	}
+// }
 
 
 

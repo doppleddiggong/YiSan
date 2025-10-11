@@ -140,3 +140,55 @@ struct FResponseTTS
     void SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response);
     void PrintData();
 };
+
+// --- Test Endpoints ---
+
+USTRUCT(BlueprintType)
+struct FRequestTestGPT
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite)
+    FString text;
+};
+
+DECLARE_DELEGATE_TwoParams( FResponseTestGPTDelegate, FResponseTestGPT&, bool );
+USTRUCT(BlueprintType)
+struct FResponseTestGPT
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite)
+    FString response;
+
+    void SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response);
+    void PrintData();
+};
+
+USTRUCT(BlueprintType)
+struct FRequestTestTTS
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite)
+    FString text;
+
+    UPROPERTY(BlueprintReadWrite)
+    float speaking_rate = 0.88f;
+
+    UPROPERTY(BlueprintReadWrite)
+    float pitch = -3.0f;
+};
+
+DECLARE_DELEGATE_TwoParams( FResponseTestTTSDelegate, TArray<uint8>&, bool );
+USTRUCT(BlueprintType)
+struct FResponseTestTTS
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite)
+    TArray<uint8> audio_data;
+
+    void SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response);
+    void PrintData();
+};

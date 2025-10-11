@@ -113,3 +113,63 @@ void FResponseTTS::PrintData()
     );
     NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
 }
+
+void FResponseHelpChat::PrintData()
+{
+    FString OutputString;
+    FJsonObjectConverter::UStructToJsonObjectString(
+        *this,
+        OutputString,
+        0,
+        0
+    );
+    NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+
+// --- Test Endpoints Implementation ---
+
+void FResponseTestGPT::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+    if (!Response.IsValid())
+    {
+        return;
+    }
+
+    FString ResponseBody = Response->GetContentAsString();
+
+    TSharedPtr<FJsonObject> JsonObject;
+    TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(ResponseBody);
+
+    if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+    {
+        JsonObject->TryGetStringField(TEXT("response"), response);
+    }
+}
+
+void FResponseTestGPT::PrintData()
+{
+    FString OutputString;
+    FJsonObjectConverter::UStructToJsonObjectString(
+        *this,
+        OutputString,
+        0,
+        0
+    );
+    NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+
+void FResponseTestTTS::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+    if (!Response.IsValid())
+    {
+        return;
+    }
+
+    // TestTTS returns binary WAV data
+    audio_data = Response->GetContent();
+}
+
+void FResponseTestTTS::PrintData()
+{
+    NETWORK_LOG( TEXT("[RES] TestTTS: Received %d bytes of audio data"), audio_data.Num());
+}
