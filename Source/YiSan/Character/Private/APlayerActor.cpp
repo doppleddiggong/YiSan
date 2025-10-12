@@ -7,6 +7,7 @@
 #include "UVoiceConversationSystem.h"
 #include "UWebSocketSystem.h"
 #include "FComponentHelper.h"
+#include "UHttpNetworkSystem.h"
 
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -51,6 +52,9 @@ void APlayerActor::BeginPlay()
 	MainWidgetInst = CreateWidget<UMainWidget>(GetWorld(), MainWidgetClass);
 	if (MainWidgetInst)
 		MainWidgetInst->AddToViewport();
+
+	// 일어나라 서버
+	UHttpNetworkSystem::Get(GetWorld())->RequestHealth( FResponseHealthDelegate() );
 }
 
 void APlayerActor::Tick(float DeltaTime)
