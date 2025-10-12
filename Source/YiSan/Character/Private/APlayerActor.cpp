@@ -36,6 +36,8 @@ APlayerActor::APlayerActor()
 
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->bUseControllerDesiredRotation = false;
+	
+	VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
 }
 
 void APlayerActor::BeginPlay()
@@ -45,15 +47,10 @@ void APlayerActor::BeginPlay()
 	MeshComp = this->GetMesh();
 	MoveComp = this->GetCharacterMovement();
 	AnimInstance = MeshComp->GetAnimInstance();
-
-	VoiceConversationSystem = UVoiceConversationSystem::Get(GetWorld());
 	
 	MainWidgetInst = CreateWidget<UMainWidget>(GetWorld(), MainWidgetClass);
 	if (MainWidgetInst)
 		MainWidgetInst->AddToViewport();
-
-	if (auto WebSocketSystem = UWebSocketSystem::Get(GetWorld()))
-		WebSocketSystem->Connect();
 }
 
 void APlayerActor::Tick(float DeltaTime)
@@ -108,16 +105,4 @@ void APlayerActor::Cmd_RecordEnd_Implementation()
 {
 	PRINT_STRING(TEXT("Cmd_RecordEnd_Implementation"));
 	VoiceConversationSystem->StopRecording();
-}
-
-void APlayerActor::Cmd_StreamingStart_Implementation()
-{
-	PRINT_STRING(TEXT("Cmd_StreamingStart_Implementation"));
-	VoiceConversationSystem->StartStreaming();
-}
-
-void APlayerActor::Cmd_StreamingEnd_Implementation()
-{
-	PRINT_STRING(TEXT("Cmd_StreamingEnd_Implementation"));
-	VoiceConversationSystem->StopStreaming();
 }

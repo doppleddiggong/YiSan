@@ -24,7 +24,6 @@
 #define IA_LANDING_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Landing.IA_Game_Landing")
 #define IA_CHAT_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Chat.IA_Game_Chat")
 #define IA_RECORD_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Record.IA_Game_Record")
-#define IA_STREAMING_PATH			TEXT("/Game/CustomContents/Input/IA_Game_Streaming.IA_Game_Streaming")
 
 APlayerControl::APlayerControl()
 {
@@ -38,7 +37,6 @@ APlayerControl::APlayerControl()
 	IA_Landing = FComponentHelper::LoadAsset<UInputAction>(IA_LANDING_PATH);
 	IA_Chat = FComponentHelper::LoadAsset<UInputAction>(IA_CHAT_PATH);
 	IA_Record = FComponentHelper::LoadAsset<UInputAction>(IA_RECORD_PATH);
-	IA_Streaming = FComponentHelper::LoadAsset<UInputAction>(IA_STREAMING_PATH);
 }
 
 void APlayerControl::BeginPlay()
@@ -82,9 +80,6 @@ void APlayerControl::SetupInputComponent()
 
 		EIC->BindAction(IA_Record, ETriggerEvent::Started, this, &APlayerControl::OnRecordPressed);
 		EIC->BindAction(IA_Record, ETriggerEvent::Completed, this, &APlayerControl::OnRecordReleased);
-
-		EIC->BindAction(IA_Streaming, ETriggerEvent::Started, this, &APlayerControl::OnStreamingPressed);
-		EIC->BindAction(IA_Streaming, ETriggerEvent::Completed, this, &APlayerControl::OnStreamingReleased);
 	}
 }
 
@@ -160,17 +155,4 @@ void APlayerControl::OnRecordReleased(const FInputActionValue& Value)
 {
 	if (IControllable* C = GetControllable())
 		C->Cmd_RecordEnd();
-}
-
-
-void APlayerControl::OnStreamingPressed(const FInputActionValue& Value)
-{
-	if (IControllable* C = GetControllable())
-		C->Cmd_StreamingStart();
-}
-
-void APlayerControl::OnStreamingReleased(const FInputActionValue& Value)
-{
-	if (IControllable* C = GetControllable())
-		C->Cmd_StreamingEnd();
 }

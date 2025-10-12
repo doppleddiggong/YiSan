@@ -40,7 +40,7 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
 	TObjectPtr<UMainWidget> MainWidgetInst;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Voice")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Voice", meta=(AllowPrivateAccess="true"))
 	TObjectPtr<class UVoiceConversationSystem> VoiceConversationSystem;
 	
 public: // Control Interface
@@ -58,9 +58,4 @@ public: // Control Interface
 	void Cmd_RecordStart() override;
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void Cmd_RecordEnd() override;
-
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
-	void Cmd_StreamingStart() override;
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
-	void Cmd_StreamingEnd() override;
 };
