@@ -20,6 +20,65 @@
 
 ---
 
+## 1-1. NCP 연동 사전 점검 (STT/TTS 공통)
+
+FastAPI 프록시(`/testncp`)를 통해 CLOVA Speech Recognition(STT)과 CLOVA Voice(TTS) 키/포맷을 검증합니다. `/monitor` 페이지에서는 브라우저에서 바로 업로드/합성을 수행할 수 있습니다. 구현 위치: `Tools/Server/testncp_app.py`.
+
+-   **Endpoint:** `/testncp`
+-   **Method:** `POST`
+-   **Request:**
+    -   **Content-Type:** `multipart/form-data`
+    -   **Parameters:**
+
+| 필드명 | 타입 | 필수 여부 | 설명 |
+| :----- | :--- | :-------- | :---- |
+| `service` | String | No (기본 `stt`) | `stt` 또는 `tts` 선택 |
+| `file` | File | STT: **Yes** / TTS: No | STT용 WAV/PCM (16kHz/16bit) |
+| `language` | String | STT: No | CSR 언어 코드 (기본 `.env` `CSR_LANGUAGE`) |
+| `text` | String | TTS: **Yes** | 합성할 문장 |
+| `speaker` | String | TTS: No | 기본값 `.env` `TTS_SPEAKER` |
+| `audio_format` | String | TTS: No | `wav`/`mp3` 등. 기본 `.env` `TTS_FORMAT` |
+| `speed` | String | TTS: No | -5~5 속도 (문자열로 전달) |
+
+-   **Success Response (200 OK / STT):**
+    -   **Content-Type:** `application/json`
+    -   **Body:**
+        ```json
+        {
+          "mode": "stt",
+          "language": "ko-KR",
+          "text": "테스트 음성입니다.",
+          "raw": {
+            "text": "테스트 음성입니다.",
+            "message": "SUCCESS"
+          }
+        }
+        ```
+-   **Success Response (200 OK / TTS):**
+    -   **Content-Type:** `application/json`
+    -   **Body:**
+        ```json
+        {
+          "mode": "tts",
+          "speaker": "nara",
+          "format": "wav",
+          "content_type": "audio/wav",
+          "audio_base64": "SUQzBAAAAAAAI1RTU0UAAA..."
+        }
+        ```
+-   **Error Response (502 Bad Gateway):**
+    -   **Content-Type:** `application/json`
+    -   **Body:**
+        ```json
+        {
+          "detail": "CSR 호출 실패: {\"msg\":\"Invalid Signature\"}"
+        }
+        ```
+
+-   **Monitor Page:** `/monitor` (GET) – STT/TTS를 시각적으로 테스트할 수 있는 HTML 페이지.
+
+---
+
 ## 2. 음성 인식 (Speech-to-Text)
 
 사용자의 음성 파일(예: `.wav`)을 서버로 보내 텍스트로 변환합니다.
