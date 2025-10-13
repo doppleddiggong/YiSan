@@ -9,6 +9,7 @@
 #include "CoreMinimal.h"
 #include "Macro.h"
 #include "EDamageType.h"
+#include "ENetworkState.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UBroadcastManger.generated.h"
 
@@ -35,7 +36,13 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendToastMessage(const FString& InMsg);
 
-
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNetworkStateChanged, ENetworkState, NewState);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnNetworkStateChanged OnNetworkStateChanged;
+	
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendNetworkStateChanged(const ENetworkState NewState);
+	
 
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDoorMessage, int32, GateID, bool, Open );
 	UPROPERTY(BlueprintAssignable, Category="Events")
@@ -45,7 +52,6 @@ public:
 	void SendOnDoorMessage(const int32 GateID, const bool Open);
 
 
-	
 
 
 	

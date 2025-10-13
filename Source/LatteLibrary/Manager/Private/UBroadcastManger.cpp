@@ -16,6 +16,11 @@ void UBroadcastManger::SendToastMessage(const FString& InMsg)
 	OnToastMessage.Broadcast(InMsg);
 }
 
+void UBroadcastManger::SendNetworkStateChanged(const ENetworkState NewState)
+{
+	OnNetworkStateChanged.Broadcast(NewState);
+}
+
 void UBroadcastManger::SendOnDoorMessage(const int32 GateID, const bool Open)
 {
 	OnDoorMessage.Broadcast(GateID, Open);	
