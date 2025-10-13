@@ -36,8 +36,8 @@
 			"Name": "GameplayStateTree",
 			"Enabled": true
 		},
-		{ 
-			"Name": "AudioCapture", 
+		{
+			"Name": "AudioCapture",
 			"Enabled": true
 		},
 		{
@@ -46,6 +46,10 @@
 		},
 		{
 			"Name": "HDRIBackdrop",
+			"Enabled": true
+		},
+		{
+			"Name": "ConsoleVariables",
 			"Enabled": true
 		}
 	],
