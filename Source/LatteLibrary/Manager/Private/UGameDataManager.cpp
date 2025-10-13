@@ -9,19 +9,19 @@
 #include "FCharacterAssetData.h"
 #include "FComponentHelper.h"
 
-#define HITSTOP_PATH    TEXT("/Game/CustomContents/MasterData/HitStop.HitStop")
-#define KNOCKBACK_PATH  TEXT("/Game/CustomContents/MasterData/Knockback.Knockback")
-#define BUILDINGDATA_PATH  TEXT("/Game/CustomContents/MasterData/BuildingData.BuildingData")
-#define CHARACTERINFO_PATH  TEXT("/Game/CustomContents/MasterData/CharacterInfo.CharacterInfo")
-#define CHARACTERASSET_PATH  TEXT("/Game/CustomContents/MasterData/CharacterAsset.CharacterAsset")
+#define HITSTOP_PATH    TEXT("/Game/CustomContents/MasterData/DT_HitStop.DT_HitStop")
+#define KNOCKBACK_PATH  TEXT("/Game/CustomContents/MasterData/DT_Knockback.DT_Knockback")
+#define BUILDINGDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_BuildingData.DT_BuildingData")
+#define CHARACTERINFO_PATH  TEXT("/Game/CustomContents/MasterData/DT_CharacterInfo.DT_CharacterInfo")
+#define CHARACTERASSET_PATH  TEXT("/Game/CustomContents/MasterData/DT_CharacterAsset.DT_CharacterAsset")
 
 UGameDataManager::UGameDataManager()
 {
-    HitStopTable = FComponentHelper::LoadAsset<UDataTable>(HITSTOP_PATH);
-    KnockbackTable  = FComponentHelper::LoadAsset<UDataTable>(KNOCKBACK_PATH);
+    // HitStopTable = FComponentHelper::LoadAsset<UDataTable>(HITSTOP_PATH);
+    // KnockbackTable  = FComponentHelper::LoadAsset<UDataTable>(KNOCKBACK_PATH);
     BuildingDataTable = FComponentHelper::LoadAsset<UDataTable>(BUILDINGDATA_PATH);
-    CharacterInfoTable  = FComponentHelper::LoadAsset<UDataTable>(CHARACTERINFO_PATH);
-    CharacterAssetTable = FComponentHelper::LoadAsset<UDataTable>(CHARACTERASSET_PATH);
+    // CharacterInfoTable  = FComponentHelper::LoadAsset<UDataTable>(CHARACTERINFO_PATH);
+    // CharacterAssetTable = FComponentHelper::LoadAsset<UDataTable>(CHARACTERASSET_PATH);
 }
 
 void UGameDataManager::Initialize(FSubsystemCollectionBase& Collection)
@@ -44,11 +44,11 @@ void UGameDataManager::Deinitialize()
 
 void UGameDataManager::ReloadMasterData()
 {
-    LoadData_HitStopTable();
-    LoadData_KnockbackTable();
+    // LoadData_HitStopTable();
+    // LoadData_KnockbackTable();
     LoadData_BuildingDataTable();
-    LoadData_CharacterInfoData();
-    LoadData_CharacterAssetData();
+    // LoadData_CharacterInfoData();
+    // LoadData_CharacterAssetData();
 }
 
 #pragma region BUILDING_DATA
