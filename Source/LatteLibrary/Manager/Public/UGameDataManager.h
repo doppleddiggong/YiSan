@@ -8,6 +8,7 @@
 
 #include "CoreMinimal.h"
 #include "Macro.h"
+#include "FBuildingData.h"
 #include "FHitStopData.h"
 #include "FKnockbackData.h"
 #include "FCharacterInfoData.h"
@@ -31,15 +32,33 @@ public:
 
 	UFUNCTION(Exec)
 	void ReloadMasterData();
-	
+
+#pragma region BUILDING_DATA
+public:
+	UPROPERTY(EditAnywhere, Category="MasterData|BuildingData")
+	TSoftObjectPtr<UDataTable> BuildingDataTable;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|BuildingData")
+	bool GetBuildingData(EBuildingType Type, UPARAM(ref) FBuildingData& Out) const;
+
+private:
+	void Clear_BuildingDataTable();
+	void LoadData_BuildingDataTable();
+	bool bLoadBuildingData = false;
+
+	UPROPERTY(VisibleAnywhere, Category = "Cache", meta = (AllowPrivateAccess = "true"))
+	TMap<EBuildingType, FBuildingData> BuildingDataCache;
+#pragma endregion BUILDING_DATA
+
+
 #pragma region HIT_STOP
 public:
 	UPROPERTY(EditAnywhere, Category="MasterData|HitStop")
 	TSoftObjectPtr<UDataTable> HitStopTable;
 
-    UFUNCTION(BlueprintCallable, Category="MasterData|HitStop")
-    bool GetHitStopData(EDamageType Type, UPARAM(ref) FHitStopData& Out) const;
-    UFUNCTION(BlueprintCallable, BlueprintPure, Category="MasterData|HitStop")
+	UFUNCTION(BlueprintCallable, Category="MasterData|HitStop")
+	bool GetHitStopData(EDamageType Type, UPARAM(ref) FHitStopData& Out) const;
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category="MasterData|HitStop")
 	float GetHitStopDelayTime(EDamageType Type) const;
 
 private:
@@ -67,7 +86,7 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Cache", meta = (AllowPrivateAccess = "true"))
 	TMap<EDamageType, FKnockbackData> KnockbackCache;
 #pragma endregion KNOCKBACK
-
+	
 #pragma region CHARACTER_INFO_DATA
 public:
 	UPROPERTY(EditAnywhere, Category="MasterData|CharacterInfo")

@@ -11,6 +11,7 @@
 
 #define HITSTOP_PATH    TEXT("/Game/CustomContents/MasterData/HitStop.HitStop")
 #define KNOCKBACK_PATH  TEXT("/Game/CustomContents/MasterData/Knockback.Knockback")
+#define BUILDINGDATA_PATH  TEXT("/Game/CustomContents/MasterData/BuildingData.BuildingData")
 #define CHARACTERINFO_PATH  TEXT("/Game/CustomContents/MasterData/CharacterInfo.CharacterInfo")
 #define CHARACTERASSET_PATH  TEXT("/Game/CustomContents/MasterData/CharacterAsset.CharacterAsset")
 
@@ -18,6 +19,7 @@ UGameDataManager::UGameDataManager()
 {
     HitStopTable = FComponentHelper::LoadAsset<UDataTable>(HITSTOP_PATH);
     KnockbackTable  = FComponentHelper::LoadAsset<UDataTable>(KNOCKBACK_PATH);
+    BuildingDataTable = FComponentHelper::LoadAsset<UDataTable>(BUILDINGDATA_PATH);
     CharacterInfoTable  = FComponentHelper::LoadAsset<UDataTable>(CHARACTERINFO_PATH);
     CharacterAssetTable = FComponentHelper::LoadAsset<UDataTable>(CHARACTERASSET_PATH);
 }
@@ -33,6 +35,7 @@ void UGameDataManager::Deinitialize()
 {
     Clear_HitStopTable();
     Clear_KnockbackTable();
+    Clear_BuildingDataTable();
     Clear_CharacterInfoData();
     Clear_CharacterAssetData();
     
@@ -43,9 +46,57 @@ void UGameDataManager::ReloadMasterData()
 {
     LoadData_HitStopTable();
     LoadData_KnockbackTable();
+    LoadData_BuildingDataTable();
     LoadData_CharacterInfoData();
     LoadData_CharacterAssetData();
 }
+
+#pragma region BUILDING_DATA
+void UGameDataManager::Clear_BuildingDataTable()
+{
+    BuildingDataCache.Reset();
+    bLoadBuildingData  = false;   
+}
+
+void UGameDataManager::LoadData_BuildingDataTable()
+{
+    BuildingDataCache.Reset();
+    bLoadBuildingData  = false;
+
+    UDataTable* TableObj = BuildingDataTable.LoadSynchronous();
+    if (!TableObj)
+    {
+        PRINTLOG(TEXT("Load failed: %s"), *BuildingDataTable.ToString());
+        return;
+    }
+
+    static const FString ContextString(TEXT("BuildingDataTable"));
+    for (const FName& RowName : TableObj->GetRowNames() )
+    {
+        if (const FBuildingData* Row = TableObj->FindRow<FBuildingData>(RowName, ContextString, true))
+        {
+            BuildingDataCache.Add(Row->Type, *Row);
+        }
+    }
+
+    bLoadBuildingData  = true;
+}
+
+bool UGameDataManager::GetBuildingData(EBuildingType Type, FBuildingData& Out) const
+{
+    if (!bLoadBuildingData )
+        return false;
+
+    if (const FBuildingData* Found = BuildingDataCache.Find(Type))
+    {
+        Out = *Found;
+        return true;
+    }
+
+    PRINTLOG(TEXT("DataGetFail : %s"), *UEnum::GetValueAsString(Type) );
+    return false;
+}
+#pragma endregion BUILDING_DATA
 
 #pragma region HIT_STOP
 void UGameDataManager::Clear_HitStopTable()

@@ -5,14 +5,17 @@
 #include "UMainWidget.h"
 #include "GameLogging.h"
 #include "UVoiceConversationSystem.h"
-#include "UWebSocketSystem.h"
 #include "FComponentHelper.h"
 #include "UHttpNetworkSystem.h"
-
+#include "ABuilding.h"
+#include "UGameDataManager.h"
+#include "FBuildingData.h"
 #include "Camera/CameraComponent.h"
+
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "YiSan/YiSan.h"
 
 #define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_Main.WBP_Main_C")
 
@@ -20,7 +23,7 @@ APlayerActor::APlayerActor()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-	Tags.Add(FName("Player"));
+	Tags.Add(GameTags::Player);
 
 	MainWidgetClass = FComponentHelper::LoadClass<UMainWidget>(MAINWIDGET_PATH);
 	
@@ -60,7 +63,56 @@ void APlayerActor::BeginPlay()
 void APlayerActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	CheckBuildingInView();
 }
+
+void APlayerActor::CheckBuildingInView()
+{
+	if (!FollowCamera)
+		return;
+
+	const FVector Start = FollowCamera->GetComponentLocation();
+	const FVector End = Start + FollowCamera->GetForwardVector() * 5000.f;
+
+	FHitResult HitResult;
+	FCollisionQueryParams CollisionParams;
+	CollisionParams.AddIgnoredActor(this);
+
+	EBuildingType TempBuildingType = EBuildingType::None;
+
+	if (GetWorld()->LineTraceSingleByChannel(HitResult, Start, End, ECC_Visibility, CollisionParams))
+	{
+		if (AActor* HitActor = HitResult.GetActor())
+		{
+			if (HitActor->ActorHasTag(GameTags::Building))
+			{
+				if (const ABuilding* Building = Cast<ABuilding>(HitActor))
+				{
+					TempBuildingType = Building->BuildingType;
+				}
+			}
+		}
+	}
+
+	if (!CurLookBuildingType.IsSet() ||
+		CurLookBuildingType.GetValue() != TempBuildingType)
+	{
+		if (TempBuildingType != EBuildingType::None)
+		{
+			CurLookBuildingType = TempBuildingType;
+
+			EBuildingType TypeValue = CurLookBuildingType.GetValue();
+			FText DisplayName = StaticEnum<EBuildingType>()->GetDisplayNameTextByValue((int64)TypeValue);
+			PRINT_STRING(TEXT("%s"), *DisplayName.ToString());
+		}
+		else
+		{
+			CurLookBuildingType.Reset();
+		}
+	}
+}
+
 
 void APlayerActor::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {

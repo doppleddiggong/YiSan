@@ -9,4 +9,5 @@ namespace GameTags
 {
 	static const FName Player     = TEXT("Player");
 	static const FName Door       = TEXT("Door");
+	static const FName Building   = TEXT("Building");
 }

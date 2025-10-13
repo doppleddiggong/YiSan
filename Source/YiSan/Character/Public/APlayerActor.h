@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "IControllable.h"
+#include "EBuildingType.h"
 #include "GameFramework/Character.h"
 #include "APlayerActor.generated.h"
 
@@ -58,4 +59,9 @@ public: // Control Interface
 	void Cmd_RecordStart() override;
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void Cmd_RecordEnd() override;
+
+private:
+	void CheckBuildingInView();
+	
+	TOptional<EBuildingType> CurLookBuildingType;
 };
