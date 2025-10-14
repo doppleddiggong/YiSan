@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "UVoiceConversationSystem.h"
 
@@ -49,7 +49,7 @@ void UVoiceConversationSystem::StartRecording()
 	Params.DeviceIndex = 0;
 	Params.NumInputChannels = 1;
 	
-	AudioCapture->OpenAudioCaptureStream(
+	const bool bStreamOpened = AudioCapture->OpenAudioCaptureStream(
 		Params,
 		[this](const void* InAudio, int32 NumFrames, int32 InNumChannels, int32 InSampleRate, double StreamTime, bool bOverFlow)
 		{
@@ -57,8 +57,13 @@ void UVoiceConversationSystem::StartRecording()
 		},
 		512
 	);
-	
-	AudioCapture->StartStream();
+
+	if (!bStreamOpened || !AudioCapture->StartStream() )
+	{
+		BroadcastManager->SendToastMessage(TEXT("연결된 마이크가 없습니다"));
+		bIsRecording = false;
+		return;
+	}
 
 	BroadcastManager->SendAudioCapture(true);
 	PRINTLOG( TEXT("[VoiceConversation] Recording started."));
