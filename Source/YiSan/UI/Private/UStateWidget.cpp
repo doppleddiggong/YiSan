@@ -47,11 +47,7 @@ void UStateWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
     Super::NativeTick(MyGeometry, InDeltaTime);
 
     UpdateSpectrumVisual(InDeltaTime);
-
-    if ( LoadingSpinner->IsVisible())
-    {
-
-    }    
+    UpdateLoadingSpinner(InDeltaTime);
 }
 
 void UStateWidget::RefreshTimeText()                                                                                                                                                                     
