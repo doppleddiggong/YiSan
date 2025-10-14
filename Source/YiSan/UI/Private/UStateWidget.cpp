@@ -3,6 +3,7 @@
 #include "UStateWidget.h"
 
 #include "FStateAudioAnalyzer.h"
+#include "GameLogging.h"
 
 #include "Blueprint/WidgetTree.h"
 #include "Components/HorizontalBoxSlot.h"
@@ -21,7 +22,8 @@ void UStateWidget::NativeConstruct()
     Super::NativeConstruct();
 
     LoadingSpinner->SetVisibility(ESlateVisibility::Hidden);
-
+    SpectrumProgressBar->SetVisibility(ESlateVisibility::Hidden);
+    
     if (!IsDesignTime())
         StartAudioCapture();
 
@@ -29,7 +31,10 @@ void UStateWidget::NativeConstruct()
         World->GetTimerManager().SetTimer(TimeUpdateTimerHandle, this, &UStateWidget::RefreshTimeText, TimeUpdateInterval, true);
 
     if ( auto EventManager = UBroadcastManger::Get(GetWorld()))
+    {
         EventManager->OnNetworkStateChanged.AddDynamic(this, &UStateWidget::OnNetworkStateChanged);
+        EventManager->OnAudioCapture.AddDynamic(this, &UStateWidget::OnAudioCapture);
+    }
 }
 
 void UStateWidget::NativeDestruct()
@@ -79,15 +84,14 @@ void UStateWidget::StopAudioCapture()
     SpectrumDisplayValue = 0.0f;
 }
 
-void UStateWidget::RefreshTimeText()
+void UStateWidget::RefreshTimeText()                                                                                                                                                                     
 {
     const FDateTime Now = FDateTime::Now();
-    const FString TimeString = Now.ToString(TEXT("HH:mm:ss"));
-    const FText TimeText = FText::FromString(TimeString);
+    const FString TimeString = Now.ToString(TEXT("%H:%M:%S"));
+    const FText TimeText = FText::FromString(TimeString);                                                                                                                           
 
-    if (CurrentTimeText)
-        CurrentTimeText->SetText(TimeText);
-}
+    CurrentTimeText->SetText(TimeText);                                                                                                                                       
+}          
 
 void UStateWidget::UpdateSpectrumVisual(float DeltaTime)
 {
@@ -129,4 +133,9 @@ void UStateWidget::OnNetworkStateChanged(ENetworkState InState)
 
     this->NetworkState = InState;
     LoadingSpinner->SetVisibility( NetworkState == ENetworkState::Requesting ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
+}
+
+void UStateWidget::OnAudioCapture(bool bRecording)
+{
+    SpectrumProgressBar->SetVisibility( bRecording ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
 }

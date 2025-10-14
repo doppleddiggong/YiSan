@@ -26,6 +26,7 @@ public:
 	void StopAudioCapture();
 
 private:
+	UFUNCTION()
 	void RefreshTimeText();
 
 	void UpdateSpectrumVisual(float DeltaTime);
@@ -34,6 +35,10 @@ private:
 	UFUNCTION(BlueprintCallable, Category = "State|Network")
 	void OnNetworkStateChanged(ENetworkState InState);
 
+	UFUNCTION(BlueprintCallable, Category = "State|AudioCature")
+	void OnAudioCapture(bool bRecording);
+
+	
 protected:
 	/** @brief 현재 시간을 표시하는 텍스트 블록입니다. */
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|Time")
