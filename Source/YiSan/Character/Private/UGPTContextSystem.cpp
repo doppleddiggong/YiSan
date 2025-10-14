@@ -49,12 +49,20 @@ void UGPTContextSystem::CheckBuildingInView()
 
     if (GetWorld()->LineTraceSingleByChannel(HitResult, Start, End, ECC_Visibility, CollisionParams))
     {
-        if (AActor* HitActor = HitResult.GetActor())
+        if (auto HitActor = HitResult.GetActor())
         {
             if (HitActor->ActorHasTag(GameTags::Building))
             {
                 if (ABuilding* Building = Cast<ABuilding>(HitActor))
                 {
+                    // 부딪힌 표면의 월드 좌표
+                    FVector hitLoc = HitResult.Location;
+                    PRINTLOG( TEXT("표면에 닿은 곳은 %s"), *hitLoc.ToString());
+
+                    // 액터의 원점
+                    FVector buildingLoc = Building->GetActorLocation();
+                    PRINTLOG( TEXT("액터의 월드 좌표는 %s"), *buildingLoc.ToString());
+                    
                     TempBuildingType = Building->BuildingType;
                     HitBuilding = Building;
                 }
@@ -134,9 +142,14 @@ FGPTContext UGPTContextSystem::GetGPTContext() const
     const FString CurLocationName = BuildingSnapshots.Num() > 0 ? BuildingSnapshots[0].Name : FString(TEXT("전하 위치"));
     Context.current_location.Set(CurLocationName, PlayerLocation);
 
-    FBuildingData Params;
-    UGameDataManager::Get(GetWorld())->GetBuildingData(CurLookBuildingType.GetValue(), Params);
-    Context.focused_object.Set(Params.name, FVector(Params.x, Params.y, Params.z));
+    if (CurLookBuildingType.IsSet())
+    {
+        FBuildingData Params;
+        if (UGameDataManager::Get(GetWorld())->GetBuildingData(CurLookBuildingType.GetValue(), Params))
+        {
+            Context.focused_object.Set(Params.name, FVector(Params.x, Params.y, Params.z));
+        }
+    }
 
     constexpr int32 MaxNearbyBuildings = 4;
     int32 AddedCount = 0;
