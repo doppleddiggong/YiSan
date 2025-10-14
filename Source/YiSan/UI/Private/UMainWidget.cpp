@@ -6,9 +6,12 @@
 #include "UHttpNetworkSystem.h"
 #include "APlayerActor.h"
 #include "FGPTContext.h"
+#include "UVoiceFunctionLibrary.h"
 
 #include "Components/CanvasPanel.h"
 #include "Components/EditableTextBox.h"
+#include "Kismet/GameplayStatics.h"
+#include "Sound/SoundWaveProcedural.h"
 
 void UMainWidget::NativeConstruct()
 {
@@ -79,7 +82,7 @@ void UMainWidget::SendChatMessage(const FString& InMsg)
 
     if (auto ReqNetwork = UHttpNetworkSystem::Get(GetWorld()))
     {
-        ReqNetwork->RequestGPT(InMsg, SpatialContext, FResponseGPTDelegate::CreateUObject(this, &UMainWidget::OnResponseTestGPT));
+        ReqNetwork->RequestGPT(InMsg, SpatialContext, FResponseAskDelegate::CreateUObject(this, &UMainWidget::OnResponseAsk));
     }
 }
 
@@ -93,16 +96,27 @@ FGPTContext UMainWidget::BuildSpatialContext() const
     return FGPTContext();
 }
 
-void UMainWidget::OnResponseTestGPT(FResponseGPT& Response, bool bSuccess)
+void UMainWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
 {
     if (bSuccess)
     {
+        PRINTLOG(TEXT("OnResponseAsk: Received audio data size: %d"), Response.audio_data.Num());
+
         if (auto EventManager = UBroadcastManger::Get(this))
-            EventManager->SendToastMessage(Response.response);
+            EventManager->SendToastMessage(Response.gpt_response_text);
+
+        if (Response.audio_data.Num() == 0)
+        {
+            PRINTLOG(TEXT("OnResponseAsk: Audio data is empty. Cannot play TTS audio."));
+            return;
+        }
+		
+        auto SoundWave = UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData(Response.audio_data);
+        if ( IsValid(SoundWave))
+            UGameplayStatics::PlaySound2D(this, SoundWave);
     }
     else
     {
         PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
     }
 }
-

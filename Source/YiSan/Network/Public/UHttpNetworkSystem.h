@@ -26,7 +26,9 @@ public:
     virtual void Deinitialize() override;
 
     void RequestHealth( FResponseHealthDelegate InDelegate);
-    void RequestASK(const FString& FilePath, FResponseAskDelegate InDelegate);
+    void RequestASK(const FString& FilePath, const FGPTContext& Context, FResponseAskDelegate InDelegate);
+    void RequestGPT(const FString& UserQuery, const FGPTContext& Context, FResponseAskDelegate InDelegate);
+
     void RequestSTT(const FString& FilePath, FResponseSTTDelegate InDelegate);
     void RequestTTS(
         const FString& Text,
@@ -35,7 +37,6 @@ public:
         const FString& VoiceName,
         FResponseTTSDelegate InDelegate
     );
-    void RequestGPT(const FString& UserQuery, const FGPTContext& Context, FResponseGPTDelegate InDelegate);
 
 private:
     static void LogNetwork(ENetworkLogType InLogType, const FString& URL, const FString& Body = "");

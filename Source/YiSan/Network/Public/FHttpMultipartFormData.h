@@ -18,6 +18,11 @@ public:
 
 	/** 간단한 텍스트 필드를 추가합니다. */
 	void AddText(const FString& FieldName, const FString& Value);
+	// ✅ 네가 원하는 이름으로 래퍼 추가
+	FORCEINLINE void AddStringField(const FString& FieldName, const FString& Value)
+	{
+		AddText(FieldName, Value);
+	}
 
 	/**
 	 * 파일 필드를 추가합니다.

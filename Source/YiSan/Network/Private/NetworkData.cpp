@@ -17,35 +17,7 @@
 #include "Serialization/JsonWriter.h"
 
 
-bool FRequestGPT::ToJsonString(FString& OutJson) const
-{
-    TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
 
-    const bool bHasUserQuery = !user_query.IsEmpty();
-    const bool bHasText = !text.IsEmpty();
-
-    if (bHasUserQuery)
-    {
-        Root->SetStringField(TEXT("user_query"), user_query);
-    }
-
-    if (bHasText)
-    {
-        Root->SetStringField(TEXT("text"), text);
-    }
-    else if (bHasUserQuery)
-    {
-        Root->SetStringField(TEXT("text"), user_query);
-    }
-
-    if (TSharedPtr<FJsonObject> ContextJson = context.ToJsonObject())
-    {
-        Root->SetObjectField(TEXT("context"), ContextJson);
-    }
-
-    TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutJson);
-    return FJsonSerializer::Serialize(Root.ToSharedRef(), Writer);
-}
 
 
 
@@ -70,6 +42,16 @@ void FResponseHealth::PrintData()
 }
 
 // --- Ask Endpoint Implementation ---
+bool FRequestASK::ToJsonString(FString& OutJson) const
+{
+    TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
+
+    if (TSharedPtr<FJsonObject> ContextJson = context.ToJsonObject())
+        Root->SetObjectField(TEXT("context"), ContextJson);
+
+    TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutJson);
+    return FJsonSerializer::Serialize(Root.ToSharedRef(), Writer);
+}
 
 void FResponseAsk::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
 {
@@ -159,6 +141,17 @@ void FResponseTTS::PrintData()
     NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
 }
 
+bool FRequestGPT::ToJsonString(FString& OutJson) const
+{
+    TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
+    Root->SetStringField(TEXT("user_query"), user_query);
+
+    if (TSharedPtr<FJsonObject> ContextJson = context.ToJsonObject())
+        Root->SetObjectField(TEXT("context"), ContextJson);
+
+    TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutJson);
+    return FJsonSerializer::Serialize(Root.ToSharedRef(), Writer);
+}
 
 void FResponseGPT::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
 {

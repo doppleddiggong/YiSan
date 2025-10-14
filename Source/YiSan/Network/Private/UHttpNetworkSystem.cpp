@@ -81,7 +81,7 @@ void UHttpNetworkSystem::RequestHealth( FResponseHealthDelegate InDelegate )
     HttpRequest->ProcessRequest();
 }
 
-void UHttpNetworkSystem::RequestASK(const FString& FilePath, FResponseAskDelegate InDelegate)
+void UHttpNetworkSystem::RequestASK(const FString& FilePath, const FGPTContext& Context, FResponseAskDelegate InDelegate)
 {
     auto HttpRequest = FHttpModule::Get().CreateRequest();
     HttpRequest->SetVerb(NETWORK_POST);
@@ -96,7 +96,65 @@ void UHttpNetworkSystem::RequestASK(const FString& FilePath, FResponseAskDelegat
     }
     Form.SetupHttpRequest(HttpRequest);
 
-    LogNetwork(ENetworkLogType::Post, *HttpRequest->GetURL(), TEXT("Ask (STT->GPT->TTS)"));
+    FRequestASK RequestData;
+    RequestData.context = Context;
+
+    FString RequestBody;
+    if (!RequestData.ToJsonString(RequestBody))
+    {
+        NETWORK_LOG(TEXT("Failed to serialize FRequestASK to JSON"));
+        return;
+    }
+
+    Form.AddStringField(TEXT("context"), RequestBody);
+    Form.SetupHttpRequest(HttpRequest);
+
+    const FString LogBody = FString::Printf(TEXT("file: %s, context: %s"), *FilePath, *RequestBody);
+    LogNetwork(ENetworkLogType::Post, *HttpRequest->GetURL(), LogBody);
+    
+    HttpRequest->OnProcessRequestComplete().BindLambda(
+        [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+        {
+            AddNetworkWaitCount(-1);
+            FResponseAsk ResponseData;
+            if (bWasSuccessful && ResPtr.IsValid())
+            {
+                NETWORK_LOG(TEXT("[RES] Ask completed: transcribed_text, gpt_response_text, audio_content"));
+                ResponseData.SetFromHttpResponse(ResPtr);
+            }
+            InDelegate.ExecuteIfBound(ResponseData, bWasSuccessful);
+        });
+
+    AddNetworkWaitCount(1);
+    HttpRequest->ProcessRequest();
+}
+
+void UHttpNetworkSystem::RequestGPT(const FString& UserQuery, const FGPTContext& Context, FResponseAskDelegate InDelegate)
+{
+    auto HttpRequest = FHttpModule::Get().CreateRequest();
+    HttpRequest->SetVerb(NETWORK_POST);
+    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::ASK));
+    HttpRequest->SetHeader(TEXT("Accept"), TEXT("application/json"));
+
+    FHttpMultipartFormData Form;
+    Form.AddStringField(TEXT("user_query"), UserQuery);
+
+    FRequestASK ContextData;
+    ContextData.context = Context;
+    FString ContextBody;
+    if (ContextData.ToJsonString(ContextBody))
+    {
+        Form.AddStringField(TEXT("context"), ContextBody);
+    }
+    else
+    {
+        NETWORK_LOG(TEXT("Failed to serialize FGPTContext to JSON for multipart form"));
+    }
+    
+    Form.SetupHttpRequest(HttpRequest);
+
+    const FString LogBody = FString::Printf(TEXT("user_query: %s, context: %s"), *UserQuery, *ContextBody);
+    LogNetwork(ENetworkLogType::Post, *HttpRequest->GetURL(), LogBody);
 
     HttpRequest->OnProcessRequestComplete().BindLambda(
         [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
@@ -196,45 +254,44 @@ void UHttpNetworkSystem::RequestTTS(
     AddNetworkWaitCount(1);
     HttpRequest->ProcessRequest();
 }
-
-void UHttpNetworkSystem::RequestGPT(const FString& UserQuery, const FGPTContext& Context, FResponseGPTDelegate InDelegate)
-{
-    auto HttpRequest = FHttpModule::Get().CreateRequest();
-
-    HttpRequest->SetVerb(NETWORK_POST);
-    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::GPT));
-    HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
-    HttpRequest->SetHeader(TEXT("Accept"), TEXT("application/json"));
-
-    FRequestGPT RequestData;
-    RequestData.text = UserQuery;
-    RequestData.user_query = UserQuery;
-    RequestData.context = Context;
-
-    FString RequestBody;
-    if (!RequestData.ToJsonString(RequestBody))
-    {
-        NETWORK_LOG(TEXT("Failed to serialize FRequestTestGPT to JSON"));
-        return;
-    }
-
-    HttpRequest->SetContentAsString(RequestBody);
-
-    LogNetwork(ENetworkLogType::Post, *HttpRequest->GetURL(), RequestBody);
-
-    HttpRequest->OnProcessRequestComplete().BindLambda(
-        [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
-        {
-            AddNetworkWaitCount(-1);
-            FResponseGPT ResponseData;
-            if (bWasSuccessful && ResPtr.IsValid())
-            {
-                NETWORK_LOG(TEXT("[RES] %s"), *ResPtr->GetContentAsString());
-                ResponseData.SetFromHttpResponse(ResPtr);
-            }
-            InDelegate.ExecuteIfBound(ResponseData, bWasSuccessful);
-        });
-
-    AddNetworkWaitCount(1);
-    HttpRequest->ProcessRequest();
-}
+//
+// void UHttpNetworkSystem::RequestGPT(const FString& UserQuery, const FGPTContext& Context, FResponseAskDelegate InDelegate)
+// {
+//     auto HttpRequest = FHttpModule::Get().CreateRequest();
+//
+//     HttpRequest->SetVerb(NETWORK_POST);
+//     HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::GPT));
+//     HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
+//     HttpRequest->SetHeader(TEXT("Accept"), TEXT("application/json"));
+//
+//     FRequestGPT RequestData;
+//     RequestData.user_query = UserQuery;
+//     RequestData.context = Context;
+//
+//     FString RequestBody;
+//     if (!RequestData.ToJsonString(RequestBody))
+//     {
+//         NETWORK_LOG(TEXT("Failed to serialize FRequestTestGPT to JSON"));
+//         return;
+//     }
+//
+//     HttpRequest->SetContentAsString(RequestBody);
+//
+//     LogNetwork(ENetworkLogType::Post, *HttpRequest->GetURL(), RequestBody);
+//
+//     HttpRequest->OnProcessRequestComplete().BindLambda(
+//         [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+//         {
+//             AddNetworkWaitCount(-1);
+//             FResponseAsk ResponseData;
+//             if (bWasSuccessful && ResPtr.IsValid())
+//             {
+//                 NETWORK_LOG(TEXT("[RES] %s"), *ResPtr->GetContentAsString());
+//                 ResponseData.SetFromHttpResponse(ResPtr);
+//             }
+//             InDelegate.ExecuteIfBound(ResponseData, bWasSuccessful);
+//         });
+//
+//     AddNetworkWaitCount(1);
+//     HttpRequest->ProcessRequest();
+// }

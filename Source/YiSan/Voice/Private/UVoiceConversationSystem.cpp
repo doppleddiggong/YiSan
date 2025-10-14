@@ -94,8 +94,9 @@ void UVoiceConversationSystem::HandleOnCapture(const float* InAudio, int32 InNum
 	}
 
 	const float AverageVolume = (SampleCount > 0) ? (TotalVolume / SampleCount) : 0.f;
-
-	BroadcastManager->SendAudioSpectrum(AverageVolume);
+	const float AmplifiedVolume = AverageVolume * 10.f;
+	
+	BroadcastManager->SendAudioSpectrum(FMath::Clamp(AmplifiedVolume, 0.f, 1.f));
 }
 
 void UVoiceConversationSystem::StopRecording()
@@ -136,7 +137,7 @@ void UVoiceConversationSystem::StopRecording()
 		return;
 	}
 
-	HttpSystem->RequestASK(LastRecordedFilePath, FResponseAskDelegate::CreateUObject(
+	HttpSystem->RequestASK(LastRecordedFilePath, Owner->GetGPTContext(), FResponseAskDelegate::CreateUObject(
 		this, &UVoiceConversationSystem::OnResponseAsk
 	));
 }

@@ -26,7 +26,7 @@ private:
     FGPTContext BuildSpatialContext() const;
 
     UFUNCTION()
-    void OnResponseTestGPT(FResponseGPT& Response, bool bSuccess);
+    void OnResponseAsk(FResponseAsk& Response, bool bSuccess);
 
 protected:
     UPROPERTY(meta = (BindWidget), BlueprintReadWrite, Category = "Chat")

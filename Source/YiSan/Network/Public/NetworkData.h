@@ -60,6 +60,31 @@ struct FResponseHealth
 };
 
 // --- Ask Endpoint (Integrated Pipeline: STT -> GPT -> TTS) ---
+USTRUCT(BlueprintType)
+struct FRequestASK
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite)
+    FGPTContext context;
+
+    bool ToJsonString(FString& OutJson) const;
+};
+
+
+USTRUCT(BlueprintType)
+struct FRequestGPT
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite)
+    FString user_query;
+
+    UPROPERTY(BlueprintReadWrite)
+    FGPTContext context;
+
+    bool ToJsonString(FString& OutJson) const;
+};
 
 DECLARE_DELEGATE_TwoParams( FResponseAskDelegate, FResponseAsk&, bool );
 USTRUCT(BlueprintType)
@@ -127,21 +152,6 @@ struct FResponseTTS
 };
 
 
-USTRUCT(BlueprintType)
-struct FRequestGPT
-{
-    GENERATED_BODY()
-
-    UPROPERTY(BlueprintReadWrite)
-    FString text;
-    UPROPERTY(BlueprintReadWrite)
-    FString user_query;
-
-    UPROPERTY(BlueprintReadWrite)
-    FGPTContext context;
-
-    bool ToJsonString(FString& OutJson) const;
-};
 
 DECLARE_DELEGATE_TwoParams( FResponseGPTDelegate, FResponseGPT&, bool );
 USTRUCT(BlueprintType)
