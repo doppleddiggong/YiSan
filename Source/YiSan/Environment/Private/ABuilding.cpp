@@ -2,6 +2,9 @@
 
 
 #include "ABuilding.h"
+
+#include "APlayerActor.h"
+#include "Components/BoxComponent.h"
 #include "YiSan/YiSan.h"
 
 ABuilding::ABuilding()
@@ -9,9 +12,15 @@ ABuilding::ABuilding()
 	PrimaryActorTick.bCanEverTick = false;
 
 	Tags.Add(GameTags::Building);
+
+	boxcomp = CreateDefaultSubobject<UBoxComponent>(TEXT("HitBox"));
+	boxcomp->SetupAttachment(GetRootComponent());
+
 }
 
 void ABuilding::BeginPlay()
 {
 	Super::BeginPlay();
 }
+
+
