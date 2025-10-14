@@ -21,4 +21,8 @@ protected:
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	EBuildingType BuildingType = EBuildingType::Yeomingak;
+
+	UPROPERTY(EditAnywhere)
+	class UBoxComponent* boxcomp;
+	
 };
