@@ -136,8 +136,6 @@ void UVoiceConversationSystem::StopRecording()
 		return;
 	}
 
-	BroadcastManager->SendNetworkState(ENetworkState::Requesting);
-	
 	HttpSystem->RequestASK(LastRecordedFilePath, FResponseAskDelegate::CreateUObject(
 		this, &UVoiceConversationSystem::OnResponseAsk
 	));
@@ -146,8 +144,6 @@ void UVoiceConversationSystem::StopRecording()
 void UVoiceConversationSystem::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
 {
 	bIsProcessing = false;
-
-	BroadcastManager->SendNetworkState(ENetworkState::Completed);
 
 	if (bSuccess)
 	{

@@ -9,7 +9,6 @@
 #include "CoreMinimal.h"
 #include "Macro.h"
 #include "EDamageType.h"
-#include "ENetworkState.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UBroadcastManger.generated.h"
 
@@ -35,12 +34,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendToastMessage(const FString& InMsg);
 
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNetworkState, ENetworkState, NewState);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNetworkWaitCount, int, RequestCount);
 	UPROPERTY(BlueprintAssignable, Category="Events")
-	FOnNetworkState OnNetworkState;
+	FOnNetworkWaitCount OnNetworkWaitCount;
 	
 	UFUNCTION(BlueprintCallable, Category="Events")
-	void SendNetworkState(const ENetworkState NewState);
+	void SendNetworkWaitCount(int RequestCount);
 
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAudioCapture, bool, bRecording);
 	UPROPERTY(BlueprintAssignable, Category="Events")

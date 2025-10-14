@@ -16,9 +16,9 @@ void UBroadcastManger::SendToastMessage(const FString& InMsg)
 	OnToastMessage.Broadcast(InMsg);
 }
 
-void UBroadcastManger::SendNetworkState(const ENetworkState NewState)
+void UBroadcastManger::SendNetworkWaitCount(int RequestCount )
 {
-	OnNetworkState.Broadcast(NewState);
+	OnNetworkWaitCount.Broadcast(RequestCount);
 }
 
 void UBroadcastManger::SendAudioCapture(bool bRecording)

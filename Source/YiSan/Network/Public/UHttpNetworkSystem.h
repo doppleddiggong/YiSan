@@ -26,10 +26,7 @@ public:
     virtual void Deinitialize() override;
 
     void RequestHealth( FResponseHealthDelegate InDelegate);
-
-    // Integrated pipeline: STT -> GPT -> TTS in one request
     void RequestASK(const FString& FilePath, FResponseAskDelegate InDelegate);
-
     void RequestSTT(const FString& FilePath, FResponseSTTDelegate InDelegate);
     void RequestTTS(
         const FString& Text,
@@ -43,4 +40,8 @@ public:
 private:
     static void LogNetwork(ENetworkLogType InLogType, const FString& URL, const FString& Body = "");
     static const TCHAR* GetLogPrefix(ENetworkLogType InLogType);
+    void AddNetworkWaitCount(int Value);
+
+private:
+    int NetworkWaitCount;
 };

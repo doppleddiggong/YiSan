@@ -27,7 +27,7 @@ void UStateWidget::NativeConstruct()
 
     if ( auto EventManager = UBroadcastManger::Get(GetWorld()))
     {
-        EventManager->OnNetworkState.AddDynamic(this, &UStateWidget::OnNetworkState);
+        EventManager->OnNetworkWaitCount.AddDynamic(this, &UStateWidget::OnNetworkWaitCount);
         EventManager->OnAudioCapture.AddDynamic(this, &UStateWidget::OnAudioCapture);
         EventManager->OnAudioSpectrum.AddDynamic(this, &UStateWidget::OnAudioSpectrum);
         EventManager->OnFocusBuilding.AddDynamic(this, &UStateWidget::OnFocusBuilding);
@@ -81,13 +81,9 @@ void UStateWidget::UpdateLoadingSpinner(float DeltaTime)
     LoadingSpinner->SetRenderTransformAngle(NewAngle);
 }
 
-void UStateWidget::OnNetworkState(ENetworkState InState)
+void UStateWidget::OnNetworkWaitCount(int NetworkWaitCount)
 {
-    if (NetworkState == InState)
-        return;
-
-    this->NetworkState = InState;
-    LoadingSpinner->SetVisibility( NetworkState == ENetworkState::Requesting ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
+    LoadingSpinner->SetVisibility( NetworkWaitCount > 0 ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
 }
 
 void UStateWidget::OnAudioCapture(bool bRecording)

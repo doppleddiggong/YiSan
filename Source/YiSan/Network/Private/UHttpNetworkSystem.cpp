@@ -11,6 +11,7 @@
 #include "HttpModule.h"
 #include "FHttpMultipartFormData.h"
 #include "JsonObjectConverter.h"
+#include "UBroadcastManger.h"
 #include "Interfaces/IHttpRequest.h"
 #include "Interfaces/IHttpResponse.h"
 
@@ -50,6 +51,12 @@ const TCHAR* UHttpNetworkSystem::GetLogPrefix(ENetworkLogType InLogType)
     }
 }
 
+void UHttpNetworkSystem::AddNetworkWaitCount(int InValue)
+{
+    NetworkWaitCount += InValue;
+    UBroadcastManger::Get(GetWorld())->SendNetworkWaitCount(NetworkWaitCount);
+}
+
 void UHttpNetworkSystem::RequestHealth( FResponseHealthDelegate InDelegate )
 {
     auto HttpRequest = FHttpModule::Get().CreateRequest();
@@ -63,12 +70,14 @@ void UHttpNetworkSystem::RequestHealth( FResponseHealthDelegate InDelegate )
     HttpRequest->OnProcessRequestComplete().BindLambda(
         [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
+            AddNetworkWaitCount(-1);
             FResponseHealth ResponseData;
             ResponseData.SetFromHttpResponse(ResPtr);
 
             InDelegate.ExecuteIfBound(ResponseData, bWasSuccessful);
         });
 
+    AddNetworkWaitCount(1);
     HttpRequest->ProcessRequest();
 }
 
@@ -92,6 +101,7 @@ void UHttpNetworkSystem::RequestASK(const FString& FilePath, FResponseAskDelegat
     HttpRequest->OnProcessRequestComplete().BindLambda(
         [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
+            AddNetworkWaitCount(-1);
             FResponseAsk ResponseData;
             if (bWasSuccessful && ResPtr.IsValid())
             {
@@ -101,6 +111,7 @@ void UHttpNetworkSystem::RequestASK(const FString& FilePath, FResponseAskDelegat
             InDelegate.ExecuteIfBound(ResponseData, bWasSuccessful);
         });
 
+    AddNetworkWaitCount(1);
     HttpRequest->ProcessRequest();
 }
 
@@ -124,6 +135,7 @@ void UHttpNetworkSystem::RequestSTT(const FString& FilePath, FResponseSTTDelegat
     HttpRequest->OnProcessRequestComplete().BindLambda(
         [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
+            AddNetworkWaitCount(-1);
             FResponseTestSTT ResponseData;
             if (bWasSuccessful && ResPtr.IsValid())
             {
@@ -133,6 +145,7 @@ void UHttpNetworkSystem::RequestSTT(const FString& FilePath, FResponseSTTDelegat
             InDelegate.ExecuteIfBound(ResponseData, bWasSuccessful);
         });
 
+    AddNetworkWaitCount(1);
     HttpRequest->ProcessRequest();
 }
 
@@ -169,17 +182,18 @@ void UHttpNetworkSystem::RequestTTS(
     HttpRequest->OnProcessRequestComplete().BindLambda(
         [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
+            AddNetworkWaitCount(-1);
             FResponseTTS ResponseData;
             if (bWasSuccessful && ResPtr.IsValid())
             {
                 NETWORK_LOG(TEXT("[RES] %s"), *ResPtr->GetContentAsString());
-
                 ResponseData.SetFromHttpResponse(ResPtr);
             }
 
             InDelegate.ExecuteIfBound(ResponseData, bWasSuccessful);
         });
 
+    AddNetworkWaitCount(1);
     HttpRequest->ProcessRequest();
 }
 
@@ -211,6 +225,7 @@ void UHttpNetworkSystem::RequestGPT(const FString& UserQuery, const FGPTContext&
     HttpRequest->OnProcessRequestComplete().BindLambda(
         [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
+            AddNetworkWaitCount(-1);
             FResponseGPT ResponseData;
             if (bWasSuccessful && ResPtr.IsValid())
             {
@@ -220,5 +235,6 @@ void UHttpNetworkSystem::RequestGPT(const FString& UserQuery, const FGPTContext&
             InDelegate.ExecuteIfBound(ResponseData, bWasSuccessful);
         });
 
+    AddNetworkWaitCount(1);
     HttpRequest->ProcessRequest();
 }

@@ -2,7 +2,6 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "EBuildingType.h"
-#include "ENetworkState.h"
 #include "Blueprint/UserWidget.h"
 #include "UStateWidget.generated.h"
 
@@ -28,7 +27,7 @@ private:
 	void UpdateLoadingSpinner(float DeltaTime);
 	
 	UFUNCTION(BlueprintCallable, Category = "State|Network")
-	void OnNetworkState(ENetworkState InState);
+	void OnNetworkWaitCount(int NetworkWaitCount);
 
 	UFUNCTION(BlueprintCallable, Category = "State|AudioCature")
 	void OnAudioCapture(bool bRecording);
@@ -44,6 +43,9 @@ protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|Time")
 	class UTextBlock* CurrentTimeText = nullptr;
 
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|Focus")
+	class UTextBlock* FocusBuildingText = nullptr;
+
 	/** @brief 오디오 스펙트럼을 표시하는 진행률 표시줄입니다. */
 	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly, Category = "State|Audio")
 	class UProgressBar* SpectrumProgressBar = nullptr;
@@ -56,13 +58,8 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "State|Network")
 	float SpinnerRotationSpeed = 90.0f;
 
-	/** @brief 현재 네트워크 상호작용 상태입니다. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "State|Network")
-	ENetworkState NetworkState = ENetworkState::Idle;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "State|Focus")
 	EBuildingType BuildingType = EBuildingType::None;
-
 	
 	/** @brief 시간 텍스트를 업데이트하는 간격(초)입니다. 0 또는 음수이면 매 틱마다 업데이트됩니다. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "State|Time", meta = (ClampMin = "0.05", ClampMax = "5.0"))
