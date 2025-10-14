@@ -118,7 +118,7 @@ void UVoiceConversationSystem::StopRecording()
 		return;
 	}
 
-	HttpSystem->RequestAsk(LastRecordedFilePath, FResponseAskDelegate::CreateUObject(
+	HttpSystem->RequestASK(LastRecordedFilePath, FResponseAskDelegate::CreateUObject(
 		this, &UVoiceConversationSystem::OnResponseAsk
 	));
 }

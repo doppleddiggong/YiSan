@@ -72,11 +72,11 @@ void UHttpNetworkSystem::RequestHealth( FResponseHealthDelegate InDelegate )
     HttpRequest->ProcessRequest();
 }
 
-void UHttpNetworkSystem::RequestAsk(const FString& FilePath, FResponseAskDelegate InDelegate)
+void UHttpNetworkSystem::RequestASK(const FString& FilePath, FResponseAskDelegate InDelegate)
 {
     auto HttpRequest = FHttpModule::Get().CreateRequest();
     HttpRequest->SetVerb(NETWORK_POST);
-    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::Ask));
+    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::ASK));
     HttpRequest->SetHeader(TEXT("Accept"), TEXT("application/json"));
 
     FHttpMultipartFormData Form;
@@ -104,11 +104,11 @@ void UHttpNetworkSystem::RequestAsk(const FString& FilePath, FResponseAskDelegat
     HttpRequest->ProcessRequest();
 }
 
-void UHttpNetworkSystem::RequestTestSTT(const FString& FilePath, FResponseTestSTTDelegate InDelegate)
+void UHttpNetworkSystem::RequestSTT(const FString& FilePath, FResponseSTTDelegate InDelegate)
 {
     auto HttpRequest = FHttpModule::Get().CreateRequest();
     HttpRequest->SetVerb(NETWORK_POST);
-    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::TestSTT));
+    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::STT));
     HttpRequest->SetHeader(TEXT("Accept"), TEXT("application/json"));
 
     FHttpMultipartFormData Form;
@@ -136,20 +136,20 @@ void UHttpNetworkSystem::RequestTestSTT(const FString& FilePath, FResponseTestST
     HttpRequest->ProcessRequest();
 }
 
-void UHttpNetworkSystem::RequestTestTTS(
+void UHttpNetworkSystem::RequestTTS(
     const FString& Text,
     const float SpeakingRate,
     const float Pitch,
     const FString& VoiceName,
-    FResponseTestTTSDelegate InDelegate)
+    FResponseTTSDelegate InDelegate)
 {
     auto HttpRequest = FHttpModule::Get().CreateRequest();
 
     HttpRequest->SetVerb(NETWORK_POST);
-    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::TestTTS));
+    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::TTS));
     HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
-    FRequestTestTTS RequestData;
+    FRequestTTS RequestData;
     RequestData.text = Text;
     RequestData.speaking_rate = SpeakingRate;
     RequestData.pitch = Pitch;
@@ -169,7 +169,7 @@ void UHttpNetworkSystem::RequestTestTTS(
     HttpRequest->OnProcessRequestComplete().BindLambda(
         [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
-            FResponseTestTTS ResponseData;
+            FResponseTTS ResponseData;
             if (bWasSuccessful && ResPtr.IsValid())
             {
                 NETWORK_LOG(TEXT("[RES] %s"), *ResPtr->GetContentAsString());
@@ -183,16 +183,16 @@ void UHttpNetworkSystem::RequestTestTTS(
     HttpRequest->ProcessRequest();
 }
 
-void UHttpNetworkSystem::RequestTestGPT(const FString& UserQuery, const FGPTSpatialContext& Context, FResponseTestGPTDelegate InDelegate)
+void UHttpNetworkSystem::RequestGPT(const FString& UserQuery, const FGPTContext& Context, FResponseGPTDelegate InDelegate)
 {
     auto HttpRequest = FHttpModule::Get().CreateRequest();
 
     HttpRequest->SetVerb(NETWORK_POST);
-    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::TestGPT));
+    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::GPT));
     HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
     HttpRequest->SetHeader(TEXT("Accept"), TEXT("application/json"));
 
-    FRequestTestGPT RequestData;
+    FRequestGPT RequestData;
     RequestData.text = UserQuery;
     RequestData.user_query = UserQuery;
     RequestData.context = Context;
@@ -211,7 +211,7 @@ void UHttpNetworkSystem::RequestTestGPT(const FString& UserQuery, const FGPTSpat
     HttpRequest->OnProcessRequestComplete().BindLambda(
         [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
-            FResponseTestGPT ResponseData;
+            FResponseGPT ResponseData;
             if (bWasSuccessful && ResPtr.IsValid())
             {
                 NETWORK_LOG(TEXT("[RES] %s"), *ResPtr->GetContentAsString());
