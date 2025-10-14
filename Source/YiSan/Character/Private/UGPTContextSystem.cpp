@@ -56,12 +56,19 @@ void UGPTContextSystem::CheckBuildingInView()
                 if (ABuilding* Building = Cast<ABuilding>(HitActor))
                 {
                     // 부딪힌 표면의 월드 좌표
-                    FVector hitLoc = HitResult.Location;
-                    PRINTLOG( TEXT("표면에 닿은 곳은 %s"), *hitLoc.ToString());
+                    // FVector hitLoc = HitResult.Location;
+                    // PRINTLOG( TEXT("표면에 닿은 곳은 %s"), *hitLoc.ToString());
 
                     // 액터의 원점
                     FVector buildingLoc = Building->GetActorLocation();
-                    PRINTLOG( TEXT("액터의 월드 좌표는 %s"), *buildingLoc.ToString());
+
+                    EBuildingType TypeValue = Building->BuildingType;
+                    // FText DisplayName = StaticEnum<EBuildingType>()->GetDisplayNameTextByValue(static_cast<int64>(TypeValue));
+                    // PRINTLOG( TEXT("액터의 월드 좌표는 %s"), *buildingLoc.ToString());
+
+                    FText DisplayNameText = StaticEnum<EBuildingType>()->GetDisplayNameTextByValue(static_cast<int64>(TypeValue));
+                    FString DisplayName = DisplayNameText.ToString();                    
+                    PRINTLOG( TEXT("%s, %f, %f, %f"), *DisplayName, buildingLoc.X, buildingLoc.Y, buildingLoc.Z);
                     
                     TempBuildingType = Building->BuildingType;
                     HitBuilding = Building;
