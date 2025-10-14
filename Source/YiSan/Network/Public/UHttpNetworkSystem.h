@@ -37,7 +37,7 @@ public:
         const FString& VoiceName,
         FResponseTestTTSDelegate InDelegate
     );
-    void RequestTestGPT(const FString& Text, FResponseTestGPTDelegate InDelegate);
+    void RequestTestGPT(const FString& UserQuery, const FGPTSpatialContext& Context, FResponseTestGPTDelegate InDelegate);
 
 private:
     static void LogNetwork(ENetworkLogType InLogType, const FString& URL, const FString& Body = "");

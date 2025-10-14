@@ -183,7 +183,7 @@ void UHttpNetworkSystem::RequestTestTTS(
     HttpRequest->ProcessRequest();
 }
 
-void UHttpNetworkSystem::RequestTestGPT(const FString& Text, FResponseTestGPTDelegate InDelegate)
+void UHttpNetworkSystem::RequestTestGPT(const FString& UserQuery, const FGPTSpatialContext& Context, FResponseTestGPTDelegate InDelegate)
 {
     auto HttpRequest = FHttpModule::Get().CreateRequest();
 
@@ -193,12 +193,14 @@ void UHttpNetworkSystem::RequestTestGPT(const FString& Text, FResponseTestGPTDel
     HttpRequest->SetHeader(TEXT("Accept"), TEXT("application/json"));
 
     FRequestTestGPT RequestData;
-    RequestData.text = Text;
+    RequestData.text = UserQuery;
+    RequestData.user_query = UserQuery;
+    RequestData.context = Context;
 
     FString RequestBody;
-    if (!FJsonObjectConverter::UStructToJsonObjectString(RequestData, RequestBody))
+    if (!RequestData.ToJsonString(RequestBody))
     {
-        NETWORK_LOG(TEXT("Failed to convert FRequestTestGPT to JSON"));
+        NETWORK_LOG(TEXT("Failed to serialize FRequestTestGPT to JSON"));
         return;
     }
 

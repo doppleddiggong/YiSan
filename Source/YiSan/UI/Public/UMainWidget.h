@@ -10,27 +10,29 @@
 UCLASS()
 class YISAN_API UMainWidget : public UUserWidget
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 
 public:
-	void ToggleChatBox();
+    void ToggleChatBox();
 
 protected:
-	virtual void NativeConstruct() override;
+    virtual void NativeConstruct() override;
 
-	UFUNCTION()
-	void OnMessageComitted(const FText& Text, ETextCommit::Type CommitMethod);
-	
+    UFUNCTION()
+    void OnMessageComitted(const FText& Text, ETextCommit::Type CommitMethod);
+    
 private:
-	void SendChatMessage(const FString& InMsg);
+    void SendChatMessage(const FString& InMsg);
+    FGPTSpatialContext BuildSpatialContext() const;
 
-	UFUNCTION()
-	void OnResponseTestGPT(FResponseTestGPT& Response, bool bSuccess);
+    UFUNCTION()
+    void OnResponseTestGPT(FResponseTestGPT& Response, bool bSuccess);
 
 protected:
-	UPROPERTY(meta = (BindWidget), BlueprintReadWrite, Category = "Chat")
-	class UCanvasPanel* ChatBox;
-	
-	UPROPERTY(meta = (BindWidget), BlueprintReadWrite, Category = "Chat")
-	class UEditableTextBox* InputText;
+    UPROPERTY(meta = (BindWidget), BlueprintReadWrite, Category = "Chat")
+    class UCanvasPanel* ChatBox;
+    
+    UPROPERTY(meta = (BindWidget), BlueprintReadWrite, Category = "Chat")
+    class UEditableTextBox* InputText;
 };
+

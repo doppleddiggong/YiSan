@@ -12,6 +12,9 @@
 #include "Macro.h"
 #include "UWebSocketSystem.generated.h"
 
+struct FGPTSpatialContext;
+
+
 // --- 서버 -> 클라이언트 통신을 위한 델리게이트 ---
 
 // GPT Agent 응답
@@ -79,6 +82,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "WebSocket")
 	void SendPing();
+
+    UFUNCTION(BlueprintCallable, Category = "WebSocket")
+    void SendSpatialContext(const FGPTSpatialContext& Context);
+
 
 	UFUNCTION(BlueprintPure, Category = "WebSocket")
 	bool IsConnected() const;

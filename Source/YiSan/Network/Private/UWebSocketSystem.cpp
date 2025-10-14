@@ -199,6 +199,43 @@ void UWebSocketSystem::SendStopRecordingMessage()
 	LogNetwork(TEXT("Sending stop_recording message"));
 	WebSocket->Send(TEXT("{\"type\":\"stop_recording\"}"));
 }
+void UWebSocketSystem::SendSpatialContext(const FGPTSpatialContext& Context)
+{
+    if (!IsConnected())
+    {
+        LogNetwork(TEXT("Cannot send spatial context. Not connected."));
+        return;
+    }
+
+    if (!Context.HasAnyData())
+    {
+        LogNetwork(TEXT("Spatial context is empty. Skip sending."));
+        return;
+    }
+
+    TSharedPtr<FJsonObject> ContextJson = Context.ToJsonObject();
+    if (!ContextJson.IsValid())
+    {
+        LogNetwork(TEXT("Spatial context serialization failed."));
+        return;
+    }
+
+    TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
+    Root->SetStringField(TEXT("type"), TEXT("context"));
+    Root->SetObjectField(TEXT("context"), ContextJson);
+
+    FString Payload;
+    TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Payload);
+    if (!FJsonSerializer::Serialize(Root.ToSharedRef(), Writer))
+    {
+        LogNetwork(TEXT("Failed to serialize context payload."));
+        return;
+    }
+
+    LogNetwork(FString::Printf(TEXT("Sending context payload: %s"), *Payload));
+    WebSocket->Send(Payload);
+}
+
 
 
 // --- Native WebSocket Callbacks ---

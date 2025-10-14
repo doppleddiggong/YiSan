@@ -1,14 +1,14 @@
 # Voice Server API Documentation
 
-이 문서는 Voice Server에서 제공하는 HTTP 및 WebSocket API에 대한 명세서입니다. Unreal Engine 클라이언트 개발 시 이 문서를 참고하여 API를 검증하고 연동할 수 있습니다.
+이 문서는 다산(Dasan) Voice Server에서 제공하는 HTTP 및 WebSocket API에 대한 명세서입니다. Unreal Engine 클라이언트 개발 시 이 문서를 참고하여 API를 검증하고 연동할 수 있습니다.
 
-**기본 URL**: `http://<서버_주소>:<포트>` (예: `http://127.0.0.1:8000`)
+**기본 URL**: `http://<서버_주소>:<포트>` (예: `http://127.0.0.1:4000`)
 
 ---
 
 ## 1. HTTP API
 
-일반적인 HTTP 요청을 통해 서버의 기능을 테스트하거나 단일 요청/응답이 필요한 경우 사용합니다.
+단발성 기능 테스트 및 전체 파이프라인 실행에 사용됩니다.
 
 ### 1.1. 서버 상태 확인
 
@@ -59,6 +59,7 @@
 #### `POST /test/stt`
 
 - **설명**: 음성 파일을 텍스트로 변환합니다. (STT)
+- **추가 옵션**: `POST /test/stt/{provider}` 혹은 `POST /test/ncp/stt` 를 사용하면 특정 STT 제공자를 직접 지정할 수 있습니다. (`provider` 값: `google`, `ncp`, `active`)
 - **요청**:
   - **Content-Type**: `multipart/form-data`
   - **Body**:
@@ -74,27 +75,55 @@
 
 #### `POST /test/gpt`
 
-- **설명**: 텍스트로 질문하고 GPT Agent의 답변을 텍스트로 받습니다. (GPT)
+- **설명**: 텍스트 질문을 보내고 GPT Agent가 생성한 응답을 반환합니다. (GPT)
 - **요청**:
   - **Content-Type**: `application/json`
   - **Body**:
     ```json
     {
-      "text": "GPT에게 보낼 질문 텍스트"
+      "user_query": "지금 여기 옆에는 뭐가 있느냐",
+      "context": {
+        "current_location": {
+          "name": "운한각",
+          "x": 100.2,
+          "y": 33.5,
+          "z": -12.7
+        },
+        "focused_object": {
+          "name": "신풍루",
+          "x": 120.5,
+          "y": 40.1,
+          "z": -50.3
+        },
+        "nearby_buildings": [
+          { "name": "별주", "distance": 15.3 },
+          { "name": "집사청", "distance": 22.1 },
+          { "name": "북군영", "distance": 35.7 }
+        ]
+      }
     }
     ```
+    - `user_query` (string, 필수): 최종 질문 텍스트. 기존 호환을 위해 `text` 필드도 허용되지만 `user_query` 사용을 권장합니다.
+    - `context` (object, 선택): 현재 위치·주시 대상·주변 건물 정보를 포함하는 공간 컨텍스트.
+    - `context.current_location` (object): 플레이어의 현재 위치 이름 및 좌표. 좌표는 선택입니다.
+    - `context.focused_object` (object): 카메라가 바라보는 대상.
+    - `context.nearby_buildings` (array): 가까운 건물 목록. `nearest_buildings` 키로도 인식합니다.
 - **성공 응답 (200 OK)**:
   - **Content-Type**: `application/json`
   - **Body**:
     ```json
     {
-      "response": "GPT Agent가 생성한 답변 텍스트입니다."
+      "response": "신풍루 오른편에는 별주가 가장 가깝고 이어 집사청과 북군영이 있습니다."
     }
     ```
+- **에러 응답**:
+  - `422 Unprocessable Entity`: `user_query`와 `text`가 모두 비어 있을 때
+  - `500 Internal Server Error`: OpenAI 호출 실패 등 서버 내부 오류
 
 #### `POST /test/tts`
 
 - **설명**: 텍스트를 음성(WAV)으로 변환하여 바이너리 데이터를 직접 받습니다. (TTS)
+- **추가 옵션**: `POST /test/tts/{provider}` 혹은 `POST /test/ncp/tts` 를 사용하면 특정 TTS 제공자를 직접 지정할 수 있습니다. (`provider` 값: `google`, `ncp`, `active`)
 - **요청**:
   - **Content-Type**: `application/json`
   - **Body**:
@@ -112,6 +141,7 @@
 - **성공 응답 (200 OK)**:
   - **Content-Type**: `audio/wav`
   - **Body**: 순수 WAV 바이너리 데이터
+  - **Response Header**: `X-TTS-Provider` (실제 사용된 TTS 제공자)
 
 ---
 
@@ -119,7 +149,7 @@
 
 실시간 양방향 통신이 필요할 때 사용합니다. 클라이언트는 하나의 WebSocket 연결을 통해 모든 기능을 수행할 수 있습니다.
 
-**연결 주소**: `ws://<서버_주소>:<포트>/ws` (예: `ws://127.0.0.1:8000/ws`)
+**연결 주소**: `ws://<서버_주소>:<포트>/ws` (예: `ws://127.0.0.1:4000/ws`)
 
 ### 2.1. 통신 방식
 
@@ -160,9 +190,14 @@
   ```json
   {
     "type": "gpt",
-    "text": "GPT에게 보낼 질문 텍스트"
+    "user_query": "지금 여기 옆에는 뭐가 있느냐",
+    "context": {
+      "current_location": { "name": "운한각" },
+      "focused_object": { "name": "신풍루" }
+    }
   }
   ```
+  - `context` 필드를 함께 보내면 서버가 즉시 최신 공간 정보를 반영합니다. 생략하면 마지막으로 저장된 컨텍스트가 재사용됩니다.
 - **TTS 요청**:
   ```json
   {
@@ -171,7 +206,28 @@
   }
   ```
 
-#### 4) TTS 파라미터 설정
+#### 4) 공간 컨텍스트 갱신
+
+- **설명**: 플레이어가 최신 공간 정보를 서버에 전달합니다.
+- **메시지 형식**:
+  ```json
+  {
+    "type": "context",
+    "context": {
+      "current_location": { "name": "운한각" },
+      "focused_object": { "name": "신풍루" },
+      "nearby_buildings": [
+        { "name": "별주", "distance": 15.3 },
+        { "name": "집사청", "distance": 22.1 },
+        { "name": "북군영", "distance": 35.7 }
+      ]
+    }
+  }
+  ```
+  - `context_ack` 메시지로 성공 여부를 확인할 수 있습니다.
+
+#### 5) TTS 파라미터 설정
+
 
 - **설명**: 현재 WebSocket 연결에 대한 TTS 설정을 변경합니다. 한 번 설정하면 연결이 끊길 때까지 유지됩니다.
 - **메시지 형식**:
@@ -193,20 +249,20 @@
 
 #### 1) STT 결과
 
-- **설명**: 음성 인식이 완료되었을 때 전송됩니다.
+- **설명**: 음성 인식이 완료되었음을 알립니다.
 - **메시지 형식**:
   ```json
   {
     "type": "transcription",
-    "text": "음성인식으로 변환된 텍스트입니다.",
+    "text": "음성 인식으로 변환된 텍스트입니다.",
     "status": "success"
   }
   ```
-  - `ask` 또는 `stt` 요청에 대한 응답입니다. `stt` 요청의 경우 `type`이 `stt_result`일 수 있습니다.
+  - `ask` 또는 `stt` 요청에 대한 응답입니다. 단독 `stt` 요청일 경우 `type` 값이 `stt_result`일 수 있습니다.
 
 #### 2) GPT 응답
 
-- **설명**: GPT Agent의 텍스트 답변이 생성되었을 때 전송됩니다.
+- **설명**: GPT Agent가 텍스트 응답 생성을 완료했습니다.
 - **메시지 형식**:
   ```json
   {
@@ -219,7 +275,7 @@
 
 #### 3) TTS 결과 (음성 데이터)
 
-- **설명**: TTS 음성 생성이 완료되었을 때 전송됩니다.
+- **설명**: TTS 음성 생성이 완료되어 오디오 데이터를 전송합니다.
 - **메시지 형식**:
   ```json
   {
@@ -228,21 +284,21 @@
     "encoding": "base64",
     "data": "R1d...",
     "generation_time": 1.23,
-    "text": "음성으로 변환된 텍스트",
+    "text": "합성된 스크립트 텍스트",
     "tts_provider": "google"
   }
   ```
-  - `data` (string): 생성된 WAV 음성 데이터 (Base64 인코딩)
+  - `data` (string): Base64로 인코딩된 WAV 음성 데이터.
   - `ask` 또는 `tts` 요청에 대한 응답입니다. `tts` 요청의 경우 `type`이 `tts_result`일 수 있습니다.
 
-#### 4) 파이프라인 완료
+#### 4) 파이프라인 종료
 
-- **설명**: `ask` 또는 바이너리 음성 요청에 대한 모든 파이프라인이 성공적으로 완료되었을 때 전송됩니다.
+- **설명**: `ask` 또는 음성 파이프라인 요청이 전체적으로 종료되었음을 알립니다.
 - **메시지 형식**:
   ```json
   {
     "type": "completed",
-    "message": "ASK 프로세스가 성공적으로 완료되었습니다."
+    "message": "ASK 파이프라인이 정상적으로 종료되었습니다."
   }
   ```
 
@@ -262,7 +318,7 @@
 
 #### 6) 오류 응답
 
-- **설명**: 처리 중 오류가 발생했을 때 전송됩니다.
+- **설명**: 처리 도중 오류가 발생했을 때 전송됩니다.
 - **메시지 형식**:
   ```json
   {
@@ -271,6 +327,7 @@
   }
   ```
 
+---
 ---
 
 ## 3. WebSocket 통신 흐름 예시 (음성 질문)

@@ -12,6 +12,7 @@
 #include "NetworkData.generated.h"
 
 class IHttpResponse;
+class FJsonObject;
 
 // =================================================================================
 // Network Configuration
@@ -44,6 +45,80 @@ namespace RequestAPI
     static FString TestTTS = FString("/test/tts");
     static FString TestGPT = FString("/test/gpt");
 }
+
+// --- GPT 공간 컨텍스트 ---
+
+USTRUCT(BlueprintType)
+struct FGPTSpatialContextLocation
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite)
+    FString name;
+
+    UPROPERTY(BlueprintReadWrite)
+    float x = 0.0f;
+
+    UPROPERTY(BlueprintReadWrite)
+    float y = 0.0f;
+
+    UPROPERTY(BlueprintReadWrite)
+    float z = 0.0f;
+
+    UPROPERTY(BlueprintReadWrite)
+    bool bValid = false;
+
+    void Reset();
+    void Set(const FString& InName, const FVector& InPosition);
+    bool IsValid() const;
+    TSharedPtr<FJsonObject> ToJsonObject() const;
+};
+
+USTRUCT(BlueprintType)
+struct FGPTSpatialContextNearbyBuilding
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite)
+    FString name;
+
+    UPROPERTY(BlueprintReadWrite)
+    float distance = 0.0f;
+
+    UPROPERTY(BlueprintReadWrite)
+    bool bValid = false;
+
+    void Reset();
+    void Set(const FString& InName, float InDistanceMeters);
+    bool IsValid() const;
+    TSharedPtr<FJsonObject> ToJsonObject() const;
+};
+
+USTRUCT(BlueprintType)
+struct FGPTSpatialContext
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite)
+    FGPTSpatialContextLocation current_location;
+
+    UPROPERTY(BlueprintReadWrite)
+    FGPTSpatialContextLocation focused_object;
+
+    UPROPERTY(BlueprintReadWrite)
+    TArray<FGPTSpatialContextNearbyBuilding> nearby_buildings;
+
+    void Reset();
+    bool HasAnyData() const;
+    void AddNearbyBuilding(const FGPTSpatialContextNearbyBuilding& InBuilding);
+    TSharedPtr<FJsonObject> ToJsonObject() const;
+};
+
+struct FResponseHealth;
+struct FResponseAsk;
+struct FResponseTestSTT;
+struct FResponseTestTTS;
+struct FResponseTestGPT;
 
 DECLARE_DELEGATE_TwoParams( FResponseHealthDelegate, FResponseHealth&, bool );
 USTRUCT(BlueprintType)
@@ -134,6 +209,13 @@ struct FRequestTestGPT
 
     UPROPERTY(BlueprintReadWrite)
     FString text;
+    UPROPERTY(BlueprintReadWrite)
+    FString user_query;
+
+    UPROPERTY(BlueprintReadWrite)
+    FGPTSpatialContext context;
+
+    bool ToJsonString(FString& OutJson) const;
 };
 
 DECLARE_DELEGATE_TwoParams( FResponseTestGPTDelegate, FResponseTestGPT&, bool );
