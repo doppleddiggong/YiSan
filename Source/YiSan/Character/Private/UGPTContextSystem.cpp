@@ -10,6 +10,7 @@
 
 #include "EngineUtils.h"
 #include "GameLogging.h"
+#include "UBroadcastManger.h"
 
 #include "Camera/CameraComponent.h"
 #include "YiSan/YiSan.h"
@@ -22,6 +23,8 @@ UGPTContextSystem::UGPTContextSystem()
 void UGPTContextSystem::InitSystem(APlayerActor* InOwner)
 {
     this->Owner = InOwner;
+
+    BroadcastManager = UBroadcastManger::Get(GetWorld());
 }
 
 void UGPTContextSystem::TickComponent(float DeltaTime, ELevelTick TickType,
@@ -55,21 +58,6 @@ void UGPTContextSystem::CheckBuildingInView()
             {
                 if (ABuilding* Building = Cast<ABuilding>(HitActor))
                 {
-                    // 부딪힌 표면의 월드 좌표
-                    // FVector hitLoc = HitResult.Location;
-                    // PRINTLOG( TEXT("표면에 닿은 곳은 %s"), *hitLoc.ToString());
-
-                    // 액터의 원점
-                    FVector buildingLoc = Building->GetActorLocation();
-
-                    EBuildingType TypeValue = Building->BuildingType;
-                    // FText DisplayName = StaticEnum<EBuildingType>()->GetDisplayNameTextByValue(static_cast<int64>(TypeValue));
-                    // PRINTLOG( TEXT("액터의 월드 좌표는 %s"), *buildingLoc.ToString());
-
-                    FText DisplayNameText = StaticEnum<EBuildingType>()->GetDisplayNameTextByValue(static_cast<int64>(TypeValue));
-                    FString DisplayName = DisplayNameText.ToString();                    
-                    PRINTLOG( TEXT("%s, %f, %f, %f"), *DisplayName, buildingLoc.X, buildingLoc.Y, buildingLoc.Z);
-                    
                     TempBuildingType = Building->BuildingType;
                     HitBuilding = Building;
                 }
@@ -77,23 +65,23 @@ void UGPTContextSystem::CheckBuildingInView()
         }
     }
 
-    const bool bTypeChanged = !CurLookBuildingType.IsSet() || CurLookBuildingType.GetValue() != TempBuildingType;
+    const bool bTypeChanged = !FocusBuildingType.IsSet() || FocusBuildingType.GetValue() != TempBuildingType;
 
     if (TempBuildingType != EBuildingType::None && HitBuilding)
     {
         if (bTypeChanged)
         {
-            CurLookBuildingType = TempBuildingType;
-            EBuildingType TypeValue = CurLookBuildingType.GetValue();
-            FText DisplayName = StaticEnum<EBuildingType>()->GetDisplayNameTextByValue(static_cast<int64>(TypeValue));
-
-            PRINT_STRING(TEXT("%s"), *DisplayName.ToString());
+            FocusBuildingType = TempBuildingType;
+            BroadcastManager->SendFocusBuilding(FocusBuildingType.GetValue());
         }
     }
     else
     {
-        if (CurLookBuildingType.IsSet())
-            CurLookBuildingType.Reset();
+        if (FocusBuildingType.IsSet())
+        {
+            FocusBuildingType.Reset();
+            BroadcastManager->SendFocusBuilding( EBuildingType::None );
+        }
     }
 }
 
@@ -149,10 +137,10 @@ FGPTContext UGPTContextSystem::GetGPTContext() const
     const FString CurLocationName = BuildingSnapshots.Num() > 0 ? BuildingSnapshots[0].Name : FString(TEXT("전하 위치"));
     Context.current_location.Set(CurLocationName, PlayerLocation);
 
-    if (CurLookBuildingType.IsSet())
+    if (FocusBuildingType.IsSet())
     {
         FBuildingData Params;
-        if (UGameDataManager::Get(GetWorld())->GetBuildingData(CurLookBuildingType.GetValue(), Params))
+        if (UGameDataManager::Get(GetWorld())->GetBuildingData(FocusBuildingType.GetValue(), Params))
         {
             Context.focused_object.Set(Params.name, FVector(Params.x, Params.y, Params.z));
         }

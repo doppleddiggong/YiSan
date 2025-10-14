@@ -57,6 +57,7 @@ void APlayerActor::BeginPlay()
     if (MainWidgetInst)
         MainWidgetInst->AddToViewport();
 
+    VoiceConversationSystem->InitSystem(this);
     GPTContextSystem->InitSystem(this);
    
     // 서버야 일어나라.

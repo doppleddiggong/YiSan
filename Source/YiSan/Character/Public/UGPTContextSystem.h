@@ -29,7 +29,9 @@ private:
 private:
 	UPROPERTY()
 	TObjectPtr<class APlayerActor> Owner;
-
 	UPROPERTY()
-	TOptional<EBuildingType> CurLookBuildingType;
+	TObjectPtr<class UBroadcastManger> BroadcastManager;
+	
+	UPROPERTY()
+	TOptional<EBuildingType> FocusBuildingType;
 };

@@ -3,6 +3,7 @@
 #include "UVoiceConversationSystem.h"
 
 #include "GameLogging.h"
+#include "APlayerActor.h"
 #include "UBroadcastManger.h"
 #include "UHttpNetworkSystem.h"
 #include "UVoiceFunctionLibrary.h"
@@ -14,10 +15,11 @@ UVoiceConversationSystem::UVoiceConversationSystem()
 	PrimaryComponentTick.bCanEverTick = false;
 }
 
-void UVoiceConversationSystem::BeginPlay()
+void UVoiceConversationSystem::InitSystem(APlayerActor* InOwner)
 {
-	Super::BeginPlay();
-	PRINTLOG(TEXT("[VoiceConversation] System initialized."));
+	this->Owner = InOwner;
+
+	BroadcastManager = UBroadcastManger::Get(GetWorld());
 }
 
 void UVoiceConversationSystem::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -58,7 +60,7 @@ void UVoiceConversationSystem::StartRecording()
 	
 	AudioCapture->StartStream();
 
-	UBroadcastManger::Get(GetWorld())->SendAudioCapture(true);
+	BroadcastManager->SendAudioCapture(true);
 	PRINTLOG( TEXT("[VoiceConversation] Recording started."));
 }
 
@@ -71,16 +73,24 @@ void UVoiceConversationSystem::HandleOnCapture(const float* InAudio, int32 InNum
 	const int32 SampleCount = InNumFrames * InNumChannels;
 	PCMData.Reserve(PCMData.Num() + SampleCount * sizeof(int16));
 
+	float TotalVolume = 0.f;
+	
 	for (int32 i = 0; i < SampleCount; ++i)
 	{
 		float Sample = InAudio[i];
 		Sample = FMath::Clamp(Sample, -1.0f, 1.0f);
+
+		TotalVolume += FMath::Abs(Sample);
 
 		int16 Int16Sample = static_cast<int16>(Sample * 32767.0f);
 		const uint8* SampleBytes = reinterpret_cast<const uint8*>(&Int16Sample);
 
 		PCMData.Append(SampleBytes, sizeof(int16));
 	}
+
+	const float AverageVolume = (SampleCount > 0) ? (TotalVolume / SampleCount) : 0.f;
+
+	BroadcastManager->SendAudioSpectrum(AverageVolume);
 }
 
 void UVoiceConversationSystem::StopRecording()
@@ -121,7 +131,7 @@ void UVoiceConversationSystem::StopRecording()
 		return;
 	}
 
-	UBroadcastManger::Get(GetWorld())->SendNetworkStateChanged(ENetworkState::Requesting);
+	BroadcastManager->SendNetworkState(ENetworkState::Requesting);
 	
 	HttpSystem->RequestASK(LastRecordedFilePath, FResponseAskDelegate::CreateUObject(
 		this, &UVoiceConversationSystem::OnResponseAsk
@@ -132,7 +142,7 @@ void UVoiceConversationSystem::OnResponseAsk(FResponseAsk& Response, bool bSucce
 {
 	bIsProcessing = false;
 
-	UBroadcastManger::Get(GetWorld())->SendNetworkStateChanged(ENetworkState::Completed);
+	BroadcastManager->SendNetworkState(ENetworkState::Completed);
 
 	if (bSuccess)
 	{

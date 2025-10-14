@@ -7,9 +7,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
 #include "NetworkData.h"
 #include "AudioCapture.h"
+#include "Components/ActorComponent.h"
 #include "UVoiceConversationSystem.generated.h"
 
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Voice), meta=(BlueprintSpawnableComponent))
@@ -21,10 +21,11 @@ public:
 	UVoiceConversationSystem();
 
 protected:
-	virtual void BeginPlay() override;
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 public:
+	void InitSystem(class APlayerActor* InOwner);
+
 	/** 음성 녹음 시작 */
 	UFUNCTION(BlueprintCallable, Category = "Voice|Conversation")
 	void StartRecording();
@@ -38,6 +39,13 @@ private:
 
 	UFUNCTION()
 	void OnResponseAsk(FResponseAsk& Response, bool bSuccess);
+
+private:
+	UPROPERTY()
+	TObjectPtr<class APlayerActor> Owner;
+	UPROPERTY()
+	TObjectPtr<class UBroadcastManger> BroadcastManager;
+
 
 	// --- 녹음 관련 변수 ---
 	TUniquePtr<Audio::FAudioCapture> AudioCapture;

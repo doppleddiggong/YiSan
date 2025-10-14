@@ -28,7 +28,6 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendMessage(const FString& InMsg);
 
-
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnToastMessage, FString, Msg);
 	UPROPERTY(BlueprintAssignable, Category="Events")
 	FOnToastMessage OnToastMessage;
@@ -36,13 +35,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendToastMessage(const FString& InMsg);
 
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNetworkStateChanged, ENetworkState, NewState);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNetworkState, ENetworkState, NewState);
 	UPROPERTY(BlueprintAssignable, Category="Events")
-	FOnNetworkStateChanged OnNetworkStateChanged;
+	FOnNetworkState OnNetworkState;
 	
 	UFUNCTION(BlueprintCallable, Category="Events")
-	void SendNetworkStateChanged(const ENetworkState NewState);
-
+	void SendNetworkState(const ENetworkState NewState);
 
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAudioCapture, bool, bRecording);
 	UPROPERTY(BlueprintAssignable, Category="Events")
@@ -50,6 +48,29 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendAudioCapture(bool bRecording);
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAudioSpectrum, float, Spectrum);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnAudioSpectrum OnAudioSpectrum;
+	
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendAudioSpectrum(float Spectrum);
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnFocusBuilding, EBuildingType, BuildingType);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnFocusBuilding OnFocusBuilding;
+	
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendFocusBuilding(EBuildingType BuildingType);
+	
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnContactBuilding, EBuildingType, BuildingType);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnContactBuilding OnContactBuilding;
+	
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendContactBuilding(EBuildingType BuildingType);
+		
+
 	
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDoorMessage, int32, GateID, bool, Open );
 	UPROPERTY(BlueprintAssignable, Category="Events")

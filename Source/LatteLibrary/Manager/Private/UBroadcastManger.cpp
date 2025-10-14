@@ -16,14 +16,29 @@ void UBroadcastManger::SendToastMessage(const FString& InMsg)
 	OnToastMessage.Broadcast(InMsg);
 }
 
-void UBroadcastManger::SendNetworkStateChanged(const ENetworkState NewState)
+void UBroadcastManger::SendNetworkState(const ENetworkState NewState)
 {
-	OnNetworkStateChanged.Broadcast(NewState);
+	OnNetworkState.Broadcast(NewState);
 }
 
 void UBroadcastManger::SendAudioCapture(bool bRecording)
 {
 	OnAudioCapture.Broadcast(bRecording);
+}
+
+void UBroadcastManger::SendAudioSpectrum(float Spectrum)
+{
+	OnAudioSpectrum.Broadcast(Spectrum);
+}
+
+void UBroadcastManger::SendFocusBuilding(EBuildingType BuildingType)
+{
+	OnFocusBuilding.Broadcast(BuildingType);	
+}
+
+void UBroadcastManger::SendContactBuilding(EBuildingType BuildingType)
+{
+	OnContactBuilding.Broadcast(BuildingType);	
 }
 
 void UBroadcastManger::SendOnDoorMessage(const int32 GateID, const bool Open)

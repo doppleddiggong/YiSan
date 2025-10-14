@@ -1,6 +1,7 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 #pragma once
 #include "CoreMinimal.h"
+#include "EBuildingType.h"
 #include "ENetworkState.h"
 #include "Blueprint/UserWidget.h"
 #include "UStateWidget.generated.h"
@@ -18,26 +19,25 @@ public:
 	virtual void NativeConstruct() override;
 	virtual void NativeDestruct() override;
 	virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
-	
-	UFUNCTION(BlueprintCallable, Category = "State|Audio")
-	void StartAudioCapture();
-
-	UFUNCTION(BlueprintCallable, Category = "State|Audio")
-	void StopAudioCapture();
 
 private:
 	UFUNCTION()
 	void RefreshTimeText();
 
 	void UpdateSpectrumVisual(float DeltaTime);
-	void UpdateSpectrumAnalyzer();
-
+	void UpdateLoadingSpinner(float DeltaTime);
+	
 	UFUNCTION(BlueprintCallable, Category = "State|Network")
-	void OnNetworkStateChanged(ENetworkState InState);
+	void OnNetworkState(ENetworkState InState);
 
 	UFUNCTION(BlueprintCallable, Category = "State|AudioCature")
 	void OnAudioCapture(bool bRecording);
 
+	UFUNCTION(BlueprintCallable, Category = "State|AudioCature")
+	void OnAudioSpectrum(float Spectrum);
+
+	UFUNCTION(BlueprintCallable, Category = "State|AudioCature")
+	void OnFocusBuilding(EBuildingType InBuildingType);
 	
 protected:
 	/** @brief 현재 시간을 표시하는 텍스트 블록입니다. */
@@ -60,6 +60,10 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "State|Network")
 	ENetworkState NetworkState = ENetworkState::Idle;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "State|Focus")
+	EBuildingType BuildingType = EBuildingType::None;
+
+	
 	/** @brief 시간 텍스트를 업데이트하는 간격(초)입니다. 0 또는 음수이면 매 틱마다 업데이트됩니다. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "State|Time", meta = (ClampMin = "0.05", ClampMax = "5.0"))
 	float TimeUpdateInterval = 0.25f;
@@ -77,7 +81,6 @@ protected:
 	float SpectrumSmoothing = 0.2f;
 
 private:
-	TSharedPtr<class FStateAudioAnalyzer> AudioAnalyzer;
-	FTimerHandle TimeUpdateTimerHandle;
+	FTimerHandle UpdateTimerHandle;
 	float SpectrumDisplayValue = 0.f;
 };

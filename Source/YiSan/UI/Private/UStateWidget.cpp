@@ -2,9 +2,7 @@
 
 #include "UStateWidget.h"
 
-#include "FStateAudioAnalyzer.h"
 #include "GameLogging.h"
-
 #include "Blueprint/WidgetTree.h"
 #include "Components/HorizontalBoxSlot.h"
 #include "Components/Image.h"
@@ -24,25 +22,22 @@ void UStateWidget::NativeConstruct()
     LoadingSpinner->SetVisibility(ESlateVisibility::Hidden);
     SpectrumProgressBar->SetVisibility(ESlateVisibility::Hidden);
     
-    if (!IsDesignTime())
-        StartAudioCapture();
-
     if (UWorld* World = GetWorld())
-        World->GetTimerManager().SetTimer(TimeUpdateTimerHandle, this, &UStateWidget::RefreshTimeText, TimeUpdateInterval, true);
+        World->GetTimerManager().SetTimer(UpdateTimerHandle, this, &UStateWidget::RefreshTimeText, TimeUpdateInterval, true);
 
     if ( auto EventManager = UBroadcastManger::Get(GetWorld()))
     {
-        EventManager->OnNetworkStateChanged.AddDynamic(this, &UStateWidget::OnNetworkStateChanged);
+        EventManager->OnNetworkState.AddDynamic(this, &UStateWidget::OnNetworkState);
         EventManager->OnAudioCapture.AddDynamic(this, &UStateWidget::OnAudioCapture);
+        EventManager->OnAudioSpectrum.AddDynamic(this, &UStateWidget::OnAudioSpectrum);
+        EventManager->OnFocusBuilding.AddDynamic(this, &UStateWidget::OnFocusBuilding);
     }
 }
 
 void UStateWidget::NativeDestruct()
 {
     if (UWorld* World = GetWorld())
-        World->GetTimerManager().ClearTimer(TimeUpdateTimerHandle);
-
-    StopAudioCapture();
+        World->GetTimerManager().ClearTimer(UpdateTimerHandle);
 
     Super::NativeDestruct();
 }
@@ -55,33 +50,8 @@ void UStateWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 
     if ( LoadingSpinner->IsVisible())
     {
-        const float NewAngle = LoadingSpinner->GetRenderTransformAngle() + (SpinnerRotationSpeed * InDeltaTime);
-        LoadingSpinner->SetRenderTransformAngle(NewAngle);
+
     }    
-}
-
-void UStateWidget::StartAudioCapture()
-{
-    if (!AudioAnalyzer.IsValid())
-        AudioAnalyzer = MakeShared<FStateAudioAnalyzer>();
-
-    if (AudioAnalyzer->Start(32))
-    {
-        SpectrumDisplayValue = 0.0f;
-        SpectrumProgressBar->SetPercent(0.0f);
-    }
-}
-
-void UStateWidget::StopAudioCapture()
-{
-    if (AudioAnalyzer.IsValid())
-    {
-        AudioAnalyzer->Stop();
-        AudioAnalyzer.Reset();
-    }
-
-    SpectrumProgressBar->SetPercent(0.0f);
-    SpectrumDisplayValue = 0.0f;
 }
 
 void UStateWidget::RefreshTimeText()                                                                                                                                                                     
@@ -95,8 +65,9 @@ void UStateWidget::RefreshTimeText()
 
 void UStateWidget::UpdateSpectrumVisual(float DeltaTime)
 {
-    UpdateSpectrumAnalyzer();
-
+    if ( !SpectrumProgressBar->IsVisible())
+        return;
+    
     const float Delta = FMath::Max(DeltaTime, 0.0f);
     const float TargetValue = SpectrumDisplayValue;
     const float CurrentValue = SpectrumProgressBar->GetPercent();
@@ -105,28 +76,16 @@ void UStateWidget::UpdateSpectrumVisual(float DeltaTime)
     SpectrumProgressBar->SetPercent(FMath::Clamp(NewPercent, 0.0f, 1.0f));
 }
 
-void UStateWidget::UpdateSpectrumAnalyzer()
+void UStateWidget::UpdateLoadingSpinner(float DeltaTime)
 {
-    if (!AudioAnalyzer.IsValid())
+    if ( !LoadingSpinner->IsVisible())
         return;
-
-    TArray<float> LatestValues;
-    if (!AudioAnalyzer->FetchSpectrum(LatestValues))
-        return;
-
-    if (LatestValues.Num() > 0)
-    {
-        float Average = 0.0f;
-        for (const float Value : LatestValues)
-        {
-            Average += Value;
-        }
-        Average /= LatestValues.Num();
-        SpectrumDisplayValue = FMath::Lerp(SpectrumDisplayValue, Average, SpectrumSmoothing);
-    }
+    
+    const float NewAngle = LoadingSpinner->GetRenderTransformAngle() + (SpinnerRotationSpeed * DeltaTime);
+    LoadingSpinner->SetRenderTransformAngle(NewAngle);
 }
 
-void UStateWidget::OnNetworkStateChanged(ENetworkState InState)
+void UStateWidget::OnNetworkState(ENetworkState InState)
 {
     if (NetworkState == InState)
         return;
@@ -139,3 +98,20 @@ void UStateWidget::OnAudioCapture(bool bRecording)
 {
     SpectrumProgressBar->SetVisibility( bRecording ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
 }
+
+void UStateWidget::OnAudioSpectrum(float Spectrum)
+{
+    SpectrumDisplayValue = Spectrum;
+}
+
+void UStateWidget::OnFocusBuilding(EBuildingType InBuildingType)
+{
+    if ( BuildingType == InBuildingType )
+        return;
+
+    BuildingType = InBuildingType;
+    
+    FText DisplayName = StaticEnum<EBuildingType>()->GetDisplayNameTextByValue(static_cast<int64>(BuildingType));
+    PRINT_STRING(TEXT("%s"), *DisplayName.ToString());
+}
+	
