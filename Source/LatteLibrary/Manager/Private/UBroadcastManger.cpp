@@ -21,6 +21,11 @@ void UBroadcastManger::SendNetworkStateChanged(const ENetworkState NewState)
 	OnNetworkStateChanged.Broadcast(NewState);
 }
 
+void UBroadcastManger::SendAudioCapture(bool bRecording)
+{
+	OnAudioCapture.Broadcast(bRecording);
+}
+
 void UBroadcastManger::SendOnDoorMessage(const int32 GateID, const bool Open)
 {
 	OnDoorMessage.Broadcast(GateID, Open);	

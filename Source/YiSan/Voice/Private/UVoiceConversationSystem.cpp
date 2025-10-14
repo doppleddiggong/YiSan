@@ -58,6 +58,7 @@ void UVoiceConversationSystem::StartRecording()
 	
 	AudioCapture->StartStream();
 
+	UBroadcastManger::Get(GetWorld())->SendAudioCapture(true);
 	PRINTLOG( TEXT("[VoiceConversation] Recording started."));
 }
 
@@ -95,6 +96,8 @@ void UVoiceConversationSystem::StopRecording()
 
 	AudioCapture->StopStream();
 	AudioCapture->CloseStream();
+
+	UBroadcastManger::Get(GetWorld())->SendAudioCapture(false);
 	
 	WAVData = UVoiceFunctionLibrary::ConvertPCM2WAV(PCMData, LastSampleRate, LastNumChannels, 16);
 	LastRecordedFilePath = UVoiceFunctionLibrary::SaveWavToFile(WAVData);
@@ -118,6 +121,8 @@ void UVoiceConversationSystem::StopRecording()
 		return;
 	}
 
+	UBroadcastManger::Get(GetWorld())->SendNetworkStateChanged(ENetworkState::Requesting);
+	
 	HttpSystem->RequestASK(LastRecordedFilePath, FResponseAskDelegate::CreateUObject(
 		this, &UVoiceConversationSystem::OnResponseAsk
 	));
@@ -126,6 +131,8 @@ void UVoiceConversationSystem::StopRecording()
 void UVoiceConversationSystem::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
 {
 	bIsProcessing = false;
+
+	UBroadcastManger::Get(GetWorld())->SendNetworkStateChanged(ENetworkState::Completed);
 
 	if (bSuccess)
 	{

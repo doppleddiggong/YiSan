@@ -42,8 +42,15 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendNetworkStateChanged(const ENetworkState NewState);
-	
 
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAudioCapture, bool, bRecording);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnAudioCapture OnAudioCapture;
+	
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendAudioCapture(bool bRecording);
+	
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDoorMessage, int32, GateID, bool, Open );
 	UPROPERTY(BlueprintAssignable, Category="Events")
 	FOnDoorMessage OnDoorMessage;
