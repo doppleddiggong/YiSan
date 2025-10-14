@@ -8,6 +8,7 @@
 
 #include "CoreMinimal.h"
 #include "NetworkData.h"
+#include "FGPTContext.h"
 #include "ENetworkLogType.h"
 #include "Macro.h"
 #include "Subsystems/GameInstanceSubsystem.h"
@@ -27,17 +28,17 @@ public:
     void RequestHealth( FResponseHealthDelegate InDelegate);
 
     // Integrated pipeline: STT -> GPT -> TTS in one request
-    void RequestAsk(const FString& FilePath, FResponseAskDelegate InDelegate);
+    void RequestASK(const FString& FilePath, FResponseAskDelegate InDelegate);
 
-    void RequestTestSTT(const FString& FilePath, FResponseTestSTTDelegate InDelegate);
-    void RequestTestTTS(
+    void RequestSTT(const FString& FilePath, FResponseSTTDelegate InDelegate);
+    void RequestTTS(
         const FString& Text,
         const float SpeakingRate,
         const float Pitch,
         const FString& VoiceName,
-        FResponseTestTTSDelegate InDelegate
+        FResponseTTSDelegate InDelegate
     );
-    void RequestTestGPT(const FString& UserQuery, const FGPTSpatialContext& Context, FResponseTestGPTDelegate InDelegate);
+    void RequestGPT(const FString& UserQuery, const FGPTContext& Context, FResponseGPTDelegate InDelegate);
 
 private:
     static void LogNetwork(ENetworkLogType InLogType, const FString& URL, const FString& Body = "");

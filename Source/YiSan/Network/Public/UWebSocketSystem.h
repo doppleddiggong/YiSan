@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 /**
  * @file UWebSocketSystem.h
@@ -12,7 +12,7 @@
 #include "Macro.h"
 #include "UWebSocketSystem.generated.h"
 
-struct FGPTSpatialContext;
+struct FGPTContext;
 
 
 // --- 서버 -> 클라이언트 통신을 위한 델리게이트 ---
@@ -84,7 +84,7 @@ public:
 	void SendPing();
 
     UFUNCTION(BlueprintCallable, Category = "WebSocket")
-    void SendSpatialContext(const FGPTSpatialContext& Context);
+    void SendSpatialContext(const FGPTContext& Context);
 
 
 	UFUNCTION(BlueprintPure, Category = "WebSocket")

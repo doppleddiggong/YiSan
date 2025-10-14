@@ -96,6 +96,19 @@ bool UGameDataManager::GetBuildingData(EBuildingType Type, FBuildingData& Out) c
     PRINTLOG(TEXT("DataGetFail : %s"), *UEnum::GetValueAsString(Type) );
     return false;
 }
+
+FString UGameDataManager::GetBuildingDataName(EBuildingType Type) const
+{
+    if (!bLoadBuildingData)
+        return TEXT("");
+
+    if (const FBuildingData* Found = BuildingDataCache.Find(Type))
+        return Found->name;
+
+    return TEXT("");
+}
+
+
 #pragma endregion BUILDING_DATA
 
 #pragma region HIT_STOP

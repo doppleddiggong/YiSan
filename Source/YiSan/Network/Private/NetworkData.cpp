@@ -17,162 +17,7 @@
 #include "Serialization/JsonWriter.h"
 
 
-// --- GPT 공간 컨텍스트 ---
-
-void FGPTSpatialContextLocation::Reset()
-{
-    name.Reset();
-    x = 0.0f;
-    y = 0.0f;
-    z = 0.0f;
-    bValid = false;
-}
-
-void FGPTSpatialContextLocation::Set(const FString& InName, const FVector& InPosition)
-{
-    name = InName;
-    x = InPosition.X;
-    y = InPosition.Y;
-    z = InPosition.Z;
-    bValid = !InName.IsEmpty();
-}
-
-bool FGPTSpatialContextLocation::IsValid() const
-{
-    return bValid;
-}
-
-TSharedPtr<FJsonObject> FGPTSpatialContextLocation::ToJsonObject() const
-{
-    if (!IsValid())
-    {
-        return nullptr;
-    }
-
-    TSharedPtr<FJsonObject> JsonObject = MakeShared<FJsonObject>();
-    JsonObject->SetStringField(TEXT("name"), name);
-    JsonObject->SetNumberField(TEXT("x"), x);
-    JsonObject->SetNumberField(TEXT("y"), y);
-    JsonObject->SetNumberField(TEXT("z"), z);
-    return JsonObject;
-}
-
-void FGPTSpatialContextNearbyBuilding::Reset()
-{
-    name.Reset();
-    distance = 0.0f;
-    bValid = false;
-}
-
-void FGPTSpatialContextNearbyBuilding::Set(const FString& InName, float InDistanceMeters)
-{
-    name = InName;
-    distance = InDistanceMeters;
-    bValid = !InName.IsEmpty();
-}
-
-bool FGPTSpatialContextNearbyBuilding::IsValid() const
-{
-    return bValid;
-}
-
-TSharedPtr<FJsonObject> FGPTSpatialContextNearbyBuilding::ToJsonObject() const
-{
-    if (!IsValid())
-    {
-        return nullptr;
-    }
-
-    TSharedPtr<FJsonObject> JsonObject = MakeShared<FJsonObject>();
-    JsonObject->SetStringField(TEXT("name"), name);
-    JsonObject->SetNumberField(TEXT("distance"), distance);
-    return JsonObject;
-}
-
-void FGPTSpatialContext::Reset()
-{
-    current_location.Reset();
-    focused_object.Reset();
-    nearby_buildings.Reset();
-}
-
-bool FGPTSpatialContext::HasAnyData() const
-{
-    if (current_location.IsValid() || focused_object.IsValid())
-    {
-        return true;
-    }
-
-    for (const FGPTSpatialContextNearbyBuilding& Building : nearby_buildings)
-    {
-        if (Building.IsValid())
-        {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-void FGPTSpatialContext::AddNearbyBuilding(const FGPTSpatialContextNearbyBuilding& InBuilding)
-{
-    if (!InBuilding.IsValid())
-    {
-        return;
-    }
-
-    nearby_buildings.Add(InBuilding);
-}
-
-TSharedPtr<FJsonObject> FGPTSpatialContext::ToJsonObject() const
-{
-    if (!HasAnyData())
-    {
-        return nullptr;
-    }
-
-    TSharedPtr<FJsonObject> JsonObject = MakeShared<FJsonObject>();
-
-    if (current_location.IsValid())
-    {
-        if (TSharedPtr<FJsonObject> LocationJson = current_location.ToJsonObject())
-        {
-            JsonObject->SetObjectField(TEXT("current_location"), LocationJson);
-        }
-    }
-
-    if (focused_object.IsValid())
-    {
-        if (TSharedPtr<FJsonObject> FocusJson = focused_object.ToJsonObject())
-        {
-            JsonObject->SetObjectField(TEXT("focused_object"), FocusJson);
-        }
-    }
-
-    TArray<TSharedPtr<FJsonValue>> NearbyArray;
-    for (const FGPTSpatialContextNearbyBuilding& Building : nearby_buildings)
-    {
-        if (!Building.IsValid())
-        {
-            continue;
-        }
-
-        if (TSharedPtr<FJsonObject> BuildingJson = Building.ToJsonObject())
-        {
-            NearbyArray.Add(MakeShared<FJsonValueObject>(BuildingJson));
-        }
-    }
-
-    if (NearbyArray.Num() > 0)
-    {
-        JsonObject->SetArrayField(TEXT("nearby_buildings"), NearbyArray);
-        JsonObject->SetArrayField(TEXT("nearest_buildings"), NearbyArray);
-    }
-
-    return JsonObject;
-}
-
-bool FRequestTestGPT::ToJsonString(FString& OutJson) const
+bool FRequestGPT::ToJsonString(FString& OutJson) const
 {
     TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
 
@@ -293,7 +138,7 @@ void FResponseTestSTT::PrintData()
 
 // --- Test Endpoints Implementation ---
 
-void FResponseTestTTS::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+void FResponseTTS::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
 {
     if (!Response.IsValid())
     {
@@ -302,7 +147,7 @@ void FResponseTestTTS::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMo
     audio_data = Response->GetContent();
 }
 
-void FResponseTestTTS::PrintData()
+void FResponseTTS::PrintData()
 {
     FString OutputString;
     FJsonObjectConverter::UStructToJsonObjectString(
@@ -315,7 +160,7 @@ void FResponseTestTTS::PrintData()
 }
 
 
-void FResponseTestGPT::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+void FResponseGPT::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
 {
     if (!Response.IsValid())
     {
@@ -333,7 +178,7 @@ void FResponseTestGPT::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMo
     }
 }
 
-void FResponseTestGPT::PrintData()
+void FResponseGPT::PrintData()
 {
     FString OutputString;
     FJsonObjectConverter::UStructToJsonObjectString(

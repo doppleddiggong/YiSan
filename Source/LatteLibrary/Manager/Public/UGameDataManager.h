@@ -40,6 +40,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="MasterData|BuildingData")
 	bool GetBuildingData(EBuildingType Type, UPARAM(ref) FBuildingData& Out) const;
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category="MasterData|BuildingData")
+	FString GetBuildingDataName(EBuildingType Type) const;
 
 private:
 	void Clear_BuildingDataTable();

@@ -23,10 +23,10 @@ protected:
     
 private:
     void SendChatMessage(const FString& InMsg);
-    FGPTSpatialContext BuildSpatialContext() const;
+    FGPTContext BuildSpatialContext() const;
 
     UFUNCTION()
-    void OnResponseTestGPT(FResponseTestGPT& Response, bool bSuccess);
+    void OnResponseTestGPT(FResponseGPT& Response, bool bSuccess);
 
 protected:
     UPROPERTY(meta = (BindWidget), BlueprintReadWrite, Category = "Chat")

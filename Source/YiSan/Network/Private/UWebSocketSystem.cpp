@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "UWebSocketSystem.h"
 #include "NetworkData.h"
@@ -199,7 +199,7 @@ void UWebSocketSystem::SendStopRecordingMessage()
 	LogNetwork(TEXT("Sending stop_recording message"));
 	WebSocket->Send(TEXT("{\"type\":\"stop_recording\"}"));
 }
-void UWebSocketSystem::SendSpatialContext(const FGPTSpatialContext& Context)
+void UWebSocketSystem::SendSpatialContext(const FGPTContext& Context)
 {
     if (!IsConnected())
     {

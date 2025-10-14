@@ -4,12 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "IControllable.h"
-#include "EBuildingType.h"
 #include "NetworkData.h"
 #include "GameFramework/Character.h"
 #include "APlayerActor.generated.h"
-
-class ABuilding;
 
 UCLASS()
 class YISAN_API APlayerActor : public ACharacter, public IControllable
@@ -25,9 +22,8 @@ protected:
 public:
     virtual void Tick(float DeltaTime) override;
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-    
-public:
-    FGPTSpatialContext BuildSpatialContextSnapshot() const;
+
+    FGPTContext GetGPTContext() const;
     
 public:
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Owner")
@@ -49,6 +45,9 @@ public:
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Voice", meta=(AllowPrivateAccess="true"))
     TObjectPtr<class UVoiceConversationSystem> VoiceConversationSystem;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GPT", meta=(AllowPrivateAccess="true"))
+    TObjectPtr<class UGPTContextSystem> GPTContextSystem;
     
 public: // Control Interface
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
@@ -65,17 +64,5 @@ public: // Control Interface
     void Cmd_RecordStart() override;
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
     void Cmd_RecordEnd() override;
-
-private:
-    void CheckBuildingInView();
-    void UpdateSpatialContext(float DeltaTime);
-    
-    TWeakObjectPtr<ABuilding> FocusedBuildingActor;
-    FVector LastContextLocation = FVector::ZeroVector;
-    bool bHasLastContextLocation = false;
-    bool bSpatialContextDirty = true;
-    float SpatialContextElapsed = 0.0f;
-    
-    TOptional<EBuildingType> CurLookBuildingType;
 };
 

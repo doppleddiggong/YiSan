@@ -5,6 +5,7 @@
 #include "UBroadcastManger.h"
 #include "UHttpNetworkSystem.h"
 #include "APlayerActor.h"
+#include "FGPTContext.h"
 
 #include "Components/CanvasPanel.h"
 #include "Components/EditableTextBox.h"
@@ -74,25 +75,25 @@ void UMainWidget::OnMessageComitted(const FText& Text, ETextCommit::Type CommitM
 
 void UMainWidget::SendChatMessage(const FString& InMsg)
 {
-    FGPTSpatialContext SpatialContext = BuildSpatialContext();
+    FGPTContext SpatialContext = BuildSpatialContext();
 
     if (auto ReqNetwork = UHttpNetworkSystem::Get(GetWorld()))
     {
-        ReqNetwork->RequestTestGPT(InMsg, SpatialContext, FResponseTestGPTDelegate::CreateUObject(this, &UMainWidget::OnResponseTestGPT));
+        ReqNetwork->RequestGPT(InMsg, SpatialContext, FResponseGPTDelegate::CreateUObject(this, &UMainWidget::OnResponseTestGPT));
     }
 }
 
-FGPTSpatialContext UMainWidget::BuildSpatialContext() const
+FGPTContext UMainWidget::BuildSpatialContext() const
 {
     if (const APlayerActor* Player = Cast<APlayerActor>(GetOwningPlayerPawn()))
     {
-        return Player->BuildSpatialContextSnapshot();
+        return Player->GetGPTContext();
     }
 
-    return FGPTSpatialContext();
+    return FGPTContext();
 }
 
-void UMainWidget::OnResponseTestGPT(FResponseTestGPT& Response, bool bSuccess)
+void UMainWidget::OnResponseTestGPT(FResponseGPT& Response, bool bSuccess)
 {
     if (bSuccess)
     {
