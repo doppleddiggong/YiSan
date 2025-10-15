@@ -4,7 +4,9 @@
 #include "ABuildingContainer.h"
 
 #include "ABuilding.h"
+#include "Macro.h"
 #include "EngineUtils.h"
+#include "GameLogging.h"
 #include "UObject/Package.h"
 
 #if WITH_EDITOR
@@ -96,25 +98,14 @@ void ABuildingContainer::RefreshBuildingMap()
 	{
 		ABuilding* const Building = *It;
 		if (!IsValid(Building))
-		{
 			continue;
-		}
 
 		const EBuildingType BuildingType = Building->BuildingType;
 		if (BuildingType == EBuildingType::None)
-		{
 			continue;
-		}
 
 		if (const TObjectPtr<ABuilding>* const Existing = BuildingMap.Find(BuildingType))
-		{
-			UE_LOG(
-				LogTemp,
-				Warning,
-				TEXT("ABuildingContainer::RefreshBuildingMap - Duplicate building type %s found. Overwriting existing reference."),
-				*StaticEnum<EBuildingType>()->GetNameStringByValue(static_cast<int64>(BuildingType))
-			);
-		}
+			PRINTLOG( TEXT("Duplicate building type %s found"), *FString(ENUM_TO_NAME(EBuildingType, BuildingType) ));
 
 		BuildingMap.Add(BuildingType, Building);
 	}

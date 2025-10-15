@@ -41,3 +41,9 @@ DelegateType Tmp; \
 Tmp.BindUFunction(InObj, GET_FUNCTION_NAME_CHECKED(ClassType, FuncName)); \
 return Tmp; \
 } (Obj)
+
+#define ENUM_TO_NAME(EnumType, Value) \
+(StaticEnum<EnumType>()->GetNameStringByValue(static_cast<int64>(Value)))
+
+#define ENUM_TO_TEXT(EnumType, Value) \
+(StaticEnum<EnumType>()->GetDisplayNameTextByValue(static_cast<int64>(Value)))
