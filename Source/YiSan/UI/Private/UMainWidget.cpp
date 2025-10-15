@@ -2,7 +2,7 @@
 
 #include "UMainWidget.h"
 #include "GameLogging.h"
-#include "UBroadcastManger.h"
+#include "UBroadcastManager.h"
 #include "UHttpNetworkSystem.h"
 #include "APlayerActor.h"
 #include "FGPTContext.h"
@@ -102,7 +102,7 @@ void UMainWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
     {
         PRINTLOG(TEXT("OnResponseAsk: Received audio data size: %d"), Response.audio_data.Num());
 
-        if (auto EventManager = UBroadcastManger::Get(this))
+        if (auto EventManager = UBroadcastManager::Get(this))
             EventManager->SendToastMessage(Response.gpt_response_text);
 
         if (Response.audio_data.Num() == 0)

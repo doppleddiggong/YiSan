@@ -9,6 +9,11 @@
 #include "UVoiceConversationSystem.h"
 #include "UGPTContextSystem.h"
 #include "UHttpNetworkSystem.h"
+#include "TimerManager.h"
+#include "Kismet/GameplayStatics.h"
+#include "ABuilding.h"
+#include "UBroadcastManager.h"
+#include "UQuestManager.h"
 
 #include "Camera/CameraComponent.h"
 #include "YiSan/YiSan.h"
@@ -59,9 +64,22 @@ void APlayerActor::BeginPlay()
 
     VoiceConversationSystem->InitSystem(this);
     GPTContextSystem->InitSystem(this);
-   
+
+    BroadcastManager = UBroadcastManager::Get(GetWorld());
+    
+    GetWorldTimerManager().SetTimer(FindNearestBuildingTimerHandle, this, &APlayerActor::FindNearestBuilding, 1.0f, true);
+
+    // 퀘스트 초기화
+    UQuestManager::Get(GetWorld())->InitSystem();
+    
     // 서버야 일어나라.
     UHttpNetworkSystem::Get(GetWorld())->RequestHealth( FResponseHealthDelegate() );
+}
+
+void APlayerActor::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+    GetWorldTimerManager().ClearTimer(FindNearestBuildingTimerHandle);
+    Super::EndPlay(EndPlayReason);
 }
 
 void APlayerActor::Tick(float DeltaTime)
@@ -73,6 +91,33 @@ void APlayerActor::Tick(float DeltaTime)
 void APlayerActor::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
     Super::SetupPlayerInputComponent(PlayerInputComponent);
+}
+
+void APlayerActor::FindNearestBuilding()
+{
+    TArray<AActor*> FoundBuildings;
+    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ABuilding::StaticClass(), FoundBuildings);
+
+    ABuilding* NearestBuilding = nullptr;
+    float MinDistance = TNumericLimits<float>::Max();
+
+    for (AActor* Actor : FoundBuildings)
+    {
+        if (ABuilding* Building = Cast<ABuilding>(Actor))
+        {
+            float Distance = GetDistanceTo(Building);
+            if (Distance < MinDistance)
+            {
+                MinDistance = Distance;
+                NearestBuilding = Building;
+            }
+        }
+    }
+
+    if (NearestBuilding)
+    {
+        BroadcastManager->SendNearBuilding(NearestBuilding->BuildingType);
+    }
 }
 
 FGPTContext APlayerActor::GetGPTContext() const

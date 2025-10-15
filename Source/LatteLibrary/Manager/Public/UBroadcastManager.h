@@ -10,15 +10,15 @@
 #include "Macro.h"
 #include "EDamageType.h"
 #include "Subsystems/GameInstanceSubsystem.h"
-#include "UBroadcastManger.generated.h"
+#include "UBroadcastManager.generated.h"
 
 UCLASS()
-class LATTELIBRARY_API UBroadcastManger : public UGameInstanceSubsystem
+class LATTELIBRARY_API UBroadcastManager : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
 
 public:
-    DEFINE_SUBSYSTEM_GETTER_INLINE(UBroadcastManger);
+    DEFINE_SUBSYSTEM_GETTER_INLINE(UBroadcastManager);
 
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMessage, FString, Msg);
 	UPROPERTY(BlueprintAssignable, Category="Events")
@@ -54,13 +54,6 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendAudioSpectrum(float Spectrum);
-
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnFocusBuilding, EBuildingType, BuildingType);
-	UPROPERTY(BlueprintAssignable, Category="Events")
-	FOnFocusBuilding OnFocusBuilding;
-	
-	UFUNCTION(BlueprintCallable, Category="Events")
-	void SendFocusBuilding(EBuildingType BuildingType);
 	
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnContactBuilding, EBuildingType, BuildingType);
 	UPROPERTY(BlueprintAssignable, Category="Events")
@@ -69,7 +62,26 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendContactBuilding(EBuildingType BuildingType);
 		
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnUpdateQuest, EBuildingType, NewTarget);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnUpdateQuest OnUpdateQuest;
+	
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendUpdateQuest(EBuildingType BuildingType);
 
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNearBuilding, EBuildingType, BuildingType);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnNearBuilding OnNearBuilding;
+	
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendNearBuilding(EBuildingType BuildingType);
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnFocusBuilding, EBuildingType, BuildingType);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnFocusBuilding OnFocusBuilding;
+	
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendFocusBuilding(EBuildingType BuildingType);
 	
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDoorMessage, int32, GateID, bool, Open );
 	UPROPERTY(BlueprintAssignable, Category="Events")

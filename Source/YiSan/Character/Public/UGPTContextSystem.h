@@ -30,7 +30,7 @@ private:
 	UPROPERTY()
 	TObjectPtr<class APlayerActor> Owner;
 	UPROPERTY()
-	TObjectPtr<class UBroadcastManger> BroadcastManager;
+	TObjectPtr<class UBroadcastManager> BroadcastManager;
 	
 	UPROPERTY()
 	TOptional<EBuildingType> FocusBuildingType;

@@ -33,4 +33,13 @@ struct FBuildingData : public FTableRowBase
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString description;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString detailtitle;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString detaildesc;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString subtile;
 };

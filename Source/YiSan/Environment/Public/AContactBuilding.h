@@ -5,32 +5,29 @@
 #include "CoreMinimal.h"
 #include "EBuildingType.h"
 #include "GameFramework/Actor.h"
-#include "ABuilding.generated.h"
+#include "AContactBuilding.generated.h"
 
 UCLASS()
-class YISAN_API ABuilding : public AActor
+class YISAN_API AContactBuilding : public AActor
 {
 	GENERATED_BODY()
 
 public:
-	ABuilding();
+	AContactBuilding();
 
 protected:
 	virtual void BeginPlay() override;
 
-	UFUNCTION()
-	void OnUpdateQuest(EBuildingType InBuildingType);
-
 public:
 	virtual void Tick(float DeltaTime) override;
 
-public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	EBuildingType BuildingType = EBuildingType::Yeomingak;
 
-	UPROPERTY(EditAnywhere)
-	class UBoxComponent* boxcomp;
+	UPROPERTY(VisibleAnywhere)
+	class UBoxComponent* TriggerVolume;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	bool bIsNextTargetBuilding = false;
+protected:
+	UFUNCTION()
+	void OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 };
