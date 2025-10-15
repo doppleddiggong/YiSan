@@ -9,6 +9,8 @@
 #include "CoreMinimal.h"
 #include "Macro.h"
 #include "EDamageType.h"
+#include "EBuildingType.h"
+#include "EVoiceCommandType.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UBroadcastManager.generated.h"
 
@@ -88,7 +90,15 @@ public:
 	FOnDoorMessage OnDoorMessage;
 	
 	UFUNCTION(BlueprintCallable, Category="Events")
-	void SendOnDoorMessage(const int32 GateID, const bool Open);
+	void SendDoorMessage(const int32 GateID, const bool Open);
+
+	
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnExecVoiceCommand, EVoiceCommandType, Type);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnExecVoiceCommand OnExecVoiceCommand;
+	
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendExecVoiceCommand(const EVoiceCommandType Type);
 
 
 

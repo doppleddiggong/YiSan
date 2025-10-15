@@ -20,9 +20,9 @@ protected:
 
 	UFUNCTION()
 	void OnUpdateQuest(EBuildingType InBuildingType);
-
-public:
-	virtual void Tick(float DeltaTime) override;
+	
+	UFUNCTION()
+	void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -33,4 +33,12 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool bIsNextTargetBuilding = false;
+
+protected:
+	// 빛기둥 역할을 할 스태틱 메시 컴포넌트입니다.
+	UPROPERTY(VisibleAnywhere, Category = "Building")
+	TObjectPtr<class UStaticMeshComponent> LightPillarMesh;
+
+	UPROPERTY()
+	TObjectPtr<class UBroadcastManager> BroadcastManager;
 };

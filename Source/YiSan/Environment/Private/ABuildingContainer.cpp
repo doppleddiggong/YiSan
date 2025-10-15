@@ -7,12 +7,6 @@
 #include "Macro.h"
 #include "EngineUtils.h"
 #include "GameLogging.h"
-#include "UObject/Package.h"
-
-#if WITH_EDITOR
-#include "Editor.h"
-#include "ScopedTransaction.h"
-#endif
 
 ABuildingContainer::ABuildingContainer()
 {
@@ -28,59 +22,13 @@ void ABuildingContainer::BeginPlay()
 
 void ABuildingContainer::CollectBuildings()
 {
-#if WITH_EDITOR
-	const FScopedTransaction Transaction(
-		NSLOCTEXT("BuildingContainer", "CollectBuildings", "Collect Buildings From Level")
-	);
-	Modify();
-#endif
-
 	RefreshBuildingMap();
-
-#if WITH_EDITOR
-	if (UPackage* Package = GetOutermost())
-	{
-		Package->SetDirtyFlag(true);
-	}
-#endif
-}
-
-void ABuildingContainer::FocusBuilding(const EBuildingType InBuildingType)
-{
-#if WITH_EDITOR
-	if (!GEditor)
-	{
-		return;
-	}
-
-	ABuilding* Building = GetBuilding(InBuildingType);
-	if (!IsValid(Building))
-	{
-		RefreshBuildingMap();
-		Building = GetBuilding(InBuildingType);
-	}
-
-	if (!IsValid(Building))
-	{
-		return;
-	}
-
-	GEditor->SelectNone(false, true, false);
-	GEditor->SelectActor(Building, true, true, true);
-
-	TArray<AActor*> ActorsToFocus;
-	ActorsToFocus.Add(Building);
-	GEditor->MoveViewportCamerasToActor(ActorsToFocus, false);
-#endif
 }
 
 ABuilding* ABuildingContainer::GetBuilding(const EBuildingType InBuildingType) const
 {
 	if (const TObjectPtr<ABuilding>* const Found = BuildingMap.Find(InBuildingType))
-	{
 		return Found->Get();
-	}
-
 	return nullptr;
 }
 

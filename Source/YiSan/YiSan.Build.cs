@@ -21,10 +21,7 @@ public class YiSan : ModuleRules
 			"UMG",
 			"Slate",
 			"SlateCore",
-			"UnrealEd",
 		});
-
-						
 		
 		PublicDependencyModuleNames.AddRange(new string[]
 		{

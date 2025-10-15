@@ -248,3 +248,20 @@ USoundWaveProcedural* UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavDat
 	SoundWave->QueueAudio(RawData + DataStart, DataSize);
 	return SoundWave;
 }
+
+
+EVoiceCommandType UVoiceFunctionLibrary::GetVoiceCommand(const FString& CommandString)
+{
+	if (CommandString == TEXT("Cmd_Summon"))
+		return EVoiceCommandType::Cmd_Summon;
+	if (CommandString == TEXT("Cmd_OpenGate"))
+		return EVoiceCommandType::Cmd_OpenGate;
+	if (CommandString == TEXT("Cmd_QueryLocation"))
+		return EVoiceCommandType::Cmd_QueryLocation;
+	if (CommandString == TEXT("Cmd_ShowCurrentObjective"))
+		return EVoiceCommandType::Cmd_ShowCurrentObjective;
+	if (CommandString == TEXT("Cmd_QueryBuildingInfo"))
+		return EVoiceCommandType::Cmd_QueryBuildingInfo;
+
+	return EVoiceCommandType::None;
+}

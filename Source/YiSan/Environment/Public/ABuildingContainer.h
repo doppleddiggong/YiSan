@@ -22,11 +22,8 @@ public:
 	UFUNCTION(CallInEditor, Category="BuildingContainer", meta=(DevelopmentOnly, DisplayName="Collect Buildings"))
 	void CollectBuildings();
 
-	UFUNCTION(CallInEditor, Category="BuildingContainer", meta=(DevelopmentOnly, DisplayName="Focus Building"))
-	void FocusBuilding(EBuildingType InBuildingType);
-
 	UFUNCTION(BlueprintCallable, Category="BuildingContainer")
-	ABuilding* GetBuilding(EBuildingType InBuildingType) const;
+	class ABuilding* GetBuilding(EBuildingType InBuildingType) const;
 
 protected:
 	void RefreshBuildingMap();

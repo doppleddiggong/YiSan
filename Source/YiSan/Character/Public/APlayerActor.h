@@ -29,6 +29,10 @@ public:
 private:
     void FindNearestBuilding();
     FTimerHandle FindNearestBuildingTimerHandle;
+
+
+    UFUNCTION()
+    void OnExecVoiceCommand(EVoiceCommandType InType);
     
 public:
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Owner")

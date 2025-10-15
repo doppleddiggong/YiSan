@@ -150,17 +150,25 @@ void UVoiceConversationSystem::OnResponseAsk(FResponseAsk& Response, bool bSucce
 	{
 		PRINTLOG(TEXT("OnResponseAsk: Received audio data size: %d"), Response.audio_data.Num());
 
-		BroadcastManager->SendToastMessage(Response.gpt_response_text);
-
-		if (Response.audio_data.Num() == 0)
+		auto VoiceCommand = UVoiceFunctionLibrary::GetVoiceCommand(Response.gpt_response_text);
+		if ( VoiceCommand != EVoiceCommandType::None )
 		{
-			PRINTLOG(TEXT("OnResponseAsk: Audio data is empty. Cannot play TTS audio."));
-			return;
+			BroadcastManager->SendExecVoiceCommand( VoiceCommand );
 		}
+		else
+		{
+			BroadcastManager->SendToastMessage(Response.gpt_response_text);
+
+			if (Response.audio_data.Num() == 0)
+			{
+				PRINTLOG(TEXT("OnResponseAsk: Audio data is empty. Cannot play TTS audio."));
+				return;
+			}
 		
-		auto SoundWave = UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData(Response.audio_data);
-		if ( IsValid(SoundWave))
-			UGameplayStatics::PlaySound2D(this, SoundWave);
+			auto SoundWave = UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData(Response.audio_data);
+			if ( IsValid(SoundWave))
+				UGameplayStatics::PlaySound2D(this, SoundWave);
+		}
 	}
 	else
 	{

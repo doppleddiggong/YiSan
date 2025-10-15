@@ -11,7 +11,7 @@
 
 #define HITSTOP_PATH    TEXT("/Game/CustomContents/MasterData/DT_HitStop.DT_HitStop")
 #define KNOCKBACK_PATH  TEXT("/Game/CustomContents/MasterData/DT_Knockback.DT_Knockback")
-#define BUILDINGDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_BuildingData.DT_BuildingData")
+#define BUILDINGDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_Building.DT_Building")
 #define CHARACTERINFO_PATH  TEXT("/Game/CustomContents/MasterData/DT_CharacterInfo.DT_CharacterInfo")
 #define CHARACTERASSET_PATH  TEXT("/Game/CustomContents/MasterData/DT_CharacterAsset.DT_CharacterAsset")
 

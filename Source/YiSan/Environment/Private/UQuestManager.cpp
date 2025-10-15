@@ -25,7 +25,6 @@ void UQuestManager::InitSystem()
     
     BroadcastManager = UBroadcastManager::Get(GetWorld());
     BroadcastManager->OnContactBuilding.AddDynamic(this, &UQuestManager::OnContactBuilding);
-    BroadcastManager->SendUpdateQuest(CurTarget);    
 }
 
 

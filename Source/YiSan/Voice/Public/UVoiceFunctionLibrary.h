@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "EVoiceCommandType.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "UVoiceFunctionLibrary.generated.h"
 
@@ -30,4 +31,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Voice|Utility")
 	static USoundWaveProcedural* CreateProceduralSoundWaveFromWavData(const TArray<uint8>& AudioData);
+
+	UFUNCTION(BlueprintCallable, Category = "Voice|Utility")
+	static EVoiceCommandType GetVoiceCommand(const FString& CommandString);
 };

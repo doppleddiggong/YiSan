@@ -50,11 +50,15 @@ void UBroadcastManager::SendFocusBuilding(EBuildingType BuildingType)
 	OnFocusBuilding.Broadcast(BuildingType);	
 }
 
-void UBroadcastManager::SendOnDoorMessage(const int32 GateID, const bool Open)
+void UBroadcastManager::SendDoorMessage(const int32 GateID, const bool Open)
 {
 	OnDoorMessage.Broadcast(GateID, Open);	
 }
 
+void UBroadcastManager::SendExecVoiceCommand(const EVoiceCommandType Type)
+{
+	OnExecVoiceCommand.Broadcast(Type);	
+}
 
 void UBroadcastManager::SendHitStop(AActor* Target, const EDamageType Type)
 {

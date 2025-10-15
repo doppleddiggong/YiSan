@@ -24,5 +24,5 @@ enum class EBuildingType : uint8
 	Unhangak			UMETA(DisplayName = "운한각"),
 	Jaesil				UMETA(DisplayName = "재실"),
 
-	Max
+	Max				UMETA(Hidden)
 };

@@ -66,6 +66,7 @@ void APlayerActor::BeginPlay()
     GPTContextSystem->InitSystem(this);
 
     BroadcastManager = UBroadcastManager::Get(GetWorld());
+    BroadcastManager->OnExecVoiceCommand.AddDynamic(this, &APlayerActor::OnExecVoiceCommand);
     
     GetWorldTimerManager().SetTimer(FindNearestBuildingTimerHandle, this, &APlayerActor::FindNearestBuilding, 1.0f, true);
 
@@ -74,6 +75,20 @@ void APlayerActor::BeginPlay()
     
     // 서버야 일어나라.
     UHttpNetworkSystem::Get(GetWorld())->RequestHealth( FResponseHealthDelegate() );
+
+
+    // 너도 나도 다 begin에서 일을 하려고 하니.
+    // 게임 실행이라는 의미에서 플레이어가 1초후에 시작한다 같은 이벤트로 처리하자
+    // 나중에 GameStart 이벤트가 생기면 그때 다시 정리하자.
+    // 아직은 매직코드
+    FTimerHandle TimerHandle_DelayedSend;
+    GetWorld()->GetTimerManager().SetTimer(TimerHandle_DelayedSend,
+        [this]()
+        {
+            if (BroadcastManager)
+                BroadcastManager->SendUpdateQuest( UQuestManager::Get(GetWorld())->GetCurrentTarget() );
+        }, 1.0f, false
+    );
 }
 
 void APlayerActor::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -169,3 +184,7 @@ void APlayerActor::Cmd_RecordEnd_Implementation()
     VoiceConversationSystem->StopRecording();
 }
 
+void APlayerActor::OnExecVoiceCommand(EVoiceCommandType InType)
+{
+    PRINT_STRING(TEXT("%s"), *FString( ENUM_TO_NAME(EVoiceCommandType, InType)));
+}
