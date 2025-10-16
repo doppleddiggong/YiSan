@@ -65,6 +65,8 @@ public class YiSan : ModuleRules
 			Path.Combine(ModuleDirectory, "UI", "Public"),
 			Path.Combine(ModuleDirectory, "Voice", "Public"),
 			Path.Combine(ModuleDirectory, "Network", "Public"),
+			Path.Combine(ModuleDirectory, "Mass", "Public"),
+
 		});
 	}
 }
