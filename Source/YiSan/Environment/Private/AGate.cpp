@@ -2,7 +2,7 @@
 
 #include "AGate.h"
 
-#include "UBroadcastManger.h"
+#include "UBroadcastManager.h"
 
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -77,7 +77,7 @@ void AGate::BeginPlay()
     Super::BeginPlay();
 
 
-    if (auto EventManager = UBroadcastManger::Get(this))
+    if (auto EventManager = UBroadcastManager::Get(this))
     {
         EventManager->OnDoorMessage.AddDynamic(this, &AGate::OnDoorMessage);
     }

@@ -11,7 +11,7 @@
 #include "HttpModule.h"
 #include "FHttpMultipartFormData.h"
 #include "JsonObjectConverter.h"
-#include "UBroadcastManger.h"
+#include "UBroadcastManager.h"
 #include "Interfaces/IHttpRequest.h"
 #include "Interfaces/IHttpResponse.h"
 
@@ -54,7 +54,11 @@ const TCHAR* UHttpNetworkSystem::GetLogPrefix(ENetworkLogType InLogType)
 void UHttpNetworkSystem::AddNetworkWaitCount(int InValue)
 {
     NetworkWaitCount += InValue;
-    UBroadcastManger::Get(GetWorld())->SendNetworkWaitCount(NetworkWaitCount);
+    
+    if ( auto BroadcastManager = UBroadcastManager::Get(GetWorld()) )
+    {
+        BroadcastManager->SendNetworkWaitCount(NetworkWaitCount);
+    }
 }
 
 void UHttpNetworkSystem::RequestHealth( FResponseHealthDelegate InDelegate )

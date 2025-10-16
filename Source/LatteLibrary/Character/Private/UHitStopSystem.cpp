@@ -8,7 +8,7 @@
 #include "UHitStopSystem.h"
 
 #include "ALatteGameCharacter.h"
-#include "UBroadcastManger.h"
+#include "UBroadcastManager.h"
 #include "UGameDataManager.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
@@ -30,7 +30,7 @@ void UHitStopSystem::InitSystem(ALatteGameCharacter* InOwner )
 	MeshComp = Owner->GetMesh();
 	MoveComp = Owner->GetCharacterMovement();
 
-	if (auto EventManager = UBroadcastManger::Get(this))
+	if (auto EventManager = UBroadcastManager::Get(this))
 	{
 		EventManager->OnHitStop.AddDynamic(this, &UHitStopSystem::OnHitStop);
 	}

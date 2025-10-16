@@ -11,7 +11,7 @@
 #include "UGameDataManager.h"
 #include "FKnockbackData.h"
 #include "TimerManager.h"
-#include "UBroadcastManger.h"
+#include "UBroadcastManager.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 static FORCEINLINE float Clamp01(float X){ return FMath::Clamp(X, 0.f, 1.f); }
@@ -40,7 +40,7 @@ void UKnockbackSystem::InitSystem(ALatteGameCharacter* InOwner)
     MeshComp = Owner->GetMesh();
     MoveComp = Owner->GetCharacterMovement();
 
-	if (auto EventManager = UBroadcastManger::Get(this))
+	if (auto EventManager = UBroadcastManager::Get(this))
 	{
 		EventManager->OnKnockback.AddDynamic(this, &UKnockbackSystem::OnKnockback);
 	}

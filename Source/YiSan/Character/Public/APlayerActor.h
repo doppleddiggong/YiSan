@@ -18,12 +18,21 @@ public:
 
 protected:
     virtual void BeginPlay() override;
+    virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 public:
     virtual void Tick(float DeltaTime) override;
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
     FGPTContext GetGPTContext() const;
+
+private:
+    void FindNearestBuilding();
+    FTimerHandle FindNearestBuildingTimerHandle;
+
+
+    UFUNCTION()
+    void OnExecVoiceCommand(EVoiceCommandType InType);
     
 public:
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Owner")
@@ -48,6 +57,10 @@ public:
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GPT", meta=(AllowPrivateAccess="true"))
     TObjectPtr<class UGPTContextSystem> GPTContextSystem;
+
+    UPROPERTY()
+    TObjectPtr<class UBroadcastManager> BroadcastManager;
+    
     
 public: // Control Interface
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")

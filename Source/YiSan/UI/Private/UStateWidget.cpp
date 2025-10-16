@@ -2,7 +2,7 @@
 
 #include "UStateWidget.h"
 
-#include "GameLogging.h"
+#include "UQuestManager.h"
 #include "Blueprint/WidgetTree.h"
 #include "Components/HorizontalBoxSlot.h"
 #include "Components/Image.h"
@@ -13,23 +13,37 @@
 #include "Misc/DateTime.h"
 #include "Misc/ScopeLock.h"
 #include "TimerManager.h"
-#include "UBroadcastManger.h"
+#include "UBroadcastManager.h"
+#include "UGameDataManager.h"
 
 void UStateWidget::NativeConstruct()
 {
     Super::NativeConstruct();
 
+    QuestDisplayType = EBuildingType::None;
+
     LoadingSpinner->SetVisibility(ESlateVisibility::Hidden);
     SpectrumProgressBar->SetVisibility(ESlateVisibility::Hidden);
+    
+    QuestTargetText->SetText(FText::GetEmpty());
+    QuestTargetText->SetVisibility(ESlateVisibility::Hidden);
+
+    NearTargetText->SetText(FText::GetEmpty());
+    NearTargetText->SetVisibility(ESlateVisibility::Hidden);
+
+    FocusTargetText->SetText(FText::GetEmpty());
+    FocusTargetText->SetVisibility(ESlateVisibility::Hidden);
     
     if (UWorld* World = GetWorld())
         World->GetTimerManager().SetTimer(UpdateTimerHandle, this, &UStateWidget::RefreshTimeText, TimeUpdateInterval, true);
 
-    if ( auto EventManager = UBroadcastManger::Get(GetWorld()))
+    if ( auto EventManager = UBroadcastManager::Get(GetWorld()))
     {
         EventManager->OnNetworkWaitCount.AddDynamic(this, &UStateWidget::OnNetworkWaitCount);
         EventManager->OnAudioCapture.AddDynamic(this, &UStateWidget::OnAudioCapture);
         EventManager->OnAudioSpectrum.AddDynamic(this, &UStateWidget::OnAudioSpectrum);
+        EventManager->OnUpdateQuest.AddDynamic(this, &UStateWidget::OnUpdateQuest);
+        EventManager->OnNearBuilding.AddDynamic(this, &UStateWidget::OnNearBuilding);
         EventManager->OnFocusBuilding.AddDynamic(this, &UStateWidget::OnFocusBuilding);
     }
 }
@@ -96,14 +110,34 @@ void UStateWidget::OnAudioSpectrum(float Spectrum)
     SpectrumDisplayValue = Spectrum;
 }
 
+
+
+void UStateWidget::OnUpdateQuest(EBuildingType InBuildingType)
+{
+    QuestDisplayType = InBuildingType;
+
+    if (InBuildingType == EBuildingType::None)
+    {
+        QuestTargetText->SetText(FText::GetEmpty());
+        QuestTargetText->SetVisibility(ESlateVisibility::Hidden);
+        return;
+    }
+
+    auto BuildingName  = UGameDataManager::Get(GetWorld())->GetBuildingDataName(InBuildingType);
+    QuestTargetText->SetText(FText::FromString(BuildingName));
+    QuestTargetText->SetVisibility(ESlateVisibility::Visible);
+}
+
+void UStateWidget::OnNearBuilding(EBuildingType InBuildingType)
+{
+    auto BuildingName  = UGameDataManager::Get(GetWorld())->GetBuildingDataName(InBuildingType);
+    NearTargetText->SetText(FText::FromString(BuildingName));
+    NearTargetText->SetVisibility(ESlateVisibility::Visible);
+}
+
 void UStateWidget::OnFocusBuilding(EBuildingType InBuildingType)
 {
-    if ( BuildingType == InBuildingType )
-        return;
-
-    BuildingType = InBuildingType;
-    
-    FText DisplayName = StaticEnum<EBuildingType>()->GetDisplayNameTextByValue(static_cast<int64>(BuildingType));
-    PRINT_STRING(TEXT("%s"), *DisplayName.ToString());
+    auto BuildingName  = UGameDataManager::Get(GetWorld())->GetBuildingDataName(InBuildingType);
+    FocusTargetText->SetText(FText::FromString(BuildingName));
+    FocusTargetText->SetVisibility(ESlateVisibility::Visible);
 }
-	

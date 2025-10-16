@@ -6,7 +6,7 @@
 #include "Json.h"
 #include "JsonUtilities.h"
 #include "NetworkLog.h"
-#include "UBroadcastManger.h"
+#include "UBroadcastManager.h"
 #include "Misc/Base64.h"
 
 // --- Subsystem Lifecycle ---
@@ -293,7 +293,7 @@ void UWebSocketSystem::OnMessage_Native(const FString& InMessage)
 			LogNetwork(FString::Printf(TEXT("GPT Response: %s"), *GPTResponse));
 			OnAgentResponse.Broadcast(GPTResponse);
 
-			if (auto EventManager = UBroadcastManger::Get(this))
+			if (auto EventManager = UBroadcastManager::Get(this))
 				EventManager->SendToastMessage(GPTResponse);
 		}
 	}

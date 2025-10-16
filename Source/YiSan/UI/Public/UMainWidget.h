@@ -34,5 +34,9 @@ protected:
     
     UPROPERTY(meta = (BindWidget), BlueprintReadWrite, Category = "Chat")
     class UEditableTextBox* InputText;
+
+private:
+    UPROPERTY()
+    TObjectPtr<class UBroadcastManager> BroadcastManager;
 };
 

@@ -2,7 +2,7 @@
 
 #include "UDialogWidget.h"
 #include "GameLogging.h"
-#include "UBroadcastManger.h"
+#include "UBroadcastManager.h"
 #include "UDelayTaskManager.h"
 #include "Components/Border.h"
 #include "Components/TextBlock.h"
@@ -11,7 +11,7 @@ void UDialogWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	if (auto EventManager = UBroadcastManger::Get(this))
+	if (auto EventManager = UBroadcastManager::Get(this))
 		EventManager->OnToastMessage.AddDynamic(this, &UDialogWidget::ShowDialog);
 
 	DialogBorder->SetVisibility(ESlateVisibility::Hidden);

@@ -4,7 +4,7 @@
 
 #include "GameLogging.h"
 #include "APlayerActor.h"
-#include "UBroadcastManger.h"
+#include "UBroadcastManager.h"
 #include "UHttpNetworkSystem.h"
 #include "UVoiceFunctionLibrary.h"
 #include "Kismet/GameplayStatics.h"
@@ -19,7 +19,7 @@ void UVoiceConversationSystem::InitSystem(APlayerActor* InOwner)
 {
 	this->Owner = InOwner;
 
-	BroadcastManager = UBroadcastManger::Get(GetWorld());
+	BroadcastManager = UBroadcastManager::Get(GetWorld());
 }
 
 void UVoiceConversationSystem::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -113,7 +113,7 @@ void UVoiceConversationSystem::StopRecording()
 	AudioCapture->StopStream();
 	AudioCapture->CloseStream();
 
-	UBroadcastManger::Get(GetWorld())->SendAudioCapture(false);
+	BroadcastManager->SendAudioCapture(false);
 	
 	WAVData = UVoiceFunctionLibrary::ConvertPCM2WAV(PCMData, LastSampleRate, LastNumChannels, 16);
 	LastRecordedFilePath = UVoiceFunctionLibrary::SaveWavToFile(WAVData);
@@ -150,18 +150,25 @@ void UVoiceConversationSystem::OnResponseAsk(FResponseAsk& Response, bool bSucce
 	{
 		PRINTLOG(TEXT("OnResponseAsk: Received audio data size: %d"), Response.audio_data.Num());
 
-		if (auto EventManager = UBroadcastManger::Get(this))
-			EventManager->SendToastMessage(Response.gpt_response_text);
-
-		if (Response.audio_data.Num() == 0)
+		auto VoiceCommand = UVoiceFunctionLibrary::GetVoiceCommand(Response.gpt_response_text);
+		if ( VoiceCommand != EVoiceCommandType::None )
 		{
-			PRINTLOG(TEXT("OnResponseAsk: Audio data is empty. Cannot play TTS audio."));
-			return;
+			BroadcastManager->SendExecVoiceCommand( VoiceCommand );
 		}
+		else
+		{
+			BroadcastManager->SendToastMessage(Response.gpt_response_text);
+
+			if (Response.audio_data.Num() == 0)
+			{
+				PRINTLOG(TEXT("OnResponseAsk: Audio data is empty. Cannot play TTS audio."));
+				return;
+			}
 		
-		auto SoundWave = UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData(Response.audio_data);
-		if ( IsValid(SoundWave))
-			UGameplayStatics::PlaySound2D(this, SoundWave);
+			auto SoundWave = UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData(Response.audio_data);
+			if ( IsValid(SoundWave))
+				UGameplayStatics::PlaySound2D(this, SoundWave);
+		}
 	}
 	else
 	{

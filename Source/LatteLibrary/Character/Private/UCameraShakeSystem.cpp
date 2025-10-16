@@ -7,7 +7,7 @@
 #include "UCameraShakeSystem.h"
 #include "ALatteGameCharacter.h"
 #include "FPadFeedbackData.h"
-#include "UBroadcastManger.h"
+#include "UBroadcastManager.h"
 
 #define SMALL_CAMERASHAKE_PATH      TEXT("/Game/CustomContents/Blueprints/CameraShake/BP_SmallCameraShake.BP_SmallCameraShake_C")
 #define NORMAL_CAMERASHAKE_PATH     TEXT("/Game/CustomContents/Blueprints/CameraShake/BP_NormalCameraShake.BP_NormalCameraShake_C")
@@ -47,7 +47,7 @@ void UCameraShakeSystem::InitSystem(ALatteGameCharacter* InOwner)
 {
 	this->Owner = InOwner;
 
-	if ( auto EventManager = UBroadcastManger::Get(GetWorld()))
+	if ( auto EventManager = UBroadcastManager::Get(GetWorld()))
 	{
 		EventManager->OnCameraShake.AddDynamic(this, &UCameraShakeSystem::OnCameraShake);
 		EventManager->OnForceCameraShake.AddDynamic(this, &UCameraShakeSystem::OnForceCameraShake);

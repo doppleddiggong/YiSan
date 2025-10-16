@@ -22,8 +22,6 @@ public class YiSan : ModuleRules
 			"Slate",
 			"SlateCore",
 		});
-
-						
 		
 		PublicDependencyModuleNames.AddRange(new string[]
 		{
