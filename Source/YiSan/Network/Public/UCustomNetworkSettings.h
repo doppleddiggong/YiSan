@@ -34,7 +34,10 @@ struct FServerConfig
 
 	FString GetFullUrl(const FString& Endpoint) const
 	{
-		return FString::Printf(TEXT("%s:%d%s"), *BaseUrl, Port, *Endpoint);
+		if ( Port == 443 || Port == 0 )
+			return FString::Printf(TEXT("%s%s"), *BaseUrl, *Endpoint);
+		else
+			return FString::Printf(TEXT("%s:%d%s"), *BaseUrl, Port, *Endpoint);
 	}
 };
 
