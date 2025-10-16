@@ -77,5 +77,17 @@ public: // Control Interface
     void Cmd_RecordStart() override;
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
     void Cmd_RecordEnd() override;
+
+
+    // 확인용
+
+    UFUNCTION()
+    void OnTestPopupPressed();
+
+    UFUNCTION()
+    void OnPopupCheckCompleted();
+    
+    int32 PressCount;
+    int32 TargetPressCount;
 };
 

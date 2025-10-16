@@ -21,8 +21,11 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "YiSan/MAP/UPopup.h"
 
 #define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_Main.WBP_Main_C")
+
+class UUPopup;
 
 APlayerActor::APlayerActor()
 {
@@ -48,6 +51,10 @@ APlayerActor::APlayerActor()
     
     VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
     GPTContextSystem = CreateDefaultSubobject<UGPTContextSystem>(TEXT("GPTContextSystem"));
+
+    //확인용
+    PressCount = 0;
+    TargetPressCount = 4;
 }
 
 void APlayerActor::BeginPlay()
@@ -106,6 +113,7 @@ void APlayerActor::Tick(float DeltaTime)
 void APlayerActor::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
     Super::SetupPlayerInputComponent(PlayerInputComponent);
+    PlayerInputComponent->BindKey(EKeys::T, IE_Pressed, this, &APlayerActor::OnTestPopupPressed);
 }
 
 void APlayerActor::FindNearestBuilding()
@@ -187,4 +195,48 @@ void APlayerActor::Cmd_RecordEnd_Implementation()
 void APlayerActor::OnExecVoiceCommand(EVoiceCommandType InType)
 {
     PRINT_STRING(TEXT("%s"), *FString( ENUM_TO_NAME(EVoiceCommandType, InType)));
+}
+
+
+
+void APlayerActor::OnTestPopupPressed()
+{
+    // 누를 때마다 카운트 증가
+    PressCount++;
+
+    int32 NumBuildingTypes = static_cast<int32>(EBuildingType::Max);
+
+    int32 Enumindex = (PressCount -1 )% NumBuildingTypes;
+    EBuildingType BuildingToBrodcast = static_cast<EBuildingType>(Enumindex);
+   
+
+    // 팝업 브로드캐스트 테스트
+    if (UUPopup* Popup = UUPopup::Get(GetWorld()))
+    {
+        Popup->BroadcastBuildingEvent(BuildingToBrodcast);
+    }
+
+    // 4번 누르면 완료 처리
+    if (PressCount >= TargetPressCount)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("4번 눌렀니"));
+
+        // 원하는 동작 넣기 (예시: 특정 UI 표시 또는 퀘스트 완료)
+        OnPopupCheckCompleted();
+
+        // 카운트 초기화
+        PressCount = 0;
+    }
+}
+
+void APlayerActor::OnPopupCheckCompleted()
+{
+    // 4번 누르면 실행될 로직
+    UE_LOG(LogTemp, Warning, TEXT("4번끝"));
+
+    // 예시로 팝업 띄우기 or 퀘스트 갱신 가능
+    if (UUPopup* Popup = UUPopup::Get(GetWorld()))
+    {
+        Popup->BroadcastBuildingEvent(EBuildingType::Yeomingak);
+    }
 }
