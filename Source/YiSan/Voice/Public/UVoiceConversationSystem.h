@@ -44,7 +44,7 @@ private:
 	UPROPERTY()
 	TObjectPtr<class APlayerActor> Owner;
 	UPROPERTY()
-	TObjectPtr<class UBroadcastManger> BroadcastManager;
+	TObjectPtr<class UBroadcastManager> BroadcastManager;
 
 
 	// --- 녹음 관련 변수 ---

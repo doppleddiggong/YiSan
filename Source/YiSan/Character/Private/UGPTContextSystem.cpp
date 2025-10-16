@@ -10,7 +10,7 @@
 
 #include "EngineUtils.h"
 #include "GameLogging.h"
-#include "UBroadcastManger.h"
+#include "UBroadcastManager.h"
 
 #include "Camera/CameraComponent.h"
 #include "YiSan/YiSan.h"
@@ -24,7 +24,7 @@ void UGPTContextSystem::InitSystem(APlayerActor* InOwner)
 {
     this->Owner = InOwner;
 
-    BroadcastManager = UBroadcastManger::Get(GetWorld());
+    BroadcastManager = UBroadcastManager::Get(GetWorld());
 }
 
 void UGPTContextSystem::TickComponent(float DeltaTime, ELevelTick TickType,

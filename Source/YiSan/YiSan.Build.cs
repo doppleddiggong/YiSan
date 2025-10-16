@@ -23,8 +23,6 @@ public class YiSan : ModuleRules
 			"SlateCore",
 			"MediaAssets",
 		});
-
-						
 		
 		PublicDependencyModuleNames.AddRange(new string[]
 		{

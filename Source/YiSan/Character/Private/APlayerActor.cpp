@@ -9,6 +9,11 @@
 #include "UVoiceConversationSystem.h"
 #include "UGPTContextSystem.h"
 #include "UHttpNetworkSystem.h"
+#include "TimerManager.h"
+#include "Kismet/GameplayStatics.h"
+#include "ABuilding.h"
+#include "UBroadcastManager.h"
+#include "UQuestManager.h"
 
 #include "Camera/CameraComponent.h"
 #include "YiSan/YiSan.h"
@@ -59,9 +64,37 @@ void APlayerActor::BeginPlay()
 
     VoiceConversationSystem->InitSystem(this);
     GPTContextSystem->InitSystem(this);
-   
+
+    BroadcastManager = UBroadcastManager::Get(GetWorld());
+    BroadcastManager->OnExecVoiceCommand.AddDynamic(this, &APlayerActor::OnExecVoiceCommand);
+    
+    GetWorldTimerManager().SetTimer(FindNearestBuildingTimerHandle, this, &APlayerActor::FindNearestBuilding, 1.0f, true);
+
+    // 퀘스트 초기화
+    UQuestManager::Get(GetWorld())->InitSystem();
+    
     // 서버야 일어나라.
     UHttpNetworkSystem::Get(GetWorld())->RequestHealth( FResponseHealthDelegate() );
+
+
+    // 너도 나도 다 begin에서 일을 하려고 하니.
+    // 게임 실행이라는 의미에서 플레이어가 1초후에 시작한다 같은 이벤트로 처리하자
+    // 나중에 GameStart 이벤트가 생기면 그때 다시 정리하자.
+    // 아직은 매직코드
+    FTimerHandle TimerHandle_DelayedSend;
+    GetWorld()->GetTimerManager().SetTimer(TimerHandle_DelayedSend,
+        [this]()
+        {
+            if (BroadcastManager)
+                BroadcastManager->SendUpdateQuest( UQuestManager::Get(GetWorld())->GetCurrentTarget() );
+        }, 1.0f, false
+    );
+}
+
+void APlayerActor::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+    GetWorldTimerManager().ClearTimer(FindNearestBuildingTimerHandle);
+    Super::EndPlay(EndPlayReason);
 }
 
 void APlayerActor::Tick(float DeltaTime)
@@ -73,6 +106,33 @@ void APlayerActor::Tick(float DeltaTime)
 void APlayerActor::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
     Super::SetupPlayerInputComponent(PlayerInputComponent);
+}
+
+void APlayerActor::FindNearestBuilding()
+{
+    TArray<AActor*> FoundBuildings;
+    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ABuilding::StaticClass(), FoundBuildings);
+
+    ABuilding* NearestBuilding = nullptr;
+    float MinDistance = TNumericLimits<float>::Max();
+
+    for (AActor* Actor : FoundBuildings)
+    {
+        if (ABuilding* Building = Cast<ABuilding>(Actor))
+        {
+            float Distance = GetDistanceTo(Building);
+            if (Distance < MinDistance)
+            {
+                MinDistance = Distance;
+                NearestBuilding = Building;
+            }
+        }
+    }
+
+    if (NearestBuilding)
+    {
+        BroadcastManager->SendNearBuilding(NearestBuilding->BuildingType);
+    }
 }
 
 FGPTContext APlayerActor::GetGPTContext() const
@@ -124,3 +184,7 @@ void APlayerActor::Cmd_RecordEnd_Implementation()
     VoiceConversationSystem->StopRecording();
 }
 
+void APlayerActor::OnExecVoiceCommand(EVoiceCommandType InType)
+{
+    PRINT_STRING(TEXT("%s"), *FString( ENUM_TO_NAME(EVoiceCommandType, InType)));
+}
