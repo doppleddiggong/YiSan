@@ -244,20 +244,20 @@ void UWebSocketSystem::OnConnected_Native()
 {
 	LogNetwork(TEXT("Connection successful."));
 	bIsExpectingAudio = false;
-	OnConnected.Broadcast();
+	// OnConnected.Broadcast();
 }
 
-void UWebSocketSystem::OnConnectionError_Native(const FString& Error)
+void UWebSocketSystem::OnConnectionError_Native(const FString& InErrorMessage)
 {
-	LogNetwork(FString::Printf(TEXT("Connection failed: %s"), *Error));
-	OnConnectionError.Broadcast(Error);
+	LogNetwork(FString::Printf(TEXT("Connection failed: %s"), *InErrorMessage));
+	// OnConnectionError.Broadcast(InErrorMessage);
 }
 
 void UWebSocketSystem::OnClosed_Native(int32 StatusCode, const FString& Reason, bool bWasClean)
 {
 	LogNetwork(FString::Printf(TEXT("Connection closed. Code: %d, Reason: %s, Clean: %s"), StatusCode, *Reason, bWasClean ? TEXT("true") : TEXT("false")));
 	bIsExpectingAudio = false;
-	OnClosed.Broadcast(StatusCode, Reason, bWasClean);
+	// OnClosed.Broadcast(StatusCode, Reason, bWasClean);
 }
 
 void UWebSocketSystem::OnMessage_Native(const FString& InMessage)
@@ -291,7 +291,7 @@ void UWebSocketSystem::OnMessage_Native(const FString& InMessage)
 		if (JsonObject->TryGetStringField(TEXT("text"), GPTResponse))
 		{
 			LogNetwork(FString::Printf(TEXT("GPT Response: %s"), *GPTResponse));
-			OnAgentResponse.Broadcast(GPTResponse);
+			// OnAgentResponse.Broadcast(GPTResponse);
 
 			if (auto EventManager = UBroadcastManager::Get(this))
 				EventManager->SendToastMessage(GPTResponse);
@@ -302,7 +302,7 @@ void UWebSocketSystem::OnMessage_Native(const FString& InMessage)
 		LogNetwork(FString::Printf(TEXT("Received message: %s"), *InMessage));
 		
 		bIsExpectingAudio = true;
-		OnAudioStart.Broadcast();
+		// OnAudioStart.Broadcast();
 	}
 	else if (MessageType == TEXT("audio_data"))
 	{
@@ -315,7 +315,7 @@ void UWebSocketSystem::OnMessage_Native(const FString& InMessage)
 			if (FBase64::Decode(Base64Data, DecodedAudio))
 			{
 				LogNetwork(FString::Printf(TEXT("Received audio_data (%d bytes decoded)"), DecodedAudio.Num()));
-				OnAudioDataReceived.Broadcast(DecodedAudio);
+				// OnAudioDataReceived.Broadcast(DecodedAudio);
 			}
 			else
 			{
@@ -349,7 +349,7 @@ void UWebSocketSystem::OnMessage_Native(const FString& InMessage)
 		
 		FString TempMessage;
 		JsonObject->TryGetStringField(TEXT("message"), TempMessage);
-		OnStartRecordingAck.Broadcast(TempMessage);
+		// OnStartRecordingAck.Broadcast(TempMessage);
 	}
 	else if (MessageType == TEXT("error"))
 	{
@@ -359,12 +359,12 @@ void UWebSocketSystem::OnMessage_Native(const FString& InMessage)
 		if (JsonObject->TryGetStringField(TEXT("message"), ErrorMessage))
 		{
 			LogNetwork(FString::Printf(TEXT("Server Error: %s"), *ErrorMessage));
-			OnError.Broadcast(ErrorMessage);
+			// OnSocketError.Broadcast(ErrorMessage);
 		}
 		else
 		{
 			LogNetwork(TEXT("Server Error: (no message field)"));
-			OnError.Broadcast(TEXT("Unknown server error"));
+			// OnSocketError.Broadcast(TEXT("Unknown server error"));
 		}
 	}
 	else
