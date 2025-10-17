@@ -14,12 +14,8 @@
 #include "ABuilding.h"
 #include "UBroadcastManager.h"
 #include "UQuestManager.h"
-
-#include "windows.ui.popups.h"
-
 #include "Camera/CameraComponent.h"
 #include "YiSan/YiSan.h"
-
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
