@@ -15,6 +15,8 @@
 #include "UBroadcastManager.h"
 #include "UQuestManager.h"
 
+#include "windows.ui.popups.h"
+
 #include "Camera/CameraComponent.h"
 #include "YiSan/YiSan.h"
 
@@ -51,10 +53,7 @@ APlayerActor::APlayerActor()
     
     VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
     GPTContextSystem = CreateDefaultSubobject<UGPTContextSystem>(TEXT("GPTContextSystem"));
-
-    //확인용
-    PressCount = 0;
-    TargetPressCount = 4;
+    
 }
 
 void APlayerActor::BeginPlay()
@@ -198,45 +197,43 @@ void APlayerActor::OnExecVoiceCommand(EVoiceCommandType InType)
 }
 
 
-
+// 확인용 테스트 코드
 void APlayerActor::OnTestPopupPressed()
 {
-    // 누를 때마다 카운트 증가
-    PressCount++;
-
-    int32 NumBuildingTypes = static_cast<int32>(EBuildingType::Max);
-
-    int32 Enumindex = (PressCount -1 )% NumBuildingTypes;
-    EBuildingType BuildingToBrodcast = static_cast<EBuildingType>(Enumindex);
-   
-
-    // 팝업 브로드캐스트 테스트
-    if (UUPopup* Popup = UUPopup::Get(GetWorld()))
+    TArray<AActor*> FBuliding;
+    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ABuilding::StaticClass(), FBuliding);
+    if (FBuliding.Num() == 0)
     {
-        Popup->BroadcastBuildingEvent(BuildingToBrodcast);
+        UE_LOG(LogTemp,Warning,TEXT("월드에 빌딩 액터가 없습니다"));
+        return;
     }
+    ABuilding* cloBulid = nullptr;
+    float MinDistance = TNumericLimits<float>::Max();
+    FVector PlayerLocation = GetActorLocation();
 
-    // 4번 누르면 완료 처리
-    if (PressCount >= TargetPressCount)
+    for (AActor* Actor : FBuliding)
     {
-        UE_LOG(LogTemp, Warning, TEXT("4번 눌렀니"));
-
-        // 원하는 동작 넣기 (예시: 특정 UI 표시 또는 퀘스트 완료)
-        OnPopupCheckCompleted();
-
-        // 카운트 초기화
-        PressCount = 0;
+        if (ABuilding* Building = Cast<ABuilding>(Actor))
+        {
+            float dis = FVector::DistSquared(PlayerLocation, Building->GetActorLocation());
+            if (dis < MinDistance)
+            {
+                cloBulid = Building;
+                MinDistance = dis;
+            }
+        }
     }
-}
-
-void APlayerActor::OnPopupCheckCompleted()
-{
-    // 4번 누르면 실행될 로직
-    UE_LOG(LogTemp, Warning, TEXT("4번끝"));
-
-    // 예시로 팝업 띄우기 or 퀘스트 갱신 가능
-    if (UUPopup* Popup = UUPopup::Get(GetWorld()))
+    if (cloBulid)
     {
-        Popup->BroadcastBuildingEvent(EBuildingType::Yeomingak);
+        EBuildingType BuildingToBroadcast = cloBulid->BuildingType;
+        UE_LOG(LogTemp,Warning,TEXT("가장 가까운 곳 : %s, 타입 %s"), *cloBulid->GetName(), *UEnum::GetValueAsString(BuildingToBroadcast));
+        if (UUPopup*popup = UUPopup::Get(GetWorld()))
+        {
+            popup->BroadcastBuildingEvent(BuildingToBroadcast);
+        }
+        else
+        {
+            UE_LOG(LogTemp,Warning,TEXT("가장 가까운 빌딩을 못찾았습니다"))
+        }
     }
 }

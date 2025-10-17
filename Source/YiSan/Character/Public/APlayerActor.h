@@ -84,10 +84,5 @@ public: // Control Interface
     UFUNCTION()
     void OnTestPopupPressed();
 
-    UFUNCTION()
-    void OnPopupCheckCompleted();
-    
-    int32 PressCount;
-    int32 TargetPressCount;
 };
 

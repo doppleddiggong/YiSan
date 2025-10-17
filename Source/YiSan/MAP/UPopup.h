@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
+#include "EBuildingType.h"
 #include "UPopup.generated.h"
 
 // enum class EBuildingType : uint8

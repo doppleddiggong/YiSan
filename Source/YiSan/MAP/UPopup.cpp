@@ -3,26 +3,21 @@
 
 #include "UPopup.h"
 #include "Engine/World.h"
-
-
+#include "Engine/Engine.h"
 
 UUPopup* UUPopup::Get(UWorld* World)
 {
-	static UUPopup* instance = nullptr;
-	if (!instance)
-	{
-		instance = NewObject<UUPopup>(World, UUPopup::StaticClass());
-		// 혹시 GC 걸릴까봐
-		instance->AddToRoot();
-		UE_LOG(LogTemp, Warning, TEXT("[UPopup]이 인스턴트를 생성하였씁니다"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("[UPopup]이 이미 생성되었습니다 "));
-	}
-	return instance;
-}
+	static TWeakObjectPtr<UUPopup> Instance;
 
+	if (!Instance.IsValid())
+	{
+		UUPopup* NewInstance = NewObject<UUPopup>(GetTransientPackage(), UUPopup::StaticClass());
+		Instance = NewInstance;
+		UE_LOG(LogTemp, Warning, TEXT("[UPopup] 새 인스턴스가 생성되었습니다."));
+	}
+
+	return Instance.Get();
+}
 
 void UUPopup::BroadcastBuildingEvent(EBuildingType BuildingType)
 {
