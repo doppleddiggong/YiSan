@@ -23,11 +23,8 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
-#include "YiSan/MAP/UPopup.h"
 
 #define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_Main.WBP_Main_C")
-
-class UUPopup;
 
 APlayerActor::APlayerActor()
 {
@@ -207,7 +204,7 @@ void APlayerActor::OnTestPopupPressed()
         UE_LOG(LogTemp,Warning,TEXT("월드에 빌딩 액터가 없습니다"));
         return;
     }
-    ABuilding* cloBulid = nullptr;
+    ABuilding* nearBulid = nullptr;
     float MinDistance = TNumericLimits<float>::Max();
     FVector PlayerLocation = GetActorLocation();
 
@@ -218,22 +215,21 @@ void APlayerActor::OnTestPopupPressed()
             float dis = FVector::DistSquared(PlayerLocation, Building->GetActorLocation());
             if (dis < MinDistance)
             {
-                cloBulid = Building;
+                nearBulid = Building;
                 MinDistance = dis;
             }
         }
     }
-    if (cloBulid)
+    
+    if (!IsValid( nearBulid) )
     {
-        EBuildingType BuildingToBroadcast = cloBulid->BuildingType;
-        UE_LOG(LogTemp,Warning,TEXT("가장 가까운 곳 : %s, 타입 %s"), *cloBulid->GetName(), *UEnum::GetValueAsString(BuildingToBroadcast));
-        if (UUPopup*popup = UUPopup::Get(GetWorld()))
-        {
-            popup->BroadcastBuildingEvent(BuildingToBroadcast);
-        }
-        else
-        {
-            UE_LOG(LogTemp,Warning,TEXT("가장 가까운 빌딩을 못찾았습니다"))
-        }
+        PRINTLOG( TEXT("가장 가까운 빌딩을 못찾았습니다"));
+        return;
     }
+
+    PRINTLOG( TEXT("가장 가까운 곳 : %s, 타입 %s"),
+            *nearBulid->GetName(),
+            *FString( ENUM_TO_NAME(EBuildingType, nearBulid->BuildingType)));
+
+    BroadcastManager->SendContactBuilding(nearBulid->BuildingType);
 }
