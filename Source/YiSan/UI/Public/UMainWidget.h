@@ -3,9 +3,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "EBuildingType.h"
 #include "Blueprint/UserWidget.h"
 #include "NetworkData.h"
+
+#include "MegaPopup.h"
+#include "SmallPopup.h"
 #include "UMainWidget.generated.h"
+
+class USmallPopup;
+class UMegaPopup;
 
 UCLASS()
 class YISAN_API UMainWidget : public UUserWidget
@@ -17,6 +24,8 @@ public:
 
 protected:
     virtual void NativeConstruct() override;
+    //창 누르기 위해
+    virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 
     UFUNCTION()
     void OnMessageComitted(const FText& Text, ETextCommit::Type CommitMethod);
@@ -38,5 +47,31 @@ protected:
 private:
     UPROPERTY()
     TObjectPtr<class UBroadcastManager> BroadcastManager;
+public:
+
+    // cpp 로 제어 안할꺼라 bind 할떄 이름 바꾸는걸로
+    UPROPERTY(meta = (BindWidget))
+    class UUserWidget* SmallPopupCtn;
+    UPROPERTY(meta = (BindWidget))
+    class UUserWidget* MegaPopupCtn;
+    // t 입력시 호출
+    void ToggleMegaPopup();
+
+    UFUNCTION()
+    void OnNearBuildingBroadcast(EBuildingType BuildingType);
+
+    // 블루프린트에서 구현
+    UFUNCTION(BlueprintImplementableEvent)
+    void BPI_UpdateSmallPopupText(EBuildingType BuildingType);
+
+    UFUNCTION(BlueprintImplementableEvent)
+    void BPI_UpdateDetailedInfo(EBuildingType BuildingType);
+    
+    // mega popup 상태
+    bool bIsMegaPopupVisible = false;
+    // 건물 타입 저장 용 (바꿀꺼)
+    EBuildingType CurNearBuildingType = EBuildingType::None;
+
+    // 값 바뀔때 
 };
 

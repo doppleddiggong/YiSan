@@ -8,10 +8,14 @@
 #include "FGPTContext.h"
 #include "UVoiceFunctionLibrary.h"
 
+//addUobject 안되길레 추가
+#include "Delegates/Delegate.h"
+
 #include "Components/CanvasPanel.h"
 #include "Components/EditableTextBox.h"
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundWaveProcedural.h"
+#include "Input/Reply.h"
 
 void UMainWidget::NativeConstruct()
 {
@@ -31,8 +35,21 @@ void UMainWidget::NativeConstruct()
         PC->bShowMouseCursor = false;
     }
 
+    
     BroadcastManager = UBroadcastManager::Get(GetWorld());
+    if (BroadcastManager)
+    {
+        // OnNearBuilding 델리게이트에 
+        BroadcastManager->OnNearBuilding.AddDynamic(this, &UMainWidget::OnNearBuildingBroadcast);
+    }
+    // Popup 초기 상태 설정 (공간 차지하지 않게 collapsed 로 성정)
+    if (SmallPopupCtn)
+        SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
+    
+    if (MegaPopupCtn)
+        MegaPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
 }
+
 
 void UMainWidget::ToggleChatBox()
 {
@@ -128,4 +145,107 @@ void UMainWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
     {
         PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
     }
+}
+
+
+void UMainWidget::ToggleMegaPopup()
+{
+	// 메가 팝업이 열려있지 않고, 스몰 팝업이 보이지 않는다면 아무것도 하지 않는다.
+	if (!bIsMegaPopupVisible && SmallPopupCtn && SmallPopupCtn->GetVisibility() != ESlateVisibility::Visible)return;
+	if (!MegaPopupCtn)return;
+	// player controller 로 신호주자
+	APlayerController* PC = GetOwningPlayer();
+	if (!PC)return;
+
+	bIsMegaPopupVisible = !bIsMegaPopupVisible;
+
+	if (bIsMegaPopupVisible)
+	{
+		// mega popup 표시
+		MegaPopupCtn->SetVisibility(ESlateVisibility::Visible);
+		if(SmallPopupCtn)
+		{
+			SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
+		}
+
+		// 입력모드 전환 (player input 전화)
+		FInputModeUIOnly InputMode;
+		InputMode.SetWidgetToFocus(MegaPopupCtn->TakeWidget());
+		InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
+		PC->SetInputMode(InputMode);
+		PC->SetShowMouseCursor(true);
+
+		// 플레이어 컨트롤 disable 하자
+		if (APawn* Pawn = PC->GetPawn())
+		{
+			Pawn->DisableInput(PC);
+		}
+
+		// 시네마틱 뷰 활성화 할떄 사용할꺼
+		// PC->SetCinematicMode(true, false, false, true, true);
+
+		// 블루프린트 이벤트 호출 (상세 정보 업데이트) 
+		BPI_UpdateDetailedInfo(CurNearBuildingType);
+	}
+	else
+	{
+		// megapopup 및 smallpopup 숨기자
+		MegaPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
+		if (SmallPopupCtn)
+			SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
+
+		// 입력 모드도 원래로 돌린다
+		FInputModeGameOnly InputMode;
+		InputMode.SetConsumeCaptureMouseDown(false);
+		PC->SetInputMode(InputMode);
+		PC->SetShowMouseCursor(false);
+
+		// 플레이어 컨트롤 Enable 한다
+		if (APawn* Pawn = PC->GetPawn())
+		{
+			Pawn->EnableInput(PC);
+		}
+
+		// 시네마틱 뷰 비활성화 하고싶을때
+		// PC->SetCinematicMode(false, false, false, true, true);
+	}
+}
+
+void UMainWidget::OnNearBuildingBroadcast(EBuildingType BuildingType)
+{
+	// 주백이형 말씀대로  타입 이 같다면 리턴한다
+	if (BuildingType==CurNearBuildingType) return;
+	CurNearBuildingType = BuildingType;
+
+	// location이 바뀐다면 small popup 의 속성이 변하지 않게 하기 위한 안전 트리거
+	// megapopup 이 켜졌다면 상태를 변경하지않고 리턴한다 
+	if (bIsMegaPopupVisible)return;
+	if (!SmallPopupCtn)return;
+	
+    if (!SmallPopupCtn)
+        return;
+
+    // 타입이 none이 아니라면 표시한다
+    if (BuildingType != EBuildingType::None)
+    {
+        SmallPopupCtn->SetVisibility(ESlateVisibility::Visible);
+        
+        // 블루프린트 이벤트 호출
+        BPI_UpdateSmallPopupText(BuildingType);
+    }
+    else
+    {
+        SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
+    }
+}
+
+// 팝업 눌렀을때 닫히게 하고싶다
+FReply UMainWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
+{
+	if (bIsMegaPopupVisible)
+	{
+		ToggleMegaPopup();
+		return FReply::Handled();
+	}
+	return FReply::Unhandled();
 }
