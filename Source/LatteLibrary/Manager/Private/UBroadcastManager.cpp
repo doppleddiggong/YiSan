@@ -60,6 +60,11 @@ void UBroadcastManager::SendExecVoiceCommand(const EVoiceCommandType Type)
 	OnExecVoiceCommand.Broadcast(Type);	
 }
 
+void UBroadcastManager::SendMegaPopupClosed()
+{
+	OnMegaPopupClosed.Broadcast();
+}
+
 void UBroadcastManager::SendHitStop(AActor* Target, const EDamageType Type)
 {
 	OnHitStop.Broadcast(Target, Type);
