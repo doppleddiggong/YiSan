@@ -14,12 +14,8 @@
 #include "ABuilding.h"
 #include "UBroadcastManager.h"
 #include "UQuestManager.h"
-
-#include "windows.ui.popups.h"
-
 #include "Camera/CameraComponent.h"
 #include "YiSan/YiSan.h"
-
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -109,7 +105,9 @@ void APlayerActor::Tick(float DeltaTime)
 void APlayerActor::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
     Super::SetupPlayerInputComponent(PlayerInputComponent);
-    PlayerInputComponent->BindKey(EKeys::T, IE_Pressed, this, &APlayerActor::OnTestPopupPressed);
+    
+    // small popup 이 뜨고 T 키를 누른다면 megaPopup 이 뜨게 하고싶다
+    PlayerInputComponent->BindKey(EKeys::T, IE_Pressed, this, &APlayerActor::OnPopupPressed);
 }
 
 void APlayerActor::FindNearestBuilding()
@@ -132,10 +130,25 @@ void APlayerActor::FindNearestBuilding()
             }
         }
     }
-
+    
     if (NearestBuilding)
     {
+        // 근정했다는 정보로 small popup 을 띄울 예정
         BroadcastManager->SendNearBuilding(NearestBuilding->BuildingType);
+    }
+    else
+    {
+        // 건물이 없다면 popup 을 닫을예정
+        BroadcastManager->SendNearBuilding(EBuildingType::None);
+    }
+}
+
+// popup pressed 를 눌렀다면 megapopup 을 뜨게 하고싶다
+void APlayerActor::OnPopupPressed()
+{
+    if (MainWidgetInst)
+    {
+       MainWidgetInst->ToggleMegaPopup();
     }
 }
 
@@ -194,7 +207,11 @@ void APlayerActor::OnExecVoiceCommand(EVoiceCommandType InType)
 }
 
 
+
+
+
 // 확인용 테스트 코드
+/*
 void APlayerActor::OnTestPopupPressed()
 {
     TArray<AActor*> FBuliding;
@@ -233,3 +250,4 @@ void APlayerActor::OnTestPopupPressed()
 
     BroadcastManager->SendContactBuilding(nearBulid->BuildingType);
 }
+*/ 

@@ -78,11 +78,14 @@ public: // Control Interface
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
     void Cmd_RecordEnd() override;
 
+    //UI popup
+    UFUNCTION()
+    void OnPopupPressed();
 
     // 확인용
 
-    UFUNCTION()
-    void OnTestPopupPressed();
+    // UFUNCTION()
+    // void OnTestPopupPressed();
 
 };
 
