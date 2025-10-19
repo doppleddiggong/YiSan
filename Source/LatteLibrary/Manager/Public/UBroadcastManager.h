@@ -101,9 +101,14 @@ public:
 	void SendExecVoiceCommand(const EVoiceCommandType Type);
 
 
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnMegaPopupClosed);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnMegaPopupClosed OnMegaPopupClosed;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendMegaPopupClosed();
 
 
-	
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHitStop, AActor*, Target, EDamageType, Type);
 	UPROPERTY(BlueprintAssignable, Category="Events")
 	FOnHitStop OnHitStop;

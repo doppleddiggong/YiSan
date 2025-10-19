@@ -17,7 +17,12 @@ class YISAN_API UMegaPopup : public UUserWidget
 	GENERATED_BODY()
 
 protected:
+	virtual void NativeConstruct() override;
 	virtual void NativeDestruct() override;
+
+	UFUNCTION()
+	void OnCloseButtonClicked();
+
 
 public:
 	/**
@@ -25,6 +30,8 @@ public:
 	 * @param BuildingType 건물 타입
 	 */
 	void UpdateBuildingInfo(EBuildingType BuildingType);
+
+	void OnClose();
 
 protected:
 	UPROPERTY(meta = (BindWidget))
@@ -39,10 +46,12 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UImage> BackgroundImage;
 
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UButton> CloseButton;
+
 private:
 	UPROPERTY()
 	TObjectPtr<class UAudioComponent> PlayingSound;
-
 
 	EBuildingType BuildingType;
 };

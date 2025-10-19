@@ -37,7 +37,10 @@ void UMainWidget::NativeConstruct()
     
     BroadcastManager = UBroadcastManager::Get(GetWorld());
     if (BroadcastManager)
+    {
         BroadcastManager->OnNearBuilding.AddDynamic(this, &UMainWidget::OnNearBuilding);
+		BroadcastManager->OnMegaPopupClosed.AddDynamic(this, &UMainWidget::OnMegaPopupClosed);
+    }
 
 	// Popup 초기 상태 설정 (공간 차지하지 않게 collapsed 로 성정)
     if (SmallPopupCtn)
@@ -160,16 +163,32 @@ void UMainWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
 
 void UMainWidget::ToggleMegaPopup()
 {
-	// 스몰 팝업이 보이지 않는다면 아무것도 하지 않는다.
-	if ( IsSmallPopupVisible() == false )
-		return;
-
-	// player controller 로 신호주자
 	APlayerController* PC = GetOwningPlayer();
 	if (!PC)
 		return;
 
-	if ( IsSmallPopupVisible() )
+	if (IsMegaPopupVisible())
+	{
+		// megapopup 및 smallpopup 숨기자
+		MegaPopupCtn->OnClose();
+		MegaPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
+		SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
+
+		// 입력 모드도 원래로 돌린다
+		FInputModeGameOnly InputMode;
+		InputMode.SetConsumeCaptureMouseDown(false);
+		PC->SetInputMode(InputMode);
+		PC->SetShowMouseCursor(false);
+
+		// 플레이어 컨트롤 Enable 한다
+		if (APawn* Pawn = PC->GetPawn())
+		{
+			Pawn->EnableInput(PC);
+		}
+
+		SmallPopupCtn->UpdateBuildingInfo(CurNearBuildingType);
+	}
+	else if (IsSmallPopupVisible())
 	{
 		// mega popup 표시
 		MegaPopupCtn->SetVisibility(ESlateVisibility::Visible);
@@ -187,33 +206,12 @@ void UMainWidget::ToggleMegaPopup()
 			Pawn->DisableInput(PC);
 
 		MegaPopupCtn->UpdateBuildingInfo(CurNearBuildingType);
-		
-		// 시네마틱 뷰 활성화 할떄 사용할꺼
-		// PC->SetCinematicMode(true, false, false, true, true);
 	}
-	else
-	{
-		// megapopup 및 smallpopup 숨기자
-		MegaPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
-		SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
+}
 
-		// 입력 모드도 원래로 돌린다
-		FInputModeGameOnly InputMode;
-		InputMode.SetConsumeCaptureMouseDown(false);
-		PC->SetInputMode(InputMode);
-		PC->SetShowMouseCursor(false);
-
-		// 플레이어 컨트롤 Enable 한다
-		if (APawn* Pawn = PC->GetPawn())
-		{
-			Pawn->EnableInput(PC);
-		}
-
-		SmallPopupCtn->UpdateBuildingInfo(CurNearBuildingType);
-		
-		// 시네마틱 뷰 비활성화 하고싶을때
-		// PC->SetCinematicMode(false, false, false, true, true);
-	}
+void UMainWidget::OnMegaPopupClosed()
+{
+	ToggleMegaPopup();
 }
 
 void UMainWidget::OnNearBuilding(EBuildingType InBuildingType)
@@ -236,14 +234,14 @@ void UMainWidget::OnNearBuilding(EBuildingType InBuildingType)
         SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
     }
 }
-
-// 팝업 눌렀을때 닫히게 하고싶다
-FReply UMainWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
-{
-	if ( IsMegaPopupVisible() )
-	{
-		ToggleMegaPopup();
-		return FReply::Handled();
-	}
-	return FReply::Unhandled();
-}
+//
+// // 팝업 눌렀을때 닫히게 하고싶다
+// FReply UMainWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
+// {
+// 	if ( IsMegaPopupVisible() )
+// 	{
+// 		ToggleMegaPopup();
+// 		return FReply::Handled();
+// 	}
+// 	return FReply::Unhandled();
+// }

@@ -6,6 +6,8 @@
 #include "FBuildingAssetData.h"
 #include "UBuildingDetailData.h"
 #include "UGameDataManager.h"
+#include "UBroadcastManager.h"
+#include "Components/Button.h"
 
 #include "Components/TextBlock.h"
 #include "Components/Image.h"
@@ -14,6 +16,17 @@
 #include "Engine/Texture2D.h"
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundCue.h"
+
+void UMegaPopup::NativeConstruct()
+{
+	Super::NativeConstruct();
+
+	if (CloseButton)
+	{
+		CloseButton->OnClicked.AddDynamic(this, &UMegaPopup::OnCloseButtonClicked);
+	}
+}
+
 
 void UMegaPopup::UpdateBuildingInfo(const EBuildingType InBuildingType)
 {
@@ -58,14 +71,30 @@ void UMegaPopup::UpdateBuildingInfo(const EBuildingType InBuildingType)
 	}
 }
 
+void UMegaPopup::OnClose()
+{
+	if (PlayingSound && PlayingSound->IsPlaying())
+	{
+		PlayingSound->Stop();
+	}
+	PlayingSound = nullptr;
+}
+
 void UMegaPopup::NativeDestruct()
 {
-	if (PlayingSound &&
-		PlayingSound->IsPlaying())
+	if (PlayingSound && PlayingSound->IsPlaying())
 	{
 		PlayingSound->Stop();
 	}
 	PlayingSound = nullptr;
 
 	Super::NativeDestruct();
+}
+
+void UMegaPopup::OnCloseButtonClicked()
+{
+	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
+	{
+		BroadcastManager->SendMegaPopupClosed();
+	}
 }

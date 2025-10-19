@@ -26,8 +26,8 @@ protected:
     /// @brief 위젯 초기화와 브로드캐스트 구독을 수행합니다.
     virtual void NativeConstruct() override;
 
-    /// @brief 드래그 이동을 지원하기 위해 마우스 다운 이벤트를 처리합니다.
-    virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
+    // /// @brief 드래그 이동을 지원하기 위해 마우스 다운 이벤트를 처리합니다.
+    // virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 
     /// @brief 채팅 입력이 커밋될 때 메시지를 전송합니다.
     UFUNCTION()
@@ -63,13 +63,15 @@ public:
 
     bool IsMegaPopupVisible();
     bool IsSmallPopupVisible();
-    
 
     /// @brief 주변 건물 브로드캐스트를 수신해 UI를 업데이트합니다.
     /// @param InBuildingType [in] 감지된 건물 유형입니다.
     UFUNCTION()
     void OnNearBuilding(EBuildingType InBuildingType);
 
+    UFUNCTION()
+    void OnMegaPopupClosed();
+    
     /// @brief 메가 팝업이 배치되는 컨테이너 위젯입니다.
     UPROPERTY(meta = (BindWidget))
     class UMegaPopup* MegaPopupCtn;
