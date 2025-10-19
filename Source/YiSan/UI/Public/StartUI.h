@@ -10,40 +10,45 @@ class UImage;
 class UMediaPlayer;
 class UMediaTexture;
 
+/// @file StartUI.h
+/// @brief 인트로 영상을 재생하고 게임 시작을 안내하는 스타트 UI를 선언합니다.
+
+/// @brief 시작 버튼과 배경 영상을 제어하는 초기 진입 위젯입니다.
 UCLASS()
 class YISAN_API UStartUI : public UUserWidget
 {
     GENERATED_BODY()
 
 protected:
-    // UUserWidget의 생성자 역할을 하는 함수입니다.
+    /// @brief 위젯이 생성될 때 미디어 재생 설정을 초기화합니다.
     virtual void NativeConstruct() override;
 
 public:
-    // 시작하기 버튼
+    /// @brief 시작 버튼 위젯입니다.
     UPROPERTY(meta = (BindWidget))
     UButton* StartButton;
 
-    // 영상이 출력될 이미지 위젯 
+    /// @brief 인트로 영상이 표시되는 이미지 위젯입니다.
     UPROPERTY(meta = (BindWidget))
     UImage* BackgroundVideoImage;
 
-    // 인트로 영상 재생을 위한 미디어 플레이어 (에디터에서 할당 필요)
+    /// @brief 인트로 영상을 재생할 미디어 플레이어입니다.
     UPROPERTY(EditAnywhere, Category = "Intro Settings")
     UMediaPlayer* MediaPlayer;
 
-    // 미디어 플레이어의 출력을 담을 텍스처 (에디터에서 할당 필요)
+    /// @brief 미디어 플레이어 출력을 표시할 텍스처입니다.
     UPROPERTY(EditAnywhere, Category = "Intro Settings")
     UMediaTexture* MediaTexture;
 
-    // 미디어 플레이어의 이미지를 메테리얼로 할당하여 적용
+    /// @brief 영상 텍스처를 적용할 머티리얼 인스턴스입니다.
     UPROPERTY(EditAnywhere, Category = "Intro Settings")
     class UMaterialInstance* introMtl;
-    // '시작하기' 버튼 클릭 시 호출될 함수
+
+    /// @brief 시작 버튼 클릭 시 호출됩니다.
     UFUNCTION()
     void OnStartButtonClicked();
 
-    // 전환될 메인 맵의 이름 (에디터에서 설정)
+    /// @brief 전환할 메인 맵 이름입니다.
     UPROPERTY(EditAnywhere, Category = "Intro Settings")
     FName MainMapName = "MainMap_WP";
 };

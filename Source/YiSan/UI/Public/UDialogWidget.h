@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #pragma once
 
@@ -6,29 +6,35 @@
 #include "Blueprint/UserWidget.h"
 #include "UDialogWidget.generated.h"
 
+/// @file UDialogWidget.h
+/// @brief 음성 및 텍스트 응답을 출력하는 다이얼로그 위젯을 선언합니다.
 
+/// @brief 다이얼로그 텍스트와 강조 효과를 제공하는 UI 위젯입니다.
 UCLASS()
 class YISAN_API UDialogWidget : public UUserWidget
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 
 public:
-	virtual void NativeConstruct() override;
+    /// @brief 위젯 초기화 및 기본 색상을 설정합니다.
+    virtual void NativeConstruct() override;
 
-	UFUNCTION(BlueprintCallable, Category ="Chat")
-	void ShowDialog(FString InString);
+    /// @brief 대화 텍스트를 표시하고 강조 색상을 적용합니다.
+    /// @param InString [in] 출력할 대화 문자열입니다.
+    UFUNCTION(BlueprintCallable, Category ="Chat")
+    void ShowDialog(FString InString);
 
 public:
-	UPROPERTY(meta = (BindWidget))
-	class UBorder* DialogBorder;
-	
-	UPROPERTY(meta = (BindWidget))
-	class UTextBlock* DialogText;
+    UPROPERTY(meta = (BindWidget))
+    class UBorder* DialogBorder;
+
+    UPROPERTY(meta = (BindWidget))
+    class UTextBlock* DialogText;
 
 protected:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category ="Chat")
-	FLinearColor ActivateColor;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category ="Chat")
+    FLinearColor ActivateColor;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category ="Chat")
-	FLinearColor DeactivateColor;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category ="Chat")
+    FLinearColor DeactivateColor;
 };
