@@ -6,18 +6,12 @@
 #include "EBuildingType.h"
 #include "Blueprint/UserWidget.h"
 #include "NetworkData.h"
-
-#include "MegaPopup.h"
-#include "SmallPopup.h"
 #include "UMainWidget.generated.h"
-
-class USmallPopup;
-class UMegaPopup;
 
 /// @file UMainWidget.h
 /// @brief 음성 상호작용과 건물 안내 UI를 제공하는 메인 위젯을 선언합니다.
-
 /// @brief 채팅, 팝업, 네트워크 응답을 중재하는 게임 메인 UI 위젯입니다.
+
 UCLASS()
 class YISAN_API UMainWidget : public UUserWidget
 {
@@ -63,21 +57,13 @@ private:
     TObjectPtr<class UBroadcastManager> BroadcastManager;
 
 public:
-    /// @brief 스몰 팝업이 배치되는 컨테이너 위젯입니다.
-    UPROPERTY(meta = (BindWidget))
-    class UUserWidget* SmallPopupCtn;
-
-    /// @brief 메가 팝업이 배치되는 컨테이너 위젯입니다.
-    UPROPERTY(meta = (BindWidget))
-    class UUserWidget* MegaPopupCtn;
-
     /// @brief 메가 팝업의 표시 상태를 전환합니다.
     void ToggleMegaPopup();
 
     /// @brief 주변 건물 브로드캐스트를 수신해 UI를 업데이트합니다.
-    /// @param BuildingType [in] 감지된 건물 유형입니다.
+    /// @param InBuildingType [in] 감지된 건물 유형입니다.
     UFUNCTION()
-    void OnNearBuildingBroadcast(EBuildingType BuildingType);
+    void OnNearBuildingBroadcast(EBuildingType InBuildingType);
 
     /// @brief 스몰 팝업 텍스트를 갱신하는 블루프린트 이벤트입니다.
     UFUNCTION(BlueprintImplementableEvent)
@@ -87,6 +73,16 @@ public:
     UFUNCTION(BlueprintImplementableEvent)
     void BPI_UpdateDetailedInfo(EBuildingType BuildingType);
 
+    /// @brief 스몰 팝업이 배치되는 컨테이너 위젯입니다.
+    UPROPERTY(meta = (BindWidget))
+    class UUserWidget* SmallPopupCtn;
+
+    /// @brief 메가 팝업이 배치되는 컨테이너 위젯입니다.
+    UPROPERTY(meta = (BindWidget))
+    class UUserWidget* MegaPopupCtn;
+   
+
+private:
     /// @brief 메가 팝업 표시 여부입니다.
     bool bIsMegaPopupVisible = false;
 

@@ -1,8 +1,15 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+
+#pragma once
+#include "CoreMinimal.h"
+#include "EBuildingType.h"
+#include "Blueprint/UserWidget.h"
+#include "UStateWidget.generated.h"
+
 /// @file UStateWidget.h
 /// @brief 시간·네트워크·오디오 상태를 표시하는 UI 위젯을 선언합니다.
-
 /// @brief 시간, 네트워크 대기, 오디오 스펙트럼을 시각화하는 상태 패널입니다.
+
 UCLASS(BlueprintType, Blueprintable)
 class YISAN_API UStateWidget : public UUserWidget
 {

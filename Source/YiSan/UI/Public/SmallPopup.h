@@ -8,7 +8,6 @@
 
 /// @file SmallPopup.h
 /// @brief 근거리 건물 정보를 간단히 표시하는 팝업 위젯을 선언합니다.
-
 /// @brief 주변 건물을 안내하는 소형 팝업 UI입니다.
 UCLASS()
 class YISAN_API USmallPopup : public UUserWidget
