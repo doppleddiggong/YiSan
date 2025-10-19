@@ -8,8 +8,10 @@
 #include "FGPTContext.h"
 #include "UVoiceFunctionLibrary.h"
 
-//addUobject 안되길레 추가
-#include "Delegates/Delegate.h"
+#include "MegaPopup.h"
+
+// //addUobject 안되길레 추가
+// #include "Delegates/Delegate.h"
 
 #include "Components/CanvasPanel.h"
 #include "Components/EditableTextBox.h"
@@ -164,9 +166,7 @@ void UMainWidget::ToggleMegaPopup()
 		// mega popup 표시
 		MegaPopupCtn->SetVisibility(ESlateVisibility::Visible);
 		if(SmallPopupCtn)
-		{
 			SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
-		}
 
 		// 입력모드 전환 (player input 전화)
 		FInputModeUIOnly InputMode;
@@ -185,7 +185,9 @@ void UMainWidget::ToggleMegaPopup()
 		// PC->SetCinematicMode(true, false, false, true, true);
 
 		// 블루프린트 이벤트 호출 (상세 정보 업데이트) 
-		BPI_UpdateDetailedInfo(CurNearBuildingType);
+		// BPI_UpdateDetailedInfo(CurNearBuildingType);
+
+		MegaPopupCtn->UpdateBuildingInfo(CurNearBuildingType);
 	}
 	else
 	{

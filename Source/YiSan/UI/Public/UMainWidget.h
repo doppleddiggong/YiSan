@@ -79,7 +79,7 @@ public:
 
     /// @brief 메가 팝업이 배치되는 컨테이너 위젯입니다.
     UPROPERTY(meta = (BindWidget))
-    class UUserWidget* MegaPopupCtn;
+    class UMegaPopup* MegaPopupCtn;
    
 
 private:
