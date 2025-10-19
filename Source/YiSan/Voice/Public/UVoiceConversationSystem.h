@@ -1,9 +1,7 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
-/**
- * @file UVoiceConversationSystem.h
- * @brief 음성 대화 통합 시스템 - STT, GPT, TTS를 하나의 흐름으로 관리
- */
+/// @file UVoiceConversationSystem.h
+/// @brief STT·GPT·TTS 파이프라인을 연결하는 음성 대화 컴포넌트를 선언합니다.
 #pragma once
 
 #include "CoreMinimal.h"
@@ -15,49 +13,61 @@
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Voice), meta=(BlueprintSpawnableComponent))
 class YISAN_API UVoiceConversationSystem : public UActorComponent
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 
 public:
-	UVoiceConversationSystem();
+    /// @brief 기본 속성을 설정하는 생성자입니다.
+    UVoiceConversationSystem();
 
 protected:
-	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+    /// @brief 녹음 장치와 델리게이트를 해제합니다.
+    virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 public:
-	void InitSystem(class APlayerActor* InOwner);
+    /// @brief 소유 플레이어와 브로드캐스트 매니저를 연결합니다.
+    /// @param InOwner [in] 음성 대화를 제어하는 플레이어 액터입니다.
+    void InitSystem(class APlayerActor* InOwner);
 
-	/** 음성 녹음 시작 */
-	UFUNCTION(BlueprintCallable, Category = "Voice|Conversation")
-	void StartRecording();
+    /// @brief 음성 녹음을 시작하고 버퍼를 초기화합니다.
+    UFUNCTION(BlueprintCallable, Category = "Voice|Conversation")
+    void StartRecording();
 
-	/** 음성 녹음 중지 및 ASK 처리 시작 */
-	UFUNCTION(BlueprintCallable, Category = "Voice|Conversation")
-	void StopRecording();
-
-private:
-	void HandleOnCapture(const float* InAudio, int32 InNumFrames, int32 InNumChannels, int32 InSampleRate);
-
-	UFUNCTION()
-	void OnResponseAsk(FResponseAsk& Response, bool bSuccess);
+    /// @brief 녹음을 중지하고 ASK 요청을 전송합니다.
+    UFUNCTION(BlueprintCallable, Category = "Voice|Conversation")
+    void StopRecording();
 
 private:
-	UPROPERTY()
-	TObjectPtr<class APlayerActor> Owner;
-	UPROPERTY()
-	TObjectPtr<class UBroadcastManager> BroadcastManager;
+    /// @brief 오디오 캡처 콜백에서 호출되어 버퍼를 누적합니다.
+    /// @param InAudio [in] 캡처된 PCM 데이터입니다.
+    /// @param InNumFrames [in] 프레임 수입니다.
+    /// @param InNumChannels [in] 채널 수입니다.
+    /// @param InSampleRate [in] 샘플레이트입니다.
+    void HandleOnCapture(const float* InAudio, int32 InNumFrames, int32 InNumChannels, int32 InSampleRate);
 
+    /// @brief ASK 응답을 수신해 브로드캐스트와 UI를 갱신합니다.
+    /// @param Response [in] STT/GPT/TTS 결과입니다.
+    /// @param bSuccess [in] 요청 성공 여부입니다.
+    UFUNCTION()
+    void OnResponseAsk(FResponseAsk& Response, bool bSuccess);
 
-	// --- 녹음 관련 변수 ---
-	TUniquePtr<Audio::FAudioCapture> AudioCapture;
-	
-	TArray<uint8> WAVData;
-	TArray<uint8> PCMData;
+private:
+    UPROPERTY()
+    TObjectPtr<class APlayerActor> Owner;
 
-	int32 LastSampleRate  = 16000;
-	int32 LastNumChannels = 1;
-	FString LastRecordedFilePath;
-	
-	// --- 상태 변수 ---
-	bool bIsRecording = false;
-	bool bIsProcessing = false;
+    UPROPERTY()
+    TObjectPtr<class UBroadcastManager> BroadcastManager;
+
+    // --- 녹음 관련 변수 ---
+    TUniquePtr<Audio::FAudioCapture> AudioCapture;
+
+    TArray<uint8> WAVData;
+    TArray<uint8> PCMData;
+
+    int32 LastSampleRate = 16000;
+    int32 LastNumChannels = 1;
+    FString LastRecordedFilePath;
+
+    // --- 상태 변수 ---
+    bool bIsRecording = false;
+    bool bIsProcessing = false;
 };

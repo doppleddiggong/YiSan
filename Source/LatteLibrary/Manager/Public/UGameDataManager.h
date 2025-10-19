@@ -9,6 +9,8 @@
 #include "CoreMinimal.h"
 #include "Macro.h"
 #include "FBuildingData.h"
+#include "FBuildingAssetData.h"
+
 #include "FHitStopData.h"
 #include "FKnockbackData.h"
 #include "FCharacterInfoData.h"
@@ -52,6 +54,22 @@ private:
 	TMap<EBuildingType, FBuildingData> BuildingDataCache;
 #pragma endregion BUILDING_DATA
 
+#pragma region BUILDING_ASSET_DATA
+public:
+	UPROPERTY(EditAnywhere, Category="MasterData|BuildingAsset")
+	TSoftObjectPtr<UDataTable> BuildingAssetTable;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|BuildingAsset")
+	bool GetBuildingAssetData(EBuildingType Type, FBuildingAssetData& Out) const;
+
+private:
+	void Clear_BuildingAssetData();
+	void LoadData_BuildingAssetData();
+	bool bLoadBuildingAsset = false;
+
+	UPROPERTY(VisibleAnywhere, Category = "Cache", meta = (AllowPrivateAccess = "true"))
+	TMap<EBuildingType, FBuildingAssetData> BuildingAssetCache;
+#pragma endregion BUILDING_ASSET_DATA
 
 #pragma region HIT_STOP
 public:

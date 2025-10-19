@@ -7,11 +7,13 @@
 #include "UGameDataManager.h"
 #include "GameLogging.h"
 #include "FCharacterAssetData.h"
+#include "FBuildingAssetData.h"
 #include "FComponentHelper.h"
 
 #define HITSTOP_PATH    TEXT("/Game/CustomContents/MasterData/DT_HitStop.DT_HitStop")
 #define KNOCKBACK_PATH  TEXT("/Game/CustomContents/MasterData/DT_Knockback.DT_Knockback")
 #define BUILDINGDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_Building.DT_Building")
+#define BUILDINGASSET_PATH  TEXT("/Game/CustomContents/MasterData/DT_BuildingAsset.DT_BuildingAsset")
 #define CHARACTERINFO_PATH  TEXT("/Game/CustomContents/MasterData/DT_CharacterInfo.DT_CharacterInfo")
 #define CHARACTERASSET_PATH  TEXT("/Game/CustomContents/MasterData/DT_CharacterAsset.DT_CharacterAsset")
 
@@ -20,6 +22,7 @@ UGameDataManager::UGameDataManager()
     // HitStopTable = FComponentHelper::LoadAsset<UDataTable>(HITSTOP_PATH);
     // KnockbackTable  = FComponentHelper::LoadAsset<UDataTable>(KNOCKBACK_PATH);
     BuildingDataTable = FComponentHelper::LoadAsset<UDataTable>(BUILDINGDATA_PATH);
+    BuildingAssetTable  = FComponentHelper::LoadAsset<UDataTable>(BUILDINGASSET_PATH);
     // CharacterInfoTable  = FComponentHelper::LoadAsset<UDataTable>(CHARACTERINFO_PATH);
     // CharacterAssetTable = FComponentHelper::LoadAsset<UDataTable>(CHARACTERASSET_PATH);
 }
@@ -33,9 +36,11 @@ void UGameDataManager::Initialize(FSubsystemCollectionBase& Collection)
 
 void UGameDataManager::Deinitialize()
 {
+    Clear_BuildingDataTable();
+    Clear_BuildingAssetData();
+
     Clear_HitStopTable();
     Clear_KnockbackTable();
-    Clear_BuildingDataTable();
     Clear_CharacterInfoData();
     Clear_CharacterAssetData();
     
@@ -44,9 +49,11 @@ void UGameDataManager::Deinitialize()
 
 void UGameDataManager::ReloadMasterData()
 {
+    LoadData_BuildingDataTable();
+    LoadData_BuildingAssetData();
+
     // LoadData_HitStopTable();
     // LoadData_KnockbackTable();
-    LoadData_BuildingDataTable();
     // LoadData_CharacterInfoData();
     // LoadData_CharacterAssetData();
 }
@@ -107,9 +114,58 @@ FString UGameDataManager::GetBuildingDataName(EBuildingType Type) const
 
     return TEXT("");
 }
-
-
 #pragma endregion BUILDING_DATA
+
+
+#pragma region BUILDING_ASSET_DATA
+void UGameDataManager::Clear_BuildingAssetData()
+{
+    BuildingAssetCache.Reset();
+    bLoadBuildingAsset = false;
+}
+
+void UGameDataManager::LoadData_BuildingAssetData()
+{
+    BuildingAssetCache.Reset();
+    bLoadBuildingAsset = false;
+
+    UDataTable* TableObj = BuildingAssetTable.LoadSynchronous();
+    if (!TableObj)
+    {
+        PRINTLOG(TEXT("Load failed: %s"), *BuildingAssetTable.ToString());
+        return;
+    }
+
+    static const FString ContextString(TEXT("BuildingAssetTable"));
+    for (const FName& RowName : TableObj->GetRowNames())
+    {
+        if (const FBuildingAssetData* Row = TableObj->FindRow<FBuildingAssetData>(RowName, ContextString, true))
+        {
+            BuildingAssetCache.Add(Row->BuildingType, *Row);
+        }
+    }
+
+    bLoadBuildingAsset = true;
+}
+
+bool UGameDataManager::GetBuildingAssetData(EBuildingType Type, FBuildingAssetData& Out) const
+{
+    if (!bLoadBuildingAsset)
+        return false;
+
+    if (const FBuildingAssetData* Found = BuildingAssetCache.Find(Type))
+    {
+        Out = *Found;
+        return true;
+    }
+
+    PRINTLOG(TEXT("DataGetFail : %s"), *UEnum::GetValueAsString(Type));
+    return false;
+}
+#pragma endregion BUILDING_ASSET_DATA
+
+
+
 
 #pragma region HIT_STOP
 void UGameDataManager::Clear_HitStopTable()

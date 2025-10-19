@@ -1,22 +1,73 @@
-﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
-
+// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "MegaPopup.h"
+#include "EBuildingType.h"
+#include "FBuildingData.h"
+#include "FBuildingAssetData.h"
+#include "UBuildingDetailData.h"
+#include "UGameDataManager.h"
+
 #include "Components/TextBlock.h"
+#include "Components/Image.h"
+#include "Components/AudioComponent.h"
 
-void UMegaPopup::NativeConstruct()
+#include "Engine/Texture2D.h"
+#include "Kismet/GameplayStatics.h"
+#include "Sound/SoundCue.h"
+
+void UMegaPopup::UpdateBuildingInfo(const EBuildingType InBuildingType)
 {
-	Super::NativeConstruct();
+	if (BuildingType == InBuildingType)
+		return;
+	
+	// 데이터 매니저 가져오기
+	auto DataManager = UGameDataManager::Get(GetWorld());
+	if (!DataManager)
+		return;
+
+	// 건물 테이블 정보 데이터 가져오기
+	FBuildingData BuildingData;
+	if (DataManager->GetBuildingData(InBuildingType, BuildingData))
+	{
+		DetailTitleText->SetText(FText::FromString(BuildingData.detailtitle));
+		DetailText->SetText(FText::FromString(BuildingData.detaildesc));
+		SubTitle->SetText(FText::FromString(BuildingData.subtile));
+	}
+
+	// 건물 에셋 정보 데이터 가져오기
+	FBuildingAssetData AssetData;
+	if ( DataManager->GetBuildingAssetData(InBuildingType, AssetData) )
+	{
+		UBuildingDetailData* DetailAsset = AssetData.BuildingDetailDataAsset.LoadSynchronous();
+
+		if ( DetailAsset )
+		{
+			TSoftObjectPtr<UTexture2D> LoadedTexture;
+			if ( DetailAsset->LoadBackgroundImage(LoadedTexture) && LoadedTexture.Get() )
+				BackgroundImage->SetBrushFromTexture(LoadedTexture.Get());
+
+			TSoftObjectPtr<USoundCue> LoadedCue;
+			if ( DetailAsset->LoadSoundCue(LoadedCue) && LoadedCue.Get() )
+			{
+				if (PlayingSound && PlayingSound->IsPlaying())
+					PlayingSound->Stop();
+
+				PlayingSound = UGameplayStatics::SpawnSound2D(GetWorld(), LoadedCue.Get());
+			}
+		}
+		
+		
+	}
 }
 
-void UMegaPopup::SetDescription(const FString& InText)
+void UMegaPopup::NativeDestruct()
 {
-	if (Description)
-		Description->SetText(FText::FromString(InText));
-}
+	if (PlayingSound &&
+		PlayingSound->IsPlaying())
+	{
+		PlayingSound->Stop();
+	}
+	PlayingSound = nullptr;
 
-void UMegaPopup::ShowLoading(bool bShow)
-{	
-	if (Description && bShow)
-		Description->SetText(FText::FromString(TEXT("GPT가 설명을 생성하고 있습니다...")));
+	Super::NativeDestruct();
 }
