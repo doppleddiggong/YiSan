@@ -81,13 +81,35 @@ void APlayerActor::BeginPlay()
     // 나중에 GameStart 이벤트가 생기면 그때 다시 정리하자.
     // 아직은 매직코드
     FTimerHandle TimerHandle_DelayedSend;
-    GetWorld()->GetTimerManager().SetTimer(TimerHandle_DelayedSend,
-        [this]()
+    GetWorldTimerManager().SetTimer(TimerHandle_DelayedSend,this, &APlayerActor::DelayedSendQuestUpdate, 1.0f, true);
+    // GetWorld()->GetTimerManager().SetTimer(TimerHandle_DelayedSend,
+    //     [this]()
+    //     {
+    //         // if (BroadcastManager)
+    //         //     BroadcastManager->SendUpdateQuest( UQuestManager::Get(GetWorld())->GetCurrentTarget());
+    //         
+    //         if (BroadcastManager)
+    //         {
+    //             UQuestManager* QManager = UQuestManager::Get(GetWorld());
+    //             
+    //             if (QManager)
+    //             {
+    //                 BroadcastManager->SendUpdateQuest( QManager->GetCurrentTarget());
+    //             }
+    //         }
+    //     }, 1.0f, false
+    // );
+}
+void APlayerActor::DelayedSendQuestUpdate()
+{
+    if (BroadcastManager)
+    {
+        UQuestManager*QManager = UQuestManager::Get(GetWorld());
+        if (QManager)
         {
-            if (BroadcastManager)
-                BroadcastManager->SendUpdateQuest( UQuestManager::Get(GetWorld())->GetCurrentTarget() );
-        }, 1.0f, false
-    );
+            BroadcastManager->SendUpdateQuest(QManager->GetCurrentTarget());
+        }
+    }
 }
 
 void APlayerActor::EndPlay(const EEndPlayReason::Type EndPlayReason)

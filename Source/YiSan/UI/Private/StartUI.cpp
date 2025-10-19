@@ -4,6 +4,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "MediaPlayer.h"
 #include "MediaTexture.h"
+#include "YiSanGameInstance.h" 
 #include "Engine/Texture.h"
 
 void UStartUI::NativeConstruct()
@@ -42,12 +43,32 @@ void UStartUI::OnStartButtonClicked()
 	}
 
 	// 맵 이름이 유효하면 레벨 전환
-	if (!MainMapName.IsNone())
+	if (!MapName.IsNone())
 	{
-		UGameplayStatics::OpenLevel(this, MainMapName);
+		UGameplayStatics::OpenLevel(this, MapName);
 	}
 	else
 	{
 		UE_LOG(LogTemp, Warning, TEXT("MainMapName is not set in StartUI"));
+	}
+	UYiSanGameInstance* GI = Cast<UYiSanGameInstance>(GetGameInstance());
+	//인스턴스를 가져오자
+	if (!GI)
+	{
+		UE_LOG(LogTemp, Error, TEXT("GameInstance is not UYiSanGameInstance!"));
+		return;
+	}
+
+	// 목료 레벨 이름 저장
+	GI->TargetLevel = FName("MainMap"); 
+
+	// 이제 mapname 에서 설정한 맵으로 이동
+	if (!MapName.IsNone()) 
+	{
+		UGameplayStatics::OpenLevel(this, MapName);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("MapName (to LoadingMap) is not set in StartUI"));
 	}
 }

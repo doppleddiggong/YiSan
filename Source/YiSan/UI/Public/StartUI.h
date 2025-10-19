@@ -50,5 +50,5 @@ public:
 
     /// @brief 전환할 메인 맵 이름입니다.
     UPROPERTY(EditAnywhere, Category = "Intro Settings")
-    FName MainMapName = "MainMap_WP";
+    FName MapName = "MainMap_WP";
 };

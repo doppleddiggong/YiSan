@@ -14,6 +14,8 @@
 #include "InputAction.h"
 
 #include "FComponentHelper.h"
+#include "GameFramework/GameModeBase.h"
+#include "Kismet/GameplayStatics.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
@@ -54,6 +56,23 @@ void APlayerControl::BeginPlay()
 			}
 		}
 	}
+	// 한 프레임 뒤 보정 체크
+	GetWorldTimerManager().SetTimerForNextTick([this]()
+	{
+		if (!GetPawn())
+		{
+			UE_LOG(LogTemp, Warning, TEXT("[YiSanPlayerController] Pawn missing - request restart"));
+			if (AGameModeBase* GM = UGameplayStatics::GetGameMode(this))
+			{
+				GM->RestartPlayer(this); // GameMode 통해 재스폰
+			}
+		}
+		else
+		{
+			UE_LOG(LogTemp, Log, TEXT("[YiSanPlayerController] Pawn OK: %s"), *GetNameSafe(GetPawn()));
+			GetPawn()->EnableInput(this);
+		}
+	});
 }
 
 void APlayerControl::SetupInputComponent()
