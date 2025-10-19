@@ -21,6 +21,7 @@ public:
     /// @brief 채팅 박스의 표시 상태를 전환합니다.
     void ToggleChatBox();
 
+
 protected:
     /// @brief 위젯 초기화와 브로드캐스트 구독을 수행합니다.
     virtual void NativeConstruct() override;
@@ -60,32 +61,24 @@ public:
     /// @brief 메가 팝업의 표시 상태를 전환합니다.
     void ToggleMegaPopup();
 
+    bool IsMegaPopupVisible();
+    bool IsSmallPopupVisible();
+    
+
     /// @brief 주변 건물 브로드캐스트를 수신해 UI를 업데이트합니다.
     /// @param InBuildingType [in] 감지된 건물 유형입니다.
     UFUNCTION()
-    void OnNearBuildingBroadcast(EBuildingType InBuildingType);
-
-    /// @brief 스몰 팝업 텍스트를 갱신하는 블루프린트 이벤트입니다.
-    UFUNCTION(BlueprintImplementableEvent)
-    void BPI_UpdateSmallPopupText(EBuildingType BuildingType);
-
-    /// @brief 상세 정보 패널을 갱신하는 블루프린트 이벤트입니다.
-    UFUNCTION(BlueprintImplementableEvent)
-    void BPI_UpdateDetailedInfo(EBuildingType BuildingType);
-
-    /// @brief 스몰 팝업이 배치되는 컨테이너 위젯입니다.
-    UPROPERTY(meta = (BindWidget))
-    class UUserWidget* SmallPopupCtn;
+    void OnNearBuilding(EBuildingType InBuildingType);
 
     /// @brief 메가 팝업이 배치되는 컨테이너 위젯입니다.
     UPROPERTY(meta = (BindWidget))
     class UMegaPopup* MegaPopupCtn;
-   
+    
+    /// @brief 스몰 팝업이 배치되는 컨테이너 위젯입니다.
+    UPROPERTY(meta = (BindWidget))
+    class USmallPopup* SmallPopupCtn;
 
 private:
-    /// @brief 메가 팝업 표시 여부입니다.
-    bool bIsMegaPopupVisible = false;
-
     /// @brief 최근 감지된 건물 유형입니다.
     EBuildingType CurNearBuildingType = EBuildingType::None;
 };

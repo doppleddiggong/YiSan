@@ -1,6 +1,6 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
-#include "MegaPopup.h"
+#include "UMegaPopup.h"
 #include "EBuildingType.h"
 #include "FBuildingData.h"
 #include "FBuildingAssetData.h"
@@ -55,8 +55,6 @@ void UMegaPopup::UpdateBuildingInfo(const EBuildingType InBuildingType)
 				PlayingSound = UGameplayStatics::SpawnSound2D(GetWorld(), LoadedCue.Get());
 			}
 		}
-		
-		
 	}
 }
 
