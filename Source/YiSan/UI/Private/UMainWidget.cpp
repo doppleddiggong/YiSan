@@ -269,14 +269,13 @@ void UMainWidget::OnMegaPopupResponse(FResponseAsk& Response, bool bSuccess)
 	{
 		PRINTLOG(TEXT("수신된 대답은: %s"),*Response.gpt_response_text);
         
-		// GPT 응답 텍스트설정
-		MegaPopupCtn->SetDescription(Response.gpt_response_text);
+		
 	}
 	// 만약 실패했다면
 	else
 	{
 		PRINTLOG(TEXT("GPT 에게 응답이 됮 않았습니다"));
-		MegaPopupCtn->SetDescription(TEXT("설명을 불러오는데 실패했습니다."));
+		
 	}
 }
 

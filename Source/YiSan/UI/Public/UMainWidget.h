@@ -64,6 +64,7 @@ public:
     /// @param InBuildingType [in] 감지된 건물 유형입니다.
     UFUNCTION()
     void OnNearBuildingBroadcast(EBuildingType InBuildingType);
+    void OnMegaPopupResponse(FResponseAsk& Response, bool bSuccess);
 
     /// @brief 스몰 팝업 텍스트를 갱신하는 블루프린트 이벤트입니다.
     UFUNCTION(BlueprintImplementableEvent)
