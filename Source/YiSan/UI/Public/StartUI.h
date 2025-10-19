@@ -28,15 +28,15 @@ public:
     UPROPERTY(meta = (BindWidget))
     UImage* BackgroundVideoImage;
 
-    // 인트로 영상 재생을 위한 미디어 플레이어 (에디터에서 할당 필요)
+    // 인트로 영상 재생을 위한 미디어 플레이어 (에디터에서 할당 필요) = 오류 블루프린트 에서 제어
     UPROPERTY(EditAnywhere, Category = "Intro Settings")
     UMediaPlayer* MediaPlayer;
 
-    // 미디어 플레이어의 출력을 담을 텍스처 (에디터에서 할당 필요)
+    // 미디어 플레이어의 출력을 담을 텍스처 (에디터에서 할당 필요) = 오류 블루프린트 에서 제어
     UPROPERTY(EditAnywhere, Category = "Intro Settings")
     UMediaTexture* MediaTexture;
 
-    // 미디어 플레이어의 이미지를 메테리얼로 할당하여 적용
+    // 미디어 플레이어의 이미지를 메테리얼로 할당하여 적용  = 오류 블루프린트 에서 제어
     UPROPERTY(EditAnywhere, Category = "Intro Settings")
     class UMaterialInstance* introMtl;
     // '시작하기' 버튼 클릭 시 호출될 함수

@@ -51,9 +51,9 @@ public:
 
     // cpp 로 제어 안할꺼라 bind 할떄 이름 바꾸는걸로
     UPROPERTY(meta = (BindWidget))
-    class UUserWidget* SmallPopupCtn;
+    USmallPopup* SmallPopupCtn;
     UPROPERTY(meta = (BindWidget))
-    class UUserWidget* MegaPopupCtn;
+    UMegaPopup* MegaPopupCtn;
     // t 입력시 호출
     void ToggleMegaPopup();
 
@@ -71,7 +71,9 @@ public:
     bool bIsMegaPopupVisible = false;
     // 건물 타입 저장 용 (바꿀꺼)
     EBuildingType CurNearBuildingType = EBuildingType::None;
+    // gpt 를 응답 처리할 함수
+    UFUNCTION()
+    void OnMegaPopupResponse(FResponseAsk& Response, bool bSuccess);
 
-    // 값 바뀔때 
 };
 
