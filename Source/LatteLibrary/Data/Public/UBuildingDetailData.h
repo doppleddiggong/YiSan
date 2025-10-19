@@ -14,7 +14,29 @@ UCLASS(BlueprintType)
 class LATTELIBRARY_API UBuildingDetailData : public UDataAsset
 {
 	GENERATED_BODY()
+
 public:
+	/**
+	 * @brief 썸네일 이미지를 동기적으로 로드합니다.
+	 * @param OutTexture 로드된 텍스처 에셋
+	 * @return 성공 시 true
+	 */
+	bool LoadThumbnailImage(TSoftObjectPtr<UTexture2D>& OutTexture) const;
+
+	/**
+	 * @brief 배경 이미지를 동기적으로 로드합니다.
+	 * @param OutTexture 로드된 텍스처 에셋
+	 * @return 성공 시 true
+	 */
+	bool LoadBackgroundImage(TSoftObjectPtr<UTexture2D>& OutTexture) const;
+
+	/**
+	 * @brief 사운드 큐를 동기적으로 로드합니다.
+	 * @param OutSoundCue 로드된 사운드 큐 에셋
+	 * @return 성공 시 true
+	 */
+	bool LoadSoundCue(TSoftObjectPtr<USoundCue>& OutSoundCue) const;
+
 	// UI 썸네일 이미지
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=UI)
 	TSoftObjectPtr<class UTexture2D> ThumbnailImage;
