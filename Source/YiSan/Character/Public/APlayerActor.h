@@ -48,7 +48,7 @@ private:
     void FindNearestBuilding();
 
     /// @brief 가장 가까운 건물을 주기적으로 평가하기 위한 타이머 핸들입니다.
-    FTimerHandle FindNearestBuildingTimerHandle;
+    FTimerHandle TimeHandle_NearestBuilding;
 
     /// @brief 브로드캐스트 매니저에서 전달되는 음성 명령 실행 이벤트에 대응합니다.
     UFUNCTION()
@@ -111,14 +111,7 @@ public: // 제어 인터페이스
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
     void Cmd_RecordEnd() override;
 
-    /// @brief 디버그 입력 단축키가 눌리면 메가 팝업 위젯의 표시를 전환합니다.
-    UFUNCTION()
-    void OnPopupPressed();
-
-    // 확인용
-
-    // UFUNCTION()
-    // void OnTestPopupPressed();
-
+    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
+    void Cmd_ShowDetail() override;
 };
 

@@ -20,7 +20,7 @@ class LATTELIBRARY_API UBroadcastManager : public UGameInstanceSubsystem
 	GENERATED_BODY()
 
 public:
-    DEFINE_SUBSYSTEM_GETTER_INLINE(UBroadcastManager);
+	DEFINE_SUBSYSTEM_GETTER_INLINE(UBroadcastManager);
 
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMessage, FString, Msg);
 	UPROPERTY(BlueprintAssignable, Category="Events")
@@ -108,6 +108,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendMegaPopupClosed();
 
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnPlayerControlState, bool, bState, UUserWidget*, FocusWidget);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnPlayerControlState OnPlayerControlState;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendPlayerControlState(bool bState, UUserWidget* FocusWidget);
 
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHitStop, AActor*, Target, EDamageType, Type);
 	UPROPERTY(BlueprintAssignable, Category="Events")

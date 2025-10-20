@@ -65,6 +65,11 @@ void UBroadcastManager::SendMegaPopupClosed()
 	OnMegaPopupClosed.Broadcast();
 }
 
+void UBroadcastManager::SendPlayerControlState(bool bState, UUserWidget* FocusWidget)
+{
+	OnPlayerControlState.Broadcast(bState, FocusWidget);
+}
+
 void UBroadcastManager::SendHitStop(AActor* Target, const EDamageType Type)
 {
 	OnHitStop.Broadcast(Target, Type);

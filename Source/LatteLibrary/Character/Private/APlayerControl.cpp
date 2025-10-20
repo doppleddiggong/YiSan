@@ -14,6 +14,8 @@
 #include "InputAction.h"
 
 #include "FComponentHelper.h"
+#include "UBroadcastManager.h"
+#include "Blueprint/UserWidget.h"
 #include "GameFramework/GameModeBase.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -26,6 +28,7 @@
 #define IA_LANDING_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Landing.IA_Game_Landing")
 #define IA_CHAT_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Chat.IA_Game_Chat")
 #define IA_RECORD_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Record.IA_Game_Record")
+#define IA_SHOWDETAIL_PATH			TEXT("/Game/CustomContents/Input/IA_Game_Detail.IA_Game_Detail")
 
 APlayerControl::APlayerControl()
 {
@@ -39,6 +42,7 @@ APlayerControl::APlayerControl()
 	IA_Landing = FComponentHelper::LoadAsset<UInputAction>(IA_LANDING_PATH);
 	IA_Chat = FComponentHelper::LoadAsset<UInputAction>(IA_CHAT_PATH);
 	IA_Record = FComponentHelper::LoadAsset<UInputAction>(IA_RECORD_PATH);
+	IA_ShowDetail = FComponentHelper::LoadAsset<UInputAction>(IA_SHOWDETAIL_PATH);
 }
 
 void APlayerControl::BeginPlay()
@@ -73,6 +77,12 @@ void APlayerControl::BeginPlay()
 			GetPawn()->EnableInput(this);
 		}
 	});
+
+
+	if ( auto BroadcastManager = UBroadcastManager::Get(GetWorld()) )
+	{
+		BroadcastManager->OnPlayerControlState.AddDynamic(this, &APlayerControl::OnPlayerControlState);
+	}
 }
 
 void APlayerControl::SetupInputComponent()
@@ -99,8 +109,37 @@ void APlayerControl::SetupInputComponent()
 
 		EIC->BindAction(IA_Record, ETriggerEvent::Started, this, &APlayerControl::OnRecordPressed);
 		EIC->BindAction(IA_Record, ETriggerEvent::Completed, this, &APlayerControl::OnRecordReleased);
+
+		EIC->BindAction(IA_ShowDetail, ETriggerEvent::Completed, this, &APlayerControl::OnShowDetail);
 	}
 }
+
+void APlayerControl::OnPlayerControlState(bool bState, UUserWidget* FocusWidget)
+{
+	if ( bState )
+	{
+		// 플레이어 컨트롤 Enable 한다
+		FInputModeGameOnly InputMode;
+		InputMode.SetConsumeCaptureMouseDown(false);
+		this->SetInputMode(InputMode);
+		this->SetShowMouseCursor(false);
+
+		GetPawn()->EnableInput(this);
+	}
+	else
+	{
+		// 플레이어 컨트롤 disable 하자
+		FInputModeUIOnly InputMode;
+		if (IsValid(FocusWidget))
+			InputMode.SetWidgetToFocus(FocusWidget->TakeWidget());
+		InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
+		this->SetInputMode(InputMode);
+		this->SetShowMouseCursor(true);
+
+		GetPawn()->DisableInput(this);
+	}
+}
+
 
 IControllable* APlayerControl::GetControllable() const
 {
@@ -175,3 +214,9 @@ void APlayerControl::OnRecordReleased(const FInputActionValue& Value)
 	if (IControllable* C = GetControllable())
 		C->Cmd_RecordEnd();
 }
+
+void APlayerControl::OnShowDetail(const FInputActionValue& Value)
+{
+	if (IControllable* C = GetControllable())
+		C->Cmd_ShowDetail();
+} 

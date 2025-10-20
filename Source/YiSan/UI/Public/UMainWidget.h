@@ -58,9 +58,6 @@ private:
     TObjectPtr<class UBroadcastManager> BroadcastManager;
 
 public:
-    /// @brief 메가 팝업의 표시 상태를 전환합니다.
-    void ToggleMegaPopup();
-
     bool IsMegaPopupVisible();
     bool IsSmallPopupVisible();
 

@@ -18,6 +18,8 @@ public class LatteLibrary : ModuleRules
 		{
 			"EnhancedInput",
 			"Niagara",
+
+			"UMG",
 			
 			"CoffeeLibrary",
 		});
