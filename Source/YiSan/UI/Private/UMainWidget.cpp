@@ -161,57 +161,41 @@ void UMainWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
     }
 }
 
-void UMainWidget::ToggleMegaPopup()
-{
-	APlayerController* PC = GetOwningPlayer();
-	if (!PC)
-		return;
-
-	if (IsMegaPopupVisible())
-	{
-		// megapopup 및 smallpopup 숨기자
-		MegaPopupCtn->OnClose();
-		MegaPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
-		SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
-
-		// 입력 모드도 원래로 돌린다
-		FInputModeGameOnly InputMode;
-		InputMode.SetConsumeCaptureMouseDown(false);
-		PC->SetInputMode(InputMode);
-		PC->SetShowMouseCursor(false);
-
-		// 플레이어 컨트롤 Enable 한다
-		if (APawn* Pawn = PC->GetPawn())
-		{
-			Pawn->EnableInput(PC);
-		}
-
-		SmallPopupCtn->UpdateBuildingInfo(CurNearBuildingType);
-	}
-	else if (IsSmallPopupVisible())
-	{
-		// mega popup 표시
-		MegaPopupCtn->SetVisibility(ESlateVisibility::Visible);
-		SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
-
-		// 입력모드 전환 (player input 전화)
-		FInputModeUIOnly InputMode;
-		InputMode.SetWidgetToFocus(MegaPopupCtn->TakeWidget());
-		InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
-		PC->SetInputMode(InputMode);
-		PC->SetShowMouseCursor(true);
-
-		// 플레이어 컨트롤 disable 하자
-		if (APawn* Pawn = PC->GetPawn())
-			Pawn->DisableInput(PC);
-
-		MegaPopupCtn->UpdateBuildingInfo(CurNearBuildingType);
-	}
-}
-
 void UMainWidget::OnMegaPopupClosed()
 {
-	ToggleMegaPopup();
+    APlayerController* PC = GetOwningPlayer();
+    if (!PC)
+        return;
+
+    if (IsMegaPopupVisible())
+    {
+        // megapopup 및 smallpopup 숨기자
+        MegaPopupCtn->OnClose();
+        MegaPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
+        SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
+
+        // 입력 모드도 원래로 돌린다
+        // if ( 입력모드...를...못하게 하는건가? )
+            // APlayerControl::OnHold(true);
+        BroadcastManager->SendPlayerControlState(true, nullptr);
+
+
+        SmallPopupCtn->UpdateBuildingInfo(CurNearBuildingType);
+    }
+    else if (IsSmallPopupVisible())
+    {
+        // mega popup 표시
+        MegaPopupCtn->SetVisibility(ESlateVisibility::Visible);
+        SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
+
+        // 입력모드 전환 (player input 전화)
+        FInputModeUIOnly InputMode;
+        InputMode.SetWidgetToFocus(MegaPopupCtn->TakeWidget());
+
+        BroadcastManager->SendPlayerControlState(false, MegaPopupCtn);
+
+        MegaPopupCtn->UpdateBuildingInfo(CurNearBuildingType);
+    }
 }
 
 void UMainWidget::OnNearBuilding(EBuildingType InBuildingType)
@@ -234,14 +218,3 @@ void UMainWidget::OnNearBuilding(EBuildingType InBuildingType)
         SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
     }
 }
-//
-// // 팝업 눌렀을때 닫히게 하고싶다
-// FReply UMainWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
-// {
-// 	if ( IsMegaPopupVisible() )
-// 	{
-// 		ToggleMegaPopup();
-// 		return FReply::Handled();
-// 	}
-// 	return FReply::Unhandled();
-// }
