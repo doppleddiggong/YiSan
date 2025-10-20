@@ -55,15 +55,6 @@ protected:
 
 public:
 	// ========================================
-	// Multiplayer Session Component
-	// ========================================
-
-	/// @brief 멀티플레이 세션 관리 컴포넌트
-	/// @details Blueprint에서 접근 가능하며, 세션 관리 기능을 위임합니다.
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Multiplayer")
-	TObjectPtr<class UMultiplayerSessionComponent> MultiplayerSessionComponent;
-
-	// ========================================
 	// Multiplayer Session Functions (UI Binding)
 	// ========================================
 	// 주의: 이 함수들은 MultiplayerSessionComponent로 위임됩니다.
