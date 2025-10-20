@@ -35,4 +35,6 @@ public:
 
 	virtual void Cmd_RecordStart() {};						// 녹음 시작
 	virtual void Cmd_RecordEnd() {};						// 녹음 종료
+
+	virtual void Cmd_ShowDetail() {};						// 상세보기 정보창
 };

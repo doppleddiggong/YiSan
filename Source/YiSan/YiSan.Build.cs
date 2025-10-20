@@ -22,6 +22,7 @@ public class YiSan : ModuleRules
 			"Slate",
 			"SlateCore",
 			"MediaAssets",
+			"RenderCore"
 		});
 		
 		PublicDependencyModuleNames.AddRange(new string[]
@@ -65,6 +66,7 @@ public class YiSan : ModuleRules
 			Path.Combine(ModuleDirectory, "Voice", "Public"),
 			Path.Combine(ModuleDirectory, "Network", "Public"),
 			Path.Combine(ModuleDirectory, "Mass", "Public"),
+			Path.Combine(ModuleDirectory, "Loading", "Public"),
 
 		});
 	}

@@ -66,33 +66,30 @@ void APlayerActor::BeginPlay()
 
     BroadcastManager = UBroadcastManager::Get(GetWorld());
     BroadcastManager->OnExecVoiceCommand.AddDynamic(this, &APlayerActor::OnExecVoiceCommand);
-    
-    GetWorldTimerManager().SetTimer(FindNearestBuildingTimerHandle, this, &APlayerActor::FindNearestBuilding, 1.0f, true);
 
     // 퀘스트 초기화
     UQuestManager::Get(GetWorld())->InitSystem();
-    
+
     // 서버야 일어나라.
     UHttpNetworkSystem::Get(GetWorld())->RequestHealth( FResponseHealthDelegate() );
-
 
     // 너도 나도 다 begin에서 일을 하려고 하니.
     // 게임 실행이라는 의미에서 플레이어가 1초후에 시작한다 같은 이벤트로 처리하자
     // 나중에 GameStart 이벤트가 생기면 그때 다시 정리하자.
     // 아직은 매직코드
     FTimerHandle TimerHandle_DelayedSend;
-    GetWorld()->GetTimerManager().SetTimer(TimerHandle_DelayedSend,
-        [this]()
-        {
-            if (BroadcastManager)
-                BroadcastManager->SendUpdateQuest( UQuestManager::Get(GetWorld())->GetCurrentTarget() );
-        }, 1.0f, false
-    );
+    GetWorldTimerManager().SetTimer(TimerHandle_DelayedSend,this, &APlayerActor::DelayedSendQuestUpdate, 1.0f, false);
+    GetWorldTimerManager().SetTimer(TimeHandle_NearestBuilding, this, &APlayerActor::FindNearestBuilding, 1.0f, true);
+}
+
+void APlayerActor::DelayedSendQuestUpdate()
+{
+    BroadcastManager->SendUpdateQuest( UQuestManager::Get(GetWorld())->GetCurrentTarget());
 }
 
 void APlayerActor::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
-    GetWorldTimerManager().ClearTimer(FindNearestBuildingTimerHandle);
+    GetWorldTimerManager().ClearTimer(TimeHandle_NearestBuilding);
     Super::EndPlay(EndPlayReason);
 }
 
@@ -101,13 +98,9 @@ void APlayerActor::Tick(float DeltaTime)
     Super::Tick(DeltaTime);
 }
 
-
 void APlayerActor::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
     Super::SetupPlayerInputComponent(PlayerInputComponent);
-    
-    // small popup 이 뜨고 T 키를 누른다면 megaPopup 이 뜨게 하고싶다
-    PlayerInputComponent->BindKey(EKeys::T, IE_Pressed, this, &APlayerActor::OnPopupPressed);
 }
 
 void APlayerActor::FindNearestBuilding()
@@ -140,15 +133,6 @@ void APlayerActor::FindNearestBuilding()
     {
         // 건물이 없다면 popup 을 닫을예정
         BroadcastManager->SendNearBuilding(EBuildingType::None);
-    }
-}
-
-// popup pressed 를 눌렀다면 megapopup 을 뜨게 하고싶다
-void APlayerActor::OnPopupPressed()
-{
-    if (MainWidgetInst)
-    {
-       MainWidgetInst->ToggleMegaPopup();
     }
 }
 
@@ -191,63 +175,20 @@ void APlayerActor::Cmd_Chat_Implementation()
 
 void APlayerActor::Cmd_RecordStart_Implementation()
 {
-    PRINT_STRING(TEXT("Cmd_RecordStart_Implementation"));
     VoiceConversationSystem->StartRecording();
 }
 
 void APlayerActor::Cmd_RecordEnd_Implementation()
 {
-    PRINT_STRING(TEXT("Cmd_RecordEnd_Implementation"));
     VoiceConversationSystem->StopRecording();
+}
+
+void APlayerActor::Cmd_ShowDetail_Implementation()
+{
+    BroadcastManager->SendMegaPopupClosed();
 }
 
 void APlayerActor::OnExecVoiceCommand(EVoiceCommandType InType)
 {
     PRINT_STRING(TEXT("%s"), *FString( ENUM_TO_NAME(EVoiceCommandType, InType)));
 }
-
-
-
-
-
-// 확인용 테스트 코드
-/*
-void APlayerActor::OnTestPopupPressed()
-{
-    TArray<AActor*> FBuliding;
-    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ABuilding::StaticClass(), FBuliding);
-    if (FBuliding.Num() == 0)
-    {
-        UE_LOG(LogTemp,Warning,TEXT("월드에 빌딩 액터가 없습니다"));
-        return;
-    }
-    ABuilding* nearBulid = nullptr;
-    float MinDistance = TNumericLimits<float>::Max();
-    FVector PlayerLocation = GetActorLocation();
-
-    for (AActor* Actor : FBuliding)
-    {
-        if (ABuilding* Building = Cast<ABuilding>(Actor))
-        {
-            float dis = FVector::DistSquared(PlayerLocation, Building->GetActorLocation());
-            if (dis < MinDistance)
-            {
-                nearBulid = Building;
-                MinDistance = dis;
-            }
-        }
-    }
-    
-    if (!IsValid( nearBulid) )
-    {
-        PRINTLOG( TEXT("가장 가까운 빌딩을 못찾았습니다"));
-        return;
-    }
-
-    PRINTLOG( TEXT("가장 가까운 곳 : %s, 타입 %s"),
-            *nearBulid->GetName(),
-            *FString( ENUM_TO_NAME(EBuildingType, nearBulid->BuildingType)));
-
-    BroadcastManager->SendContactBuilding(nearBulid->BuildingType);
-}
-*/ 
