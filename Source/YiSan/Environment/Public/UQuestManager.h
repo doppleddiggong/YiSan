@@ -20,20 +20,19 @@ class YISAN_API UQuestManager : public UGameInstanceSubsystem
 public:
     DEFINE_SUBSYSTEM_GETTER_INLINE(UQuestManager);
 
-    /// @brief 브로드캐스트 구독과 초기 상태를 준비합니다.
-    virtual void Initialize(FSubsystemCollectionBase& Collection) override;
-
-    /// @brief 등록된 델리게이트를 해제합니다.
-    virtual void Deinitialize() override;
-
     /// @brief 현재 목표 건물 유형을 반환합니다.
-    FORCEINLINE EBuildingType GetCurrentTarget() const
-    {
-        return CurTarget;
-    }
+    FORCEINLINE EBuildingType GetCurTarget() const { return CurTarget; }
+
+    /// @brief 현재 퀘스트 인덱스를 반환합니다.
+    FORCEINLINE int32 GetCurQuestIndex() const { return CurQuestIndex; }
+
+    /// @brief 현재 퀘스트 인덱스를 반환합니다.
+    FORCEINLINE bool IsHasQuest() const { return this->GetCurTarget() != EBuildingType::None; }
 
     /// @brief 퀘스트 데이터와 브로드캐스트 연동을 초기화합니다.
     void InitSystem();
+
+    FString GetTargetBuildingName();
 
 private:
     /// @brief 플레이어가 특정 건물과 접촉했을 때 호출됩니다.

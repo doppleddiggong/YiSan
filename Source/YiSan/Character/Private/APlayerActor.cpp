@@ -84,7 +84,7 @@ void APlayerActor::BeginPlay()
 
 void APlayerActor::DelayedSendQuestUpdate()
 {
-    BroadcastManager->SendUpdateQuest( UQuestManager::Get(GetWorld())->GetCurrentTarget());
+    BroadcastManager->SendUpdateQuest( UQuestManager::Get(GetWorld())->GetCurTarget());
 }
 
 void APlayerActor::EndPlay(const EEndPlayReason::Type EndPlayReason)
