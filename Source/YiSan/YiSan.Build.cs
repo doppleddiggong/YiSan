@@ -62,12 +62,12 @@ public class YiSan : ModuleRules
 		PublicIncludePaths.AddRange(new string[] {
 			Path.Combine(ModuleDirectory, "Character", "Public"),
 			Path.Combine(ModuleDirectory, "Environment", "Public"),
+			Path.Combine(ModuleDirectory, "Loading", "Public"),
+			Path.Combine(ModuleDirectory, "Mass", "Public"),
+			Path.Combine(ModuleDirectory, "Network", "Public"),
+			Path.Combine(ModuleDirectory, "NPC", "Public"),
 			Path.Combine(ModuleDirectory, "UI", "Public"),
 			Path.Combine(ModuleDirectory, "Voice", "Public"),
-			Path.Combine(ModuleDirectory, "Network", "Public"),
-			Path.Combine(ModuleDirectory, "Mass", "Public"),
-			Path.Combine(ModuleDirectory, "Loading", "Public"),
-
 		});
 	}
 }
