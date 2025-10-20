@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(git log:*)",
-      "Bash(git shortlog:*)"
+      "Bash(git shortlog:*)",
+      "Bash(findstr /v \"Intermediate Private gen.cpp\")",
+      "Bash(dir Source /s /b /ad)",
+      "Bash(if not exist \"E:\\UE\\YiSan\\document\" mkdir \"E:\\UE\\YiSan\\document\")",
+      "Bash(dir \"E:\\UE\\YiSan\\document\" /b)"
     ],
     "deny": [],
     "ask": []

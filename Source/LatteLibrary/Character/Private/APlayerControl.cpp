@@ -19,6 +19,8 @@
 #include "GameFramework/GameModeBase.h"
 #include "Kismet/GameplayStatics.h"
 
+#include "YiSan/Environment/Public/UYiSanGameInstance.h"
+
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
 #define IA_LOOK_PATH				TEXT("/Game/CustomContents/Input/IA_Game_LookAround.IA_Game_LookAround")
@@ -219,4 +221,41 @@ void APlayerControl::OnShowDetail(const FInputActionValue& Value)
 {
 	if (IControllable* C = GetControllable())
 		C->Cmd_ShowDetail();
+}
+
+// ========================================
+// Multiplayer Session Functions (UI Binding)
+// ========================================
+
+void APlayerControl::HostSession(const FString& MapName, int32 MaxPlayers)
+{
+	if (UGameInstance* GI = GetGameInstance())
+	{
+		if (UYiSanGameInstance* YiSanGI = Cast<UYiSanGameInstance>(GI))
+		{
+			YiSanGI->HostGame(MapName, MaxPlayers);
+		}
+	}
+}
+
+void APlayerControl::JoinSession(const FString& Address, int32 Port)
+{
+	if (UGameInstance* GI = GetGameInstance())
+	{
+		if (UYiSanGameInstance* YiSanGI = Cast<UYiSanGameInstance>(GI))
+		{
+			YiSanGI->JoinGame(Address, Port);
+		}
+	}
+}
+
+void APlayerControl::DisconnectSession()
+{
+	if (UGameInstance* GI = GetGameInstance())
+	{
+		if (UYiSanGameInstance* YiSanGI = Cast<UYiSanGameInstance>(GI))
+		{
+			YiSanGI->DisconnectFromSession();
+		}
+	}
 } 

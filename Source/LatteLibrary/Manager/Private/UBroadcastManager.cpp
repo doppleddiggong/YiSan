@@ -97,3 +97,27 @@ void UBroadcastManager::SendKnockback(AActor* Target, AActor* Instigator, EDamag
 {
 	OnKnockback.Broadcast(Target, Instigator, Type, Resistance);
 }
+
+// ========================================
+// Multiplayer Session Events
+// ========================================
+
+void UBroadcastManager::SendSessionHost(const FString& MapName)
+{
+	OnSessionHost.Broadcast(MapName);
+}
+
+void UBroadcastManager::SendSessionJoin(const FString& Address, int32 Port)
+{
+	OnSessionJoin.Broadcast(Address, Port);
+}
+
+void UBroadcastManager::SendSessionDisconnect()
+{
+	OnSessionDisconnect.Broadcast();
+}
+
+void UBroadcastManager::SendSessionError(const FString& ErrorMessage)
+{
+	OnSessionError.Broadcast(ErrorMessage);
+}

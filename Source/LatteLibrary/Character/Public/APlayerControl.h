@@ -52,7 +52,38 @@ protected:
 	void OnRecordReleased(const FInputActionValue& Value);
 
 	void OnShowDetail(const FInputActionValue& Value);
-	
+
+public:
+	// ========================================
+	// Multiplayer Session Component
+	// ========================================
+
+	/// @brief 멀티플레이 세션 관리 컴포넌트
+	/// @details Blueprint에서 접근 가능하며, 세션 관리 기능을 위임합니다.
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Multiplayer")
+	TObjectPtr<class UMultiplayerSessionComponent> MultiplayerSessionComponent;
+
+	// ========================================
+	// Multiplayer Session Functions (UI Binding)
+	// ========================================
+	// 주의: 이 함수들은 MultiplayerSessionComponent로 위임됩니다.
+
+	/// @brief 호스트로 게임 세션을 생성합니다 (UI 위젯에서 호출).
+	/// @param MapName 호스팅할 맵 이름
+	/// @param MaxPlayers 최대 플레이어 수
+	UFUNCTION(BlueprintCallable, Category="Multiplayer|Session")
+	void HostSession(const FString& MapName = TEXT("MainLevel_WP"), int32 MaxPlayers = 4);
+
+	/// @brief 기존 게임 세션에 참가합니다 (UI 위젯에서 호출).
+	/// @param Address 서버 IP 주소 또는 도메인
+	/// @param Port 서버 포트
+	UFUNCTION(BlueprintCallable, Category="Multiplayer|Session")
+	void JoinSession(const FString& Address, int32 Port = 7777);
+
+	/// @brief 현재 세션에서 연결을 끊습니다 (UI 위젯에서 호출).
+	UFUNCTION(BlueprintCallable, Category="Multiplayer|Session")
+	void DisconnectSession();
+
 private:
 	UFUNCTION()
 	void OnPlayerControlState(bool bState, class UUserWidget* FocusWidget);

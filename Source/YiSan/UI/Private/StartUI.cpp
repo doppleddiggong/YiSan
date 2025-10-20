@@ -4,7 +4,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "MediaPlayer.h"
 #include "MediaTexture.h"
-#include "YiSanGameInstance.h" 
+#include "UYiSanGameInstance.h" 
 #include "Engine/Texture.h"
 
 void UStartUI::NativeConstruct()
