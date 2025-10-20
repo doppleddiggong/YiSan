@@ -15,7 +15,7 @@ void ALoadingLevelManager::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// 로딩 UI가 있다면 표시합니다.
+	// 로딩 UI가 있다면 표시
 	if (LoadingWidgetClass)
 	{
 		LoadingWidget = CreateWidget<UUserWidget>(GetWorld(), LoadingWidgetClass);
@@ -25,7 +25,7 @@ void ALoadingLevelManager::BeginPlay()
 		}
 	}
 
-	// 비동기 로딩을 시작합니다.
+	// 비동기 로딩
 	StartAsyncLoad();
 }
 
@@ -33,10 +33,10 @@ void ALoadingLevelManager::StartAsyncLoad()
 {
 	UE_LOG(LogTemp, Log, TEXT("[YiSan] Starting async load for level: %s"), *TargetLevelName.ToString());
 
-	// 1. 에셋 로딩과 월드 파티션 확인을 동시에 시작합니다.
+	// 1. 에셋 로딩과 월드 파티션 확인을 동시에 시작
 	LoadAssetsAndWorldPartition();
 
-	// 2. 레벨 스트리밍을 시작합니다.
+	// 2. 레벨 스트리밍을 시작
 	FLatentActionInfo LatentInfo;
 	LatentInfo.CallbackTarget = this;
 	LatentInfo.ExecutionFunction = FName("OnLevelStreamed");
@@ -52,7 +52,7 @@ void ALoadingLevelManager::LoadAssetsAndWorldPartition()
 
 	// 추가로 로드할 에셋 목록 (필요에 따라 추가)
 	const TArray<FSoftObjectPath> AssetsToLoad = {
-		// 예시: FSoftObjectPath(TEXT("/Game/Path/To/Your/Asset.Asset"))
+		// FSoftObjectPath(TEXT("/Game/Path/To/Your/Asset.Asset"))
 	};
 
 	if (AssetsToLoad.Num() > 0)
@@ -62,7 +62,7 @@ void ALoadingLevelManager::LoadAssetsAndWorldPartition()
 	}
 	else
 	{
-		// 로드할 추가 에셋이 없으면 바로 완료 처리합니다.
+		// 로드할 추가 에셋이 없으면 바로 완료 처리
 		bAssetsLoaded = true;
 	}
 }
@@ -95,7 +95,7 @@ void ALoadingLevelManager::CheckWorldPartitionStatus()
 	}
 	else
 	{
-		// 월드 파티션이 없는 맵이면, 즉시 완료된 것으로 간주합니다.
+		// 월드 파티션이 없는 맵이면, 즉시 완료
 		UE_LOG(LogTemp, Log, TEXT("[YiSan] No World Partition subsystem found. Assuming complete."));
 		bWorldPartitionLoaded = true;
 		GetWorldTimerManager().ClearTimer(WorldPartitionCheckTimer);
@@ -105,7 +105,7 @@ void ALoadingLevelManager::CheckWorldPartitionStatus()
 
 void ALoadingLevelManager::TryTransition()
 {
-	// 모든 로딩(레벨, 에셋, 월드 파티션)이 완료되었는지 확인합니다.
+	// 모든 로딩(이 완료되었는지 확인
 	if (bLevelStreamed && bAssetsLoaded && bWorldPartitionLoaded)
 	{
 		TransitionToMainLevel();
@@ -114,7 +114,7 @@ void ALoadingLevelManager::TryTransition()
 
 void ALoadingLevelManager::TransitionToMainLevel()
 {
-	// 한 번만 실행되도록 합니다.
+	// 한 번만 실행
 	if (GetWorldTimerManager().IsTimerActive(WorldPartitionCheckTimer))
 	{
 		GetWorldTimerManager().ClearTimer(WorldPartitionCheckTimer);
@@ -122,7 +122,7 @@ void ALoadingLevelManager::TransitionToMainLevel()
         // 이미 전환이 시작되었다면 중복 실행을 막습니다.
         if(!PrimaryActorTick.bCanEverTick) return;
     }
-    PrimaryActorTick.bCanEverTick = false; // 중복 호출 방지
+    PrimaryActorTick.bCanEverTick = false;
 
 	UE_LOG(LogTemp, Log, TEXT("[YiSan] All loading complete. Transitioning to level: %s"), *TargetLevelName.ToString());
 
