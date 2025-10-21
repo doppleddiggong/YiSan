@@ -1,30 +1,25 @@
-﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #pragma once
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "APlayerControl.h"
 #include "UChatPlayerSystem.generated.h"
 
-class UChatUIWidget;
-class UChatBoxWidget;
-
 UCLASS(ClassGroup=(Chat), meta=(BlueprintSpawnableComponent))
-class LATTELIBRARY_API UChatPlayerSystem : public UActorComponent
-{				
+class YISAN_API UChatPlayerSystem : public UActorComponent
+{
 	GENERATED_BODY()
 
 public:
 	UChatPlayerSystem();
 
-	void InitSytstem(APlayerControl* PC);
-	
-protected:
-	/** 로컬 전용: 채팅창 포커스 / 스크롤 처리 */
+	void InitSystem(class UChatBoxWidget* InChatBox);
+
+	/** 채팅 입력 처리 */
 	void OnEnterPressed();
-	void OnMouseWheelUp();
-	void OnMouseWheelDown();
+	void OnScrollUp();
+	void OnScrollDown();
 
 public:
 	/** 서버 RPC: 메시지 전송 */
@@ -39,14 +34,7 @@ public:
 	UFUNCTION(NetMulticast, Reliable)
 	void AddChatMessageOnAllClients(const FString& Message);
 
-	
-public:
-	UPROPERTY(EditDefaultsOnly, Category = "UI")
-	TSubclassOf<UChatUIWidget> ChatUIClass;
-
-	UPROPERTY()
-	TObjectPtr<UChatUIWidget> ChatUIRef;
-
+private:
 	UPROPERTY()
 	TObjectPtr<UChatBoxWidget> ChatBoxRef;
 };

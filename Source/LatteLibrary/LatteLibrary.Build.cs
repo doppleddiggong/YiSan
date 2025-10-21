@@ -20,7 +20,7 @@ public class LatteLibrary : ModuleRules
 			"Niagara",
 
 			"UMG",
-			
+
 			"CoffeeLibrary",
 		});
 		

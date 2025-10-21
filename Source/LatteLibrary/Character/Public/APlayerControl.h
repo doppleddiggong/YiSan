@@ -35,6 +35,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Jump;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Landing;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Chat;
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_ChatEnter;
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_ChatScrollUp;
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_ChatScrollDown;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Record;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_ShowDetail;
 	
@@ -49,6 +52,9 @@ protected:
 	void OnLanding(const FInputActionValue& Value);
 
 	void OnChat(const FInputActionValue& Value);
+	void OnChatEnter(const FInputActionValue& Value);
+	void OnChatScrollUp(const FInputActionValue& Value);
+	void OnChatScrollDown(const FInputActionValue& Value);
 	void OnRecordPressed(const FInputActionValue& Value);
 	void OnRecordReleased(const FInputActionValue& Value);
 
@@ -60,10 +66,4 @@ private:
 
 private:
     class IControllable* GetControllable() const;
-
-
-
-public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chat")
-	TObjectPtr<class UChatPlayerSystem> ChatPlayerSystem;
 };

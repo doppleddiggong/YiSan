@@ -8,6 +8,9 @@
 #include "UMainWidget.h"
 #include "UVoiceConversationSystem.h"
 #include "UGPTContextSystem.h"
+#include "UChatPlayerSystem.h"
+#include "UChatUIWidget.h"
+#include "UChatBoxWidget.h"
 #include "UHttpNetworkSystem.h"
 #include "TimerManager.h"
 #include "Kismet/GameplayStatics.h"
@@ -19,6 +22,7 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "GameFramework/PlayerController.h"
 
 #define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_Main.WBP_Main_C")
 
@@ -46,7 +50,7 @@ APlayerActor::APlayerActor()
     
     VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
     GPTContextSystem = CreateDefaultSubobject<UGPTContextSystem>(TEXT("GPTContextSystem"));
-    
+    ChatPlayerSystem = CreateDefaultSubobject<UChatPlayerSystem>(TEXT("ChatPlayerSystem"));
 }
 
 void APlayerActor::BeginPlay()
@@ -56,10 +60,25 @@ void APlayerActor::BeginPlay()
     MeshComp = this->GetMesh();
     MoveComp = this->GetCharacterMovement();
     AnimInstance = MeshComp->GetAnimInstance();
-    
-    MainWidgetInst = CreateWidget<UMainWidget>(GetWorld(), MainWidgetClass);
-    if (MainWidgetInst)
-        MainWidgetInst->AddToViewport();
+
+    // LocalController만 UI 생성
+    if (APlayerController* PC = Cast<APlayerController>(GetController()))
+    {
+        if (PC->IsLocalController())
+        {
+            MainWidgetInst = CreateWidget<UMainWidget>(GetWorld(), MainWidgetClass);
+            if (MainWidgetInst)
+            {
+                MainWidgetInst->AddToViewport();
+
+                // ChatUI 연결
+                if (MainWidgetInst->ChatBoxCtn)
+                {
+                    ChatPlayerSystem->InitSystem(MainWidgetInst->ChatBoxCtn);
+                }
+            }
+        }
+    }
 
     VoiceConversationSystem->InitSystem(this);
     GPTContextSystem->InitSystem(this);
@@ -186,6 +205,24 @@ void APlayerActor::Cmd_RecordEnd_Implementation()
 void APlayerActor::Cmd_ShowDetail_Implementation()
 {
     BroadcastManager->SendMegaPopupClosed();
+}
+
+void APlayerActor::Cmd_ChatEnter_Implementation()
+{
+    if (ChatPlayerSystem)
+        ChatPlayerSystem->OnEnterPressed();
+}
+
+void APlayerActor::Cmd_ChatScrollUp_Implementation()
+{
+    if (ChatPlayerSystem)
+        ChatPlayerSystem->OnScrollUp();
+}
+
+void APlayerActor::Cmd_ChatScrollDown_Implementation()
+{
+    if (ChatPlayerSystem)
+        ChatPlayerSystem->OnScrollDown();
 }
 
 void APlayerActor::OnExecVoiceCommand(EVoiceCommandType InType)

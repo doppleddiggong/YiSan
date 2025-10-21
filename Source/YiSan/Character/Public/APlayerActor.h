@@ -80,6 +80,9 @@ public:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GPT", meta=(AllowPrivateAccess="true"))
     TObjectPtr<class UGPTContextSystem> GPTContextSystem; ///< 시선 및 주변 건물을 추적하는 GPT 컨텍스트 제공자입니다.
 
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Chat", meta=(AllowPrivateAccess="true"))
+    TObjectPtr<class UChatPlayerSystem> ChatPlayerSystem; ///< 채팅 시스템 컴포넌트입니다.
+
     UPROPERTY()
     TObjectPtr<class UBroadcastManager> BroadcastManager; ///< UI 알림에 사용하는 캐시된 브로드캐스트 매니저입니다.
 
@@ -113,5 +116,14 @@ public: // 제어 인터페이스
 
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
     void Cmd_ShowDetail() override;
+
+    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
+    void Cmd_ChatEnter() override;
+
+    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
+    void Cmd_ChatScrollUp() override;
+
+    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
+    void Cmd_ChatScrollDown() override;
 };
 
