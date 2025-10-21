@@ -7,6 +7,7 @@
 #include "Engine/World.h"
 #include "TimerManager.h"
 #include "ContentStreaming.h"
+#include "GameLogging.h"
 #include "Streaming/StreamingWorldSubsystemInterface.h"
 #include "WorldPartition/WorldPartitionSubsystem.h"
 #if WITH_EDITOR
@@ -27,56 +28,51 @@ void UYiSanGameInstance::Init()
 
 void UYiSanGameInstance::LoadLevelWithLoadingScreen(FName InTargetLevelName)
 {
+    //이미 로딩 중이면 새로운 요청을 무시합니다. (무한 루프 방지)
+    if (bIsLoadingLevel)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("[YiSan] Already in loading process. Ignoring new request to load: %s"), *InTargetLevelName.ToString());
+        return;
+    }
+
     if (InTargetLevelName.IsNone())
     {
         UE_LOG(LogTemp, Error, TEXT("[YiSan] Invalid target level name!"));
         return;
     }
 
+    //로딩 시작 플래그 설정
+    bIsLoadingLevel = true;
     TargetLevelName = InTargetLevelName;
-    UE_LOG(LogTemp, Log, TEXT("[YiSan] Starting level transition to: %s"), *TargetLevelName.ToString());
+    PRINTLOG(TEXT("레벨로 이동: %s"), *TargetLevelName.ToString());
 
-    // 초기화
-    bLevelLoaded = false;
-    bAssetsLoaded = false;
-    bWorldPartitionReady = false;
-
-    // Step 1: 로딩 레벨로 먼저 이동
+    // step1 으로 이동한다
     Step1_MoveToLoadingLevel();
+    
 }
+
+
 
 // ==================== Step 1: 로딩 레벨로 이동 ====================
 
 void UYiSanGameInstance::Step1_MoveToLoadingLevel()
 {
-    UE_LOG(LogTemp, Log, TEXT("[YiSan Step 1] Moving to loading level"));
+    UE_LOG(LogTemp, Warning, TEXT("[YiSan Step 1] Moving to loading level"));
 
     // 로딩 스크린 표시
     ShowLoadingScreen();
-
-    // 로딩 레벨로 이동 (동기)
-    // 주의: 로딩 레벨은 가벼워야 합니다!
+    //step 1 에서 레벨 넘기기만 하기
     UGameplayStatics::OpenLevel(this, FName("/Game/CustomContents/Maps/LoadingMap"));
+}
 
-    // 로딩 레벨이 로드되면 Step2 실행
-    FTimerHandle DelayTimer;
+void UYiSanGameInstance::OnLoadingMapReady()
+{
+    PRINTLOG(TEXT("로딩 안정화"));
     if (UWorld* World = GetWorld())
     {
-        World->GetTimerManager().SetTimerForNextTick([this]()
-        {
-            // 다음 프레임에 Step2 실행을 위한 타이머 설정
-            if (UWorld* CurrentWorld = GetWorld())
-            {
-                FTimerHandle SecondDelayTimer;
-                CurrentWorld->GetTimerManager().SetTimer(
-                    SecondDelayTimer,
-                    this,
-                    &UYiSanGameInstance::Step2_StartLoadingTargetLevel,
-                    0.5f,  // 로딩 레벨 안정화 대기
-                    false
-                );
-            }
-        });
+        // 안정화 용
+        FTimerHandle TimerHandle;
+        GetTimerManager().SetTimer(TimerHandle,this,&UYiSanGameInstance::Step2_StartLoadingTargetLevel,0.5,false);
     }
 }
 
@@ -84,25 +80,24 @@ void UYiSanGameInstance::Step1_MoveToLoadingLevel()
 
 void UYiSanGameInstance::Step2_StartLoadingTargetLevel()
 {
-    UE_LOG(LogTemp, Log, TEXT("[YiSan Step 2] Starting to load target level: %s"), *TargetLevelName.ToString());
-
-    // 비동기 레벨 로드 (현재 로딩 레벨 위에 스트리밍)
-    FLatentActionInfo LatentInfo;
-    LatentInfo.CallbackTarget = this;
-    LatentInfo.ExecutionFunction = FName("Step3_OnLevelLoaded");
-    LatentInfo.Linkage = 0;
-    LatentInfo.UUID = FMath::Rand();
-
-    UGameplayStatics::LoadStreamLevel(this, TargetLevelName, true, false, LatentInfo);
+    UE_LOG(LogTemp, Warning, TEXT("[YiSan Step 2] Starting to load target level: %s"), *TargetLevelName.ToString());
+    
+    UGameplayStatics::OpenLevel(this, TargetLevelName);
 }
+
+
+void UYiSanGameInstance::OnTargetLevelReady()
+{
+    Step3_OnLevelLoaded();
+}
+
 
 // ==================== Step 3: 레벨 로드 완료 ====================
 
 void UYiSanGameInstance::Step3_OnLevelLoaded()
 {
-    UE_LOG(LogTemp, Log, TEXT("[YiSan Step 3] Target level loaded into memory"));
+    PRINTLOG(TEXT("메모리 로딩"));
     bLevelLoaded = true;
-
     // 이제 리소스(텍스처, 셰이더 등)가 완전히 준비될 때까지 대기
     Step4_CheckResources();
 }
@@ -111,38 +106,28 @@ void UYiSanGameInstance::Step3_OnLevelLoaded()
 
 void UYiSanGameInstance::Step4_CheckResources()
 {
-    UE_LOG(LogTemp, Log, TEXT("[YiSan Step 4] Checking resources..."));
-
+    PRINTLOG(TEXT("리소스 체크중"));
     if (UWorld* World = GetWorld())
     {
-        // 주기적으로 리소스 상태 확인
-        World->GetTimerManager().SetTimer(
-            ResourceCheckTimer,
-            [this]()
-            {
-                bool bTexturesReady = CheckTextureStreaming();
-                bool bShadersReady = CheckShaderCompilation();
-                bool bWPReady = CheckWorldPartition();
-
-                // 진행률 로그
-                UE_LOG(LogTemp, Verbose, TEXT("[YiSan] Resources - Textures: %d, Shaders: %d, WP: %d"),
-                    bTexturesReady, bShadersReady, bWPReady);
-
-                if (bTexturesReady && bShadersReady && bWPReady)
-                {
-                    // 모두 준비 완료!
-                    if (UWorld* CurrentWorld = GetWorld())
-                    {
-                        CurrentWorld->GetTimerManager().ClearTimer(ResourceCheckTimer);
-                    }
-                    Step5_TransitionToTarget();
-                }
-            },
-            0.1f,  // 0.1초마다 체크
-            true   // 반복
-        );
+        GetTimerManager().SetTimer(ResourceCheckTimer,this,&UYiSanGameInstance::PeriodicResourceCheck,0.1f,true);
     }
 }
+
+void UYiSanGameInstance::PeriodicResourceCheck()
+{
+    bool bTextureReady = CheckTextureStreaming();
+    bool bShaderReady = CheckShaderCompilation();
+    bool worldPartitionReady = CheckWorldPartition();
+    if (bTextureReady && bShaderReady && worldPartitionReady)
+    {
+        if (UWorld* World = GetWorld())
+        {
+            World->GetTimerManager().ClearTimer(ResourceCheckTimer);
+        }
+        Step5_TransitionToTarget();
+    }
+}
+
 
 bool UYiSanGameInstance::CheckTextureStreaming()
 {
@@ -160,8 +145,6 @@ bool UYiSanGameInstance::CheckTextureStreaming()
         // 1.0이면 완료
         return StreamingPercentage >= 1.0f;
     }
-    
-    // 스트리밍 매니저가 없으면 완료로 간주
     return true;
 }
 
@@ -175,13 +158,12 @@ bool UYiSanGameInstance::CheckShaderCompilation()
         
         if (RemainingJobs > 0)
         {
-            UE_LOG(LogTemp, Verbose, TEXT("[YiSan] Waiting for %d shader compilation jobs"), RemainingJobs);
+            PRINTLOG(TEXT(" 쉐이더 %d 다 됐습니다"), RemainingJobs);
             return false;
         }
     }
 #endif
-    
-    // 패키징된 빌드에서는 항상 true (셰이더가 미리 컴파일됨)
+    // 패키징된 빌드에서는 항상 true 되어있어야 한다
     return true;
 }
 
@@ -196,7 +178,7 @@ bool UYiSanGameInstance::CheckWorldPartition()
             
             if (!bCompleted)
             {
-                UE_LOG(LogTemp, Verbose, TEXT("[YiSan] World Partition streaming in progress..."));
+                PRINTLOG(TEXT("월드 파티션쪽도 거의다 끝났슴다"));
             }
             
             return bCompleted;
@@ -206,6 +188,8 @@ bool UYiSanGameInstance::CheckWorldPartition()
     // World Partition이 없으면 완료로 간주
     return true;
 }
+
+
 
 // ==================== Step 5: 타겟 레벨로 전환 ====================
 
@@ -217,23 +201,15 @@ void UYiSanGameInstance::Step5_TransitionToTarget()
     {
         // 약간의 딜레이 후 전환 (안정화)
         FTimerHandle FinalDelayTimer;
-        World->GetTimerManager().SetTimer(
-            FinalDelayTimer,
-            [this]()
-            {
-                // 로딩 스크린 숨김
-                HideLoadingScreen();
-
-                // 타겟 레벨로 완전 전환
-                // 이제 OpenLevel을 사용하여 로딩 레벨을 언로드하고 타겟 레벨만 남김
-                UGameplayStatics::OpenLevel(this, TargetLevelName);
-
-                UE_LOG(LogTemp, Log, TEXT("[YiSan] Level transition complete!"));
-            },
-            0.3f,  // 300ms 후 전환
-            false
-        );
+        World->GetTimerManager().SetTimer(FinalDelayTimer,this,&UYiSanGameInstance::FinalHideLoadingScreen,0.3,false); 
     }
+}
+void UYiSanGameInstance::FinalHideLoadingScreen()
+{
+    HideLoadingScreen();
+    PRINTLOG(TEXT("레벨 트랜지션 끝났습니다"));
+    // 빠져 나옵니다
+    bIsLoadingLevel = false;
 }
 
 // ==================== UI 관리 ====================
@@ -248,11 +224,13 @@ void UYiSanGameInstance::ShowLoadingScreen()
             if (LoadingWidget)
             {
                 LoadingWidget->AddToViewport(9999);  // 최상위 레이어
-                UE_LOG(LogTemp, Log, TEXT("[YiSan] Loading screen shown"));
+                UE_LOG(LogTemp, Warning, TEXT("[YiSan] Loading screen shown"));
             }
         }
     }
 }
+
+
 
 void UYiSanGameInstance::HideLoadingScreen()
 {
@@ -260,6 +238,7 @@ void UYiSanGameInstance::HideLoadingScreen()
     {
         LoadingWidget->RemoveFromParent();
         LoadingWidget = nullptr;
-        UE_LOG(LogTemp, Log, TEXT("[YiSan] Loading screen hidden"));
+        UE_LOG(LogTemp, Warning, TEXT("[YiSan] Loading screen hidden"));
     }
 }
+

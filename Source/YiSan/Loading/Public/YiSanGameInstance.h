@@ -24,7 +24,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Level")
 	void LoadLevelWithLoadingScreen(FName InTargetLevelName);
 
-protected:
+	// 로딩 매니저가 호출할 함수
+	UFUNCTION()
+	void OnLoadingMapReady();
+
+	//begin play 에서 호출할 함수
+	UFUNCTION(BlueprintCallable, Category = "Level")
+	void OnTargetLevelReady();
+	
 	virtual void Init() override;
 
 	/** 로딩 위젯 클래스 */
@@ -36,12 +43,15 @@ protected:
 	TObjectPtr<UUserWidget> LoadingWidget;
 
 	/** 최종 목적지 레벨 */
+	UPROPERTY(EditDefaultsOnly, Category = "UI")
 	FName TargetLevelName;
 
 	/** 로딩 완료 플래그 */
 	bool bLevelLoaded = false;
 	bool bAssetsLoaded = false;
 	bool bWorldPartitionReady = false;
+
+	bool bIsLoadingLevel = false;
 
 	/** 타이머 핸들 */
 	FTimerHandle WorldPartitionCheckTimer;
@@ -71,7 +81,10 @@ protected:
 	bool CheckShaderCompilation();
 	bool CheckWorldPartition();
 
+	void PeriodicResourceCheck();
+
 	/** 로딩 UI 표시/숨김 */
 	void ShowLoadingScreen();
 	void HideLoadingScreen();
+	void FinalHideLoadingScreen();
 };

@@ -22,7 +22,8 @@ public class YiSan : ModuleRules
 			"Slate",
 			"SlateCore",
 			"MediaAssets",
-			"RenderCore"
+			"RenderCore" ,
+			"AIModule" ,
 		});
 		
 		PublicDependencyModuleNames.AddRange(new string[]
