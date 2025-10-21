@@ -1,5 +1,4 @@
 #include "LoadingLevelManager.h"
-
 #include "Blueprint/UserWidget.h"
 #include "Kismet/GameplayStatics.h"
 #include "Engine/StreamableManager.h"
@@ -15,6 +14,10 @@ void ALoadingLevelManager::BeginPlay()
 {
 	Super::BeginPlay();
 
+	// [2025-10-20 Gemini-CLI] UYiSanGameInstance의 로딩 로직과 충돌하여 비활성화합니다.
+	// 이 액터는 LoadingLevel에 배치되어 자체적으로 레벨 로딩을 시도하며,
+	// 이는 GameInstance의 로딩 플로우를 방해하고 오류를 발생시킵니다.
+	/*
 	// 로딩 UI가 있다면 표시
 	if (LoadingWidgetClass)
 	{
@@ -27,6 +30,7 @@ void ALoadingLevelManager::BeginPlay()
 
 	// 비동기 로딩
 	StartAsyncLoad();
+	*/
 }
 
 void ALoadingLevelManager::StartAsyncLoad()

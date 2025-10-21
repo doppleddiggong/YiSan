@@ -4,6 +4,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "MediaPlayer.h"
 #include "MediaTexture.h"
+#include "YiSanGameInstance.h" 
 #include "Engine/Texture.h"
 
 void UStartUI::NativeConstruct()
@@ -36,38 +37,29 @@ void UStartUI::NativeConstruct()
 
 void UStartUI::OnStartButtonClicked()
 {
+	UE_LOG(LogTemp, Warning, TEXT("UStartUI::OnStartButtonClicked - Button Clicked!"));
+
 	if (MediaPlayer && MediaPlayer->IsPlaying())
 	{
 		MediaPlayer->Pause();
 	}
 
-	// 맵 이름이 유효하면 레벨 전환
-	if (!MapName.IsNone())
+	UGameInstance* GI_Raw = GetGameInstance();
+	if (!GI_Raw)
 	{
-		UGameplayStatics::OpenLevel(this, MapName);
+		UE_LOG(LogTemp, Error, TEXT("UStartUI - GetGameInstance() returned NULL!"));
+		return;
 	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("MainMapName is not set in StartUI"));
-	}
-	// UYisanGameInstance* GI = Cast<UYisanGameInstance>(GetGameInstance());
-	// //인스턴스를 가져오자
-	// if (!GI)
-	// {
-	// 	UE_LOG(LogTemp, Error, TEXT("GameInstance is not UYisanGameInstance!"));
-	// 	return;
-	// }
+	UE_LOG(LogTemp, Warning, TEXT("UStartUI - Got GameInstance of class: %s"), *GI_Raw->GetClass()->GetName());
 
-	// 목료 레벨 이름 저장
-	// GI->TargetLevel = FName("MainMap"); 
 
-	// 이제 mapname 에서 설정한 맵으로 이동
-	if (!MapName.IsNone()) 
+	UYiSanGameInstance* GI = Cast<UYiSanGameInstance>(GI_Raw);
+	if (!GI)
 	{
-		UGameplayStatics::OpenLevel(this, MapName);
+		UE_LOG(LogTemp, Error, TEXT("UStartUI - Cast to UYiSanGameInstance FAILED!"));
+		return;
 	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("MapName (to LoadingMap) is not set in StartUI"));
-	}
+
+	UE_LOG(LogTemp, Warning, TEXT("UStartUI - Cast successful. Calling LoadLevelWithLoadingScreen..."));
+	GI->LoadLevelWithLoadingScreen(FName("MainMap"));
 }
