@@ -3,6 +3,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "EDasanState.h"
 #include "AYiSanGameMode.generated.h"
 
 /// @file AYiSanGameMode.h
@@ -13,6 +14,19 @@ UCLASS(abstract)
 class AYiSanGameMode : public AGameModeBase
 {
     GENERATED_BODY()
+
 public:
     virtual void PostLogin(APlayerController* NewPlayer) override;
+
+public:
+    // 투어 시작 (블루프린트에서도 호출 가능)
+    UFUNCTION(BlueprintCallable, Category="Tour")
+    void StartTour();
+
+    // 투어 상태 설정
+    void SetTourState(EDasanState InState);
+
+private:
+    UPROPERTY()
+    TObjectPtr<class ADasanActor> DasanNPC;
 };

@@ -8,6 +8,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/ActorComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 struct FComponentHelper
 {
@@ -66,5 +67,29 @@ struct FComponentHelper
 			}
 		}
 		return nullptr;
+	}
+
+	template<typename T>
+	static TArray<T*> GetAllOfClass(UWorld* World)
+	{
+		static_assert(TIsDerivedFrom<T, AActor>::IsDerived, "T must derive from AActor");
+
+		TArray<T*> Result;
+
+		if (!World)
+			return Result;
+
+		TArray<AActor*> FoundActors;
+		UGameplayStatics::GetAllActorsOfClass(World, T::StaticClass(), FoundActors);
+
+		for (AActor* Actor : FoundActors)
+		{
+			if (T* Casted = Cast<T>(Actor))
+			{
+				Result.Add(Casted);
+			}
+		}
+
+		return Result;
 	}
 };

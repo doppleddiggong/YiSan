@@ -7,9 +7,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "InputActionValue.h"
 #include "GameFramework/PlayerController.h"
 #include "APlayerControl.generated.h"
+
+struct  FInputActionValue;
 
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Dopple))
 class LATTELIBRARY_API APlayerControl : public APlayerController
@@ -52,7 +53,7 @@ protected:
 	void OnRecordReleased(const FInputActionValue& Value);
 
 	void OnShowDetail(const FInputActionValue& Value);
-	
+
 private:
 	UFUNCTION()
 	void OnPlayerControlState(bool bState, class UUserWidget* FocusWidget);

@@ -4,11 +4,6 @@
 #include "GameLogging.h"
 #include "UBroadcastManager.h"
 
-void UQuestManager::Initialize(FSubsystemCollectionBase& Collection)
-{
-    Super::Initialize(Collection);
-}
-
 void UQuestManager::InitSystem()
 {
     QuestList = {
@@ -27,10 +22,12 @@ void UQuestManager::InitSystem()
     BroadcastManager->OnContactBuilding.AddDynamic(this, &UQuestManager::OnContactBuilding);
 }
 
-
-void UQuestManager::Deinitialize()
+FString UQuestManager::GetTargetBuildingName()
 {
-    Super::Deinitialize();
+    if ( CurTarget == EBuildingType::None)
+        return TEXT("EMPTY");
+    
+    return ENUM_TO_NAME( EBuildingType, CurTarget );
 }
 
 void UQuestManager::OnContactBuilding(EBuildingType InType)

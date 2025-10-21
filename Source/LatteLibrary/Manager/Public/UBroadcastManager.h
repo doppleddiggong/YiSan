@@ -152,4 +152,40 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendKnockback(AActor* Target, AActor* Instigator, EDamageType Type, float Resistance);
+
+	// ========================================
+	// Multiplayer Session Events
+	// ========================================
+
+	/// @brief 세션 호스트 생성 이벤트
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSessionHost, FString, MapName);
+	UPROPERTY(BlueprintAssignable, Category="Events|Multiplayer")
+	FOnSessionHost OnSessionHost;
+
+	UFUNCTION(BlueprintCallable, Category="Events|Multiplayer")
+	void SendSessionHost(const FString& MapName);
+
+	/// @brief 세션 참가 이벤트
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnSessionJoin, FString, Address, int32, Port);
+	UPROPERTY(BlueprintAssignable, Category="Events|Multiplayer")
+	FOnSessionJoin OnSessionJoin;
+
+	UFUNCTION(BlueprintCallable, Category="Events|Multiplayer")
+	void SendSessionJoin(const FString& Address, int32 Port);
+
+	/// @brief 세션 연결 해제 이벤트
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnSessionDisconnect);
+	UPROPERTY(BlueprintAssignable, Category="Events|Multiplayer")
+	FOnSessionDisconnect OnSessionDisconnect;
+
+	UFUNCTION(BlueprintCallable, Category="Events|Multiplayer")
+	void SendSessionDisconnect();
+
+	/// @brief 세션 오류 이벤트
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSessionError, FString, ErrorMessage);
+	UPROPERTY(BlueprintAssignable, Category="Events|Multiplayer")
+	FOnSessionError OnSessionError;
+
+	UFUNCTION(BlueprintCallable, Category="Events|Multiplayer")
+	void SendSessionError(const FString& ErrorMessage);
 };

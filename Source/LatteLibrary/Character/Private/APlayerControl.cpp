@@ -11,6 +11,7 @@
 #include "EnhancedInputComponent.h"
 
 #include "InputMappingContext.h"
+#include "InputActionValue.h"
 #include "InputAction.h"
 
 #include "FComponentHelper.h"
@@ -219,4 +220,4 @@ void APlayerControl::OnShowDetail(const FInputActionValue& Value)
 {
 	if (IControllable* C = GetControllable())
 		C->Cmd_ShowDetail();
-} 
+}

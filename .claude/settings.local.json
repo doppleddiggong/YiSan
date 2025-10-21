@@ -2,7 +2,19 @@
   "permissions": {
     "allow": [
       "Bash(git log:*)",
-      "Bash(git shortlog:*)"
+      "Bash(git shortlog:*)",
+      "Bash(findstr /v \"Intermediate Private gen.cpp\")",
+      "Bash(dir Source /s /b /ad)",
+      "Bash(if not exist \"E:\\UE\\YiSan\\document\" mkdir \"E:\\UE\\YiSan\\document\")",
+      "Bash(dir \"E:\\UE\\YiSan\\document\" /b)",
+      "Bash(if exist \"Intermediate\" rmdir /s /q \"Intermediate\")",
+      "Bash(if exist \"Binaries\" rmdir /s /q \"Binaries\")",
+      "Bash(\"C:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Binaries\\DotNET\\UnrealBuildTool\\UnrealBuildTool.exe\" -projectfiles -project=\"E:\\UE\\YiSan\\YiSan.uproject\" -game -rocket -progress)",
+      "Bash(findstr:*)",
+      "Bash(cmd /c \"cd /d E:\\UE\\YiSan && \"\"C:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Binaries\\DotNET\\UnrealBuildTool\\UnrealBuildTool.exe\"\" -projectfiles -project=\"\"E:\\UE\\YiSan\\YiSan.uproject\"\" -game -rocket -progress\")",
+      "Bash(cmd /c:*)",
+      "Bash(where:*)",
+      "Bash(dir \"C:\\Program Files\\Microsoft Visual Studio\\2022\" /b)"
     ],
     "deny": [],
     "ask": []
