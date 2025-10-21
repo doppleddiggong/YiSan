@@ -23,13 +23,13 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	class UTextBlock* MessageText;
 
-	/** 타임스탬프 표시 (옵션) */
-	UPROPERTY(meta = (BindWidget))
-	class UTextBlock* TimestampText;
-
-	/** 아이콘 (옵션) */
-	UPROPERTY(meta = (BindWidget))
-	class UImage* MessageIcon;
+	// /** 타임스탬프 표시 (옵션) */
+	// UPROPERTY(meta = (BindWidget))
+	// class UTextBlock* TimestampText;
+	//
+	// /** 아이콘 (옵션) */
+	// UPROPERTY(meta = (BindWidget))
+	// class UImage* MessageIcon;
 
 public:
 	/**

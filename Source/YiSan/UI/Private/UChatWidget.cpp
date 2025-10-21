@@ -10,29 +10,9 @@
 
 #include "Kismet/GameplayStatics.h"
 
-// 여기서 GameChatManager를 포함 (다음 단계에서 구현)
-// #include "GameChatManager.h"
-
 void UChatWidget::NativeConstruct()
 {
     Super::NativeConstruct();
-
-    // 버튼 이벤트 바인딩
-    if (SendButton)
-    {
-        SendButton->OnClicked.AddDynamic(this, &UChatWidget::OnSendButtonClicked);
-    }
-
-    if (ToggleChatButton)
-    {
-        ToggleChatButton->OnClicked.AddDynamic(this, &UChatWidget::OnToggleChatButtonClicked);
-    }
-
-    // 입력창 엔터키 바인딩
-    if (MessageInputBox)
-    {
-        MessageInputBox->OnTextCommitted.AddDynamic(this, &UChatWidget::OnMessageInputCommitted);
-    }
 
     // 초기 시스템 메시지
     FChatMessageData WelcomeMessage;
@@ -40,27 +20,6 @@ void UChatWidget::NativeConstruct()
     WelcomeMessage.MessageText = TEXT("채팅 시스템이 초기화되었습니다. /ask [질문]으로 Dasan에게 질문하세요.");
     WelcomeMessage.MessageType = EChatMessageType::SystemMessage;
     AddMessage(WelcomeMessage);
-}
-
-void UChatWidget::NativeDestruct()
-{
-    Super::NativeDestruct();
-
-    // 이벤트 언바인딩
-    if (SendButton)
-    {
-        SendButton->OnClicked.RemoveDynamic(this, &UChatWidget::OnSendButtonClicked);
-    }
-
-    if (ToggleChatButton)
-    {
-        ToggleChatButton->OnClicked.RemoveDynamic(this, &UChatWidget::OnToggleChatButtonClicked);
-    }
-
-    if (MessageInputBox)
-    {
-        MessageInputBox->OnTextCommitted.RemoveDynamic(this, &UChatWidget::OnMessageInputCommitted);
-    }
 }
 
 void UChatWidget::AddMessage(const FChatMessageData& MessageData)
@@ -114,12 +73,6 @@ void UChatWidget::SendAskCommand(const FString& Question)
         }
     }
     */
-
-    // 입력창 초기화
-    if (MessageInputBox)
-    {
-        MessageInputBox->SetText(FText::GetEmpty());
-    }
 }
 
 void UChatWidget::SendChatMessage(const FString& Message)
@@ -138,12 +91,6 @@ void UChatWidget::SendChatMessage(const FString& Message)
 
     // TODO: 일반 채팅 서버 전송 구현
     // ChatManager->ServerRPC_SendChatMessage(Message);
-
-    // 입력창 초기화
-    if (MessageInputBox)
-    {
-        MessageInputBox->SetText(FText::GetEmpty());
-    }
 }
 
 void UChatWidget::ClearChatHistory()
@@ -154,56 +101,6 @@ void UChatWidget::ClearChatHistory()
     {
         ChatScrollBox->ClearChildren();
     }
-}
-
-void UChatWidget::ToggleChatVisibility()
-{
-    bIsChatVisible = !bIsChatVisible;
-
-    if (ChatScrollBox)
-    {
-        ChatScrollBox->SetVisibility(bIsChatVisible ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
-    }
-
-    if (MessageInputBox)
-    {
-        MessageInputBox->SetVisibility(bIsChatVisible ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
-    }
-}
-
-void UChatWidget::OnSendButtonClicked()
-{
-    if (!MessageInputBox)
-    {
-        return;
-    }
-
-    FString InputText = MessageInputBox->GetText().ToString().TrimStartAndEnd();
-    
-    if (InputText.IsEmpty())
-    {
-        return;
-    }
-
-    // 명령어 처리
-    if (!ProcessCommand(InputText))
-    {
-        // 일반 메시지로 처리
-        SendChatMessage(InputText);
-    }
-}
-
-void UChatWidget::OnMessageInputCommitted(const FText& Text, ETextCommit::Type CommitMethod)
-{
-    if (CommitMethod == ETextCommit::OnEnter)
-    {
-        OnSendButtonClicked();
-    }
-}
-
-void UChatWidget::OnToggleChatButtonClicked()
-{
-    ToggleChatVisibility();
 }
 
 FLinearColor UChatWidget::GetMessageColor(EChatMessageType MessageType) const

@@ -27,18 +27,6 @@ protected:
     UPROPERTY(meta = (BindWidget))
     class UScrollBox* ChatScrollBox;
 
-    /** 메시지 입력 필드 */
-    UPROPERTY(meta = (BindWidget))
-    class UEditableTextBox* MessageInputBox;
-
-    /** 전송 버튼 */
-    UPROPERTY(meta = (BindWidget))
-    class UButton* SendButton;
-
-    /** 채팅창 토글 버튼 (옵션) */
-    UPROPERTY(meta = (BindWidget))
-    class UButton* ToggleChatButton;
-
     // ──────────────────────────────────────────────────────
     // Message Display Settings
     // ──────────────────────────────────────────────────────
@@ -76,12 +64,7 @@ protected:
     bool bIsChatVisible = true;
 
 public:
-    // ──────────────────────────────────────────────────────
-    // Lifecycle
-    // ──────────────────────────────────────────────────────
-
     virtual void NativeConstruct() override;
-    virtual void NativeDestruct() override;
 
     // ──────────────────────────────────────────────────────
     // Public Interface
@@ -114,29 +97,7 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Chat")
     void ClearChatHistory();
 
-    /**
-     * 채팅창 표시/숨김 토글
-     */
-    UFUNCTION(BlueprintCallable, Category = "Chat")
-    void ToggleChatVisibility();
-
 protected:
-    // ──────────────────────────────────────────────────────
-    // Internal Methods
-    // ──────────────────────────────────────────────────────
-
-    /** 전송 버튼 클릭 처리 */
-    UFUNCTION()
-    void OnSendButtonClicked();
-
-    /** 입력창 엔터키 처리 */
-    UFUNCTION()
-    void OnMessageInputCommitted(const FText& Text, ETextCommit::Type CommitMethod);
-
-    /** 토글 버튼 클릭 처리 */
-    UFUNCTION()
-    void OnToggleChatButtonClicked();
-
     /**
      * 메시지 타입에 따른 색상 반환
      */
