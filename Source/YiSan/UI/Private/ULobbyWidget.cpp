@@ -30,6 +30,11 @@ void ULobbyWidget::NativeConstruct()
 		Btn_Join->OnClicked.AddDynamic(this, &ULobbyWidget::OnJoinButtonClicked);
 	}
 
+	if (Btn_Find)
+	{
+		Btn_Find->OnClicked.AddDynamic(this, &ULobbyWidget::OnFindButtonClicked);
+	}
+
 	if (Btn_Disconnect)
 	{
 		Btn_Disconnect->OnClicked.AddDynamic(this, &ULobbyWidget::OnDisconnectButtonClicked);
@@ -75,17 +80,29 @@ void ULobbyWidget::OnHostButtonClicked()
 {
 	PRINTLOG(TEXT("[LobbyWidget] OnHostButtonClicked - Map=%s, MaxPlayers=%d"), *MapName, MaxPlayers);
 
-	// if (CachedPlayerController)
-	// {
-	// 	CachedPlayerController->HostSession(MapName, MaxPlayers);
-	// 	UpdateStatusText(FString::Printf(TEXT("호스트 생성 중... 맵: %s"), *MapName));
-	// }
-	// else
-	// {
-	// 	PRINTLOG(TEXT("[LobbyWidget] OnHostButtonClicked - PlayerController is null"));
-	// 	UpdateStatusText(TEXT("오류: PlayerController를 찾을 수 없습니다"));
-	// }
+	/*if (CachedPlayerController)
+	{
+		CachedPlayerController->HostSession(MapName, MaxPlayers);
+	 	UpdateStatusText(FString::Printf(TEXT("호스트 생성 중... 맵: %s"), *MapName));
+	}
+	else
+	{
+	 	PRINTLOG(TEXT("[LobbyWidget] OnHostButtonClicked - PlayerController is null"));
+	 	UpdateStatusText(TEXT("오류: PlayerController를 찾을 수 없습니다"));
+	}*/
+
+	auto gi = Cast<UYiSanGameInstance>(GetGameInstance());
+	gi->CreateMySession(TEXT("qqq"), 4);
 }
+
+void ULobbyWidget::OnFindButtonClicked()
+{
+
+	auto gi = Cast<UYiSanGameInstance>(GetGameInstance());
+	gi->FindOtherSession();
+
+}
+
 
 void ULobbyWidget::OnJoinButtonClicked()
 {
@@ -107,6 +124,11 @@ void ULobbyWidget::OnJoinButtonClicked()
 
 	PRINTLOG(TEXT("[LobbyWidget] OnJoinButtonClicked - Address=%s, Port=%d"), *IPAddress, Port);
 
+
+	auto gi = Cast<UYiSanGameInstance>(GetGameInstance());
+	gi->JoinOtherSession(0);
+
+	
 	// if (CachedPlayerController)
 	// {
 	// 	CachedPlayerController->JoinSession(IPAddress, Port);
@@ -117,6 +139,8 @@ void ULobbyWidget::OnJoinButtonClicked()
 	// 	PRINTLOG(TEXT("[LobbyWidget] OnJoinButtonClicked - PlayerController is null"));
 	// 	UpdateStatusText(TEXT("오류: PlayerController를 찾을 수 없습니다"));
 	// }
+
+
 }
 
 void ULobbyWidget::OnDisconnectButtonClicked()
