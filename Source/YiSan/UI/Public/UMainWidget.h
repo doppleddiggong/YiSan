@@ -47,11 +47,11 @@ private:
     void OnResponseAsk(FResponseAsk& Response, bool bSuccess);
 
 protected:
-    UPROPERTY(meta = (BindWidget), BlueprintReadWrite, Category = "Chat")
-    class UCanvasPanel* ChatBox;
-
-    UPROPERTY(meta = (BindWidget), BlueprintReadWrite, Category = "Chat")
-    class UEditableTextBox* InputText;
+    // UPROPERTY(meta = (BindWidget), BlueprintReadWrite, Category = "Chat")
+    // class UCanvasPanel* ChatBox;
+    //
+    // UPROPERTY(meta = (BindWidget), BlueprintReadWrite, Category = "Chat")
+    // class UEditableTextBox* InputText;
 
 private:
     UPROPERTY()
@@ -77,6 +77,9 @@ public:
     UPROPERTY(meta = (BindWidget))
     class USmallPopup* SmallPopupCtn;
 
+    UPROPERTY(meta = (BindWidget))
+    class UChatBoxWidget* ChatBoxCtn;
+    
 private:
     /// @brief 최근 감지된 건물 유형입니다.
     EBuildingType CurNearBuildingType = EBuildingType::None;

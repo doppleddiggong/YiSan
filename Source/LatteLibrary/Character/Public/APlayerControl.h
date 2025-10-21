@@ -10,7 +10,7 @@
 #include "GameFramework/PlayerController.h"
 #include "APlayerControl.generated.h"
 
-struct  FInputActionValue;
+struct FInputActionValue;
 
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Dopple))
 class LATTELIBRARY_API APlayerControl : public APlayerController
@@ -60,4 +60,10 @@ private:
 
 private:
     class IControllable* GetControllable() const;
+
+
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chat")
+	TObjectPtr<class UChatPlayerSystem> ChatPlayerSystem;
 };

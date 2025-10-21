@@ -20,6 +20,8 @@
 #include "GameFramework/GameModeBase.h"
 #include "Kismet/GameplayStatics.h"
 
+#include "UChatPlayerSystem.h"
+
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
 #define IA_LOOK_PATH				TEXT("/Game/CustomContents/Input/IA_Game_LookAround.IA_Game_LookAround")
@@ -44,6 +46,9 @@ APlayerControl::APlayerControl()
 	IA_Chat = FComponentHelper::LoadAsset<UInputAction>(IA_CHAT_PATH);
 	IA_Record = FComponentHelper::LoadAsset<UInputAction>(IA_RECORD_PATH);
 	IA_ShowDetail = FComponentHelper::LoadAsset<UInputAction>(IA_SHOWDETAIL_PATH);
+
+
+	ChatPlayerSystem = CreateDefaultSubobject<UChatPlayerSystem>(TEXT("ChatPlayerSystem"));
 }
 
 void APlayerControl::BeginPlay()
@@ -61,6 +66,10 @@ void APlayerControl::BeginPlay()
 			}
 		}
 	}
+
+	ChatPlayerSystem->InitSytstem(this);
+
+	
 	// 한 프레임 뒤 보정 체크
 	GetWorldTimerManager().SetTimerForNextTick([this]()
 	{

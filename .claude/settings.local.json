@@ -14,7 +14,13 @@
       "Bash(cmd /c \"cd /d E:\\UE\\YiSan && \"\"C:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Binaries\\DotNET\\UnrealBuildTool\\UnrealBuildTool.exe\"\" -projectfiles -project=\"\"E:\\UE\\YiSan\\YiSan.uproject\"\" -game -rocket -progress\")",
       "Bash(cmd /c:*)",
       "Bash(where:*)",
-      "Bash(dir \"C:\\Program Files\\Microsoft Visual Studio\\2022\" /b)"
+      "Bash(dir \"C:\\Program Files\\Microsoft Visual Studio\\2022\" /b)",
+      "Bash(\"C:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Build\\BatchFiles\\Build.bat\" YiSanEditor Win64 Development \"E:\\UE\\YiSan\\YiSan.uproject\" -WaitMutex -FromMsBuild)",
+      "Bash(\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe\" YiSan.sln /t:YiSan /p:Configuration=Development /p:Platform=Win64 /v:minimal)",
+      "Bash(\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe\" YiSan.sln -t:YiSan -p:Configuration=Development -p:Platform=Win64 -v:minimal)",
+      "Bash(\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe\" YiSan.sln -p:Configuration=\"Development Editor\" -p:Platform=Win64 -v:minimal -m)",
+      "Bash(move \"E:\\UE\\YiSan\\Source\\YiSan\\Character\\Public\\UChatPlayerSystem.h\" \"E:\\UE\\YiSan\\Source\\LatteLibrary\\Character\\Public\\UChatPlayerSystem.h\")",
+      "Bash(move \"E:\\UE\\YiSan\\Source\\YiSan\\Character\\Private\\UChatPlayerSystem.cpp\" \"E:\\UE\\YiSan\\Source\\LatteLibrary\\Character\\Private\\UChatPlayerSystem.cpp\")"
     ],
     "deny": [],
     "ask": []

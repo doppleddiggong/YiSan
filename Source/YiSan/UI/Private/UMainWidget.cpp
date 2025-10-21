@@ -21,10 +21,10 @@ void UMainWidget::NativeConstruct()
 {
     Super::NativeConstruct();
 
-    if (InputText)
-        InputText->OnTextCommitted.AddDynamic(this, &UMainWidget::OnMessageComitted);
-
-    ChatBox->SetVisibility(ESlateVisibility::Hidden);
+    // if (InputText)
+    //     InputText->OnTextCommitted.AddDynamic(this, &UMainWidget::OnMessageComitted);
+    //
+    // ChatBox->SetVisibility(ESlateVisibility::Hidden);
     
     if ( APlayerController* PC = GetWorld()->GetFirstPlayerController() )
     {
@@ -53,38 +53,38 @@ void UMainWidget::NativeConstruct()
 
 void UMainWidget::ToggleChatBox()
 {
-    if (ChatBox->GetVisibility() == ESlateVisibility::Hidden)
-    {
-        InputText->SetText(FText::GetEmpty());
-        ChatBox->SetVisibility(ESlateVisibility::Visible);
-
-        if (InputText)
-            InputText->SetKeyboardFocus();
-
-        if (APlayerController* PC = GetOwningPlayer())
-        {
-            FInputModeGameAndUI InputMode;
-            InputMode.SetWidgetToFocus(InputText->TakeWidget());
-            InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
-
-            PC->SetInputMode(InputMode);
-            PC->SetShowMouseCursor(true);
-        }
-    }
-    else
-    {
-        SendChatMessage( InputText->GetText().ToString());
-        ChatBox->SetVisibility(ESlateVisibility::Hidden);
-
-        if (APlayerController* PC = GetOwningPlayer())
-        {
-            FInputModeGameOnly InputMode;
-            InputMode.SetConsumeCaptureMouseDown(false);
-        
-            PC->SetInputMode(InputMode);
-            PC->SetShowMouseCursor(false);
-        }
-    }
+    // if (ChatBox->GetVisibility() == ESlateVisibility::Hidden)
+    // {
+    //     InputText->SetText(FText::GetEmpty());
+    //     ChatBox->SetVisibility(ESlateVisibility::Visible);
+    //
+    //     if (InputText)
+    //         InputText->SetKeyboardFocus();
+    //
+    //     if (APlayerController* PC = GetOwningPlayer())
+    //     {
+    //         FInputModeGameAndUI InputMode;
+    //         InputMode.SetWidgetToFocus(InputText->TakeWidget());
+    //         InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
+    //
+    //         PC->SetInputMode(InputMode);
+    //         PC->SetShowMouseCursor(true);
+    //     }
+    // }
+    // else
+    // {
+    //     SendChatMessage( InputText->GetText().ToString());
+    //     ChatBox->SetVisibility(ESlateVisibility::Hidden);
+    //
+    //     if (APlayerController* PC = GetOwningPlayer())
+    //     {
+    //         FInputModeGameOnly InputMode;
+    //         InputMode.SetConsumeCaptureMouseDown(false);
+    //     
+    //         PC->SetInputMode(InputMode);
+    //         PC->SetShowMouseCursor(false);
+    //     }
+    // }
 }
 
 bool UMainWidget::IsMegaPopupVisible()
