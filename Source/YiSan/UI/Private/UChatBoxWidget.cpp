@@ -38,7 +38,7 @@ void UChatBoxWidget::OnTextCommittedHandler(const FText& Text, ETextCommit::Type
 
     const FString Message = FString::Printf(TEXT("%s : %s"), *GetPlayerDisplayName(), *InputString);
 
-    ChatPlayerSystem->SendChatMessage(Message);
+    ChatPlayerSystem->ServerRPC_SendChatMessage(Message);
     ChatInput->SetText(FText::GetEmpty());
 }
 

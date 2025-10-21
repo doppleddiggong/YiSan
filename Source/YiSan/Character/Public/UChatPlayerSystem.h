@@ -24,15 +24,15 @@ public:
 public:
 	/** 서버 RPC: 메시지 전송 */
 	UFUNCTION(Server, Reliable)
-	void SendChatMessage(const FString& Message);
+	void ServerRPC_SendChatMessage(const FString& Message);
 
 	/** 클라 RPC: 자기 자신만 갱신 */
 	UFUNCTION(Client, Reliable)
-	void AddChatMessageOnOwningClient(const FString& Message);
+	void ClientRPC_AddChatMessage(const FString& Message);
 
 	/** 멀티캐스트 RPC: 전체 클라 갱신 */
 	UFUNCTION(NetMulticast, Reliable)
-	void AddChatMessageOnAllClients(const FString& Message);
+	void MulticastRPC_AddChatMessage(const FString& Message);
 
 private:
 	UPROPERTY()

@@ -35,15 +35,15 @@ void UChatPlayerSystem::OnScrollDown()
 		ChatBoxRef->Scroll(false);
 }
 
-void UChatPlayerSystem::SendChatMessage_Implementation(const FString& Message)
+void UChatPlayerSystem::ServerRPC_SendChatMessage_Implementation(const FString& Message)
 {
 	if (Message.IsEmpty())
 		return;
 
-	AddChatMessageOnAllClients(Message);
+	MulticastRPC_AddChatMessage(Message);
 }
 
-void UChatPlayerSystem::AddChatMessageOnAllClients_Implementation(const FString& Message)
+void UChatPlayerSystem::MulticastRPC_AddChatMessage_Implementation(const FString& Message)
 {
 	for (APlayerState* PS : GetWorld()->GetGameState()->PlayerArray)
 	{
@@ -51,13 +51,13 @@ void UChatPlayerSystem::AddChatMessageOnAllClients_Implementation(const FString&
 		{
 			if (UChatPlayerSystem* Comp = PC->GetPawn()->FindComponentByClass<UChatPlayerSystem>())
 			{
-				Comp->AddChatMessageOnOwningClient(Message);
+				Comp->ClientRPC_AddChatMessage(Message);
 			}
 		}
 	}
 }
 
-void UChatPlayerSystem::AddChatMessageOnOwningClient_Implementation(const FString& Message)
+void UChatPlayerSystem::ClientRPC_AddChatMessage_Implementation(const FString& Message)
 {
 	if (ChatBoxRef)
 		ChatBoxRef->AddChatMessage(Message);
