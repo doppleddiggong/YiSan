@@ -13,7 +13,65 @@ UCLASS()
 class YISAN_API UYiSanGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
+
 public:
-		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Level") FName TargetLevel = TEXT("MainLevel_WP");
-		UPROPERTY(BlueprintReadOnly) bool bLevelReady = false;
+	UYiSanGameInstance();
+
+	/**
+	 * 로딩 레벨을 거쳐서 타겟 레벨로 전환
+	 * @param InTargetLevelName 최종 목적지 레벨 이름
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Level")
+	void LoadLevelWithLoadingScreen(FName InTargetLevelName);
+
+protected:
+	virtual void Init() override;
+
+	/** 로딩 위젯 클래스 */
+	UPROPERTY(EditDefaultsOnly, Category = "UI")
+	TSubclassOf<UUserWidget> LoadingWidgetClass;
+
+	/** 로딩 위젯 인스턴스 */
+	UPROPERTY()
+	TObjectPtr<UUserWidget> LoadingWidget;
+
+	/** 최종 목적지 레벨 */
+	FName TargetLevelName;
+
+	/** 로딩 완료 플래그 */
+	bool bLevelLoaded = false;
+	bool bAssetsLoaded = false;
+	bool bWorldPartitionReady = false;
+
+	/** 타이머 핸들 */
+	FTimerHandle WorldPartitionCheckTimer;
+	FTimerHandle ResourceCheckTimer;
+
+	// ==================== 단계별 처리 ====================
+
+	/** Step 1: 로딩 레벨로 이동 */
+	void Step1_MoveToLoadingLevel();
+
+	/** Step 2: 로딩 레벨에서 타겟 레벨 로드 시작 */
+	UFUNCTION()
+	void Step2_StartLoadingTargetLevel();
+
+	/** Step 3: 레벨 로드 완료 콜백 */
+	UFUNCTION()
+	void Step3_OnLevelLoaded();
+
+	/** Step 4: 리소스 스트리밍 체크 */
+	void Step4_CheckResources();
+
+	/** Step 5: 모든 준비 완료, 타겟 레벨로 전환 */
+	void Step5_TransitionToTarget();
+
+	/** 리소스 로딩 상태 확인 */
+	bool CheckTextureStreaming();
+	bool CheckShaderCompilation();
+	bool CheckWorldPartition();
+
+	/** 로딩 UI 표시/숨김 */
+	void ShowLoadingScreen();
+	void HideLoadingScreen();
 };
