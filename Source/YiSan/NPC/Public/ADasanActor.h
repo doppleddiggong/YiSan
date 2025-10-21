@@ -64,6 +64,28 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="State")
 	TObjectPtr<class UAnswerStateSystem> AnswerStateSystem;
 
+
+	// Tour 상태를 업데이트하는 헬퍼 함수 (Tick에서 호출)
+	void UpdateTourState(float DeltaTime);
+
+	// // 플레이어 폰을 가져오는 헬퍼 함수
+	// class APawn* GetPlayerPawn();
+	//
+	// // 플레이어와의 거리를 계산하는 헬퍼 함수
+	// float GetPlayerDistance(class APawn* PlayerPawn) const;
+	
+	// ai control
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<class AAIController> DasanAicontrol;
+	// 
+	UPROPERTY(EditAnywhere)
+	float playerMaxDis;
+	UPROPERTY(EditAnywhere)
+	float wayPointDis;
+
+	//tour wait 상태에서 player 체크용
+	float waitChackTimer;
+	
 private:
 	UPROPERTY()
 	TObjectPtr<class UQuestManager> QuestManager;

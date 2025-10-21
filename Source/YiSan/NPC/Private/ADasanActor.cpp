@@ -5,6 +5,8 @@
 #include "UExplainStateSystem.h"
 #include "UAnswerStateSystem.h"
 
+#include  "AIController.h"
+
 #include "UQuestManager.h"
 #include "ABuilding.h"
 #include "EBuildingType.h"
@@ -14,6 +16,7 @@
 #include "DrawDebugHelpers.h"
 #include "FComponentHelper.h"
 #include "GameLogging.h"
+
 
 ADasanActor::ADasanActor()
 {
@@ -28,6 +31,10 @@ ADasanActor::ADasanActor()
 	ExplainStateSystem = CreateDefaultSubobject<UExplainStateSystem>(TEXT("ExplainStateSystem"));
 	AnswerStateSystem = CreateDefaultSubobject<UAnswerStateSystem>(TEXT("AnswerStateSystem"));
 
+	playerMaxDis = 2000.f;
+	wayPointDis = 250.f;
+	waitChackTimer = 1.f;
+	DasanAicontrol = nullptr;
 }
 
 void ADasanActor::BeginPlay()
@@ -46,6 +53,7 @@ void ADasanActor::BeginPlay()
 		// 초기 상태 설정
 		DasanState = EDasanState::Tour;
 	}
+	StartTour();
 }
 
 void ADasanActor::Tick(float DeltaTime)
@@ -73,6 +81,7 @@ void ADasanActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifet
 
 	DOREPLIFETIME(ADasanActor, DasanState);
 }
+
 
 
 void ADasanActor::DrawDebugState()
@@ -128,6 +137,13 @@ float ADasanActor::GetTargetBuildingDistnace()
 
 void ADasanActor::StartTour()
 {
+	// 컨트롤러 체크
+	if (!DasanAicontrol) 
+	{
+		PRINTLOG( TEXT("ai 컨트롤러가 존재 하지 않습니다"));
+		return;
+	}
+	
 	if (!HasAuthority())
 		return;
 
@@ -138,11 +154,31 @@ void ADasanActor::StartTour()
 
 	// 현재 목표 건물 찾기
 	CurTargetBuilding = FindCurTargetBuilding();
-	PRINTLOG( TEXT("Dasan Tour Started! Target: %s"), *QuestManager->GetTargetBuildingName());
+	PRINTLOG( TEXT("다산 캐릭터의 추적 건물은 : %s 입니다"), *QuestManager->GetTargetBuildingName());
+
+	if (CurTargetBuilding)
+	{
+		DasanAicontrol->MoveToActor(CurTargetBuilding,wayPointDis);
+		PRINTLOG(TEXT("타산 투어 시작합니다 %s "), *CurTargetBuilding->GetName());
+	}
+	else
+	{
+		PRINTLOG(TEXT("아 못가 못가 "));
+		TourStateSystem->SetTourState(ETourState::TourEnd);
+	}
+	// FindCurTargetBuilding() 함수 기반으로 AiMoveTO 를 이용해 움직인다
+	
 }
 
 void ADasanActor::NextQuest()
 {
+	// 컨트롤러 체크
+	if (!DasanAicontrol) 
+	{
+		PRINTLOG( TEXT("ai 컨트롤러가 존재 하지 않습니다"));
+		return;
+	}
+	
 	if (!HasAuthority())
 		return;
 
@@ -151,6 +187,16 @@ void ADasanActor::NextQuest()
 		TourStateSystem->SetTourState(ETourState::TourMove);
 		CurTargetBuilding = FindCurTargetBuilding();
 		PRINTLOG( TEXT("DasanActor: Moving to next quest - Target: %s"), *QuestManager->GetTargetBuildingName());
+		if (CurTargetBuilding)
+		{
+			DasanAicontrol->MoveToActor(CurTargetBuilding,wayPointDis);
+			PRINTLOG(TEXT("이 지점으로 이동합니다 %s "), *QuestManager->GetTargetBuildingName());
+		}
+		else
+		{
+			PRINTLOG(TEXT("지점으로 이동이 불가능합니다"));
+			TourStateSystem->SetTourState(ETourState::TourEnd);
+		}
 	}
 	else
 	{
@@ -158,6 +204,8 @@ void ADasanActor::NextQuest()
 		TourStateSystem->SetTourState(ETourState::TourEnd);
 		PRINTLOG( TEXT("DasanActor: All quests completed!"));
 	}
+
+	
 }
 
 // TODO.이함수는 사실 얘가 할거는 아닌데...
@@ -213,5 +261,26 @@ void ADasanActor::TransitionToState(EDasanState InMainState)
 		case EDasanState::Explain: ExplainStateSystem->SetExplainState(EExplainState::ExplainIng); break;
 		case EDasanState::Answer: AnswerStateSystem->SetAnswerState(EAnswerState::AnswerListen);	break;
 		default: break;
+	}
+}
+
+
+void ADasanActor::UpdateTourState(float DeltaTime)
+{
+	if (!TourStateSystem||DasanAicontrol)return;
+
+	ETourState Curstate = TourStateSystem->GetCurState();
+	// 플레이어 폰 (dis 에 따른 추적용)
+	// APawn* pawn = GetPlayerPawn();
+	switch (Curstate)
+	{
+		case ETourState::TourMove:
+			{
+				// 건물에 도착했는지 체크
+				if (CurTargetBuilding && GetTargetBuildingDistnace() <= wayPointDis)
+				{
+					TourStateSystem->SetTourState(ETourState::TourEnd);
+				}
+			}
 	}
 }

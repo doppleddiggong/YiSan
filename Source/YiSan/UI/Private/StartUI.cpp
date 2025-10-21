@@ -61,5 +61,5 @@ void UStartUI::OnStartButtonClicked()
 	}
 
 	UE_LOG(LogTemp, Warning, TEXT("UStartUI - Cast successful. Calling LoadLevelWithLoadingScreen..."));
-	GI->LoadLevelWithLoadingScreen(FName("MainMap"));
+	GI->LoadLevelWithLoadingScreen(MapName);
 }
