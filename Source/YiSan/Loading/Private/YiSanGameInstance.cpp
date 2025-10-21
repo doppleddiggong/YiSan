@@ -7,6 +7,7 @@
 #include "Engine/World.h"
 #include "TimerManager.h"
 #include "ContentStreaming.h"
+#include "GameLogging.h"
 #include "Streaming/StreamingWorldSubsystemInterface.h"
 #include "WorldPartition/WorldPartitionSubsystem.h"
 #if WITH_EDITOR
@@ -140,6 +141,9 @@ void UYiSanGameInstance::Step4_CheckResources()
                 bool bTexturesReady = CheckTextureStreaming();
                 bool bShadersReady = CheckShaderCompilation();
                 bool bWPReady = CheckWorldPartition();
+                PRINTLOG(TEXT("Resource Check: Textures Ready: %s, Shaders Ready: %s, World Partition Ready: %s"),(bTexturesReady ? TEXT("True") : TEXT("False")),
+                     (bShadersReady ? TEXT("True") : TEXT("False")),
+                     (bWPReady ? TEXT("True") : TEXT("False")));
 
                 // 진행률 로그
                 UE_LOG(LogTemp, Verbose, TEXT("[YiSan] Resources - Textures: %d, Shaders: %d, WP: %d"),
