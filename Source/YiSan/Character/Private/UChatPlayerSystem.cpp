@@ -4,7 +4,7 @@
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/GameStateBase.h"
 #include "GameFramework/PlayerState.h"
-#include "YiSan/UI/Public/UChatBoxWidget.h"
+#include "UChatBoxWidget.h"
 
 UChatPlayerSystem::UChatPlayerSystem()
 {
