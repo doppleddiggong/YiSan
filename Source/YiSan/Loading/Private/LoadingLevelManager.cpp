@@ -1,4 +1,6 @@
 #include "LoadingLevelManager.h"
+
+#include "YiSanGameInstance.h"
 #include "Blueprint/UserWidget.h"
 #include "Kismet/GameplayStatics.h"
 #include "Engine/StreamableManager.h"
@@ -13,6 +15,7 @@ ALoadingLevelManager::ALoadingLevelManager()
 void ALoadingLevelManager::BeginPlay()
 {
 	Super::BeginPlay();
+	
 
 	// [2025-10-20 Gemini-CLI] UYiSanGameInstance의 로딩 로직과 충돌하여 비활성화합니다.
 	// 이 액터는 LoadingLevel에 배치되어 자체적으로 레벨 로딩을 시도하며,

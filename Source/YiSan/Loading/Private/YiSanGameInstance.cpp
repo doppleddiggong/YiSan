@@ -36,14 +36,38 @@ void UYiSanGameInstance::LoadLevelWithLoadingScreen(FName InTargetLevelName)
     TargetLevelName = InTargetLevelName;
     UE_LOG(LogTemp, Log, TEXT("[YiSan] Starting level transition to: %s"), *TargetLevelName.ToString());
 
-    // 초기화
-    bLevelLoaded = false;
-    bAssetsLoaded = false;
-    bWorldPartitionReady = false;
+    // 로딩 UI 표시
+    ShowLoadingScreen();
 
-    // Step 1: 로딩 레벨로 먼저 이동
-    Step1_MoveToLoadingLevel();
+    // LoadingMap으로 먼저 이동
+    UGameplayStatics::OpenLevel(this, FName("LoadingMap"));
+
+    // LoadingMap이 로드된 후 타겟으로 전환
+    if (UWorld* World = GetWorld())
+    {
+        World->GetTimerManager().SetTimerForNextTick([this]()
+        {
+            if (UWorld* CurrentWorld = GetWorld())
+            {
+                FTimerHandle TransitionTimer;
+                CurrentWorld->GetTimerManager().SetTimer(
+                    TransitionTimer,
+                    [this]()
+                    {
+                        // 로딩 화면을 보여준 후 타겟 레벨로 전환
+                        UGameplayStatics::OpenLevel(this, TargetLevelName);
+                        
+                        // 타겟 레벨이 로드되면 로딩 화면 숨기기
+                        // (타겟 레벨의 BeginPlay 등에서 처리)
+                    },
+                    1.5f,  // 로딩 화면을 1.5초 보여줌
+                    false
+                );
+            }
+        });
+    }
 }
+
 
 // ==================== Step 1: 로딩 레벨로 이동 ====================
 
@@ -85,15 +109,8 @@ void UYiSanGameInstance::Step1_MoveToLoadingLevel()
 void UYiSanGameInstance::Step2_StartLoadingTargetLevel()
 {
     UE_LOG(LogTemp, Log, TEXT("[YiSan Step 2] Starting to load target level: %s"), *TargetLevelName.ToString());
-
-    // 비동기 레벨 로드 (현재 로딩 레벨 위에 스트리밍)
-    FLatentActionInfo LatentInfo;
-    LatentInfo.CallbackTarget = this;
-    LatentInfo.ExecutionFunction = FName("Step3_OnLevelLoaded");
-    LatentInfo.Linkage = 0;
-    LatentInfo.UUID = FMath::Rand();
-
-    UGameplayStatics::LoadStreamLevel(this, TargetLevelName, true, false, LatentInfo);
+    
+    UGameplayStatics::OpenLevel(this, TargetLevelName);
 }
 
 // ==================== Step 3: 레벨 로드 완료 ====================
