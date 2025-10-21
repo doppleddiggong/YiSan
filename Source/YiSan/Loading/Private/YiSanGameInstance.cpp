@@ -316,17 +316,24 @@ void UYiSanGameInstance::CreateMySession(FString displayName, int32 playerCount)
     sessionSettings.bShouldAdvertise = true;
     sessionSettings.NumPublicConnections = playerCount;
     sessionSettings.Set(FName("DP_NAME"), displayName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
+
     FUniqueNetIdPtr netID = GetWorld()->GetFirstLocalPlayerFromController()->GetUniqueNetIdForPlatformUser().GetUniqueNetId();
-    sessionInterface->CreateSession(*netID, FName(displayName), sessionSettings);
+    FString netIDString = netID->ToString();
     UE_LOG(LogTemp, Warning, TEXT("서브시스템 : %s"), *subsysName.ToString());
+    /*UE_LOG(LogTemp, Warning, TEXT("netID : %s"), *netIDString);
+    sessionInterface->CreateSession(*netID, FName(displayName), sessionSettings);*/
+    sessionInterface->CreateSession(0, FName(displayName), sessionSettings);
+
+
 }
 
 void UYiSanGameInstance::OnCreateSessionComplete(FName sessionName, bool success)
 {
     if (success)
     {
+        
         UE_LOG(LogTemp, Warning, TEXT("세션 : %s 성공"), *sessionName.ToString());
-        GetWorld()->ServerTravel(TEXT("/Game/CustomContents/Maps/StartLevel"));
+        GetWorld()->ServerTravel(TEXT("/Game/CustomContents/Maps/MainMap_WP?listen"));
     }
     else
     {
@@ -358,6 +365,7 @@ void UYiSanGameInstance::OnFindSessionComplete(bool success)
             FString displayName;
             results[i].Session.SessionSettings.Get(FName(TEXT("DP_NAME")), displayName);
             UE_LOG(LogTemp, Warning, TEXT("세션 : %i, 이름 : %s"), i, *displayName);
+
         }
     }
     else

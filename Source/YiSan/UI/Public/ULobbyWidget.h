@@ -29,6 +29,9 @@ public:
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UButton> Btn_Host;
 
+	UPROPERTY(meta=(BindWidget))
+	TObjectPtr<class UButton> Btn_Find;
+
 	/// @brief Join 버튼 (Blueprint에서 바인딩)
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UButton> Btn_Join;
@@ -68,6 +71,9 @@ public:
 	/// @brief Host 버튼 클릭 핸들러
 	UFUNCTION()
 	void OnHostButtonClicked();
+
+	UFUNCTION()
+	void OnFindButtonClicked();
 
 	/// @brief Join 버튼 클릭 핸들러
 	UFUNCTION()

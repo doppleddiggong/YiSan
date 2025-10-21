@@ -30,6 +30,11 @@ void ULobbyWidget::NativeConstruct()
 		Btn_Join->OnClicked.AddDynamic(this, &ULobbyWidget::OnJoinButtonClicked);
 	}
 
+	if (Btn_Find)
+	{
+		Btn_Find->OnClicked.AddDynamic(this, &ULobbyWidget::OnFindButtonClicked);
+	}
+
 	if (Btn_Disconnect)
 	{
 		Btn_Disconnect->OnClicked.AddDynamic(this, &ULobbyWidget::OnDisconnectButtonClicked);
@@ -90,6 +95,15 @@ void ULobbyWidget::OnHostButtonClicked()
 	gi->CreateMySession(TEXT("qqq"), 4);
 }
 
+void ULobbyWidget::OnFindButtonClicked()
+{
+
+	auto gi = Cast<UYiSanGameInstance>(GetGameInstance());
+	gi->FindOtherSession();
+
+}
+
+
 void ULobbyWidget::OnJoinButtonClicked()
 {
 	if (!TxtBox_IPAddress)
@@ -110,6 +124,11 @@ void ULobbyWidget::OnJoinButtonClicked()
 
 	PRINTLOG(TEXT("[LobbyWidget] OnJoinButtonClicked - Address=%s, Port=%d"), *IPAddress, Port);
 
+
+	auto gi = Cast<UYiSanGameInstance>(GetGameInstance());
+	gi->JoinOtherSession(0);
+
+	
 	// if (CachedPlayerController)
 	// {
 	// 	CachedPlayerController->JoinSession(IPAddress, Port);
@@ -121,9 +140,7 @@ void ULobbyWidget::OnJoinButtonClicked()
 	// 	UpdateStatusText(TEXT("오류: PlayerController를 찾을 수 없습니다"));
 	// }
 
-	auto gi = Cast<UYiSanGameInstance>(GetGameInstance());
-	gi->FindOtherSession();
-	gi->JoinOtherSession(0);
+
 }
 
 void ULobbyWidget::OnDisconnectButtonClicked()
