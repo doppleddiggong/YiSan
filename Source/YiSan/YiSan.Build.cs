@@ -39,6 +39,12 @@ public class YiSan : ModuleRules
 		
 		PublicDependencyModuleNames.AddRange(new string[]
 		{
+			"OnlineSubsystem",
+			"OnlineSubsystemSteam",
+		});
+		
+		PublicDependencyModuleNames.AddRange(new string[]
+		{
 			"Voice",     
 			"AudioMixer" 
 		});

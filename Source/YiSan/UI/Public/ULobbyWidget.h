@@ -2,6 +2,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "YiSanGameInstance.h"
 #include "Blueprint/UserWidget.h"
 #include "ULobbyWidget.generated.h"
 
@@ -108,4 +109,9 @@ public:
 private:
 	/// @brief PlayerController 참조 캐싱
 	TObjectPtr<class APlayerControl> CachedPlayerController;
+
+	
+	
 };
+
+	
