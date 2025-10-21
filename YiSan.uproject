@@ -122,8 +122,12 @@
 		{
 			"Name": "GPULightmass",
 			"Enabled": true
-		}
-	],
+		},
+        {
+          "Name": "EnhancedInput",
+          "Enabled": true
+        }
+    ],
 	"PreBuildSteps":
 	{
 		"Windows": [

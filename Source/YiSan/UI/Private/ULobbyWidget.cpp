@@ -39,10 +39,10 @@ void ULobbyWidget::NativeConstruct()
 	// BroadcastManager 이벤트 바인딩
 	if (auto BroadcastManager = UBroadcastManager::Get(GetWorld()))
 	{
-		BroadcastManager->OnSessionHost.AddDynamic(this, &ULobbyWidget::OnSessionHost);
-		BroadcastManager->OnSessionJoin.AddDynamic(this, &ULobbyWidget::OnSessionJoin);
-		BroadcastManager->OnSessionDisconnect.AddDynamic(this, &ULobbyWidget::OnSessionDisconnect);
-		BroadcastManager->OnSessionError.AddDynamic(this, &ULobbyWidget::OnSessionError);
+		// BroadcastManager->OnSessionHost.AddDynamic(this, &ULobbyWidget::OnSessionHost);
+		// BroadcastManager->OnSessionJoin.AddDynamic(this, &ULobbyWidget::OnSessionJoin);
+		// BroadcastManager->OnSessionDisconnect.AddDynamic(this, &ULobbyWidget::OnSessionDisconnect);
+		// BroadcastManager->OnSessionError.AddDynamic(this, &ULobbyWidget::OnSessionError);
 	}
 
 	// 초기 상태 메시지
@@ -56,10 +56,10 @@ void ULobbyWidget::NativeDestruct()
 	// BroadcastManager 이벤트 언바인딩
 	if (auto BroadcastManager = UBroadcastManager::Get(GetWorld()))
 	{
-		BroadcastManager->OnSessionHost.RemoveDynamic(this, &ULobbyWidget::OnSessionHost);
-		BroadcastManager->OnSessionJoin.RemoveDynamic(this, &ULobbyWidget::OnSessionJoin);
-		BroadcastManager->OnSessionDisconnect.RemoveDynamic(this, &ULobbyWidget::OnSessionDisconnect);
-		BroadcastManager->OnSessionError.RemoveDynamic(this, &ULobbyWidget::OnSessionError);
+		// BroadcastManager->OnSessionHost.RemoveDynamic(this, &ULobbyWidget::OnSessionHost);
+		// BroadcastManager->OnSessionJoin.RemoveDynamic(this, &ULobbyWidget::OnSessionJoin);
+		// BroadcastManager->OnSessionDisconnect.RemoveDynamic(this, &ULobbyWidget::OnSessionDisconnect);
+		// BroadcastManager->OnSessionError.RemoveDynamic(this, &ULobbyWidget::OnSessionError);
 	}
 
 	Super::NativeDestruct();
@@ -75,16 +75,16 @@ void ULobbyWidget::OnHostButtonClicked()
 {
 	PRINTLOG(TEXT("[LobbyWidget] OnHostButtonClicked - Map=%s, MaxPlayers=%d"), *MapName, MaxPlayers);
 
-	if (CachedPlayerController)
-	{
-		CachedPlayerController->HostSession(MapName, MaxPlayers);
-		UpdateStatusText(FString::Printf(TEXT("호스트 생성 중... 맵: %s"), *MapName));
-	}
-	else
-	{
-		PRINTLOG(TEXT("[LobbyWidget] OnHostButtonClicked - PlayerController is null"));
-		UpdateStatusText(TEXT("오류: PlayerController를 찾을 수 없습니다"));
-	}
+	// if (CachedPlayerController)
+	// {
+	// 	CachedPlayerController->HostSession(MapName, MaxPlayers);
+	// 	UpdateStatusText(FString::Printf(TEXT("호스트 생성 중... 맵: %s"), *MapName));
+	// }
+	// else
+	// {
+	// 	PRINTLOG(TEXT("[LobbyWidget] OnHostButtonClicked - PlayerController is null"));
+	// 	UpdateStatusText(TEXT("오류: PlayerController를 찾을 수 없습니다"));
+	// }
 }
 
 void ULobbyWidget::OnJoinButtonClicked()
@@ -107,32 +107,32 @@ void ULobbyWidget::OnJoinButtonClicked()
 
 	PRINTLOG(TEXT("[LobbyWidget] OnJoinButtonClicked - Address=%s, Port=%d"), *IPAddress, Port);
 
-	if (CachedPlayerController)
-	{
-		CachedPlayerController->JoinSession(IPAddress, Port);
-		UpdateStatusText(FString::Printf(TEXT("서버 접속 중... %s:%d"), *IPAddress, Port));
-	}
-	else
-	{
-		PRINTLOG(TEXT("[LobbyWidget] OnJoinButtonClicked - PlayerController is null"));
-		UpdateStatusText(TEXT("오류: PlayerController를 찾을 수 없습니다"));
-	}
+	// if (CachedPlayerController)
+	// {
+	// 	CachedPlayerController->JoinSession(IPAddress, Port);
+	// 	UpdateStatusText(FString::Printf(TEXT("서버 접속 중... %s:%d"), *IPAddress, Port));
+	// }
+	// else
+	// {
+	// 	PRINTLOG(TEXT("[LobbyWidget] OnJoinButtonClicked - PlayerController is null"));
+	// 	UpdateStatusText(TEXT("오류: PlayerController를 찾을 수 없습니다"));
+	// }
 }
 
 void ULobbyWidget::OnDisconnectButtonClicked()
 {
 	PRINTLOG(TEXT("[LobbyWidget] OnDisconnectButtonClicked"));
 
-	if (CachedPlayerController)
-	{
-		CachedPlayerController->DisconnectSession();
-		UpdateStatusText(TEXT("연결 해제 중..."));
-	}
-	else
-	{
-		PRINTLOG(TEXT("[LobbyWidget] OnDisconnectButtonClicked - PlayerController is null"));
-		UpdateStatusText(TEXT("오류: PlayerController를 찾을 수 없습니다"));
-	}
+	// if (CachedPlayerController)
+	// {
+	// 	CachedPlayerController->DisconnectSession();
+	// 	UpdateStatusText(TEXT("연결 해제 중..."));
+	// }
+	// else
+	// {
+	// 	PRINTLOG(TEXT("[LobbyWidget] OnDisconnectButtonClicked - PlayerController is null"));
+	// 	UpdateStatusText(TEXT("오류: PlayerController를 찾을 수 없습니다"));
+	// }
 }
 
 // ========================================
