@@ -28,7 +28,8 @@ public:
 
 protected:
 	virtual void Init() override;
-
+	
+public:
 	/** 로딩 위젯 클래스 */
 	UPROPERTY(EditDefaultsOnly, Category = "UI")
 	TSubclassOf<UUserWidget> LoadingWidgetClass;
@@ -44,6 +45,7 @@ protected:
 	bool bLevelLoaded = false;
 	bool bAssetsLoaded = false;
 	bool bWorldPartitionReady = false;
+	bool bIsLoadingLevel = false;
 
 	/** 타이머 핸들 */
 	FTimerHandle WorldPartitionCheckTimer;
@@ -53,10 +55,12 @@ protected:
 
 	/** Step 1: 로딩 레벨로 이동 */
 	void Step1_MoveToLoadingLevel();
+	void OnLoadingMapReady();
 
 	/** Step 2: 로딩 레벨에서 타겟 레벨 로드 시작 */
 	UFUNCTION()
 	void Step2_StartLoadingTargetLevel();
+	void OnTargetLevelReady();
 
 	/** Step 3: 레벨 로드 완료 콜백 */
 	UFUNCTION()
@@ -64,6 +68,7 @@ protected:
 
 	/** Step 4: 리소스 스트리밍 체크 */
 	void Step4_CheckResources();
+	void PeriodicResourceCheck();
 
 	/** Step 5: 모든 준비 완료, 타겟 레벨로 전환 */
 	void Step5_TransitionToTarget();
@@ -76,6 +81,9 @@ protected:
 	/** 로딩 UI 표시/숨김 */
 	void ShowLoadingScreen();
 	void HideLoadingScreen();
+	
+	void FinalHideLoadingScreen();
+
 #pragma endregion map
 
 
