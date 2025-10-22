@@ -9,7 +9,6 @@
 #include "FGPTContext.h"
 
 #include "EngineUtils.h"
-#include "GameLogging.h"
 #include "UBroadcastManager.h"
 
 #include "Camera/CameraComponent.h"

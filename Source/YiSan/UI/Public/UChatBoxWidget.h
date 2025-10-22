@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "NetworkData.h"
 #include "Blueprint/UserWidget.h"
 #include "UChatBoxWidget.generated.h"
 
@@ -13,6 +14,8 @@ class YISAN_API UChatBoxWidget : public UUserWidget
 
 public:
 	virtual void NativeConstruct() override;
+	
+	void InitSystem(class APlayerActor* InOwner);
 
 	UFUNCTION()
 	void OnTextCommittedHandler(const FText& Text, ETextCommit::Type CommitMethod);
@@ -32,6 +35,15 @@ public:
 private:
 	FString GetPlayerDisplayName() const;
 
+	/// @brief 입력된 문자열을 네트워크로 전송합니다.
+	void SendChatMessage(const FString& InMsg);
+
+	/// @brief ASK 응답을 수신해 UI를 갱신합니다.
+	/// @param Response [in] 음성/텍스트 처리 결과입니다.
+	/// @param bSuccess [in] 요청 성공 여부입니다.
+	UFUNCTION()
+	void OnResponseAsk(FResponseAsk& Response, bool bSuccess);
+	
 public:
 	/** --- 위젯 참조 --- */
 	UPROPERTY(meta = (BindWidget))
@@ -42,6 +54,12 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Chat")
 	TSubclassOf<class UChatEntryWidget> ChatEntryClass;
+
+	UPROPERTY()
+	TObjectPtr<class UBroadcastManager> BroadcastManager;
+	
+	UPROPERTY()
+	TObjectPtr<class APlayerActor> Owner;
 
 	UPROPERTY()
 	TObjectPtr<class UChatPlayerSystem> ChatPlayerSystem;

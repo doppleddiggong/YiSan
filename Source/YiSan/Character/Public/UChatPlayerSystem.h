@@ -14,7 +14,7 @@ class YISAN_API UChatPlayerSystem : public UActorComponent
 public:
 	UChatPlayerSystem();
 
-	void InitSystem(class UChatBoxWidget* InChatBox);
+	void InitSystem( class APlayerActor* InOwner, class UChatBoxWidget* InChatBox);
 
 	/** 채팅 입력 처리 */
 	void OnEnterPressed();
@@ -36,5 +36,8 @@ public:
 
 private:
 	UPROPERTY()
-	TObjectPtr<UChatBoxWidget> ChatBoxRef;
+	TObjectPtr<APlayerActor> Owner;
+
+	UPROPERTY()
+	TObjectPtr<UChatBoxWidget> ChatBoxWidget;
 };

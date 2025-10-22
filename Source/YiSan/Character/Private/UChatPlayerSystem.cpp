@@ -1,10 +1,14 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "UChatPlayerSystem.h"
+
+#include "UChatBoxWidget.h"
+#include "APlayerActor.h"
+
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/GameStateBase.h"
 #include "GameFramework/PlayerState.h"
-#include "UChatBoxWidget.h"
+
 
 UChatPlayerSystem::UChatPlayerSystem()
 {
@@ -12,31 +16,33 @@ UChatPlayerSystem::UChatPlayerSystem()
 	SetIsReplicatedByDefault(true);
 }
 
-void UChatPlayerSystem::InitSystem(UChatBoxWidget* InChatBox)
+void UChatPlayerSystem::InitSystem(
+	APlayerActor* InOwner,
+	UChatBoxWidget* InChatBox)
 {
-	ChatBoxRef = InChatBox;
+	this->Owner = InOwner;
+
+	this->ChatBoxWidget = InChatBox;
+	this->ChatBoxWidget->InitSystem( Owner );
 }
 
 void UChatPlayerSystem::OnEnterPressed()
 {
-	if (ChatBoxRef)
-		ChatBoxRef->FocusChat();
+	ChatBoxWidget->FocusChat();
 }
 
 void UChatPlayerSystem::OnScrollUp()
 {
-	if (ChatBoxRef)
-		ChatBoxRef->Scroll(true);
+	ChatBoxWidget->Scroll(true);
 }
 
 void UChatPlayerSystem::OnScrollDown()
 {
-	if (ChatBoxRef)
-		ChatBoxRef->Scroll(false);
+	ChatBoxWidget->Scroll(false);
 }
 
 void UChatPlayerSystem::ServerRPC_SendChatMessage_Implementation(const FString& Message)
-{
+{ 
 	if (Message.IsEmpty())
 		return;
 
@@ -45,20 +51,10 @@ void UChatPlayerSystem::ServerRPC_SendChatMessage_Implementation(const FString& 
 
 void UChatPlayerSystem::MulticastRPC_AddChatMessage_Implementation(const FString& Message)
 {
-	for (APlayerState* PS : GetWorld()->GetGameState()->PlayerArray)
-	{
-		if (APlayerController* PC = Cast<APlayerController>(PS->GetOwner()))
-		{
-			if (UChatPlayerSystem* Comp = PC->GetPawn()->FindComponentByClass<UChatPlayerSystem>())
-			{
-				Comp->ClientRPC_AddChatMessage(Message);
-			}
-		}
-	}
+	ChatBoxWidget->AddChatMessage(Message);
 }
 
-void UChatPlayerSystem::ClientRPC_AddChatMessage_Implementation(const FString& Message)
+void UChatPlayerSystem::ClientRPC_AddChatMessage_Implementation (const FString& Message)
 {
-	if (ChatBoxRef)
-		ChatBoxRef->AddChatMessage(Message);
+	ChatBoxWidget->AddChatMessage(Message);
 }

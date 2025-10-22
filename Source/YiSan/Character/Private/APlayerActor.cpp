@@ -70,8 +70,7 @@ void APlayerActor::BeginPlay()
             if (MainWidgetInst)
             {
                 MainWidgetInst->AddToViewport();
-
-                ChatPlayerSystem->InitSystem(MainWidgetInst->ChatBoxCtn);
+                ChatPlayerSystem->InitSystem(this, MainWidgetInst->ChatBoxCtn);
             }
         }
     }

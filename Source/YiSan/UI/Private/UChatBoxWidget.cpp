@@ -2,45 +2,55 @@
 
 #include "UChatBoxWidget.h"
 
+#include "APlayerActor.h"
+#include "GameLogging.h"
+#include "UBroadcastManager.h"
+#include "UChatPlayerSystem.h"
+#include "UChatEntryWidget.h"
+#include "UHttpNetworkSystem.h"
+#include "UVoiceFunctionLibrary.h"
+
 #include "Components/EditableTextBox.h"
 #include "Components/ScrollBox.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/PlayerState.h"
-#include "UChatPlayerSystem.h"
-#include "UChatEntryWidget.h"
+#include "Sound/SoundWaveProcedural.h"
+
 
 void UChatBoxWidget::NativeConstruct()
 {
     Super::NativeConstruct();
-
-    if (auto PC = UGameplayStatics::GetPlayerController(GetWorld(), 0))
-        ChatPlayerSystem = Cast<UChatPlayerSystem>(PC->GetComponentByClass(UChatPlayerSystem::StaticClass()));
-
     ChatInput->OnTextCommitted.AddDynamic(this, &UChatBoxWidget::OnTextCommittedHandler);
+}
+
+void UChatBoxWidget::InitSystem(APlayerActor* InOwner)
+{
+    this->Owner = InOwner;
+    this->ChatPlayerSystem = Owner->ChatPlayerSystem;
+
+    BroadcastManager = UBroadcastManager::Get(GetWorld());
 }
 
 void UChatBoxWidget::OnTextCommittedHandler(const FText& Text, ETextCommit::Type CommitMethod)
 {
-    if (CommitMethod != ETextCommit::OnEnter)
-        return;
+	if (CommitMethod != ETextCommit::OnEnter)
+		return;
 
-    const FString InputString = Text.ToString();
+	const FString InputString = Text.ToString();
 
-    if (InputString.IsEmpty())
-    {
-        ExitChat();
-        return;
-    }
+	if (!InputString.IsEmpty())
+	{
+		if (ChatPlayerSystem)
+		{
+			const FString Message = FString::Printf(TEXT("%s : %s"), *GetPlayerDisplayName(), *InputString);
+			ChatPlayerSystem->ServerRPC_SendChatMessage(Message);
 
-    if (!ChatPlayerSystem)
-        return;
+		    this->SendChatMessage(InputString);
+		}
+	}
 
-    const FString Message = FString::Printf(TEXT("%s : %s"), *GetPlayerDisplayName(), *InputString);
-
-    ChatPlayerSystem->ServerRPC_SendChatMessage(Message);
-    ChatInput->SetText(FText::GetEmpty());
-    ExitChat();
+	ExitChat();
 }
 
 void UChatBoxWidget::FocusChat()
@@ -50,7 +60,7 @@ void UChatBoxWidget::FocusChat()
         ChatInput->SetIsEnabled(true);
         ChatInput->SetUserFocus(PC);
 
-        FInputModeUIOnly InputMode;
+        FInputModeGameAndUI InputMode;
         InputMode.SetWidgetToFocus(ChatInput->TakeWidget());
         InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
         PC->SetInputMode(InputMode);
@@ -70,6 +80,7 @@ void UChatBoxWidget::ExitChat()
     if (APlayerController* PC = UGameplayStatics::GetPlayerController(GetWorld(), 0))
     {
         FInputModeGameOnly InputMode;
+        InputMode.SetConsumeCaptureMouseDown(false);
         PC->SetInputMode(InputMode);
         PC->bShowMouseCursor = false;
     }
@@ -90,7 +101,7 @@ void UChatBoxWidget::Scroll(bool bUp)
 void UChatBoxWidget::AddChatMessage(const FString& Message)
 {
     if (!ScrollBox || !ChatEntryClass)
-        return;
+        return; 
 
     UChatEntryWidget* NewEntry = CreateWidget<UChatEntryWidget>(this, ChatEntryClass);
     NewEntry->Message = Message;
@@ -100,12 +111,54 @@ void UChatBoxWidget::AddChatMessage(const FString& Message)
 
 FString UChatBoxWidget::GetPlayerDisplayName() const
 {
-    if (APlayerController* PC = UGameplayStatics::GetPlayerController(GetWorld(), 0))
+    if (auto PC = UGameplayStatics::GetPlayerController(GetWorld(), 0))
     {
-        if (APlayerState* PS = PC->PlayerState)
-        {
+        if (auto PS = PC->PlayerState)
             return PS->GetPlayerName();
+    }
+    
+    return TEXT("Yisan");
+}
+
+void UChatBoxWidget::SendChatMessage(const FString& InMsg)
+{
+    FGPTContext SpatialContext = Owner->GetGPTContext();
+
+    if (auto ReqNetwork = UHttpNetworkSystem::Get(GetWorld()))
+    {
+        ReqNetwork->RequestGPT(InMsg, SpatialContext, FResponseAskDelegate::CreateUObject(this, &UChatBoxWidget::OnResponseAsk));
+    }
+}
+
+void UChatBoxWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
+{
+    if (bSuccess)
+    {
+        PRINTLOG(TEXT("OnResponseAsk: Received audio data size: %d"), Response.audio_data.Num());
+
+        auto VoiceCommand = UVoiceFunctionLibrary::GetVoiceCommand(Response.gpt_response_text);
+        if ( VoiceCommand != EVoiceCommandType::None )
+        {
+            BroadcastManager->SendExecVoiceCommand( VoiceCommand );
+        }
+        else
+        {
+            ChatPlayerSystem->ServerRPC_SendChatMessage(Response.gpt_response_text);
+            // BroadcastManager->SendToastMessage(Response.gpt_response_text);
+
+            if (Response.audio_data.Num() == 0)
+            {
+                PRINTLOG(TEXT("OnResponseAsk: Audio data is empty. Cannot play TTS audio."));
+                return;
+            }
+		
+            auto SoundWave = UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData(Response.audio_data);
+            if ( IsValid(SoundWave))
+                UGameplayStatics::PlaySound2D(this, SoundWave);
         }
     }
-    return TEXT("Unknown");
+    else
+    {
+        PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
+    }
 }
