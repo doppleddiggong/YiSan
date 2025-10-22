@@ -17,6 +17,7 @@
 #include "OnlineSubsystemUtils.h"
 #include "OnlineSessionSettings.h"
 #include "Online/OnlineSessionNames.h"
+#include "YiSan/YiSan.h"
 
 
 UYiSanGameInstance::UYiSanGameInstance()
@@ -100,9 +101,9 @@ void UYiSanGameInstance::OnLoadingMapReady()
 
 void UYiSanGameInstance::Step2_StartLoadingTargetLevel()
 {
-    UE_LOG(LogTemp, Warning, TEXT("[YiSan Step 2] Starting to load target level: %s"), *TargetLevelName.ToString());
+    UE_LOG(LogTemp, Warning, TEXT("[YiSan Step 2] Starting to load target level: %s"), *GameLevel::MainMap_WP);
     
-    UGameplayStatics::OpenLevel(this, TargetLevelName);
+    UGameplayStatics::OpenLevel(this, *GameLevel::MainMap_WP);
 }
 
 

@@ -38,8 +38,8 @@ public:
 	UPROPERTY()
 	TObjectPtr<UUserWidget> LoadingWidget;
 
-	/** 최종 목적지 레벨 */
-	FName TargetLevelName;
+	// /** 최종 목적지 레벨 */
+	// FName TargetLevelName;
 
 	/** 로딩 완료 플래그 */
 	bool bLevelLoaded = false;
