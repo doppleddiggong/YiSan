@@ -49,6 +49,8 @@ void UYiSanGameInstance::Init()
 
 void UYiSanGameInstance::LoadLevelWithLoadingScreen(FName InTargetLevelName)
 {
+    if (GetFirstLocalPlayerController()->HasAuthority() == false) return;
+    
     //이미 로딩 중이면 새로운 요청을 무시합니다. (무한 루프 방지)
     if (bIsLoadingLevel)
     {
@@ -83,7 +85,9 @@ void UYiSanGameInstance::Step1_MoveToLoadingLevel()
     // 로딩 스크린 표시
     ShowLoadingScreen();
     //step 1 에서 레벨 넘기기만 하기
-    UGameplayStatics::OpenLevel(this, FName("/Game/CustomContents/Maps/LoadingMap"));
+    GetWorld()->ServerTravel(TEXT("/Game/CustomContents/Maps/LoadingMap"));
+
+    //UGameplayStatics::OpenLevel(this, FName("/Game/CustomContents/Maps/LoadingMap"));
 }
 
 void UYiSanGameInstance::OnLoadingMapReady()
@@ -101,9 +105,13 @@ void UYiSanGameInstance::OnLoadingMapReady()
 
 void UYiSanGameInstance::Step2_StartLoadingTargetLevel()
 {
-    UE_LOG(LogTemp, Warning, TEXT("[YiSan Step 2] Starting to load target level: %s"), *GameLevel::MainMap_WP);
+//이프 3명다 있으면~ 엘쓰 기다려~
     
-    UGameplayStatics::OpenLevel(this, *GameLevel::MainMap_WP);
+    UE_LOG(LogTemp, Warning, TEXT("[YiSan Step 2] Starting to load target level: %s"), *GameLevel::MainMap_WP);
+
+    GetWorld()->ServerTravel(TEXT("/Game/CustomContents/Maps/MainMap_WP"));
+
+    //UGameplayStatics::OpenLevel(this, *GameLevel::MainMap_WP);
 }
 
 
@@ -262,6 +270,11 @@ void UYiSanGameInstance::HideLoadingScreen()
 
 void UYiSanGameInstance::CreateMySession(FString displayName, int32 playerCount)
 {
+    if (!sessionInterface.IsValid())
+    {
+        UE_LOG(LogTemp, Error, TEXT("SessionInterface is invalid!"));
+        return;
+    }
     FOnlineSessionSettings sessionSettings;
     FName subsysName = Online::GetSubsystem(GetWorld())->GetSubsystemName();
     sessionSettings.bIsLANMatch = subsysName.IsEqual(FName(TEXT("NULL")));

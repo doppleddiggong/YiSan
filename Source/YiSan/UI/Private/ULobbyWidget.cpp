@@ -92,7 +92,7 @@ void ULobbyWidget::OnHostButtonClicked()
 	}*/
 
 	auto gi = Cast<UYiSanGameInstance>(GetGameInstance());
-	gi->CreateMySession(TEXT("qqq"), 4);
+	gi->CreateMySession(TEXT("PleaseNetworkWork"), 4);
 }
 
 void ULobbyWidget::OnFindButtonClicked()

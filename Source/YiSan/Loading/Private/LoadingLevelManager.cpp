@@ -11,16 +11,22 @@ ALoadingLevelManager::ALoadingLevelManager()
 void ALoadingLevelManager::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	PRINTLOG(TEXT("로딩중"));
 
-	if (UYiSanGameInstance* GI = GetGameInstance<UYiSanGameInstance>())
+	if (HasAuthority())
 	{
+		PRINTLOG(TEXT("로딩중"));
+
+		if (UYiSanGameInstance* GI = GetGameInstance<UYiSanGameInstance>())
+		{
 		
-		GI->OnLoadingMapReady();
+			GI->OnLoadingMapReady();
+		}
+		else
+		{
+			PRINTLOG(TEXT("실패"));
+		}
+
+		
 	}
-	else
-	{
-		PRINTLOG(TEXT("실패"));
-	}
+	
 }
