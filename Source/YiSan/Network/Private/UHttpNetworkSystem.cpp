@@ -10,6 +10,7 @@
 #include "ENetworkLogType.h"
 #include "HttpModule.h"
 #include "FHttpMultipartFormData.h"
+#include "GameLogging.h"
 #include "JsonObjectConverter.h"
 #include "UBroadcastManager.h"
 #include "Interfaces/IHttpRequest.h"
@@ -54,11 +55,16 @@ const TCHAR* UHttpNetworkSystem::GetLogPrefix(ENetworkLogType InLogType)
 void UHttpNetworkSystem::AddNetworkWaitCount(int InValue)
 {
     NetworkWaitCount += InValue;
-    
-    if ( auto BroadcastManager = UBroadcastManager::Get(GetWorld()) )
+
+    UWorld* World = GetWorld();
+    if (!IsValid(World))
     {
-        BroadcastManager->SendNetworkWaitCount(NetworkWaitCount);
+        PRINTLOG( TEXT("[Network] Invalid World in AddNetworkWaitCount."));
+        return;
     }
+
+    if ( auto BroadcastManager = UBroadcastManager::Get(World) )
+        BroadcastManager->SendNetworkWaitCount(NetworkWaitCount);
 }
 
 void UHttpNetworkSystem::RequestHealth( FResponseHealthDelegate InDelegate )
