@@ -6,6 +6,7 @@
 #include "MediaTexture.h"
 #include "YiSanGameInstance.h" 
 #include "Engine/Texture.h"
+#include "YiSan/YiSan.h"
 
 void UStartUI::NativeConstruct()
 {
@@ -61,5 +62,5 @@ void UStartUI::OnStartButtonClicked()
 	}
 
 	UE_LOG(LogTemp, Warning, TEXT("UStartUI - Cast successful. Calling LoadLevelWithLoadingScreen..."));
-	GI->LoadLevelWithLoadingScreen(MapName);
+	GI->LoadLevelWithLoadingScreen(*GameLevel::LoadingMap);
 }

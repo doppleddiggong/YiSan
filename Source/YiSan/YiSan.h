@@ -18,3 +18,13 @@ namespace GameTags
     /// @brief 건물 액터를 구분할 때 사용하는 태그입니다.
     static const FName Building = TEXT("Building");
 }
+
+
+namespace GameLevel
+{
+    static const FString StartLevel = TEXT("StartLevel");
+    static const FString LobbyMap   = TEXT("LobbyMap");
+	static const FString LoadingMap = TEXT("LoadingMap");
+    static const FString MainMap_WP = TEXT("MainMap_WP");
+}
+

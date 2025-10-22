@@ -284,7 +284,6 @@ void UYiSanGameInstance::OnCreateSessionComplete(FName sessionName, bool success
 {
     if (success)
     {
-        
         UE_LOG(LogTemp, Warning, TEXT("세션 : %s 성공"), *sessionName.ToString());
         GetWorld()->ServerTravel(TEXT("/Game/CustomContents/Maps/StartLevel?listen"));
     }
