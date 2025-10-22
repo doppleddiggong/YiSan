@@ -127,8 +127,6 @@ void UYiSanGameInstance::PeriodicResourceCheck()
         Step5_TransitionToTarget();
     }
 }
-
-
 bool UYiSanGameInstance::CheckTextureStreaming()
 {
     // IStreamingManager::Get()을 통해 스트리밍 매니저에 접근합니다.
@@ -180,16 +178,12 @@ bool UYiSanGameInstance::CheckWorldPartition()
             {
                 PRINTLOG(TEXT("월드 파티션쪽도 거의다 끝났슴다"));
             }
-            
             return bCompleted;
         }
     }
-    
     // World Partition이 없으면 완료로 간주
     return true;
 }
-
-
 
 // ==================== Step 5: 타겟 레벨로 전환 ====================
 
