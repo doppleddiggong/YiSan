@@ -2,7 +2,6 @@
 
 #include "UChatBoxWidget.h"
 
-#include "GameLogging.h"
 #include "Components/EditableTextBox.h"
 #include "Components/ScrollBox.h"
 #include "Kismet/GameplayStatics.h"
@@ -23,8 +22,6 @@ void UChatBoxWidget::NativeConstruct()
 
 void UChatBoxWidget::OnTextCommittedHandler(const FText& Text, ETextCommit::Type CommitMethod)
 {
-    PRINTLOG(TEXT("OnTextCommitted()"));
-
     if (CommitMethod != ETextCommit::OnEnter)
         return;
 
@@ -32,7 +29,6 @@ void UChatBoxWidget::OnTextCommittedHandler(const FText& Text, ETextCommit::Type
 
     if (InputString.IsEmpty())
     {
-        PRINTLOG(TEXT("InputString.IsEmpty()"));
         ExitChat();
         return;
     }
@@ -44,14 +40,11 @@ void UChatBoxWidget::OnTextCommittedHandler(const FText& Text, ETextCommit::Type
 
     ChatPlayerSystem->ServerRPC_SendChatMessage(Message);
     ChatInput->SetText(FText::GetEmpty());
-    PRINTLOG(TEXT("ChatInput->SetText(FText::GetEmpty())"));
     ExitChat();
 }
 
 void UChatBoxWidget::FocusChat()
 {
-    PRINTLOG(TEXT("FocusChat()"));
-
     if (APlayerController* PC = UGameplayStatics::GetPlayerController(GetWorld(), 0))
     {
         ChatInput->SetIsEnabled(true);
@@ -69,8 +62,6 @@ void UChatBoxWidget::FocusChat()
 
 void UChatBoxWidget::ExitChat()
 {
-    PRINTLOG(TEXT("ExitChat()"));
-
     bChatFocused = false;
 
     ChatInput->SetText(FText::GetEmpty());

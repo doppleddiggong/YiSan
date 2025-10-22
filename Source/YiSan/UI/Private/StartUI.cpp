@@ -45,48 +45,22 @@ void UStartUI::OnStartButtonClicked()
 		MediaPlayer->Pause();
 	}
 
-	// 서버(Host)인지 확인
-	UWorld* World = GetWorld();
-	if (!World)
+	UGameInstance* GI_Raw = GetGameInstance();
+	if (!GI_Raw)
 	{
-		UE_LOG(LogTemp, Error, TEXT("UStartUI - World is NULL!"));
+		UE_LOG(LogTemp, Error, TEXT("UStartUI - GetGameInstance() returned NULL!"));
+		return;
+	}
+	UE_LOG(LogTemp, Warning, TEXT("UStartUI - Got GameInstance of class: %s"), *GI_Raw->GetClass()->GetName());
+
+
+	UYiSanGameInstance* GI = Cast<UYiSanGameInstance>(GI_Raw);
+	if (!GI)
+	{
+		UE_LOG(LogTemp, Error, TEXT("UStartUI - Cast to UYiSanGameInstance FAILED!"));
 		return;
 	}
 
-	ENetMode NetMode = World->GetNetMode();
-
-	// Host (리슨 서버 또는 데디케이티드 서버)만 레벨 전환 가능
-	if (NetMode == NM_ListenServer || NetMode == NM_DedicatedServer)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("UStartUI - Host detected. Starting ServerTravel to MainMap_WP..."));
-
-		// ServerTravel을 사용하면 모든 클라이언트가 자동으로 따라옴
-		World->ServerTravel(TEXT("/Game/CustomContents/Maps/MainMap_WP?listen"));
-	}
-	else if (NetMode == NM_Client)
-	{
-		// 클라이언트는 시작할 수 없음
-		UE_LOG(LogTemp, Warning, TEXT("UStartUI - Client cannot start the game. Waiting for Host..."));
-	}
-	else // NM_Standalone (싱글플레이)
-	{
-		// 싱글플레이는 기존 방식 사용
-		UE_LOG(LogTemp, Warning, TEXT("UStartUI - Standalone mode. Using LoadLevelWithLoadingScreen..."));
-
-		UGameInstance* GI_Raw = GetGameInstance();
-		if (!GI_Raw)
-		{
-			UE_LOG(LogTemp, Error, TEXT("UStartUI - GetGameInstance() returned NULL!"));
-			return;
-		}
-
-		UYiSanGameInstance* GI = Cast<UYiSanGameInstance>(GI_Raw);
-		if (!GI)
-		{
-			UE_LOG(LogTemp, Error, TEXT("UStartUI - Cast to UYiSanGameInstance FAILED!"));
-			return;
-		}
-
-		GI->LoadLevelWithLoadingScreen(*GameLevel::LoadingMap);
-	}
+	UE_LOG(LogTemp, Warning, TEXT("UStartUI - Cast successful. Calling LoadLevelWithLoadingScreen..."));
+	GI->LoadLevelWithLoadingScreen(*GameLevel::LoadingMap);
 }
