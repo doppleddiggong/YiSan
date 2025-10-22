@@ -18,7 +18,7 @@
 /**
  * @brief 툴바 버튼 배치와 기능 토글을 정의하는 개발자 설정입니다.
  */
-UCLASS(Config=ToolbarSettings)
+UCLASS(Config=ToolbarSettings, defaultconfig)
 class COFFEETOOLBAR_API UToolbarSettings : public UDeveloperSettings
 {
     GENERATED_BODY()
@@ -28,7 +28,9 @@ public:
 	UToolbarSettings(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 
 	/** @brief 프로젝트 설정 패널에서 사용되는 설정 카테고리를 반환합니다. */
-	virtual FName GetCategoryName() const override { return TEXT("Plugins"); }
+    virtual FName GetCategoryName() const override { return TEXT("Plugins"); }
+    // Force project container so changes persist to DefaultToolbarSettings.ini
+    virtual FName GetContainerName() const override { return TEXT("Project"); }
 
 	/** @brief 설정 그룹에 대한 지역화된 섹션 이름을 반환합니다. */
 	virtual FName GetSectionName()  const override { return TEXT("Level Selector"); }
@@ -45,8 +47,12 @@ public:
 	bool bEnableLevelFeature = true;
 	/** @brief 레벨을 탐색할 때 추가로 확인할 디렉터리 목록입니다. */
 	UPROPERTY(EditAnywhere, Config, Category="Search")
+	TArray<FString> ExtraSearchPathsStrings;
+	UPROPERTY(Transient)
 	TArray<FDirectoryPath> ExtraSearchPaths;
 
+	virtual void PostInitProperties() override;
+	virtual void PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent) override;
 
 	/** @brief true일 때 스크린샷 헬퍼 기능을 활성화합니다. */
 	UPROPERTY(EditAnywhere, Config, Category="Screenshot")
