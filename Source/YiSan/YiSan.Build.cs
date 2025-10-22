@@ -24,6 +24,8 @@ public class YiSan : ModuleRules
 			"MediaAssets",
 			"RenderCore" ,
 			"AIModule" ,
+			"NavigationSystem",
+			"GamePlayTasks"
 		});
 		
 		PublicDependencyModuleNames.AddRange(new string[]
