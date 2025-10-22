@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "NetworkData.h"
 #include "Blueprint/UserWidget.h"
+#include "UChatPlayerSystem.h"
 #include "UChatBoxWidget.generated.h"
 
 UCLASS()
@@ -30,7 +31,7 @@ public:
 	void Scroll(bool bUp);
 
 	UFUNCTION(BlueprintCallable)
-	void AddChatMessage(const FString& Message);
+	void AddChatMessage(const FChatMessage& ChatMessage);
 
 private:
 	FString GetPlayerDisplayName() const;

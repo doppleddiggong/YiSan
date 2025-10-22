@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "UChatPlayerSystem.h"
 #include "UChatEntryWidget.generated.h"
 
 UCLASS()
@@ -13,10 +14,13 @@ class YISAN_API UChatEntryWidget : public UUserWidget
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chat")
-	FString Message;
+	FChatMessage ChatMessageData;
 
 protected:
 	virtual void NativeConstruct() override;
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Chat")
+	void SetupMessageAppearance(EChatMessageType MessageType);
 
 	UPROPERTY(meta = (BindWidget))
 	class UTextBlock* TextBlock;

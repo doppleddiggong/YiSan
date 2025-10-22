@@ -41,20 +41,20 @@ void UChatPlayerSystem::OnScrollDown()
 	ChatBoxWidget->Scroll(false);
 }
 
-void UChatPlayerSystem::ServerRPC_SendChatMessage_Implementation(const FString& Message)
-{ 
-	if (Message.IsEmpty())
+void UChatPlayerSystem::ServerRPC_SendChatMessage_Implementation(const FChatMessage& ChatMessage)
+{
+	if (ChatMessage.Message.IsEmpty())
 		return;
 
-	MulticastRPC_AddChatMessage(Message);
+	MulticastRPC_AddChatMessage(ChatMessage);
 }
 
-void UChatPlayerSystem::MulticastRPC_AddChatMessage_Implementation(const FString& Message)
+void UChatPlayerSystem::MulticastRPC_AddChatMessage_Implementation(const FChatMessage& ChatMessage)
 {
-	ChatBoxWidget->AddChatMessage(Message);
+	ChatBoxWidget->AddChatMessage(ChatMessage);
 }
 
-void UChatPlayerSystem::ClientRPC_AddChatMessage_Implementation (const FString& Message)
+void UChatPlayerSystem::ClientRPC_AddChatMessage_Implementation(const FChatMessage& ChatMessage)
 {
-	ChatBoxWidget->AddChatMessage(Message);
+	ChatBoxWidget->AddChatMessage(ChatMessage);
 }

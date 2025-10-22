@@ -43,8 +43,8 @@ void UChatBoxWidget::OnTextCommittedHandler(const FText& Text, ETextCommit::Type
 	{
 		if (ChatPlayerSystem)
 		{
-			const FString Message = FString::Printf(TEXT("%s : %s"), *GetPlayerDisplayName(), *InputString);
-			ChatPlayerSystem->ServerRPC_SendChatMessage(Message);
+			FChatMessage ChatMessage(EChatMessageType::User, *GetPlayerDisplayName(), *InputString);
+			ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
 
 		    this->SendChatMessage(InputString);
 		}
@@ -98,13 +98,13 @@ void UChatBoxWidget::Scroll(bool bUp)
     ScrollBox->SetScrollOffset(NewOffset);
 }
 
-void UChatBoxWidget::AddChatMessage(const FString& Message)
+void UChatBoxWidget::AddChatMessage(const FChatMessage& ChatMessage)
 {
     if (!ScrollBox || !ChatEntryClass)
-        return; 
+        return;
 
     UChatEntryWidget* NewEntry = CreateWidget<UChatEntryWidget>(this, ChatEntryClass);
-    NewEntry->Message = Message;
+    NewEntry->ChatMessageData = ChatMessage;
     ScrollBox->AddChild(NewEntry);
     ScrollBox->ScrollToEnd();
 }
@@ -143,7 +143,8 @@ void UChatBoxWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
         }
         else
         {
-            ChatPlayerSystem->ServerRPC_SendChatMessage(Response.gpt_response_text);
+            FChatMessage ChatMessage(EChatMessageType::NPC, TEXT("정약용"), Response.gpt_response_text);
+            ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
             // BroadcastManager->SendToastMessage(Response.gpt_response_text);
 
             if (Response.audio_data.Num() == 0)

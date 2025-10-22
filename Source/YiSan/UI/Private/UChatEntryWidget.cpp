@@ -7,6 +7,7 @@ void UChatEntryWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	if (TextBlock)
-		TextBlock->SetText(FText::FromString(Message));
+	TextBlock->SetText(FText::FromString(ChatMessageData.Message));
+
+	SetupMessageAppearance(ChatMessageData.SpeakerType);
 }
