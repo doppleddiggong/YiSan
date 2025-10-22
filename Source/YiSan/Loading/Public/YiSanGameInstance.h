@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved.
 
 #pragma once
 
@@ -6,85 +6,52 @@
 #include "Engine/GameInstance.h"
 #include "YiSanGameInstance.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class YISAN_API UYiSanGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
 
 public:
-	UYiSanGameInstance();
-
-	/**
-	 * 로딩 레벨을 거쳐서 타겟 레벨로 전환
-	 * @param InTargetLevelName 최종 목적지 레벨 이름
-	 */
-	UFUNCTION(BlueprintCallable, Category = "Level")
-	void LoadLevelWithLoadingScreen(FName InTargetLevelName);
-
-	// 로딩 매니저가 호출할 함수
-	UFUNCTION()
-	void OnLoadingMapReady();
-
-	//begin play 에서 호출할 함수
-	UFUNCTION(BlueprintCallable, Category = "Level")
-	void OnTargetLevelReady();
 	
-	virtual void Init() override;
+	// Step별 함수들
+	void UpdateLoadingUIProgress(float ProgressPercentage);
 
-	/** 로딩 위젯 클래스 */
-	UPROPERTY(EditDefaultsOnly, Category = "UI")
-	TSubclassOf<UUserWidget> LoadingWidgetClass;
-
-	/** 로딩 위젯 인스턴스 */
-	UPROPERTY()
-	TObjectPtr<UUserWidget> LoadingWidget;
-
-	/** 최종 목적지 레벨 */
-	UPROPERTY(EditDefaultsOnly, Category = "UI")
-	FName TargetLevelName;
-
-	/** 로딩 완료 플래그 */
-	bool bLevelLoaded = false;
-	bool bAssetsLoaded = false;
-	bool bWorldPartitionReady = false;
-
-	bool bIsLoadingLevel = false;
-
-	/** 타이머 핸들 */
-	FTimerHandle WorldPartitionCheckTimer;
-	FTimerHandle ResourceCheckTimer;
-
-	// ==================== 단계별 처리 ====================
-
-	/** Step 1: 로딩 레벨로 이동 */
-	void Step1_MoveToLoadingLevel();
-
-	/** Step 2: 로딩 레벨에서 타겟 레벨 로드 시작 */
-	UFUNCTION()
 	void Step2_StartLoadingTargetLevel();
 
-	/** Step 3: 레벨 로드 완료 콜백 */
-	UFUNCTION()
-	void Step3_OnLevelLoaded();
-
-	/** Step 4: 리소스 스트리밍 체크 */
-	void Step4_CheckResources();
-
-	/** Step 5: 모든 준비 완료, 타겟 레벨로 전환 */
 	void Step5_TransitionToTarget();
+    
+	// 수정: 레벨 로드 완료 콜백 추가
+	void OnPostLoadMap(UWorld* LoadedWorld);
 
-	/** 리소스 로딩 상태 확인 */
+	// 리소스 체크 함수들
+	void Poll_StreamingAndInstancesReady();
 	bool CheckTextureStreaming();
-	bool CheckShaderCompilation();
 	bool CheckWorldPartition();
 
-	void PeriodicResourceCheck();
+	// UI 관련
+	void ShowLoadingUI(TSubclassOf<UUserWidget> LoadingWidgetClass);
+	void HideLoadingUI();
 
-	/** 로딩 UI 표시/숨김 */
-	void ShowLoadingScreen();
-	void HideLoadingScreen();
-	void FinalHideLoadingScreen();
+	
+	// 로딩 위젯
+	UPROPERTY(EditDefaultsOnly, Category = "Loading")
+	TSubclassOf<UUserWidget> LoadingWidgetClass;
+
+	UPROPERTY()
+	UUserWidget* LoadingWidget = nullptr;
+
+	// 로딩 상태
+	FName TargetLevelName = "Main_MapWP";
+	bool bIsLoadingLevel = false;
+	bool bLevelLoaded = false;
+
+	// 타이머
+	FTimerHandle ResourceCheckTimer;
+    
+	// 수정: 타임아웃 체크를 위한 시작 시간 추가
+	double ResourceCheckStartTime = 0.0;
+
+	TSharedPtr<SWidget> LoadingWidgetHolder; // GameViewport에 추가한 위젯 보관
+	TWeakObjectPtr<UUserWidget> LoadingWidgetObject; // UUserWidget 인스턴스 보관 (GC 안전성)
+	FTimerHandle PollingStreamingTimerHandle; // 스트리밍 완료 폴링 타이머
 };

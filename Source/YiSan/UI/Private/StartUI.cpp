@@ -11,6 +11,9 @@ void UStartUI::NativeConstruct()
 {
 	Super::NativeConstruct();
 
+	GetWorld()->GetFirstPlayerController()->SetShowMouseCursor(true);
+
+
 	// 버튼 클릭 이벤트 바인딩
 	if (StartButton)
 	{
@@ -61,5 +64,7 @@ void UStartUI::OnStartButtonClicked()
 	}
 
 	UE_LOG(LogTemp, Warning, TEXT("UStartUI - Cast successful. Calling LoadLevelWithLoadingScreen..."));
-	GI->LoadLevelWithLoadingScreen(MapName);
+	GetWorld()->SeamlessTravel(FString("MainMap_WP"));
+	GI->Step2_StartLoadingTargetLevel();
+	
 }

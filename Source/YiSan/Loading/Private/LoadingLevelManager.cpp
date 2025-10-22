@@ -11,16 +11,9 @@ ALoadingLevelManager::ALoadingLevelManager()
 void ALoadingLevelManager::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	PRINTLOG(TEXT("로딩중"));
+	UYiSanGameInstance* GI = Cast<UYiSanGameInstance>(GetGameInstance());
 
-	if (UYiSanGameInstance* GI = GetGameInstance<UYiSanGameInstance>())
-	{
-		
-		GI->OnLoadingMapReady();
-	}
-	else
-	{
-		PRINTLOG(TEXT("실패"));
-	}
+	GI->Step2_StartLoadingTargetLevel();
+	PRINTLOG(TEXT("실행"));
+	
 }
