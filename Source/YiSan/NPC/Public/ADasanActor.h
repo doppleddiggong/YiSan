@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "GameFramework/Pawn.h"
 #include "EDasanState.h"
 #include "ADasanActor.generated.h"
 
@@ -68,16 +69,16 @@ public:
 	// Tour 상태를 업데이트하는 헬퍼 함수 (Tick에서 호출)
 	void UpdateTourState(float DeltaTime);
 
-	// // 플레이어 폰을 가져오는 헬퍼 함수
-	// class APawn* GetPlayerPawn();
-	//
-	// // 플레이어와의 거리를 계산하는 헬퍼 함수
-	// float GetPlayerDistance(class APawn* PlayerPawn) const;
+	// 플레이어 폰을 가져오는 헬퍼 함수
+	 class APawn* GetPlayerPawn() const;
+	
+	// 플레이어와의 거리를 계산하는 헬퍼 함수
+	float GetPlayerDistance(class APawn* PlayerPawn) const;
 	
 	// ai control
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AI")
 	TObjectPtr<class AAIController> DasanAicontrol;
-	// 
+	 
 	UPROPERTY(EditAnywhere)
 	float playerMaxDis;
 	UPROPERTY(EditAnywhere)
@@ -86,7 +87,6 @@ public:
 	//tour wait 상태에서 player 체크용
 	float waitChackTimer;
 	
-private:
 	UPROPERTY()
 	TObjectPtr<class UQuestManager> QuestManager;
 
