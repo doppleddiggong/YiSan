@@ -70,10 +70,6 @@ public:
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_SendChatMessage(const FChatMessage& ChatMessage);
 
-	/** 클라 RPC: 자기 자신만 갱신 */
-	UFUNCTION(Client, Reliable)
-	void ClientRPC_AddChatMessage(const FChatMessage& ChatMessage);
-
 	/** 멀티캐스트 RPC: 전체 클라 갱신 */
 	UFUNCTION(NetMulticast, Reliable)
 	void MulticastRPC_AddChatMessage(const FChatMessage& ChatMessage);
