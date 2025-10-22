@@ -37,9 +37,6 @@ public:
     UPROPERTY(meta = (BindWidget))
     class USmallPopup* SmallPopupCtn;
 
-    UPROPERTY(meta = (BindWidget))
-    class UChatBoxWidget* ChatBoxCtn;
-
 private:
     UPROPERTY()
     TObjectPtr<class UBroadcastManager> BroadcastManager;

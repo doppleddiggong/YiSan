@@ -25,6 +25,7 @@
 #include "GameFramework/PlayerController.h"
 
 #define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_Main.WBP_Main_C")
+#define CHATUIWIDGET_PATH TEXT("/Game/CustomContents/UI/Chat/WB_ChatUI.WB_ChatUI_C")
 
 APlayerActor::APlayerActor()
 {
@@ -33,6 +34,7 @@ APlayerActor::APlayerActor()
     Tags.Add(GameTags::Player);
 
     MainWidgetClass = FComponentHelper::LoadClass<UMainWidget>(MAINWIDGET_PATH);
+    ChatUIWidgetClass = FComponentHelper::LoadClass<UChatUIWidget>(CHATUIWIDGET_PATH);
     
     SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
     SpringArmComp->SetupAttachment(GetCapsuleComponent());
@@ -70,7 +72,17 @@ void APlayerActor::BeginPlay()
             if (MainWidgetInst)
             {
                 MainWidgetInst->AddToViewport();
-                ChatPlayerSystem->InitSystem(this, MainWidgetInst->ChatBoxCtn);
+            }
+
+            if (ChatUIWidgetClass)
+            {
+                auto ChatUIInst = CreateWidget<UChatUIWidget>(GetWorld(), ChatUIWidgetClass);
+                if (ChatUIInst && ChatUIInst->WBP_ChatBox)
+                {
+                    ChatUIInst->AddToViewport();
+                    ChatBoxWidget = ChatUIInst->WBP_ChatBox;
+                    ChatPlayerSystem->InitSystem(ChatBoxWidget.Get());
+                }
             }
         }
     }

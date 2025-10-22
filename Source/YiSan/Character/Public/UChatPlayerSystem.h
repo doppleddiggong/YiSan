@@ -58,7 +58,7 @@ class YISAN_API UChatPlayerSystem : public UActorComponent
 public:
 	UChatPlayerSystem();
 
-	void InitSystem( class APlayerActor* InOwner, class UChatBoxWidget* InChatBox);
+	void InitSystem(class UChatBoxWidget* InChatBox);
 
 	/** 채팅 입력 처리 */
 	void OnEnterPressed();
@@ -77,11 +77,11 @@ public:
 	/** 멀티캐스트 RPC: 전체 클라 갱신 */
 	UFUNCTION(NetMulticast, Reliable)
 	void MulticastRPC_AddChatMessage(const FChatMessage& ChatMessage);
-
+	
 private:
 	UPROPERTY()
-	TObjectPtr<APlayerActor> Owner;
+	TObjectPtr<class APlayerActor> Owner;
 
 	UPROPERTY()
-	TObjectPtr<UChatBoxWidget> ChatBoxWidget;
+	TObjectPtr<class UChatBoxWidget> ChatBoxWidget;
 };

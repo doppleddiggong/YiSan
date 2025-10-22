@@ -122,6 +122,13 @@ FString UChatBoxWidget::GetPlayerDisplayName() const
 
 void UChatBoxWidget::SendChatMessage(const FString& InMsg)
 {
+    // 로컬 플레이어만 GPT 요청
+    if (!IsValid(Owner) || !Owner->IsLocallyControlled())
+    {
+        PRINTLOG(TEXT("SendChatMessage return | !IsValid(Owner) || !Owner->IsLocallyControlled() "));
+        return;
+    }
+
     FGPTContext SpatialContext = Owner->GetGPTContext();
 
     if (auto ReqNetwork = UHttpNetworkSystem::Get(GetWorld()))
@@ -134,6 +141,8 @@ void UChatBoxWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
 {
     if (bSuccess)
     {
+        PRINTLOG(TEXT("OnResponseAsk: Received transcribed_text : %s"), *Response.transcribed_text);
+        PRINTLOG(TEXT("OnResponseAsk: Received gpt_response_text : %s"), *Response.gpt_response_text);
         PRINTLOG(TEXT("OnResponseAsk: Received audio data size: %d"), Response.audio_data.Num());
 
         auto VoiceCommand = UVoiceFunctionLibrary::GetVoiceCommand(Response.gpt_response_text);
