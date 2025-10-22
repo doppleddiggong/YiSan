@@ -16,6 +16,7 @@
 #include "DrawDebugHelpers.h"
 #include "FComponentHelper.h"
 #include "GameLogging.h"
+#include "YiSan/YiSan.h"
 
 
 ADasanActor::ADasanActor()
@@ -32,14 +33,20 @@ ADasanActor::ADasanActor()
 	AnswerStateSystem = CreateDefaultSubobject<UAnswerStateSystem>(TEXT("AnswerStateSystem"));
 
 	playerMaxDis = 2000.f;
-	wayPointDis = 250.f;
+	wayPointDis = 10.f;
 	waitChackTimer = 1.f;
-	DasanAicontrol = nullptr;
 }
 
 void ADasanActor::BeginPlay()
 {
 	Super::BeginPlay();
+
+	// AI 컨트롤러 가져오기
+	DasanAicontrol = Cast<AAIController>(GetController());
+	if (!DasanAicontrol)
+	{
+		PRINTLOG(TEXT("AI Controller is not possessed or is not of type AAIController."));
+	}
 
 	if (HasAuthority())
 	{
@@ -73,6 +80,9 @@ void ADasanActor::Tick(float DeltaTime)
 	}
 
 	DrawDebugState();
+	
+	UpdateTourState(DeltaTime);
+	
 }
 
 void ADasanActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -149,9 +159,9 @@ void ADasanActor::StartTour()
 
 	DasanState = EDasanState::Tour;
 
-	// TourStateSystem 초기 상태 설정
+	// TourStateSystem 초기 상태 설정 (움직인다)
 	TourStateSystem->SetTourState(ETourState::TourMove);
-
+	
 	// 현재 목표 건물 찾기
 	CurTargetBuilding = FindCurTargetBuilding();
 	PRINTLOG( TEXT("다산 캐릭터의 추적 건물은 : %s 입니다"), *QuestManager->GetTargetBuildingName());
@@ -166,8 +176,6 @@ void ADasanActor::StartTour()
 		PRINTLOG(TEXT("아 못가 못가 "));
 		TourStateSystem->SetTourState(ETourState::TourEnd);
 	}
-	// FindCurTargetBuilding() 함수 기반으로 AiMoveTO 를 이용해 움직인다
-	
 }
 
 void ADasanActor::NextQuest()
@@ -271,7 +279,7 @@ void ADasanActor::UpdateTourState(float DeltaTime)
 
 	ETourState Curstate = TourStateSystem->GetCurState();
 	// 플레이어 폰 (dis 에 따른 추적용)
-	// APawn* pawn = GetPlayerPawn();
+	APawn* player = GetPlayerPawn();
 	switch (Curstate)
 	{
 		case ETourState::TourMove:
@@ -279,8 +287,68 @@ void ADasanActor::UpdateTourState(float DeltaTime)
 				// 건물에 도착했는지 체크
 				if (CurTargetBuilding && GetTargetBuildingDistnace() <= wayPointDis)
 				{
+					PRINTLOG(TEXT("다산님 건물에 도착하십니다"));
 					TourStateSystem->SetTourState(ETourState::TourEnd);
+					
+					// 도착했으니까 설명상태로 변환
+					TransitionToState(EDasanState::Explain);
 				}
+				else if (player && GetPlayerDistance(player) > playerMaxDis)
+				{
+					TourStateSystem->SetTourState(ETourState::TourWait);
+					DasanAicontrol->StopMovement();
+					waitChackTimer = 1.f;
+				}
+				//player 가 너무 멀리 갔다
+				break;
 			}
-	}
+		case ETourState::TourWait:
+			{
+				waitChackTimer = 1.f;
+				// 1초 마다 확인
+				if (player && GetPlayerDistance(player) <= playerMaxDis)
+				{
+					PRINTLOG(TEXT("플레이어 가 다시왔"));
+					TourStateSystem->SetTourState(ETourState::TourMove);
+					if (CurTargetBuilding)
+					{
+						DasanAicontrol->MoveToActor(CurTargetBuilding,wayPointDis);
+					}
+					else
+					{
+						PRINTLOG(TEXT("너 기다리는중 너"));
+					}
+				}
+				break;
+				
+			}
+		case ETourState::TourEnd:
+			{
+				break;
+			}
+		default:
+			break;
+	}	
+	
 }
+
+float ADasanActor::GetPlayerDistance(class APawn* PlayerPawn) const
+{
+	if (!PlayerPawn)
+	{
+		PRINTLOG(TEXT("플레이어 없어요"));
+		return 0;
+	}
+	return FVector::Dist(GetActorLocation(), PlayerPawn->GetActorLocation());
+}
+
+class APawn* ADasanActor::GetPlayerPawn() const
+{
+	if (!GetWorld())return nullptr;
+
+	return  UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+}
+
+
+
+

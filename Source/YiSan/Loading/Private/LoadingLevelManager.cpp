@@ -2,11 +2,6 @@
 
 #include "GameLogging.h"
 #include "YiSanGameInstance.h"
-#include "Blueprint/UserWidget.h"
-#include "Kismet/GameplayStatics.h"
-#include "Engine/StreamableManager.h"
-#include "Engine/AssetManager.h"
-#include "WorldPartition/WorldPartitionSubsystem.h"
 
 ALoadingLevelManager::ALoadingLevelManager()
 {
