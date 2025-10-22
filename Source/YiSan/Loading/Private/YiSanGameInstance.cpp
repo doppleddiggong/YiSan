@@ -64,8 +64,8 @@ void UYiSanGameInstance::LoadLevelWithLoadingScreen(FName InTargetLevelName)
 
     //로딩 시작 플래그 설정
     bIsLoadingLevel = true;
-    TargetLevelName = InTargetLevelName;
-    PRINTLOG(TEXT("레벨로 이동: %s"), *TargetLevelName.ToString());
+    // TargetLevelName = InTargetLevelName;
+     PRINTLOG(TEXT("레벨로 이동: %s"), *GameLevel::MainMap_WP);
 
     // step1 으로 이동한다
     Step1_MoveToLoadingLevel();
