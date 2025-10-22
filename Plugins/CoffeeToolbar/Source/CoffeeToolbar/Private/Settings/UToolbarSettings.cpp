@@ -72,7 +72,6 @@ void UToolbarSettings::PostEditChangeProperty(FPropertyChangedEvent& PropertyCha
 		{
 			Defaults->bEnableLevelFeature = bEnableLevelFeature;
 			Defaults->ExtraSearchPathsStrings = ExtraSearchPathsStrings;
-			Defaults->TestPathString = TestPathString;
 			Defaults->bEnableScreenshotFeature = bEnableScreenshotFeature;
 			Defaults->bEnableCommandFeature = bEnableCommandFeature;
 			Defaults->ToolbarButtons = ToolbarButtons;
