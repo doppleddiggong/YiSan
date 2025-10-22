@@ -40,6 +40,7 @@ void UChatBoxWidget::OnTextCommittedHandler(const FText& Text, ETextCommit::Type
 
     ChatPlayerSystem->ServerRPC_SendChatMessage(Message);
     ChatInput->SetText(FText::GetEmpty());
+    ExitChat();
 }
 
 void UChatBoxWidget::FocusChat()

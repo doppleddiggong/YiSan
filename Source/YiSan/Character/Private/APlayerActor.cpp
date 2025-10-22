@@ -71,11 +71,7 @@ void APlayerActor::BeginPlay()
             {
                 MainWidgetInst->AddToViewport();
 
-                // ChatUI 연결
-                if (MainWidgetInst->ChatBoxCtn)
-                {
-                    ChatPlayerSystem->InitSystem(MainWidgetInst->ChatBoxCtn);
-                }
+                ChatPlayerSystem->InitSystem(MainWidgetInst->ChatBoxCtn);
             }
         }
     }
@@ -184,12 +180,6 @@ void APlayerActor::Cmd_Look_Implementation(const FVector2D& Axis)
 void APlayerActor::Cmd_Jump_Implementation()
 {
     this->Jump();
-}
-
-void APlayerActor::Cmd_Chat_Implementation()
-{
-    if (MainWidgetInst)
-        MainWidgetInst->ToggleChatBox();
 }
 
 void APlayerActor::Cmd_RecordStart_Implementation()

@@ -102,10 +102,6 @@ public: // 제어 인터페이스
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
     void Cmd_Jump() override;
 
-    /// @brief 인게임 채팅 위젯의 표시 여부를 전환합니다.
-    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
-    void Cmd_Chat() override;
-
     /// @brief GPT 상호작용을 위한 음성 캡처를 시작합니다.
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
     void Cmd_RecordStart() override;

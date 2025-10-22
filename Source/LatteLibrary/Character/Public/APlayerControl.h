@@ -35,7 +35,6 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Jump;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Landing;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Chat;
-	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_ChatEnter;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_ChatScrollUp;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_ChatScrollDown;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Record;
@@ -51,7 +50,6 @@ protected:
 	void OnJump(const FInputActionValue& Value);
 	void OnLanding(const FInputActionValue& Value);
 
-	void OnChat(const FInputActionValue& Value);
 	void OnChatEnter(const FInputActionValue& Value);
 	void OnChatScrollUp(const FInputActionValue& Value);
 	void OnChatScrollDown(const FInputActionValue& Value);

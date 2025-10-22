@@ -28,7 +28,6 @@
 #define IA_JUMP_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Jump.IA_Game_Jump")
 #define IA_LANDING_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Landing.IA_Game_Landing")
 #define IA_CHAT_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Chat.IA_Game_Chat")
-#define IA_CHAT_ENTER_PATH			TEXT("/Game/CustomContents/Input/IA_Game_ChatEnter.IA_Game_ChatEnter")
 #define IA_CHAT_SCROLL_UP_PATH		TEXT("/Game/CustomContents/Input/IA_Game_ChatScrollUp.IA_Game_ChatScrollUp")
 #define IA_CHAT_SCROLL_DOWN_PATH	TEXT("/Game/CustomContents/Input/IA_Game_ChatScrollDown.IA_Game_ChatScrollDown")
 #define IA_RECORD_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Record.IA_Game_Record")
@@ -45,7 +44,6 @@ APlayerControl::APlayerControl()
 	IA_Jump = FComponentHelper::LoadAsset<UInputAction>(IA_JUMP_PATH);
 	IA_Landing = FComponentHelper::LoadAsset<UInputAction>(IA_LANDING_PATH);
 	IA_Chat = FComponentHelper::LoadAsset<UInputAction>(IA_CHAT_PATH);
-	IA_ChatEnter = FComponentHelper::LoadAsset<UInputAction>(IA_CHAT_ENTER_PATH);
 	IA_ChatScrollUp = FComponentHelper::LoadAsset<UInputAction>(IA_CHAT_SCROLL_UP_PATH);
 	IA_ChatScrollDown = FComponentHelper::LoadAsset<UInputAction>(IA_CHAT_SCROLL_DOWN_PATH);
 	IA_Record = FComponentHelper::LoadAsset<UInputAction>(IA_RECORD_PATH);
@@ -113,8 +111,7 @@ void APlayerControl::SetupInputComponent()
 		EIC->BindAction(IA_Jump, ETriggerEvent::Started,    this, &APlayerControl::OnJump);
 		EIC->BindAction(IA_Landing, ETriggerEvent::Started,  this, &APlayerControl::OnLanding);
 
-		EIC->BindAction(IA_Chat, ETriggerEvent::Started, this, &APlayerControl::OnChat);
-		EIC->BindAction(IA_ChatEnter, ETriggerEvent::Started, this, &APlayerControl::OnChatEnter);
+		EIC->BindAction(IA_Chat, ETriggerEvent::Started, this, &APlayerControl::OnChatEnter);
 		EIC->BindAction(IA_ChatScrollUp, ETriggerEvent::Started, this, &APlayerControl::OnChatScrollUp);
 		EIC->BindAction(IA_ChatScrollDown, ETriggerEvent::Started, this, &APlayerControl::OnChatScrollDown);
 
@@ -205,13 +202,6 @@ void APlayerControl::OnLanding(const FInputActionValue&)
 {
 	if (IControllable* C = GetControllable())
 		C->Cmd_Landing();
-}
-
-
-void APlayerControl::OnChat(const FInputActionValue&)
-{
-	if (IControllable* C = GetControllable())
-		C->Cmd_Chat();
 }
 
 void APlayerControl::OnChatEnter(const FInputActionValue&)
