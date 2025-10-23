@@ -41,15 +41,15 @@ void ADasanActor::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// AI 컨트롤러 가져오기
-	DasanAicontrol = Cast<AAIController>(GetController());
-	if (!DasanAicontrol)
-	{
-		PRINTLOG(TEXT("AI Controller is not possessed or is not of type AAIController."));
-	}
-
 	if (HasAuthority())
 	{
+		// AI 컨트롤러 가져오기
+		DasanAicontrol = Cast<AAIController>(GetController());
+		if (!DasanAicontrol)
+		{
+			PRINTLOG(TEXT("AI Controller is not possessed or is not of type AAIController."));
+		}
+
 		TourStateSystem->InitSystem(this);
 		ExplainStateSystem->InitSystem(this);
 		AnswerStateSystem->InitSystem(this);
@@ -82,9 +82,6 @@ void ADasanActor::Tick(float DeltaTime)
 	}
 
 	DrawDebugState();
-	
-	
-	
 }
 
 void ADasanActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -108,7 +105,7 @@ void ADasanActor::DrawDebugState()
 	FString TourStateStr = *ENUM_TO_NAME(ETourState, TourStateSystem->GetCurState());
 	FString ExplainStateStr = *ENUM_TO_NAME(EExplainState, ExplainStateSystem->GetCurState());
 	FString AnswerStateStr = *ENUM_TO_NAME(EAnswerState, AnswerStateSystem->GetCurState());
-	FString TargetBuildingStr =  QuestManager->GetTargetBuildingName();
+	FString TargetBuildingStr =  QuestManager != nullptr ? QuestManager->GetTargetBuildingName() : TEXT("Unknown");
 
 	// 상태 정보 조합
 	FString StateInfo = FString::Printf(TEXT("[DASAN]\nMain: %s\nTour: %s\nExplain: %s\nAnswer: %s\nTarget: %s"),
