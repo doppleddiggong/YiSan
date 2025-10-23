@@ -15,7 +15,12 @@ class YISAN_API UYiSanGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
 
+protected:
+	virtual void Init() override;
+	
 public:
+
+#pragma region OPTIMIZATION
 	
 	// Step별 함수임
 	// Step 1: 로딩 UI를 표시하고 타겟 레벨 로드(OpenLevel 또는 ServerTravel)를 시작함.
@@ -61,4 +66,55 @@ private:
 	
 	// 스트리밍 완료 폴링 타이머 핸들임.
 	FTimerHandle PollingStreamingTimerHandle;
+#pragma endregion OPTIMIZATION
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+#pragma region ONLINE_SUB_SYSTEM
+public:
+	void InitSubsystem();
+	
+	//세션의 모든 처리 진행 객체
+	IOnlineSessionPtr sessionInterface;
+
+	//세션 생성 
+	//세션 생성 함수
+	UFUNCTION(BlueprintCallable)
+	void CreateMySession(FString displayName, int32 playerCount);
+	//세션 생성 완료 함수
+	void OnCreateSessionComplete(FName sessionName, bool success);
+
+	//세션 조회 
+	//세션 조회할 때 사용하는 객체
+	TSharedPtr<FOnlineSessionSearch> sessionSearch;
+	//세션 조회 함수
+	UFUNCTION(BlueprintCallable)
+	void FindOtherSession();
+	//세션 조회 완료 함수
+	void OnFindSessionComplete(bool success);
+	
+	//세션 참여 
+	//세션 참여 함수
+	UFUNCTION(BlueprintCallable)
+	void JoinOtherSession(int32 sessionIndex);
+	//세션 참여 완료 함수
+	void OnJoinSessionComplete(FName sessionName, EOnJoinSessionCompleteResult::Type result);
+#pragma endregion ONLINE_SUB_SYSTEM
 };
