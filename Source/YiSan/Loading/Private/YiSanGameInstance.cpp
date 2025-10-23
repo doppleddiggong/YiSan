@@ -1,4 +1,6 @@
 ﻿#include "YiSanGameInstance.h"
+
+#include "GameLogging.h"
 #include "Engine/World.h"
 #include "Engine/Engine.h"
 #include "Engine/GameViewportClient.h"
@@ -195,11 +197,13 @@ void UYiSanGameInstance::Poll_StreamingAndInstancesReady()
 
     // 2. 텍스처 스트리밍 체크함
     {
-        IStreamingManager& StreamingManager = IStreamingManager::Get();
+        IStreamingManager& StreamingManager = IStreamingManager::Get(); 
         const float RequestSeconds = 0.1f;
-        StreamingManager.UpdateResourceStreaming(RequestSeconds, true);
+        
+       // StreamingManager.UpdateResourceStreaming(RequestSeconds, true);
+        
         StreamingPercentage = StreamingManager.StreamAllResources(RequestSeconds);
-
+        
         // (수정) 텍스처 0% 처리 문제 수정: 99% 이상일 때만 완료로 간주함
         if (!FMath::IsFinite(StreamingPercentage) || StreamingPercentage < 0.0f)
         {
@@ -215,6 +219,10 @@ void UYiSanGameInstance::Poll_StreamingAndInstancesReady()
         else // 0.0 ~ 0.989... (진행 중)
         {
             // UE_LOG(LogTemp, Display, TEXT("[폴링] 텍스처 스트리밍 진행률: %.2f%%"), StreamingPercentage * 100.0f);
+            if (StreamingPercentage < 0.01f)
+            {
+                PRINTLOG(TEXT("텍스쳐 스트리밍 진행율 %.2f%% "),StreamingPercentage * 100.0f);
+            }
             bTextureReady = false;
         }
     }
@@ -238,7 +246,7 @@ void UYiSanGameInstance::Poll_StreamingAndInstancesReady()
             {
                 if (ALevelInstance* LI = Cast<ALevelInstance>(Actor))
                 {
-                    // (수정) 레벨 인스턴스 확인 방식: Actors.Num() 대신 IsLevelLoaded() 사용
+                    // 레벨 인스턴스 확인 방식: Actors.Num() 대신 IsLevelLoaded() 사용
                     if (LI->GetLoadedLevel() != nullptr)
                     {
                         ReadyCount++;
@@ -257,7 +265,7 @@ void UYiSanGameInstance::Poll_StreamingAndInstancesReady()
 
     // 4. 진행률 및 상태 텍스트 계산
     float WorldPartitionProgress = bWorldPartitionReady ? 1.0f : 0.0f;
-    // (수정) 텍스처 진행률 계산 오류 수정: Clamp(0.5...) 대신 실제 진행률 Clamp
+    // 텍스처 진행률 계산 오류 수정: Clamp(0.5...) 대신 실제 진행률 Clamp
     float TextureProgress = FMath::Clamp(StreamingPercentage, 0.0f, 1.0f); 
     
     float OverallProgress = 
@@ -273,7 +281,7 @@ void UYiSanGameInstance::Poll_StreamingAndInstancesReady()
     else if (OverallProgress >= 0.99f)
         StatusText = FText::FromString(TEXT("로딩 완료. 잠시 후 게임 시작."));
 
-    // (수정) 미사용 상태 텍스트 문제 해결: UI 업데이트 함수 호출
+    // 미사용 상태 텍스트 문제 해결: UI 업데이트 함수 호출
     UpdateLoadingUIProgress(OverallProgress, StatusText);
     
     // 5. 모든 준비가 완료되었는지 확인
@@ -296,7 +304,7 @@ void UYiSanGameInstance::Poll_StreamingAndInstancesReady()
     else
     {
         // 아직 준비되지 않음 (타이머가 계속 실행됨)
-        // UE_LOG(LogTemp, Display, TEXT("[폴링] 아직 준비되지 않았습니다. 계속 대기합니다."));
+        UE_LOG(LogTemp, Display, TEXT("[폴링] 아직 준비되지 않았습니다. 계속 대기합니다."));
     }
 }
 
