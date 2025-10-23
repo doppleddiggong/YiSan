@@ -39,4 +39,7 @@ public:
 	virtual void Cmd_RecordEnd() {};						// 녹음 종료
 
 	virtual void Cmd_ShowDetail() {};						// 상세보기 정보창
+
+	virtual void Cmd_ShowMouse() {};						// 마우스 노출
+	virtual void Cmd_HideMouse() {};						// 마우스 감춤
 };

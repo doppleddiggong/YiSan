@@ -141,3 +141,12 @@ float UCommonFunctionLibrary::GetDistance(AActor* A, AActor* B)
 
 	return UKismetMathLibrary::Vector_Distance( A->GetActorLocation(), B->GetActorLocation() );
 }
+
+FString UCommonFunctionLibrary::RemoveLineBreaks(const FString& InText)
+{
+	FString CleanedText = InText;
+	CleanedText.ReplaceInline(TEXT("\r\n"), TEXT(""));
+	CleanedText.ReplaceInline(TEXT("\r"), TEXT(""));
+	CleanedText.ReplaceInline(TEXT("\n"), TEXT(""));
+	return CleanedText;
+}

@@ -9,14 +9,18 @@
 #include "FGPTContext.h"
 
 #include "EngineUtils.h"
+#include "FComponentHelper.h"
 #include "UBroadcastManager.h"
 
 #include "Camera/CameraComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "YiSan/YiSan.h"
 
 UGPTContextSystem::UGPTContextSystem()
 {
 	PrimaryComponentTick.bCanEverTick = true;
+
+    TimeSinceLastCheck = 0.0f;       
 }
 
 void UGPTContextSystem::InitSystem(APlayerActor* InOwner)
@@ -33,8 +37,20 @@ void UGPTContextSystem::TickComponent(float DeltaTime, ELevelTick TickType,
 
     if ( Owner == nullptr )
         return;
-    
-    this->CheckBuildingInView();
+        
+    // DeltaTime을 계속 더해줍니다.                                                                                                                                                                                                                           
+    TimeSinceLastCheck += DeltaTime;                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                             
+    // TimeSinceLastCheck가 1초를 넘어섰는지 확인합니다.                                                                                                                                                                                                      
+    if (TimeSinceLastCheck >= 1.0f)                                                                                                                                                                                                                           
+    {                                                                                                                                                                                                                                                         
+       // 타이머를 리셋합니다. (정확한 주기를 위해 1.0f를 빼줍니다)                                                                                                                                                                                          
+       TimeSinceLastCheck -= 1.0f;                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                             
+       // 1초 마다 실행될 로직                                                                                                                                                                                                                                
+       this->CheckBuildingInView();                                                                                                                                                                                                                          
+       this->FindNearestBuilding();                                                                                                                                                                                                                          
+    }
 }
 
 void UGPTContextSystem::CheckBuildingInView()
@@ -83,6 +99,36 @@ void UGPTContextSystem::CheckBuildingInView()
         }
     }
 }
+
+
+void UGPTContextSystem::FindNearestBuilding()
+{
+    auto FoundBuildings = FComponentHelper::GetAllOfClass<ABuilding>(GetWorld());
+
+    float MinDistance = TNumericLimits<float>::Max();
+
+    for (auto Building : FoundBuildings)
+    {
+        float Distance = Owner->GetDistanceTo(Building);
+        if (Distance < MinDistance)
+        {
+            MinDistance = Distance;
+            NearestBuilding = Building;
+        }
+    }
+    
+    if (NearestBuilding.Get())
+    {
+        // 근접 했다는 정보로 small popup 을 띄울 예정
+        BroadcastManager->SendNearBuilding(NearestBuilding->BuildingType);
+    }
+    else
+    {
+        // 건물이 없다면 popup 을 닫을예정
+        BroadcastManager->SendNearBuilding(EBuildingType::None);
+    }
+}
+
 
 struct FBuildingSnapshot
 {

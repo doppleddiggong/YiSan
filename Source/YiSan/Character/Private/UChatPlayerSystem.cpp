@@ -11,6 +11,7 @@
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundWaveProcedural.h"
+#include "YiSan/YiSan.h"
 
 UChatPlayerSystem::UChatPlayerSystem()
 {
@@ -52,62 +53,6 @@ void UChatPlayerSystem::OnScrollDown()
 
 	ChatBoxWidget->Scroll(false);
 }
-
-void UChatPlayerSystem::Ask(const FString& InMsg, const FGPTContext& SpatialContext)
-{
-	// 로컬 플레이어만 GPT 요청
-	if (!IsValid(Owner) || !Owner->IsLocallyControlled())
-	{
-		PRINTLOG(TEXT("SendChatMessage return | !IsValid(Owner) || !Owner->IsLocallyControlled() "));
-		return;
-	}
-
-	if (auto ReqNetwork = UHttpNetworkSystem::Get(GetWorld()))
-	{
-		ReqNetwork->RequestGPT(InMsg, SpatialContext, FResponseAskDelegate::CreateUObject(this, &UChatPlayerSystem::OnResponseAsk));
-	}
-}
-
-void UChatPlayerSystem::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
-{
-	if (bSuccess)
-	{
-		PRINTLOG(TEXT("OnResponseAsk: Received transcribed_text : %s"), *Response.transcribed_text);
-		PRINTLOG(TEXT("OnResponseAsk: Received gpt_response_text : %s"), *Response.gpt_response_text);
-		PRINTLOG(TEXT("OnResponseAsk: Received audio data size: %d"), Response.audio_data.Num());
-
-		auto VoiceCommand = UVoiceFunctionLibrary::GetVoiceCommand(Response.gpt_response_text);
-		PRINTLOG(TEXT("OnResponseAsk: VoiceCommand result is %d"), static_cast<int32>(VoiceCommand));
-
-		if ( VoiceCommand != EVoiceCommandType::None )
-		{
-			if ( auto BroadcastManager = UBroadcastManager::Get(GetWorld()) )
-			{
-				BroadcastManager->SendExecVoiceCommand( VoiceCommand );
-			}
-		}
-		else
-		{
-			// GPT 응답에서 줄바꿈 제거 (UI에서 자동 줄바꿈 처리)
-			FString CleanedText = Response.gpt_response_text;
-			CleanedText.ReplaceInline(TEXT("\r\n"), TEXT(" "));
-			CleanedText.ReplaceInline(TEXT("\n"), TEXT(" "));
-			CleanedText.ReplaceInline(TEXT("\r"), TEXT(" "));
-
-			FChatMessage ChatMessage(EChatMessageType::NPC, TEXT("정약용"),CleanedText);
-			this->ServerRPC_SendChatMessage(ChatMessage);
-
-			auto SoundWave = UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData(Response.audio_data);
-			if ( IsValid(SoundWave))
-				UGameplayStatics::PlaySound2D(this, SoundWave);
-		}
-	}
-	else
-	{
-		PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
-	}
-}
-
 
 void UChatPlayerSystem::ServerRPC_SendChatMessage_Implementation(const FChatMessage& ChatMessage)
 {

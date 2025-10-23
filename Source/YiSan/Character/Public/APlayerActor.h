@@ -29,26 +29,19 @@ protected:
     /// @brief 게임 플레이가 시작될 때 호출되어 의존 시스템을 초기화합니다.
     virtual void BeginPlay() override;
 
-    /// @brief 타이머를 정리하고 기본 구현을 호출하여 종료 시점을 처리합니다.
-    virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
-
 public:
-    /// @brief 매 프레임 업데이트를 수행하며 현재는 ACharacter 기본 구현에 의존합니다.
-    virtual void Tick(float DeltaTime) override;
-
-    /// @brief 강화 입력 액션과 임시 디버그 단축키를 바인딩합니다.
-    virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
     /// @brief 플레이어의 최신 GPT 컨텍스트 스냅샷을 수집합니다.
     /// @return 플레이어 위치, 시선 대상, 주변 건물을 담은 FGPTContext입니다.
     FGPTContext GetGPTContext() const;
 
-private:
-    /// @brief 주변에서 가장 가까운 건물을 찾고 관련 시스템에 알립니다.
-    void FindNearestBuilding();
+    FString GetPlayerDisplayName() const;
 
-    /// @brief 가장 가까운 건물을 주기적으로 평가하기 위한 타이머 핸들입니다.
-    FTimerHandle TimeHandle_NearestBuilding;
+private:
+    // /// @brief 주변에서 가장 가까운 건물을 찾고 관련 시스템에 알립니다.
+    // void FindNearestBuilding();
+    //
+    // /// @brief 가장 가까운 건물을 주기적으로 평가하기 위한 타이머 핸들입니다.
+    // FTimerHandle TimeHandle_NearestBuilding;
 
     /// @brief 브로드캐스트 매니저에서 전달되는 음성 명령 실행 이벤트에 대응합니다.
     UFUNCTION()
@@ -135,5 +128,11 @@ public: // 제어 인터페이스
 
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
     void Cmd_ChatScrollDown() override;
+
+    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
+    void Cmd_ShowMouse() override;
+
+    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
+    void Cmd_HideMouse() override;
 };
 

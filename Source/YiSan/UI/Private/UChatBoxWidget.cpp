@@ -16,6 +16,7 @@
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/PlayerState.h"
 #include "Sound/SoundWaveProcedural.h"
+#include "YiSan/YiSan.h"
 
 
 void UChatBoxWidget::NativeConstruct()
@@ -43,15 +44,62 @@ void UChatBoxWidget::OnTextCommittedHandler(const FText& Text, ETextCommit::Type
 	{
 		if (ChatPlayerSystem)
 		{
-		    FChatMessage ChatMessage(EChatMessageType::User, *GetPlayerDisplayName(), *InputString);
+		    FChatMessage ChatMessage(EChatMessageType::User, Owner->GetPlayerDisplayName(), *InputString);
 		    ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
 
-		    ChatPlayerSystem->Ask(InputString, Owner->GetGPTContext());
+		    this->Ask(InputString, Owner->GetGPTContext());
 		}
 	}
 
 	ExitChat();
 }
+
+void UChatBoxWidget::Ask(const FString& InMsg, const FGPTContext& SpatialContext)
+{
+	// 로컬 플레이어만 GPT 요청
+	if (!IsValid(Owner) || !Owner->IsLocallyControlled())
+	{
+		PRINTLOG(TEXT("SendChatMessage return | !IsValid(Owner) || !Owner->IsLocallyControlled() "));
+		return;
+	}
+
+	if (auto ReqNetwork = UHttpNetworkSystem::Get(GetWorld()))
+	{
+		ReqNetwork->RequestGPT(InMsg, SpatialContext, FResponseAskDelegate::CreateUObject(this, &UChatBoxWidget::OnResponseAsk));
+	}
+}
+
+void UChatBoxWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
+{
+	if (bSuccess)
+	{
+		PRINTLOG(TEXT("OnResponseAsk: Received transcribed_text : %s"), *Response.transcribed_text);
+		PRINTLOG(TEXT("OnResponseAsk: Received gpt_response_text : %s"), *Response.gpt_response_text);
+		PRINTLOG(TEXT("OnResponseAsk: Received audio data size: %d"), Response.audio_data.Num());
+
+		auto VoiceCommand = UVoiceFunctionLibrary::GetVoiceCommand(Response.gpt_response_text);
+		PRINTLOG(TEXT("OnResponseAsk: VoiceCommand result is %d"), static_cast<int32>(VoiceCommand));
+
+		if ( VoiceCommand != EVoiceCommandType::None )
+		{
+			BroadcastManager->SendExecVoiceCommand( VoiceCommand );
+		}
+		else
+		{
+			FChatMessage ChatMessage(EChatMessageType::NPC, GameString::NPC,Response.gpt_response_text);
+			ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
+
+			auto SoundWave = UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData(Response.audio_data);
+			if ( IsValid(SoundWave))
+				UGameplayStatics::PlaySound2D(this, SoundWave);
+		}
+	}
+	else
+	{
+		PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
+	}
+}
+
 
 void UChatBoxWidget::FocusChat()
 {
@@ -107,15 +155,4 @@ void UChatBoxWidget::AddChatMessage(const FChatMessage& ChatMessage)
     NewEntry->ChatMessageData = ChatMessage;
     ScrollBox->AddChild(NewEntry);
     ScrollBox->ScrollToEnd();
-}
-
-FString UChatBoxWidget::GetPlayerDisplayName() const
-{
-    if (auto PC = UGameplayStatics::GetPlayerController(GetWorld(), 0))
-    {
-        if (auto PS = PC->PlayerState)
-            return PS->GetPlayerName();
-    }
-    
-    return TEXT("Yisan");
 }

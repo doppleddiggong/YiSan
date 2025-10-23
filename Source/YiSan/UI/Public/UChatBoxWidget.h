@@ -18,9 +18,6 @@ public:
 	
 	void InitSystem(class APlayerActor* InOwner);
 
-	UFUNCTION()
-	void OnTextCommittedHandler(const FText& Text, ETextCommit::Type CommitMethod);
-
 	UFUNCTION(BlueprintCallable)
 	void FocusChat();
 
@@ -34,16 +31,14 @@ public:
 	void AddChatMessage(const FChatMessage& ChatMessage);
 
 private:
-	 FString GetPlayerDisplayName() const;
+	UFUNCTION()
+	void OnTextCommittedHandler(const FText& Text, ETextCommit::Type CommitMethod);
 
-	// /// @brief 입력된 문자열을 네트워크로 전송합니다.
-	// void SendChatMessage(const FString& InMsg);
-	//
-	// /// @brief ASK 응답을 수신해 UI를 갱신합니다.
-	// /// @param Response [in] 음성/텍스트 처리 결과입니다.
-	// /// @param bSuccess [in] 요청 성공 여부입니다.
-	// UFUNCTION()
-	// void OnResponseAsk(FResponseAsk& Response, bool bSuccess);
+	UFUNCTION()
+	void Ask(const FString& InMsg, const FGPTContext& SpatialContext);
+
+	UFUNCTION()
+	void OnResponseAsk(FResponseAsk& Response, bool bSuccess);
 	
 public:
 	/** --- 위젯 참조 --- */

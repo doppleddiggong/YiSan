@@ -5,10 +5,12 @@
 #include "GameLogging.h"
 #include "APlayerActor.h"
 #include "UBroadcastManager.h"
+#include "UChatPlayerSystem.h"
 #include "UHttpNetworkSystem.h"
 #include "UVoiceFunctionLibrary.h"
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundWaveProcedural.h"
+#include "YiSan/YiSan.h"
 
 UVoiceConversationSystem::UVoiceConversationSystem()
 {
@@ -119,9 +121,7 @@ void UVoiceConversationSystem::StopRecording()
 	LastRecordedFilePath = UVoiceFunctionLibrary::SaveWavToFile(WAVData);
 
 	PRINTLOG( TEXT("[VoiceConversation] Recording stopped. Processing...") );
-
 	PRINTLOG( TEXT("[VoiceConversation] Recording saved to: %s"), *LastRecordedFilePath);
-
 	if (LastRecordedFilePath.IsEmpty())
 	{
 		PRINTLOG( TEXT("[VoiceConversation] FilePath is Empty") );
@@ -148,23 +148,34 @@ void UVoiceConversationSystem::OnResponseAsk(FResponseAsk& Response, bool bSucce
 
 	if (bSuccess)
 	{
+		PRINTLOG(TEXT("OnResponseAsk: Received transcribed_text : %s"), *Response.transcribed_text);
+		PRINTLOG(TEXT("OnResponseAsk: Received gpt_response_text : %s"), *Response.gpt_response_text);
 		PRINTLOG(TEXT("OnResponseAsk: Received audio data size: %d"), Response.audio_data.Num());
 
 		auto VoiceCommand = UVoiceFunctionLibrary::GetVoiceCommand(Response.gpt_response_text);
+		PRINTLOG(TEXT("OnResponseAsk: VoiceCommand result is %d"), static_cast<int32>(VoiceCommand));
+
+
+		{
+			FChatMessage ChatMessage(EChatMessageType::User, *Owner->GetPlayerDisplayName(), *Response.transcribed_text);
+			Owner->ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
+		}
+		
 		if ( VoiceCommand != EVoiceCommandType::None )
 		{
 			BroadcastManager->SendExecVoiceCommand( VoiceCommand );
 		}
 		else
 		{
-			BroadcastManager->SendToastMessage(Response.gpt_response_text);
+			// GPT 응답에서 줄바꿈 제거 (UI에서 자동 줄바꿈 처리)
+			FString CleanedText = Response.gpt_response_text;
+			CleanedText.ReplaceInline(TEXT("\r\n"), TEXT(" "));
+			CleanedText.ReplaceInline(TEXT("\n"), TEXT(" "));
+			CleanedText.ReplaceInline(TEXT("\r"), TEXT(" "));
 
-			if (Response.audio_data.Num() == 0)
-			{
-				PRINTLOG(TEXT("OnResponseAsk: Audio data is empty. Cannot play TTS audio."));
-				return;
-			}
-		
+			FChatMessage ChatMessage(EChatMessageType::NPC, GameString::NPC,CleanedText);
+			Owner->ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
+
 			auto SoundWave = UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData(Response.audio_data);
 			if ( IsValid(SoundWave))
 				UGameplayStatics::PlaySound2D(this, SoundWave);

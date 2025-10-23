@@ -67,8 +67,6 @@ public:
 	void OnScrollDown();
 
 public:
-	void Ask(const FString& InMsg, const FGPTContext& SpatialContext);
-	
 	/** 서버 RPC: 메시지 전송 */
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_SendChatMessage(const FChatMessage& ChatMessage);
@@ -77,8 +75,6 @@ private:
 	/** 멀티캐스트 RPC: 전체 클라 갱신 */
 	UFUNCTION(NetMulticast, Reliable)
 	void MulticastRPC_AddChatMessage(const FChatMessage& ChatMessage);
-	
-	void OnResponseAsk(FResponseAsk& Response, bool bSuccess);
 	
 private:
 	UPROPERTY()

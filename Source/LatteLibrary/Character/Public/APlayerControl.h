@@ -39,7 +39,8 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_ChatScrollDown;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Record;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_ShowDetail;
-	
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_ShowMouse;
+		
 	// --- Handlers ---
 	void OnMove(const FInputActionValue& Value);
 	void OnLook(const FInputActionValue& Value);
@@ -57,6 +58,8 @@ protected:
 	void OnRecordReleased(const FInputActionValue& Value);
 
 	void OnShowDetail(const FInputActionValue& Value);
+	void OnShowMouse(const FInputActionValue& Value);
+	void OnHideMouse(const FInputActionValue& Value);
 
 private:
 	UFUNCTION()

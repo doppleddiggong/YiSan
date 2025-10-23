@@ -28,3 +28,9 @@ namespace GameLevel
     static const FString MainMap_WP = TEXT("MainMap_WP");
 }
 
+
+namespace GameString
+{
+    static const FString NPC = TEXT("정약용");
+}
+

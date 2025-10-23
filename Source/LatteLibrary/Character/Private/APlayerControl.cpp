@@ -15,6 +15,7 @@
 #include "InputAction.h"
 
 #include "FComponentHelper.h"
+#include "GameLogging.h"
 #include "UBroadcastManager.h"
 #include "Blueprint/UserWidget.h"
 #include "GameFramework/GameModeBase.h"
@@ -32,6 +33,7 @@
 #define IA_CHAT_SCROLL_DOWN_PATH	TEXT("/Game/CustomContents/Input/IA_Game_ChatScrollDown.IA_Game_ChatScrollDown")
 #define IA_RECORD_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Record.IA_Game_Record")
 #define IA_SHOWDETAIL_PATH			TEXT("/Game/CustomContents/Input/IA_Game_Detail.IA_Game_Detail")
+#define IA_SHOWMOUSE_PATH			TEXT("/Game/CustomContents/Input/IA_Game_Mouse.IA_Game_Mouse")
 
 APlayerControl::APlayerControl()
 {
@@ -48,6 +50,7 @@ APlayerControl::APlayerControl()
 	IA_ChatScrollDown = FComponentHelper::LoadAsset<UInputAction>(IA_CHAT_SCROLL_DOWN_PATH);
 	IA_Record = FComponentHelper::LoadAsset<UInputAction>(IA_RECORD_PATH);
 	IA_ShowDetail = FComponentHelper::LoadAsset<UInputAction>(IA_SHOWDETAIL_PATH);
+	IA_ShowMouse = FComponentHelper::LoadAsset<UInputAction>(IA_SHOWDETAIL_PATH);
 }
 
 void APlayerControl::BeginPlay()
@@ -71,7 +74,7 @@ void APlayerControl::BeginPlay()
 	{
 		if (!GetPawn())
 		{
-			UE_LOG(LogTemp, Warning, TEXT("[YiSanPlayerController] Pawn missing - request restart"));
+			PRINTLOG( TEXT("[YiSan_PC] Pawn missing - request restart"));
 			if (AGameModeBase* GM = UGameplayStatics::GetGameMode(this))
 			{
 				GM->RestartPlayer(this); // GameMode 통해 재스폰
@@ -79,16 +82,14 @@ void APlayerControl::BeginPlay()
 		}
 		else
 		{
-			UE_LOG(LogTemp, Log, TEXT("[YiSanPlayerController] Pawn OK: %s"), *GetNameSafe(GetPawn()));
+			PRINTLOG( TEXT("[YiSan_PC] Pawn OK: %s"), *GetNameSafe(GetPawn()));
 			GetPawn()->EnableInput(this);
 		}
 	});
 
 
 	if ( auto BroadcastManager = UBroadcastManager::Get(GetWorld()) )
-	{
 		BroadcastManager->OnPlayerControlState.AddDynamic(this, &APlayerControl::OnPlayerControlState);
-	}
 }
 
 void APlayerControl::SetupInputComponent()
@@ -119,6 +120,9 @@ void APlayerControl::SetupInputComponent()
 		EIC->BindAction(IA_Record, ETriggerEvent::Completed, this, &APlayerControl::OnRecordReleased);
 
 		EIC->BindAction(IA_ShowDetail, ETriggerEvent::Completed, this, &APlayerControl::OnShowDetail);
+
+		EIC->BindAction(IA_ShowMouse, ETriggerEvent::Started, this, &APlayerControl::OnShowMouse);
+		EIC->BindAction(IA_ShowMouse, ETriggerEvent::Completed, this, &APlayerControl::OnHideMouse);
 	}
 }
 
@@ -238,4 +242,16 @@ void APlayerControl::OnShowDetail(const FInputActionValue& Value)
 {
 	if (IControllable* C = GetControllable())
 		C->Cmd_ShowDetail();
+}
+
+void APlayerControl::OnShowMouse(const FInputActionValue& Value)
+{
+	if (IControllable* C = GetControllable())
+		C->Cmd_ShowMouse();
+}
+
+void APlayerControl::OnHideMouse(const FInputActionValue& Value)
+{
+	if (IControllable* C = GetControllable())
+		C->Cmd_HideMouse();
 }
