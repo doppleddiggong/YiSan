@@ -107,47 +107,48 @@ void UYiSanGameInstance::HideLoadingUI()
 void UYiSanGameInstance::Step1_StartLoadingTargetLevel()
 {
     UE_LOG(LogTemp, Warning, TEXT("[스텝1] 타겟 레벨 로드 시작함: %s"), *TargetLevelName.ToString());
+    
+    // UWorld* World = GetWorld();
+    // if (!World)
+    // {
+    //     UE_LOG(LogTemp, Error, TEXT("[스텝1] GetWorld()가 null임. 로드 중단함."));
+    //     return;
+    // }
+    //
+    // // 로딩 UI 띄움
+    // if (LoadingWidgetClass)
+    // {
+    //     ShowLoadingUI(LoadingWidgetClass);
+    // }
+
+    // 서버 모드(리슨서버/데디케이티드)인지 확인함
+    // ENetMode NetMode = World->GetNetMode();
+    // bool bIsServerMode = (NetMode == NM_ListenServer) || (NetMode == NM_DedicatedServer);
+
+    // const FString TargetLevelString = TargetLevelName.ToString();
+    // const bool bUseSeamless = true;
+    GetWorld()->ServerTravel("/Game/CustomContents/Maps/MainMap_WP");
 
     // 중복 바인딩 방지함
     FCoreUObjectDelegates::PostLoadMapWithWorld.RemoveAll(this);
     // 맵 로드 완료 시 Step2_OnPostLoadMap 함수를 호출하도록 바인딩함
     FCoreUObjectDelegates::PostLoadMapWithWorld.AddUObject(this, &UYiSanGameInstance::Step2_OnPostLoadMap);
-
-    UWorld* World = GetWorld();
-    if (!World)
-    {
-        UE_LOG(LogTemp, Error, TEXT("[스텝1] GetWorld()가 null임. 로드 중단함."));
-        return;
-    }
-
-    // 로딩 UI 띄움
-    if (LoadingWidgetClass)
-    {
-        ShowLoadingUI(LoadingWidgetClass);
-    }
-
-    // 서버 모드(리슨서버/데디케이티드)인지 확인함
-    ENetMode NetMode = World->GetNetMode();
-    bool bIsServerMode = (NetMode == NM_ListenServer) || (NetMode == NM_DedicatedServer);
-
-    const FString TargetLevelString = TargetLevelName.ToString();
-    const bool bUseSeamless = true;
-
-    if (bIsServerMode)
-    {
-        UE_LOG(LogTemp, Warning, TEXT("[스텝1] 서버 모드이므로 ServerTravel로 이동함: %s, Seamless: %s"), 
-            *TargetLevelString, bUseSeamless ? TEXT("ON") : TEXT("OFF"));
     
-        FString TravelURL = FString::Printf(TEXT("%s?listen"), *TargetLevelString);
-        
-        // ServerTravel 실행 (RPC 통신용이므로 수정하지 않음)
-        World->ServerTravel(TravelURL, bUseSeamless); 
-    }
-    else
-    {
-        UE_LOG(LogTemp, Warning, TEXT("[스텝1] 클라이언트/싱글플레이 모드이므로 OpenLevel 사용함: %s"), *TargetLevelString);
-        UGameplayStatics::OpenLevel(this, TargetLevelName);
-    }
+    // if (bIsServerMode)
+    // {
+    //     UE_LOG(LogTemp, Warning, TEXT("[스텝1] 서버 모드이므로 ServerTravel로 이동함: %s, Seamless: %s"), 
+    //         *TargetLevelString, bUseSeamless ? TEXT("ON") : TEXT("OFF"));
+    //
+    //     FString TravelURL = FString::Printf(TEXT("%s"), *TargetLevelString);
+    //     
+    //     // ServerTravel 실행 (RPC 통신용이므로 수정하지 않음)
+    //     World->ServerTravel(TravelURL, bUseSeamless); 
+    // }
+    // else
+    // {
+    //     UE_LOG(LogTemp, Warning, TEXT("[스텝1] 클라이언트/싱글플레이 모드이므로 OpenLevel 사용함: %s"), *TargetLevelString);
+    //     UGameplayStatics::OpenLevel(this, TargetLevelName);
+    // }
 }
 
 
