@@ -62,5 +62,7 @@ void UStartUI::OnStartButtonClicked()
 	}
 
 	UE_LOG(LogTemp, Warning, TEXT("UStartUI - Cast successful. Calling LoadLevelWithLoadingScreen..."));
-	GI->LoadLevelWithLoadingScreen(*GameLevel::LoadingMap);
+	//GI->LoadLevelWithLoadingScreen(*GameLevel::LoadingMap);
+	GetWorld()->ServerTravel(TEXT("/Game/CustomContents/Maps/MainMap_WP"));
+
 }

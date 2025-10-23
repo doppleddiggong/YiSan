@@ -105,7 +105,6 @@ void UYiSanGameInstance::OnLoadingMapReady()
 
 void UYiSanGameInstance::Step2_StartLoadingTargetLevel()
 {
-//이프 3명다 있으면~ 엘쓰 기다려~
     
     UE_LOG(LogTemp, Warning, TEXT("[YiSan Step 2] Starting to load target level: %s"), *GameLevel::MainMap_WP);
 
