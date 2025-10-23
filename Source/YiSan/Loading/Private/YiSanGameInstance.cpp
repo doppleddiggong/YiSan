@@ -13,57 +13,56 @@
 #include "Widgets/SWidget.h"
 #include "GameFramework/PlayerController.h"
 
-// 로딩 UI
+// 로딩 UI 표시함
 void UYiSanGameInstance::ShowLoadingUI(TSubclassOf<UUserWidget> InLoadingWidgetClass)
 {
     if (!GEngine)
     {
-        UE_LOG(LogTemp, Error, TEXT("[로딩UI] GEngine이 존재하지 않습니다."));
+        UE_LOG(LogTemp, Error, TEXT("[로딩UI] GEngine이 존재하지 않음."));
         return;
     }
 
     if (LoadingWidgetObject.IsValid())
     {
-        UE_LOG(LogTemp, Warning, TEXT("[로딩UI] 이미 로딩 UI가 표시되어 있습니다."));
+        UE_LOG(LogTemp, Warning, TEXT("[로딩UI] 이미 로딩 UI가 표시되어 있음."));
         return;
     }
 
     if (!InLoadingWidgetClass)
     {
-        UE_LOG(LogTemp, Warning, TEXT("[로딩UI] 로딩 위젯 클래스가 설정되지 않았습니다."));
+        UE_LOG(LogTemp, Warning, TEXT("[로딩UI] 로딩 위젯 클래스가 설정되지 않음."));
         return;
     }
 
     UUserWidget* Created = CreateWidget<UUserWidget>(this, InLoadingWidgetClass);
     if (!Created)
     {
-        UE_LOG(LogTemp, Error, TEXT("[로딩UI] 위젯 생성 실패."));
+        UE_LOG(LogTemp, Error, TEXT("[로딩UI] 위젯 생성 실패함."));
         return;
     }
 
     LoadingWidgetObject = Created;
 
-    // 뷰포트에 슬레이트 위젯으로 추가하려 시도
+    // 뷰포트에 슬레이트 위젯으로 추가 시도함
     if (GEngine->GameViewport)
     {
         TSharedRef<SWidget> SlateWidget = Created->TakeWidget();
         GEngine->GameViewport->AddViewportWidgetContent(SlateWidget, 1);
         LoadingWidgetHolder = SlateWidget;
-        UE_LOG(LogTemp, Display, TEXT("[로딩UI] 뷰포트에 로딩 UI 추가 완료."));
+        UE_LOG(LogTemp, Display, TEXT("[로딩UI] 뷰포트에 로딩 UI 추가 완료함."));
     }
     else
     {
-        // 백업: AddToViewport
         Created->AddToViewport(9999);
-        UE_LOG(LogTemp, Display, TEXT("[로딩UI] GameViewport가 없어 AddToViewport로 추가했습니다."));
+        UE_LOG(LogTemp, Display, TEXT("[로딩UI] GameViewport가 없어 AddToViewport로 추가함."));
     }
 }
 
 
-// 헬퍼: 로딩 UI 제거
+// 헬퍼: 로딩 UI 제거함
 void UYiSanGameInstance::HideLoadingUI()
 {
-    UE_LOG(LogTemp, Display, TEXT("[로딩UI] 로딩 UI 제거 시도."));
+    UE_LOG(LogTemp, Display, TEXT("[로딩UI] 로딩 UI 제거 시도함."));
 
     if (LoadingWidgetObject.IsValid())
     {
@@ -75,45 +74,42 @@ void UYiSanGameInstance::HideLoadingUI()
         LoadingWidgetObject = nullptr;
     }
     
-    // Slate 위젯 홀더 제거
+    // Slate 위젯 홀더 제거함
     if (GEngine && GEngine->GameViewport)
     {
-        // TSharedPtr 타입이라고 가정하고 IsValid()로 유효성 검사
         if (LoadingWidgetHolder.IsValid())
         {
-            // TSharedPtr는 TSharedRef로 안전하게 변환하여 제거 함수에 전달 가능
             GEngine->GameViewport->RemoveViewportWidgetContent(LoadingWidgetHolder.ToSharedRef());
-            
-            // 뷰포트에서 제거했으니 포인터 초기화
             LoadingWidgetHolder.Reset();
         }
     }
-    UE_LOG(LogTemp, Display, TEXT("[로딩UI] 로딩 UI 제거 완료."));
+    UE_LOG(LogTemp, Display, TEXT("[로딩UI] 로딩 UI 제거 완료함."));
 }
 
-// Step2: 타겟 레벨 로드 시작 
-void UYiSanGameInstance::Step2_StartLoadingTargetLevel()
+// Step 1: 타겟 레벨 로드 시작함
+void UYiSanGameInstance::Step1_StartLoadingTargetLevel()
 {
-    UE_LOG(LogTemp, Warning, TEXT("[스텝2] 타겟 레벨 로드 시작: %s"), *TargetLevelName.ToString());
+    UE_LOG(LogTemp, Warning, TEXT("[스텝1] 타겟 레벨 로드 시작함: %s"), *TargetLevelName.ToString());
 
-    // 중복 바인딩 방지
+    // 중복 바인딩 방지함
     FCoreUObjectDelegates::PostLoadMapWithWorld.RemoveAll(this);
-    FCoreUObjectDelegates::PostLoadMapWithWorld.AddUObject(this, &UYiSanGameInstance::OnPostLoadMap);
+    // 맵 로드 완료 시 Step2_OnPostLoadMap 함수를 호출하도록 바인딩함
+    FCoreUObjectDelegates::PostLoadMapWithWorld.AddUObject(this, &UYiSanGameInstance::Step2_OnPostLoadMap);
 
     UWorld* World = GetWorld();
     if (!World)
     {
-        UE_LOG(LogTemp, Error, TEXT("[스텝2] GetWorld()가 null입니다. 로드 중단."));
+        UE_LOG(LogTemp, Error, TEXT("[스텝1] GetWorld()가 null임. 로드 중단함."));
         return;
     }
 
-    // 로딩 UI 띄우기 (사전에 LoadingWidgetClass를 할당해야 함)
+    // 로딩 UI 띄움
     if (LoadingWidgetClass)
     {
         ShowLoadingUI(LoadingWidgetClass);
     }
 
-    // 서버 모드(리슨서버 또는 데디케이티드)인지 확인
+    // 서버 모드(리슨서버/데디케이티드)인지 확인함
     ENetMode NetMode = World->GetNetMode();
     bool bIsServerMode = (NetMode == NM_ListenServer) || (NetMode == NM_DedicatedServer);
 
@@ -122,104 +118,108 @@ void UYiSanGameInstance::Step2_StartLoadingTargetLevel()
 
     if (bIsServerMode)
     {
-        UE_LOG(LogTemp, Warning, TEXT("[스텝2] 서버 모드이므로 ServerTravel로 이동합니다: %s, Seamless: %s"), 
+        UE_LOG(LogTemp, Warning, TEXT("[스텝1] 서버 모드이므로 ServerTravel로 이동함: %s, Seamless: %s"), 
             *TargetLevelString, bUseSeamless ? TEXT("ON") : TEXT("OFF"));
     
-        // ServerTravel은 listen 서버에서 사용해야 클라이언트가 따라옴
         FString TravelURL = FString::Printf(TEXT("%s?listen"), *TargetLevelString);
-    
-        // bAbsolute를 true로 설정하여 전체 경로가 아닌 맵 이름으로 트래블.
-        // SeamlessTravel이 실패하면 Non-Seamless Travel이 발생할 수 있음.
+        
+        // ServerTravel 실행 (RPC 통신용이므로 수정하지 않음)
         World->ServerTravel(TravelURL, bUseSeamless); 
     }
     else
     {
-        UE_LOG(LogTemp, Warning, TEXT("[스텝2] 클라이언트/싱글플레이 모드이므로 OpenLevel 사용: %s"), *TargetLevelString);
+        UE_LOG(LogTemp, Warning, TEXT("[스텝1] 클라이언트/싱글플레이 모드이므로 OpenLevel 사용함: %s"), *TargetLevelString);
         UGameplayStatics::OpenLevel(this, TargetLevelName);
     }
 }
 
 
-// OnPostLoadMap: 맵 로드 직후 호출되는 콜백 뷰포트 위젯 재생성(서버 트래블 등으로 제거된 경우 대비) 스트리밍/레벨인스턴스 준비 상태 폴링 시작
-void UYiSanGameInstance::OnPostLoadMap(UWorld* LoadedWorld)
+// Step 2: 맵 로드 직후 호출되는 콜백임.
+void UYiSanGameInstance::Step2_OnPostLoadMap(UWorld* LoadedWorld)
 {
-    // 델리게이트 해제(중복 방지)
+    // 델리게이트 해제함(중복 방지)
     FCoreUObjectDelegates::PostLoadMapWithWorld.RemoveAll(this);
 
     if (!LoadedWorld)
     {
-        UE_LOG(LogTemp, Error, TEXT("[OnPostLoadMap] LoadedWorld가 null입니다."));
+        UE_LOG(LogTemp, Error, TEXT("[스텝2] LoadedWorld가 null임."));
         return;
     }
 
-    UE_LOG(LogTemp, Display, TEXT("[OnPostLoadMap] 맵 로드 완료: %s"), *LoadedWorld->GetName());
+    UE_LOG(LogTemp, Display, TEXT("[스텝2] 맵 로드 완료: %s"), *LoadedWorld->GetName());
 
-    // 로딩 UI가 없다면 재생성 (ServerTravel 등으로 인해 제거되었을 수 있음)
+    // 로딩 UI가 없다면 재생성함 (ServerTravel 등으로 제거되었을 수 있음)
     if (!LoadingWidgetObject.IsValid() && !LoadingWidgetHolder.IsValid() && LoadingWidgetClass)
     {
-        UE_LOG(LogTemp, Display, TEXT("[OnPostLoadMap] 로딩 UI가 없어 재생성합니다."));
+        UE_LOG(LogTemp, Display, TEXT("[스텝2] 로딩 UI가 없어 재생성함."));
         ShowLoadingUI(LoadingWidgetClass);
     }
+	
+    // 타임아웃 체크 시작 시간 기록 (필요 시 사용)
+    ResourceCheckStartTime = LoadedWorld->GetTimeSeconds();
 
-    // 스트리밍 / 인스턴스 준비 상태 폴링 시작
+    // 스트리밍 / 인스턴스 준비 상태 폴링 시작함
     const float PollInterval = 0.25f;
     LoadedWorld->GetTimerManager().SetTimer(PollingStreamingTimerHandle, this, &UYiSanGameInstance::Poll_StreamingAndInstancesReady, PollInterval, true);
 }
 
  
-// Poll_StreamingAndInstancesReady: 주기적으로 호출되어 WorldPartition 스트리밍 완료 여부 텍스처 스트리밍 진행률 레벨 인스턴스의 실제 로드 상태 를 검사하고 모두 준비되면 UI 제거 및 다음 단계 호출
+// Poll_StreamingAndInstancesReady: 주기적으로 호출되어 스트리밍 상태를 검사함.
 void UYiSanGameInstance::Poll_StreamingAndInstancesReady()
 {
     UWorld* World = GetWorld();
-    if (!World) return;
+    if (!World) 
+    {
+        UE_LOG(LogTemp, Error, TEXT("[폴링] World가 null임. 폴링 중단."));
+        return;
+    }
 
     bool bWorldPartitionReady = false;
     bool bTextureReady = false;
     bool bLevelInstancesReady = false;
+	
+    float StreamingPercentage = 0.0f; // (수정) 텍스처 진행률 변수를 상위 스코프로 이동
+    float LevelInstanceProgress = 0.0f;
 
-    // WorldPartition 체크 
+    // 1. WorldPartition 체크함
     if (UWorldPartitionSubsystem* WPS = World->GetSubsystem<UWorldPartitionSubsystem>())
     {
-        // 한국어 주석: IsStreamingCompleted가 true이면 스트리밍(셀 로딩)이 완료된 상태
         bWorldPartitionReady = WPS->IsStreamingCompleted();
-        UE_LOG(LogTemp, Display, TEXT("[폴링] WorldPartition 완료 여부: %s"), bWorldPartitionReady ? TEXT("완료") : TEXT("진행중"));
+        // UE_LOG(LogTemp, Display, TEXT("[폴링] WorldPartition 완료 여부: %s"), bWorldPartitionReady ? TEXT("완료") : TEXT("진행중"));
     }
     else
     {
-        bWorldPartitionReady = true;
-        UE_LOG(LogTemp, Display, TEXT("[폴링] WorldPartitionSubsystem가 없어 체크를 스킵합니다."));
+        bWorldPartitionReady = true; // WP 서브시스템이 없으면 체크 패스함
+        // UE_LOG(LogTemp, Display, TEXT("[폴링] WorldPartitionSubsystem가 없어 체크 스킵함."));
     }
 
-    //텍스처 스트리밍 체크
+    // 2. 텍스처 스트리밍 체크함
     {
         IStreamingManager& StreamingManager = IStreamingManager::Get();
         const float RequestSeconds = 0.1f;
         StreamingManager.UpdateResourceStreaming(RequestSeconds, true);
-        float StreamingPercentage = StreamingManager.StreamAllResources(RequestSeconds);
-        bTextureReady = FMath::IsFinite(StreamingPercentage) && (StreamingPercentage >= 0.99f || FMath::IsNearlyZero(StreamingPercentage));
+        StreamingPercentage = StreamingManager.StreamAllResources(RequestSeconds);
 
+        // (수정) 텍스처 0% 처리 문제 수정: 99% 이상일 때만 완료로 간주함
         if (!FMath::IsFinite(StreamingPercentage) || StreamingPercentage < 0.0f)
         {
-            // 통계 읽기 실패 또는 음수 값
-            UE_LOG(LogTemp, Warning, TEXT("[폴링] 텍스처 스트리밍 진행률 읽기 실패 또는 음수값: %.3f"), StreamingPercentage);
+            // 통계 읽기 실패 또는 음수 값임
+            UE_LOG(LogTemp, Warning, TEXT("[폴링] 텍스처 스트리밍 진행률 읽기 실패 또는 음수값임: %.3f"), StreamingPercentage);
             bTextureReady = false;
         }
-        // 로드 완료 상태를 0.0f 또는 0.99f 이상으로 간주
-        else if (FMath::IsNearlyZero(StreamingPercentage) || StreamingPercentage >= 0.99f) // 수정된 부분
+        else if (StreamingPercentage >= 0.99f) // 99% 이상
         {
-            UE_LOG(LogTemp, Display, TEXT("[폴링] 텍스처 스트리밍 진행률: %.2f%%"), StreamingPercentage * 100.0f);
+            // UE_LOG(LogTemp, Display, TEXT("[폴링] 텍스처 스트리밍 완료: %.2f%%"), StreamingPercentage * 100.0f);
             bTextureReady = true; 
         }
-        else
+        else // 0.0 ~ 0.989... (진행 중)
         {
-            // 0.0f 초과, 0.99f 미만은 진행 중
-            UE_LOG(LogTemp, Display, TEXT("[폴링] 텍스처 스트리밍 진행률: %.2f%%"), StreamingPercentage * 100.0f);
+            // UE_LOG(LogTemp, Display, TEXT("[폴링] 텍스처 스트리밍 진행률: %.2f%%"), StreamingPercentage * 100.0f);
             bTextureReady = false;
         }
     }
 
-    //레벨 인스턴스 체크
-    float LevelInstanceProgress = 0.0f;
+    // 3. 레벨 인스턴스 체크함
     if (ULevelInstanceSubsystem* LevelInstSub = World->GetSubsystem<ULevelInstanceSubsystem>())
     {
         TArray<AActor*> Found;
@@ -229,7 +229,7 @@ void UYiSanGameInstance::Poll_StreamingAndInstancesReady()
         {
             LevelInstanceProgress = 1.0f;
             bLevelInstancesReady = true;
-            UE_LOG(LogTemp, Display, TEXT("[폴링] 레벨 인스턴스가 없습니다. (체크 패스)"));
+            // UE_LOG(LogTemp, Display, TEXT("[폴링] 레벨 인스턴스가 없음. (체크 패스함)"));
         }
         else
         {
@@ -238,24 +238,27 @@ void UYiSanGameInstance::Poll_StreamingAndInstancesReady()
             {
                 if (ALevelInstance* LI = Cast<ALevelInstance>(Actor))
                 {
-                    ULevel* SubLevel = LI->GetLevel(); 
-                    if (SubLevel && SubLevel->Actors.Num() > 0)
+                    // (수정) 레벨 인스턴스 확인 방식: Actors.Num() 대신 IsLevelLoaded() 사용
+                    if (LI->GetLoadedLevel() != nullptr)
                     {
                         ReadyCount++;
                     }
                 }
             }
-            LevelInstanceProgress = (float)ReadyCount / Found.Num();
+            LevelInstanceProgress = (Found.Num() > 0) ? ((float)ReadyCount / Found.Num()) : 1.0f;
             bLevelInstancesReady = (ReadyCount == Found.Num());
         }
     }
     else
     {
-        bLevelInstancesReady = true; LevelInstanceProgress = 1.0f;
+        bLevelInstancesReady = true; 
+        LevelInstanceProgress = 1.0f; // 서브시스템 없으면 패스
     }
 
+    // 4. 진행률 및 상태 텍스트 계산
     float WorldPartitionProgress = bWorldPartitionReady ? 1.0f : 0.0f;
-    float TextureProgress = FMath::Clamp(0.5, 0.0f, 0.99f) + (bTextureReady ? 0.01f : 0.0f); // 0.0 ~ 1.0에 맞춤
+    // (수정) 텍스처 진행률 계산 오류 수정: Clamp(0.5...) 대신 실제 진행률 Clamp
+    float TextureProgress = FMath::Clamp(StreamingPercentage, 0.0f, 1.0f); 
     
     float OverallProgress = 
         (WorldPartitionProgress * 0.2f) + 
@@ -269,73 +272,64 @@ void UYiSanGameInstance::Poll_StreamingAndInstancesReady()
         StatusText = FText::FromString(TEXT("레벨 인스턴스 초기화 중..."));
     else if (OverallProgress >= 0.99f)
         StatusText = FText::FromString(TEXT("로딩 완료. 잠시 후 게임 시작."));
+
+    // (수정) 미사용 상태 텍스트 문제 해결: UI 업데이트 함수 호출
+    UpdateLoadingUIProgress(OverallProgress, StatusText);
     
-    // 모두 준비되었을 때 처리 
+    // 5. 모든 준비가 완료되었는지 확인
     if (bWorldPartitionReady && bTextureReady && bLevelInstancesReady)
     {
-        UE_LOG(LogTemp, Display, TEXT("[폴링] 모든 준비 완료: WorldPartition(%s), Texture(%s), LevelInstance(%s)"),
+        UE_LOG(LogTemp, Display, TEXT("[폴링] 모든 준비 완료: WorldPartition(%s), Texture(%.2f%%), LevelInstance(%d/%d)"),
             bWorldPartitionReady ? TEXT("OK") : TEXT("NO"),
-            bTextureReady ? TEXT("OK") : TEXT("NO"),
-            bLevelInstancesReady ? TEXT("OK") : TEXT("NO"));
+            TextureProgress * 100.0f,
+            (int32)(LevelInstanceProgress * 100.0f), 100);
 
-        // 타이머 정지
+        // 타이머 정지함
         World->GetTimerManager().ClearTimer(PollingStreamingTimerHandle);
 
-        // 로딩 UI 제거
+        // 로딩 UI 제거함
         HideLoadingUI();
 
-        // 다음 단계 호출
-        Step5_TransitionToTarget();
+        // 다음 단계(Step3) 호출함
+        Step3_TransitionToTarget();
     }
     else
     {
-        UE_LOG(LogTemp, Display, TEXT("[폴링] 아직 준비되지 않았습니다. 계속 대기합니다."));
+        // 아직 준비되지 않음 (타이머가 계속 실행됨)
+        // UE_LOG(LogTemp, Display, TEXT("[폴링] 아직 준비되지 않았습니다. 계속 대기합니다."));
     }
 }
 
-// CheckWorldPartition
-bool UYiSanGameInstance::CheckWorldPartition()
+// (수정) 미사용 상태 텍스트 문제 해결을 위한 함수 구현
+void UYiSanGameInstance::UpdateLoadingUIProgress(float ProgressPercentage, const FText& StatusText)
 {
-    UWorld* World = GetWorld();
-    if (!World) return true;
+    // 로그로 현재 상태 출력
+    UE_LOG(LogTemp, Display, TEXT("[UI업데이트] 진행률: %.1f%%, 상태: %s"), ProgressPercentage * 100.0f, *StatusText.ToString());
 
-    if (UWorldPartitionSubsystem* WPS = World->GetSubsystem<UWorldPartitionSubsystem>())
+    // 실제 위젯이 유효한지 확인
+    if (LoadingWidgetObject.IsValid())
     {
-        bool bStreamingCompleted = WPS->IsStreamingCompleted();
-        if (!bStreamingCompleted)
+        UUserWidget* Widget = LoadingWidgetObject.Get();
+        if (Widget)
         {
-            UE_LOG(LogTemp, Display, TEXT("[CheckWorldPartition] 아직 스트리밍 중입니다."));
-            return false;
-        }
-        else
-        {
-            UE_LOG(LogTemp, Display, TEXT("[CheckWorldPartition] 스트리밍 완료."));
-            return true;
+            // 참고: 여기에 실제 로딩 위젯의 함수를 호출해야 함.
+            // 예: UMyLoadingWidget* MyWidget = Cast<UMyLoadingWidget>(Widget);
+            // if (MyWidget)
+            // {
+            //     MyWidget->SetProgress(ProgressPercentage);
+            //     MyWidget->SetStatusText(StatusText);
+            // }
         }
     }
-
-    // WorldPartitionSubsystem이 없으면 체크를 패스
-    return true;
 }
 
 
-// 기존에 있던 CheckTextureStreaming 함수(호출 필요 시 사용)
-
-bool UYiSanGameInstance::CheckTextureStreaming()
+// Step 3: 타겟으로 전환 (더미 함수)
+void UYiSanGameInstance::Step3_TransitionToTarget()
 {
-    IStreamingManager& StreamingManager = IStreamingManager::Get();
-    const float RequestSeconds = 0.1f;
-    StreamingManager.UpdateResourceStreaming(RequestSeconds, true);
-    float StreamingPercentage = StreamingManager.StreamAllResources(RequestSeconds);
-
-    UE_LOG(LogTemp, Display, TEXT("[CheckTextureStreaming] 진행률: %.2f%%"), StreamingPercentage * 100.0f);
-
-    if (!FMath::IsFinite(StreamingPercentage) || StreamingPercentage < 0.0f) return false;
-    return StreamingPercentage >= 0.99f;
+    UE_LOG(LogTemp, Display, TEXT("[스텝3] 타겟으로 전환 완료함."));
+    
+    // (예: 페이드인, 플레이어 입력 활성화 등)
 }
 
-// Step5_TransitionToTarget 더미
-void UYiSanGameInstance::Step5_TransitionToTarget()
-{
-    UE_LOG(LogTemp, Display, TEXT("[스텝5] 타겟으로 전환 중..."));
-}
+// (참고: CheckWorldPartition 및 CheckTextureStreaming 함수는 Poll_StreamingAndInstancesReady에 로직이 통합되었으므로 제거됨)
