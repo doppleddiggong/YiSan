@@ -1,5 +1,4 @@
 ﻿#include "YiSanGameInstance.h"
-
 #include "GameLogging.h"
 #include "Engine/World.h"
 #include "Engine/Engine.h"
@@ -14,6 +13,8 @@
 #include "Templates/SharedPointer.h" 
 #include "Widgets/SWidget.h"
 #include "GameFramework/PlayerController.h"
+#include "Engine/StreamableManager.h" 
+#include "ContentStreaming.h"           
 
 // 로딩 UI 표시함
 void UYiSanGameInstance::ShowLoadingUI(TSubclassOf<UUserWidget> InLoadingWidgetClass)
@@ -157,11 +158,19 @@ void UYiSanGameInstance::Step2_OnPostLoadMap(UWorld* LoadedWorld)
         ShowLoadingUI(LoadingWidgetClass);
     }
 	
-    // 타임아웃 체크 시작 시간 기록 (필요 시 사용)
+    // 타임아웃 체크 시작 시간 기록
     ResourceCheckStartTime = LoadedWorld->GetTimeSeconds();
+    TextureStreamingStartTime = ResourceCheckStartTime; // 텍스처 스트리밍 시작 시간 기록
+    bInitialTextureStreamingComplete = false; // 초기화
+
+    // **수정: 텍스처 스트리밍 강제 시작**
+    IStreamingManager::Get().AddLevel(LoadedWorld->PersistentLevel);
+    IStreamingManager::Get().NotifyLevelChange();
+    
+    UE_LOG(LogTemp, Warning, TEXT("[스텝2] 텍스처 스트리밍 강제 시작 완료"));
 
     // 스트리밍 / 인스턴스 준비 상태 폴링 시작함
-    const float PollInterval = 0.25f;
+    const float PollInterval = 0.1f; // 0.25초 → 0.1초로 단축 (더 빠른 반응)
     LoadedWorld->GetTimerManager().SetTimer(PollingStreamingTimerHandle, this, &UYiSanGameInstance::Poll_StreamingAndInstancesReady, PollInterval, true);
 }
 
@@ -180,51 +189,123 @@ void UYiSanGameInstance::Poll_StreamingAndInstancesReady()
     bool bTextureReady = false;
     bool bLevelInstancesReady = false;
 	
-    float StreamingPercentage = 0.0f; // (수정) 텍스처 진행률 변수를 상위 스코프로 이동
+    float StreamingPercentage = 0.0f;
     float LevelInstanceProgress = 0.0f;
 
     // 1. WorldPartition 체크함
     if (UWorldPartitionSubsystem* WPS = World->GetSubsystem<UWorldPartitionSubsystem>())
     {
         bWorldPartitionReady = WPS->IsStreamingCompleted();
-        // UE_LOG(LogTemp, Display, TEXT("[폴링] WorldPartition 완료 여부: %s"), bWorldPartitionReady ? TEXT("완료") : TEXT("진행중"));
     }
     else
     {
-        bWorldPartitionReady = true; // WP 서브시스템이 없으면 체크 패스함
-        // UE_LOG(LogTemp, Display, TEXT("[폴링] WorldPartitionSubsystem가 없어 체크 스킵함."));
+        bWorldPartitionReady = true;
     }
 
-    // 2. 텍스처 스트리밍 체크함
+    // 2. **개선된 텍스처 스트리밍 체크**
     {
-        IStreamingManager& StreamingManager = IStreamingManager::Get(); 
-        const float RequestSeconds = 0.1f;
+        IStreamingManager& StreamingManager = IStreamingManager::Get();
         
-       // StreamingManager.UpdateResourceStreaming(RequestSeconds, true);
+        // 현재 시간
+        float CurrentTime = World->GetTimeSeconds();
+        float ElapsedTime = CurrentTime - TextureStreamingStartTime;
         
-        StreamingPercentage = StreamingManager.StreamAllResources(RequestSeconds);
+        // **방법 A: 대기중인 요청 수 확인 (가장 정확)**
+        int32 NumStreamingTextures = StreamingManager.GetNumWantingResources();
         
-        // (수정) 텍스처 0% 처리 문제 수정: 99% 이상일 때만 완료로 간주함
-        if (!FMath::IsFinite(StreamingPercentage) || StreamingPercentage < 0.0f)
+        if (NumStreamingTextures == 0)
         {
-            // 통계 읽기 실패 또는 음수 값임
-            UE_LOG(LogTemp, Warning, TEXT("[폴링] 텍스처 스트리밍 진행률 읽기 실패 또는 음수값임: %.3f"), StreamingPercentage);
-            bTextureReady = false;
-        }
-        else if (StreamingPercentage >= 0.99f) // 99% 이상
-        {
-            // UE_LOG(LogTemp, Display, TEXT("[폴링] 텍스처 스트리밍 완료: %.2f%%"), StreamingPercentage * 100.0f);
-            bTextureReady = true; 
-        }
-        else // 0.0 ~ 0.989... (진행 중)
-        {
-            // UE_LOG(LogTemp, Display, TEXT("[폴링] 텍스처 스트리밍 진행률: %.2f%%"), StreamingPercentage * 100.0f);
-            if (StreamingPercentage < 0.01f)
+            // 스트리밍할 텍스처가 없음 = 완료
+            StreamingPercentage = 1.0f;
+            bTextureReady = true;
+            
+            if (!bInitialTextureStreamingComplete)
             {
-                PRINTLOG(TEXT("텍스쳐 스트리밍 진행율 %.2f%% "),StreamingPercentage * 100.0f);
+                UE_LOG(LogTemp, Display, TEXT("[폴링] 텍스처 스트리밍 완료 (대기 텍스처 0개, 소요 시간: %.2f초)"), ElapsedTime);
+                bInitialTextureStreamingComplete = true;
             }
-            bTextureReady = false;
         }
+        else
+        {
+            // **방법 B: StreamAllResources 사용하되 안전장치 추가**
+            const float RequestSeconds = 0.1f;
+            float RawPercentage = StreamingManager.StreamAllResources(RequestSeconds);
+            
+            // 진행률 계산 (음수/무한대 처리)
+            if (!FMath::IsFinite(RawPercentage) || RawPercentage < 0.0f)
+            {
+                // DDC 빌드 중이거나 초기 상태 = 시간 기반 추정
+                // 초기 10초는 0%에서 시작, 이후 서서히 증가
+                float TimeBasedProgress = FMath::Clamp((ElapsedTime - 2.0f) / 10.0f, 0.0f, 0.5f);
+                StreamingPercentage = TimeBasedProgress;
+                
+                if (ElapsedTime < 5.0f)
+                {
+                    // 처음 5초는 로그 생략 (DDC 초기화 중)
+                }
+                else
+                {
+                    UE_LOG(LogTemp, Display, TEXT("[폴링] 텍스처 DDC 빌드 중... (대기: %d개, 추정: %.1f%%, 경과: %.1f초)"), 
+                        NumStreamingTextures, StreamingPercentage * 100.0f, ElapsedTime);
+                }
+                bTextureReady = false;
+            }
+            else if (RawPercentage >= 0.99f)
+            {
+                StreamingPercentage = 1.0f;
+                bTextureReady = true;
+                
+                if (!bInitialTextureStreamingComplete)
+                {
+                    UE_LOG(LogTemp, Display, TEXT("[폴링] 텍스처 스트리밍 완료 (진행률: 100%%, 소요 시간: %.2f초)"), ElapsedTime);
+                    bInitialTextureStreamingComplete = true;
+                }
+            }
+            else
+            {
+                // 정상적인 진행 중 (0.0 ~ 0.99)
+                StreamingPercentage = RawPercentage;
+                bTextureReady = false;
+                
+                // 5초마다 한 번씩 로그 출력
+                if (FMath::Fmod(ElapsedTime, 5.0f) < 0.2f)
+                {
+                    UE_LOG(LogTemp, Display, TEXT("[폴링] 텍스처 스트리밍 진행 중 (진행률: %.1f%%, 대기: %d개)"), 
+                        StreamingPercentage * 100.0f, NumStreamingTextures);
+                }
+            }
+        }
+        
+        // **방법 C: 타임아웃 처리 (60초 이상 걸리면 강제 완료)**
+        if (!bTextureReady && ElapsedTime > 60.0f)
+        {
+            UE_LOG(LogTemp, Warning, TEXT("[폴링] 텍스처 스트리밍 타임아웃 (60초 초과). 강제 완료 처리함. 대기 텍스처: %d개"), NumStreamingTextures);
+            UE_LOG(LogTemp, Warning, TEXT("[폴링] 일부 셰이더는 런타임에 컴파일됩니다. 게임 진행 가능."));
+            StreamingPercentage = 1.0f;
+            bTextureReady = true;
+        }
+        
+        // **방법 D: 진행 없음 감지 (같은 진행률이 10초 이상 유지)**
+        static float LastPercentage = -1.0f;
+        static float StuckTime = 0.0f;
+        
+        if (FMath::Abs(StreamingPercentage - LastPercentage) < 0.01f)
+        {
+            StuckTime += 0.1f; // 폴링 주기만큼 증가
+            
+            if (StuckTime > 10.0f && !bTextureReady)
+            {
+                UE_LOG(LogTemp, Warning, TEXT("[폴링] 텍스처 스트리밍 정체 감지 (%.1f초 동안 %.1f%%). 진행 강제함."), 
+                    StuckTime, StreamingPercentage * 100.0f);
+                StreamingPercentage = FMath::Min(StreamingPercentage + 0.2f, 1.0f);
+                StuckTime = 0.0f; // 리셋
+            }
+        }
+        else
+        {
+            StuckTime = 0.0f; // 진행 있음, 리셋
+        }
+        LastPercentage = StreamingPercentage;
     }
 
     // 3. 레벨 인스턴스 체크함
@@ -237,7 +318,6 @@ void UYiSanGameInstance::Poll_StreamingAndInstancesReady()
         {
             LevelInstanceProgress = 1.0f;
             bLevelInstancesReady = true;
-            // UE_LOG(LogTemp, Display, TEXT("[폴링] 레벨 인스턴스가 없음. (체크 패스함)"));
         }
         else
         {
@@ -246,7 +326,6 @@ void UYiSanGameInstance::Poll_StreamingAndInstancesReady()
             {
                 if (ALevelInstance* LI = Cast<ALevelInstance>(Actor))
                 {
-                    // 레벨 인스턴스 확인 방식: Actors.Num() 대신 IsLevelLoaded() 사용
                     if (LI->GetLoadedLevel() != nullptr)
                     {
                         ReadyCount++;
@@ -260,84 +339,92 @@ void UYiSanGameInstance::Poll_StreamingAndInstancesReady()
     else
     {
         bLevelInstancesReady = true; 
-        LevelInstanceProgress = 1.0f; // 서브시스템 없으면 패스
+        LevelInstanceProgress = 1.0f;
     }
 
     // 4. 진행률 및 상태 텍스트 계산
     float WorldPartitionProgress = bWorldPartitionReady ? 1.0f : 0.0f;
-    // 텍스처 진행률 계산 오류 수정: Clamp(0.5...) 대신 실제 진행률 Clamp
     float TextureProgress = FMath::Clamp(StreamingPercentage, 0.0f, 1.0f); 
     
+    // **가중치 조정: 텍스처가 가장 중요 (70%)**
     float OverallProgress = 
-        (WorldPartitionProgress * 0.2f) + 
-        (TextureProgress * 0.6f) + 
-        (LevelInstanceProgress * 0.2f);
+        (WorldPartitionProgress * 0.15f) + 
+        (TextureProgress * 0.70f) + 
+        (LevelInstanceProgress * 0.15f);
     
-    FText StatusText = FText::FromString(TEXT("데이터 로딩 및 스트리밍 중..."));
-    if (bWorldPartitionReady && !bTextureReady) 
-        StatusText = FText::FromString(TEXT("에셋 스트리밍 최적화 중..."));
-    else if (bWorldPartitionReady && bTextureReady && !bLevelInstancesReady)
+    FText StatusText = FText::FromString(TEXT("맵 데이터 로딩 중..."));
+    if (!bWorldPartitionReady)
+        StatusText = FText::FromString(TEXT("월드 파티션 스트리밍 중..."));
+    else if (!bTextureReady) 
+        StatusText = FText::FromString(TEXT("텍스처 에셋 스트리밍 중... (DDC 빌드 포함)"));
+    else if (!bLevelInstancesReady)
         StatusText = FText::FromString(TEXT("레벨 인스턴스 초기화 중..."));
     else if (OverallProgress >= 0.99f)
-        StatusText = FText::FromString(TEXT("로딩 완료. 잠시 후 게임 시작."));
+        StatusText = FText::FromString(TEXT("로딩 완료! 게임 시작 준비됨."));
 
-    // 미사용 상태 텍스트 문제 해결: UI 업데이트 함수 호출
+    // UI 업데이트
     UpdateLoadingUIProgress(OverallProgress, StatusText);
     
     // 5. 모든 준비가 완료되었는지 확인
     if (bWorldPartitionReady && bTextureReady && bLevelInstancesReady)
     {
-        UE_LOG(LogTemp, Display, TEXT("[폴링] 모든 준비 완료: WorldPartition(%s), Texture(%.2f%%), LevelInstance(%d/%d)"),
-            bWorldPartitionReady ? TEXT("OK") : TEXT("NO"),
-            TextureProgress * 100.0f,
-            (int32)(LevelInstanceProgress * 100.0f), 100);
+        UE_LOG(LogTemp, Display, TEXT("[폴링] ===== 모든 준비 완료 ====="));
+        UE_LOG(LogTemp, Display, TEXT("  WorldPartition: OK"));
+        UE_LOG(LogTemp, Display, TEXT("  Texture: %.1f%% (완료)"), TextureProgress * 100.0f);
+        UE_LOG(LogTemp, Display, TEXT("  LevelInstance: %.0f%% (완료)"), LevelInstanceProgress * 100.0f);
+        UE_LOG(LogTemp, Display, TEXT("  총 소요 시간: %.2f초"), World->GetTimeSeconds() - ResourceCheckStartTime);
 
         // 타이머 정지함
         World->GetTimerManager().ClearTimer(PollingStreamingTimerHandle);
 
-        // 로딩 UI 제거함
-        HideLoadingUI();
-
-        // 다음 단계(Step3) 호출함
-        Step3_TransitionToTarget();
-    }
-    else
-    {
-        // 아직 준비되지 않음 (타이머가 계속 실행됨)
-        UE_LOG(LogTemp, Display, TEXT("[폴링] 아직 준비되지 않았습니다. 계속 대기합니다."));
+        // 약간의 딜레이 후 로딩 UI 제거 (시각적 안정성)
+        FTimerHandle DelayHandle;
+        World->GetTimerManager().SetTimer(DelayHandle, [this]()
+        {
+            HideLoadingUI();
+            Step3_TransitionToTarget();
+        }, 0.5f, false);
     }
 }
 
-// (수정) 미사용 상태 텍스트 문제 해결을 위한 함수 구현
+// UI 업데이트 함수
 void UYiSanGameInstance::UpdateLoadingUIProgress(float ProgressPercentage, const FText& StatusText)
 {
-    // 로그로 현재 상태 출력
-    UE_LOG(LogTemp, Display, TEXT("[UI업데이트] 진행률: %.1f%%, 상태: %s"), ProgressPercentage * 100.0f, *StatusText.ToString());
+    // 10% 단위로만 로그 출력 (로그 스팸 방지)
+    static int32 LastLoggedPercent = -1;
+    int32 CurrentPercent = FMath::FloorToInt(ProgressPercentage * 10.0f) * 10; // 10% 단위
+    
+    if (CurrentPercent != LastLoggedPercent)
+    {
+        UE_LOG(LogTemp, Display, TEXT("[UI업데이트] 진행률: %d%%, 상태: %s"), CurrentPercent, *StatusText.ToString());
+        LastLoggedPercent = CurrentPercent;
+    }
 
-    // 실제 위젯이 유효한지 확인
     if (LoadingWidgetObject.IsValid())
     {
         UUserWidget* Widget = LoadingWidgetObject.Get();
         if (Widget)
         {
-            // 참고: 여기에 실제 로딩 위젯의 함수를 호출해야 함.
-            // 예: UMyLoadingWidget* MyWidget = Cast<UMyLoadingWidget>(Widget);
-            // if (MyWidget)
-            // {
-            //     MyWidget->SetProgress(ProgressPercentage);
-            //     MyWidget->SetStatusText(StatusText);
-            // }
+            // 실제 위젯 업데이트 (블루프린트에서 구현 필요)
+            // 예: ILoadingWidgetInterface를 구현한 위젯이라면:
+            // ILoadingWidgetInterface::Execute_UpdateProgress(Widget, ProgressPercentage, StatusText);
         }
     }
 }
 
 
-// Step 3: 타겟으로 전환 (더미 함수)
+// Step 3: 타겟으로 전환
 void UYiSanGameInstance::Step3_TransitionToTarget()
 {
-    UE_LOG(LogTemp, Display, TEXT("[스텝3] 타겟으로 전환 완료함."));
+    UE_LOG(LogTemp, Display, TEXT("[스텝3] 타겟으로 전환 완료함. 플레이어 입력 활성화."));
     
-    // (예: 페이드인, 플레이어 입력 활성화 등)
+    // 플레이어 입력 활성화
+    if (UWorld* World = GetWorld())
+    {
+        if (APlayerController* PC = World->GetFirstPlayerController())
+        {
+            PC->SetInputMode(FInputModeGameOnly());
+            PC->bShowMouseCursor = false;
+        }
+    }
 }
-
-// (참고: CheckWorldPartition 및 CheckTextureStreaming 함수는 Poll_StreamingAndInstancesReady에 로직이 통합되었으므로 제거됨)

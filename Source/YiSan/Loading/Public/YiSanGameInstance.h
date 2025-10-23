@@ -51,6 +51,11 @@ public:
 	// 타임아웃 체크를 위한 시작 시간 (현재 로직에서는 사용되지 않으나 추후 확장용으로 둠).
 	double ResourceCheckStartTime = 0.0;
 
+	
+	// 텍스쳐 스트리밍 추적 변수
+	double TextureStreamingStartTime = 0.0;
+	bool bInitialTextureStreamingComplete = false;
+	
 private:
 	// GameViewport에 추가한 슬레이트 위젯 레퍼런스 보관용임.
 	TSharedPtr<SWidget> LoadingWidgetHolder; 
