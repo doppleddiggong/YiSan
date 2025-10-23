@@ -50,7 +50,7 @@ APlayerControl::APlayerControl()
 	IA_ChatScrollDown = FComponentHelper::LoadAsset<UInputAction>(IA_CHAT_SCROLL_DOWN_PATH);
 	IA_Record = FComponentHelper::LoadAsset<UInputAction>(IA_RECORD_PATH);
 	IA_ShowDetail = FComponentHelper::LoadAsset<UInputAction>(IA_SHOWDETAIL_PATH);
-	IA_ShowMouse = FComponentHelper::LoadAsset<UInputAction>(IA_SHOWDETAIL_PATH);
+	IA_ShowMouse = FComponentHelper::LoadAsset<UInputAction>(IA_SHOWMOUSE_PATH);
 }
 
 void APlayerControl::BeginPlay()
