@@ -1,4 +1,6 @@
 #include "StartUI.h"
+
+#include "GameLogging.h"
 #include "Components/Button.h"
 #include "Components/Image.h"
 #include "Kismet/GameplayStatics.h"
