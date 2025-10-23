@@ -80,7 +80,7 @@ void UHttpNetworkSystem::RequestHealth( FResponseHealthDelegate InDelegate )
     HttpRequest->OnProcessRequestComplete().BindLambda(
         [WeakThis = TWeakObjectPtr<UHttpNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
-            if (!WeakThis.IsValid() || GIsRequestingExit)
+            if (!WeakThis.IsValid() || IsEngineExitRequested())
                 return;
             
             WeakThis->AddNetworkWaitCount(-1);
@@ -128,7 +128,7 @@ void UHttpNetworkSystem::RequestASK(const FString& FilePath, const FGPTContext& 
     HttpRequest->OnProcessRequestComplete().BindLambda(
         [WeakThis = TWeakObjectPtr<UHttpNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
-            if (!WeakThis.IsValid() || GIsRequestingExit)
+            if (!WeakThis.IsValid() || IsEngineExitRequested())
                 return;
             
             WeakThis->AddNetworkWaitCount(-1);
@@ -176,7 +176,7 @@ void UHttpNetworkSystem::RequestGPT(const FString& UserQuery, const FGPTContext&
     HttpRequest->OnProcessRequestComplete().BindLambda(
         [WeakThis = TWeakObjectPtr<UHttpNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
-            if (!WeakThis.IsValid() || GIsRequestingExit)
+            if (!WeakThis.IsValid() || IsEngineExitRequested())
                 return;
             
             WeakThis->AddNetworkWaitCount(-1);
@@ -213,7 +213,7 @@ void UHttpNetworkSystem::RequestSTT(const FString& FilePath, FResponseSTTDelegat
     HttpRequest->OnProcessRequestComplete().BindLambda(
         [WeakThis = TWeakObjectPtr<UHttpNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
-            if (!WeakThis.IsValid() || GIsRequestingExit)
+            if (!WeakThis.IsValid() || IsEngineExitRequested())
                 return;
             
             WeakThis->AddNetworkWaitCount(-1);
@@ -263,7 +263,7 @@ void UHttpNetworkSystem::RequestTTS(
     HttpRequest->OnProcessRequestComplete().BindLambda(
         [WeakThis = TWeakObjectPtr<UHttpNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
-            if (!WeakThis.IsValid() || GIsRequestingExit)
+            if (!WeakThis.IsValid() || IsEngineExitRequested())
                 return;
             
             WeakThis->AddNetworkWaitCount(-1);
