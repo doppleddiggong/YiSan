@@ -67,7 +67,7 @@ public:
 
 
 	// Tour 상태를 업데이트하는 헬퍼 함수 (Tick에서 호출)
-	void UpdateTourState(float DeltaTime);
+	void UpdateTourState();
 
 	// 플레이어 폰을 가져오는 헬퍼 함수
 	 class APawn* GetPlayerPawn() const;
@@ -86,6 +86,9 @@ public:
 
 	//tour wait 상태에서 player 체크용
 	float waitChackTimer;
+
+	// 투어 상태 업데이트용 타이머 핸들
+	FTimerHandle TourStateTimerHandle;
 	
 	UPROPERTY()
 	TObjectPtr<class UQuestManager> QuestManager;

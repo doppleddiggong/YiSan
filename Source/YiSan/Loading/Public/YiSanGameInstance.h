@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+﻿// Copyright (c) 2025 Doppleddiggong. 모든 권리 보유함.
 
 #pragma once
 
@@ -15,12 +15,8 @@ class YISAN_API UYiSanGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
 
-protected:
-	virtual void Init() override;
-	
 public:
-
-#pragma region OPTIMIZATION
+	virtual void Init() override;
 	
 	// Step별 함수임
 	// Step 1: 로딩 UI를 표시하고 타겟 레벨 로드(OpenLevel 또는 ServerTravel)를 시작함.
@@ -57,6 +53,11 @@ public:
 	// 타임아웃 체크를 위한 시작 시간 (현재 로직에서는 사용되지 않으나 추후 확장용으로 둠).
 	double ResourceCheckStartTime = 0.0;
 
+	
+	// 텍스쳐 스트리밍 추적 변수
+	double TextureStreamingStartTime = 0.0;
+	bool bInitialTextureStreamingComplete = false;
+	
 private:
 	// GameViewport에 추가한 슬레이트 위젯 레퍼런스 보관용임.
 	TSharedPtr<SWidget> LoadingWidgetHolder; 
@@ -66,31 +67,12 @@ private:
 	
 	// 스트리밍 완료 폴링 타이머 핸들임.
 	FTimerHandle PollingStreamingTimerHandle;
-#pragma endregion OPTIMIZATION
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 #pragma region ONLINE_SUB_SYSTEM
 public:
 	void InitSubsystem();
-	
+
 	//세션의 모든 처리 진행 객체
 	IOnlineSessionPtr sessionInterface;
 
@@ -109,12 +91,14 @@ public:
 	void FindOtherSession();
 	//세션 조회 완료 함수
 	void OnFindSessionComplete(bool success);
-	
+
 	//세션 참여 
 	//세션 참여 함수
 	UFUNCTION(BlueprintCallable)
 	void JoinOtherSession(int32 sessionIndex);
 	//세션 참여 완료 함수
 	void OnJoinSessionComplete(FName sessionName, EOnJoinSessionCompleteResult::Type result);
+	
 #pragma endregion ONLINE_SUB_SYSTEM
+	
 };

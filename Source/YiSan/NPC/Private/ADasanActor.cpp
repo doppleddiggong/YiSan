@@ -32,8 +32,8 @@ ADasanActor::ADasanActor()
 	ExplainStateSystem = CreateDefaultSubobject<UExplainStateSystem>(TEXT("ExplainStateSystem"));
 	AnswerStateSystem = CreateDefaultSubobject<UAnswerStateSystem>(TEXT("AnswerStateSystem"));
 
-	playerMaxDis = 2000.f;
-	wayPointDis = 10.f;
+	playerMaxDis = 100.f;
+	wayPointDis = 250.f;
 	waitChackTimer = 1.f;
 }
 
@@ -61,6 +61,8 @@ void ADasanActor::BeginPlay()
 		DasanState = EDasanState::Tour;
 	}
 	StartTour();
+
+	GetWorldTimerManager().SetTimer(TourStateTimerHandle, this, &ADasanActor::UpdateTourState, 0.1f, true);
 }
 
 void ADasanActor::Tick(float DeltaTime)
@@ -72,16 +74,16 @@ void ADasanActor::Tick(float DeltaTime)
 	{
 		switch (DasanState)
 		{
-		case EDasanState::Tour:		TourStateSystem->UpdateTick(DeltaTime);
+		//case EDasanState::Tour:		TourStateSystem->UpdateTick(DeltaTime);
 		case EDasanState::Explain:	ExplainStateSystem->UpdateTick(DeltaTime);
 		case EDasanState::Answer:	AnswerStateSystem->UpdateTick(DeltaTime);
 		default: break;
 		}
 	}
 
-	/*DrawDebugState();
+	DrawDebugState();
 	
-	UpdateTourState(DeltaTime);*/
+	
 	
 }
 
@@ -273,7 +275,7 @@ void ADasanActor::TransitionToState(EDasanState InMainState)
 }
 
 
-void ADasanActor::UpdateTourState(float DeltaTime)
+void ADasanActor::UpdateTourState()
 {
 	if (!TourStateSystem||DasanAicontrol)return;
 

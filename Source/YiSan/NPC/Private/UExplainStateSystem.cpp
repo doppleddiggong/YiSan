@@ -1,8 +1,10 @@
 ﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
-
 #include "UExplainStateSystem.h"
 #include "ADasanActor.h"
 #include "GameLogging.h"
+#include "ABuilding.h"
+#include "EBuildingType.h"
+#include "Macro.h"
 
 UExplainStateSystem::UExplainStateSystem()
 {
@@ -13,7 +15,7 @@ void UExplainStateSystem::InitSystem(ADasanActor* InOwner)
 {
 	OwnerDasan = InOwner;
 	PrevState = EExplainState::ExplainWait;
-}
+};
 
 bool UExplainStateSystem::IsUpdateEnble()
 {
@@ -23,7 +25,7 @@ bool UExplainStateSystem::IsUpdateEnble()
 	if ( OwnerDasan->HasAuthority() == false)
 		return false;
 	return true;
-}
+};
 
 void UExplainStateSystem::UpdateTick(float DeltaTime)
 {
@@ -61,20 +63,26 @@ void UExplainStateSystem::Enter_ExplainIng()
 	PRINTLOG( TEXT("[ExplainState] Enter ExplainIng"));
 	ExplainTimer = 0.0f;
 
-	// [TODO] 여기서 블루프린트 이벤트 호출 가능
-	// 예: 음성 재생, 자막 표시 등
-}
+	if (OwnerDasan)
+	{
+		ABuilding* TargetBuilding = OwnerDasan->GetCurTargetBuilding();
+		if (TargetBuilding)
+		{
+			FString BuildingTypeName = ENUM_TO_NAME(EBuildingType, TargetBuilding->BuildingType);
+			PRINTLOG(TEXT("지금부터 %s 에 대한 설명을 시작합니다."), *BuildingTypeName);
+		}
+	}
+};
 
 // Tick 함수들
 void UExplainStateSystem::Tick_ExplainWait(float DeltaTime)
 {
 	// 대기 중 - 특별한 동작 없음
 }
-
 void UExplainStateSystem::Tick_ExplainIng(float DeltaTime)
 {
 	if (!OwnerDasan)
-		return;
+	return;
 
 	ExplainTimer += DeltaTime;
 
@@ -83,7 +91,7 @@ void UExplainStateSystem::Tick_ExplainIng(float DeltaTime)
 	{
 		OnExplainFinished();
 	}
-}
+};
 
 void UExplainStateSystem::OnExplainFinished()
 {
@@ -92,6 +100,6 @@ void UExplainStateSystem::OnExplainFinished()
 
 	PRINTLOG( TEXT("[ExplainState] Explain Finished"));
 
-	OwnerDasan->TransitionToState(EDasanState::Tour);
+	OwnerDasan->NextQuest();
 	ExplainTimer = 0.0f;
-}
+};
