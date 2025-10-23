@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "NetworkData.h"
 #include "Components/ActorComponent.h"
 #include "UChatPlayerSystem.generated.h"
 
@@ -33,11 +34,15 @@ struct FChatMessage
 	UPROPERTY(BlueprintReadWrite)
 	FString Message;
 
+	UPROPERTY(BlueprintReadWrite)
+	TArray<uint8> AudioData;
+
 	FChatMessage()
 		: SpeakerType(EChatMessageType::System)
-		,Timestamp(FDateTime::Now())
-		,SpeakerName(TEXT(""))
-		,Message(TEXT(""))
+		, Timestamp(FDateTime::Now())
+		, SpeakerName(TEXT(""))
+		, Message(TEXT(""))
+		, AudioData()
 	{
 	}
 
@@ -46,6 +51,16 @@ struct FChatMessage
 		, Timestamp(FDateTime::Now())
 		, SpeakerName(InSpeakerName)
 		, Message(InMessage)
+		, AudioData()
+	{
+	}
+
+	FChatMessage(EChatMessageType InType, const FString& InSpeakerName, const FString& InMessage, const TArray<uint8>& InAudioData)
+		: SpeakerType(InType)
+		, Timestamp(FDateTime::Now())
+		, SpeakerName(InSpeakerName)
+		, Message(InMessage)
+		, AudioData(InAudioData)
 	{
 	}
 };
@@ -61,18 +76,23 @@ public:
 	void InitSystem(class UChatBoxWidget* InChatBox);
 
 	/** 채팅 입력 처리 */
-	void OnEnterPressed();
+	void OnEnter();
 	void OnScrollUp();
 	void OnScrollDown();
 
 public:
+	void Ask(const FString& InMsg, const FGPTContext& SpatialContext);
+	
 	/** 서버 RPC: 메시지 전송 */
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_SendChatMessage(const FChatMessage& ChatMessage);
 
+private:
 	/** 멀티캐스트 RPC: 전체 클라 갱신 */
 	UFUNCTION(NetMulticast, Reliable)
 	void MulticastRPC_AddChatMessage(const FChatMessage& ChatMessage);
+	
+	void OnResponseAsk(FResponseAsk& Response, bool bSuccess);
 	
 private:
 	UPROPERTY()

@@ -211,7 +211,7 @@ void APlayerActor::Cmd_ShowDetail_Implementation()
 void APlayerActor::Cmd_ChatEnter_Implementation()
 {
     if (ChatPlayerSystem)
-        ChatPlayerSystem->OnEnterPressed();
+        ChatPlayerSystem->OnEnter();
 }
 
 void APlayerActor::Cmd_ChatScrollUp_Implementation()

@@ -142,6 +142,7 @@ void UHttpNetworkSystem::RequestASK(const FString& FilePath, const FGPTContext& 
 void UHttpNetworkSystem::RequestGPT(const FString& UserQuery, const FGPTContext& Context, FResponseAskDelegate InDelegate)
 {
     auto HttpRequest = FHttpModule::Get().CreateRequest();
+    HttpRequest->SetTimeout(30.0f);
     HttpRequest->SetVerb(NETWORK_POST);
     HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::ASK));
     HttpRequest->SetHeader(TEXT("Accept"), TEXT("application/json"));

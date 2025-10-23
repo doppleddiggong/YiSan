@@ -43,10 +43,10 @@ void UChatBoxWidget::OnTextCommittedHandler(const FText& Text, ETextCommit::Type
 	{
 		if (ChatPlayerSystem)
 		{
-			FChatMessage ChatMessage(EChatMessageType::User, *GetPlayerDisplayName(), *InputString);
-			ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
+		    FChatMessage ChatMessage(EChatMessageType::User, *GetPlayerDisplayName(), *InputString);
+		    ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
 
-		    this->SendChatMessage(InputString);
+		    ChatPlayerSystem->Ask(InputString, Owner->GetGPTContext());
 		}
 	}
 
@@ -118,57 +118,4 @@ FString UChatBoxWidget::GetPlayerDisplayName() const
     }
     
     return TEXT("Yisan");
-}
-
-void UChatBoxWidget::SendChatMessage(const FString& InMsg)
-{
-    // 로컬 플레이어만 GPT 요청
-    if (!IsValid(Owner) || !Owner->IsLocallyControlled())
-    {
-        PRINTLOG(TEXT("SendChatMessage return | !IsValid(Owner) || !Owner->IsLocallyControlled() "));
-        return;
-    }
-
-    FGPTContext SpatialContext = Owner->GetGPTContext();
-
-    if (auto ReqNetwork = UHttpNetworkSystem::Get(GetWorld()))
-    {
-        ReqNetwork->RequestGPT(InMsg, SpatialContext, FResponseAskDelegate::CreateUObject(this, &UChatBoxWidget::OnResponseAsk));
-    }
-}
-
-void UChatBoxWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
-{
-    if (bSuccess)
-    {
-        PRINTLOG(TEXT("OnResponseAsk: Received transcribed_text : %s"), *Response.transcribed_text);
-        PRINTLOG(TEXT("OnResponseAsk: Received gpt_response_text : %s"), *Response.gpt_response_text);
-        PRINTLOG(TEXT("OnResponseAsk: Received audio data size: %d"), Response.audio_data.Num());
-
-        auto VoiceCommand = UVoiceFunctionLibrary::GetVoiceCommand(Response.gpt_response_text);
-        if ( VoiceCommand != EVoiceCommandType::None )
-        {
-            BroadcastManager->SendExecVoiceCommand( VoiceCommand );
-        }
-        else
-        {
-            FChatMessage ChatMessage(EChatMessageType::NPC, TEXT("정약용"), Response.gpt_response_text);
-            ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
-            // BroadcastManager->SendToastMessage(Response.gpt_response_text);
-
-            if (Response.audio_data.Num() == 0)
-            {
-                PRINTLOG(TEXT("OnResponseAsk: Audio data is empty. Cannot play TTS audio."));
-                return;
-            }
-		
-            auto SoundWave = UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData(Response.audio_data);
-            if ( IsValid(SoundWave))
-                UGameplayStatics::PlaySound2D(this, SoundWave);
-        }
-    }
-    else
-    {
-        PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
-    }
 }
