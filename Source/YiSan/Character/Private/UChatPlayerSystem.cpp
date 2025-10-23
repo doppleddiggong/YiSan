@@ -9,6 +9,8 @@
 #include "UVoiceFunctionLibrary.h"
 
 #include "GameFramework/PlayerController.h"
+#include "Kismet/GameplayStatics.h"
+#include "Sound/SoundWaveProcedural.h"
 
 UChatPlayerSystem::UChatPlayerSystem()
 {
@@ -60,9 +62,6 @@ void UChatPlayerSystem::Ask(const FString& InMsg, const FGPTContext& SpatialCont
 		return;
 	}
 
-
-
-	
 	if (auto ReqNetwork = UHttpNetworkSystem::Get(GetWorld()))
 	{
 		ReqNetwork->RequestGPT(InMsg, SpatialContext, FResponseAskDelegate::CreateUObject(this, &UChatPlayerSystem::OnResponseAsk));
@@ -79,6 +78,7 @@ void UChatPlayerSystem::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
 
 		auto VoiceCommand = UVoiceFunctionLibrary::GetVoiceCommand(Response.gpt_response_text);
 		PRINTLOG(TEXT("OnResponseAsk: VoiceCommand result is %d"), static_cast<int32>(VoiceCommand));
+
 		if ( VoiceCommand != EVoiceCommandType::None )
 		{
 			if ( auto BroadcastManager = UBroadcastManager::Get(GetWorld()) )
@@ -88,11 +88,18 @@ void UChatPlayerSystem::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
 		}
 		else
 		{
-			FChatMessage ChatMessage(EChatMessageType::NPC,
-				TEXT("정약용"),
-				Response.gpt_response_text,
-				Response.audio_data );
+			// GPT 응답에서 줄바꿈 제거 (UI에서 자동 줄바꿈 처리)
+			FString CleanedText = Response.gpt_response_text;
+			CleanedText.ReplaceInline(TEXT("\r\n"), TEXT(" "));
+			CleanedText.ReplaceInline(TEXT("\n"), TEXT(" "));
+			CleanedText.ReplaceInline(TEXT("\r"), TEXT(" "));
+
+			FChatMessage ChatMessage(EChatMessageType::NPC, TEXT("정약용"),CleanedText);
 			this->ServerRPC_SendChatMessage(ChatMessage);
+
+			auto SoundWave = UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData(Response.audio_data);
+			if ( IsValid(SoundWave))
+				UGameplayStatics::PlaySound2D(this, SoundWave);
 		}
 	}
 	else

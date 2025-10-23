@@ -31,6 +31,10 @@ APlayerActor::APlayerActor()
 {
     PrimaryActorTick.bCanEverTick = true;
 
+    // 멀티플레이어 복제 활성화
+    bReplicates = true;
+    SetReplicateMovement(true);
+
     Tags.Add(GameTags::Player);
 
     MainWidgetClass = FComponentHelper::LoadClass<UMainWidget>(MAINWIDGET_PATH);

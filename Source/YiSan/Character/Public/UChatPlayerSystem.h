@@ -34,15 +34,11 @@ struct FChatMessage
 	UPROPERTY(BlueprintReadWrite)
 	FString Message;
 
-	UPROPERTY(BlueprintReadWrite)
-	TArray<uint8> AudioData;
-
 	FChatMessage()
 		: SpeakerType(EChatMessageType::System)
 		, Timestamp(FDateTime::Now())
 		, SpeakerName(TEXT(""))
 		, Message(TEXT(""))
-		, AudioData()
 	{
 	}
 
@@ -51,16 +47,6 @@ struct FChatMessage
 		, Timestamp(FDateTime::Now())
 		, SpeakerName(InSpeakerName)
 		, Message(InMessage)
-		, AudioData()
-	{
-	}
-
-	FChatMessage(EChatMessageType InType, const FString& InSpeakerName, const FString& InMessage, const TArray<uint8>& InAudioData)
-		: SpeakerType(InType)
-		, Timestamp(FDateTime::Now())
-		, SpeakerName(InSpeakerName)
-		, Message(InMessage)
-		, AudioData(InAudioData)
 	{
 	}
 };

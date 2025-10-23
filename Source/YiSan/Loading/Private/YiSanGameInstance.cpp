@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 
-#include "YiSan/Loading/Public/YiSanGameInstance.h"
+#include "YiSanGameInstance.h"
 #include "Blueprint/UserWidget.h"
 #include "Kismet/GameplayStatics.h"
 #include "Engine/World.h"
@@ -10,12 +10,16 @@
 #include "GameLogging.h"
 #include "Streaming/StreamingWorldSubsystemInterface.h"
 #include "WorldPartition/WorldPartitionSubsystem.h"
+
+
+
 #if WITH_EDITOR
 #include "ShaderCompiler.h"
 #endif
 #include "OnlineSubsystem.h"
 #include "OnlineSubsystemUtils.h"
 #include "OnlineSessionSettings.h"
+#include "Engine/UserInterfaceSettings.h"
 #include "Online/OnlineSessionNames.h"
 #include "YiSan/YiSan.h"
 
@@ -24,6 +28,8 @@ UYiSanGameInstance::UYiSanGameInstance()
 {
     // 로딩 위젯 클래스 설정 (블루프린트에서도 설정 가능)
     // LoadingWidgetClass = ...;
+
+    GetMutableDefault<UUserInterfaceSettings>()->ApplicationScale = 1.0f;
 }
 
 void UYiSanGameInstance::Init()

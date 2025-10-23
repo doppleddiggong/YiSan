@@ -22,6 +22,19 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Chat")
 	void SetupMessageAppearance(EChatMessageType MessageType);
 
+	void ReverseHorizontalBox(bool IsPlayer);
+
+	
 	UPROPERTY(meta = (BindWidget))
 	class UTextBlock* TextBlock;
+
+	UPROPERTY(meta = (BindWidget))
+	class UHorizontalBox* HorizontalBox;
+
+	UPROPERTY(meta = (BindWidget))
+	class UBorder* BorderIcon;
+
+	UPROPERTY(meta = (BindWidget))
+	class USizeBox* ChatSizeBox;
+
 };
