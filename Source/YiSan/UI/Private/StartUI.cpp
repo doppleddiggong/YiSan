@@ -62,6 +62,8 @@ void UStartUI::OnStartButtonClicked()
 	}
 
 	UE_LOG(LogTemp, Warning, TEXT("UStartUI - Cast successful. Calling LoadLevelWithLoadingScreen..."));
+	// GI->LoadLevelWithLoadingScreen(*GameLevel::LoadingMap);
+
 	if (GI)
 	{
 		// 게임 인스턴스의 로딩 시퀀스 Step 1을 호출함
@@ -72,4 +74,5 @@ void UStartUI::OnStartButtonClicked()
 	{
 		PRINTLOG(TEXT("로딩 레벨 매니저: YiSanGameInstance를 찾을 수 없음!"));
 	}
+
 }

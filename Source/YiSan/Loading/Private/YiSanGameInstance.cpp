@@ -25,27 +25,30 @@ void UYiSanGameInstance::Init()
 {
     Super::Init();
     UE_LOG(LogTemp, Log, TEXT("[YiSan GameInstance] Initialized"));
+    
+    IOnlineSubsystem* subsys = Online::GetSubsystem(GetWorld());
+    if (subsys)
+    {
+        //서브시스템의 인터페이스를 가져오자
+        sessionInterface = subsys->GetSessionInterface();
+        //세션생성 성공시 호출되는 함수 등록
+        sessionInterface->OnCreateSessionCompleteDelegates.AddUObject(this, &UYiSanGameInstance::OnCreateSessionComplete);
+        //세션조회 성공시 호출되는 함수 등록
+        sessionInterface->OnFindSessionsCompleteDelegates.AddUObject(this, &UYiSanGameInstance::OnFindSessionComplete);
+        //세션참여 성공시 호출되는 함수 등록
+        sessionInterface->OnJoinSessionCompleteDelegates.AddUObject(this, &UYiSanGameInstance::OnJoinSessionComplete);
+    }
+    
 
-    this->InitSubsystem();
 }
 
-#pragma region OPTIMIZATION
-// 로딩 UI 표시함
-void UYiSanGameInstance::ShowLoadingUI(TSubclassOf<UUserWidget> InLoadingWidgetClass)
+void UYiSanGameInstance::LoadLevelWithLoadingScreen(FName InTargetLevelName)
 {
-    if (!GEngine)
-    {
-        UE_LOG(LogTemp, Error, TEXT("[로딩UI] GEngine이 존재하지 않음."));
+    if (GetFirstLocalPlayerController()->HasAuthority() == false) 
         return;
-    }
 
-    if (LoadingWidgetObject.IsValid())
-    {
-        UE_LOG(LogTemp, Warning, TEXT("[로딩UI] 이미 로딩 UI가 표시되어 있음."));
-        return;
-    }
-
-    if (!InLoadingWidgetClass)
+    //이미 로딩 중이면 새로운 요청을 무시합니다. (무한 루프 방지)
+    if (bIsLoadingLevel)
     {
         UE_LOG(LogTemp, Warning, TEXT("[로딩UI] 로딩 위젯 클래스가 설정되지 않음."));
         return;
@@ -79,28 +82,12 @@ void UYiSanGameInstance::ShowLoadingUI(TSubclassOf<UUserWidget> InLoadingWidgetC
 // 헬퍼: 로딩 UI 제거함
 void UYiSanGameInstance::HideLoadingUI()
 {
-    UE_LOG(LogTemp, Display, TEXT("[로딩UI] 로딩 UI 제거 시도함."));
+    UE_LOG(LogTemp, Warning, TEXT("[YiSan Step 1] Moving to loading level"));
 
-    if (LoadingWidgetObject.IsValid())
-    {
-        UUserWidget* W = LoadingWidgetObject.Get();
-        if (W)
-        {
-            W->RemoveFromParent();
-        }
-        LoadingWidgetObject = nullptr;
-    }
-    
-    // Slate 위젯 홀더 제거함
-    if (GEngine && GEngine->GameViewport)
-    {
-        if (LoadingWidgetHolder.IsValid())
-        {
-            GEngine->GameViewport->RemoveViewportWidgetContent(LoadingWidgetHolder.ToSharedRef());
-            LoadingWidgetHolder.Reset();
-        }
-    }
-    UE_LOG(LogTemp, Display, TEXT("[로딩UI] 로딩 UI 제거 완료함."));
+    // 로딩 스크린 표시
+    ShowLoadingScreen();
+    //step 1 에서 레벨 넘기기만 하기
+    UGameplayStatics::OpenLevel(this, FName("/Game/CustomContents/Maps/LoadingMap"));
 }
 
 // Step 1: 타겟 레벨 로드 시작함
@@ -125,29 +112,21 @@ void UYiSanGameInstance::Step1_StartLoadingTargetLevel()
     {
         ShowLoadingUI(LoadingWidgetClass);
     }
+}
 
-    // 서버 모드(리슨서버/데디케이티드)인지 확인함
-    ENetMode NetMode = World->GetNetMode();
-    bool bIsServerMode = (NetMode == NM_ListenServer) || (NetMode == NM_DedicatedServer);
+// ==================== Step 2: 타겟 레벨 로드 시작 ====================
 
-    const FString TargetLevelString = TargetLevelName.ToString();
-    const bool bUseSeamless = true;
-
-    if (bIsServerMode)
-    {
-        UE_LOG(LogTemp, Warning, TEXT("[스텝1] 서버 모드이므로 ServerTravel로 이동함: %s, Seamless: %s"), 
-            *TargetLevelString, bUseSeamless ? TEXT("ON") : TEXT("OFF"));
+void UYiSanGameInstance::Step2_StartLoadingTargetLevel()
+{
+    UE_LOG(LogTemp, Warning, TEXT("[YiSan Step 2] Starting to load target level: %s"), *GameLevel::MainMap_WP);
     
-        FString TravelURL = FString::Printf(TEXT("%s?listen"), *TargetLevelString);
-        
-        // ServerTravel 실행 (RPC 통신용이므로 수정하지 않음)
-        World->ServerTravel(TravelURL, bUseSeamless); 
-    }
-    else
-    {
-        UE_LOG(LogTemp, Warning, TEXT("[스텝1] 클라이언트/싱글플레이 모드이므로 OpenLevel 사용함: %s"), *TargetLevelString);
-        UGameplayStatics::OpenLevel(this, TargetLevelName);
-    }
+    UGameplayStatics::OpenLevel(this, *GameLevel::MainMap_WP);
+}
+
+
+void UYiSanGameInstance::OnTargetLevelReady()
+{
+    Step3_OnLevelLoaded();
 }
 
 
@@ -382,6 +361,11 @@ void UYiSanGameInstance::InitSubsystem()
 
 void UYiSanGameInstance::CreateMySession(FString displayName, int32 playerCount)
 {
+    if (!sessionInterface.IsValid())
+    {
+        UE_LOG(LogTemp, Error, TEXT("SessionInterface is invalid!"));
+        return;
+    }
     FOnlineSessionSettings sessionSettings;
     FName subsysName = Online::GetSubsystem(GetWorld())->GetSubsystemName();
     sessionSettings.bIsLANMatch = subsysName.IsEqual(FName(TEXT("NULL")));

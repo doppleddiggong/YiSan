@@ -79,9 +79,9 @@ void ADasanActor::Tick(float DeltaTime)
 		}
 	}
 
-	DrawDebugState();
+	/*DrawDebugState();
 	
-	UpdateTourState(DeltaTime);
+	UpdateTourState(DeltaTime);*/
 	
 }
 
