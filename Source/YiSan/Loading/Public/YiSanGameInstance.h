@@ -48,7 +48,7 @@ public:
 	TSubclassOf<UUserWidget> LoadingWidgetClass;
 
 	// 로딩 상태임
-	FName TargetLevelName = "Main_MapWP";
+	FName TargetLevelName = "MainMap_WP";
 
 	// 타임아웃 체크를 위한 시작 시간 (현재 로직에서는 사용되지 않으나 추후 확장용으로 둠).
 	double ResourceCheckStartTime = 0.0;
