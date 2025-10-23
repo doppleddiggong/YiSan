@@ -11,87 +11,82 @@
 #include "AssetRegistry/IAssetRegistry.h"
 
 /** @brief 기본 검색 경로를 초기화하고 저장된 설정을 불러옵니다. */
-UToolbarSettings::UToolbarSettings(const FObjectInitializer& ObjectInitializer)
-	: Super(ObjectInitializer)
+UToolbarSettings::UToolbarSettings(const FObjectInitializer& ObjectInitializer)	: Super(ObjectInitializer) { }
+	
+void UToolbarSettings::PostInitProperties()
 {
-	// 기능 활성화 기본값 설정
-	bEnableLevelFeature = true;
-	FDirectoryPath P;
-	P.Path = TEXT("Game/CustomContents/Levels");
-	ExtraSearchPaths.Add(P);
-
-	bEnableScreenshotFeature = true;
-
-	
-	bEnableCommandFeature = true;
-	ToolbarButtons.Add(FToolbarButtonInfo{
-		FName("StatFPS"), FString("Stat FPS"), FString("Toggle Stat FPS"),
-		FString("stat fps"), FName("Icons.Monitor"), true
-	});
-	ToolbarButtons.Add(FToolbarButtonInfo{
-		FName("StatUnit"), FString("Stat Unit"), FString("Toggle Stat Unit"),
-		FString("stat unit"), FName("Icons.Monitor"), true
-	});
-	ToolbarButtons.Add(FToolbarButtonInfo{
-		FName("ShowCollision"), FString("Show Collision"), FString("Toggle Show Collision"),
-		FString("show collision"), FName("Icons.Collision"), true
-	});
-	ToolbarButtons.Add(FToolbarButtonInfo{
-		FName("ShowDebugAI"), FString("Show Debug AI"), FString("Toggle Show Debug AI"),
-		FString("showdebug ai"), FName("Icons.AI"), true
-	});
-	ToolbarButtons.Add(FToolbarButtonInfo{
-		FName("StatSceneRendering"), FString("Stat SceneRendering"), FString("Toggle Stat SceneRendering"),
-		FString("stat scenerendering"), FName("Picto/Pictoicon_jewel_3"), true
-	});
-
-	
-	bEnableFolderFeature = true;
-	FoldersToOpen.Add(FFolderPathInfo {
-		FString("Documents"),
-		FString("Documents")});
-
-	FoldersToOpen.Add(FFolderPathInfo {
-		FString("Logs"),
-		FString("Saved/Logs")});
+	Super::PostInitProperties();
 
 
-	bEnableNetworkTestFeature = true;
-	NetworkTestUrl = TEXT("http://127.0.0.1:8000");
+	ExtraSearchPaths.Empty();
+	for (const FString& PathString : ExtraSearchPathsStrings)
+	{
+		if (!PathString.IsEmpty())
+		{
+			FDirectoryPath DirPath;
+			DirPath.Path = PathString;
+			ExtraSearchPaths.Add(DirPath);
+		}
+	}
+}
 
-	// API 문서 기반 기본값
-	// 1. GET /health - 서버 상태 확인
-	FApiSendInfo HealthCheck;
-	HealthCheck.Label = TEXT("Health Check");
-	HealthCheck.Method = EApiHttpMethod::GET;
-	HealthCheck.Endpoint = TEXT("/health");
-	NetworkTests.Add(HealthCheck);
+void UToolbarSettings::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)
+{
+	Super::PostEditChangeProperty(PropertyChangedEvent);
 
-	// 2. POST /test/gpt - GPT 텍스트 질의응답
-	FApiSendInfo GptTest;
-	GptTest.Label = TEXT("GPT Test");
-	GptTest.Method = EApiHttpMethod::POST;
-	GptTest.Endpoint = TEXT("/test/gpt");
-	GptTest.BodyParams.Add(TEXT("text"), TEXT("안녕하세요, 테스트입니다."));
-	NetworkTests.Add(GptTest);
+	if (PropertyChangedEvent.GetPropertyName() == GET_MEMBER_NAME_CHECKED(UToolbarSettings, ExtraSearchPathsStrings))
+	{
+		ExtraSearchPaths.Empty();
+		for (const FString& PathString : ExtraSearchPathsStrings)
+		{
+			if (!PathString.IsEmpty())
+			{
+				FDirectoryPath DirPath;
+				DirPath.Path = PathString;
+				ExtraSearchPaths.Add(DirPath);
+			}
+		}
 
-	// 3. POST /test/tts - 텍스트를 음성으로 변환
-	FApiSendInfo TtsTest;
-	TtsTest.Label = TEXT("TTS Test");
-	TtsTest.Method = EApiHttpMethod::POST;
-	TtsTest.Endpoint = TEXT("/test/tts");
-	TtsTest.BodyParams.Add(TEXT("text"), TEXT("안녕하세요, TTS 테스트입니다."));
-	TtsTest.BodyParams.Add(TEXT("speaking_rate"), TEXT("0.9"));
-	TtsTest.BodyParams.Add(TEXT("pitch"), TEXT("-2.0"));
-	TtsTest.BodyParams.Add(TEXT("voice_name"), TEXT("ko-KR-Wavenet-D"));
-	NetworkTests.Add(TtsTest);
+		// Manual save for ExtraSearchPathsStrings
+		FString ConfigFilename = GetDefault<UToolbarSettings>()->GetDefaultConfigFilename();
+		const FString ConfigSectionName = TEXT("/Script/CoffeeToolbar.ToolbarSettings"); // Renamed local variable
+		const FString PropertyName = TEXT("ExtraSearchPathsStrings");
 
-	ReloadConfig(); // .ini 파일이 존재하면 C++ 기본값을 덮어씁니다.
+		// Correct way to save TArray<FString>
+		GConfig->SetArray(*ConfigSectionName, *PropertyName, ExtraSearchPathsStrings, *ConfigFilename);
+
+		GConfig->Flush(true, *ConfigFilename); // Force a full flush
+
+		// Persist to project default config via CDO (defaultconfig class)
+		if (UToolbarSettings* Defaults = GetMutableDefault<UToolbarSettings>())
+		{
+			// keep CDO in sync in case editor instance isn't the CDO
+			Defaults->ExtraSearchPathsStrings = ExtraSearchPathsStrings;
+			Defaults->SaveConfig();
+			GConfig->Flush(false, *Defaults->GetDefaultConfigFilename());
+		}
+	}
+	else
+	{
+		if (UToolbarSettings* Defaults = GetMutableDefault<UToolbarSettings>())
+		{
+			Defaults->bEnableLevelFeature = bEnableLevelFeature;
+			Defaults->ExtraSearchPathsStrings = ExtraSearchPathsStrings;
+			Defaults->bEnableScreenshotFeature = bEnableScreenshotFeature;
+			Defaults->bEnableCommandFeature = bEnableCommandFeature;
+			Defaults->ToolbarButtons = ToolbarButtons;
+			Defaults->bEnableFolderFeature = bEnableFolderFeature;
+			Defaults->FoldersToOpen = FoldersToOpen;
+			Defaults->bEnableNetworkTestFeature = bEnableNetworkTestFeature;
+			Defaults->NetworkTestUrl = NetworkTestUrl;
+			Defaults->NetworkTests = NetworkTests;
+			Defaults->SaveConfig();
+			GConfig->Flush(false, *Defaults->GetDefaultConfigFilename());
+		}
+	}
 }
 
 /**
- * @brief 사용자 입력 디렉터리 문자열을 콘텐츠 루트 형식으로 정규화합니다.
- * @param In 사용자 입력 원본 경로 문자열.
  * @param OutRoot 에셋 레지스트리와 호환되는 정규화된 루트 경로입니다.
  * @return 정규화에 성공하여 OutRoot가 채워졌다면 true를 반환합니다.
  */
@@ -137,10 +132,6 @@ TArray<FName> UToolbarSettings::GetSearchRoots(const bool bFallbackToGame)
 				Paths.AddUnique(Root);
 				bAdded = true;
 			}
-			else
-			{
-				UE_LOG(LogTemp, Warning, TEXT("Invalid search path (cannot normalize): %s"), *Dir.Path);
-			}
 		}
 	}
 
@@ -154,7 +145,6 @@ TArray<FName> UToolbarSettings::GetSearchRoots(const bool bFallbackToGame)
 	{
 		if (!AR.PathExists(Paths[i]))
 		{
-			UE_LOG(LogTemp, Warning, TEXT("Skip invalid search path: %s"), *Paths[i].ToString());
 			Paths.RemoveAt(i);
 		}
 	}

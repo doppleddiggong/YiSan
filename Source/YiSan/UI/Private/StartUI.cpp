@@ -1,6 +1,4 @@
 #include "StartUI.h"
-
-#include "GameLogging.h"
 #include "Components/Button.h"
 #include "Components/Image.h"
 #include "Kismet/GameplayStatics.h"
@@ -8,13 +6,11 @@
 #include "MediaTexture.h"
 #include "YiSanGameInstance.h" 
 #include "Engine/Texture.h"
+#include "YiSan/YiSan.h"
 
 void UStartUI::NativeConstruct()
 {
 	Super::NativeConstruct();
-
-	GetWorld()->GetFirstPlayerController()->SetShowMouseCursor(true);
-
 
 	// 버튼 클릭 이벤트 바인딩
 	if (StartButton)
@@ -66,6 +62,8 @@ void UStartUI::OnStartButtonClicked()
 	}
 
 	UE_LOG(LogTemp, Warning, TEXT("UStartUI - Cast successful. Calling LoadLevelWithLoadingScreen..."));
+	// GI->LoadLevelWithLoadingScreen(*GameLevel::LoadingMap);
+
 	if (GI)
 	{
 		// 게임 인스턴스의 로딩 시퀀스 Step 1을 호출함
@@ -76,4 +74,5 @@ void UStartUI::OnStartButtonClicked()
 	{
 		PRINTLOG(TEXT("로딩 레벨 매니저: YiSanGameInstance를 찾을 수 없음!"));
 	}
+
 }

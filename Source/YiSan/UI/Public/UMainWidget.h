@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "EBuildingType.h"
 #include "Blueprint/UserWidget.h"
-#include "NetworkData.h"
 #include "UMainWidget.generated.h"
 
 /// @file UMainWidget.h
@@ -16,59 +15,20 @@ UCLASS()
 class YISAN_API UMainWidget : public UUserWidget
 {
     GENERATED_BODY()
-
-public:
-    /// @brief 채팅 박스의 표시 상태를 전환합니다.
-    void ToggleChatBox();
-
-
 protected:
     /// @brief 위젯 초기화와 브로드캐스트 구독을 수행합니다.
     virtual void NativeConstruct() override;
 
-    // /// @brief 드래그 이동을 지원하기 위해 마우스 다운 이벤트를 처리합니다.
-    // virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
-
-    /// @brief 채팅 입력이 커밋될 때 메시지를 전송합니다.
-    UFUNCTION()
-    void OnMessageComitted(const FText& Text, ETextCommit::Type CommitMethod);
-
 private:
-    /// @brief 입력된 문자열을 네트워크로 전송합니다.
-    void SendChatMessage(const FString& InMsg);
-
-    /// @brief 현재 플레이어 위치 기반 GPT 컨텍스트를 구성합니다.
-    FGPTContext BuildSpatialContext() const;
-
-    /// @brief ASK 응답을 수신해 UI를 갱신합니다.
-    /// @param Response [in] 음성/텍스트 처리 결과입니다.
-    /// @param bSuccess [in] 요청 성공 여부입니다.
-    UFUNCTION()
-    void OnResponseAsk(FResponseAsk& Response, bool bSuccess);
-
-protected:
-    UPROPERTY(meta = (BindWidget), BlueprintReadWrite, Category = "Chat")
-    class UCanvasPanel* ChatBox;
-
-    UPROPERTY(meta = (BindWidget), BlueprintReadWrite, Category = "Chat")
-    class UEditableTextBox* InputText;
-
-private:
-    UPROPERTY()
-    TObjectPtr<class UBroadcastManager> BroadcastManager;
-
-public:
-    bool IsMegaPopupVisible();
-    bool IsSmallPopupVisible();
-
-    /// @brief 주변 건물 브로드캐스트를 수신해 UI를 업데이트합니다.
-    /// @param InBuildingType [in] 감지된 건물 유형입니다.
     UFUNCTION()
     void OnNearBuilding(EBuildingType InBuildingType);
 
     UFUNCTION()
     void OnMegaPopupClosed();
-    
+
+    bool IsMegaPopupVisible() const;
+    bool IsSmallPopupVisible() const;
+public:
     /// @brief 메가 팝업이 배치되는 컨테이너 위젯입니다.
     UPROPERTY(meta = (BindWidget))
     class UMegaPopup* MegaPopupCtn;
@@ -78,6 +38,9 @@ public:
     class USmallPopup* SmallPopupCtn;
 
 private:
+    UPROPERTY()
+    TObjectPtr<class UBroadcastManager> BroadcastManager;
+    
     /// @brief 최근 감지된 건물 유형입니다.
     EBuildingType CurNearBuildingType = EBuildingType::None;
 };

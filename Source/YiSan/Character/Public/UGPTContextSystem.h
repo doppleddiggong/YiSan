@@ -6,11 +6,10 @@
 #include "EBuildingType.h"
 #include "FGPTContext.h"
 #include "Components/ActorComponent.h"
+#include "UGPTContextSystem.generated.h"
 
 /// @file UGPTContextSystem.h
 /// @brief 환경 정보를 반영한 프롬프트를 구성하는 GPT 컨텍스트 컴포넌트를 선언합니다.
-#include "UGPTContextSystem.generated.h"
-
 /// @brief 소유한 플레이어를 위해 GPT 프롬프트 컨텍스트를 조합하는 액터 컴포넌트입니다.
 ///
 /// @details 이 컴포넌트는 카메라 시선, 주변 건물, 캐시된 게임 데이터를 점검하여 구조화된
@@ -44,6 +43,7 @@ public:
 private:
     /// @brief 현재 시선에 포착된 건물을 판별하기 위해 카메라 트레이스를 수행합니다.
     void CheckBuildingInView();
+    void FindNearestBuilding();
 
 private:
     UPROPERTY()
@@ -54,4 +54,9 @@ private:
 
     UPROPERTY()
     TOptional<EBuildingType> FocusBuildingType; ///< 플레이어 시선에 있는 건물 유형을 캐시한 값입니다.
+
+    UPROPERTY()
+    TWeakObjectPtr<class ABuilding> NearestBuilding;
+
+    float TimeSinceLastCheck = 0.0f;
 };

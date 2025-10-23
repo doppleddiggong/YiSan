@@ -22,8 +22,8 @@ public class YiSan : ModuleRules
 			"Slate",
 			"SlateCore",
 			"MediaAssets",
-			"RenderCore" ,
-			"AIModule" ,
+			"RenderCore",
+			"AIModule",
 			"NavigationSystem",
 			"GamePlayTasks",
 		});

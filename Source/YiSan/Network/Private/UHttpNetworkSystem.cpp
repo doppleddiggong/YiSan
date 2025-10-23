@@ -10,6 +10,7 @@
 #include "ENetworkLogType.h"
 #include "HttpModule.h"
 #include "FHttpMultipartFormData.h"
+#include "GameLogging.h"
 #include "JsonObjectConverter.h"
 #include "UBroadcastManager.h"
 #include "Interfaces/IHttpRequest.h"
@@ -54,11 +55,16 @@ const TCHAR* UHttpNetworkSystem::GetLogPrefix(ENetworkLogType InLogType)
 void UHttpNetworkSystem::AddNetworkWaitCount(int InValue)
 {
     NetworkWaitCount += InValue;
-    
-    if ( auto BroadcastManager = UBroadcastManager::Get(GetWorld()) )
+
+    UWorld* World = GetWorld();
+    if (!IsValid(World))
     {
-        BroadcastManager->SendNetworkWaitCount(NetworkWaitCount);
+        PRINTLOG( TEXT("[Network] Invalid World in AddNetworkWaitCount."));
+        return;
     }
+
+    if ( auto BroadcastManager = UBroadcastManager::Get(World) )
+        BroadcastManager->SendNetworkWaitCount(NetworkWaitCount);
 }
 
 void UHttpNetworkSystem::RequestHealth( FResponseHealthDelegate InDelegate )
@@ -72,9 +78,12 @@ void UHttpNetworkSystem::RequestHealth( FResponseHealthDelegate InDelegate )
     LogNetwork(ENetworkLogType::Get, *HttpRequest->GetURL());
 
     HttpRequest->OnProcessRequestComplete().BindLambda(
-        [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+        [WeakThis = TWeakObjectPtr<UHttpNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
-            AddNetworkWaitCount(-1);
+            if (!WeakThis.IsValid() || GIsRequestingExit)
+                return;
+            
+            WeakThis->AddNetworkWaitCount(-1);
             FResponseHealth ResponseData;
             ResponseData.SetFromHttpResponse(ResPtr);
 
@@ -117,9 +126,12 @@ void UHttpNetworkSystem::RequestASK(const FString& FilePath, const FGPTContext& 
     LogNetwork(ENetworkLogType::Post, *HttpRequest->GetURL(), LogBody);
     
     HttpRequest->OnProcessRequestComplete().BindLambda(
-        [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+        [WeakThis = TWeakObjectPtr<UHttpNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
-            AddNetworkWaitCount(-1);
+            if (!WeakThis.IsValid() || GIsRequestingExit)
+                return;
+            
+            WeakThis->AddNetworkWaitCount(-1);
             FResponseAsk ResponseData;
             if (bWasSuccessful && ResPtr.IsValid())
             {
@@ -136,6 +148,7 @@ void UHttpNetworkSystem::RequestASK(const FString& FilePath, const FGPTContext& 
 void UHttpNetworkSystem::RequestGPT(const FString& UserQuery, const FGPTContext& Context, FResponseAskDelegate InDelegate)
 {
     auto HttpRequest = FHttpModule::Get().CreateRequest();
+    HttpRequest->SetTimeout(30.0f);
     HttpRequest->SetVerb(NETWORK_POST);
     HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::ASK));
     HttpRequest->SetHeader(TEXT("Accept"), TEXT("application/json"));
@@ -161,9 +174,12 @@ void UHttpNetworkSystem::RequestGPT(const FString& UserQuery, const FGPTContext&
     LogNetwork(ENetworkLogType::Post, *HttpRequest->GetURL(), LogBody);
 
     HttpRequest->OnProcessRequestComplete().BindLambda(
-        [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+        [WeakThis = TWeakObjectPtr<UHttpNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
-            AddNetworkWaitCount(-1);
+            if (!WeakThis.IsValid() || GIsRequestingExit)
+                return;
+            
+            WeakThis->AddNetworkWaitCount(-1);
             FResponseAsk ResponseData;
             if (bWasSuccessful && ResPtr.IsValid())
             {
@@ -195,9 +211,12 @@ void UHttpNetworkSystem::RequestSTT(const FString& FilePath, FResponseSTTDelegat
     LogNetwork(ENetworkLogType::Post, *HttpRequest->GetURL(), TEXT("STT"));
 
     HttpRequest->OnProcessRequestComplete().BindLambda(
-        [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+        [WeakThis = TWeakObjectPtr<UHttpNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
-            AddNetworkWaitCount(-1);
+            if (!WeakThis.IsValid() || GIsRequestingExit)
+                return;
+            
+            WeakThis->AddNetworkWaitCount(-1);
             FResponseTestSTT ResponseData;
             if (bWasSuccessful && ResPtr.IsValid())
             {
@@ -242,9 +261,12 @@ void UHttpNetworkSystem::RequestTTS(
     LogNetwork(ENetworkLogType::Post, *HttpRequest->GetURL(), RequestBody);
 
     HttpRequest->OnProcessRequestComplete().BindLambda(
-        [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+        [WeakThis = TWeakObjectPtr<UHttpNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
         {
-            AddNetworkWaitCount(-1);
+            if (!WeakThis.IsValid() || GIsRequestingExit)
+                return;
+            
+            WeakThis->AddNetworkWaitCount(-1);
             FResponseTTS ResponseData;
             if (bWasSuccessful && ResPtr.IsValid())
             {
@@ -258,44 +280,3 @@ void UHttpNetworkSystem::RequestTTS(
     AddNetworkWaitCount(1);
     HttpRequest->ProcessRequest();
 }
-//
-// void UHttpNetworkSystem::RequestGPT(const FString& UserQuery, const FGPTContext& Context, FResponseAskDelegate InDelegate)
-// {
-//     auto HttpRequest = FHttpModule::Get().CreateRequest();
-//
-//     HttpRequest->SetVerb(NETWORK_POST);
-//     HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::GPT));
-//     HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
-//     HttpRequest->SetHeader(TEXT("Accept"), TEXT("application/json"));
-//
-//     FRequestGPT RequestData;
-//     RequestData.user_query = UserQuery;
-//     RequestData.context = Context;
-//
-//     FString RequestBody;
-//     if (!RequestData.ToJsonString(RequestBody))
-//     {
-//         NETWORK_LOG(TEXT("Failed to serialize FRequestTestGPT to JSON"));
-//         return;
-//     }
-//
-//     HttpRequest->SetContentAsString(RequestBody);
-//
-//     LogNetwork(ENetworkLogType::Post, *HttpRequest->GetURL(), RequestBody);
-//
-//     HttpRequest->OnProcessRequestComplete().BindLambda(
-//         [this, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
-//         {
-//             AddNetworkWaitCount(-1);
-//             FResponseAsk ResponseData;
-//             if (bWasSuccessful && ResPtr.IsValid())
-//             {
-//                 NETWORK_LOG(TEXT("[RES] %s"), *ResPtr->GetContentAsString());
-//                 ResponseData.SetFromHttpResponse(ResPtr);
-//             }
-//             InDelegate.ExecuteIfBound(ResponseData, bWasSuccessful);
-//         });
-//
-//     AddNetworkWaitCount(1);
-//     HttpRequest->ProcessRequest();
-// }

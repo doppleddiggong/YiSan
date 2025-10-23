@@ -10,7 +10,7 @@
 #include "GameFramework/PlayerController.h"
 #include "APlayerControl.generated.h"
 
-struct  FInputActionValue;
+struct FInputActionValue;
 
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Dopple))
 class LATTELIBRARY_API APlayerControl : public APlayerController
@@ -35,9 +35,12 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Jump;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Landing;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Chat;
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_ChatScrollUp;
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_ChatScrollDown;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Record;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_ShowDetail;
-	
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_ShowMouse;
+		
 	// --- Handlers ---
 	void OnMove(const FInputActionValue& Value);
 	void OnLook(const FInputActionValue& Value);
@@ -48,11 +51,15 @@ protected:
 	void OnJump(const FInputActionValue& Value);
 	void OnLanding(const FInputActionValue& Value);
 
-	void OnChat(const FInputActionValue& Value);
+	void OnChatEnter(const FInputActionValue& Value);
+	void OnChatScrollUp(const FInputActionValue& Value);
+	void OnChatScrollDown(const FInputActionValue& Value);
 	void OnRecordPressed(const FInputActionValue& Value);
 	void OnRecordReleased(const FInputActionValue& Value);
 
 	void OnShowDetail(const FInputActionValue& Value);
+	void OnShowMouse(const FInputActionValue& Value);
+	void OnHideMouse(const FInputActionValue& Value);
 
 private:
 	UFUNCTION()

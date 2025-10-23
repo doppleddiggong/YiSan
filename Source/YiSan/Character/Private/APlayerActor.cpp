@@ -8,27 +8,39 @@
 #include "UMainWidget.h"
 #include "UVoiceConversationSystem.h"
 #include "UGPTContextSystem.h"
+#include "UChatPlayerSystem.h"
+#include "UChatUIWidget.h"
+#include "UChatBoxWidget.h"
 #include "UHttpNetworkSystem.h"
 #include "TimerManager.h"
 #include "Kismet/GameplayStatics.h"
 #include "ABuilding.h"
 #include "UBroadcastManager.h"
 #include "UQuestManager.h"
+#include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Camera/CameraComponent.h"
 #include "YiSan/YiSan.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "GameFramework/PlayerController.h"
+#include "GameFramework/PlayerState.h"
 
 #define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_Main.WBP_Main_C")
+#define CHATUIWIDGET_PATH TEXT("/Game/CustomContents/UI/Chat/WB_ChatUI.WB_ChatUI_C")
 
 APlayerActor::APlayerActor()
 {
     PrimaryActorTick.bCanEverTick = true;
 
+    // 멀티플레이어 복제 활성화
+    bReplicates = true;
+    SetReplicateMovement(true);
+
     Tags.Add(GameTags::Player);
 
     MainWidgetClass = FComponentHelper::LoadClass<UMainWidget>(MAINWIDGET_PATH);
+    ChatUIWidgetClass = FComponentHelper::LoadClass<UChatUIWidget>(CHATUIWIDGET_PATH);
     
     SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
     SpringArmComp->SetupAttachment(GetCapsuleComponent());
@@ -46,7 +58,7 @@ APlayerActor::APlayerActor()
     
     VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
     GPTContextSystem = CreateDefaultSubobject<UGPTContextSystem>(TEXT("GPTContextSystem"));
-    
+    ChatPlayerSystem = CreateDefaultSubobject<UChatPlayerSystem>(TEXT("ChatPlayerSystem"));
 }
 
 void APlayerActor::BeginPlay()
@@ -56,10 +68,30 @@ void APlayerActor::BeginPlay()
     MeshComp = this->GetMesh();
     MoveComp = this->GetCharacterMovement();
     AnimInstance = MeshComp->GetAnimInstance();
-    
-    MainWidgetInst = CreateWidget<UMainWidget>(GetWorld(), MainWidgetClass);
-    if (MainWidgetInst)
-        MainWidgetInst->AddToViewport();
+
+    // LocalController만 UI 생성
+    if (APlayerController* PC = Cast<APlayerController>(GetController()))
+    {
+        if (PC->IsLocalController())
+        {
+            MainWidgetInst = CreateWidget<UMainWidget>(GetWorld(), MainWidgetClass);
+            if (MainWidgetInst)
+            {
+                MainWidgetInst->AddToViewport();
+            }
+
+            if (ChatUIWidgetClass)
+            {
+                auto ChatUIInst = CreateWidget<UChatUIWidget>(GetWorld(), ChatUIWidgetClass);
+                if (ChatUIInst && ChatUIInst->WBP_ChatBox)
+                {
+                    ChatUIInst->AddToViewport();
+                    ChatBoxWidget = ChatUIInst->WBP_ChatBox;
+                    ChatPlayerSystem->InitSystem(ChatBoxWidget.Get());
+                }
+            }
+        }
+    }
 
     VoiceConversationSystem->InitSystem(this);
     GPTContextSystem->InitSystem(this);
@@ -79,61 +111,11 @@ void APlayerActor::BeginPlay()
     // 아직은 매직코드
     FTimerHandle TimerHandle_DelayedSend;
     GetWorldTimerManager().SetTimer(TimerHandle_DelayedSend,this, &APlayerActor::DelayedSendQuestUpdate, 1.0f, false);
-    GetWorldTimerManager().SetTimer(TimeHandle_NearestBuilding, this, &APlayerActor::FindNearestBuilding, 1.0f, true);
 }
 
 void APlayerActor::DelayedSendQuestUpdate()
 {
     BroadcastManager->SendUpdateQuest( UQuestManager::Get(GetWorld())->GetCurTarget());
-}
-
-void APlayerActor::EndPlay(const EEndPlayReason::Type EndPlayReason)
-{
-    GetWorldTimerManager().ClearTimer(TimeHandle_NearestBuilding);
-    Super::EndPlay(EndPlayReason);
-}
-
-void APlayerActor::Tick(float DeltaTime)
-{
-    Super::Tick(DeltaTime);
-}
-
-void APlayerActor::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-    Super::SetupPlayerInputComponent(PlayerInputComponent);
-}
-
-void APlayerActor::FindNearestBuilding()
-{
-    TArray<AActor*> FoundBuildings;
-    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ABuilding::StaticClass(), FoundBuildings);
-
-    ABuilding* NearestBuilding = nullptr;
-    float MinDistance = TNumericLimits<float>::Max();
-
-    for (AActor* Actor : FoundBuildings)
-    {
-        if (ABuilding* Building = Cast<ABuilding>(Actor))
-        {
-            float Distance = GetDistanceTo(Building);
-            if (Distance < MinDistance)
-            {
-                MinDistance = Distance;
-                NearestBuilding = Building;
-            }
-        }
-    }
-    
-    if (NearestBuilding)
-    {
-        // 근정했다는 정보로 small popup 을 띄울 예정
-        BroadcastManager->SendNearBuilding(NearestBuilding->BuildingType);
-    }
-    else
-    {
-        // 건물이 없다면 popup 을 닫을예정
-        BroadcastManager->SendNearBuilding(EBuildingType::None);
-    }
 }
 
 FGPTContext APlayerActor::GetGPTContext() const
@@ -167,12 +149,6 @@ void APlayerActor::Cmd_Jump_Implementation()
     this->Jump();
 }
 
-void APlayerActor::Cmd_Chat_Implementation()
-{
-    if (MainWidgetInst)
-        MainWidgetInst->ToggleChatBox();
-}
-
 void APlayerActor::Cmd_RecordStart_Implementation()
 {
     VoiceConversationSystem->StartRecording();
@@ -188,7 +164,67 @@ void APlayerActor::Cmd_ShowDetail_Implementation()
     BroadcastManager->SendMegaPopupClosed();
 }
 
+void APlayerActor::Cmd_ChatEnter_Implementation()
+{
+    if (ChatPlayerSystem)
+        ChatPlayerSystem->OnEnter();
+}
+
+void APlayerActor::Cmd_ChatScrollUp_Implementation()
+{
+    if (ChatPlayerSystem)
+        ChatPlayerSystem->OnScrollUp();
+}
+
+void APlayerActor::Cmd_ChatScrollDown_Implementation()
+{
+    if (ChatPlayerSystem)
+        ChatPlayerSystem->OnScrollDown();
+}
+
+void APlayerActor::Cmd_ShowMouse_Implementation()
+{
+    if (auto PC = GetWorld()->GetFirstPlayerController() )
+    {
+        UWidgetBlueprintLibrary::SetInputMode_GameOnly(PC);
+        
+        // 1. 입력 모드를 '게임과 UI' 모두 사용으로 변경합니다.                                                                                            
+        FInputModeGameAndUI InputModeData;                                                                                                                 
+        InputModeData.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock); // 마우스가 뷰포트에 갇히지 않도록 설정                                   
+        PC->SetInputMode(InputModeData);                                                                                                                   
+                                                                                                                                                           
+        // 2. 마우스 커서를 표시합니다.                                                                                                                    
+        PC->SetShowMouseCursor(true); 
+    }
+}
+
+void APlayerActor::Cmd_HideMouse_Implementation()
+{
+    if (auto PC = GetWorld()->GetFirstPlayerController() )
+    {
+        UWidgetBlueprintLibrary::SetInputMode_GameOnly(PC);
+        
+        // 1. 입력 모드를 '게임 전용'으로 되돌립니다.                                                                                                      
+        FInputModeGameOnly InputModeData;                                                                                                                  
+        PC->SetInputMode(InputModeData);                                                                                                                   
+                                                                                                                                                           
+        // 2. 마우스 커서를 숨깁니다.                                                                                                                      
+        PC->SetShowMouseCursor(false);
+    }   
+}
+
 void APlayerActor::OnExecVoiceCommand(EVoiceCommandType InType)
 {
     PRINT_STRING(TEXT("%s"), *FString( ENUM_TO_NAME(EVoiceCommandType, InType)));
+}
+
+FString APlayerActor::GetPlayerDisplayName() const
+{
+    if (auto PC = UGameplayStatics::GetPlayerController(GetWorld(), 0))
+    {
+        if (auto PS = PC->PlayerState)
+            return PS->GetPlayerName();
+    }
+    
+    return TEXT("Yisan");
 }

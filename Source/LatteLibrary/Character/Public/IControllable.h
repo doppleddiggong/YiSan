@@ -31,10 +31,15 @@ public:
 	virtual void Cmd_AltitudeDown() {};						// 고도 하강
 	virtual void Cmd_AltitudeReleased() {};					// 고도 조절 해제
 
-	virtual void Cmd_Chat() {};								// 챗
+	virtual void Cmd_ChatEnter() {};						// 채팅 Enter 키
+	virtual void Cmd_ChatScrollUp() {};						// 채팅 스크롤 업
+	virtual void Cmd_ChatScrollDown() {};					// 채팅 스크롤 다운
 
 	virtual void Cmd_RecordStart() {};						// 녹음 시작
 	virtual void Cmd_RecordEnd() {};						// 녹음 종료
 
 	virtual void Cmd_ShowDetail() {};						// 상세보기 정보창
+
+	virtual void Cmd_ShowMouse() {};						// 마우스 노출
+	virtual void Cmd_HideMouse() {};						// 마우스 감춤
 };
