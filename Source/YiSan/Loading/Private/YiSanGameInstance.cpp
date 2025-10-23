@@ -20,6 +20,7 @@
 #include "OnlineSubsystemUtils.h"
 #include "OnlineSessionSettings.h"
 #include "Online/OnlineSessionNames.h"
+#include "YiSan/YiSan.h"
 
 void UYiSanGameInstance::Init()
 {
@@ -38,45 +39,43 @@ void UYiSanGameInstance::Init()
         //세션참여 성공시 호출되는 함수 등록
         sessionInterface->OnJoinSessionCompleteDelegates.AddUObject(this, &UYiSanGameInstance::OnJoinSessionComplete);
     }
-    
-
 }
-
-void UYiSanGameInstance::LoadLevelWithLoadingScreen(FName InTargetLevelName)
-{
-    if (GetFirstLocalPlayerController()->HasAuthority() == false) 
-        return;
-
-    //이미 로딩 중이면 새로운 요청을 무시합니다. (무한 루프 방지)
-    if (bIsLoadingLevel)
-    {
-        UE_LOG(LogTemp, Warning, TEXT("[로딩UI] 로딩 위젯 클래스가 설정되지 않음."));
-        return;
-    }
-
-    UUserWidget* Created = CreateWidget<UUserWidget>(this, InLoadingWidgetClass);
-    if (!Created)
-    {
-        UE_LOG(LogTemp, Error, TEXT("[로딩UI] 위젯 생성 실패함."));
-        return;
-    }
-
-    LoadingWidgetObject = Created;
-
-    // 뷰포트에 슬레이트 위젯으로 추가 시도함
-    if (GEngine->GameViewport)
-    {
-        TSharedRef<SWidget> SlateWidget = Created->TakeWidget();
-        GEngine->GameViewport->AddViewportWidgetContent(SlateWidget, 1);
-        LoadingWidgetHolder = SlateWidget;
-        UE_LOG(LogTemp, Display, TEXT("[로딩UI] 뷰포트에 로딩 UI 추가 완료함."));
-    }
-    else
-    {
-        Created->AddToViewport(9999);
-        UE_LOG(LogTemp, Display, TEXT("[로딩UI] GameViewport가 없어 AddToViewport로 추가함."));
-    }
-}
+//
+// void UYiSanGameInstance::LoadLevelWithLoadingScreen(FName InTargetLevelName)
+// {
+//     if (GetFirstLocalPlayerController()->HasAuthority() == false) 
+//         return;
+//
+//     //이미 로딩 중이면 새로운 요청을 무시합니다. (무한 루프 방지)
+//     if (bIsLoadingLevel)
+//     {
+//         UE_LOG(LogTemp, Warning, TEXT("[로딩UI] 로딩 위젯 클래스가 설정되지 않음."));
+//         return;
+//     }
+//
+//     UUserWidget* Created = CreateWidget<UUserWidget>(this, InLoadingWidgetClass);
+//     if (!Created)
+//     {
+//         UE_LOG(LogTemp, Error, TEXT("[로딩UI] 위젯 생성 실패함."));
+//         return;
+//     }
+//
+//     LoadingWidgetObject = Created;
+//
+//     // 뷰포트에 슬레이트 위젯으로 추가 시도함
+//     if (GEngine->GameViewport)
+//     {
+//         TSharedRef<SWidget> SlateWidget = Created->TakeWidget();
+//         GEngine->GameViewport->AddViewportWidgetContent(SlateWidget, 1);
+//         LoadingWidgetHolder = SlateWidget;
+//         UE_LOG(LogTemp, Display, TEXT("[로딩UI] 뷰포트에 로딩 UI 추가 완료함."));
+//     }
+//     else
+//     {
+//         Created->AddToViewport(9999);
+//         UE_LOG(LogTemp, Display, TEXT("[로딩UI] GameViewport가 없어 AddToViewport로 추가함."));
+//     }
+// }
 
 
 // 헬퍼: 로딩 UI 제거함
