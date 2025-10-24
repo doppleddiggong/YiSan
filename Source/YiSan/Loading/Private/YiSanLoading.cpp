@@ -20,9 +20,11 @@ void UYiSanLoading::Step1_StartLoadingTargetLevel()
 {
 	UE_LOG(LogTemp, Warning, TEXT("[스텝1] 타겟 레벨 로드 시작함: %s"), *TargetLevelName.ToString());
 
-	const bool bUseSeamless = true;
+	//const bool bUseSeamless = true;
 	
-	GetWorld()->SeamlessTravel("/Game/CustomContents/Maps/MainMap_WP", bUseSeamless);
+	//GetWorld()->SeamlessTravel("/Game/CustomContents/Maps/MainMap_WP", bUseSeamless);
+
+	GetWorld()->ServerTravel("/Game/CustomContents/Maps/MainMap_WP");
 	// 중복 바인딩 방지함
 	FCoreUObjectDelegates::PostLoadMapWithWorld.RemoveAll(this);
 	// 맵 로드 완료 시 Step2_OnPostLoadMap 함수를 호출하도록 바인딩함
