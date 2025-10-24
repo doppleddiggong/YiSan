@@ -39,9 +39,9 @@ void UYiSanLoading::Step1_StartLoadingTargetLevel()
 	// bool bIsServerMode = (NetMode == NM_ListenServer) || (NetMode == NM_DedicatedServer);
 
 	const bool bUseSeamless = true;
-    
-	GetWorld()->ServerTravel("/Game/CustomContents/Maps/MainMap_WP");
-
+	
+	//GetWorld()->ServerTravel("/Game/CustomContents/Maps/MainMap_WP");
+	GetWorld()->SeamlessTravel("/Game/CustomContents/Maps/MainMap_WP",bUseSeamless);
 	// 중복 바인딩 방지함
 	FCoreUObjectDelegates::PostLoadMapWithWorld.RemoveAll(this);
 	// 맵 로드 완료 시 Step2_OnPostLoadMap 함수를 호출하도록 바인딩함
