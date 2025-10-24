@@ -43,6 +43,15 @@ public:
 	
 	// 로딩 UI의 진행률과 상태 텍스트를 업데이트함 (현재는 로그만 출력).
 	void UpdateLoadingUIProgress(float ProgressPercentage, const FText& StatusText);
+
+	// // 클라이언트에게 로딩 UI 표시 지시
+	// void ClientShowLoadingUI(APlayerController* PC);
+	//
+	// // RPC: 클라이언트에게 로딩 UI 표시 (Client RPC)
+	// UFUNCTION(Client, Reliable)
+	// void Client_ShowLoadingUIRPC(APlayerController* PC);
+	// void Client_ShowLoadingUIRPC_Implementation(APlayerController* PC);
+
 	
 	// 로딩 위젯 클래스 (블루프린트 등에서 설정).
 	UPROPERTY(EditDefaultsOnly, Category = "Loading")

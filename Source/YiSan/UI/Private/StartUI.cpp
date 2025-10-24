@@ -54,6 +54,7 @@ void UStartUI::OnStartButtonClicked()
 		UE_LOG(LogTemp, Error, TEXT("UStartUI - Cast to UYiSanGameInstance FAILED!"));
 		return;
 	}
+	UYiSanLoading* Loader = NewObject<UYiSanLoading>(this);
 
 	UE_LOG(LogTemp, Warning, TEXT("UStartUI - Cast successful. Calling LoadLevelWithLoadingScreen..."));
 	// GI->LoadLevelWithLoadingScreen(*GameLevel::LoadingMap);
