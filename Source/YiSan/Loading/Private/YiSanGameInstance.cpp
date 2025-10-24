@@ -11,8 +11,6 @@ void UYiSanGameInstance::Init()
     Super::Init();
     UE_LOG(LogTemp, Log, TEXT("[YiSan GameInstance] Initialized"));
     this->InitSubsystem();
-
-    
 }
 
 #pragma region ONLINE_SUB_SYSTEM
