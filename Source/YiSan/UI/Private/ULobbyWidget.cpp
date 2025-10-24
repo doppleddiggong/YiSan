@@ -27,21 +27,21 @@ void ULobbyWidget::NativeConstruct()
 		Btn_Host->OnClicked.AddDynamic(this, &ULobbyWidget::OnHostButtonClicked);
 	}
 
-	if (Btn_Join)
+	/*if (Btn_Join)
 	{
 		Btn_Join->OnClicked.AddDynamic(this, &ULobbyWidget::OnJoinButtonClicked);
-	}
+	}*/
 
 	if (Btn_Find)
 	{
 		Btn_Find->OnClicked.AddDynamic(this, &ULobbyWidget::OnFindButtonClicked);
 	}
 
-	if (Btn_Disconnect)
+	/*if (Btn_Disconnect)
 	{
 		Btn_Disconnect->OnClicked.AddDynamic(this, &ULobbyWidget::OnDisconnectButtonClicked);
 		Btn_Disconnect->SetVisibility(ESlateVisibility::Collapsed); // 초기에는 숨김
-	}
+	}*/
 
 	// BroadcastManager 이벤트 바인딩
 	if (auto BroadcastManager = UBroadcastManager::Get(GetWorld()))
@@ -110,32 +110,31 @@ void ULobbyWidget::OnFindButtonClicked()
 	// gi->GetSubsystem<UNetworkGameInstanceSubsystem>()->FindOtherSession();
 
 }
-
-
-void ULobbyWidget::OnJoinButtonClicked()
-{
-	if (!TxtBox_IPAddress)
-	{
-		PRINTLOG(TEXT("[LobbyWidget] OnJoinButtonClicked - IP TextBox is null"));
-		UpdateStatusText(TEXT("오류: IP 입력 필드를 찾을 수 없습니다"));
-		return;
-	}
-
-	FString IPAddress = TxtBox_IPAddress->GetText().ToString();
-
-	if (IPAddress.IsEmpty())
-	{
-		PRINTLOG(TEXT("[LobbyWidget] OnJoinButtonClicked - IP Address is empty"));
-		UpdateStatusText(TEXT("오류: IP 주소를 입력하세요"));
-		return;
-	}
-
-	PRINTLOG(TEXT("[LobbyWidget] OnJoinButtonClicked - Address=%s, Port=%d"), *IPAddress, Port);
-
+//
+//
+// void ULobbyWidget::OnJoinButtonClicked()
+// {
+// 	if (!TxtBox_IPAddress)
+// 	{
+// 		PRINTLOG(TEXT("[LobbyWidget] OnJoinButtonClicked - IP TextBox is null"));
+// 		UpdateStatusText(TEXT("오류: IP 입력 필드를 찾을 수 없습니다"));
+// 		return;
+// 	}
+//
+// 	FString IPAddress = TxtBox_IPAddress->GetText().ToString();
+//
+// 	if (IPAddress.IsEmpty())
+// 	{
+// 		PRINTLOG(TEXT("[LobbyWidget] OnJoinButtonClicked - IP Address is empty"));
+// 		UpdateStatusText(TEXT("오류: IP 주소를 입력하세요"));
+// 		return;
+// 	}
+//
+// 	PRINTLOG(TEXT("[LobbyWidget] OnJoinButtonClicked - Address=%s, Port=%d"), *IPAddress, Port);
+//
 
 	// auto gi = Cast<UYiSanGameInstance>(GetGameInstance());
 	// gi->GetSubsystem<UNetworkGameInstanceSubsystem>()->JoinOtherSession(0);
-	UNetworkGameInstanceSubsystem::Get(GetWorld())->JoinOtherSession(0);
 	
 	// if (CachedPlayerController)
 	// {
@@ -148,24 +147,24 @@ void ULobbyWidget::OnJoinButtonClicked()
 	// 	UpdateStatusText(TEXT("오류: PlayerController를 찾을 수 없습니다"));
 	// }
 
-
-}
-
-void ULobbyWidget::OnDisconnectButtonClicked()
-{
-	PRINTLOG(TEXT("[LobbyWidget] OnDisconnectButtonClicked"));
-
-	// if (CachedPlayerController)
-	// {
-	// 	CachedPlayerController->DisconnectSession();
-	// 	UpdateStatusText(TEXT("연결 해제 중..."));
-	// }
-	// else
-	// {
-	// 	PRINTLOG(TEXT("[LobbyWidget] OnDisconnectButtonClicked - PlayerController is null"));
-	// 	UpdateStatusText(TEXT("오류: PlayerController를 찾을 수 없습니다"));
-	// }
-}
+//
+// }
+//
+// void ULobbyWidget::OnDisconnectButtonClicked()
+// {
+// 	PRINTLOG(TEXT("[LobbyWidget] OnDisconnectButtonClicked"));
+//
+// 	// if (CachedPlayerController)
+// 	// {
+// 	// 	CachedPlayerController->DisconnectSession();
+// 	// 	UpdateStatusText(TEXT("연결 해제 중..."));
+// 	// }
+// 	// else
+// 	// {
+// 	// 	PRINTLOG(TEXT("[LobbyWidget] OnDisconnectButtonClicked - PlayerController is null"));
+// 	// 	UpdateStatusText(TEXT("오류: PlayerController를 찾을 수 없습니다"));
+// 	// }
+// }
 
 // ========================================
 // Broadcast Event Handlers
@@ -176,22 +175,22 @@ void ULobbyWidget::OnSessionHost(const FString& InMapName)
 	PRINTLOG(TEXT("[LobbyWidget] OnSessionHost - Map=%s"), *InMapName);
 	UpdateStatusText(FString::Printf(TEXT("호스트 생성 완료! 맵: %s (난입 허용)"), *InMapName));
 
-	// Disconnect 버튼 표시
-	if (Btn_Disconnect)
-	{
-		Btn_Disconnect->SetVisibility(ESlateVisibility::Visible);
-	}
-
-	// Host/Join 버튼 숨김
-	if (Btn_Host)
-	{
-		Btn_Host->SetVisibility(ESlateVisibility::Collapsed);
-	}
-
-	if (Btn_Join)
-	{
-		Btn_Join->SetVisibility(ESlateVisibility::Collapsed);
-	}
+	// // Disconnect 버튼 표시
+	// if (Btn_Disconnect)
+	// {
+	// 	Btn_Disconnect->SetVisibility(ESlateVisibility::Visible);
+	// }
+	//
+	// // Host/Join 버튼 숨김
+	// if (Btn_Host)
+	// {
+	// 	Btn_Host->SetVisibility(ESlateVisibility::Collapsed);
+	// }
+	//
+	// if (Btn_Join)
+	// {
+	// 	Btn_Join->SetVisibility(ESlateVisibility::Collapsed);
+	// }
 }
 
 void ULobbyWidget::OnSessionJoin(const FString& Address, int32 InPort)
@@ -200,10 +199,10 @@ void ULobbyWidget::OnSessionJoin(const FString& Address, int32 InPort)
 	UpdateStatusText(FString::Printf(TEXT("서버 접속 완료! %s:%d"), *Address, InPort));
 
 	// Disconnect 버튼 표시
-	if (Btn_Disconnect)
+	/*if (Btn_Disconnect)
 	{
 		Btn_Disconnect->SetVisibility(ESlateVisibility::Visible);
-	}
+	}*/
 
 	// Host/Join 버튼 숨김
 	if (Btn_Host)
@@ -216,29 +215,29 @@ void ULobbyWidget::OnSessionJoin(const FString& Address, int32 InPort)
 		Btn_Join->SetVisibility(ESlateVisibility::Collapsed);
 	}
 }
-
-void ULobbyWidget::OnSessionDisconnect()
-{
-	PRINTLOG(TEXT("[LobbyWidget] OnSessionDisconnect"));
-	UpdateStatusText(TEXT("연결 해제됨 - Host 또는 Join을 선택하세요"));
-
-	// Disconnect 버튼 숨김
-	if (Btn_Disconnect)
-	{
-		Btn_Disconnect->SetVisibility(ESlateVisibility::Collapsed);
-	}
-
-	// Host/Join 버튼 표시
-	if (Btn_Host)
-	{
-		Btn_Host->SetVisibility(ESlateVisibility::Visible);
-	}
-
-	if (Btn_Join)
-	{
-		Btn_Join->SetVisibility(ESlateVisibility::Visible);
-	}
-}
+//
+// void ULobbyWidget::OnSessionDisconnect()
+// {
+// 	PRINTLOG(TEXT("[LobbyWidget] OnSessionDisconnect"));
+// 	UpdateStatusText(TEXT("연결 해제됨 - Host 또는 Join을 선택하세요"));
+//
+// 	// Disconnect 버튼 숨김
+// 	if (Btn_Disconnect)
+// 	{
+// 		Btn_Disconnect->SetVisibility(ESlateVisibility::Collapsed);
+// 	}
+//
+// 	// Host/Join 버튼 표시
+// 	if (Btn_Host)
+// 	{
+// 		Btn_Host->SetVisibility(ESlateVisibility::Visible);
+// 	}
+//
+// 	if (Btn_Join)
+// 	{
+// 		Btn_Join->SetVisibility(ESlateVisibility::Visible);
+// 	}
+// }
 
 void ULobbyWidget::OnSessionError(const FString& ErrorMessage)
 {
@@ -252,8 +251,8 @@ void ULobbyWidget::OnSessionError(const FString& ErrorMessage)
 
 void ULobbyWidget::UpdateStatusText(const FString& StatusText)
 {
-	if (Txt_Status)
+	/*if (Txt_Status)
 	{
 		Txt_Status->SetText(FText::FromString(StatusText));
-	}
+	}*/
 }
