@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
-#include "YiSanGameInstance.generated.h"
+#include "UYiSanGameInstance.generated.h"
 
 UCLASS()
 class YISAN_API UYiSanGameInstance : public UGameInstance

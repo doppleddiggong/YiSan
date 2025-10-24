@@ -14,54 +14,19 @@
 #include "Templates/SharedPointer.h" 
 #include "Widgets/SWidget.h"
 #include "GameFramework/PlayerController.h"
-#include "Engine/StreamableManager.h" 
 #include "ContentStreaming.h"
 
 void UYiSanLoading::Step1_StartLoadingTargetLevel()
 {
 	UE_LOG(LogTemp, Warning, TEXT("[스텝1] 타겟 레벨 로드 시작함: %s"), *TargetLevelName.ToString());
-    
-	// UWorld* World = GetWorld();
-	// if (!World)
-	// {
-	//     UE_LOG(LogTemp, Error, TEXT("[스텝1] GetWorld()가 null임. 로드 중단함."));
-	//     return;
-	// }
-	//
-	// // 로딩 UI 띄움
-	// if (LoadingWidgetClass)
-	// {
-	//     ShowLoadingUI(LoadingWidgetClass);
-	// }
-
-	// 서버 모드(리슨서버/데디케이티드)인지 확인함
-	// ENetMode NetMode = World->GetNetMode();
-	// bool bIsServerMode = (NetMode == NM_ListenServer) || (NetMode == NM_DedicatedServer);
 
 	const bool bUseSeamless = true;
 	
-	//GetWorld()->ServerTravel("/Game/CustomContents/Maps/MainMap_WP");
-	GetWorld()->SeamlessTravel("/Game/CustomContents/Maps/MainMap_WP",bUseSeamless);
+	GetWorld()->SeamlessTravel("/Game/CustomContents/Maps/MainMap_WP", bUseSeamless);
 	// 중복 바인딩 방지함
 	FCoreUObjectDelegates::PostLoadMapWithWorld.RemoveAll(this);
 	// 맵 로드 완료 시 Step2_OnPostLoadMap 함수를 호출하도록 바인딩함
 	FCoreUObjectDelegates::PostLoadMapWithWorld.AddUObject(this, &UYiSanLoading::Step2_OnPostLoadMap);
-    
-	// if (bIsServerMode)
-	// {
-	//     UE_LOG(LogTemp, Warning, TEXT("[스텝1] 서버 모드이므로 ServerTravel로 이동함: %s, Seamless: %s"), 
-	//         *TargetLevelString, bUseSeamless ? TEXT("ON") : TEXT("OFF"));
-	//
-	//     FString TravelURL = FString::Printf(TEXT("%s"), *TargetLevelString);
-	//     
-	//     // ServerTravel 실행 (RPC 통신용이므로 수정하지 않음)
-	//     World->ServerTravel(TravelURL, bUseSeamless); 
-	// }
-	// else
-	// {
-	//     UE_LOG(LogTemp, Warning, TEXT("[스텝1] 클라이언트/싱글플레이 모드이므로 OpenLevel 사용함: %s"), *TargetLevelString);
-	//     UGameplayStatics::OpenLevel(this, TargetLevelName);
-	// }
 }
 
 void UYiSanLoading::Step2_OnPostLoadMap(UWorld* LoadedWorld)
@@ -406,16 +371,5 @@ void UYiSanLoading::UpdateLoadingUIProgress(float ProgressPercentage, const FTex
 	{
 		UE_LOG(LogTemp, Display, TEXT("[UI업데이트] 진행률: %d%%, 상태: %s"), CurrentPercent, *StatusText.ToString());
 		LastLoggedPercent = CurrentPercent;
-	}
-
-	if (LoadingWidgetObject.IsValid())
-	{
-		UUserWidget* Widget = LoadingWidgetObject.Get();
-		if (Widget)
-		{
-			// 실제 위젯 업데이트 (블루프린트에서 구현 필요)
-			// 예: ILoadingWidgetInterface를 구현한 위젯이라면:
-			// ILoadingWidgetInterface::Execute_UpdateProgress(Widget, ProgressPercentage, StatusText);
-		}
 	}
 }

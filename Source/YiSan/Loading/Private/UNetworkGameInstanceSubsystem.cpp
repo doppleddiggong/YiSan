@@ -1,23 +1,19 @@
 ﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "UNetworkGameInstanceSubsystem.h"
-#include "YiSanGameInstance.h"
-#include "GameLogging.h"
+
+#include "TimerManager.h"
+#include "ContentStreaming.h"
+
+// #include "UObject/WeakObjectPtr.h"
+// #include "Templates/SharedPointer.h" 
+#include "Widgets/SWidget.h"
+#include "GameFramework/PlayerController.h"
+
 #include "Engine/World.h"
 #include "Engine/Engine.h"
 #include "Engine/GameViewportClient.h"
-#include "Blueprint/UserWidget.h"
-#include "Kismet/GameplayStatics.h"
-#include "TimerManager.h"
-#include "UObject/WeakObjectPtr.h"
-#include "WorldPartition/WorldPartitionSubsystem.h"
-#include "LevelInstance/LevelInstanceSubsystem.h"
-#include "LevelInstance/LevelInstanceActor.h"
-#include "Templates/SharedPointer.h" 
-#include "Widgets/SWidget.h"
-#include "GameFramework/PlayerController.h"
-#include "Engine/StreamableManager.h" 
-#include "ContentStreaming.h"
+
 #include "OnlineSubsystem.h"
 #include "OnlineSubsystemUtils.h"
 #include "OnlineSessionSettings.h"
@@ -27,8 +23,7 @@
 void UNetworkGameInstanceSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
     Super::Initialize(Collection);
-    IOnlineSubsystem* subsys = Online::GetSubsystem(GetWorld());
-    if (subsys)
+    if( auto subsys = Online::GetSubsystem(GetWorld()) )
     {
         //서브시스템의 인터페이스를 가져오자
         sessionInterface = subsys->GetSessionInterface();
@@ -63,15 +58,12 @@ void UNetworkGameInstanceSubsystem::CreateMySession(FString displayName, int32 p
     /*UE_LOG(LogTemp, Warning, TEXT("netID : %s"), *netIDString);
     sessionInterface->CreateSession(*netID, FName(displayName), sessionSettings);*/
     sessionInterface->CreateSession(0, FName(displayName), sessionSettings);
-
-
 }
 
 void UNetworkGameInstanceSubsystem::OnCreateSessionComplete(FName sessionName, bool success)
 {
     if (success)
     {
-
         UE_LOG(LogTemp, Warning, TEXT("세션 : %s 성공"), *sessionName.ToString());
         // Seamless Travel을 사용하여 클라이언트 연결 유지
         GetWorld()->ServerTravel(TEXT("/Game/CustomContents/Maps/StartLevel?listen"), true);
@@ -85,6 +77,7 @@ void UNetworkGameInstanceSubsystem::OnCreateSessionComplete(FName sessionName, b
 void UNetworkGameInstanceSubsystem::FindOtherSession()
 {
     UE_LOG(LogTemp, Warning, TEXT("세션 조회 시작"));
+    
     //sessionSearch 만들자
     sessionSearch = MakeShared<FOnlineSessionSearch>();
     FName subsysName = Online::GetSubsystem(GetWorld())->GetSubsystemName();
@@ -106,7 +99,6 @@ void UNetworkGameInstanceSubsystem::OnFindSessionComplete(bool success)
             FString displayName;
             results[i].Session.SessionSettings.Get(FName(TEXT("DP_NAME")), displayName);
             UE_LOG(LogTemp, Warning, TEXT("세션 : %i, 이름 : %s"), i, *displayName);
-
         }
     }
     else

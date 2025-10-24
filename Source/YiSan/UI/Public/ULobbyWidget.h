@@ -2,7 +2,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "YiSanGameInstance.h"
+#include "UYiSanGameInstance.h"
 #include "Blueprint/UserWidget.h"
 #include "ULobbyWidget.generated.h"
 

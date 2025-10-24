@@ -6,7 +6,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "MediaPlayer.h"
 #include "MediaTexture.h"
-#include "YiSanGameInstance.h" 
+// #include "YiSanGameInstance.h" 
 #include "YiSanLoading.h"
 #include "Engine/Texture.h"
 #include "YiSan/YiSan.h"
