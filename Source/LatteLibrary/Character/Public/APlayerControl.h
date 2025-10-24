@@ -60,7 +60,35 @@ protected:
 	void OnShowDetail(const FInputActionValue& Value);
 	void OnShowMouse(const FInputActionValue& Value);
 	void OnHideMouse(const FInputActionValue& Value);
+public:
+	//----------------로딩 관련-------------------
+	
+	// 로딩 위젯 클래스
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "UI")
+	TSubclassOf<UUserWidget> LoadingWidgetClass;
 
+	// 서버에서 호출: 맵 전환 시작
+	UFUNCTION(BlueprintCallable, Category = "Travel")
+	void ServerStartMapTravel(const FString& MapPath);
+
+	// 클라이언트가 서버에게 맵 전환 요청 (Server RPC)
+	UFUNCTION(Server, Reliable, BlueprintCallable, Category = "Travel")
+	void Server_RequestMapTravel(const FString& MapPath);
+	void Server_RequestMapTravel_Implementation(const FString& MapPath);
+
+	// 클라이언트 RPC: 로딩 UI 표시
+	UFUNCTION(Client, Reliable)
+	void Client_ShowLoadingScreen();
+	void Client_ShowLoadingScreen_Implementation();
+
+	// 클라이언트 RPC: 로딩 UI 숨김
+	UFUNCTION(Client, Reliable)
+	void Client_HideLoadingScreen();
+	void Client_HideLoadingScreen_Implementation();
+	UPROPERTY()
+	UUserWidget* LoadingWidget;
+
+	//----------------로딩 관련-------------------
 private:
 	UFUNCTION()
 	void OnPlayerControlState(bool bState, class UUserWidget* FocusWidget);

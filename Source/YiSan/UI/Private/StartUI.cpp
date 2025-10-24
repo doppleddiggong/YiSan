@@ -6,7 +6,8 @@
 #include "Kismet/GameplayStatics.h"
 #include "MediaPlayer.h"
 #include "MediaTexture.h"
-// #include "YiSanGameInstance.h" 
+// #include "YiSanGameInstance.h"
+#include "APlayerControl.h"
 #include "YiSanLoading.h"
 #include "Engine/Texture.h"
 #include "YiSan/YiSan.h"
@@ -47,26 +48,36 @@ void UStartUI::OnStartButtonClicked()
 	{
 		MediaPlayer->Pause();
 	}
-	
-	UYiSanLoading* gi =  UYiSanLoading::Get(GetWorld());
-	if (!gi)
+
+	APlayerController* PC = GetOwningPlayer();
+	if (!PC)
 	{
-		UE_LOG(LogTemp, Error, TEXT("UStartUI - Cast to UYiSanGameInstance FAILED!"));
+		UE_LOG(LogTemp, Error, TEXT("UStartUI - GetOwningPlayer() returned nullptr!"));
 		return;
 	}
-	UYiSanLoading* Loader = NewObject<UYiSanLoading>(this);
-
-	UE_LOG(LogTemp, Warning, TEXT("UStartUI - Cast successful. Calling LoadLevelWithLoadingScreen..."));
-	// GI->LoadLevelWithLoadingScreen(*GameLevel::LoadingMap);
-	if (gi)
+	
+	APlayerControl* pc = Cast<APlayerControl>(PC);
+	if (!pc)
 	{
-		// 게임 인스턴스의 로딩 시퀀스 Step 1을 호출함
-		gi->Step1_StartLoadingTargetLevel();
-		PRINTLOG(TEXT("로딩 레벨 매니저: Step1 로딩 시작 호출함"));
+		UE_LOG(LogTemp, Error, TEXT("UStartUI - PlayerController is not AYourPlayerController!"));
+		return;
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("UStartUI - Cast successful. Calling ServerStartMapTravel..."));
+
+	//서버에서만 실행되도록 체크
+	if (pc->HasAuthority())
+	{
+		// 서버(호스트)인 경우: 직접 호출
+		pc->ServerStartMapTravel(TEXT("/Game/CustomContents/Maps/MainMap_WP"));
+		PRINTLOG(TEXT("로딩 레벨 매니저: 서버가 맵 전환 시작"));
 	}
 	else
 	{
-		PRINTLOG(TEXT("로딩 레벨 매니저: YiSanGameInstance를 찾을 수 없음!"));
+		// 클라이언트인 경우: 서버에게 요청
+		// Server RPC가 필요함 (아래 추가 코드 참고)
+		pc->Server_RequestMapTravel(TEXT("/Game/CustomContents/Maps/MainMap_WP"));
+		PRINTLOG(TEXT("로딩 레벨 매니저: 클라이언트가 서버에 맵 전환 요청"));
 	}
 
 }
