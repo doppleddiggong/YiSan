@@ -1,6 +1,8 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "ULobbyWidget.h"
+
+#include "UNetworkGameInstanceSubsystem.h"
 #include "APlayerControl.h"
 #include "UBroadcastManager.h"
 #include "GameLogging.h"
@@ -91,15 +93,21 @@ void ULobbyWidget::OnHostButtonClicked()
 	 	UpdateStatusText(TEXT("오류: PlayerController를 찾을 수 없습니다"));
 	}*/
 
-	auto gi = Cast<UYiSanGameInstance>(GetGameInstance());
-	gi->CreateMySession(TEXT("PleaseNetworkWork"), 4);
+	// auto gi = Cast<UYiSanGameInstance>(GetGameInstance());
+	// gi->GetSubsystem<UNetworkGameInstanceSubsystem>()->CreateMySession(TEXT("PleaseNetworkWork"), 4);
+	UNetworkGameInstanceSubsystem::Get(GetWorld())->CreateMySession(TEXT("PleaseNetworkWork"), 4);
 }
 
 void ULobbyWidget::OnFindButtonClicked()
 {
+	// auto gi = UNetworkGameInstanceSubsystem::Get(GetWorld());
+	UNetworkGameInstanceSubsystem::Get(GetWorld())->FindOtherSession();
 
-	auto gi = Cast<UYiSanGameInstance>(GetGameInstance());
-	gi->FindOtherSession();
+	
+	// gi->GetSubsystem<UNetworkGameInstanceSubsystem>()->FindOtherSession();
+	
+	// auto gi = Cast<UYiSanGameInstance>(GetGameInstance());
+	// gi->GetSubsystem<UNetworkGameInstanceSubsystem>()->FindOtherSession();
 
 }
 
@@ -125,9 +133,9 @@ void ULobbyWidget::OnJoinButtonClicked()
 	PRINTLOG(TEXT("[LobbyWidget] OnJoinButtonClicked - Address=%s, Port=%d"), *IPAddress, Port);
 
 
-	auto gi = Cast<UYiSanGameInstance>(GetGameInstance());
-	gi->JoinOtherSession(0);
-
+	// auto gi = Cast<UYiSanGameInstance>(GetGameInstance());
+	// gi->GetSubsystem<UNetworkGameInstanceSubsystem>()->JoinOtherSession(0);
+	UNetworkGameInstanceSubsystem::Get(GetWorld())->JoinOtherSession(0);
 	
 	// if (CachedPlayerController)
 	// {
