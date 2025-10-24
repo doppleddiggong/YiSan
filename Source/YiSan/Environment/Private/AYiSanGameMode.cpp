@@ -6,9 +6,17 @@
 #include "FComponentHelper.h"
 #include "GameLogging.h"
 #include "Macro.h"
+#include "YiSanLoading.h"
 
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
+
+void AYiSanGameMode::BeginPlay()
+{
+	Super::BeginPlay();
+	bUseSeamlessTravel = true;
+
+}
 
 void AYiSanGameMode::PostLogin(APlayerController* NewPlayer)
 {
