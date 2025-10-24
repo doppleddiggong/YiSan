@@ -1,8 +1,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
 #include "GameFramework/Actor.h"
 #include "LoadingLevelManager.generated.h"
+
 
 UCLASS()
 class YISAN_API ALoadingLevelManager : public AActor
@@ -10,6 +12,8 @@ class YISAN_API ALoadingLevelManager : public AActor
 	GENERATED_BODY()
 
 public:
+
+	
 	ALoadingLevelManager();
 
 // game start 에서 버튼을 눌렀을때 traver 을 통해서 맵을 이동합니다

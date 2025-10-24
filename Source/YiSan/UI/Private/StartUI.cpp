@@ -7,6 +7,7 @@
 #include "MediaPlayer.h"
 #include "MediaTexture.h"
 #include "YiSanGameInstance.h" 
+#include "YiSanLoading.h"
 #include "Engine/Texture.h"
 #include "YiSan/YiSan.h"
 
@@ -56,7 +57,7 @@ void UStartUI::OnStartButtonClicked()
 	UE_LOG(LogTemp, Warning, TEXT("UStartUI - Got GameInstance of class: %s"), *GI_Raw->GetClass()->GetName());
 
 
-	UYiSanGameInstance* GI = Cast<UYiSanGameInstance>(GI_Raw);
+	UYiSanLoading* GI = Cast<UYiSanLoading>(GI_Raw);
 	if (!GI)
 	{
 		UE_LOG(LogTemp, Error, TEXT("UStartUI - Cast to UYiSanGameInstance FAILED!"));
