@@ -4,7 +4,6 @@
 #include "CoreMinimal.h"
 #include "UYiSanGameInstance.h"
 #include "Blueprint/UserWidget.h"
-#include "Components/EditableText.h"
 #include "ULobbyWidget.generated.h"
 
 /// @file ULobbyWidget.h
@@ -37,23 +36,17 @@ public:
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UButton> Btn_Join;
 
+	/// @brief Disconnect 버튼 (Blueprint에서 바인딩)
 	UPROPERTY(meta=(BindWidget))
-	TObjectPtr<class UEditableText> editSessionName;
+	TObjectPtr<class UButton> Btn_Disconnect;
 
+	/// @brief IP 주소 입력 텍스트 박스 (Blueprint에서 바인딩)
 	UPROPERTY(meta=(BindWidget))
-	TObjectPtr<class UEditableText> editSessionSize;
-
-	// /// @brief Disconnect 버튼 (Blueprint에서 바인딩)
-	// UPROPERTY(meta=(BindWidget))
-	// TObjectPtr<class UButton> Btn_Disconnect;
-	//
-	// /// @brief IP 주소 입력 텍스트 박스 (Blueprint에서 바인딩)
-	// UPROPERTY(meta=(BindWidget))
-	// TObjectPtr<class UEditableTextBox> TxtBox_IPAddress;
+	TObjectPtr<class UEditableTextBox> TxtBox_IPAddress;
 
 	/// @brief 상태 표시 텍스트 (Blueprint에서 바인딩)
-	//UPROPERTY(meta=(BindWidget))
-	//TObjectPtr<class UTextBlock> Txt_Status;
+	UPROPERTY(meta=(BindWidget))
+	TObjectPtr<class UTextBlock> Txt_Status;
 
 	// ========================================
 	// Settings
@@ -82,13 +75,13 @@ public:
 	UFUNCTION()
 	void OnFindButtonClicked();
 
-	// /// @brief Join 버튼 클릭 핸들러
-	// UFUNCTION()
-	// void OnJoinButtonClicked();
+	/// @brief Join 버튼 클릭 핸들러
+	UFUNCTION()
+	void OnJoinButtonClicked();
 
-	// /// @brief Disconnect 버튼 클릭 핸들러
-	// UFUNCTION()
-	// void OnDisconnectButtonClicked();
+	/// @brief Disconnect 버튼 클릭 핸들러
+	UFUNCTION()
+	void OnDisconnectButtonClicked();
 
 	// ========================================
 	// Broadcast Event Handlers
@@ -102,9 +95,9 @@ public:
 	UFUNCTION()
 	void OnSessionJoin(const FString& Address, int32 InPort);
 
-	// /// @brief 세션 연결 해제 이벤트 핸들러
-	// UFUNCTION()
-	// void OnSessionDisconnect();
+	/// @brief 세션 연결 해제 이벤트 핸들러
+	UFUNCTION()
+	void OnSessionDisconnect();
 
 	/// @brief 세션 오류 이벤트 핸들러
 	UFUNCTION()
