@@ -265,3 +265,40 @@ EVoiceCommandType UVoiceFunctionLibrary::GetVoiceCommand(const FString& CommandS
 
 	return EVoiceCommandType::None;
 }
+
+TArray<uint8> UVoiceFunctionLibrary::ResampleAudio(const TArray<uint8>& InPCMData, int32 InSampleRate, int32 OutSampleRate, int32 InNumChannels)
+{
+	if (InSampleRate == OutSampleRate)
+		return InPCMData;
+
+	// PCM 데이터는 int16 형식
+	const int32 NumSamples = InPCMData.Num() / sizeof(int16);
+	const int16* InSamples = reinterpret_cast<const int16*>(InPCMData.GetData());
+
+	// 리샘플링 비율 계산
+	const double ResampleRatio = static_cast<double>(OutSampleRate) / static_cast<double>(InSampleRate);
+	const int32 OutNumSamples = FMath::CeilToInt(NumSamples * ResampleRatio);
+
+	TArray<uint8> OutPCMData;
+	OutPCMData.Reserve(OutNumSamples * sizeof(int16));
+
+	// Linear interpolation 리샘플링
+	for (int32 i = 0; i < OutNumSamples; ++i)
+	{
+		const double SourceIndex = i / ResampleRatio;
+		const int32 Index0 = FMath::FloorToInt(SourceIndex);
+		const int32 Index1 = FMath::Min(Index0 + 1, NumSamples - 1);
+		const double Fraction = SourceIndex - Index0;
+
+		// Linear interpolation
+		const int16 Sample0 = InSamples[Index0];
+		const int16 Sample1 = InSamples[Index1];
+		const int16 InterpolatedSample = FMath::RoundToInt(Sample0 + (Sample1 - Sample0) * Fraction);
+
+		// 결과 버퍼에 추가
+		const uint8* SampleBytes = reinterpret_cast<const uint8*>(&InterpolatedSample);
+		OutPCMData.Append(SampleBytes, sizeof(int16));
+	}
+
+	return OutPCMData;
+}

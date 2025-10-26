@@ -64,6 +64,7 @@ private:
     UFUNCTION()
     void OnResponseAsk(FResponseAsk& Response, bool bSuccess);
 
+
 private:
     UPROPERTY()
     TObjectPtr<class APlayerActor> Owner;
@@ -90,5 +91,5 @@ private:
     TObjectPtr<class UAudioComponent> CurVoiceAudio;
 
     /** @brief TTS 재생 완료를 감지하는 타이머 핸들입니다. */
-    FTimerHandle TTSFinishTimerHandle;
+    FTimerHandle VoiceFinishTimerHandle;
 };

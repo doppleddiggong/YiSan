@@ -50,7 +50,7 @@ void UVoiceConversationSystem::StartRecording()
 		// 타이머 정리
 		if (GetWorld())
 		{
-			GetWorld()->GetTimerManager().ClearTimer(TTSFinishTimerHandle);
+			GetWorld()->GetTimerManager().ClearTimer(VoiceFinishTimerHandle);
 		}
 
 		OnVoiceAudioFinished(); // 수동으로 호출하여 이전 상태를 정리합니다.
@@ -141,12 +141,25 @@ void UVoiceConversationSystem::StopRecording()
 	AudioCapture->CloseStream();
 
 	BroadcastManager->SendAudioCapture(false);
-	
-	WAVData = UVoiceFunctionLibrary::ConvertPCM2WAV(PCMData, LastSampleRate, LastNumChannels, 16);
+
+	PRINTLOG(TEXT("[VoiceConversation] Recording stopped. Original: SampleRate=%d, Channels=%d, PCM Size=%d bytes"),
+		LastSampleRate, LastNumChannels, PCMData.Num());
+
+	// NAVER CLOVA STT 최적화: 16kHz로 리샘플링
+	TArray<uint8> ProcessedPCM = PCMData;
+	int32 TargetSampleRate = 16000;
+
+	if (LastSampleRate != TargetSampleRate)
+	{
+		PRINTLOG(TEXT("[VoiceConversation] Resampling from %dHz to %dHz..."), LastSampleRate, TargetSampleRate);
+		ProcessedPCM = UVoiceFunctionLibrary::ResampleAudio(PCMData, LastSampleRate, TargetSampleRate, LastNumChannels);
+		PRINTLOG(TEXT("[VoiceConversation] Resampled PCM Size=%d bytes"), ProcessedPCM.Num());
+	}
+
+	WAVData = UVoiceFunctionLibrary::ConvertPCM2WAV(ProcessedPCM, TargetSampleRate, LastNumChannels, 16);
 	LastRecordedFilePath = UVoiceFunctionLibrary::SaveWavToFile(WAVData);
 
-	PRINTLOG( TEXT("[VoiceConversation] Recording stopped. Processing...") );
-	PRINTLOG( TEXT("[VoiceConversation] Recording saved to: %s"), *LastRecordedFilePath);
+	PRINTLOG(TEXT("[VoiceConversation] Recording saved to: %s"), *LastRecordedFilePath);
 	if (LastRecordedFilePath.IsEmpty())
 	{
 		PRINTLOG( TEXT("[VoiceConversation] FilePath is Empty") );
@@ -236,7 +249,7 @@ bool UVoiceConversationSystem::PlayVoiceAudio(const TArray<uint8>& AudioData)
 		// 타이머 정리
 		if (GetWorld())
 		{
-			GetWorld()->GetTimerManager().ClearTimer(TTSFinishTimerHandle);
+			GetWorld()->GetTimerManager().ClearTimer(VoiceFinishTimerHandle);
 		}
 
 		PRINTLOG(TEXT("[VoiceConversation] Stopped previous TTS audio"));
@@ -268,11 +281,11 @@ bool UVoiceConversationSystem::PlayVoiceAudio(const TArray<uint8>& AudioData)
 	// 기존 타이머 정리
 	if (GetWorld())
 	{
-		GetWorld()->GetTimerManager().ClearTimer(TTSFinishTimerHandle);
+		GetWorld()->GetTimerManager().ClearTimer(VoiceFinishTimerHandle);
 
 		// Duration + 여유 시간(0.1초) 후에 OnVoiceAudioFinished 호출
 		GetWorld()->GetTimerManager().SetTimer(
-			TTSFinishTimerHandle,
+			VoiceFinishTimerHandle,
 			this,
 			&UVoiceConversationSystem::OnVoiceAudioFinished,
 			Duration + 0.1f,
@@ -290,7 +303,7 @@ void UVoiceConversationSystem::OnVoiceAudioFinished()
 	// 타이머 정리
 	if (GetWorld())
 	{
-		GetWorld()->GetTimerManager().ClearTimer(TTSFinishTimerHandle);
+		GetWorld()->GetTimerManager().ClearTimer(VoiceFinishTimerHandle);
 	}
 
 	// BroadcastManager를 통해 TTS 재생 완료 알림
