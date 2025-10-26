@@ -17,6 +17,9 @@
 #include "OnlineSubsystem.h"
 #include "OnlineSubsystemUtils.h"
 #include "OnlineSessionSettings.h"
+#include "UBroadcastManager.h"
+#include "UDialogManager.h"
+#include "GameFramework/GameSession.h"
 #include "Online/OnlineSessionNames.h"
 
 // ==================== Network 관리 ====================
@@ -77,6 +80,9 @@ void UNetworkGameInstanceSubsystem::OnCreateSessionComplete(FName sessionName, b
 void UNetworkGameInstanceSubsystem::FindOtherSession()
 {
     UE_LOG(LogTemp, Warning, TEXT("세션 조회 시작"));
+
+
+    
     
     //sessionSearch 만들자
     sessionSearch = MakeShared<FOnlineSessionSearch>();

@@ -19,6 +19,42 @@ return GI->GetSubsystem<ClassName>(); \
 return nullptr; \
 }
 
+
+#define DEFINE_LOCALPLAYER_SUBSYSTEM_GETTER_INLINE(ClassName) \
+UFUNCTION(BlueprintPure, Category="CoffeeLibrary|Subsystem", meta=(WorldContext="WorldContextObject")) \
+static ClassName* Get(UObject* WorldContextObject) \
+{ \
+	if (!WorldContextObject) \
+		return nullptr; \
+	if (UWorld* World = WorldContextObject->GetWorld()) \
+	{ \
+		if (UGameInstance* GameInstance = World->GetGameInstance()) \
+		{ \
+			if (ULocalPlayer* LocalPlayer = GameInstance->GetFirstGamePlayer()) \
+			{ \
+				return LocalPlayer->GetSubsystem<ClassName>(); \
+			} \
+		} \
+	} \
+	return nullptr; \
+}
+
+// Optional: PlayerController를 받아서 해당 LocalPlayer의 서브시스템을 가져오는 매크로도 만들 수 있어요
+#define DEFINE_LOCALPLAYER_FROM_PC_SUBSYSTEM_GETTER_INLINE(ClassName) \
+UFUNCTION(BlueprintPure, Category="CoffeeLibrary|Subsystem", meta=(WorldContext="WorldContextObject")) \
+static ClassName* GetFromPlayerController(UObject* WorldContextObject, APlayerController* PC) \
+{ \
+	if (!WorldContextObject || !PC) \
+		return nullptr; \
+	if (ULocalPlayer* LP = Cast<ULocalPlayer>(PC->Player)) \
+	{ \
+		return LP->GetSubsystem<ClassName>(); \
+	} \
+	return nullptr; \
+}
+
+
+
 // 공통 선언 매크로
 #define DECLARE_SUBSYSTEM_GETTER(ClassName) \
 UFUNCTION(BlueprintPure, Category="CoffeeLibrary|Subsystem", meta=(WorldContext="WorldContextObject")) \
