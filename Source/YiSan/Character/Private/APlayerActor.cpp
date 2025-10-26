@@ -213,9 +213,10 @@ void APlayerActor::Cmd_HideMouse_Implementation()
     }   
 }
 
-void APlayerActor::OnExecVoiceCommand(EVoiceCommandType InType)
+void APlayerActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester)
 {
-    PRINT_STRING(TEXT("%s"), *FString( ENUM_TO_NAME(EVoiceCommandType, InType)));
+    PRINT_STRING(TEXT("%s from %s"), *FString( ENUM_TO_NAME(EVoiceCommandType, InType)),
+        Requester ? *Requester->GetName() : TEXT("Unknown"));
 }
 
 FString APlayerActor::GetPlayerDisplayName() const

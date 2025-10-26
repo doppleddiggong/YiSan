@@ -10,6 +10,8 @@
 #include "UQuestManager.h"
 #include "ABuilding.h"
 #include "EBuildingType.h"
+#include "UBroadcastManager.h"
+#include "EVoiceCommandType.h"
 
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
@@ -19,6 +21,7 @@
 
 #include "Components/WidgetComponent.h"
 #include "UDasanWidget.h"
+#include "NavigationSystem.h"
 
 #define DASANWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_DasanWidget.WBP_DasanWidget_C")
 
@@ -134,6 +137,14 @@ void ADasanActor::BeginPlay()
 	{
 		GetWorldTimerManager().SetTimer(TourStateTimerHandle, this, &ADasanActor::UpdateTourState, 0.1f, true);
 		PRINTLOG(TEXT(" TourState 타이머 시작"));
+	}
+
+	// BroadcastManager 이벤트 구독
+	BroadcastManager = UBroadcastManager::Get(GetWorld());
+	if (BroadcastManager)
+	{
+		BroadcastManager->OnExecVoiceCommand.AddDynamic(this, &ADasanActor::OnExecVoiceCommand);
+		PRINTLOG(TEXT(" BroadcastManager 이벤트 구독 성공"));
 	}
 }
 
@@ -693,4 +704,81 @@ void ADasanActor::UpdateWidgetState()
 
 	// 위젯 상태 업데이트
 	DasanWidget->UpdateDasanState(DasanState, CurrentTourState, CurrentExplainState, CurrentAnswerState);
+}
+
+void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester)
+{
+	if (!HasAuthority())
+		return;
+
+	PRINTLOG(TEXT("[Dasan] 음성 명령 수신: %s from %s"),
+		*ENUM_TO_NAME(EVoiceCommandType, InType),
+		Requester ? *Requester->GetName() : TEXT("Unknown"));
+
+	switch (InType)
+	{
+		case EVoiceCommandType::Cmd_Summon:
+			if (Requester)
+			{
+				PRINTLOG(TEXT("[Dasan] Cmd_Summon: %s님이 다산을 소환합니다"), *Requester->GetName());
+				MoveToPlayer(Requester);
+			}
+			break;
+
+		default:
+			break;
+	}
+}
+
+void ADasanActor::MoveToPlayer(AActor* PlayerActor)
+{
+	if (!HasAuthority())
+		return;
+
+	if (!PlayerActor || !DasanAicontrol)
+	{
+		PRINTLOG(TEXT("[Dasan] MoveToPlayer 실패: PlayerActor 또는 DasanAicontrol이 없습니다"));
+		return;
+	}
+
+	// 현재 상태 저장 (나중에 복귀용)
+	EDasanState PreviousState = DasanState;
+
+	// 플레이어 위치 가져오기
+	FVector PlayerLocation = PlayerActor->GetActorLocation();
+
+	// 플레이어 주변의 랜덤 위치 계산 (플레이어 앞쪽 200~300 범위)
+	FVector DasanLocation = GetActorLocation();
+	FVector DirectionToPlayer = (PlayerLocation - DasanLocation).GetSafeNormal();
+
+	// 플레이어 주변 200~400 범위의 랜덤 위치
+	float Distance = FMath::RandRange(200.f, 400.f);
+	float AngleOffset = FMath::RandRange(-45.f, 45.f);
+	FRotator Rotation = DirectionToPlayer.Rotation();
+	Rotation.Yaw += AngleOffset;
+	FVector TargetDirection = Rotation.Vector();
+	FVector TargetLocation = PlayerLocation - (TargetDirection * Distance);
+
+	// 네비게이션 시스템으로 유효한 위치 찾기
+	UNavigationSystemV1* NavSys = UNavigationSystemV1::GetCurrent(GetWorld());
+	if (NavSys)
+	{
+		FNavLocation NavLocation;
+		if (NavSys->ProjectPointToNavigation(TargetLocation, NavLocation, FVector(500.f, 500.f, 500.f)))
+		{
+			TargetLocation = NavLocation.Location;
+		}
+	}
+
+	PRINTLOG(TEXT("[Dasan] 플레이어 %s 근처로 이동 시작 (%.1f, %.1f, %.1f)"),
+		*PlayerActor->GetName(), TargetLocation.X, TargetLocation.Y, TargetLocation.Z);
+
+	// AI 이동 시작
+	DasanAicontrol->MoveToLocation(TargetLocation, 50.f, true, true, false, true, nullptr, false);
+
+	// 상태를 Tour로 전환 (이동 중임을 표시)
+	if (DasanState != EDasanState::Tour)
+	{
+		TransitionToState(EDasanState::Tour);
+	}
 }

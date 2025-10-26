@@ -65,9 +65,9 @@ void UBroadcastManager::SendDoorMessage(const int32 GateID, const bool Open)
 	OnDoorMessage.Broadcast(GateID, Open);	
 }
 
-void UBroadcastManager::SendExecVoiceCommand(const EVoiceCommandType Type)
+void UBroadcastManager::SendExecVoiceCommand(const EVoiceCommandType Type, AActor* Requester)
 {
-	OnExecVoiceCommand.Broadcast(Type);	
+	OnExecVoiceCommand.Broadcast(Type, Requester);
 }
 
 void UBroadcastManager::SendMegaPopupClosed()

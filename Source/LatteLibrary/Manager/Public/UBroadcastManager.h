@@ -107,12 +107,12 @@ public:
 	void SendDoorMessage(const int32 GateID, const bool Open);
 
 	
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnExecVoiceCommand, EVoiceCommandType, Type);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnExecVoiceCommand, EVoiceCommandType, Type, AActor*, Requester);
 	UPROPERTY(BlueprintAssignable, Category="Events")
 	FOnExecVoiceCommand OnExecVoiceCommand;
-	
+
 	UFUNCTION(BlueprintCallable, Category="Events")
-	void SendExecVoiceCommand(const EVoiceCommandType Type);
+	void SendExecVoiceCommand(const EVoiceCommandType Type, AActor* Requester);
 
 
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnMegaPopupClosed);

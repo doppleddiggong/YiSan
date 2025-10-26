@@ -112,4 +112,15 @@ public:
 
 	UPROPERTY()
 	TObjectPtr<class ABuilding> CurTargetBuilding;
+
+	UPROPERTY()
+	TObjectPtr<class UBroadcastManager> BroadcastManager;
+
+private:
+	// 음성 명령 핸들러
+	UFUNCTION()
+	void OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester);
+
+	// 플레이어에게 이동하는 함수
+	void MoveToPlayer(AActor* PlayerActor);
 };
