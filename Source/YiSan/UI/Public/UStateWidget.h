@@ -68,12 +68,18 @@ protected:
 
     UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly, Category = "State|Quest")
     class UTextBlock* QuestTargetText = nullptr;
+    UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|Quest")
+    class UImage* QuestTargetImage = nullptr;
 
     UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly, Category = "State|Location")
     class UTextBlock* NearTargetText = nullptr;
+    UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|Location")
+    class UImage* NearTargetImage = nullptr;
 
     UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|Focus")
     class UTextBlock* FocusTargetText = nullptr;
+    UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|Focus")
+    class UImage* FocusTargetImage = nullptr;
 
     /// @brief 오디오 스펙트럼을 시각화하는 프로그레스바입니다.
     UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly, Category = "State|Audio")

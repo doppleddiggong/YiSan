@@ -14,6 +14,7 @@
 #include "Misc/ScopeLock.h"
 #include "TimerManager.h"
 #include "UBroadcastManager.h"
+#include "UBuildingDetailData.h"
 #include "UGameDataManager.h"
 
 void UStateWidget::NativeConstruct()
@@ -27,12 +28,15 @@ void UStateWidget::NativeConstruct()
     
     QuestTargetText->SetText(FText::GetEmpty());
     QuestTargetText->SetVisibility(ESlateVisibility::Hidden);
+    QuestTargetImage->SetVisibility(ESlateVisibility::Hidden);
 
     NearTargetText->SetText(FText::GetEmpty());
     NearTargetText->SetVisibility(ESlateVisibility::Hidden);
+    NearTargetImage->SetVisibility(ESlateVisibility::Hidden);
 
     FocusTargetText->SetText(FText::GetEmpty());
     FocusTargetText->SetVisibility(ESlateVisibility::Hidden);
+    FocusTargetImage->SetVisibility(ESlateVisibility::Hidden);
     
     if (UWorld* World = GetWorld())
         World->GetTimerManager().SetTimer(UpdateTimerHandle, this, &UStateWidget::RefreshTimeText, TimeUpdateInterval, true);
@@ -118,24 +122,80 @@ void UStateWidget::OnUpdateQuest(EBuildingType InBuildingType)
     {
         QuestTargetText->SetText(FText::GetEmpty());
         QuestTargetText->SetVisibility(ESlateVisibility::Hidden);
+        QuestTargetImage->SetVisibility(ESlateVisibility::Hidden);
         return;
     }
 
-    auto BuildingName  = UGameDataManager::Get(GetWorld())->GetBuildingDataName(InBuildingType);
+    auto GameDataManager = UGameDataManager::Get(GetWorld());
+    auto BuildingName  = GameDataManager->GetBuildingDataName(InBuildingType);
     QuestTargetText->SetText(FText::FromString(BuildingName));
     QuestTargetText->SetVisibility(ESlateVisibility::Visible);
+
+    FBuildingAssetData AssetData;
+    if ( GameDataManager->GetBuildingAssetData(InBuildingType, AssetData) )
+    {
+        UBuildingDetailData* DetailAsset = AssetData.BuildingDetailDataAsset.LoadSynchronous();
+        if ( DetailAsset )
+        {
+            TSoftObjectPtr<UTexture2D> LoadedTexture;
+            if ( DetailAsset->LoadThumbnailImage(LoadedTexture) && LoadedTexture.Get() )
+                QuestTargetImage->SetBrushFromTexture(LoadedTexture.Get());
+        }
+    }
 }
 
 void UStateWidget::OnNearBuilding(EBuildingType InBuildingType)
 {
-    auto BuildingName  = UGameDataManager::Get(GetWorld())->GetBuildingDataName(InBuildingType);
+    if (InBuildingType == EBuildingType::None)
+    {
+        NearTargetText->SetText(FText::GetEmpty());
+        NearTargetText->SetVisibility(ESlateVisibility::Hidden);
+        NearTargetImage->SetVisibility(ESlateVisibility::Hidden);
+        return;
+    }
+    
+    auto GameDataManager = UGameDataManager::Get(GetWorld());
+    auto BuildingName  = GameDataManager->GetBuildingDataName(InBuildingType);
     NearTargetText->SetText(FText::FromString(BuildingName));
     NearTargetText->SetVisibility(ESlateVisibility::Visible);
+
+    FBuildingAssetData AssetData;
+    if ( GameDataManager->GetBuildingAssetData(InBuildingType, AssetData) )
+    {
+        UBuildingDetailData* DetailAsset = AssetData.BuildingDetailDataAsset.LoadSynchronous();
+        if ( DetailAsset )
+        {
+            TSoftObjectPtr<UTexture2D> LoadedTexture;
+            if ( DetailAsset->LoadThumbnailImage(LoadedTexture) && LoadedTexture.Get() )
+                NearTargetImage->SetBrushFromTexture(LoadedTexture.Get());
+        }
+    }
 }
 
 void UStateWidget::OnFocusBuilding(EBuildingType InBuildingType)
 {
-    auto BuildingName  = UGameDataManager::Get(GetWorld())->GetBuildingDataName(InBuildingType);
+    if (InBuildingType == EBuildingType::None)
+    {
+        FocusTargetText->SetText(FText::GetEmpty());
+        FocusTargetText->SetVisibility(ESlateVisibility::Hidden);
+        FocusTargetImage->SetVisibility(ESlateVisibility::Hidden);
+        return;
+    }
+    
+    auto GameDataManager = UGameDataManager::Get(GetWorld());
+    auto BuildingName  = GameDataManager->GetBuildingDataName(InBuildingType);
     FocusTargetText->SetText(FText::FromString(BuildingName));
     FocusTargetText->SetVisibility(ESlateVisibility::Visible);
+
+    FBuildingAssetData AssetData;
+    if ( GameDataManager->GetBuildingAssetData(InBuildingType, AssetData) )
+    {
+        UBuildingDetailData* DetailAsset = AssetData.BuildingDetailDataAsset.LoadSynchronous();
+        if ( DetailAsset )
+        {
+            TSoftObjectPtr<UTexture2D> LoadedTexture;
+            if ( DetailAsset->LoadThumbnailImage(LoadedTexture) && LoadedTexture.Get() )
+                FocusTargetImage->SetBrushFromTexture(LoadedTexture.Get());
+        }
+    }
 }
