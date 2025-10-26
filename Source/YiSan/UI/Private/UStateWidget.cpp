@@ -139,7 +139,10 @@ void UStateWidget::OnUpdateQuest(EBuildingType InBuildingType)
         {
             TSoftObjectPtr<UTexture2D> LoadedTexture;
             if ( DetailAsset->LoadThumbnailImage(LoadedTexture) && LoadedTexture.Get() )
+            {
                 QuestTargetImage->SetBrushFromTexture(LoadedTexture.Get());
+                QuestTargetImage->SetVisibility(ESlateVisibility::Visible);
+            }
         }
     }
 }
@@ -167,7 +170,10 @@ void UStateWidget::OnNearBuilding(EBuildingType InBuildingType)
         {
             TSoftObjectPtr<UTexture2D> LoadedTexture;
             if ( DetailAsset->LoadThumbnailImage(LoadedTexture) && LoadedTexture.Get() )
+            {
                 NearTargetImage->SetBrushFromTexture(LoadedTexture.Get());
+                NearTargetImage->SetVisibility(ESlateVisibility::Visible);
+            }
         }
     }
 }
@@ -195,7 +201,10 @@ void UStateWidget::OnFocusBuilding(EBuildingType InBuildingType)
         {
             TSoftObjectPtr<UTexture2D> LoadedTexture;
             if ( DetailAsset->LoadThumbnailImage(LoadedTexture) && LoadedTexture.Get() )
+            {
                 FocusTargetImage->SetBrushFromTexture(LoadedTexture.Get());
+                FocusTargetImage->SetVisibility(ESlateVisibility::Visible);
+            }
         }
     }
 }
