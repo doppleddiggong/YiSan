@@ -725,7 +725,16 @@ void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester
 			if (Requester)
 			{
 				PRINTLOG(TEXT("[Dasan] Cmd_Summon: %s님이 다산을 소환합니다"), *Requester->GetName());
-				MoveToPlayer(Requester);
+				
+				// Requester의 위치로 텔레포트
+				FVector PlayerLocation = Requester->GetActorLocation();
+				FRotator PlayerRotation = Requester->GetActorRotation();
+				
+				// 플레이어의 앞쪽으로 200 유닛 떨어진 위치 계산
+				FVector TargetLocation = PlayerLocation + (PlayerRotation.Vector() * 200.f);
+
+				// 텔레포트
+				TeleportTo(TargetLocation, GetActorRotation(), false, true);
 
 				APlayerActor* RequestPlayer = Cast<APlayerActor>(Requester);
 				if (RequestPlayer && RequestPlayer->ChatPlayerSystem)
@@ -740,58 +749,5 @@ void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester
 
 		default:
 			break;
-	}
-}
-
-void ADasanActor::MoveToPlayer(AActor* PlayerActor)
-{
-	if (!HasAuthority())
-		return;
-
-	if (!PlayerActor || !DasanAicontrol)
-	{
-		PRINTLOG(TEXT("[Dasan] MoveToPlayer 실패: PlayerActor 또는 DasanAicontrol이 없습니다"));
-		return;
-	}
-
-	// 현재 상태 저장 (나중에 복귀용)
-	EDasanState PreviousState = DasanState;
-
-	// 플레이어 위치 가져오기
-	FVector PlayerLocation = PlayerActor->GetActorLocation();
-
-	// 플레이어 주변의 랜덤 위치 계산 (플레이어 앞쪽 200~300 범위)
-	FVector DasanLocation = GetActorLocation();
-	FVector DirectionToPlayer = (PlayerLocation - DasanLocation).GetSafeNormal();
-
-	// 플레이어 주변 200~400 범위의 랜덤 위치
-	float Distance = FMath::RandRange(200.f, 400.f);
-	float AngleOffset = FMath::RandRange(-45.f, 45.f);
-	FRotator Rotation = DirectionToPlayer.Rotation();
-	Rotation.Yaw += AngleOffset;
-	FVector TargetDirection = Rotation.Vector();
-	FVector TargetLocation = PlayerLocation - (TargetDirection * Distance);
-
-	// 네비게이션 시스템으로 유효한 위치 찾기
-	UNavigationSystemV1* NavSys = UNavigationSystemV1::GetCurrent(GetWorld());
-	if (NavSys)
-	{
-		FNavLocation NavLocation;
-		if (NavSys->ProjectPointToNavigation(TargetLocation, NavLocation, FVector(500.f, 500.f, 500.f)))
-		{
-			TargetLocation = NavLocation.Location;
-		}
-	}
-
-	PRINTLOG(TEXT("[Dasan] 플레이어 %s 근처로 이동 시작 (%.1f, %.1f, %.1f)"),
-		*PlayerActor->GetName(), TargetLocation.X, TargetLocation.Y, TargetLocation.Z);
-
-	// AI 이동 시작
-	DasanAicontrol->MoveToLocation(TargetLocation, 50.f, true, true, false, true, nullptr, false);
-
-	// 상태를 Tour로 전환 (이동 중임을 표시)
-	if (DasanState != EDasanState::Tour)
-	{
-		TransitionToState(EDasanState::Tour);
 	}
 }
