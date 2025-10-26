@@ -39,6 +39,8 @@ FString UDasanWidget::GetStateMessage(EDasanState MainState, ETourState TourStat
 				return TEXT("TourMove");
 			case ETourState::TourWait:
 				return TEXT("TourWait");
+			case ETourState::TourExplain:
+				return TEXT("TourExplain");
 			case ETourState::TourEnd:
 				return TEXT("");  // 숨김
 			default:

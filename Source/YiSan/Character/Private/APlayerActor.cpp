@@ -232,5 +232,5 @@ FString APlayerActor::GetPlayerDisplayName() const
 
 void APlayerActor::PlayTTSAudio(const TArray<uint8>& AudioData)
 {
-    VoiceConversationSystem->PlayTTSAudio(AudioData);
+    VoiceConversationSystem->PlayVoiceAudio(AudioData);
 }

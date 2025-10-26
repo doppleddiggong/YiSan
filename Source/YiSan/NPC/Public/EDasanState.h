@@ -21,6 +21,7 @@ enum class ETourState : uint8
 	None			UMETA(DisplayName = "없음"),
 	TourMove		UMETA(DisplayName = "이동중"),
 	TourWait		UMETA(DisplayName = "대기중"),
+	TourExplain		UMETA(DisplayName = "자유 관광"),
 	TourEnd			UMETA(DisplayName = "투어종료"),
 	Max				UMETA(Hidden)
 };

@@ -33,18 +33,21 @@ public:
 	UFUNCTION()
 	void OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::Type Result);
 
-	// 현재 메인 상태 (Tour/Answer)
+	// 현재 메인 상태 (Tour/Explain/Answer)
 	UPROPERTY(ReplicatedUsing=OnRep_DasanState, BlueprintReadOnly, Category="State")
 	EDasanState DasanState;
+	FORCEINLINE EDasanState GetDasanState() const { return DasanState; }
 	
 public:
 	// 유틸리티 함수
 	void StartTour();
 	void NextQuest();
+
+	bool IsNearTargetBuilding();
 	
 	// 현재 목표 건물 찾기
 	class ABuilding* FindCurTargetBuilding() const;
-	FORCEINLINE class ABuilding* GetCurTargetBuilding() { return CurTargetBuilding;}
+	class ABuilding* GetCurTargetBuilding() { return CurTargetBuilding;}
 	FORCEINLINE void UpdateTargetBuilding(class ABuilding* InBuilding)	{ CurTargetBuilding = InBuilding; }
 
 	
@@ -69,9 +72,6 @@ public:
 	UPROPERTY()
 	TObjectPtr<class UDasanWidget> DasanWidget;
 
-	// Tour 상태를 업데이트하는 함수
-	void UpdateTourState();
-
 	// 위젯 상태 업데이트 함수
 	void UpdateWidgetState();
 
@@ -94,13 +94,7 @@ public:
 	// 웨이포인트 거리
 	float wayPointDis;
 
-	// 직접 이동 모드 (NavMesh 실패 시)
-	bool bUseDirectMovement = false;
-
-public:
-	// 투어 상태 업데이트용 타이머 핸들
-	FTimerHandle TourStateTimerHandle;
-	
+public:	
 	UPROPERTY()
 	TObjectPtr<class UQuestManager> QuestManager;
 
@@ -114,4 +108,7 @@ private:
 	// 음성 명령 핸들러
 	UFUNCTION()
 	void OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester);
+
+	// // 플레이어에게 이동하는 함수
+	// void MoveToPlayer(AActor* PlayerActor);
 };

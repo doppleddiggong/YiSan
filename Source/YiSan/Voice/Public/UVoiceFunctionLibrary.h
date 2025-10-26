@@ -56,4 +56,14 @@ public:
     /// @return 매칭된 음성 명령 유형입니다.
     UFUNCTION(BlueprintCallable, Category = "Voice|Utility")
     static EVoiceCommandType GetVoiceCommand(const FString& CommandString);
+
+
+    /// @brief PCM 오디오 데이터를 다른 샘플레이트로 리샘플링합니다.
+    /// @param InPCMData [in] 원본 PCM 데이터 (16bit)
+    /// @param InSampleRate [in] 원본 샘플레이트
+    /// @param OutSampleRate [in] 목표 샘플레이트
+    /// @param InNumChannels [in] 채널 수
+    /// @return 리샘플링된 PCM 데이터
+    UFUNCTION(BlueprintCallable, Category="Voice|Utility")
+    static TArray<uint8> ResampleAudio(const TArray<uint8>& InPCMData, int32 InSampleRate, int32 OutSampleRate, int32 InNumChannels);
 };
