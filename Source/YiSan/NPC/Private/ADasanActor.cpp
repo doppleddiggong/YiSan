@@ -653,11 +653,12 @@ void ADasanActor::NextQuest()
             if (Result.Code == EPathFollowingRequestResult::RequestSuccessful)
                 PRINTLOG(TEXT(" 다음 목적지로 이동 시작: %s"), *CurTargetBuilding->GetName());
             else
-                PRINTLOG(TEXT("MoveTo 실패: 코드 %d"), (int32)Result.Code);
+                PRINTLOG(TEXT("[WARN] MoveTo 실패: 코드 %d"), (int32)Result.Code);
         }
     }
     else
     {
+        PRINTLOG(TEXT("[WARN] NextQuest: CurTargetBuilding이 nullptr입니다. 이동 불가"));
         TourStateSystem->SetTourState(ETourState::TourEnd);
     }
 }
