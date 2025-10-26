@@ -35,7 +35,7 @@ void UAnswerStateSystem::InitSystem(ADasanActor* InOwner)
 	BroadcastManager = UBroadcastManager::Get(GetWorld());
 	if (BroadcastManager)
 	{
-		BroadcastManager->OnAudioCapture.AddDynamic(this, &UAnswerStateSystem::OnAudioCaptureChanged);
+		BroadcastManager->OnAudioCapture.AddDynamic(this, &UAnswerStateSystem::OnAudioCapture);
 		BroadcastManager->OnTTSPlaybackFinished.AddDynamic(this, &UAnswerStateSystem::OnTTSPlaybackFinished);
 		BroadcastManager->OnQuestionDetected.AddDynamic(this, &UAnswerStateSystem::OnQuestionDetected);
 		PRINTLOG(TEXT("[AnswerSystem] BroadcastManager 이벤트 구독 성공 (OnAudioCapture, OnTTSPlaybackFinished, OnQuestionDetected)"));
@@ -183,12 +183,10 @@ void UAnswerStateSystem::OnAnswerFinished()
 	if (!OwnerDasan || !OwnerDasan->HasAuthority())
 		return;
 
-	PRINTLOG( TEXT("[AnswerState] Answer finished - back to listening"));
+	PRINTLOG( TEXT("[AnswerState] Answer finished - returning to previous state"));
 
-	// Reply에서 다시 Listen으로
-	// SetAnswerState(EAnswerState::AnswerListen);
-	ReplyTimer = 0.0f;
-	ListenTimer = 0.0f;
+	// Answer 완료 처리 (이전 상태로 복귀)
+	FinishAnswer();
 }
 
 void UAnswerStateSystem::EndAnswer()
@@ -296,7 +294,7 @@ bool UAnswerStateSystem::IsAnswerSessionActive() const
 	return !CurrentQuestionerName.IsEmpty();
 }
 
-void UAnswerStateSystem::OnAudioCaptureChanged(bool bRecording)
+void UAnswerStateSystem::OnAudioCapture(bool bRecording)
 {
 	if (!OwnerDasan || !OwnerDasan->HasAuthority())
 		return;

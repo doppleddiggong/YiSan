@@ -40,6 +40,7 @@ bool UTourStateSystem::IsUpdateEnble()
 
 	if ( OwnerDasan->HasAuthority() == false)
 		return false;
+	
 	return true;
 }
 
@@ -57,6 +58,7 @@ void UTourStateSystem::UpdateTick(float DeltaTime )
 			case ETourState::TourEnd: Enter_TourEnd(); break;
 			default:  break;
 		}
+		
 		PrevState = CurState;
 	}
 

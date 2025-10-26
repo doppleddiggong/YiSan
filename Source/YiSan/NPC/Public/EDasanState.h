@@ -25,13 +25,13 @@ enum class ETourState : uint8
 	Max				UMETA(Hidden)
 };
 
-UENUM(BlueprintType)
-enum class EExplainState : uint8
-{
-	ExplainWait		UMETA(DisplayName = "설명대기"),
-	ExplainIng		UMETA(DisplayName = "설명중"),
-	Max				UMETA(Hidden)
-};
+// UENUM(BlueprintType)
+// enum class EExplainState : uint8
+// {
+// 	ExplainWait		UMETA(DisplayName = "설명대기"),
+// 	ExplainIng		UMETA(DisplayName = "설명중"),
+// 	Max				UMETA(Hidden)
+// };
 
 UENUM(BlueprintType)
 enum class EAnswerState : uint8

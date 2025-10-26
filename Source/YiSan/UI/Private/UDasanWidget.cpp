@@ -16,18 +16,18 @@ void UDasanWidget::InitWidget(ADasanActor* InDasanActor)
 	DasanActor = InDasanActor;
 }
 
-void UDasanWidget::UpdateDasanState(EDasanState MainState, ETourState TourState, EExplainState ExplainState, EAnswerState AnswerState)
+void UDasanWidget::UpdateDasanState(EDasanState MainState, ETourState TourState, EAnswerState AnswerState)
 {
 	if (!Text_Msg)
 		return;
 
-	FString StateMessage = GetStateMessage(MainState, TourState, ExplainState, AnswerState);
+	FString StateMessage = GetStateMessage(MainState, TourState, AnswerState);
 
 	// 메시지가 비어있으면 위젯을 숨기는 대신, 텍스트만 비워 깜빡임을 방지합니다.
 	Text_Msg->SetText(FText::FromString(StateMessage));
 }
 
-FString UDasanWidget::GetStateMessage(EDasanState MainState, ETourState TourState, EExplainState ExplainState, EAnswerState AnswerState) const
+FString UDasanWidget::GetStateMessage(EDasanState MainState, ETourState TourState, EAnswerState AnswerState) const
 {
 	switch (MainState)
 	{
@@ -45,19 +45,19 @@ FString UDasanWidget::GetStateMessage(EDasanState MainState, ETourState TourStat
 				return TEXT("");
 			}
 		}
-
-	case EDasanState::Explain:
-		{
-			switch (ExplainState)
-			{
-			case EExplainState::ExplainWait:
-				return TEXT("");  // 숨김
-			case EExplainState::ExplainIng:
-				return TEXT("ExplainIng");
-			default:
-				return TEXT("");
-			}
-		}
+	//
+	// case EDasanState::Explain:
+	// 	{
+	// 		switch (ExplainState)
+	// 		{
+	// 		case EExplainState::ExplainWait:
+	// 			return TEXT("");  // 숨김
+	// 		case EExplainState::ExplainIng:
+	// 			return TEXT("ExplainIng");
+	// 		default:
+	// 			return TEXT("");
+	// 		}
+	// 	}
 
 	case EDasanState::Answer:
 		{

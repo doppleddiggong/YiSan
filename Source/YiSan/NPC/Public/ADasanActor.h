@@ -61,8 +61,8 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="State")
 	TObjectPtr<class UTourStateSystem> TourStateSystem;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="State")
-	TObjectPtr<class UExplainStateSystem> ExplainStateSystem;
+	// UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="State")
+	// TObjectPtr<class UExplainStateSystem> ExplainStateSystem;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="State")
 	TObjectPtr<class UAnswerStateSystem> AnswerStateSystem;
@@ -121,6 +121,6 @@ private:
 	UFUNCTION()
 	void OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester);
 
-	// 플레이어에게 이동하는 함수
-	void MoveToPlayer(AActor* PlayerActor);
+	// // 플레이어에게 이동하는 함수
+	// void MoveToPlayer(AActor* PlayerActor);
 };

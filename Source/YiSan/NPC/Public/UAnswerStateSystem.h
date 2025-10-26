@@ -39,7 +39,7 @@ public:
 
 	// 음성 녹음 이벤트 핸들러
 	UFUNCTION()
-	void OnAudioCaptureChanged(bool bRecording);
+	void OnAudioCapture(bool bRecording);
 
 	// TTS 재생 완료 이벤트 핸들러
 	UFUNCTION()

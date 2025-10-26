@@ -22,11 +22,11 @@ public:
 	void InitWidget(class ADasanActor* InDasanActor);
 
 	// 다산 상태 업데이트 (메인 상태 + 서브 상태)
-	void UpdateDasanState(EDasanState MainState, ETourState TourState, EExplainState ExplainState, EAnswerState AnswerState);
+	void UpdateDasanState(EDasanState MainState, ETourState TourState, EAnswerState AnswerState);
 
 private:
 	// 상태에 따른 메시지 텍스트 반환
-	FString GetStateMessage(EDasanState MainState, ETourState TourState, EExplainState ExplainState, EAnswerState AnswerState) const;
+	FString GetStateMessage(EDasanState MainState, ETourState TourState, EAnswerState AnswerState) const;
 
 public:
 	// 이미지의 경우에는 Blueprint에서 상태 제어가 가능하게 빼준다
