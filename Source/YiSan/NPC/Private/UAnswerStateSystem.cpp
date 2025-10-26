@@ -38,7 +38,7 @@ void UAnswerStateSystem::InitSystem(ADasanActor* InOwner)
 		BroadcastManager->OnAudioCapture.AddDynamic(this, &UAnswerStateSystem::OnAudioCapture);
 		BroadcastManager->OnTTSPlaybackFinished.AddDynamic(this, &UAnswerStateSystem::OnTTSPlaybackFinished);
 		BroadcastManager->OnQuestionDetected.AddDynamic(this, &UAnswerStateSystem::OnQuestionDetected);
-		PRINTLOG(TEXT("[AnswerSystem] BroadcastManager 이벤트 구독 성공 (OnAudioCapture, OnTTSPlaybackFinished, OnQuestionDetected)"));
+		PRINTLOG(TEXT("[AnswerSystem] BroadcastManager 이벤트 구독 성공"));
 	}
 	else
 	{
@@ -67,26 +67,27 @@ void UAnswerStateSystem::OnRep_CurState()
 
 bool UAnswerStateSystem::IsUpdateEnble()
 {
-	if ( OwnerDasan == nullptr)
+	if (OwnerDasan == nullptr)
 		return false;
 
-	if ( OwnerDasan->HasAuthority() == false)
+	if (OwnerDasan->HasAuthority() == false)
 		return false;
+	
 	return true;
 }
 
-void UAnswerStateSystem::UpdateTick(float DeltaTime )
+void UAnswerStateSystem::UpdateTick(float DeltaTime)
 {
-	if ( !IsUpdateEnble())
+	if (!IsUpdateEnble())
 		return;
 
 	if (PrevState != CurState)
 	{
 		switch (CurState)
 		{
-			case EAnswerState::AnswerListen: Enter_AnswerListen();	break;
-			case EAnswerState::AnswerReply:	 Enter_AnswerReply();	break;
-			case EAnswerState::AnswerEnd:	 Enter_AnswerEnd();		break;
+			case EAnswerState::AnswerListen: Enter_AnswerListen(); break;
+			case EAnswerState::AnswerReply: Enter_AnswerReply(); break;
+			case EAnswerState::AnswerEnd: Enter_AnswerEnd(); break;
 			default: break;
 		}
 		PrevState = CurState;
@@ -95,7 +96,7 @@ void UAnswerStateSystem::UpdateTick(float DeltaTime )
 	switch (CurState)
 	{
 		case EAnswerState::AnswerListen: Tick_AnswerListen(DeltaTime); break;
-		case EAnswerState::AnswerReply:	Tick_AnswerReply(DeltaTime); break;
+		case EAnswerState::AnswerReply: Tick_AnswerReply(DeltaTime); break;
 		default: break;
 	}
 }
@@ -109,7 +110,7 @@ void UAnswerStateSystem::Enter_AnswerListen()
 
 	ListenTimer = 0.0f;
 
-	// UI 위젯 표시 (다산이 듣고 있다는 표시)
+	// UI 위젯 표시
 	if (BroadcastManager)
 	{
 		BroadcastManager->SendDasanListening(true, CurrentQuestionerName);
@@ -119,20 +120,19 @@ void UAnswerStateSystem::Enter_AnswerListen()
 
 void UAnswerStateSystem::Enter_AnswerReply()
 {
-	PRINTLOG( TEXT("[AnswerState] Enter AnswerReply - Answering question..."));
+	PRINTLOG(TEXT("[AnswerState] Enter AnswerReply - Answering question..."));
 	ReplyTimer = 0.0f;
-
-	// 여기서 블루프린트 이벤트 호출 가능
-	// 예: 답변 음성 재생, 자막 표시 등
 }
 
 void UAnswerStateSystem::Enter_AnswerEnd()
 {
-	PRINTLOG( TEXT("[AnswerState] Answer session ended"));
+	PRINTLOG(TEXT("[AnswerState] Answer session ended"));
 
-	// 다음 퀘스트로 이동
+	// 이전 상태로 복귀 (Tour로)
 	if (OwnerDasan)
-		OwnerDasan->NextQuest();
+	{
+		OwnerDasan->TransitionToState(EDasanState::Tour);
+	}
 }
 
 // Tick 함수들
@@ -143,10 +143,10 @@ void UAnswerStateSystem::Tick_AnswerListen(float DeltaTime)
 
 	ListenTimer += DeltaTime;
 
-	// 타임아웃 시 자동으로 다음 웨이포인트로
+	// 타임아웃 시 자동으로 이전 상태로
 	if (ListenTimer >= ListenTimeout)
 	{
-		PRINTLOG( TEXT("[AnswerState] Listen timeout - moving to next waypoint"));
+		PRINTLOG(TEXT("[AnswerState] Listen timeout - returning to Tour"));
 		EndAnswer();
 	}
 }
@@ -171,11 +171,13 @@ void UAnswerStateSystem::OnQuestionDetected()
 	if (!OwnerDasan || !OwnerDasan->HasAuthority())
 		return;
 
-	PRINTLOG( TEXT("[AnswerState] Question detected!"));
+	PRINTLOG(TEXT("[AnswerState] Question detected!"));
 
 	// Listen 상태에서만 Reply로 전환
 	if (CurState == EAnswerState::AnswerListen)
+	{
 		SetAnswerState(EAnswerState::AnswerReply);
+	}
 }
 
 void UAnswerStateSystem::OnAnswerFinished()
@@ -183,9 +185,9 @@ void UAnswerStateSystem::OnAnswerFinished()
 	if (!OwnerDasan || !OwnerDasan->HasAuthority())
 		return;
 
-	PRINTLOG( TEXT("[AnswerState] Answer finished - returning to previous state"));
+	PRINTLOG(TEXT("[AnswerState] Answer finished - returning to Tour"));
 
-	// Answer 완료 처리 (이전 상태로 복귀)
+	// Answer 완료 처리
 	FinishAnswer();
 }
 
@@ -194,11 +196,10 @@ void UAnswerStateSystem::EndAnswer()
 	if (!OwnerDasan || !OwnerDasan->HasAuthority())
 		return;
 
-	PRINTLOG( TEXT("[AnswerState] Ending answer session"));
+	PRINTLOG(TEXT("[AnswerState] Ending answer session"));
 
-	// Answer 종료 후 다음 퀘스트로 이동
+	// Answer 종료 후 Tour 상태로 복귀
 	SetAnswerState(EAnswerState::AnswerEnd);
-	OwnerDasan->TransitionToState(EDasanState::Tour);
 }
 
 bool UAnswerStateSystem::CanStartAnswer(const FString& PlayerName, FString& OutReason) const
@@ -230,12 +231,8 @@ bool UAnswerStateSystem::TryStartAnswer(const FString& PlayerName)
 	FString Reason;
 	if (!CanStartAnswer(PlayerName, Reason))
 	{
-		// 거부 메시지를 요청한 플레이어에게 표시
 		PRINTLOG(TEXT("[AnswerSystem] Answer 시작 거부: %s"), *Reason);
-
-		// 모든 클라이언트에 다이얼로그 표시 (Toast는 로컬 플레이어만 보임)
 		UDialogManager::Toast(GetWorld(), Reason);
-
 		return false;
 	}
 
@@ -272,7 +269,7 @@ void UAnswerStateSystem::FinishAnswer()
 
 	PRINTLOG(TEXT("[AnswerSystem] %s님의 질문 종료"), *CurrentQuestionerName);
 
-	// UI 위젯 숨기기 (다산이 듣기 종료)
+	// UI 위젯 숨기기
 	if (BroadcastManager)
 	{
 		BroadcastManager->SendDasanListening(false, TEXT(""));
@@ -281,11 +278,18 @@ void UAnswerStateSystem::FinishAnswer()
 
 	CurrentQuestionerName.Empty();
 
-	// 이전 상태로 복귀
+	// 이전 상태로 복귀 (Tour)
 	if (PreviousMainState != EDasanState::Answer)
 	{
-		PRINTLOG(TEXT("[AnswerSystem] 이전 상태로 복귀: %s"), *ENUM_TO_NAME(EDasanState, PreviousMainState));
+		PRINTLOG(TEXT("[AnswerSystem] 이전 상태로 복귀: %s"), 
+			*ENUM_TO_NAME(EDasanState, PreviousMainState));
 		OwnerDasan->TransitionToState(PreviousMainState);
+	}
+	else
+	{
+		// 안전하게 Tour로 복귀
+		PRINTLOG(TEXT("[AnswerSystem] Tour 상태로 복귀"));
+		OwnerDasan->TransitionToState(EDasanState::Tour);
 	}
 }
 
@@ -301,7 +305,7 @@ void UAnswerStateSystem::OnAudioCapture(bool bRecording)
 
 	if (bRecording)
 	{
-		// 음성 녹음 시작 - 플레이어 이름 가져오기
+		// 음성 녹음 시작
 		PRINTLOG(TEXT("[AnswerSystem] 음성 녹음 시작 감지"));
 
 		// 첫 번째 플레이어 가져오기
@@ -326,8 +330,8 @@ void UAnswerStateSystem::OnAudioCapture(bool bRecording)
 	}
 	else
 	{
-		// 음성 녹음 종료 - TTS 대기 중
-		PRINTLOG(TEXT("[AnswerSystem] 음성 녹음 종료 감지 (Answer 상태 유지 - TTS 대기)"));
+		// 음성 녹음 종료
+		PRINTLOG(TEXT("[AnswerSystem] 음성 녹음 종료 (TTS 대기 중)"));
 	}
 }
 

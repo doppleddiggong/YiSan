@@ -6,6 +6,7 @@
 #include "ADasanActor.h"
 #include "FComponentHelper.h"
 #include "GameLogging.h"
+#include "UQuestManager.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/Character.h"
@@ -20,10 +21,20 @@ void UTourStateSystem::InitSystem(ADasanActor* InOwner)
 {
 	OwnerDasan = InOwner;
 	PrevState = ETourState::None;
+	CurState = ETourState::None;
+	
+	PRINTLOG(TEXT("[TourSystem] 시스템 초기화 완료"));
 }
 
 void UTourStateSystem::SetTourState(const ETourState InState)
 {
+	if (CurState == InState)
+		return;
+		
+	PRINTLOG(TEXT("[TourSystem] 상태 변경: %s -> %s"),
+		*ENUM_TO_NAME(ETourState, CurState),
+		*ENUM_TO_NAME(ETourState, InState));
+	
 	CurState = InState;
 
 	// 상태가 변경되었으므로 위젯 업데이트
@@ -35,18 +46,18 @@ void UTourStateSystem::SetTourState(const ETourState InState)
 
 bool UTourStateSystem::IsUpdateEnble()
 {
-	if ( OwnerDasan == nullptr)
+	if (OwnerDasan == nullptr)
 		return false;
 
-	if ( OwnerDasan->HasAuthority() == false)
+	if (OwnerDasan->HasAuthority() == false)
 		return false;
 	
 	return true;
 }
 
-void UTourStateSystem::UpdateTick(float DeltaTime )
+void UTourStateSystem::UpdateTick(float DeltaTime)
 {
-	if ( !IsUpdateEnble())
+	if (!IsUpdateEnble())
 		return;
 	
 	if (PrevState != CurState)
@@ -56,7 +67,7 @@ void UTourStateSystem::UpdateTick(float DeltaTime )
 			case ETourState::TourMove: Enter_TourMove(); break;
 			case ETourState::TourWait: Enter_TourWait(); break;
 			case ETourState::TourEnd: Enter_TourEnd(); break;
-			default:  break;
+			default: break;
 		}
 		
 		PrevState = CurState;
@@ -70,17 +81,18 @@ void UTourStateSystem::UpdateTick(float DeltaTime )
 	}
 }
 
-
 // Enter 함수들
 void UTourStateSystem::Enter_TourMove()
 {
-	PRINTLOG( TEXT("[TourState] Enter TourMove"));
+	PRINTLOG(TEXT("[TourState] Enter TourMove"));
 	WaitTimer = 0.0f;
+	
+	// AI Controller를 통한 이동은 ADasanActor에서 처리됨
 }
 
 void UTourStateSystem::Enter_TourWait()
 {
-	PRINTLOG( TEXT("[TourState] Enter TourWait"));
+	PRINTLOG(TEXT("[TourState] Enter TourWait"));
 	WaitTimer = 0.0f;
 
 	// 캐릭터 정지
@@ -91,16 +103,44 @@ void UTourStateSystem::Enter_TourWait()
 		{
 			Movement->StopMovementImmediately();
 		}
+		
+		// AI 이동도 중지
+		if (OwnerDasan->DasanAicontrol)
+		{
+			OwnerDasan->DasanAicontrol->StopMovement();
+		}
 	}
 }
 
 void UTourStateSystem::Enter_TourEnd()
 {
-	PRINTLOG( TEXT("[TourState] Tour End"));
+	PRINTLOG(TEXT("[TourState] Enter TourEnd"));
 
-	// 투어 종료 후 다음 메인 상태로 전환
-	if (OwnerDasan)
-		OwnerDasan->TransitionToState(EDasanState::Explain);
+	if (!OwnerDasan)
+		return;
+
+	// 이동 중지
+	if (OwnerDasan->DasanAicontrol)
+	{
+		OwnerDasan->DasanAicontrol->StopMovement();
+	}
+
+	// 다음 퀘스트가 있는지 확인
+	UQuestManager* QuestManager = OwnerDasan->QuestManager;
+	
+	if (QuestManager && QuestManager->IsHasQuest() && QuestManager->GetCurTarget() != EBuildingType::None)
+	{
+		PRINTLOG(TEXT("[TourState] 다음 퀘스트로 이동"));
+		
+		// 다음 퀘스트로 이동
+		OwnerDasan->NextQuest();
+	}
+	else
+	{
+		// 모든 퀘스트 완료 - Answer 상태로 전환
+		PRINTLOG(TEXT("[TourState] 모든 퀘스트 완료 - Answer 상태로 전환"));
+		OwnerDasan->TransitionToState(EDasanState::Answer);
+	}
 }
 
 // Tick 함수들
@@ -109,14 +149,8 @@ void UTourStateSystem::Tick_TourMove(float DeltaTime)
 	if (!OwnerDasan)
 		return;
 
-	// 웨이포인트로 이동
-	MoveToCurWaypoint();
-
-	// 웨이포인트 도착 체크
-	if (IsNearWaypoint())
-	{
-		CurState = ETourState::TourWait;
-	}
+	// 이동은 AI Controller가 자동으로 처리
+	// 도착 감지는 OnMoveCompleted 콜백에서 처리됨
 }
 
 void UTourStateSystem::Tick_TourWait(float DeltaTime)
@@ -125,72 +159,20 @@ void UTourStateSystem::Tick_TourWait(float DeltaTime)
 		return;
 
 	WaitTimer += DeltaTime;
-
-	// 플레이어들이 근처에 있는지 확인
-	if ( IsAllPlayersNearby() && WaitTimer >= WaitTimeBeforeExplain)
-	{
-		// 설명 상태로 전환
-		OwnerDasan->TransitionToState(EDasanState::Explain);
-		WaitTimer = 0.0f;
-	}
-}
-
-// 유틸리티 함수들
-void UTourStateSystem::MoveToCurWaypoint()
-{
-	if (!OwnerDasan)
-		return;
-
-	// 현재 목표 건물이 없으면 찾기
-	if (!OwnerDasan->GetCurTargetBuilding())
-		OwnerDasan->UpdateTargetBuilding( OwnerDasan->FindCurTargetBuilding());
-
-	// 여전히 없으면 리턴
-	if (!OwnerDasan->GetCurTargetBuilding())
-	{
-		PRINTLOG( TEXT(" No target building found"));
-		return;
-	}
-
-	// AI Controller가 있으면 AI MoveTo 사용
-	if (OwnerDasan->DasanAicontrol)
-	{
-		// AI MoveTo로 이동 - NavMesh 기반 경로 탐색
-		// 이 함수는 Tick마다 호출되지만, AI MoveTo는 한 번만 시작됨
-		// 실제 이동은 UpdateTourState 또는 OnMoveCompleted에서 관리됨
-		return;
-	}
-
-	// AI Controller가 없으면 직접 이동 방식 사용 (기존 코드)
-	// 목표 방향 계산
-	const FVector CurLoc  = OwnerDasan->GetActorLocation();
-	const FVector TargetLoc  = OwnerDasan->GetCurTargetBuilding()->GetActorLocation();
-	const FVector Direction = (TargetLoc - CurLoc).GetSafeNormal();
-
-	// 회전
-	const FRotator TargetRotation = Direction.Rotation();
 	
-	OwnerDasan->SetActorRotation(FMath::RInterpTo(
-		OwnerDasan->GetActorRotation(),
-		TargetRotation,
-		GetWorld()->GetDeltaSeconds(),
-		5.0f
-	));
-
-	// 직선 이동
-	if (auto Movement = OwnerDasan->GetCharacterMovement())
-	{
-		Movement->MaxWalkSpeed = MoveSpeed;
-		OwnerDasan->AddMovementInput(Direction, 1.0f);
-	}
+	// 플레이어 대기는 ADasanActor의 UpdateTourState에서 처리됨
 }
 
+// 유틸리티 함수들 - 더 이상 사용하지 않지만 호환성을 위해 유지
 bool UTourStateSystem::IsNearWaypoint() const
 {
 	if (!OwnerDasan || !OwnerDasan->GetCurTargetBuilding())
 		return false;
 
-	float Distance = FVector::Dist( OwnerDasan->GetActorLocation(), OwnerDasan->GetCurTargetBuilding()->GetActorLocation() );
+	float Distance = FVector::Dist(
+		OwnerDasan->GetActorLocation(), 
+		OwnerDasan->GetCurTargetBuilding()->GetActorLocation()
+	);
 
 	return Distance <= WaypointReachDistance;
 }
@@ -214,11 +196,9 @@ bool UTourStateSystem::IsAllPlayersNearby() const
 		float Distance = FVector::Dist(DasanLocation, Player->GetActorLocation());
 		if (Distance > PlayerDetectionRadius)
 		{
-			// 하나라도 기준 밖이면 전체 실패
 			return false;
 		}
 	}
 
-	// 모든 플레이어가 범위 안에 있음
 	return true;
 }

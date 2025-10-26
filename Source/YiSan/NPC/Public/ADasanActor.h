@@ -33,7 +33,7 @@ public:
 	UFUNCTION()
 	void OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::Type Result);
 
-	// 현재 메인 상태 (Tour/Explain/Answer)
+	// 현재 메인 상태 (Tour/Answer)
 	UPROPERTY(ReplicatedUsing=OnRep_DasanState, BlueprintReadOnly, Category="State")
 	EDasanState DasanState;
 	
@@ -52,17 +52,11 @@ public:
 	void TransitionToState(EDasanState InMainState);
 
 	float GetTargetBuildingDistnace();
-	
-	// // 디버그 상태 표시
-	//  void DrawDebugState();
 
 public:
 	// 상태 시스템 컴포넌트
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="State")
 	TObjectPtr<class UTourStateSystem> TourStateSystem;
-
-	// UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="State")
-	// TObjectPtr<class UExplainStateSystem> ExplainStateSystem;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="State")
 	TObjectPtr<class UAnswerStateSystem> AnswerStateSystem;
@@ -75,14 +69,11 @@ public:
 	UPROPERTY()
 	TObjectPtr<class UDasanWidget> DasanWidget;
 
-	// Tour 상태를 업데이트하는  함수
+	// Tour 상태를 업데이트하는 함수
 	void UpdateTourState();
 
 	// 위젯 상태 업데이트 함수
 	void UpdateWidgetState();
-
-	// 사용안함
-	// void MoveToTarget();
 
 	// 플레이어 폰을 가져오는 헬퍼 함수
 	class APawn* GetPlayerPawn() const;
@@ -103,6 +94,9 @@ public:
 	// 웨이포인트 거리
 	float wayPointDis;
 
+	// 직접 이동 모드 (NavMesh 실패 시)
+	bool bUseDirectMovement = false;
+
 public:
 	// 투어 상태 업데이트용 타이머 핸들
 	FTimerHandle TourStateTimerHandle;
@@ -120,7 +114,4 @@ private:
 	// 음성 명령 핸들러
 	UFUNCTION()
 	void OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester);
-
-	// // 플레이어에게 이동하는 함수
-	// void MoveToPlayer(AActor* PlayerActor);
 };

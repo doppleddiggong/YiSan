@@ -9,8 +9,8 @@
 UENUM(BlueprintType)
 enum class EDasanState : uint8
 {
+	None			UMETA(DisplayName = "초기화"),
 	Tour			UMETA(DisplayName = "투어"),
-	Explain			UMETA(DisplayName = "설명"),
 	Answer			UMETA(DisplayName = "답변"),
 	Max				UMETA(Hidden)
 };
@@ -24,14 +24,6 @@ enum class ETourState : uint8
 	TourEnd			UMETA(DisplayName = "투어종료"),
 	Max				UMETA(Hidden)
 };
-
-// UENUM(BlueprintType)
-// enum class EExplainState : uint8
-// {
-// 	ExplainWait		UMETA(DisplayName = "설명대기"),
-// 	ExplainIng		UMETA(DisplayName = "설명중"),
-// 	Max				UMETA(Hidden)
-// };
 
 UENUM(BlueprintType)
 enum class EAnswerState : uint8
