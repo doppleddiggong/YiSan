@@ -50,7 +50,7 @@ private:
 
 	// 설명 관련
 	UPROPERTY(EditAnywhere, Category="Explain")
-	float ExplainDuration = 10.0f; // 기본 설명 시간
+	float ExplainDuration = 3.0f; // 기본 설명 시간 테스트 떄문에 이따가 다시 수정 해야함
 
 	UPROPERTY(EditAnywhere, Category="Explain")
 	bool bAutoFinishExplain = true; // 자동으로 설명 종료할지 여부
