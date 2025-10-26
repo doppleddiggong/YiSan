@@ -37,6 +37,11 @@ void UGPTContextSystem::TickComponent(float DeltaTime, ELevelTick TickType,
 
     if ( Owner == nullptr )
         return;
+
+    // 로컬 플레이어에 대해서만 GPT 컨텍스트를 업데이트합니다.
+    // Host 클라이언트에서 Guest 플레이어의 GPTContextSystem이 동작하지 않도록 방지합니다.
+    if (!Owner->IsLocallyControlled())
+        return;
         
     // DeltaTime을 계속 더해줍니다.                                                                                                                                                                                                                           
     TimeSinceLastCheck += DeltaTime;                                                                                                                                                                                                                          
