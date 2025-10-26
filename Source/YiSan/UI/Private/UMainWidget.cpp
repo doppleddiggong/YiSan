@@ -5,9 +5,11 @@
 
 #include "USmallPopup.h"
 #include "UMegaPopup.h"
+#include "Components/AudioComponent.h"
 
 #include "Components/EditableTextBox.h"
 #include "Input/Reply.h"
+#include "Kismet/GameplayStatics.h"
 
 void UMainWidget::NativeConstruct()
 {
@@ -35,6 +37,31 @@ void UMainWidget::NativeConstruct()
 	
     if (MegaPopupCtn)
         MegaPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
+
+    PlayBGM();
+}
+
+void UMainWidget::PlayBGM()
+{
+    if (!BGM_Sound)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("BGM_Sound is null"));
+        return;
+    }
+
+    BGM_AudioComp = UGameplayStatics::SpawnSound2D(
+        this,
+        BGM_Sound,
+        1.0f,   // Volume
+        1.0f,   // Pitch
+        0.0f,   // StartTime
+        nullptr // Concurrency
+    );
+
+    if (BGM_AudioComp)
+    {
+        BGM_AudioComp->Play();
+    }
 }
 
 

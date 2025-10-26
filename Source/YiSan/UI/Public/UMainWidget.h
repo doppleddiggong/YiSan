@@ -18,6 +18,7 @@ class YISAN_API UMainWidget : public UUserWidget
 protected:
     /// @brief 위젯 초기화와 브로드캐스트 구독을 수행합니다.
     virtual void NativeConstruct() override;
+    void PlayBGM();
 
 private:
     UFUNCTION()
@@ -36,6 +37,11 @@ public:
     /// @brief 스몰 팝업이 배치되는 컨테이너 위젯입니다.
     UPROPERTY(meta = (BindWidget))
     class USmallPopup* SmallPopupCtn;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="BGM")
+    class USoundBase* BGM_Sound;
+    UPROPERTY()
+    class UAudioComponent* BGM_AudioComp;
 
 private:
     UPROPERTY()
