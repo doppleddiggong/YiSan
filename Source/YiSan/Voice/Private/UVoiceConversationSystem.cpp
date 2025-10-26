@@ -172,7 +172,7 @@ void UVoiceConversationSystem::OnResponseAsk(FResponseAsk& Response, bool bSucce
 
 		if ( VoiceCommand != EVoiceCommandType::None )
 		{
-			BroadcastManager->SendExecVoiceCommand( VoiceCommand );
+			BroadcastManager->SendExecVoiceCommand( VoiceCommand, Owner );
 		}
 		else
 		{

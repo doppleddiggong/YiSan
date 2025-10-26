@@ -103,7 +103,7 @@ void UChatBoxWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
 
 		if ( VoiceCommand != EVoiceCommandType::None )
 		{
-			BroadcastManager->SendExecVoiceCommand( VoiceCommand );
+			BroadcastManager->SendExecVoiceCommand( VoiceCommand, Owner );
 		}
 		else
 		{

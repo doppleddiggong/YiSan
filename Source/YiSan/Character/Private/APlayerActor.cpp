@@ -77,7 +77,7 @@ void APlayerActor::BeginPlay()
             MainWidgetInst = CreateWidget<UMainWidget>(GetWorld(), MainWidgetClass);
             if (MainWidgetInst)
             {
-                MainWidgetInst->AddToViewport();
+                MainWidgetInst->AddToViewport(50);
             }
 
             if (ChatUIWidgetClass)
@@ -85,7 +85,7 @@ void APlayerActor::BeginPlay()
                 auto ChatUIInst = CreateWidget<UChatUIWidget>(GetWorld(), ChatUIWidgetClass);
                 if (ChatUIInst && ChatUIInst->WBP_ChatBox)
                 {
-                    ChatUIInst->AddToViewport();
+                    ChatUIInst->AddToViewport(0);
                     ChatBoxWidget = ChatUIInst->WBP_ChatBox;
                     ChatPlayerSystem->InitSystem(ChatBoxWidget.Get());
                 }

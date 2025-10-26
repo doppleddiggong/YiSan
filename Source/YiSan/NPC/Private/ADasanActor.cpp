@@ -9,6 +9,7 @@
 
 #include "UQuestManager.h"
 #include "ABuilding.h"
+#include "APlayerActor.h"
 #include "EBuildingType.h"
 #include "UBroadcastManager.h"
 #include "EVoiceCommandType.h"
@@ -22,6 +23,9 @@
 #include "Components/WidgetComponent.h"
 #include "UDasanWidget.h"
 #include "NavigationSystem.h"
+#include "UChatPlayerSystem.h"
+#include "UGameSoundManager.h"
+#include "YiSan/YiSan.h"
 
 #define DASANWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_DasanWidget.WBP_DasanWidget_C")
 
@@ -722,6 +726,15 @@ void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester
 			{
 				PRINTLOG(TEXT("[Dasan] Cmd_Summon: %s님이 다산을 소환합니다"), *Requester->GetName());
 				MoveToPlayer(Requester);
+
+				APlayerActor* RequestPlayer = Cast<APlayerActor>(Requester);
+				if (RequestPlayer && RequestPlayer->ChatPlayerSystem)
+				{
+					FChatMessage ChatMessage(EChatMessageType::NPC, GameString::NPC, TEXT("부르셨습니까?"));
+					RequestPlayer->ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
+				}
+
+				UGameSoundManager::Get(GetWorld())->PlaySound2D(EGameSoundType::Cmd_Summon);
 			}
 			break;
 

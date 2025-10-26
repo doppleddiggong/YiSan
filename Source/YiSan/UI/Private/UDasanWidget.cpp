@@ -3,9 +3,7 @@
 #include "UDasanWidget.h"
 #include "ADasanActor.h"
 #include "Components/TextBlock.h"
-#include "Components/Image.h"
 #include "Components/WidgetComponent.h"
-#include "Kismet/GameplayStatics.h"
 #include "GameFramework/PlayerController.h"
 
 void UDasanWidget::NativeConstruct()
@@ -38,9 +36,9 @@ FString UDasanWidget::GetStateMessage(EDasanState MainState, ETourState TourStat
 			switch (TourState)
 			{
 			case ETourState::TourMove:
-				return TEXT("이동 중...");
+				return TEXT("TourMove");
 			case ETourState::TourWait:
-				return TEXT("대기 중...");
+				return TEXT("TourWait");
 			case ETourState::TourEnd:
 				return TEXT("");  // 숨김
 			default:
@@ -55,7 +53,7 @@ FString UDasanWidget::GetStateMessage(EDasanState MainState, ETourState TourStat
 			case EExplainState::ExplainWait:
 				return TEXT("");  // 숨김
 			case EExplainState::ExplainIng:
-				return TEXT("설명 중...");
+				return TEXT("ExplainIng");
 			default:
 				return TEXT("");
 			}
@@ -66,9 +64,9 @@ FString UDasanWidget::GetStateMessage(EDasanState MainState, ETourState TourStat
 			switch (AnswerState)
 			{
 			case EAnswerState::AnswerListen:
-				return TEXT("🎤 듣는 중...");
+				return TEXT("AnswerListen");
 			case EAnswerState::AnswerReply:
-				return TEXT("💬 답변 중...");
+				return TEXT("AnswerReply");
 			case EAnswerState::AnswerEnd:
 				return TEXT("");  // 숨김
 			default:
