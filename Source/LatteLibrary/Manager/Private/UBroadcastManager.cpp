@@ -26,25 +26,26 @@ void UBroadcastManager::SendAudioCapture(bool bRecording)
 	OnAudioCapture.Broadcast(bRecording);
 }
 
-void UBroadcastManager::SendQuestionDetected()
+void UBroadcastManager::SendAnswerReply()
 {
-	OnQuestionDetected.Broadcast();
+	OnAnswerReply.Broadcast();
 }
 
-void UBroadcastManager::SendTTSPlaybackFinished()
+void UBroadcastManager::SendVoiceAudioFinished()
 {
-	OnTTSPlaybackFinished.Broadcast();
+	OnVoiceAudioFinished.Broadcast();
 }
 
-void UBroadcastManager::SendDasanListening(bool bListening, const FString& PlayerName)
+void UBroadcastManager::SendAskListening(bool bListening, const FString& PlayerName)
 {
-	OnDasanListening.Broadcast(bListening, PlayerName);
+	OnAskListening.Broadcast(bListening, PlayerName);
 }
 
 void UBroadcastManager::SendAudioSpectrum(float Spectrum)
 {
 	OnAudioSpectrum.Broadcast(Spectrum);
 }
+
 void UBroadcastManager::SendContactBuilding(EBuildingType BuildingType)
 {
 	OnContactBuilding.Broadcast(BuildingType);	

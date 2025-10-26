@@ -21,7 +21,7 @@ void UAnswerStateSystem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-	DOREPLIFETIME(UAnswerStateSystem, CurrentQuestionerName);
+	DOREPLIFETIME(UAnswerStateSystem, CurQuestionerName);
 	DOREPLIFETIME(UAnswerStateSystem, CurState);
 }
 
@@ -36,17 +36,12 @@ void UAnswerStateSystem::InitSystem(ADasanActor* InOwner)
 	if (BroadcastManager)
 	{
 		BroadcastManager->OnAudioCapture.AddDynamic(this, &UAnswerStateSystem::OnAudioCapture);
-		BroadcastManager->OnTTSPlaybackFinished.AddDynamic(this, &UAnswerStateSystem::OnTTSPlaybackFinished);
-		BroadcastManager->OnQuestionDetected.AddDynamic(this, &UAnswerStateSystem::OnQuestionDetected);
-		PRINTLOG(TEXT("[AnswerSystem] BroadcastManager 이벤트 구독 성공 (OnAudioCapture, OnTTSPlaybackFinished, OnQuestionDetected)"));
-	}
-	else
-	{
-		PRINTLOG(TEXT("[AnswerSystem] BroadcastManager를 찾을 수 없습니다!"));
+		BroadcastManager->OnVoiceAudioFinished.AddDynamic(this, &UAnswerStateSystem::OnTTSFinished);
+		BroadcastManager->OnAnswerReply.AddDynamic(this, &UAnswerStateSystem::OnAnswerReply);
 	}
 }
 
-void UAnswerStateSystem::SetAnswerState(const EAnswerState InState)
+void UAnswerStateSystem::SetCurState(EAnswerState InState)
 {
 	CurState = InState;
 
@@ -57,6 +52,7 @@ void UAnswerStateSystem::SetAnswerState(const EAnswerState InState)
 	}
 }
 
+
 void UAnswerStateSystem::OnRep_CurState()
 {
 	if (OwnerDasan)
@@ -65,141 +61,21 @@ void UAnswerStateSystem::OnRep_CurState()
 	}
 }
 
-bool UAnswerStateSystem::IsUpdateEnble()
-{
-	if ( OwnerDasan == nullptr)
-		return false;
-
-	if ( OwnerDasan->HasAuthority() == false)
-		return false;
-	return true;
-}
-
-void UAnswerStateSystem::UpdateTick(float DeltaTime )
-{
-	if ( !IsUpdateEnble())
-		return;
-
-	if (PrevState != CurState)
-	{
-		switch (CurState)
-		{
-			case EAnswerState::AnswerListen: Enter_AnswerListen();	break;
-			case EAnswerState::AnswerReply:	 Enter_AnswerReply();	break;
-			case EAnswerState::AnswerEnd:	 Enter_AnswerEnd();		break;
-			default: break;
-		}
-		PrevState = CurState;
-	}
-
-	switch (CurState)
-	{
-		case EAnswerState::AnswerListen: Tick_AnswerListen(DeltaTime); break;
-		case EAnswerState::AnswerReply:	Tick_AnswerReply(DeltaTime); break;
-		default: break;
-	}
-}
-
-// Enter 함수들
-void UAnswerStateSystem::Enter_AnswerListen()
-{
-	PRINTLOG(TEXT("[AnswerState] Enter AnswerListen - Waiting for questions..."));
-	PRINTLOG(TEXT("[AnswerState] 다산이 %s님의 질문을 듣고 있습니다."),
-		CurrentQuestionerName.IsEmpty() ? TEXT("누군가") : *CurrentQuestionerName);
-
-	ListenTimer = 0.0f;
-
-	// UI 위젯 표시 (다산이 듣고 있다는 표시)
-	if (BroadcastManager)
-	{
-		BroadcastManager->SendDasanListening(true, CurrentQuestionerName);
-		PRINTLOG(TEXT("[AnswerState] SendDasanListening(true, %s)"), *CurrentQuestionerName);
-	}
-}
-
-void UAnswerStateSystem::Enter_AnswerReply()
-{
-	PRINTLOG( TEXT("[AnswerState] Enter AnswerReply - Answering question..."));
-	ReplyTimer = 0.0f;
-
-	// 여기서 블루프린트 이벤트 호출 가능
-	// 예: 답변 음성 재생, 자막 표시 등
-}
-
-void UAnswerStateSystem::Enter_AnswerEnd()
-{
-	PRINTLOG( TEXT("[AnswerState] Answer session ended"));
-
-	// 다음 퀘스트로 이동
-	if (OwnerDasan)
-		OwnerDasan->NextQuest();
-}
-
-// Tick 함수들
-void UAnswerStateSystem::Tick_AnswerListen(float DeltaTime)
-{
-	if (!OwnerDasan)
-		return;
-
-	ListenTimer += DeltaTime;
-
-	// 타임아웃 시 자동으로 다음 웨이포인트로
-	if (ListenTimer >= ListenTimeout)
-	{
-		PRINTLOG( TEXT("[AnswerState] Listen timeout - moving to next waypoint"));
-		EndAnswer();
-	}
-}
-
-void UAnswerStateSystem::Tick_AnswerReply(float DeltaTime)
-{
-	if (!OwnerDasan)
-		return;
-
-	ReplyTimer += DeltaTime;
-
-	// 자동 종료 모드일 경우 시간이 지나면 자동으로 Listen으로 복귀
-	if (bAutoEndAnswer && ReplyTimer >= ReplyDuration)
-	{
-		OnAnswerFinished();
-	}
-}
-
 // 블루프린트 호출 함수들
-void UAnswerStateSystem::OnQuestionDetected()
+void UAnswerStateSystem::OnAnswerReply()
 {
 	if (!OwnerDasan || !OwnerDasan->HasAuthority())
 		return;
 
-	PRINTLOG( TEXT("[AnswerState] Question detected!"));
+	PRINTLOG( TEXT("[AnswerState] OnAnswerReply"));
 
 	// Listen 상태에서만 Reply로 전환
 	if (CurState == EAnswerState::AnswerListen)
-		SetAnswerState(EAnswerState::AnswerReply);
+	{
+		this->SetCurState(EAnswerState::AnswerReply);
+	}
 }
 
-void UAnswerStateSystem::OnAnswerFinished()
-{
-	if (!OwnerDasan || !OwnerDasan->HasAuthority())
-		return;
-
-	PRINTLOG( TEXT("[AnswerState] Answer finished - returning to previous state"));
-
-	// Answer 완료 처리 (이전 상태로 복귀)
-	FinishAnswer();
-}
-
-void UAnswerStateSystem::EndAnswer()
-{
-	if (!OwnerDasan || !OwnerDasan->HasAuthority())
-		return;
-
-	PRINTLOG( TEXT("[AnswerState] Ending answer session"));
-
-	// Answer 종료 후 다음 퀘스트로 이동
-	SetAnswerState(EAnswerState::AnswerEnd);
-	OwnerDasan->TransitionToState(EDasanState::Tour);
-}
 
 bool UAnswerStateSystem::CanStartAnswer(const FString& PlayerName, FString& OutReason) const
 {
@@ -210,11 +86,11 @@ bool UAnswerStateSystem::CanStartAnswer(const FString& PlayerName, FString& OutR
 	}
 
 	// 이미 Answer 상태이고, 다른 플레이어가 질문 중이면 거부
-	if (OwnerDasan->DasanState == EDasanState::Answer && !CurrentQuestionerName.IsEmpty())
+	if (OwnerDasan->DasanState == EDasanState::Answer && !CurQuestionerName.IsEmpty())
 	{
-		if (CurrentQuestionerName != PlayerName)
+		if (CurQuestionerName != PlayerName)
 		{
-			OutReason = FString::Printf(TEXT("다산은 %s에게 답변중입니다."), *CurrentQuestionerName);
+			OutReason = FString::Printf(TEXT("다산은 %s에게 답변중입니다."), *CurQuestionerName);
 			return false;
 		}
 	}
@@ -240,7 +116,7 @@ bool UAnswerStateSystem::TryStartAnswer(const FString& PlayerName)
 	}
 
 	// Answer 시작 성공
-	CurrentQuestionerName = PlayerName;
+	CurQuestionerName = PlayerName;
 	PRINTLOG(TEXT("[AnswerSystem] %s님의 질문 시작"), *PlayerName);
 
 	// 현재 Dasan 메인 상태가 Answer가 아닐 때만 처리
@@ -270,16 +146,16 @@ void UAnswerStateSystem::FinishAnswer()
 	if (!OwnerDasan || !OwnerDasan->HasAuthority())
 		return;
 
-	PRINTLOG(TEXT("[AnswerSystem] %s님의 질문 종료"), *CurrentQuestionerName);
+	PRINTLOG(TEXT("[AnswerSystem] %s님의 질문 종료"), *CurQuestionerName);
 
 	// UI 위젯 숨기기 (다산이 듣기 종료)
 	if (BroadcastManager)
 	{
-		BroadcastManager->SendDasanListening(false, TEXT(""));
+		BroadcastManager->SendAskListening(false, TEXT(""));
 		PRINTLOG(TEXT("[AnswerState] SendDasanListening(false)"));
 	}
 
-	CurrentQuestionerName.Empty();
+	CurQuestionerName.Empty();
 
 	// 이전 상태로 복귀
 	if (PreviousMainState != EDasanState::Answer)
@@ -291,7 +167,7 @@ void UAnswerStateSystem::FinishAnswer()
 
 bool UAnswerStateSystem::IsAnswerSessionActive() const
 {
-	return !CurrentQuestionerName.IsEmpty();
+	return !CurQuestionerName.IsEmpty();
 }
 
 void UAnswerStateSystem::OnAudioCapture(bool bRecording)
@@ -331,7 +207,7 @@ void UAnswerStateSystem::OnAudioCapture(bool bRecording)
 	}
 }
 
-void UAnswerStateSystem::OnTTSPlaybackFinished()
+void UAnswerStateSystem::OnTTSFinished()
 {
 	if (!OwnerDasan || !OwnerDasan->HasAuthority())
 		return;

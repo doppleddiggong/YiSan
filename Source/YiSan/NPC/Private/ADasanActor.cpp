@@ -31,7 +31,7 @@
 
 ADasanActor::ADasanActor()
 {
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 
 	// 네트워크 복제 활성화
 	bReplicates = true;
@@ -152,24 +152,24 @@ void ADasanActor::BeginPlay()
 	}
 }
 
-void ADasanActor::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-	// 서버에서만 상태 시스템 틱 실행
-	if (HasAuthority())
-	{
-		switch (DasanState)
-		{
-		// case EDasanState::Explain: ExplainStateSystem->UpdateTick(DeltaTime); break;
-		case EDasanState::Answer: AnswerStateSystem->UpdateTick(DeltaTime); break;
-		case EDasanState::Tour:
-		default: break;
-		}
-	}
-
-	// DrawDebugState();
-}
+// void ADasanActor::Tick(float DeltaTime)
+// {
+// 	Super::Tick(DeltaTime);
+//
+// 	// // 서버에서만 상태 시스템 틱 실행
+// 	// if (HasAuthority())
+// 	// {
+// 	// 	switch (DasanState)
+// 	// 	{
+// 	// 	// case EDasanState::Explain: ExplainStateSystem->UpdateTick(DeltaTime); break;
+// 	// 	case EDasanState::Answer: AnswerStateSystem->UpdateTick(DeltaTime); break;
+// 	// 	case EDasanState::Tour:
+// 	// 	default: break;
+// 	// 	}
+// 	// }
+//
+// 	// DrawDebugState();
+// }
 
 void ADasanActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
@@ -400,8 +400,7 @@ void ADasanActor::StartTour()
             }
         }
 
-        PRINTLOG(TEXT(" StartTour 완료 - DasanState: %s, TourState: %s"),
-            *ENUM_TO_NAME(EDasanState, DasanState),
+        PRINTLOG(TEXT(" StartTour 완료 - DasanState: %s, TourState: %s"), *ENUM_TO_NAME(EDasanState, DasanState),
             TourStateSystem ? *ENUM_TO_NAME(ETourState, TourStateSystem->GetCurState()) : TEXT("Unknown"));
     }
     else
@@ -439,9 +438,10 @@ ABuilding* ADasanActor::FindCurTargetBuilding() const
 		}
 	}
 
-	PRINTLOG(TEXT("[WARN] FindCurTargetBuilding: 타겟 건물을 찾을 수 없음 (%s)"),
-		*QuestManager->GetTargetBuildingName());
-	return CurTargetBuilding; // 실패 시에도 기존 타깃 유지
+	PRINTLOG(TEXT("[WARN] FindCurTargetBuilding: 타겟 건물을 찾을 수 없음 (%s)"), *QuestManager->GetTargetBuildingName());
+
+	// 실패 시에도 기존 타깃 유지
+	return CurTargetBuilding;
 }
 
 void ADasanActor::TransitionToState(EDasanState InMainState)
@@ -534,7 +534,7 @@ void ADasanActor::TransitionToState(EDasanState InMainState)
         PRINTLOG(TEXT("[EDasanState::Answer] Answer 상태 시작"));
         if (AnswerStateSystem)
         {
-            AnswerStateSystem->SetAnswerState(EAnswerState::AnswerListen);
+            AnswerStateSystem->SetCurState(EAnswerState::AnswerListen);
         }
     }
     break;
