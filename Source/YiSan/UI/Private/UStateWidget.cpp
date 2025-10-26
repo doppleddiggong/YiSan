@@ -110,8 +110,6 @@ void UStateWidget::OnAudioSpectrum(float Spectrum)
     SpectrumDisplayValue = Spectrum;
 }
 
-
-
 void UStateWidget::OnUpdateQuest(EBuildingType InBuildingType)
 {
     QuestDisplayType = InBuildingType;
