@@ -6,21 +6,16 @@
 #include "GameLogging.h"
 #include "UStateWidget.h"
 
-#include "UQuestManager.h"
 #include "Blueprint/WidgetTree.h"
 #include "Components/HorizontalBoxSlot.h"
 #include "Components/Image.h"
 #include "Components/Overlay.h"
-#include "Components/ProgressBar.h"
-#include "Components/TextBlock.h"
 #include "Engine/GameViewportClient.h"
 #include "Engine/World.h"
 #include "HAL/CriticalSection.h"
 #include "Misc/DateTime.h"
 #include "Misc/ScopeLock.h"
 #include "TimerManager.h"
-#include "UBroadcastManager.h"
-#include "UGameDataManager.h"
 
 void ULoadginCircle::NativeConstruct()
 {
@@ -48,7 +43,7 @@ void ULoadginCircle::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 void ULoadginCircle::ShowLoading()
 {
 	LoadingCount++;
-	PRINTLOG( TEXT("ULoadginCircle::ShowLoading() : LoadingCount = %d"), LoadingCount);
+
 	OnLoadingCountChanged.Broadcast(LoadingCount);
 	UpdateVisibility();
 }
@@ -57,7 +52,7 @@ void ULoadginCircle::HideLoading()
 {
 	const int32 OldCount = LoadingCount;
 	LoadingCount = FMath::Max(0, LoadingCount - 1);
-	PRINTLOG( TEXT("ULoadginCircle::HideLoading() : LoadingCount %d -> %d"), OldCount, LoadingCount);
+
 	OnLoadingCountChanged.Broadcast(LoadingCount);
 	UpdateVisibility();
 }
@@ -81,13 +76,18 @@ void ULoadginCircle::UpdateVisibility()
 
 	const bool bShouldBeVisible = LoadingCount > 0;
 
-	// RootOverlay만 제어하면 자식인 LoadingSpinner도 함께 제어됨
-	const ESlateVisibility NewVisibility = bShouldBeVisible ? ESlateVisibility::Visible : ESlateVisibility::Collapsed;
-	RootOverlay->SetVisibility(NewVisibility);
-
-	PRINTLOG( TEXT("ULoadginCircle::UpdateVisibility() : LoadingCount = %d, Visibility = %s"),
-		LoadingCount,
-		bShouldBeVisible ? TEXT("Visible") : TEXT("Collapsed"));
+	if (bShouldBeVisible)
+	{
+		// 로딩 중일 때: 보이고, 터치 차단
+		SetVisibility(ESlateVisibility::Visible);
+		RootOverlay->SetVisibility(ESlateVisibility::Visible);
+	}
+	else
+	{
+		// 로딩 완료 시: 안 보이지만 Hit Test 완전히 무시 (터치 이벤트 통과)
+		SetVisibility(ESlateVisibility::HitTestInvisible);
+		RootOverlay->SetVisibility(ESlateVisibility::Collapsed);
+	}
 }
 
 void ULoadginCircle::AddToGameViewport(int32 ZOrder)
@@ -98,9 +98,7 @@ void ULoadginCircle::AddToGameViewport(int32 ZOrder)
 		{
 			// 이미 추가되어 있다면 제거 후 재추가
 			if (IsInViewport())
-			{
 				RemoveFromParent();
-			}
 
 			// Game Viewport에 직접 추가 (레벨 전환 시에도 유지됨)
 			ViewportClient->AddViewportWidgetContent(TakeWidget(), ZOrder);
