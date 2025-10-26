@@ -233,6 +233,21 @@ bool UVoiceConversationSystem::PlayTTSAudio(const TArray<uint8>& AudioData)
 		return false;
 	}
 
+	// TTS 재생 완료 콜백 바인딩
+	CurrentTTSAudio->OnAudioFinished.AddDynamic(this, &UVoiceConversationSystem::OnTTSAudioFinished);
+
 	PRINTLOG(TEXT("[VoiceConversation] TTS audio playing"));
 	return true;
+}
+
+void UVoiceConversationSystem::OnTTSAudioFinished()
+{
+	PRINTLOG(TEXT("[VoiceConversation] TTS audio playback finished"));
+
+	// BroadcastManager를 통해 TTS 재생 완료 알림
+	if (BroadcastManager)
+	{
+		BroadcastManager->SendTTSPlaybackFinished();
+		PRINTLOG(TEXT("[VoiceConversation] TTS 재생 완료 이벤트 발생"));
+	}
 }

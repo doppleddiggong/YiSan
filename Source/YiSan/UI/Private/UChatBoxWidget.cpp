@@ -9,6 +9,9 @@
 #include "UChatEntryWidget.h"
 #include "UHttpNetworkSystem.h"
 #include "UVoiceFunctionLibrary.h"
+#include "ADasanActor.h"
+#include "UAnswerStateSystem.h"
+#include "AYisanGameState.h"
 
 #include "Components/EditableTextBox.h"
 #include "Components/ScrollBox.h"
@@ -42,9 +45,29 @@ void UChatBoxWidget::OnTextCommittedHandler(const FText& Text, ETextCommit::Type
 	{
 		if (ChatPlayerSystem)
 		{
-		    FChatMessage ChatMessage(EChatMessageType::User, Owner->GetPlayerDisplayName(), *InputString);
+			// 플레이어 이름 가져오기
+			FString PlayerName = Owner->GetPlayerDisplayName();
+
+			// Dasan NPC가 질문을 받을 수 있는지 체크
+			if (auto GameState = GetWorld()->GetGameState<AYisanGameState>())
+			{
+				if (GameState->DasanNPC && GameState->DasanNPC->AnswerStateSystem)
+				{
+					// TryStartAnswer가 실패하면 (다른 플레이어가 질문 중) Ask 호출 안함
+					if (!GameState->DasanNPC->AnswerStateSystem->TryStartAnswer(PlayerName))
+					{
+						PRINTLOG(TEXT("[ChatBox] Dasan is busy answering another player's question"));
+						ExitChat();
+						return;
+					}
+				}
+			}
+
+			// 채팅 메시지 전송
+		    FChatMessage ChatMessage(EChatMessageType::User, PlayerName, *InputString);
 		    ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
 
+			// GPT 질문 요청
 		    this->Ask(InputString, Owner->GetGPTContext());
 		}
 	}

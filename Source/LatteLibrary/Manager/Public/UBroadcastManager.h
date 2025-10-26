@@ -46,9 +46,23 @@ public:
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAudioCapture, bool, bRecording);
 	UPROPERTY(BlueprintAssignable, Category="Events")
 	FOnAudioCapture OnAudioCapture;
-	
+
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendAudioCapture(bool bRecording);
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnTTSPlaybackFinished);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnTTSPlaybackFinished OnTTSPlaybackFinished;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendTTSPlaybackFinished();
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDasanListening, bool, bListening, FString, PlayerName);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnDasanListening OnDasanListening;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendDasanListening(bool bListening, const FString& PlayerName);
 
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAudioSpectrum, float, Spectrum);
 	UPROPERTY(BlueprintAssignable, Category="Events")

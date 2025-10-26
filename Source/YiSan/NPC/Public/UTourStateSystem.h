@@ -17,7 +17,7 @@ public:
 
 public:
 	FORCEINLINE ETourState GetCurState() const { return CurState; }
-	FORCEINLINE void SetTourState(const ETourState InState) { CurState = InState; }
+	void SetTourState(const ETourState InState);
 
 	void InitSystem(class ADasanActor* InOwner);
 	void UpdateTick(float DeltaTime );

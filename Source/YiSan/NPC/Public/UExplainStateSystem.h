@@ -18,7 +18,7 @@ public:
 public:
 	// 상태 접근자
 	FORCEINLINE EExplainState GetCurState() const { return CurState; }
-	FORCEINLINE void SetExplainState(const EExplainState InState) { CurState = InState; }
+	void SetExplainState(const EExplainState InState);
 	
 	void InitSystem(class ADasanActor* InOwner);
 	void UpdateTick(float DeltaTime );

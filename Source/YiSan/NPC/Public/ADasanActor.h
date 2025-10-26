@@ -53,8 +53,8 @@ public:
 
 	float GetTargetBuildingDistnace();
 	
-	// 디버그 상태 표시
-	 void DrawDebugState();
+	// // 디버그 상태 표시
+	//  void DrawDebugState();
 
 public:
 	// 상태 시스템 컴포넌트
@@ -67,9 +67,19 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="State")
 	TObjectPtr<class UAnswerStateSystem> AnswerStateSystem;
 
+	// 다산 상태 표시 위젯 컴포넌트 (머리 위에 표시)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="UI")
+	TObjectPtr<class UWidgetComponent> DasanWidgetComp;
+
+	// 캐싱된 다산 위젯 인스턴스
+	UPROPERTY()
+	TObjectPtr<class UDasanWidget> DasanWidget;
 
 	// Tour 상태를 업데이트하는  함수
 	void UpdateTourState();
+
+	// 위젯 상태 업데이트 함수
+	void UpdateWidgetState();
 
 	// 사용안함
 	// void MoveToTarget();

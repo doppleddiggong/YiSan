@@ -26,6 +26,16 @@ void UBroadcastManager::SendAudioCapture(bool bRecording)
 	OnAudioCapture.Broadcast(bRecording);
 }
 
+void UBroadcastManager::SendTTSPlaybackFinished()
+{
+	OnTTSPlaybackFinished.Broadcast();
+}
+
+void UBroadcastManager::SendDasanListening(bool bListening, const FString& PlayerName)
+{
+	OnDasanListening.Broadcast(bListening, PlayerName);
+}
+
 void UBroadcastManager::SendAudioSpectrum(float Spectrum)
 {
 	OnAudioSpectrum.Broadcast(Spectrum);

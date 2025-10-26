@@ -16,9 +16,11 @@
 #include "DrawDebugHelpers.h"
 #include "FComponentHelper.h"
 #include "GameLogging.h"
-#include "YiSan/YiSan.h"
-#include "GameFramework/CharacterMovementComponent.h"
 
+#include "Components/WidgetComponent.h"
+#include "UDasanWidget.h"
+
+#define DASANWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_DasanWidget.WBP_DasanWidget_C")
 
 ADasanActor::ADasanActor()
 {
@@ -33,6 +35,18 @@ ADasanActor::ADasanActor()
 	ExplainStateSystem = CreateDefaultSubobject<UExplainStateSystem>(TEXT("ExplainStateSystem"));
 	AnswerStateSystem = CreateDefaultSubobject<UAnswerStateSystem>(TEXT("AnswerStateSystem"));
 
+	// 위젯 컴포넌트 생성 (머리 위에 표시)
+	DasanWidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("DasanWidgetComponent"));
+	DasanWidgetComp->SetupAttachment(RootComponent);
+	DasanWidgetComp->SetRelativeLocation(FVector(0.f, 0.f, 170.f));  // 머리 위 Z+170
+	DasanWidgetComp->SetWidgetSpace(EWidgetSpace::Screen);
+	DasanWidgetComp->SetDrawSize(FVector2D(300.f, 100.f));
+
+	// 위젯 클래스 설정
+	static ConstructorHelpers::FClassFinder<UUserWidget> WidgetClassFinder(DASANWIDGET_PATH);
+	if (WidgetClassFinder.Succeeded())
+		DasanWidgetComp->SetWidgetClass(WidgetClassFinder.Class);
+
 	playerMaxDis = 1000.f;
 	wayPointDis = 250.f;
 	waitChackTimer = 1.f;
@@ -44,23 +58,30 @@ void ADasanActor::BeginPlay()
 
 	if (!TourStateSystem)
 	{
-		PRINTLOG(TEXT(" nullptr이라 재생성합니다."));
+		PRINTLOG(TEXT("TourStateSystem::nullptr이라 재생성합니다."));
 		TourStateSystem = NewObject<UTourStateSystem>(this, UTourStateSystem::StaticClass());
 		TourStateSystem->RegisterComponent();
 	}
-
+	
 	if (!ExplainStateSystem)
 	{
-		PRINTLOG(TEXT(" nullptr이라 재생성합니다."));
+		PRINTLOG(TEXT("ExplainStateSystem::nullptr이라 재생성합니다."));
 		ExplainStateSystem = NewObject<UExplainStateSystem>(this, UExplainStateSystem::StaticClass());
 		ExplainStateSystem->RegisterComponent();
 	}
-
+	
 	if (!AnswerStateSystem)
 	{
-		PRINTLOG(TEXT(" nullptr이라 재생성합니다."));
+		PRINTLOG(TEXT("AnswerStateSystem::nullptr이라 재생성합니다."));
 		AnswerStateSystem = NewObject<UAnswerStateSystem>(this, UAnswerStateSystem::StaticClass());
 		AnswerStateSystem->RegisterComponent();
+	}
+
+	// 위젯 캐싱 및 초기화
+	if (DasanWidgetComp && DasanWidgetComp->GetWidget())
+	{
+		DasanWidget = Cast<UDasanWidget>(DasanWidgetComp->GetWidget());
+		DasanWidget->InitWidget(this);
 	}
 
 	// 값 설정
@@ -91,20 +112,9 @@ void ADasanActor::BeginPlay()
 		}
 
 		// 시스템 초기화 - nullptr 체크 추가
-		if (TourStateSystem)
-		{
-			TourStateSystem->InitSystem(this);
-		}
-		
-		if (ExplainStateSystem)
-		{
-			ExplainStateSystem->InitSystem(this);
-		}
-		
-		if (AnswerStateSystem)
-		{
-			AnswerStateSystem->InitSystem(this);
-		}
+		TourStateSystem->InitSystem(this);
+		ExplainStateSystem->InitSystem(this);
+		AnswerStateSystem->InitSystem(this);
 		
 		QuestManager = UQuestManager::Get(GetWorld());
 		if (QuestManager)
@@ -112,16 +122,10 @@ void ADasanActor::BeginPlay()
 			QuestManager->InitSystem();
 			PRINTLOG(TEXT(" QuestManager 초기화 성공"));
 		}
-		else
-		{
-			PRINTLOG(TEXT(" QuestManager 초기화 실패!"));
-		}
-
 		// 초기 상태 설정
 		DasanState = EDasanState::Tour;
 		
 		// 투어 시작
-		PRINTLOG(TEXT(" StartTour 호출 예정"));
 		StartTour();
 	}
 
@@ -142,19 +146,14 @@ void ADasanActor::Tick(float DeltaTime)
 	{
 		switch (DasanState)
 		{
-		case EDasanState::Explain:	
-			ExplainStateSystem->UpdateTick(DeltaTime);
-			break;
-		case EDasanState::Answer:	
-			AnswerStateSystem->UpdateTick(DeltaTime);
-			break;
+		case EDasanState::Explain: ExplainStateSystem->UpdateTick(DeltaTime); break;
+		case EDasanState::Answer: AnswerStateSystem->UpdateTick(DeltaTime); break;
 		case EDasanState::Tour:
-		default: 
-			break;
+		default: break;
 		}
 	}
 
-	//DrawDebugState();
+	// DrawDebugState();
 }
 
 void ADasanActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -274,6 +273,9 @@ void ADasanActor::OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::
 void ADasanActor::OnRep_DasanState()
 {
 	PRINTLOG(TEXT("DasanActor MainState changed: %s"), *ENUM_TO_NAME(EDasanState, DasanState));
+
+	// 클라이언트에서 메인 상태가 복제되었으므로 위젯 업데이트
+	UpdateWidgetState();
 }
 
 // 서버 RPC 구현
@@ -292,10 +294,10 @@ float ADasanActor::GetTargetBuildingDistnace()
 	return FVector::Dist(this->GetActorLocation(), this->CurTargetBuilding->GetActorLocation());
 }
 
-void ADasanActor::DrawDebugState()
-{
-	// 아무것도 안함
-}
+// void ADasanActor::DrawDebugState()
+// {
+// 	// 아무것도 안함
+// }
 
 void ADasanActor::StartTour()
 {
@@ -443,8 +445,11 @@ void ADasanActor::TransitionToState(EDasanState InMainState)
         *ENUM_TO_NAME(EDasanState, DasanState),
         *ENUM_TO_NAME(EDasanState, InMainState));
 
-    // 쓰기 전에 this가 유효한지
+    // 메인 상태 변경
     DasanState = InMainState;
+
+    // 위젯 업데이트 (메인 상태가 바뀌었으므로)
+    UpdateWidgetState();
 
     switch (InMainState)
     {
@@ -600,19 +605,14 @@ void ADasanActor::UpdateTourState()
 
 void ADasanActor::NextQuest()
 {
-	
     if (!HasAuthority())
         return;
 
     if (!DasanAicontrol)
-    {
         return;
-    }
 
     if (!QuestManager)
-    {
         return;
-    }
 
     // 퀘스트 매니저가 준비되지 않거나 타겟이 None이면 이동 중단
     if (!QuestManager->IsHasQuest() || QuestManager->GetCurTarget() == EBuildingType::None)
@@ -672,10 +672,25 @@ float ADasanActor::GetPlayerDistance(class APawn* PlayerPawn) const
 	return FVector::Dist(GetActorLocation(), PlayerPawn->GetActorLocation());
 }
 
-class APawn* ADasanActor::GetPlayerPawn() const
+APawn* ADasanActor::GetPlayerPawn() const
 {
 	if (!GetWorld())
 		return nullptr;
 
 	return UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+}
+
+void ADasanActor::UpdateWidgetState()
+{
+	// 캐싱된 위젯 사용
+	if (!DasanWidget)
+		return;
+
+	// 현재 상태 가져오기
+	ETourState CurrentTourState = TourStateSystem ? TourStateSystem->GetCurState() : ETourState::None;
+	EExplainState CurrentExplainState = ExplainStateSystem ? ExplainStateSystem->GetCurState() : EExplainState::ExplainWait;
+	EAnswerState CurrentAnswerState = AnswerStateSystem ? AnswerStateSystem->GetCurState() : EAnswerState::AnswerListen;
+
+	// 위젯 상태 업데이트
+	DasanWidget->UpdateDasanState(DasanState, CurrentTourState, CurrentExplainState, CurrentAnswerState);
 }

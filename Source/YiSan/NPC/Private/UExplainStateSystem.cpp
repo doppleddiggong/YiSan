@@ -18,8 +18,19 @@ void UExplainStateSystem::InitSystem(ADasanActor* InOwner)
 	OwnerDasan = InOwner;
 	PrevState = EExplainState::ExplainWait;
 	CurState = EExplainState::ExplainWait;
-	
+
 	PRINTLOG(TEXT("[ExplainSystem] 시스템 초기화 완료"));
+}
+
+void UExplainStateSystem::SetExplainState(const EExplainState InState)
+{
+	CurState = InState;
+
+	// 상태가 변경되었으므로 위젯 업데이트
+	if (OwnerDasan)
+	{
+		OwnerDasan->UpdateWidgetState();
+	}
 }
 
 bool UExplainStateSystem::IsUpdateEnble()

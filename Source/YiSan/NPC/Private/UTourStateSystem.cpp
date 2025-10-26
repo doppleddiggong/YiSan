@@ -22,6 +22,17 @@ void UTourStateSystem::InitSystem(ADasanActor* InOwner)
 	PrevState = ETourState::None;
 }
 
+void UTourStateSystem::SetTourState(const ETourState InState)
+{
+	CurState = InState;
+
+	// 상태가 변경되었으므로 위젯 업데이트
+	if (OwnerDasan)
+	{
+		OwnerDasan->UpdateWidgetState();
+	}
+}
+
 bool UTourStateSystem::IsUpdateEnble()
 {
 	if ( OwnerDasan == nullptr)

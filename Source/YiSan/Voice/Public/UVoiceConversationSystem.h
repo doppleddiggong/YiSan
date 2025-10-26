@@ -42,6 +42,10 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Voice|Conversation")
     bool PlayTTSAudio(const TArray<uint8>& AudioData);
 
+    /// @brief TTS 오디오 재생 완료 시 호출되는 콜백입니다.
+    UFUNCTION()
+    void OnTTSAudioFinished();
+
     /// @brief 현재 녹음 중인지 확인합니다.
     UFUNCTION(BlueprintPure, Category = "Voice|Conversation")
     bool IsRecording() const { return bIsRecording; }
