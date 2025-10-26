@@ -29,6 +29,9 @@ public:
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_SetDasanState(EDasanState InState);
 	
+	// AI MoveTo 완료 콜백
+	UFUNCTION()
+	void OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::Type Result);
 
 	// 현재 메인 상태 (Tour/Explain/Answer)
 	UPROPERTY(ReplicatedUsing=OnRep_DasanState, BlueprintReadOnly, Category="State")
@@ -49,10 +52,9 @@ public:
 	void TransitionToState(EDasanState InMainState);
 
 	float GetTargetBuildingDistnace();
-
-private:
+	
 	// 디버그 상태 표시
-	void DrawDebugState();
+	 void DrawDebugState();
 
 public:
 	// 상태 시스템 컴포넌트
@@ -87,8 +89,7 @@ public:
 	
 	// tour wait 상태에서 player 체크용
 	float waitChackTimer;
-
-private:
+	
 	// 웨이포인트 거리
 	float wayPointDis;
 

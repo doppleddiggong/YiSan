@@ -34,9 +34,11 @@ bool UExplainStateSystem::IsUpdateEnble()
 
 void UExplainStateSystem::UpdateTick(float DeltaTime)
 {
+	
+	if (!OwnerDasan) return;
+	
 	if ( !IsUpdateEnble())
 		return;
-
 	if ( PrevState != CurState )
 	{
 		PRINTLOG(TEXT("[ExplainSystem] 상태 변경: %s -> %s"), 
@@ -86,7 +88,7 @@ void UExplainStateSystem::Enter_ExplainIng()
 // Tick 함수들
 void UExplainStateSystem::Tick_ExplainWait(float DeltaTime)
 {
-	// 대기 중 - 특별한 동작 없음
+	// 이건 뭐지
 }
 
 void UExplainStateSystem::Tick_ExplainIng(float DeltaTime)
@@ -101,14 +103,14 @@ void UExplainStateSystem::Tick_ExplainIng(float DeltaTime)
 	LogTimer += DeltaTime;
 	if (LogTimer >= 1.0f)
 	{
-		PRINTLOG(TEXT("[ExplainIng] 설명 중... (%.1f / %.1f초)"), ExplainTimer, ExplainDuration);
+		PRINTLOG(TEXT(" 설명 중... (%.1f / %.1f초)"), ExplainTimer, ExplainDuration);
 		LogTimer = 0.0f;
 	}
 
 	// 자동 종료 모드일 경우 시간이 지나면 자동으로 완료
 	if (bAutoFinishExplain && ExplainTimer >= ExplainDuration)
 	{
-		PRINTLOG(TEXT("[ExplainIng] 설명 시간 종료 - 자동 완료"));
+		PRINTLOG(TEXT(" 설명 시간 종료 - 자동 완료"));
 		OnExplainFinished();
 	}
 }
@@ -118,18 +120,24 @@ void UExplainStateSystem::OnExplainFinished()
 	if (!OwnerDasan || !OwnerDasan->HasAuthority())
 		return;
 	
-	PRINTLOG(TEXT("[ExplainState] Explain Finished"));
-
-	// 다음 퀘스트로 이동
-	if (OwnerDasan->QuestManager && OwnerDasan->QuestManager->IsHasQuest())
-	{
-		OwnerDasan->NextQuest();
-	}
-	
-	// 메인 상태를 Tour로 변경
-	OwnerDasan->TransitionToState(EDasanState::Tour); 
+	PRINTLOG(TEXT("Explain Finished"));
 
 	// Explain 시스템은 다시 대기 상태로
 	ExplainTimer = 0.0f;
 	SetExplainState(EExplainState::ExplainWait);
+	
+	// 다음 퀘스트로 이동
+	if (OwnerDasan->QuestManager && OwnerDasan->QuestManager->IsHasQuest())
+	{
+		// 순서 변경: 먼저 다음 퀘스트로 이동하여 CurTargetBuilding을 업데이트
+		OwnerDasan->NextQuest();
+		
+		// 그 다음 메인 상태를 Tour로 변경하여 새로운 목표로 이동 시작
+		OwnerDasan->TransitionToState(EDasanState::Tour);
+	}
+	else
+	{
+		// 더 이상 퀘스트가 없으면 투어 종료
+		PRINTLOG(TEXT(" 모든 퀘스트 완료"));
+	}
 }

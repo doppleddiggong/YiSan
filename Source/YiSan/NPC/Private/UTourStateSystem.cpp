@@ -9,6 +9,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/Character.h"
+#include "AIController.h"
 
 UTourStateSystem::UTourStateSystem()
 {
@@ -128,18 +129,26 @@ void UTourStateSystem::MoveToCurWaypoint()
 		return;
 
 	// 현재 목표 건물이 없으면 찾기
-	// 뭔가...이상한...코드인데..
-	// TODO.FindCurTargetBuilding 자체가 이상한 코드임
 	if (!OwnerDasan->GetCurTargetBuilding())
 		OwnerDasan->UpdateTargetBuilding( OwnerDasan->FindCurTargetBuilding());
 
 	// 여전히 없으면 리턴
 	if (!OwnerDasan->GetCurTargetBuilding())
 	{
-		PRINTLOG( TEXT("[TourState] No target building found"));
+		PRINTLOG( TEXT(" No target building found"));
 		return;
 	}
 
+	// AI Controller가 있으면 AI MoveTo 사용
+	if (OwnerDasan->DasanAicontrol)
+	{
+		// AI MoveTo로 이동 - NavMesh 기반 경로 탐색
+		// 이 함수는 Tick마다 호출되지만, AI MoveTo는 한 번만 시작됨
+		// 실제 이동은 UpdateTourState 또는 OnMoveCompleted에서 관리됨
+		return;
+	}
+
+	// AI Controller가 없으면 직접 이동 방식 사용 (기존 코드)
 	// 목표 방향 계산
 	const FVector CurLoc  = OwnerDasan->GetActorLocation();
 	const FVector TargetLoc  = OwnerDasan->GetCurTargetBuilding()->GetActorLocation();
@@ -155,8 +164,7 @@ void UTourStateSystem::MoveToCurWaypoint()
 		5.0f
 	));
 
-	// [TODO], AIMoveTO를 사용하여서 이동하시오
-	// 지금은 직선 이동입니다
+	// 직선 이동
 	if (auto Movement = OwnerDasan->GetCharacterMovement())
 	{
 		Movement->MaxWalkSpeed = MoveSpeed;
