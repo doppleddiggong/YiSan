@@ -1,34 +1,41 @@
-﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "UDialogWidget.h"
 #include "GameLogging.h"
-#include "UBroadcastManager.h"
 #include "UDelayTaskManager.h"
 #include "Components/Border.h"
 #include "Components/TextBlock.h"
 
 void UDialogWidget::NativeConstruct()
 {
-	Super::NativeConstruct();
+        Super::NativeConstruct();
 
-	if (auto EventManager = UBroadcastManager::Get(this))
-		EventManager->OnToastMessage.AddDynamic(this, &UDialogWidget::ShowDialog);
-
-	DialogBorder->SetVisibility(ESlateVisibility::Hidden);
+        if (DialogBorder)
+        {
+                DialogBorder->SetVisibility(ESlateVisibility::Hidden);
+        }
 }
 
 void UDialogWidget::ShowDialog(FString InString)
 {
-	PRINTLOG(TEXT("%s"), *InString );
+        PRINTLOG(TEXT("%s"), *InString);
 
-	DialogBorder->SetVisibility(ESlateVisibility::Visible);
-	DialogBorder->SetBrushColor(ActivateColor);
+        if (!DialogBorder || !DialogText)
+        {
+                return;
+        }
 
-	DialogText->SetText(FText::FromString( InString ));
+        DialogBorder->SetVisibility(ESlateVisibility::Visible);
+        DialogBorder->SetBrushColor(ActivateColor);
 
-	UDelayTaskManager::Get(GetWorld())->Delay(this, 5, [&]() 
-	{
-		DialogText->SetText(FText::GetEmpty());
-		DialogBorder->SetBrushColor(DeactivateColor);
-	});
+        DialogText->SetText(FText::FromString(InString));
+
+        if (UDelayTaskManager* DelayManager = UDelayTaskManager::Get(GetWorld()))
+        {
+                DelayManager->Delay(this, 5, [&]()
+                {
+                        DialogText->SetText(FText::GetEmpty());
+                        DialogBorder->SetBrushColor(DeactivateColor);
+                });
+        }
 }
