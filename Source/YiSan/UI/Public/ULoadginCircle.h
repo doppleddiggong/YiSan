@@ -61,6 +61,10 @@ private:
 	int32 LoadingCount = 0;
 
 public:
+	/// @brief 로딩 중 전체 화면을 덮는 오버레이입니다.
+	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly, Category = "State|Network")
+	class UOverlay* RootOverlay = nullptr;
+
 	/// @brief 네트워크 대기 상태를 나타내는 로딩 스피너 이미지입니다.
 	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly, Category = "State|Network")
 	class UImage* LoadingSpinner = nullptr;

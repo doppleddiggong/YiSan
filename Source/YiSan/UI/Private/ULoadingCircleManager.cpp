@@ -86,7 +86,7 @@ int32 ULoadingCircleManager::GetLoadingCount() const
 	return 0;
 }
 
-void ULoadingCircleManager::Incr(UObject* WorldContextObject)
+void ULoadingCircleManager::Increase(UObject* WorldContextObject)
 {
 	if (!WorldContextObject)
 	{
@@ -108,7 +108,7 @@ void ULoadingCircleManager::Incr(UObject* WorldContextObject)
 	}
 }
 
-void ULoadingCircleManager::Decr(UObject* WorldContextObject)
+void ULoadingCircleManager::Decrease(UObject* WorldContextObject)
 {
 	if (!WorldContextObject)
 	{

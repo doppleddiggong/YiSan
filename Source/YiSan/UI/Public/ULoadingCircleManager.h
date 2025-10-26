@@ -11,8 +11,8 @@
  * LocalPlayerSubsystem으로 구현되어 레벨 전환 시에도 유지됩니다.
  *
  * 사용법:
- * ULoadingCircleManager::Incr(this); // 로딩 시작
- * ULoadingCircleManager::Decr(this); // 로딩 종료
+ * ULoadingCircleManager::Increase(this); // 로딩 시작
+ * ULoadingCircleManager::Decrease(this); // 로딩 종료
  */
 UCLASS()
 class YISAN_API ULoadingCircleManager : public ULocalPlayerSubsystem
@@ -38,13 +38,13 @@ public:
 	int32 GetLoadingCount() const;
 
 	// 정적 유틸: 간편 호출용
-	// ULoadingCircleManager::Incr(this);
-	// ULoadingCircleManager::Decr(this);
+	// ULoadingCircleManager::Increase(this);
+	// ULoadingCircleManager::Decrease(this);
 	UFUNCTION(BlueprintCallable, Category = "Loading", meta = (WorldContext = "WorldContextObject"))
-	static void Incr(UObject* WorldContextObject);
+	static void Increase(UObject* WorldContextObject);
 
 	UFUNCTION(BlueprintCallable, Category = "Loading", meta = (WorldContext = "WorldContextObject"))
-	static void Decr(UObject* WorldContextObject);
+	static void Decrease(UObject* WorldContextObject);
 
 protected:
 	/// @brief 현재 월드에 위젯이 없으면 생성하고 Game Viewport에 부착합니다.

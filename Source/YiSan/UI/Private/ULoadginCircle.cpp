@@ -3,12 +3,14 @@
 
 #include "ULoadginCircle.h"
 
+#include "GameLogging.h"
 #include "UStateWidget.h"
 
 #include "UQuestManager.h"
 #include "Blueprint/WidgetTree.h"
 #include "Components/HorizontalBoxSlot.h"
 #include "Components/Image.h"
+#include "Components/Overlay.h"
 #include "Components/ProgressBar.h"
 #include "Components/TextBlock.h"
 #include "Engine/GameViewportClient.h"
@@ -46,13 +48,16 @@ void ULoadginCircle::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 void ULoadginCircle::ShowLoading()
 {
 	LoadingCount++;
+	PRINTLOG( TEXT("ULoadginCircle::ShowLoading() : LoadingCount = %d"), LoadingCount);
 	OnLoadingCountChanged.Broadcast(LoadingCount);
 	UpdateVisibility();
 }
 
 void ULoadginCircle::HideLoading()
 {
+	const int32 OldCount = LoadingCount;
 	LoadingCount = FMath::Max(0, LoadingCount - 1);
+	PRINTLOG( TEXT("ULoadginCircle::HideLoading() : LoadingCount %d -> %d"), OldCount, LoadingCount);
 	OnLoadingCountChanged.Broadcast(LoadingCount);
 	UpdateVisibility();
 }
@@ -68,12 +73,21 @@ void ULoadginCircle::UpdateLoadingSpinner(float DeltaTime)
 
 void ULoadginCircle::UpdateVisibility()
 {
-	if (!LoadingSpinner)
+	if (!RootOverlay)
+	{
+		PRINTLOG( TEXT("ULoadginCircle::UpdateVisibility() : RootOverlay is nullptr!"));
 		return;
+	}
 
 	const bool bShouldBeVisible = LoadingCount > 0;
-	const ESlateVisibility NewVisibility = bShouldBeVisible ? ESlateVisibility::SelfHitTestInvisible : ESlateVisibility::Hidden;
-	LoadingSpinner->SetVisibility(NewVisibility);
+
+	// RootOverlay만 제어하면 자식인 LoadingSpinner도 함께 제어됨
+	const ESlateVisibility NewVisibility = bShouldBeVisible ? ESlateVisibility::Visible : ESlateVisibility::Collapsed;
+	RootOverlay->SetVisibility(NewVisibility);
+
+	PRINTLOG( TEXT("ULoadginCircle::UpdateVisibility() : LoadingCount = %d, Visibility = %s"),
+		LoadingCount,
+		bShouldBeVisible ? TEXT("Visible") : TEXT("Collapsed"));
 }
 
 void ULoadginCircle::AddToGameViewport(int32 ZOrder)

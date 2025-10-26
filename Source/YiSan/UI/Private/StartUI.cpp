@@ -11,10 +11,14 @@
 #include "YiSanLoading.h"
 #include "Engine/Texture.h"
 #include "YiSan/YiSan.h"
+#include "ULoadingCircleManager.h"
 
 void UStartUI::NativeConstruct()
 {
 	Super::NativeConstruct();
+
+	// 레벨 로드 완료 - 로딩 화면 숨기기
+	ULoadingCircleManager::Decrease(this);
 
 	// 버튼 클릭 이벤트 바인딩
 	if (StartButton)
@@ -30,7 +34,7 @@ void UStartUI::NativeConstruct()
 
 		// 이미지 위젯에 미디어 텍스처 적용
 		BackgroundVideoImage->SetBrushFromMaterial(introMtl);
-		
+
 		// 자동 재생
 		MediaPlayer->Play();
 	}
@@ -55,7 +59,7 @@ void UStartUI::OnStartButtonClicked()
 		UE_LOG(LogTemp, Error, TEXT("UStartUI - GetOwningPlayer() returned nullptr!"));
 		return;
 	}
-	
+
 	APlayerControl* pc = Cast<APlayerControl>(PC);
 	if (!pc)
 	{
@@ -79,5 +83,4 @@ void UStartUI::OnStartButtonClicked()
 		pc->Server_RequestMapTravel(TEXT("/Game/CustomContents/Maps/MainMap_WP"));
 		PRINTLOG(TEXT("로딩 레벨 매니저: 클라이언트가 서버에 맵 전환 요청"));
 	}
-
 }
