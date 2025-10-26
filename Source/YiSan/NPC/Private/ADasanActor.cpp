@@ -32,7 +32,7 @@ ADasanActor::ADasanActor()
 	ExplainStateSystem = CreateDefaultSubobject<UExplainStateSystem>(TEXT("ExplainStateSystem"));
 	AnswerStateSystem = CreateDefaultSubobject<UAnswerStateSystem>(TEXT("AnswerStateSystem"));
 
-	playerMaxDis = 100.f;
+	playerMaxDis = 1000.f;
 	wayPointDis = 250.f;
 	waitChackTimer = 1.f;
 }
@@ -82,7 +82,7 @@ void ADasanActor::BeginPlay()
 	if (HasAuthority())
 	{
 		GetWorldTimerManager().SetTimer(TourStateTimerHandle, this, &ADasanActor::UpdateTourState, 0.1f, true);
-		PRINTLOG(TEXT("✅ TourState 타이머 시작"));
+		PRINTLOG(TEXT("TourState 타이머 시작"));
 	}
 }
 
@@ -101,6 +101,7 @@ void ADasanActor::Tick(float DeltaTime)
 		case EDasanState::Answer:	
 			AnswerStateSystem->UpdateTick(DeltaTime);
 			break;
+		case EDasanState::Tour:
 		default: 
 			break;
 		}
@@ -195,7 +196,7 @@ void ADasanActor::StartTour()
 		PRINTLOG(TEXT("️ StartTour: 클라이언트에서 호출됨 (무시)"));
 		return;
 	}
-
+	
 	DasanState = EDasanState::Tour;
 
 	// TourStateSystem 초기 상태 설정
@@ -215,8 +216,22 @@ void ADasanActor::StartTour()
 			*CurTargetBuilding->GetName(), 
 			GetTargetBuildingDistnace());
 			
-		DasanAicontrol->MoveToActor(CurTargetBuilding, wayPointDis);
-		PRINTLOG(TEXT("🚶 다산 투어 시작 → %s로 이동 중..."), *CurTargetBuilding->GetName());
+		// 투어 시작 시 플레이어 거리체크 하자
+		APawn* Player = GetPlayerPawn();
+		if (Player && GetPlayerDistance(Player) > playerMaxDis)
+		{
+			// n 초 뒤 체크하도록 초기회 한다
+			PRINTLOG(TEXT("플레이어가 너무 멀리 있습니다. 대기 상태(TourWait)에서 시작합니다."));
+			TourStateSystem->SetTourState(ETourState::TourWait);
+			waitChackTimer = 1.f; 
+		} 
+		else
+		{
+			PRINTLOG(TEXT("플레이어가 근처에 있습니다. 이동 상태(TourMove)에서 시작합니다."));
+			TourStateSystem->SetTourState(ETourState::TourMove);
+			DasanAicontrol->MoveToActor(CurTargetBuilding, wayPointDis);
+			PRINTLOG(TEXT("다산 투어 시작 → %s로 이동 중..."), *CurTargetBuilding->GetName());
+		}
 	}
 	else
 	{
@@ -239,14 +254,26 @@ void ADasanActor::NextQuest()
 
 	if (QuestManager && QuestManager->IsHasQuest())
 	{
-		TourStateSystem->SetTourState(ETourState::TourMove);
+		// 다음 퀘스트 시작 시 player 의 거리를 체크 하자 
 		CurTargetBuilding = FindCurTargetBuilding();
 		PRINTLOG(TEXT("DasanActor: Moving to next quest - Target: %s"), *QuestManager->GetTargetBuildingName());
 		
 		if (CurTargetBuilding)
 		{
-			DasanAicontrol->MoveToActor(CurTargetBuilding, wayPointDis);
-			PRINTLOG(TEXT(" 다음 목적지로 이동: %s"), *QuestManager->GetTargetBuildingName());
+			APawn* Player = GetPlayerPawn();
+			if (Player && GetPlayerDistance(Player) > playerMaxDis)
+			{
+				PRINTLOG(TEXT("플레이어가 너무 멀리 있습니다. 대기 상태 시작합니다."));
+				TourStateSystem->SetTourState(ETourState::TourWait);
+				waitChackTimer = 1.f;
+			}
+			else
+			{
+				PRINTLOG(TEXT("플레이어가 근처에 있습니다. 이동 상태 시작합니다."));
+				TourStateSystem->SetTourState(ETourState::TourMove);
+				DasanAicontrol->MoveToActor(CurTargetBuilding, wayPointDis);
+				PRINTLOG(TEXT(" 다음 목적지로 이동: %s"), *QuestManager->GetTargetBuildingName());
+			}
 		}
 		else
 		{
@@ -334,6 +361,9 @@ void ADasanActor::TransitionToState(EDasanState InMainState)
 
 void ADasanActor::UpdateTourState()
 {
+	// 메인상태가 투어가 아니라면 함수를 실행 하지 않는다
+	if(DasanState != EDasanState::Tour)
+		return;
 	
 	if (!TourStateSystem || !DasanAicontrol)
 	{
@@ -398,6 +428,11 @@ void ADasanActor::UpdateTourState()
 				{
 					PRINTLOG(TEXT("CurTargetBuilding이 nullptr!"));
 				}
+			}
+			else
+			{
+				// 플레이어가 아직 멀리 있다면
+				PRINTLOG(TEXT("플레이어 대기 중..."));
 			}
 		}
 		break;
