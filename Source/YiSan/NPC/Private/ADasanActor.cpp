@@ -2,7 +2,6 @@
 
 #include "ADasanActor.h"
 #include "UTourStateSystem.h"
-#include "UExplainStateSystem.h"
 #include "UAnswerStateSystem.h"
 
 #include "AIController.h"
@@ -22,7 +21,6 @@
 
 #include "Components/WidgetComponent.h"
 #include "UDasanWidget.h"
-#include "NavigationSystem.h"
 #include "UChatPlayerSystem.h"
 #include "UGameSoundManager.h"
 #include "YiSan/YiSan.h"
@@ -31,7 +29,7 @@
 
 ADasanActor::ADasanActor()
 {
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
 
 	// 네트워크 복제 활성화
 	bReplicates = true;
@@ -39,7 +37,6 @@ ADasanActor::ADasanActor()
 
 	// 상태 시스템 컴포넌트 생성
 	TourStateSystem = CreateDefaultSubobject<UTourStateSystem>(TEXT("TourStateSystem"));
-	// ExplainStateSystem = CreateDefaultSubobject<UExplainStateSystem>(TEXT("ExplainStateSystem"));
 	AnswerStateSystem = CreateDefaultSubobject<UAnswerStateSystem>(TEXT("AnswerStateSystem"));
 
 	// 위젯 컴포넌트 생성 (머리 위에 표시)
@@ -63,26 +60,19 @@ void ADasanActor::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (!TourStateSystem)
-	{
-		PRINTLOG(TEXT("TourStateSystem::nullptr이라 재생성합니다."));
-		TourStateSystem = NewObject<UTourStateSystem>(this, UTourStateSystem::StaticClass());
-		TourStateSystem->RegisterComponent();
-	}
-	
-	// if (!ExplainStateSystem)
+	// if (!TourStateSystem)
 	// {
-	// 	PRINTLOG(TEXT("ExplainStateSystem::nullptr이라 재생성합니다."));
-	// 	ExplainStateSystem = NewObject<UExplainStateSystem>(this, UExplainStateSystem::StaticClass());
-	// 	ExplainStateSystem->RegisterComponent();
+	// 	PRINTLOG(TEXT("TourStateSystem::nullptr이라 재생성합니다."));
+	// 	TourStateSystem = NewObject<UTourStateSystem>(this, UTourStateSystem::StaticClass());
+	// 	TourStateSystem->RegisterComponent();
 	// }
-	
-	if (!AnswerStateSystem)
-	{
-		PRINTLOG(TEXT("AnswerStateSystem::nullptr이라 재생성합니다."));
-		AnswerStateSystem = NewObject<UAnswerStateSystem>(this, UAnswerStateSystem::StaticClass());
-		AnswerStateSystem->RegisterComponent();
-	}
+	//
+	// if (!AnswerStateSystem)
+	// {
+	// 	PRINTLOG(TEXT("AnswerStateSystem::nullptr이라 재생성합니다."));
+	// 	AnswerStateSystem = NewObject<UAnswerStateSystem>(this, UAnswerStateSystem::StaticClass());
+	// 	AnswerStateSystem->RegisterComponent();
+	// }
 
 	// 위젯 캐싱 및 초기화
 	if (DasanWidgetComp && DasanWidgetComp->GetWidget())
@@ -136,13 +126,6 @@ void ADasanActor::BeginPlay()
 		StartTour();
 	}
 
-	// 타이머 시작 (Authority만)
-	if (HasAuthority())
-	{
-		GetWorldTimerManager().SetTimer(TourStateTimerHandle, this, &ADasanActor::UpdateTourState, 0.1f, true);
-		PRINTLOG(TEXT(" TourState 타이머 시작"));
-	}
-
 	// BroadcastManager 이벤트 구독
 	BroadcastManager = UBroadcastManager::Get(GetWorld());
 	if (BroadcastManager)
@@ -152,24 +135,19 @@ void ADasanActor::BeginPlay()
 	}
 }
 
-// void ADasanActor::Tick(float DeltaTime)
-// {
-// 	Super::Tick(DeltaTime);
-//
-// 	// // 서버에서만 상태 시스템 틱 실행
-// 	// if (HasAuthority())
-// 	// {
-// 	// 	switch (DasanState)
-// 	// 	{
-// 	// 	// case EDasanState::Explain: ExplainStateSystem->UpdateTick(DeltaTime); break;
-// 	// 	case EDasanState::Answer: AnswerStateSystem->UpdateTick(DeltaTime); break;
-// 	// 	case EDasanState::Tour:
-// 	// 	default: break;
-// 	// 	}
-// 	// }
-//
-// 	// DrawDebugState();
-// }
+void ADasanActor::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	// 서버에서만 상태 시스템 틱 실행
+	if (HasAuthority())
+	{
+		if ( DasanState == EDasanState::Tour)
+		{
+			TourStateSystem->UpdateTick(DeltaTime);
+		}
+	}
+}
 
 void ADasanActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
@@ -195,15 +173,14 @@ void ADasanActor::OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::
         {
             if (TourStateSystem)
             {
-                TourStateSystem->SetTourState(ETourState::TourEnd);
+                // 건물 도착 시 TourExplain 상태로 전환 (관광 시작)
+                TourStateSystem->SetTourState(ETourState::TourExplain);
+                PRINTLOG(TEXT("[Tour] 건물 도착 - TourExplain 상태 시작"));
             }
             else
             {
                 PRINTLOG(TEXT("[WARN] OnMoveCompleted: TourStateSystem이 nullptr입니다."));
             }
-
-            // Explain 상태로 전환
-            TransitionToState(EDasanState::Explain);
         }
         break;
 
@@ -236,7 +213,7 @@ void ADasanActor::OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::
         break;
 
     case EPathFollowingResult::Aborted:
-        PRINTLOG(TEXT(" AI MoveTo 중단됨"));
+        // PRINTLOG(TEXT(" AI MoveTo 중단됨"));
         break;
 
     case EPathFollowingResult::Invalid:
@@ -247,42 +224,6 @@ void ADasanActor::OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::
         break;
     }
 }
-
-// void ADasanActor::DrawDebugState()
-// {
-// 	if (!GetWorld())
-// 		return;
-//
-// 	// 캐릭터 머리 위 위치 계산
-// 	FVector DrawLocation = GetActorLocation() + FVector(0, 0, 120.0f);
-//
-// 	FString MainStateStr = *ENUM_TO_NAME(EDasanState, DasanState);
-// 	FString TourStateStr = *ENUM_TO_NAME(ETourState, TourStateSystem->GetCurState());
-// 	FString ExplainStateStr = *ENUM_TO_NAME(EExplainState, ExplainStateSystem->GetCurState());
-// 	FString AnswerStateStr = *ENUM_TO_NAME(EAnswerState, AnswerStateSystem->GetCurState());
-// 	FString TargetBuildingStr = QuestManager != nullptr ? QuestManager->GetTargetBuildingName() : TEXT("Unknown");
-// 	FString AIControllerStr = DasanAicontrol ? TEXT("OK") : TEXT("NULL");
-//
-// 	// 상태 정보 조합
-// 	FString StateInfo = FString::Printf(TEXT("[DASAN]\nMain: %s\nTour: %s\nExplain: %s\nAnswer: %s\nTarget: %s\nAI: %s"),
-// 		*MainStateStr,
-// 		*TourStateStr,
-// 		*ExplainStateStr,
-// 		*AnswerStateStr,
-// 		*TargetBuildingStr,
-// 		*AIControllerStr
-// 	);
-//
-// 	// DrawDebugString 호출
-// 	DrawDebugString(GetWorld(),
-// 		DrawLocation,
-// 		StateInfo,
-// 		nullptr,
-// 		FColor::Cyan,
-// 		0.0f,
-// 		true
-// 	);
-// }
 
 // RepNotify 함수
 void ADasanActor::OnRep_DasanState()
@@ -310,11 +251,6 @@ float ADasanActor::GetTargetBuildingDistnace()
 	}
 	return FVector::Dist(this->GetActorLocation(), this->CurTargetBuilding->GetActorLocation());
 }
-
-// void ADasanActor::DrawDebugState()
-// {
-// 	// 아무것도 안함
-// }
 
 void ADasanActor::StartTour()
 {
@@ -511,24 +447,6 @@ void ADasanActor::TransitionToState(EDasanState InMainState)
         }
     }
     break;
-    //
-    // case EDasanState::Explain:
-    // {
-    //     PRINTLOG(TEXT(" Explain 상태 시작"));
-    //
-    //     // 이동 중지 추가 (안전 체크)
-    //     if (DasanAicontrol)
-    //     {
-    //         DasanAicontrol->StopMovement();
-    //     }
-    //
-    //     if (ExplainStateSystem)
-    //     {
-    //         ExplainStateSystem->SetExplainState(EExplainState::ExplainIng);
-    //     }
-    // }
-    // break;
-
     case EDasanState::Answer:
     {
         PRINTLOG(TEXT("[EDasanState::Answer] Answer 상태 시작"));
@@ -542,90 +460,6 @@ void ADasanActor::TransitionToState(EDasanState InMainState)
     default:
         break;
     }
-}
-
-void ADasanActor::UpdateTourState()
-{
-	// 메인상태가 투어가 아니라면 함수를 실행 하지 않음
-	if(DasanState != EDasanState::Tour)
-		return;
-	
-	if (!TourStateSystem || !DasanAicontrol)
-	{
-		// static 변수로 1회만 출력
-		static bool bLoggedOnce = false;
-		if (!bLoggedOnce)
-		{
-			if (!TourStateSystem)
-				PRINTLOG(TEXT(" TourStateSystem이 nullptr임"));
-			if (!DasanAicontrol)
-				PRINTLOG(TEXT(" DasanAicontrol이 nullptr임"));
-			bLoggedOnce = true;
-		}
-		return;
-	}
-
-	ETourState Curstate = TourStateSystem->GetCurState();
-	APawn* player = GetPlayerPawn();
-
-	switch (Curstate)
-	{
-	case ETourState::TourMove:
-		{
-			// 플레이어가 너무 멀어졌는지 체크만 수행
-			if (player && GetPlayerDistance(player) > playerMaxDis)
-			{
-				PRINTLOG(TEXT("[TourMove] 플레이어가 너무 멀어짐 (거리: %.1f) - 대기 상태"), GetPlayerDistance(player));
-				TourStateSystem->SetTourState(ETourState::TourWait);
-				DasanAicontrol->StopMovement();
-				waitChackTimer = 1.f;
-			}
-			break;
-		}
-	case ETourState::TourWait:
-		{
-			waitChackTimer -= 0.1f;
-		
-			// 1초마다 확인
-			if (waitChackTimer <= 0.0f)
-			{
-				waitChackTimer = 1.f;
-			
-				if (player && GetPlayerDistance(player) <= playerMaxDis)
-				{
-					PRINTLOG(TEXT("[TourWait] 플레이어 복귀 - 다시 이동"));
-					TourStateSystem->SetTourState(ETourState::TourMove);
-				
-					if (CurTargetBuilding)
-					{
-						FAIMoveRequest MoveRequest;
-						MoveRequest.SetGoalActor(CurTargetBuilding);
-						MoveRequest.SetAcceptanceRadius(wayPointDis);
-						MoveRequest.SetUsePathfinding(true); // NavMesh 사용 설정 추가
-						
-						DasanAicontrol->MoveTo(MoveRequest);
-					}
-					else
-					{
-						PRINTLOG(TEXT("[TourWait] CurTargetBuilding이 nullptr"));
-					}
-				}
-				else
-				{
-					// 플레이어가 아직 멀리 있다면
-					PRINTLOG(TEXT("[TourWait] 플레이어 대기 중..."));
-				}
-			}
-			break;
-		}
-	case ETourState::TourEnd:
-		{
-			// 종료 상태 - OnMoveCompleted에서 이미 처리됨
-			break;
-		}
-	default:
-		break;
-	}
 }
 
 void ADasanActor::NextQuest()
@@ -688,7 +522,17 @@ void ADasanActor::NextQuest()
     }
 }
 
-float ADasanActor::GetPlayerDistance(class APawn* PlayerPawn) const
+bool ADasanActor::IsNearTargetBuilding()
+{
+	auto building = GetCurTargetBuilding();
+	if ( building == nullptr )
+		return false;
+
+	float Distance = FVector::Dist( this->GetActorLocation(), GetCurTargetBuilding()->GetActorLocation() );
+	return Distance <= 100.0f;
+}
+
+float ADasanActor::GetPlayerDistance(APawn* PlayerPawn) const
 {
 	if (!PlayerPawn)
 	{
@@ -711,13 +555,8 @@ void ADasanActor::UpdateWidgetState()
 	if (!DasanWidget)
 		return;
 
-	// 현재 상태 가져오기
-	ETourState CurTourState = TourStateSystem ? TourStateSystem->GetCurState() : ETourState::None;
-	// EExplainState CurrentExplainState = ExplainStateSystem ? ExplainStateSystem->GetCurState() : EExplainState::ExplainWait;
-	EAnswerState CurAnswerState = AnswerStateSystem ? AnswerStateSystem->GetCurState() : EAnswerState::AnswerListen;
-
 	// 위젯 상태 업데이트
-	DasanWidget->UpdateDasanState(DasanState, CurTourState, CurAnswerState);
+	DasanWidget->UpdateDasanState(DasanState, TourStateSystem->GetCurState(), AnswerStateSystem->GetCurState());
 }
 
 void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester)
@@ -725,39 +564,33 @@ void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester
 	if (!HasAuthority())
 		return;
 
-	PRINTLOG(TEXT("[Dasan] 음성 명령 수신: %s from %s"),
-		*ENUM_TO_NAME(EVoiceCommandType, InType),
+	PRINTLOG(TEXT("[Dasan] 음성 명령 수신: %s from %s"), *ENUM_TO_NAME(EVoiceCommandType, InType),
 		Requester ? *Requester->GetName() : TEXT("Unknown"));
 
-	switch (InType)
+	if ( InType == EVoiceCommandType::Cmd_Summon )
 	{
-		case EVoiceCommandType::Cmd_Summon:
-			if (Requester)
-			{
-				PRINTLOG(TEXT("[Dasan] Cmd_Summon: %s님이 다산을 소환합니다"), *Requester->GetName());
-				
-				// Requester의 위치로 텔레포트
-				FVector PlayerLocation = Requester->GetActorLocation();
-				FRotator PlayerRotation = Requester->GetActorRotation();
-				
-				// 플레이어의 앞쪽으로 200 유닛 떨어진 위치 계산
-				FVector TargetLocation = PlayerLocation + (PlayerRotation.Vector() * 200.f);
+		if (Requester == nullptr)
+			return;
+		
+		PRINTLOG(TEXT("[Dasan] Cmd_Summon: %s님이 다산을 소환합니다"), *Requester->GetName());
+		
+		// Requester의 위치로 텔레포트
+		FVector PlayerLocation = Requester->GetActorLocation();
+		FRotator PlayerRotation = Requester->GetActorRotation();
+		
+		// 플레이어의 앞쪽으로 200 유닛 떨어진 위치 계산
+		FVector TargetLocation = PlayerLocation + (PlayerRotation.Vector() * 200.f);
 
-				// 텔레포트
-				TeleportTo(TargetLocation, GetActorRotation(), false, true);
+		// 텔레포트
+		TeleportTo(TargetLocation, GetActorRotation(), false, true);
 
-				APlayerActor* RequestPlayer = Cast<APlayerActor>(Requester);
-				if (RequestPlayer && RequestPlayer->ChatPlayerSystem)
-				{
-					FChatMessage ChatMessage(EChatMessageType::NPC, GameString::NPC, TEXT("부르셨습니까?"));
-					RequestPlayer->ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
-				}
+		APlayerActor* RequestPlayer = Cast<APlayerActor>(Requester);
+		if (RequestPlayer && RequestPlayer->ChatPlayerSystem)
+		{
+			FChatMessage ChatMessage(EChatMessageType::NPC, GameString::NPC, TEXT("부르셨습니까?"));
+			RequestPlayer->ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
+		}
 
-				UGameSoundManager::Get(GetWorld())->PlaySound2D(EGameSoundType::Cmd_Summon);
-			}
-			break;
-
-		default:
-			break;
+		UGameSoundManager::Get(GetWorld())->PlaySound2D(EGameSoundType::Cmd_Summon);
 	}
 }

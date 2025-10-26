@@ -17,7 +17,7 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
-	// virtual void Tick(float DeltaTime) override;
+	virtual void Tick(float DeltaTime) override;
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:
@@ -36,15 +36,18 @@ public:
 	// 현재 메인 상태 (Tour/Explain/Answer)
 	UPROPERTY(ReplicatedUsing=OnRep_DasanState, BlueprintReadOnly, Category="State")
 	EDasanState DasanState;
+	FORCEINLINE EDasanState GetDasanState() const { return DasanState; }
 	
 public:
 	// 유틸리티 함수
 	void StartTour();
 	void NextQuest();
+
+	bool IsNearTargetBuilding();
 	
 	// 현재 목표 건물 찾기
 	class ABuilding* FindCurTargetBuilding() const;
-	FORCEINLINE class ABuilding* GetCurTargetBuilding() { return CurTargetBuilding;}
+	class ABuilding* GetCurTargetBuilding() { return CurTargetBuilding;}
 	FORCEINLINE void UpdateTargetBuilding(class ABuilding* InBuilding)	{ CurTargetBuilding = InBuilding; }
 
 	
@@ -52,17 +55,11 @@ public:
 	void TransitionToState(EDasanState InMainState);
 
 	float GetTargetBuildingDistnace();
-	
-	// // 디버그 상태 표시
-	//  void DrawDebugState();
 
 public:
 	// 상태 시스템 컴포넌트
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="State")
 	TObjectPtr<class UTourStateSystem> TourStateSystem;
-
-	// UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="State")
-	// TObjectPtr<class UExplainStateSystem> ExplainStateSystem;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="State")
 	TObjectPtr<class UAnswerStateSystem> AnswerStateSystem;
@@ -75,14 +72,8 @@ public:
 	UPROPERTY()
 	TObjectPtr<class UDasanWidget> DasanWidget;
 
-	// Tour 상태를 업데이트하는  함수
-	void UpdateTourState();
-
 	// 위젯 상태 업데이트 함수
 	void UpdateWidgetState();
-
-	// 사용안함
-	// void MoveToTarget();
 
 	// 플레이어 폰을 가져오는 헬퍼 함수
 	class APawn* GetPlayerPawn() const;
@@ -103,10 +94,7 @@ public:
 	// 웨이포인트 거리
 	float wayPointDis;
 
-public:
-	// 투어 상태 업데이트용 타이머 핸들
-	FTimerHandle TourStateTimerHandle;
-	
+public:	
 	UPROPERTY()
 	TObjectPtr<class UQuestManager> QuestManager;
 

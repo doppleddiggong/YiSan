@@ -11,10 +11,10 @@ void UBroadcastManager::SendMessage(const FString& InMsg)
 	OnMessage.Broadcast(InMsg);
 }
 
-void UBroadcastManager::SendToastMessage(const FString& InMsg)
-{
-	OnToastMessage.Broadcast(InMsg);
-}
+// void UBroadcastManager::SendToastMessage(const FString& InMsg)
+// {
+// 	OnToastMessage.Broadcast(InMsg);
+// }
 
 void UBroadcastManager::SendNetworkWaitCount(int RequestCount )
 {

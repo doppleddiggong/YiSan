@@ -28,13 +28,13 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendMessage(const FString& InMsg);
-
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnToastMessage, FString, Msg);
-	UPROPERTY(BlueprintAssignable, Category="Events")
-	FOnToastMessage OnToastMessage;
-	
-	UFUNCTION(BlueprintCallable, Category="Events")
-	void SendToastMessage(const FString& InMsg);
+	//
+	// DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnToastMessage, FString, Msg);
+	// UPROPERTY(BlueprintAssignable, Category="Events")
+	// FOnToastMessage OnToastMessage;
+	//
+	// UFUNCTION(BlueprintCallable, Category="Events")
+	// void SendToastMessage(const FString& InMsg);
 
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNetworkWaitCount, int, RequestCount);
 	UPROPERTY(BlueprintAssignable, Category="Events")

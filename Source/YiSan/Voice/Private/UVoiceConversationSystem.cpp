@@ -6,6 +6,7 @@
 #include "APlayerActor.h"
 #include "UBroadcastManager.h"
 #include "UChatPlayerSystem.h"
+#include "UDialogManager.h"
 #include "UHttpNetworkSystem.h"
 #include "UVoiceFunctionLibrary.h"
 #include "Kismet/GameplayStatics.h"
@@ -85,7 +86,8 @@ void UVoiceConversationSystem::StartRecording()
 
 	if (!bStreamOpened || !AudioCapture->StartStream() )
 	{
-		BroadcastManager->SendToastMessage(TEXT("연결된 마이크가 없습니다"));
+		UDialogManager::Toast(GetWorld(), TEXT("연결된 마이크가 없습니다"));
+		// BroadcastManager->SendToastMessage();
 		return;
 	}
 

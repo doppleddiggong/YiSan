@@ -19,6 +19,14 @@ protected:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:
+	UFUNCTION(Server, Reliable)                                                                                                           
+	void ServerRPC_BroadcastToastMessage(const FString& Message);    
+protected:                                                                                                                                                  
+	// Client-side RPC function to display the toast                                                                                                        
+	UFUNCTION(Client, Reliable)                                                                                                                             
+	void ClientRPC_ShowToastMessage(const FString& Message);   
+
+public:
 	// Dasan NPC 참조
 	UPROPERTY(Replicated, BlueprintReadOnly, Category="Tour")
 	TObjectPtr<class ADasanActor> DasanNPC;
