@@ -93,6 +93,12 @@ public:
     UPROPERTY()
     TObjectPtr<class UBroadcastManager> BroadcastManager; ///< UI 알림에 사용하는 캐시된 브로드캐스트 매니저입니다.
 
+public: // 음성 관련
+    /// @brief TTS 오디오를 재생합니다. VoiceConversationSystem으로 전달합니다.
+    /// @param AudioData [in] TTS로 생성된 오디오 데이터 (WAV)
+    /// @return 재생 성공 여부
+    UFUNCTION(BlueprintCallable, Category = "Voice")
+    void PlayTTSAudio(const TArray<uint8>& AudioData);
 
 public: // 제어 인터페이스
     /// @brief 입력 축 데이터를 처리해 월드 공간 이동을 수행합니다.

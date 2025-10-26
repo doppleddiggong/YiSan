@@ -36,6 +36,16 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Voice|Conversation")
     void StopRecording();
 
+    /// @brief TTS 오디오를 재생합니다. 녹음 중일 때는 재생하지 않습니다.
+    /// @param AudioData [in] TTS로 생성된 오디오 데이터 (WAV)
+    /// @return 재생 성공 여부 (녹음 중이면 false)
+    UFUNCTION(BlueprintCallable, Category = "Voice|Conversation")
+    bool PlayTTSAudio(const TArray<uint8>& AudioData);
+
+    /// @brief 현재 녹음 중인지 확인합니다.
+    UFUNCTION(BlueprintPure, Category = "Voice|Conversation")
+    bool IsRecording() const { return bIsRecording; }
+
 private:
     /// @brief 오디오 캡처 콜백에서 호출되어 버퍼를 누적합니다.
     /// @param InAudio [in] 캡처된 PCM 데이터입니다.
@@ -70,4 +80,8 @@ private:
     // --- 상태 변수 ---
     bool bIsRecording = false;
     bool bIsProcessing = false;
+
+    /** @brief 현재 재생 중인 TTS 오디오 컴포넌트입니다. */
+    UPROPERTY()
+    TObjectPtr<class UAudioComponent> CurrentTTSAudio;
 };

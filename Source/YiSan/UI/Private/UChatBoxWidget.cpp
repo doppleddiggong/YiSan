@@ -14,8 +14,6 @@
 #include "Components/ScrollBox.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/PlayerController.h"
-#include "GameFramework/PlayerState.h"
-#include "Sound/SoundWaveProcedural.h"
 #include "YiSan/YiSan.h"
 
 
@@ -89,9 +87,7 @@ void UChatBoxWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
 			FChatMessage ChatMessage(EChatMessageType::NPC, GameString::NPC,Response.gpt_response_text);
 			ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
 
-			auto SoundWave = UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData(Response.audio_data);
-			if ( IsValid(SoundWave))
-				UGameplayStatics::PlaySound2D(this, SoundWave);
+			Owner->PlayTTSAudio(Response.audio_data);
 		}
 	}
 	else
@@ -151,8 +147,26 @@ void UChatBoxWidget::AddChatMessage(const FChatMessage& ChatMessage)
     if (!ScrollBox || !ChatEntryClass)
         return;
 
+	//현재 스크롤 위치
+	float scrollOffset = ScrollBox->GetScrollOffset();
+	// 스크롤 맨 끝일때 값
+	float scrollOffsetOfEnd = ScrollBox->GetScrollOffsetOfEnd();
+	
     UChatEntryWidget* NewEntry = CreateWidget<UChatEntryWidget>(this, ChatEntryClass);
     NewEntry->ChatMessageData = ChatMessage;
     ScrollBox->AddChild(NewEntry);
-    ScrollBox->ScrollToEnd();
+    // ScrollBox->ScrollToEnd();
+
+	// 만약에 스크롤이 위치가 맽 끝이라면
+	if( scrollOffset == scrollOffsetOfEnd )
+	{
+		// 개행되는 채팅이 추가되면 한줄로 크기를 인식해서 발생하는 문제 때문에
+		// ScrollToEnd 0.01초 뒤에 실행
+		FTimerHandle timerHandle;
+		GetWorld()->GetTimerManager().SetTimer(timerHandle, [this]()
+		{
+		   // 스크롤 위치를 맨 끝으로 해라!
+		   ScrollBox->ScrollToEnd();
+		},0.01f, false);
+	}
 }

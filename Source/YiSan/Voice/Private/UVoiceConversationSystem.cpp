@@ -10,6 +10,7 @@
 #include "UVoiceFunctionLibrary.h"
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundWaveProcedural.h"
+#include "Components/AudioComponent.h"
 #include "YiSan/YiSan.h"
 
 UVoiceConversationSystem::UVoiceConversationSystem()
@@ -41,7 +42,13 @@ void UVoiceConversationSystem::StartRecording()
 		return;
 	}
 
-	bIsRecording = true;
+	// 재생 중인 TTS 오디오가 있으면 정지
+	if (CurrentTTSAudio && CurrentTTSAudio->IsPlaying())
+	{
+		CurrentTTSAudio->Stop();
+		PRINTLOG(TEXT("[VoiceConversation] Stopped TTS audio before recording"));
+	}
+
 	PCMData.Reset();
 
 	if (!AudioCapture)
@@ -50,7 +57,7 @@ void UVoiceConversationSystem::StartRecording()
 	Audio::FAudioCaptureDeviceParams Params;
 	Params.DeviceIndex = 0;
 	Params.NumInputChannels = 1;
-	
+
 	const bool bStreamOpened = AudioCapture->OpenAudioCaptureStream(
 		Params,
 		[this](const void* InAudio, int32 NumFrames, int32 InNumChannels, int32 InSampleRate, double StreamTime, bool bOverFlow)
@@ -63,9 +70,11 @@ void UVoiceConversationSystem::StartRecording()
 	if (!bStreamOpened || !AudioCapture->StartStream() )
 	{
 		BroadcastManager->SendToastMessage(TEXT("연결된 마이크가 없습니다"));
-		bIsRecording = false;
 		return;
 	}
+
+	// 스트림 시작 성공 후에 녹음 플래그 설정
+	bIsRecording = true;
 
 	BroadcastManager->SendAudioCapture(true);
 	PRINTLOG( TEXT("[VoiceConversation] Recording started."));
@@ -160,7 +169,7 @@ void UVoiceConversationSystem::OnResponseAsk(FResponseAsk& Response, bool bSucce
 			FChatMessage ChatMessage(EChatMessageType::User, *Owner->GetPlayerDisplayName(), *Response.transcribed_text);
 			Owner->ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
 		}
-		
+
 		if ( VoiceCommand != EVoiceCommandType::None )
 		{
 			BroadcastManager->SendExecVoiceCommand( VoiceCommand );
@@ -176,13 +185,54 @@ void UVoiceConversationSystem::OnResponseAsk(FResponseAsk& Response, bool bSucce
 			FChatMessage ChatMessage(EChatMessageType::NPC, GameString::NPC,CleanedText);
 			Owner->ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
 
-			auto SoundWave = UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData(Response.audio_data);
-			if ( IsValid(SoundWave))
-				UGameplayStatics::PlaySound2D(this, SoundWave);
+			PlayTTSAudio(Response.audio_data);
 		}
 	}
 	else
 	{
 		PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
 	}
+}
+
+bool UVoiceConversationSystem::PlayTTSAudio(const TArray<uint8>& AudioData)
+{
+	// 녹음 중일 때는 TTS 재생 차단
+	if (bIsRecording)
+	{
+		PRINTLOG(TEXT("[VoiceConversation] TTS playback blocked: recording in progress"));
+		return false;
+	}
+
+	// 오디오 데이터가 없으면 재생 불가
+	if (AudioData.Num() == 0)
+	{
+		PRINTLOG(TEXT("[VoiceConversation] TTS playback failed: empty audio data"));
+		return false;
+	}
+
+	// 이전에 재생 중인 TTS가 있으면 정지
+	if (CurrentTTSAudio && CurrentTTSAudio->IsPlaying())
+	{
+		CurrentTTSAudio->Stop();
+		PRINTLOG(TEXT("[VoiceConversation] Stopped previous TTS audio"));
+	}
+
+	// SoundWave 생성 및 재생
+	auto SoundWave = UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData(AudioData);
+	if (!IsValid(SoundWave))
+	{
+		PRINTLOG(TEXT("[VoiceConversation] TTS playback failed: invalid sound wave"));
+		return false;
+	}
+
+	// UAudioComponent로 재생 (나중에 정지할 수 있도록)
+	CurrentTTSAudio = UGameplayStatics::SpawnSound2D(this, SoundWave);
+	if (!CurrentTTSAudio)
+	{
+		PRINTLOG(TEXT("[VoiceConversation] TTS playback failed: could not spawn audio component"));
+		return false;
+	}
+
+	PRINTLOG(TEXT("[VoiceConversation] TTS audio playing"));
+	return true;
 }

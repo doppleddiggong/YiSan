@@ -225,6 +225,11 @@ FString APlayerActor::GetPlayerDisplayName() const
         if (auto PS = PC->PlayerState)
             return PS->GetPlayerName();
     }
-    
+
     return TEXT("Yisan");
+}
+
+void APlayerActor::PlayTTSAudio(const TArray<uint8>& AudioData)
+{
+    VoiceConversationSystem->PlayTTSAudio(AudioData);
 }
