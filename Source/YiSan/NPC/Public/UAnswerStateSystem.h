@@ -54,6 +54,12 @@ public:
 	// Answer 종료 (질문자 초기화)
 	void FinishAnswer();
 
+	// 질의응답 세션이 활성 상태인지 확인
+	bool IsAnswerSessionActive() const;
+
+	UFUNCTION()
+	void OnRep_CurState();
+
 private:
 	// 상태별 Enter 함수
 	void Enter_AnswerListen();
@@ -75,6 +81,7 @@ private:
 	TObjectPtr<class UBroadcastManager> BroadcastManager;
 
 	// 현재 Answer 상태 (StateSystem 내부 관리)
+	UPROPERTY(ReplicatedUsing=OnRep_CurState)
 	EAnswerState CurState = EAnswerState::AnswerListen;
 	EAnswerState PrevState = EAnswerState::AnswerListen;
 

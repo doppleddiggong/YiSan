@@ -46,7 +46,8 @@ void UVoiceConversationSystem::StartRecording()
 	if (CurrentTTSAudio && CurrentTTSAudio->IsPlaying())
 	{
 		CurrentTTSAudio->Stop();
-		PRINTLOG(TEXT("[VoiceConversation] Stopped TTS audio before recording"));
+		OnTTSAudioFinished(); // 수동으로 호출하여 이전 상태를 정리합니다.
+		PRINTLOG(TEXT("[VoiceConversation] Stopped TTS audio before recording and manually called OnTTSAudioFinished"));
 	}
 
 	PCMData.Reset();
@@ -176,6 +177,8 @@ void UVoiceConversationSystem::OnResponseAsk(FResponseAsk& Response, bool bSucce
 		}
 		else
 		{
+			BroadcastManager->SendQuestionDetected();
+
 			// GPT 응답에서 줄바꿈 제거 (UI에서 자동 줄바꿈 처리)
 			FString CleanedText = Response.gpt_response_text;
 			CleanedText.ReplaceInline(TEXT("\r\n"), TEXT(" "));
@@ -234,6 +237,7 @@ bool UVoiceConversationSystem::PlayTTSAudio(const TArray<uint8>& AudioData)
 	}
 
 	// TTS 재생 완료 콜백 바인딩
+	CurrentTTSAudio->OnAudioFinished.RemoveAll(this);
 	CurrentTTSAudio->OnAudioFinished.AddDynamic(this, &UVoiceConversationSystem::OnTTSAudioFinished);
 
 	PRINTLOG(TEXT("[VoiceConversation] TTS audio playing"));
@@ -249,5 +253,12 @@ void UVoiceConversationSystem::OnTTSAudioFinished()
 	{
 		BroadcastManager->SendTTSPlaybackFinished();
 		PRINTLOG(TEXT("[VoiceConversation] TTS 재생 완료 이벤트 발생"));
+	}
+
+	// UAudioComponent 수동 파괴 및 초기화
+	if (CurrentTTSAudio)
+	{
+		CurrentTTSAudio->DestroyComponent();
+		CurrentTTSAudio = nullptr;
 	}
 }

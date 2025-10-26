@@ -456,6 +456,13 @@ void ADasanActor::TransitionToState(EDasanState InMainState)
         return;
     }
 
+	// Answer 상태일 때 다른 상태로의 전환을 막는 로직 추가
+	if (AnswerStateSystem && AnswerStateSystem->IsAnswerSessionActive() && InMainState != EDasanState::Answer)
+	{
+		PRINTLOG(TEXT("TransitionToState: 질의응답 중에는 다른 상태로 전환할 수 없습니다."));
+		return;
+	}
+
     PRINTLOG(TEXT(" 상태 전환: %s → %s"),
         *ENUM_TO_NAME(EDasanState, DasanState),
         *ENUM_TO_NAME(EDasanState, InMainState));

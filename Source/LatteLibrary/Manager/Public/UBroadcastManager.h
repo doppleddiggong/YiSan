@@ -50,6 +50,13 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendAudioCapture(bool bRecording);
 
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnQuestionDetected);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnQuestionDetected OnQuestionDetected;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendQuestionDetected();
+
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnTTSPlaybackFinished);
 	UPROPERTY(BlueprintAssignable, Category="Events")
 	FOnTTSPlaybackFinished OnTTSPlaybackFinished;

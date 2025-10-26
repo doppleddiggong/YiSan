@@ -26,6 +26,11 @@ void UBroadcastManager::SendAudioCapture(bool bRecording)
 	OnAudioCapture.Broadcast(bRecording);
 }
 
+void UBroadcastManager::SendQuestionDetected()
+{
+	OnQuestionDetected.Broadcast();
+}
+
 void UBroadcastManager::SendTTSPlaybackFinished()
 {
 	OnTTSPlaybackFinished.Broadcast();

@@ -170,18 +170,18 @@ void UChatBoxWidget::AddChatMessage(const FChatMessage& ChatMessage)
     if (!ScrollBox || !ChatEntryClass)
         return;
 
-	//현재 스크롤 위치
-	float scrollOffset = ScrollBox->GetScrollOffset();
-	// 스크롤 맨 끝일때 값
-	float scrollOffsetOfEnd = ScrollBox->GetScrollOffsetOfEnd();
-	
+	// //현재 스크롤 위치
+	// float scrollOffset = ScrollBox->GetScrollOffset();
+	// // 스크롤 맨 끝일때 값
+	// float scrollOffsetOfEnd = ScrollBox->GetScrollOffsetOfEnd();
+
     UChatEntryWidget* NewEntry = CreateWidget<UChatEntryWidget>(this, ChatEntryClass);
     NewEntry->ChatMessageData = ChatMessage;
     ScrollBox->AddChild(NewEntry);
     // ScrollBox->ScrollToEnd();
 
 	// 만약에 스크롤이 위치가 맽 끝이라면
-	if( scrollOffset == scrollOffsetOfEnd )
+	// if( scrollOffset == scrollOffsetOfEnd )
 	{
 		// 개행되는 채팅이 추가되면 한줄로 크기를 인식해서 발생하는 문제 때문에
 		// ScrollToEnd 0.01초 뒤에 실행
@@ -190,6 +190,6 @@ void UChatBoxWidget::AddChatMessage(const FChatMessage& ChatMessage)
 		{
 		   // 스크롤 위치를 맨 끝으로 해라!
 		   ScrollBox->ScrollToEnd();
-		},0.01f, false);
+		},0.1f, false);
 	}
 }

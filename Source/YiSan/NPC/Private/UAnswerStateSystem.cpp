@@ -22,6 +22,7 @@ void UAnswerStateSystem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(UAnswerStateSystem, CurrentQuestionerName);
+	DOREPLIFETIME(UAnswerStateSystem, CurState);
 }
 
 void UAnswerStateSystem::InitSystem(ADasanActor* InOwner)
@@ -36,7 +37,8 @@ void UAnswerStateSystem::InitSystem(ADasanActor* InOwner)
 	{
 		BroadcastManager->OnAudioCapture.AddDynamic(this, &UAnswerStateSystem::OnAudioCaptureChanged);
 		BroadcastManager->OnTTSPlaybackFinished.AddDynamic(this, &UAnswerStateSystem::OnTTSPlaybackFinished);
-		PRINTLOG(TEXT("[AnswerSystem] BroadcastManager 이벤트 구독 성공 (OnAudioCapture, OnTTSPlaybackFinished)"));
+		BroadcastManager->OnQuestionDetected.AddDynamic(this, &UAnswerStateSystem::OnQuestionDetected);
+		PRINTLOG(TEXT("[AnswerSystem] BroadcastManager 이벤트 구독 성공 (OnAudioCapture, OnTTSPlaybackFinished, OnQuestionDetected)"));
 	}
 	else
 	{
@@ -49,6 +51,14 @@ void UAnswerStateSystem::SetAnswerState(const EAnswerState InState)
 	CurState = InState;
 
 	// 상태가 변경되었으므로 위젯 업데이트
+	if (OwnerDasan)
+	{
+		OwnerDasan->UpdateWidgetState();
+	}
+}
+
+void UAnswerStateSystem::OnRep_CurState()
+{
 	if (OwnerDasan)
 	{
 		OwnerDasan->UpdateWidgetState();
@@ -165,7 +175,7 @@ void UAnswerStateSystem::OnQuestionDetected()
 
 	// Listen 상태에서만 Reply로 전환
 	if (CurState == EAnswerState::AnswerListen)
-		CurState = EAnswerState::AnswerReply;
+		SetAnswerState(EAnswerState::AnswerReply);
 }
 
 void UAnswerStateSystem::OnAnswerFinished()
@@ -176,7 +186,7 @@ void UAnswerStateSystem::OnAnswerFinished()
 	PRINTLOG( TEXT("[AnswerState] Answer finished - back to listening"));
 
 	// Reply에서 다시 Listen으로
-	CurState = EAnswerState::AnswerListen;
+	// SetAnswerState(EAnswerState::AnswerListen);
 	ReplyTimer = 0.0f;
 	ListenTimer = 0.0f;
 }
@@ -189,7 +199,7 @@ void UAnswerStateSystem::EndAnswer()
 	PRINTLOG( TEXT("[AnswerState] Ending answer session"));
 
 	// Answer 종료 후 다음 퀘스트로 이동
-	CurState = EAnswerState::AnswerEnd;
+	SetAnswerState(EAnswerState::AnswerEnd);
 	OwnerDasan->TransitionToState(EDasanState::Tour);
 }
 
@@ -279,6 +289,11 @@ void UAnswerStateSystem::FinishAnswer()
 		PRINTLOG(TEXT("[AnswerSystem] 이전 상태로 복귀: %s"), *ENUM_TO_NAME(EDasanState, PreviousMainState));
 		OwnerDasan->TransitionToState(PreviousMainState);
 	}
+}
+
+bool UAnswerStateSystem::IsAnswerSessionActive() const
+{
+	return !CurrentQuestionerName.IsEmpty();
 }
 
 void UAnswerStateSystem::OnAudioCaptureChanged(bool bRecording)
