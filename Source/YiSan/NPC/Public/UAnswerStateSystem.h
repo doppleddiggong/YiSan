@@ -15,6 +15,11 @@ class YISAN_API UAnswerStateSystem : public UActorComponent
 public:
 	UAnswerStateSystem();
 
+	protected:
+	// Called when the game starts
+	virtual void BeginPlay() override;
+
+	public:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:

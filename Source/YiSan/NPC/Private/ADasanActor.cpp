@@ -286,12 +286,12 @@ float ADasanActor::GetTargetBuildingDistnace()
 
 void ADasanActor::TryStartAnswer(const FString& PlayerName)
 {
-	 AnswerStateSystem->ServerRPC_TryStartAnswer(PlayerName);
+	OnTryStartAnswer.Broadcast(PlayerName);
 }
 
 void ADasanActor::FinishAnswer()
 {
-	AnswerStateSystem->ServerRPC_FinishAnswer();
+	OnFinishAnswer.Broadcast();
 }
 
 void ADasanActor::StartTour()

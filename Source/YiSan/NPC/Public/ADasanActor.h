@@ -7,6 +7,9 @@
 #include "Navigation/PathFollowingComponent.h"
 #include "ADasanActor.generated.h"
 
+DECLARE_MULTICAST_DELEGATE_OneParam(FOnTryStartAnswer, const FString&);
+DECLARE_MULTICAST_DELEGATE(FOnFinishAnswer);
+
 UCLASS()
 class YISAN_API ADasanActor : public ACharacter
 {
@@ -57,6 +60,9 @@ public:
 
 	void TryStartAnswer(const FString& PlayerName);
 	void FinishAnswer();
+
+	FOnTryStartAnswer OnTryStartAnswer;
+	FOnFinishAnswer OnFinishAnswer;
 	
 	FPathFollowingRequestResult AIMoveToLoc(
 		const FVector& InGoalLocation,
