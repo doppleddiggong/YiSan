@@ -13,7 +13,7 @@ public class YiSan : ModuleRules
 			"Core",
 			"CoreUObject",
 			"Engine",
-			"EnhancedInput", "MassActors",
+			"EnhancedInput",
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[]
@@ -51,12 +51,6 @@ public class YiSan : ModuleRules
 		{
 			"Voice",     
 			"AudioMixer" 
-		});
-		
-		PublicDependencyModuleNames.AddRange(new string[]
-		{
-			"MassEntity", 
-			"MassSpawner",
 		});
 		
 		PrivateDependencyModuleNames.AddRange(new string[]
