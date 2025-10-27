@@ -3,6 +3,7 @@
 #include "UChatBoxWidget.h"
 
 #include "APlayerActor.h"
+#include "APlayerControl.h"
 #include "GameLogging.h"
 #include "UBroadcastManager.h"
 #include "UChatPlayerSystem.h"
@@ -48,16 +49,10 @@ void UChatBoxWidget::OnTextCommittedHandler(const FText& Text, ETextCommit::Type
 			// 플레이어 이름 가져오기
 			FString PlayerName = Owner->GetPlayerDisplayName();
 
-			// Dasan NPC가 질문을 받을 수 있는지 체크 (서버에 요청)
-			if (auto GameState = GetWorld()->GetGameState<AYisanGameState>())
+			// Dasan NPC가 질문을 받을 수 있는지 체크 (PlayerController를 통해 서버에 요청)
+			if (APlayerControl* PC = Owner->GetController<APlayerControl>())
 			{
-				GameState->ServerRPC_TryStartAnswer(PlayerName);
-				// if (GameState->DasanNPC && GameState->DasanNPC->AnswerStateSystem)
-				// {
-				// 	// ServerRPC를 통해 서버에서 답변 시작 시도
-				// 	// 실패 시 서버에서 Toast 메시지를 표시함
-				// 	GameState->DasanNPC->AnswerStateSystem->ServerRPC_TryStartAnswer(PlayerName);
-				// }
+				PC->ServerRPC_TryStartAnswer(PlayerName);
 			}
 
 			// 채팅 메시지 전송
@@ -107,18 +102,12 @@ void UChatBoxWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
 			Owner->PlayTTSAudio(Response.audio_data);
 		}
 
-		// GPT 응답 완료 후 답변 종료 처리
+		// GPT 응답 완료 후 답변 종료 처리 (PlayerController를 통해 서버에 요청)
 		// TTS가 재생되지 않거나 OnTTSFinished가 호출되지 않는 경우 대비
 		// (OnTTSFinished에서도 FinishAnswer가 호출되지만 중복 호출은 안전함)
-		if (auto GameState = GetWorld()->GetGameState<AYisanGameState>())
+		if (APlayerControl* PC = Owner->GetController<APlayerControl>())
 		{
-			// if (GameState->DasanNPC && GameState->DasanNPC->AnswerStateSystem)
-			// {
-			// 	GameState->DasanNPC->AnswerStateSystem->ServerRPC_FinishAnswer();
-			// 	PRINTLOG(TEXT("[ChatBox] GPT 응답 완료 - FinishAnswer 호출"));
-			// }
-			
-			GameState->ServerRPC_FinishAnswer();
+			PC->ServerRPC_FinishAnswer();
 			PRINTLOG(TEXT("[ChatBox] GPT 응답 완료 - FinishAnswer 호출"));
 		}
 	}
@@ -126,14 +115,11 @@ void UChatBoxWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
 	{
 		PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
 
-		// 실패한 경우에도 답변 종료 처리
-		if (auto GameState = GetWorld()->GetGameState<AYisanGameState>())
+		// 실패한 경우에도 답변 종료 처리 (PlayerController를 통해 서버에 요청)
+		if (APlayerControl* PC = Owner->GetController<APlayerControl>())
 		{
-			if (GameState->DasanNPC && GameState->DasanNPC->AnswerStateSystem)
-			{
-				GameState->ServerRPC_FinishAnswer();
-				PRINTLOG(TEXT("[ChatBox] GPT 응답 실패 - FinishAnswer 호출"));
-			}
+			PC->ServerRPC_FinishAnswer();
+			PRINTLOG(TEXT("[ChatBox] GPT 응답 실패 - FinishAnswer 호출"));
 		}
 	}
 }

@@ -24,10 +24,6 @@ public:
 	// RepNotify 함수
 	UFUNCTION()
 	void OnRep_DasanState();
-
-	// 서버 RPC - 상태 변경
-	UFUNCTION(Server, Reliable)
-	void ServerRPC_SetDasanState(EDasanState InState);
 	
 	// AI MoveTo 완료 콜백
 	UFUNCTION()

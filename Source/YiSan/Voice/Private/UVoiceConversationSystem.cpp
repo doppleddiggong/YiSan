@@ -4,6 +4,7 @@
 
 #include "GameLogging.h"
 #include "APlayerActor.h"
+#include "APlayerControl.h"
 #include "UBroadcastManager.h"
 #include "UChatPlayerSystem.h"
 #include "UDialogManager.h"
@@ -99,6 +100,19 @@ void UVoiceConversationSystem::StartRecording()
 
 	BroadcastManager->SendAudioCapture(true);
 	PRINTLOG( TEXT("[VoiceConversation] Recording started."));
+
+	// 서버에 녹음 시작 알림 (PlayerController의 ServerRPC 사용)
+	if (Owner)
+	{
+		if (APlayerControl* PC = Owner->GetController<APlayerControl>())
+		{
+			PC->ServerRPC_NotifyRecordingStart();
+		}
+		else
+		{
+			PRINTLOG(TEXT("[VoiceConversation] Failed to get PlayerControl!"));
+		}
+	}
 }
 
 
@@ -146,6 +160,15 @@ void UVoiceConversationSystem::StopRecording()
 	AudioCapture->CloseStream();
 
 	BroadcastManager->SendAudioCapture(false);
+
+	// 서버에 녹음 종료 알림 (PlayerController의 ServerRPC 사용)
+	if (Owner)
+	{
+		if (APlayerControl* PC = Owner->GetController<APlayerControl>())
+		{
+			PC->ServerRPC_NotifyRecordingEnd();
+		}
+	}
 
 	PRINTLOG(TEXT("[VoiceConversation] Recording stopped. Original: SampleRate=%d, Channels=%d, PCM Size=%d bytes"),
 		LastSampleRate, LastNumChannels, PCMData.Num());

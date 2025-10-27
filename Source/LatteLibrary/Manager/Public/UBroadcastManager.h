@@ -59,7 +59,7 @@ public:
 
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnVoiceAutioFinished);
 	UPROPERTY(BlueprintAssignable, Category="Events")
-	FOnVoiceAutioFinished OnVoiceAudioFinished;
+	FOnVoiceAutioFinished OnVoiceTalkFinished;
 
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendVoiceAudioFinished();

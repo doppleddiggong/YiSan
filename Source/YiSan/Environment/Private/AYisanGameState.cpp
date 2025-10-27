@@ -2,11 +2,13 @@
 
 #include "AYisanGameState.h"
 #include "ADasanActor.h"
+#include "APlayerActor.h"
 #include "APlayerControl.h"
 #include "GameLogging.h"
 #include "UAnswerStateSystem.h"
 #include "UQuestManager.h"
 #include "EBuildingType.h"
+#include "UBroadcastManager.h"
 #include "Net/UnrealNetwork.h"
 
 AYisanGameState::AYisanGameState()
@@ -19,6 +21,14 @@ void AYisanGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 
 	DOREPLIFETIME(AYisanGameState, DasanNPC);
 }
+
+// void AYisanGameState::ServerRPC_SetDasanState_Implementation(EDasanState InState)
+// {
+// 	if (!HasAuthority())
+// 		return;
+// 	
+// 	DasanNPC->DasanState = InState;
+// }
 
 void AYisanGameState::ServerRPC_ToastMessage_Implementation(const FString& Message)
 {
@@ -47,13 +57,77 @@ void AYisanGameState::ServerRPC_ToastMessage_Implementation(const FString& Messa
 
 void AYisanGameState::ServerRPC_TryStartAnswer_Implementation(const FString& PlayerName)
 {
+	if (!HasAuthority())
+		return;
+	
 	DasanNPC->AnswerStateSystem->TryStartAnswer(PlayerName);
 }
 
 void AYisanGameState::ServerRPC_FinishAnswer_Implementation()
 {
+	if (!HasAuthority())
+		return;
+	
 	DasanNPC->AnswerStateSystem->FinishAnswer();
 }
+//
+// void AYisanGameState::ServerRPC_RecordingStart_Implementation(APlayerController* Player)
+// {
+// 	if (!HasAuthority())
+// 		return;
+//
+// 	if (!Player || !Player->GetPawn())
+// 	{
+// 		PRINTLOG(TEXT("[GameState] ServerRPC_RecordingStart - Invalid Player!"));
+// 		return;
+// 	}
+//
+// 	// 플레이어 이름 가져오기
+// 	FString PlayerName = TEXT("Unknown");
+// 	if (auto PlayerActor = Cast<APlayerActor>(Player->GetPawn()))
+// 	{
+// 		PlayerName = PlayerActor->GetPlayerDisplayName();
+// 	}
+//
+// 	PRINTLOG(TEXT("[GameState] ServerRPC_RecordingStart - Player: %s"), *PlayerName);
+//
+// 	// Dasan 유효성 체크
+// 	if (!DasanNPC)
+// 	{
+// 		PRINTLOG(TEXT("[GameState] ServerRPC_RecordingStart - DasanNPC is nullptr!"));
+// 		return;
+// 	}
+//
+// 	if (!DasanNPC->AnswerStateSystem)
+// 	{
+// 		PRINTLOG(TEXT("[GameState] ServerRPC_RecordingStart - AnswerStateSystem is nullptr!"));
+// 		return;
+// 	}
+//
+// 	// Dasan에게 Answer 시작 시도
+// 	PRINTLOG(TEXT("[GameState] ServerRPC_RecordingStart - Calling TryStartAnswer"));
+// 	DasanNPC->AnswerStateSystem->TryStartAnswer(PlayerName);
+//
+// 	// BroadcastManager를 통해 UI 업데이트 (선택사항)
+// 	if (UBroadcastManager* BM = UBroadcastManager::Get(GetWorld()))
+// 	{
+// 		BM->SendAudioCapture(true);
+// 	}
+// }
+//
+// void AYisanGameState::ServerRPC_RecordingEnd_Implementation(APlayerController* Player)
+// {
+// 	if (!HasAuthority())
+// 		return;
+//
+// 	PRINTLOG(TEXT("[GameState] ServerRPC_NotifyRecordingEnd - Player: %s"),
+// 		Player ? *Player->GetName() : TEXT("nullptr"));
+//
+// 	if (UBroadcastManager* BM = UBroadcastManager::Get(GetWorld()))
+// 	{
+// 		BM->SendAudioCapture(false);
+// 	}
+// }
 
 void AYisanGameState::StartGlobalTour()
 {
@@ -69,17 +143,7 @@ void AYisanGameState::StartGlobalTour()
 	}
 
 	if (QuestManager->GetCurTarget() == EBuildingType::None)
-	{
 		QuestManager->InitSystem();
-	}
 
-	if (DasanNPC)
-	{
-		DasanNPC->StartTour();
-		PRINTLOG( TEXT("YisanGameState: Global tour started! First target: %s"), *ENUM_TO_NAME(EBuildingType, QuestManager->GetCurTarget())) ;
-	}
-	else
-	{
-		PRINTLOG( TEXT("YisanGameState: DasanNPC not found!"));
-	}
+	DasanNPC->StartTour();
 }

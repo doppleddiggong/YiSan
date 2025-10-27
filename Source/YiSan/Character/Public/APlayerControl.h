@@ -88,7 +88,21 @@ public:
 	UPROPERTY()
 	UUserWidget* LoadingWidget;
 	//----------------로딩 관련-------------------
-	
+
+	// 음성 녹음 관련 Server RPC
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_NotifyRecordingStart();
+
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_NotifyRecordingEnd();
+
+	// Answer 관련 Server RPC
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_TryStartAnswer(const FString& PlayerName);
+
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_FinishAnswer();
+
 	// 클라이언트 RPC : 토스트메시지
 	UFUNCTION(Client, Reliable)
 	void ClientRPC_ShowToastMessage(const FString& Message);

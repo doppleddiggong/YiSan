@@ -2,14 +2,13 @@
 
 #include "UAnswerStateSystem.h"
 #include "ADasanActor.h"
-#include "APlayerActor.h"
 #include "GameLogging.h"
 #include "UBroadcastManager.h"
 #include "UDialogManager.h"
 #include "AIController.h"
+#include "AYisanGameState.h"
 #include "Macro.h"
 #include "Net/UnrealNetwork.h"
-#include "Kismet/GameplayStatics.h"
 
 UAnswerStateSystem::UAnswerStateSystem()
 {
@@ -40,15 +39,20 @@ void UAnswerStateSystem::InitSystem(ADasanActor* InOwner)
 	BroadcastManager = UBroadcastManager::Get(GetWorld());
 	if (BroadcastManager)
 	{
-		BroadcastManager->OnAudioCapture.AddDynamic(this, &UAnswerStateSystem::OnAudioCapture);
-		BroadcastManager->OnVoiceAudioFinished.AddDynamic(this, &UAnswerStateSystem::OnTTSFinished);
+		BroadcastManager->OnVoiceTalkFinished.AddDynamic(this, &UAnswerStateSystem::OnVoiceTalkFinished);
 		BroadcastManager->OnAnswerReply.AddDynamic(this, &UAnswerStateSystem::OnAnswerReply);
 	}
 }
 
 void UAnswerStateSystem::SetCurState(EAnswerState InState)
 {
+	const EAnswerState OldState = CurState;
 	CurState = InState;
+
+	PRINTLOG(TEXT("[AnswerSystem] SetCurState - %s → %s (Authority: %s)"),
+		*ENUM_TO_NAME(EAnswerState, OldState),
+		*ENUM_TO_NAME(EAnswerState, InState),
+		OwnerDasan && OwnerDasan->HasAuthority() ? TEXT("TRUE") : TEXT("FALSE"));
 
 	// 상태가 변경되었으므로 위젯 업데이트
 	if (OwnerDasan)
@@ -57,14 +61,37 @@ void UAnswerStateSystem::SetCurState(EAnswerState InState)
 	}
 }
 
+bool UAnswerStateSystem::IsAnswerSessionActive() const
+{
+	return !CurQuestionerName.IsEmpty();
+}
 
 void UAnswerStateSystem::OnRep_CurState()
 {
+	PRINTLOG(TEXT("[AnswerSystem] OnRep_CurState - New State: %s (Client)"),
+		*ENUM_TO_NAME(EAnswerState, CurState));
+
+	// 클라이언트에서 상태가 복제되었으므로 위젯 업데이트
 	if (OwnerDasan)
 	{
 		OwnerDasan->UpdateWidgetState();
 	}
+	else
+	{
+		PRINTLOG(TEXT("[AnswerSystem] OnRep_CurState - OwnerDasan is nullptr (InitSystem not called yet)"));
+	}
 }
+
+
+void UAnswerStateSystem::OnRep_QuestionerName()
+{
+	// 클라이언트에서 복제된 값 로그 출력
+	PRINTLOG(TEXT("[AnswerSystem] OnRep_QuestionerName - %s"), *CurQuestionerName);
+
+	// Toast 메시지는 서버의 TryStartAnswer에서 표시됨
+	// OnRep에서는 ServerRPC를 호출하면 안 됨!
+}
+
 
 // 블루프린트 호출 함수들
 void UAnswerStateSystem::OnAnswerReply()
@@ -125,6 +152,12 @@ bool UAnswerStateSystem::TryStartAnswer(const FString& PlayerName)
 	CurQuestionerName = PlayerName;
 	PRINTLOG(TEXT("[AnswerSystem] %s님의 질문 시작"), *PlayerName);
 
+	// 모든 클라이언트에 Toast 메시지 표시
+	if (AYisanGameState* GS = GetWorld()->GetGameState<AYisanGameState>())
+	{
+		GS->ServerRPC_ToastMessage(FString::Printf(TEXT("%s가 질문중입니다"), *PlayerName));
+	}
+
 	// 타임아웃 타이머 시작 (예외 상황 대비)
 	if (GetWorld())
 	{
@@ -157,6 +190,9 @@ bool UAnswerStateSystem::TryStartAnswer(const FString& PlayerName)
 		OwnerDasan->TransitionToState(EDasanState::Answer);
 	}
 
+	// Answer 서브 상태를 AnswerListen으로 설정 (음성 듣는 중)
+	SetCurState(EAnswerState::AnswerListen);
+
 	return true;
 }
 
@@ -183,6 +219,9 @@ void UAnswerStateSystem::FinishAnswer()
 
 	CurQuestionerName.Empty();
 
+	// Answer 서브 상태 초기화
+	SetCurState(EAnswerState::AnswerListen);
+
 	// 이전 상태로 복귀
 	if (PreviousMainState != EDasanState::Answer)
 	{
@@ -206,49 +245,8 @@ void UAnswerStateSystem::OnAnswerTimeout()
 	FinishAnswer();
 }
 
-bool UAnswerStateSystem::IsAnswerSessionActive() const
-{
-	return !CurQuestionerName.IsEmpty();
-}
 
-void UAnswerStateSystem::OnAudioCapture(bool bRecording)
-{
-	if (!OwnerDasan || !OwnerDasan->HasAuthority())
-		return;
-
-	if (bRecording)
-	{
-		// 음성 녹음 시작 - 플레이어 이름 가져오기
-		PRINTLOG(TEXT("[AnswerSystem] 음성 녹음 시작 감지"));
-
-		// 첫 번째 플레이어 가져오기
-		APlayerController* PC = UGameplayStatics::GetPlayerController(GetWorld(), 0);
-		if (!PC || !PC->GetPawn())
-		{
-			PRINTLOG(TEXT("[AnswerSystem] 플레이어를 찾을 수 없습니다."));
-			return;
-		}
-
-		// APlayerActor에서 실제 플레이어 표시 이름 가져오기
-		FString PlayerName = TEXT("Unknown");
-		if (auto PlayerActor = Cast<APlayerActor>(PC->GetPawn()))
-		{
-			PlayerName = PlayerActor->GetPlayerDisplayName();
-		}
-
-		PRINTLOG(TEXT("[AnswerSystem] 플레이어 이름: %s"), *PlayerName);
-
-		// Answer 시작 시도
-		TryStartAnswer(PlayerName);
-	}
-	else
-	{
-		// 음성 녹음 종료 - TTS 대기 중
-		PRINTLOG(TEXT("[AnswerSystem] 음성 녹음 종료 감지 (Answer 상태 유지 - TTS 대기)"));
-	}
-}
-
-void UAnswerStateSystem::OnTTSFinished()
+void UAnswerStateSystem::OnVoiceTalkFinished()
 {
 	if (!OwnerDasan || !OwnerDasan->HasAuthority())
 		return;

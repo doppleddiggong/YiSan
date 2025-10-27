@@ -2,6 +2,8 @@
 
 #include "UDasanWidget.h"
 #include "ADasanActor.h"
+#include "GameLogging.h"
+#include "Macro.h"
 #include "Components/TextBlock.h"
 #include "Components/WidgetComponent.h"
 #include "GameFramework/PlayerController.h"
@@ -19,9 +21,18 @@ void UDasanWidget::InitWidget(ADasanActor* InDasanActor)
 void UDasanWidget::UpdateDasanState(EDasanState MainState, ETourState TourState, EAnswerState AnswerState)
 {
 	if (!Text_Msg)
+	{
+		PRINTLOG(TEXT("[DasanWidget] UpdateDasanState - Text_Msg is nullptr!"));
 		return;
+	}
 
 	FString StateMessage = GetStateMessage(MainState, TourState, AnswerState);
+
+	PRINTLOG(TEXT("[DasanWidget] UpdateDasanState - MainState: %s, TourState: %s, AnswerState: %s, Message: %s"),
+		*ENUM_TO_NAME(EDasanState, MainState),
+		*ENUM_TO_NAME(ETourState, TourState),
+		*ENUM_TO_NAME(EAnswerState, AnswerState),
+		*StateMessage);
 
 	// 메시지가 비어있으면 위젯을 숨기는 대신, 텍스트만 비워 깜빡임을 방지합니다.
 	Text_Msg->SetText(FText::FromString(StateMessage));

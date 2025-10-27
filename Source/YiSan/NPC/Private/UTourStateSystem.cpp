@@ -38,12 +38,16 @@ void UTourStateSystem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
 
 void UTourStateSystem::OnRep_CurState()
 {
-	PRINTLOG(TEXT("UTourStateSystem::OnRep_CurState - State changed to: %s"), *ENUM_TO_NAME(ETourState, CurState));
+	PRINTLOG(TEXT("[TourSystem] OnRep_CurState - New State: %s (Client)"), *ENUM_TO_NAME(ETourState, CurState));
 
 	// 클라이언트에서 상태가 복제되었으므로 위젯 업데이트
 	if (OwnerDasan)
 	{
 		OwnerDasan->UpdateWidgetState();
+	}
+	else
+	{
+		PRINTLOG(TEXT("[TourSystem] OnRep_CurState - OwnerDasan is nullptr (InitSystem not called yet)"));
 	}
 }
 
@@ -62,7 +66,13 @@ void UTourStateSystem::InitSystem(ADasanActor* InOwner)
 
 void UTourStateSystem::SetTourState(const ETourState InState)
 {
+	const ETourState OldState = CurState;
 	CurState = InState;
+
+	PRINTLOG(TEXT("[TourSystem] SetTourState - %s → %s (Authority: %s)"),
+		*ENUM_TO_NAME(ETourState, OldState),
+		*ENUM_TO_NAME(ETourState, InState),
+		OwnerDasan && OwnerDasan->HasAuthority() ? TEXT("TRUE") : TEXT("FALSE"));
 
 	// 상태가 변경되었으므로 위젯 업데이트
 	if (OwnerDasan)

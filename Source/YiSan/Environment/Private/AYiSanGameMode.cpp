@@ -5,8 +5,6 @@
 #include "ADasanActor.h"
 #include "FComponentHelper.h"
 #include "GameLogging.h"
-#include "Macro.h"
-#include "YiSanLoading.h"
 
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
@@ -71,17 +69,5 @@ void AYiSanGameMode::StartTour()
 	else
 	{
 		PRINTLOG( TEXT("[GameMode] State not found!"));
-	}
-}
-
-void AYiSanGameMode::SetTourState(EDasanState InState)
-{
-	if (!HasAuthority())
-		return;
-
-	if (DasanNPC)
-	{
-		DasanNPC->ServerRPC_SetDasanState( InState );
-		PRINTLOG( TEXT("[GameMode] Tour state set to: %s"), *ENUM_TO_NAME(EDasanState, InState));
 	}
 }

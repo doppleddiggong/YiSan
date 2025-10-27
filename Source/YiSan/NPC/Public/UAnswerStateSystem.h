@@ -32,13 +32,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Answer")
 	void OnAnswerReply();
 
-	// 음성 녹음 이벤트 핸들러
-	UFUNCTION()
-	void OnAudioCapture(bool bRecording);
-
 	// TTS 재생 완료 이벤트 핸들러
 	UFUNCTION()
-	void OnTTSFinished();
+	void OnVoiceTalkFinished();
 
 	// Answer 시작 가능 여부 체크
 	bool CanStartAnswer(const FString& PlayerName, FString& OutReason) const;
@@ -55,6 +51,9 @@ public:
 	UFUNCTION()
 	void OnRep_CurState();
 
+	UFUNCTION()
+	void OnRep_QuestionerName();
+
 private:
 	UPROPERTY()
 	TObjectPtr<class ADasanActor> OwnerDasan;
@@ -63,7 +62,7 @@ private:
 	TObjectPtr<class UBroadcastManager> BroadcastManager;
 
 	// 현재 질문 중인 플레이어 이름 (멀티플레이어 동기화용)
-	UPROPERTY(Replicated)
+	UPROPERTY(ReplicatedUsing=OnRep_QuestionerName)
 	FString CurQuestionerName;
 
 	// 현재 Answer 상태 (StateSystem 내부 관리)
