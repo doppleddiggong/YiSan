@@ -18,6 +18,8 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Character.h"
 #include "Sound/SoundCue.h"
+#include "NavigationSystem.h"
+#include "NavigationPath.h"
 
 // 2초에 한 번 검사
 static float CheckInterval = 2.0f;
@@ -95,6 +97,69 @@ void UTourStateSystem::Enter_TourMove()
 {
 	PRINTLOG( TEXT("[TourState] Enter TourMove"));
 	WaitTimer = 0.0f;
+
+	// Enter 시에도 이동 명령 실행
+	if (OwnerDasan && OwnerDasan->DasanAicontrol && OwnerDasan->GetCurTargetBuilding())
+	{
+		FVector StartPos = OwnerDasan->GetActorLocation();
+		FVector TargetPos = OwnerDasan->GetCurTargetBuilding()->GetActorLocation();
+		float Distance = FVector::Dist(StartPos, TargetPos);
+
+		PRINTLOG(TEXT("[TourState] MoveTo 시작 - From: (%.1f, %.1f, %.1f) To: (%.1f, %.1f, %.1f), Distance: %.1f"),
+			StartPos.X, StartPos.Y, StartPos.Z,
+			TargetPos.X, TargetPos.Y, TargetPos.Z,
+			Distance);
+
+		// NavMesh로 목표 위치 투영
+		UNavigationSystemV1* NavSys = UNavigationSystemV1::GetCurrent(GetWorld());
+		if (NavSys)
+		{
+			FNavLocation TargetNavLoc;
+			bool bTargetOnNavMesh = NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000));
+
+			if (bTargetOnNavMesh)
+			{
+				float ProjectionDist = FVector::Dist(TargetPos, TargetNavLoc.Location);
+				PRINTLOG(TEXT("[TourState] 목표 NavMesh 투영: 원본 Z=%.1f → NavMesh Z=%.1f (높이차: %.1f)"),
+					TargetPos.Z, TargetNavLoc.Location.Z, ProjectionDist);
+
+				// NavMesh 위치로 이동 명령 (Actor가 아닌 Location 사용)
+				FAIMoveRequest MoveRequest;
+				MoveRequest.SetGoalLocation(TargetNavLoc.Location); // SetGoalActor 대신 SetGoalLocation
+				MoveRequest.SetAcceptanceRadius(250.0f);
+				MoveRequest.SetUsePathfinding(true);
+
+				FPathFollowingRequestResult Result = OwnerDasan->DasanAicontrol->MoveTo(MoveRequest);
+				PRINTLOG(TEXT("[TourState] MoveTo 결과: %d (NavMesh 위치 사용)"), (int32)Result.Code);
+			}
+			else
+			{
+				PRINTLOG(TEXT("[TourState] 경고: 목표 위치를 NavMesh에 투영 실패! Actor 위치로 시도"));
+
+				FAIMoveRequest MoveRequest;
+				MoveRequest.SetGoalActor(OwnerDasan->GetCurTargetBuilding());
+				MoveRequest.SetAcceptanceRadius(250.0f);
+				MoveRequest.SetUsePathfinding(true);
+				MoveRequest.SetProjectGoalLocation(true);
+
+				FPathFollowingRequestResult Result = OwnerDasan->DasanAicontrol->MoveTo(MoveRequest);
+				PRINTLOG(TEXT("[TourState] MoveTo 결과: %d (Actor 위치 사용)"), (int32)Result.Code);
+			}
+		}
+		else
+		{
+			PRINTLOG(TEXT("[TourState] 경고: NavigationSystem 없음! Actor 위치로 시도"));
+
+			FAIMoveRequest MoveRequest;
+			MoveRequest.SetGoalActor(OwnerDasan->GetCurTargetBuilding());
+			MoveRequest.SetAcceptanceRadius(250.0f);
+			MoveRequest.SetUsePathfinding(true);
+			MoveRequest.SetProjectGoalLocation(true);
+
+			FPathFollowingRequestResult Result = OwnerDasan->DasanAicontrol->MoveTo(MoveRequest);
+			PRINTLOG(TEXT("[TourState] MoveTo 결과: %d"), (int32)Result.Code);
+		}
+	}
 }
 
 void UTourStateSystem::Enter_TourWait()
@@ -168,14 +233,6 @@ void UTourStateSystem::Tick_TourMove(float DeltaTime)
 		return;
 	}
 
-	FAIMoveRequest MoveRequest;
-	MoveRequest.SetGoalActor(OwnerDasan->GetCurTargetBuilding());
-	MoveRequest.SetAcceptanceRadius(250.0f);
-	MoveRequest.SetUsePathfinding(true); // NavMesh 사용 설정 추가
-			
-	OwnerDasan->DasanAicontrol->MoveTo(MoveRequest);
-
-	
 	// 웨이포인트 도착 체크
 	if (OwnerDasan->IsNearTargetBuilding())
 	{
@@ -183,7 +240,7 @@ void UTourStateSystem::Tick_TourMove(float DeltaTime)
 		CurState = ETourState::TourExplain;
 		return;
 	}
-	
+
 	// 주변 플레이어 검사 간격
 	WaitTimer += DeltaTime;
 
@@ -219,8 +276,27 @@ void UTourStateSystem::Tick_TourWait(float DeltaTime)
 		if (IsAllPlayersNearby())
 		{
 			CurState = ETourState::TourMove;
-
 			PRINTLOG(TEXT("[TourState] 모든 플레이어 근처 → TourMove 전환"));
+
+			// TourMove로 전환할 때 실제 이동 명령 실행 (NavMesh 위치로)
+			if (OwnerDasan->DasanAicontrol && OwnerDasan->GetCurTargetBuilding())
+			{
+				FVector TargetPos = OwnerDasan->GetCurTargetBuilding()->GetActorLocation();
+				UNavigationSystemV1* NavSys = UNavigationSystemV1::GetCurrent(GetWorld());
+
+				if (NavSys)
+				{
+					FNavLocation TargetNavLoc;
+					if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
+					{
+						FAIMoveRequest MoveRequest;
+						MoveRequest.SetGoalLocation(TargetNavLoc.Location);
+						MoveRequest.SetAcceptanceRadius(250.0f);
+						MoveRequest.SetUsePathfinding(true);
+						OwnerDasan->DasanAicontrol->MoveTo(MoveRequest);
+					}
+				}
+			}
 		}
 		else
 		{
