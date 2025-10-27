@@ -1,6 +1,7 @@
-﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved.
 
 #include "YiSanLoading.h"
+#include "LoadingScreenWidget.h"
 #include "Blueprint/UserWidget.h"
 #include "Kismet/GameplayStatics.h"
 #include "LevelInstance/LevelInstanceActor.h"
@@ -16,69 +17,155 @@
 #include "GameFramework/PlayerController.h"
 #include "ContentStreaming.h"
 
-void UYiSanLoading::Step1_StartLoadingTargetLevel()
+void UYiSanLoading::Initialize(FSubsystemCollectionBase& Collection)
 {
-	UE_LOG(LogTemp, Warning, TEXT("[스텝1] 타겟 레벨 로드 시작함: %s"), *TargetLevelName.ToString());
+	Super::Initialize(Collection);
+	
+	UE_LOG(LogTemp, Display, TEXT("[YiSanLoading] 서브시스템 초기화"));
+	
+	// PreLoadMap 델리게이트 바인딩 (맵 전환 시작 시 호출)
+	PreLoadMapHandle = FCoreUObjectDelegates::PreLoadMap.AddUObject(this, &UYiSanLoading::Step1_OnPreLoadMap);
+	
+	// PostLoadMapWithWorld 델리게이트 바인딩 (맵 로드 완료 시 호출)
+	PostLoadMapHandle = FCoreUObjectDelegates::PostLoadMapWithWorld.AddUObject(this, &UYiSanLoading::Step2_OnPostLoadMap);
+	
+	UE_LOG(LogTemp, Display, TEXT("[YiSanLoading] 델리게이트 바인딩 완료 - 맵 전환 자동 감지 활성화"));
+}
 
-	// 현재는 seamlessTravel 사용중
-	const bool bUseSeamless = true;
-	const FString MapPath = TEXT("/Game/CustomContents/Maps/MainMap_WP");
-	//GetWorld()->SeamlessTravel("/Game/CustomContents/Maps/MainMap_WP", bUseSeamless);
-	// 문제시 severtarvel 사용
-	GetWorld()->ServerTravel("/Game/CustomContents/Maps/MainMap_WP",bUseSeamless);
-	// 중복 바인딩 방지함
-	FCoreUObjectDelegates::PostLoadMapWithWorld.RemoveAll(this);
-	// 맵 로드 완료 시 Step2_OnPostLoadMap 함수를 호출하도록 바인딩함
-	FCoreUObjectDelegates::PostLoadMapWithWorld.AddUObject(this, &UYiSanLoading::Step2_OnPostLoadMap);
+void UYiSanLoading::Deinitialize()
+{
+	// 델리게이트 정리
+	if (PreLoadMapHandle.IsValid())
+	{
+		FCoreUObjectDelegates::PreLoadMap.Remove(PreLoadMapHandle);
+	}
+	
+	if (PostLoadMapHandle.IsValid())
+	{
+		FCoreUObjectDelegates::PostLoadMapWithWorld.Remove(PostLoadMapHandle);
+	}
+	
+	// 로딩 UI 정리
+	HideLoadingUI();
+	
+	UE_LOG(LogTemp, Display, TEXT("[YiSanLoading] 서브시스템 정리 완료"));
+	
+	Super::Deinitialize();
+}
+
+void UYiSanLoading::Step1_OnPreLoadMap(const FString& MapName)
+{
+	// 맵 전환이 시작될 때 자동으로 호출됨
+	UE_LOG(LogTemp, Warning, TEXT("[스텝1 - 자동] 맵 전환 감지: %s"), *MapName);
+	
+	// StartMap이나 TransitionMap 같은 것은 무시
+	if (MapName.Contains(TEXT("StartMap")) || 
+	    MapName.Contains(TEXT("Transition")) || 
+	    MapName.Contains(TEXT("Entry")))
+	{
+		UE_LOG(LogTemp, Display, TEXT("[스텝1] 시작 맵으로 전환 중 - 로딩 UI 표시 안 함"));
+		return;
+	}
+	
+	// 로딩 위젯 클래스가 설정되어 있으면 UI 표시
+	if (LoadingWidgetClass)
+	{
+		UE_LOG(LogTemp, Display, TEXT("[스텝1] 로딩 UI 표시 시작"));
+		ShowLoadingUI(LoadingWidgetClass);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[스텝1] LoadingWidgetClass가 설정되지 않음 - UI 표시 안 함"));
+	}
 }
 
 void UYiSanLoading::Step2_OnPostLoadMap(UWorld* LoadedWorld)
 {
-	// 델리게이트 해제함(중복 방지)
-	FCoreUObjectDelegates::PostLoadMapWithWorld.RemoveAll(this);
-
 	if (!LoadedWorld)
 	{
 		UE_LOG(LogTemp, Error, TEXT("[스텝2] LoadedWorld가 null임."));
 		return;
 	}
 
-	UE_LOG(LogTemp, Display, TEXT("[스텝2] 맵 로드 완료: %s"), *LoadedWorld->GetName());
+	// === 로컬 월드인지 확인 (멀티플레이어 대응) ===
+	bool bIsLocalWorld = false;
+	if (UGameInstance* GI = GetGameInstance())
+	{
+		if (ULocalPlayer* LP = GI->GetFirstGamePlayer())
+		{
+			if (LP->GetWorld() == LoadedWorld)
+			{
+				bIsLocalWorld = true;
+			}
+		}
+	}
 
-	// 로딩 UI가 없다면 재생성함 (ServerTravel 등으로 제거되었을 수 있음)
+	if (!bIsLocalWorld)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[스텝2] 로컬 월드가 아님, 폴링 스킵 (다른 플레이어의 월드)"));
+		return;
+	}
+	// === 로컬 월드 체크 끝 ===
+
+	UE_LOG(LogTemp, Display, TEXT("[스텝2 - 로컬] 맵 로드 완료: %s"), *LoadedWorld->GetName());
+
+	// StartMap이나 TransitionMap이면 로딩 추적 안 함
+	FString WorldName = LoadedWorld->GetName();
+	if (WorldName.Contains(TEXT("StartMap")) || 
+	    WorldName.Contains(TEXT("Transition")) || 
+	    WorldName.Contains(TEXT("Entry")))
+	{
+		UE_LOG(LogTemp, Display, TEXT("[스텝2] 시작 맵 - 로딩 추적 안 함"));
+		HideLoadingUI();
+		return;
+	}
+
+	// 로딩 UI가 없다면 재생성 (ServerTravel 등으로 제거되었을 수 있음)
 	if (!LoadingWidgetObject.IsValid() && !LoadingWidgetHolder.IsValid() && LoadingWidgetClass)
 	{
-		UE_LOG(LogTemp, Display, TEXT("[스텝2] 로딩 UI가 없어 재생성함."));
+		UE_LOG(LogTemp, Display, TEXT("[스텝2 - 로컬] 로딩 UI가 없어 재생성함."));
 		ShowLoadingUI(LoadingWidgetClass);
 	}
 	
 	// 타임아웃 체크 시작 시간 기록
 	ResourceCheckStartTime = LoadedWorld->GetTimeSeconds();
-	TextureStreamingStartTime = ResourceCheckStartTime; // 텍스처 스트리밍 시작 시간 기록
-	bInitialTextureStreamingComplete = false; // 초기화
+	TextureStreamingStartTime = ResourceCheckStartTime;
+	bInitialTextureStreamingComplete = false;
 
-	// **수정: 텍스처 스트리밍 강제 시작**
+	// 텍스처 스트리밍 강제 시작
 	IStreamingManager::Get().AddLevel(LoadedWorld->PersistentLevel);
 	IStreamingManager::Get().NotifyLevelChange();
     
-	UE_LOG(LogTemp, Warning, TEXT("[스텝2] 텍스처 스트리밍 강제 시작 완료"));
+	UE_LOG(LogTemp, Warning, TEXT("[스텝2 - 로컬] 텍스처 스트리밍 강제 시작 완료"));
 
-	// 스트리밍 / 인스턴스 준비 상태 폴링 시작함
-	const float PollInterval = 0.1f; // 0.25초 → 0.1초로 단축 (더 빠른 반응)
-	LoadedWorld->GetTimerManager().SetTimer(PollingStreamingTimerHandle, this, &UYiSanLoading ::Poll_StreamingAndInstancesReady, PollInterval, true);
+	// 스트리밍 폴링 시작
+	const float PollInterval = 0.1f;
+	LoadedWorld->GetTimerManager().SetTimer(
+		PollingStreamingTimerHandle, 
+		this, 
+		&UYiSanLoading::Poll_StreamingAndInstancesReady, 
+		PollInterval, 
+		true
+	);
+	
+	UE_LOG(LogTemp, Display, TEXT("[스텝2 - 로컬] 폴링 타이머 시작 (%.2f초 간격)"), PollInterval);
 }
 
 void UYiSanLoading::Step3_TransitionToTarget()
 {
-	UE_LOG(LogTemp, Display, TEXT("[스텝3] 타겟으로 전환 완료함. 플레이어 입력 활성화."));
+	UE_LOG(LogTemp, Display, TEXT("[스텝3 - 로컬] 타겟으로 전환 완료함. 플레이어 입력 활성화."));
     
-	// 플레이어 입력 활성화
+	// 플레이어 입력 활성화 (로컬 플레이어만)
 	if (UWorld* World = GetWorld())
 	{
 		if (APlayerController* PC = World->GetFirstPlayerController())
 		{
-			PC->SetInputMode(FInputModeGameOnly());
-			PC->bShowMouseCursor = false;
+			if (PC->IsLocalController())
+			{
+				PC->SetInputMode(FInputModeGameOnly());
+				PC->bShowMouseCursor = false;
+				UE_LOG(LogTemp, Display, TEXT("[스텝3 - 로컬] 입력 모드 변경 완료"));
+			}
 		}
 	}
 }
@@ -99,7 +186,7 @@ void UYiSanLoading::Poll_StreamingAndInstancesReady()
     float StreamingPercentage = 0.0f;
     float LevelInstanceProgress = 0.0f;
 
-    // 1. WorldPartition 체크함
+    // 1. WorldPartition 체크
     if (UWorldPartitionSubsystem* WPS = World->GetSubsystem<UWorldPartitionSubsystem>())
     {
         bWorldPartitionReady = WPS->IsStreamingCompleted();
@@ -109,20 +196,17 @@ void UYiSanLoading::Poll_StreamingAndInstancesReady()
         bWorldPartitionReady = true;
     }
 
-    // 2. **개선된 텍스처 스트리밍 체크**
+    // 2. 텍스처 스트리밍 체크
     {
         IStreamingManager& StreamingManager = IStreamingManager::Get();
         
-        // 현재 시간
         float CurrentTime = World->GetTimeSeconds();
         float ElapsedTime = CurrentTime - TextureStreamingStartTime;
         
-        // **방법 A: 대기중인 요청 수 확인 (가장 정확)**
         int32 NumStreamingTextures = StreamingManager.GetNumWantingResources();
         
         if (NumStreamingTextures == 0)
         {
-            // 스트리밍할 텍스처가 없음 = 완료
             StreamingPercentage = 1.0f;
             bTextureReady = true;
             
@@ -134,23 +218,15 @@ void UYiSanLoading::Poll_StreamingAndInstancesReady()
         }
         else
         {
-            // **방법 B: StreamAllResources 사용하되 안전장치 추가**
             const float RequestSeconds = 0.1f;
             float RawPercentage = StreamingManager.StreamAllResources(RequestSeconds);
             
-            // 진행률 계산 (음수/무한대 처리)
             if (!FMath::IsFinite(RawPercentage) || RawPercentage < 0.0f)
             {
-                // DDC 빌드 중이거나 초기 상태 = 시간 기반 추정
-                // 초기 10초는 0%에서 시작, 이후 서서히 증가
                 float TimeBasedProgress = FMath::Clamp((ElapsedTime - 2.0f) / 10.0f, 0.0f, 0.5f);
                 StreamingPercentage = TimeBasedProgress;
                 
-                if (ElapsedTime < 5.0f)
-                {
-                    // 처음 5초는 로그 생략 (DDC 초기화 중)
-                }
-                else
+                if (ElapsedTime >= 5.0f && FMath::Fmod(ElapsedTime, 5.0f) < 0.2f)
                 {
                     UE_LOG(LogTemp, Display, TEXT("[폴링] 텍스처 DDC 빌드 중... (대기: %d개, 추정: %.1f%%, 경과: %.1f초)"), 
                         NumStreamingTextures, StreamingPercentage * 100.0f, ElapsedTime);
@@ -170,11 +246,9 @@ void UYiSanLoading::Poll_StreamingAndInstancesReady()
             }
             else
             {
-                // 정상적인 진행 중 (0.0 ~ 0.99)
                 StreamingPercentage = RawPercentage;
                 bTextureReady = false;
                 
-                // 5초마다 한 번씩 로그 출력
                 if (FMath::Fmod(ElapsedTime, 5.0f) < 0.2f)
                 {
                     UE_LOG(LogTemp, Display, TEXT("[폴링] 텍스처 스트리밍 진행 중 (진행률: %.1f%%, 대기: %d개)"), 
@@ -183,39 +257,37 @@ void UYiSanLoading::Poll_StreamingAndInstancesReady()
             }
         }
         
-        // **방법 C: 타임아웃 처리 (60초 이상 걸리면 강제 완료)**
+        // 타임아웃 처리
         if (!bTextureReady && ElapsedTime > 60.0f)
         {
-            UE_LOG(LogTemp, Warning, TEXT("[폴링] 텍스처 스트리밍 타임아웃 (60초 초과). 강제 완료 처리함. 대기 텍스처: %d개"), NumStreamingTextures);
-            UE_LOG(LogTemp, Warning, TEXT("[폴링] 일부 셰이더는 런타임에 컴파일됩니다. 게임 진행 가능."));
+            UE_LOG(LogTemp, Warning, TEXT("[폴링] 텍스처 스트리밍 타임아웃 (60초 초과). 강제 완료 처리함."));
             StreamingPercentage = 1.0f;
             bTextureReady = true;
         }
         
-        // **방법 D: 진행 없음 감지 (같은 진행률이 10초 이상 유지)**
+        // 진행 없음 감지
         static float LastPercentage = -1.0f;
         static float StuckTime = 0.0f;
         
         if (FMath::Abs(StreamingPercentage - LastPercentage) < 0.01f)
         {
-            StuckTime += 0.1f; // 폴링 주기만큼 증가
+            StuckTime += 0.1f;
             
             if (StuckTime > 10.0f && !bTextureReady)
             {
-                UE_LOG(LogTemp, Warning, TEXT("[폴링] 텍스처 스트리밍 정체 감지 (%.1f초 동안 %.1f%%). 진행 강제함."), 
-                    StuckTime, StreamingPercentage * 100.0f);
+                UE_LOG(LogTemp, Warning, TEXT("[폴링] 텍스처 스트리밍 정체 감지. 진행 강제함."));
                 StreamingPercentage = FMath::Min(StreamingPercentage + 0.2f, 1.0f);
-                StuckTime = 0.0f; // 리셋
+                StuckTime = 0.0f;
             }
         }
         else
         {
-            StuckTime = 0.0f; // 진행 있음, 리셋
+            StuckTime = 0.0f;
         }
         LastPercentage = StreamingPercentage;
     }
 
-    // 3. 레벨 인스턴스 체크함
+    // 3. 레벨 인스턴스 체크
     if (ULevelInstanceSubsystem* LevelInstSub = World->GetSubsystem<ULevelInstanceSubsystem>())
     {
         TArray<AActor*> Found;
@@ -253,7 +325,7 @@ void UYiSanLoading::Poll_StreamingAndInstancesReady()
     float WorldPartitionProgress = bWorldPartitionReady ? 1.0f : 0.0f;
     float TextureProgress = FMath::Clamp(StreamingPercentage, 0.0f, 1.0f); 
     
-    // **가중치 조정: 텍스처가 가장 중요 (70%)**
+    // 가중치: 텍스처가 가장 중요 (70%)
     float OverallProgress = 
         (WorldPartitionProgress * 0.15f) + 
         (TextureProgress * 0.70f) + 
@@ -270,7 +342,7 @@ void UYiSanLoading::Poll_StreamingAndInstancesReady()
         StatusText = FText::FromString(TEXT("로딩 완료! 게임 시작 준비됨."));
 
     // UI 업데이트
-    UpdateLoadingUIProgress(OverallProgress, StatusText);
+    UpdateLoadingUIProgress(OverallProgress, StatusText, WorldPartitionProgress, TextureProgress, LevelInstanceProgress);
     
     // 5. 모든 준비가 완료되었는지 확인
     if (bWorldPartitionReady && bTextureReady && bLevelInstancesReady)
@@ -281,10 +353,10 @@ void UYiSanLoading::Poll_StreamingAndInstancesReady()
         UE_LOG(LogTemp, Display, TEXT("  LevelInstance: %.0f%% (완료)"), LevelInstanceProgress * 100.0f);
         UE_LOG(LogTemp, Display, TEXT("  총 소요 시간: %.2f초"), World->GetTimeSeconds() - ResourceCheckStartTime);
 
-        // 타이머 정지함
+        // 타이머 정지
         World->GetTimerManager().ClearTimer(PollingStreamingTimerHandle);
 
-        // 약간의 딜레이 후 로딩 UI 제거 (시각적 안정성)
+        // 약간의 딜레이 후 로딩 UI 제거
         FTimerHandle DelayHandle;
         World->GetTimerManager().SetTimer(DelayHandle, [this]()
         {
@@ -323,7 +395,7 @@ void UYiSanLoading::ShowLoadingUI(TSubclassOf<UUserWidget> InLoadingWidgetClass)
 
 	LoadingWidgetObject = Created;
 
-	// 뷰포트에 슬레이트 위젯으로 추가 시도함
+	// 뷰포트에 슬레이트 위젯으로 추가
 	if (GEngine->GameViewport)
 	{
 		TSharedRef<SWidget> SlateWidget = Created->TakeWidget();
@@ -352,7 +424,7 @@ void UYiSanLoading::HideLoadingUI()
 		LoadingWidgetObject = nullptr;
 	}
     
-	// Slate 위젯 홀더 제거함
+	// Slate 위젯 홀더 제거
 	if (GEngine && GEngine->GameViewport)
 	{
 		if (LoadingWidgetHolder.IsValid())
@@ -364,15 +436,46 @@ void UYiSanLoading::HideLoadingUI()
 	UE_LOG(LogTemp, Display, TEXT("[로딩UI] 로딩 UI 제거 완료함."));
 }
 
-void UYiSanLoading::UpdateLoadingUIProgress(float ProgressPercentage, const FText& StatusText)
+void UYiSanLoading::UpdateLoadingUIProgress(float ProgressPercentage, const FText& StatusText, 
+	float WorldPartitionProgress, float TextureProgress, float LevelInstanceProgress)
 {
-	// 10% 단위로만 로그 출력 (로그 스팸 방지)
+	// 10% 단위로만 로그 출력
 	static int32 LastLoggedPercent = -1;
-	int32 CurrentPercent = FMath::FloorToInt(ProgressPercentage * 10.0f) * 10; // 10% 단위
+	int32 CurrentPercent = FMath::FloorToInt(ProgressPercentage * 10.0f) * 10;
     
 	if (CurrentPercent != LastLoggedPercent)
 	{
 		UE_LOG(LogTemp, Display, TEXT("[UI업데이트] 진행률: %d%%, 상태: %s"), CurrentPercent, *StatusText.ToString());
+		UE_LOG(LogTemp, Display, TEXT("  - WorldPartition: %.0f%%, Texture: %.0f%%, LevelInstance: %.0f%%"), 
+			WorldPartitionProgress * 100.0f, TextureProgress * 100.0f, LevelInstanceProgress * 100.0f);
 		LastLoggedPercent = CurrentPercent;
+	}
+
+	// 실제 UI 위젯 업데이트
+	if (LoadingWidgetObject.IsValid())
+	{
+		if (ULoadingScreenWidget* LoadingWidget = Cast<ULoadingScreenWidget>(LoadingWidgetObject.Get()))
+		{
+			// 전체 진행률 업데이트
+			LoadingWidget->UpdateOverallProgress(ProgressPercentage, StatusText);
+			
+			// 개별 컴포넌트 진행률 업데이트
+			LoadingWidget->UpdateComponentProgress(WorldPartitionProgress, TextureProgress, LevelInstanceProgress);
+			
+			// 컴포넌트별 상태 텍스트 업데이트
+			FText WPStatus = WorldPartitionProgress >= 1.0f ? 
+				FText::FromString(TEXT("✓ 완료")) : 
+				FText::FromString(FString::Printf(TEXT("진행 중 (%.0f%%)"), WorldPartitionProgress * 100.0f));
+			
+			FText TexStatus = TextureProgress >= 1.0f ? 
+				FText::FromString(TEXT("✓ 완료")) : 
+				FText::FromString(FString::Printf(TEXT("로딩 중 (%.0f%%)"), TextureProgress * 100.0f));
+			
+			FText LIStatus = LevelInstanceProgress >= 1.0f ? 
+				FText::FromString(TEXT("✓ 완료")) : 
+				FText::FromString(FString::Printf(TEXT("초기화 중 (%.0f%%)"), LevelInstanceProgress * 100.0f));
+			
+			LoadingWidget->UpdateComponentStatus(WPStatus, TexStatus, LIStatus);
+		}
 	}
 }

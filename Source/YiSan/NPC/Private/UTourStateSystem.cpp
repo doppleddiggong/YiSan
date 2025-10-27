@@ -20,7 +20,7 @@
 #include "Sound/SoundCue.h"
 
 // 2초에 한 번 검사
-static float CheckInterval = 2.0f;
+static float CheckInterval = 4.0f;
 
 UTourStateSystem::UTourStateSystem()
 {
@@ -171,7 +171,7 @@ void UTourStateSystem::Tick_TourMove(float DeltaTime)
 	FAIMoveRequest MoveRequest;
 	MoveRequest.SetGoalActor(OwnerDasan->GetCurTargetBuilding());
 	MoveRequest.SetAcceptanceRadius(250.0f);
-	MoveRequest.SetUsePathfinding(true); // NavMesh 사용 설정 추가
+	MoveRequest.SetUsePathfinding(true);
 			
 	OwnerDasan->DasanAicontrol->MoveTo(MoveRequest);
 

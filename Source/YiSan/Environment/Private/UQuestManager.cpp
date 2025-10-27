@@ -7,10 +7,10 @@
 void UQuestManager::InitSystem()
 {
     QuestList = {
-        EBuildingType::Sinpungnu,     
-        EBuildingType::Uhwagwan,      
-        EBuildingType::Jwaikmun,      
-        EBuildingType::Bongsudang,    
+        EBuildingType::Sinpungnu,
+        EBuildingType::Bongsudang,
+        EBuildingType::Jwaikmun, 
+        EBuildingType::Uhwagwan,  
         EBuildingType::Yeomingak,     
         EBuildingType::Byeolju,
     };

@@ -5,6 +5,7 @@
 #include "GameFramework/Pawn.h"
 #include "EDasanState.h"
 #include "Navigation/PathFollowingComponent.h"
+#include "NavigationSystem.h"
 #include "ADasanActor.generated.h"
 
 UCLASS()
@@ -41,6 +42,7 @@ public:
 public:
 	// 유틸리티 함수
 	void StartTour();
+	
 	void NextQuest();
 
 	bool IsNearTargetBuilding();
@@ -77,6 +79,8 @@ public:
 
 	// 플레이어 폰을 가져오는 헬퍼 함수
 	class APawn* GetPlayerPawn() const;
+
+	FVector GetSafeMoveToLocation(AActor* TargetActor) const;
 	
 	// 플레이어와의 거리를 계산하는 함수
 	float GetPlayerDistance(class APawn* PlayerPawn) const;
