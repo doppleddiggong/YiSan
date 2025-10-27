@@ -25,12 +25,20 @@ void ULoadingCircleManager::EnsureWidgetForWorld(UWorld* World)
 	if (World == nullptr || !World->IsGameWorld())
 		return;
 
-	if (LoadingCircleWidget && LoadingCircleWidget->GetWorld() == World)
+	// 위젯이 유효하고 같은 월드이며, 뷰포트에 추가되어 있는지 확인
+	if (IsValid(LoadingCircleWidget) &&
+		LoadingCircleWidget->GetWorld() == World &&
+		LoadingCircleWidget->IsInViewport())
+	{
 		return;
+	}
 
+	// 기존 위젯이 있으면 정리
 	if (LoadingCircleWidget)
 	{
-		LoadingCircleWidget->RemoveFromParent();
+		if (LoadingCircleWidget->IsInViewport())
+			LoadingCircleWidget->RemoveFromParent();
+
 		LoadingCircleWidget = nullptr;
 	}
 
@@ -41,6 +49,9 @@ void ULoadingCircleManager::EnsureWidgetForWorld(UWorld* World)
 	// 멀티플레이 대응: PlayerController 사용
 	APlayerController* PC = LocalPlayer->GetPlayerController(World);
 	if (PC == nullptr)
+		return;
+
+	if (!LoadingCircleWidgetClass)
 		return;
 
 	if (ULoadginCircle* NewWidget = CreateWidget<ULoadginCircle>(PC, LoadingCircleWidgetClass))
