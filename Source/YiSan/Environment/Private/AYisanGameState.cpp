@@ -54,22 +54,33 @@ void AYisanGameState::ServerRPC_ToastMessage_Implementation(const FString& Messa
 			PC->ClientMessage(Message);
 	}
 }
+//
+// void AYisanGameState::ServerRPC_TryStartAnswer_Implementation(const FString& PlayerName)
+// {
+// 	if (!HasAuthority())
+// 		return;
+// 	
+// 	DasanNPC->AnswerStateSystem->TryStartAnswer(PlayerName);
+// }
+//
+// void AYisanGameState::ServerRPC_AnswerReply_Implementation()
+// {
+// 	if (!HasAuthority())
+// 		return;
+// 	
+// 	DasanNPC->AnswerStateSystem->AnswerReply();
+// }
+//
+// void AYisanGameState::ServerRPC_FinishAnswer_Implementation()
+// {
+// 	if (!HasAuthority())
+// 		return;
+// 	
+// 	DasanNPC->AnswerStateSystem->FinishAnswer();
+// }
 
-void AYisanGameState::ServerRPC_TryStartAnswer_Implementation(const FString& PlayerName)
-{
-	if (!HasAuthority())
-		return;
-	
-	DasanNPC->AnswerStateSystem->TryStartAnswer(PlayerName);
-}
 
-void AYisanGameState::ServerRPC_FinishAnswer_Implementation()
-{
-	if (!HasAuthority())
-		return;
-	
-	DasanNPC->AnswerStateSystem->FinishAnswer();
-}
+
 //
 // void AYisanGameState::ServerRPC_RecordingStart_Implementation(APlayerController* Player)
 // {

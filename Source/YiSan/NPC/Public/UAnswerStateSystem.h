@@ -28,13 +28,9 @@ public:
 
 	void InitSystem(class ADasanActor* InOwner);
 	
-	// 블루프린트에서 호출 가능 - 질문 감지 시
-	UFUNCTION(BlueprintCallable, Category="Answer")
-	void OnAnswerReply();
-
-	// TTS 재생 완료 이벤트 핸들러
-	UFUNCTION()
-	void OnVoiceTalkFinished();
+	// // TTS 재생 완료 이벤트 핸들러
+	// UFUNCTION()
+	// void OnVoiceTalkFinished();
 
 	// Answer 시작 가능 여부 체크
 	bool CanStartAnswer(const FString& PlayerName, FString& OutReason) const;
@@ -42,6 +38,9 @@ public:
 	// Answer 시작 시도 (내부 구현 - 서버에서만 실행)
 	bool TryStartAnswer(const FString& PlayerName);
 
+	// 답변중
+	void AnswerReply();
+	
 	// Answer 종료 (내부 구현 - 질문자 초기화)
 	void FinishAnswer();
 

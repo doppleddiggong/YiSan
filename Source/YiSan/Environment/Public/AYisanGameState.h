@@ -27,12 +27,17 @@ public:
 	// UFUNCTION(Server, Reliable)
 	// void ServerRPC_SetDasanState(EDasanState InState);
 	
-	UFUNCTION(Server, Reliable)
-	void ServerRPC_TryStartAnswer(const FString& PlayerName);
-	
-	UFUNCTION(Server, Reliable)
-	void ServerRPC_FinishAnswer();
+	// UFUNCTION(Server, Reliable)
+	// void ServerRPC_TryStartAnswer(const FString& PlayerName);
+	//
+	// UFUNCTION(Server, Reliable)
+	// void ServerRPC_AnswerReply();
+	//
+	// UFUNCTION(Server, Reliable)
+	// void ServerRPC_FinishAnswer();
 
+
+	
 	// /// @brief 클라이언트가 음성 녹음을 시작했음을 서버에 알립니다.
 	// UFUNCTION(Server, Reliable)
 	// void ServerRPC_RecordingStart(APlayerController* Player);

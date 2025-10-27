@@ -35,13 +35,13 @@ void UAnswerStateSystem::InitSystem(ADasanActor* InOwner)
 	PrevState = EAnswerState::AnswerListen;
 	PreviousMainState = EDasanState::Tour;
 
-	// BroadcastManager 가져오기 및 이벤트 구독
-	BroadcastManager = UBroadcastManager::Get(GetWorld());
-	if (BroadcastManager)
-	{
-		BroadcastManager->OnVoiceTalkFinished.AddDynamic(this, &UAnswerStateSystem::OnVoiceTalkFinished);
-		BroadcastManager->OnAnswerReply.AddDynamic(this, &UAnswerStateSystem::OnAnswerReply);
-	}
+	// // BroadcastManager 가져오기 및 이벤트 구독
+	// BroadcastManager = UBroadcastManager::Get(GetWorld());
+	// if (BroadcastManager)
+	// {
+	// 	BroadcastManager->OnVoiceTalkFinished.AddDynamic(this, &UAnswerStateSystem::OnVoiceTalkFinished);
+	// 	// BroadcastManager->OnAnswerReply.AddDynamic(this, &UAnswerStateSystem::OnAnswerReply);
+	// }
 }
 
 void UAnswerStateSystem::SetCurState(EAnswerState InState)
@@ -93,20 +93,17 @@ void UAnswerStateSystem::OnRep_QuestionerName()
 }
 
 
-// 블루프린트 호출 함수들
-void UAnswerStateSystem::OnAnswerReply()
-{
-	if (!OwnerDasan || !OwnerDasan->HasAuthority())
-		return;
-
-	PRINTLOG( TEXT("[AnswerState] OnAnswerReply"));
-
-	// Listen 상태에서만 Reply로 전환
-	if (CurState == EAnswerState::AnswerListen)
-	{
-		this->SetCurState(EAnswerState::AnswerReply);
-	}
-}
+// // 블루프린트 호출 함수들
+// void UAnswerStateSystem::OnAnswerReply()
+// {
+// 	PRINTLOG( TEXT("[AnswerState] OnAnswerReply"));
+//
+// 	// Listen 상태에서만 Reply로 전환
+// 	if (CurState == EAnswerState::AnswerListen)
+// 	{
+// 		this->SetCurState(EAnswerState::AnswerReply);
+// 	}
+// }
 
 
 bool UAnswerStateSystem::CanStartAnswer(const FString& PlayerName, FString& OutReason) const
@@ -196,6 +193,14 @@ bool UAnswerStateSystem::TryStartAnswer(const FString& PlayerName)
 	return true;
 }
 
+void UAnswerStateSystem::AnswerReply()
+{
+	if (CurState == EAnswerState::AnswerListen)
+	{
+		SetCurState(EAnswerState::AnswerReply);
+	}
+}
+
 void UAnswerStateSystem::FinishAnswer()
 {
 	if (!OwnerDasan || !OwnerDasan->HasAuthority())
@@ -210,12 +215,12 @@ void UAnswerStateSystem::FinishAnswer()
 		PRINTLOG(TEXT("[AnswerSystem] 답변 타임아웃 타이머 정리"));
 	}
 
-	// UI 위젯 숨기기 (다산이 듣기 종료)
-	if (BroadcastManager)
-	{
-		BroadcastManager->SendAskListening(false, TEXT(""));
-		PRINTLOG(TEXT("[AnswerState] SendDasanListening(false)"));
-	}
+	// // UI 위젯 숨기기 (다산이 듣기 종료)
+	// if (BroadcastManager)
+	// {
+	// 	BroadcastManager->SendAskListening(false, TEXT(""));
+	// 	PRINTLOG(TEXT("[AnswerState] SendDasanListening(false)"));
+	// }
 
 	CurQuestionerName.Empty();
 
@@ -246,13 +251,13 @@ void UAnswerStateSystem::OnAnswerTimeout()
 }
 
 
-void UAnswerStateSystem::OnVoiceTalkFinished()
-{
-	if (!OwnerDasan || !OwnerDasan->HasAuthority())
-		return;
-
-	PRINTLOG(TEXT("[AnswerSystem] TTS 재생 완료 - FinishAnswer 호출"));
-
-	// Answer 완료 처리
-	FinishAnswer();
-}
+// void UAnswerStateSystem::OnVoiceTalkFinished()
+// {
+// 	if (!OwnerDasan || !OwnerDasan->HasAuthority())
+// 		return;
+//
+// 	PRINTLOG(TEXT("[AnswerSystem] TTS 재생 완료 - FinishAnswer 호출"));
+//
+// 	// Answer 완료 처리
+// 	FinishAnswer();
+// }

@@ -96,19 +96,26 @@ void UChatBoxWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
 		}
 		else
 		{
+			// GPT 응답을 받았으므로 AnswerReply 상태로 전환
+			// if (BroadcastManager)
+			// {
+			// 	BroadcastManager->SendAnswerReply();
+			// 	PRINTLOG(TEXT("[ChatBox] SendAnswerReply 호출 - AnswerListen → AnswerReply"));
+			// }
+
+			// GPT 응답을 받았으므로 AnswerReply 상태로 전환
+			if (APlayerControl* PC = Owner->GetController<APlayerControl>())
+			{
+				PC->ServerRPC_AnswerReply();
+			}
+
 			FChatMessage ChatMessage(EChatMessageType::NPC, GameString::NPC,Response.gpt_response_text);
 			ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
 
 			Owner->PlayTTSAudio(Response.audio_data);
-		}
 
-		// GPT 응답 완료 후 답변 종료 처리 (PlayerController를 통해 서버에 요청)
-		// TTS가 재생되지 않거나 OnTTSFinished가 호출되지 않는 경우 대비
-		// (OnTTSFinished에서도 FinishAnswer가 호출되지만 중복 호출은 안전함)
-		if (APlayerControl* PC = Owner->GetController<APlayerControl>())
-		{
-			PC->ServerRPC_FinishAnswer();
-			PRINTLOG(TEXT("[ChatBox] GPT 응답 완료 - FinishAnswer 호출"));
+			// FinishAnswer는 TTS 재생 완료 후 OnVoiceTalkFinished에서 자동 호출됨
+			// 여기서 즉시 호출하면 TTS가 재생되기 전에 상태가 초기화됨
 		}
 	}
 	else

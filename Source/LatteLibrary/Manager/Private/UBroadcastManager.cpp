@@ -21,21 +21,21 @@ void UBroadcastManager::SendAudioCapture(bool bRecording)
 {
 	OnAudioCapture.Broadcast(bRecording);
 }
-
-void UBroadcastManager::SendAnswerReply()
-{
-	OnAnswerReply.Broadcast();
-}
-
-void UBroadcastManager::SendVoiceAudioFinished()
-{
-	OnVoiceTalkFinished.Broadcast();
-}
-
-void UBroadcastManager::SendAskListening(bool bListening, const FString& PlayerName)
-{
-	OnAskListening.Broadcast(bListening, PlayerName);
-}
+//
+// void UBroadcastManager::SendAnswerReply()
+// {
+// 	OnAnswerReply.Broadcast();
+// }
+//
+// void UBroadcastManager::SendVoiceAudioFinished()
+// {
+// 	OnVoiceTalkFinished.Broadcast();
+// }
+//
+// void UBroadcastManager::SendAskListening(bool bListening, const FString& PlayerName)
+// {
+// 	OnAskListening.Broadcast(bListening, PlayerName);
+// }
 
 void UBroadcastManager::SendAudioSpectrum(float Spectrum)
 {

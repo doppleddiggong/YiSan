@@ -233,7 +233,10 @@ void UVoiceConversationSystem::OnResponseAsk(FResponseAsk& Response, bool bSucce
 		}
 		else
 		{
-			BroadcastManager->SendAnswerReply();
+			if (APlayerControl* PC = Owner->GetController<APlayerControl>())
+			{
+				PC->ServerRPC_AnswerReply();
+			}
 
 			// GPT 응답에서 줄바꿈 제거 (UI에서 자동 줄바꿈 처리)
 			FString CleanedText = Response.gpt_response_text;
@@ -337,7 +340,12 @@ void UVoiceConversationSystem::OnVoiceAudioFinished()
 	// BroadcastManager를 통해 TTS 재생 완료 알림
 	if (BroadcastManager)
 	{
-		BroadcastManager->SendVoiceAudioFinished();
+		if (APlayerControl* PC = Owner->GetController<APlayerControl>())
+		{
+			PC->ServerRPC_FinishAnswer();
+		}
+
+		// BroadcastManager->SendVoiceAudioFinished();
 		PRINTLOG(TEXT("[VoiceConversation] TTS 재생 완료 이벤트 발생"));
 	}
 

@@ -101,6 +101,9 @@ public:
 	void ServerRPC_TryStartAnswer(const FString& PlayerName);
 
 	UFUNCTION(Server, Reliable)
+	void ServerRPC_AnswerReply();
+
+	UFUNCTION(Server, Reliable)
 	void ServerRPC_FinishAnswer();
 
 	// 클라이언트 RPC : 토스트메시지

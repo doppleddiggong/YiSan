@@ -432,6 +432,23 @@ void APlayerControl::ServerRPC_TryStartAnswer_Implementation(const FString& Play
 	}
 }
 
+void APlayerControl::ServerRPC_AnswerReply_Implementation()
+{
+	if (!HasAuthority())
+		return;
+
+	PRINTLOG(TEXT("[PlayerControl] ServerRPC_AnswerReply"));
+
+	// GameState를 통해 Dasan에게 전달
+	if (AYisanGameState* GS = GetWorld()->GetGameState<AYisanGameState>())
+	{
+		if (GS->DasanNPC && GS->DasanNPC->AnswerStateSystem)
+		{
+			GS->DasanNPC->AnswerStateSystem->AnswerReply();
+		}
+	}
+}
+
 void APlayerControl::ServerRPC_FinishAnswer_Implementation()
 {
 	if (!HasAuthority())

@@ -50,26 +50,26 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendAudioCapture(bool bRecording);
 
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnAnswerReply);
-	UPROPERTY(BlueprintAssignable, Category="Events")
-	FOnAnswerReply OnAnswerReply;
+	// DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnAnswerReply);
+	// UPROPERTY(BlueprintAssignable, Category="Events")
+	// FOnAnswerReply OnAnswerReply;
+	//
+	// UFUNCTION(BlueprintCallable, Category="Events")
+	// void SendAnswerReply();
 
-	UFUNCTION(BlueprintCallable, Category="Events")
-	void SendAnswerReply();
+	// DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnVoiceAutioFinished);
+	// UPROPERTY(BlueprintAssignable, Category="Events")
+	// FOnVoiceAutioFinished OnVoiceTalkFinished;
+	//
+	// UFUNCTION(BlueprintCallable, Category="Events")
+	// void SendVoiceAudioFinished();
 
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnVoiceAutioFinished);
-	UPROPERTY(BlueprintAssignable, Category="Events")
-	FOnVoiceAutioFinished OnVoiceTalkFinished;
-
-	UFUNCTION(BlueprintCallable, Category="Events")
-	void SendVoiceAudioFinished();
-
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDasanListening, bool, bListening, FString, PlayerName);
-	UPROPERTY(BlueprintAssignable, Category="Events")
-	FOnDasanListening OnAskListening;
-
-	UFUNCTION(BlueprintCallable, Category="Events")
-	void SendAskListening(bool bListening, const FString& PlayerName);
+	// DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDasanListening, bool, bListening, FString, PlayerName);
+	// UPROPERTY(BlueprintAssignable, Category="Events")
+	// FOnDasanListening OnAskListening;
+	//
+	// UFUNCTION(BlueprintCallable, Category="Events")
+	// void SendAskListening(bool bListening, const FString& PlayerName);
 
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAudioSpectrum, float, Spectrum);
 	UPROPERTY(BlueprintAssignable, Category="Events")
