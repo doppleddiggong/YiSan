@@ -2,6 +2,8 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/TextBlock.h"
+#include "Components/VerticalBox.h"
 #include "StartUI.generated.h"
 
 // 전방 선언
@@ -53,4 +55,14 @@ public:
     FName MapName = "LoadingMap";
 
     bool bSucessd = false;
+
+
+    //=========참여자 명단 가져오기=========
+    UFUNCTION(BlueprintCallable)
+    void UpdatePlayerList(const TArray<FString>& playerNames);
+    UPROPERTY(meta=(BindWidget))
+    TObjectPtr<UVerticalBox> playerList;
+    UFUNCTION()
+    UTextBlock* CreatePlayerText(const FString& playerName);
+    void OnPlayerListUpdated(const TArray<FString>& NewPlayerList);
 };

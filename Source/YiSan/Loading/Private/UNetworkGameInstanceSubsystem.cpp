@@ -22,6 +22,10 @@
 #include "ULoadingCircleManager.h"
 #include "GameFramework/GameSession.h"
 #include "Online/OnlineSessionNames.h"
+#include "StartUI.h"
+#include "GameFramework/PlayerState.h"
+#include "YiSanPlayerListManager.h"
+#include "Kismet/GameplayStatics.h"
 
 // ==================== Network 관리 ====================
 void UNetworkGameInstanceSubsystem::Initialize(FSubsystemCollectionBase& Collection)
@@ -118,12 +122,14 @@ void UNetworkGameInstanceSubsystem::OnFindSessionComplete(bool success)
             FString displayName;
             results[i].Session.SessionSettings.Get(FName(TEXT("DP_NAME")), displayName);
             UE_LOG(LogTemp, Warning, TEXT("세션 : %i, 이름 : %s"), i, *displayName);
+            onFindComplete.ExecuteIfBound(i, displayName);
         }
     }
     else
     {
         UE_LOG(LogTemp, Warning, TEXT("세션 조회 실패"));
     }
+    onFindComplete.ExecuteIfBound(-1, FString());
 }
 
 void UNetworkGameInstanceSubsystem::JoinOtherSession(int32 sessionIndex)
@@ -155,5 +161,3 @@ void UNetworkGameInstanceSubsystem::OnJoinSessionComplete(FName sessionName, EOn
         pc->ClientTravel(url, TRAVEL_Absolute);
     }
 }
-
-

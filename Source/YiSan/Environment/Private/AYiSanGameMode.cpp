@@ -15,7 +15,6 @@ void AYiSanGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 	bUseSeamlessTravel = true;
-
 }
 
 void AYiSanGameMode::PostLogin(APlayerController* NewPlayer)
