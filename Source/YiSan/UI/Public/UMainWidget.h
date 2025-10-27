@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "EBuildingType.h"
 #include "Blueprint/UserWidget.h"
+#include "EndingWidget.h" // EndingWidget 헤더 추가
 #include "UMainWidget.generated.h"
 
 /// @file UMainWidget.h
@@ -30,6 +31,7 @@ private:
     bool IsMegaPopupVisible() const;
     bool IsSmallPopupVisible() const;
 public:
+    
     /// @brief 메가 팝업이 배치되는 컨테이너 위젯입니다.
     UPROPERTY(meta = (BindWidget))
     class UMegaPopup* MegaPopupCtn;
@@ -43,7 +45,15 @@ public:
     UPROPERTY()
     class UAudioComponent* BGM_AudioComp;
 
-private:
+
+    // 엔딩 위젯
+    UPROPERTY(EditAnywhere, Category = "Widgets")
+    TSubclassOf<UEndingWidget> EndingWidgetClass;
+    
+    // 생성된 엔딩 위젯의 인스턴스를 저장할 변수
+    UPROPERTY()
+    UEndingWidget* EndingWidgetInstance;
+    
     UPROPERTY()
     TObjectPtr<class UBroadcastManager> BroadcastManager;
     
