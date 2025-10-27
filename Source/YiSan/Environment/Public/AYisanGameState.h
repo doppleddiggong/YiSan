@@ -20,8 +20,12 @@ protected:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:
-	UFUNCTION(Server, Reliable)                                                                                                           
-	void ServerRPC_ToastMessage(const FString& Message);
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPC_ToastMessage(const FString& Message);
+
+	
+	// UFUNCTION(Server, Reliable)                                                                                                           
+	// void ServerRPC_ToastMessage(const FString& Message);
 
 	// // 서버 RPC - 상태 변경
 	// UFUNCTION(Server, Reliable)

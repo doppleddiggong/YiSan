@@ -150,9 +150,9 @@ bool UAnswerStateSystem::TryStartAnswer(const FString& PlayerName)
 	PRINTLOG(TEXT("[AnswerSystem] %s님의 질문 시작"), *PlayerName);
 
 	// 모든 클라이언트에 Toast 메시지 표시
-	if (AYisanGameState* GS = GetWorld()->GetGameState<AYisanGameState>())
+	if (auto GS = GetWorld()->GetGameState<AYisanGameState>())
 	{
-		GS->ServerRPC_ToastMessage(FString::Printf(TEXT("%s가 질문중입니다"), *PlayerName));
+		GS->MulticastRPC_ToastMessage(FString::Printf(TEXT("%s가 질문중입니다"), *PlayerName));
 	}
 
 	// 타임아웃 타이머 시작 (예외 상황 대비)

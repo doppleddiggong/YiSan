@@ -101,7 +101,7 @@ void UStartUI::OnStartButtonClicked()
 		StartButton->SetVisibility(ESlateVisibility::Hidden);
 		
 		if (auto GS = GetWorld()->GetGameState<AYisanGameState>())
-			GS->ServerRPC_ToastMessage(TEXT("Host가 Start버튼을 눌렀습니다"));
+			GS->MulticastRPC_ToastMessage(TEXT("화성 투어를 시작합니다"));
 	}
 	else
 	{

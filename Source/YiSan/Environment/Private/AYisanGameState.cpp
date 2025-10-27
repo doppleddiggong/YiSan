@@ -22,6 +22,15 @@ void AYisanGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 	DOREPLIFETIME(AYisanGameState, DasanNPC);
 }
 
+void AYisanGameState::MulticastRPC_ToastMessage_Implementation(const FString& Message)
+{
+	// 각 클라이언트에서 실행됨                                                                                                                                         
+	if (APlayerControl* PC = Cast<APlayerControl>(GetWorld()->GetFirstPlayerController()))
+	{
+		PC->ClientRPC_ShowToastMessage(Message);
+	}
+}
+
 // void AYisanGameState::ServerRPC_SetDasanState_Implementation(EDasanState InState)
 // {
 // 	if (!HasAuthority())
@@ -29,31 +38,31 @@ void AYisanGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 // 	
 // 	DasanNPC->DasanState = InState;
 // }
-
-void AYisanGameState::ServerRPC_ToastMessage_Implementation(const FString& Message)
-{
-	if (!HasAuthority())
-		return;
-
-	if (Message.IsEmpty())
-		return;
-
-	UWorld* World = GetWorld();
-	if (!World)
-		return;
-
-	for (FConstPlayerControllerIterator It = World->GetPlayerControllerIterator(); It; ++It)
-	{
-		APlayerController* PC = It->Get();
-		if (!PC)
-			continue;
-
-		if (APlayerControl* CustomPC = Cast<APlayerControl>(PC))
-			CustomPC->ClientRPC_ShowToastMessage(Message);
-		else
-			PC->ClientMessage(Message);
-	}
-}
+//
+// void AYisanGameState::ServerRPC_ToastMessage_Implementation(const FString& Message)
+// {
+// 	if (!HasAuthority())
+// 		return;
+//
+// 	if (Message.IsEmpty())
+// 		return;
+//
+// 	UWorld* World = GetWorld();
+// 	if (!World)
+// 		return;
+//
+// 	for (FConstPlayerControllerIterator It = World->GetPlayerControllerIterator(); It; ++It)
+// 	{
+// 		APlayerController* PC = It->Get();
+// 		if (!PC)
+// 			continue;
+//
+// 		if (APlayerControl* CustomPC = Cast<APlayerControl>(PC))
+// 			CustomPC->ClientRPC_ShowToastMessage(Message);
+// 		else
+// 			PC->ClientMessage(Message);
+// 	}
+// }
 //
 // void AYisanGameState::ServerRPC_TryStartAnswer_Implementation(const FString& PlayerName)
 // {

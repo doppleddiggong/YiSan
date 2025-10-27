@@ -133,6 +133,20 @@ void APlayerControl::SetupInputComponent()
 	}
 }
 
+void APlayerControl::ServerRPC_ShowToastMessage_Implementation(const FString& Message)
+{
+	// 권한 검증 (예: 스팸 방지)                                                                                                                                        
+	if (!CanSendToast())
+		return;
+
+	// 시간 업데이트                                                                                                                                                
+	LastToastTime = GetWorld()->GetTimeSeconds();
+	
+	// GameState의 Multicast 호출                                                                                                                                       
+	if (auto GS = GetWorld()->GetGameState<AYisanGameState>())
+		GS->MulticastRPC_ToastMessage(Message);
+}
+
 void APlayerControl::OnPlayerControlState(bool bState, UUserWidget* FocusWidget)
 {
 	if ( bState )
