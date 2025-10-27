@@ -43,16 +43,8 @@ public:
 	// Answer 시작 가능 여부 체크
 	bool CanStartAnswer(const FString& PlayerName, FString& OutReason) const;
 
-	// Answer 시작 시도 - ServerRPC (클라이언트에서 호출 가능)
-	UFUNCTION(Server, Reliable)
-	void ServerRPC_TryStartAnswer(const FString& PlayerName);
-
 	// Answer 시작 시도 (내부 구현 - 서버에서만 실행)
 	bool TryStartAnswer(const FString& PlayerName);
-
-	// Answer 종료 - ServerRPC (클라이언트에서 호출 가능)
-	UFUNCTION(Server, Reliable)
-	void ServerRPC_FinishAnswer();
 
 	// Answer 종료 (내부 구현 - 질문자 초기화)
 	void FinishAnswer();

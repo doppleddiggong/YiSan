@@ -284,16 +284,6 @@ float ADasanActor::GetTargetBuildingDistnace()
 	return FVector::Dist(this->GetActorLocation(), this->CurTargetBuilding->GetActorLocation());
 }
 
-void ADasanActor::TryStartAnswer(const FString& PlayerName)
-{
-	OnTryStartAnswer.Broadcast(PlayerName);
-}
-
-void ADasanActor::FinishAnswer()
-{
-	OnFinishAnswer.Broadcast();
-}
-
 void ADasanActor::StartTour()
 {
     PRINTLOG(TEXT("========== StartTour 호출 =========="));

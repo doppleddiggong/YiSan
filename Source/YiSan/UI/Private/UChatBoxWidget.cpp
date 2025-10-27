@@ -51,7 +51,7 @@ void UChatBoxWidget::OnTextCommittedHandler(const FText& Text, ETextCommit::Type
 			// Dasan NPC가 질문을 받을 수 있는지 체크 (서버에 요청)
 			if (auto GameState = GetWorld()->GetGameState<AYisanGameState>())
 			{
-				GameState->TryStartAnswer(PlayerName);
+				GameState->ServerRPC_TryStartAnswer(PlayerName);
 				// if (GameState->DasanNPC && GameState->DasanNPC->AnswerStateSystem)
 				// {
 				// 	// ServerRPC를 통해 서버에서 답변 시작 시도
@@ -118,7 +118,7 @@ void UChatBoxWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
 			// 	PRINTLOG(TEXT("[ChatBox] GPT 응답 완료 - FinishAnswer 호출"));
 			// }
 			
-			GameState->FinishAnswer();
+			GameState->ServerRPC_FinishAnswer();
 			PRINTLOG(TEXT("[ChatBox] GPT 응답 완료 - FinishAnswer 호출"));
 		}
 	}
@@ -131,7 +131,7 @@ void UChatBoxWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
 		{
 			if (GameState->DasanNPC && GameState->DasanNPC->AnswerStateSystem)
 			{
-				GameState->DasanNPC->AnswerStateSystem->ServerRPC_FinishAnswer();
+				GameState->ServerRPC_FinishAnswer();
 				PRINTLOG(TEXT("[ChatBox] GPT 응답 실패 - FinishAnswer 호출"));
 			}
 		}

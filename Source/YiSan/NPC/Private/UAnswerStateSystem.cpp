@@ -28,14 +28,6 @@ void UAnswerStateSystem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
 void UAnswerStateSystem::BeginPlay()
 {
 	Super::BeginPlay();
-
-	// GetOwner()를 통해 ADasanActor를 가져와서 이벤트에 바인딩합니다.
-	ADasanActor* DasanActor = Cast<ADasanActor>(GetOwner());
-	if (DasanActor)
-	{
-		DasanActor->OnTryStartAnswer.AddUObject(this, &UAnswerStateSystem::ServerRPC_TryStartAnswer);
-		DasanActor->OnFinishAnswer.AddUObject(this, &UAnswerStateSystem::ServerRPC_FinishAnswer);
-	}
 }
 
 void UAnswerStateSystem::InitSystem(ADasanActor* InOwner)
@@ -111,11 +103,6 @@ bool UAnswerStateSystem::CanStartAnswer(const FString& PlayerName, FString& OutR
 	return true;
 }
 
-void UAnswerStateSystem::ServerRPC_TryStartAnswer_Implementation(const FString& PlayerName)
-{
-	TryStartAnswer(PlayerName);
-}
-
 bool UAnswerStateSystem::TryStartAnswer(const FString& PlayerName)
 {
 	if (!OwnerDasan || !OwnerDasan->HasAuthority())
@@ -171,11 +158,6 @@ bool UAnswerStateSystem::TryStartAnswer(const FString& PlayerName)
 	}
 
 	return true;
-}
-
-void UAnswerStateSystem::ServerRPC_FinishAnswer_Implementation()
-{
-	FinishAnswer();
 }
 
 void UAnswerStateSystem::FinishAnswer()

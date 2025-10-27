@@ -4,13 +4,13 @@
 #include "ADasanActor.h"
 #include "APlayerControl.h"
 #include "GameLogging.h"
+#include "UAnswerStateSystem.h"
 #include "UQuestManager.h"
+#include "EBuildingType.h"
 #include "Net/UnrealNetwork.h"
 
 AYisanGameState::AYisanGameState()
 {
-	GlobalTourState = EDasanState::Tour;
-	bIsTourActive = false;
 }
 
 void AYisanGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -18,11 +18,9 @@ void AYisanGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(AYisanGameState, DasanNPC);
-	DOREPLIFETIME(AYisanGameState, GlobalTourState);
-	DOREPLIFETIME(AYisanGameState, bIsTourActive);
 }
 
-void AYisanGameState::ServerRPC_BroadcastToastMessage_Implementation(const FString& Message)
+void AYisanGameState::ServerRPC_ToastMessage_Implementation(const FString& Message)
 {
 	if (!HasAuthority())
 		return;
@@ -47,14 +45,14 @@ void AYisanGameState::ServerRPC_BroadcastToastMessage_Implementation(const FStri
 	}
 }
 
-void AYisanGameState::TryStartAnswer(const FString& PlayerName)
+void AYisanGameState::ServerRPC_TryStartAnswer_Implementation(const FString& PlayerName)
 {
-	DasanNPC->TryStartAnswer(PlayerName);
+	DasanNPC->AnswerStateSystem->TryStartAnswer(PlayerName);
 }
 
-void AYisanGameState::FinishAnswer()
+void AYisanGameState::ServerRPC_FinishAnswer_Implementation()
 {
-	DasanNPC->FinishAnswer();
+	DasanNPC->AnswerStateSystem->FinishAnswer();
 }
 
 void AYisanGameState::StartGlobalTour()
@@ -66,7 +64,7 @@ void AYisanGameState::StartGlobalTour()
 	QuestManager = UQuestManager::Get(GetWorld());
 	if (!QuestManager)
 	{
-		UE_LOG(LogTemp, Error, TEXT("YisanGameState: QuestManager not found!"));
+		PRINTLOG(TEXT("YisanGameState: QuestManager not found!"));
 		return;
 	}
 
@@ -77,40 +75,11 @@ void AYisanGameState::StartGlobalTour()
 
 	if (DasanNPC)
 	{
-		bIsTourActive = true;
-		GlobalTourState = EDasanState::Tour;
-
 		DasanNPC->StartTour();
-		UE_LOG(LogTemp, Log, TEXT("YisanGameState: Global tour started! First target: %d"),
-			static_cast<uint8>(QuestManager->GetCurTarget()));
+		PRINTLOG( TEXT("YisanGameState: Global tour started! First target: %s"), *ENUM_TO_NAME(EBuildingType, QuestManager->GetCurTarget())) ;
 	}
 	else
 	{
-		UE_LOG(LogTemp, Error, TEXT("YisanGameState: DasanNPC not found!"));
+		PRINTLOG( TEXT("YisanGameState: DasanNPC not found!"));
 	}
-}
-
-void AYisanGameState::UpdateTourState(EDasanState NewState)
-{
-	if (!HasAuthority())
-		return;
-
-	GlobalTourState = NewState;
-
-	UE_LOG(LogTemp, Log, TEXT("YisanGameState: Tour state updated - State: %d"),
-		static_cast<uint8>(NewState));
-}
-
-int32 AYisanGameState::GetCurQuestIndex()
-{
-	if (!QuestManager)
-		QuestManager = UQuestManager::Get(GetWorld());
-	return QuestManager ? QuestManager->GetCurQuestIndex() : INDEX_NONE;
-}
-
-EBuildingType AYisanGameState::GetCurTargetBuilding()
-{
-	if (!QuestManager)
-		QuestManager = UQuestManager::Get(GetWorld());
-	return QuestManager ? QuestManager->GetCurTarget() : EBuildingType::None;
 }

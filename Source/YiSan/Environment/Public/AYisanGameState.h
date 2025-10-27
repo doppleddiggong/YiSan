@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "EBuildingType.h"
 #include "GameFramework/GameStateBase.h"
 #include "EDasanState.h"
 #include "AYisanGameState.generated.h"
@@ -20,11 +21,14 @@ protected:
 
 public:
 	UFUNCTION(Server, Reliable)                                                                                                           
-	void ServerRPC_BroadcastToastMessage(const FString& Message);
+	void ServerRPC_ToastMessage(const FString& Message);
 
-	void TryStartAnswer(const FString& PlayerName);
-	void FinishAnswer();
-
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_TryStartAnswer(const FString& PlayerName);
+	
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_FinishAnswer();
+	
 public:
 	// Dasan NPC 참조
 	UPROPERTY(Replicated, BlueprintReadOnly, Category="Tour")
@@ -34,27 +38,8 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category="Tour")
 	TObjectPtr<class UQuestManager> QuestManager;
 
-	// 전역 투어 상태
-	UPROPERTY(Replicated, BlueprintReadOnly, Category="Tour")
-	EDasanState GlobalTourState;
-
-	// 투어 진행 여부
-	UPROPERTY(Replicated, BlueprintReadOnly, Category="Tour")
-	bool bIsTourActive;
-
 public:
 	// 투어 시작
 	UFUNCTION(BlueprintCallable, Category="Tour")
 	void StartGlobalTour();
-
-	// 투어 상태 업데이트
-	void UpdateTourState(EDasanState NewState);
-
-	// 현재 퀘스트 인덱스 가져오기 (QuestManager에서)
-	UFUNCTION(BlueprintCallable, Category="Tour")
-	int32 GetCurQuestIndex();
-
-	// 현재 목표 건물 타입 가져오기 (QuestManager에서)
-	UFUNCTION(BlueprintCallable, Category="Tour")
-	EBuildingType GetCurTargetBuilding();
 };
