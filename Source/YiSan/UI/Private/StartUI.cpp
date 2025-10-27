@@ -8,8 +8,6 @@
 #include "APlayerControl.h"
 #include "AYisanGameState.h"
 #include "Engine/Texture.h"
-#include "ULoadingCircleManager.h"
-#include "UNetworkGameInstanceSubsystem.h"
 #include "Blueprint/WidgetTree.h"
 #include "Engine/Font.h"
 #include "YiSanPlayerListManager.h"
@@ -19,12 +17,8 @@ void UStartUI::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	// 레벨 로드 완료 - 로딩 화면 숨기기
-	//ULoadingCircleManager::Decrease(this);
-
 	// 버튼 클릭 이벤트 바인딩
-	if (StartButton)
-		StartButton->OnClicked.AddDynamic(this, &UStartUI::OnStartButtonClicked);
+	StartButton->OnClicked.AddDynamic(this, &UStartUI::OnStartButtonClicked);
 
 	// 미디어 플레이어와 텍스처가 올바르게 설정되어 있다면 영상 재생 준비
 	if (MediaPlayer && MediaTexture && BackgroundVideoImage)
@@ -40,11 +34,11 @@ void UStartUI::NativeConstruct()
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("MediaPlayer, MediaTexture, or BackgroundVideoImage not set in StartUI"));
+		PRINTLOG(TEXT("MediaPlayer, MediaTexture, or BackgroundVideoImage not set in StartUI"));
 	}
 
 	// 마우스 보여라
-	if (auto PC = GetWorld()->GetFirstPlayerController() )
+	if (auto PC = GetOwningPlayer() )
 	{
 		// 입력 모드를 'UI 우선'으로 설정 (버튼 클릭 가능하게)
 		FInputModeUIOnly InputModeData;
@@ -54,19 +48,21 @@ void UStartUI::NativeConstruct()
 
 		// 마우스 커서를 표시
 		PC->SetShowMouseCursor(true);
+
+		StartButton->SetVisibility(PC->HasAuthority() ? ESlateVisibility::Visible :  ESlateVisibility::Hidden );
 	}
 	
-	// Find the player list manager and bind to its update delegate
-	AYiSanPlayerListManager* PlayerListManager = Cast<AYiSanPlayerListManager>(UGameplayStatics::GetActorOfClass(GetWorld(), AYiSanPlayerListManager::StaticClass()));
+	auto PlayerListManager = Cast<AYiSanPlayerListManager>(UGameplayStatics::GetActorOfClass(GetWorld(), AYiSanPlayerListManager::StaticClass()));
     if (PlayerListManager)
     {
-        GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Green, TEXT("UI found the PlayerListManager!"));
-        PlayerListManager->OnPlayerListUpdated.AddUObject(this, &UStartUI::OnPlayerListUpdated);
-        // Also, immediately update the list with the current data
+    	PRINTLOG( TEXT("UI found the PlayerListManager!") );
+
+    	PlayerListManager->OnPlayerListUpdated.AddUObject(this, &UStartUI::OnPlayerListUpdated);
         OnPlayerListUpdated(PlayerListManager->GetPlayerList());
     }
     else
-    { GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, TEXT("UI FAILED to find the PlayerListManager!"));
+    {
+    	PRINTLOG( TEXT("UI FAILED to find the PlayerListManager!"));
     }
 }
 
@@ -102,7 +98,8 @@ void UStartUI::OnStartButtonClicked()
 		pc->ServerStartMapTravel(TEXT("/Game/CustomContents/Maps/MainMap_WP"));
 		PRINTLOG(TEXT("로딩 레벨 매니저: 서버가 맵 전환 시작"));
 
-
+		StartButton->SetVisibility(ESlateVisibility::Hidden);
+		
 		if (auto GS = GetWorld()->GetGameState<AYisanGameState>())
 			GS->ServerRPC_ToastMessage(TEXT("Host가 Start버튼을 눌렀습니다"));
 	}
