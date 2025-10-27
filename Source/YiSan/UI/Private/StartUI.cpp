@@ -6,6 +6,7 @@
 #include "MediaPlayer.h"
 #include "MediaTexture.h"
 #include "APlayerControl.h"
+#include "AYisanGameState.h"
 #include "Engine/Texture.h"
 #include "ULoadingCircleManager.h"
 #include "UNetworkGameInstanceSubsystem.h"
@@ -100,6 +101,10 @@ void UStartUI::OnStartButtonClicked()
 		// 서버(호스트)인 경우: 직접 호출
 		pc->ServerStartMapTravel(TEXT("/Game/CustomContents/Maps/MainMap_WP"));
 		PRINTLOG(TEXT("로딩 레벨 매니저: 서버가 맵 전환 시작"));
+
+
+		if (auto GS = GetWorld()->GetGameState<AYisanGameState>())
+			GS->ServerRPC_ToastMessage(TEXT("Host가 Start버튼을 눌렀습니다"));
 	}
 	else
 	{
