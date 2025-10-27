@@ -3,6 +3,7 @@
 #include "ULoadingCircleManager.h"
 
 #include "FComponentHelper.h"
+#include "GameLogging.h"
 #include "ULoadginCircle.h"
 
 #include "GameFramework/PlayerController.h"
@@ -70,7 +71,13 @@ void ULoadingCircleManager::IncrementLoading()
 
 		if (LoadingCircleWidget)
 		{
+			PRINTLOG(TEXT("[LoadingCircleManager] IncrementLoading - Widget: %s"),
+				*LoadingCircleWidget->GetName());
 			LoadingCircleWidget->ShowLoading();
+		}
+		else
+		{
+			PRINTLOG(TEXT("[LoadingCircleManager] IncrementLoading FAILED - Widget is nullptr!"));
 		}
 	}
 }
@@ -83,7 +90,14 @@ void ULoadingCircleManager::DecrementLoading()
 
 		if (LoadingCircleWidget)
 		{
+			PRINTLOG(TEXT("[LoadingCircleManager] DecrementLoading - Widget: %s, Current Count: %d"),
+				*LoadingCircleWidget->GetName(),
+				LoadingCircleWidget->GetLoadingCount());
 			LoadingCircleWidget->HideLoading();
+		}
+		else
+		{
+			PRINTLOG(TEXT("[LoadingCircleManager] DecrementLoading FAILED - Widget is nullptr!"));
 		}
 	}
 }
