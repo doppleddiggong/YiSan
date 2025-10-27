@@ -55,6 +55,9 @@ public:
 
 	float GetTargetBuildingDistnace();
 
+	void TryStartAnswer(const FString& PlayerName);
+	void FinishAnswer();
+	
 	FPathFollowingRequestResult AIMoveToLoc(
 		const FVector& InGoalLocation,
 		const float InAcceptanceRadius,

@@ -98,6 +98,11 @@ bool UAnswerStateSystem::CanStartAnswer(const FString& PlayerName, FString& OutR
 	return true;
 }
 
+void UAnswerStateSystem::ServerRPC_TryStartAnswer_Implementation(const FString& PlayerName)
+{
+	TryStartAnswer(PlayerName);
+}
+
 bool UAnswerStateSystem::TryStartAnswer(const FString& PlayerName)
 {
 	if (!OwnerDasan || !OwnerDasan->HasAuthority())
@@ -119,6 +124,19 @@ bool UAnswerStateSystem::TryStartAnswer(const FString& PlayerName)
 	// Answer 시작 성공
 	CurQuestionerName = PlayerName;
 	PRINTLOG(TEXT("[AnswerSystem] %s님의 질문 시작"), *PlayerName);
+
+	// 타임아웃 타이머 시작 (예외 상황 대비)
+	if (GetWorld())
+	{
+		GetWorld()->GetTimerManager().SetTimer(
+			AnswerTimeoutTimer,
+			this,
+			&UAnswerStateSystem::OnAnswerTimeout,
+			AnswerTimeoutDuration,
+			false
+		);
+		PRINTLOG(TEXT("[AnswerSystem] 답변 타임아웃 타이머 시작 (%.1f초)"), AnswerTimeoutDuration);
+	}
 
 	// 현재 Dasan 메인 상태가 Answer가 아닐 때만 처리
 	if (OwnerDasan->DasanState != EDasanState::Answer)
@@ -142,12 +160,24 @@ bool UAnswerStateSystem::TryStartAnswer(const FString& PlayerName)
 	return true;
 }
 
+void UAnswerStateSystem::ServerRPC_FinishAnswer_Implementation()
+{
+	FinishAnswer();
+}
+
 void UAnswerStateSystem::FinishAnswer()
 {
 	if (!OwnerDasan || !OwnerDasan->HasAuthority())
 		return;
 
 	PRINTLOG(TEXT("[AnswerSystem] %s님의 질문 종료"), *CurQuestionerName);
+
+	// 타임아웃 타이머 정리
+	if (GetWorld() && AnswerTimeoutTimer.IsValid())
+	{
+		GetWorld()->GetTimerManager().ClearTimer(AnswerTimeoutTimer);
+		PRINTLOG(TEXT("[AnswerSystem] 답변 타임아웃 타이머 정리"));
+	}
 
 	// UI 위젯 숨기기 (다산이 듣기 종료)
 	if (BroadcastManager)
@@ -164,6 +194,21 @@ void UAnswerStateSystem::FinishAnswer()
 		PRINTLOG(TEXT("[AnswerSystem] 이전 상태로 복귀: %s"), *ENUM_TO_NAME(EDasanState, PreviousMainState));
 		OwnerDasan->TransitionToState(PreviousMainState);
 	}
+}
+
+void UAnswerStateSystem::OnAnswerTimeout()
+{
+	if (!OwnerDasan || !OwnerDasan->HasAuthority())
+		return;
+
+	PRINTLOG(TEXT("[AnswerSystem] 답변 타임아웃 발생 - 강제 종료"));
+
+	// 타임아웃 메시지 표시
+	if (auto DM = UDialogManager::Get(GetWorld()))
+		DM->ShowToast(TEXT("질문 시간이 초과되어 대화가 종료되었습니다."));
+
+	// 답변 종료 처리
+	FinishAnswer();
 }
 
 bool UAnswerStateSystem::IsAnswerSessionActive() const

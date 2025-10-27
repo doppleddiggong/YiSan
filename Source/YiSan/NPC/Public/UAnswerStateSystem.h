@@ -38,10 +38,18 @@ public:
 	// Answer 시작 가능 여부 체크
 	bool CanStartAnswer(const FString& PlayerName, FString& OutReason) const;
 
-	// Answer 시작 시도 (성공 시 true, 실패 시 false 반환)
+	// Answer 시작 시도 - ServerRPC (클라이언트에서 호출 가능)
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_TryStartAnswer(const FString& PlayerName);
+
+	// Answer 시작 시도 (내부 구현 - 서버에서만 실행)
 	bool TryStartAnswer(const FString& PlayerName);
 
-	// Answer 종료 (질문자 초기화)
+	// Answer 종료 - ServerRPC (클라이언트에서 호출 가능)
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_FinishAnswer();
+
+	// Answer 종료 (내부 구현 - 질문자 초기화)
 	void FinishAnswer();
 
 	// 질의응답 세션이 활성 상태인지 확인
@@ -69,4 +77,14 @@ private:
 
 	// 음성 질의응답 전 Dasan의 메인 상태 (복귀용)
 	EDasanState PreviousMainState;
+
+	// 답변 타임아웃 타이머 핸들
+	FTimerHandle AnswerTimeoutTimer;
+
+	// 답변 타임아웃 시간 (초)
+	UPROPERTY(EditAnywhere, Category = "Answer")
+	float AnswerTimeoutDuration = 30.0f;
+
+	// 타임아웃 처리 함수
+	void OnAnswerTimeout();
 };

@@ -18,6 +18,7 @@
 #include "GameFramework/Character.h"
 #include "Sound/SoundCue.h"
 #include "NavigationSystem.h"
+#include "Net/UnrealNetwork.h"
 
 // 2초에 한 번 검사
 static float CheckInterval = 2.0f;
@@ -25,6 +26,25 @@ static float CheckInterval = 2.0f;
 UTourStateSystem::UTourStateSystem()
 {
 	PrimaryComponentTick.bCanEverTick = false;
+	SetIsReplicatedByDefault(true);
+}
+
+void UTourStateSystem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(UTourStateSystem, CurState);
+}
+
+void UTourStateSystem::OnRep_CurState()
+{
+	PRINTLOG(TEXT("UTourStateSystem::OnRep_CurState - State changed to: %s"), *ENUM_TO_NAME(ETourState, CurState));
+
+	// 클라이언트에서 상태가 복제되었으므로 위젯 업데이트
+	if (OwnerDasan)
+	{
+		OwnerDasan->UpdateWidgetState();
+	}
 }
 
 void UTourStateSystem::InitSystem(ADasanActor* InOwner)

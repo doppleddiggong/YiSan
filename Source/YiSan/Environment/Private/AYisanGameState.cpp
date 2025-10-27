@@ -47,6 +47,15 @@ void AYisanGameState::ServerRPC_BroadcastToastMessage_Implementation(const FStri
 	}
 }
 
+void AYisanGameState::TryStartAnswer(const FString& PlayerName)
+{
+	DasanNPC->TryStartAnswer(PlayerName);
+}
+
+void AYisanGameState::FinishAnswer()
+{
+	DasanNPC->FinishAnswer();
+}
 
 void AYisanGameState::StartGlobalTour()
 {

@@ -83,6 +83,22 @@ void ADasanActor::BeginPlay()
 	{
 		DasanWidget = Cast<UDasanWidget>(DasanWidgetComp->GetWidget());
 		DasanWidget->InitWidget(this);
+
+		// 클라이언트 접속 시 리플리케이트된 상태로 위젯을 초기화
+		// (OnRep는 값이 변경될 때만 호출되므로, 최초 접속 시에는 수동으로 업데이트 필요)
+		if (!HasAuthority())
+		{
+			// 약간의 지연 후 업데이트 (리플리케이션이 완료될 때까지 대기)
+			FTimerHandle InitWidgetTimer;
+			GetWorldTimerManager().SetTimer(InitWidgetTimer, [this]()
+			{
+				if (DasanWidget)
+				{
+					UpdateWidgetState();
+					PRINTLOG(TEXT("[DasanWidget] 클라이언트 초기 위젯 상태 업데이트 완료"));
+				}
+			}, 0.1f, false);
+		}
 	}
 
 	// 값 설정
@@ -266,6 +282,16 @@ float ADasanActor::GetTargetBuildingDistnace()
 		return -1.0f;
 	}
 	return FVector::Dist(this->GetActorLocation(), this->CurTargetBuilding->GetActorLocation());
+}
+
+void ADasanActor::TryStartAnswer(const FString& PlayerName)
+{
+	 AnswerStateSystem->ServerRPC_TryStartAnswer(PlayerName);
+}
+
+void ADasanActor::FinishAnswer()
+{
+	AnswerStateSystem->ServerRPC_FinishAnswer();
 }
 
 void ADasanActor::StartTour()

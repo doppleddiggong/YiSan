@@ -20,7 +20,10 @@ protected:
 
 public:
 	UFUNCTION(Server, Reliable)                                                                                                           
-	void ServerRPC_BroadcastToastMessage(const FString& Message);    
+	void ServerRPC_BroadcastToastMessage(const FString& Message);
+
+	void TryStartAnswer(const FString& PlayerName);
+	void FinishAnswer();
 
 public:
 	// Dasan NPC 참조
