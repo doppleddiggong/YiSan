@@ -10,6 +10,7 @@
 #include "Components/EditableTextBox.h"
 #include "Input/Reply.h"
 #include "Kismet/GameplayStatics.h"
+#include "EndingWidget.h" // EndingWidget 헤더 추가
 
 void UMainWidget::NativeConstruct()
 {
@@ -39,8 +40,17 @@ void UMainWidget::NativeConstruct()
         MegaPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
 
     PlayBGM();
-}
 
+    // 엔딩 위젯 클래스가 설정
+    if (EndingWidgetClass)
+    {
+        EndingWidgetInstance = CreateWidget<UEndingWidget>(this, EndingWidgetClass);
+        if (EndingWidgetInstance)
+        {
+            EndingWidgetInstance->AddToViewport();
+        }
+    }
+}
 void UMainWidget::PlayBGM()
 {
     if (!BGM_Sound)
