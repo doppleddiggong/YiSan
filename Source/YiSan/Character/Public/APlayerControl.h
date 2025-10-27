@@ -13,7 +13,7 @@
 struct FInputActionValue;
 
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Dopple))
-class LATTELIBRARY_API APlayerControl : public APlayerController
+class YISAN_API APlayerControl : public APlayerController
 {
 	GENERATED_BODY()
 
@@ -87,8 +87,12 @@ public:
 	void Client_HideLoadingScreen_Implementation();
 	UPROPERTY()
 	UUserWidget* LoadingWidget;
-
 	//----------------로딩 관련-------------------
+	
+	// 클라이언트 RPC : 토스트메시지
+	UFUNCTION(Client, Reliable)
+	void ClientRPC_ShowToastMessage(const FString& Message);
+	
 private:
 	UFUNCTION()
 	void OnPlayerControlState(bool bState, class UUserWidget* FocusWidget);

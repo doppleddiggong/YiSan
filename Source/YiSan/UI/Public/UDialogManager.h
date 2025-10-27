@@ -19,12 +19,7 @@ public:
 
 	// 다이얼로그 요청 함수
 	UFUNCTION(BlueprintCallable, Category = "Dialog")
-	void OnToastManager(const FString& Message);
-
-	// 정적 유틸: 간편 호출용
-	// UDialogManager::Toast(GetWorld(), TEXT("세션 조회 시작"));
-	UFUNCTION(BlueprintCallable, Category = "Dialog", meta = (WorldContext = "WorldContextObject"))
-	static void Toast(UObject* WorldContextObject, const FString& Message);
+	void ShowToast(const FString& Message);
 
 protected:
 	/** @brief 현재 월드에 위젯이 없으면 생성하고 뷰포트에 부착합니다. */

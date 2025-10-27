@@ -72,7 +72,8 @@ void UNetworkGameInstanceSubsystem::OnCreateSessionComplete(FName sessionName, b
 
         ULoadingCircleManager::Increase(GetWorld());
 
-        UDialogManager::Toast(GetWorld(), FString::Printf( TEXT("세션 : %s 성공"), *sessionName.ToString()) );        
+        if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
+            DM->ShowToast(FString::Printf( TEXT("세션 : %s 성공"), *sessionName.ToString()));        
 
         // Seamless Travel을 사용하여 클라이언트 연결 유지
         GetWorld()->ServerTravel(TEXT("/Game/CustomContents/Maps/StartLevel?listen"), true);
@@ -87,7 +88,8 @@ void UNetworkGameInstanceSubsystem::FindOtherSession()
 {
     UE_LOG(LogTemp, Warning, TEXT("세션 조회 시작"));
 
-    UDialogManager::Toast(GetWorld(), TEXT("세션 조회 시작"));        
+    if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
+        DM->ShowToast(TEXT("세션 조회 시작"));        
     ULoadingCircleManager::Increase(GetWorld());
     
     //sessionSearch 만들자
@@ -103,7 +105,8 @@ void UNetworkGameInstanceSubsystem::OnFindSessionComplete(bool success)
 {
     UE_LOG(LogTemp, Warning, TEXT("세션 조회 끝"));
 
-    UDialogManager::Toast(GetWorld(), TEXT("세션 조회 끝"));        
+    if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
+        DM->ShowToast(TEXT("세션 조회 끝"));        
     ULoadingCircleManager::Decrease(GetWorld());
     
     if (success)

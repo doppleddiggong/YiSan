@@ -2,8 +2,8 @@
 
 #include "AYisanGameState.h"
 #include "ADasanActor.h"
+#include "APlayerControl.h"
 #include "GameLogging.h"
-#include "UDialogManager.h"
 #include "UQuestManager.h"
 #include "Net/UnrealNetwork.h"
 
@@ -24,23 +24,27 @@ void AYisanGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 
 void AYisanGameState::ServerRPC_BroadcastToastMessage_Implementation(const FString& Message)
 {
-	if (HasAuthority())
+	if (!HasAuthority())
+		return;
+
+	if (Message.IsEmpty())
+		return;
+
+	UWorld* World = GetWorld();
+	if (!World)
+		return;
+
+	for (FConstPlayerControllerIterator It = World->GetPlayerControllerIterator(); It; ++It)
 	{
-		for (FConstPlayerControllerIterator It = GetWorld()->GetPlayerControllerIterator(); It; ++It)
-		{
-			APlayerController* PlayerController = It->Get();
-			if (PlayerController)
-			{
-				ClientRPC_ShowToastMessage(Message);                                                                                                           
-			}                                                                                                                                               
-		}                                                                                                                                                   
-	}       
-}                                                                                                                                                       
-                                                                                                                                                             
-void AYisanGameState::ClientRPC_ShowToastMessage_Implementation(const FString& Message)                                                                          
-{
-	PRINTLOG( TEXT("Client received global toast: %s"), *Message);
-	UDialogManager::Toast(GetWorld(), Message);                                                                                                          
+		APlayerController* PC = It->Get();
+		if (!PC)
+			continue;
+
+		if (APlayerControl* CustomPC = Cast<APlayerControl>(PC))
+			CustomPC->ClientRPC_ShowToastMessage(Message);
+		else
+			PC->ClientMessage(Message);
+	}
 }
 
 

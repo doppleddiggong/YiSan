@@ -21,6 +21,8 @@
 #include "GameFramework/GameModeBase.h"
 #include "Kismet/GameplayStatics.h"
 
+#include "UDialogManager.h"
+
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
 #define IA_LOOK_PATH				TEXT("/Game/CustomContents/Input/IA_Game_LookAround.IA_Game_LookAround")
@@ -347,3 +349,13 @@ void APlayerControl::Client_HideLoadingScreen_Implementation()
 	}
 }
 
+void APlayerControl::ClientRPC_ShowToastMessage_Implementation(const FString& Message)
+{
+	if (Message.IsEmpty())
+		return;
+
+	if (auto DM = UDialogManager::Get(this))
+	{
+		DM->ShowToast(Message);
+	}
+}

@@ -21,10 +21,6 @@ protected:
 public:
 	UFUNCTION(Server, Reliable)                                                                                                           
 	void ServerRPC_BroadcastToastMessage(const FString& Message);    
-protected:                                                                                                                                                  
-	// Client-side RPC function to display the toast                                                                                                        
-	UFUNCTION(Client, Reliable)                                                                                                                             
-	void ClientRPC_ShowToastMessage(const FString& Message);   
 
 public:
 	// Dasan NPC 참조

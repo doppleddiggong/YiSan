@@ -86,8 +86,11 @@ void UVoiceConversationSystem::StartRecording()
 
 	if (!bStreamOpened || !AudioCapture->StartStream() )
 	{
-		UDialogManager::Toast(GetWorld(), TEXT("연결된 마이크가 없습니다"));
-		// BroadcastManager->SendToastMessage();
+		if (auto DM = UDialogManager::Get(GetWorld()))
+		{
+			DM->ShowToast(TEXT("연결된 마이크가 없습니다"));
+		}
+
 		return;
 	}
 

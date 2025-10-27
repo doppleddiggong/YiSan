@@ -5,8 +5,6 @@
 #include "UAnswerStateSystem.h"
 
 #include "AIController.h"
-#include "GameFramework/CharacterMovementComponent.h"
-#include "NavigationSystem.h" // 수정: NavMesh 프로젝션을 위해 헤더 추가
 
 #include "UQuestManager.h"
 #include "ABuilding.h"
@@ -26,12 +24,14 @@
 #include "UChatPlayerSystem.h"
 #include "UGameSoundManager.h"
 #include "YiSan/YiSan.h"
+#include "NavigationSystem.h"
 
 #define DASANWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_DasanWidget.WBP_DasanWidget_C")
 
 ADasanActor::ADasanActor()
 {
 	PrimaryActorTick.bCanEverTick = true;
+
 	// 네트워크 복제 활성화
 	bReplicates = true;
 	SetReplicateMovement(true);
@@ -39,44 +39,41 @@ ADasanActor::ADasanActor()
 	// 상태 시스템 컴포넌트 생성
 	TourStateSystem = CreateDefaultSubobject<UTourStateSystem>(TEXT("TourStateSystem"));
 	AnswerStateSystem = CreateDefaultSubobject<UAnswerStateSystem>(TEXT("AnswerStateSystem"));
+
 	// 위젯 컴포넌트 생성 (머리 위에 표시)
 	DasanWidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("DasanWidgetComponent"));
 	DasanWidgetComp->SetupAttachment(RootComponent);
 	DasanWidgetComp->SetRelativeLocation(FVector(0.f, 0.f, 170.f));  // 머리 위 Z+170
 	DasanWidgetComp->SetWidgetSpace(EWidgetSpace::Screen);
 	DasanWidgetComp->SetDrawSize(FVector2D(300.f, 100.f));
+
 	// 위젯 클래스 설정
 	static ConstructorHelpers::FClassFinder<UUserWidget> WidgetClassFinder(DASANWIDGET_PATH);
 	if (WidgetClassFinder.Succeeded())
 		DasanWidgetComp->SetWidgetClass(WidgetClassFinder.Class);
 
 	playerMaxDis = 1000.f;
-	wayPointDis = 1.f;
+	wayPointDis = 250.f;
 	waitChackTimer = 1.f;
 }
 
 void ADasanActor::BeginPlay()
 {
 	Super::BeginPlay();
-	// CharacterMovementComponent 설정 - 땅으로 빠지지 않도록
-	if (UCharacterMovementComponent* MovementComp = GetCharacterMovement())
-	{
-		// 바닥 체크 강화
-		MovementComp->bAlwaysCheckFloor = true;
-		MovementComp->SetWalkableFloorAngle(46.f);
-		// 절벽에서 떨어지지 않도록
-		MovementComp->bCanWalkOffLedges = false;
-		MovementComp->bCanWalkOffLedgesWhenCrouching = false;
-		
-		// 바닥 마찰력 증가
-		MovementComp->GroundFriction = 8.0f;
-		MovementComp->BrakingDecelerationWalking = 2048.f;
-		// NavMesh 위에서만 움직이도록
-		MovementComp->bUseRVOAvoidance = true;
-		MovementComp->AvoidanceConsiderationRadius = 500.f;
-		
-		PRINTLOG(TEXT("[Movement] 땅으로 빠지지 않도록 설정 완료"));
-	}
+
+	// if (!TourStateSystem)
+	// {
+	// 	PRINTLOG(TEXT("TourStateSystem::nullptr이라 재생성합니다."));
+	// 	TourStateSystem = NewObject<UTourStateSystem>(this, UTourStateSystem::StaticClass());
+	// 	TourStateSystem->RegisterComponent();
+	// }
+	//
+	// if (!AnswerStateSystem)
+	// {
+	// 	PRINTLOG(TEXT("AnswerStateSystem::nullptr이라 재생성합니다."));
+	// 	AnswerStateSystem = NewObject<UAnswerStateSystem>(this, UAnswerStateSystem::StaticClass());
+	// 	AnswerStateSystem->RegisterComponent();
+	// }
 
 	// 위젯 캐싱 및 초기화
 	if (DasanWidgetComp && DasanWidgetComp->GetWidget())
@@ -87,7 +84,7 @@ void ADasanActor::BeginPlay()
 
 	// 값 설정
 	playerMaxDis = 1000.f;
-	wayPointDis = 1.f;
+	wayPointDis = 250.f;
 	waitChackTimer = 1.f;
 	
 	PRINTLOG(TEXT("========== ADasanActor BeginPlay =========="));
@@ -107,14 +104,16 @@ void ADasanActor::BeginPlay()
 		else
 		{
 			PRINTLOG(TEXT(" AI Controller 초기화 성공: %s"), *DasanAicontrol->GetName());
+			
 			// AI MoveTo 완료 콜백 바인딩 추가
 			DasanAicontrol->ReceiveMoveCompleted.AddDynamic(this, &ADasanActor::OnMoveCompleted);
 		}
 
 		// 시스템 초기화 - nullptr 체크 추가
 		TourStateSystem->InitSystem(this);
-		// ExplainStateSystem->InitSystem(this); // (원본 주석)
+		// ExplainStateSystem->InitSystem(this);
 		AnswerStateSystem->InitSystem(this);
+		
 		QuestManager = UQuestManager::Get(GetWorld());
 		if (QuestManager)
 		{
@@ -140,6 +139,7 @@ void ADasanActor::BeginPlay()
 void ADasanActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
 	// 서버에서만 상태 시스템 틱 실행
 	if (HasAuthority())
 	{
@@ -162,67 +162,76 @@ void ADasanActor::OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::
 {
     if (!HasAuthority())
         return;
-	// TourStateSystem 등 사용 전에 체크
+
+    // TourStateSystem 등 사용 전에 체크
     switch (Result)
     {
     case EPathFollowingResult::Success:
         PRINTLOG(TEXT(" AI MoveTo 성공 - 목적지 도착"));
-		// Tour 상태일 때만 처리
+
+        // Tour 상태일 때만 처리
         if (DasanState == EDasanState::Tour)
         {
             if (TourStateSystem)
             {
                 // 건물 도착 시 TourExplain 상태로 전환 (관광 시작)
                 TourStateSystem->SetTourState(ETourState::TourExplain);
-				PRINTLOG(TEXT("[Tour] 건물 도착 - TourExplain 상태 시작"));
+                PRINTLOG(TEXT("[Tour] 건물 도착 - TourExplain 상태 시작"));
             }
             else
             {
                 PRINTLOG(TEXT("[WARN] OnMoveCompleted: TourStateSystem이 nullptr입니다."));
-			}
+            }
         }
         break;
+
     case EPathFollowingResult::Blocked:
         PRINTLOG(TEXT(" AI MoveTo 차단됨 - 재시도"));
-		// 0.5초 후 재시도 
+        // 0.5초 후 재시도
         if (CurTargetBuilding && DasanAicontrol)
         {
             FTimerHandle RetryTimer;
-			GetWorldTimerManager().SetTimer(RetryTimer, [this]()
+            GetWorldTimerManager().SetTimer(RetryTimer, [this]()
             {
                 if (CurTargetBuilding && DasanAicontrol)
                 {
-                    FAIMoveRequest MoveRequest;
-					
-					// 수정 시작: Actor 대신 Z값이 보정된 안전한 Location으로 이동
-                    //MoveRequest.SetGoalActor(CurTargetBuilding);
-					MoveRequest.SetGoalLocation(GetSafeMoveToLocation(CurTargetBuilding));
-					// 수정 끝
-           
-					MoveRequest.SetAcceptanceRadius(wayPointDis);
-                    MoveRequest.SetUsePathfinding(true);
-                    DasanAicontrol->MoveTo(MoveRequest);
+                    FVector TargetPos = CurTargetBuilding->GetActorLocation();
+                    UNavigationSystemV1* NavSys = UNavigationSystemV1::GetCurrent(GetWorld());
+
+                    if (NavSys)
+                    {
+                        FNavLocation TargetNavLoc;
+                        if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
+                        {
+                            FAIMoveRequest MoveRequest;
+                            MoveRequest.SetGoalLocation(TargetNavLoc.Location);
+                            MoveRequest.SetAcceptanceRadius(wayPointDis);
+                            MoveRequest.SetUsePathfinding(true);
+                            DasanAicontrol->MoveTo(MoveRequest);
+                        }
+                    }
                 }
                 else
                 {
-					PRINTLOG(TEXT("Retry MoveTo 실패: CurTargetBuilding 또는 DasanAicontrol이 nullptr입니다."));
+                    PRINTLOG(TEXT("Retry MoveTo 실패: CurTargetBuilding 또는 DasanAicontrol이 nullptr입니다."));
                 }
             }, 0.5f, false);
-		}
+        }
         else
         {
             PRINTLOG(TEXT("Blocked 처리: CurTargetBuilding 또는 DasanAicontrol이 nullptr입니다."));
-		}
+        }
         break;
 
     case EPathFollowingResult::Aborted:
         // PRINTLOG(TEXT(" AI MoveTo 중단됨"));
-		break;
+        break;
 
     case EPathFollowingResult::Invalid:
         PRINTLOG(TEXT(" AI MoveTo 실패 - 경로 없음"));
         break;
-	default:
+
+    default:
         break;
     }
 }
@@ -231,6 +240,7 @@ void ADasanActor::OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::
 void ADasanActor::OnRep_DasanState()
 {
 	PRINTLOG(TEXT("DasanActor MainState changed: %s"), *ENUM_TO_NAME(EDasanState, DasanState));
+
 	// 클라이언트에서 메인 상태가 복제되었으므로 위젯 업데이트
 	UpdateWidgetState();
 }
@@ -256,138 +266,116 @@ float ADasanActor::GetTargetBuildingDistnace()
 void ADasanActor::StartTour()
 {
     PRINTLOG(TEXT("========== StartTour 호출 =========="));
-	if (!HasAuthority())
+
+    if (!HasAuthority())
     {
         PRINTLOG(TEXT("클라이언트에서 호출됨"));
         return;
-	}
+    }
 
     // 첫 번째 목표 건물 찾기
     CurTargetBuilding = FindCurTargetBuilding();
-	if (QuestManager)
+
+    if (QuestManager)
     {
         PRINTLOG(TEXT(" 다산 캐릭터의 추적 건물: %s"), *QuestManager->GetTargetBuildingName());
-	}
+    }
     else
     {
         PRINTLOG(TEXT(" QuestManager가 nullptr"));
         return;
-	}
+    }
 
     if (CurTargetBuilding)
     {
         float Distance = GetTargetBuildingDistnace();
-		PRINTLOG(TEXT(" 타겟 건물 발견: %s (거리: %.1f)"),
+        PRINTLOG(TEXT(" 타겟 건물 발견: %s (거리: %.1f)"),
             *CurTargetBuilding->GetName(),
             Distance);
-		// 상태를 먼저 설정
+
+        // 상태를 먼저 설정
         DasanState = EDasanState::Tour;
-		// 투어 시작 시 플레이어 거리 체크
+
+        // 투어 시작 시 플레이어 거리 체크
         APawn* Player = GetPlayerPawn();
-		if (Player && GetPlayerDistance(Player) > playerMaxDis)
+        if (Player && GetPlayerDistance(Player) > playerMaxDis)
         {
             PRINTLOG(TEXT(" 플레이어가 너무 멀리 있음. 대기 상태(TourWait)에서 시작함"));
-			if (TourStateSystem)
+            if (TourStateSystem)
             {
                 TourStateSystem->SetTourState(ETourState::TourWait);
-			}
+            }
             else
             {
                 PRINTLOG(TEXT("[WARN] StartTour: TourStateSystem이 nullptr입니다."));
-			}
+            }
             waitChackTimer = 1.f;
-		}
+        }
         else
         {
             PRINTLOG(TEXT(" 플레이어가 근처에 있음. 이동 상태(TourMove) 시작함"));
-			if (TourStateSystem)
+            if (TourStateSystem)
             {
                 TourStateSystem->SetTourState(ETourState::TourMove);
-			}
+            }
             else
             {
                 PRINTLOG(TEXT("[WARN] StartTour: TourStateSystem이 nullptr입니다."));
-			}
+            }
 
-            // AI Controller로 이동 시작
+            // AI Controller로 이동 시작 (NavMesh 위치로)
             if (DasanAicontrol && CurTargetBuilding)
             {
-                FAIMoveRequest MoveRequest;
+                FVector TargetPos = CurTargetBuilding->GetActorLocation();
+                UNavigationSystemV1* NavSys = UNavigationSystemV1::GetCurrent(GetWorld());
 
-				// z 값이 보장된 안전한 곳으로 이동
-				MoveRequest.SetGoalLocation(GetSafeMoveToLocation(CurTargetBuilding));
-				
-
-                MoveRequest.SetAcceptanceRadius(wayPointDis);
-                MoveRequest.SetUsePathfinding(true);
-
-                FPathFollowingRequestResult Result = DasanAicontrol->MoveTo(MoveRequest);
-                if (Result.Code == EPathFollowingRequestResult::RequestSuccessful)
+                if (NavSys)
                 {
-                    PRINTLOG(TEXT(" AI MoveTo 시작 성공"));
-				}
+                    FNavLocation TargetNavLoc;
+                    if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
+                    {
+                        FAIMoveRequest MoveRequest;
+                        MoveRequest.SetGoalLocation(TargetNavLoc.Location);
+                        MoveRequest.SetAcceptanceRadius(wayPointDis);
+                        MoveRequest.SetUsePathfinding(true);
+
+                        FPathFollowingRequestResult Result = DasanAicontrol->MoveTo(MoveRequest);
+                        if (Result.Code == EPathFollowingRequestResult::RequestSuccessful)
+                        {
+                            PRINTLOG(TEXT(" AI MoveTo 시작 성공 (NavMesh 위치)"));
+                        }
+                        else
+                        {
+                            PRINTLOG(TEXT(" AI MoveTo 실패: %d"), (int32)Result.Code);
+                        }
+                    }
+                    else
+                    {
+                        PRINTLOG(TEXT(" NavMesh 투영 실패"));
+                    }
+                }
                 else
                 {
-                    PRINTLOG(TEXT(" AI MoveTo 실패: %d"), (int32)Result.Code);
-				}
+                    PRINTLOG(TEXT(" NavigationSystem 없음"));
+                }
             }
             else
             {
                 PRINTLOG(TEXT(" AI Controller가 없음 - 직접 이동 모드"));
-			}
+            }
         }
 
         PRINTLOG(TEXT(" StartTour 완료 - DasanState: %s, TourState: %s"), *ENUM_TO_NAME(EDasanState, DasanState),
             TourStateSystem ? *ENUM_TO_NAME(ETourState, TourStateSystem->GetCurState()) : TEXT("Unknown"));
-	}
+    }
     else
     {
         PRINTLOG(TEXT(" [CRITICAL] 타겟 건물을 찾을 수 없음"));
-		DasanState = EDasanState::Tour;
+        DasanState = EDasanState::Tour;
         if (TourStateSystem)
             TourStateSystem->SetTourState(ETourState::TourEnd);
-	}
+    }
 }
-
-// 수정 시작: Z축(높이) 보정 헬퍼 함수 구현
-FVector ADasanActor::GetSafeMoveToLocation(AActor* TargetActor) const
-{
-	if (!TargetActor)
-	{
-		PRINTLOG(TEXT("[WARN] GetSafeMoveToLocation: TargetActor가 nullptr입니다."));
-		return GetActorLocation(); // 현재 위치 반환
-	}
-
-	FVector GoalLocation = TargetActor->GetActorLocation();
-	FVector ProjectedLocation = GoalLocation;
-
-	UNavigationSystemV1* NavSys = FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());
-	if (NavSys)
-	{
-		FNavLocation NavLoc;
-		// 목표 지점을 NavMesh 위로 프로젝션 (수평 1000, 수직 1000 범위 내에서 검색)
-		bool bSuccess = NavSys->ProjectPointToNavigation(GoalLocation, NavLoc, FVector(1000.f, 1000.f, 1000.f));
-		
-		if (bSuccess)
-		{
-			ProjectedLocation = NavLoc.Location;
-			// Z값이 다른 경우에만 로그 출력 (너무 많은 로그 방지)
-			if (!FMath::IsNearlyEqual(GoalLocation.Z, ProjectedLocation.Z, 1.f))
-			{
-				PRINTLOG(TEXT("목표 지점 (%s)을 NavMesh로 프로젝션함: Z=%.1f -> Z=%.1f"),
-					*TargetActor->GetName(), GoalLocation.Z, ProjectedLocation.Z);
-			}
-		}
-		else
-		{
-			PRINTLOG(TEXT("[WARN] 목표 지점 (%s)을 NavMesh로 프로젝션 실패! 원래 위치 사용."),
-				*TargetActor->GetName());
-		}
-	}
-	
-	return ProjectedLocation;
-}
-// 수정 끝
 
 ABuilding* ADasanActor::FindCurTargetBuilding() const
 {
@@ -405,6 +393,7 @@ ABuilding* ADasanActor::FindCurTargetBuilding() const
 	// 월드에서 모든 ABuilding 검색
 	auto FoundBuildings = FComponentHelper::GetAllOfClass<ABuilding>(GetWorld());
 	PRINTLOG(TEXT(" 월드에서 건물 검색 중... (총 %d개 발견)"), FoundBuildings.Num());
+
 	for (auto Building : FoundBuildings)
 	{
 		if (Building && Building->BuildingType == TargetType)
@@ -425,13 +414,13 @@ void ADasanActor::TransitionToState(EDasanState InMainState)
     if (!HasAuthority())
     {
         PRINTLOG(TEXT(" TransitionToState: 클라이언트에서 호출됨 (무시)"));
-		return;
+        return;
     }
 
     if (DasanState == InMainState)
     {
         PRINTLOG(TEXT(" TransitionToState: 이미 %s 상태임"), *ENUM_TO_NAME(EDasanState, InMainState));
-		return;
+        return;
     }
 
 	// Answer 상태일 때 다른 상태로의 전환을 막는 로직 추가
@@ -444,122 +433,140 @@ void ADasanActor::TransitionToState(EDasanState InMainState)
 	}
 
     PRINTLOG(TEXT(" 상태 전환: [%s] → [%s]"), *ENUM_TO_NAME(EDasanState, DasanState), *ENUM_TO_NAME(EDasanState, InMainState));
-	// 메인 상태 변경
+
+    // 메인 상태 변경
     DasanState = InMainState;
 
     // 위젯 업데이트 (메인 상태가 바뀌었으므로)
     UpdateWidgetState();
-	switch (InMainState)
+
+    switch (InMainState)
     {
     case EDasanState::Tour:
     {
     	if (!CurTargetBuilding)
     	{
     		PRINTLOG(TEXT("Tour 전환 시 CurTargetBuilding이 비어있어 FindCurTargetBuilding() 호출"));
-			CurTargetBuilding = FindCurTargetBuilding();
+    		CurTargetBuilding = FindCurTargetBuilding();
     	}
     		
-        const FString TargetName = CurTargetBuilding ?
-			CurTargetBuilding->GetName() : TEXT("None");
+        const FString TargetName = CurTargetBuilding ? CurTargetBuilding->GetName() : TEXT("None");
         PRINTLOG(TEXT(" Tour 상태 시작 - 목표: %s"), *TargetName);
-		if (TourStateSystem)
+
+        if (TourStateSystem)
         {
             TourStateSystem->SetTourState(ETourState::TourMove);
-		}
+        }
 
-        // AI Controller로 이동 시작 (안전 체크)
+        // AI Controller로 이동 시작 (NavMesh 위치로)
         if (DasanAicontrol && CurTargetBuilding)
         {
-            FAIMoveRequest MoveRequest;
+            FVector TargetPos = CurTargetBuilding->GetActorLocation();
+            UNavigationSystemV1* NavSys = UNavigationSystemV1::GetCurrent(GetWorld());
 
-			// z 값이 보장된 안전한 곳으로 이동 
-			MoveRequest.SetGoalLocation(GetSafeMoveToLocation(CurTargetBuilding));
-			// 수정 끝
+            if (NavSys)
+            {
+                FNavLocation TargetNavLoc;
+                if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
+                {
+                    FAIMoveRequest MoveRequest;
+                    MoveRequest.SetGoalLocation(TargetNavLoc.Location);
+                    MoveRequest.SetAcceptanceRadius(wayPointDis);
+                    MoveRequest.SetUsePathfinding(true);
 
-            MoveRequest.SetAcceptanceRadius(wayPointDis);
-            MoveRequest.SetUsePathfinding(true);
-
-            // MoveTo 결과는 내부에서 처리됨
-            DasanAicontrol->MoveTo(MoveRequest);
-			PRINTLOG(TEXT(" AI MoveTo 시작"));
+                    DasanAicontrol->MoveTo(MoveRequest);
+                    PRINTLOG(TEXT(" AI MoveTo 시작 (NavMesh 위치)"));
+                }
+            }
         }
         else
         {
             PRINTLOG(TEXT(" AI MoveTo를 시작하지 않음 (직접 이동 또는 대기 모드)"));
-		}
+        }
     }
     break;
     case EDasanState::Answer:
     {
         PRINTLOG(TEXT("[EDasanState::Answer] Answer 상태 시작"));
-		if (AnswerStateSystem)
+        if (AnswerStateSystem)
         {
             AnswerStateSystem->SetCurState(EAnswerState::AnswerListen);
-		}
+        }
     }
     break;
 
     default:
         break;
-	}
+    }
 }
 
 void ADasanActor::NextQuest()
 {
     if (!HasAuthority())
         return;
-	if (!DasanAicontrol)
+
+    if (!DasanAicontrol)
         return;
 
     if (!QuestManager)
         return;
-	// 퀘스트 매니저가 준비되지 않거나 타겟이 None이면 이동 중단
+
+    // 퀘스트 매니저가 준비되지 않거나 타겟이 None이면 이동 중단
     if (!QuestManager->IsHasQuest() || QuestManager->GetCurTarget() == EBuildingType::None)
     {
         PRINTLOG(TEXT(" NextQuest: 유효한 퀘스트가 없거나 TargetType이 None입니다."));
-		TourStateSystem->SetTourState(ETourState::TourEnd);
+        TourStateSystem->SetTourState(ETourState::TourEnd);
         return;
     }
 
     // 새로운 목표 건물 찾기
     CurTargetBuilding = FindCurTargetBuilding();
-	PRINTLOG(TEXT("NextQuest: TargetBuilding = %s"), 
+    PRINTLOG(TEXT("NextQuest: TargetBuilding = %s"), 
         CurTargetBuilding ? *CurTargetBuilding->GetName() : TEXT("None"));
-	if (CurTargetBuilding)
+
+    if (CurTargetBuilding)
     {
         float Distance = GetTargetBuildingDistnace();
-		PRINTLOG(TEXT(" 다음 목표 건물까지 거리: %.1f"), Distance);
+        PRINTLOG(TEXT(" 다음 목표 건물까지 거리: %.1f"), Distance);
 
         APawn* Player = GetPlayerPawn();
-		if (Player && GetPlayerDistance(Player) > playerMaxDis)
+        if (Player && GetPlayerDistance(Player) > playerMaxDis)
         {
             PRINTLOG(TEXT(" 플레이어가 너무 멀리 있음. 대기 상태 시작"));
-			TourStateSystem->SetTourState(ETourState::TourWait);
+            TourStateSystem->SetTourState(ETourState::TourWait);
             waitChackTimer = 1.f;
         }
         else
         {
             PRINTLOG(TEXT(" 플레이어가 근처에 있음. 이동 상태 시작"));
-			TourStateSystem->SetTourState(ETourState::TourMove);
+            TourStateSystem->SetTourState(ETourState::TourMove);
 
-            FAIMoveRequest MoveRequest;
-			
-			MoveRequest.SetGoalLocation(GetSafeMoveToLocation(CurTargetBuilding));
+            FVector TargetPos = CurTargetBuilding->GetActorLocation();
+            UNavigationSystemV1* NavSys = UNavigationSystemV1::GetCurrent(GetWorld());
 
-            MoveRequest.SetAcceptanceRadius(wayPointDis);
-            MoveRequest.SetUsePathfinding(true);
+            if (NavSys)
+            {
+                FNavLocation TargetNavLoc;
+                if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
+                {
+                    FAIMoveRequest MoveRequest;
+                    MoveRequest.SetGoalLocation(TargetNavLoc.Location);
+                    MoveRequest.SetAcceptanceRadius(wayPointDis);
+                    MoveRequest.SetUsePathfinding(true);
 
-            FPathFollowingRequestResult Result = DasanAicontrol->MoveTo(MoveRequest);
-			if (Result.Code == EPathFollowingRequestResult::RequestSuccessful)
-                PRINTLOG(TEXT(" 다음 목적지로 이동 시작: %s"), *CurTargetBuilding->GetName());
-			else
-                PRINTLOG(TEXT("[WARN] MoveTo 실패: 코드 %d"), (int32)Result.Code);
-		}
+                    FPathFollowingRequestResult Result = DasanAicontrol->MoveTo(MoveRequest);
+                    if (Result.Code == EPathFollowingRequestResult::RequestSuccessful)
+                        PRINTLOG(TEXT(" 다음 목적지로 이동 시작: %s (NavMesh 위치)"), *CurTargetBuilding->GetName());
+                    else
+                        PRINTLOG(TEXT("[WARN] MoveTo 실패: 코드 %d"), (int32)Result.Code);
+                }
+            }
+        }
     }
     else
     {
         PRINTLOG(TEXT("[WARN] NextQuest: CurTargetBuilding이 nullptr입니다. 이동 불가"));
-		TourStateSystem->SetTourState(ETourState::TourEnd);
+        TourStateSystem->SetTourState(ETourState::TourEnd);
     }
 }
 
@@ -586,6 +593,7 @@ APawn* ADasanActor::GetPlayerPawn() const
 {
 	if (!GetWorld())
 		return nullptr;
+
 	return UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 }
 
@@ -606,30 +614,24 @@ void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester
 
 	PRINTLOG(TEXT("[Dasan] 음성 명령 수신: %s from %s"), *ENUM_TO_NAME(EVoiceCommandType, InType),
 		Requester ? *Requester->GetName() : TEXT("Unknown"));
+
 	if ( InType == EVoiceCommandType::Cmd_Summon )
 	{
 		if (Requester == nullptr)
 			return;
 		
 		PRINTLOG(TEXT("[Dasan] Cmd_Summon: %s님이 다산을 소환합니다"), *Requester->GetName());
+		
 		// Requester의 위치로 텔레포트
 		FVector PlayerLocation = Requester->GetActorLocation();
 		FRotator PlayerRotation = Requester->GetActorRotation();
+		
 		// 플레이어의 앞쪽으로 200 유닛 떨어진 위치 계산
 		FVector TargetLocation = PlayerLocation + (PlayerRotation.Vector() * 200.f);
-		PRINTLOG(TEXT("현재 거리에 200 로 텔레포트 합니다"));
 
 		// 텔레포트
-		
-		// 1. 다산 액터의 현재 위치(피벗)를 가져옵니다.
-		FVector CurrentDasanLocation = GetActorLocation();
-		
-		// 2. 최종 텔레포트 위치를 (Target의 X, Target의 Y, Dasan의 현재 Z)로 조합합니다.
-		FVector FinalLocation = FVector(TargetLocation.X, TargetLocation.Y, CurrentDasanLocation.Z);
+		TeleportTo(TargetLocation, GetActorRotation(), false, true);
 
-		// 3. Z값이 보정된 FinalLocation으로 텔레포트합니다.
-		TeleportTo(FinalLocation, GetActorRotation(), false, true);
-		
 		APlayerActor* RequestPlayer = Cast<APlayerActor>(Requester);
 		if (RequestPlayer && RequestPlayer->ChatPlayerSystem)
 		{
