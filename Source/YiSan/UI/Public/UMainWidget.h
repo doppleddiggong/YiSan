@@ -15,16 +15,18 @@
 UCLASS()
 class YISAN_API UMainWidget : public UUserWidget
 {
-    GENERATED_BODY()
+	GENERATED_BODY()
+public:
+	UMainWidget(const FObjectInitializer& ObjectInitializer);
+
 protected:
-    /// @brief 위젯 초기화와 브로드캐스트 구독을 수행합니다.
-    virtual void NativeConstruct() override;
-    void PlayBGM();
+	/// @brief 위젯 초기화와 브로드캐스트 구독을 수행합니다.
+	virtual void NativeConstruct() override;
+	void PlayBGM();
 
 private:
-    UFUNCTION()
-    void OnNearBuilding(EBuildingType InBuildingType);
-
+	UFUNCTION()
+	void OnNearBuilding(EBuildingType InBuildingType);
     UFUNCTION()
     void OnMegaPopupClosed();
 
