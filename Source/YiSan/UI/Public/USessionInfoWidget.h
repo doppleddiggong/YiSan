@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "Components/EditableText.h"
+#include "Components/TextBlock.h"
 #include "USessionInfoWidget.generated.h"
 
 /**
@@ -19,7 +19,7 @@ public:
 	virtual void NativeConstruct() override;
 
 	UPROPERTY(meta = (BindWidget))
-	class UEditableText* textSessionName;
+	class UTextBlock* textSessionName;
 	UPROPERTY(meta = (BindWidget))
 	class UButton* btn_Join;
 	int32 sessionIndex;

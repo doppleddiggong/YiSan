@@ -26,16 +26,20 @@ public:
 	// UI Bindings (Blueprint에서 바인딩할 위젯들)
 	// ========================================
 
-	/// @brief Host 버튼 (Blueprint에서 바인딩)
+	UPROPERTY(meta=(BindWidget))
+	TObjectPtr<class UWidgetSwitcher> widgetSwitcher;
+	
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UButton> Btn_Host;
 
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UButton> Btn_Find;
 
-	/// @brief Join 버튼 (Blueprint에서 바인딩)
 	UPROPERTY(meta=(BindWidget))
-	TObjectPtr<class UButton> Btn_Join;
+	TObjectPtr<class UButton> Btn_GoHost;
+
+	UPROPERTY(meta=(BindWidget))
+	TObjectPtr<class UButton> Btn_GoFind;
 
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UEditableText> editSessionName;
@@ -43,18 +47,15 @@ public:
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UEditableText> editSessionSize;
 
-	// /// @brief Disconnect 버튼 (Blueprint에서 바인딩)
-	// UPROPERTY(meta=(BindWidget))
-	// TObjectPtr<class UButton> Btn_Disconnect;
-	//
-	// /// @brief IP 주소 입력 텍스트 박스 (Blueprint에서 바인딩)
-	// UPROPERTY(meta=(BindWidget))
-	// TObjectPtr<class UEditableTextBox> TxtBox_IPAddress;
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class USessionInfoWidget> sessionInfoWidget;
 
-	/// @brief 상태 표시 텍스트 (Blueprint에서 바인딩)
-	//UPROPERTY(meta=(BindWidget))
-	//TObjectPtr<class UTextBlock> Txt_Status;
+	UPROPERTY(meta=(BindWidget))
+	class UScrollBox* scrollSessionList;
 
+	UPROPERTY(meta=(BindWidget))
+	TObjectPtr<class UTextBlock> textFinding;
+	
 	// ========================================
 	// Settings
 	// ========================================
@@ -74,25 +75,26 @@ public:
 	// ========================================
 	// Button Handlers
 	// ========================================
-
-	/// @brief Host 버튼 클릭 핸들러
+	
 	UFUNCTION()
 	void OnHostButtonClicked();
 
 	UFUNCTION()
 	void OnFindButtonClicked();
 
-	// /// @brief Join 버튼 클릭 핸들러
-	// UFUNCTION()
-	// void OnJoinButtonClicked();
-
-	// /// @brief Disconnect 버튼 클릭 핸들러
-	// UFUNCTION()
-	// void OnDisconnectButtonClicked();
+	// 세션 생성 화면 이동 함수
+	UFUNCTION()
+	void OnClickGoHost();
+	// 세션 조회 화면 이동 함수
+	UFUNCTION()
+	void OnClickGoFind();
 
 	// ========================================
 	// Broadcast Event Handlers
 	// ========================================
+
+	UFUNCTION()
+	void OnFindComplete(int32 idx, FString sessionName);
 
 	/// @brief 세션 호스트 생성 이벤트 핸들러
 	UFUNCTION()
@@ -102,27 +104,16 @@ public:
 	UFUNCTION()
 	void OnSessionJoin(const FString& Address, int32 InPort);
 
-	// /// @brief 세션 연결 해제 이벤트 핸들러
-	// UFUNCTION()
-	// void OnSessionDisconnect();
-
 	/// @brief 세션 오류 이벤트 핸들러
 	UFUNCTION()
 	void OnSessionError(const FString& ErrorMessage);
-
-	// ========================================
-	// UI Update
-	// ========================================
-
-	/// @brief 상태 텍스트를 업데이트합니다.
-	/// @param StatusText 표시할 상태 텍스트
-	UFUNCTION(BlueprintCallable, Category="Lobby|UI")
-	void UpdateStatusText(const FString& StatusText);
+	
+	UFUNCTION()
+	void SetFindingText(const FString& NewText);
 
 private:
 	/// @brief PlayerController 참조 캐싱
 	TObjectPtr<class APlayerControl> CachedPlayerController;
-	
 };
 
 	

@@ -6,9 +6,12 @@
 #include "APlayerControl.h"
 #include "UBroadcastManager.h"
 #include "GameLogging.h"
+#include "USessionInfoWidget.h"
 #include "Components/Button.h"
 #include "Components/EditableTextBox.h"
+#include "Components/ScrollBox.h"
 #include "Components/TextBlock.h"
+#include "Components/WidgetSwitcher.h"
 #include "GameFramework/PlayerController.h"
 
 void ULobbyWidget::NativeConstruct()
@@ -23,52 +26,20 @@ void ULobbyWidget::NativeConstruct()
 
 	// 버튼 이벤트 바인딩
 	if (Btn_Host)
-	{
-		Btn_Host->OnClicked.AddDynamic(this, &ULobbyWidget::OnHostButtonClicked);
-	}
-
-	/*if (Btn_Join)
-	{
-		Btn_Join->OnClicked.AddDynamic(this, &ULobbyWidget::OnJoinButtonClicked);
-	}*/
-
+	{Btn_Host->OnClicked.AddDynamic(this, &ULobbyWidget::OnHostButtonClicked);}
 	if (Btn_Find)
-	{
-		Btn_Find->OnClicked.AddDynamic(this, &ULobbyWidget::OnFindButtonClicked);
-	}
-
-	/*if (Btn_Disconnect)
-	{
-		Btn_Disconnect->OnClicked.AddDynamic(this, &ULobbyWidget::OnDisconnectButtonClicked);
-		Btn_Disconnect->SetVisibility(ESlateVisibility::Collapsed); // 초기에는 숨김
-	}*/
-
-	// BroadcastManager 이벤트 바인딩
-	if (auto BroadcastManager = UBroadcastManager::Get(GetWorld()))
-	{
-		// BroadcastManager->OnSessionHost.AddDynamic(this, &ULobbyWidget::OnSessionHost);
-		// BroadcastManager->OnSessionJoin.AddDynamic(this, &ULobbyWidget::OnSessionJoin);
-		// BroadcastManager->OnSessionDisconnect.AddDynamic(this, &ULobbyWidget::OnSessionDisconnect);
-		// BroadcastManager->OnSessionError.AddDynamic(this, &ULobbyWidget::OnSessionError);
-	}
-
-	// 초기 상태 메시지
-	UpdateStatusText(TEXT("로비 - Host 또는 Join을 선택하세요"));
+	{Btn_Find->OnClicked.AddDynamic(this, &ULobbyWidget::OnFindButtonClicked);}
+	if (Btn_GoHost)
+	{Btn_GoHost->OnClicked.AddDynamic(this, &ULobbyWidget::OnClickGoHost);}
+	if (Btn_GoFind)
+	{Btn_GoFind->OnClicked.AddDynamic(this, &ULobbyWidget::OnClickGoFind);}
+	UNetworkGameInstanceSubsystem::Get(GetWorld())->onFindComplete.BindUObject(this, &ULobbyWidget::OnFindComplete);
 
 	PRINTLOG(TEXT("[LobbyWidget] NativeConstruct - Widget initialized"));
 }
 
 void ULobbyWidget::NativeDestruct()
 {
-	// BroadcastManager 이벤트 언바인딩
-	if (auto BroadcastManager = UBroadcastManager::Get(GetWorld()))
-	{
-		// BroadcastManager->OnSessionHost.RemoveDynamic(this, &ULobbyWidget::OnSessionHost);
-		// BroadcastManager->OnSessionJoin.RemoveDynamic(this, &ULobbyWidget::OnSessionJoin);
-		// BroadcastManager->OnSessionDisconnect.RemoveDynamic(this, &ULobbyWidget::OnSessionDisconnect);
-		// BroadcastManager->OnSessionError.RemoveDynamic(this, &ULobbyWidget::OnSessionError);
-	}
-
 	Super::NativeDestruct();
 
 	PRINTLOG(TEXT("[LobbyWidget] NativeDestruct - Widget destroyed"));
@@ -80,179 +51,77 @@ void ULobbyWidget::NativeDestruct()
 
 void ULobbyWidget::OnHostButtonClicked()
 {
-	PRINTLOG(TEXT("[LobbyWidget] OnHostButtonClicked - Map=%s, MaxPlayers=%d"), *MapName, MaxPlayers);
+	UTextBlock* buttonText = Cast<UTextBlock>(Btn_Host->GetChildAt(0));
 
-	/*if (CachedPlayerController)
-	{
-		CachedPlayerController->HostSession(MapName, MaxPlayers);
-	 	UpdateStatusText(FString::Printf(TEXT("호스트 생성 중... 맵: %s"), *MapName));
-	}
-	else
-	{
-	 	PRINTLOG(TEXT("[LobbyWidget] OnHostButtonClicked - PlayerController is null"));
-	 	UpdateStatusText(TEXT("오류: PlayerController를 찾을 수 없습니다"));
-	}*/
+	buttonText->SetText(FText::FromString(TEXT("만드는 중")));
+	
+	FText nameText = editSessionName->GetText();
+	FText sizeText = editSessionSize->GetText();
 
-	// auto gi = Cast<UYiSanGameInstance>(GetGameInstance());
-	// gi->GetSubsystem<UNetworkGameInstanceSubsystem>()->CreateMySession(TEXT("PleaseNetworkWork"), 4);
-	UNetworkGameInstanceSubsystem::Get(GetWorld())->CreateMySession(TEXT("PleaseNetworkWork"), 4);
+	if (nameText.IsEmpty() || sizeText.IsEmpty()) return;
+	
+	FString sessionName = nameText.ToString();
+	int32 sessionSize = FCString::Atoi(*(sizeText.ToString()));
+	
+	PRINTLOG(TEXT("[LobbyWidget] OnHostButtonClicked - Map=%s, SessionName=%s, MaxPlayers=%d"), *MapName, *sessionName, MaxPlayers);
+
+	UNetworkGameInstanceSubsystem::Get(GetWorld())->CreateMySession(sessionName, sessionSize);
 }
 
 void ULobbyWidget::OnFindButtonClicked()
 {
-	// auto gi = UNetworkGameInstanceSubsystem::Get(GetWorld());
 	UNetworkGameInstanceSubsystem::Get(GetWorld())->FindOtherSession();
-
-	
-	// gi->GetSubsystem<UNetworkGameInstanceSubsystem>()->FindOtherSession();
-	
-	// auto gi = Cast<UYiSanGameInstance>(GetGameInstance());
-	// gi->GetSubsystem<UNetworkGameInstanceSubsystem>()->FindOtherSession();
-
+	SetFindingText(TEXT("방 찾는 중..."));
 }
-//
-//
-// void ULobbyWidget::OnJoinButtonClicked()
-// {
-// 	if (!TxtBox_IPAddress)
-// 	{
-// 		PRINTLOG(TEXT("[LobbyWidget] OnJoinButtonClicked - IP TextBox is null"));
-// 		UpdateStatusText(TEXT("오류: IP 입력 필드를 찾을 수 없습니다"));
-// 		return;
-// 	}
-//
-// 	FString IPAddress = TxtBox_IPAddress->GetText().ToString();
-//
-// 	if (IPAddress.IsEmpty())
-// 	{
-// 		PRINTLOG(TEXT("[LobbyWidget] OnJoinButtonClicked - IP Address is empty"));
-// 		UpdateStatusText(TEXT("오류: IP 주소를 입력하세요"));
-// 		return;
-// 	}
-//
-// 	PRINTLOG(TEXT("[LobbyWidget] OnJoinButtonClicked - Address=%s, Port=%d"), *IPAddress, Port);
-//
 
-	// auto gi = Cast<UYiSanGameInstance>(GetGameInstance());
-	// gi->GetSubsystem<UNetworkGameInstanceSubsystem>()->JoinOtherSession(0);
-	
-	// if (CachedPlayerController)
-	// {
-	// 	CachedPlayerController->JoinSession(IPAddress, Port);
-	// 	UpdateStatusText(FString::Printf(TEXT("서버 접속 중... %s:%d"), *IPAddress, Port));
-	// }
-	// else
-	// {
-	// 	PRINTLOG(TEXT("[LobbyWidget] OnJoinButtonClicked - PlayerController is null"));
-	// 	UpdateStatusText(TEXT("오류: PlayerController를 찾을 수 없습니다"));
-	// }
-
-//
-// }
-//
-// void ULobbyWidget::OnDisconnectButtonClicked()
-// {
-// 	PRINTLOG(TEXT("[LobbyWidget] OnDisconnectButtonClicked"));
-//
-// 	// if (CachedPlayerController)
-// 	// {
-// 	// 	CachedPlayerController->DisconnectSession();
-// 	// 	UpdateStatusText(TEXT("연결 해제 중..."));
-// 	// }
-// 	// else
-// 	// {
-// 	// 	PRINTLOG(TEXT("[LobbyWidget] OnDisconnectButtonClicked - PlayerController is null"));
-// 	// 	UpdateStatusText(TEXT("오류: PlayerController를 찾을 수 없습니다"));
-// 	// }
-// }
-
-// ========================================
-// Broadcast Event Handlers
-// ========================================
+void ULobbyWidget::OnFindComplete(int32 idx, FString sessionName)
+{
+	SetFindingText(TEXT("방 목록"));
+	Btn_Find->SetVisibility(ESlateVisibility::Visible);
+	if (sessionName.IsEmpty() == false && idx >= 0)
+	{
+		// sessionInfoWidget 만들자.
+		USessionInfoWidget* item = CreateWidget<USessionInfoWidget>(GetWorld(), sessionInfoWidget);
+		// 만들어진 item 을 scrollSessionList 에 추가
+		scrollSessionList->AddChild(item);
+		// 만들어지 item 정보 설정
+		{item->SetSessionInfo(idx, sessionName);}
+	}
+}
 
 void ULobbyWidget::OnSessionHost(const FString& InMapName)
 {
 	PRINTLOG(TEXT("[LobbyWidget] OnSessionHost - Map=%s"), *InMapName);
-	UpdateStatusText(FString::Printf(TEXT("호스트 생성 완료! 맵: %s (난입 허용)"), *InMapName));
-
-	// // Disconnect 버튼 표시
-	// if (Btn_Disconnect)
-	// {
-	// 	Btn_Disconnect->SetVisibility(ESlateVisibility::Visible);
-	// }
-	//
-	// // Host/Join 버튼 숨김
-	// if (Btn_Host)
-	// {
-	// 	Btn_Host->SetVisibility(ESlateVisibility::Collapsed);
-	// }
-	//
-	// if (Btn_Join)
-	// {
-	// 	Btn_Join->SetVisibility(ESlateVisibility::Collapsed);
-	// }
 }
 
 void ULobbyWidget::OnSessionJoin(const FString& Address, int32 InPort)
 {
 	PRINTLOG(TEXT("[LobbyWidget] OnSessionJoin - Address=%s, Port=%d"), *Address, InPort);
-	UpdateStatusText(FString::Printf(TEXT("서버 접속 완료! %s:%d"), *Address, InPort));
-
-	// Disconnect 버튼 표시
-	/*if (Btn_Disconnect)
-	{
-		Btn_Disconnect->SetVisibility(ESlateVisibility::Visible);
-	}*/
-
-	// Host/Join 버튼 숨김
-	if (Btn_Host)
-	{
-		Btn_Host->SetVisibility(ESlateVisibility::Collapsed);
-	}
-
-	if (Btn_Join)
-	{
-		Btn_Join->SetVisibility(ESlateVisibility::Collapsed);
-	}
 }
-//
-// void ULobbyWidget::OnSessionDisconnect()
-// {
-// 	PRINTLOG(TEXT("[LobbyWidget] OnSessionDisconnect"));
-// 	UpdateStatusText(TEXT("연결 해제됨 - Host 또는 Join을 선택하세요"));
-//
-// 	// Disconnect 버튼 숨김
-// 	if (Btn_Disconnect)
-// 	{
-// 		Btn_Disconnect->SetVisibility(ESlateVisibility::Collapsed);
-// 	}
-//
-// 	// Host/Join 버튼 표시
-// 	if (Btn_Host)
-// 	{
-// 		Btn_Host->SetVisibility(ESlateVisibility::Visible);
-// 	}
-//
-// 	if (Btn_Join)
-// 	{
-// 		Btn_Join->SetVisibility(ESlateVisibility::Visible);
-// 	}
-// }
 
 void ULobbyWidget::OnSessionError(const FString& ErrorMessage)
 {
 	PRINTLOG(TEXT("[LobbyWidget] OnSessionError - Error=%s"), *ErrorMessage);
-	UpdateStatusText(FString::Printf(TEXT("오류: %s"), *ErrorMessage));
 }
 
-// ========================================
-// UI Update
-// ========================================
-
-void ULobbyWidget::UpdateStatusText(const FString& StatusText)
+void ULobbyWidget::OnClickGoHost()
 {
-	/*if (Txt_Status)
+	// 세션 생성 화면으로 이동
+	widgetSwitcher->SetActiveWidgetIndex(1);
+}
+
+void ULobbyWidget::OnClickGoFind()
+{
+	// 세션 조회 화면으로 이동
+	widgetSwitcher->SetActiveWidgetIndex(2);
+	// 세션 조회
+	OnFindButtonClicked();
+}
+
+void ULobbyWidget::SetFindingText(const FString& NewText)
+{
+	if (textFinding)
 	{
-		Txt_Status->SetText(FText::FromString(StatusText));
-	}*/
+		textFinding->SetText(FText::FromString(NewText));
+	}
 }

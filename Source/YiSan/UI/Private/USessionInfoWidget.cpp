@@ -21,5 +21,5 @@ void USessionInfoWidget::SetSessionInfo(int32 index, FString sessionName)
 
 void USessionInfoWidget::OnClickJoin()
 {
-	UNetworkGameInstanceSubsystem::Get(GetWorld())->JoinOtherSession(0);
+	UNetworkGameInstanceSubsystem::Get(GetWorld())->JoinOtherSession(sessionIndex);
 }

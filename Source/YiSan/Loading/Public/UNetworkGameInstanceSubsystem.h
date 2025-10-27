@@ -8,6 +8,7 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UNetworkGameInstanceSubsystem.generated.h"
 
+DECLARE_DELEGATE_TwoParams(FFindComplete, int32, FString);
 
 /**
  * 
@@ -22,9 +23,9 @@ public:
 	DEFINE_SUBSYSTEM_GETTER_INLINE(UNetworkGameInstanceSubsystem);
 
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
-
 	
 public:
+	FFindComplete onFindComplete;
 
 	//세션의 모든 처리 진행 객체
 	IOnlineSessionPtr sessionInterface;

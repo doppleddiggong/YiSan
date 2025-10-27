@@ -99,12 +99,14 @@ void UNetworkGameInstanceSubsystem::OnFindSessionComplete(bool success)
             FString displayName;
             results[i].Session.SessionSettings.Get(FName(TEXT("DP_NAME")), displayName);
             UE_LOG(LogTemp, Warning, TEXT("세션 : %i, 이름 : %s"), i, *displayName);
+            onFindComplete.ExecuteIfBound(i, displayName);
         }
     }
     else
     {
         UE_LOG(LogTemp, Warning, TEXT("세션 조회 실패"));
     }
+    onFindComplete.ExecuteIfBound(-1, FString());
 }
 
 void UNetworkGameInstanceSubsystem::JoinOtherSession(int32 sessionIndex)
