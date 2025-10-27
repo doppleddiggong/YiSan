@@ -155,4 +155,25 @@ void UNetworkGameInstanceSubsystem::OnJoinSessionComplete(FName sessionName, EOn
     }
 }
 
+TArray<FString> UNetworkGameInstanceSubsystem::GetCurrentSessionPlayers()
+{
+    return CurrentPlayers;
+}
 
+void UNetworkGameInstanceSubsystem::AddPlayer(const FString& PlayerName)
+{
+    if (!CurrentPlayers.Contains(PlayerName))
+    {
+        CurrentPlayers.Add(PlayerName);
+        OnPlayerJoined.Broadcast(PlayerName);
+    }
+}
+
+void UNetworkGameInstanceSubsystem::RemovePlayer(const FString& PlayerName)
+{
+    if (CurrentPlayers.Contains(PlayerName))
+    {
+        CurrentPlayers.Remove(PlayerName);
+        OnPlayerLeft.Broadcast(PlayerName);
+    }
+}

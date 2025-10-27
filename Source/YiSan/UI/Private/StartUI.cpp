@@ -8,6 +8,7 @@
 #include "APlayerControl.h"
 #include "Engine/Texture.h"
 #include "ULoadingCircleManager.h"
+#include "UNetworkGameInstanceSubsystem.h" 
 
 void UStartUI::NativeConstruct()
 {
@@ -37,7 +38,6 @@ void UStartUI::NativeConstruct()
 		UE_LOG(LogTemp, Warning, TEXT("MediaPlayer, MediaTexture, or BackgroundVideoImage not set in StartUI"));
 	}
 
-
 	// 마우스 보여라
 	if (auto PC = GetWorld()->GetFirstPlayerController() )
 	{
@@ -50,6 +50,16 @@ void UStartUI::NativeConstruct()
 		// 마우스 커서를 표시
 		PC->SetShowMouseCursor(true);
 	}
+	
+	// 초기 세션 참여자 리스트 가져오기
+	if (UNetworkGameInstanceSubsystem* Subsystem = UNetworkGameInstanceSubsystem::Get(GetWorld()))
+	{
+		currentPlayerNames = Subsystem->GetCurrentSessionPlayers();
+		UpdatePlayerList(currentPlayerNames);
+	}
+
+	// 세션 참여자 이벤트 바인딩
+	BindSessionEvents();
 }
 
 void UStartUI::OnStartButtonClicked()
@@ -91,4 +101,51 @@ void UStartUI::OnStartButtonClicked()
 		pc->Server_RequestMapTravel(TEXT("/Game/CustomContents/Maps/MainMap_WP"));
 		PRINTLOG(TEXT("로딩 레벨 매니저: 클라이언트가 서버에 맵 전환 요청"));
 	}
+}
+	
+void UStartUI::UpdatePlayerList(const TArray<FString>& playerNames)
+{
+	if (!playerList) return;
+
+	playerList->ClearChildren();
+
+	for (const FString& Name : playerNames)
+	{
+		UTextBlock* PlayerText = CreatePlayerText(Name);
+		if (PlayerText)
+		{
+			playerList->AddChild(PlayerText);
+		}
+	}
+}
+
+UTextBlock* UStartUI::CreatePlayerText(const FString& playerName)
+{
+	UTextBlock* newText = NewObject<UTextBlock>(this);
+	if (newText)
+	{
+		newText->SetText(FText::FromString(playerName));
+	}
+	return newText;
+}
+
+void UStartUI::BindSessionEvents()
+{
+	if (UNetworkGameInstanceSubsystem* subsystem = UNetworkGameInstanceSubsystem::Get(GetWorld()))
+	{
+		subsystem->OnPlayerJoined.AddUObject(this, &UStartUI::OnPlayerJoined);
+		subsystem->OnPlayerLeft.AddUObject(this, &UStartUI::OnPlayerLeft);
+	}
+}
+
+void UStartUI::OnPlayerJoined(const FString& playerName)
+{
+	currentPlayerNames.Add(playerName);
+	UpdatePlayerList(currentPlayerNames);
+}
+
+void UStartUI::OnPlayerLeft(const FString& playerName)
+{
+	currentPlayerNames.Remove(playerName);
+	UpdatePlayerList(currentPlayerNames);
 }
