@@ -28,13 +28,13 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendMessage(const FString& InMsg);
-
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnToastMessage, FString, Msg);
-	UPROPERTY(BlueprintAssignable, Category="Events")
-	FOnToastMessage OnToastMessage;
-	
-	UFUNCTION(BlueprintCallable, Category="Events")
-	void SendToastMessage(const FString& InMsg);
+	//
+	// DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnToastMessage, FString, Msg);
+	// UPROPERTY(BlueprintAssignable, Category="Events")
+	// FOnToastMessage OnToastMessage;
+	//
+	// UFUNCTION(BlueprintCallable, Category="Events")
+	// void SendToastMessage(const FString& InMsg);
 
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNetworkWaitCount, int, RequestCount);
 	UPROPERTY(BlueprintAssignable, Category="Events")
@@ -46,9 +46,30 @@ public:
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAudioCapture, bool, bRecording);
 	UPROPERTY(BlueprintAssignable, Category="Events")
 	FOnAudioCapture OnAudioCapture;
-	
+
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendAudioCapture(bool bRecording);
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnAnswerReply);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnAnswerReply OnAnswerReply;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendAnswerReply();
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnVoiceAutioFinished);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnVoiceAutioFinished OnVoiceAudioFinished;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendVoiceAudioFinished();
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDasanListening, bool, bListening, FString, PlayerName);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnDasanListening OnAskListening;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendAskListening(bool bListening, const FString& PlayerName);
 
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAudioSpectrum, float, Spectrum);
 	UPROPERTY(BlueprintAssignable, Category="Events")
@@ -93,12 +114,12 @@ public:
 	void SendDoorMessage(const int32 GateID, const bool Open);
 
 	
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnExecVoiceCommand, EVoiceCommandType, Type);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnExecVoiceCommand, EVoiceCommandType, Type, AActor*, Requester);
 	UPROPERTY(BlueprintAssignable, Category="Events")
 	FOnExecVoiceCommand OnExecVoiceCommand;
-	
+
 	UFUNCTION(BlueprintCallable, Category="Events")
-	void SendExecVoiceCommand(const EVoiceCommandType Type);
+	void SendExecVoiceCommand(const EVoiceCommandType Type, AActor* Requester);
 
 
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnMegaPopupClosed);

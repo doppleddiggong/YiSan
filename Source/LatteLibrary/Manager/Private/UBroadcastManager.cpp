@@ -11,10 +11,10 @@ void UBroadcastManager::SendMessage(const FString& InMsg)
 	OnMessage.Broadcast(InMsg);
 }
 
-void UBroadcastManager::SendToastMessage(const FString& InMsg)
-{
-	OnToastMessage.Broadcast(InMsg);
-}
+// void UBroadcastManager::SendToastMessage(const FString& InMsg)
+// {
+// 	OnToastMessage.Broadcast(InMsg);
+// }
 
 void UBroadcastManager::SendNetworkWaitCount(int RequestCount )
 {
@@ -26,10 +26,26 @@ void UBroadcastManager::SendAudioCapture(bool bRecording)
 	OnAudioCapture.Broadcast(bRecording);
 }
 
+void UBroadcastManager::SendAnswerReply()
+{
+	OnAnswerReply.Broadcast();
+}
+
+void UBroadcastManager::SendVoiceAudioFinished()
+{
+	OnVoiceAudioFinished.Broadcast();
+}
+
+void UBroadcastManager::SendAskListening(bool bListening, const FString& PlayerName)
+{
+	OnAskListening.Broadcast(bListening, PlayerName);
+}
+
 void UBroadcastManager::SendAudioSpectrum(float Spectrum)
 {
 	OnAudioSpectrum.Broadcast(Spectrum);
 }
+
 void UBroadcastManager::SendContactBuilding(EBuildingType BuildingType)
 {
 	OnContactBuilding.Broadcast(BuildingType);	
@@ -55,9 +71,9 @@ void UBroadcastManager::SendDoorMessage(const int32 GateID, const bool Open)
 	OnDoorMessage.Broadcast(GateID, Open);	
 }
 
-void UBroadcastManager::SendExecVoiceCommand(const EVoiceCommandType Type)
+void UBroadcastManager::SendExecVoiceCommand(const EVoiceCommandType Type, AActor* Requester)
 {
-	OnExecVoiceCommand.Broadcast(Type);	
+	OnExecVoiceCommand.Broadcast(Type, Requester);
 }
 
 void UBroadcastManager::SendMegaPopupClosed()

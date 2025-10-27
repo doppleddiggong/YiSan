@@ -2,6 +2,8 @@
 
 #include "AYisanGameState.h"
 #include "ADasanActor.h"
+#include "APlayerControl.h"
+#include "GameLogging.h"
 #include "UQuestManager.h"
 #include "Net/UnrealNetwork.h"
 
@@ -19,6 +21,34 @@ void AYisanGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 	DOREPLIFETIME(AYisanGameState, GlobalTourState);
 	DOREPLIFETIME(AYisanGameState, bIsTourActive);
 }
+
+void AYisanGameState::ServerRPC_BroadcastToastMessage_Implementation(const FString& Message)
+{
+	if (!HasAuthority())
+		return;
+
+	if (Message.IsEmpty())
+	{
+		PRINTLOG(TEXT("[GameState] Ignored empty toast message"));
+		return;
+	}
+
+	if (UWorld* World = GetWorld())
+	{
+		for (FConstPlayerControllerIterator It = World->GetPlayerControllerIterator(); It; ++It)
+		{
+			if (APlayerControl* PC = Cast<APlayerControl>(It->Get()))
+			{
+				PC->ClientRPC_ShowToastMessage(Message);
+			}
+			else
+			{
+				PC->ClientMessage(Message);
+			}
+		}
+	}
+}
+
 
 void AYisanGameState::StartGlobalTour()
 {

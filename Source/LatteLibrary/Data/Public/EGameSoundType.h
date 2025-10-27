@@ -10,4 +10,6 @@ enum class EGameSoundType : uint8
 	Click,
 	Diaglog,
 	Disolve,
+
+	Cmd_Summon,
 };

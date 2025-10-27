@@ -77,7 +77,7 @@ void APlayerActor::BeginPlay()
             MainWidgetInst = CreateWidget<UMainWidget>(GetWorld(), MainWidgetClass);
             if (MainWidgetInst)
             {
-                MainWidgetInst->AddToViewport();
+                MainWidgetInst->AddToViewport(50);
             }
 
             if (ChatUIWidgetClass)
@@ -85,7 +85,7 @@ void APlayerActor::BeginPlay()
                 auto ChatUIInst = CreateWidget<UChatUIWidget>(GetWorld(), ChatUIWidgetClass);
                 if (ChatUIInst && ChatUIInst->WBP_ChatBox)
                 {
-                    ChatUIInst->AddToViewport();
+                    ChatUIInst->AddToViewport(0);
                     ChatBoxWidget = ChatUIInst->WBP_ChatBox;
                     ChatPlayerSystem->InitSystem(ChatBoxWidget.Get());
                 }
@@ -213,9 +213,10 @@ void APlayerActor::Cmd_HideMouse_Implementation()
     }   
 }
 
-void APlayerActor::OnExecVoiceCommand(EVoiceCommandType InType)
+void APlayerActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester)
 {
-    PRINT_STRING(TEXT("%s"), *FString( ENUM_TO_NAME(EVoiceCommandType, InType)));
+    PRINT_STRING(TEXT("%s from %s"), *FString( ENUM_TO_NAME(EVoiceCommandType, InType)),
+        Requester ? *Requester->GetName() : TEXT("Unknown"));
 }
 
 FString APlayerActor::GetPlayerDisplayName() const
@@ -225,6 +226,11 @@ FString APlayerActor::GetPlayerDisplayName() const
         if (auto PS = PC->PlayerState)
             return PS->GetPlayerName();
     }
-    
+
     return TEXT("Yisan");
+}
+
+void APlayerActor::PlayTTSAudio(const TArray<uint8>& AudioData)
+{
+    VoiceConversationSystem->PlayVoiceAudio(AudioData);
 }

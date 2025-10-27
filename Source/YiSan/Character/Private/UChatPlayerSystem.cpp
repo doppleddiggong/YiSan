@@ -3,15 +3,7 @@
 #include "UChatPlayerSystem.h"
 #include "UChatBoxWidget.h"
 #include "APlayerActor.h"
-#include "GameLogging.h"
-#include "UBroadcastManager.h"
-#include "UHttpNetworkSystem.h"
-#include "UVoiceFunctionLibrary.h"
-
 #include "GameFramework/PlayerController.h"
-#include "Kismet/GameplayStatics.h"
-#include "Sound/SoundWaveProcedural.h"
-#include "YiSan/YiSan.h"
 
 UChatPlayerSystem::UChatPlayerSystem()
 {
