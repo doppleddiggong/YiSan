@@ -74,10 +74,11 @@ void UNetworkGameInstanceSubsystem::OnCreateSessionComplete(FName sessionName, b
     {
         UE_LOG(LogTemp, Warning, TEXT("세션 : %s 성공"), *sessionName.ToString());
 
-        ULoadingCircleManager::Increase(GetWorld());
+        // ServerTravel은 즉시 실행되므로 로딩 인디케이터 불필요
+        // ULoadingCircleManager::Increase(GetWorld()); // 제거됨 - Decrease 짝이 없음!
 
         if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
-            DM->ShowToast(FString::Printf( TEXT("세션 : %s 성공"), *sessionName.ToString()));        
+            DM->ShowToast(FString::Printf( TEXT("세션 : %s 성공"), *sessionName.ToString()));
 
         // Seamless Travel을 사용하여 클라이언트 연결 유지
         GetWorld()->ServerTravel(TEXT("/Game/CustomContents/Maps/StartLevel?listen"), true);

@@ -44,6 +44,8 @@ void ULoadginCircle::ShowLoading()
 {
 	LoadingCount++;
 
+	PRINTLOG(TEXT("[LoadingCircle] ShowLoading() - Count: %d → %d"), LoadingCount - 1, LoadingCount);
+
 	OnLoadingCountChanged.Broadcast(LoadingCount);
 	UpdateVisibility();
 }
@@ -52,6 +54,13 @@ void ULoadginCircle::HideLoading()
 {
 	const int32 OldCount = LoadingCount;
 	LoadingCount = FMath::Max(0, LoadingCount - 1);
+
+	PRINTLOG(TEXT("[LoadingCircle] HideLoading() - Count: %d → %d"), OldCount, LoadingCount);
+
+	if (OldCount == 0)
+	{
+		PRINTLOG(TEXT("[LoadingCircle] WARNING: HideLoading called but count was already 0!"));
+	}
 
 	OnLoadingCountChanged.Broadcast(LoadingCount);
 	UpdateVisibility();
@@ -70,11 +79,15 @@ void ULoadginCircle::UpdateVisibility()
 {
 	if (!RootOverlay)
 	{
-		PRINTLOG( TEXT("ULoadginCircle::UpdateVisibility() : RootOverlay is nullptr!"));
+		PRINTLOG(TEXT("[LoadingCircle] UpdateVisibility: RootOverlay is nullptr!"));
 		return;
 	}
 
 	const bool bShouldBeVisible = LoadingCount > 0;
+
+	PRINTLOG(TEXT("[LoadingCircle] UpdateVisibility - Count: %d, Visible: %s"),
+		LoadingCount,
+		bShouldBeVisible ? TEXT("TRUE") : TEXT("FALSE"));
 
 	if (bShouldBeVisible)
 	{
