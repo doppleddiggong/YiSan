@@ -95,7 +95,7 @@ void UNetworkGameInstanceSubsystem::FindOtherSession()
 
     if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
         DM->ShowToast(TEXT("세션 조회 시작"));        
-    ULoadingCircleManager::Increase(GetWorld());
+    //ULoadingCircleManager::Increase(GetWorld());
     
     //sessionSearch 만들자
     sessionSearch = MakeShared<FOnlineSessionSearch>();
@@ -112,7 +112,7 @@ void UNetworkGameInstanceSubsystem::OnFindSessionComplete(bool success)
 
     if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
         DM->ShowToast(TEXT("세션 조회 끝"));        
-    ULoadingCircleManager::Decrease(GetWorld());
+    //ULoadingCircleManager::Decrease(GetWorld());
     
     if (success)
     {

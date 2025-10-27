@@ -19,7 +19,7 @@ void UStartUI::NativeConstruct()
 	Super::NativeConstruct();
 
 	// 레벨 로드 완료 - 로딩 화면 숨기기
-	ULoadingCircleManager::Decrease(this);
+	//ULoadingCircleManager::Decrease(this);
 
 	// 버튼 클릭 이벤트 바인딩
 	if (StartButton)
