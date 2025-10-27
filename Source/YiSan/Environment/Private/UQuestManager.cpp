@@ -37,10 +37,7 @@ void UQuestManager::OnContactBuilding(EBuildingType InType)
 
     if (InType == CurTarget)
     {
-        const UEnum* EnumPtr = StaticEnum<EBuildingType>();
-        const FString TargetName = EnumPtr->GetNameStringByValue((int64)CurTarget);
-
-        PRINT_STRING(TEXT("Quest Completed: %s"), *TargetName);
+        PRINTLOG(TEXT("Quest Completed: %s"), *ENUM_TO_NAME(EBuildingType, CurTarget));
 
         CurQuestIndex++;
         if (QuestList.IsValidIndex(CurQuestIndex))

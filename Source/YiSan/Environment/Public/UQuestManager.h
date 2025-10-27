@@ -42,7 +42,9 @@ private:
 
 private:
     TArray<EBuildingType> QuestList;
+    
     int32 CurQuestIndex = INDEX_NONE;
+    
     EBuildingType CurTarget = EBuildingType::None;
 
     UPROPERTY()
