@@ -4,7 +4,6 @@
 
 #include "ABuilding.h"
 #include "ADasanActor.h"
-#include "AIController.h"
 #include "APlayerActor.h"
 #include "AYisanGameState.h"
 #include "FBuildingAssetData.h"
@@ -19,7 +18,6 @@
 #include "GameFramework/Character.h"
 #include "Sound/SoundCue.h"
 #include "NavigationSystem.h"
-#include "NavigationPath.h"
 
 // 2초에 한 번 검사
 static float CheckInterval = 2.0f;
@@ -51,17 +49,6 @@ void UTourStateSystem::SetTourState(const ETourState InState)
 	{
 		OwnerDasan->UpdateWidgetState();
 	}
-}
-
-bool UTourStateSystem::IsUpdateEnble()
-{
-	if ( OwnerDasan == nullptr)
-		return false;
-
-	if ( OwnerDasan->HasAuthority() == false)
-		return false;
-	
-	return true;
 }
 
 void UTourStateSystem::UpdateTick(float DeltaTime )
@@ -383,5 +370,16 @@ bool UTourStateSystem::IsAllPlayersNearby() const
 	}
 
 	// 모든 플레이어가 범위 안에 있음
+	return true;
+}
+
+bool UTourStateSystem::IsUpdateEnble() const
+{
+	if ( OwnerDasan == nullptr)
+		return false;
+
+	if ( OwnerDasan->HasAuthority() == false)
+		return false;
+	
 	return true;
 }
