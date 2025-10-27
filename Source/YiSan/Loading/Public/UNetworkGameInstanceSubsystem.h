@@ -4,14 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "Macro.h"
+#include "StartUI.h"
 #include "Interfaces/OnlineSessionInterface.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UNetworkGameInstanceSubsystem.generated.h"
 
 DECLARE_DELEGATE_TwoParams(FFindComplete, int32, FString);
-DECLARE_MULTICAST_DELEGATE_OneParam(FOnPlayerJoined, const FString&);
-DECLARE_MULTICAST_DELEGATE_OneParam(FOnPlayerLeft, const FString&);
-
 /**
  * 
  */
@@ -54,13 +52,4 @@ public:
 	void JoinOtherSession(int32 sessionIndex);
 	//세션 참여 완료 함수
 	void OnJoinSessionComplete(FName sessionName, EOnJoinSessionCompleteResult::Type result);
-
-	//============참여자 업데이트 델레게이트============
-public:
-	FOnPlayerJoined OnPlayerJoined;
-	FOnPlayerLeft OnPlayerLeft;
-	TArray<FString> GetCurrentSessionPlayers();
-	TArray<FString> CurrentPlayers;
-	void AddPlayer(const FString& PlayerName);
-	void RemovePlayer(const FString& PlayerName);
 };

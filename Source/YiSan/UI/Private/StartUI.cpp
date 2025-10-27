@@ -8,7 +8,11 @@
 #include "APlayerControl.h"
 #include "Engine/Texture.h"
 #include "ULoadingCircleManager.h"
-#include "UNetworkGameInstanceSubsystem.h" 
+#include "UNetworkGameInstanceSubsystem.h"
+#include "Blueprint/WidgetTree.h"
+#include "Engine/Font.h"
+#include "YiSanPlayerListManager.h"
+#include "Kismet/GameplayStatics.h"
 
 void UStartUI::NativeConstruct()
 {
@@ -51,15 +55,18 @@ void UStartUI::NativeConstruct()
 		PC->SetShowMouseCursor(true);
 	}
 	
-	// 초기 세션 참여자 리스트 가져오기
-	if (UNetworkGameInstanceSubsystem* Subsystem = UNetworkGameInstanceSubsystem::Get(GetWorld()))
-	{
-		currentPlayerNames = Subsystem->GetCurrentSessionPlayers();
-		UpdatePlayerList(currentPlayerNames);
-	}
-
-	// 세션 참여자 이벤트 바인딩
-	BindSessionEvents();
+	// Find the player list manager and bind to its update delegate
+	AYiSanPlayerListManager* PlayerListManager = Cast<AYiSanPlayerListManager>(UGameplayStatics::GetActorOfClass(GetWorld(), AYiSanPlayerListManager::StaticClass()));
+    if (PlayerListManager)
+    {
+        GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Green, TEXT("UI found the PlayerListManager!"));
+        PlayerListManager->OnPlayerListUpdated.AddUObject(this, &UStartUI::OnPlayerListUpdated);
+        // Also, immediately update the list with the current data
+        OnPlayerListUpdated(PlayerListManager->GetPlayerList());
+    }
+    else
+    { GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, TEXT("UI FAILED to find the PlayerListManager!"));
+    }
 }
 
 void UStartUI::OnStartButtonClicked()
@@ -107,7 +114,8 @@ void UStartUI::UpdatePlayerList(const TArray<FString>& playerNames)
 {
 	if (!playerList) return;
 
-	playerList->ClearChildren();
+	playerList->ClearChildren(); // Clear existing entries
+	playerList->SetVisibility(ESlateVisibility::Visible);
 
 	for (const FString& Name : playerNames)
 	{
@@ -121,31 +129,27 @@ void UStartUI::UpdatePlayerList(const TArray<FString>& playerNames)
 
 UTextBlock* UStartUI::CreatePlayerText(const FString& playerName)
 {
-	UTextBlock* newText = NewObject<UTextBlock>(this);
+    UTextBlock* newText = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass());
 	if (newText)
 	{
 		newText->SetText(FText::FromString(playerName));
+		newText->SetJustification(ETextJustify::Right);
+		newText->SetColorAndOpacity(FSlateColor(FLinearColor::White));
+
+		// 폰트 적용
+		UFont* fontObj = LoadObject<UFont>(nullptr, TEXT("/Game/CustomContents/UI/Fonts/NotoSerifKR-Regular_Font.NotoSerifKR-Regular_Font.NotoSerifKR-Regular_Font"));
+		if (fontObj)
+		{
+			FSlateFontInfo fontInfo;
+			fontInfo.FontObject = fontObj;
+			fontInfo.Size = 24; // 원하는 크기
+			newText->SetFont(fontInfo);
+		}
 	}
 	return newText;
 }
 
-void UStartUI::BindSessionEvents()
+void UStartUI::OnPlayerListUpdated(const TArray<FString>& NewPlayerList)
 {
-	if (UNetworkGameInstanceSubsystem* subsystem = UNetworkGameInstanceSubsystem::Get(GetWorld()))
-	{
-		subsystem->OnPlayerJoined.AddUObject(this, &UStartUI::OnPlayerJoined);
-		subsystem->OnPlayerLeft.AddUObject(this, &UStartUI::OnPlayerLeft);
-	}
-}
-
-void UStartUI::OnPlayerJoined(const FString& playerName)
-{
-	currentPlayerNames.Add(playerName);
-	UpdatePlayerList(currentPlayerNames);
-}
-
-void UStartUI::OnPlayerLeft(const FString& playerName)
-{
-	currentPlayerNames.Remove(playerName);
-	UpdatePlayerList(currentPlayerNames);
+    UpdatePlayerList(NewPlayerList);
 }

@@ -22,6 +22,10 @@
 #include "ULoadingCircleManager.h"
 #include "GameFramework/GameSession.h"
 #include "Online/OnlineSessionNames.h"
+#include "StartUI.h"
+#include "GameFramework/PlayerState.h"
+#include "YiSanPlayerListManager.h"
+#include "Kismet/GameplayStatics.h"
 
 // ==================== Network 관리 ====================
 void UNetworkGameInstanceSubsystem::Initialize(FSubsystemCollectionBase& Collection)
@@ -152,28 +156,5 @@ void UNetworkGameInstanceSubsystem::OnJoinSessionComplete(FName sessionName, EOn
         //서버가있는 맵으로 이동 (최초1회)
         APlayerController* pc = GetWorld()->GetFirstPlayerController();
         pc->ClientTravel(url, TRAVEL_Absolute);
-    }
-}
-
-TArray<FString> UNetworkGameInstanceSubsystem::GetCurrentSessionPlayers()
-{
-    return CurrentPlayers;
-}
-
-void UNetworkGameInstanceSubsystem::AddPlayer(const FString& PlayerName)
-{
-    if (!CurrentPlayers.Contains(PlayerName))
-    {
-        CurrentPlayers.Add(PlayerName);
-        OnPlayerJoined.Broadcast(PlayerName);
-    }
-}
-
-void UNetworkGameInstanceSubsystem::RemovePlayer(const FString& PlayerName)
-{
-    if (CurrentPlayers.Contains(PlayerName))
-    {
-        CurrentPlayers.Remove(PlayerName);
-        OnPlayerLeft.Broadcast(PlayerName);
     }
 }

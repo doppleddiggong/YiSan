@@ -64,8 +64,5 @@ public:
     TObjectPtr<UVerticalBox> playerList;
     UFUNCTION()
     UTextBlock* CreatePlayerText(const FString& playerName);
-    void BindSessionEvents();
-    void OnPlayerJoined(const FString& playerName);
-    void OnPlayerLeft(const FString& playerName);
-    TArray<FString> currentPlayerNames;
+    void OnPlayerListUpdated(const TArray<FString>& NewPlayerList);
 };
