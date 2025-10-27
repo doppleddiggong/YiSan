@@ -36,6 +36,9 @@ ADasanActor::ADasanActor()
 	bReplicates = true;
 	SetReplicateMovement(true);
 
+	// 건물 퀘스트 인식을 위한 태그 추가
+	Tags.Add(GameTags::Dasan);
+
 	// 상태 시스템 컴포넌트 생성
 	TourStateSystem = CreateDefaultSubobject<UTourStateSystem>(TEXT("TourStateSystem"));
 	AnswerStateSystem = CreateDefaultSubobject<UAnswerStateSystem>(TEXT("AnswerStateSystem"));
@@ -203,11 +206,13 @@ void ADasanActor::OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::
                         FNavLocation TargetNavLoc;
                         if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
                         {
-                            FAIMoveRequest MoveRequest;
-                            MoveRequest.SetGoalLocation(TargetNavLoc.Location);
-                            MoveRequest.SetAcceptanceRadius(wayPointDis);
-                            MoveRequest.SetUsePathfinding(true);
-                            DasanAicontrol->MoveTo(MoveRequest);
+                            // FAIMoveRequest MoveRequest;
+                            // MoveRequest.SetGoalLocation(TargetNavLoc.Location);
+                            // MoveRequest.SetAcceptanceRadius(wayPointDis);
+                            // MoveRequest.SetUsePathfinding(true);
+                            // DasanAicontrol->MoveTo(MoveRequest);
+
+                        	auto Result = this->AIMoveToLoc(TargetNavLoc.Location, wayPointDis, true);
                         }
                     }
                 }
@@ -328,40 +333,30 @@ void ADasanActor::StartTour()
             {
                 FVector TargetPos = CurTargetBuilding->GetActorLocation();
                 UNavigationSystemV1* NavSys = UNavigationSystemV1::GetCurrent(GetWorld());
-
-                if (NavSys)
+                FNavLocation TargetNavLoc;
+                if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
                 {
-                    FNavLocation TargetNavLoc;
-                    if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
-                    {
-                        FAIMoveRequest MoveRequest;
-                        MoveRequest.SetGoalLocation(TargetNavLoc.Location);
-                        MoveRequest.SetAcceptanceRadius(wayPointDis);
-                        MoveRequest.SetUsePathfinding(true);
+                    // FAIMoveRequest MoveRequest;
+                    // MoveRequest.SetGoalLocation(TargetNavLoc.Location);
+                    // MoveRequest.SetAcceptanceRadius(wayPointDis);
+                    // MoveRequest.SetUsePathfinding(true);
+                    //
+                    // FPathFollowingRequestResult Result = DasanAicontrol->MoveTo(MoveRequest);
+                    // if (Result.Code == EPathFollowingRequestResult::RequestSuccessful)
+                    // {
+                    //     PRINTLOG(TEXT(" AI MoveTo 시작 성공 (NavMesh 위치)"));
+                    // }
+                    // else
+                    // {
+                    //     PRINTLOG(TEXT(" AI MoveTo 실패: %d"), (int32)Result.Code);
+                    // }
 
-                        FPathFollowingRequestResult Result = DasanAicontrol->MoveTo(MoveRequest);
-                        if (Result.Code == EPathFollowingRequestResult::RequestSuccessful)
-                        {
-                            PRINTLOG(TEXT(" AI MoveTo 시작 성공 (NavMesh 위치)"));
-                        }
-                        else
-                        {
-                            PRINTLOG(TEXT(" AI MoveTo 실패: %d"), (int32)Result.Code);
-                        }
-                    }
-                    else
-                    {
-                        PRINTLOG(TEXT(" NavMesh 투영 실패"));
-                    }
-                }
-                else
-                {
-                    PRINTLOG(TEXT(" NavigationSystem 없음"));
-                }
-            }
-            else
-            {
-                PRINTLOG(TEXT(" AI Controller가 없음 - 직접 이동 모드"));
+                	auto Result = this->AIMoveToLoc(TargetNavLoc.Location, wayPointDis, true);
+                	if (Result.Code == EPathFollowingRequestResult::RequestSuccessful)
+                	    PRINTLOG(TEXT(" AI MoveTo 시작 성공 (NavMesh 위치)"));
+                	else
+                	    PRINTLOG(TEXT(" AI MoveTo 실패: %d"), (int32)Result.Code);
+				}
             }
         }
 
@@ -469,12 +464,14 @@ void ADasanActor::TransitionToState(EDasanState InMainState)
                 FNavLocation TargetNavLoc;
                 if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
                 {
-                    FAIMoveRequest MoveRequest;
-                    MoveRequest.SetGoalLocation(TargetNavLoc.Location);
-                    MoveRequest.SetAcceptanceRadius(wayPointDis);
-                    MoveRequest.SetUsePathfinding(true);
+                    // FAIMoveRequest MoveRequest;
+                    // MoveRequest.SetGoalLocation(TargetNavLoc.Location);
+                    // MoveRequest.SetAcceptanceRadius(wayPointDis);
+                    // MoveRequest.SetUsePathfinding(true);
+                    //
+                    // DasanAicontrol->MoveTo(MoveRequest);
 
-                    DasanAicontrol->MoveTo(MoveRequest);
+                	auto Result = this->AIMoveToLoc(TargetNavLoc.Location, wayPointDis, true);
                     PRINTLOG(TEXT(" AI MoveTo 시작 (NavMesh 위치)"));
                 }
             }
@@ -549,16 +546,22 @@ void ADasanActor::NextQuest()
                 FNavLocation TargetNavLoc;
                 if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
                 {
-                    FAIMoveRequest MoveRequest;
-                    MoveRequest.SetGoalLocation(TargetNavLoc.Location);
-                    MoveRequest.SetAcceptanceRadius(wayPointDis);
-                    MoveRequest.SetUsePathfinding(true);
+                    // FAIMoveRequest MoveRequest;
+                    // MoveRequest.SetGoalLocation(TargetNavLoc.Location);
+                    // MoveRequest.SetAcceptanceRadius(wayPointDis);
+                    // MoveRequest.SetUsePathfinding(true);
+                    //
+                    // FPathFollowingRequestResult Result = DasanAicontrol->MoveTo(MoveRequest);
+                    // if (Result.Code == EPathFollowingRequestResult::RequestSuccessful)
+                    //     PRINTLOG(TEXT(" 다음 목적지로 이동 시작: %s (NavMesh 위치)"), *CurTargetBuilding->GetName());
+                    // else
+                    //     PRINTLOG(TEXT("[WARN] MoveTo 실패: 코드 %d"), (int32)Result.Code);
 
-                    FPathFollowingRequestResult Result = DasanAicontrol->MoveTo(MoveRequest);
-                    if (Result.Code == EPathFollowingRequestResult::RequestSuccessful)
-                        PRINTLOG(TEXT(" 다음 목적지로 이동 시작: %s (NavMesh 위치)"), *CurTargetBuilding->GetName());
-                    else
-                        PRINTLOG(TEXT("[WARN] MoveTo 실패: 코드 %d"), (int32)Result.Code);
+					auto Result = this->AIMoveToLoc(TargetNavLoc.Location, wayPointDis, true);
+                	if (Result.Code == EPathFollowingRequestResult::RequestSuccessful)
+                		PRINTLOG(TEXT(" 다음 목적지로 이동 시작: %s (NavMesh 위치)"), *CurTargetBuilding->GetName());
+                	else
+                		PRINTLOG(TEXT("[WARN] MoveTo 실패: 코드 %d"), (int32)Result.Code);
                 }
             }
         }
@@ -569,6 +572,36 @@ void ADasanActor::NextQuest()
         TourStateSystem->SetTourState(ETourState::TourEnd);
     }
 }
+
+
+FPathFollowingRequestResult ADasanActor::AIMoveToLoc(
+	const FVector& InGoalLocation,
+	const float InAcceptanceRadius,
+	const bool bPathfinding ) const
+{
+	FAIMoveRequest MoveRequest;
+	MoveRequest.SetGoalLocation(InGoalLocation);
+	MoveRequest.SetAcceptanceRadius(InAcceptanceRadius);
+	MoveRequest.SetUsePathfinding(bPathfinding);
+	
+	return DasanAicontrol->MoveTo(MoveRequest);
+}
+
+FPathFollowingRequestResult ADasanActor::AIMoveToActor(
+	const AActor* Actor,
+	const float InAcceptanceRadius,
+	const bool bPathfinding ) const
+{
+	FAIMoveRequest MoveRequest;
+	MoveRequest.SetGoalActor(Actor);
+	MoveRequest.SetAcceptanceRadius(InAcceptanceRadius);
+	MoveRequest.SetUsePathfinding(bPathfinding);
+	MoveRequest.SetProjectGoalLocation(true);
+	
+	return DasanAicontrol->MoveTo(MoveRequest);
+}
+
+
 
 bool ADasanActor::IsNearTargetBuilding()
 {

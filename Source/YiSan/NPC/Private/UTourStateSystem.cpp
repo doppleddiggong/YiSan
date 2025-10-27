@@ -4,7 +4,6 @@
 
 #include "ABuilding.h"
 #include "ADasanActor.h"
-#include "AIController.h"
 #include "APlayerActor.h"
 #include "AYisanGameState.h"
 #include "FBuildingAssetData.h"
@@ -19,7 +18,6 @@
 #include "GameFramework/Character.h"
 #include "Sound/SoundCue.h"
 #include "NavigationSystem.h"
-#include "NavigationPath.h"
 
 // 2초에 한 번 검사
 static float CheckInterval = 2.0f;
@@ -51,17 +49,6 @@ void UTourStateSystem::SetTourState(const ETourState InState)
 	{
 		OwnerDasan->UpdateWidgetState();
 	}
-}
-
-bool UTourStateSystem::IsUpdateEnble()
-{
-	if ( OwnerDasan == nullptr)
-		return false;
-
-	if ( OwnerDasan->HasAuthority() == false)
-		return false;
-	
-	return true;
 }
 
 void UTourStateSystem::UpdateTick(float DeltaTime )
@@ -123,26 +110,32 @@ void UTourStateSystem::Enter_TourMove()
 				PRINTLOG(TEXT("[TourState] 목표 NavMesh 투영: 원본 Z=%.1f → NavMesh Z=%.1f (높이차: %.1f)"),
 					TargetPos.Z, TargetNavLoc.Location.Z, ProjectionDist);
 
-				// NavMesh 위치로 이동 명령 (Actor가 아닌 Location 사용)
-				FAIMoveRequest MoveRequest;
-				MoveRequest.SetGoalLocation(TargetNavLoc.Location); // SetGoalActor 대신 SetGoalLocation
-				MoveRequest.SetAcceptanceRadius(250.0f);
-				MoveRequest.SetUsePathfinding(true);
+				// // NavMesh 위치로 이동 명령 (Actor가 아닌 Location 사용)
+				// FAIMoveRequest MoveRequest;
+				// MoveRequest.SetGoalLocation(TargetNavLoc.Location); // SetGoalActor 대신 SetGoalLocation
+				// MoveRequest.SetAcceptanceRadius(250.0f);
+				// MoveRequest.SetUsePathfinding(true);
+				//
+				// FPathFollowingRequestResult Result = OwnerDasan->DasanAicontrol->MoveTo(MoveRequest);
+				// PRINTLOG(TEXT("[TourState] MoveTo 결과: %d (NavMesh 위치 사용)"), (int32)Result.Code);
 
-				FPathFollowingRequestResult Result = OwnerDasan->DasanAicontrol->MoveTo(MoveRequest);
+				auto Result = OwnerDasan->AIMoveToLoc(TargetNavLoc.Location, 250.0f, true);
 				PRINTLOG(TEXT("[TourState] MoveTo 결과: %d (NavMesh 위치 사용)"), (int32)Result.Code);
 			}
 			else
 			{
 				PRINTLOG(TEXT("[TourState] 경고: 목표 위치를 NavMesh에 투영 실패! Actor 위치로 시도"));
 
-				FAIMoveRequest MoveRequest;
-				MoveRequest.SetGoalActor(OwnerDasan->GetCurTargetBuilding());
-				MoveRequest.SetAcceptanceRadius(250.0f);
-				MoveRequest.SetUsePathfinding(true);
-				MoveRequest.SetProjectGoalLocation(true);
+				// FAIMoveRequest MoveRequest;
+				 // MoveRequest.SetGoalActor(OwnerDasan->GetCurTargetBuilding());
+				// MoveRequest.SetAcceptanceRadius(250.0f);
+				// MoveRequest.SetUsePathfinding(true);
+				// MoveRequest.SetProjectGoalLocation(true);
+				//
+				// FPathFollowingRequestResult Result = OwnerDasan->DasanAicontrol->MoveTo(MoveRequest);
+				// PRINTLOG(TEXT("[TourState] MoveTo 결과: %d (Actor 위치 사용)"), (int32)Result.Code);
 
-				FPathFollowingRequestResult Result = OwnerDasan->DasanAicontrol->MoveTo(MoveRequest);
+				auto Result = OwnerDasan->AIMoveToActor( OwnerDasan->GetCurTargetBuilding(), 250.0f, true );
 				PRINTLOG(TEXT("[TourState] MoveTo 결과: %d (Actor 위치 사용)"), (int32)Result.Code);
 			}
 		}
@@ -150,13 +143,16 @@ void UTourStateSystem::Enter_TourMove()
 		{
 			PRINTLOG(TEXT("[TourState] 경고: NavigationSystem 없음! Actor 위치로 시도"));
 
-			FAIMoveRequest MoveRequest;
-			MoveRequest.SetGoalActor(OwnerDasan->GetCurTargetBuilding());
-			MoveRequest.SetAcceptanceRadius(250.0f);
-			MoveRequest.SetUsePathfinding(true);
-			MoveRequest.SetProjectGoalLocation(true);
+			// FAIMoveRequest MoveRequest;
+			// MoveRequest.SetGoalActor(OwnerDasan->GetCurTargetBuilding());
+			// MoveRequest.SetAcceptanceRadius(250.0f);
+			// MoveRequest.SetUsePathfinding(true);
+			// MoveRequest.SetProjectGoalLocation(true);
+			//
+			// FPathFollowingRequestResult Result = OwnerDasan->DasanAicontrol->MoveTo(MoveRequest);
+			// PRINTLOG(TEXT("[TourState] MoveTo 결과: %d"), (int32)Result.Code);
 
-			FPathFollowingRequestResult Result = OwnerDasan->DasanAicontrol->MoveTo(MoveRequest);
+			auto Result = OwnerDasan->AIMoveToActor( OwnerDasan->GetCurTargetBuilding(), 250.0f, true );
 			PRINTLOG(TEXT("[TourState] MoveTo 결과: %d"), (int32)Result.Code);
 		}
 	}
@@ -289,11 +285,14 @@ void UTourStateSystem::Tick_TourWait(float DeltaTime)
 					FNavLocation TargetNavLoc;
 					if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
 					{
-						FAIMoveRequest MoveRequest;
-						MoveRequest.SetGoalLocation(TargetNavLoc.Location);
-						MoveRequest.SetAcceptanceRadius(250.0f);
-						MoveRequest.SetUsePathfinding(true);
-						OwnerDasan->DasanAicontrol->MoveTo(MoveRequest);
+						// FAIMoveRequest MoveRequest;
+						// MoveRequest.SetGoalLocation(TargetNavLoc.Location);
+						// MoveRequest.SetAcceptanceRadius(250.0f);
+						// MoveRequest.SetUsePathfinding(true);
+						// OwnerDasan->DasanAicontrol->MoveTo(MoveRequest);
+
+						auto Result = OwnerDasan->AIMoveToLoc( TargetNavLoc.Location, 250.0f, true );
+						PRINTLOG(TEXT("[TourState] MoveTo 결과: %d"), (int32)Result.Code);
 					}
 				}
 			}
@@ -371,5 +370,16 @@ bool UTourStateSystem::IsAllPlayersNearby() const
 	}
 
 	// 모든 플레이어가 범위 안에 있음
+	return true;
+}
+
+bool UTourStateSystem::IsUpdateEnble() const
+{
+	if ( OwnerDasan == nullptr)
+		return false;
+
+	if ( OwnerDasan->HasAuthority() == false)
+		return false;
+	
 	return true;
 }

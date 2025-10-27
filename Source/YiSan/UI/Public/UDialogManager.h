@@ -12,7 +12,6 @@ class YISAN_API UDialogManager : public ULocalPlayerSubsystem
 	GENERATED_BODY()
 
 public:
-	DEFINE_LOCALPLAYER_FROM_PC_SUBSYSTEM_GETTER_INLINE(UDialogManager);
 	DEFINE_LOCALPLAYER_SUBSYSTEM_GETTER_INLINE(UDialogManager);
 
 	UDialogManager();
