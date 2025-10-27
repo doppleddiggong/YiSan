@@ -80,14 +80,11 @@ void UChatBoxWidget::Ask(const FString& InMsg, const FGPTContext& SpatialContext
 	// 로컬 플레이어만 GPT 요청
 	if (!IsValid(Owner) || !Owner->IsLocallyControlled())
 	{
-		PRINTLOG(TEXT("SendChatMessage return | !IsValid(Owner) || !Owner->IsLocallyControlled() "));
 		return;
 	}
 
 	if (auto ReqNetwork = UHttpNetworkSystem::Get(GetWorld()))
-	{
 		ReqNetwork->RequestGPT(InMsg, SpatialContext, FResponseAskDelegate::CreateUObject(this, &UChatBoxWidget::OnResponseAsk));
-	}
 }
 
 void UChatBoxWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)

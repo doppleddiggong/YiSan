@@ -28,24 +28,22 @@ void AYisanGameState::ServerRPC_BroadcastToastMessage_Implementation(const FStri
 		return;
 
 	if (Message.IsEmpty())
-	{
-		PRINTLOG(TEXT("[GameState] Ignored empty toast message"));
 		return;
-	}
 
-	if (UWorld* World = GetWorld())
+	UWorld* World = GetWorld();
+	if (!World)
+		return;
+
+	for (FConstPlayerControllerIterator It = World->GetPlayerControllerIterator(); It; ++It)
 	{
-		for (FConstPlayerControllerIterator It = World->GetPlayerControllerIterator(); It; ++It)
-		{
-			if (APlayerControl* PC = Cast<APlayerControl>(It->Get()))
-			{
-				PC->ClientRPC_ShowToastMessage(Message);
-			}
-			else
-			{
-				PC->ClientMessage(Message);
-			}
-		}
+		APlayerController* PC = It->Get();
+		if (!PC)
+			continue;
+
+		if (APlayerControl* CustomPC = Cast<APlayerControl>(PC))
+			CustomPC->ClientRPC_ShowToastMessage(Message);
+		else
+			PC->ClientMessage(Message);
 	}
 }
 
