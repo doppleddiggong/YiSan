@@ -2,8 +2,8 @@
 
 #include "AYisanGameState.h"
 #include "ADasanActor.h"
+#include "APlayerControl.h"
 #include "GameLogging.h"
-#include "UDialogManager.h"
 #include "UQuestManager.h"
 #include "Net/UnrealNetwork.h"
 
@@ -24,23 +24,29 @@ void AYisanGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 
 void AYisanGameState::ServerRPC_BroadcastToastMessage_Implementation(const FString& Message)
 {
-	if (HasAuthority())
+	if (!HasAuthority())
+		return;
+
+	if (Message.IsEmpty())
 	{
-		for (FConstPlayerControllerIterator It = GetWorld()->GetPlayerControllerIterator(); It; ++It)
+		PRINTLOG(TEXT("[GameState] Ignored empty toast message"));
+		return;
+	}
+
+	if (UWorld* World = GetWorld())
+	{
+		for (FConstPlayerControllerIterator It = World->GetPlayerControllerIterator(); It; ++It)
 		{
-			APlayerController* PlayerController = It->Get();
-			if (PlayerController)
+			if (APlayerControl* PC = Cast<APlayerControl>(It->Get()))
 			{
-				ClientRPC_ShowToastMessage(Message);                                                                                                           
-			}                                                                                                                                               
-		}                                                                                                                                                   
-	}       
-}                                                                                                                                                       
-                                                                                                                                                             
-void AYisanGameState::ClientRPC_ShowToastMessage_Implementation(const FString& Message)                                                                          
-{
-	PRINTLOG( TEXT("Client received global toast: %s"), *Message);
-	UDialogManager::Toast(GetWorld(), Message);                                                                                                          
+				PC->ClientRPC_ShowToastMessage(Message);
+			}
+			else
+			{
+				PC->ClientMessage(Message);
+			}
+		}
+	}
 }
 
 

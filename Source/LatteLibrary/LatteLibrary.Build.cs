@@ -16,7 +16,7 @@ public class LatteLibrary : ModuleRules
 
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
-			"EnhancedInput",
+			// "EnhancedInput",
 			"Niagara",
 
 			"UMG",
