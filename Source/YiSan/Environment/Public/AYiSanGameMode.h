@@ -15,7 +15,7 @@ class AYiSanGameMode : public AGameModeBase
 {
     GENERATED_BODY()
 
-public:\
+public:
     virtual void BeginPlay() override;
     virtual void PostLogin(APlayerController* NewPlayer) override;
 

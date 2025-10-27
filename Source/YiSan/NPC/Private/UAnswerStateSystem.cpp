@@ -110,7 +110,8 @@ bool UAnswerStateSystem::TryStartAnswer(const FString& PlayerName)
 		PRINTLOG(TEXT("[AnswerSystem] Answer 시작 거부: %s"), *Reason);
 
 		// 모든 클라이언트에 다이얼로그 표시 (Toast는 로컬 플레이어만 보임)
-		UDialogManager::Toast(GetWorld(), Reason);
+		if (auto DM = UDialogManager::Get(GetWorld()))
+			DM->ShowToast(Reason);
 
 		return false;
 	}

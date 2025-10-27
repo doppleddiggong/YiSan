@@ -37,8 +37,7 @@ private:
 	// 내부 유틸리티
 	bool IsAllPlayersNearby() const;
 
-private:
-	bool IsUpdateEnble();
+	bool IsUpdateEnble() const;
 
 private:
 	UPROPERTY()

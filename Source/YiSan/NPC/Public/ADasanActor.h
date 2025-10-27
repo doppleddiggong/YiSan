@@ -49,12 +49,21 @@ public:
 	class ABuilding* FindCurTargetBuilding() const;
 	class ABuilding* GetCurTargetBuilding() { return CurTargetBuilding;}
 	FORCEINLINE void UpdateTargetBuilding(class ABuilding* InBuilding)	{ CurTargetBuilding = InBuilding; }
-
 	
 	// 상태 전환 메서드
 	void TransitionToState(EDasanState InMainState);
 
 	float GetTargetBuildingDistnace();
+
+	FPathFollowingRequestResult AIMoveToLoc(
+		const FVector& InGoalLocation,
+		const float InAcceptanceRadius,
+		const bool bPathfinding ) const;
+
+	FPathFollowingRequestResult AIMoveToActor(
+		const AActor* Actor,
+		const float InAcceptanceRadius,
+		const bool bPathfinding ) const;
 
 public:
 	// 상태 시스템 컴포넌트
@@ -108,7 +117,4 @@ private:
 	// 음성 명령 핸들러
 	UFUNCTION()
 	void OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester);
-
-	// // 플레이어에게 이동하는 함수
-	// void MoveToPlayer(AActor* PlayerActor);
 };

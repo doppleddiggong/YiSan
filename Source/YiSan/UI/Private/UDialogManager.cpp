@@ -24,12 +24,20 @@ void UDialogManager::EnsureWidgetForWorld(UWorld* World)
 	if (World == nullptr || !World->IsGameWorld())
 		return;
 
-	if (DialogWidget && DialogWidget->GetWorld() == World)
+	// 위젯이 유효하고 같은 월드이며, 뷰포트에 추가되어 있는지 확인
+	if (IsValid(DialogWidget) &&
+		DialogWidget->GetWorld() == World &&
+		DialogWidget->IsInViewport())
+	{
 		return;
+	}
 
+	// 기존 위젯이 있으면 정리
 	if (DialogWidget)
 	{
-		DialogWidget->RemoveFromParent();
+		if (DialogWidget->IsInViewport())
+			DialogWidget->RemoveFromParent();
+		
 		DialogWidget = nullptr;
 	}
 
@@ -37,54 +45,32 @@ void UDialogManager::EnsureWidgetForWorld(UWorld* World)
 	if (LocalPlayer == nullptr)
 		return;
 
-	// 멀티플레이 대응: PlayerController 사용                                                                                 
 	APlayerController* PC = LocalPlayer->GetPlayerController(World);
 	if (PC == nullptr)
 		return;
-	
-	if (UDialogWidget* NewWidget = CreateWidget<UDialogWidget>(PC, DialogWidgetClass))
-	{
-		NewWidget->AddToViewport();
-		DialogWidget = NewWidget;
-	}
+
+	if (!DialogWidgetClass)
+		return;
+
+	UDialogWidget* NewWidget = CreateWidget<UDialogWidget>(PC, DialogWidgetClass);
+	if (!NewWidget)
+		return;
+
+	NewWidget->AddToViewport(1000);
+	DialogWidget = NewWidget;
 }
 
-void UDialogManager::OnToastManager(const FString& Message)
+void UDialogManager::ShowToast(const FString& Message)
 {
 	if (Message.IsEmpty())
-	{
 		return;
-	}
 
-	if (UWorld* World = GetWorld())
-	{
-		EnsureWidgetForWorld(World);
-
-		if (DialogWidget)
-		{
-			DialogWidget->ShowDialog(Message);
-		}
-	}
-}
-
-void UDialogManager::Toast(UObject* WorldContextObject, const FString& Message)
-{
-	if (!WorldContextObject || Message.IsEmpty())
-	{
+	UWorld* World = GetWorld();
+	if (!World)
 		return;
-	}
 
-	if (UWorld* World = WorldContextObject->GetWorld())
-	{
-		if (UGameInstance* GI = World->GetGameInstance())
-		{
-			if (ULocalPlayer* LP = GI->GetFirstGamePlayer()) // 단일 플레이어 기준
-			{
-				if (UDialogManager* Dialog = LP->GetSubsystem<UDialogManager>())
-				{
-					Dialog->OnToastManager(Message);
-				}
-			}
-		}
-	}
+	EnsureWidgetForWorld(World);
+
+	if (DialogWidget)
+		DialogWidget->ShowDialog(Message);
 }

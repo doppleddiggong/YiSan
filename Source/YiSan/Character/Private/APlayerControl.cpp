@@ -352,11 +352,10 @@ void APlayerControl::Client_HideLoadingScreen_Implementation()
 void APlayerControl::ClientRPC_ShowToastMessage_Implementation(const FString& Message)
 {
 	if (Message.IsEmpty())
-	{
-		PRINTLOG(TEXT("[PlayerController] Ignored empty toast message"));
 		return;
+
+	if (auto DM = UDialogManager::Get(this))
+	{
+		DM->ShowToast(Message);
 	}
-	
-	PRINTLOG(TEXT("[PlayerController] Display toast: %s"), *Message);
-	UDialogManager::Toast(this, Message);
 }

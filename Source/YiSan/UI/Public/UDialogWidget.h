@@ -37,4 +37,8 @@ protected:
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category ="Chat")
     FLinearColor DeactivateColor;
+
+private:
+    /// @brief Delay 태스크 핸들 (이전 태스크 취소용)
+    FTimerHandle HideTimerHandle;
 };
