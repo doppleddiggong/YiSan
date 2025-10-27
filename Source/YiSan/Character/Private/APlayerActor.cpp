@@ -99,8 +99,8 @@ void APlayerActor::BeginPlay()
     BroadcastManager = UBroadcastManager::Get(GetWorld());
     BroadcastManager->OnExecVoiceCommand.AddDynamic(this, &APlayerActor::OnExecVoiceCommand);
 
-    // 퀘스트 초기화
-    UQuestManager::Get(GetWorld())->InitSystem();
+    // // 퀘스트 초기화
+    // UQuestManager::Get(GetWorld())->InitSystem();
 
     // 서버야 일어나라.
     UHttpNetworkSystem::Get(GetWorld())->RequestHealth( FResponseHealthDelegate() );
