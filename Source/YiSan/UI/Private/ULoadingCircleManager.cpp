@@ -18,7 +18,7 @@
 
 ULoadingCircleManager::ULoadingCircleManager()
 {
-	LoadingCircleWidgetClass = FComponentHelper::LoadClass<ULoadginCircle>(LOADINGCIRCLEWIDGET_PATH);
+	CircleWidgetClass = FComponentHelper::LoadClass<ULoadginCircle>(LOADINGCIRCLEWIDGET_PATH);
 }
 
 void ULoadingCircleManager::EnsureWidgetForWorld(UWorld* World)
@@ -27,20 +27,27 @@ void ULoadingCircleManager::EnsureWidgetForWorld(UWorld* World)
 		return;
 
 	// 위젯이 유효하고 같은 월드이며, 뷰포트에 추가되어 있는지 확인
-	if (IsValid(LoadingCircleWidget) &&
-		LoadingCircleWidget->GetWorld() == World &&
-		LoadingCircleWidget->IsInViewport())
+	const bool bIsValid = IsValid(CircleWidget);
+	const bool bSameWorld = bIsValid && CircleWidget->GetWorld() == World;
+	const bool bInViewport = bIsValid && CircleWidget->IsInViewport();
+
+	if (bIsValid && bSameWorld && bInViewport)
 	{
 		return;
 	}
 
-	// 기존 위젯이 있으면 정리
-	if (LoadingCircleWidget)
-	{
-		if (LoadingCircleWidget->IsInViewport())
-			LoadingCircleWidget->RemoveFromParent();
+	// PRINTLOG(TEXT("[LoadingCircleManager] EnsureWidgetForWorld - Recreating widget! Valid: %s, SameWorld: %s, InViewport: %s"),
+	// 	bIsValid ? TEXT("TRUE") : TEXT("FALSE"),
+	// 	bSameWorld ? TEXT("TRUE") : TEXT("FALSE"),
+	// 	bInViewport ? TEXT("TRUE") : TEXT("FALSE"));
 
-		LoadingCircleWidget = nullptr;
+	// 기존 위젯이 있으면 정리
+	if (CircleWidget)
+	{
+		if (CircleWidget->IsInViewport())
+			CircleWidget->RemoveFromParent();
+
+		CircleWidget = nullptr;
 	}
 
 	ULocalPlayer* LocalPlayer = GetLocalPlayer();
@@ -52,105 +59,79 @@ void ULoadingCircleManager::EnsureWidgetForWorld(UWorld* World)
 	if (PC == nullptr)
 		return;
 
-	if (!LoadingCircleWidgetClass)
+	if (!CircleWidgetClass)
 		return;
 
-	if (ULoadginCircle* NewWidget = CreateWidget<ULoadginCircle>(PC, LoadingCircleWidgetClass))
+	if (ULoadginCircle* NewWidget = CreateWidget<ULoadginCircle>(PC, CircleWidgetClass))
 	{
 		// Game Viewport에 추가하여 레벨 전환 시에도 유지
 		NewWidget->AddToGameViewport(1000);
-		LoadingCircleWidget = NewWidget;
-	}
-}
+		CircleWidget = NewWidget;
 
-void ULoadingCircleManager::IncrementLoading()
-{
-	if (UWorld* World = GetWorld())
-	{
-		EnsureWidgetForWorld(World);
-
-		if (LoadingCircleWidget)
+		// 위젯 재생성 시 현재 카운트에 따라 표시 상태 복원
+		if (LoadingCount > 0)
 		{
-			PRINTLOG(TEXT("[LoadingCircleManager] IncrementLoading - Widget: %s"),
-				*LoadingCircleWidget->GetName());
-			LoadingCircleWidget->ShowLoading();
+			CircleWidget->Show();
 		}
 		else
 		{
-			PRINTLOG(TEXT("[LoadingCircleManager] IncrementLoading FAILED - Widget is nullptr!"));
+			CircleWidget->Hide();
 		}
 	}
 }
 
-void ULoadingCircleManager::DecrementLoading()
+void ULoadingCircleManager::Show()
 {
+	LoadingCount++;
+
+	PRINTLOG(TEXT("[LoadingCircleManager] Show - Count: %d → %d"), LoadingCount - 1, LoadingCount);
+
 	if (UWorld* World = GetWorld())
 	{
 		EnsureWidgetForWorld(World);
 
-		if (LoadingCircleWidget)
+		if (CircleWidget && LoadingCount > 0)
 		{
-			PRINTLOG(TEXT("[LoadingCircleManager] DecrementLoading - Widget: %s, Current Count: %d"),
-				*LoadingCircleWidget->GetName(),
-				LoadingCircleWidget->GetLoadingCount());
-			LoadingCircleWidget->HideLoading();
+			CircleWidget->Show();
+		}
+		else if (!CircleWidget)
+		{
+			PRINTLOG(TEXT("[LoadingCircleManager] Show FAILED - Widget is nullptr!"));
+		}
+	}
+}
+
+void ULoadingCircleManager::Hide()
+{
+	const int32 OldCount = LoadingCount;
+	LoadingCount = FMath::Max(0, LoadingCount - 1);
+
+	PRINTLOG(TEXT("[LoadingCircleManager] Hide - Count: %d → %d"), OldCount, LoadingCount);
+
+	if (OldCount == 0)
+	{
+		PRINTLOG(TEXT("[LoadingCircleManager] WARNING: Hide called but count was already 0!"));
+	}
+
+	if (UWorld* World = GetWorld())
+	{
+		EnsureWidgetForWorld(World);
+
+		if (CircleWidget)
+		{
+			if (LoadingCount == 0)
+			{
+				CircleWidget->Hide();
+			}
 		}
 		else
 		{
-			PRINTLOG(TEXT("[LoadingCircleManager] DecrementLoading FAILED - Widget is nullptr!"));
+			PRINTLOG(TEXT("[LoadingCircleManager] Hide FAILED - Widget is nullptr!"));
 		}
 	}
 }
 
 int32 ULoadingCircleManager::GetLoadingCount() const
 {
-	if (LoadingCircleWidget)
-	{
-		return LoadingCircleWidget->GetLoadingCount();
-	}
-	return 0;
-}
-
-void ULoadingCircleManager::Increase(UObject* WorldContextObject)
-{
-	if (!WorldContextObject)
-	{
-		return;
-	}
-
-	if (UWorld* World = WorldContextObject->GetWorld())
-	{
-		if (UGameInstance* GI = World->GetGameInstance())
-		{
-			if (ULocalPlayer* LP = GI->GetFirstGamePlayer())
-			{
-				if (ULoadingCircleManager* Manager = LP->GetSubsystem<ULoadingCircleManager>())
-				{
-					Manager->IncrementLoading();
-				}
-			}
-		}
-	}
-}
-
-void ULoadingCircleManager::Decrease(UObject* WorldContextObject)
-{
-	if (!WorldContextObject)
-	{
-		return;
-	}
-
-	if (UWorld* World = WorldContextObject->GetWorld())
-	{
-		if (UGameInstance* GI = World->GetGameInstance())
-		{
-			if (ULocalPlayer* LP = GI->GetFirstGamePlayer())
-			{
-				if (ULoadingCircleManager* Manager = LP->GetSubsystem<ULoadingCircleManager>())
-				{
-					Manager->DecrementLoading();
-				}
-			}
-		}
-	}
+	return LoadingCount;
 }

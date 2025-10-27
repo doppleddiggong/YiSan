@@ -6,6 +6,7 @@
 #include "APlayerControl.h"
 #include "UBroadcastManager.h"
 #include "GameLogging.h"
+#include "ULoadingCircleManager.h"
 #include "USessionInfoWidget.h"
 #include "Components/Button.h"
 #include "Components/EditableTextBox.h"
@@ -26,13 +27,21 @@ void ULobbyWidget::NativeConstruct()
 
 	// 버튼 이벤트 바인딩
 	if (Btn_Host)
-	{Btn_Host->OnClicked.AddDynamic(this, &ULobbyWidget::OnHostButtonClicked);}
+	{
+		Btn_Host->OnClicked.AddDynamic(this, &ULobbyWidget::OnHostButtonClicked);
+	}
 	if (Btn_Find)
-	{Btn_Find->OnClicked.AddDynamic(this, &ULobbyWidget::OnFindButtonClicked);}
+	{
+		Btn_Find->OnClicked.AddDynamic(this, &ULobbyWidget::OnFindButtonClicked);
+	}
 	if (Btn_GoHost)
-	{Btn_GoHost->OnClicked.AddDynamic(this, &ULobbyWidget::OnClickGoHost);}
+	{
+		Btn_GoHost->OnClicked.AddDynamic(this, &ULobbyWidget::OnClickGoHost);
+	}
 	if (Btn_GoFind)
-	{Btn_GoFind->OnClicked.AddDynamic(this, &ULobbyWidget::OnClickGoFind);}
+	{
+		Btn_GoFind->OnClicked.AddDynamic(this, &ULobbyWidget::OnClickGoFind);
+	}
 	UNetworkGameInstanceSubsystem::Get(GetWorld())->onFindComplete.BindUObject(this, &ULobbyWidget::OnFindComplete);
 
 	PRINTLOG(TEXT("[LobbyWidget] NativeConstruct - Widget initialized"));
@@ -72,12 +81,14 @@ void ULobbyWidget::OnFindButtonClicked()
 {
 	UNetworkGameInstanceSubsystem::Get(GetWorld())->FindOtherSession();
 	SetFindingText(TEXT("방 찾는 중..."));
+
+	ULoadingCircleManager::Get(GetWorld())->Show();
 }
 
 void ULobbyWidget::OnFindComplete(int32 idx, FString sessionName)
 {
-	SetFindingText(TEXT("방 목록"));
-	Btn_Find->SetVisibility(ESlateVisibility::Visible);
+	PRINTLOG(TEXT("[LobbyWidget] OnFindComplete - idx: %d, sessionName: %s"), idx, *sessionName);
+
 	if (sessionName.IsEmpty() == false && idx >= 0)
 	{
 		// sessionInfoWidget 만들자.
@@ -85,7 +96,17 @@ void ULobbyWidget::OnFindComplete(int32 idx, FString sessionName)
 		// 만들어진 item 을 scrollSessionList 에 추가
 		scrollSessionList->AddChild(item);
 		// 만들어지 item 정보 설정
-		{item->SetSessionInfo(idx, sessionName);}
+		{
+			item->SetSessionInfo(idx, sessionName);
+		}
+	}
+
+	// idx == -1: 모든 세션 검색 완료 신호
+	if (idx == -1)
+	{
+		SetFindingText(TEXT("방 목록"));
+		Btn_Find->SetVisibility(ESlateVisibility::Visible);
+		ULoadingCircleManager::Get(GetWorld())->Hide();
 	}
 }
 

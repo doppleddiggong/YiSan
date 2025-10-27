@@ -21,16 +21,12 @@ void ULoadginCircle::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	LoadingCount = 0;
-	UpdateVisibility();
+	UpdateVisibility(false);
 }
 
 void ULoadginCircle::NativeDestruct()
 {
 	Super::NativeDestruct();
-
-	// 델리게이트 정리
-	OnLoadingCountChanged.Clear();
 }
 
 void ULoadginCircle::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
@@ -40,30 +36,16 @@ void ULoadginCircle::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 	UpdateLoadingSpinner(InDeltaTime);
 }
 
-void ULoadginCircle::ShowLoading()
+void ULoadginCircle::Show()
 {
-	LoadingCount++;
-
-	PRINTLOG(TEXT("[LoadingCircle] ShowLoading() - Count: %d → %d"), LoadingCount - 1, LoadingCount);
-
-	OnLoadingCountChanged.Broadcast(LoadingCount);
-	UpdateVisibility();
+	// PRINTLOG(TEXT("[LoadingCircle] Show()"));
+	UpdateVisibility(true);
 }
 
-void ULoadginCircle::HideLoading()
+void ULoadginCircle::Hide()
 {
-	const int32 OldCount = LoadingCount;
-	LoadingCount = FMath::Max(0, LoadingCount - 1);
-
-	PRINTLOG(TEXT("[LoadingCircle] HideLoading() - Count: %d → %d"), OldCount, LoadingCount);
-
-	if (OldCount == 0)
-	{
-		PRINTLOG(TEXT("[LoadingCircle] WARNING: HideLoading called but count was already 0!"));
-	}
-
-	OnLoadingCountChanged.Broadcast(LoadingCount);
-	UpdateVisibility();
+	// PRINTLOG(TEXT("[LoadingCircle] Hide()"));
+	UpdateVisibility(false);
 }
 
 void ULoadginCircle::UpdateLoadingSpinner(float DeltaTime)
@@ -75,7 +57,7 @@ void ULoadginCircle::UpdateLoadingSpinner(float DeltaTime)
 	LoadingSpinner->SetRenderTransformAngle(NewAngle);
 }
 
-void ULoadginCircle::UpdateVisibility()
+void ULoadginCircle::UpdateVisibility(bool bShouldShow)
 {
 	if (!RootOverlay)
 	{
@@ -83,13 +65,10 @@ void ULoadginCircle::UpdateVisibility()
 		return;
 	}
 
-	const bool bShouldBeVisible = LoadingCount > 0;
+	// PRINTLOG(TEXT("[LoadingCircle] UpdateVisibility - Visible: %s"),
+	// 	bShouldShow ? TEXT("TRUE") : TEXT("FALSE"));
 
-	PRINTLOG(TEXT("[LoadingCircle] UpdateVisibility - Count: %d, Visible: %s"),
-		LoadingCount,
-		bShouldBeVisible ? TEXT("TRUE") : TEXT("FALSE"));
-
-	if (bShouldBeVisible)
+	if (bShouldShow)
 	{
 		// 로딩 중일 때: 보이고, 터치 차단
 		SetVisibility(ESlateVisibility::Visible);
@@ -114,7 +93,10 @@ void ULoadginCircle::AddToGameViewport(int32 ZOrder)
 				RemoveFromParent();
 
 			// Game Viewport에 직접 추가 (레벨 전환 시에도 유지됨)
-			ViewportClient->AddViewportWidgetContent(TakeWidget(), ZOrder);
+			AddToViewport(ZOrder);
+
+			// PRINTLOG(TEXT("[LoadingCircle] AddToGameViewport - IsInViewport: %s"),
+			// 	IsInViewport() ? TEXT("TRUE") : TEXT("FALSE"));
 		}
 	}
 }

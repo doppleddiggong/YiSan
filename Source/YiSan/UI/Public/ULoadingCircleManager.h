@@ -9,10 +9,6 @@
 /**
  * 전역 로딩 서클 관리자
  * LocalPlayerSubsystem으로 구현되어 레벨 전환 시에도 유지됩니다.
- *
- * 사용법:
- * ULoadingCircleManager::Increase(this); // 로딩 시작
- * ULoadingCircleManager::Decrease(this); // 로딩 종료
  */
 UCLASS()
 class YISAN_API ULoadingCircleManager : public ULocalPlayerSubsystem
@@ -20,31 +16,21 @@ class YISAN_API ULoadingCircleManager : public ULocalPlayerSubsystem
 	GENERATED_BODY()
 
 public:
-	DEFINE_LOCALPLAYER_FROM_PC_SUBSYSTEM_GETTER_INLINE(ULoadingCircleManager);
 	DEFINE_LOCALPLAYER_SUBSYSTEM_GETTER_INLINE(ULoadingCircleManager);
 
 	ULoadingCircleManager();
 
 	/// @brief 로딩 카운트를 증가시킵니다.
 	UFUNCTION(BlueprintCallable, Category = "Loading")
-	void IncrementLoading();
+	void Show();
 
 	/// @brief 로딩 카운트를 감소시킵니다.
 	UFUNCTION(BlueprintCallable, Category = "Loading")
-	void DecrementLoading();
+	void Hide();
 
 	/// @brief 현재 로딩 카운트를 반환합니다.
 	UFUNCTION(BlueprintPure, Category = "Loading")
 	int32 GetLoadingCount() const;
-
-	// 정적 유틸: 간편 호출용
-	// ULoadingCircleManager::Increase(this);
-	// ULoadingCircleManager::Decrease(this);
-	UFUNCTION(BlueprintCallable, Category = "Loading", meta = (WorldContext = "WorldContextObject"))
-	static void Increase(UObject* WorldContextObject);
-
-	UFUNCTION(BlueprintCallable, Category = "Loading", meta = (WorldContext = "WorldContextObject"))
-	static void Decrease(UObject* WorldContextObject);
 
 protected:
 	/// @brief 현재 월드에 위젯이 없으면 생성하고 Game Viewport에 부착합니다.
@@ -52,8 +38,11 @@ protected:
 
 protected:
 	UPROPERTY()
-	TSubclassOf<class ULoadginCircle> LoadingCircleWidgetClass;
+	TSubclassOf<class ULoadginCircle> CircleWidgetClass;
 
 	UPROPERTY()
-	TObjectPtr<class ULoadginCircle> LoadingCircleWidget;
+	TObjectPtr<class ULoadginCircle> CircleWidget;
+
+	/// @brief Manager가 관리하는 로딩 카운트 (위젯 재생성 시에도 유지됨)
+	int32 LoadingCount = 0;
 };
