@@ -202,15 +202,14 @@ void UTourStateSystem::Enter_TourExplain()
 	FBuildingAssetData AssetData;
 	if ( UGameDataManager::Get(GetWorld())->GetBuildingAssetData( building->BuildingType, AssetData) )
 	{
-		UBuildingDetailData* DetailAsset = AssetData.BuildingDetailDataAsset.LoadSynchronous();
-
-		if ( DetailAsset )
+		if ( auto DetailAsset = AssetData.BuildingDetailDataAsset.LoadSynchronous() )
 		{
 			TSoftObjectPtr<USoundCue> LoadedCue;
 			if ( DetailAsset->LoadSoundCue(LoadedCue) && LoadedCue.Get() )
 			{
 				if (PlayingSound && PlayingSound->IsPlaying())
 					PlayingSound->Stop();
+				
 				PlayingSound = UGameplayStatics::SpawnSound2D(GetWorld(), LoadedCue.Get());
 			}
 		}

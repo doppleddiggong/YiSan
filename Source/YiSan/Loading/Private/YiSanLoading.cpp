@@ -23,7 +23,6 @@ void UYiSanLoading::Step1_StartLoadingTargetLevel()
 	// 현재는 seamlessTravel 사용중
 	const bool bUseSeamless = true;
 	const FString MapPath = TEXT("/Game/CustomContents/Maps/MainMap_WP");
-	//GetWorld()->SeamlessTravel("/Game/CustomContents/Maps/MainMap_WP", bUseSeamless);
 	// 문제시 severtarvel 사용
 	GetWorld()->ServerTravel("/Game/CustomContents/Maps/MainMap_WP",bUseSeamless);
 	// 중복 바인딩 방지함

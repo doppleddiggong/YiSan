@@ -99,23 +99,18 @@ void APlayerActor::BeginPlay()
     BroadcastManager = UBroadcastManager::Get(GetWorld());
     BroadcastManager->OnExecVoiceCommand.AddDynamic(this, &APlayerActor::OnExecVoiceCommand);
 
-    // // 퀘스트 초기화
-    // UQuestManager::Get(GetWorld())->InitSystem();
 
-    // 서버야 일어나라.
-    UHttpNetworkSystem::Get(GetWorld())->RequestHealth( FResponseHealthDelegate() );
+    if ( HasAuthority() )
+    {
+        FTimerHandle TimerHandle;
+        GetWorld()->GetTimerManager().SetTimerForNextTick([this]()
+        {
+            BroadcastManager->SendUpdateQuest(UQuestManager::Get(GetWorld())->GetCurTarget());
 
-    // 너도 나도 다 begin에서 일을 하려고 하니.
-    // 게임 실행이라는 의미에서 플레이어가 1초후에 시작한다 같은 이벤트로 처리하자
-    // 나중에 GameStart 이벤트가 생기면 그때 다시 정리하자.
-    // 아직은 매직코드
-    FTimerHandle TimerHandle_DelayedSend;
-    GetWorldTimerManager().SetTimer(TimerHandle_DelayedSend,this, &APlayerActor::DelayedSendQuestUpdate, 1.0f, false);
-}
-
-void APlayerActor::DelayedSendQuestUpdate()
-{
-    BroadcastManager->SendUpdateQuest( UQuestManager::Get(GetWorld())->GetCurTarget());
+            FChatMessage ChatMessage(EChatMessageType::User, *GetPlayerDisplayName(), TEXT("민지 왔쪄요"));
+            ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
+        });
+    }
 }
 
 FGPTContext APlayerActor::GetGPTContext() const
@@ -221,13 +216,27 @@ void APlayerActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requeste
 
 FString APlayerActor::GetPlayerDisplayName() const
 {
+    int index = GetLocalPlayerIndex();
+
     if (auto PC = UGameplayStatics::GetPlayerController(GetWorld(), 0))
     {
         if (auto PS = PC->PlayerState)
-            return PS->GetPlayerName();
+        {
+            return FString::Printf(TEXT("%s (%02d)"), *PS->GetPlayerName(), index );
+        }
     }
 
     return TEXT("Yisan");
+}
+
+int APlayerActor::GetLocalPlayerIndex() const
+{
+    if (const ULocalPlayer* LocalPlayer = GetWorld()->GetFirstLocalPlayerFromController())
+    {
+        return LocalPlayer->GetControllerId();
+    }
+
+    return 0;
 }
 
 void APlayerActor::PlayTTSAudio(const TArray<uint8>& AudioData)

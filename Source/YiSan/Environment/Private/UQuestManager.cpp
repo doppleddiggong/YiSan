@@ -3,6 +3,8 @@
 #include "UQuestManager.h"
 #include "GameLogging.h"
 #include "UBroadcastManager.h"
+#include "AYisanGameState.h"
+
 
 void UQuestManager::InitSystem()
 {
@@ -37,13 +39,9 @@ void UQuestManager::OnContactBuilding(EBuildingType InType)
 
     if (InType == CurTarget)
     {
-        PRINTLOG(TEXT("Quest Completed: %s"), *ENUM_TO_NAME(EBuildingType, CurTarget));
+        PRINTLOG(TEXT("Quest Contacted: %s"), *ENUM_TO_NAME(EBuildingType, CurTarget));
 
         CurQuestIndex++;
-        if (QuestList.IsValidIndex(CurQuestIndex))
-        {
-            CurTarget = QuestList[CurQuestIndex];
-            BroadcastManager->SendUpdateQuest(CurTarget);
-        }
+        CurTarget = QuestList.IsValidIndex(CurQuestIndex) ? QuestList[CurQuestIndex] : EBuildingType::None;
     }
 }

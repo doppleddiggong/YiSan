@@ -11,6 +11,7 @@
 #include "Blueprint/UserWidget.h"
 #include "Engine/Engine.h"
 #include "Engine/World.h"
+#include "YiSan/YiSan.h"
 
 #define DIALOGWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_Dialog.WBP_Dialog_C")
 
@@ -56,7 +57,7 @@ void UDialogManager::EnsureWidgetForWorld(UWorld* World)
 	if (!NewWidget)
 		return;
 
-	NewWidget->AddToViewport(1000);
+	NewWidget->AddToViewport(GameLayer::ToastManager);
 	DialogWidget = NewWidget;
 }
 

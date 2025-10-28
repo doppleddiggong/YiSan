@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "EBuildingType.h"
 #include "GameFramework/GameStateBase.h"
-#include "EDasanState.h"
 #include "AYisanGameState.generated.h"
 
 UCLASS()
@@ -23,15 +22,18 @@ public:
 	UFUNCTION(NetMulticast, Reliable)
 	void MulticastRPC_ToastMessage(const FString& Message);
 
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPC_UpdateQuestTarget(const EBuildingType InBuildingType);
+	
 	// 투어 시작
 	UFUNCTION(BlueprintCallable, Category="Tour")
 	void StartGlobalTour();
+	
 public:
-	// Dasan NPC 참조
 	UPROPERTY(Replicated, BlueprintReadOnly, Category="Tour")
 	TObjectPtr<class ADasanActor> DasanNPC;
 
-	// QuestManager 참조
-	UPROPERTY(BlueprintReadOnly, Category="Tour")
+private:
+	UPROPERTY()
 	TObjectPtr<class UQuestManager> QuestManager;
 };

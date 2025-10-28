@@ -28,6 +28,9 @@
 #include "AYisanGameState.h"
 #include "UAnswerStateSystem.h"
 
+
+#include "ULoadingWidget.h"
+
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
 #define IA_LOOK_PATH				TEXT("/Game/CustomContents/Input/IA_Game_LookAround.IA_Game_LookAround")
@@ -294,14 +297,14 @@ void APlayerControl::ServerStartMapTravel(const FString& MapPath)
 	{
 		if (APlayerControl* PC = Cast<APlayerControl>(It->Get()))
 		{
-			PC->Client_ShowLoadingScreen();
+			PC->ClientRPC_ShowLoadingScreen();
 		}
 	}
 
 	// 2. 서버도 로딩 UI 표시
 	if (IsLocalController())
 	{
-		Client_ShowLoadingScreen_Implementation();
+		ClientRPC_ShowLoadingScreen_Implementation();
 	}
 
 	// 3. 약간의 딜레이 후 ServerTravel 호출 (UI가 먼저 뜨도록)
@@ -323,9 +326,8 @@ void APlayerControl::Server_RequestMapTravel_Implementation(const FString& MapPa
 	ServerStartMapTravel(MapPath);
 }
 
-void APlayerControl::Client_ShowLoadingScreen_Implementation()
+void APlayerControl::ClientRPC_ShowLoadingScreen_Implementation()
 {
-	
 	if (!LoadingWidgetClass)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("[Travel] LoadingWidgetClass가 설정되지 않음"));
@@ -340,7 +342,7 @@ void APlayerControl::Client_ShowLoadingScreen_Implementation()
 	}
 
 	// 로딩 위젯 생성
-	LoadingWidget = CreateWidget<UUserWidget>(this, LoadingWidgetClass);
+	LoadingWidget = CreateWidget<ULoadingWidget>(this, LoadingWidgetClass);
 	if (LoadingWidget)
 	{
 		LoadingWidget->AddToViewport(9999);
@@ -353,7 +355,7 @@ void APlayerControl::Client_ShowLoadingScreen_Implementation()
 	}
 }
 
-void APlayerControl::Client_HideLoadingScreen_Implementation()
+void APlayerControl::ClientRPC_HideLoadingScreen_Implementation()
 {
 	if (LoadingWidget && LoadingWidget->IsInViewport())
 	{
@@ -376,6 +378,14 @@ void APlayerControl::ClientRPC_ShowToastMessage_Implementation(const FString& Me
 	if (auto DM = UDialogManager::Get(this))
 	{
 		DM->ShowToast(Message);
+	}
+}
+
+void APlayerControl::ClientRPC_UpdateQuestTarget_Implementation(const EBuildingType BuildingType)
+{
+	if (auto BM = UBroadcastManager::Get(GetWorld()))
+	{
+		BM->SendUpdateQuest(BuildingType);
 	}
 }
 
