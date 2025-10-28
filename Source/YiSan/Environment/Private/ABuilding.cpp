@@ -53,11 +53,10 @@ void ABuilding::BeginPlay()
 void ABuilding::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	// 자기 자신이나, OtherActor가 유효하지 않으면 무시
-	if (OtherActor && (OtherActor != this))	
+	if (OtherActor && OtherActor != this  && OtherActor->ActorHasTag(GameTags::Dasan))	
 	{
 		// 로그 출력으로 트리거 발동 확인
 		PRINTLOG(TEXT("%s entered the trigger volume of %s"), *OtherActor->GetName(), *this->GetName());
-
 		BroadcastManager->SendContactBuilding(BuildingType);
 	}
 }
