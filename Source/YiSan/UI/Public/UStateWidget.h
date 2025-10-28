@@ -112,10 +112,6 @@ protected:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "State|Audio", meta = (ClampMin = "0.001", ClampMax = "1.0"))
     float SpectrumSmoothing = 0.2f;
 
-private:
-    UPROPERTY()
-    TObjectPtr<class UQuestManager> QuestManager;
-
     EBuildingType QuestDisplayType = EBuildingType::None;
 
     FTimerHandle UpdateTimerHandle;

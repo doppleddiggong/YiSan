@@ -2,7 +2,6 @@
 
 #include "UStateWidget.h"
 
-#include "UQuestManager.h"
 #include "Blueprint/WidgetTree.h"
 #include "Components/HorizontalBoxSlot.h"
 #include "Components/Image.h"

@@ -3,6 +3,7 @@
 #include "AYiSanGameMode.h"
 #include "AYisanGameState.h"
 #include "ADasanActor.h"
+#include "AQuestManagerActor.h"
 #include "FComponentHelper.h"
 #include "GameLogging.h"
 
@@ -11,8 +12,37 @@
 
 void AYiSanGameMode::BeginPlay()
 {
-	Super::BeginPlay();
-	bUseSeamlessTravel = true;
+		Super::BeginPlay();
+		bUseSeamlessTravel = true;
+
+		if (HasAuthority())
+		{
+				if (auto State = GetGameState<AYisanGameState>())
+				{
+						QuestManager = State->GetQuestManager();
+						if (!QuestManager)
+						{
+								FActorSpawnParameters SpawnParams;
+								SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+								SpawnParams.Owner = this;
+
+								QuestManager = GetWorld()->SpawnActor<AQuestManagerActor>(AQuestManagerActor::StaticClass(), SpawnParams);
+								if (QuestManager)
+								{
+										State->SetQuestManager(QuestManager);
+										PRINTLOG(TEXT("[GameMode] QuestManager spawned and initialized"));
+								}
+								else
+								{
+										PRINTLOG(TEXT("[GameMode] Failed to spawn QuestManagerActor"));
+								}
+						}
+				}
+				else
+				{
+						PRINTLOG(TEXT("[GameMode] BeginPlay - GameState not found"));
+				}
+		}
 }
 
 void AYiSanGameMode::PostLogin(APlayerController* NewPlayer)

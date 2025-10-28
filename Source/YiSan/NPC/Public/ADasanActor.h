@@ -111,11 +111,8 @@ public:
 
 	
 public:	
-	UPROPERTY()
-	TObjectPtr<class UQuestManager> QuestManager;
-
-	UPROPERTY()
-	TObjectPtr<class ABuilding> CurTargetBuilding;
+        UPROPERTY()
+        TObjectPtr<class ABuilding> CurTargetBuilding;
 
 	UPROPERTY()
 	TObjectPtr<class UBroadcastManager> BroadcastManager;
