@@ -67,8 +67,8 @@ private:
 	UPROPERTY(EditAnywhere, Category="Tour")
 	float WaitTimeBeforeTour = 2.0f; // 건물 도착 후 관광 시작 전 대기 시간
 
-	UPROPERTY(EditAnywhere, Category="Debug")
-	bool bEnablePlayerRadiusDebugDraw = false;
+	UPROPERTY(EditAnywhere, Category="Debug|Dasan")
+	bool bEnableDebugDraw = false;
 	
 	// 대기 타이머
 	float WaitTimer = 0.0f;

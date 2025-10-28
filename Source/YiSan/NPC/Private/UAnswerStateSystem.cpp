@@ -92,20 +92,6 @@ void UAnswerStateSystem::OnRep_QuestionerName()
 	// OnRep에서는 ServerRPC를 호출하면 안 됨!
 }
 
-
-// // 블루프린트 호출 함수들
-// void UAnswerStateSystem::OnAnswerReply()
-// {
-// 	PRINTLOG( TEXT("[AnswerState] OnAnswerReply"));
-//
-// 	// Listen 상태에서만 Reply로 전환
-// 	if (CurState == EAnswerState::AnswerListen)
-// 	{
-// 		this->SetCurState(EAnswerState::AnswerReply);
-// 	}
-// }
-
-
 bool UAnswerStateSystem::CanStartAnswer(const FString& PlayerName, FString& OutReason) const
 {
 	if (!OwnerDasan)
@@ -113,7 +99,7 @@ bool UAnswerStateSystem::CanStartAnswer(const FString& PlayerName, FString& OutR
 		OutReason = TEXT("다산을 찾을 수 없습니다.");
 		return false;
 	}
-
+	
 	// 이미 Answer 상태이고, 다른 플레이어가 질문 중이면 거부
 	if (OwnerDasan->DasanState == EDasanState::Answer && !CurQuestionerName.IsEmpty())
 	{
@@ -215,13 +201,6 @@ void UAnswerStateSystem::FinishAnswer()
 		PRINTLOG(TEXT("[AnswerSystem] 답변 타임아웃 타이머 정리"));
 	}
 
-	// // UI 위젯 숨기기 (다산이 듣기 종료)
-	// if (BroadcastManager)
-	// {
-	// 	BroadcastManager->SendAskListening(false, TEXT(""));
-	// 	PRINTLOG(TEXT("[AnswerState] SendDasanListening(false)"));
-	// }
-
 	CurQuestionerName.Empty();
 
 	// Answer 서브 상태 초기화
@@ -249,15 +228,3 @@ void UAnswerStateSystem::OnAnswerTimeout()
 	// 답변 종료 처리
 	FinishAnswer();
 }
-
-
-// void UAnswerStateSystem::OnVoiceTalkFinished()
-// {
-// 	if (!OwnerDasan || !OwnerDasan->HasAuthority())
-// 		return;
-//
-// 	PRINTLOG(TEXT("[AnswerSystem] TTS 재생 완료 - FinishAnswer 호출"));
-//
-// 	// Answer 완료 처리
-// 	FinishAnswer();
-// }

@@ -18,6 +18,7 @@
 #include "DrawDebugHelpers.h"
 #include "FComponentHelper.h"
 #include "GameLogging.h"
+#include "NavigationPath.h"
 
 #include "Components/WidgetComponent.h"
 #include "UDasanWidget.h"
@@ -46,7 +47,7 @@ ADasanActor::ADasanActor()
 	// 위젯 컴포넌트 생성 (머리 위에 표시)
 	DasanWidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("DasanWidgetComponent"));
 	DasanWidgetComp->SetupAttachment(RootComponent);
-	DasanWidgetComp->SetRelativeLocation(FVector(0.f, 0.f, 85.f));
+	DasanWidgetComp->SetRelativeLocation(FVector(0.f, 0.f, 125.f));
 	DasanWidgetComp->SetWidgetSpace(EWidgetSpace::Screen);
 	DasanWidgetComp->SetDrawSize(FVector2D(300.f, 100.f));
 
@@ -63,20 +64,6 @@ ADasanActor::ADasanActor()
 void ADasanActor::BeginPlay()
 {
 	Super::BeginPlay();
-
-	// if (!TourStateSystem)
-	// {
-	// 	PRINTLOG(TEXT("TourStateSystem::nullptr이라 재생성합니다."));
-	// 	TourStateSystem = NewObject<UTourStateSystem>(this, UTourStateSystem::StaticClass());
-	// 	TourStateSystem->RegisterComponent();
-	// }
-	//
-	// if (!AnswerStateSystem)
-	// {
-	// 	PRINTLOG(TEXT("AnswerStateSystem::nullptr이라 재생성합니다."));
-	// 	AnswerStateSystem = NewObject<UAnswerStateSystem>(this, UAnswerStateSystem::StaticClass());
-	// 	AnswerStateSystem->RegisterComponent();
-	// }
 
 	// 위젯 캐싱 및 초기화
 	if (DasanWidgetComp && DasanWidgetComp->GetWidget())
@@ -241,12 +228,6 @@ void ADasanActor::OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::
                         FNavLocation TargetNavLoc;
                         if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
                         {
-                            // FAIMoveRequest MoveRequest;
-                            // MoveRequest.SetGoalLocation(TargetNavLoc.Location);
-                            // MoveRequest.SetAcceptanceRadius(wayPointDis);
-                            // MoveRequest.SetUsePathfinding(true);
-                            // DasanAicontrol->MoveTo(MoveRequest);
-
                         	auto Result = this->AIMoveToLoc(TargetNavLoc.Location, wayPointDis, true);
                         }
                     }
@@ -489,13 +470,6 @@ void ADasanActor::TransitionToState(EDasanState InMainState)
                 FNavLocation TargetNavLoc;
                 if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
                 {
-                    // FAIMoveRequest MoveRequest;
-                    // MoveRequest.SetGoalLocation(TargetNavLoc.Location);
-                    // MoveRequest.SetAcceptanceRadius(wayPointDis);
-                    // MoveRequest.SetUsePathfinding(true);
-                    //
-                    // DasanAicontrol->MoveTo(MoveRequest);
-
                 	auto Result = this->AIMoveToLoc(TargetNavLoc.Location, wayPointDis, true);
                     PRINTLOG(TEXT(" AI MoveTo 시작 (NavMesh 위치)"));
                 }
@@ -571,17 +545,6 @@ void ADasanActor::NextQuest()
                 FNavLocation TargetNavLoc;
                 if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
                 {
-                    // FAIMoveRequest MoveRequest;
-                    // MoveRequest.SetGoalLocation(TargetNavLoc.Location);
-                    // MoveRequest.SetAcceptanceRadius(wayPointDis);
-                    // MoveRequest.SetUsePathfinding(true);
-                    //
-                    // FPathFollowingRequestResult Result = DasanAicontrol->MoveTo(MoveRequest);
-                    // if (Result.Code == EPathFollowingRequestResult::RequestSuccessful)
-                    //     PRINTLOG(TEXT(" 다음 목적지로 이동 시작: %s (NavMesh 위치)"), *CurTargetBuilding->GetName());
-                    // else
-                    //     PRINTLOG(TEXT("[WARN] MoveTo 실패: 코드 %d"), (int32)Result.Code);
-
 					auto Result = this->AIMoveToLoc(TargetNavLoc.Location, wayPointDis, true);
                 	if (Result.Code == EPathFollowingRequestResult::RequestSuccessful)
                 		PRINTLOG(TEXT(" 다음 목적지로 이동 시작: %s (NavMesh 위치)"), *CurTargetBuilding->GetName());
@@ -602,12 +565,14 @@ void ADasanActor::NextQuest()
 FPathFollowingRequestResult ADasanActor::AIMoveToLoc(
 	const FVector& InGoalLocation,
 	const float InAcceptanceRadius,
-	const bool bPathfinding ) const
+	const bool bPathfinding )
 {
 	FAIMoveRequest MoveRequest;
 	MoveRequest.SetGoalLocation(InGoalLocation);
 	MoveRequest.SetAcceptanceRadius(InAcceptanceRadius);
 	MoveRequest.SetUsePathfinding(bPathfinding);
+
+	DebugDrawPath(InGoalLocation);
 	
 	return DasanAicontrol->MoveTo(MoveRequest);
 }
@@ -615,18 +580,18 @@ FPathFollowingRequestResult ADasanActor::AIMoveToLoc(
 FPathFollowingRequestResult ADasanActor::AIMoveToActor(
 	const AActor* Actor,
 	const float InAcceptanceRadius,
-	const bool bPathfinding ) const
+	const bool bPathfinding )
 {
 	FAIMoveRequest MoveRequest;
 	MoveRequest.SetGoalActor(Actor);
 	MoveRequest.SetAcceptanceRadius(InAcceptanceRadius);
 	MoveRequest.SetUsePathfinding(bPathfinding);
 	MoveRequest.SetProjectGoalLocation(true);
+
+	DebugDrawPath(Actor->GetActorLocation());
 	
 	return DasanAicontrol->MoveTo(MoveRequest);
 }
-
-
 
 bool ADasanActor::IsNearTargetBuilding()
 {
@@ -707,5 +672,40 @@ void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester
 		}
 
 		UGameSoundManager::Get(GetWorld())->PlaySound2D(EGameSoundType::Cmd_Summon);
+	}
+}
+
+void ADasanActor::DebugDrawPath(const FVector& GoalLocation)
+{
+	if (!bEnableDebugDraw)
+		return;
+	
+	if (!HasAuthority())
+		return; // 서버에서만 실행
+
+	UNavigationPath* NavPath = UNavigationSystemV1::FindPathToLocationSynchronously(
+		GetWorld(),
+		GetActorLocation(),
+		GoalLocation
+	);
+
+	if (NavPath && NavPath->PathPoints.Num() > 1)
+		MulticastRPC_DrawDebugPath(NavPath->PathPoints);
+}
+
+void ADasanActor::MulticastRPC_DrawDebugPath_Implementation(const TArray<FVector>& PathPoints)
+{
+	FlushPersistentDebugLines(GetWorld());
+	
+	if (PathPoints.Num() > 1)
+	{
+		for (int32 i = 0; i < PathPoints.Num() - 1; i++)
+		{
+			FVector Start = PathPoints[i];
+			FVector End   = PathPoints[i + 1];
+
+			// 선으로 경로 표시
+			DrawDebugLine(GetWorld(), Start, End, FColor::Green, true, 0.0f, 0.0f, 10.f);
+		}
 	}
 }
