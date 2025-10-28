@@ -20,6 +20,8 @@
 #include "NavigationSystem.h"
 #include "Net/UnrealNetwork.h"
 
+#include "DrawDebugHelpers.h"
+
 // 2초에 한 번 검사
 static float CheckInterval = 2.0f;
 
@@ -61,6 +63,20 @@ void UTourStateSystem::InitSystem(ADasanActor* InOwner)
 	if (!BroadcastManager)
 	{
 		PRINTLOG(TEXT("[TourState] BroadcastManager를 찾을 수 없습니다!"));
+	}
+
+	if (bEnablePlayerRadiusDebugDraw)
+	{
+		if (auto World = GetWorld())
+		{
+			World->GetTimerManager().ClearTimer(DebugTimerHandle);
+			World->GetTimerManager().SetTimer(
+				DebugTimerHandle,
+				this,
+				&UTourStateSystem::DrawPlayerRadiusDebug,
+				0.15f,
+				true);
+		}
 	}
 }
 
@@ -315,12 +331,6 @@ void UTourStateSystem::Tick_TourWait(float DeltaTime)
 					FNavLocation TargetNavLoc;
 					if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
 					{
-						// FAIMoveRequest MoveRequest;
-						// MoveRequest.SetGoalLocation(TargetNavLoc.Location);
-						// MoveRequest.SetAcceptanceRadius(250.0f);
-						// MoveRequest.SetUsePathfinding(true);
-						// OwnerDasan->DasanAicontrol->MoveTo(MoveRequest);
-
 						auto Result = OwnerDasan->AIMoveToLoc( TargetNavLoc.Location, 250.0f, true );
 						PRINTLOG(TEXT("[TourState] MoveTo 결과: %d"), (int32)Result.Code);
 					}
@@ -412,4 +422,16 @@ bool UTourStateSystem::IsUpdateEnble() const
 		return false;
 	
 	return true;
+}
+
+void UTourStateSystem::DrawPlayerRadiusDebug() const
+{
+	UWorld* World = OwnerDasan->GetWorld();
+	if (!World)
+		return;
+
+	const FVector Origin = OwnerDasan->GetActorLocation();
+	const float Lifetime = CheckInterval;
+
+	DrawDebugSphere(World, Origin, PlayerDetectionRadius, 24, FColor::Yellow, false, Lifetime, 0, 2.0f);
 }
