@@ -565,7 +565,7 @@ void ADasanActor::NextQuest()
 FPathFollowingRequestResult ADasanActor::AIMoveToLoc(
 	const FVector& InGoalLocation,
 	const float InAcceptanceRadius,
-	const bool bPathfinding ) const
+	const bool bPathfinding )
 {
 	FAIMoveRequest MoveRequest;
 	MoveRequest.SetGoalLocation(InGoalLocation);
@@ -580,7 +580,7 @@ FPathFollowingRequestResult ADasanActor::AIMoveToLoc(
 FPathFollowingRequestResult ADasanActor::AIMoveToActor(
 	const AActor* Actor,
 	const float InAcceptanceRadius,
-	const bool bPathfinding ) const
+	const bool bPathfinding )
 {
 	FAIMoveRequest MoveRequest;
 	MoveRequest.SetGoalActor(Actor);
@@ -695,6 +695,8 @@ void ADasanActor::DebugDrawPath(const FVector& GoalLocation)
 
 void ADasanActor::MulticastRPC_DrawDebugPath_Implementation(const TArray<FVector>& PathPoints)
 {
+	FlushPersistentDebugLines(GetWorld());
+	
 	if (PathPoints.Num() > 1)
 	{
 		for (int32 i = 0; i < PathPoints.Num() - 1; i++)
@@ -703,10 +705,7 @@ void ADasanActor::MulticastRPC_DrawDebugPath_Implementation(const TArray<FVector
 			FVector End   = PathPoints[i + 1];
 
 			// 선으로 경로 표시
-			DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, 0.15f, 0, 2.f);
-
-			// 경로 지점마다 점 찍기
-			DrawDebugSphere(GetWorld(), End, 6.f, 8, FColor::Green, false, 0.15f);
+			DrawDebugLine(GetWorld(), Start, End, FColor::Green, true, 0.0f, 0.0f, 10.f);
 		}
 	}
 }

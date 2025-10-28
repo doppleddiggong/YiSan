@@ -54,12 +54,12 @@ public:
 	FPathFollowingRequestResult AIMoveToLoc(
 		const FVector& InGoalLocation,
 		const float InAcceptanceRadius,
-		const bool bPathfinding ) const;
+		const bool bPathfinding );
 
 	FPathFollowingRequestResult AIMoveToActor(
 		const AActor* Actor,
 		const float InAcceptanceRadius,
-		const bool bPathfinding ) const;
+		const bool bPathfinding );
 
 	// 위젯 상태 업데이트 함수
 	void UpdateWidgetState();

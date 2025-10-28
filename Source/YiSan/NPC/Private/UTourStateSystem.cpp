@@ -405,6 +405,6 @@ void UTourStateSystem::DrawPlayerRadiusDebug() const
 		return;
 
 	const FVector Origin = OwnerDasan->GetActorLocation();
-	DrawDebugSphere(World, Origin, PlayerDetectionRadius, 8, TransparentYellow, false, 1.0f, 0, 3.0f);
+	DrawDebugSphere(World, Origin, PlayerDetectionRadius, 8, TransparentYellow, false, 0.25f, 0, 3.0f);
 }
 
