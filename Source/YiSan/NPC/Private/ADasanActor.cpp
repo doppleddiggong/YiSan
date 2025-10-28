@@ -675,12 +675,13 @@ void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester
 	}
 }
 
-
-
-void ADasanActor::DebugDrawPath(const FVector& GoalLocation) const
+void ADasanActor::DebugDrawPath(const FVector& GoalLocation)
 {
 	if (!bEnableDebugDraw)
 		return;
+	
+	if (!HasAuthority())
+		return; // 서버에서만 실행
 
 	UNavigationPath* NavPath = UNavigationSystemV1::FindPathToLocationSynchronously(
 		GetWorld(),
@@ -689,17 +690,23 @@ void ADasanActor::DebugDrawPath(const FVector& GoalLocation) const
 	);
 
 	if (NavPath && NavPath->PathPoints.Num() > 1)
+		MulticastRPC_DrawDebugPath(NavPath->PathPoints);
+}
+
+void ADasanActor::MulticastRPC_DrawDebugPath_Implementation(const TArray<FVector>& PathPoints)
+{
+	if (PathPoints.Num() > 1)
 	{
-		for (int32 i = 0; i < NavPath->PathPoints.Num() - 1; i++)
+		for (int32 i = 0; i < PathPoints.Num() - 1; i++)
 		{
-			FVector Start = NavPath->PathPoints[i];
-			FVector End   = NavPath->PathPoints[i + 1];
+			FVector Start = PathPoints[i];
+			FVector End   = PathPoints[i + 1];
 
 			// 선으로 경로 표시
-			DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, 5, 0, 3.f);
+			DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, 0.15f, 0, 2.f);
 
 			// 경로 지점마다 점 찍기
-			DrawDebugSphere(GetWorld(), End, 12.f, 8, FColor::Green, false, 0.15f);
+			DrawDebugSphere(GetWorld(), End, 6.f, 8, FColor::Green, false, 0.15f);
 		}
 	}
 }

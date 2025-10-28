@@ -61,7 +61,6 @@ public:
 		const float InAcceptanceRadius,
 		const bool bPathfinding ) const;
 
-
 	// 위젯 상태 업데이트 함수
 	void UpdateWidgetState();
 
@@ -73,8 +72,11 @@ public:
 	
 
 private:
-	void DebugDrawPath(const FVector& GoalLocation) const;
+	void DebugDrawPath(const FVector& GoalLocation);
 
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPC_DrawDebugPath(const TArray<FVector>& PathPoints);
+	
 public:
 	// 상태 시스템 컴포넌트
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="State")
