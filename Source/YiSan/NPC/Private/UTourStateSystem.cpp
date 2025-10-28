@@ -65,7 +65,7 @@ void UTourStateSystem::InitSystem(ADasanActor* InOwner)
 		PRINTLOG(TEXT("[TourState] BroadcastManager를 찾을 수 없습니다!"));
 	}
 
-	if (bEnablePlayerRadiusDebugDraw)
+	if (bEnableDebugDraw)
 	{
 		if (auto World = GetWorld())
 		{
@@ -156,30 +156,12 @@ void UTourStateSystem::Enter_TourMove()
 				PRINTLOG(TEXT("[TourState] 목표 NavMesh 투영: 원본 Z=%.1f → NavMesh Z=%.1f (높이차: %.1f)"),
 					TargetPos.Z, TargetNavLoc.Location.Z, ProjectionDist);
 
-				// // NavMesh 위치로 이동 명령 (Actor가 아닌 Location 사용)
-				// FAIMoveRequest MoveRequest;
-				// MoveRequest.SetGoalLocation(TargetNavLoc.Location); // SetGoalActor 대신 SetGoalLocation
-				// MoveRequest.SetAcceptanceRadius(250.0f);
-				// MoveRequest.SetUsePathfinding(true);
-				//
-				// FPathFollowingRequestResult Result = OwnerDasan->DasanAicontrol->MoveTo(MoveRequest);
-				// PRINTLOG(TEXT("[TourState] MoveTo 결과: %d (NavMesh 위치 사용)"), (int32)Result.Code);
-
 				auto Result = OwnerDasan->AIMoveToLoc(TargetNavLoc.Location, 250.0f, true);
 				PRINTLOG(TEXT("[TourState] MoveTo 결과: %d (NavMesh 위치 사용)"), (int32)Result.Code);
 			}
 			else
 			{
 				PRINTLOG(TEXT("[TourState] 경고: 목표 위치를 NavMesh에 투영 실패! Actor 위치로 시도"));
-
-				// FAIMoveRequest MoveRequest;
-				 // MoveRequest.SetGoalActor(OwnerDasan->GetCurTargetBuilding());
-				// MoveRequest.SetAcceptanceRadius(250.0f);
-				// MoveRequest.SetUsePathfinding(true);
-				// MoveRequest.SetProjectGoalLocation(true);
-				//
-				// FPathFollowingRequestResult Result = OwnerDasan->DasanAicontrol->MoveTo(MoveRequest);
-				// PRINTLOG(TEXT("[TourState] MoveTo 결과: %d (Actor 위치 사용)"), (int32)Result.Code);
 
 				auto Result = OwnerDasan->AIMoveToActor( OwnerDasan->GetCurTargetBuilding(), 250.0f, true );
 				PRINTLOG(TEXT("[TourState] MoveTo 결과: %d (Actor 위치 사용)"), (int32)Result.Code);
@@ -188,16 +170,6 @@ void UTourStateSystem::Enter_TourMove()
 		else
 		{
 			PRINTLOG(TEXT("[TourState] 경고: NavigationSystem 없음! Actor 위치로 시도"));
-
-			// FAIMoveRequest MoveRequest;
-			// MoveRequest.SetGoalActor(OwnerDasan->GetCurTargetBuilding());
-			// MoveRequest.SetAcceptanceRadius(250.0f);
-			// MoveRequest.SetUsePathfinding(true);
-			// MoveRequest.SetProjectGoalLocation(true);
-			//
-			// FPathFollowingRequestResult Result = OwnerDasan->DasanAicontrol->MoveTo(MoveRequest);
-			// PRINTLOG(TEXT("[TourState] MoveTo 결과: %d"), (int32)Result.Code);
-
 			auto Result = OwnerDasan->AIMoveToActor( OwnerDasan->GetCurTargetBuilding(), 250.0f, true );
 			PRINTLOG(TEXT("[TourState] MoveTo 결과: %d"), (int32)Result.Code);
 		}
@@ -424,6 +396,8 @@ bool UTourStateSystem::IsUpdateEnble() const
 	return true;
 }
 
+static FColor TransparentYellow(255, 255, 0, 64); // (R,G,B,A)
+
 void UTourStateSystem::DrawPlayerRadiusDebug() const
 {
 	UWorld* World = OwnerDasan->GetWorld();
@@ -431,7 +405,6 @@ void UTourStateSystem::DrawPlayerRadiusDebug() const
 		return;
 
 	const FVector Origin = OwnerDasan->GetActorLocation();
-	const float Lifetime = CheckInterval;
-
-	DrawDebugSphere(World, Origin, PlayerDetectionRadius, 24, FColor::Yellow, false, Lifetime, 0, 2.0f);
+	DrawDebugSphere(World, Origin, PlayerDetectionRadius, 8, TransparentYellow, false, 1.0f, 0, 3.0f);
 }
+
