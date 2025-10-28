@@ -321,39 +321,52 @@ void ADasanActor::StartTour()
     if (CurTargetBuilding)
     {
         float Distance = GetTargetBuildingDistnace();
-        PRINTLOG(TEXT(" 타겟 건물 발견: %s (거리: %.1f)"),
-            *CurTargetBuilding->GetName(),
-            Distance);
+        PRINTLOG(TEXT(" 타겟 건물 발견: %s (거리: %.1f)"), *CurTargetBuilding->GetName(), Distance);
 
         // 상태를 먼저 설정
         DasanState = EDasanState::Tour;
 
         // 투어 시작 시 플레이어 거리 체크
         APawn* Player = GetPlayerPawn();
-        if (Player && GetPlayerDistance(Player) > playerMaxDis)
-        {
-            PRINTLOG(TEXT(" 플레이어가 너무 멀리 있음. 대기 상태(TourWait)에서 시작함"));
-            if (TourStateSystem)
-            {
-                TourStateSystem->SetTourState(ETourState::TourWait);
-            }
-            else
-            {
-                PRINTLOG(TEXT("[WARN] StartTour: TourStateSystem이 nullptr입니다."));
-            }
+
+    	const bool bHasPlayer = (Player != nullptr);
+    	const float PlayerDistance = bHasPlayer ? GetPlayerDistance(Player) : -1.0f;
+
+    	if (!bHasPlayer)
+    	{
+    		PRINTLOG(TEXT(" 유효한 플레이어가 없어 대기 상태(TourWait)에서 시작함"));
+    	}
+
+    	if (!bHasPlayer || PlayerDistance > playerMaxDis)
+    	{
+    		if (PlayerDistance > playerMaxDis && bHasPlayer)
+    		{
+    			PRINTLOG(TEXT(" 플레이어가 너무 멀리 있음(거리: %.1f). 대기 상태(TourWait)에서 시작함"), PlayerDistance);
+    		}
+    		
+            // if (TourStateSystem)
+            // {
+            // }
+            // else
+            // {
+            //     PRINTLOG(TEXT("[WARN] StartTour: TourStateSystem이 nullptr입니다."));
+            // }
+    		TourStateSystem->SetTourState(ETourState::TourWait);
             waitChackTimer = 1.f;
         }
         else
         {
-            PRINTLOG(TEXT(" 플레이어가 근처에 있음. 이동 상태(TourMove) 시작함"));
-            if (TourStateSystem)
-            {
-                TourStateSystem->SetTourState(ETourState::TourMove);
-            }
-            else
-            {
-                PRINTLOG(TEXT("[WARN] StartTour: TourStateSystem이 nullptr입니다."));
-            }
+        	PRINTLOG(TEXT(" 플레이어가 근처에 있음(거리: %.1f). 이동 상태(TourMove) 시작함"), PlayerDistance);
+
+        	TourStateSystem->SetTourState(ETourState::TourMove);
+
+            // if (TourStateSystem)
+            // {
+            // }
+            // else
+            // {
+            //     PRINTLOG(TEXT("[WARN] StartTour: TourStateSystem이 nullptr입니다."));
+            // }
 
             // AI Controller로 이동 시작 (NavMesh 위치로)
             if (DasanAicontrol && CurTargetBuilding)
@@ -363,21 +376,6 @@ void ADasanActor::StartTour()
                 FNavLocation TargetNavLoc;
                 if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
                 {
-                    // FAIMoveRequest MoveRequest;
-                    // MoveRequest.SetGoalLocation(TargetNavLoc.Location);
-                    // MoveRequest.SetAcceptanceRadius(wayPointDis);
-                    // MoveRequest.SetUsePathfinding(true);
-                    //
-                    // FPathFollowingRequestResult Result = DasanAicontrol->MoveTo(MoveRequest);
-                    // if (Result.Code == EPathFollowingRequestResult::RequestSuccessful)
-                    // {
-                    //     PRINTLOG(TEXT(" AI MoveTo 시작 성공 (NavMesh 위치)"));
-                    // }
-                    // else
-                    // {
-                    //     PRINTLOG(TEXT(" AI MoveTo 실패: %d"), (int32)Result.Code);
-                    // }
-
                 	auto Result = this->AIMoveToLoc(TargetNavLoc.Location, wayPointDis, true);
                 	if (Result.Code == EPathFollowingRequestResult::RequestSuccessful)
                 	    PRINTLOG(TEXT(" AI MoveTo 시작 성공 (NavMesh 위치)"));

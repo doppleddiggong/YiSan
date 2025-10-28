@@ -49,11 +49,11 @@ void UChatBoxWidget::OnTextCommittedHandler(const FText& Text, ETextCommit::Type
 			// 플레이어 이름 가져오기
 			FString PlayerName = Owner->GetPlayerDisplayName();
 
-			// Dasan NPC가 질문을 받을 수 있는지 체크 (PlayerController를 통해 서버에 요청)
-			if (APlayerControl* PC = Owner->GetController<APlayerControl>())
-			{
-				PC->ServerRPC_TryStartAnswer(PlayerName);
-			}
+			// // Dasan NPC가 질문을 받을 수 있는지 체크 (PlayerController를 통해 서버에 요청)
+			// if (APlayerControl* PC = Owner->GetController<APlayerControl>())
+			// {
+			// 	PC->ServerRPC_TryStartAnswer(PlayerName);
+			// }
 
 			// 채팅 메시지 전송
 		    FChatMessage ChatMessage(EChatMessageType::User, PlayerName, *InputString);
@@ -103,16 +103,16 @@ void UChatBoxWidget::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
 			// 	PRINTLOG(TEXT("[ChatBox] SendAnswerReply 호출 - AnswerListen → AnswerReply"));
 			// }
 
-			// GPT 응답을 받았으므로 AnswerReply 상태로 전환
-			if (APlayerControl* PC = Owner->GetController<APlayerControl>())
-			{
-				PC->ServerRPC_AnswerReply();
-			}
+			// // GPT 응답을 받았으므로 AnswerReply 상태로 전환
+			// if (APlayerControl* PC = Owner->GetController<APlayerControl>())
+			// {
+			// 	PC->ServerRPC_AnswerReply();
+			// }
 
 			FChatMessage ChatMessage(EChatMessageType::NPC, GameString::NPC,Response.gpt_response_text);
 			ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
 
-			Owner->PlayTTSAudio(Response.audio_data);
+			// Owner->PlayTTSAudio(Response.audio_data);
 
 			// FinishAnswer는 TTS 재생 완료 후 OnVoiceTalkFinished에서 자동 호출됨
 			// 여기서 즉시 호출하면 TTS가 재생되기 전에 상태가 초기화됨
