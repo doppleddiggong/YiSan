@@ -74,22 +74,41 @@ public:
 	// 클라이언트가 서버에게 맵 전환 요청 (Server RPC)
 	UFUNCTION(Server, Reliable, BlueprintCallable, Category = "Travel")
 	void Server_RequestMapTravel(const FString& MapPath);
-	void Server_RequestMapTravel_Implementation(const FString& MapPath);
 
 	// 클라이언트 RPC: 로딩 UI 표시
 	UFUNCTION(Client, Reliable)
 	void Client_ShowLoadingScreen();
-	void Client_ShowLoadingScreen_Implementation();
 
 	// 클라이언트 RPC: 로딩 UI 숨김
 	UFUNCTION(Client, Reliable)
 	void Client_HideLoadingScreen();
-	void Client_HideLoadingScreen_Implementation();
+
 	UPROPERTY()
 	UUserWidget* LoadingWidget;
 	//----------------로딩 관련-------------------
-	
-	// 클라이언트 RPC : 토스트메시지
+
+	// 음성 녹음 관련 Server RPC
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_NotifyRecordingStart();
+
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_NotifyRecordingEnd();
+
+	// Answer 관련 Server RPC
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_TryStartAnswer(const FString& PlayerName);
+
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_AnswerReply();
+
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_FinishAnswer();
+
+
+	// Toast 관련 Server RPC
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_ShowToastMessage(const FString& Message);
+
 	UFUNCTION(Client, Reliable)
 	void ClientRPC_ShowToastMessage(const FString& Message);
 	
@@ -99,4 +118,23 @@ private:
 
 private:
     class IControllable* GetControllable() const;
+
+
+	// 마지막 토스트 전송 시간                                                                                                                                          
+	float LastToastTime = 0.f;
+	// 쿨다운 (초)                                                                                                                                                      
+	const float ToastCooldown = 2.0f;
+	bool CanSendToast() const                                                                                                                                           
+	{
+		// 현재 시간 확인                                                                                                                                               
+		float CurrentTime = GetWorld()->GetTimeSeconds();
+
+		// 쿨다운 체크                                                                                                                                                  
+		if (CurrentTime - LastToastTime < ToastCooldown)
+		{
+			return false; // 너무 빠른 재호출                                                                                                                           
+		}
+
+		return true;
+	}
 };

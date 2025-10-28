@@ -5,6 +5,8 @@
  * @brief APlayerControl 구현에 대한 Doxygen 주석을 제공합니다.
  */
 #include "APlayerControl.h"
+
+#include "ADasanActor.h"
 #include "IControllable.h"
 
 #include "EnhancedInputSubsystems.h"
@@ -22,6 +24,9 @@
 #include "Kismet/GameplayStatics.h"
 
 #include "UDialogManager.h"
+#include "APlayerActor.h"
+#include "AYisanGameState.h"
+#include "UAnswerStateSystem.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
@@ -126,6 +131,20 @@ void APlayerControl::SetupInputComponent()
 		EIC->BindAction(IA_ShowMouse, ETriggerEvent::Started, this, &APlayerControl::OnShowMouse);
 		EIC->BindAction(IA_ShowMouse, ETriggerEvent::Completed, this, &APlayerControl::OnHideMouse);
 	}
+}
+
+void APlayerControl::ServerRPC_ShowToastMessage_Implementation(const FString& Message)
+{
+	// 권한 검증 (예: 스팸 방지)                                                                                                                                        
+	if (!CanSendToast())
+		return;
+
+	// 시간 업데이트                                                                                                                                                
+	LastToastTime = GetWorld()->GetTimeSeconds();
+	
+	// GameState의 Multicast 호출                                                                                                                                       
+	if (auto GS = GetWorld()->GetGameState<AYisanGameState>())
+		GS->MulticastRPC_ToastMessage(Message);
 }
 
 void APlayerControl::OnPlayerControlState(bool bState, UUserWidget* FocusWidget)
@@ -357,5 +376,106 @@ void APlayerControl::ClientRPC_ShowToastMessage_Implementation(const FString& Me
 	if (auto DM = UDialogManager::Get(this))
 	{
 		DM->ShowToast(Message);
+	}
+}
+
+void APlayerControl::ServerRPC_NotifyRecordingStart_Implementation()
+{
+	if (!HasAuthority())
+		return;
+
+	if (!GetPawn())
+	{
+		PRINTLOG(TEXT("[PlayerControl] ServerRPC_NotifyRecordingStart - No Pawn!"));
+		return;
+	}
+
+	// 플레이어 이름 가져오기
+	FString PlayerName = TEXT("Unknown");
+	if (auto PlayerActor = Cast<APlayerActor>(GetPawn()))
+	{
+		PlayerName = PlayerActor->GetPlayerDisplayName();
+	}
+
+	PRINTLOG(TEXT("[PlayerControl] ServerRPC_NotifyRecordingStart - Player: %s"), *PlayerName);
+
+	// GameState를 통해 Dasan에게 전달
+	if (AYisanGameState* GS = GetWorld()->GetGameState<AYisanGameState>())
+	{
+		if (GS->DasanNPC && GS->DasanNPC->AnswerStateSystem)
+		{
+			GS->DasanNPC->AnswerStateSystem->TryStartAnswer(PlayerName);
+		}
+
+		// BroadcastManager를 통해 UI 업데이트
+		if (UBroadcastManager* BM = UBroadcastManager::Get(GetWorld()))
+		{
+			BM->SendAudioCapture(true);
+		}
+	}
+}
+
+void APlayerControl::ServerRPC_NotifyRecordingEnd_Implementation()
+{
+	if (!HasAuthority())
+		return;
+
+	PRINTLOG(TEXT("[PlayerControl] ServerRPC_NotifyRecordingEnd"));
+
+	// BroadcastManager를 통해 UI 업데이트
+	if (UBroadcastManager* BM = UBroadcastManager::Get(GetWorld()))
+	{
+		BM->SendAudioCapture(false);
+	}
+}
+
+void APlayerControl::ServerRPC_TryStartAnswer_Implementation(const FString& PlayerName)
+{
+	if (!HasAuthority())
+		return;
+
+	PRINTLOG(TEXT("[PlayerControl] ServerRPC_TryStartAnswer - Player: %s"), *PlayerName);
+
+	// GameState를 통해 Dasan에게 전달
+	if (AYisanGameState* GS = GetWorld()->GetGameState<AYisanGameState>())
+	{
+		if (GS->DasanNPC && GS->DasanNPC->AnswerStateSystem)
+		{
+			GS->DasanNPC->AnswerStateSystem->TryStartAnswer(PlayerName);
+		}
+	}
+}
+
+void APlayerControl::ServerRPC_AnswerReply_Implementation()
+{
+	if (!HasAuthority())
+		return;
+
+	PRINTLOG(TEXT("[PlayerControl] ServerRPC_AnswerReply"));
+
+	// GameState를 통해 Dasan에게 전달
+	if (AYisanGameState* GS = GetWorld()->GetGameState<AYisanGameState>())
+	{
+		if (GS->DasanNPC && GS->DasanNPC->AnswerStateSystem)
+		{
+			GS->DasanNPC->AnswerStateSystem->AnswerReply();
+		}
+	}
+}
+
+void APlayerControl::ServerRPC_FinishAnswer_Implementation()
+{
+	if (!HasAuthority())
+		return;
+
+	PRINTLOG(TEXT("[PlayerControl] ServerRPC_FinishAnswer"));
+
+	// GameState를 통해 Dasan에게 전달
+	if (AYisanGameState* GS = GetWorld()->GetGameState<AYisanGameState>())
+	{
+		if (GS->DasanNPC && GS->DasanNPC->AnswerStateSystem)
+		{
+			GS->DasanNPC->AnswerStateSystem->FinishAnswer();
+		}
 	}
 }

@@ -4,6 +4,7 @@
 
 #include "GameLogging.h"
 #include "APlayerActor.h"
+#include "APlayerControl.h"
 #include "UBroadcastManager.h"
 #include "UChatPlayerSystem.h"
 #include "UDialogManager.h"
@@ -99,6 +100,19 @@ void UVoiceConversationSystem::StartRecording()
 
 	BroadcastManager->SendAudioCapture(true);
 	PRINTLOG( TEXT("[VoiceConversation] Recording started."));
+
+	// 서버에 녹음 시작 알림 (PlayerController의 ServerRPC 사용)
+	if (Owner)
+	{
+		if (APlayerControl* PC = Owner->GetController<APlayerControl>())
+		{
+			PC->ServerRPC_NotifyRecordingStart();
+		}
+		else
+		{
+			PRINTLOG(TEXT("[VoiceConversation] Failed to get PlayerControl!"));
+		}
+	}
 }
 
 
@@ -146,6 +160,15 @@ void UVoiceConversationSystem::StopRecording()
 	AudioCapture->CloseStream();
 
 	BroadcastManager->SendAudioCapture(false);
+
+	// 서버에 녹음 종료 알림 (PlayerController의 ServerRPC 사용)
+	if (Owner)
+	{
+		if (APlayerControl* PC = Owner->GetController<APlayerControl>())
+		{
+			PC->ServerRPC_NotifyRecordingEnd();
+		}
+	}
 
 	PRINTLOG(TEXT("[VoiceConversation] Recording stopped. Original: SampleRate=%d, Channels=%d, PCM Size=%d bytes"),
 		LastSampleRate, LastNumChannels, PCMData.Num());
@@ -210,7 +233,10 @@ void UVoiceConversationSystem::OnResponseAsk(FResponseAsk& Response, bool bSucce
 		}
 		else
 		{
-			BroadcastManager->SendAnswerReply();
+			if (APlayerControl* PC = Owner->GetController<APlayerControl>())
+			{
+				PC->ServerRPC_AnswerReply();
+			}
 
 			// GPT 응답에서 줄바꿈 제거 (UI에서 자동 줄바꿈 처리)
 			FString CleanedText = Response.gpt_response_text;
@@ -314,7 +340,12 @@ void UVoiceConversationSystem::OnVoiceAudioFinished()
 	// BroadcastManager를 통해 TTS 재생 완료 알림
 	if (BroadcastManager)
 	{
-		BroadcastManager->SendVoiceAudioFinished();
+		if (APlayerControl* PC = Owner->GetController<APlayerControl>())
+		{
+			PC->ServerRPC_FinishAnswer();
+		}
+
+		// BroadcastManager->SendVoiceAudioFinished();
 		PRINTLOG(TEXT("[VoiceConversation] TTS 재생 완료 이벤트 발생"));
 	}
 

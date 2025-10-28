@@ -74,9 +74,6 @@ void UNetworkGameInstanceSubsystem::OnCreateSessionComplete(FName sessionName, b
     {
         UE_LOG(LogTemp, Warning, TEXT("세션 : %s 성공"), *sessionName.ToString());
 
-        // ServerTravel은 즉시 실행되므로 로딩 인디케이터 불필요
-        // ULoadingCircleManager::Increase(GetWorld()); // 제거됨 - Decrease 짝이 없음!
-
         if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
             DM->ShowToast(FString::Printf( TEXT("세션 : %s 성공"), *sessionName.ToString()));
 
@@ -95,7 +92,6 @@ void UNetworkGameInstanceSubsystem::FindOtherSession()
 
     if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
         DM->ShowToast(TEXT("세션 조회 시작"));        
-    //ULoadingCircleManager::Increase(GetWorld());
     
     //sessionSearch 만들자
     sessionSearch = MakeShared<FOnlineSessionSearch>();
@@ -112,7 +108,6 @@ void UNetworkGameInstanceSubsystem::OnFindSessionComplete(bool success)
 
     if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
         DM->ShowToast(TEXT("세션 조회 끝"));        
-    //ULoadingCircleManager::Decrease(GetWorld());
     
     if (success)
     {
@@ -147,11 +142,15 @@ void UNetworkGameInstanceSubsystem::JoinOtherSession(int32 sessionIndex)
     FString displayName;
     results[sessionIndex].Session.SessionSettings.Get(FName(TEXT("DP_NAME")), displayName);
 
+    ULoadingCircleManager::Get(GetWorld())->Show();
+    
     sessionInterface->JoinSession(0, FName(displayName), results[sessionIndex]);
 }
 
 void UNetworkGameInstanceSubsystem::OnJoinSessionComplete(FName sessionName, EOnJoinSessionCompleteResult::Type result)
 {
+    ULoadingCircleManager::Get(GetWorld())->Hide();
+
     if (result == EOnJoinSessionCompleteResult::Success)
     {
         FString url;

@@ -4,17 +4,13 @@
  * @file UBroadcastManger.cpp
  * @brief UBroadcastManger 구현에 대한 Doxygen 주석을 제공합니다.
  */
+
 #include "UBroadcastManager.h"
 
 void UBroadcastManager::SendMessage(const FString& InMsg)
 {
 	OnMessage.Broadcast(InMsg);
 }
-
-// void UBroadcastManager::SendToastMessage(const FString& InMsg)
-// {
-// 	OnToastMessage.Broadcast(InMsg);
-// }
 
 void UBroadcastManager::SendNetworkWaitCount(int RequestCount )
 {
@@ -25,21 +21,21 @@ void UBroadcastManager::SendAudioCapture(bool bRecording)
 {
 	OnAudioCapture.Broadcast(bRecording);
 }
-
-void UBroadcastManager::SendAnswerReply()
-{
-	OnAnswerReply.Broadcast();
-}
-
-void UBroadcastManager::SendVoiceAudioFinished()
-{
-	OnVoiceAudioFinished.Broadcast();
-}
-
-void UBroadcastManager::SendAskListening(bool bListening, const FString& PlayerName)
-{
-	OnAskListening.Broadcast(bListening, PlayerName);
-}
+//
+// void UBroadcastManager::SendAnswerReply()
+// {
+// 	OnAnswerReply.Broadcast();
+// }
+//
+// void UBroadcastManager::SendVoiceAudioFinished()
+// {
+// 	OnVoiceTalkFinished.Broadcast();
+// }
+//
+// void UBroadcastManager::SendAskListening(bool bListening, const FString& PlayerName)
+// {
+// 	OnAskListening.Broadcast(bListening, PlayerName);
+// }
 
 void UBroadcastManager::SendAudioSpectrum(float Spectrum)
 {

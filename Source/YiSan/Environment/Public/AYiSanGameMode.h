@@ -24,9 +24,6 @@ public:
     UFUNCTION(BlueprintCallable, Category="Tour")
     void StartTour();
 
-    // 투어 상태 설정
-    void SetTourState(EDasanState InState);
-
 private:
     UPROPERTY()
     TObjectPtr<class ADasanActor> DasanNPC;

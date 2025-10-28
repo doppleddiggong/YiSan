@@ -46,7 +46,7 @@ ADasanActor::ADasanActor()
 	// 위젯 컴포넌트 생성 (머리 위에 표시)
 	DasanWidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("DasanWidgetComponent"));
 	DasanWidgetComp->SetupAttachment(RootComponent);
-	DasanWidgetComp->SetRelativeLocation(FVector(0.f, 0.f, 170.f));  // 머리 위 Z+170
+	DasanWidgetComp->SetRelativeLocation(FVector(0.f, 0.f, 85.f));
 	DasanWidgetComp->SetWidgetSpace(EWidgetSpace::Screen);
 	DasanWidgetComp->SetDrawSize(FVector2D(300.f, 100.f));
 
@@ -82,7 +82,39 @@ void ADasanActor::BeginPlay()
 	if (DasanWidgetComp && DasanWidgetComp->GetWidget())
 	{
 		DasanWidget = Cast<UDasanWidget>(DasanWidgetComp->GetWidget());
-		DasanWidget->InitWidget(this);
+		if (DasanWidget)
+		{
+			DasanWidget->InitWidget(this);
+			PRINTLOG(TEXT("[Dasan] DasanWidget 캐싱 및 초기화 완료"));
+		}
+		else
+		{
+			PRINTLOG(TEXT("[Dasan] DasanWidget Cast 실패!"));
+		}
+
+		// 클라이언트 접속 시 리플리케이트된 상태로 위젯을 초기화
+		// (OnRep는 값이 변경될 때만 호출되므로, 최초 접속 시에는 수동으로 업데이트 필요)
+		if (!HasAuthority())
+		{
+			// 약간의 지연 후 업데이트 (리플리케이션이 완료될 때까지 대기)
+			FTimerHandle InitWidgetTimer;
+			GetWorldTimerManager().SetTimer(InitWidgetTimer, [this]()
+			{
+				if (DasanWidget)
+				{
+					UpdateWidgetState();
+					PRINTLOG(TEXT("[DasanWidget] 클라이언트 초기 위젯 상태 업데이트 완료"));
+				}
+				else
+				{
+					PRINTLOG(TEXT("[DasanWidget] 클라이언트 초기 업데이트 실패 - Widget is nullptr"));
+				}
+			}, 0.1f, false);
+		}
+	}
+	else
+	{
+		PRINTLOG(TEXT("[Dasan] DasanWidgetComp 또는 Widget이 nullptr!"));
 	}
 
 	// 값 설정
@@ -93,7 +125,14 @@ void ADasanActor::BeginPlay()
 	PRINTLOG(TEXT("========== ADasanActor BeginPlay =========="));
 	PRINTLOG(TEXT(" playerMaxDis: %.1f"), playerMaxDis);
 	PRINTLOG(TEXT(" wayPointDis: %.1f"), wayPointDis);
+	PRINTLOG(TEXT(" HasAuthority: %s"), HasAuthority() ? TEXT("TRUE (Server)") : TEXT("FALSE (Client)"));
 
+	// 시스템 초기화 - 모든 머신에서 실행
+	TourStateSystem->InitSystem(this);
+	AnswerStateSystem->InitSystem(this);
+	PRINTLOG(TEXT(" State Systems 초기화 완료"));
+
+	// 서버 전용 로직
 	if (HasAuthority())
 	{
 		// AI 컨트롤러 가져오기
@@ -107,25 +146,21 @@ void ADasanActor::BeginPlay()
 		else
 		{
 			PRINTLOG(TEXT(" AI Controller 초기화 성공: %s"), *DasanAicontrol->GetName());
-			
+
 			// AI MoveTo 완료 콜백 바인딩 추가
 			DasanAicontrol->ReceiveMoveCompleted.AddDynamic(this, &ADasanActor::OnMoveCompleted);
 		}
 
-		// 시스템 초기화 - nullptr 체크 추가
-		TourStateSystem->InitSystem(this);
-		// ExplainStateSystem->InitSystem(this);
-		AnswerStateSystem->InitSystem(this);
-		
 		QuestManager = UQuestManager::Get(GetWorld());
 		if (QuestManager)
 		{
 			QuestManager->InitSystem();
 			PRINTLOG(TEXT(" QuestManager 초기화 성공"));
 		}
+
 		// 초기 상태 설정
 		DasanState = EDasanState::Tour;
-		
+
 		// 투어 시작
 		StartTour();
 	}
@@ -248,14 +283,6 @@ void ADasanActor::OnRep_DasanState()
 
 	// 클라이언트에서 메인 상태가 복제되었으므로 위젯 업데이트
 	UpdateWidgetState();
-}
-
-// 서버 RPC 구현
-void ADasanActor::ServerRPC_SetDasanState_Implementation(EDasanState InState)
-{
-	PRINTLOG(TEXT("DasanActor ServerRPC_SetDasanState(%s)"), *ENUM_TO_NAME(EDasanState, DasanState));
-	
-	DasanState = InState;
 }
 
 float ADasanActor::GetTargetBuildingDistnace()
@@ -634,7 +661,16 @@ void ADasanActor::UpdateWidgetState()
 {
 	// 캐싱된 위젯 사용
 	if (!DasanWidget)
+	{
+		PRINTLOG(TEXT("[Dasan] UpdateWidgetState - DasanWidget is nullptr!"));
 		return;
+	}
+
+	PRINTLOG(TEXT("[Dasan] UpdateWidgetState - DasanState: %s, TourState: %s, AnswerState: %s (Authority: %s)"),
+		*ENUM_TO_NAME(EDasanState, DasanState),
+		*ENUM_TO_NAME(ETourState, TourStateSystem->GetCurState()),
+		*ENUM_TO_NAME(EAnswerState, AnswerStateSystem->GetCurState()),
+		HasAuthority() ? TEXT("TRUE") : TEXT("FALSE"));
 
 	// 위젯 상태 업데이트
 	DasanWidget->UpdateDasanState(DasanState, TourStateSystem->GetCurState(), AnswerStateSystem->GetCurState());

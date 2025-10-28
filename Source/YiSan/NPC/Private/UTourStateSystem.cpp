@@ -18,6 +18,7 @@
 #include "GameFramework/Character.h"
 #include "Sound/SoundCue.h"
 #include "NavigationSystem.h"
+#include "Net/UnrealNetwork.h"
 
 // 2초에 한 번 검사
 static float CheckInterval = 2.0f;
@@ -25,6 +26,29 @@ static float CheckInterval = 2.0f;
 UTourStateSystem::UTourStateSystem()
 {
 	PrimaryComponentTick.bCanEverTick = false;
+	SetIsReplicatedByDefault(true);
+}
+
+void UTourStateSystem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(UTourStateSystem, CurState);
+}
+
+void UTourStateSystem::OnRep_CurState()
+{
+	PRINTLOG(TEXT("[TourSystem] OnRep_CurState - New State: %s (Client)"), *ENUM_TO_NAME(ETourState, CurState));
+
+	// 클라이언트에서 상태가 복제되었으므로 위젯 업데이트
+	if (OwnerDasan)
+	{
+		OwnerDasan->UpdateWidgetState();
+	}
+	else
+	{
+		PRINTLOG(TEXT("[TourSystem] OnRep_CurState - OwnerDasan is nullptr (InitSystem not called yet)"));
+	}
 }
 
 void UTourStateSystem::InitSystem(ADasanActor* InOwner)
@@ -42,7 +66,13 @@ void UTourStateSystem::InitSystem(ADasanActor* InOwner)
 
 void UTourStateSystem::SetTourState(const ETourState InState)
 {
+	const ETourState OldState = CurState;
 	CurState = InState;
+
+	PRINTLOG(TEXT("[TourSystem] SetTourState - %s → %s (Authority: %s)"),
+		*ENUM_TO_NAME(ETourState, OldState),
+		*ENUM_TO_NAME(ETourState, InState),
+		OwnerDasan && OwnerDasan->HasAuthority() ? TEXT("TRUE") : TEXT("FALSE"));
 
 	// 상태가 변경되었으므로 위젯 업데이트
 	if (OwnerDasan)
@@ -207,7 +237,7 @@ void UTourStateSystem::Enter_TourEnd()
 	// 필요 시 추가 처리 (예: 다시 처음부터 시작, 또는 대기 상태)
 	if (auto GS = GetWorld()->GetGameState<AYisanGameState>())
 	{
-		GS->ServerRPC_BroadcastToastMessage(TEXT("모든 투어 일정이 종료되었습니다"));
+		GS->MulticastRPC_ToastMessage(TEXT("모든 투어 일정이 종료되었습니다"));
 	}
 }
 
@@ -328,7 +358,7 @@ void UTourStateSystem::Tick_TourExplain(float DeltaTime)
 			PRINTLOG(TEXT("[TourState] %s"), *ChatMessageText);
 
 			if (auto GS = GetWorld()->GetGameState<AYisanGameState>())                                                                                                                                               
-			    GS->ServerRPC_BroadcastToastMessage(ChatMessageText);                                                           
+			    GS->MulticastRPC_ToastMessage(ChatMessageText);                                                           
 
 			LastReportedTime = RemainingTime;
 		}

@@ -15,12 +15,18 @@ class YISAN_API UTourStateSystem : public UActorComponent
 public:
 	UTourStateSystem();
 
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
 public:
 	FORCEINLINE ETourState GetCurState() const { return CurState; }
 	void SetTourState(const ETourState InState);
 
 	void InitSystem(class ADasanActor* InOwner);
 	void UpdateTick(float DeltaTime );
+
+	// RepNotify 함수
+	UFUNCTION()
+	void OnRep_CurState();
 
 private:
 	// 상태별 Enter 함수
@@ -46,7 +52,9 @@ private:
 	UPROPERTY()
 	TObjectPtr<class UBroadcastManager> BroadcastManager;
 
+	UPROPERTY(ReplicatedUsing=OnRep_CurState)
 	ETourState CurState = ETourState::None;
+
 	ETourState PrevState = ETourState::None;
 
 	// 이동 관련

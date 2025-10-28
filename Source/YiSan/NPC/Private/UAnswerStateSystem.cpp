@@ -2,14 +2,13 @@
 
 #include "UAnswerStateSystem.h"
 #include "ADasanActor.h"
-#include "APlayerActor.h"
 #include "GameLogging.h"
 #include "UBroadcastManager.h"
 #include "UDialogManager.h"
 #include "AIController.h"
+#include "AYisanGameState.h"
 #include "Macro.h"
 #include "Net/UnrealNetwork.h"
-#include "Kismet/GameplayStatics.h"
 
 UAnswerStateSystem::UAnswerStateSystem()
 {
@@ -25,25 +24,35 @@ void UAnswerStateSystem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
 	DOREPLIFETIME(UAnswerStateSystem, CurState);
 }
 
+void UAnswerStateSystem::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
 void UAnswerStateSystem::InitSystem(ADasanActor* InOwner)
 {
 	OwnerDasan = InOwner;
 	PrevState = EAnswerState::AnswerListen;
 	PreviousMainState = EDasanState::Tour;
 
-	// BroadcastManager 가져오기 및 이벤트 구독
-	BroadcastManager = UBroadcastManager::Get(GetWorld());
-	if (BroadcastManager)
-	{
-		BroadcastManager->OnAudioCapture.AddDynamic(this, &UAnswerStateSystem::OnAudioCapture);
-		BroadcastManager->OnVoiceAudioFinished.AddDynamic(this, &UAnswerStateSystem::OnTTSFinished);
-		BroadcastManager->OnAnswerReply.AddDynamic(this, &UAnswerStateSystem::OnAnswerReply);
-	}
+	// // BroadcastManager 가져오기 및 이벤트 구독
+	// BroadcastManager = UBroadcastManager::Get(GetWorld());
+	// if (BroadcastManager)
+	// {
+	// 	BroadcastManager->OnVoiceTalkFinished.AddDynamic(this, &UAnswerStateSystem::OnVoiceTalkFinished);
+	// 	// BroadcastManager->OnAnswerReply.AddDynamic(this, &UAnswerStateSystem::OnAnswerReply);
+	// }
 }
 
 void UAnswerStateSystem::SetCurState(EAnswerState InState)
 {
+	const EAnswerState OldState = CurState;
 	CurState = InState;
+
+	PRINTLOG(TEXT("[AnswerSystem] SetCurState - %s → %s (Authority: %s)"),
+		*ENUM_TO_NAME(EAnswerState, OldState),
+		*ENUM_TO_NAME(EAnswerState, InState),
+		OwnerDasan && OwnerDasan->HasAuthority() ? TEXT("TRUE") : TEXT("FALSE"));
 
 	// 상태가 변경되었으므로 위젯 업데이트
 	if (OwnerDasan)
@@ -52,29 +61,49 @@ void UAnswerStateSystem::SetCurState(EAnswerState InState)
 	}
 }
 
+bool UAnswerStateSystem::IsAnswerSessionActive() const
+{
+	return !CurQuestionerName.IsEmpty();
+}
 
 void UAnswerStateSystem::OnRep_CurState()
 {
+	PRINTLOG(TEXT("[AnswerSystem] OnRep_CurState - New State: %s (Client)"),
+		*ENUM_TO_NAME(EAnswerState, CurState));
+
+	// 클라이언트에서 상태가 복제되었으므로 위젯 업데이트
 	if (OwnerDasan)
 	{
 		OwnerDasan->UpdateWidgetState();
 	}
-}
-
-// 블루프린트 호출 함수들
-void UAnswerStateSystem::OnAnswerReply()
-{
-	if (!OwnerDasan || !OwnerDasan->HasAuthority())
-		return;
-
-	PRINTLOG( TEXT("[AnswerState] OnAnswerReply"));
-
-	// Listen 상태에서만 Reply로 전환
-	if (CurState == EAnswerState::AnswerListen)
+	else
 	{
-		this->SetCurState(EAnswerState::AnswerReply);
+		PRINTLOG(TEXT("[AnswerSystem] OnRep_CurState - OwnerDasan is nullptr (InitSystem not called yet)"));
 	}
 }
+
+
+void UAnswerStateSystem::OnRep_QuestionerName()
+{
+	// 클라이언트에서 복제된 값 로그 출력
+	PRINTLOG(TEXT("[AnswerSystem] OnRep_QuestionerName - %s"), *CurQuestionerName);
+
+	// Toast 메시지는 서버의 TryStartAnswer에서 표시됨
+	// OnRep에서는 ServerRPC를 호출하면 안 됨!
+}
+
+
+// // 블루프린트 호출 함수들
+// void UAnswerStateSystem::OnAnswerReply()
+// {
+// 	PRINTLOG( TEXT("[AnswerState] OnAnswerReply"));
+//
+// 	// Listen 상태에서만 Reply로 전환
+// 	if (CurState == EAnswerState::AnswerListen)
+// 	{
+// 		this->SetCurState(EAnswerState::AnswerReply);
+// 	}
+// }
 
 
 bool UAnswerStateSystem::CanStartAnswer(const FString& PlayerName, FString& OutReason) const
@@ -120,6 +149,25 @@ bool UAnswerStateSystem::TryStartAnswer(const FString& PlayerName)
 	CurQuestionerName = PlayerName;
 	PRINTLOG(TEXT("[AnswerSystem] %s님의 질문 시작"), *PlayerName);
 
+	// 모든 클라이언트에 Toast 메시지 표시
+	if (auto GS = GetWorld()->GetGameState<AYisanGameState>())
+	{
+		GS->MulticastRPC_ToastMessage(FString::Printf(TEXT("%s가 질문중입니다"), *PlayerName));
+	}
+
+	// 타임아웃 타이머 시작 (예외 상황 대비)
+	if (GetWorld())
+	{
+		GetWorld()->GetTimerManager().SetTimer(
+			AnswerTimeoutTimer,
+			this,
+			&UAnswerStateSystem::OnAnswerTimeout,
+			AnswerTimeoutDuration,
+			false
+		);
+		PRINTLOG(TEXT("[AnswerSystem] 답변 타임아웃 타이머 시작 (%.1f초)"), AnswerTimeoutDuration);
+	}
+
 	// 현재 Dasan 메인 상태가 Answer가 아닐 때만 처리
 	if (OwnerDasan->DasanState != EDasanState::Answer)
 	{
@@ -139,7 +187,18 @@ bool UAnswerStateSystem::TryStartAnswer(const FString& PlayerName)
 		OwnerDasan->TransitionToState(EDasanState::Answer);
 	}
 
+	// Answer 서브 상태를 AnswerListen으로 설정 (음성 듣는 중)
+	SetCurState(EAnswerState::AnswerListen);
+
 	return true;
+}
+
+void UAnswerStateSystem::AnswerReply()
+{
+	if (CurState == EAnswerState::AnswerListen)
+	{
+		SetCurState(EAnswerState::AnswerReply);
+	}
 }
 
 void UAnswerStateSystem::FinishAnswer()
@@ -149,14 +208,24 @@ void UAnswerStateSystem::FinishAnswer()
 
 	PRINTLOG(TEXT("[AnswerSystem] %s님의 질문 종료"), *CurQuestionerName);
 
-	// UI 위젯 숨기기 (다산이 듣기 종료)
-	if (BroadcastManager)
+	// 타임아웃 타이머 정리
+	if (GetWorld() && AnswerTimeoutTimer.IsValid())
 	{
-		BroadcastManager->SendAskListening(false, TEXT(""));
-		PRINTLOG(TEXT("[AnswerState] SendDasanListening(false)"));
+		GetWorld()->GetTimerManager().ClearTimer(AnswerTimeoutTimer);
+		PRINTLOG(TEXT("[AnswerSystem] 답변 타임아웃 타이머 정리"));
 	}
 
+	// // UI 위젯 숨기기 (다산이 듣기 종료)
+	// if (BroadcastManager)
+	// {
+	// 	BroadcastManager->SendAskListening(false, TEXT(""));
+	// 	PRINTLOG(TEXT("[AnswerState] SendDasanListening(false)"));
+	// }
+
 	CurQuestionerName.Empty();
+
+	// Answer 서브 상태 초기화
+	SetCurState(EAnswerState::AnswerListen);
 
 	// 이전 상태로 복귀
 	if (PreviousMainState != EDasanState::Answer)
@@ -166,55 +235,29 @@ void UAnswerStateSystem::FinishAnswer()
 	}
 }
 
-bool UAnswerStateSystem::IsAnswerSessionActive() const
-{
-	return !CurQuestionerName.IsEmpty();
-}
-
-void UAnswerStateSystem::OnAudioCapture(bool bRecording)
+void UAnswerStateSystem::OnAnswerTimeout()
 {
 	if (!OwnerDasan || !OwnerDasan->HasAuthority())
 		return;
 
-	if (bRecording)
-	{
-		// 음성 녹음 시작 - 플레이어 이름 가져오기
-		PRINTLOG(TEXT("[AnswerSystem] 음성 녹음 시작 감지"));
+	PRINTLOG(TEXT("[AnswerSystem] 답변 타임아웃 발생 - 강제 종료"));
 
-		// 첫 번째 플레이어 가져오기
-		APlayerController* PC = UGameplayStatics::GetPlayerController(GetWorld(), 0);
-		if (!PC || !PC->GetPawn())
-		{
-			PRINTLOG(TEXT("[AnswerSystem] 플레이어를 찾을 수 없습니다."));
-			return;
-		}
+	// 타임아웃 메시지 표시
+	if (auto DM = UDialogManager::Get(GetWorld()))
+		DM->ShowToast(TEXT("질문 시간이 초과되어 대화가 종료되었습니다."));
 
-		// APlayerActor에서 실제 플레이어 표시 이름 가져오기
-		FString PlayerName = TEXT("Unknown");
-		if (auto PlayerActor = Cast<APlayerActor>(PC->GetPawn()))
-		{
-			PlayerName = PlayerActor->GetPlayerDisplayName();
-		}
-
-		PRINTLOG(TEXT("[AnswerSystem] 플레이어 이름: %s"), *PlayerName);
-
-		// Answer 시작 시도
-		TryStartAnswer(PlayerName);
-	}
-	else
-	{
-		// 음성 녹음 종료 - TTS 대기 중
-		PRINTLOG(TEXT("[AnswerSystem] 음성 녹음 종료 감지 (Answer 상태 유지 - TTS 대기)"));
-	}
-}
-
-void UAnswerStateSystem::OnTTSFinished()
-{
-	if (!OwnerDasan || !OwnerDasan->HasAuthority())
-		return;
-
-	PRINTLOG(TEXT("[AnswerSystem] TTS 재생 완료 - FinishAnswer 호출"));
-
-	// Answer 완료 처리
+	// 답변 종료 처리
 	FinishAnswer();
 }
+
+
+// void UAnswerStateSystem::OnVoiceTalkFinished()
+// {
+// 	if (!OwnerDasan || !OwnerDasan->HasAuthority())
+// 		return;
+//
+// 	PRINTLOG(TEXT("[AnswerSystem] TTS 재생 완료 - FinishAnswer 호출"));
+//
+// 	// Answer 완료 처리
+// 	FinishAnswer();
+// }
