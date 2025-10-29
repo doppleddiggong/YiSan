@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/VerticalBox.h"
+#include "Components/TextBlock.h"
 #include "UPlayerWidget.generated.h"
 
 /**
@@ -14,10 +16,20 @@ class YISAN_API UPlayerWidget : public UUserWidget
 {
 	GENERATED_BODY()
 
-	UFUNCTION()
-	void GetUserWidgetObject();
-};
+protected:
+	virtual void NativeConstruct() override;
 
-inline void UPlayerWidget::GetUserWidgetObject()
-{
-}
+public:
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UVerticalBox> PlayerListContainer;
+
+	UFUNCTION()
+	void UpdatePlayerList(const TArray<FString>& playerNames);
+
+	UFUNCTION()
+	UTextBlock* CreatePlayerText(const FString& playerName);
+
+	UFUNCTION()
+	void OnPlayerListUpdated(const TArray<FString>& NewPlayerList);
+
+};
