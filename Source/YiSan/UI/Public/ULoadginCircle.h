@@ -36,7 +36,7 @@ public:
 	/// @brief 위젯을 Game Viewport에 추가하여 레벨 전환 시에도 유지되도록 합니다.
 	/// @param ZOrder 뷰포트에서의 레이어 순서 (높을수록 위에 표시됨)
 	UFUNCTION(BlueprintCallable, Category = "Loading")
-	void AddToGameViewport(int32 ZOrder = 1000);
+	void AddToGameViewport(int32 ZOrder);
 
 private:
 	/// @brief 로딩 스피너 회전 애니메이션을 갱신합니다.

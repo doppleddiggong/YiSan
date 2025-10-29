@@ -1,3 +1,4 @@
+
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #pragma once
@@ -28,26 +29,19 @@ public:
 protected:
     /// @brief 게임 플레이가 시작될 때 호출되어 의존 시스템을 초기화합니다.
     virtual void BeginPlay() override;
-
+    
 public:
     /// @brief 플레이어의 최신 GPT 컨텍스트 스냅샷을 수집합니다.
     /// @return 플레이어 위치, 시선 대상, 주변 건물을 담은 FGPTContext입니다.
     FGPTContext GetGPTContext() const;
 
     FString GetPlayerDisplayName() const;
+    int GetLocalPlayerIndex() const;
 
 private:
-    // /// @brief 주변에서 가장 가까운 건물을 찾고 관련 시스템에 알립니다.
-    // void FindNearestBuilding();
-    //
-    // /// @brief 가장 가까운 건물을 주기적으로 평가하기 위한 타이머 핸들입니다.
-    // FTimerHandle TimeHandle_NearestBuilding;
-
     /// @brief 브로드캐스트 매니저에서 전달되는 음성 명령 실행 이벤트에 대응합니다.
     UFUNCTION()
     void OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester);
-    UFUNCTION()
-    void DelayedSendQuestUpdate();
 
 public:
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Owner")

@@ -41,12 +41,12 @@ private:
     void OnContactBuilding(EBuildingType InType);
 
 private:
+    UPROPERTY()
+    TObjectPtr<class UBroadcastManager> BroadcastManager;
+
     TArray<EBuildingType> QuestList;
     
     int32 CurQuestIndex = INDEX_NONE;
     
     EBuildingType CurTarget = EBuildingType::None;
-
-    UPROPERTY()
-    TObjectPtr<class UBroadcastManager> BroadcastManager;
 };

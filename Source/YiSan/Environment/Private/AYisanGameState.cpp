@@ -28,6 +28,14 @@ void AYisanGameState::MulticastRPC_ToastMessage_Implementation(const FString& Me
 	}
 }
 
+void AYisanGameState::MulticastRPC_UpdateQuestTarget_Implementation(const EBuildingType InBuildingType)
+{
+	if (APlayerControl* PC = Cast<APlayerControl>(GetWorld()->GetFirstPlayerController()))
+	{
+		PC->ClientRPC_UpdateQuestTarget(InBuildingType);
+	}
+}
+
 void AYisanGameState::StartGlobalTour()
 {
 	if (!HasAuthority())
