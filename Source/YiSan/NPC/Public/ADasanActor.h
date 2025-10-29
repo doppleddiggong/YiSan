@@ -54,13 +54,29 @@ public:
 	FPathFollowingRequestResult AIMoveToLoc(
 		const FVector& InGoalLocation,
 		const float InAcceptanceRadius,
-		const bool bPathfinding ) const;
+		const bool bPathfinding );
 
 	FPathFollowingRequestResult AIMoveToActor(
 		const AActor* Actor,
 		const float InAcceptanceRadius,
-		const bool bPathfinding ) const;
+		const bool bPathfinding );
 
+	// 위젯 상태 업데이트 함수
+	void UpdateWidgetState();
+
+	// 플레이어 폰을 가져오는 헬퍼 함수
+	class APawn* GetPlayerPawn() const;
+	
+	// 플레이어와의 거리를 계산하는 함수
+	float GetPlayerDistance(class APawn* PlayerPawn) const;
+	
+
+private:
+	void DebugDrawPath(const FVector& GoalLocation);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPC_DrawDebugPath(const TArray<FVector>& PathPoints);
+	
 public:
 	// 상태 시스템 컴포넌트
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="State")
@@ -77,15 +93,6 @@ public:
 	UPROPERTY()
 	TObjectPtr<class UDasanWidget> DasanWidget;
 
-	// 위젯 상태 업데이트 함수
-	void UpdateWidgetState();
-
-	// 플레이어 폰을 가져오는 헬퍼 함수
-	class APawn* GetPlayerPawn() const;
-	
-	// 플레이어와의 거리를 계산하는 함수
-	float GetPlayerDistance(class APawn* PlayerPawn) const;
-	
 	// ai control
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AI")
 	TObjectPtr<class AAIController> DasanAicontrol;
@@ -99,6 +106,10 @@ public:
 	// 웨이포인트 거리
 	float wayPointDis;
 
+	UPROPERTY(EditAnywhere, Category="Debug|Dasan")
+	bool bEnableDebugDraw = true;
+
+	
 public:	
 	UPROPERTY()
 	TObjectPtr<class UQuestManager> QuestManager;

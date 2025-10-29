@@ -15,7 +15,7 @@ class YISAN_API UAnswerStateSystem : public UActorComponent
 public:
 	UAnswerStateSystem();
 
-	protected:
+protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
@@ -27,10 +27,6 @@ public:
 	void SetCurState(EAnswerState InState);
 
 	void InitSystem(class ADasanActor* InOwner);
-	
-	// // TTS 재생 완료 이벤트 핸들러
-	// UFUNCTION()
-	// void OnVoiceTalkFinished();
 
 	// Answer 시작 가능 여부 체크
 	bool CanStartAnswer(const FString& PlayerName, FString& OutReason) const;
