@@ -45,3 +45,4 @@ void USmallPopup::UpdateBuildingInfo(const EBuildingType InBuildingType)
 		}
 	}
 }
+

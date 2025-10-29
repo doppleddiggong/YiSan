@@ -61,5 +61,23 @@ public:
     
     /// @brief 최근 감지된 건물 유형입니다.
     EBuildingType CurNearBuildingType = EBuildingType::None;
+
+	// slide 애니메이션 위해서
+	UPROPERTY(Transient, meta = (BindWidgetAnim))
+	TObjectPtr<UWidgetAnimation> Slideani;
+	
+	UPROPERTY(Transient, meta = (BindWidgetAnim))
+	TObjectPtr<UWidgetAnimation> disapperani;
+
+	EBuildingType PendBuildingType;
+	
+	// anim 호출 함수
+	void StartAnim();
+	void EndAnim();
+	//위젯 정보 업데이트 함수
+	void UpdatePopup(EBuildingType newType);
+	// 애니메이션 끝날때 정보 저장 함수
+	UFUNCTION()
+	void AnimFinished();
 };
 

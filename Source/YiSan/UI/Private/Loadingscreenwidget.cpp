@@ -180,3 +180,4 @@ FLinearColor ULoadingScreenWidget::GetProgressColor(float Progress) const
 		return FLinearColor::LerpUsingHSV(FLinearColor(1.0f, 1.0f, 0.2f), FLinearColor(0.2f, 1.0f, 0.2f), Alpha);
 	}
 }
+
