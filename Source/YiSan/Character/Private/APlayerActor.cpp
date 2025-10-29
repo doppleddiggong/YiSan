@@ -11,12 +11,10 @@
 #include "UChatPlayerSystem.h"
 #include "UChatUIWidget.h"
 #include "UChatBoxWidget.h"
-#include "UHttpNetworkSystem.h"
 #include "TimerManager.h"
 #include "Kismet/GameplayStatics.h"
-#include "ABuilding.h"
 #include "UBroadcastManager.h"
-#include "UQuestManager.h"
+#include "AQuestManagerActor.h"
 #include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Camera/CameraComponent.h"
 #include "YiSan/YiSan.h"
@@ -105,7 +103,8 @@ void APlayerActor::BeginPlay()
         FTimerHandle TimerHandle;
         GetWorld()->GetTimerManager().SetTimerForNextTick([this]()
         {
-            BroadcastManager->SendUpdateQuest(UQuestManager::Get(GetWorld())->GetCurTarget());
+            if (AQuestManagerActor* QuestManager = AQuestManagerActor::Get(this))
+                BroadcastManager->SendUpdateQuest(QuestManager->GetCurrentTarget());
 
             FChatMessage ChatMessage(EChatMessageType::User, *GetPlayerDisplayName(), TEXT("민지 왔쪄요"));
             ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);

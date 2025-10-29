@@ -6,7 +6,7 @@
 
 #include "AIController.h"
 
-#include "UQuestManager.h"
+#include "AQuestManagerActor.h"
 #include "ABuilding.h"
 #include "APlayerActor.h"
 #include "EBuildingType.h"
@@ -138,12 +138,7 @@ void ADasanActor::BeginPlay()
 			DasanAicontrol->ReceiveMoveCompleted.AddDynamic(this, &ADasanActor::OnMoveCompleted);
 		}
 
-		QuestManager = UQuestManager::Get(GetWorld());
-		if (QuestManager)
-		{
-			QuestManager->InitSystem();
-			PRINTLOG(TEXT(" QuestManager 초기화 성공"));
-		}
+		QuestManager = AQuestManagerActor::Get(GetWorld());
 
 		// 초기 상태 설정
 		DasanState = EDasanState::Tour;
@@ -360,7 +355,7 @@ ABuilding* ADasanActor::FindCurTargetBuilding() const
 		return CurTargetBuilding; // 기존 타깃 유지
 	}
 
-	EBuildingType TargetType = QuestManager->GetCurTarget();
+	EBuildingType TargetType = QuestManager->GetCurrentTarget();
 	if (TargetType == EBuildingType::None)
 	{
 		return CurTargetBuilding;
@@ -379,7 +374,7 @@ ABuilding* ADasanActor::FindCurTargetBuilding() const
 		}
 	}
 
-	PRINTLOG(TEXT("[WARN] FindCurTargetBuilding: 타겟 건물을 찾을 수 없음 (%s)"), *QuestManager->GetTargetBuildingName());
+	PRINTLOG(TEXT("[WARN] FindCurTargetBuilding: 타겟 건물을 찾을 수 없음"));
 
 	// 실패 시에도 기존 타깃 유지
 	return CurTargetBuilding;
@@ -484,7 +479,7 @@ void ADasanActor::NextQuest()
         return;
 
     // 퀘스트 매니저가 준비되지 않거나 타겟이 None이면 이동 중단
-    if (!QuestManager->IsHasQuest() || QuestManager->GetCurTarget() == EBuildingType::None)
+    if (!QuestManager->HasActiveQuest() || QuestManager->GetCurrentTarget() == EBuildingType::None)
     {
         PRINTLOG(TEXT(" NextQuest: 유효한 퀘스트가 없거나 TargetType이 None입니다."));
         TourStateSystem->SetTourState(ETourState::TourEnd);

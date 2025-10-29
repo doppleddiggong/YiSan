@@ -28,12 +28,22 @@ public:
 	// 투어 시작
 	UFUNCTION(BlueprintCallable, Category="Tour")
 	void StartGlobalTour();
+
+	/** @brief 퀘스트 매니저를 설정합니다. 서버 전용입니다. */
+	void SetQuestManager(class AQuestManagerActor* InQuestManager);
+
+	/** @brief 현재 퀘스트 매니저를 반환합니다. */
+	class AQuestManagerActor* GetQuestManager() const { return QuestManager; }
+
+private:
+	UFUNCTION()
+	void OnRep_QuestManager();
 	
 public:
 	UPROPERTY(Replicated, BlueprintReadOnly, Category="Tour")
 	TObjectPtr<class ADasanActor> DasanNPC;
 
 private:
-	UPROPERTY()
-	TObjectPtr<class UQuestManager> QuestManager;
+	UPROPERTY(ReplicatedUsing=OnRep_QuestManager)
+	TObjectPtr<class AQuestManagerActor> QuestManager;
 };

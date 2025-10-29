@@ -3,6 +3,7 @@
 #include "AYiSanGameMode.h"
 #include "AYisanGameState.h"
 #include "ADasanActor.h"
+#include "AQuestManagerActor.h"
 #include "FComponentHelper.h"
 #include "GameLogging.h"
 
@@ -13,6 +14,25 @@ void AYiSanGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 	bUseSeamlessTravel = true;
+
+	if (HasAuthority())
+	{
+		if (AYisanGameState* State = GetGameState<AYisanGameState>())
+		{
+			if (!State->GetQuestManager())
+			{
+				AQuestManagerActor* QuestManager = AQuestManagerActor::Get(this);
+				if (!QuestManager)
+				{
+					FActorSpawnParameters SpawnParams;
+					SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+					QuestManager = GetWorld()->SpawnActor<AQuestManagerActor>(AQuestManagerActor::StaticClass(), SpawnParams);
+				}
+
+				State->SetQuestManager(QuestManager);
+			}
+		}
+	}
 }
 
 void AYiSanGameMode::PostLogin(APlayerController* NewPlayer)

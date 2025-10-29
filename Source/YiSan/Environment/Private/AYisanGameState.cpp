@@ -4,7 +4,7 @@
 #include "ADasanActor.h"
 #include "APlayerControl.h"
 #include "GameLogging.h"
-#include "UQuestManager.h"
+#include "AQuestManagerActor.h"
 #include "EBuildingType.h"
 #include "Net/UnrealNetwork.h"
 
@@ -17,6 +17,7 @@ void AYisanGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(AYisanGameState, DasanNPC);
+	DOREPLIFETIME(AYisanGameState, QuestManager);
 }
 
 void AYisanGameState::MulticastRPC_ToastMessage_Implementation(const FString& Message)
@@ -42,15 +43,35 @@ void AYisanGameState::StartGlobalTour()
 		return;
 
 	// QuestManager 초기화
-	QuestManager = UQuestManager::Get(GetWorld());
 	if (!QuestManager)
 	{
-		PRINTLOG(TEXT("YisanGameState: QuestManager not found!"));
+		QuestManager = AQuestManagerActor::Get(this);
+		if (!QuestManager)
+		{
+			PRINTLOG(TEXT("YisanGameState: QuestManager actor not found!"));
+			return;
+		}
+	}
+	
+	QuestManager->StartQuest();
+	DasanNPC->StartTour();
+}
+
+void AYisanGameState::SetQuestManager(AQuestManagerActor* InQuestManager)
+{
+	if (!HasAuthority())
+	{
 		return;
 	}
 
-	if (QuestManager->GetCurTarget() == EBuildingType::None)
-		QuestManager->InitSystem();
+	QuestManager = InQuestManager;
+	OnRep_QuestManager();
+}
 
-	DasanNPC->StartTour();
+void AYisanGameState::OnRep_QuestManager()
+{
+	if (QuestManager)
+	{
+		QuestManager->BroadcastQuestUpdate();
+	}
 }

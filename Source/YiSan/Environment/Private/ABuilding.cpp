@@ -4,6 +4,7 @@
 #include "ABuilding.h"
 
 #include "APlayerActor.h"
+#include "AQuestManagerActor.h"
 #include "GameLogging.h"
 #include "UBroadcastManager.h"
 #include "Components/BoxComponent.h"
@@ -58,6 +59,9 @@ void ABuilding::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Othe
 		// 로그 출력으로 트리거 발동 확인
 		PRINTLOG(TEXT("%s entered the trigger volume of %s"), *OtherActor->GetName(), *this->GetName());
 		BroadcastManager->SendContactBuilding(BuildingType);
+
+		if (AQuestManagerActor* QuestManager = AQuestManagerActor::Get(this))
+			QuestManager->NotifyContact(BuildingType);
 	}
 }
 
