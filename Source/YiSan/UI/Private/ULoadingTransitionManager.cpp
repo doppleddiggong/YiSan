@@ -87,12 +87,25 @@ void ULoadingTransitionManager::ShowLoadingScreen()
 			}
 
 			TransitionWidget->SetVisibility(ESlateVisibility::Visible);
+			LatestReportedProgress = 0.0f;
+			TransitionWidget->SetVisibility(ESlateVisibility::Visible);
+			TransitionWidget->UpdateProgress(LatestReportedProgress);
+
+			if (HideTimerHandle.IsValid())
+			{
+				World->GetTimerManager().ClearTimer(HideTimerHandle);
+			}
+
+			LastShowTimestamp = FPlatformTime::Seconds();
+			bHideRequested = false;
 		}
 	}
 }
 
 void ULoadingTransitionManager::UpdateLoadingProgress(const float Progress)
 {
+	LatestReportedProgress = FMath::Clamp(Progress, 0.0f, 1.0f);
+	
 	if (TransitionWidget)
 	{
 		TransitionWidget->UpdateProgress(Progress);
@@ -101,6 +114,56 @@ void ULoadingTransitionManager::UpdateLoadingProgress(const float Progress)
 
 void ULoadingTransitionManager::HideLoadingScreen()
 {
+	if (!TransitionWidget)
+		return;
+	
+	LatestReportedProgress = FMath::Clamp(LatestReportedProgress, 0.0f, 1.0f);
+
+
+	if (UWorld* World = GetWorld())
+	{
+		if (HideTimerHandle.IsValid())
+		{
+			World->GetTimerManager().ClearTimer(HideTimerHandle);
+		}
+
+		const double Elapsed = FPlatformTime::Seconds() - LastShowTimestamp;
+		double Delay = 0.0;
+
+		if (Elapsed < MinVisibleDurationSeconds)
+		{
+			Delay = MinVisibleDurationSeconds - Elapsed;
+		}
+
+		Delay = FMath::Max(Delay, HoldAfterCompletionSeconds);
+
+		if (Delay > KINDA_SMALL_NUMBER)
+		{
+			bHideRequested = true;
+			World->GetTimerManager().SetTimer(
+					HideTimerHandle,
+					this,
+					&ULoadingTransitionManager::FinalizeHide,
+					Delay,
+					false);
+			return;
+		}
+	}
+
+	FinalizeHide();
+	
+}
+
+void ULoadingTransitionManager::FinalizeHide()
+{
+	if (UWorld* World = GetWorld())
+	{
+		if (HideTimerHandle.IsValid())
+		{
+			World->GetTimerManager().ClearTimer(HideTimerHandle);
+		}
+	}
+
 	if (TransitionWidget)
 	{
 		if (TransitionWidget->IsInViewport())
@@ -110,4 +173,6 @@ void ULoadingTransitionManager::HideLoadingScreen()
 
 		TransitionWidget = nullptr;
 	}
+
+	bHideRequested = false;
 }

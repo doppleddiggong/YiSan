@@ -112,6 +112,14 @@ void APlayerActor::BeginPlay()
     }
 }
 
+void APlayerActor::PossessedBy(AController* NewController)
+{
+    Super::PossessedBy(NewController);
+    if (IsLocallyControlled())
+        UE_LOG(LogTemp, Warning, TEXT("Pawn possessed locally, player can move"));
+}
+
+
 FGPTContext APlayerActor::GetGPTContext() const
 {
     return GPTContextSystem->GetGPTContext();

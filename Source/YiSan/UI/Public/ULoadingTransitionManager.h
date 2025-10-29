@@ -29,14 +29,30 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Loading")
 	void HideLoadingScreen();
 
-	protected:
+
+
+private:
 	/// @brief 현재 월드에 맞는 위젯이 없으면 생성하여 GameViewport에 추가합니다.
 	void EnsureWidgetForWorld(UWorld* World);
+	
+	void FinalizeHide();
 
+	/// @brief 로딩 화면 제거를 지연 처리하기 위한 최소 노출 시간(초)
+	static constexpr double MinVisibleDurationSeconds = 1.5;
+
+	/// @brief 완료 이후 페이드아웃 전 유지 시간(초)
+	static constexpr double HoldAfterCompletionSeconds = 0.35;
+	
 private:
 	UPROPERTY()
 	TSubclassOf<class ULoadingTransitionWidget> TransitionWidgetClass;
 
 	UPROPERTY()
 	TObjectPtr<class ULoadingTransitionWidget> TransitionWidget;
+
+	double LastShowTimestamp = 0.0;
+	float LatestReportedProgress = 0.0f;
+	bool bHideRequested = false;
+
+	FTimerHandle HideTimerHandle;
 };
