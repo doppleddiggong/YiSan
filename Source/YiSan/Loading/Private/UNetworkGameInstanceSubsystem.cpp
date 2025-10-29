@@ -5,8 +5,6 @@
 #include "TimerManager.h"
 #include "ContentStreaming.h"
 
-// #include "UObject/WeakObjectPtr.h"
-// #include "Templates/SharedPointer.h" 
 #include "Widgets/SWidget.h"
 #include "GameFramework/PlayerController.h"
 
@@ -17,15 +15,9 @@
 #include "OnlineSubsystem.h"
 #include "OnlineSubsystemUtils.h"
 #include "OnlineSessionSettings.h"
-#include "UBroadcastManager.h"
 #include "UDialogManager.h"
 #include "ULoadingCircleManager.h"
-#include "GameFramework/GameSession.h"
 #include "Online/OnlineSessionNames.h"
-#include "StartUI.h"
-#include "GameFramework/PlayerState.h"
-#include "YiSanPlayerListManager.h"
-#include "Kismet/GameplayStatics.h"
 
 // ==================== Network 관리 ====================
 void UNetworkGameInstanceSubsystem::Initialize(FSubsystemCollectionBase& Collection)

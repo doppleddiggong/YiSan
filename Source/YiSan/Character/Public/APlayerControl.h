@@ -76,23 +76,7 @@ public:
 	// 클라이언트가 서버에게 맵 전환 요청 (Server RPC)
 	UFUNCTION(Server, Reliable, BlueprintCallable, Category = "Travel")
 	void Server_RequestMapTravel(const FString& MapPath);
-
-	// 클라이언트 RPC: 로딩 UI 표시
-	UFUNCTION(Client, Reliable)
-	void ClientRPC_ShowLoadingScreen();
-	
-	// 클라이언트 RPC: 로딩 UI 숨김
-	UFUNCTION(Client, Reliable)
-	void ClientRPC_HideLoadingScreen();
-
-	// 로딩 위젯 클래스
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "UI")
-	TSubclassOf<class ULoadingWidget> LoadingWidgetClass;
-
-	UPROPERTY()
-	TObjectPtr<class ULoadingWidget> LoadingWidget;
 #pragma endregion LOADING
-
 	
 	// Recording RPC
 	UFUNCTION(Server, Reliable)
