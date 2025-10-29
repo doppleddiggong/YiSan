@@ -15,8 +15,12 @@ class YISAN_API AYiSanPlayerListManager : public AActor
 
 public:
     AYiSanPlayerListManager();
-
     FOnPlayerListUpdated OnPlayerListUpdated;
+
+    UFUNCTION(BlueprintCallable)
+    void RequestRefresh(); // Client-side call to request refresh from server
+    UFUNCTION(Server, Reliable)
+    void Server_RequestRefresh(); // Server-side implementation
 
     TArray<FString> GetPlayerList() const { return PlayerList; };
 
@@ -31,7 +35,10 @@ private:
     UFUNCTION()
     void OnRep_PlayerList();
 
-    FTimerHandle PollingTimer;
+public:
+    void UpdatePlayerListAndBroadcast();
 
-    void PollPlayerList();
+private:
+
+
 };

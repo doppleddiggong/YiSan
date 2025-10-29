@@ -7,6 +7,7 @@
 
 // #include "UObject/WeakObjectPtr.h"
 // #include "Templates/SharedPointer.h" 
+#include "GameLogging.h"
 #include "Widgets/SWidget.h"
 #include "GameFramework/PlayerController.h"
 
@@ -27,6 +28,9 @@
 #include "YiSanPlayerListManager.h"
 #include "Kismet/GameplayStatics.h"
 
+#include "YiSanPlayerListManager.h"
+#include "Kismet/GameplayStatics.h"
+
 // ==================== Network 관리 ====================
 void UNetworkGameInstanceSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
@@ -42,6 +46,32 @@ void UNetworkGameInstanceSubsystem::Initialize(FSubsystemCollectionBase& Collect
         //세션참여 성공시 호출되는 함수 등록
         sessionInterface->OnJoinSessionCompleteDelegates.AddUObject(this, &UNetworkGameInstanceSubsystem::OnJoinSessionComplete);
     }
+}
+
+void UNetworkGameInstanceSubsystem::SetPlayerListManager(AYiSanPlayerListManager* InManager)
+{
+    if (PlayerListManager)
+    {
+        PlayerListManager->OnPlayerListUpdated.RemoveAll(this);
+    }
+    PlayerListManager = InManager;
+    if (PlayerListManager)
+    {
+        PlayerListManager->OnPlayerListUpdated.AddUObject(this, &UNetworkGameInstanceSubsystem::HandlePlayerListUpdated);
+    }
+}
+
+void UNetworkGameInstanceSubsystem::RequestPlayerListRefresh()
+{
+    if (PlayerListManager)
+    {
+        PlayerListManager->RequestRefresh();
+    }
+}
+
+void UNetworkGameInstanceSubsystem::HandlePlayerListUpdated(const TArray<FString>& PlayerNames)
+{
+    OnPlayerListUpdated.Broadcast(PlayerNames);
 }
 
 void UNetworkGameInstanceSubsystem::CreateMySession(FString displayName, int32 playerCount)
@@ -82,7 +112,7 @@ void UNetworkGameInstanceSubsystem::OnCreateSessionComplete(FName sessionName, b
     }
     else
     {
-        UE_LOG(LogTemp, Warning, TEXT("세션 : %s 실패"), *sessionName.ToString());
+        UE_LOG(LogTemp, Warning, TEXT("세션 : 실패"));
     }
 }
 
@@ -111,7 +141,8 @@ void UNetworkGameInstanceSubsystem::OnFindSessionComplete(bool success)
     
     if (success)
     {
-        auto results = sessionSearch->SearchResults;
+        if (sessionSearch.IsValid()) { // Check if sessionSearch is valid
+            auto results = sessionSearch->SearchResults;
         for (int32 i = 0; i < results.Num(); i++)
         {
             //세션이름담을변수
@@ -119,6 +150,7 @@ void UNetworkGameInstanceSubsystem::OnFindSessionComplete(bool success)
             results[i].Session.SessionSettings.Get(FName(TEXT("DP_NAME")), displayName);
             UE_LOG(LogTemp, Warning, TEXT("세션 : %i, 이름 : %s"), i, *displayName);
             onFindComplete.ExecuteIfBound(i, displayName);
+        }
         }
     }
     else
@@ -160,4 +192,33 @@ void UNetworkGameInstanceSubsystem::OnJoinSessionComplete(FName sessionName, EOn
         APlayerController* pc = GetWorld()->GetFirstPlayerController();
         pc->ClientTravel(url, TRAVEL_Absolute);
     }
+}
+
+void UNetworkGameInstanceSubsystem::SetPlayerNickname(const FString& InName)
+{
+    PlayerNickname = InName;
+    PRINTLOG(TEXT("Set player: %s"), *PlayerNickname);
+
+    UWorld* World = GetWorld();
+    if (World && World->GetAuthGameMode()) // 서버인지 확인
+    {
+        if (PlayerListManager)
+        {
+            // 지연 호출하여 PlayerState가 업데이트될 시간을 줍니다.
+            FTimerHandle TimerHandle;
+            World->GetTimerManager().SetTimer(TimerHandle, [this]()
+            {
+                if (PlayerListManager)
+                {
+                    PlayerListManager->UpdatePlayerListAndBroadcast();
+                }
+            }, 0.2f, false);
+        }
+    }
+}
+
+FString UNetworkGameInstanceSubsystem::GetPlayerNickname()
+{
+    PRINTLOG(TEXT("Got player: %s"), *PlayerNickname);
+    return PlayerNickname;
 }

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AYiSanPlayerState.h"
 #include "EBuildingType.h"
 #include "GameFramework/GameStateBase.h"
 #include "EDasanState.h"

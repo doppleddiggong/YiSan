@@ -6,6 +6,8 @@
 #include "IControllable.h"
 #include "NetworkData.h"
 #include "GameFramework/Character.h"
+#include "Components/WidgetComponent.h"
+
 /// @file APlayerActor.h
 /// @brief 프로젝트 전반에서 사용되는 플레이어 조작 캐릭터 액터를 선언합니다.
 
@@ -68,18 +70,11 @@ public:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
     TObjectPtr<UMainWidget> MainWidgetInst; ///< 뷰포트에 배치되는 메인 위젯 인스턴스입니다.
 
-    
-    
-    
     UPROPERTY(EditDefaultsOnly, Category = "UI")
     TSubclassOf<class UChatUIWidget> ChatUIWidgetClass;
     
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
     TObjectPtr<class UChatBoxWidget> ChatBoxWidget;
-    
-
-    
-
     
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Voice", meta=(AllowPrivateAccess="true"))
     TObjectPtr<class UVoiceConversationSystem> VoiceConversationSystem; ///< 플레이어가 소유한 음성 명령 파이프라인입니다.
@@ -140,5 +135,8 @@ public: // 제어 인터페이스
 
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
     void Cmd_HideMouse() override;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="UI")
+    UWidgetComponent* NameTagWidgetComponent;
 };
 

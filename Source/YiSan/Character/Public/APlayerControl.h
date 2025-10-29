@@ -23,6 +23,7 @@ public:
 protected:
     virtual void BeginPlay() override;
     virtual void SetupInputComponent() override;
+	virtual void OnPossess(APawn* InPawn) override;
 
 	// --- Input Assets ---
 	UPROPERTY(EditDefaultsOnly, Category="Input")
@@ -40,7 +41,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Record;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_ShowDetail;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_ShowMouse;
-		
+
 	// --- Handlers ---
 	void OnMove(const FInputActionValue& Value);
 	void OnLook(const FInputActionValue& Value);
@@ -111,6 +112,9 @@ public:
 
 	UFUNCTION(Client, Reliable)
 	void ClientRPC_ShowToastMessage(const FString& Message);
+
+	UFUNCTION(Server, Reliable)
+	void Server_SetPlayerNickname(const FString& Nickname);
 	
 private:
 	UFUNCTION()

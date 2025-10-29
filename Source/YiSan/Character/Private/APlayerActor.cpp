@@ -15,12 +15,16 @@
 #include "TimerManager.h"
 #include "Kismet/GameplayStatics.h"
 #include "ABuilding.h"
+#include "AYiSanPlayerState.h"
 #include "UBroadcastManager.h"
+#include "UPlayerWidget.h"
 #include "UQuestManager.h"
 #include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Camera/CameraComponent.h"
 #include "YiSan/YiSan.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/TextBlock.h"
+#include "Components/WidgetComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/PlayerController.h"
@@ -59,6 +63,13 @@ APlayerActor::APlayerActor()
     VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
     GPTContextSystem = CreateDefaultSubobject<UGPTContextSystem>(TEXT("GPTContextSystem"));
     ChatPlayerSystem = CreateDefaultSubobject<UChatPlayerSystem>(TEXT("ChatPlayerSystem"));
+
+    NameTagWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("NameTagWidget"));
+    NameTagWidgetComponent->SetupAttachment(RootComponent);
+
+    NameTagWidgetComponent->SetWidgetSpace(EWidgetSpace::Screen); // 카메라 정면 고정
+    NameTagWidgetComponent->SetDrawSize(FVector2D(200.f, 50.f));
+    NameTagWidgetComponent->SetRelativeLocation(FVector(0.f, 0.f, 100.f)); // 머리 위 위치
 }
 
 void APlayerActor::BeginPlay()
@@ -89,6 +100,17 @@ void APlayerActor::BeginPlay()
                     ChatBoxWidget = ChatUIInst->WBP_ChatBox;
                     ChatPlayerSystem->InitSystem(ChatBoxWidget.Get());
                 }
+            }
+        }
+    }
+
+    if (UPlayerWidget* HeadWidget = Cast<UPlayerWidget>(NameTagWidgetComponent->GetUserWidgetObject()))
+    {
+        if (UTextBlock* NameText = Cast<UTextBlock>(HeadWidget->GetWidgetFromName(TEXT("PlayerNameText"))))
+        {
+            if (AYiSanPlayerState* ps = GetPlayerState<AYiSanPlayerState>())
+            {
+                NameText->SetText(FText::FromString(ps->Nickname));
             }
         }
     }
