@@ -35,7 +35,11 @@ private:
 	void Loading_LevelInstance(UWorld* World);
 
 	// 로딩 UI의 진행률과 상태 텍스트를 업데이트함 (현재는 로그만 출력).
-	void UpdateLoadingProgress() const;
+	void UpdateLoadingProgress();
+
+	void BroadcastLoadingScreenShow() const;
+	void BroadcastLoadingScreenHide() const;
+	void BroadcastLoadingProgress(float Progress) const;
 
 private:
 	// 타임아웃 체크를 위한 시작 시간
@@ -53,10 +57,12 @@ private:
 	bool bLevelInstancesReady = false;
 	float StreamingPercentage = 0.0f;
 	float LevelInstanceProgress = 0.0f;
-	
+
 	// 스트리밍 완료 폴링 타이머 핸들임.
 	FTimerHandle TimeHandlePool;
 
+	int32 LastReportedPercent = -10;
+	
 	UPROPERTY()
 	TObjectPtr<class UDialogManager> DM;
 };

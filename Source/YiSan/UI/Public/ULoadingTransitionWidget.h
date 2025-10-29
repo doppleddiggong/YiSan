@@ -19,6 +19,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Loading")
 	void UpdateProgress(float Progress );
 
+	void AddToGameViewport(int32 ZOrder);
+	
 protected:
 	virtual void NativeConstruct() override;
 

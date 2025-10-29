@@ -2,12 +2,14 @@
 
 #include "UYiSanLoading.h"
 
+#include "APlayerControl.h"
 #include "FComponentHelper.h"
 #include "GameLogging.h"
 #include "UDialogManager.h"
 
 #include "TimerManager.h"
 #include "ContentStreaming.h"
+#include "ULoadingTransitionManager.h"
 
 #include "LevelInstance/LevelInstanceActor.h"
 #include "LevelInstance/LevelInstanceSubsystem.h"
@@ -32,6 +34,14 @@ void UYiSanLoading::InitSystem(const FString& InURL, const bool bAbsolute)
 	LevelInstanceProgress = 0.0f;
 
 	DM = UDialogManager::Get(this);
+
+	BroadcastLoadingScreenShow();
+
+	if (auto TransitionManager = ULoadingTransitionManager::Get(this))
+	{
+		TransitionManager->ShowLoadingScreen();
+		TransitionManager->UpdateLoadingProgress(0.0f);
+	}
 	
 	// 맵 로드 완료 시 Step2_OnPostLoadMap 함수를 호출하도록 바인딩함
 	FCoreUObjectDelegates::PostLoadMapWithWorld.RemoveAll(this);
@@ -143,6 +153,13 @@ void UYiSanLoading::CompleteProcess(const UWorld* World)
 		// 플레이어 입력 활성화
 		if (UWorld* World = GetWorld())
 		{
+			BroadcastLoadingScreenHide();
+
+			if (auto TransitionManager = ULoadingTransitionManager::Get(this))
+			{
+				TransitionManager->HideLoadingScreen();
+			}
+			
 			if (auto PC = World->GetFirstPlayerController())
 			{
 				PC->SetInputMode(FInputModeGameOnly());
@@ -295,9 +312,61 @@ void UYiSanLoading::Loading_LevelInstance(UWorld* World)
 	}
 }
 
-void UYiSanLoading::UpdateLoadingProgress() const
+void UYiSanLoading::UpdateLoadingProgress()
 {
 	// 10% 단위로만 로그 출력 (로그 스팸 방지)
 	int32 CurrentPercent = FMath::FloorToInt(TotalProgress * 10.0f) * 10; // 10% 단위
 	PRINTLOG(TEXT("PROGRESS : %d"), CurrentPercent);
+
+    if (CurrentPercent != LastReportedPercent)
+    {
+        PRINTLOG(TEXT("PROGRESS : %d"), CurrentPercent);
+        const float NormalizedProgress = static_cast<float>(CurrentPercent) / 100.0f;
+        if (auto TransitionManager = ULoadingTransitionManager::Get(this))
+            TransitionManager->UpdateLoadingProgress(NormalizedProgress);
+        BroadcastLoadingProgress(NormalizedProgress);
+        LastReportedPercent = CurrentPercent;
+    }
+}
+
+void UYiSanLoading::BroadcastLoadingScreenShow() const
+{
+    if (UWorld* World = GetWorld())
+    {
+        for (FConstPlayerControllerIterator It = World->GetPlayerControllerIterator(); It; ++It)
+        {
+            if (APlayerControl* PlayerControl = Cast<APlayerControl>(It->Get()))
+            {
+                PlayerControl->ClientRPC_ShowLoadingTransition();
+            }
+        }
+    }
+}
+
+void UYiSanLoading::BroadcastLoadingScreenHide() const
+{
+    if (UWorld* World = GetWorld())
+    {
+        for (FConstPlayerControllerIterator It = World->GetPlayerControllerIterator(); It; ++It)
+        {
+            if (APlayerControl* PlayerControl = Cast<APlayerControl>(It->Get()))
+            {
+                PlayerControl->ClientRPC_HideLoadingTransition();
+            }
+        }
+    }
+}
+
+void UYiSanLoading::BroadcastLoadingProgress(const float Progress) const
+{
+    if (UWorld* World = GetWorld())
+    {
+        for (FConstPlayerControllerIterator It = World->GetPlayerControllerIterator(); It; ++It)
+        {
+            if (APlayerControl* PlayerControl = Cast<APlayerControl>(It->Get()))
+            {
+                PlayerControl->ClientRPC_UpdateLoadingTransitionProgress(Progress);
+            }
+        }
+    }
 }

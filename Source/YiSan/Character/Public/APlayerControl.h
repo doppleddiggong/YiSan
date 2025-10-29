@@ -76,6 +76,16 @@ public:
 	// 클라이언트가 서버에게 맵 전환 요청 (Server RPC)
 	UFUNCTION(Server, Reliable, BlueprintCallable, Category = "Travel")
 	void Server_RequestMapTravel(const FString& MapPath);
+
+	UFUNCTION(Client, Reliable)
+	void ClientRPC_ShowLoadingTransition();
+
+	UFUNCTION(Client, Reliable)
+	void ClientRPC_UpdateLoadingTransitionProgress(float Progress);
+
+	UFUNCTION(Client, Reliable)
+	void ClientRPC_HideLoadingTransition();
+	
 #pragma endregion LOADING
 	
 	// Recording RPC

@@ -4,6 +4,9 @@
 #include "Components/ProgressBar.h"
 #include "Components/TextBlock.h"
 #include "Components/VerticalBox.h"
+#include "Engine/GameViewportClient.h"
+#include "Engine/World.h"
+
 
 void ULoadingTransitionWidget::NativeConstruct()
 {
@@ -37,4 +40,21 @@ void ULoadingTransitionWidget::UpdateProgress(float Progress)
 	ProgressText->SetText( FText::FromString(FString::Printf(TEXT("%d%%"), Percentage)) );
 
 	StatusText->SetText(FText::FromString("로딩 STATUS 테스트"));
+}
+
+
+void ULoadingTransitionWidget::AddToGameViewport(int32 ZOrder)
+{
+	if (UWorld* World = GetWorld())
+	{
+		if (UGameViewportClient* ViewportClient = World->GetGameViewport())
+		{
+			if (IsInViewport())
+			{
+				RemoveFromParent();
+			}
+
+			AddToViewport(ZOrder);
+		}
+	}
 }

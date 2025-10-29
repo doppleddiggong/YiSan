@@ -27,6 +27,7 @@
 #include "APlayerActor.h"
 #include "AYisanGameState.h"
 #include "UAnswerStateSystem.h"
+#include "ULoadingTransitionManager.h"
 #include "UYiSanLoading.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
@@ -294,12 +295,62 @@ void APlayerControl::ServerStartMapTravel(const FString& MapPath)
 	FTimerHandle TravelTimerHandle;
 	GetWorldTimerManager().SetTimer(TravelTimerHandle, [this, MapPath]()
 	{
-		FString TravelURL = MapPath + TEXT("?listen");
-		if ( auto GI = UYiSanLoading::Get( GetWorld() ))
+		if (UWorld* World = GetWorld())
+		{
+			for (FConstPlayerControllerIterator It = World->GetPlayerControllerIterator(); It; ++It)
+			{
+				if (APlayerControl* PlayerControl = Cast<APlayerControl>(It->Get()))
+				{
+					PlayerControl->ClientRPC_ShowLoadingTransition();
+				}
+			}
+		}
+
+		if (auto TransitionManager = ULoadingTransitionManager::Get(this))
+		{
+			TransitionManager->ShowLoadingScreen();
+			TransitionManager->UpdateLoadingProgress(0.0f);
+		}
+
+		if (auto GI = UYiSanLoading::Get(GetWorld()))
+		{
+			FString TravelURL = MapPath + TEXT("?listen");
 			GI->InitSystem(TravelURL, true);
+		}
+		
+
+		// if ( auto GI = UYiSanLoading::Get( GetWorld() ))
+		// 	GI->InitSystem(TravelURL, true);
 		
 	}, 0.1f, false);
 }
+
+void APlayerControl::ClientRPC_ShowLoadingTransition_Implementation()
+{
+	if (auto TransitionManager = ULoadingTransitionManager::Get(this))
+	{
+		TransitionManager->ShowLoadingScreen();
+		TransitionManager->UpdateLoadingProgress(0.0f);
+	}
+}
+
+void APlayerControl::ClientRPC_UpdateLoadingTransitionProgress_Implementation(const float Progress)
+{
+	if (auto TransitionManager = ULoadingTransitionManager::Get(this))
+	{
+		TransitionManager->UpdateLoadingProgress(FMath::Clamp(Progress, 0.0f, 1.0f));
+	}
+}
+
+void APlayerControl::ClientRPC_HideLoadingTransition_Implementation()
+{
+	if (auto TransitionManager = ULoadingTransitionManager::Get(this))
+	{
+		TransitionManager->HideLoadingScreen();
+	}
+}
+
+
 
 void APlayerControl::Server_RequestMapTravel_Implementation(const FString& MapPath)
 {
