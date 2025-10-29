@@ -78,7 +78,7 @@ UTextBlock* UPlayerWidget::CreatePlayerText(const FString& playerName)
         {
             FSlateFontInfo fontInfo;
             fontInfo.FontObject = fontObj;
-            fontInfo.Size = 24; // 원하는 크기
+            fontInfo.Size = 20; // 원하는 크기
             newText->SetFont(fontInfo);
         }
     }

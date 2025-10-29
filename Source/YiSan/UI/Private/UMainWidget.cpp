@@ -2,63 +2,150 @@
 
 #include "UMainWidget.h"
 
+
+
 #include "FComponentHelper.h"
+
 #include "UBroadcastManager.h"
 
+
+
 #include "USmallPopup.h"
+
 #include "UMegaPopup.h"
+
 #include "Components/AudioComponent.h"
 
+
+
 #include "Components/EditableTextBox.h"
+
 #include "Input/Reply.h"
+
 #include "Kismet/GameplayStatics.h"
+
 #include "EndingWidget.h" // EndingWidget 헤더 추가
+
+#include "Components/CanvasPanelSlot.h" // Added for UCanvasPanelSlot
+
+#include "Components/CanvasPanel.h"
+#include "Components/CanvasPanelSlot.h"
+#include "UPlayerWidget.h" // Added for UPlayerWidget
+
+
 
 #define ENDINGWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_EndingWidget.WBP_EndingWidget_C")
 
+
+
 UMainWidget::UMainWidget(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
+
 {
+
 	EndingWidgetClass = FComponentHelper::LoadClass<UEndingWidget>(ENDINGWIDGET_PATH);
+	
+
 }
 
+
+
 void UMainWidget::NativeConstruct()
+
 {
+
 	Super::NativeConstruct();
 
+
+
 	if ( APlayerController* PC = GetWorld()->GetFirstPlayerController() )
+
 	{
+
 		FInputModeGameOnly InputMode;
+
 		InputMode.SetConsumeCaptureMouseDown(false);
+
 		
+
 		PC->SetInputMode(InputMode);
+
 		PC->bShowMouseCursor = false;
-	}
-	
-	BroadcastManager = UBroadcastManager::Get(GetWorld());
-	if (BroadcastManager)
-	{
-		BroadcastManager->OnNearBuilding.AddDynamic(this, &UMainWidget::OnNearBuilding);
-		BroadcastManager->OnMegaPopupClosed.AddDynamic(this, &UMainWidget::OnMegaPopupClosed);
+
 	}
 
-	// Popup 초기 상태 설정 (공간 차지하지 않게 collapsed 로 성정)
-	if (SmallPopupCtn)
-		SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
 	
+
+	BroadcastManager = UBroadcastManager::Get(GetWorld());
+
+	if (BroadcastManager)
+
+	{
+
+		BroadcastManager->OnNearBuilding.AddDynamic(this, &UMainWidget::OnNearBuilding);
+
+		BroadcastManager->OnMegaPopupClosed.AddDynamic(this, &UMainWidget::OnMegaPopupClosed);
+
+	}
+
+
+
+	// Popup 초기 상태 설정 (공간 차지하지 않게 collapsed 로 성정)
+
+	if (SmallPopupCtn)
+
+		SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
+
+	
+
 	if (MegaPopupCtn)
+
 		MegaPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
+
+
 
 	PlayBGM();
 
+
+
 	// 엔딩 위젯 클래스가 설정
+
 	if (EndingWidgetClass)
+
 	{
+
 		EndingWidgetInstance = CreateWidget<UEndingWidget>(this, EndingWidgetClass);
+
 		if (EndingWidgetInstance)
+
 		{
+
 			EndingWidgetInstance->AddToViewport();
+
 		}
+
 	}
+
+
+
+	// PlayerListWidget 생성 및 추가
+
+
+
+
+
+
+	if (PlayerWidgetClass)
+	{
+		PlayerWidgetInstance = CreateWidget<UPlayerWidget>(this, PlayerWidgetClass);
+		if (PlayerWidgetInstance)
+		{
+			PlayerWidgetInstance->AddToViewport();
+		}
+
+	}
+
+	
+
 }
 void UMainWidget::PlayBGM()
 {

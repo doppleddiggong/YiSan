@@ -104,7 +104,9 @@ void APlayerActor::BeginPlay()
         }
     }
 
-    if (UPlayerWidget* HeadWidget = Cast<UPlayerWidget>(NameTagWidgetComponent->GetUserWidgetObject()))
+    // 여기 수정해서 머리 위 닉네임================================================ playerwidget 말고 playerheadwidget 만들어야함
+    
+    /*if (UPlayerWidget* HeadWidget = Cast<UPlayerWidget>(NameTagWidgetComponent->GetUserWidgetObject()))
     {
         if (UTextBlock* NameText = Cast<UTextBlock>(HeadWidget->GetWidgetFromName(TEXT("PlayerNameText"))))
         {
@@ -113,7 +115,7 @@ void APlayerActor::BeginPlay()
                 NameText->SetText(FText::FromString(ps->Nickname));
             }
         }
-    }
+    }*/
 
     VoiceConversationSystem->InitSystem(this);
     GPTContextSystem->InitSystem(this);

@@ -6,6 +6,7 @@
 #include "EBuildingType.h"
 #include "Blueprint/UserWidget.h"
 #include "EndingWidget.h" // EndingWidget 헤더 추가
+#include "UPlayerWidget.h"
 #include "UMainWidget.generated.h"
 
 /// @file UMainWidget.h
@@ -17,6 +18,7 @@ class YISAN_API UMainWidget : public UUserWidget
 {
 	GENERATED_BODY()
 public:
+
 	UMainWidget(const FObjectInitializer& ObjectInitializer);
 
 protected:
@@ -61,5 +63,14 @@ public:
     
     /// @brief 최근 감지된 건물 유형입니다.
     EBuildingType CurNearBuildingType = EBuildingType::None;
+
+
+	// 엔딩 위젯
+	UPROPERTY(EditAnywhere, Category = "Widgets")
+	TSubclassOf<UPlayerWidget> PlayerWidgetClass;
+	// 생성된 엔딩 위젯의 인스턴스를 저장할 변수
+	UPROPERTY()
+	UPlayerWidget* PlayerWidgetInstance;
+	
 };
 
