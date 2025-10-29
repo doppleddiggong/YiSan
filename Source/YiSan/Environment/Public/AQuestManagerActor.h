@@ -21,33 +21,27 @@ public:
     AQuestManagerActor();
 
     static AQuestManagerActor* Get(const UObject* WorldContextObject);
+
+    void StartQuest();
+    void SendUpdateQuest();
     
-    virtual void BeginPlay() override;
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
     UFUNCTION(BlueprintCallable, Category="Quest")
-    EBuildingType GetCurrentTarget() const { return CurQuestTarget; }
+    EBuildingType GetCurrentTarget() const { return QuestTarget; }
 
     UFUNCTION(BlueprintCallable, Category="Quest")
-    int32 GetCurrentQuestIndex() const { return CurQuestIndex; }
+    bool HasActiveQuest() const { return QuestTarget != EBuildingType::None; }
+    void OnContactBuilding(EBuildingType InType);
 
-    UFUNCTION(BlueprintCallable, Category="Quest")
-    bool HasActiveQuest() const { return CurQuestTarget != EBuildingType::None; }
-
-    void StartQuest();
-    void NotifyContact(EBuildingType InType);
-    void BroadcastQuestUpdate();
 
 protected:
     UFUNCTION(Server, Reliable)
-    void ServerRPC_NotifyContact(EBuildingType InType);
+    void ServerRPC_ContactBuilding(EBuildingType InType);
 
 private:
-    void InitializeQuestList();
-    void ResetQuestProgress();
-    void AdvanceQuest();
-    void HandleQuestUpdated();
-    void HandleContactInternal(EBuildingType InType);
+    void NextQuest();
+    void ContactBuilding(EBuildingType InType);
 
     UFUNCTION()
     void OnRep_CurQuestIndex();
@@ -57,16 +51,18 @@ private:
 
 private:
     UPROPERTY(EditDefaultsOnly, Category="Quest")
-    TArray<EBuildingType> QuestList;
-
+    TArray<EBuildingType> QuestList = {
+        EBuildingType::Sinpungnu,
+        EBuildingType::Uhwagwan,
+        EBuildingType::Jwaikmun,
+        EBuildingType::Bongsudang,
+        EBuildingType::Yeomingak,
+        EBuildingType::Byeolju,
+    };
+    
     UPROPERTY(ReplicatedUsing=OnRep_CurQuestIndex)
-    int32 CurQuestIndex;
+    int32 QuestIndex = 0;
 
     UPROPERTY(ReplicatedUsing=OnRep_CurQuestTarget)
-    EBuildingType CurQuestTarget;
-
-    UPROPERTY()
-    TObjectPtr<class UBroadcastManager> BroadcastManager;
-
-    bool bInitialized;
+    EBuildingType QuestTarget = EBuildingType::Sinpungnu;
 };

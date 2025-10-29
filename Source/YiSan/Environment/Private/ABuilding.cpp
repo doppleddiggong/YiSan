@@ -61,7 +61,7 @@ void ABuilding::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Othe
 		BroadcastManager->SendContactBuilding(BuildingType);
 
 		if (AQuestManagerActor* QuestManager = AQuestManagerActor::Get(this))
-			QuestManager->NotifyContact(BuildingType);
+			QuestManager->OnContactBuilding(BuildingType);
 	}
 }
 

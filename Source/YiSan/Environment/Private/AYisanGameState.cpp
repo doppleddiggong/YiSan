@@ -72,6 +72,6 @@ void AYisanGameState::OnRep_QuestManager()
 {
 	if (QuestManager)
 	{
-		QuestManager->BroadcastQuestUpdate();
+		QuestManager->SendUpdateQuest();
 	}
 }

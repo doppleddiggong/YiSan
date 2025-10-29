@@ -26,9 +26,6 @@ AQuestManagerActor* AQuestManagerActor::Get(const UObject* WorldContextObject)
 }
 
 AQuestManagerActor::AQuestManagerActor()
-    : CurQuestIndex(INDEX_NONE)
-    , CurQuestTarget(EBuildingType::None)
-    , bInitialized(false)
 {
     PrimaryActorTick.bCanEverTick = false;
     bReplicates = true;
@@ -37,146 +34,80 @@ AQuestManagerActor::AQuestManagerActor()
     SetReplicateMovement(false);
 }
 
-void AQuestManagerActor::BeginPlay()
+void AQuestManagerActor::StartQuest()
 {
-    Super::BeginPlay();
-
-    BroadcastManager = UBroadcastManager::Get(this);
-
     if (HasAuthority())
     {
-        InitializeQuestList();
+        if (QuestList.Num() > 0)
+        {
+            QuestIndex = 0;
+            QuestTarget = QuestList[QuestIndex];
+        }
+        else
+        {
+            QuestIndex = INDEX_NONE;
+            QuestTarget = EBuildingType::None;
+        }
+
+        SendUpdateQuest();
     }
 }
+
 
 void AQuestManagerActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-    DOREPLIFETIME(AQuestManagerActor, CurQuestIndex);
-    DOREPLIFETIME(AQuestManagerActor, CurQuestTarget);
+    DOREPLIFETIME(AQuestManagerActor, QuestIndex);
+    DOREPLIFETIME(AQuestManagerActor, QuestTarget);
 }
-
-void AQuestManagerActor::StartQuest()
+    
+void AQuestManagerActor::OnRep_CurQuestIndex()
 {
-    if (!HasAuthority())
-        return;
-
-    if (!bInitialized)
-    {
-        InitializeQuestList();
-        return;
-    }
-
-    ResetQuestProgress();
+    PRINTLOG(TEXT("OnRep_CurQuestIndex : %d"), QuestIndex);
 }
 
-void AQuestManagerActor::NotifyContact(EBuildingType InType)
+void AQuestManagerActor::OnRep_CurQuestTarget()
+{
+    PRINTLOG(TEXT("OnRep_CurQuestTarget : %d"), QuestTarget);
+    SendUpdateQuest();
+}
+
+void AQuestManagerActor::ServerRPC_ContactBuilding_Implementation(EBuildingType InType)
+{
+    ContactBuilding(InType);
+}
+
+void AQuestManagerActor::OnContactBuilding(EBuildingType InType)
 {
     if (HasAuthority())
-        HandleContactInternal(InType);
+        ContactBuilding(InType);
     else
-        ServerRPC_NotifyContact(InType);
+        ServerRPC_ContactBuilding(InType);
 }
 
-void AQuestManagerActor::BroadcastQuestUpdate()
-{
-    HandleQuestUpdated();
-}
-
-void AQuestManagerActor::ServerRPC_NotifyContact_Implementation(EBuildingType InType)
-{
-    HandleContactInternal(InType);
-}
-
-void AQuestManagerActor::InitializeQuestList()
-{
-    if (bInitialized)
-    {
-        return;
-    }
-
-    QuestList = {
-        EBuildingType::Sinpungnu,
-        EBuildingType::Uhwagwan,
-        EBuildingType::Jwaikmun,
-        EBuildingType::Bongsudang,
-        EBuildingType::Yeomingak,
-        EBuildingType::Byeolju,
-    };
-
-    ResetQuestProgress();
-    bInitialized = true;
-
-    PRINTLOG(TEXT("[QUEST] Initialized quest list (%d entries)"), QuestList.Num());
-}
-
-void AQuestManagerActor::ResetQuestProgress()
-{
-    if (QuestList.Num() > 0)
-    {
-        CurQuestIndex = 0;
-        CurQuestTarget = QuestList[CurQuestIndex];
-    }
-    else
-    {
-        CurQuestIndex = INDEX_NONE;
-        CurQuestTarget = EBuildingType::None;
-    }
-
-    HandleQuestUpdated();
-}
-
-void AQuestManagerActor::AdvanceQuest()
+void AQuestManagerActor::NextQuest()
 {
     if (!HasAuthority())
+        return;
+
+    if (!QuestList.IsValidIndex(QuestIndex))
     {
+        PRINTLOG(TEXT("[QUEST] NextQuest called with invalid index"));
+        QuestTarget = EBuildingType::None;
+        SendUpdateQuest();
         return;
     }
 
-    if (!QuestList.IsValidIndex(CurQuestIndex))
-    {
-        PRINTLOG(TEXT("[QUEST] AdvanceQuest called with invalid index"));
-        CurQuestTarget = EBuildingType::None;
-        HandleQuestUpdated();
-        return;
-    }
-
-    ++CurQuestIndex;
-
-    if (QuestList.IsValidIndex(CurQuestIndex))
-    {
-        CurQuestTarget = QuestList[CurQuestIndex];
-        PRINTLOG(TEXT("[QUEST] Advanced to quest %d (%s)"),CurQuestIndex, *ENUM_TO_NAME(EBuildingType, CurQuestTarget));
-    }
-    else
-    {
-        CurQuestTarget = EBuildingType::None;
-        PRINTLOG(TEXT("[QUEST] Quest chain completed"));
-    }
-
-    HandleQuestUpdated();
+    ++QuestIndex;
+    QuestTarget = QuestList.IsValidIndex(QuestIndex) ? QuestList[QuestIndex] : QuestTarget = EBuildingType::None;
+    SendUpdateQuest();
 }
 
-void AQuestManagerActor::HandleQuestUpdated()
-{
-    if (!BroadcastManager)
-    {
-        BroadcastManager = UBroadcastManager::Get(this);
-    }
-
-    if (BroadcastManager)
-    {
-        BroadcastManager->SendUpdateQuest(CurQuestTarget);
-    }
-}
-
-void AQuestManagerActor::HandleContactInternal(EBuildingType InType)
+void AQuestManagerActor::ContactBuilding(EBuildingType InType)
 {
     if (!HasAuthority())
-    {
         return;
-    }
 
     if (!HasActiveQuest())
     {
@@ -184,23 +115,19 @@ void AQuestManagerActor::HandleContactInternal(EBuildingType InType)
         return;
     }
 
-    if (InType != CurQuestTarget)
+    if (InType != QuestTarget)
     {
         PRINTLOG(TEXT("[QUEST] Contact %s ignored. Current target is %s"),
-            *ENUM_TO_NAME(EBuildingType, InType),
-            *ENUM_TO_NAME(EBuildingType, CurQuestTarget));
+            *ENUM_TO_NAME(EBuildingType, InType), *ENUM_TO_NAME(EBuildingType, QuestTarget));
         return;
     }
 
-    PRINTLOG(TEXT("[QUEST] Contact confirmed for %s"),  *ENUM_TO_NAME(EBuildingType, CurQuestTarget));
-    AdvanceQuest();
+    PRINTLOG(TEXT("[QUEST] Contact confirmed for %s"), *ENUM_TO_NAME(EBuildingType, QuestTarget));
+    NextQuest();
 }
 
-void AQuestManagerActor::OnRep_CurQuestIndex()
+void AQuestManagerActor::SendUpdateQuest()
 {
-}
-
-void AQuestManagerActor::OnRep_CurQuestTarget()
-{
-    HandleQuestUpdated();
+    if (auto BM =  UBroadcastManager::Get(this) )
+        BM->SendUpdateQuest(QuestTarget);
 }
