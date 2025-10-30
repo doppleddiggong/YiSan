@@ -26,6 +26,7 @@
 #include "UGameSoundManager.h"
 #include "YiSan/YiSan.h"
 #include "NavigationSystem.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 #define DASANWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_DasanWidget.WBP_DasanWidget_C")
 
@@ -36,6 +37,12 @@ ADasanActor::ADasanActor()
 	// 네트워크 복제 활성화
 	bReplicates = true;
 	SetReplicateMovement(true);
+
+	if (GetMesh())
+	{
+		GetMesh()->SetRelativeLocation(FVector(0.0f, 0.0f, -88.0f));
+		GetMesh()->SetRelativeRotation(FRotator(0.0f, -90.0f, 0.0f));
+	}
 
 	// 건물 퀘스트 인식을 위한 태그 추가
 	Tags.Add(GameTags::Dasan);
@@ -65,7 +72,7 @@ void ADasanActor::BeginPlay()
 {
 	Super::BeginPlay();
 
-	bIsexplain = false;
+	bIsPlayingExplainAnim = false;
 	// 위젯 캐싱 및 초기화
 	if (DasanWidgetComp && DasanWidgetComp->GetWidget())
 	{
@@ -176,6 +183,7 @@ void ADasanActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifet
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(ADasanActor, DasanState);
+	DOREPLIFETIME(ADasanActor, bIsPlayingExplainAnim);
 }
 
 // AI MoveTo 완료 콜백 - 새로 추가된 함수
@@ -193,7 +201,6 @@ void ADasanActor::OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::
         // Tour 상태일 때만 처리
         if (DasanState == EDasanState::Tour)
         {
-        	bIsexplain = true;
             if (TourStateSystem)
             {
                 // 건물 도착 시 TourExplain 상태로 전환 (관광 시작)
@@ -648,6 +655,7 @@ void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester
 	}
 }
 
+
 void ADasanActor::DebugDrawPath(const FVector& GoalLocation)
 {
 	if (!bEnableDebugDraw)
@@ -680,5 +688,47 @@ void ADasanActor::MulticastRPC_DrawDebugPath_Implementation(const TArray<FVector
 			// 선으로 경로 표시
 			DrawDebugLine(GetWorld(), Start, End, FColor::Green, true, 0.0f, 0.0f, 10.f);
 		}
+	}
+}
+
+// TODO 애님관련 입니다
+
+
+float ADasanActor::GetGroundSpeed()
+{
+	if(UCharacterMovementComponent* move = GetCharacterMovement())
+	{
+		FVector velo = move->Velocity;
+		velo.Z = 0.0f;
+		return velo.Size();
+	}
+	return 0.0f;
+}
+
+bool ADasanActor::IsExplaining() 
+{
+	if (TourStateSystem && TourStateSystem->GetCurState() == ETourState::TourExplain)
+	{
+		return true;
+	}
+	return bIsPlayingExplainAnim;
+}
+
+
+void ADasanActor::StartExplainAnim()
+{
+	if (HasAuthority())
+	{
+		bIsPlayingExplainAnim = true;
+		PRINTLOG(TEXT("설명 애니메이션 시작"));
+	}
+}
+
+void ADasanActor::EndExplainAnim()
+{
+	if (HasAuthority())
+	{
+		bIsPlayingExplainAnim = false;
+		PRINTLOG(TEXT("설명 애니메이션 끝"));
 	}
 }

@@ -34,9 +34,6 @@ public:
 	EDasanState DasanState;
 	FORCEINLINE EDasanState GetDasanState() const { return DasanState; }
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	bool bIsexplain = false;
-	
 public:
 	// 유틸리티 함수
 	void StartTour();
@@ -127,4 +124,27 @@ private:
 	// 음성 명령 핸들러
 	UFUNCTION()
 	void OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester);
+
+public:
+	// ---------------------------- ABP 관련 함수 -------------------------------//
+
+	//이동 속도 
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Dasan|Animation")
+	float GetGroundSpeed();
+
+	//상태 확인 함수 
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Dasan|Animation")
+	bool IsExplaining(); 
+
+	// Explain 시작 
+	UFUNCTION(BlueprintCallable, Category = "Dasan|Animation")
+	void StartExplainAnim();
+
+	// Explain 종료 
+	UFUNCTION(BlueprintCallable, Category = "Dasan|Animation")
+	void EndExplainAnim();
+
+	// 애님 재생중 여부
+	UPROPERTY(Replicated)
+	bool bIsPlayingExplainAnim;
 };
