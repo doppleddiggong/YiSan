@@ -3,6 +3,7 @@
 #include "UChatPlayerSystem.h"
 #include "UChatBoxWidget.h"
 #include "APlayerActor.h"
+#include "YiSan/YiSan.h"
 #include "GameFramework/PlayerController.h"
 
 UChatPlayerSystem::UChatPlayerSystem()
@@ -76,4 +77,14 @@ void UChatPlayerSystem::MulticastRPC_AddChatMessage_Implementation(const FChatMe
 
 	// 로컬 클라이언트의 채팅창에 서버에서 전달받은 메시지를 출력
 	ChatBox->AddChatMessage(ChatMessage);
+}
+
+void UChatPlayerSystem::AnnouncePlayerJoin()
+{
+	if (!IsValid(Owner) || !IsValid(ChatBoxWidget))
+		return;
+
+	const FString Message = FString::Printf(TEXT("%s가 입궁하셨습니다"), *Owner->GetPlayerDisplayName());
+	const FChatMessage ChatMessage(EChatMessageType::System, -1, GameString::System, Message);
+	ServerRPC_SendChatMessage(ChatMessage);
 }

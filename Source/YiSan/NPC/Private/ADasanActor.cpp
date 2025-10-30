@@ -640,7 +640,7 @@ void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester
 		APlayerActor* RequestPlayer = Cast<APlayerActor>(Requester);
 		if (RequestPlayer && RequestPlayer->ChatPlayerSystem)
 		{
-			FChatMessage ChatMessage(EChatMessageType::NPC, GameString::NPC, TEXT("부르셨습니까?"));
+			FChatMessage ChatMessage(EChatMessageType::NPC, -1, GameString::NPC, TEXT("부르셨습니까?"));
 			RequestPlayer->ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
 		}
 

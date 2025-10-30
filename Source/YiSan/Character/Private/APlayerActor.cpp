@@ -3,6 +3,7 @@
 #include "APlayerActor.h"
 
 #include "AQuestManagerActor.h"
+#include "AYiSanPlayerState.h"
 #include "Components/WidgetComponent.h"
 
 #include "FComponentHelper.h"
@@ -124,9 +125,6 @@ void APlayerActor::BeginPlay()
         {
             if (AQuestManagerActor* QuestManager = AQuestManagerActor::Get(this))
                 BroadcastManager->SendUpdateQuest(QuestManager->GetCurrentTarget());
-
-            FChatMessage ChatMessage(EChatMessageType::User, *GetPlayerDisplayName(), TEXT("민지 왔쪄요"));
-            ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
         });
     }
     
@@ -261,13 +259,38 @@ void APlayerActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requeste
 
 FString APlayerActor::GetPlayerDisplayName() const
 {
-    if (auto PC = UGameplayStatics::GetPlayerController(GetWorld(), 0))
+    if (auto PS = GetPlayerState<AYiSanPlayerState>())
     {
-        if (auto PS = PC->PlayerState)
-            return PS->GetPlayerName();
+        return PS->Nickname;
+    }
+    
+    if (auto PC = GetController())
+    {
+        if (auto PS = Cast<AYiSanPlayerState>( PC->PlayerState))
+        {
+            return PS->Nickname;
+        }
     }
 
-    return TEXT("Yisan");
+    return TEXT("YiSan");
+}
+
+int32 APlayerActor::GetPlayerIndex() const
+{
+    if (auto PS = GetPlayerState<AYiSanPlayerState>())
+    {
+        return PS->PlayerIndex;
+    }
+    
+    if (auto PC = GetController())
+    {
+        if (auto PS = Cast<AYiSanPlayerState>( PC->PlayerState))
+        {
+            return PS->PlayerIndex;
+        }
+    }
+
+    return 0;
 }
 
 void APlayerActor::PlayTTSAudio(const TArray<uint8>& AudioData)

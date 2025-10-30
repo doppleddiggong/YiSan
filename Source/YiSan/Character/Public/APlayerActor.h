@@ -39,14 +39,9 @@ public:
     FGPTContext GetGPTContext() const;
 
     FString GetPlayerDisplayName() const;
+    int32 GetPlayerIndex() const;
 
 private:
-    // /// @brief 주변에서 가장 가까운 건물을 찾고 관련 시스템에 알립니다.
-    // void FindNearestBuilding();
-    //
-    // /// @brief 가장 가까운 건물을 주기적으로 평가하기 위한 타이머 핸들입니다.
-    // FTimerHandle TimeHandle_NearestBuilding;
-
     /// @brief 브로드캐스트 매니저에서 전달되는 음성 명령 실행 이벤트에 대응합니다.
     UFUNCTION()
     void OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester);
