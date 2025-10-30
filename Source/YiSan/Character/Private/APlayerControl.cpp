@@ -159,13 +159,13 @@ void APlayerControl::OnPossess(APawn* InPawn)
 {
     Super::OnPossess(InPawn);
 
-    if (HasAuthority())
+    if (IsLocalController())
     {
         if (UYiSanGameInstance* GI = GetGameInstance<UYiSanGameInstance>())
         {
             if (UNetworkGameInstanceSubsystem* NetworkSubsystem = GI->GetSubsystem<UNetworkGameInstanceSubsystem>())
             {
-                FString Nickname = NetworkSubsystem->GetPlayerNickname();
+                const FString Nickname = NetworkSubsystem->GetPlayerNickname();
                 if (!Nickname.IsEmpty())
                 {
                     Server_SetPlayerNickname(Nickname);
