@@ -32,6 +32,7 @@ protected:
     virtual void BeginPlay() override;
     virtual void PossessedBy(AController* NewController) override;
     virtual void OnRep_PlayerState() override;
+    virtual void OnRep_Controller() override;
     
 public:
     /// @brief 플레이어의 최신 GPT 컨텍스트 스냅샷을 수집합니다.
@@ -49,7 +50,9 @@ private:
 private:
 	FTimerHandle TimerHandle_InitNameTag;
 	void CheckAndInitNameTag();
-
+    
+    void OnReadyPawn();
+    
 public:
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Owner")
     TObjectPtr<class USkeletalMeshComponent> MeshComp; ///< 애니메이션 재생을 담당하는 메시 컴포넌트입니다.

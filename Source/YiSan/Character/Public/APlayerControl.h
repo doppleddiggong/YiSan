@@ -17,7 +17,7 @@ UCLASS(Blueprintable, BlueprintType, ClassGroup=(Dopple))
 class YISAN_API APlayerControl : public APlayerController
 {
 	GENERATED_BODY()
-
+	
 public:
 	APlayerControl();
 
@@ -63,12 +63,17 @@ protected:
 	void OnShowMouse(const FInputActionValue& Value);
 	void OnHideMouse(const FInputActionValue& Value);
 
+public:
+	void OnPawnReady(class APawn& InPawn);
+	
 private:
 	UFUNCTION()
 	void OnPlayerControlState(bool bState, class UUserWidget* FocusWidget);
-	
-public:
 
+	void CompleteLoading();
+	bool IsReadyToFinish() const;
+
+	
 #pragma region LOADING
 	//----------------로딩 관련-------------------
 	// 서버에서 호출: 맵 전환 시작
@@ -83,16 +88,23 @@ public:
 	void ClientRPC_ShowLoadingTransition();
 
 	UFUNCTION(Client, Reliable)
-	void ClientRPC_HideLoadingTransition();	
+	void ClientRPC_HideLoadingTransition();
+	
+	void HandleLoadingComplete();
 #pragma endregion LOADING
 
+
+#pragma region RECORDING
 	// Recording RPC
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_NotifyRecordingStart();
 
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_NotifyRecordingEnd();
+#pragma endregion RECORDING
 
+	
+#pragma region ANSWER
 	// Answer RPC
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_TryStartAnswer(const FString& PlayerName);
@@ -102,7 +114,9 @@ public:
 
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_FinishAnswer();
+#pragma endregion ANSWER
 
+	
 	// Toast
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_ShowToastMessage(const FString& Message);
@@ -110,6 +124,7 @@ public:
 	UFUNCTION(Client, Reliable)
 	void ClientRPC_ShowToastMessage(const FString& Message);
 
+	
 	// Quest
 	UFUNCTION(Client, Reliable)
 	void ClientRPC_UpdateQuestTarget(const EBuildingType BuildingType);
@@ -120,6 +135,10 @@ public:
 
 private:
     class IControllable* GetControllable() const;
+
+	bool bAwaitFinish = false;
+	bool bPawnReady = false;
+	
 
 	// 마지막 토스트 전송 시간                                                                                                                                          
 	float LastToastTime = 0.f;

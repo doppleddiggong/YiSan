@@ -29,6 +29,7 @@
 #include "AYisanGameState.h"
 #include "UAnswerStateSystem.h"
 #include "AYiSanPlayerState.h"
+#include "UDelayTaskManager.h"
 #include "UNetworkGameInstanceSubsystem.h"
 #include "UYiSanGameInstance.h"
 #include "ULoadingTransitionManager.h"
@@ -157,6 +158,8 @@ void APlayerControl::SetupInputComponent()
 
 void APlayerControl::OnPossess(APawn* InPawn)
 {
+	bAwaitFinish = false;
+
     Super::OnPossess(InPawn);
 
     if (IsLocalController())
@@ -172,6 +175,9 @@ void APlayerControl::OnPossess(APawn* InPawn)
                 }
             }
         }
+   	
+    	if (bAwaitFinish && GetPawn())
+    		CompleteLoading();
     }
 }
 
@@ -387,10 +393,66 @@ void APlayerControl::ClientRPC_ShowLoadingTransition_Implementation()
 
 void APlayerControl::ClientRPC_HideLoadingTransition_Implementation()
 {
-	if (auto TransitionManager = ULoadingTransitionManager::Get(this))
+	HandleLoadingComplete();
+}
+
+void APlayerControl::HandleLoadingComplete()
+{
+	if (!IsLocalController())
+		return;
+
+	if (!IsReadyToFinish())
 	{
-		TransitionManager->HideLoadingScreen();
+		if (!bAwaitFinish)
+		{
+			if (auto CtrlPawn = GetPawn())
+				PRINTLOG(TEXT("[Travel] Pawn not fully initialized - deferring loading completion for %s"), *GetNameSafe(CtrlPawn));
+			else
+				PRINTLOG(TEXT("[Travel] Pawn not ready - deferring loading completion for %s"), *GetName());
+		}
+
+		bAwaitFinish = true;
+		return;
 	}
+
+	CompleteLoading();
+}
+
+void APlayerControl::CompleteLoading()
+{
+	bAwaitFinish = false;
+
+	if (auto TM = ULoadingTransitionManager::Get(this))
+	{
+		TM->HideLoadingScreen();
+	}
+
+	SetInputMode(FInputModeGameOnly());
+	bShowMouseCursor = false;
+
+	PRINTLOG(TEXT("[Travel] Loading transition completed for %s"), *GetName());
+}
+
+void APlayerControl::OnPawnReady(APawn& InPawn)
+{
+	if (!IsLocalController())
+		return;
+
+	if (&InPawn != GetPawn())
+		return;
+
+	if (bPawnReady)
+		return;
+
+	bPawnReady = true;
+
+	if (bAwaitFinish)
+		CompleteLoading();
+}
+
+bool APlayerControl::IsReadyToFinish() const
+{
+	return GetPawn() != nullptr && bPawnReady;
 }
 
 void APlayerControl::Server_RequestMapTravel_Implementation(const FString& MapPath)

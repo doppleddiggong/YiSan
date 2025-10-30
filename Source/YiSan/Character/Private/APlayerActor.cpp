@@ -1,6 +1,7 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "APlayerActor.h"
+#include "APlayerControl.h"
 
 #include "AQuestManagerActor.h"
 #include "AYiSanPlayerState.h"
@@ -130,6 +131,11 @@ void APlayerActor::BeginPlay()
     
     // 이름표 위젯 초기화를 위한 타이머 시작
     GetWorldTimerManager().SetTimer(TimerHandle_InitNameTag, this, &APlayerActor::CheckAndInitNameTag, 0.2f, true);
+
+    GetWorldTimerManager().SetTimerForNextTick([this]()
+    {
+        OnReadyPawn();
+    });
 }
 
 void APlayerActor::OnRep_PlayerState()
@@ -137,11 +143,19 @@ void APlayerActor::OnRep_PlayerState()
     Super::OnRep_PlayerState();
 }
 
+void APlayerActor::OnRep_Controller()
+{
+    Super::OnRep_Controller();
+    OnReadyPawn();
+}
+
 void APlayerActor::PossessedBy(AController* NewController)
 {
     Super::PossessedBy(NewController);
     if (IsLocallyControlled())
         UE_LOG(LogTemp, Warning, TEXT("Pawn possessed locally, player can move"));
+
+    OnReadyPawn();
 }
 
 void APlayerActor::CheckAndInitNameTag()
@@ -153,6 +167,18 @@ void APlayerActor::CheckAndInitNameTag()
         // 위젯이 준비되면, 위젯에게 소유자가 자신임을 알려주고 이 타이머는 역할을 다했으므로 중지합니다.
         HeadWidget->SetOwningActor(this);
         GetWorldTimerManager().ClearTimer(TimerHandle_InitNameTag);
+    }
+}
+
+void APlayerActor::OnReadyPawn()
+{
+    if (auto PlayerController = Cast<APlayerController>(GetController()))
+    {
+        if (!PlayerController->IsLocalController())
+            return;
+
+        if (auto PC = Cast<APlayerControl>(PlayerController))
+            PC->OnPawnReady(*this);
     }
 }
 

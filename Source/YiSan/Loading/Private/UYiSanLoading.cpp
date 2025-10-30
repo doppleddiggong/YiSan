@@ -3,6 +3,7 @@
 #include "UYiSanLoading.h"
 
 #include "APlayerControl.h"
+#include "AYisanGameState.h"
 #include "FComponentHelper.h"
 #include "GameLogging.h"
 
@@ -173,17 +174,13 @@ void UYiSanLoading::CompleteProcess(const UWorld* InWorld)
             {
                 Broadcast_HideLoading();
 
-                if (auto TM = ULoadingTransitionManager::Get(this))
+                if (auto GS = World->GetGameState<AYisanGameState>())
                 {
-                    TM->HideLoadingScreen();
+                    GS->MulticastRPC_LoadingComplete();
                 }
-
-                if (auto pc = World->GetFirstPlayerController())
+                else
                 {
-                    pc->SetInputMode(FInputModeGameOnly());
-                    pc->bShowMouseCursor = false;
-
-                    PRINTLOG(TEXT("LOADING COMPLTE::GAME START."));
+                    Broadcast_HideLoading();
                 }
             }
         },
