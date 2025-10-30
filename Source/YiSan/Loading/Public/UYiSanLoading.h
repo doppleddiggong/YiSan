@@ -7,62 +7,70 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UYiSanLoading.generated.h"
 
+
 UCLASS()
 class YISAN_API UYiSanLoading : public UGameInstanceSubsystem
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 
 public:
-	DEFINE_SUBSYSTEM_GETTER_INLINE(UYiSanLoading);
+    DEFINE_SUBSYSTEM_GETTER_INLINE(UYiSanLoading);
 
-	void InitSystem(const FString& InURL, const bool bAbsolute);
-	
+    enum struct EState : uint8
+    {
+        WP          UMETA(DisplayName = "월드 파티션"),
+        TEXTURE     UMETA(DisplayName = "텍스쳐"),
+        LI          UMETA(DisplayName = "레벨 인스턴스"),
+        COMPLETE    UMETA(DisplayName = "완료"),
+        MAX         UMETA(Hidden)
+    };
+    
+    void InitSystem(const FString& InURL, bool bAbsolute);
+   
 private:
-	// 맵 로드 완료후 호출 콜백.
-	void PostLoadMapWithWorld(UWorld* World);
-	
-	// Step 3: 모든 스트리밍(WP, 텍스처, 레벨 인스턴스)이 완료된 후 호출됨.
-	void CompleteProcess(const UWorld* World);
+    void ResetLoadingState();
+    void PostLoadMapWithWorld(UWorld* InWorld);
+    void CompleteProcess(const UWorld* InWorld);
+    void UpdateTick();
+    void Loading_Textures(const UWorld* InWorld);
+    void Loading_LevelInstance(UWorld* InWorld);
+    void UpdateLoadingProgress();
+    float GetTotalProgress() const;
 
-	// 리소스 체크 함수임
-	// 스트리밍 및 레벨 인스턴스 준비 상태를 주기적으로 폴링함.
-	void Poll_StreamingAndInstancesReady();
-
-	// 로딩_텍스쳐
-	void Loading_Textures(const UWorld* World);
-	
-	// 로딩_레벨 인스턴스
-	void Loading_LevelInstance(UWorld* World);
-
-	// 로딩 UI의 진행률과 상태 텍스트를 업데이트함 (현재는 로그만 출력).
-	void UpdateLoadingProgress();
-
-	void BroadcastLoadingScreenShow() const;
-	void BroadcastLoadingScreenHide() const;
-	void BroadcastLoadingProgress(float Progress) const;
+#pragma region BROADCAST
+    void Broadcast_ShowLoading() const;
+    void Broadcast_HideLoading() const;
+    void Broadcast_UpdateLoadingProgress(float Progress) const;
+#pragma endregion   
 
 private:
-	// 타임아웃 체크를 위한 시작 시간
-	double ResourceCheckStartTime = 0.0;
-	
-	// 텍스쳐 스트리밍 추적 변수
-	double TextureStreamingStartTime = 0.0;
-	bool bInitialTextureStreamingComplete = false;
+    const double TextureStreaming_TimeOut = 60.0;
+    const double TextureProgress_LogInterval = 1.0;
+        
+private:
+    double TotalTime = 0.0;
+    float TotalProgress = 0.0f;
 
-	// 전체 진행율
-	float TotalProgress;
+    TMap<EState, bool> CompleteState
+    {
+        { EState::WP, false },
+        { EState::TEXTURE, false },
+        { EState::LI, false },
+        { EState::COMPLETE, false }
+    };
+    EState CurState = EState::WP;
 
-	bool bWorldPartitionReady = false;
-	bool bTextureReady = false;
-	bool bLevelInstancesReady = false;
-	float StreamingPercentage = 0.0f;
-	float LevelInstanceProgress = 0.0f;
+    FTimerHandle TimeHandlePool;
+    int32 LastPercent = -10;
+    
+   
+    bool bTextureStreamingComplete = false;
+    
+    float Progress_Texture = 0.0f;
+    float Progress_LI = 0.0f;
 
-	// 스트리밍 완료 폴링 타이머 핸들임.
-	FTimerHandle TimeHandlePool;
-
-	int32 LastReportedPercent = -10;
-	
-	UPROPERTY()
-	TObjectPtr<class UDialogManager> DM;
+    bool bRequestTexture = false;
+    int32 TextureRequestCount = 0;
+    double LastTextureProgressTime = 0.0;
+    float LastTextureProgress = -1.0f;
 };
