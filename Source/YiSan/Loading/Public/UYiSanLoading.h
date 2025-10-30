@@ -7,6 +7,7 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UYiSanLoading.generated.h"
 
+
 UCLASS()
 class YISAN_API UYiSanLoading : public UGameInstanceSubsystem
 {
@@ -15,82 +16,61 @@ class YISAN_API UYiSanLoading : public UGameInstanceSubsystem
 public:
     DEFINE_SUBSYSTEM_GETTER_INLINE(UYiSanLoading);
 
+    enum struct EState : uint8
+    {
+        WP          UMETA(DisplayName = "월드 파티션"),
+        TEXTURE     UMETA(DisplayName = "텍스쳐"),
+        LI          UMETA(DisplayName = "레벨 인스턴스"),
+        COMPLETE    UMETA(DisplayName = "완료"),
+        MAX         UMETA(Hidden)
+    };
+    
     void InitSystem(const FString& InURL, bool bAbsolute);
-
+   
 private:
-    enum class ELoadingSequenceStage : uint8
-    {
-        WorldPartition,
-        Texture,
-        LevelInstances,
-        Completed
-    };
-
     void ResetLoadingState();
-    void PostLoadMapWithWorld(UWorld* World);
-    void CompleteProcess(const UWorld* World);
-    void Poll_StreamingAndInstancesReady();
-    void Loading_Textures(const UWorld* World);
-    void Loading_LevelInstance(UWorld* World);
+    void PostLoadMapWithWorld(UWorld* InWorld);
+    void CompleteProcess(const UWorld* InWorld);
+    void UpdateTick();
+    void Loading_Textures(const UWorld* InWorld);
+    void Loading_LevelInstance(UWorld* InWorld);
     void UpdateLoadingProgress();
-    float CalculateTotalProgress() const;
-    void AdvanceToStage(ELoadingSequenceStage NextStage);
+    float GetTotalProgress() const;
 
-    void MarkStageStart(ELoadingSequenceStage Stage, double TimeSeconds);
-    void MarkStageComplete(ELoadingSequenceStage Stage, double TimeSeconds);
-    void LogStageSummary(const UWorld* World) const;
-    const TCHAR* GetStageLabel(ELoadingSequenceStage Stage) const;
-
-    void BroadcastLoadingScreenShow() const;
-    void BroadcastLoadingScreenHide() const;
-    void BroadcastLoadingProgress(float Progress) const;
+#pragma region BROADCAST
+    void Broadcast_ShowLoading() const;
+    void Broadcast_HideLoading() const;
+    void Broadcast_UpdateLoadingProgress(float Progress) const;
+#pragma endregion   
 
 private:
-    struct FStageTiming
-    {
-        double StartTime = 0.0;
-        double EndTime = 0.0;
-        bool bStarted = false;
-        bool bCompleted = false;
-
-        double GetDuration() const
-        {
-            return (bStarted && bCompleted) ? EndTime - StartTime : 0.0;
-        }
-    };
-
-    static constexpr int32 StageCount = static_cast<int32>(ELoadingSequenceStage::Completed) + 1;
-
-    static constexpr double TextureStreamingTimeoutSeconds = 60.0;
-    static constexpr double TextureProgressLogIntervalSeconds = 5.0;
-    static constexpr float WorldPartitionWeight = 0.15f;
-    static constexpr float TextureWeight = 0.70f;
-    static constexpr float LevelInstanceWeight = 0.15f;
-
-    double ResourceCheckStartTime = 0.0;
-    bool bInitialTextureStreamingComplete = false;
-
+    const double TextureStreaming_TimeOut = 60.0;
+    const double TextureProgress_LogInterval = 1.0;
+        
+private:
+    double TotalTime = 0.0;
     float TotalProgress = 0.0f;
 
-    bool bWorldPartitionReady = false;
-    bool bTextureReady = false;
-    bool bLevelInstancesReady = false;
-    bool bCompletionAnnounced = false;
-    float StreamingPercentage = 0.0f;
-    float LevelInstanceProgress = 0.0f;
-
-    bool bCapturedInitialTextureRequests = false;
-    int32 InitialTextureRequestCount = 0;
-    double LastTextureProgressLogTime = 0.0;
-    float LastReportedTextureProgress = -1.0f;
+    TMap<EState, bool> CompleteState
+    {
+        { EState::WP, false },
+        { EState::TEXTURE, false },
+        { EState::LI, false },
+        { EState::COMPLETE, false }
+    };
+    EState CurState = EState::WP;
 
     FTimerHandle TimeHandlePool;
-    ELoadingSequenceStage CurrentStage = ELoadingSequenceStage::WorldPartition;
+    int32 LastPercent = -10;
+    
+   
+    bool bTextureStreamingComplete = false;
+    
+    float Progress_Texture = 0.0f;
+    float Progress_LI = 0.0f;
 
-    int32 LastReportedPercent = -10;
-
-    FStageTiming StageTimings[StageCount] = {};
-
-    UPROPERTY()
-    TObjectPtr<class UDialogManager> DM;
+    bool bRequestTexture = false;
+    int32 TextureRequestCount = 0;
+    double LastTextureProgressTime = 0.0;
+    float LastTextureProgress = -1.0f;
 };

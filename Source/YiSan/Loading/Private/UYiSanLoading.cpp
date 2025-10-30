@@ -5,7 +5,6 @@
 #include "APlayerControl.h"
 #include "FComponentHelper.h"
 #include "GameLogging.h"
-#include "UDialogManager.h"
 
 #include "TimerManager.h"
 #include "ContentStreaming.h"
@@ -19,23 +18,44 @@
 
 #include "Engine/World.h"
 #include "Engine/Engine.h"
-#include "Engine/StreamableManager.h"
-#include "Engine/AssetManager.h"
+
+static float WorldWeight = 0.15f;
+static float TextureWeight = 0.70f;
+static float LevelWeight = 0.15f;
+
 
 void UYiSanLoading::InitSystem(const FString& InURL, bool bAbsolute)
 {
-    PRINTLOG(TEXT("로딩 레벨 매니저: Step1 로딩 시작 호출함"));
+    PRINTLOG(TEXT("UYiSanLoading::InitSystem(%s, %d)"), *InURL, bAbsolute);
 
-    ResetLoadingState();
+    // 기본 데이터 초기화
+    TotalTime = 0.0;
+    TotalProgress = 0.0f;
 
-    DM = UDialogManager::Get(this);
+    bTextureStreamingComplete = false;
 
-    BroadcastLoadingScreenShow();
+    CompleteState[EState::WP] = false;
+    CompleteState[EState::TEXTURE] = false;
+    CompleteState[EState::LI] =  false;
+    CompleteState[EState::COMPLETE] =  false;
 
-    if (ULoadingTransitionManager* TransitionManager = ULoadingTransitionManager::Get(this))
+    Progress_Texture = 0.0f;
+    Progress_LI = 0.0f;
+
+    bRequestTexture = false;
+    TextureRequestCount = 0;
+    LastTextureProgressTime = 0.0;
+    LastTextureProgress = -1.0f;
+
+    LastPercent = -10;
+    CurState = EState::WP;
+
+    Broadcast_ShowLoading();
+
+    if (auto TM = ULoadingTransitionManager::Get(this))
     {
-        TransitionManager->ShowLoadingScreen();
-        TransitionManager->UpdateLoadingProgress(0.0f);
+        TM->ShowLoadingScreen();
+        TM->UpdateLoadingProgress(0.0f);
     }
 
     FCoreUObjectDelegates::PostLoadMapWithWorld.RemoveAll(this);
@@ -45,65 +65,33 @@ void UYiSanLoading::InitSystem(const FString& InURL, bool bAbsolute)
     GetWorld()->ServerTravel(InURL, bAbsolute);
 }
 
-void UYiSanLoading::PostLoadMapWithWorld(UWorld* World)
+void UYiSanLoading::PostLoadMapWithWorld(UWorld* InWorld)
 {
-    if (!World)
+    if (!InWorld)
     {
         PRINTLOG(TEXT("[스텝2] LoadedWorld가 null임."));
         return;
     }
 
-    PRINTLOG(TEXT("[스텝2] 맵 로드 완료: %s"), *World->GetName());
-    DM->ShowToast(FString::Printf(TEXT("[스텝2] 맵 로드 완료: %s"), *World->GetName()));
+    PRINTLOG(TEXT("[스텝2] 맵 로드 완료: %s"), *InWorld->GetName());
 
-    ResourceCheckStartTime = World->GetTimeSeconds();
-    bInitialTextureStreamingComplete = false;
+    TotalTime = InWorld->GetTimeSeconds();
+    bTextureStreamingComplete = false;
 
-    MarkStageStart(ELoadingSequenceStage::WorldPartition, ResourceCheckStartTime);
-
-    IStreamingManager::Get().AddLevel(World->PersistentLevel);
+    IStreamingManager::Get().AddLevel(InWorld->PersistentLevel);
     IStreamingManager::Get().NotifyLevelChange();
 
     PRINTLOG(TEXT("[스텝2] 텍스처 스트리밍 강제 시작 완료"));
-    DM->ShowToast(FString::Printf(TEXT("[스텝2] 텍스처 스트리밍 강제 시작 완료")));
 
-    World->GetTimerManager().SetTimer(
+    InWorld->GetTimerManager().SetTimer(
         TimeHandlePool,
         this,
-        &UYiSanLoading::Poll_StreamingAndInstancesReady,
+        &UYiSanLoading::UpdateTick,
         0.1f,
         true);
 }
 
-void UYiSanLoading::ResetLoadingState()
-{
-    ResourceCheckStartTime = 0.0;
-    TotalProgress = 0.0f;
-
-    bInitialTextureStreamingComplete = false;
-    bWorldPartitionReady = false;
-    bTextureReady = false;
-    bLevelInstancesReady = false;
-    bCompletionAnnounced = false;
-
-    StreamingPercentage = 0.0f;
-    LevelInstanceProgress = 0.0f;
-
-    bCapturedInitialTextureRequests = false;
-    InitialTextureRequestCount = 0;
-    LastTextureProgressLogTime = 0.0;
-    LastReportedTextureProgress = -1.0f;
-
-    LastReportedPercent = -10;
-    CurrentStage = ELoadingSequenceStage::WorldPartition;
-
-    for (FStageTiming& StageTiming : StageTimings)
-    {
-        StageTiming = FStageTiming();
-    }
-}
-
-void UYiSanLoading::Poll_StreamingAndInstancesReady()
+void UYiSanLoading::UpdateTick()
 {
     UWorld* World = GetWorld();
     if (!World)
@@ -112,100 +100,104 @@ void UYiSanLoading::Poll_StreamingAndInstancesReady()
         return;
     }
 
-    switch (CurrentStage)
+    switch (CurState)
     {
-    case ELoadingSequenceStage::WorldPartition:
+    case EState::WP:
     {
-        if (!bWorldPartitionReady)
+        if (!CompleteState[EState::WP] )
         {
-            if (UWorldPartitionSubsystem* WPS = World->GetSubsystem<UWorldPartitionSubsystem>())
-            {
-                bWorldPartitionReady = WPS->IsStreamingCompleted();
-            }
+            if (auto WPS = World->GetSubsystem<UWorldPartitionSubsystem>())
+                CompleteState[EState::WP] = WPS->IsStreamingCompleted();
             else
-            {
-                bWorldPartitionReady = true;
-            }
+                CompleteState[EState::WP] = true;
 
-            if (bWorldPartitionReady)
+            if (CompleteState[EState::WP])
             {
-                PRINTLOG(TEXT("[폴링] WorldPartition 스트리밍 완료"));
-                AdvanceToStage(ELoadingSequenceStage::Texture);
+                PRINTLOG(TEXT("[폴링] WorldPartition | 완료"));
+                CurState = EState::TEXTURE;
+                
+                bRequestTexture = false;
+                TextureRequestCount = 0;
+                LastTextureProgressTime = 0.0;
+                LastTextureProgress = -1.0f;
             }
         }
         break;
     }
-    case ELoadingSequenceStage::Texture:
+    case EState::TEXTURE:
     {
         Loading_Textures(World);
-        if (bTextureReady)
+        if (CompleteState[EState::TEXTURE])
         {
-            PRINTLOG(TEXT("[폴링] 텍스처 스트리밍 단계 완료"));
-            AdvanceToStage(ELoadingSequenceStage::LevelInstances);
+            PRINTLOG(TEXT("[폴링] 텍스처 스트리밍 | 완료"));
+            CurState = EState::LI;
         }
         break;
     }
-    case ELoadingSequenceStage::LevelInstances:
+    case EState::LI:
     {
         Loading_LevelInstance(World);
-        if (bLevelInstancesReady)
+        if (CompleteState[EState::LI])
         {
-            AdvanceToStage(ELoadingSequenceStage::Completed);
-        }
+            PRINTLOG(TEXT("[폴링] 레벨 인스턴스 | 완료"));
+            CurState = EState::COMPLETE;
+       }
         break;
     }
-    case ELoadingSequenceStage::Completed:
+        
+    case EState::COMPLETE:
+    default:
         break;
     }
 
-    TotalProgress = CalculateTotalProgress();
+    TotalProgress = GetTotalProgress();
     UpdateLoadingProgress();
 
-    if (CurrentStage == ELoadingSequenceStage::Completed && !bCompletionAnnounced)
+    if ( CurState == EState::COMPLETE && ! CompleteState[EState::COMPLETE] )
     {
-        bCompletionAnnounced = true;
-        LogStageSummary(World);
+        // 현재 완료 상태이면서, 완료 도달 상태라면
+        CompleteState[EState::COMPLETE] = true;
+
         PRINTLOG(TEXT("[폴링] ===== 모든 준비 완료 ====="));
         PRINTLOG(TEXT("WorldPartition: OK"));
-        PRINTLOG(TEXT("Texture: %.1f%% (완료)"), StreamingPercentage * 100.0f);
-        PRINTLOG(TEXT("LevelInstance: %.0f%% (완료)"), LevelInstanceProgress * 100.0f);
-        PRINTLOG(TEXT("총 소요 시간: %.2f초"), World->GetTimeSeconds() - ResourceCheckStartTime);
+        PRINTLOG(TEXT("Texture: %.1f%% (완료)"), Progress_Texture * 100.0f);
+        PRINTLOG(TEXT("LevelInstance: %.0f%% (완료)"), Progress_LI * 100.0f);
+        PRINTLOG(TEXT("총 소요 시간: %.2f초"), World->GetTimeSeconds() - TotalTime);
 
         CompleteProcess(World);
     }
 }
 
-void UYiSanLoading::CompleteProcess(const UWorld* World)
+void UYiSanLoading::CompleteProcess(const UWorld* InWorld)
 {
-    World->GetTimerManager().ClearTimer(TimeHandlePool);
+    InWorld->GetTimerManager().ClearTimer(TimeHandlePool);
 
     FTimerHandle DelayHandle;
-    World->GetTimerManager().SetTimer(
+    
+    InWorld->GetTimerManager().SetTimer(
         DelayHandle,
         [this]()
         {
             PRINTLOG(TEXT("[스텝3] 타겟으로 전환 완료함. 플레이어 입력 활성화."));
-            DM->ShowToast(FString::Printf(TEXT("[스텝3] 타겟으로 전환 완료함. 플레이어 입력 활성화.")));
-
             if (UWorld* World = GetWorld())
             {
-                BroadcastLoadingScreenHide();
+                Broadcast_HideLoading();
 
-                if (ULoadingTransitionManager* TransitionManager = ULoadingTransitionManager::Get(this))
+                if (auto TM = ULoadingTransitionManager::Get(this))
                 {
-                    TransitionManager->HideLoadingScreen();
+                    TM->HideLoadingScreen();
                 }
 
-                if (APlayerController* PC = World->GetFirstPlayerController())
+                if (auto pc = World->GetFirstPlayerController())
                 {
-                    PC->SetInputMode(FInputModeGameOnly());
-                    PC->bShowMouseCursor = false;
+                    pc->SetInputMode(FInputModeGameOnly());
+                    pc->bShowMouseCursor = false;
 
-                    DM->ShowToast(FString::Printf(TEXT("GAME START!!!")));
+                    PRINTLOG(TEXT("LOADING COMPLTE::GAME START."));
                 }
             }
         },
-        0.1f,
+        0.1f, // 전환 시간
         false);
 }
 
@@ -213,11 +205,11 @@ void UYiSanLoading::CompleteProcess(const UWorld* World)
 // - `GetNumWantingResources` 값이 감소하는 속도를 기반으로 선형 진행률을 계산한다.
 // - 엔진의 기본 스트리밍 스레드를 존중하기 위해 `StreamAllResources` 호출은 제거했다.
 // - 일정 시간 동안 완료되지 않을 경우, 타임아웃을 적용해 플레이어 진행을 보장한다.
-void UYiSanLoading::Loading_Textures(const UWorld* World)
+void UYiSanLoading::Loading_Textures(const UWorld* InWorld)
 {
     IStreamingManager& StreamingManager = IStreamingManager::Get();
-    const double CurrentTime = World->GetTimeSeconds();
-    const double ElapsedTime = CurrentTime - ResourceCheckStartTime;
+    const double CurTime = InWorld->GetTimeSeconds();
+    const double ElapsedTime = CurTime - TotalTime;
 
     const int32 PendingRequests = StreamingManager.GetNumWantingResources();
     const bool bStreamingInProgress = (PendingRequests > 0);
@@ -225,257 +217,149 @@ void UYiSanLoading::Loading_Textures(const UWorld* World)
     UE_LOG(LogTemp, Log, TEXT("[Loading] %.2f s elapsed – Pending %d – Streaming %s"),
         ElapsedTime, PendingRequests, bStreamingInProgress ? TEXT("InProgress") : TEXT("Done"));
 
-
-    if (!bCapturedInitialTextureRequests)
+    if (!bRequestTexture)
     {
-        bCapturedInitialTextureRequests = true;
-        InitialTextureRequestCount = PendingRequests;
-        LastTextureProgressLogTime = CurrentTime;
+        bRequestTexture = true;
+        
+        TextureRequestCount = PendingRequests;
+        LastTextureProgressTime = CurTime;
     }
 
     if (!bStreamingInProgress && PendingRequests == 0)
     {
-        StreamingPercentage = 1.0f;
-        bTextureReady = true;
+        Progress_Texture = 1.0f;
+        CompleteState[EState::TEXTURE] = true;
 
-        if (!bInitialTextureStreamingComplete)
+        if (!bTextureStreamingComplete)
         {
             PRINTLOG(TEXT("[폴링] 텍스처 스트리밍 완료 (소요 시간: %.2f초)"), ElapsedTime);
-            bInitialTextureStreamingComplete = true;
+            bTextureStreamingComplete = true;
         }
 
-        LastReportedTextureProgress = StreamingPercentage;
+        LastTextureProgress = Progress_Texture;
         return;
     }
 
-    bTextureReady = false;
+    CompleteState[EState::COMPLETE] = false;
 
-    const int32 EffectiveInitialCount = FMath::Max(InitialTextureRequestCount, 1);
-    const float PendingRatio = FMath::Clamp(static_cast<float>(PendingRequests) / static_cast<float>(EffectiveInitialCount), 0.0f, 1.0f);
-    StreamingPercentage = 1.0f - PendingRatio;
+    const int32 RequestCount = FMath::Max(TextureRequestCount, 1);
+    const float PendingRatio = FMath::Clamp(static_cast<float>(PendingRequests) / static_cast<float>(RequestCount), 0.0f, 1.0f);
+    Progress_Texture = 1.0f - PendingRatio;
 
-    if (StreamingPercentage < LastReportedTextureProgress - KINDA_SMALL_NUMBER ||
-        StreamingPercentage > LastReportedTextureProgress + KINDA_SMALL_NUMBER)
+    if (Progress_Texture < LastTextureProgress - KINDA_SMALL_NUMBER ||
+        Progress_Texture > LastTextureProgress + KINDA_SMALL_NUMBER)
     {
-        const double TimeSinceLastLog = CurrentTime - LastTextureProgressLogTime;
-        if (TimeSinceLastLog >= TextureProgressLogIntervalSeconds)
+        const double TimeSinceLastLog = CurTime - LastTextureProgressTime;
+        if (TimeSinceLastLog >= TextureProgress_LogInterval)
         {
-            PRINTLOG(TEXT("[폴링] 텍스처 스트리밍 진행 중 (대기: %d개, 진행률: %.1f%%)"), PendingRequests, StreamingPercentage * 100.0f);
-            LastTextureProgressLogTime = CurrentTime;
-            LastReportedTextureProgress = StreamingPercentage;
+            PRINTLOG(TEXT("[폴링] 텍스처 스트리밍 진행 중 (대기: %d개, 진행률: %.1f%%)"), PendingRequests, Progress_Texture * 100.0f);
+            LastTextureProgressTime = CurTime;
+            LastTextureProgress = Progress_Texture;
         }
     }
 
-    if (!bTextureReady && ElapsedTime > TextureStreamingTimeoutSeconds)
+    if (!CompleteState[EState::TEXTURE] && ElapsedTime > TextureStreaming_TimeOut)
     {
-        PRINTLOG(TEXT("[폴링] 텍스처 스트리밍 타임아웃 (%.0f초 초과). 남은 대기 텍스처: %d개"), TextureStreamingTimeoutSeconds, PendingRequests);
-        StreamingPercentage = 1.0f;
-        bTextureReady = true;
+        PRINTLOG(TEXT("[폴링] 텍스처 스트리밍 타임아웃 (%.0f초 초과). 남은 대기 텍스처: %d개"), TextureStreaming_TimeOut, PendingRequests);
+        Progress_Texture = 1.0f;
+        CompleteState[EState::TEXTURE] = true;
     }
 }
 
-void UYiSanLoading::Loading_LevelInstance(UWorld* World)
+void UYiSanLoading::Loading_LevelInstance(UWorld* InWorld)
 {
-    if (World->GetSubsystem<ULevelInstanceSubsystem>())
+    if (auto LIS = InWorld->GetSubsystem<ULevelInstanceSubsystem>())
     {
-        const TArray<ALevelInstance*> Found = FComponentHelper::GetAllOfClass<ALevelInstance>(World);
+        auto Found = FComponentHelper::GetAllOfClass<ALevelInstance>(InWorld);
+
         if (Found.Num() == 0)
         {
-            LevelInstanceProgress = 1.0f;
-            bLevelInstancesReady = true;
+            Progress_LI = 1.0f;
+            CompleteState[EState::LI] = true;
             return;
         }
 
         int32 ReadyCount = 0;
-        for (ALevelInstance* LevelInstance : Found)
+        for (auto LevelInstance : Found)
         {
             if (LevelInstance && LevelInstance->GetLoadedLevel() != nullptr)
-            {
                 ++ReadyCount;
-            }
         }
 
-        LevelInstanceProgress = Found.Num() > 0 ? static_cast<float>(ReadyCount) / static_cast<float>(Found.Num()) : 1.0f;
-        bLevelInstancesReady = (ReadyCount == Found.Num());
+        Progress_LI = Found.Num() > 0 ? static_cast<float>(ReadyCount) / static_cast<float>(Found.Num()) : 1.0f;
+        CompleteState[EState::LI] = (ReadyCount == Found.Num());
     }
     else
     {
-        bLevelInstancesReady = true;
-        LevelInstanceProgress = 1.0f;
+        CompleteState[EState::LI] = true;
+        Progress_LI = 1.0f;
     }
+}
+
+float UYiSanLoading::GetTotalProgress() const
+{
+    const float WorldPartitionProgress = CompleteState[EState::WP] ? 1.0f : 0.0f;
+    const float tmpTextureProgress = FMath::Clamp(Progress_Texture, 0.0f, 1.0f);
+
+    return (WorldPartitionProgress * WorldWeight) + (tmpTextureProgress * TextureWeight) + (Progress_LI * LevelWeight);
 }
 
 void UYiSanLoading::UpdateLoadingProgress()
 {
-    const int32 CurrentPercent = FMath::Clamp(FMath::FloorToInt(TotalProgress * 10.0f) * 10, 0, 100);
-    if (CurrentPercent != LastReportedPercent)
+    const int32 Percent = FMath::Clamp(FMath::FloorToInt(TotalProgress * 10.0f) * 10, 0, 100);
+    if (Percent != LastPercent)
     {
-        PRINTLOG(TEXT("PROGRESS : %d"), CurrentPercent);
-        const float NormalizedProgress = static_cast<float>(CurrentPercent) / 100.0f;
+        PRINTLOG(TEXT("PROGRESS : %d"), Percent);
+        const float NormalizedProgress = static_cast<float>(Percent) / 100.0f;
 
-        if (ULoadingTransitionManager* TransitionManager = ULoadingTransitionManager::Get(this))
-        {
-            TransitionManager->UpdateLoadingProgress(NormalizedProgress);
-        }
+        if (auto TM = ULoadingTransitionManager::Get(this))
+            TM->UpdateLoadingProgress(NormalizedProgress);
 
-        BroadcastLoadingProgress(NormalizedProgress);
-        LastReportedPercent = CurrentPercent;
+        Broadcast_UpdateLoadingProgress(NormalizedProgress);
+        LastPercent = Percent;
     }
 }
 
-float UYiSanLoading::CalculateTotalProgress() const
-{
-    const float WorldPartitionProgress = bWorldPartitionReady ? 1.0f : 0.0f;
-    const float TextureProgress = FMath::Clamp(StreamingPercentage, 0.0f, 1.0f);
-
-    return (WorldPartitionProgress * WorldPartitionWeight) +
-           (TextureProgress * TextureWeight) +
-           (LevelInstanceProgress * LevelInstanceWeight);
-}
-
-void UYiSanLoading::AdvanceToStage(const ELoadingSequenceStage NextStage)
-{
-    if (CurrentStage == NextStage)
-    {
-        return;
-    }
-
-    const UWorld* World = GetWorld();
-    const double TimeSeconds = World ? World->GetTimeSeconds() : 0.0;
-
-    MarkStageComplete(CurrentStage, TimeSeconds);
-
-    CurrentStage = NextStage;
-
-    if (CurrentStage == ELoadingSequenceStage::Texture)
-    {
-        bCapturedInitialTextureRequests = false;
-        InitialTextureRequestCount = 0;
-        LastTextureProgressLogTime = 0.0;
-        LastReportedTextureProgress = -1.0f;
-    }
-
-    if (CurrentStage != ELoadingSequenceStage::Completed)
-    {
-        MarkStageStart(CurrentStage, TimeSeconds);
-    }
-    else
-    {
-        MarkStageComplete(CurrentStage, TimeSeconds);
-    }
-}
-
-void UYiSanLoading::MarkStageStart(const ELoadingSequenceStage Stage, const double TimeSeconds)
-{
-    const int32 StageIndex = static_cast<int32>(Stage);
-    if (!StageTimings[StageIndex].bStarted)
-    {
-        StageTimings[StageIndex].bStarted = true;
-        StageTimings[StageIndex].StartTime = TimeSeconds;
-
-        const double RelativeTime = TimeSeconds - ResourceCheckStartTime;
-        PRINTLOG(TEXT("[타이밍] (Legacy 비교) %s 단계 시작 (T+%.2f초)"), GetStageLabel(Stage), RelativeTime);
-    }
-}
-
-void UYiSanLoading::MarkStageComplete(const ELoadingSequenceStage Stage, const double TimeSeconds)
-{
-    const int32 StageIndex = static_cast<int32>(Stage);
-    FStageTiming& Timing = StageTimings[StageIndex];
-    if (Timing.bStarted && !Timing.bCompleted)
-    {
-        Timing.EndTime = TimeSeconds;
-        Timing.bCompleted = true;
-
-        const double StageDuration = Timing.GetDuration();
-        const double Accumulated = TimeSeconds - ResourceCheckStartTime;
-        PRINTLOG(TEXT("[타이밍] (Legacy 비교) %s 단계 완료 (단계 소요: %.2f초, 누적: %.2f초)"), GetStageLabel(Stage), StageDuration, Accumulated);
-    }
-}
-
-void UYiSanLoading::LogStageSummary(const UWorld* World) const
-{
-    if (!World)
-    {
-        return;
-    }
-
-    PRINTLOG(TEXT("[타이밍] (Legacy 비교) 단계별 소요 시간 요약"));
-    for (int32 StageIndex = 0; StageIndex < StageCount; ++StageIndex)
-    {
-        const FStageTiming& Timing = StageTimings[StageIndex];
-        if (!Timing.bStarted)
-        {
-            continue;
-        }
-
-        const double Duration = Timing.GetDuration();
-        const double StartOffset = Timing.StartTime - ResourceCheckStartTime;
-        const double EndOffset = Timing.bCompleted ? Timing.EndTime - ResourceCheckStartTime : StartOffset;
-
-        PRINTLOG(TEXT("[타이밍]  - %s | 시작: T+%.2f초 | 종료: T+%.2f초 | 단계 소요: %.2f초"),
-            GetStageLabel(static_cast<ELoadingSequenceStage>(StageIndex)),
-            StartOffset,
-            EndOffset,
-            Duration);
-    }
-}
-
-const TCHAR* UYiSanLoading::GetStageLabel(const ELoadingSequenceStage Stage) const
-{
-    switch (Stage)
-    {
-    case ELoadingSequenceStage::WorldPartition:
-        return TEXT("WorldPartition");
-    case ELoadingSequenceStage::Texture:
-        return TEXT("TextureStreaming");
-    case ELoadingSequenceStage::LevelInstances:
-        return TEXT("LevelInstance");
-    case ELoadingSequenceStage::Completed:
-        return TEXT("Completed");
-    default:
-        return TEXT("Unknown");
-    }
-}
-
-void UYiSanLoading::BroadcastLoadingScreenShow() const
+#pragma region BROADCAST
+void UYiSanLoading::Broadcast_ShowLoading() const
 {
     if (UWorld* World = GetWorld())
     {
-        for (FConstPlayerControllerIterator It = World->GetPlayerControllerIterator(); It; ++It)
+        for (auto It = World->GetPlayerControllerIterator(); It; ++It)
         {
-            if (APlayerControl* PlayerControl = Cast<APlayerControl>(It->Get()))
+            if (auto pc = Cast<APlayerControl>(It->Get()))
             {
-                PlayerControl->ClientRPC_ShowLoadingTransition();
+                pc->ClientRPC_ShowLoadingTransition();
             }
         }
     }
 }
 
-void UYiSanLoading::BroadcastLoadingScreenHide() const
+void UYiSanLoading::Broadcast_HideLoading() const
 {
     if (UWorld* World = GetWorld())
     {
-        for (FConstPlayerControllerIterator It = World->GetPlayerControllerIterator(); It; ++It)
+        for (auto it = World->GetPlayerControllerIterator(); it; ++it)
         {
-            if (APlayerControl* PlayerControl = Cast<APlayerControl>(It->Get()))
+            if (auto pc = Cast<APlayerControl>(it->Get()))
             {
-                PlayerControl->ClientRPC_HideLoadingTransition();
+                pc->ClientRPC_HideLoadingTransition();
             }
         }
     }
 }
 
-void UYiSanLoading::BroadcastLoadingProgress(const float Progress) const
+void UYiSanLoading::Broadcast_UpdateLoadingProgress(const float Progress) const
 {
     if (UWorld* World = GetWorld())
     {
-        for (FConstPlayerControllerIterator It = World->GetPlayerControllerIterator(); It; ++It)
+        for (auto it = World->GetPlayerControllerIterator(); it; ++it)
         {
-            if (APlayerControl* PlayerControl = Cast<APlayerControl>(It->Get()))
+            if (auto pc = Cast<APlayerControl>(it->Get()))
             {
-                PlayerControl->ClientRPC_UpdateLoadingTransitionProgress(Progress);
+                pc->ClientRPC_UpdateLoadingTransitionProgress(Progress);
             }
         }
     }
 }
+#pragma endregion
