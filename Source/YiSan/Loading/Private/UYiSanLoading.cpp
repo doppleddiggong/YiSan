@@ -207,7 +207,7 @@ void UYiSanLoading::CompleteProcess(const UWorld* InWorld)
 void UYiSanLoading::Loading_Textures(const UWorld* InWorld)
 {
     IStreamingManager& StreamingManager = IStreamingManager::Get();
-    const double CurTime = InWorld->GetTimeSeconds();
+    const double CurTime = FPlatformTime::Seconds();
     const double ElapsedTime = CurTime - TotalTime;
 
     const int32 PendingRequests = StreamingManager.GetNumWantingResources();
