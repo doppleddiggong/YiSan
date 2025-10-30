@@ -28,13 +28,11 @@
 #include "APlayerActor.h"
 #include "AYisanGameState.h"
 #include "UAnswerStateSystem.h"
-#include "ULoadingTransitionManager.h"
-#include "UYiSanLoading.h"
-
-
 #include "AYiSanPlayerState.h"
 #include "UNetworkGameInstanceSubsystem.h"
 #include "UYiSanGameInstance.h"
+#include "ULoadingTransitionManager.h"
+#include "UYiSanLoading.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
@@ -361,89 +359,79 @@ void APlayerControl::ServerStartMapTravel(const FString& MapPath)
 	// 서버 권한 체크
 	if (!HasAuthority())
 	{
-		UE_LOG(LogTemp, Error, TEXT("[Travel] 클라이언트가 ServerStartMapTravel 호출 시도 - 무시됨"));
+		PRINTLOG( TEXT("[Travel] 클라이언트가 ServerStartMapTravel 호출 시도 - 무시됨"));
 		return;
 	}
 
-	UE_LOG(LogTemp, Display, TEXT("[Travel] 서버가 맵 전환 시작: %s"), *MapPath);
+	PRINTLOG(  TEXT("[Travel] 서버가 맵 전환 시작: %s"), *MapPath);
 
-	// 1. 모든 클라이언트에게 로딩 UI 표시 알림
-	for (FConstPlayerControllerIterator It = GetWorld()->GetPlayerControllerIterator(); It; ++It)
-	{
-		if (APlayerControl* PC = Cast<APlayerControl>(It->Get()))
-		{
-			PC->Client_ShowLoadingScreen();
-		}
-	}
-
-	// 2. 서버도 로딩 UI 표시
-	if (IsLocalController())
-	{
-		Client_ShowLoadingScreen_Implementation();
-	}
-
-	// 3. 약간의 딜레이 후 ServerTravel 호출 (UI가 먼저 뜨도록)
+	// 약간의 딜레이 후 ServerTravel 호출 (UI가 먼저 뜨도록)
 	FTimerHandle TravelTimerHandle;
 	GetWorldTimerManager().SetTimer(TravelTimerHandle, [this, MapPath]()
 	{
-		FString TravelURL = MapPath + TEXT("?listen");
-        
-		UE_LOG(LogTemp, Display, TEXT("[Travel] ServerTravel 실행: %s"), *TravelURL);
-		GetWorld()->ServerTravel(TravelURL, true); // true = SeamlessTravel
+		if (UWorld* World = GetWorld())
+		{
+			for (FConstPlayerControllerIterator It = World->GetPlayerControllerIterator(); It; ++It)
+			{
+				if (APlayerControl* PlayerControl = Cast<APlayerControl>(It->Get()))
+				{
+					PlayerControl->ClientRPC_ShowLoadingTransition();
+				}
+			}
+		}
+
+		if (auto TransitionManager = ULoadingTransitionManager::Get(this))
+		{
+			TransitionManager->ShowLoadingScreen();
+			TransitionManager->UpdateLoadingProgress(0.0f);
+		}
+
+		if (auto GI = UYiSanLoading::Get(GetWorld()))
+		{
+			FString TravelURL = MapPath + TEXT("?listen");
+			GI->InitSystem(TravelURL, true);
+		}
+		
+
+		// if ( auto GI = UYiSanLoading::Get( GetWorld() ))
+		// 	GI->InitSystem(TravelURL, true);
+		
 	}, 0.1f, false);
 }
 
+void APlayerControl::ClientRPC_ShowLoadingTransition_Implementation()
+{
+	if (auto TransitionManager = ULoadingTransitionManager::Get(this))
+	{
+		TransitionManager->ShowLoadingScreen();
+		TransitionManager->UpdateLoadingProgress(0.0f);
+	}
+}
+
+void APlayerControl::ClientRPC_UpdateLoadingTransitionProgress_Implementation(const float Progress)
+{
+	if (auto TransitionManager = ULoadingTransitionManager::Get(this))
+	{
+		TransitionManager->UpdateLoadingProgress(FMath::Clamp(Progress, 0.0f, 1.0f));
+	}
+}
+
+void APlayerControl::ClientRPC_HideLoadingTransition_Implementation()
+{
+	if (auto TransitionManager = ULoadingTransitionManager::Get(this))
+	{
+		TransitionManager->HideLoadingScreen();
+	}
+}
+
+
+
 void APlayerControl::Server_RequestMapTravel_Implementation(const FString& MapPath)
 {
-	UE_LOG(LogTemp, Display, TEXT("[Travel] 클라이언트로부터 맵 전환 요청 받음: %s"), *MapPath);
+	PRINTLOG( TEXT("[Travel] 클라이언트로부터 맵 전환 요청 받음: %s"), *MapPath);
     
 	// 서버에서 실제 맵 전환 실행
 	ServerStartMapTravel(MapPath);
-}
-
-void APlayerControl::Client_ShowLoadingScreen_Implementation()
-{
-	
-	if (!LoadingWidgetClass)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("[Travel] LoadingWidgetClass가 설정되지 않음"));
-		return;
-	}
-
-	// 이미 표시 중이면 스킵
-	if (LoadingWidget && LoadingWidget->IsInViewport())
-	{
-		UE_LOG(LogTemp, Warning, TEXT("[Travel] 로딩 UI 이미 표시 중"));
-		return;
-	}
-
-	// 로딩 위젯 생성
-	LoadingWidget = CreateWidget<UUserWidget>(this, LoadingWidgetClass);
-	if (LoadingWidget)
-	{
-		LoadingWidget->AddToViewport(9999);
-        
-		// 입력 비활성화
-		SetInputMode(FInputModeUIOnly());
-		bShowMouseCursor = false;
-
-		UE_LOG(LogTemp, Display, TEXT("[Travel] 로딩 UI 표시 완료 (NetMode: %d)"), (int32)GetNetMode());
-	}
-}
-
-void APlayerControl::Client_HideLoadingScreen_Implementation()
-{
-	if (LoadingWidget && LoadingWidget->IsInViewport())
-	{
-		LoadingWidget->RemoveFromParent();
-		LoadingWidget = nullptr;
-
-		// 입력 활성화
-		SetInputMode(FInputModeGameOnly());
-		bShowMouseCursor = false;
-
-		UE_LOG(LogTemp, Display, TEXT("[Travel] 로딩 UI 제거 완료"));
-	}
 }
 
 void APlayerControl::ClientRPC_ShowToastMessage_Implementation(const FString& Message)
@@ -454,6 +442,14 @@ void APlayerControl::ClientRPC_ShowToastMessage_Implementation(const FString& Me
 	if (auto DM = UDialogManager::Get(this))
 	{
 		DM->ShowToast(Message);
+	}
+}
+
+void APlayerControl::ClientRPC_UpdateQuestTarget_Implementation(const EBuildingType BuildingType)
+{
+	if (auto BM = UBroadcastManager::Get(GetWorld()))
+	{
+		BM->SendUpdateQuest(BuildingType);
 	}
 }
 

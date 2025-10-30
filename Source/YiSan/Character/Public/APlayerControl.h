@@ -7,6 +7,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "EBuildingType.h"
 #include "GameFramework/PlayerController.h"
 #include "APlayerControl.generated.h"
 
@@ -116,6 +117,10 @@ public:
 	// Quest
 	UFUNCTION(Client, Reliable)
 	void ClientRPC_UpdateQuestTarget(const EBuildingType BuildingType);
+
+	UFUNCTION(Server, Reliable)
+	void Server_SetPlayerNickname(const FString& Nickname);
+
 	
 
 private:

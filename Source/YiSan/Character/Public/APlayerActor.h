@@ -50,8 +50,6 @@ private:
     /// @brief 브로드캐스트 매니저에서 전달되는 음성 명령 실행 이벤트에 대응합니다.
     UFUNCTION()
     void OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester);
-    UFUNCTION()
-    void DelayedSendQuestUpdate();
 
 private:
 	FTimerHandle TimerHandle_InitNameTag;

@@ -1,6 +1,8 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "APlayerActor.h"
+
+#include "AQuestManagerActor.h"
 #include "Components/WidgetComponent.h"
 
 #include "FComponentHelper.h"
@@ -15,18 +17,12 @@
 #include "UHttpNetworkSystem.h"
 #include "TimerManager.h"
 #include "Kismet/GameplayStatics.h"
-#include "ABuilding.h"
-#include "AYiSanPlayerState.h"
 #include "UBroadcastManager.h"
 #include "UPlayerHeadWidget.h"
-#include "UPlayerWidget.h"
-#include "UQuestManager.h"
 #include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Camera/CameraComponent.h"
 #include "YiSan/YiSan.h"
 #include "Components/CapsuleComponent.h"
-#include "Components/TextBlock.h"
-#include "Components/WidgetComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/PlayerController.h"
@@ -121,21 +117,33 @@ void APlayerActor::BeginPlay()
     // 서버야 일어나라.
     UHttpNetworkSystem::Get(GetWorld())->RequestHealth( FResponseHealthDelegate() );
 
-    // 너도 나도 다 begin에서 일을 하려고 하니.
-    // 게임 실행이라는 의미에서 플레이어가 1초후에 시작한다 같은 이벤트로 처리하자
-    // 나중에 GameStart 이벤트가 생기면 그때 다시 정리하자.
-    // 아직은 매직코드
-    FTimerHandle TimerHandle_DelayedSend;
-    GetWorldTimerManager().SetTimer(TimerHandle_DelayedSend,this, &APlayerActor::DelayedSendQuestUpdate, 1.0f, false);
+    if ( HasAuthority() )
+    {
+        FTimerHandle TimerHandle;
+        GetWorld()->GetTimerManager().SetTimerForNextTick([this]()
+        {
+            if (AQuestManagerActor* QuestManager = AQuestManagerActor::Get(this))
+                BroadcastManager->SendUpdateQuest(QuestManager->GetCurrentTarget());
+
+            FChatMessage ChatMessage(EChatMessageType::User, *GetPlayerDisplayName(), TEXT("민지 왔쪄요"));
+            ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
+        });
+    }
+    
     // 이름표 위젯 초기화를 위한 타이머 시작
     GetWorldTimerManager().SetTimer(TimerHandle_InitNameTag, this, &APlayerActor::CheckAndInitNameTag, 0.2f, true);
-
-
 }
 
 void APlayerActor::OnRep_PlayerState()
 {
     Super::OnRep_PlayerState();
+}
+
+void APlayerActor::PossessedBy(AController* NewController)
+{
+    Super::PossessedBy(NewController);
+    if (IsLocallyControlled())
+        UE_LOG(LogTemp, Warning, TEXT("Pawn possessed locally, player can move"));
 }
 
 void APlayerActor::CheckAndInitNameTag()
@@ -148,11 +156,6 @@ void APlayerActor::CheckAndInitNameTag()
         HeadWidget->SetOwningActor(this);
         GetWorldTimerManager().ClearTimer(TimerHandle_InitNameTag);
     }
-}
-
-void APlayerActor::DelayedSendQuestUpdate()
-{
-    BroadcastManager->SendUpdateQuest( UQuestManager::Get(GetWorld())->GetCurTarget());
 }
 
 FGPTContext APlayerActor::GetGPTContext() const
