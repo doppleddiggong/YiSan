@@ -29,8 +29,14 @@ inline FLogWriter& GetLogWriter()
 // Log + file output
 #define PRINTLOG(fmt, ...) \
 do { \
+const FString __Timestamp__ = FDateTime::Now().ToString(TEXT("%Y-%m-%d %H:%M:%S.%s")); \
 const FString __LogMessage__ = FString::Printf(fmt, ##__VA_ARGS__); \
-const FString __FullMessage__ = FString::Printf(TEXT("%s : %s"), *CALLINFO, *__LogMessage__); \
+const FString __FullMessage__ = FString::Printf( \
+TEXT("[%s] %s : %s"), \
+*__Timestamp__, \
+*CALLINFO, \
+*__LogMessage__ \
+); \
 UE_LOG(LogCoffee, Warning, TEXT("%s"), *__FullMessage__); \
 GetLogWriter().WriteLog(__FullMessage__); \
 } while(0)
