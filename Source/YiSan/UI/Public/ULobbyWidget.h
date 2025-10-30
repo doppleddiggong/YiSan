@@ -42,6 +42,12 @@ public:
 	TObjectPtr<class UButton> Btn_GoFind;
 
 	UPROPERTY(meta=(BindWidget))
+	TObjectPtr<class UButton> Btn_Name;
+
+	UPROPERTY(meta=(BindWidget))
+	TObjectPtr<class UEditableText> editNickname;
+
+	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UEditableText> editSessionName;
 
 	UPROPERTY(meta=(BindWidget))
@@ -88,6 +94,9 @@ public:
 	// 세션 조회 화면 이동 함수
 	UFUNCTION()
 	void OnClickGoFind();
+
+	UFUNCTION()
+	void OnClickName();
 
 	// ========================================
 	// Broadcast Event Handlers

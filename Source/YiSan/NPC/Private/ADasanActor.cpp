@@ -65,6 +65,7 @@ void ADasanActor::BeginPlay()
 {
 	Super::BeginPlay();
 
+	bIsexplain = false;
 	// 위젯 캐싱 및 초기화
 	if (DasanWidgetComp && DasanWidgetComp->GetWidget())
 	{
@@ -192,6 +193,7 @@ void ADasanActor::OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::
         // Tour 상태일 때만 처리
         if (DasanState == EDasanState::Tour)
         {
+        	bIsexplain = true;
             if (TourStateSystem)
             {
                 // 건물 도착 시 TourExplain 상태로 전환 (관광 시작)

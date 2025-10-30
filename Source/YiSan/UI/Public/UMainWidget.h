@@ -6,6 +6,7 @@
 #include "EBuildingType.h"
 #include "Blueprint/UserWidget.h"
 #include "EndingWidget.h" // EndingWidget 헤더 추가
+#include "UPlayerWidget.h"
 #include "UMainWidget.generated.h"
 
 /// @file UMainWidget.h
@@ -79,5 +80,12 @@ public:
 	// 애니메이션 끝날때 정보 저장 함수
 	UFUNCTION()
 	void AnimFinished();
+		
+	// 엔딩 위젯
+	UPROPERTY(EditAnywhere, Category = "Widgets")
+	TSubclassOf<UPlayerWidget> PlayerWidgetClass;
+	// 생성된 엔딩 위젯의 인스턴스를 저장할 변수
+	UPROPERTY()
+	UPlayerWidget* PlayerWidgetInstance;
 };
 

@@ -65,4 +65,5 @@ public:
     UFUNCTION()
     UTextBlock* CreatePlayerText(const FString& playerName);
     void OnPlayerListUpdated(const TArray<FString>& NewPlayerList);
+    
 };

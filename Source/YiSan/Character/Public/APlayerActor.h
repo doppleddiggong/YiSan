@@ -1,4 +1,3 @@
-
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #pragma once
@@ -7,6 +6,8 @@
 #include "IControllable.h"
 #include "NetworkData.h"
 #include "GameFramework/Character.h"
+#include "Components/WidgetComponent.h"
+
 /// @file APlayerActor.h
 /// @brief 프로젝트 전반에서 사용되는 플레이어 조작 캐릭터 액터를 선언합니다.
 
@@ -30,6 +31,7 @@ protected:
     /// @brief 게임 플레이가 시작될 때 호출되어 의존 시스템을 초기화합니다.
     virtual void BeginPlay() override;
     virtual void PossessedBy(AController* NewController) override;
+    virtual void OnRep_PlayerState() override;
     
 public:
     /// @brief 플레이어의 최신 GPT 컨텍스트 스냅샷을 수집합니다.
@@ -37,12 +39,21 @@ public:
     FGPTContext GetGPTContext() const;
 
     FString GetPlayerDisplayName() const;
-    int GetLocalPlayerIndex() const;
 
 private:
+    // /// @brief 주변에서 가장 가까운 건물을 찾고 관련 시스템에 알립니다.
+    // void FindNearestBuilding();
+    //
+    // /// @brief 가장 가까운 건물을 주기적으로 평가하기 위한 타이머 핸들입니다.
+    // FTimerHandle TimeHandle_NearestBuilding;
+
     /// @brief 브로드캐스트 매니저에서 전달되는 음성 명령 실행 이벤트에 대응합니다.
     UFUNCTION()
     void OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester);
+
+private:
+	FTimerHandle TimerHandle_InitNameTag;
+	void CheckAndInitNameTag();
 
 public:
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Owner")
@@ -63,18 +74,14 @@ public:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
     TObjectPtr<UMainWidget> MainWidgetInst; ///< 뷰포트에 배치되는 메인 위젯 인스턴스입니다.
 
-    
-    
-    
     UPROPERTY(EditDefaultsOnly, Category = "UI")
     TSubclassOf<class UChatUIWidget> ChatUIWidgetClass;
     
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
     TObjectPtr<class UChatBoxWidget> ChatBoxWidget;
     
-
-    
-
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="UI")
+    UWidgetComponent* NameTagWidgetComponent;
     
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Voice", meta=(AllowPrivateAccess="true"))
     TObjectPtr<class UVoiceConversationSystem> VoiceConversationSystem; ///< 플레이어가 소유한 음성 명령 파이프라인입니다.

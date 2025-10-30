@@ -13,6 +13,8 @@ DECLARE_DELEGATE_TwoParams(FFindComplete, int32, FString);
 /**
  * 
  */
+DECLARE_MULTICAST_DELEGATE_OneParam(FOnPlayerListUpdated, const TArray<FString>& /* PlayerNames */);
+
 UCLASS()
 class YISAN_API UNetworkGameInstanceSubsystem : public UGameInstanceSubsystem
 {
@@ -52,4 +54,29 @@ public:
 	void JoinOtherSession(int32 sessionIndex);
 	//세션 참여 완료 함수
 	void OnJoinSessionComplete(FName sessionName, EOnJoinSessionCompleteResult::Type result);
+
+	//=============이름 저장 부분================
+public:
+	void SetPlayerNickname(const FString& InName);
+	FString GetPlayerNickname();
+
+private:
+	FString PlayerNickname;
+
+
+	//=============플레이어 목록 관리 부분================
+public:
+	FOnPlayerListUpdated OnPlayerListUpdated;
+
+	UFUNCTION(BlueprintCallable)
+	void RequestPlayerListRefresh();
+
+	void SetPlayerListManager(class AYiSanPlayerListManager* InManager);
+	class AYiSanPlayerListManager* GetPlayerListManager() const { return PlayerListManager; }
+
+private:
+	UPROPERTY()
+	class AYiSanPlayerListManager* PlayerListManager;
+
+	void HandlePlayerListUpdated(const TArray<FString>& PlayerNames);
 };

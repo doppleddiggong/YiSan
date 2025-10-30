@@ -2,6 +2,9 @@
 
 #include "APlayerActor.h"
 
+#include "AQuestManagerActor.h"
+#include "Components/WidgetComponent.h"
+
 #include "FComponentHelper.h"
 #include "FGPTContext.h"
 #include "GameLogging.h"
@@ -11,10 +14,11 @@
 #include "UChatPlayerSystem.h"
 #include "UChatUIWidget.h"
 #include "UChatBoxWidget.h"
+#include "UHttpNetworkSystem.h"
 #include "TimerManager.h"
 #include "Kismet/GameplayStatics.h"
 #include "UBroadcastManager.h"
-#include "AQuestManagerActor.h"
+#include "UPlayerHeadWidget.h"
 #include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Camera/CameraComponent.h"
 #include "YiSan/YiSan.h"
@@ -57,7 +61,17 @@ APlayerActor::APlayerActor()
     VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
     GPTContextSystem = CreateDefaultSubobject<UGPTContextSystem>(TEXT("GPTContextSystem"));
     ChatPlayerSystem = CreateDefaultSubobject<UChatPlayerSystem>(TEXT("ChatPlayerSystem"));
+
+    NameTagWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("NameTagWidget"));
+    NameTagWidgetComponent->SetupAttachment(RootComponent);
+
+    NameTagWidgetComponent->SetWidgetSpace(EWidgetSpace::Screen); // 카메라 정면 고정
+    NameTagWidgetComponent->SetDrawSize(FVector2D(200.f, 50.f));
+    NameTagWidgetComponent->SetRelativeLocation(FVector(0.f, 0.f, 100.f)); // 머리 위 위치
 }
+
+
+
 
 void APlayerActor::BeginPlay()
 {
@@ -97,6 +111,11 @@ void APlayerActor::BeginPlay()
     BroadcastManager = UBroadcastManager::Get(GetWorld());
     BroadcastManager->OnExecVoiceCommand.AddDynamic(this, &APlayerActor::OnExecVoiceCommand);
 
+    // // 퀘스트 초기화
+    // UQuestManager::Get(GetWorld())->InitSystem();
+
+    // 서버야 일어나라.
+    UHttpNetworkSystem::Get(GetWorld())->RequestHealth( FResponseHealthDelegate() );
 
     if ( HasAuthority() )
     {
@@ -110,6 +129,14 @@ void APlayerActor::BeginPlay()
             ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
         });
     }
+    
+    // 이름표 위젯 초기화를 위한 타이머 시작
+    GetWorldTimerManager().SetTimer(TimerHandle_InitNameTag, this, &APlayerActor::CheckAndInitNameTag, 0.2f, true);
+}
+
+void APlayerActor::OnRep_PlayerState()
+{
+    Super::OnRep_PlayerState();
 }
 
 void APlayerActor::PossessedBy(AController* NewController)
@@ -119,6 +146,17 @@ void APlayerActor::PossessedBy(AController* NewController)
         UE_LOG(LogTemp, Warning, TEXT("Pawn possessed locally, player can move"));
 }
 
+void APlayerActor::CheckAndInitNameTag()
+{
+    // 위젯이 생성되었는지 확인합니다.
+    UPlayerHeadWidget* HeadWidget = Cast<UPlayerHeadWidget>(NameTagWidgetComponent->GetUserWidgetObject());
+    if (HeadWidget)
+    {
+        // 위젯이 준비되면, 위젯에게 소유자가 자신임을 알려주고 이 타이머는 역할을 다했으므로 중지합니다.
+        HeadWidget->SetOwningActor(this);
+        GetWorldTimerManager().ClearTimer(TimerHandle_InitNameTag);
+    }
+}
 
 FGPTContext APlayerActor::GetGPTContext() const
 {
@@ -223,27 +261,13 @@ void APlayerActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requeste
 
 FString APlayerActor::GetPlayerDisplayName() const
 {
-    int index = GetLocalPlayerIndex();
-
     if (auto PC = UGameplayStatics::GetPlayerController(GetWorld(), 0))
     {
         if (auto PS = PC->PlayerState)
-        {
-            return FString::Printf(TEXT("%s (%02d)"), *PS->GetPlayerName(), index );
-        }
+            return PS->GetPlayerName();
     }
 
     return TEXT("Yisan");
-}
-
-int APlayerActor::GetLocalPlayerIndex() const
-{
-    if (const ULocalPlayer* LocalPlayer = GetWorld()->GetFirstLocalPlayerFromController())
-    {
-        return LocalPlayer->GetControllerId();
-    }
-
-    return 0;
 }
 
 void APlayerActor::PlayTTSAudio(const TArray<uint8>& AudioData)

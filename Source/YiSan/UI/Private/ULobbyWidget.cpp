@@ -14,6 +14,7 @@
 #include "Components/TextBlock.h"
 #include "Components/WidgetSwitcher.h"
 #include "GameFramework/PlayerController.h"
+#include "Kismet/GameplayStatics.h"
 
 void ULobbyWidget::NativeConstruct()
 {
@@ -41,6 +42,10 @@ void ULobbyWidget::NativeConstruct()
 	if (Btn_GoFind)
 	{
 		Btn_GoFind->OnClicked.AddDynamic(this, &ULobbyWidget::OnClickGoFind);
+	}
+	if (Btn_Name)
+	{
+		Btn_Name->OnClicked.AddDynamic(this, &ULobbyWidget::OnClickName);
 	}
 	UNetworkGameInstanceSubsystem::Get(GetWorld())->onFindComplete.BindUObject(this, &ULobbyWidget::OnFindComplete);
 
@@ -128,15 +133,33 @@ void ULobbyWidget::OnSessionError(const FString& ErrorMessage)
 void ULobbyWidget::OnClickGoHost()
 {
 	// 세션 생성 화면으로 이동
-	widgetSwitcher->SetActiveWidgetIndex(1);
+	widgetSwitcher->SetActiveWidgetIndex(2);
 }
 
 void ULobbyWidget::OnClickGoFind()
 {
 	// 세션 조회 화면으로 이동
-	widgetSwitcher->SetActiveWidgetIndex(2);
+	widgetSwitcher->SetActiveWidgetIndex(3);
 	// 세션 조회
 	OnFindButtonClicked();
+}
+
+void ULobbyWidget::OnClickName()
+{
+	if (!editNickname) return;
+
+	const FString EnteredName = editNickname->GetText().ToString();
+
+	if (EnteredName.IsEmpty())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("닉네임을 입력해주세요!"));
+		return;
+	}
+
+	UNetworkGameInstanceSubsystem::Get(GetWorld())->SetPlayerNickname(EnteredName);
+	UE_LOG(LogTemp, Log, TEXT("닉네임 저장됨: %s"), *EnteredName);
+
+	widgetSwitcher->SetActiveWidgetIndex(1);
 }
 
 void ULobbyWidget::SetFindingText(const FString& NewText)
