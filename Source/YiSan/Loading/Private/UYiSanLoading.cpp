@@ -29,7 +29,7 @@ void UYiSanLoading::InitSystem(const FString& InURL, bool bAbsolute)
     PRINTLOG(TEXT("UYiSanLoading::InitSystem(%s, %d)"), *InURL, bAbsolute);
 
     // 기본 데이터 초기화
-    TotalTime = 0.0;
+    TotalTime = GetWorld()->GetTimeSeconds();
     TotalProgress = 0.0f;
 
     bTextureStreamingComplete = false;
@@ -51,7 +51,6 @@ void UYiSanLoading::InitSystem(const FString& InURL, bool bAbsolute)
     CurState = EState::WP;
 
     Broadcast_ShowLoading();
-
     if (auto TM = ULoadingTransitionManager::Get(this))
     {
         TM->ShowLoadingScreen();
@@ -75,7 +74,7 @@ void UYiSanLoading::PostLoadMapWithWorld(UWorld* InWorld)
 
     PRINTLOG(TEXT("[스텝2] 맵 로드 완료: %s"), *InWorld->GetName());
 
-    TotalTime = InWorld->GetTimeSeconds();
+
     bTextureStreamingComplete = false;
 
     IStreamingManager::Get().AddLevel(InWorld->PersistentLevel);

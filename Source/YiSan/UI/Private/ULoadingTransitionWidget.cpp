@@ -39,7 +39,8 @@ void ULoadingTransitionWidget::UpdateProgress(float Progress)
 	int32 Percentage = FMath::RoundToInt(Progress * 100.0f);
 	ProgressText->SetText( FText::FromString(FString::Printf(TEXT("%d%%"), Percentage)) );
 
-	StatusText->SetText(FText::FromString("로딩 STATUS 테스트"));
+	StatusText->SetText(
+		NSLOCTEXT("YiSan", "LoadingStatusTest", "로딩 STATUS 테스트"));
 }
 
 
