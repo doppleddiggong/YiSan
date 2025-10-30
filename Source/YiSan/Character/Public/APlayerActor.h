@@ -29,8 +29,10 @@ public:
 
 protected:
     /// @brief 게임 플레이가 시작될 때 호출되어 의존 시스템을 초기화합니다.
-    virtual void BeginPlay() override;
-
+    	virtual void BeginPlay() override;
+    
+    	virtual void OnRep_PlayerState() override;
+    
 public:
     /// @brief 플레이어의 최신 GPT 컨텍스트 스냅샷을 수집합니다.
     /// @return 플레이어 위치, 시선 대상, 주변 건물을 담은 FGPTContext입니다.
@@ -50,6 +52,10 @@ private:
     void OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester);
     UFUNCTION()
     void DelayedSendQuestUpdate();
+
+private:
+	FTimerHandle TimerHandle_InitNameTag;
+	void CheckAndInitNameTag();
 
 public:
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Owner")

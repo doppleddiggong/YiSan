@@ -1,6 +1,7 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "APlayerActor.h"
+#include "Components/WidgetComponent.h"
 
 #include "FComponentHelper.h"
 #include "FGPTContext.h"
@@ -17,6 +18,7 @@
 #include "ABuilding.h"
 #include "AYiSanPlayerState.h"
 #include "UBroadcastManager.h"
+#include "UPlayerHeadWidget.h"
 #include "UPlayerWidget.h"
 #include "UQuestManager.h"
 #include "Blueprint/WidgetBlueprintLibrary.h"
@@ -72,6 +74,9 @@ APlayerActor::APlayerActor()
     NameTagWidgetComponent->SetRelativeLocation(FVector(0.f, 0.f, 100.f)); // 머리 위 위치
 }
 
+
+
+
 void APlayerActor::BeginPlay()
 {
     Super::BeginPlay();
@@ -104,19 +109,6 @@ void APlayerActor::BeginPlay()
         }
     }
 
-    // 여기 수정해서 머리 위 닉네임================================================ playerwidget 말고 playerheadwidget 만들어야함
-    
-    /*if (UPlayerWidget* HeadWidget = Cast<UPlayerWidget>(NameTagWidgetComponent->GetUserWidgetObject()))
-    {
-        if (UTextBlock* NameText = Cast<UTextBlock>(HeadWidget->GetWidgetFromName(TEXT("PlayerNameText"))))
-        {
-            if (AYiSanPlayerState* ps = GetPlayerState<AYiSanPlayerState>())
-            {
-                NameText->SetText(FText::FromString(ps->Nickname));
-            }
-        }
-    }*/
-
     VoiceConversationSystem->InitSystem(this);
     GPTContextSystem->InitSystem(this);
 
@@ -135,6 +127,27 @@ void APlayerActor::BeginPlay()
     // 아직은 매직코드
     FTimerHandle TimerHandle_DelayedSend;
     GetWorldTimerManager().SetTimer(TimerHandle_DelayedSend,this, &APlayerActor::DelayedSendQuestUpdate, 1.0f, false);
+    // 이름표 위젯 초기화를 위한 타이머 시작
+    GetWorldTimerManager().SetTimer(TimerHandle_InitNameTag, this, &APlayerActor::CheckAndInitNameTag, 0.2f, true);
+
+
+}
+
+void APlayerActor::OnRep_PlayerState()
+{
+    Super::OnRep_PlayerState();
+}
+
+void APlayerActor::CheckAndInitNameTag()
+{
+    // 위젯이 생성되었는지 확인합니다.
+    UPlayerHeadWidget* HeadWidget = Cast<UPlayerHeadWidget>(NameTagWidgetComponent->GetUserWidgetObject());
+    if (HeadWidget)
+    {
+        // 위젯이 준비되면, 위젯에게 소유자가 자신임을 알려주고 이 타이머는 역할을 다했으므로 중지합니다.
+        HeadWidget->SetOwningActor(this);
+        GetWorldTimerManager().ClearTimer(TimerHandle_InitNameTag);
+    }
 }
 
 void APlayerActor::DelayedSendQuestUpdate()

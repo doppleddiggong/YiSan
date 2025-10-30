@@ -28,7 +28,7 @@ public:
 	/** 서버에서 닉네임/인덱스 세팅 */
 	void SetPlayerInfo(const FString& InName, int32 InIndex);
 
-protected:
+	protected:
 	UFUNCTION()
 	void OnRep_Nickname();
 

@@ -10,17 +10,27 @@ AYiSanPlayerState::AYiSanPlayerState()
 }
 
 void AYiSanPlayerState::SetPlayerInfo(const FString& InName, int32 InIndex)
+
 {
+
 	if (HasAuthority())
+
 	{
+
 		Nickname = InName;
+
 		PlayerIndex = InIndex;
-		OnRep_Nickname();
-		OnRep_PlayerIndex();
+
 	}
+
 }
 
+
+
 void AYiSanPlayerState::OnRep_Nickname() {}
+
+
+
 void AYiSanPlayerState::OnRep_PlayerIndex() {}
 
 void AYiSanPlayerState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
