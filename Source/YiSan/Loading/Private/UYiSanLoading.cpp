@@ -29,7 +29,7 @@ void UYiSanLoading::InitSystem(const FString& InURL, bool bAbsolute)
     PRINTLOG(TEXT("UYiSanLoading::InitSystem(%s, %d)"), *InURL, bAbsolute);
 
     // 기본 데이터 초기화
-    TotalTime = GetWorld()->GetTimeSeconds();
+    TotalTime = FPlatformTime::Seconds();
     TotalProgress = 0.0f;
 
     bTextureStreamingComplete = false;
@@ -161,7 +161,7 @@ void UYiSanLoading::UpdateTick()
         PRINTLOG(TEXT("WorldPartition: OK"));
         PRINTLOG(TEXT("Texture: %.1f%% (완료)"), Progress_Texture * 100.0f);
         PRINTLOG(TEXT("LevelInstance: %.0f%% (완료)"), Progress_LI * 100.0f);
-        PRINTLOG(TEXT("총 소요 시간: %.2f초"), World->GetTimeSeconds() - TotalTime);
+        PRINTLOG(TEXT("총 소요 시간: %.2f초"), FPlatformTime::Seconds() - TotalTime);
 
         CompleteProcess(World);
     }
