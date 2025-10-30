@@ -13,7 +13,7 @@ public class YiSan : ModuleRules
 			"Core",
 			"CoreUObject",
 			"Engine",
-			"EnhancedInput",
+			"EnhancedInput", "LatteLibrary",
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[]

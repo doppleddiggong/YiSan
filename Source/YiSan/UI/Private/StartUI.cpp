@@ -12,6 +12,7 @@
 #include "Engine/Font.h"
 #include "YiSanPlayerListManager.h"
 #include "Kismet/GameplayStatics.h"
+#include "UNetworkGameInstanceSubsystem.h" // Added include
 
 void UStartUI::NativeConstruct()
 {
@@ -45,25 +46,32 @@ void UStartUI::NativeConstruct()
 		InputModeData.SetWidgetToFocus(TakeWidget());
 		InputModeData.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
 		PC->SetInputMode(InputModeData);
-
+	
 		// 마우스 커서를 표시
 		PC->SetShowMouseCursor(true);
-
+	
 		StartButton->SetVisibility(PC->HasAuthority() ? ESlateVisibility::Visible :  ESlateVisibility::Hidden );
 	}
 	
-	auto PlayerListManager = Cast<AYiSanPlayerListManager>(UGameplayStatics::GetActorOfClass(GetWorld(), AYiSanPlayerListManager::StaticClass()));
-    if (PlayerListManager)
-    {
-    	PRINTLOG( TEXT("UI found the PlayerListManager!") );
-
-    	PlayerListManager->OnPlayerListUpdated.AddUObject(this, &UStartUI::OnPlayerListUpdated);
-        OnPlayerListUpdated(PlayerListManager->GetPlayerList());
-    }
-    else
-    {
-    	PRINTLOG( TEXT("UI FAILED to find the PlayerListManager!"));
-    }
+	if (!playerList)
+	{
+		PRINTLOG(TEXT("UStartUI::playerList is NULL! Check WBP_StartUI binding."));
+	}
+	
+	// Get the Network Game Instance Subsystem
+	if (UGameInstance* GameInstance = GetGameInstance())
+	{
+		if (UNetworkGameInstanceSubsystem* NetworkSubsystem = GameInstance->GetSubsystem<UNetworkGameInstanceSubsystem>())
+		{
+			PRINTLOG(TEXT("UStartUI found the NetworkSubsystem!"));
+			NetworkSubsystem->OnPlayerListUpdated.AddUObject(this, &UStartUI::OnPlayerListUpdated);
+			NetworkSubsystem->RequestPlayerListRefresh(); // Request refresh via subsystem
+		}
+	}
+	else
+	{
+		PRINTLOG(TEXT("UStartUI FAILED to find the NetworkSubsystem!"));
+	}
 }
 
 void UStartUI::OnStartButtonClicked()
@@ -114,6 +122,7 @@ void UStartUI::OnStartButtonClicked()
 	
 void UStartUI::UpdatePlayerList(const TArray<FString>& playerNames)
 {
+    PRINTLOG(TEXT("UStartUI::UpdatePlayerList called with %d player(s)."), playerNames.Num());
 	if (!playerList) return;
 
 	playerList->ClearChildren(); // Clear existing entries
@@ -131,6 +140,7 @@ void UStartUI::UpdatePlayerList(const TArray<FString>& playerNames)
 
 UTextBlock* UStartUI::CreatePlayerText(const FString& playerName)
 {
+    PRINTLOG(TEXT("UStartUI::CreatePlayerText creating text for: %s"), *playerName);
     UTextBlock* newText = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass());
 	if (newText)
 	{
@@ -155,3 +165,5 @@ void UStartUI::OnPlayerListUpdated(const TArray<FString>& NewPlayerList)
 {
     UpdatePlayerList(NewPlayerList);
 }
+
+

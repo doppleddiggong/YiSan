@@ -22,11 +22,15 @@
 #include "Blueprint/UserWidget.h"
 #include "GameFramework/GameModeBase.h"
 #include "Kismet/GameplayStatics.h"
+#include "YiSanPlayerListManager.h"
 
 #include "UDialogManager.h"
 #include "APlayerActor.h"
 #include "AYisanGameState.h"
 #include "UAnswerStateSystem.h"
+#include "AYiSanPlayerState.h"
+#include "UNetworkGameInstanceSubsystem.h"
+#include "UYiSanGameInstance.h"
 #include "ULoadingTransitionManager.h"
 #include "UYiSanLoading.h"
 
@@ -66,14 +70,30 @@ void APlayerControl::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (auto LP = GetLocalPlayer())
+	if (IsLocalController())
 	{
-		if (auto SubSystem = LP->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>())
+		if (auto LP = GetLocalPlayer())
 		{
-			if (IMC_Default)
+			if (auto SubSystem = LP->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>())
 			{
-				SubSystem->ClearAllMappings();
-				SubSystem->AddMappingContext(IMC_Default, 0);
+				if (IMC_Default)
+				{
+					SubSystem->ClearAllMappings();
+					SubSystem->AddMappingContext(IMC_Default, 0);
+				}
+			}
+		}
+
+		// 클라이언트에서 닉네임을 서버로 전송
+		if (UYiSanGameInstance* GI = GetGameInstance<UYiSanGameInstance>())
+		{
+			if (UNetworkGameInstanceSubsystem* NetworkSubsystem = GI->GetSubsystem<UNetworkGameInstanceSubsystem>())
+			{
+				FString Nickname = NetworkSubsystem->GetPlayerNickname();
+				if (!Nickname.IsEmpty())
+				{
+					Server_SetPlayerNickname(Nickname);
+				}
 			}
 		}
 	}
@@ -133,6 +153,60 @@ void APlayerControl::SetupInputComponent()
 		EIC->BindAction(IA_ShowMouse, ETriggerEvent::Started, this, &APlayerControl::OnShowMouse);
 		EIC->BindAction(IA_ShowMouse, ETriggerEvent::Completed, this, &APlayerControl::OnHideMouse);
 	}
+}
+
+void APlayerControl::OnPossess(APawn* InPawn)
+{
+    Super::OnPossess(InPawn);
+
+    if (HasAuthority())
+    {
+        if (UYiSanGameInstance* GI = GetGameInstance<UYiSanGameInstance>())
+        {
+            if (UNetworkGameInstanceSubsystem* NetworkSubsystem = GI->GetSubsystem<UNetworkGameInstanceSubsystem>())
+            {
+                FString Nickname = NetworkSubsystem->GetPlayerNickname();
+                if (!Nickname.IsEmpty())
+                {
+                    Server_SetPlayerNickname(Nickname);
+                }
+            }
+        }
+    }
+}
+
+void APlayerControl::Server_SetPlayerNickname_Implementation(const FString& Nickname)
+
+{
+
+    if (AYiSanPlayerState* YSPlayerState = GetPlayerState<AYiSanPlayerState>())
+
+    {
+
+        // GameState에서 플레이어 인덱스를 받아와서 함께 설정
+
+        if (AGameStateBase* GS = GetWorld()->GetGameState())
+
+        {
+
+            YSPlayerState->SetPlayerInfo(Nickname, GS->PlayerArray.Num() - 1);
+
+
+
+            // 닉네임이 설정된 직후, PlayerListManager를 찾아 목록 업데이트를 요청합니다.
+
+            if (AYiSanPlayerListManager* PlayerListManager = Cast<AYiSanPlayerListManager>(UGameplayStatics::GetActorOfClass(GetWorld(), AYiSanPlayerListManager::StaticClass())))
+
+            {
+
+                PlayerListManager->UpdatePlayerListAndBroadcast();
+
+            }
+
+        }
+
+    }
+
 }
 
 void APlayerControl::ServerRPC_ShowToastMessage_Implementation(const FString& Message)

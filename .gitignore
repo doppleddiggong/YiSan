@@ -80,3 +80,4 @@ Documents/Doxygen/
 doxygen_warnings.log
 *.user
 Content/CustomContents/MetaHumans/MH_BaseTest.uasset
+*.bak

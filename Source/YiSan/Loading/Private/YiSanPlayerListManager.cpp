@@ -6,6 +6,12 @@
 #include "Engine/World.h"
 #include "TimerManager.h"
 #include "Net/UnrealNetwork.h"
+#include "AYiSanPlayerState.h"
+#include "ALobbyGameMode.h"
+#include "GameLogging.h"
+#include "StartUI.h"
+#include "UNetworkGameInstanceSubsystem.h" // Added include
+#include "Engine/GameInstance.h" // Added include for GameInstance
 
 AYiSanPlayerListManager::AYiSanPlayerListManager()
 {
@@ -25,34 +31,36 @@ void AYiSanPlayerListManager::BeginPlay()
 {
     Super::BeginPlay();
 
-    if (HasAuthority())
+    // Register this PlayerListManager with the GameInstance Subsystem
+    if (UGameInstance* GameInstance = GetGameInstance())
     {
-        GetWorldTimerManager().SetTimer(PollingTimer, this, &AYiSanPlayerListManager::PollPlayerList, 1.0f, true);
-    }
-}
-
-void AYiSanPlayerListManager::PollPlayerList()
-{
-    if (!HasAuthority())
-    {
-        return;
-    }
-
-    AGameStateBase* GameState = GetWorld()->GetGameState();
-    if (!GameState)
-    {
-        return;
-    }
-
-    TArray<FString> CurrentPlayerNames;
-    for (APlayerState* PlayerState : GameState->PlayerArray)
-    {
-        if (PlayerState)
+        if (UNetworkGameInstanceSubsystem* NetworkSubsystem = GameInstance->GetSubsystem<UNetworkGameInstanceSubsystem>())
         {
-            CurrentPlayerNames.Add(PlayerState->GetPlayerName());
+            NetworkSubsystem->SetPlayerListManager(this);
         }
     }
+    // Do nothing on BeginPlay, wait for external trigger
+}
 
+void AYiSanPlayerListManager::UpdatePlayerListAndBroadcast()
+{
+    if (!HasAuthority()) return;
+    
+    AGameStateBase* GameState = GetWorld()->GetGameState();
+    if (!GameState) return;
+    
+    TArray<FString> CurrentPlayerNames;
+    for (APlayerState* ps : GameState->PlayerArray)
+    {
+        if (AYiSanPlayerState* YiSanPS = Cast<AYiSanPlayerState>(ps))
+        {
+            if (!YiSanPS->Nickname.IsEmpty())
+            {
+                CurrentPlayerNames.Add(YiSanPS->Nickname);
+            }
+        }
+    }
+    
     // Sort arrays to compare them regardless of order
     CurrentPlayerNames.Sort();
     TArray<FString> SortedPlayerList = PlayerList;
@@ -61,6 +69,7 @@ void AYiSanPlayerListManager::PollPlayerList()
     if (CurrentPlayerNames != SortedPlayerList)
     {
         PlayerList = CurrentPlayerNames;
+        PRINTLOG(TEXT("AYiSanPlayerListManager: PlayerList updated. Current players: %s"), *FString::Join(PlayerList, TEXT(", ")));
         // On server, manually trigger the update if needed for host UI
         OnRep_PlayerList(); 
     }
@@ -68,5 +77,21 @@ void AYiSanPlayerListManager::PollPlayerList()
 
 void AYiSanPlayerListManager::OnRep_PlayerList()
 {
-    OnPlayerListUpdated.Broadcast(PlayerList);
+    OnPlayerListUpdated.Broadcast(this->PlayerList);
+}
+
+void AYiSanPlayerListManager::RequestRefresh()
+{
+    // If on client, send RPC to server to refresh
+    if (!HasAuthority())
+    {
+        Server_RequestRefresh();
+    }
+    // On server, or if RPC is not needed, broadcast current list (e.g., for initial UI setup)
+    OnPlayerListUpdated.Broadcast(this->PlayerList); // This will broadcast the *current* (potentially outdated on client) list immediately. The replicated list will update later.
+}
+
+void AYiSanPlayerListManager::Server_RequestRefresh_Implementation()
+{
+    UpdatePlayerListAndBroadcast();
 }
