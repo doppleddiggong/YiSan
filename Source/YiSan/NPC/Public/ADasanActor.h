@@ -30,9 +30,12 @@ public:
 	void OnMoveCompleted(FAIRequestID RequestID, EPathFollowingResult::Type Result);
 
 	// 현재 메인 상태 (Tour/Explain/Answer)
-	UPROPERTY(ReplicatedUsing=OnRep_DasanState, BlueprintReadOnly, Category="State")
+	UPROPERTY(ReplicatedUsing=OnRep_DasanState, BlueprintReadOnly,Category="State")
 	EDasanState DasanState;
 	FORCEINLINE EDasanState GetDasanState() const { return DasanState; }
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bIsexplain = false;
 	
 public:
 	// 유틸리티 함수
