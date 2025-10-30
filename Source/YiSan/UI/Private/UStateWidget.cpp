@@ -2,7 +2,7 @@
 
 #include "UStateWidget.h"
 
-#include "UQuestManager.h"
+#include "AQuestManagerActor.h"
 #include "Blueprint/WidgetTree.h"
 #include "Components/HorizontalBoxSlot.h"
 #include "Components/Image.h"
@@ -41,6 +41,12 @@ void UStateWidget::NativeConstruct()
     if (UWorld* World = GetWorld())
         World->GetTimerManager().SetTimer(UpdateTimerHandle, this, &UStateWidget::RefreshTimeText, TimeUpdateInterval, true);
 
+    if (AQuestManagerActor* QuestActor = AQuestManagerActor::Get(this))
+    {
+        QuestManager = QuestActor;
+        OnUpdateQuest(QuestActor->GetCurrentTarget());
+    }
+    
     if ( auto EventManager = UBroadcastManager::Get(GetWorld()))
     {
         EventManager->OnNetworkWaitCount.AddDynamic(this, &UStateWidget::OnNetworkWaitCount);

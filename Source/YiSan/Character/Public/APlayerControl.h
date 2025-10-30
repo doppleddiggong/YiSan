@@ -61,13 +61,15 @@ protected:
 	void OnShowDetail(const FInputActionValue& Value);
 	void OnShowMouse(const FInputActionValue& Value);
 	void OnHideMouse(const FInputActionValue& Value);
-public:
-	//----------------로딩 관련-------------------
-	
-	// 로딩 위젯 클래스
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "UI")
-	TSubclassOf<UUserWidget> LoadingWidgetClass;
 
+private:
+	UFUNCTION()
+	void OnPlayerControlState(bool bState, class UUserWidget* FocusWidget);
+	
+public:
+
+#pragma region LOADING
+	//----------------로딩 관련-------------------
 	// 서버에서 호출: 맵 전환 시작
 	UFUNCTION(BlueprintCallable, Category = "Travel")
 	void ServerStartMapTravel(const FString& MapPath);
@@ -76,26 +78,25 @@ public:
 	UFUNCTION(Server, Reliable, BlueprintCallable, Category = "Travel")
 	void Server_RequestMapTravel(const FString& MapPath);
 
-	// 클라이언트 RPC: 로딩 UI 표시
 	UFUNCTION(Client, Reliable)
-	void Client_ShowLoadingScreen();
+	void ClientRPC_ShowLoadingTransition();
 
-	// 클라이언트 RPC: 로딩 UI 숨김
 	UFUNCTION(Client, Reliable)
-	void Client_HideLoadingScreen();
+	void ClientRPC_UpdateLoadingTransitionProgress(float Progress);
 
-	UPROPERTY()
-	UUserWidget* LoadingWidget;
-	//----------------로딩 관련-------------------
-
-	// 음성 녹음 관련 Server RPC
+	UFUNCTION(Client, Reliable)
+	void ClientRPC_HideLoadingTransition();
+	
+#pragma endregion LOADING
+	
+	// Recording RPC
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_NotifyRecordingStart();
 
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_NotifyRecordingEnd();
 
-	// Answer 관련 Server RPC
+	// Answer RPC
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_TryStartAnswer(const FString& PlayerName);
 
@@ -105,20 +106,17 @@ public:
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_FinishAnswer();
 
-
-	// Toast 관련 Server RPC
+	// Toast
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_ShowToastMessage(const FString& Message);
 
 	UFUNCTION(Client, Reliable)
 	void ClientRPC_ShowToastMessage(const FString& Message);
 
-	UFUNCTION(Server, Reliable)
-	void Server_SetPlayerNickname(const FString& Nickname);
+	// Quest
+	UFUNCTION(Client, Reliable)
+	void ClientRPC_UpdateQuestTarget(const EBuildingType BuildingType);
 	
-private:
-	UFUNCTION()
-	void OnPlayerControlState(bool bState, class UUserWidget* FocusWidget);
 
 private:
     class IControllable* GetControllable() const;

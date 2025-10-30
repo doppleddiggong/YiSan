@@ -114,7 +114,7 @@ protected:
 
 private:
     UPROPERTY()
-    TObjectPtr<class UQuestManager> QuestManager;
+    TObjectPtr<class AQuestManagerActor> QuestManager;
 
     EBuildingType QuestDisplayType = EBuildingType::None;
 

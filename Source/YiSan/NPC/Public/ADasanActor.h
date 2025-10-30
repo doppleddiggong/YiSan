@@ -112,7 +112,7 @@ public:
 	
 public:	
 	UPROPERTY()
-	TObjectPtr<class UQuestManager> QuestManager;
+	TObjectPtr<class AQuestManagerActor> QuestManager;
 
 	UPROPERTY()
 	TObjectPtr<class ABuilding> CurTargetBuilding;

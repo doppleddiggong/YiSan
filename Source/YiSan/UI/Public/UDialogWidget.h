@@ -18,12 +18,16 @@ class YISAN_API UDialogWidget : public UUserWidget
 public:
     /// @brief 위젯 초기화 및 기본 색상을 설정합니다.
     virtual void NativeConstruct() override;
+    virtual void NativeDestruct() override;
 
     /// @brief 대화 텍스트를 표시하고 강조 색상을 적용합니다.
     /// @param InString [in] 출력할 대화 문자열입니다.
     UFUNCTION(BlueprintCallable, Category ="Chat")
     void ShowDialog(FString InString);
 
+private:
+    void HandleHideTimerExpired();
+    
 public:
     UPROPERTY(meta = (BindWidget))
     class UBorder* DialogBorder;

@@ -141,16 +141,17 @@ void UNetworkGameInstanceSubsystem::OnFindSessionComplete(bool success)
     
     if (success)
     {
-        if (sessionSearch.IsValid()) { // Check if sessionSearch is valid
+        if (sessionSearch.IsValid()) 
+        { // Check if sessionSearch is valid
             auto results = sessionSearch->SearchResults;
-        for (int32 i = 0; i < results.Num(); i++)
-        {
-            //세션이름담을변수
-            FString displayName;
-            results[i].Session.SessionSettings.Get(FName(TEXT("DP_NAME")), displayName);
-            UE_LOG(LogTemp, Warning, TEXT("세션 : %i, 이름 : %s"), i, *displayName);
-            onFindComplete.ExecuteIfBound(i, displayName);
-        }
+	        for (int32 i = 0; i < results.Num(); i++)
+	        {
+	            //세션이름담을변수
+	            FString displayName;
+	            results[i].Session.SessionSettings.Get(FName(TEXT("DP_NAME")), displayName);
+	            UE_LOG(LogTemp, Warning, TEXT("세션 : %i, 이름 : %s"), i, *displayName);
+	            onFindComplete.ExecuteIfBound(i, displayName);
+	        }
         }
     }
     else

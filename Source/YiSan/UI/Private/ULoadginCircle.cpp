@@ -88,15 +88,10 @@ void ULoadginCircle::AddToGameViewport(int32 ZOrder)
 	{
 		if (UGameViewportClient* ViewportClient = World->GetGameViewport())
 		{
-			// 이미 추가되어 있다면 제거 후 재추가
 			if (IsInViewport())
 				RemoveFromParent();
 
-			// Game Viewport에 직접 추가 (레벨 전환 시에도 유지됨)
 			AddToViewport(ZOrder);
-
-			// PRINTLOG(TEXT("[LoadingCircle] AddToGameViewport - IsInViewport: %s"),
-			// 	IsInViewport() ? TEXT("TRUE") : TEXT("FALSE"));
 		}
 	}
 }

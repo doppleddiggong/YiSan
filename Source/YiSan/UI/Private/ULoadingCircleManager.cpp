@@ -13,6 +13,7 @@
 #include "Blueprint/UserWidget.h"
 #include "Engine/Engine.h"
 #include "Engine/World.h"
+#include "YiSan/YiSan.h"
 
 #define LOADINGCIRCLEWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_NetworkLoading.WBP_NetworkLoading_C")
 
@@ -32,14 +33,7 @@ void ULoadingCircleManager::EnsureWidgetForWorld(UWorld* World)
 	const bool bInViewport = bIsValid && CircleWidget->IsInViewport();
 
 	if (bIsValid && bSameWorld && bInViewport)
-	{
 		return;
-	}
-
-	// PRINTLOG(TEXT("[LoadingCircleManager] EnsureWidgetForWorld - Recreating widget! Valid: %s, SameWorld: %s, InViewport: %s"),
-	// 	bIsValid ? TEXT("TRUE") : TEXT("FALSE"),
-	// 	bSameWorld ? TEXT("TRUE") : TEXT("FALSE"),
-	// 	bInViewport ? TEXT("TRUE") : TEXT("FALSE"));
 
 	// 기존 위젯이 있으면 정리
 	if (CircleWidget)
@@ -65,7 +59,7 @@ void ULoadingCircleManager::EnsureWidgetForWorld(UWorld* World)
 	if (ULoadginCircle* NewWidget = CreateWidget<ULoadginCircle>(PC, CircleWidgetClass))
 	{
 		// Game Viewport에 추가하여 레벨 전환 시에도 유지
-		NewWidget->AddToGameViewport(1000);
+		NewWidget->AddToGameViewport(GameLayer::LoadingCircle);
 		CircleWidget = NewWidget;
 
 		// 위젯 재생성 시 현재 카운트에 따라 표시 상태 복원

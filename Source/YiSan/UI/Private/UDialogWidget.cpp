@@ -14,6 +14,28 @@ void UDialogWidget::NativeConstruct()
 		DialogBorder->SetVisibility(ESlateVisibility::Hidden);
 	}
 }
+void UDialogWidget::NativeDestruct()
+{
+	if (UWorld* World = GetWorld())
+	{
+		if (HideTimerHandle.IsValid())
+		{
+			World->GetTimerManager().ClearTimer(HideTimerHandle);
+		}
+	}
+
+	Super::NativeDestruct();
+}
+
+void UDialogWidget::HandleHideTimerExpired()
+{
+	if (!DialogBorder || !DialogText)
+		return;
+
+	DialogText->SetText(FText::GetEmpty());
+	DialogBorder->SetBrushColor(DeactivateColor);
+	DialogBorder->SetVisibility(ESlateVisibility::Hidden);
+}
 
 void UDialogWidget::ShowDialog(FString InString)
 {
@@ -34,15 +56,12 @@ void UDialogWidget::ShowDialog(FString InString)
 	// 5초 후 숨기는 타이머 설정
 	if (UWorld* World = GetWorld())
 	{
+		const FTimerDelegate HideDelegate = FTimerDelegate::CreateUObject(this, &UDialogWidget::HandleHideTimerExpired);
 		World->GetTimerManager().SetTimer(
-			HideTimerHandle,
-			[this]()
-			{
-				DialogText->SetText(FText::GetEmpty());
-				DialogBorder->SetBrushColor(DeactivateColor);
-			},
-			5.0f,
-			false
+				HideTimerHandle,
+				HideDelegate,
+				5.0f,
+				false
 		);
 	}
 }

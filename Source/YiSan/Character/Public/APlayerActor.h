@@ -29,9 +29,9 @@ public:
 
 protected:
     /// @brief 게임 플레이가 시작될 때 호출되어 의존 시스템을 초기화합니다.
-    	virtual void BeginPlay() override;
-    
-    	virtual void OnRep_PlayerState() override;
+    virtual void BeginPlay() override;
+    virtual void PossessedBy(AController* NewController) override;
+    virtual void OnRep_PlayerState() override;
     
 public:
     /// @brief 플레이어의 최신 GPT 컨텍스트 스냅샷을 수집합니다.
@@ -81,6 +81,9 @@ public:
     
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
     TObjectPtr<class UChatBoxWidget> ChatBoxWidget;
+    
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="UI")
+    UWidgetComponent* NameTagWidgetComponent;
     
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Voice", meta=(AllowPrivateAccess="true"))
     TObjectPtr<class UVoiceConversationSystem> VoiceConversationSystem; ///< 플레이어가 소유한 음성 명령 파이프라인입니다.
@@ -141,8 +144,5 @@ public: // 제어 인터페이스
 
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
     void Cmd_HideMouse() override;
-
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="UI")
-    UWidgetComponent* NameTagWidgetComponent;
 };
 

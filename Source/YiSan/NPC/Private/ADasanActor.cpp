@@ -6,7 +6,7 @@
 
 #include "AIController.h"
 
-#include "UQuestManager.h"
+#include "AQuestManagerActor.h"
 #include "ABuilding.h"
 #include "APlayerActor.h"
 #include "EBuildingType.h"
@@ -138,12 +138,7 @@ void ADasanActor::BeginPlay()
 			DasanAicontrol->ReceiveMoveCompleted.AddDynamic(this, &ADasanActor::OnMoveCompleted);
 		}
 
-		QuestManager = UQuestManager::Get(GetWorld());
-		if (QuestManager)
-		{
-			QuestManager->InitSystem();
-			PRINTLOG(TEXT(" QuestManager 초기화 성공"));
-		}
+		QuestManager = AQuestManagerActor::Get(GetWorld());
 
 		// 초기 상태 설정
 		DasanState = EDasanState::Tour;
@@ -289,16 +284,6 @@ void ADasanActor::StartTour()
     // 첫 번째 목표 건물 찾기
     CurTargetBuilding = FindCurTargetBuilding();
 
-    if (QuestManager)
-    {
-        PRINTLOG(TEXT(" 다산 캐릭터의 추적 건물: %s"), *QuestManager->GetTargetBuildingName());
-    }
-    else
-    {
-        PRINTLOG(TEXT(" QuestManager가 nullptr"));
-        return;
-    }
-
     if (CurTargetBuilding)
     {
         float Distance = GetTargetBuildingDistnace();
@@ -324,14 +309,7 @@ void ADasanActor::StartTour()
     		{
     			PRINTLOG(TEXT(" 플레이어가 너무 멀리 있음(거리: %.1f). 대기 상태(TourWait)에서 시작함"), PlayerDistance);
     		}
-    		
-            // if (TourStateSystem)
-            // {
-            // }
-            // else
-            // {
-            //     PRINTLOG(TEXT("[WARN] StartTour: TourStateSystem이 nullptr입니다."));
-            // }
+
     		TourStateSystem->SetTourState(ETourState::TourWait);
             waitChackTimer = 1.f;
         }
@@ -340,14 +318,6 @@ void ADasanActor::StartTour()
         	PRINTLOG(TEXT(" 플레이어가 근처에 있음(거리: %.1f). 이동 상태(TourMove) 시작함"), PlayerDistance);
 
         	TourStateSystem->SetTourState(ETourState::TourMove);
-
-            // if (TourStateSystem)
-            // {
-            // }
-            // else
-            // {
-            //     PRINTLOG(TEXT("[WARN] StartTour: TourStateSystem이 nullptr입니다."));
-            // }
 
             // AI Controller로 이동 시작 (NavMesh 위치로)
             if (DasanAicontrol && CurTargetBuilding)
@@ -385,7 +355,7 @@ ABuilding* ADasanActor::FindCurTargetBuilding() const
 		return CurTargetBuilding; // 기존 타깃 유지
 	}
 
-	EBuildingType TargetType = QuestManager->GetCurTarget();
+	EBuildingType TargetType = QuestManager->GetCurrentTarget();
 	if (TargetType == EBuildingType::None)
 	{
 		return CurTargetBuilding;
@@ -404,7 +374,7 @@ ABuilding* ADasanActor::FindCurTargetBuilding() const
 		}
 	}
 
-	PRINTLOG(TEXT("[WARN] FindCurTargetBuilding: 타겟 건물을 찾을 수 없음 (%s)"), *QuestManager->GetTargetBuildingName());
+	PRINTLOG(TEXT("[WARN] FindCurTargetBuilding: 타겟 건물을 찾을 수 없음"));
 
 	// 실패 시에도 기존 타깃 유지
 	return CurTargetBuilding;
@@ -443,56 +413,57 @@ void ADasanActor::TransitionToState(EDasanState InMainState)
 
     switch (InMainState)
     {
-    case EDasanState::Tour:
-    {
-    	if (!CurTargetBuilding)
-    	{
-    		PRINTLOG(TEXT("Tour 전환 시 CurTargetBuilding이 비어있어 FindCurTargetBuilding() 호출"));
-    		CurTargetBuilding = FindCurTargetBuilding();
-    	}
-    		
-        const FString TargetName = CurTargetBuilding ? CurTargetBuilding->GetName() : TEXT("None");
-        PRINTLOG(TEXT(" Tour 상태 시작 - 목표: %s"), *TargetName);
+	    case EDasanState::Tour:
+	    {
+    		if (!CurTargetBuilding)
+    		{
+    			PRINTLOG(TEXT("Tour 전환 시 CurTargetBuilding이 비어있어 FindCurTargetBuilding() 호출"));
+    			CurTargetBuilding = FindCurTargetBuilding();
+    		}
+    			
+	        const FString TargetName = CurTargetBuilding ? CurTargetBuilding->GetName() : TEXT("None");
+	        PRINTLOG(TEXT(" Tour 상태 시작 - 목표: %s"), *TargetName);
 
-        if (TourStateSystem)
-        {
-            TourStateSystem->SetTourState(ETourState::TourMove);
-        }
+	        if (TourStateSystem)
+	        {
+	            TourStateSystem->SetTourState(ETourState::TourMove);
+	        }
 
-        // AI Controller로 이동 시작 (NavMesh 위치로)
-        if (DasanAicontrol && CurTargetBuilding)
-        {
-            FVector TargetPos = CurTargetBuilding->GetActorLocation();
-            UNavigationSystemV1* NavSys = UNavigationSystemV1::GetCurrent(GetWorld());
+	        // AI Controller로 이동 시작 (NavMesh 위치로)
+	        if (DasanAicontrol && CurTargetBuilding)
+	        {
+	            FVector TargetPos = CurTargetBuilding->GetActorLocation();
+	            UNavigationSystemV1* NavSys = UNavigationSystemV1::GetCurrent(GetWorld());
 
-            if (NavSys)
-            {
-                FNavLocation TargetNavLoc;
-                if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
-                {
-                	auto Result = this->AIMoveToLoc(TargetNavLoc.Location, wayPointDis, true);
-                    PRINTLOG(TEXT(" AI MoveTo 시작 (NavMesh 위치)"));
-                }
-            }
-        }
-        else
-        {
-            PRINTLOG(TEXT(" AI MoveTo를 시작하지 않음 (직접 이동 또는 대기 모드)"));
-        }
-    }
-    break;
-    case EDasanState::Answer:
-    {
-        PRINTLOG(TEXT("[EDasanState::Answer] Answer 상태 시작"));
-        if (AnswerStateSystem)
-        {
-            AnswerStateSystem->SetCurState(EAnswerState::AnswerListen);
-        }
-    }
-    break;
+	            if (NavSys)
+	            {
+	                FNavLocation TargetNavLoc;
+	                if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
+	                {
+                		auto Result = this->AIMoveToLoc(TargetNavLoc.Location, wayPointDis, true);
+	                    PRINTLOG(TEXT(" AI MoveTo 시작 (NavMesh 위치)"));
+	                }
+	            }
+	        }
+	        else
+	        {
+	            PRINTLOG(TEXT(" AI MoveTo를 시작하지 않음 (직접 이동 또는 대기 모드)"));
+	        }
+	    }
+	    break;
+    	
+	    case EDasanState::Answer:
+	    {
+	        PRINTLOG(TEXT("[EDasanState::Answer] Answer 상태 시작"));
+	        if (AnswerStateSystem)
+	        {
+	            AnswerStateSystem->SetCurState(EAnswerState::AnswerListen);
+	        }
+	    }
+    	break;
 
-    default:
-        break;
+    	default:
+    		break;
     }
 }
 
@@ -508,7 +479,7 @@ void ADasanActor::NextQuest()
         return;
 
     // 퀘스트 매니저가 준비되지 않거나 타겟이 None이면 이동 중단
-    if (!QuestManager->IsHasQuest() || QuestManager->GetCurTarget() == EBuildingType::None)
+    if (!QuestManager->HasActiveQuest() || QuestManager->GetCurrentTarget() == EBuildingType::None)
     {
         PRINTLOG(TEXT(" NextQuest: 유효한 퀘스트가 없거나 TargetType이 None입니다."));
         TourStateSystem->SetTourState(ETourState::TourEnd);

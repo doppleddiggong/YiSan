@@ -4,6 +4,15 @@
 
 #include "CoreMinimal.h"
 
+
+namespace GameLayer
+{
+    static const int32 Loading = 400;
+    static const int32 LoadingCircle = 500;
+    static const int32 ToastManager = 600;
+}
+
+
 /// @file YiSan.h
 /// @brief 게임 전역에서 공유하는 GameplayTag 상수를 정의합니다.
 

@@ -43,10 +43,14 @@ private:
 public:
 	/** --- 위젯 참조 --- */
 	UPROPERTY(meta = (BindWidget))
-	class UEditableTextBox* ChatInput;
+	class UScrollBox* ScrollBox;
 
 	UPROPERTY(meta = (BindWidget))
-	class UScrollBox* ScrollBox;
+	class UVerticalBox* ChatMessagesBox; // UMG에서 이름 정확히 일치시켜야 함!
+	
+	UPROPERTY(meta = (BindWidget))
+	class UEditableTextBox* ChatInput;
+
 
 	UPROPERTY(EditDefaultsOnly, Category = "Chat")
 	TSubclassOf<class UChatEntryWidget> ChatEntryClass;

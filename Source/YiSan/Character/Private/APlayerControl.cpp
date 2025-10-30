@@ -28,6 +28,10 @@
 #include "APlayerActor.h"
 #include "AYisanGameState.h"
 #include "UAnswerStateSystem.h"
+#include "ULoadingTransitionManager.h"
+#include "UYiSanLoading.h"
+
+
 #include "AYiSanPlayerState.h"
 #include "UNetworkGameInstanceSubsystem.h"
 #include "UYiSanGameInstance.h"

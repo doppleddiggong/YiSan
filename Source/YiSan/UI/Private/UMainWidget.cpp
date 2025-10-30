@@ -185,6 +185,7 @@ bool UMainWidget::IsSmallPopupVisible() const
     return SmallPopupCtn->GetVisibility() == ESlateVisibility::Visible;
 }
 
+
 void UMainWidget::OnMegaPopupClosed()
 {
     APlayerController* PC = GetOwningPlayer();
@@ -229,15 +230,73 @@ void UMainWidget::OnNearBuilding(EBuildingType InBuildingType)
 	if (IsMegaPopupVisible())
 		return;
 
+	PendBuildingType = InBuildingType;
 	CurNearBuildingType = InBuildingType;
+	
+	// 보이는 상태인지 확인
+	if (IsSmallPopupVisible())
+	{
+		// 보인다면 사라지는 애님을 재생
+		EndAnim();
+	}
+	// 숨겨진 상태라면 애니메이션 재생한다 업데이트 하고
+	else
+	{
+		if (PendBuildingType != EBuildingType::None)UpdatePopup(PendBuildingType);
+	}
 
     if (InBuildingType != EBuildingType::None)
     {
         SmallPopupCtn->SetVisibility(ESlateVisibility::Visible);
+    	// 보이자 마자 애니메이션을 재생하자
+    	StartAnim();
     	SmallPopupCtn->UpdateBuildingInfo(InBuildingType);
     }
     else
     {
         SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
     }
+}
+
+// 애니메이션 호출함수
+void UMainWidget::StartAnim()
+{
+	if (Slideani)
+	{
+		SmallPopupCtn->SetVisibility(ESlateVisibility::Visible);
+		PlayAnimation(Slideani, 0.0f, 1 , EUMGSequencePlayMode::Forward, 1.0f);
+	}
+	else
+	{
+		SmallPopupCtn->SetVisibility(ESlateVisibility::Visible);
+	}
+}
+
+void UMainWidget::EndAnim()
+{
+	if (disapperani)
+	{
+		FWidgetAnimationDynamicEvent FinshDelegate;
+		FinshDelegate.BindUFunction(this, FName("EndAnim"));
+		PlayAnimation(disapperani, 0.0f, 1 , EUMGSequencePlayMode::Forward, 1.0f,true);
+	}
+	else
+	{
+		AnimFinished();
+	}
+}
+
+void UMainWidget::UpdatePopup(EBuildingType newType)
+{
+	// 위젯 정보를 업데이트하고 재생하자
+	SmallPopupCtn->UpdateBuildingInfo(newType);
+	StartAnim();
+}
+
+void UMainWidget::AnimFinished()
+{
+	// 끝났다면 숨긴다
+	SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
+	// 새로 표시할 빌딩이 있다면 업데이트 하고 애니메이션 재생한다
+	if (PendBuildingType != EBuildingType::None)UpdatePopup(PendBuildingType);
 }
