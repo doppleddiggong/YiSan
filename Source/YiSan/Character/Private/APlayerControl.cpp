@@ -176,37 +176,21 @@ void APlayerControl::OnPossess(APawn* InPawn)
 }
 
 void APlayerControl::Server_SetPlayerNickname_Implementation(const FString& Nickname)
-
 {
-
     if (AYiSanPlayerState* YSPlayerState = GetPlayerState<AYiSanPlayerState>())
-
     {
-
         // GameState에서 플레이어 인덱스를 받아와서 함께 설정
-
         if (AGameStateBase* GS = GetWorld()->GetGameState())
-
         {
-
-            YSPlayerState->SetPlayerInfo(Nickname, GS->PlayerArray.Num() - 1);
-
-
-
+            int32 NewIndex = GS->PlayerArray.Num() - 1;
+            YSPlayerState->SetPlayerInfo(Nickname, NewIndex);
             // 닉네임이 설정된 직후, PlayerListManager를 찾아 목록 업데이트를 요청합니다.
-
             if (AYiSanPlayerListManager* PlayerListManager = Cast<AYiSanPlayerListManager>(UGameplayStatics::GetActorOfClass(GetWorld(), AYiSanPlayerListManager::StaticClass())))
-
             {
-
                 PlayerListManager->UpdatePlayerListAndBroadcast();
-
             }
-
         }
-
     }
-
 }
 
 void APlayerControl::ServerRPC_ShowToastMessage_Implementation(const FString& Message)

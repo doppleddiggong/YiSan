@@ -10,26 +10,15 @@ AYiSanPlayerState::AYiSanPlayerState()
 }
 
 void AYiSanPlayerState::SetPlayerInfo(const FString& InName, int32 InIndex)
-
 {
-
 	if (HasAuthority())
-
 	{
-
 		Nickname = InName;
-
 		PlayerIndex = InIndex;
-
 	}
-
 }
 
-
-
 void AYiSanPlayerState::OnRep_Nickname() {}
-
-
 
 void AYiSanPlayerState::OnRep_PlayerIndex() {}
 

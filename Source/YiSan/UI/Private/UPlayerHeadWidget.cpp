@@ -40,7 +40,28 @@ void UPlayerHeadWidget::CheckPlayerState()
 				if (!Nickname.IsEmpty())
 				{
 					PlayerNameText->SetText(FText::FromString(Nickname));
-					
+
+					// index도 가져오자
+					int32 index = PS->PlayerIndex;
+					if (index < 0) return;
+					switch (index)
+					{
+					case 0:
+						image_Icon->SetBrushFromTexture(LoadObject<UTexture2D>(nullptr,TEXT("/Game/CustomContents/UI/Texture/icon_yisan512_red")));
+						break;
+					case 1:
+						image_Icon->SetBrushFromTexture(LoadObject<UTexture2D>(nullptr,TEXT("/Game/CustomContents/UI/Texture/icon_yisan512_green")));
+						break;
+					case 2:
+						image_Icon->SetBrushFromTexture(LoadObject<UTexture2D>(nullptr,TEXT("/Game/CustomContents/UI/Texture/icon_yisan512_blue")));
+						break;
+					case 3:
+						image_Icon->SetBrushFromTexture(LoadObject<UTexture2D>(nullptr,TEXT("/Game/CustomContents/UI/Texture/icon_yisan512_black")));
+						break;
+					case 4:
+						image_Icon->SetBrushFromTexture(LoadObject<UTexture2D>(nullptr,TEXT("/Game/CustomContents/UI/Texture/icon_yisan512_white")));
+						break;
+					}
 					// 이름이 설정되었으므로, 타이머를 정지시킵니다.
 					GetWorld()->GetTimerManager().ClearTimer(TimerHandle_CheckPlayerState);
 				}
