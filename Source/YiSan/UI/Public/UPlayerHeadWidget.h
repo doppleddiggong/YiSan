@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/Image.h"
 #include "UPlayerHeadWidget.generated.h"
 
 class UTextBlock;
@@ -37,4 +38,7 @@ private:
 
 	/** 위젯을 소유하고 있는 액터에 대한 약한 포인터입니다. */
 	TWeakObjectPtr<AActor> OwningActor;
+
+	UPROPERTY(meta = (BindWidget))
+	UImage* image_Icon;
 };
