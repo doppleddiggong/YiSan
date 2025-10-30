@@ -9,7 +9,6 @@
 
 #include "TimerManager.h"
 #include "ContentStreaming.h"
-#include "RenderAssetStreaming.h"
 #include "ULoadingTransitionManager.h"
 
 #include "LevelInstance/LevelInstanceActor.h"
@@ -20,6 +19,8 @@
 
 #include "Engine/World.h"
 #include "Engine/Engine.h"
+#include "Engine/StreamableManager.h"
+#include "Engine/AssetManager.h"
 
 void UYiSanLoading::InitSystem(const FString& InURL, bool bAbsolute)
 {
@@ -217,8 +218,13 @@ void UYiSanLoading::Loading_Textures(const UWorld* World)
     IStreamingManager& StreamingManager = IStreamingManager::Get();
     const double CurrentTime = World->GetTimeSeconds();
     const double ElapsedTime = CurrentTime - ResourceCheckStartTime;
+
     const int32 PendingRequests = StreamingManager.GetNumWantingResources();
-    const bool bStreamingInProgress = StreamingManager.GetRenderAssetStreamingManager().IsStreamingInProgress();
+    const bool bStreamingInProgress = (PendingRequests > 0);
+
+    UE_LOG(LogTemp, Log, TEXT("[Loading] %.2f s elapsed – Pending %d – Streaming %s"),
+        ElapsedTime, PendingRequests, bStreamingInProgress ? TEXT("InProgress") : TEXT("Done"));
+
 
     if (!bCapturedInitialTextureRequests)
     {
@@ -239,7 +245,6 @@ void UYiSanLoading::Loading_Textures(const UWorld* World)
         }
 
         LastReportedTextureProgress = StreamingPercentage;
-
         return;
     }
 
