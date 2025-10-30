@@ -83,13 +83,9 @@ public:
 	void ClientRPC_ShowLoadingTransition();
 
 	UFUNCTION(Client, Reliable)
-	void ClientRPC_UpdateLoadingTransitionProgress(float Progress);
-
-	UFUNCTION(Client, Reliable)
-	void ClientRPC_HideLoadingTransition();
-	
+	void ClientRPC_HideLoadingTransition();	
 #pragma endregion LOADING
-	
+
 	// Recording RPC
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_NotifyRecordingStart();
@@ -118,14 +114,12 @@ public:
 	UFUNCTION(Client, Reliable)
 	void ClientRPC_UpdateQuestTarget(const EBuildingType BuildingType);
 
+	// NickName
 	UFUNCTION(Server, Reliable)
 	void Server_SetPlayerNickname(const FString& Nickname);
 
-	
-
 private:
     class IControllable* GetControllable() const;
-
 
 	// 마지막 토스트 전송 시간                                                                                                                                          
 	float LastToastTime = 0.f;

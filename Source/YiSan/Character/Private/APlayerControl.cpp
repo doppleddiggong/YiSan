@@ -364,10 +364,9 @@ void APlayerControl::ServerStartMapTravel(const FString& MapPath)
 			}
 		}
 
-		if (auto TransitionManager = ULoadingTransitionManager::Get(this))
+		if (auto TM = ULoadingTransitionManager::Get(this))
 		{
-			TransitionManager->ShowLoadingScreen();
-			TransitionManager->UpdateLoadingProgress(0.0f);
+			TM->ShowLoadingScreen();
 		}
 
 		if (auto GI = UYiSanLoading::Get(GetWorld()))
@@ -375,11 +374,6 @@ void APlayerControl::ServerStartMapTravel(const FString& MapPath)
 			FString TravelURL = MapPath + TEXT("?listen");
 			GI->InitSystem(TravelURL, true);
 		}
-		
-
-		// if ( auto GI = UYiSanLoading::Get( GetWorld() ))
-		// 	GI->InitSystem(TravelURL, true);
-		
 	}, 0.1f, false);
 }
 
@@ -388,15 +382,6 @@ void APlayerControl::ClientRPC_ShowLoadingTransition_Implementation()
 	if (auto TransitionManager = ULoadingTransitionManager::Get(this))
 	{
 		TransitionManager->ShowLoadingScreen();
-		TransitionManager->UpdateLoadingProgress(0.0f);
-	}
-}
-
-void APlayerControl::ClientRPC_UpdateLoadingTransitionProgress_Implementation(const float Progress)
-{
-	if (auto TransitionManager = ULoadingTransitionManager::Get(this))
-	{
-		TransitionManager->UpdateLoadingProgress(FMath::Clamp(Progress, 0.0f, 1.0f));
 	}
 }
 
@@ -407,8 +392,6 @@ void APlayerControl::ClientRPC_HideLoadingTransition_Implementation()
 		TransitionManager->HideLoadingScreen();
 	}
 }
-
-
 
 void APlayerControl::Server_RequestMapTravel_Implementation(const FString& MapPath)
 {

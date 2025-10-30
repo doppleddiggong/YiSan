@@ -2,7 +2,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UYiSanGameInstance.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/EditableText.h"
 #include "ULobbyWidget.generated.h"
@@ -57,7 +56,7 @@ public:
 	TSubclassOf<class USessionInfoWidget> sessionInfoWidget;
 
 	UPROPERTY(meta=(BindWidget))
-	class UScrollBox* scrollSessionList;
+	TObjectPtr<class UScrollBox> scrollSessionList;
 
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UTextBlock> textFinding;

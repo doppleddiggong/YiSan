@@ -28,19 +28,15 @@ public:
     void InitSystem(const FString& InURL, bool bAbsolute);
    
 private:
-    void ResetLoadingState();
     void PostLoadMapWithWorld(UWorld* InWorld);
     void CompleteProcess(const UWorld* InWorld);
     void UpdateTick();
     void Loading_Textures(const UWorld* InWorld);
     void Loading_LevelInstance(UWorld* InWorld);
-    void UpdateLoadingProgress();
-    float GetTotalProgress() const;
 
 #pragma region BROADCAST
     void Broadcast_ShowLoading() const;
     void Broadcast_HideLoading() const;
-    void Broadcast_UpdateLoadingProgress(float Progress) const;
 #pragma endregion   
 
 private:
@@ -49,7 +45,6 @@ private:
         
 private:
     double TotalTime = 0.0;
-    float TotalProgress = 0.0f;
 
     TMap<EState, bool> CompleteState
     {
@@ -62,8 +57,7 @@ private:
 
     FTimerHandle TimeHandlePool;
     int32 LastPercent = -10;
-    
-   
+       
     bool bTextureStreamingComplete = false;
     
     float Progress_Texture = 0.0f;

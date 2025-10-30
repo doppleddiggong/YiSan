@@ -65,10 +65,9 @@ void ULoadingTransitionManager::EnsureWidgetForWorld(UWorld* World)
 		return;
 	}
 
-	if (ULoadingTransitionWidget* NewWidget = CreateWidget<ULoadingTransitionWidget>(PC, TransitionWidgetClass))
+	if (auto NewWidget = CreateWidget<ULoadingTransitionWidget>(PC, TransitionWidgetClass))
 	{
 		NewWidget->AddToGameViewport(GameLayer::Loading);
-		NewWidget->UpdateProgress(0.0f);
 		TransitionWidget = NewWidget;
 	}
 }
@@ -87,9 +86,10 @@ void ULoadingTransitionManager::ShowLoadingScreen()
 			}
 
 			TransitionWidget->SetVisibility(ESlateVisibility::Visible);
+
 			LatestReportedProgress = 0.0f;
 			TransitionWidget->SetVisibility(ESlateVisibility::Visible);
-			TransitionWidget->UpdateProgress(LatestReportedProgress);
+			TransitionWidget->RefreshLoadingTip();
 
 			if (HideTimerHandle.IsValid())
 			{
@@ -99,16 +99,6 @@ void ULoadingTransitionManager::ShowLoadingScreen()
 			LastShowTimestamp = FPlatformTime::Seconds();
 			bHideRequested = false;
 		}
-	}
-}
-
-void ULoadingTransitionManager::UpdateLoadingProgress(const float Progress)
-{
-	LatestReportedProgress = FMath::Clamp(Progress, 0.0f, 1.0f);
-	
-	if (TransitionWidget)
-	{
-		TransitionWidget->UpdateProgress(Progress);
 	}
 }
 

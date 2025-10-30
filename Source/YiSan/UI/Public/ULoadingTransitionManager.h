@@ -21,15 +21,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Loading")
 	void ShowLoadingScreen();
 
-	/// @brief 로딩 화면의 진행률을 업데이트합니다.
-	UFUNCTION(BlueprintCallable, Category = "Loading")
-	void UpdateLoadingProgress(float Progress);
-
 	/// @brief 로딩 화면을 제거합니다.
 	UFUNCTION(BlueprintCallable, Category = "Loading")
 	void HideLoadingScreen();
-
-
 
 private:
 	/// @brief 현재 월드에 맞는 위젯이 없으면 생성하여 GameViewport에 추가합니다.
