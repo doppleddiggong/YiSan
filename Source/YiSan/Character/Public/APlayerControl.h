@@ -73,7 +73,8 @@ private:
 	void CompleteLoading();
 	bool IsReadyToFinish() const;
 
-	
+
+public:
 #pragma region LOADING
 	//----------------로딩 관련-------------------
 	// 서버에서 호출: 맵 전환 시작
