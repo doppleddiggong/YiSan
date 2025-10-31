@@ -42,4 +42,7 @@ struct FBuildingData : public FTableRowBase
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString subtile;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString explain;
 };

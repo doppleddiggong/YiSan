@@ -64,6 +64,12 @@ public:
 	// 위젯 상태 업데이트 함수
 	void UpdateWidgetState();
 
+	// 모든 클라이언트에게 설명 다이얼로그 표시 (서버에서 호출)
+	UFUNCTION(BlueprintCallable, Category = "Dialog")
+	void ShowExplainDialog(const FString& ExplainText);
+	UFUNCTION(BlueprintCallable, Category = "Dialog")
+	void HideExplainDialog();
+
 	// 플레이어 폰을 가져오는 헬퍼 함수
 	class APawn* GetPlayerPawn() const;
 	
@@ -76,7 +82,14 @@ private:
 
 	UFUNCTION(NetMulticast, Reliable)
 	void MulticastRPC_DrawDebugPath(const TArray<FVector>& PathPoints);
-	
+
+	// 모든 클라이언트에게 설명 다이얼로그 표시
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPC_ShowExplainDialog(const FString& ExplainText);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPC_HideExplainDialog();
+
 public:
 	// 상태 시스템 컴포넌트
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="State")

@@ -2,6 +2,7 @@
 
 #include "UStateWidget.h"
 
+#include "ABuilding.h"
 #include "AQuestManagerActor.h"
 #include "Blueprint/WidgetTree.h"
 #include "Components/HorizontalBoxSlot.h"
@@ -9,7 +10,10 @@
 #include "Components/ProgressBar.h"
 #include "Components/TextBlock.h"
 #include "Engine/World.h"
+#include "GameFramework/PlayerController.h"
 #include "HAL/CriticalSection.h"
+#include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "Misc/DateTime.h"
 #include "Misc/ScopeLock.h"
 #include "TimerManager.h"
@@ -29,14 +33,11 @@ void UStateWidget::NativeConstruct()
     QuestTargetText->SetText(FText::GetEmpty());
     QuestTargetText->SetVisibility(ESlateVisibility::Hidden);
     QuestTargetImage->SetVisibility(ESlateVisibility::Hidden);
+    QuestArrowImage->SetVisibility(ESlateVisibility::Hidden);
 
     NearTargetText->SetText(FText::GetEmpty());
     NearTargetText->SetVisibility(ESlateVisibility::Hidden);
     NearTargetImage->SetVisibility(ESlateVisibility::Hidden);
-
-    FocusTargetText->SetText(FText::GetEmpty());
-    FocusTargetText->SetVisibility(ESlateVisibility::Hidden);
-    FocusTargetImage->SetVisibility(ESlateVisibility::Hidden);
     
     if (UWorld* World = GetWorld())
         World->GetTimerManager().SetTimer(UpdateTimerHandle, this, &UStateWidget::RefreshTimeText, TimeUpdateInterval, true);
@@ -54,7 +55,6 @@ void UStateWidget::NativeConstruct()
         EventManager->OnAudioSpectrum.AddDynamic(this, &UStateWidget::OnAudioSpectrum);
         EventManager->OnUpdateQuest.AddDynamic(this, &UStateWidget::OnUpdateQuest);
         EventManager->OnNearBuilding.AddDynamic(this, &UStateWidget::OnNearBuilding);
-        EventManager->OnFocusBuilding.AddDynamic(this, &UStateWidget::OnFocusBuilding);
     }
 }
 
@@ -72,6 +72,7 @@ void UStateWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 
     UpdateSpectrumVisual(InDeltaTime);
     UpdateLoadingSpinner(InDeltaTime);
+    UpdateQuestArrow();
 }
 
 void UStateWidget::RefreshTimeText()                                                                                                                                                                     
@@ -129,6 +130,7 @@ void UStateWidget::OnUpdateQuest(EBuildingType InBuildingType)
         QuestTargetText->SetText(FText::GetEmpty());
         QuestTargetText->SetVisibility(ESlateVisibility::Hidden);
         QuestTargetImage->SetVisibility(ESlateVisibility::Hidden);
+        QuestArrowImage->SetVisibility(ESlateVisibility::Hidden);
         return;
     }
 
@@ -136,6 +138,7 @@ void UStateWidget::OnUpdateQuest(EBuildingType InBuildingType)
     auto BuildingName  = GameDataManager->GetBuildingDataName(InBuildingType);
     QuestTargetText->SetText(FText::FromString(BuildingName));
     QuestTargetText->SetVisibility(ESlateVisibility::Visible);
+    QuestArrowImage->SetVisibility(ESlateVisibility::Visible);
 
     FBuildingAssetData AssetData;
     if ( GameDataManager->GetBuildingAssetData(InBuildingType, AssetData) )
@@ -151,6 +154,68 @@ void UStateWidget::OnUpdateQuest(EBuildingType InBuildingType)
             }
         }
     }
+}
+
+void UStateWidget::UpdateQuestArrow()
+{
+    // 퀘스트가 없으면 화살표 숨김
+    if (QuestDisplayType == EBuildingType::None || !QuestArrowImage)
+        return;
+
+    // 플레이어 컨트롤러 가져오기
+    APlayerController* PC = UGameplayStatics::GetPlayerController(GetWorld(), 0);
+    if (!PC)
+        return;
+
+    APawn* PlayerPawn = PC->GetPawn();
+    if (!PlayerPawn)
+        return;
+
+    // 목표 건물 찾기
+    ABuilding* TargetBuilding = nullptr;
+    TArray<AActor*> FoundBuildings;
+    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ABuilding::StaticClass(), FoundBuildings);
+
+    for (AActor* Actor : FoundBuildings)
+    {
+        ABuilding* Building = Cast<ABuilding>(Actor);
+        if (Building && Building->BuildingType == QuestDisplayType)
+        {
+            TargetBuilding = Building;
+            break;
+        }
+    }
+
+    if (!TargetBuilding)
+        return;
+
+    // 플레이어 위치와 목표 건물 위치
+    FVector PlayerLocation = PlayerPawn->GetActorLocation();
+    FVector TargetLocation = TargetBuilding->GetActorLocation();
+
+    // 플레이어에서 목표로의 방향 벡터 (2D 평면)
+    FVector DirectionToTarget = TargetLocation - PlayerLocation;
+    DirectionToTarget.Z = 0; // 수평 방향만 고려
+    DirectionToTarget.Normalize();
+
+    // 플레이어의 정면 방향 (카메라 기준)
+    FVector CameraForward = PC->GetControlRotation().Vector();
+    CameraForward.Z = 0;
+    CameraForward.Normalize();
+
+    // 두 벡터 사이의 각도 계산 (Degree)
+    float DotProduct = FVector::DotProduct(CameraForward, DirectionToTarget);
+    float CrossProduct = FVector::CrossProduct(CameraForward, DirectionToTarget).Z;
+
+    // 각도 계산 (-180 ~ 180)
+    float AngleDegrees = FMath::RadiansToDegrees(FMath::Acos(FMath::Clamp(DotProduct, -1.0f, 1.0f)));
+
+    // CrossProduct의 부호로 방향 결정
+    if (CrossProduct < 0)
+        AngleDegrees = -AngleDegrees;
+
+    // 화살표 회전 (화살표 머리가 12시 방향이므로 그대로 적용)
+    QuestArrowImage->SetRenderTransformAngle(AngleDegrees);
 }
 
 void UStateWidget::OnNearBuilding(EBuildingType InBuildingType)
@@ -179,37 +244,6 @@ void UStateWidget::OnNearBuilding(EBuildingType InBuildingType)
             {
                 NearTargetImage->SetBrushFromTexture(LoadedTexture.Get());
                 NearTargetImage->SetVisibility(ESlateVisibility::Visible);
-            }
-        }
-    }
-}
-
-void UStateWidget::OnFocusBuilding(EBuildingType InBuildingType)
-{
-    if (InBuildingType == EBuildingType::None)
-    {
-        FocusTargetText->SetText(FText::GetEmpty());
-        FocusTargetText->SetVisibility(ESlateVisibility::Hidden);
-        FocusTargetImage->SetVisibility(ESlateVisibility::Hidden);
-        return;
-    }
-    
-    auto GameDataManager = UGameDataManager::Get(GetWorld());
-    auto BuildingName  = GameDataManager->GetBuildingDataName(InBuildingType);
-    FocusTargetText->SetText(FText::FromString(BuildingName));
-    FocusTargetText->SetVisibility(ESlateVisibility::Visible);
-
-    FBuildingAssetData AssetData;
-    if ( GameDataManager->GetBuildingAssetData(InBuildingType, AssetData) )
-    {
-        UBuildingDetailData* DetailAsset = AssetData.BuildingDetailDataAsset.LoadSynchronous();
-        if ( DetailAsset )
-        {
-            TSoftObjectPtr<UTexture2D> LoadedTexture;
-            if ( DetailAsset->LoadThumbnailImage(LoadedTexture) && LoadedTexture.Get() )
-            {
-                FocusTargetImage->SetBrushFromTexture(LoadedTexture.Get());
-                FocusTargetImage->SetVisibility(ESlateVisibility::Visible);
             }
         }
     }

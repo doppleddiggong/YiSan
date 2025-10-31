@@ -180,6 +180,8 @@ void UTourStateSystem::Enter_TourWait()
 {
 	PRINTLOG( TEXT("[TourState] Enter TourWait"));
 	WaitTimer = 0.0f;
+	ForcedGatherTimer = 0.0f;
+	LastReportedGatherTime = -1;
 
 	// 캐릭터 정지
 	if (OwnerDasan)
@@ -266,15 +268,36 @@ void UTourStateSystem::Tick_TourMove(float DeltaTime)
 	{
 		WaitTimer = 0.0f;
 
+		// 플레이어 수 계산
+		auto Players = FComponentHelper::GetAllOfClass<APlayerActor>(GetWorld());
+		int32 TotalPlayers = Players.Num();
+		int32 NearbyPlayers = 0;
+		FVector DasanLocation = OwnerDasan->GetActorLocation();
+
+		for (auto Player : Players)
+		{
+			float Distance = FVector::Dist(DasanLocation, Player->GetActorLocation());
+			if (Distance <= PlayerDetectionRadius)
+			{
+				NearbyPlayers++;
+			}
+		}
+
 		if (IsAllPlayersNearby())
 		{
 			PRINTLOG(TEXT("[TourState] 플레이어 전원 근처 → TourWait"));
 			WaitTimer = 0.0f;
 			CurState = ETourState::TourWait;
+
+			OwnerDasan->HideExplainDialog();
 		}
 		else
 		{
-			PRINTLOG(TEXT("[TourState] 아직 더 모여야 함"));
+			PRINTLOG(TEXT("[TourState] 아직 더 모여야 함 (%d/%d)"), NearbyPlayers, TotalPlayers);
+
+			// ShowExplainDialog로 대기 중인 플레이어 정보 표시
+			FString ExplainText = FString::Printf(TEXT("플레이어를 기다리는 중... (%d/%d명)"), NearbyPlayers, TotalPlayers);
+			OwnerDasan->ShowExplainDialog(ExplainText);
 		}
 	}
 }
@@ -283,6 +306,69 @@ void UTourStateSystem::Tick_TourWait(float DeltaTime)
 {
 	if (!OwnerDasan)
 		return;
+
+	// 강제 집결 타이머 누적
+	ForcedGatherTimer += DeltaTime;
+
+	// 플레이어 수 계산
+	auto Players = FComponentHelper::GetAllOfClass<APlayerActor>(GetWorld());
+	int32 TotalPlayers = Players.Num();
+	int32 NearbyPlayers = 0;
+	FVector DasanLocation = OwnerDasan->GetActorLocation();
+
+	for (auto Player : Players)
+	{
+		float Distance = FVector::Dist(DasanLocation, Player->GetActorLocation());
+		if (Distance <= PlayerDetectionRadius)
+		{
+			NearbyPlayers++;
+		}
+	}
+
+	// 강제 집결 시간이 지나면 모든 플레이어를 텔레포트
+	if (ForcedGatherTimer >= ForcedGatherTime)
+	{
+		PRINTLOG(TEXT("[TourState] 강제 집결 시간 도달 - 모든 플레이어를 다산 위치로 텔레포트"));
+
+		// 다산 앞쪽 방향 계산
+		FVector DasanForward = OwnerDasan->GetActorForwardVector();
+
+		// 모든 플레이어를 다산 근처로 텔레포트
+		for (auto Player : Players)
+		{
+			float Distance = FVector::Dist(DasanLocation, Player->GetActorLocation());
+			if (Distance > PlayerDetectionRadius)
+			{
+				// 다산 앞쪽 200 유닛 위치로 텔레포트
+				FVector TeleportLocation = DasanLocation + (DasanForward * 200.0f);
+				Player->TeleportTo(TeleportLocation, Player->GetActorRotation(), false, true);
+				PRINTLOG(TEXT("[TourState] 플레이어 텔레포트: %s"), *Player->GetName());
+			}
+		}
+
+		// 강제 집결 후 TourMove로 전환
+		ForcedGatherTimer = 0.0f;
+		CurState = ETourState::TourMove;
+		PRINTLOG(TEXT("[TourState] 강제 집결 완료 → TourMove 전환"));
+
+		// TourMove로 전환할 때 실제 이동 명령 실행
+		if (OwnerDasan->DasanAicontrol && OwnerDasan->GetCurTargetBuilding())
+		{
+			FVector TargetPos = OwnerDasan->GetCurTargetBuilding()->GetActorLocation();
+			UNavigationSystemV1* NavSys = UNavigationSystemV1::GetCurrent(GetWorld());
+
+			if (NavSys)
+			{
+				FNavLocation TargetNavLoc;
+				if (NavSys->ProjectPointToNavigation(TargetPos, TargetNavLoc, FVector(5000, 5000, 5000)))
+				{
+					auto Result = OwnerDasan->AIMoveToLoc( TargetNavLoc.Location, 250.0f, true );
+					PRINTLOG(TEXT("[TourState] MoveTo 결과: %d"), (int32)Result.Code);
+				}
+			}
+		}
+		return;
+	}
 
 	// 주기적 체크 타이머 누적
 	WaitTimer += DeltaTime;
@@ -293,6 +379,7 @@ void UTourStateSystem::Tick_TourWait(float DeltaTime)
 
 		if (IsAllPlayersNearby())
 		{
+			ForcedGatherTimer = 0.0f; // 타이머 리셋
 			CurState = ETourState::TourMove;
 			PRINTLOG(TEXT("[TourState] 모든 플레이어 근처 → TourMove 전환"));
 
@@ -315,8 +402,22 @@ void UTourStateSystem::Tick_TourWait(float DeltaTime)
 		}
 		else
 		{
-			PRINTLOG(TEXT("[TourState] 일부 플레이어 미도달"));
+			PRINTLOG(TEXT("[TourState] 일부 플레이어 미도달 (%d/%d)"), NearbyPlayers, TotalPlayers);
 		}
+	}
+
+	// 강제 집결 카운트다운 표시 (1초마다)
+	int32 RemainingGatherTime = FMath::CeilToInt(ForcedGatherTime - ForcedGatherTimer);
+	RemainingGatherTime = FMath::Max(0, RemainingGatherTime);
+
+	if (RemainingGatherTime != LastReportedGatherTime)
+	{
+		// "모두 모일 때까지 기다립니다 (cur/max) - 강제 집결까지 X초"
+		FString ExplainText = FString::Printf(TEXT("모두 모일 때까지 기다립니다 (%d/%d명)\n강제 집결까지 %d초"),
+			NearbyPlayers, TotalPlayers, RemainingGatherTime);
+		OwnerDasan->ShowExplainDialog(ExplainText);
+
+		LastReportedGatherTime = RemainingGatherTime;
 	}
 }
 

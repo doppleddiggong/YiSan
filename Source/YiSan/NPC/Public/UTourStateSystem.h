@@ -73,6 +73,12 @@ private:
 	// 대기 타이머
 	float WaitTimer = 0.0f;
 
+	// 강제 집결 관련
+	UPROPERTY(EditAnywhere, Category="Tour")
+	float ForcedGatherTime = 10.0f; // 강제 집결까지 대기 시간 (초)
+	float ForcedGatherTimer = 0.0f; // 강제 집결 타이머
+	int32 LastReportedGatherTime = -1; // 마지막으로 보고한 강제 집결 남은 시간
+
 	// 관광 시간 관련
 	UPROPERTY(EditAnywhere, Category="Tour")
 	float TourViewDuration = 10.0f; // 관광 시간 (초)

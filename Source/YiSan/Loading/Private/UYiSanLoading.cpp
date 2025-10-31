@@ -71,6 +71,7 @@ void UYiSanLoading::PrepareClientTravel(const FString& InURL, const ETravelType 
 
 void UYiSanLoading::PrepareForTravel()
 {
+    PRINTLOG(TEXT("[LOADING_FLOW] PrepareForTravel - Resetting all loading states"));
     TotalTime = FPlatformTime::Seconds();
     
     bTextureStreamingComplete = false;
@@ -108,7 +109,33 @@ void UYiSanLoading::PostLoadMapWithWorld(UWorld* InWorld)
         return;
     }
 
+    PRINTLOG(TEXT("[LOADING_FLOW] PostLoadMapWithWorld - Map loaded: %s, NetMode: %s"),
+        *InWorld->GetName(),
+        InWorld->GetNetMode() == NM_Client ? TEXT("Client") : TEXT("Server/Standalone"));
     PRINTLOG(TEXT("[WP] 맵 로드 완료: %s"), *InWorld->GetName());
+
+    // 클라이언트가 자동 travel될 때 (PrepareForTravel 없이), 로딩 상태 초기화
+    if (CurState == EState::COMPLETE || CompleteState[EState::COMPLETE])
+    {
+        PRINTLOG(TEXT("[LOADING_FLOW] PostLoadMapWithWorld - Resetting loading state for auto-traveled client"));
+
+        TotalTime = FPlatformTime::Seconds();
+
+        CompleteState[EState::WP] = false;
+        CompleteState[EState::TEXTURE] = false;
+        CompleteState[EState::LI] = false;
+        CompleteState[EState::COMPLETE] = false;
+
+        Progress_Texture = 0.0f;
+        Progress_LI = 0.0f;
+
+        bRequestTexture = false;
+        TextureRequestCount = 0;
+        LastTextureProgressTime = 0.0;
+        LastTextureProgress = -1.0f;
+
+        CurState = EState::WP;
+    }
 
     bTextureStreamingComplete = false;
 
@@ -123,6 +150,8 @@ void UYiSanLoading::PostLoadMapWithWorld(UWorld* InWorld)
         &UYiSanLoading::UpdateTick,
         0.1f,
         true);
+
+    PRINTLOG(TEXT("[LOADING_FLOW] PostLoadMapWithWorld - UpdateTick timer started, CurState: %d"), static_cast<int32>(CurState));
 }
 
 void UYiSanLoading::UpdateTick()
@@ -133,6 +162,10 @@ void UYiSanLoading::UpdateTick()
         PRINTLOG(TEXT("[TICK] World가 null임. 폴링 중단."));
         return;
     }
+
+    PRINTLOG(TEXT("[LOADING_FLOW] UpdateTick - Current State: %d, NetMode: %s"),
+        static_cast<int32>(CurState),
+        World->GetNetMode() == NM_Client ? TEXT("Client") : TEXT("Server/Standalone"));
 
     switch (CurState)
     {
@@ -147,6 +180,7 @@ void UYiSanLoading::UpdateTick()
 
             if (CompleteState[EState::WP])
             {
+                PRINTLOG(TEXT("[LOADING_FLOW] [WP] WorldPartition streaming COMPLETE"));
                 PRINTLOG(TEXT("[TICK] WorldPartition | 완료"));
                 CurState = EState::TEXTURE;
                 
@@ -163,6 +197,7 @@ void UYiSanLoading::UpdateTick()
         Loading_Textures(World);
         if (CompleteState[EState::TEXTURE])
         {
+            PRINTLOG(TEXT("[LOADING_FLOW] [TEXTURE] Texture streaming COMPLETE"));
             PRINTLOG(TEXT("[TICK] 텍스처 스트리밍 | 완료"));
             CurState = EState::LI;
         }
@@ -173,6 +208,7 @@ void UYiSanLoading::UpdateTick()
         Loading_LevelInstance(World);
         if (CompleteState[EState::LI])
         {
+            PRINTLOG(TEXT("[LOADING_FLOW] [LI] LevelInstance loading COMPLETE"));
             PRINTLOG(TEXT("[TICK] 레벨 인스턴스 | 완료"));
             CurState = EState::COMPLETE;
        }
@@ -189,6 +225,7 @@ void UYiSanLoading::UpdateTick()
         // 현재 완료 상태이면서, 완료 도달 상태라면
         CompleteState[EState::COMPLETE] = true;
 
+        PRINTLOG(TEXT("[LOADING_FLOW] ===== ALL LOADING STAGES COMPLETE ====="));
         PRINTLOG(TEXT("[TICK] ===== 모든 준비 완료 ====="));
         PRINTLOG(TEXT("WorldPartition: OK"));
         PRINTLOG(TEXT("Texture: %.1f%% (완료)"), Progress_Texture * 100.0f);
@@ -204,11 +241,12 @@ void UYiSanLoading::CompleteProcess(const UWorld* InWorld)
     InWorld->GetTimerManager().ClearTimer(TimeHandlePool);
 
     FTimerHandle DelayHandle;
-    
+
     InWorld->GetTimerManager().SetTimer(
         DelayHandle,
         [this]()
         {
+            PRINTLOG(TEXT("[LOADING_FLOW] CompleteProcess - Broadcasting hide loading to all clients"));
             PRINTLOG(TEXT("[COMPLETE] 타겟으로 전환 완료함. 플레이어 입력 활성화."));
             if (UWorld* World = GetWorld())
             {
@@ -326,6 +364,7 @@ void UYiSanLoading::Loading_LevelInstance(UWorld* InWorld)
 #pragma region BROADCAST
 void UYiSanLoading::Broadcast_ShowLoading() const
 {
+    PRINTLOG(TEXT("[LOADING_FLOW] Broadcast_ShowLoading called"));
     if (UWorld* World = GetWorld())
     {
         if (World->GetNetMode() == NM_Client)
@@ -349,24 +388,36 @@ void UYiSanLoading::Broadcast_ShowLoading() const
 
 void UYiSanLoading::Broadcast_HideLoading() const
 {
+    PRINTLOG(TEXT("[LOADING_FLOW] Broadcast_HideLoading called"));
     if (UWorld* World = GetWorld())
     {
+        PRINTLOG(TEXT("[LOADING_FLOW] NetMode: %s"),
+            World->GetNetMode() == NM_Client ? TEXT("Client") : TEXT("Server/Standalone"));
+
         if (World->GetNetMode() == NM_Client)
         {
+            PRINTLOG(TEXT("[LOADING_FLOW] Client mode - calling HandleLoadingComplete on local PC"));
             if (auto LocalPC = Cast<APlayerControl>(World->GetFirstPlayerController()))
             {
                 LocalPC->HandleLoadingComplete();
             }
             return;
         }
-        
+
+        PRINTLOG(TEXT("[LOADING_FLOW] Server mode - sending ClientRPC_HideLoadingTransition to all clients"));
         for (auto it = World->GetPlayerControllerIterator(); it; ++it)
         {
             if (auto pc = Cast<APlayerControl>(it->Get()))
             {
+                PRINTLOG(TEXT("[LOADING_FLOW] Sending RPC to %s"), *GetNameSafe(pc));
                 pc->ClientRPC_HideLoadingTransition();
             }
         }
     }
+}
+
+bool UYiSanLoading::IsLoadingComplete() const
+{
+    return CompleteState[EState::COMPLETE];
 }
 #pragma endregion

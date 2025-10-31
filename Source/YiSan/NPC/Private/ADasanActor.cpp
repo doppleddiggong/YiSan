@@ -615,8 +615,47 @@ void ADasanActor::UpdateWidgetState()
 		*ENUM_TO_NAME(EAnswerState, AnswerStateSystem->GetCurState()),
 		HasAuthority() ? TEXT("TRUE") : TEXT("FALSE"));
 
+	// 컨텍스트 데이터 수집
+	FString BuildingName;
+	FString PlayerName;
+	int32 CurPlayers = 0;
+	int32 MaxPlayers = 0;
+
+	// 건물 이름 가져오기 (Tour 상태일 때)
+	if (DasanState == EDasanState::Tour && CurTargetBuilding)
+	{
+		BuildingName = *ENUM_TO_NAME( EBuildingType, CurTargetBuilding->BuildingType );
+	}
+
+	// 플레이어 카운트 (TourWait 상태일 때)
+	if (DasanState == EDasanState::Tour && TourStateSystem->GetCurState() == ETourState::TourWait)
+	{
+		auto Players = FComponentHelper::GetAllOfClass<APlayerActor>(GetWorld());
+		MaxPlayers = Players.Num();
+		FVector DasanLocation = GetActorLocation();
+
+		for (auto Player : Players)
+		{
+			float Distance = FVector::Dist(DasanLocation, Player->GetActorLocation());
+			if (Distance <= 500.0f) // PlayerDetectionRadius
+			{
+				CurPlayers++;
+			}
+		}
+	}
+
+	// 플레이어 이름 가져오기 (Answer 상태일 때)
+	if (DasanState == EDasanState::Answer)
+	{
+		if (auto Player = Cast<APlayerActor>(GetPlayerPawn()))
+		{
+			PlayerName = Player->GetPlayerDisplayName();
+		}
+	}
+
 	// 위젯 상태 업데이트
-	DasanWidget->UpdateDasanState(DasanState, TourStateSystem->GetCurState(), AnswerStateSystem->GetCurState());
+	DasanWidget->UpdateDasanState(DasanState, TourStateSystem->GetCurState(), AnswerStateSystem->GetCurState(),
+		BuildingName, PlayerName, CurPlayers, MaxPlayers);
 }
 
 void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester)
@@ -631,23 +670,27 @@ void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester
 	{
 		if (Requester == nullptr)
 			return;
-		
-		PRINTLOG(TEXT("[Dasan] Cmd_Summon: %s님이 다산을 소환합니다"), *Requester->GetName());
-		
-		// Requester의 위치로 텔레포트
-		FVector PlayerLocation = Requester->GetActorLocation();
-		FRotator PlayerRotation = Requester->GetActorRotation();
-		
-		// 플레이어의 앞쪽으로 200 유닛 떨어진 위치 계산
-		FVector TargetLocation = PlayerLocation + (PlayerRotation.Vector() * 200.f);
-
-		// 텔레포트
-		TeleportTo(TargetLocation, GetActorRotation(), false, true);
 
 		APlayerActor* RequestPlayer = Cast<APlayerActor>(Requester);
-		if (RequestPlayer && RequestPlayer->ChatPlayerSystem)
+		if (!RequestPlayer)
+			return;
+
+		PRINTLOG(TEXT("[Dasan] Cmd_Summon: %s님이 다산에게 이동합니다"), *RequestPlayer->GetName());
+
+		// Dasan의 위치와 회전
+		FVector DasanLocation = GetActorLocation();
+		FRotator DasanRotation = GetActorRotation();
+
+		// Dasan의 앞쪽으로 200 유닛 떨어진 위치 계산 (Player가 이동할 위치)
+		FVector TargetLocation = DasanLocation + (DasanRotation.Vector() * 200.f);
+
+		// Player를 Dasan 앞으로 텔레포트
+		RequestPlayer->TeleportTo(TargetLocation, RequestPlayer->GetActorRotation(), false, true);
+
+		// 채팅 메시지
+		if (RequestPlayer->ChatPlayerSystem)
 		{
-			FChatMessage ChatMessage(EChatMessageType::NPC, -1, GameString::NPC, TEXT("부르셨습니까?"));
+			FChatMessage ChatMessage(EChatMessageType::NPC, -1, GameString::NPC, TEXT("어서 오십시오!"));
 			RequestPlayer->ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
 		}
 
@@ -655,11 +698,10 @@ void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester
 	}
 }
 
-
 void ADasanActor::DebugDrawPath(const FVector& GoalLocation)
 {
-	if (!bEnableDebugDraw)
-		return;
+	// if (!bEnableDebugDraw)
+	// 	return;
 	
 	if (!HasAuthority())
 		return; // 서버에서만 실행
@@ -674,10 +716,42 @@ void ADasanActor::DebugDrawPath(const FVector& GoalLocation)
 		MulticastRPC_DrawDebugPath(NavPath->PathPoints);
 }
 
+
+
+void ADasanActor::ShowExplainDialog(const FString& ExplainText)
+{
+	if (!HasAuthority())
+	{
+		PRINTLOG(TEXT("[Dasan] ShowExplainDialog - No authority, ignoring"));
+		return;
+	}
+
+	PRINTLOG(TEXT("[Dasan] ShowExplainDialog - Text: %s"), *ExplainText);
+
+	// 모든 클라이언트에게 RPC 전송
+	MulticastRPC_ShowExplainDialog(ExplainText);
+}
+
+
+void ADasanActor::HideExplainDialog()
+{
+	if (!HasAuthority())
+	{
+		PRINTLOG(TEXT("[Dasan] HideExplainDialog - No authority, ignoring"));
+		return;
+	}
+
+	PRINTLOG(TEXT("[Dasan] HideExplainDialog"));
+
+	// 모든 클라이언트에게 RPC 전송
+	MulticastRPC_HideExplainDialog();
+}
+
+
 void ADasanActor::MulticastRPC_DrawDebugPath_Implementation(const TArray<FVector>& PathPoints)
 {
 	FlushPersistentDebugLines(GetWorld());
-	
+
 	if (PathPoints.Num() > 1)
 	{
 		for (int32 i = 0; i < PathPoints.Num() - 1; i++)
@@ -690,6 +764,38 @@ void ADasanActor::MulticastRPC_DrawDebugPath_Implementation(const TArray<FVector
 		}
 	}
 }
+
+void ADasanActor::MulticastRPC_ShowExplainDialog_Implementation(const FString& ExplainText)
+{
+	// 모든 클라이언트에서 실행됨
+	if (!DasanWidget)
+	{
+		PRINTLOG(TEXT("[Dasan] MulticastRPC_ShowExplainDialog - DasanWidget is nullptr!"));
+		return;
+	}
+
+	PRINTLOG(TEXT("[Dasan] MulticastRPC_ShowExplainDialog - Showing dialog: %s"), *ExplainText);
+
+	// 위젯에 다이얼로그 표시 요청
+	DasanWidget->ShowExplainDialog(ExplainText);
+}
+
+
+void ADasanActor::MulticastRPC_HideExplainDialog_Implementation()
+{
+	// 모든 클라이언트에서 실행됨
+	if (!DasanWidget)
+	{
+		PRINTLOG(TEXT("[Dasan] MulticastRPC_HideExplainDialog - DasanWidget is nullptr!"));
+		return;
+	}
+
+	PRINTLOG(TEXT("[Dasan] MulticastRPC_HideExplainDialog") );
+
+	// 위젯에 다이얼로그 표시 요청
+	DasanWidget->HideExplainDialog();
+}
+
 
 // TODO 애님관련 입니다
 

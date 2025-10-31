@@ -28,7 +28,10 @@ public:
     
     void InitSystem(const FString& InURL, const bool bAbsolute, const bool bUseLoadingScreen = true);
     void PrepareClientTravel(const FString& InURL, const ETravelType TravelType, const bool bSeamlessTravel);
-   
+
+    // 클라이언트 측 로딩 완료 여부 확인
+    bool IsLoadingComplete() const;
+
 private:
     void PrepareForTravel();
     void PostLoadMapWithWorld(UWorld* InWorld);

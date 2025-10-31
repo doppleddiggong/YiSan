@@ -22,12 +22,24 @@ public:
 	void InitWidget(class ADasanActor* InDasanActor);
 
 	// 다산 상태 업데이트 (메인 상태 + 서브 상태)
-	void UpdateDasanState(EDasanState MainState, ETourState TourState, EAnswerState AnswerState);
+	void UpdateDasanState(EDasanState MainState, ETourState TourState, EAnswerState AnswerState,
+		const FString& BuildingName = TEXT(""), const FString& PlayerName = TEXT(""),
+		int32 CurrentPlayers = 0, int32 MaxPlayers = 0);
+
+	// 설명 다이얼로그 표시 (3초 후 자동 숨김)
+	UFUNCTION(BlueprintCallable, Category = "Dialog")
+	void ShowExplainDialog(const FString& ExplainText);
+	// 설명 다이얼로그 숨김
+	UFUNCTION(BlueprintCallable, Category = "Dialog")
+	void HideExplainDialog();
 
 private:
 	// 상태에 따른 메시지 텍스트 반환
-	FString GetStateMessage(EDasanState MainState, ETourState TourState, EAnswerState AnswerState) const;
+	FString GetStateMessage(EDasanState MainState, ETourState TourState, EAnswerState AnswerState,
+		const FString& BuildingName, const FString& PlayerName, int32 CurrentPlayers, int32 MaxPlayers) const;
+	FString GetResourcePath(EDasanState MainState, ETourState TourState, EAnswerState AnswerState) const;
 
+	
 public:
 	// 이미지의 경우에는 Blueprint에서 상태 제어가 가능하게 빼준다
 	UPROPERTY(meta = (BindWidget))
@@ -36,7 +48,16 @@ public:
 	UPROPERTY(meta = (BindWidget))
 	class UTextBlock* Text_Msg;
 
+	UPROPERTY(meta = (BindWidget))
+	class UTextBlock* Text_Explain;
+
+	UPROPERTY(meta = (BindWidget))
+	class UBorder* Border_Explain;
+
 private:
 	UPROPERTY()
 	TObjectPtr<class ADasanActor> DasanActor;
+
+	// 설명 다이얼로그 자동 숨김 타이머
+	FTimerHandle ExplainDialogTimerHandle;
 };

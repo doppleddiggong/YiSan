@@ -36,6 +36,9 @@ private:
     /// @brief 로딩 스피너 회전 애니메이션을 갱신합니다.
     void UpdateLoadingSpinner(float DeltaTime);
 
+    /// @brief 퀘스트 화살표 방향을 업데이트합니다.
+    void UpdateQuestArrow();
+
     /// @brief 네트워크 대기 카운트 변경 시 호출됩니다.
     /// @param NetworkWaitCount [in] 처리 중인 요청 수입니다.
     UFUNCTION(BlueprintCallable, Category = "State|Network")
@@ -48,10 +51,6 @@ private:
     /// @brief 실시간 오디오 스펙트럼 값을 반영합니다.
     UFUNCTION(BlueprintCallable, Category = "State|AudioCature")
     void OnAudioSpectrum(float Spectrum);
-
-    /// @brief 플레이어 시선에 들어온 건물 정보를 표시합니다.
-    UFUNCTION(BlueprintCallable, Category = "State|AudioCature")
-    void OnFocusBuilding(EBuildingType InBuildingType);
 
     /// @brief 주변 건물 정보를 표시합니다.
     UFUNCTION(BlueprintCallable, Category = "State|AudioCature")
@@ -70,16 +69,13 @@ protected:
     class UTextBlock* QuestTargetText = nullptr;
     UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|Quest")
     class UImage* QuestTargetImage = nullptr;
-
+    UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|Quest")
+    class UImage* QuestArrowImage = nullptr;
+    
     UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly, Category = "State|Location")
     class UTextBlock* NearTargetText = nullptr;
     UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|Location")
     class UImage* NearTargetImage = nullptr;
-
-    UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|Focus")
-    class UTextBlock* FocusTargetText = nullptr;
-    UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|Focus")
-    class UImage* FocusTargetImage = nullptr;
 
     /// @brief 오디오 스펙트럼을 시각화하는 프로그레스바입니다.
     UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly, Category = "State|Audio")

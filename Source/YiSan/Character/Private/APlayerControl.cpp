@@ -402,16 +402,20 @@ void APlayerControl::ServerStartMapTravel(const FString& MapPath)
 
 void APlayerControl::ClientRPC_ShowLoadingTransition_Implementation()
 {
+	PRINTLOG(TEXT("[LOADING_FLOW] ClientRPC_ShowLoadingTransition received - showing loading screen"));
 	ShowLoadingScreenLocal();
 }
 
 void APlayerControl::ClientRPC_HideLoadingTransition_Implementation()
 {
+	PRINTLOG(TEXT("[LOADING_FLOW] ClientRPC_HideLoadingTransition received - checking if ready to hide"));
 	HandleLoadingComplete();
 }
 
 void APlayerControl::HandleLoadingComplete()
 {
+	PRINTLOG(TEXT("[LOADING_FLOW] HandleLoadingComplete called - IsLocal: %s"), IsLocalController() ? TEXT("true") : TEXT("false"));
+
 	if (!IsLocalController())
 		return;
 
@@ -420,15 +424,16 @@ void APlayerControl::HandleLoadingComplete()
 		if (!bAwaitFinish)
 		{
 			if (auto CtrlPawn = GetPawn())
-				PRINTLOG(TEXT("[Travel] Pawn not fully initialized - deferring loading completion for %s"), *GetNameSafe(CtrlPawn));
+				PRINTLOG(TEXT("[LOADING_FLOW] Pawn not fully initialized - deferring loading completion for %s"), *GetNameSafe(CtrlPawn));
 			else
-				PRINTLOG(TEXT("[Travel] Pawn not ready - deferring loading completion for %s"), *GetName());
+				PRINTLOG(TEXT("[LOADING_FLOW] Pawn not ready - deferring loading completion for %s"), *GetName());
 		}
 
 		bAwaitFinish = true;
 		return;
 	}
 
+	PRINTLOG(TEXT("[LOADING_FLOW] All conditions met - proceeding to CompleteLoading"));
 	CompleteLoading();
 }
 
@@ -442,17 +447,29 @@ void APlayerControl::ShowLoadingScreenLocal()
 
 void APlayerControl::CompleteLoading()
 {
+	PRINTLOG(TEXT("[LOADING_FLOW] CompleteLoading called - waiting for rendering preparation"));
 	bAwaitFinish = false;
 
-	if (auto TM = ULoadingTransitionManager::Get(this))
-	{
-		TM->HideLoadingScreen();
-	}
+	// 렌더링 준비(SkyLight capture, texture preparation)를 위해 추가 대기
+	FTimerHandle RenderWaitHandle;
+	GetWorld()->GetTimerManager().SetTimer(
+		RenderWaitHandle,
+		[this]()
+		{
+			PRINTLOG(TEXT("[LOADING_FLOW] Rendering preparation complete - hiding loading screen now"));
 
-	SetInputMode(FInputModeGameOnly());
-	bShowMouseCursor = false;
+			if (auto TM = ULoadingTransitionManager::Get(this))
+			{
+				TM->HideLoadingScreen();
+			}
 
-	PRINTLOG(TEXT("[Travel] Loading transition completed for %s"), *GetName());
+			SetInputMode(FInputModeGameOnly());
+			bShowMouseCursor = false;
+
+			PRINTLOG(TEXT("[Travel] Loading transition completed for %s"), *GetName());
+		},
+		3.0f, // 렌더링 준비 대기 시간
+		false);
 }
 
 void APlayerControl::OnPawnReady(APawn& InPawn)
@@ -465,6 +482,8 @@ void APlayerControl::OnPawnReady(APawn& InPawn)
 
 	if (bPawnReady)
 		return;
+
+	PRINTLOG(TEXT("[LOADING_FLOW] OnPawnReady called for %s"), *GetNameSafe(&InPawn));
 
 	bPawnReady = true;
 
@@ -480,6 +499,7 @@ void APlayerControl::OnPawnHasName()
 	if (bPawnHasName)
 		return;
 
+	PRINTLOG(TEXT("[LOADING_FLOW] OnPawnHasName called"));
 	bPawnHasName = true;
 
 	if (bAwaitFinish)
@@ -488,7 +508,49 @@ void APlayerControl::OnPawnHasName()
 
 bool APlayerControl::IsReadyToFinish() const
 {
-	return GetPawn() != nullptr && bPawnReady && bPawnHasName;
+	PRINTLOG(TEXT("[LOADING_FLOW] IsReadyToFinish check - Pawn: %s, bPawnReady: %s, bPawnHasName: %s"),
+		GetPawn() ? TEXT("true") : TEXT("false"),
+		bPawnReady ? TEXT("true") : TEXT("false"),
+		bPawnHasName ? TEXT("true") : TEXT("false"));
+
+	// Pawn과 Name 준비 체크
+	if (GetPawn() == nullptr)
+	{
+		PRINTLOG(TEXT("[LOADING_FLOW] NOT READY: Pawn is null"));
+		return false;
+	}
+
+	if (!bPawnReady)
+	{
+		PRINTLOG(TEXT("[LOADING_FLOW] NOT READY: bPawnReady is false"));
+		return false;
+	}
+
+	if (!bPawnHasName)
+	{
+		PRINTLOG(TEXT("[LOADING_FLOW] NOT READY: bPawnHasName is false"));
+		return false;
+	}
+
+	// 클라이언트 측 로딩 완료 체크 (WorldPartition, Texture, LevelInstance)
+	if (auto LoadingSubsystem = UYiSanLoading::Get(GetWorld()))
+	{
+		bool bLoadingComplete = LoadingSubsystem->IsLoadingComplete();
+		PRINTLOG(TEXT("[LOADING_FLOW] Client-side loading complete: %s"), bLoadingComplete ? TEXT("true") : TEXT("false"));
+
+		if (!bLoadingComplete)
+		{
+			PRINTLOG(TEXT("[LOADING_FLOW] NOT READY: Client-side loading not complete yet - deferring"));
+			return false;
+		}
+	}
+	else
+	{
+		PRINTLOG(TEXT("[LOADING_FLOW] WARNING: LoadingSubsystem not found!"));
+	}
+
+	PRINTLOG(TEXT("[LOADING_FLOW] READY: All conditions satisfied!"));
+	return true;
 }
 
 void APlayerControl::Server_RequestMapTravel_Implementation(const FString& MapPath)
