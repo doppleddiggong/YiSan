@@ -7,6 +7,7 @@
 
 // #include "UObject/WeakObjectPtr.h"
 // #include "Templates/SharedPointer.h" 
+#include "APlayerControl.h"
 #include "GameLogging.h"
 #include "Widgets/SWidget.h"
 #include "GameFramework/PlayerController.h"
@@ -190,8 +191,20 @@ void UNetworkGameInstanceSubsystem::OnJoinSessionComplete(FName sessionName, EOn
         sessionInterface->GetResolvedConnectString(sessionName, url);
         UE_LOG(LogTemp, Warning, TEXT("URL : %s"), *url)
         //서버가있는 맵으로 이동 (최초1회)
-        APlayerController* pc = GetWorld()->GetFirstPlayerController();
-        pc->ClientTravel(url, TRAVEL_Absolute);
+        // APlayerController* pc = GetWorld()->GetFirstPlayerController();
+        // pc->ClientTravel(url, TRAVEL_Absolute);
+
+        if (auto Ctrl = GetWorld()->GetFirstPlayerController())
+        {
+            if (auto PC = Cast<APlayerControl>(Ctrl))
+            {
+                PC->ClientTravelWithLoading(url, TRAVEL_Absolute);
+            }
+            else
+            {
+                Ctrl->ClientTravel(url, TRAVEL_Absolute);
+            }
+        }
     }
 }
 

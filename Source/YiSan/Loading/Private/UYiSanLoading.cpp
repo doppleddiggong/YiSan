@@ -3,12 +3,14 @@
 #include "UYiSanLoading.h"
 
 #include "APlayerControl.h"
+#include "AYisanGameState.h"
 #include "FComponentHelper.h"
 #include "GameLogging.h"
 
 #include "TimerManager.h"
 #include "ContentStreaming.h"
 #include "ULoadingTransitionManager.h"
+#include "UObject/UnrealType.h"
 
 #include "LevelInstance/LevelInstanceActor.h"
 #include "LevelInstance/LevelInstanceSubsystem.h"
@@ -19,68 +21,101 @@
 #include "Engine/World.h"
 #include "Engine/Engine.h"
 
-static float WorldWeight = 0.15f;
-static float TextureWeight = 0.70f;
-static float LevelWeight = 0.15f;
 
-
-void UYiSanLoading::InitSystem(const FString& InURL, bool bAbsolute)
+void UYiSanLoading::InitSystem(const FString& InURL, const bool bAbsolute, const bool bUseLoadingScreen)
 {
-    PRINTLOG(TEXT("UYiSanLoading::InitSystem(%s, %d)"), *InURL, bAbsolute);
+    PRINTLOG(TEXT("InitSystem(%s, %d, UseLoadingScreen: %s)"), *InURL, bAbsolute, bUseLoadingScreen ? TEXT("true") : TEXT("false"));
 
-    // 기본 데이터 초기화
+    if (UWorld* World = GetWorld())
+    {
+        if (bUseLoadingScreen)
+        {
+            PrepareForTravel();
+            Broadcast_ShowLoading();
+            PRINTLOG(TEXT("[LOADING] 타겟 레벨 로드 시작함 (USE 로딩 화면)"));
+            World->ServerTravel(InURL, bAbsolute);
+        }
+        else
+        {
+            NonLoadingTravelStartTime = FPlatformTime::Seconds();
+            FCoreUObjectDelegates::PostLoadMapWithWorld.AddUObject(this, &UYiSanLoading::HandlePostLoadMapSimple);
+            PRINTLOG(TEXT("[LOADING] 타겟 레벨 로드 시작함 (Unuse 로딩 화면)"));
+            World->ServerTravel(InURL, bAbsolute);
+        }
+    }
+    else
+    {
+        PRINTLOG(TEXT("[LOADING] World가 유효하지 않아 ServerTravel을 실행할 수 없음"));
+    }
+}
+
+void UYiSanLoading::HandlePostLoadMapSimple(UWorld* World)
+{
+    const double LoadingTime = FPlatformTime::Seconds() - NonLoadingTravelStartTime;
+    PRINTLOG(TEXT("===== 레벨 로드 완료 (로딩 화면 미사용) ====="));
+    PRINTLOG(TEXT("총 소요 시간: %.2f초"), LoadingTime);
+
+    FCoreUObjectDelegates::PostLoadMapWithWorld.RemoveAll(this);
+}
+
+void UYiSanLoading::PrepareClientTravel(const FString& InURL, const ETravelType TravelType, const bool bSeamlessTravel)
+{
+    PRINTLOG(TEXT("PrepareClientTravel(%s, %s, Seamless:%s)"),
+        *InURL,
+        *ENUM_TO_NAME(ETravelType, TravelType),
+        bSeamlessTravel ? TEXT("true") : TEXT("false"));
+
+    PrepareForTravel();
+    Broadcast_ShowLoading();
+}
+
+void UYiSanLoading::PrepareForTravel()
+{
     TotalTime = FPlatformTime::Seconds();
-    TotalProgress = 0.0f;
-
+    
     bTextureStreamingComplete = false;
-
+    
     CompleteState[EState::WP] = false;
     CompleteState[EState::TEXTURE] = false;
     CompleteState[EState::LI] =  false;
     CompleteState[EState::COMPLETE] =  false;
-
+    
     Progress_Texture = 0.0f;
     Progress_LI = 0.0f;
-
+    
     bRequestTexture = false;
     TextureRequestCount = 0;
     LastTextureProgressTime = 0.0;
     LastTextureProgress = -1.0f;
-
+    
     LastPercent = -10;
     CurState = EState::WP;
-
-    Broadcast_ShowLoading();
+    
     if (auto TM = ULoadingTransitionManager::Get(this))
     {
         TM->ShowLoadingScreen();
-        TM->UpdateLoadingProgress(0.0f);
     }
-
+    
     FCoreUObjectDelegates::PostLoadMapWithWorld.RemoveAll(this);
     FCoreUObjectDelegates::PostLoadMapWithWorld.AddUObject(this, &UYiSanLoading::PostLoadMapWithWorld);
-
-    PRINTLOG(TEXT("[스텝1] 타겟 레벨 로드 시작함"));
-    GetWorld()->ServerTravel(InURL, bAbsolute);
 }
 
 void UYiSanLoading::PostLoadMapWithWorld(UWorld* InWorld)
 {
     if (!InWorld)
     {
-        PRINTLOG(TEXT("[스텝2] LoadedWorld가 null임."));
+        PRINTLOG(TEXT("[WP] LoadedWorld가 null임."));
         return;
     }
 
-    PRINTLOG(TEXT("[스텝2] 맵 로드 완료: %s"), *InWorld->GetName());
-
+    PRINTLOG(TEXT("[WP] 맵 로드 완료: %s"), *InWorld->GetName());
 
     bTextureStreamingComplete = false;
 
     IStreamingManager::Get().AddLevel(InWorld->PersistentLevel);
     IStreamingManager::Get().NotifyLevelChange();
 
-    PRINTLOG(TEXT("[스텝2] 텍스처 스트리밍 강제 시작 완료"));
+    PRINTLOG(TEXT("[WP] 텍스처 스트리밍 강제 시작 완료"));
 
     InWorld->GetTimerManager().SetTimer(
         TimeHandlePool,
@@ -95,7 +130,7 @@ void UYiSanLoading::UpdateTick()
     UWorld* World = GetWorld();
     if (!World)
     {
-        PRINTLOG(TEXT("[폴링] World가 null임. 폴링 중단."));
+        PRINTLOG(TEXT("[TICK] World가 null임. 폴링 중단."));
         return;
     }
 
@@ -112,7 +147,7 @@ void UYiSanLoading::UpdateTick()
 
             if (CompleteState[EState::WP])
             {
-                PRINTLOG(TEXT("[폴링] WorldPartition | 완료"));
+                PRINTLOG(TEXT("[TICK] WorldPartition | 완료"));
                 CurState = EState::TEXTURE;
                 
                 bRequestTexture = false;
@@ -128,7 +163,7 @@ void UYiSanLoading::UpdateTick()
         Loading_Textures(World);
         if (CompleteState[EState::TEXTURE])
         {
-            PRINTLOG(TEXT("[폴링] 텍스처 스트리밍 | 완료"));
+            PRINTLOG(TEXT("[TICK] 텍스처 스트리밍 | 완료"));
             CurState = EState::LI;
         }
         break;
@@ -138,7 +173,7 @@ void UYiSanLoading::UpdateTick()
         Loading_LevelInstance(World);
         if (CompleteState[EState::LI])
         {
-            PRINTLOG(TEXT("[폴링] 레벨 인스턴스 | 완료"));
+            PRINTLOG(TEXT("[TICK] 레벨 인스턴스 | 완료"));
             CurState = EState::COMPLETE;
        }
         break;
@@ -149,15 +184,12 @@ void UYiSanLoading::UpdateTick()
         break;
     }
 
-    TotalProgress = GetTotalProgress();
-    UpdateLoadingProgress();
-
     if ( CurState == EState::COMPLETE && ! CompleteState[EState::COMPLETE] )
     {
         // 현재 완료 상태이면서, 완료 도달 상태라면
         CompleteState[EState::COMPLETE] = true;
 
-        PRINTLOG(TEXT("[폴링] ===== 모든 준비 완료 ====="));
+        PRINTLOG(TEXT("[TICK] ===== 모든 준비 완료 ====="));
         PRINTLOG(TEXT("WorldPartition: OK"));
         PRINTLOG(TEXT("Texture: %.1f%% (완료)"), Progress_Texture * 100.0f);
         PRINTLOG(TEXT("LevelInstance: %.0f%% (완료)"), Progress_LI * 100.0f);
@@ -177,22 +209,18 @@ void UYiSanLoading::CompleteProcess(const UWorld* InWorld)
         DelayHandle,
         [this]()
         {
-            PRINTLOG(TEXT("[스텝3] 타겟으로 전환 완료함. 플레이어 입력 활성화."));
+            PRINTLOG(TEXT("[COMPLETE] 타겟으로 전환 완료함. 플레이어 입력 활성화."));
             if (UWorld* World = GetWorld())
             {
                 Broadcast_HideLoading();
 
-                if (auto TM = ULoadingTransitionManager::Get(this))
+                if (auto GS = World->GetGameState<AYisanGameState>())
                 {
-                    TM->HideLoadingScreen();
+                    GS->MulticastRPC_LoadingComplete();
                 }
-
-                if (auto pc = World->GetFirstPlayerController())
+                else
                 {
-                    pc->SetInputMode(FInputModeGameOnly());
-                    pc->bShowMouseCursor = false;
-
-                    PRINTLOG(TEXT("LOADING COMPLTE::GAME START."));
+                    Broadcast_HideLoading();
                 }
             }
         },
@@ -213,7 +241,7 @@ void UYiSanLoading::Loading_Textures(const UWorld* InWorld)
     const int32 PendingRequests = StreamingManager.GetNumWantingResources();
     const bool bStreamingInProgress = (PendingRequests > 0);
 
-    UE_LOG(LogTemp, Log, TEXT("[Loading] %.2f s elapsed – Pending %d – Streaming %s"),
+    PRINTLOG( TEXT("[Loading] %.2f s elapsed – Pending %d – Streaming %s"),
         ElapsedTime, PendingRequests, bStreamingInProgress ? TEXT("InProgress") : TEXT("Done"));
 
     if (!bRequestTexture)
@@ -231,7 +259,7 @@ void UYiSanLoading::Loading_Textures(const UWorld* InWorld)
 
         if (!bTextureStreamingComplete)
         {
-            PRINTLOG(TEXT("[폴링] 텍스처 스트리밍 완료 (소요 시간: %.2f초)"), ElapsedTime);
+            PRINTLOG(TEXT("[TEXTURE] 텍스처 스트리밍 완료 (소요 시간: %.2f초)"), ElapsedTime);
             bTextureStreamingComplete = true;
         }
 
@@ -251,7 +279,7 @@ void UYiSanLoading::Loading_Textures(const UWorld* InWorld)
         const double TimeSinceLastLog = CurTime - LastTextureProgressTime;
         if (TimeSinceLastLog >= TextureProgress_LogInterval)
         {
-            PRINTLOG(TEXT("[폴링] 텍스처 스트리밍 진행 중 (대기: %d개, 진행률: %.1f%%)"), PendingRequests, Progress_Texture * 100.0f);
+            PRINTLOG(TEXT("[TEXTURE] 텍스처 스트리밍 진행 중 (대기: %d개, 진행률: %.1f%%)"), PendingRequests, Progress_Texture * 100.0f);
             LastTextureProgressTime = CurTime;
             LastTextureProgress = Progress_Texture;
         }
@@ -259,7 +287,7 @@ void UYiSanLoading::Loading_Textures(const UWorld* InWorld)
 
     if (!CompleteState[EState::TEXTURE] && ElapsedTime > TextureStreaming_TimeOut)
     {
-        PRINTLOG(TEXT("[폴링] 텍스처 스트리밍 타임아웃 (%.0f초 초과). 남은 대기 텍스처: %d개"), TextureStreaming_TimeOut, PendingRequests);
+        PRINTLOG(TEXT("[TEXTURE] 텍스처 스트리밍 타임아웃 (%.0f초 초과). 남은 대기 텍스처: %d개"), TextureStreaming_TimeOut, PendingRequests);
         Progress_Texture = 1.0f;
         CompleteState[EState::TEXTURE] = true;
     }
@@ -295,35 +323,20 @@ void UYiSanLoading::Loading_LevelInstance(UWorld* InWorld)
     }
 }
 
-float UYiSanLoading::GetTotalProgress() const
-{
-    const float WorldPartitionProgress = CompleteState[EState::WP] ? 1.0f : 0.0f;
-    const float tmpTextureProgress = FMath::Clamp(Progress_Texture, 0.0f, 1.0f);
-
-    return (WorldPartitionProgress * WorldWeight) + (tmpTextureProgress * TextureWeight) + (Progress_LI * LevelWeight);
-}
-
-void UYiSanLoading::UpdateLoadingProgress()
-{
-    const int32 Percent = FMath::Clamp(FMath::FloorToInt(TotalProgress * 10.0f) * 10, 0, 100);
-    if (Percent != LastPercent)
-    {
-        PRINTLOG(TEXT("PROGRESS : %d"), Percent);
-        const float NormalizedProgress = static_cast<float>(Percent) / 100.0f;
-
-        if (auto TM = ULoadingTransitionManager::Get(this))
-            TM->UpdateLoadingProgress(NormalizedProgress);
-
-        Broadcast_UpdateLoadingProgress(NormalizedProgress);
-        LastPercent = Percent;
-    }
-}
-
 #pragma region BROADCAST
 void UYiSanLoading::Broadcast_ShowLoading() const
 {
     if (UWorld* World = GetWorld())
     {
+        if (World->GetNetMode() == NM_Client)
+        {
+            if (auto LocalPC = Cast<APlayerControl>(World->GetFirstPlayerController()))
+            {
+                LocalPC->ShowLoadingScreenLocal();
+            }
+            return;
+        }
+        
         for (auto It = World->GetPlayerControllerIterator(); It; ++It)
         {
             if (auto pc = Cast<APlayerControl>(It->Get()))
@@ -338,25 +351,20 @@ void UYiSanLoading::Broadcast_HideLoading() const
 {
     if (UWorld* World = GetWorld())
     {
+        if (World->GetNetMode() == NM_Client)
+        {
+            if (auto LocalPC = Cast<APlayerControl>(World->GetFirstPlayerController()))
+            {
+                LocalPC->HandleLoadingComplete();
+            }
+            return;
+        }
+        
         for (auto it = World->GetPlayerControllerIterator(); it; ++it)
         {
             if (auto pc = Cast<APlayerControl>(it->Get()))
             {
                 pc->ClientRPC_HideLoadingTransition();
-            }
-        }
-    }
-}
-
-void UYiSanLoading::Broadcast_UpdateLoadingProgress(const float Progress) const
-{
-    if (UWorld* World = GetWorld())
-    {
-        for (auto it = World->GetPlayerControllerIterator(); it; ++it)
-        {
-            if (auto pc = Cast<APlayerControl>(it->Get()))
-            {
-                pc->ClientRPC_UpdateLoadingTransitionProgress(Progress);
             }
         }
     }

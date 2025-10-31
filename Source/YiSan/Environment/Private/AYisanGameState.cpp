@@ -7,6 +7,7 @@
 #include "AQuestManagerActor.h"
 #include "EBuildingType.h"
 #include "Net/UnrealNetwork.h"
+#include "Engine/World.h"
 
 AYisanGameState::AYisanGameState()
 {
@@ -23,7 +24,7 @@ void AYisanGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 void AYisanGameState::MulticastRPC_ToastMessage_Implementation(const FString& Message)
 {
 	// 각 클라이언트에서 실행됨                                                                                                                                         
-	if (APlayerControl* PC = Cast<APlayerControl>(GetWorld()->GetFirstPlayerController()))
+	if (auto PC = Cast<APlayerControl>(GetWorld()->GetFirstPlayerController()))
 	{
 		PC->ClientRPC_ShowToastMessage(Message);
 	}
@@ -31,9 +32,25 @@ void AYisanGameState::MulticastRPC_ToastMessage_Implementation(const FString& Me
 
 void AYisanGameState::MulticastRPC_UpdateQuestTarget_Implementation(const EBuildingType InBuildingType)
 {
-	if (APlayerControl* PC = Cast<APlayerControl>(GetWorld()->GetFirstPlayerController()))
+	if (auto PC = Cast<APlayerControl>(GetWorld()->GetFirstPlayerController()))
 	{
 		PC->ClientRPC_UpdateQuestTarget(InBuildingType);
+	}
+}
+
+void AYisanGameState::MulticastRPC_LoadingComplete_Implementation()
+{
+	if (!ensureMsgf(GetWorld(), TEXT("MulticastRPC_NotifyLoadingComplete requires a valid world")))
+	{
+		return;
+	}
+
+	for (auto It = GetWorld()->GetPlayerControllerIterator(); It; ++It)
+	{
+		if (auto PC = Cast<APlayerControl>(It->Get()))
+		{
+			PC->HandleLoadingComplete();
+		}
 	}
 }
 

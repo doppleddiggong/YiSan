@@ -51,6 +51,9 @@ void UStartUI::NativeConstruct()
 		PC->SetShowMouseCursor(true);
 	
 		StartButton->SetVisibility(PC->HasAuthority() ? ESlateVisibility::Visible :  ESlateVisibility::Hidden );
+		Image_Square_0->SetVisibility(PC->HasAuthority() ? ESlateVisibility::Visible :  ESlateVisibility::Hidden );
+		Image_Square_1->SetVisibility(PC->HasAuthority() ? ESlateVisibility::Visible :  ESlateVisibility::Hidden );
+		Image_Square_2->SetVisibility(PC->HasAuthority() ? ESlateVisibility::Visible :  ESlateVisibility::Hidden );
 	}
 	
 	if (!playerList)

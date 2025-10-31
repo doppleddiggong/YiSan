@@ -20,10 +20,9 @@ protected:
 	virtual void NativeConstruct() override;
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Chat")
-	void SetupMessageAppearance(EChatMessageType MessageType);
+	void SetupMessageAppearance(EChatMessageType MessageType, int PlayerIndex);
 
 	void ReverseHorizontalBox(bool IsPlayer);
-
 	
 	UPROPERTY(meta = (BindWidget))
 	class UTextBlock* TextBlock;

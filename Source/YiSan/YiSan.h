@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 
-
 namespace GameLayer
 {
     static const int32 Loading = 400;
@@ -15,7 +14,6 @@ namespace GameLayer
 
 /// @file YiSan.h
 /// @brief 게임 전역에서 공유하는 GameplayTag 상수를 정의합니다.
-
 namespace GameTags
 {
     /// @brief 플레이어 액터를 식별하기 위한 태그입니다.
@@ -43,5 +41,7 @@ namespace GameLevel
 namespace GameString
 {
     static const FString NPC = TEXT("정약용");
+    static const FString System = TEXT("SYSTEM");
+    static const FString Default = TEXT("이산");    
 }
 

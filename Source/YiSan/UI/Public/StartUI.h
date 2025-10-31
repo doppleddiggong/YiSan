@@ -26,6 +26,13 @@ protected:
     virtual void NativeConstruct() override;
 
 public:
+    UPROPERTY(meta = (BindWidget))
+    UImage* Image_Square_0;
+    UPROPERTY(meta = (BindWidget))
+    UImage* Image_Square_1;
+    UPROPERTY(meta = (BindWidget))
+    UImage* Image_Square_2;
+    
     /// @brief 시작 버튼 위젯입니다.
     UPROPERTY(meta = (BindWidget))
     UButton* StartButton;

@@ -33,6 +33,7 @@
 #include "UYiSanGameInstance.h"
 #include "ULoadingTransitionManager.h"
 #include "UYiSanLoading.h"
+#include "UObject/UnrealType.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
@@ -157,23 +158,45 @@ void APlayerControl::SetupInputComponent()
 
 void APlayerControl::OnPossess(APawn* InPawn)
 {
+	bAwaitFinish = false;
+
     Super::OnPossess(InPawn);
 
-    if (HasAuthority())
+    if (IsLocalController())
     {
         if (UYiSanGameInstance* GI = GetGameInstance<UYiSanGameInstance>())
         {
             if (UNetworkGameInstanceSubsystem* NetworkSubsystem = GI->GetSubsystem<UNetworkGameInstanceSubsystem>())
             {
-                FString Nickname = NetworkSubsystem->GetPlayerNickname();
+                const FString Nickname = NetworkSubsystem->GetPlayerNickname();
                 if (!Nickname.IsEmpty())
                 {
                     Server_SetPlayerNickname(Nickname);
                 }
             }
         }
+   	
+    	if (bAwaitFinish && GetPawn())
+    		CompleteLoading();
     }
 }
+
+void APlayerControl::ClientTravelWithLoading(const FString& URL, ETravelType TravelType, bool bSeamlessTravel, FGuid MapPackageGuid)
+{
+	PRINTLOG(TEXT("[Travel] ClientTravelWithLoading request URL=%s, Type=%s, Seamless=%s"),
+		*URL,
+		*ENUM_TO_NAME(ETravelType, TravelType),
+		bSeamlessTravel ? TEXT("true") : TEXT("false"));
+
+	bPawnReady = false;
+	bAwaitFinish = false;
+
+	if (auto LoadingSubsystem = UYiSanLoading::Get(GetWorld()))
+		LoadingSubsystem->PrepareClientTravel(URL, TravelType, bSeamlessTravel);
+
+	Super::ClientTravel(URL, TravelType, bSeamlessTravel, MapPackageGuid );
+}
+
 
 void APlayerControl::Server_SetPlayerNickname_Implementation(const FString& Nickname)
 {
@@ -364,51 +387,109 @@ void APlayerControl::ServerStartMapTravel(const FString& MapPath)
 			}
 		}
 
-		if (auto TransitionManager = ULoadingTransitionManager::Get(this))
+		if (auto TM = ULoadingTransitionManager::Get(this))
 		{
-			TransitionManager->ShowLoadingScreen();
-			TransitionManager->UpdateLoadingProgress(0.0f);
+			TM->ShowLoadingScreen();
 		}
 
 		if (auto GI = UYiSanLoading::Get(GetWorld()))
 		{
 			FString TravelURL = MapPath + TEXT("?listen");
-			GI->InitSystem(TravelURL, true);
+			GI->InitSystem(TravelURL, true, true);
 		}
-		
-
-		// if ( auto GI = UYiSanLoading::Get( GetWorld() ))
-		// 	GI->InitSystem(TravelURL, true);
-		
 	}, 0.1f, false);
 }
 
 void APlayerControl::ClientRPC_ShowLoadingTransition_Implementation()
 {
-	if (auto TransitionManager = ULoadingTransitionManager::Get(this))
-	{
-		TransitionManager->ShowLoadingScreen();
-		TransitionManager->UpdateLoadingProgress(0.0f);
-	}
-}
-
-void APlayerControl::ClientRPC_UpdateLoadingTransitionProgress_Implementation(const float Progress)
-{
-	if (auto TransitionManager = ULoadingTransitionManager::Get(this))
-	{
-		TransitionManager->UpdateLoadingProgress(FMath::Clamp(Progress, 0.0f, 1.0f));
-	}
+	ShowLoadingScreenLocal();
 }
 
 void APlayerControl::ClientRPC_HideLoadingTransition_Implementation()
 {
-	if (auto TransitionManager = ULoadingTransitionManager::Get(this))
-	{
-		TransitionManager->HideLoadingScreen();
-	}
+	HandleLoadingComplete();
 }
 
+void APlayerControl::HandleLoadingComplete()
+{
+	if (!IsLocalController())
+		return;
 
+	if (!IsReadyToFinish())
+	{
+		if (!bAwaitFinish)
+		{
+			if (auto CtrlPawn = GetPawn())
+				PRINTLOG(TEXT("[Travel] Pawn not fully initialized - deferring loading completion for %s"), *GetNameSafe(CtrlPawn));
+			else
+				PRINTLOG(TEXT("[Travel] Pawn not ready - deferring loading completion for %s"), *GetName());
+		}
+
+		bAwaitFinish = true;
+		return;
+	}
+
+	CompleteLoading();
+}
+
+void APlayerControl::ShowLoadingScreenLocal()
+{
+    if (auto TM = ULoadingTransitionManager::Get(this))
+    {
+        TM->ShowLoadingScreen();
+    }
+}
+
+void APlayerControl::CompleteLoading()
+{
+	bAwaitFinish = false;
+
+	if (auto TM = ULoadingTransitionManager::Get(this))
+	{
+		TM->HideLoadingScreen();
+	}
+
+	SetInputMode(FInputModeGameOnly());
+	bShowMouseCursor = false;
+
+	PRINTLOG(TEXT("[Travel] Loading transition completed for %s"), *GetName());
+}
+
+void APlayerControl::OnPawnReady(APawn& InPawn)
+{
+	if (!IsLocalController())
+		return;
+
+	if (&InPawn != GetPawn())
+		return;
+
+	if (bPawnReady)
+		return;
+
+	bPawnReady = true;
+
+	if (bAwaitFinish)
+		CompleteLoading();
+}
+
+void APlayerControl::OnPawnHasName()
+{
+	if (!IsLocalController())
+		return;
+
+	if (bPawnHasName)
+		return;
+
+	bPawnHasName = true;
+
+	if (bAwaitFinish)
+		CompleteLoading();
+}
+
+bool APlayerControl::IsReadyToFinish() const
+{
+	return GetPawn() != nullptr && bPawnReady && bPawnHasName;
+}
 
 void APlayerControl::Server_RequestMapTravel_Implementation(const FString& MapPath)
 {

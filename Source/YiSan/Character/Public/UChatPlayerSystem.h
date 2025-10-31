@@ -20,13 +20,11 @@ struct FChatMessage
 {
 	GENERATED_BODY()
 
-	/** 메시지를 보낸 주체 타입 */
 	UPROPERTY(BlueprintReadWrite)
 	EChatMessageType SpeakerType;
 
-	/** 메시지가 전송된 시간 */
 	UPROPERTY(BlueprintReadWrite)
-	FDateTime Timestamp;
+	int32 PlayerIndex;
 
 	UPROPERTY(BlueprintReadWrite)
 	FString SpeakerName;
@@ -36,15 +34,15 @@ struct FChatMessage
 
 	FChatMessage()
 		: SpeakerType(EChatMessageType::System)
-		, Timestamp(FDateTime::Now())
+		, PlayerIndex(-1)
 		, SpeakerName(TEXT(""))
 		, Message(TEXT(""))
 	{
 	}
 
-	FChatMessage(EChatMessageType InType, const FString& InSpeakerName, const FString& InMessage)
+	FChatMessage(EChatMessageType InType, int32 InPlayerIndex, const FString& InSpeakerName, const FString& InMessage)
 		: SpeakerType(InType)
-		, Timestamp(FDateTime::Now())
+		, PlayerIndex(InPlayerIndex)
 		, SpeakerName(InSpeakerName)
 		, Message(InMessage)
 	{
@@ -71,10 +69,11 @@ public:
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_SendChatMessage(const FChatMessage& ChatMessage);
 
-private:
 	/** 멀티캐스트 RPC: 전체 클라 갱신 */
 	UFUNCTION(NetMulticast, Reliable)
 	void MulticastRPC_AddChatMessage(const FChatMessage& ChatMessage);
+
+	void AnnouncePlayerJoin();
 	
 private:
 	UPROPERTY()

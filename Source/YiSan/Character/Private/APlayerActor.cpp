@@ -1,8 +1,10 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "APlayerActor.h"
+#include "APlayerControl.h"
 
 #include "AQuestManagerActor.h"
+#include "AYiSanPlayerState.h"
 #include "Components/WidgetComponent.h"
 
 #include "FComponentHelper.h"
@@ -124,9 +126,6 @@ void APlayerActor::BeginPlay()
         {
             if (AQuestManagerActor* QuestManager = AQuestManagerActor::Get(this))
                 BroadcastManager->SendUpdateQuest(QuestManager->GetCurrentTarget());
-
-            FChatMessage ChatMessage(EChatMessageType::User, *GetPlayerDisplayName(), TEXT("민지 왔쪄요"));
-            ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
         });
     }
     
@@ -139,15 +138,29 @@ void APlayerActor::OnRep_PlayerState()
     Super::OnRep_PlayerState();
 }
 
+void APlayerActor::OnRep_Controller()
+{
+    Super::OnRep_Controller();
+    OnReadyPawn();
+}
+
 void APlayerActor::PossessedBy(AController* NewController)
 {
     Super::PossessedBy(NewController);
     if (IsLocallyControlled())
         UE_LOG(LogTemp, Warning, TEXT("Pawn possessed locally, player can move"));
+
+    OnReadyPawn();
 }
 
 void APlayerActor::CheckAndInitNameTag()
 {
+    // 이름이 아직 설정되지 않았을 수 있으므로, 유효한 이름이 될 때까지 대기합니다.
+    if (GetPlayerDisplayName() == GameString::Default )
+    {
+        return; // 아직 이름이 없으므로, 다음 타이머 틱에서 다시 시도합니다.
+    }
+
     // 위젯이 생성되었는지 확인합니다.
     UPlayerHeadWidget* HeadWidget = Cast<UPlayerHeadWidget>(NameTagWidgetComponent->GetUserWidgetObject());
     if (HeadWidget)
@@ -155,6 +168,23 @@ void APlayerActor::CheckAndInitNameTag()
         // 위젯이 준비되면, 위젯에게 소유자가 자신임을 알려주고 이 타이머는 역할을 다했으므로 중지합니다.
         HeadWidget->SetOwningActor(this);
         GetWorldTimerManager().ClearTimer(TimerHandle_InitNameTag);
+
+        // 컨트롤러에 이름이 준비되었음을 알립니다.
+        if (auto PC = Cast<APlayerControl>(GetController()))
+        {
+            PC->OnPawnHasName();
+        }
+    }
+}
+void APlayerActor::OnReadyPawn()
+{
+    if (auto PlayerController = Cast<APlayerController>(GetController()))
+    {
+        if (!PlayerController->IsLocalController())
+            return;
+
+        if (auto PC = Cast<APlayerControl>(PlayerController))
+            PC->OnPawnReady(*this);
     }
 }
 
@@ -261,13 +291,38 @@ void APlayerActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requeste
 
 FString APlayerActor::GetPlayerDisplayName() const
 {
-    if (auto PC = UGameplayStatics::GetPlayerController(GetWorld(), 0))
+    if (auto PS = GetPlayerState<AYiSanPlayerState>())
     {
-        if (auto PS = PC->PlayerState)
-            return PS->GetPlayerName();
+        return PS->Nickname;
+    }
+    
+    if (auto PC = GetController())
+    {
+        if (auto PS = Cast<AYiSanPlayerState>( PC->PlayerState))
+        {
+            return PS->Nickname;
+        }
     }
 
-    return TEXT("Yisan");
+    return GameString::Default;
+}
+
+int32 APlayerActor::GetPlayerIndex() const
+{
+    if (auto PS = GetPlayerState<AYiSanPlayerState>())
+    {
+        return PS->PlayerIndex;
+    }
+    
+    if (auto PC = GetController())
+    {
+        if (auto PS = Cast<AYiSanPlayerState>( PC->PlayerState))
+        {
+            return PS->PlayerIndex;
+        }
+    }
+
+    return 0;
 }
 
 void APlayerActor::PlayTTSAudio(const TArray<uint8>& AudioData)

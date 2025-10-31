@@ -223,7 +223,7 @@ void UVoiceConversationSystem::OnResponseAsk(FResponseAsk& Response, bool bSucce
 
 
 		{
-			FChatMessage ChatMessage(EChatMessageType::User, *Owner->GetPlayerDisplayName(), *Response.transcribed_text);
+			FChatMessage ChatMessage(EChatMessageType::User,Owner->GetPlayerIndex(), *Owner->GetPlayerDisplayName(), *Response.transcribed_text);
 			Owner->ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
 		}
 
@@ -244,7 +244,7 @@ void UVoiceConversationSystem::OnResponseAsk(FResponseAsk& Response, bool bSucce
 			CleanedText.ReplaceInline(TEXT("\n"), TEXT(" "));
 			CleanedText.ReplaceInline(TEXT("\r"), TEXT(" "));
 
-			FChatMessage ChatMessage(EChatMessageType::NPC, GameString::NPC,CleanedText);
+			FChatMessage ChatMessage(EChatMessageType::NPC, -1, GameString::NPC, CleanedText);
 			Owner->ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
 
 			PlayVoiceAudio(Response.audio_data);

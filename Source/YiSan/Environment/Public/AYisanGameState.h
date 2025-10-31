@@ -25,6 +25,9 @@ public:
 
 	UFUNCTION(NetMulticast, Reliable)
 	void MulticastRPC_UpdateQuestTarget(const EBuildingType InBuildingType);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPC_LoadingComplete();
 	
 	// 투어 시작
 	UFUNCTION(BlueprintCallable, Category="Tour")

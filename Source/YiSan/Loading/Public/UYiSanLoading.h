@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine/EngineBaseTypes.h"
 #include "Macro.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UYiSanLoading.generated.h"
@@ -25,31 +26,31 @@ public:
         MAX         UMETA(Hidden)
     };
     
-    void InitSystem(const FString& InURL, bool bAbsolute);
+    void InitSystem(const FString& InURL, const bool bAbsolute, const bool bUseLoadingScreen = true);
+    void PrepareClientTravel(const FString& InURL, const ETravelType TravelType, const bool bSeamlessTravel);
    
 private:
-    void ResetLoadingState();
+    void PrepareForTravel();
     void PostLoadMapWithWorld(UWorld* InWorld);
     void CompleteProcess(const UWorld* InWorld);
     void UpdateTick();
     void Loading_Textures(const UWorld* InWorld);
     void Loading_LevelInstance(UWorld* InWorld);
-    void UpdateLoadingProgress();
-    float GetTotalProgress() const;
+
+    void HandlePostLoadMapSimple(UWorld* World);
 
 #pragma region BROADCAST
     void Broadcast_ShowLoading() const;
     void Broadcast_HideLoading() const;
-    void Broadcast_UpdateLoadingProgress(float Progress) const;
 #pragma endregion   
 
 private:
+    double NonLoadingTravelStartTime = 0.0;
     const double TextureStreaming_TimeOut = 60.0;
     const double TextureProgress_LogInterval = 1.0;
         
 private:
     double TotalTime = 0.0;
-    float TotalProgress = 0.0f;
 
     TMap<EState, bool> CompleteState
     {
@@ -62,8 +63,7 @@ private:
 
     FTimerHandle TimeHandlePool;
     int32 LastPercent = -10;
-    
-   
+       
     bool bTextureStreamingComplete = false;
     
     float Progress_Texture = 0.0f;

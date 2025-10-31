@@ -14,7 +14,7 @@ void UChatEntryWidget::NativeConstruct()
 	if (TextBlock)
 		TextBlock->SetText(FText::FromString(ChatMessageData.Message));
 
-	SetupMessageAppearance(ChatMessageData.SpeakerType);
+	SetupMessageAppearance(ChatMessageData.SpeakerType, ChatMessageData.PlayerIndex);
 
 	this->ReverseHorizontalBox(ChatMessageData.SpeakerType == EChatMessageType::User);
 }
