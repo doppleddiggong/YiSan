@@ -395,7 +395,7 @@ void APlayerControl::ServerStartMapTravel(const FString& MapPath)
 		if (auto GI = UYiSanLoading::Get(GetWorld()))
 		{
 			FString TravelURL = MapPath + TEXT("?listen");
-			GI->InitSystem(TravelURL, true);
+			GI->InitSystem(TravelURL, true, true);
 		}
 	}, 0.1f, false);
 }

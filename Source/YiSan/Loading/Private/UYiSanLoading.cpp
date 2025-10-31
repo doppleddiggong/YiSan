@@ -22,39 +22,55 @@
 #include "Engine/Engine.h"
 
 
-void UYiSanLoading::InitSystem(const FString& InURL, bool bAbsolute)
+void UYiSanLoading::InitSystem(const FString& InURL, const bool bAbsolute, const bool bUseLoadingScreen)
 {
-    PRINTLOG(TEXT("UYiSanLoading::InitSystem(%s, %d)"), *InURL, bAbsolute);
-    
-    PrepareForTravel(InURL);
+    PRINTLOG(TEXT("InitSystem(%s, %d, UseLoadingScreen: %s)"), *InURL, bAbsolute, bUseLoadingScreen ? TEXT("true") : TEXT("false"));
 
     if (UWorld* World = GetWorld())
     {
-        Broadcast_ShowLoading();
-        PRINTLOG(TEXT("[스텝1] 타겟 레벨 로드 시작함"));
-        World->ServerTravel(InURL, bAbsolute);
+        if (bUseLoadingScreen)
+        {
+            PrepareForTravel();
+            Broadcast_ShowLoading();
+            PRINTLOG(TEXT("[LOADING] 타겟 레벨 로드 시작함 (USE 로딩 화면)"));
+            World->ServerTravel(InURL, bAbsolute);
+        }
+        else
+        {
+            NonLoadingTravelStartTime = FPlatformTime::Seconds();
+            FCoreUObjectDelegates::PostLoadMapWithWorld.AddUObject(this, &UYiSanLoading::HandlePostLoadMapSimple);
+            PRINTLOG(TEXT("[LOADING] 타겟 레벨 로드 시작함 (Unuse 로딩 화면)"));
+            World->ServerTravel(InURL, bAbsolute);
+        }
     }
     else
     {
-        PRINTLOG(TEXT("[스텝1] World가 유효하지 않아 ServerTravel을 실행할 수 없음"));
+        PRINTLOG(TEXT("[LOADING] World가 유효하지 않아 ServerTravel을 실행할 수 없음"));
     }
 }
 
-void UYiSanLoading::PrepareClientTravel(const FString& InURL, ETravelType TravelType, bool bSeamlessTravel)
+void UYiSanLoading::HandlePostLoadMapSimple(UWorld* World)
 {
-    PRINTLOG(TEXT("UYiSanLoading::PrepareClientTravel(%s, %s, Seamless:%s)"),
+    const double LoadingTime = FPlatformTime::Seconds() - NonLoadingTravelStartTime;
+    PRINTLOG(TEXT("===== 레벨 로드 완료 (로딩 화면 미사용) ====="));
+    PRINTLOG(TEXT("총 소요 시간: %.2f초"), LoadingTime);
+
+    FCoreUObjectDelegates::PostLoadMapWithWorld.RemoveAll(this);
+}
+
+void UYiSanLoading::PrepareClientTravel(const FString& InURL, const ETravelType TravelType, const bool bSeamlessTravel)
+{
+    PRINTLOG(TEXT("PrepareClientTravel(%s, %s, Seamless:%s)"),
         *InURL,
         *ENUM_TO_NAME(ETravelType, TravelType),
         bSeamlessTravel ? TEXT("true") : TEXT("false"));
 
-    PrepareForTravel(InURL);
+    PrepareForTravel();
     Broadcast_ShowLoading();
 }
 
-void UYiSanLoading::PrepareForTravel(const FString& InURL)
+void UYiSanLoading::PrepareForTravel()
 {
-    PRINTLOG(TEXT("[Loading] Prepare travel sequence: %s"), *InURL);
-
     TotalTime = FPlatformTime::Seconds();
     
     bTextureStreamingComplete = false;
@@ -93,7 +109,6 @@ void UYiSanLoading::PostLoadMapWithWorld(UWorld* InWorld)
     }
 
     PRINTLOG(TEXT("[WP] 맵 로드 완료: %s"), *InWorld->GetName());
-
 
     bTextureStreamingComplete = false;
 

@@ -26,16 +26,18 @@ public:
         MAX         UMETA(Hidden)
     };
     
-    void InitSystem(const FString& InURL, bool bAbsolute);
-    void PrepareClientTravel(const FString& InURL, ETravelType TravelType, bool bSeamlessTravel);
+    void InitSystem(const FString& InURL, const bool bAbsolute, const bool bUseLoadingScreen = true);
+    void PrepareClientTravel(const FString& InURL, const ETravelType TravelType, const bool bSeamlessTravel);
    
 private:
-    void PrepareForTravel(const FString& InURL);
+    void PrepareForTravel();
     void PostLoadMapWithWorld(UWorld* InWorld);
     void CompleteProcess(const UWorld* InWorld);
     void UpdateTick();
     void Loading_Textures(const UWorld* InWorld);
     void Loading_LevelInstance(UWorld* InWorld);
+
+    void HandlePostLoadMapSimple(UWorld* World);
 
 #pragma region BROADCAST
     void Broadcast_ShowLoading() const;
@@ -43,6 +45,7 @@ private:
 #pragma endregion   
 
 private:
+    double NonLoadingTravelStartTime = 0.0;
     const double TextureStreaming_TimeOut = 60.0;
     const double TextureProgress_LogInterval = 1.0;
         
