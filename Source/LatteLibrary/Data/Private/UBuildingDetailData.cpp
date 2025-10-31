@@ -4,6 +4,9 @@
 #include "GameLogging.h"
 #include "Sound/SoundCue.h"
 
+
+
+
 bool UBuildingDetailData::LoadThumbnailImage(TSoftObjectPtr<UTexture2D>& OutTexture) const
 {
 	OutTexture = ThumbnailImage.LoadSynchronous();
