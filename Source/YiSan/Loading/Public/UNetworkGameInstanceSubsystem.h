@@ -55,6 +55,10 @@ public:
 	//세션 참여 완료 함수
 	void OnJoinSessionComplete(FName sessionName, EOnJoinSessionCompleteResult::Type result);
 
+	// IP로 세션 참여 함수
+	UFUNCTION(BlueprintCallable)
+	void JoinSessionByIp(const FString& IpAddress);
+
 	//=============이름 저장 부분================
 public:
 	void SetPlayerNickname(const FString& InName);
