@@ -195,6 +195,11 @@ void UTourStateSystem::Enter_TourWait()
 void UTourStateSystem::Enter_TourExplain()
 {
 	PRINTLOG( TEXT("[TourState] Enter TourExplain"));
+	// explain 시작하는거 알리기 위함
+	if (OwnerDasan)
+	{
+		OwnerDasan->StartExplainAnim();
+	}
 
 	auto building = OwnerDasan->GetCurTargetBuilding();
 
@@ -348,7 +353,11 @@ void UTourStateSystem::Tick_TourExplain(float DeltaTime)
 		if (TourViewTimer >= TourViewDuration)
 		{
 			PRINTLOG(TEXT("[TourState] 관광 시간 종료 - 다음 건물로 이동"));
-
+			// 애니메이션 끝났다는거 알리기 위함
+			if (OwnerDasan)
+			{
+				OwnerDasan->EndExplainAnim();
+			}
 			// 다음 퀘스트(건물)로 이동
 			OwnerDasan->NextQuest();
 
