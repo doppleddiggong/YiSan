@@ -42,5 +42,6 @@ namespace GameString
 {
     static const FString NPC = TEXT("정약용");
     static const FString System = TEXT("SYSTEM");
+    static const FString Default = TEXT("이산");    
 }
 

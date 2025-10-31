@@ -29,11 +29,11 @@
 #include "AYisanGameState.h"
 #include "UAnswerStateSystem.h"
 #include "AYiSanPlayerState.h"
-#include "UDelayTaskManager.h"
 #include "UNetworkGameInstanceSubsystem.h"
 #include "UYiSanGameInstance.h"
 #include "ULoadingTransitionManager.h"
 #include "UYiSanLoading.h"
+#include "UObject/UnrealType.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
@@ -180,6 +180,23 @@ void APlayerControl::OnPossess(APawn* InPawn)
     		CompleteLoading();
     }
 }
+
+void APlayerControl::ClientTravelWithLoading(const FString& URL, ETravelType TravelType, bool bSeamlessTravel, FGuid MapPackageGuid)
+{
+	PRINTLOG(TEXT("[Travel] ClientTravelWithLoading request URL=%s, Type=%s, Seamless=%s"),
+		*URL,
+		*ENUM_TO_NAME(ETravelType, TravelType),
+		bSeamlessTravel ? TEXT("true") : TEXT("false"));
+
+	bPawnReady = false;
+	bAwaitFinish = false;
+
+	if (auto LoadingSubsystem = UYiSanLoading::Get(GetWorld()))
+		LoadingSubsystem->PrepareClientTravel(URL, TravelType, bSeamlessTravel);
+
+	Super::ClientTravel(URL, TravelType, bSeamlessTravel, MapPackageGuid );
+}
+
 
 void APlayerControl::Server_SetPlayerNickname_Implementation(const FString& Nickname)
 {
@@ -385,10 +402,7 @@ void APlayerControl::ServerStartMapTravel(const FString& MapPath)
 
 void APlayerControl::ClientRPC_ShowLoadingTransition_Implementation()
 {
-	if (auto TransitionManager = ULoadingTransitionManager::Get(this))
-	{
-		TransitionManager->ShowLoadingScreen();
-	}
+	ShowLoadingScreenLocal();
 }
 
 void APlayerControl::ClientRPC_HideLoadingTransition_Implementation()
@@ -416,6 +430,14 @@ void APlayerControl::HandleLoadingComplete()
 	}
 
 	CompleteLoading();
+}
+
+void APlayerControl::ShowLoadingScreenLocal()
+{
+    if (auto TM = ULoadingTransitionManager::Get(this))
+    {
+        TM->ShowLoadingScreen();
+    }
 }
 
 void APlayerControl::CompleteLoading()
@@ -450,9 +472,23 @@ void APlayerControl::OnPawnReady(APawn& InPawn)
 		CompleteLoading();
 }
 
+void APlayerControl::OnPawnHasName()
+{
+	if (!IsLocalController())
+		return;
+
+	if (bPawnHasName)
+		return;
+
+	bPawnHasName = true;
+
+	if (bAwaitFinish)
+		CompleteLoading();
+}
+
 bool APlayerControl::IsReadyToFinish() const
 {
-	return GetPawn() != nullptr && bPawnReady;
+	return GetPawn() != nullptr && bPawnReady && bPawnHasName;
 }
 
 void APlayerControl::Server_RequestMapTravel_Implementation(const FString& MapPath)

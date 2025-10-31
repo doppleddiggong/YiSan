@@ -10,6 +10,7 @@
 #include "TimerManager.h"
 #include "ContentStreaming.h"
 #include "ULoadingTransitionManager.h"
+#include "UObject/UnrealType.h"
 
 #include "LevelInstance/LevelInstanceActor.h"
 #include "LevelInstance/LevelInstanceSubsystem.h"
@@ -24,39 +25,63 @@
 void UYiSanLoading::InitSystem(const FString& InURL, bool bAbsolute)
 {
     PRINTLOG(TEXT("UYiSanLoading::InitSystem(%s, %d)"), *InURL, bAbsolute);
+    
+    PrepareForTravel(InURL);
 
-    // 기본 데이터 초기화
+    if (UWorld* World = GetWorld())
+    {
+        Broadcast_ShowLoading();
+        PRINTLOG(TEXT("[스텝1] 타겟 레벨 로드 시작함"));
+        World->ServerTravel(InURL, bAbsolute);
+    }
+    else
+    {
+        PRINTLOG(TEXT("[스텝1] World가 유효하지 않아 ServerTravel을 실행할 수 없음"));
+    }
+}
+
+void UYiSanLoading::PrepareClientTravel(const FString& InURL, ETravelType TravelType, bool bSeamlessTravel)
+{
+    PRINTLOG(TEXT("UYiSanLoading::PrepareClientTravel(%s, %s, Seamless:%s)"),
+        *InURL,
+        *ENUM_TO_NAME(ETravelType, TravelType),
+        bSeamlessTravel ? TEXT("true") : TEXT("false"));
+
+    PrepareForTravel(InURL);
+    Broadcast_ShowLoading();
+}
+
+void UYiSanLoading::PrepareForTravel(const FString& InURL)
+{
+    PRINTLOG(TEXT("[Loading] Prepare travel sequence: %s"), *InURL);
+
     TotalTime = FPlatformTime::Seconds();
-
+    
     bTextureStreamingComplete = false;
-
+    
     CompleteState[EState::WP] = false;
     CompleteState[EState::TEXTURE] = false;
     CompleteState[EState::LI] =  false;
     CompleteState[EState::COMPLETE] =  false;
-
+    
     Progress_Texture = 0.0f;
     Progress_LI = 0.0f;
-
+    
     bRequestTexture = false;
     TextureRequestCount = 0;
     LastTextureProgressTime = 0.0;
     LastTextureProgress = -1.0f;
-
+    
     LastPercent = -10;
     CurState = EState::WP;
-
-    Broadcast_ShowLoading();
+    
     if (auto TM = ULoadingTransitionManager::Get(this))
     {
         TM->ShowLoadingScreen();
     }
-
+    
     FCoreUObjectDelegates::PostLoadMapWithWorld.RemoveAll(this);
     FCoreUObjectDelegates::PostLoadMapWithWorld.AddUObject(this, &UYiSanLoading::PostLoadMapWithWorld);
-
-    PRINTLOG(TEXT("[스텝1] 타겟 레벨 로드 시작함"));
-    GetWorld()->ServerTravel(InURL, bAbsolute);
 }
 
 void UYiSanLoading::PostLoadMapWithWorld(UWorld* InWorld)
@@ -288,6 +313,15 @@ void UYiSanLoading::Broadcast_ShowLoading() const
 {
     if (UWorld* World = GetWorld())
     {
+        if (World->GetNetMode() == NM_Client)
+        {
+            if (auto LocalPC = Cast<APlayerControl>(World->GetFirstPlayerController()))
+            {
+                LocalPC->ShowLoadingScreenLocal();
+            }
+            return;
+        }
+        
         for (auto It = World->GetPlayerControllerIterator(); It; ++It)
         {
             if (auto pc = Cast<APlayerControl>(It->Get()))
@@ -302,6 +336,15 @@ void UYiSanLoading::Broadcast_HideLoading() const
 {
     if (UWorld* World = GetWorld())
     {
+        if (World->GetNetMode() == NM_Client)
+        {
+            if (auto LocalPC = Cast<APlayerControl>(World->GetFirstPlayerController()))
+            {
+                LocalPC->HandleLoadingComplete();
+            }
+            return;
+        }
+        
         for (auto it = World->GetPlayerControllerIterator(); it; ++it)
         {
             if (auto pc = Cast<APlayerControl>(it->Get()))

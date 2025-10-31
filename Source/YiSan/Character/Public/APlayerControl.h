@@ -8,6 +8,7 @@
 
 #include "CoreMinimal.h"
 #include "EBuildingType.h"
+#include "Engine/EngineBaseTypes.h"
 #include "GameFramework/PlayerController.h"
 #include "APlayerControl.generated.h"
 
@@ -65,6 +66,8 @@ protected:
 
 public:
 	void OnPawnReady(class APawn& InPawn);
+	void OnPawnHasName();
+	void ClientTravelWithLoading(const FString& URL, ETravelType TravelType, bool bSeamlessTravel = false, FGuid MapPackageGuid = FGuid());
 	
 private:
 	UFUNCTION()
@@ -92,6 +95,7 @@ public:
 	void ClientRPC_HideLoadingTransition();
 	
 	void HandleLoadingComplete();
+	void ShowLoadingScreenLocal();
 #pragma endregion LOADING
 
 
@@ -139,6 +143,7 @@ private:
 
 	bool bAwaitFinish = false;
 	bool bPawnReady = false;
+	bool bPawnHasName = false;
 	
 
 	// 마지막 토스트 전송 시간                                                                                                                                          

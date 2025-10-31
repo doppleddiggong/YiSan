@@ -131,11 +131,6 @@ void APlayerActor::BeginPlay()
     
     // 이름표 위젯 초기화를 위한 타이머 시작
     GetWorldTimerManager().SetTimer(TimerHandle_InitNameTag, this, &APlayerActor::CheckAndInitNameTag, 0.2f, true);
-
-    GetWorldTimerManager().SetTimerForNextTick([this]()
-    {
-        OnReadyPawn();
-    });
 }
 
 void APlayerActor::OnRep_PlayerState()
@@ -160,6 +155,12 @@ void APlayerActor::PossessedBy(AController* NewController)
 
 void APlayerActor::CheckAndInitNameTag()
 {
+    // 이름이 아직 설정되지 않았을 수 있으므로, 유효한 이름이 될 때까지 대기합니다.
+    if (GetPlayerDisplayName() == GameString::Default )
+    {
+        return; // 아직 이름이 없으므로, 다음 타이머 틱에서 다시 시도합니다.
+    }
+
     // 위젯이 생성되었는지 확인합니다.
     UPlayerHeadWidget* HeadWidget = Cast<UPlayerHeadWidget>(NameTagWidgetComponent->GetUserWidgetObject());
     if (HeadWidget)
@@ -167,9 +168,14 @@ void APlayerActor::CheckAndInitNameTag()
         // 위젯이 준비되면, 위젯에게 소유자가 자신임을 알려주고 이 타이머는 역할을 다했으므로 중지합니다.
         HeadWidget->SetOwningActor(this);
         GetWorldTimerManager().ClearTimer(TimerHandle_InitNameTag);
+
+        // 컨트롤러에 이름이 준비되었음을 알립니다.
+        if (auto PC = Cast<APlayerControl>(GetController()))
+        {
+            PC->OnPawnHasName();
+        }
     }
 }
-
 void APlayerActor::OnReadyPawn()
 {
     if (auto PlayerController = Cast<APlayerController>(GetController()))
@@ -298,7 +304,7 @@ FString APlayerActor::GetPlayerDisplayName() const
         }
     }
 
-    return TEXT("YiSan");
+    return GameString::Default;
 }
 
 int32 APlayerActor::GetPlayerIndex() const

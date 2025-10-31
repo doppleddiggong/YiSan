@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine/EngineBaseTypes.h"
 #include "Macro.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UYiSanLoading.generated.h"
@@ -26,8 +27,10 @@ public:
     };
     
     void InitSystem(const FString& InURL, bool bAbsolute);
+    void PrepareClientTravel(const FString& InURL, ETravelType TravelType, bool bSeamlessTravel);
    
 private:
+    void PrepareForTravel(const FString& InURL);
     void PostLoadMapWithWorld(UWorld* InWorld);
     void CompleteProcess(const UWorld* InWorld);
     void UpdateTick();
