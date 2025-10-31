@@ -38,6 +38,17 @@ void UPlayerHeadWidget::CheckPlayerState()
 				GetWorld()->GetTimerManager().ClearTimer(TimerHandle_CheckPlayerState);
 				
 				PlayerNameText->SetText(FText::FromString(PS->Nickname));
+
+				// 로컬 플레이어인 경우에만 녹색으로 설정
+				if (OwningActor->IsLocallyControlled())
+				{
+					PlayerNameText->SetColorAndOpacity(FLinearColor::Green);
+				}
+				else
+				{
+					PlayerNameText->SetColorAndOpacity(FLinearColor::White);
+				}
+				
 				image_Icon->SetBrushFromTexture( LoadObject<UTexture2D>(nullptr, *PS->GetResourcePath()));
 				OwningActor->ChatPlayerSystem->AnnouncePlayerJoin();
 			}
