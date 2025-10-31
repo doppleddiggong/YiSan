@@ -236,3 +236,18 @@ FString UNetworkGameInstanceSubsystem::GetPlayerNickname()
     PRINTLOG(TEXT("Got player: %s"), *PlayerNickname);
     return PlayerNickname;
 }
+
+void UNetworkGameInstanceSubsystem::JoinSessionByIp(const FString& IpAddress)
+{
+	if (auto Ctrl = GetWorld()->GetFirstPlayerController())
+	{
+		if (auto PC = Cast<APlayerControl>(Ctrl))
+		{
+			PC->ClientTravelWithLoading(IpAddress, TRAVEL_Absolute);
+		}
+		else
+		{
+			Ctrl->ClientTravel(IpAddress, TRAVEL_Absolute);
+		}
+	}
+}

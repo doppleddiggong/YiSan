@@ -47,6 +47,13 @@ void ULobbyWidget::NativeConstruct()
 	{
 		Btn_Name->OnClicked.AddDynamic(this, &ULobbyWidget::OnClickName);
 	}
+
+	if (Btn_JoinByIp)
+	{
+		Btn_JoinByIp->OnClicked.AddDynamic(this, &ULobbyWidget::OnClickJoinByIpButton);
+	}
+
+	
 	UNetworkGameInstanceSubsystem::Get(GetWorld())->onFindComplete.BindUObject(this, &ULobbyWidget::OnFindComplete);
 
 	PRINTLOG(TEXT("[LobbyWidget] NativeConstruct - Widget initialized"));
@@ -161,6 +168,25 @@ void ULobbyWidget::OnClickName()
 
 	widgetSwitcher->SetActiveWidgetIndex(1);
 }
+
+void ULobbyWidget::OnClickJoinByIpButton()
+{
+	if (editIpAddress)
+	{
+		FString IpAddress = editIpAddress->GetText().ToString();
+		if (!IpAddress.IsEmpty())
+		{
+			if (UGameInstance* GameInstance = GetGameInstance())
+			{
+				if (UNetworkGameInstanceSubsystem* NetworkSubsystem = GameInstance->GetSubsystem<UNetworkGameInstanceSubsystem>())
+				{
+					NetworkSubsystem->JoinSessionByIp(IpAddress);
+				}
+			}
+		}
+	}
+}
+
 
 void ULobbyWidget::SetFindingText(const FString& NewText)
 {

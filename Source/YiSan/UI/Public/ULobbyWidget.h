@@ -60,7 +60,13 @@ public:
 
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UTextBlock> textFinding;
-	
+
+	UPROPERTY(meta = (BindWidget, OptionalWidget = true))
+	TObjectPtr<class UButton> Btn_JoinByIp;
+
+	UPROPERTY(meta = (BindWidget, OptionalWidget = true))
+	TObjectPtr<class UEditableText> editIpAddress;
+
 	// ========================================
 	// Settings
 	// ========================================
@@ -96,6 +102,9 @@ public:
 
 	UFUNCTION()
 	void OnClickName();
+
+	UFUNCTION()
+	void OnClickJoinByIpButton();
 
 	// ========================================
 	// Broadcast Event Handlers
