@@ -31,6 +31,8 @@ private:
 	void OnNearBuilding(EBuildingType InBuildingType);
     UFUNCTION()
     void OnMegaPopupClosed();
+	UFUNCTION()
+	void OnGameMessage(FString Message);
 
     bool IsMegaPopupVisible() const;
     bool IsSmallPopupVisible() const;
@@ -54,23 +56,21 @@ public:
     UPROPERTY(meta = (BindWidget))
     TObjectPtr<class USmallPopup> SmallPopupCtn;
 
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UEndingWidget> EndingWidget;
+	
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="BGM")
     TObjectPtr<class USoundBase> BGM_Sound;
 	UPROPERTY()
     TObjectPtr<class UAudioComponent> BGM_AudioComp;
 
-    // 엔딩 위젯
-    UPROPERTY(EditAnywhere, Category = "Widgets")
-    TSubclassOf<class UEndingWidget> EndingWidgetClass;
-    UPROPERTY()
-    TObjectPtr<class UEndingWidget> EndingWidgetInstance;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Voice")
+	TObjectPtr<class USoundBase> IntroStart;
 
-	// 플레이어 위젯
-	UPROPERTY(EditAnywhere, Category = "Widgets")
-	TSubclassOf<class UPlayerWidget> PlayerWidgetClass;
-	UPROPERTY()
-	TObjectPtr<class UPlayerWidget> PlayerWidgetInstance;
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Voice")
+	TObjectPtr<class USoundBase> OutroStart;
+	
+	
 	UPROPERTY()
 	TObjectPtr<class UBroadcastManager> BroadcastManager;
 
@@ -78,7 +78,6 @@ public:
 	/// @brief 최근 감지된 건물 유형입니다.
 	EBuildingType CurNearBuildingType = EBuildingType::None;
 	EBuildingType PendBuildingType;
-
 
 
 #pragma region ANIM

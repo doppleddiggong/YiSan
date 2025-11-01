@@ -38,6 +38,18 @@ namespace GameLevel
 }
 
 
+
+namespace GameMessage
+{
+    static const FString GameStart = TEXT("GameStart");
+    static const FString GameEnd = TEXT("GameEnd");
+    static const FString IntroStart = TEXT("IntroStart");
+    static const FString OutroStart = TEXT("OutroStart");    
+}
+
+
+
+
 namespace GameString
 {
     static const FString NPC = TEXT("정약용");

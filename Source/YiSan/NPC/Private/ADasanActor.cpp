@@ -41,6 +41,8 @@ ADasanActor::ADasanActor()
 	bReplicates = true;
 	SetReplicateMovement(true);
 
+	bIsTickEnabled = false;
+
 	if (GetMesh())
 	{
 		GetMesh()->SetRelativeLocation(FVector(0.0f, 0.0f, -88.0f));
@@ -74,6 +76,8 @@ ADasanActor::ADasanActor()
 void ADasanActor::BeginPlay()
 {
 	Super::BeginPlay();
+
+	SetActorTickEnabled(bIsTickEnabled);
 
 	bIsPlayingExplainAnim = false;
 	// 위젯 캐싱 및 초기화
@@ -163,7 +167,21 @@ void ADasanActor::BeginPlay()
 	if (BroadcastManager)
 	{
 		BroadcastManager->OnExecVoiceCommand.AddDynamic(this, &ADasanActor::OnExecVoiceCommand);
+		BroadcastManager->OnMessage.AddDynamic(this, &ADasanActor::OnGameMessage);
 		PRINTLOG(TEXT(" BroadcastManager 이벤트 구독 성공"));
+	}
+}
+
+void ADasanActor::OnGameMessage(FString Message)
+{
+	if (Message == GameMessage::GameStart)
+	{
+		if (HasAuthority())
+		{
+			bIsTickEnabled = true;
+			OnRep_IsTickEnabled(); // Call OnRep manually on server
+		}
+		PRINTLOG(TEXT("[Dasan] GameStart 메시지 수신, Tick 활성화"));
 	}
 }
 
@@ -187,6 +205,12 @@ void ADasanActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifet
 
 	DOREPLIFETIME(ADasanActor, DasanState);
 	DOREPLIFETIME(ADasanActor, bIsPlayingExplainAnim);
+	DOREPLIFETIME(ADasanActor, bIsTickEnabled);
+}
+
+void ADasanActor::OnRep_IsTickEnabled()
+{
+	SetActorTickEnabled(bIsTickEnabled);
 }
 
 // AI MoveTo 완료 콜백 - 새로 추가된 함수

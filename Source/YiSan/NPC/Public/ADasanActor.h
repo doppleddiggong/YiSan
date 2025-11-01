@@ -24,6 +24,9 @@ public:
 	// RepNotify 함수
 	UFUNCTION()
 	void OnRep_DasanState();
+
+	UFUNCTION()
+	void OnRep_IsTickEnabled();
 	
 	// AI MoveTo 완료 콜백
 	UFUNCTION()
@@ -33,6 +36,9 @@ public:
 	UPROPERTY(ReplicatedUsing=OnRep_DasanState, BlueprintReadOnly,Category="State")
 	EDasanState DasanState;
 	FORCEINLINE EDasanState GetDasanState() const { return DasanState; }
+
+	UPROPERTY(ReplicatedUsing=OnRep_IsTickEnabled)
+	bool bIsTickEnabled = false;
 
 public:
 	// 유틸리티 함수
@@ -145,6 +151,10 @@ private:
 	// 음성 명령 핸들러
 	UFUNCTION()
 	void OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester);
+
+	// 게임 메시지 핸들러
+	UFUNCTION()
+	void OnGameMessage(FString Message);
 
 public:
 	// ---------------------------- ABP 관련 함수 -------------------------------//
