@@ -24,6 +24,9 @@ public:
 	// RepNotify 함수
 	UFUNCTION()
 	void OnRep_DasanState();
+
+	UFUNCTION()
+	void OnRep_IsTickEnabled();
 	
 	// AI MoveTo 완료 콜백
 	UFUNCTION()
@@ -33,6 +36,9 @@ public:
 	UPROPERTY(ReplicatedUsing=OnRep_DasanState, BlueprintReadOnly,Category="State")
 	EDasanState DasanState;
 	FORCEINLINE EDasanState GetDasanState() const { return DasanState; }
+
+	UPROPERTY(ReplicatedUsing=OnRep_IsTickEnabled)
+	bool bIsTickEnabled = false;
 
 public:
 	// 유틸리티 함수
@@ -70,6 +76,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Dialog")
 	void HideExplainDialog();
 
+	// 다산의 채팅 메시지를 모든 클라이언트에게 전송
+	UFUNCTION(BlueprintCallable, Category = "Chat")
+	void SendDasanChatMessage(const FString& Message);
+
 	// 플레이어 폰을 가져오는 헬퍼 함수
 	class APawn* GetPlayerPawn() const;
 	
@@ -89,6 +99,10 @@ private:
 
 	UFUNCTION(NetMulticast, Reliable)
 	void MulticastRPC_HideExplainDialog();
+
+	// 다산의 채팅 메시지 전송 RPC
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPC_SendDasanChatMessage(const FString& Message);
 
 public:
 	// 상태 시스템 컴포넌트
@@ -137,6 +151,10 @@ private:
 	// 음성 명령 핸들러
 	UFUNCTION()
 	void OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester);
+
+	// 게임 메시지 핸들러
+	UFUNCTION()
+	void OnGameMessage(FString Message);
 
 public:
 	// ---------------------------- ABP 관련 함수 -------------------------------//

@@ -23,55 +23,64 @@ public:
 protected:
 	/// @brief 위젯 초기화와 브로드캐스트 구독을 수행합니다.
 	virtual void NativeConstruct() override;
-	void PlayBGM();
 
 private:
+	void PlayBGM();
+
 	UFUNCTION()
 	void OnNearBuilding(EBuildingType InBuildingType);
     UFUNCTION()
     void OnMegaPopupClosed();
+	UFUNCTION()
+	void OnGameMessage(FString Message);
 
     bool IsMegaPopupVisible() const;
     bool IsSmallPopupVisible() const;
+	
 public:
-    
+    /// @brief 지정된 건물의 MegaPopup을 표시합니다.
+	UFUNCTION(BlueprintCallable, Category="MegaPopup")
+	void ShowMegaPopup(const EBuildingType InBuildingType);
+
+	UFUNCTION(BlueprintImplementableEvent, Category="VoiceGuide")
+	void ShowVoiceGuide();
+	UFUNCTION(BlueprintImplementableEvent, Category="VoiceGuide")
+	void HideVoiceGuide();
+	
+public:
     /// @brief 메가 팝업이 배치되는 컨테이너 위젯입니다.
     UPROPERTY(meta = (BindWidget))
-    class UMegaPopup* MegaPopupCtn;
+    TObjectPtr<class UMegaPopup> MegaPopupCtn;
     
     /// @brief 스몰 팝업이 배치되는 컨테이너 위젯입니다.
     UPROPERTY(meta = (BindWidget))
-    class USmallPopup* SmallPopupCtn;
+    TObjectPtr<class USmallPopup> SmallPopupCtn;
 
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UEndingWidget> EndingWidget;
+	
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="BGM")
-    class USoundBase* BGM_Sound;
-    UPROPERTY()
-    class UAudioComponent* BGM_AudioComp;
+    TObjectPtr<class USoundBase> BGM_Sound;
+	UPROPERTY()
+    TObjectPtr<class UAudioComponent> BGM_AudioComp;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Voice")
+	TObjectPtr<class USoundBase> IntroStart;
 
-    // 엔딩 위젯
-    UPROPERTY(EditAnywhere, Category = "Widgets")
-    TSubclassOf<UEndingWidget> EndingWidgetClass;
-    
-    // 생성된 엔딩 위젯의 인스턴스를 저장할 변수
-    UPROPERTY()
-    UEndingWidget* EndingWidgetInstance;
-    
-    UPROPERTY()
-    TObjectPtr<class UBroadcastManager> BroadcastManager;
-    
-    /// @brief 최근 감지된 건물 유형입니다.
-    EBuildingType CurNearBuildingType = EBuildingType::None;
-
-	// slide 애니메이션 위해서
-	UPROPERTY(Transient, meta = (BindWidgetAnim))
-	TObjectPtr<UWidgetAnimation> Slideani;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Voice")
+	TObjectPtr<class USoundBase> OutroStart;
 	
-	UPROPERTY(Transient, meta = (BindWidgetAnim))
-	TObjectPtr<UWidgetAnimation> disapperani;
+	
+	UPROPERTY()
+	TObjectPtr<class UBroadcastManager> BroadcastManager;
 
+	
+	/// @brief 최근 감지된 건물 유형입니다.
+	EBuildingType CurNearBuildingType = EBuildingType::None;
 	EBuildingType PendBuildingType;
-	
+
+
+#pragma region ANIM
 	// anim 호출 함수
 	void StartAnim();
 	void EndAnim();
@@ -80,12 +89,12 @@ public:
 	// 애니메이션 끝날때 정보 저장 함수
 	UFUNCTION()
 	void AnimFinished();
-		
-	// 엔딩 위젯
-	UPROPERTY(EditAnywhere, Category = "Widgets")
-	TSubclassOf<UPlayerWidget> PlayerWidgetClass;
-	// 생성된 엔딩 위젯의 인스턴스를 저장할 변수
-	UPROPERTY()
-	UPlayerWidget* PlayerWidgetInstance;
-};
 
+	// slide 애니메이션 위해서
+	UPROPERTY(Transient, meta = (BindWidgetAnim))
+	TObjectPtr<class UWidgetAnimation> Slideani;
+	
+	UPROPERTY(Transient, meta = (BindWidgetAnim))
+	TObjectPtr<class UWidgetAnimation> disapperani;
+#pragma endregion 
+};

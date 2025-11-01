@@ -43,6 +43,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Record;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_ShowDetail;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_ShowMouse;
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_VoiceGuide;
 
 	// --- Handlers ---
 	void OnMove(const FInputActionValue& Value);
@@ -64,6 +65,9 @@ protected:
 	void OnShowMouse(const FInputActionValue& Value);
 	void OnHideMouse(const FInputActionValue& Value);
 
+	void OnShowVoiceGuide(const FInputActionValue& Value);
+	void OnHideVoiceGuide(const FInputActionValue& Value);
+	
 public:
 	void OnPawnReady(class APawn& InPawn);
 	void OnPawnHasName();
@@ -136,7 +140,7 @@ public:
 
 	// NickName
 	UFUNCTION(Server, Reliable)
-	void Server_SetPlayerNickname(const FString& Nickname);
+	void ServerRPC_SetPlayerNickname(const FString& Nickname);
 
 private:
     class IControllable* GetControllable() const;

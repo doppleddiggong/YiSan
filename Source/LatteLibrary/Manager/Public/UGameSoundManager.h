@@ -32,14 +32,30 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Sound")
     void StopSound2D(const EGameSoundType Type);
-	
+
+	// 대화 음성 재생 (기존 대화 음성을 중지하고 새로운 음성 재생)
+	UFUNCTION(BlueprintCallable, Category="Sound")
+	UAudioComponent* PlayConversationVoice(USoundBase* Sound);
+
+	// 현재 재생 중인 대화 음성 중지
+	UFUNCTION(BlueprintCallable, Category="Sound")
+	void StopConversationVoice();
+
+	// 대화 음성이 재생 중인지 확인
+	UFUNCTION(BlueprintCallable, Category="Sound")
+	bool IsConversationVoicePlaying() const;
+
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Sound", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<class USoundData> SoundAsset;
-	
+
 	UPROPERTY(EditAnywhere, Category = "Sound")
 	TMap<EGameSoundType, TObjectPtr<class USoundBase>> SoundData;
 
 	UPROPERTY()
 	TMap<EGameSoundType, UAudioComponent*> ActiveSounds;
+
+	// 현재 재생 중인 대화 음성 (MegaPopup, DasanExplain, PlayerAsk 공유)
+	UPROPERTY()
+	TObjectPtr<UAudioComponent> ConversationVoice;
 };

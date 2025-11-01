@@ -12,6 +12,8 @@
 #include "EBuildingType.h"
 #include "UBroadcastManager.h"
 #include "EVoiceCommandType.h"
+#include "UGameDataManager.h"
+#include "FBuildingData.h"
 
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
@@ -26,6 +28,7 @@
 #include "UGameSoundManager.h"
 #include "YiSan/YiSan.h"
 #include "NavigationSystem.h"
+#include "UChatBoxWidget.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 #define DASANWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_DasanWidget.WBP_DasanWidget_C")
@@ -37,6 +40,8 @@ ADasanActor::ADasanActor()
 	// 네트워크 복제 활성화
 	bReplicates = true;
 	SetReplicateMovement(true);
+
+	bIsTickEnabled = false;
 
 	if (GetMesh())
 	{
@@ -71,6 +76,8 @@ ADasanActor::ADasanActor()
 void ADasanActor::BeginPlay()
 {
 	Super::BeginPlay();
+
+	SetActorTickEnabled(bIsTickEnabled);
 
 	bIsPlayingExplainAnim = false;
 	// 위젯 캐싱 및 초기화
@@ -160,7 +167,21 @@ void ADasanActor::BeginPlay()
 	if (BroadcastManager)
 	{
 		BroadcastManager->OnExecVoiceCommand.AddDynamic(this, &ADasanActor::OnExecVoiceCommand);
+		BroadcastManager->OnMessage.AddDynamic(this, &ADasanActor::OnGameMessage);
 		PRINTLOG(TEXT(" BroadcastManager 이벤트 구독 성공"));
+	}
+}
+
+void ADasanActor::OnGameMessage(FString Message)
+{
+	if (Message == GameMessage::GameStart)
+	{
+		if (HasAuthority())
+		{
+			bIsTickEnabled = true;
+			OnRep_IsTickEnabled(); // Call OnRep manually on server
+		}
+		PRINTLOG(TEXT("[Dasan] GameStart 메시지 수신, Tick 활성화"));
 	}
 }
 
@@ -184,6 +205,12 @@ void ADasanActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifet
 
 	DOREPLIFETIME(ADasanActor, DasanState);
 	DOREPLIFETIME(ADasanActor, bIsPlayingExplainAnim);
+	DOREPLIFETIME(ADasanActor, bIsTickEnabled);
+}
+
+void ADasanActor::OnRep_IsTickEnabled()
+{
+	SetActorTickEnabled(bIsTickEnabled);
 }
 
 // AI MoveTo 완료 콜백 - 새로 추가된 함수
@@ -624,8 +651,14 @@ void ADasanActor::UpdateWidgetState()
 	// 건물 이름 가져오기 (Tour 상태일 때)
 	if (DasanState == EDasanState::Tour && CurTargetBuilding)
 	{
-		BuildingName = *ENUM_TO_NAME( EBuildingType, CurTargetBuilding->BuildingType );
+		if (auto DM = UGameDataManager::Get(GetWorld()))
+		{
+			FBuildingData BuildingData;
+			if (DM->GetBuildingData(CurTargetBuilding->BuildingType, BuildingData))
+				BuildingName = BuildingData.name;
+		}
 	}
+
 
 	// 플레이어 카운트 (TourWait 상태일 때)
 	if (DasanState == EDasanState::Tour && TourStateSystem->GetCurState() == ETourState::TourWait)
@@ -666,7 +699,7 @@ void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester
 	PRINTLOG(TEXT("[Dasan] 음성 명령 수신: %s from %s"), *ENUM_TO_NAME(EVoiceCommandType, InType),
 		Requester ? *Requester->GetName() : TEXT("Unknown"));
 
-	if ( InType == EVoiceCommandType::Cmd_Summon )
+	if ( InType == EVoiceCommandType::Cmd_Approach )
 	{
 		if (Requester == nullptr)
 			return;
@@ -675,7 +708,7 @@ void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester
 		if (!RequestPlayer)
 			return;
 
-		PRINTLOG(TEXT("[Dasan] Cmd_Summon: %s님이 다산에게 이동합니다"), *RequestPlayer->GetName());
+		PRINTLOG(TEXT("[Dasan] Cmd_Approach: %s님이 다산에게 이동합니다"), *RequestPlayer->GetName());
 
 		// Dasan의 위치와 회전
 		FVector DasanLocation = GetActorLocation();
@@ -690,18 +723,18 @@ void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester
 		// 채팅 메시지
 		if (RequestPlayer->ChatPlayerSystem)
 		{
-			FChatMessage ChatMessage(EChatMessageType::NPC, -1, GameString::NPC, TEXT("어서 오십시오!"));
+			FChatMessage ChatMessage(EChatMessageType::NPC, -1, GameString::NPC, TEXT("전하 오셨습니까"));
 			RequestPlayer->ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
 		}
 
-		UGameSoundManager::Get(GetWorld())->PlaySound2D(EGameSoundType::Cmd_Summon);
+		UGameSoundManager::Get(GetWorld())->PlaySound2D(EGameSoundType::Cmd_Approach);
 	}
 }
-
+	
 void ADasanActor::DebugDrawPath(const FVector& GoalLocation)
 {
-	// if (!bEnableDebugDraw)
-	// 	return;
+	if (!bEnableDebugDraw)
+		return;
 	
 	if (!HasAuthority())
 		return; // 서버에서만 실행
@@ -751,14 +784,14 @@ void ADasanActor::HideExplainDialog()
 void ADasanActor::MulticastRPC_DrawDebugPath_Implementation(const TArray<FVector>& PathPoints)
 {
 	FlushPersistentDebugLines(GetWorld());
+	FVector Offset(0, 0, 20.f); // 지면에서 조금 띄우기
 
 	if (PathPoints.Num() > 1)
 	{
 		for (int32 i = 0; i < PathPoints.Num() - 1; i++)
 		{
-			FVector Start = PathPoints[i];
-			FVector End   = PathPoints[i + 1];
-
+			FVector Start = PathPoints[i] + Offset;
+			FVector End   = PathPoints[i + 1] + Offset;
 			// 선으로 경로 표시
 			DrawDebugLine(GetWorld(), Start, End, FColor::Green, true, 0.0f, 0.0f, 10.f);
 		}
@@ -794,6 +827,38 @@ void ADasanActor::MulticastRPC_HideExplainDialog_Implementation()
 
 	// 위젯에 다이얼로그 표시 요청
 	DasanWidget->HideExplainDialog();
+}
+
+void ADasanActor::SendDasanChatMessage(const FString& Message)
+{
+	if (HasAuthority())
+	{
+		MulticastRPC_SendDasanChatMessage(Message);
+	}
+}
+
+void ADasanActor::MulticastRPC_SendDasanChatMessage_Implementation(const FString& Message)
+{
+	// 현재 클라이언트의 로컬 플레이어 컨트롤러를 가져옴
+	auto* PC = GetWorld()->GetFirstPlayerController();
+	if (!PC)
+		return;
+
+	// 로컬 컨트롤러가 조종 중인 Pawn을 APlayerActor 타입으로 변환
+	auto* Player = Cast<APlayerActor>(PC->GetPawn());
+	if (!Player)
+		return;
+
+	// 플레이어가 보유한 채팅 UI 위젯 참조
+	auto* ChatBox = Player->ChatBoxWidget.Get();
+	if (!ChatBox)
+		return;
+
+	// 다산의 채팅 메시지 생성
+	FChatMessage ChatMessage(EChatMessageType::NPC, -1, GameString::NPC, Message);
+
+	// 로컬 클라이언트의 채팅창에 메시지 출력
+	ChatBox->AddChatMessage(ChatMessage);
 }
 
 

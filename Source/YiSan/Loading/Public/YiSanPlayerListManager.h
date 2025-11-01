@@ -20,7 +20,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void RequestRefresh(); // Client-side call to request refresh from server
     UFUNCTION(Server, Reliable)
-    void Server_RequestRefresh(); // Server-side implementation
+    void ServerRPC_RequestRefresh(); // Server-side implementation
 
     TArray<FString> GetPlayerList() const { return PlayerList; };
 
@@ -37,8 +37,4 @@ private:
 
 public:
     void UpdatePlayerListAndBroadcast();
-
-private:
-
-
 };

@@ -150,3 +150,12 @@ FString UCommonFunctionLibrary::RemoveLineBreaks(const FString& InText)
 	CleanedText.ReplaceInline(TEXT("\n"), TEXT(""));
 	return CleanedText;
 }
+
+void UCommonFunctionLibrary::SetCollisionDebugVisible(UPrimitiveComponent* Target, bool bVisible)
+{
+	if (!Target)
+		return;
+
+	Target->SetHiddenInGame(!bVisible);
+	Target->SetVisibility(bVisible);
+}

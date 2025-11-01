@@ -48,6 +48,7 @@
 #define IA_RECORD_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Record.IA_Game_Record")
 #define IA_SHOWDETAIL_PATH			TEXT("/Game/CustomContents/Input/IA_Game_Detail.IA_Game_Detail")
 #define IA_SHOWMOUSE_PATH			TEXT("/Game/CustomContents/Input/IA_Game_Mouse.IA_Game_Mouse")
+#define IA_VOICEGUIDE_PATH			TEXT("/Game/CustomContents/Input/IA_Game_VoiceGuide.IA_Game_VoiceGuide")
 
 APlayerControl::APlayerControl()
 {
@@ -65,6 +66,7 @@ APlayerControl::APlayerControl()
 	IA_Record = FComponentHelper::LoadAsset<UInputAction>(IA_RECORD_PATH);
 	IA_ShowDetail = FComponentHelper::LoadAsset<UInputAction>(IA_SHOWDETAIL_PATH);
 	IA_ShowMouse = FComponentHelper::LoadAsset<UInputAction>(IA_SHOWMOUSE_PATH);
+	IA_VoiceGuide = FComponentHelper::LoadAsset<UInputAction>(IA_VOICEGUIDE_PATH);
 }
 
 void APlayerControl::BeginPlay()
@@ -93,7 +95,7 @@ void APlayerControl::BeginPlay()
 				FString Nickname = NetworkSubsystem->GetPlayerNickname();
 				if (!Nickname.IsEmpty())
 				{
-					Server_SetPlayerNickname(Nickname);
+					ServerRPC_SetPlayerNickname(Nickname);
 				}
 			}
 		}
@@ -153,6 +155,9 @@ void APlayerControl::SetupInputComponent()
 
 		EIC->BindAction(IA_ShowMouse, ETriggerEvent::Started, this, &APlayerControl::OnShowMouse);
 		EIC->BindAction(IA_ShowMouse, ETriggerEvent::Completed, this, &APlayerControl::OnHideMouse);
+
+		EIC->BindAction(IA_VoiceGuide, ETriggerEvent::Started, this, &APlayerControl::OnShowVoiceGuide);
+		EIC->BindAction(IA_VoiceGuide, ETriggerEvent::Completed, this, &APlayerControl::OnHideVoiceGuide);
 	}
 }
 
@@ -171,7 +176,7 @@ void APlayerControl::OnPossess(APawn* InPawn)
                 const FString Nickname = NetworkSubsystem->GetPlayerNickname();
                 if (!Nickname.IsEmpty())
                 {
-                    Server_SetPlayerNickname(Nickname);
+                    ServerRPC_SetPlayerNickname(Nickname);
                 }
             }
         }
@@ -198,7 +203,7 @@ void APlayerControl::ClientTravelWithLoading(const FString& URL, ETravelType Tra
 }
 
 
-void APlayerControl::Server_SetPlayerNickname_Implementation(const FString& Nickname)
+void APlayerControl::ServerRPC_SetPlayerNickname_Implementation(const FString& Nickname)
 {
     if (AYiSanPlayerState* YSPlayerState = GetPlayerState<AYiSanPlayerState>())
     {
@@ -359,6 +364,19 @@ void APlayerControl::OnHideMouse(const FInputActionValue& Value)
 	if (IControllable* C = GetControllable())
 		C->Cmd_HideMouse();
 }
+
+void APlayerControl::OnShowVoiceGuide(const FInputActionValue& Value)
+{
+	if (IControllable* C = GetControllable())
+		C->Cmd_ShowVoiceGuide();
+}
+
+void APlayerControl::OnHideVoiceGuide(const FInputActionValue& Value)
+{
+	if (IControllable* C = GetControllable())
+		C->Cmd_HideVoiceGuide();
+}
+
 //------------------------------로딩 관련-------------------------------------
 
 void APlayerControl::ServerStartMapTravel(const FString& MapPath)

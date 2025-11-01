@@ -14,7 +14,7 @@ void AYiSanPlayerState::SetPlayerInfo(const FString& InName, int32 InIndex)
 	if (HasAuthority())
 	{
 		Nickname = InName;
-		PlayerIndex = InIndex;
+		// PlayerIndex = InIndex;
 	}
 }
 

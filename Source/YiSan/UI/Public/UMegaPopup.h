@@ -50,8 +50,5 @@ protected:
 	TObjectPtr<class UButton> CloseButton;
 
 private:
-	UPROPERTY()
-	TObjectPtr<class UAudioComponent> PlayingSound;
-
 	EBuildingType BuildingType;
 };

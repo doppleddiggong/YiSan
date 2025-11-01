@@ -4,15 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "Macro.h"
-#include "StartUI.h"
 #include "Interfaces/OnlineSessionInterface.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UNetworkGameInstanceSubsystem.generated.h"
 
 DECLARE_DELEGATE_TwoParams(FFindComplete, int32, FString);
-/**
- * 
- */
 DECLARE_MULTICAST_DELEGATE_OneParam(FOnPlayerListUpdated, const TArray<FString>& /* PlayerNames */);
 
 UCLASS()
@@ -80,7 +76,7 @@ public:
 
 private:
 	UPROPERTY()
-	class AYiSanPlayerListManager* PlayerListManager;
+	TObjectPtr<AYiSanPlayerListManager> PlayerListManager;
 
 	void HandlePlayerListUpdated(const TArray<FString>& PlayerNames);
 };

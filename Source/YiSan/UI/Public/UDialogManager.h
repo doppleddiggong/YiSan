@@ -20,6 +20,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Dialog")
 	void ShowToast(const FString& Message);
 
+	/// @brief 활성 토스트 메시지를 즉시 숨깁니다.
+	void HideToastImmediately();
+	
 protected:
 	/** @brief 현재 월드에 위젯이 없으면 생성하고 뷰포트에 부착합니다. */
 	void EnsureWidgetForWorld(UWorld* World);

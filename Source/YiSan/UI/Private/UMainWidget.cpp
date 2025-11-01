@@ -2,151 +2,56 @@
 
 #include "UMainWidget.h"
 
-
-
-#include "FComponentHelper.h"
-
 #include "UBroadcastManager.h"
-
-
-
+#include "UGameSoundManager.h"
 #include "USmallPopup.h"
-
 #include "UMegaPopup.h"
 
 #include "Components/AudioComponent.h"
-
-
-
 #include "Components/EditableTextBox.h"
-
 #include "Input/Reply.h"
-
 #include "Kismet/GameplayStatics.h"
-
-#include "EndingWidget.h" // EndingWidget 헤더 추가
-
-#include "Components/CanvasPanelSlot.h" // Added for UCanvasPanelSlot
-
-#include "Components/CanvasPanel.h"
-#include "Components/CanvasPanelSlot.h"
-#include "UPlayerWidget.h" // Added for UPlayerWidget
-
-
-
-#define ENDINGWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_EndingWidget.WBP_EndingWidget_C")
-
+#include "YiSan/YiSan.h"
 
 
 UMainWidget::UMainWidget(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
-
 {
-
-	EndingWidgetClass = FComponentHelper::LoadClass<UEndingWidget>(ENDINGWIDGET_PATH);
-	
-
 }
 
-
-
 void UMainWidget::NativeConstruct()
-
 {
-
 	Super::NativeConstruct();
 
-
-
-	if ( APlayerController* PC = GetWorld()->GetFirstPlayerController() )
-
+	if ( auto PC = GetWorld()->GetFirstPlayerController() )
 	{
-
 		FInputModeGameOnly InputMode;
-
 		InputMode.SetConsumeCaptureMouseDown(false);
-
-		
-
 		PC->SetInputMode(InputMode);
-
 		PC->bShowMouseCursor = false;
-
 	}
-
-	
 
 	BroadcastManager = UBroadcastManager::Get(GetWorld());
 
 	if (BroadcastManager)
-
 	{
-
 		BroadcastManager->OnNearBuilding.AddDynamic(this, &UMainWidget::OnNearBuilding);
-
 		BroadcastManager->OnMegaPopupClosed.AddDynamic(this, &UMainWidget::OnMegaPopupClosed);
-
+		BroadcastManager->OnMessage.AddDynamic(this, &UMainWidget::OnGameMessage);
 	}
-
-
 
 	// Popup 초기 상태 설정 (공간 차지하지 않게 collapsed 로 성정)
-
 	if (SmallPopupCtn)
-
 		SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
 
-	
-
 	if (MegaPopupCtn)
-
 		MegaPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
 
-
-
-	PlayBGM();
-
-
-
-	// 엔딩 위젯 클래스가 설정
-
-	if (EndingWidgetClass)
-
-	{
-
-		EndingWidgetInstance = CreateWidget<UEndingWidget>(this, EndingWidgetClass);
-
-		if (EndingWidgetInstance)
-
-		{
-
-			EndingWidgetInstance->AddToViewport();
-
-		}
-
-	}
-
-
-
-	// PlayerListWidget 생성 및 추가
-
-
-
-
-
-
-	if (PlayerWidgetClass)
-	{
-		PlayerWidgetInstance = CreateWidget<UPlayerWidget>(this, PlayerWidgetClass);
-		if (PlayerWidgetInstance)
-		{
-			PlayerWidgetInstance->AddToViewport();
-		}
-
-	}
-
+	if (EndingWidget)
+		EndingWidget->SetVisibility(ESlateVisibility::Hidden);
 	
-
+	PlayBGM();
 }
+
 void UMainWidget::PlayBGM()
 {
     if (!BGM_Sound)
@@ -185,6 +90,23 @@ bool UMainWidget::IsSmallPopupVisible() const
     return SmallPopupCtn->GetVisibility() == ESlateVisibility::Visible;
 }
 
+void UMainWidget::ShowMegaPopup(const EBuildingType InBuildingType)
+{
+    if (!MegaPopupCtn || !BroadcastManager)
+        return;
+
+    // MegaPopup 표시
+    MegaPopupCtn->SetVisibility(ESlateVisibility::Visible);
+
+    if (SmallPopupCtn)
+        SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
+
+    // 플레이어 컨트롤 상태 변경 (UI 모드로 전환)
+    BroadcastManager->SendPlayerControlState(false, MegaPopupCtn);
+
+    // 건물 정보 업데이트
+    MegaPopupCtn->UpdateBuildingInfo(InBuildingType);
+}
 
 void UMainWidget::OnMegaPopupClosed()
 {
@@ -242,7 +164,8 @@ void UMainWidget::OnNearBuilding(EBuildingType InBuildingType)
 	// 숨겨진 상태라면 애니메이션 재생한다 업데이트 하고
 	else
 	{
-		if (PendBuildingType != EBuildingType::None)UpdatePopup(PendBuildingType);
+		if (PendBuildingType != EBuildingType::None)
+			UpdatePopup(PendBuildingType);
 	}
 
     if (InBuildingType != EBuildingType::None)
@@ -257,6 +180,24 @@ void UMainWidget::OnNearBuilding(EBuildingType InBuildingType)
         SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
     }
 }
+
+void UMainWidget::OnGameMessage(FString Message)
+{
+	if (Message == GameMessage::GameEnd)
+	{
+		if ( EndingWidget)
+			EndingWidget->SetVisibility(ESlateVisibility::Visible);
+	}
+	else if (Message == GameMessage::IntroStart)
+	{
+		// UGameSoundManager::Get(GetWorld())->PlayConversationVoice(IntroStart);
+	}
+	else if (Message == GameMessage::OutroStart)
+	{
+		UGameSoundManager::Get(GetWorld())->PlayConversationVoice(OutroStart);
+	}
+}
+
 
 // 애니메이션 호출함수
 void UMainWidget::StartAnim()

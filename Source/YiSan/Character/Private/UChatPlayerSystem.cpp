@@ -3,6 +3,8 @@
 #include "UChatPlayerSystem.h"
 #include "UChatBoxWidget.h"
 #include "APlayerActor.h"
+#include "AYisanGameState.h"
+#include "UGameSoundManager.h"
 #include "YiSan/YiSan.h"
 #include "GameFramework/PlayerController.h"
 
@@ -84,7 +86,12 @@ void UChatPlayerSystem::AnnouncePlayerJoin()
 	if (!IsValid(Owner) || !IsValid(ChatBoxWidget))
 		return;
 
-	const FString Message = FString::Printf(TEXT("%s가 입궁하셨습니다"), *Owner->GetPlayerDisplayName());
+	const FString Message = FString::Printf(TEXT("%s 전하 어가, 행궁에 이르셨습니다."), *Owner->GetPlayerDisplayName());
 	const FChatMessage ChatMessage(EChatMessageType::System, -1, GameString::System, Message);
 	ServerRPC_SendChatMessage(ChatMessage);
+
+	if (auto GS = GetWorld()->GetGameState<AYisanGameState>())
+	{
+		GS->ServerRPC_PlaySound(EGameSoundType::Enter_Game);
+	}
 }

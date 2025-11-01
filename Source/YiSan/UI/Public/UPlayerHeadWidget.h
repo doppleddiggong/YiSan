@@ -30,11 +30,11 @@ private:
 	TObjectPtr<class UTextBlock> PlayerNameText;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UImage> image_Icon;
+	TObjectPtr<class UImage> image_Icon;
 
 	/** 위젯을 소유하고 있는 액터에 대한 약한 포인터입니다. */
 	UPROPERTY()
-	TWeakObjectPtr<APlayerActor> OwningActor;
+	TWeakObjectPtr<class APlayerActor> OwningActor;
 
 	/** 닉네임 정보를 주기적으로 확인할 타이머 핸들입니다. */
 	FTimerHandle TimerHandle_CheckPlayerState;

@@ -2,13 +2,13 @@
 
 
 #include "UPlayerWidget.h"
-#include "UNetworkGameInstanceSubsystem.h" // Added include
-#include "Engine/GameInstance.h" // Added include for GameInstance
-#include "Components/TextBlock.h" // Added include for UTextBlock
-#include "Components/VerticalBox.h" // Added include for UVerticalBox
-#include "Blueprint/WidgetTree.h" // Added include for WidgetTree
-#include "Engine/Font.h" // Added include for UFont
-#include "GameLogging.h" // Assuming this is for PRINTLOG
+
+#include "AYiSanPlayerState.h"
+#include "UNetworkGameInstanceSubsystem.h"
+#include "Engine/GameInstance.h"
+#include "Components/VerticalBox.h" 
+#include "Blueprint/WidgetTree.h"
+#include "GameLogging.h"
 
 void UPlayerWidget::NativeConstruct()
 {
@@ -30,7 +30,7 @@ void UPlayerWidget::NativeConstruct()
         {
             PRINTLOG(TEXT("UPlayerWidget found the NetworkSubsystem!"));
             NetworkSubsystem->OnPlayerListUpdated.AddUObject(this, &UPlayerWidget::OnPlayerListUpdated);
-            NetworkSubsystem->RequestPlayerListRefresh(); // Request refresh via subsystem
+            NetworkSubsystem->RequestPlayerListRefresh();
         }
     }
     else
@@ -47,42 +47,56 @@ void UPlayerWidget::NativeConstruct()
 void UPlayerWidget::UpdatePlayerList(const TArray<FString>& playerNames)
 {
     PRINTLOG(TEXT("UPlayerWidget::UpdatePlayerList called with %d player(s)."), playerNames.Num());
-    if (!PlayerListContainer) return;
+    if (!PlayerListContainer)
+        return;
 
     PlayerListContainer->ClearChildren(); // Clear existing entries
     PlayerListContainer->SetVisibility(ESlateVisibility::Visible);
 
-    for (const FString& Name : playerNames)
+    // ✅ 내 PlayerIndex 구하기
+    int32 LocalPlayerIndex = -1;
+    if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
     {
-        UTextBlock* PlayerText = CreatePlayerText(Name);
-        if (PlayerText)
+        if (AYiSanPlayerState* LocalPS = PC->GetPlayerState<AYiSanPlayerState>())
         {
-            PlayerListContainer->AddChild(PlayerText);
+            LocalPlayerIndex = LocalPS->PlayerIndex;
+            PRINTLOG(TEXT("LocalPlayerIndex = %d"), LocalPlayerIndex);
+        }
+    }
+    
+    for (const FString& PlayerInfoString : playerNames)
+    {
+        TArray<FString> PlayerInfo;
+        PlayerInfoString.ParseIntoArray(PlayerInfo, TEXT(":"), true);
+
+        if (PlayerInfo.Num() == 2)
+        {
+            int32 PlayerIndex = FCString::Atoi(*PlayerInfo[0]);
+            FString PlayerName = PlayerInfo[1];
+
+            UPlayerListItem* PlayerListItem = CreatePlayerListItem(PlayerIndex, LocalPlayerIndex, PlayerName );
+            if (PlayerListItem)
+            {
+                PlayerListContainer->AddChild(PlayerListItem);
+            }
         }
     }
 }
 
-UTextBlock* UPlayerWidget::CreatePlayerText(const FString& playerName)
+UPlayerListItem* UPlayerWidget::CreatePlayerListItem(const int32 InPlayerIndex, const int32 LocalPlayerIndex, const FString& InPlayerName)
 {
-    PRINTLOG(TEXT("UPlayerWidget::CreatePlayerText creating text for: %s"), *playerName);
-    UTextBlock* newText = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass());
-    if (newText)
-    {
-        newText->SetText(FText::FromString(playerName));
-        newText->SetJustification(ETextJustify::Right);
-        newText->SetColorAndOpacity(FSlateColor(FLinearColor::White));
+    PRINTLOG(TEXT("UPlayerWidget::CreatePlayerListItem creating item for: [%d](%s)"), InPlayerIndex, *InPlayerName);
 
-        // 폰트 적용 (Assuming the same font as StartUI)
-        UFont* fontObj = LoadObject<UFont>(nullptr, TEXT("/Game/CustomContents/UI/Fonts/NotoSerifKR-Regular_Font.NotoSerifKR-Regular_Font.NotoSerifKR-Regular_Font"));
-        if (fontObj)
+    if (PlayerListItemClass)
+    {
+        UPlayerListItem* NewItem = CreateWidget<UPlayerListItem>(this, PlayerListItemClass);
+        if (NewItem)
         {
-            FSlateFontInfo fontInfo;
-            fontInfo.FontObject = fontObj;
-            fontInfo.Size = 20; // 원하는 크기
-            newText->SetFont(fontInfo);
+            NewItem->SetPlayerStatus(InPlayerIndex, LocalPlayerIndex, InPlayerName);
+            return NewItem;
         }
     }
-    return newText;
+    return nullptr;
 }
 
 void UPlayerWidget::OnPlayerListUpdated(const TArray<FString>& NewPlayerList)

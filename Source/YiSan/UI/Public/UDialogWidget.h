@@ -25,6 +25,8 @@ public:
     UFUNCTION(BlueprintCallable, Category ="Chat")
     void ShowDialog(FString InString);
 
+    void HideDialogImmediately();
+
 private:
     void HandleHideTimerExpired();
     

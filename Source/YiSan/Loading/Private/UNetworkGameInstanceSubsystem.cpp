@@ -19,18 +19,10 @@
 #include "OnlineSubsystem.h"
 #include "OnlineSubsystemUtils.h"
 #include "OnlineSessionSettings.h"
-#include "UBroadcastManager.h"
 #include "UDialogManager.h"
 #include "ULoadingCircleManager.h"
-#include "GameFramework/GameSession.h"
 #include "Online/OnlineSessionNames.h"
-#include "StartUI.h"
-#include "GameFramework/PlayerState.h"
 #include "YiSanPlayerListManager.h"
-#include "Kismet/GameplayStatics.h"
-
-#include "YiSanPlayerListManager.h"
-#include "Kismet/GameplayStatics.h"
 
 // ==================== Network 관리 ====================
 void UNetworkGameInstanceSubsystem::Initialize(FSubsystemCollectionBase& Collection)
@@ -66,12 +58,61 @@ void UNetworkGameInstanceSubsystem::RequestPlayerListRefresh()
 {
     if (PlayerListManager)
     {
-        PlayerListManager->RequestRefresh();
+        PRINTLOG(TEXT("UNetworkGameInstanceSubsystem::RequestPlayerListRefresh - PlayerListManager found"));
+
+        // Check if PlayerList already has data (replicated before widget was created)
+        TArray<FString> CurrentList = PlayerListManager->GetPlayerList();
+        if (CurrentList.Num() > 0)
+        {
+            PRINTLOG(TEXT("UNetworkGameInstanceSubsystem::RequestPlayerListRefresh - PlayerList already has %d players, broadcasting immediately"), CurrentList.Num());
+            // Immediately broadcast existing data - don't request refresh to avoid duplicate
+            OnPlayerListUpdated.Broadcast(CurrentList);
+        }
+        else
+        {
+            // Only request refresh if there's no existing data
+            PRINTLOG(TEXT("UNetworkGameInstanceSubsystem::RequestPlayerListRefresh - No existing data, requesting refresh"));
+            PlayerListManager->RequestRefresh();
+        }
+    }
+    else
+    {
+        PRINTLOG(TEXT("UNetworkGameInstanceSubsystem::RequestPlayerListRefresh - PlayerListManager is null! Retrying..."));
+        // Retry after a short delay to handle timing issues
+        if (UWorld* World = GetWorld())
+        {
+            FTimerHandle RetryTimerHandle;
+            World->GetTimerManager().SetTimer(RetryTimerHandle, [this]()
+            {
+                if (PlayerListManager)
+                {
+                    PRINTLOG(TEXT("UNetworkGameInstanceSubsystem::RequestPlayerListRefresh - Retry succeeded, PlayerListManager found"));
+
+                    // Check for existing data on retry
+                    TArray<FString> CurrentList = PlayerListManager->GetPlayerList();
+                    if (CurrentList.Num() > 0)
+                    {
+                        PRINTLOG(TEXT("UNetworkGameInstanceSubsystem::RequestPlayerListRefresh - Retry found %d players, broadcasting"), CurrentList.Num());
+                        OnPlayerListUpdated.Broadcast(CurrentList);
+                    }
+                    else
+                    {
+                        PRINTLOG(TEXT("UNetworkGameInstanceSubsystem::RequestPlayerListRefresh - Retry with no existing data, requesting refresh"));
+                        PlayerListManager->RequestRefresh();
+                    }
+                }
+                else
+                {
+                    PRINTLOG(TEXT("UNetworkGameInstanceSubsystem::RequestPlayerListRefresh - PlayerListManager is still null after retry"));
+                }
+            }, 0.5f, false);
+        }
     }
 }
 
 void UNetworkGameInstanceSubsystem::HandlePlayerListUpdated(const TArray<FString>& PlayerNames)
 {
+    PRINTLOG(TEXT("UNetworkGameInstanceSubsystem::HandlePlayerListUpdated - Broadcasting player list with %d players"), PlayerNames.Num());
     OnPlayerListUpdated.Broadcast(PlayerNames);
 }
 
