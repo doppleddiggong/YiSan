@@ -105,3 +105,30 @@ void UGameSoundManager::StopSound2D(const EGameSoundType Type)
 		ActiveSounds.Remove(Type);
 	}
 }
+
+UAudioComponent* UGameSoundManager::PlayConversationVoice(USoundBase* Sound)
+{
+	if (!Sound)
+		return nullptr;
+
+	// 기존 대화 음성이 재생 중이면 중지
+	StopConversationVoice();
+
+	// 새로운 대화 음성 재생
+	ConversationVoice = UGameplayStatics::SpawnSound2D(GetWorld(), Sound);
+	return ConversationVoice;
+}
+
+void UGameSoundManager::StopConversationVoice()
+{
+	if (ConversationVoice && ConversationVoice->IsPlaying())
+	{
+		ConversationVoice->Stop();
+	}
+	ConversationVoice = nullptr;
+}
+
+bool UGameSoundManager::IsConversationVoicePlaying() const
+{
+	return ConversationVoice && ConversationVoice->IsPlaying();
+}

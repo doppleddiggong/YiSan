@@ -70,6 +70,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Dialog")
 	void HideExplainDialog();
 
+	// 다산의 채팅 메시지를 모든 클라이언트에게 전송
+	UFUNCTION(BlueprintCallable, Category = "Chat")
+	void SendDasanChatMessage(const FString& Message);
+
 	// 플레이어 폰을 가져오는 헬퍼 함수
 	class APawn* GetPlayerPawn() const;
 	
@@ -89,6 +93,10 @@ private:
 
 	UFUNCTION(NetMulticast, Reliable)
 	void MulticastRPC_HideExplainDialog();
+
+	// 다산의 채팅 메시지 전송 RPC
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPC_SendDasanChatMessage(const FString& Message);
 
 public:
 	// 상태 시스템 컴포넌트

@@ -7,6 +7,7 @@
 #include "UBuildingDetailData.h"
 #include "UGameDataManager.h"
 #include "UBroadcastManager.h"
+#include "UGameSoundManager.h"
 #include "Components/Button.h"
 
 #include "Components/TextBlock.h"
@@ -62,10 +63,11 @@ void UMegaPopup::UpdateBuildingInfo(const EBuildingType InBuildingType)
 			TSoftObjectPtr<USoundCue> LoadedCue;
 			if ( DetailAsset->LoadSoundCue(LoadedCue) && LoadedCue.Get() )
 			{
-				if (PlayingSound && PlayingSound->IsPlaying())
-					PlayingSound->Stop();
-
-				PlayingSound = UGameplayStatics::SpawnSound2D(GetWorld(), LoadedCue.Get());
+				// UGameSoundManager를 통해 대화 음성 재생 (기존 음성 자동 중지)
+				if (auto SoundManager = UGameSoundManager::Get(GetWorld()))
+				{
+					SoundManager->PlayConversationVoice(LoadedCue.Get());
+				}
 			}
 		}
 	}
@@ -73,20 +75,20 @@ void UMegaPopup::UpdateBuildingInfo(const EBuildingType InBuildingType)
 
 void UMegaPopup::OnClose()
 {
-	if (PlayingSound && PlayingSound->IsPlaying())
+	// UGameSoundManager를 통해 대화 음성 중지
+	if (auto SoundManager = UGameSoundManager::Get(GetWorld()))
 	{
-		PlayingSound->Stop();
+		SoundManager->StopConversationVoice();
 	}
-	PlayingSound = nullptr;
 }
 
 void UMegaPopup::NativeDestruct()
 {
-	if (PlayingSound && PlayingSound->IsPlaying())
+	// UGameSoundManager를 통해 대화 음성 중지
+	if (auto SoundManager = UGameSoundManager::Get(GetWorld()))
 	{
-		PlayingSound->Stop();
+		SoundManager->StopConversationVoice();
 	}
-	PlayingSound = nullptr;
 
 	Super::NativeDestruct();
 }

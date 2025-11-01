@@ -40,6 +40,8 @@ private:
 	void Tick_TourWait(float DeltaTime);
 	void Tick_TourExplain(float DeltaTime);
 
+	void StartExplainVoice();
+	
 	// 내부 유틸리티
 	bool IsAllPlayersNearby() const;
 	bool IsUpdateEnble() const;
@@ -67,7 +69,7 @@ private:
 	UPROPERTY(EditAnywhere, Category="Tour")
 	float WaitTimeBeforeTour = 2.0f; // 건물 도착 후 관광 시작 전 대기 시간
 
-	UPROPERTY(EditAnywhere, Category="Debug|Dasan")
+	UPROPERTY(EditAnywhere, Category="Debug|Tour")
 	bool bEnableDebugDraw = false;
 	
 	// 대기 타이머
@@ -85,9 +87,18 @@ private:
 	float TourViewTimer = 0.0f; // 관광 시간 타이머
 	int32 LastReportedTime = -1; // 마지막으로 보고한 남은 시간
 
+	// 설명 출력 관련
+	UPROPERTY(EditAnywhere, Category="Tour")
+	float ExplainLineInterval = 3.0f; // 설명 라인 간격 (초)
 
-	UPROPERTY()
-	TObjectPtr<class UAudioComponent> PlayingSound;
+	UPROPERTY(EditAnywhere, Category="Tour")
+	float PostExplainWaitDuration = 5.0f; // 설명 완료 후 대기 시간 (초)
+
+	TArray<FString> ExplainLines;			// 설명 라인 배열
+	int32 ExplainLineIndex = 0;				// 현재 출력 중인 라인 인덱스
+	float ExplainLineTimer = 0.0f;			// 라인별 타이머
+	float PostExplainWaitTimer = 0.0f;		// 설명 완료 후 대기 타이머
+	bool bExplainCompleted = false;			// 설명 완료 여부
 
 	FTimerHandle DebugTimerHandle;
 };

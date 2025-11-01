@@ -28,6 +28,7 @@
 #include "UGameSoundManager.h"
 #include "YiSan/YiSan.h"
 #include "NavigationSystem.h"
+#include "UChatBoxWidget.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 #define DASANWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_DasanWidget.WBP_DasanWidget_C")
@@ -708,8 +709,8 @@ void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester
 
 void ADasanActor::DebugDrawPath(const FVector& GoalLocation)
 {
-	// if (!bEnableDebugDraw)
-	// 	return;
+	if (!bEnableDebugDraw)
+		return;
 	
 	if (!HasAuthority())
 		return; // 서버에서만 실행
@@ -802,6 +803,38 @@ void ADasanActor::MulticastRPC_HideExplainDialog_Implementation()
 
 	// 위젯에 다이얼로그 표시 요청
 	DasanWidget->HideExplainDialog();
+}
+
+void ADasanActor::SendDasanChatMessage(const FString& Message)
+{
+	if (HasAuthority())
+	{
+		MulticastRPC_SendDasanChatMessage(Message);
+	}
+}
+
+void ADasanActor::MulticastRPC_SendDasanChatMessage_Implementation(const FString& Message)
+{
+	// 현재 클라이언트의 로컬 플레이어 컨트롤러를 가져옴
+	auto* PC = GetWorld()->GetFirstPlayerController();
+	if (!PC)
+		return;
+
+	// 로컬 컨트롤러가 조종 중인 Pawn을 APlayerActor 타입으로 변환
+	auto* Player = Cast<APlayerActor>(PC->GetPawn());
+	if (!Player)
+		return;
+
+	// 플레이어가 보유한 채팅 UI 위젯 참조
+	auto* ChatBox = Player->ChatBoxWidget.Get();
+	if (!ChatBox)
+		return;
+
+	// 다산의 채팅 메시지 생성
+	FChatMessage ChatMessage(EChatMessageType::NPC, -1, GameString::NPC, Message);
+
+	// 로컬 클라이언트의 채팅창에 메시지 출력
+	ChatBox->AddChatMessage(ChatMessage);
 }
 
 

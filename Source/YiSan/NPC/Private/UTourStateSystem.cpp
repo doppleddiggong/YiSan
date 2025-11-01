@@ -21,6 +21,7 @@
 #include "Net/UnrealNetwork.h"
 
 #include "DrawDebugHelpers.h"
+#include "UCommonFunctionLibrary.h"
 
 // 2초에 한 번 검사
 static float CheckInterval = 2.0f;
@@ -197,6 +198,14 @@ void UTourStateSystem::Enter_TourWait()
 void UTourStateSystem::Enter_TourExplain()
 {
 	PRINTLOG( TEXT("[TourState] Enter TourExplain"));
+
+	// 설명 출력 상태 초기화
+	ExplainLines.Empty();
+	ExplainLineIndex = 0;
+	ExplainLineTimer = 0.0f;
+	PostExplainWaitTimer = 0.0f;
+	bExplainCompleted = false;
+
 	// explain 시작하는거 알리기 위함
 	if (OwnerDasan)
 	{
@@ -205,22 +214,25 @@ void UTourStateSystem::Enter_TourExplain()
 
 	auto building = OwnerDasan->GetCurTargetBuilding();
 
-	// 건물 에셋 정보 데이터 가져오기
-	FBuildingAssetData AssetData;
-	if ( UGameDataManager::Get(GetWorld())->GetBuildingAssetData( building->BuildingType, AssetData) )
+	// 건물 정보 데이터 가져오기
+	FBuildingData BuildingData;
+	if (UGameDataManager::Get(GetWorld())->GetBuildingData(building->BuildingType, BuildingData))
 	{
-		if ( auto DetailAsset = AssetData.BuildingDetailDataAsset.LoadSynchronous() )
+		// explain 필드를 줄바꿈으로 분할
+		FString ExplainText = BuildingData.explain;
+		if (!ExplainText.IsEmpty())
 		{
-			TSoftObjectPtr<USoundCue> LoadedCue;
-			if ( DetailAsset->LoadSoundCue(LoadedCue) && LoadedCue.Get() )
-			{
-				if (PlayingSound && PlayingSound->IsPlaying())
-					PlayingSound->Stop();
-				
-				PlayingSound = UGameplayStatics::SpawnSound2D(GetWorld(), LoadedCue.Get());
-			}
+			// \n으로 분할
+			ExplainText.ParseIntoArray(ExplainLines, TEXT("\n"), true);
+			PRINTLOG(TEXT("[TourState] 설명 라인 수: %d"), ExplainLines.Num());
+		}
+		else
+		{
+			PRINTLOG(TEXT("[TourState] 경고: 건물 설명이 비어있습니다!"));
 		}
 	}
+
+	// 음성 재생 로직은 Tick_TourExplain에서 첫 라인 출력 시 호출됨
 }
 
 void UTourStateSystem::Enter_TourEnd()
@@ -441,41 +453,106 @@ void UTourStateSystem::Tick_TourExplain(float DeltaTime)
 	// 플레이어들이 근처에 있는지 확인
 	if (IsAllPlayersNearby() && WaitTimer >= WaitTimeBeforeTour)
 	{
-		// 관광 시간 카운트다운
-		TourViewTimer += DeltaTime;
-
-		// 남은 시간 계산
-		int32 RemainingTime = FMath::CeilToInt(TourViewDuration - TourViewTimer);
-		RemainingTime = FMath::Max(0, RemainingTime);
-
-		// 1초 단위로 메시지 전송 (너무 자주 보내지 않도록)
-		if (RemainingTime != LastReportedTime && RemainingTime >= 0)
+		// 설명 완료되지 않았다면 설명 라인 출력
+		if (!bExplainCompleted)
 		{
-			FString ChatMessageText = FString::Printf(TEXT("다음 투어까지 남은 시간: %d초"), RemainingTime);
-			PRINTLOG(TEXT("[TourState] %s"), *ChatMessageText);
-
-			if (auto GS = GetWorld()->GetGameState<AYisanGameState>())                                                                                                                                               
-			    GS->MulticastRPC_ToastMessage(ChatMessageText);                                                           
-
-			LastReportedTime = RemainingTime;
-		}
-
-		// 관광 시간이 끝나면 다음 건물로 이동
-		if (TourViewTimer >= TourViewDuration)
-		{
-			PRINTLOG(TEXT("[TourState] 관광 시간 종료 - 다음 건물로 이동"));
-			// 애니메이션 끝났다는거 알리기 위함
-			if (OwnerDasan)
+			// 설명 라인이 있는 경우
+			if (ExplainLines.Num() > 0 && ExplainLineIndex < ExplainLines.Num())
 			{
-				OwnerDasan->EndExplainAnim();
-			}
-			// 다음 퀘스트(건물)로 이동
-			OwnerDasan->NextQuest();
+				ExplainLineTimer += DeltaTime;
 
-			// 타이머 리셋
-			WaitTimer = 0.0f;
-			TourViewTimer = 0.0f;
-			LastReportedTime = -1;
+				// 라인 간격이 지났으면 다음 라인 출력
+				if (ExplainLineTimer >= ExplainLineInterval)
+				{
+					// 첫 번째 라인일 때만 음성 재생
+					if (ExplainLineIndex == 0)
+					{
+						StartExplainVoice();
+					}
+
+					// 현재 라인 출력
+					FString CurrentLine = UCommonFunctionLibrary::RemoveLineBreaks( ExplainLines[ExplainLineIndex]);
+					PRINTLOG(TEXT("[TourState] 설명 출력 [%d/%d]: %s"), ExplainLineIndex + 1, ExplainLines.Num(), *CurrentLine);
+					
+					// 채팅으로 메시지 전송
+					OwnerDasan->SendDasanChatMessage(CurrentLine);
+					// 머리 위에도 표시
+					OwnerDasan->ShowExplainDialog(CurrentLine);
+
+					// 다음 라인으로 이동
+					ExplainLineIndex++;
+					ExplainLineTimer = 0.0f;
+				}
+			}
+			else
+			{
+				// 모든 라인 출력 완료
+				bExplainCompleted = true;
+				PostExplainWaitTimer = 0.0f;
+				PRINTLOG(TEXT("[TourState] 모든 설명 라인 출력 완료 - %d초 후 다음 장소로 이동"), (int32)PostExplainWaitDuration);
+			}
+		}
+		else
+		{
+			// 설명 완료 후 대기
+			PostExplainWaitTimer += DeltaTime;
+
+			// 남은 시간 계산
+			int32 RemainingTime = FMath::CeilToInt(PostExplainWaitDuration - PostExplainWaitTimer);
+			RemainingTime = FMath::Max(0, RemainingTime);
+
+			// 1초 단위로 메시지 전송
+			if (RemainingTime != LastReportedTime && RemainingTime >= 0)
+			{
+				FString ExplainText = FString::Printf(TEXT("다음 장소로 이동까지 %d초"), RemainingTime);
+				OwnerDasan->ShowExplainDialog(ExplainText);
+
+				LastReportedTime = RemainingTime;
+			}
+
+			// 대기 시간이 끝나면 다음 건물로 이동
+			if (PostExplainWaitTimer >= PostExplainWaitDuration)
+			{
+				PRINTLOG(TEXT("[TourState] 설명 완료 대기 종료 - 다음 건물로 이동"));
+
+				// 애니메이션 끝났다는거 알리기 위함
+				if (OwnerDasan)
+				{
+					OwnerDasan->EndExplainAnim();
+					OwnerDasan->HideExplainDialog();
+				}
+
+				// 다음 퀘스트(건물)로 이동
+				OwnerDasan->NextQuest();
+
+				// 타이머 리셋
+				WaitTimer = 0.0f;
+				LastReportedTime = -1;
+			}
+		}
+	}
+}
+
+
+void UTourStateSystem::StartExplainVoice()
+{
+	auto building = OwnerDasan->GetCurTargetBuilding();
+
+	// 건물 에셋 정보 데이터 가져오기
+	FBuildingAssetData AssetData;
+	if ( UGameDataManager::Get(GetWorld())->GetBuildingAssetData( building->BuildingType, AssetData) )
+	{
+		if ( auto DetailAsset = AssetData.BuildingDetailDataAsset.LoadSynchronous() )
+		{
+			TSoftObjectPtr<USoundCue> LoadedCue;
+			if ( DetailAsset->LoadSoundCue(LoadedCue) && LoadedCue.Get() )
+			{
+				// UGameSoundManager를 통해 대화 음성 재생 (기존 음성 자동 중지)
+				if (auto SoundManager = UGameSoundManager::Get(GetWorld()))
+				{
+					SoundManager->PlayConversationVoice(LoadedCue.Get());
+				}
+			}
 		}
 	}
 }

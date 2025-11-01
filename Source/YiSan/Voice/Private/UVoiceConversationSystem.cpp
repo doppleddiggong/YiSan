@@ -7,9 +7,11 @@
 #include "APlayerControl.h"
 #include "UBroadcastManager.h"
 #include "UChatPlayerSystem.h"
+#include "UCommonFunctionLibrary.h"
 #include "UDialogManager.h"
 #include "UHttpNetworkSystem.h"
 #include "UVoiceFunctionLibrary.h"
+#include "UGameSoundManager.h"
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundWaveProcedural.h"
 #include "Components/AudioComponent.h"
@@ -44,19 +46,22 @@ void UVoiceConversationSystem::StartRecording()
 		return;
 	}
 
-	// 재생 중인 TTS 오디오가 있으면 정지
-	if (CurVoiceAudio && CurVoiceAudio->IsPlaying())
+	// 재생 중인 대화 음성이 있으면 정지 (UGameSoundManager 사용)
+	if (auto SoundManager = UGameSoundManager::Get(GetWorld()))
 	{
-		CurVoiceAudio->Stop();
-
-		// 타이머 정리
-		if (GetWorld())
+		if (SoundManager->IsConversationVoicePlaying())
 		{
-			GetWorld()->GetTimerManager().ClearTimer(VoiceFinishTimerHandle);
-		}
+			SoundManager->StopConversationVoice();
 
-		OnVoiceAudioFinished(); // 수동으로 호출하여 이전 상태를 정리합니다.
-		PRINTLOG(TEXT("[VoiceConversation] Stopped TTS audio before recording and manually called OnVoiceAudioFinished"));
+			// 타이머 정리
+			if (GetWorld())
+			{
+				GetWorld()->GetTimerManager().ClearTimer(VoiceFinishTimerHandle);
+			}
+
+			OnVoiceAudioFinished(); // 수동으로 호출하여 이전 상태를 정리합니다.
+			PRINTLOG(TEXT("[VoiceConversation] Stopped conversation voice before recording and manually called OnVoiceAudioFinished"));
+		}
 	}
 
 	PCMData.Reset();
@@ -239,11 +244,7 @@ void UVoiceConversationSystem::OnResponseAsk(FResponseAsk& Response, bool bSucce
 			}
 
 			// GPT 응답에서 줄바꿈 제거 (UI에서 자동 줄바꿈 처리)
-			FString CleanedText = Response.gpt_response_text;
-			CleanedText.ReplaceInline(TEXT("\r\n"), TEXT(" "));
-			CleanedText.ReplaceInline(TEXT("\n"), TEXT(" "));
-			CleanedText.ReplaceInline(TEXT("\r"), TEXT(" "));
-
+			FString CleanedText = UCommonFunctionLibrary::RemoveLineBreaks(Response.gpt_response_text);
 			FChatMessage ChatMessage(EChatMessageType::NPC, -1, GameString::NPC, CleanedText);
 			Owner->ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
 
@@ -272,21 +273,7 @@ bool UVoiceConversationSystem::PlayVoiceAudio(const TArray<uint8>& AudioData)
 		return false;
 	}
 
-	// 이전에 재생 중인 TTS가 있으면 정지
-	if (CurVoiceAudio && CurVoiceAudio->IsPlaying())
-	{
-		CurVoiceAudio->Stop();
-
-		// 타이머 정리
-		if (GetWorld())
-		{
-			GetWorld()->GetTimerManager().ClearTimer(VoiceFinishTimerHandle);
-		}
-
-		PRINTLOG(TEXT("[VoiceConversation] Stopped previous TTS audio"));
-	}
-
-	// SoundWave 생성 및 재생 (Procedural 사용)
+	// SoundWave 생성 (Procedural 사용)
 	auto SoundWave = UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData(AudioData);
 	if (!IsValid(SoundWave))
 	{
@@ -294,16 +281,20 @@ bool UVoiceConversationSystem::PlayVoiceAudio(const TArray<uint8>& AudioData)
 		return false;
 	}
 
-	// UAudioComponent로 재생 (자동 파괴 방지를 위해 CreateSound2D 사용)
-	CurVoiceAudio = UGameplayStatics::CreateSound2D(this, SoundWave);
+	// UGameSoundManager를 통해 대화 음성 재생 (기존 음성 자동 중지)
+	auto SoundManager = UGameSoundManager::Get(GetWorld());
+	if (!SoundManager)
+	{
+		PRINTLOG(TEXT("[VoiceConversation] TTS playback failed: could not get sound manager"));
+		return false;
+	}
+
+	CurVoiceAudio = SoundManager->PlayConversationVoice(SoundWave);
 	if (!CurVoiceAudio)
 	{
 		PRINTLOG(TEXT("[VoiceConversation] TTS playback failed: could not create audio component"));
 		return false;
 	}
-
-	// 재생 시작
-	CurVoiceAudio->Play();
 
 	// Duration 기반 타이머로 재생 완료 감지
 	const float Duration = SoundWave->Duration;
@@ -341,18 +332,11 @@ void UVoiceConversationSystem::OnVoiceAudioFinished()
 	if (BroadcastManager)
 	{
 		if (APlayerControl* PC = Owner->GetController<APlayerControl>())
-		{
 			PC->ServerRPC_FinishAnswer();
-		}
 
-		// BroadcastManager->SendVoiceAudioFinished();
 		PRINTLOG(TEXT("[VoiceConversation] TTS 재생 완료 이벤트 발생"));
 	}
 
-	// UAudioComponent 수동 파괴 및 초기화
-	if (CurVoiceAudio)
-	{
-		CurVoiceAudio->DestroyComponent();
-		CurVoiceAudio = nullptr;
-	}
+	// AudioComponent 참조 초기화 (실제 파괴는 UGameSoundManager가 관리)
+	CurVoiceAudio = nullptr;
 }
