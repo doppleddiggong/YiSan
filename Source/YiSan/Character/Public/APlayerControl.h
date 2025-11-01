@@ -136,7 +136,7 @@ public:
 
 	// NickName
 	UFUNCTION(Server, Reliable)
-	void Server_SetPlayerNickname(const FString& Nickname);
+	void ServerRPC_SetPlayerNickname(const FString& Nickname);
 
 private:
     class IControllable* GetControllable() const;

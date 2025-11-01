@@ -93,7 +93,7 @@ void APlayerControl::BeginPlay()
 				FString Nickname = NetworkSubsystem->GetPlayerNickname();
 				if (!Nickname.IsEmpty())
 				{
-					Server_SetPlayerNickname(Nickname);
+					ServerRPC_SetPlayerNickname(Nickname);
 				}
 			}
 		}
@@ -171,7 +171,7 @@ void APlayerControl::OnPossess(APawn* InPawn)
                 const FString Nickname = NetworkSubsystem->GetPlayerNickname();
                 if (!Nickname.IsEmpty())
                 {
-                    Server_SetPlayerNickname(Nickname);
+                    ServerRPC_SetPlayerNickname(Nickname);
                 }
             }
         }
@@ -198,7 +198,7 @@ void APlayerControl::ClientTravelWithLoading(const FString& URL, ETravelType Tra
 }
 
 
-void APlayerControl::Server_SetPlayerNickname_Implementation(const FString& Nickname)
+void APlayerControl::ServerRPC_SetPlayerNickname_Implementation(const FString& Nickname)
 {
     if (AYiSanPlayerState* YSPlayerState = GetPlayerState<AYiSanPlayerState>())
     {

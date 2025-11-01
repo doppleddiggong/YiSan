@@ -24,7 +24,7 @@
 #include "ULoadingCircleManager.h"
 #include "GameFramework/GameSession.h"
 #include "Online/OnlineSessionNames.h"
-#include "StartUI.h"
+#include "UStartWidget.h"
 #include "GameFramework/PlayerState.h"
 #include "YiSanPlayerListManager.h"
 #include "Kismet/GameplayStatics.h"

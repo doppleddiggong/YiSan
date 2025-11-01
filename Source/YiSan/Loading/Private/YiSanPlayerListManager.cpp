@@ -9,7 +9,7 @@
 #include "AYiSanPlayerState.h"
 #include "ALobbyGameMode.h"
 #include "GameLogging.h"
-#include "StartUI.h"
+#include "UStartWidget.h"
 #include "UNetworkGameInstanceSubsystem.h" // Added include
 #include "Engine/GameInstance.h" // Added include for GameInstance
 
@@ -85,13 +85,15 @@ void AYiSanPlayerListManager::RequestRefresh()
     // If on client, send RPC to server to refresh
     if (!HasAuthority())
     {
-        Server_RequestRefresh();
+        ServerRPC_RequestRefresh();
     }
-    // On server, or if RPC is not needed, broadcast current list (e.g., for initial UI setup)
-    OnPlayerListUpdated.Broadcast(this->PlayerList); // This will broadcast the *current* (potentially outdated on client) list immediately. The replicated list will update later.
+    else // If on server, just update the list
+    {
+        UpdatePlayerListAndBroadcast();
+    }
 }
 
-void AYiSanPlayerListManager::Server_RequestRefresh_Implementation()
+void AYiSanPlayerListManager::ServerRPC_RequestRefresh_Implementation()
 {
     UpdatePlayerListAndBroadcast();
 }

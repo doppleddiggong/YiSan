@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Macro.h"
-#include "StartUI.h"
+#include "UStartWidget.h"
 #include "Interfaces/OnlineSessionInterface.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UNetworkGameInstanceSubsystem.generated.h"
