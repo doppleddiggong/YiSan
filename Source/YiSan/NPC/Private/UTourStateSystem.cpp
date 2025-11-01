@@ -270,7 +270,7 @@ void UTourStateSystem::Tick_TourMove(float DeltaTime)
 	if (OwnerDasan->IsNearTargetBuilding())
 	{
 		PRINTLOG(TEXT("[TourState] 웨이포인트 도착 → TourExplain"));
-		CurState = ETourState::TourExplain;
+		SetTourState(ETourState::TourExplain);
 		return;
 	}
 
@@ -296,30 +296,26 @@ void UTourStateSystem::Tick_TourMove(float DeltaTime)
 			}
 		}
 
-		if (IsAllPlayersNearby())
+		if (!IsAllPlayersNearby())
 		{
-			PRINTLOG(TEXT("[TourState] 플레이어 전원 근처 → TourWait"));
+			PRINTLOG(TEXT("[TourState] 일부 플레이어 멀리 있음 → TourWait"));
 			WaitTimer = 0.0f;
-			CurState = ETourState::TourWait;
+			SetTourState(ETourState::TourWait);
 
 			OwnerDasan->HideExplainDialog();
+			return; // 상태 변경 후 즉시 리턴
 		}
 		else
 		{
-			PRINTLOG(TEXT("[TourState] 아직 더 모여야 함 (%d/%d)"), NearbyPlayers, TotalPlayers);
+			PRINTLOG(TEXT("[TourState] 모든 플레이어 근처, 계속 이동 (%d/%d)"), NearbyPlayers, TotalPlayers);
 
 			const float DasanGroundSpeed = OwnerDasan->GetGroundSpeed();
 			const bool bIsDasanMoving = !FMath::IsNearlyZero(DasanGroundSpeed, 5.0f);
 
+			// 이동 중일 때는 메시지 숨김
 			if (bIsDasanMoving)
 			{
 				OwnerDasan->HideExplainDialog();
-			}
-			else
-			{
-				// ShowExplainDialog로 대기 중인 플레이어 정보 표시
-				FString ExplainText = FString::Printf(TEXT("플레이어를 기다리는 중... (%d/%d명)"), NearbyPlayers, TotalPlayers);
-				OwnerDasan->ShowExplainDialog(ExplainText);
 			}
 		}
 	}
@@ -371,8 +367,11 @@ void UTourStateSystem::Tick_TourWait(float DeltaTime)
 
 		// 강제 집결 후 TourMove로 전환
 		ForcedGatherTimer = 0.0f;
-		CurState = ETourState::TourMove;
+		SetTourState(ETourState::TourMove);
 		PRINTLOG(TEXT("[TourState] 강제 집결 완료 → TourMove 전환"));
+
+		// TourMove로 전환 시 대기 메시지 숨김
+		OwnerDasan->HideExplainDialog();
 
 		// TourMove로 전환할 때 실제 이동 명령 실행
 		if (OwnerDasan->DasanAicontrol && OwnerDasan->GetCurTargetBuilding())
@@ -390,7 +389,7 @@ void UTourStateSystem::Tick_TourWait(float DeltaTime)
 				}
 			}
 		}
-		return;
+		return; // 상태 변경 후 즉시 리턴
 	}
 
 	// 주기적 체크 타이머 누적
@@ -403,8 +402,11 @@ void UTourStateSystem::Tick_TourWait(float DeltaTime)
 		if (IsAllPlayersNearby())
 		{
 			ForcedGatherTimer = 0.0f; // 타이머 리셋
-			CurState = ETourState::TourMove;
+			SetTourState(ETourState::TourMove);
 			PRINTLOG(TEXT("[TourState] 모든 플레이어 근처 → TourMove 전환"));
+
+			// TourMove로 전환 시 대기 메시지 숨김
+			OwnerDasan->HideExplainDialog();
 
 			// TourMove로 전환할 때 실제 이동 명령 실행 (NavMesh 위치로)
 			if (OwnerDasan->DasanAicontrol && OwnerDasan->GetCurTargetBuilding())
@@ -422,6 +424,7 @@ void UTourStateSystem::Tick_TourWait(float DeltaTime)
 					}
 				}
 			}
+			return; // 상태 변경 후 즉시 리턴
 		}
 		else
 		{
@@ -490,7 +493,9 @@ void UTourStateSystem::Tick_TourExplain(float DeltaTime)
 				// 모든 라인 출력 완료
 				bExplainCompleted = true;
 				PostExplainWaitTimer = 0.0f;
-				PRINTLOG(TEXT("[TourState] 모든 설명 라인 출력 완료 - %d초 후 다음 장소로 이동"), (int32)PostExplainWaitDuration);
+				float TotalWaitDuration = PostExplainSilentDuration + PostExplainWaitDuration;
+				PRINTLOG(TEXT("[TourState] 모든 설명 라인 출력 완료 - %.0f초 후 다음 장소로 이동 (조용한 대기 %.0f초 + 카운트다운 %.0f초)"),
+					TotalWaitDuration, PostExplainSilentDuration, PostExplainWaitDuration);
 			}
 		}
 		else
@@ -498,21 +503,33 @@ void UTourStateSystem::Tick_TourExplain(float DeltaTime)
 			// 설명 완료 후 대기
 			PostExplainWaitTimer += DeltaTime;
 
-			// 남은 시간 계산
-			int32 RemainingTime = FMath::CeilToInt(PostExplainWaitDuration - PostExplainWaitTimer);
-			RemainingTime = FMath::Max(0, RemainingTime);
+			float TotalWaitDuration = PostExplainSilentDuration + PostExplainWaitDuration;
 
-			// 1초 단위로 메시지 전송
-			if (RemainingTime != LastReportedTime && RemainingTime >= 0)
+			// 조용한 대기 시간 중에는 메시지 숨김
+			if (PostExplainWaitTimer < PostExplainSilentDuration)
 			{
-				FString ExplainText = FString::Printf(TEXT("다음 장소로 이동까지 %d초"), RemainingTime);
-				OwnerDasan->ShowExplainDialog(ExplainText);
+				// 마지막 설명 메시지 남아있으면 숨김
+				OwnerDasan->HideExplainDialog();
+			}
+			else
+			{
+				// 조용한 대기 후 카운트다운 표시
+				float CountdownTimer = PostExplainWaitTimer - PostExplainSilentDuration;
+				int32 RemainingTime = FMath::CeilToInt(PostExplainWaitDuration - CountdownTimer);
+				RemainingTime = FMath::Max(0, RemainingTime);
 
-				LastReportedTime = RemainingTime;
+				// 1초 단위로 메시지 전송
+				if (RemainingTime != LastReportedTime)
+				{
+					FString ExplainText = FString::Printf(TEXT("다음 장소로 이동까지 %d초"), RemainingTime);
+					OwnerDasan->ShowExplainDialog(ExplainText);
+
+					LastReportedTime = RemainingTime;
+				}
 			}
 
-			// 대기 시간이 끝나면 다음 건물로 이동
-			if (PostExplainWaitTimer >= PostExplainWaitDuration)
+			// 전체 대기 시간이 끝나면 다음 건물로 이동
+			if (PostExplainWaitTimer >= TotalWaitDuration)
 			{
 				PRINTLOG(TEXT("[TourState] 설명 완료 대기 종료 - 다음 건물로 이동"));
 

@@ -6,6 +6,7 @@
 #include "GameLogging.h"
 #include "AQuestManagerActor.h"
 #include "EBuildingType.h"
+#include "UGameSoundManager.h"
 #include "Net/UnrealNetwork.h"
 #include "Engine/World.h"
 
@@ -51,6 +52,22 @@ void AYisanGameState::MulticastRPC_LoadingComplete_Implementation()
 		{
 			PC->HandleLoadingComplete();
 		}
+	}
+}
+
+void AYisanGameState::ServerRPC_PlaySound_Implementation(EGameSoundType SoundType)
+{
+	if (HasAuthority())
+	{
+		MulticastRPC_PlaySound(SoundType);
+	}
+}
+
+void AYisanGameState::MulticastRPC_PlaySound_Implementation(EGameSoundType SoundType)
+{
+	if (UGameSoundManager* SoundManager = UGameSoundManager::Get(GetWorld()))
+	{
+		SoundManager->PlaySound2D(SoundType);
 	}
 }
 

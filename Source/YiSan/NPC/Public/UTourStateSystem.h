@@ -92,7 +92,10 @@ private:
 	float ExplainLineInterval = 3.0f; // 설명 라인 간격 (초)
 
 	UPROPERTY(EditAnywhere, Category="Tour")
-	float PostExplainWaitDuration = 5.0f; // 설명 완료 후 대기 시간 (초)
+	float PostExplainSilentDuration = 5.0f; // 설명 완료 후 조용히 대기하는 시간 (초)
+
+	UPROPERTY(EditAnywhere, Category="Tour")
+	float PostExplainWaitDuration = 5.0f; // 조용한 대기 후 카운트다운 시간 (초)
 
 	TArray<FString> ExplainLines;			// 설명 라인 배열
 	int32 ExplainLineIndex = 0;				// 현재 출력 중인 라인 인덱스

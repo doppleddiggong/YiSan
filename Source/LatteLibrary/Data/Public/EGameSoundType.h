@@ -11,5 +11,7 @@ enum class EGameSoundType : uint8
 	Diaglog,
 	Disolve,
 
-	Cmd_Summon,
+	Cmd_Approach,
+	Enter_Game,
+	Door_Open,
 };
