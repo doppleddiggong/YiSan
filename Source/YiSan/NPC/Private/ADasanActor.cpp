@@ -723,14 +723,14 @@ void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester
 		// 채팅 메시지
 		if (RequestPlayer->ChatPlayerSystem)
 		{
-			FChatMessage ChatMessage(EChatMessageType::NPC, -1, GameString::NPC, TEXT("어서 오십시오!"));
+			FChatMessage ChatMessage(EChatMessageType::NPC, -1, GameString::NPC, TEXT("전하 오셨습니까"));
 			RequestPlayer->ChatPlayerSystem->ServerRPC_SendChatMessage(ChatMessage);
 		}
 
-		UGameSoundManager::Get(GetWorld())->PlaySound2D(EGameSoundType::Cmd_Summon);
+		UGameSoundManager::Get(GetWorld())->PlaySound2D(EGameSoundType::Cmd_Approach);
 	}
 }
-
+	
 void ADasanActor::DebugDrawPath(const FVector& GoalLocation)
 {
 	if (!bEnableDebugDraw)
@@ -784,14 +784,14 @@ void ADasanActor::HideExplainDialog()
 void ADasanActor::MulticastRPC_DrawDebugPath_Implementation(const TArray<FVector>& PathPoints)
 {
 	FlushPersistentDebugLines(GetWorld());
+	FVector Offset(0, 0, 20.f); // 지면에서 조금 띄우기
 
 	if (PathPoints.Num() > 1)
 	{
 		for (int32 i = 0; i < PathPoints.Num() - 1; i++)
 		{
-			FVector Start = PathPoints[i];
-			FVector End   = PathPoints[i + 1];
-
+			FVector Start = PathPoints[i] + Offset;
+			FVector End   = PathPoints[i + 1] + Offset;
 			// 선으로 경로 표시
 			DrawDebugLine(GetWorld(), Start, End, FColor::Green, true, 0.0f, 0.0f, 10.f);
 		}

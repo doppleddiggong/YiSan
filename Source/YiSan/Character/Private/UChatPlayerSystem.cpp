@@ -3,6 +3,8 @@
 #include "UChatPlayerSystem.h"
 #include "UChatBoxWidget.h"
 #include "APlayerActor.h"
+#include "AYisanGameState.h"
+#include "UGameSoundManager.h"
 #include "YiSan/YiSan.h"
 #include "GameFramework/PlayerController.h"
 
@@ -87,4 +89,9 @@ void UChatPlayerSystem::AnnouncePlayerJoin()
 	const FString Message = FString::Printf(TEXT("%s 전하 어가, 행궁에 이르셨습니다."), *Owner->GetPlayerDisplayName());
 	const FChatMessage ChatMessage(EChatMessageType::System, -1, GameString::System, Message);
 	ServerRPC_SendChatMessage(ChatMessage);
+
+	if (auto GS = GetWorld()->GetGameState<AYisanGameState>())
+	{
+		GS->ServerRPC_PlaySound(EGameSoundType::Enter_Game);
+	}
 }

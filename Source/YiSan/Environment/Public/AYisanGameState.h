@@ -28,6 +28,12 @@ public:
 
 	UFUNCTION(NetMulticast, Reliable)
 	void MulticastRPC_LoadingComplete();
+
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_PlaySound(EGameSoundType SoundType);
+	
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPC_PlaySound(EGameSoundType SoundType);
 	
 	// 투어 시작
 	UFUNCTION(BlueprintCallable, Category="Tour")
