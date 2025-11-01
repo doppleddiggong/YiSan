@@ -264,16 +264,6 @@ EVoiceCommandType UVoiceFunctionLibrary::GetVoiceCommand(const FString& CommandS
 	if (CommandString == TEXT("Cmd_Call"))
 		return EVoiceCommandType::Cmd_Call;
 
-	// 레거시 명령 (하위 호환성)
-	if (CommandString == TEXT("Cmd_OpenGate"))
-		return EVoiceCommandType::Cmd_OpenGate;
-	if (CommandString == TEXT("Cmd_QueryLocation"))
-		return EVoiceCommandType::Cmd_QueryLocation;
-	if (CommandString == TEXT("Cmd_ShowCurrentObjective"))
-		return EVoiceCommandType::Cmd_ShowCurrentObjective;
-	if (CommandString == TEXT("Cmd_QueryBuildingInfo"))
-		return EVoiceCommandType::Cmd_QueryBuildingInfo;
-
 	return EVoiceCommandType::None;
 }
 
