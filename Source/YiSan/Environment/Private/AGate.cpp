@@ -9,6 +9,7 @@
 // #include "FComponentHelper.h"
 #include "GameFramework/Pawn.h"
 // #include "Materials/MaterialInstanceConstant.h"
+#include "UGameSoundManager.h"
 #include "YiSan/YiSan.h"
 
 // namespace
@@ -114,15 +115,17 @@ void AGate::OpenDoor()
 
     bIsOpen = true;
     PlayOpenDoorAnimation();
+
+    UGameSoundManager::Get(GetWorld())->PlaySound2D(EGameSoundType::Door_Open);
 }
 
 void AGate::CloseDoor()
 {
-    if (bIsOpen == false)
-        return;
-    
-    bIsOpen = false;
-    PlayCloseDoorAnimation();
+    // if (bIsOpen == false)
+    //     return;
+    //
+    // bIsOpen = false;
+    // PlayCloseDoorAnimation();
 }
 
 bool AGate::IsPlayerActor(const AActor* OtherActor) const

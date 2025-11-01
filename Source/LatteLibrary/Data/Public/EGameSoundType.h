@@ -13,4 +13,5 @@ enum class EGameSoundType : uint8
 
 	Cmd_Approach,
 	Enter_Game,
+	Door_Open,
 };
