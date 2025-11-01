@@ -17,6 +17,8 @@ void AYiSanGameMode::BeginPlay()
 	Super::BeginPlay();
 	bUseSeamlessTravel = true;
 
+	NextPlayerIndex = 0;
+
 	if (HasAuthority())
 	{
 		if (AYisanGameState* State = GetGameState<AYisanGameState>())
@@ -47,8 +49,11 @@ void AYiSanGameMode::PostLogin(APlayerController* NewPlayer)
 
 	if (AYiSanPlayerState* PS = NewPlayer->GetPlayerState<AYiSanPlayerState>())
 	{
-		// 누적 인덱스 방식 (안 흔들림)
-		PS->PlayerIndex = NextPlayerIndex++;
+		if ( PS->PlayerIndex == -1)
+		{
+			// 누적 인덱스 방식 (안 흔들림)
+			PS->PlayerIndex = NextPlayerIndex++;
+		}
 	}
 
 	if (NewPlayer && !NewPlayer->GetPawn())
