@@ -74,6 +74,7 @@ void ULobbyWidget::OnHostButtonClicked()
 {
 	UTextBlock* buttonText = Cast<UTextBlock>(Btn_Host->GetChildAt(0));
 
+	Btn_Host->SetVisibility(ESlateVisibility::HitTestInvisible);
 	buttonText->SetText(FText::FromString(TEXT("만드는 중")));
 	
 	FText nameText = editSessionName->GetText();
