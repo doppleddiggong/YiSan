@@ -12,6 +12,8 @@
 #include "EBuildingType.h"
 #include "UBroadcastManager.h"
 #include "EVoiceCommandType.h"
+#include "UGameDataManager.h"
+#include "FBuildingData.h"
 
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
@@ -624,8 +626,14 @@ void ADasanActor::UpdateWidgetState()
 	// 건물 이름 가져오기 (Tour 상태일 때)
 	if (DasanState == EDasanState::Tour && CurTargetBuilding)
 	{
-		BuildingName = *ENUM_TO_NAME( EBuildingType, CurTargetBuilding->BuildingType );
+		if (auto DM = UGameDataManager::Get(GetWorld()))
+		{
+			FBuildingData BuildingData;
+			if (DM->GetBuildingData(CurTargetBuilding->BuildingType, BuildingData))
+				BuildingName = BuildingData.name;
+		}
 	}
+
 
 	// 플레이어 카운트 (TourWait 상태일 때)
 	if (DasanState == EDasanState::Tour && TourStateSystem->GetCurState() == ETourState::TourWait)
