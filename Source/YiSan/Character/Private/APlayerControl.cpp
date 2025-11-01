@@ -399,7 +399,14 @@ void APlayerControl::ServerStartMapTravel(const FString& MapPath)
 			{
 				if (APlayerControl* PlayerControl = Cast<APlayerControl>(It->Get()))
 				{
-					PlayerControl->ClientRPC_ShowLoadingTransition();
+					if (PlayerControl->IsLocalController())
+					{
+						PlayerControl->ShowLoadingScreenLocal();
+					}
+					else
+					{
+						PlayerControl->ClientRPC_ShowLoadingTransition();
+					}
 				}
 			}
 		}
