@@ -47,5 +47,8 @@ public:
 	/** 줄바꿈 문자들을 모두 공백으로 치환한 문자열을 반환 */
 	UFUNCTION(BlueprintPure, Category="CoffeeLibrary|Utilities")
 	static FString RemoveLineBreaks(const FString& InText);
+
+	UFUNCTION(BlueprintCallable, Category="Debug|Collision")
+	static void SetCollisionDebugVisible(UPrimitiveComponent* Target, bool bVisible);
 };
 
