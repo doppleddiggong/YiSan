@@ -272,6 +272,18 @@ void APlayerActor::Cmd_ShowMouse_Implementation()
     }
 }
 
+void APlayerActor::Cmd_ShowVoiceGuide_Implementation()
+{
+    if (MainWidgetInst)
+        MainWidgetInst->ShowVoiceGuide();
+}
+
+void APlayerActor::Cmd_HideVoiceGuide_Implementation()
+{
+    if (MainWidgetInst)
+        MainWidgetInst->HideVoiceGuide();
+}
+
 void APlayerActor::Cmd_HideMouse_Implementation()
 {
     if (auto PC = GetWorld()->GetFirstPlayerController() )

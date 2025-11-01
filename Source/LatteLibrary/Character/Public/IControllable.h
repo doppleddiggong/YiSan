@@ -42,4 +42,7 @@ public:
 
 	virtual void Cmd_ShowMouse() {};						// 마우스 노출
 	virtual void Cmd_HideMouse() {};						// 마우스 감춤
+
+	virtual void Cmd_ShowVoiceGuide() {};					// 보이스 가이드 노출
+	virtual void Cmd_HideVoiceGuide() {};					// 보이스 가이드 감춤
 };

@@ -70,7 +70,7 @@ public:
     TSubclassOf<class UMainWidget> MainWidgetClass; ///< 메인 HUD 위젯을 제공하는 블루프린트 클래스입니다.
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
-    TObjectPtr<UMainWidget> MainWidgetInst; ///< 뷰포트에 배치되는 메인 위젯 인스턴스입니다.
+    TObjectPtr<class UMainWidget> MainWidgetInst; ///< 뷰포트에 배치되는 메인 위젯 인스턴스입니다.
 
     UPROPERTY(EditDefaultsOnly, Category = "UI")
     TSubclassOf<class UChatUIWidget> ChatUIWidgetClass;
@@ -118,8 +118,6 @@ public: // 제어 인터페이스
     /// @brief GPT 상호작용을 위한 음성 캡처를 시작합니다.
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
     void Cmd_RecordStart() override;
-
-    /// @brief 음성 캡처를 종료하고 수집된 오디오 데이터를 전송합니다.
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
     void Cmd_RecordEnd() override;
 
@@ -128,17 +126,20 @@ public: // 제어 인터페이스
 
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
     void Cmd_ChatEnter() override;
-
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
     void Cmd_ChatScrollUp() override;
-
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
     void Cmd_ChatScrollDown() override;
 
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
     void Cmd_ShowMouse() override;
-
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
     void Cmd_HideMouse() override;
+
+    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
+    void Cmd_ShowVoiceGuide() override;
+    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
+    void Cmd_HideVoiceGuide() override;
+
 };
 
