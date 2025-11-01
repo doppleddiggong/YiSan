@@ -295,9 +295,19 @@ void UTourStateSystem::Tick_TourMove(float DeltaTime)
 		{
 			PRINTLOG(TEXT("[TourState] 아직 더 모여야 함 (%d/%d)"), NearbyPlayers, TotalPlayers);
 
-			// ShowExplainDialog로 대기 중인 플레이어 정보 표시
-			FString ExplainText = FString::Printf(TEXT("플레이어를 기다리는 중... (%d/%d명)"), NearbyPlayers, TotalPlayers);
-			OwnerDasan->ShowExplainDialog(ExplainText);
+			const float DasanGroundSpeed = OwnerDasan->GetGroundSpeed();
+			const bool bIsDasanMoving = !FMath::IsNearlyZero(DasanGroundSpeed, 5.0f);
+
+			if (bIsDasanMoving)
+			{
+				OwnerDasan->HideExplainDialog();
+			}
+			else
+			{
+				// ShowExplainDialog로 대기 중인 플레이어 정보 표시
+				FString ExplainText = FString::Printf(TEXT("플레이어를 기다리는 중... (%d/%d명)"), NearbyPlayers, TotalPlayers);
+				OwnerDasan->ShowExplainDialog(ExplainText);
+			}
 		}
 	}
 }
