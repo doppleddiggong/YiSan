@@ -75,3 +75,18 @@ void UDialogManager::ShowToast(const FString& Message)
 	if (DialogWidget)
 		DialogWidget->ShowDialog(Message);
 }
+
+void UDialogManager::HideToastImmediately()
+{
+	UWorld* World = GetWorld();
+	if (!World)
+		return;
+
+	if (!DialogWidget)
+		return;
+
+	if (DialogWidget->GetWorld() != World)
+		return;
+
+	DialogWidget->HideDialogImmediately();
+}

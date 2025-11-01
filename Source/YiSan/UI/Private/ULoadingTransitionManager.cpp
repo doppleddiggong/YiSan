@@ -3,6 +3,7 @@
 
 #include "FComponentHelper.h"
 #include "GameLogging.h"
+#include "UDialogManager.h"
 #include "ULoadingTransitionWidget.h"
 
 #include "Blueprint/UserWidget.h"
@@ -77,6 +78,11 @@ void ULoadingTransitionManager::ShowLoadingScreen()
 	if (UWorld* World = GetWorld())
 	{
 		EnsureWidgetForWorld(World);
+
+		if (auto DialogManager = UDialogManager::Get(this))
+		{
+			DialogManager->HideToastImmediately();
+		}
 
 		if (TransitionWidget)
 		{

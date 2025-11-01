@@ -32,6 +32,8 @@ void UDialogWidget::HandleHideTimerExpired()
 	if (!DialogBorder || !DialogText)
 		return;
 
+	HideTimerHandle.Invalidate();
+	
 	DialogText->SetText(FText::GetEmpty());
 	DialogBorder->SetBrushColor(DeactivateColor);
 	DialogBorder->SetVisibility(ESlateVisibility::Hidden);
@@ -64,4 +66,18 @@ void UDialogWidget::ShowDialog(FString InString)
 				false
 		);
 	}
+}
+
+void UDialogWidget::HideDialogImmediately()
+{
+	if (!DialogBorder || !DialogText)
+		return;
+
+	if (UWorld* World = GetWorld())
+	{
+		if (HideTimerHandle.IsValid())
+			World->GetTimerManager().ClearTimer(HideTimerHandle);
+	}
+
+	HandleHideTimerExpired();
 }
