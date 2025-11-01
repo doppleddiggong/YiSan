@@ -84,7 +84,7 @@ void UChatPlayerSystem::AnnouncePlayerJoin()
 	if (!IsValid(Owner) || !IsValid(ChatBoxWidget))
 		return;
 
-	const FString Message = FString::Printf(TEXT("%s가 입궁하셨습니다"), *Owner->GetPlayerDisplayName());
+	const FString Message = FString::Printf(TEXT("%s 전하 어가, 행궁에 이르셨습니다."), *Owner->GetPlayerDisplayName());
 	const FChatMessage ChatMessage(EChatMessageType::System, -1, GameString::System, Message);
 	ServerRPC_SendChatMessage(ChatMessage);
 }
