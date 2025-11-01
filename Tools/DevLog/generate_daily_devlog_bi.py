@@ -62,8 +62,7 @@ def git_log_commits(root, since_iso, until_iso, no_merges=True):
             cur = {"sha":m.group('sha'),"date":m.group('date'),"author":m.group('author'),
                    "subject":m.group('sub'),"body":[],"adds":0,"dels":0,"files":0}
             continue
-        m2 = re.match(r"^(?P<adds>\d+|-)\t(?P<dels>\d+|-)\t(?P<path>.+)$
-", line)
+        m2 = re.match(r"^(?P<adds>\d+|-)\t(?P<dels>\d+|-)\t(?P<path>.+)$", line)
         if m2 and cur:
             adds = 0 if m2.group('adds')=='-' else int(m2.group('adds'))
             dels = 0 if m2.group('dels')=='-' else int(m2.group('dels'))
