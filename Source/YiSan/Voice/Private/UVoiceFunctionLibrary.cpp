@@ -252,8 +252,19 @@ USoundWaveProcedural* UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavDat
 
 EVoiceCommandType UVoiceFunctionLibrary::GetVoiceCommand(const FString& CommandString)
 {
-	if (CommandString == TEXT("Cmd_Summon"))
-		return EVoiceCommandType::Cmd_Summon;
+	// 신규 명령 체계
+	if (CommandString == TEXT("Cmd_Approach"))
+		return EVoiceCommandType::Cmd_Approach;
+	if (CommandString == TEXT("Cmd_BuildingInfo"))
+		return EVoiceCommandType::Cmd_BuildingInfo;
+	if (CommandString == TEXT("Cmd_Target"))
+		return EVoiceCommandType::Cmd_Target;
+	if (CommandString == TEXT("Cmd_Friend"))
+		return EVoiceCommandType::Cmd_Friend;
+	if (CommandString == TEXT("Cmd_Call"))
+		return EVoiceCommandType::Cmd_Call;
+
+	// 레거시 명령 (하위 호환성)
 	if (CommandString == TEXT("Cmd_OpenGate"))
 		return EVoiceCommandType::Cmd_OpenGate;
 	if (CommandString == TEXT("Cmd_QueryLocation"))

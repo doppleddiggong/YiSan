@@ -675,7 +675,7 @@ void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester
 	PRINTLOG(TEXT("[Dasan] 음성 명령 수신: %s from %s"), *ENUM_TO_NAME(EVoiceCommandType, InType),
 		Requester ? *Requester->GetName() : TEXT("Unknown"));
 
-	if ( InType == EVoiceCommandType::Cmd_Summon )
+	if ( InType == EVoiceCommandType::Cmd_Approach )
 	{
 		if (Requester == nullptr)
 			return;
@@ -684,7 +684,7 @@ void ADasanActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester
 		if (!RequestPlayer)
 			return;
 
-		PRINTLOG(TEXT("[Dasan] Cmd_Summon: %s님이 다산에게 이동합니다"), *RequestPlayer->GetName());
+		PRINTLOG(TEXT("[Dasan] Cmd_Approach: %s님이 다산에게 이동합니다"), *RequestPlayer->GetName());
 
 		// Dasan의 위치와 회전
 		FVector DasanLocation = GetActorLocation();

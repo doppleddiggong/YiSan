@@ -22,6 +22,7 @@
 
 #include "DrawDebugHelpers.h"
 #include "UCommonFunctionLibrary.h"
+#include "UGameSoundManager.h"
 
 // 2초에 한 번 검사
 static float CheckInterval = 2.0f;
@@ -548,9 +549,9 @@ void UTourStateSystem::StartExplainVoice()
 			if ( DetailAsset->LoadSoundCue(LoadedCue) && LoadedCue.Get() )
 			{
 				// UGameSoundManager를 통해 대화 음성 재생 (기존 음성 자동 중지)
-				if (auto SoundManager = UGameSoundManager::Get(GetWorld()))
+				if (auto SM = UGameSoundManager::Get(GetWorld()))
 				{
-					SoundManager->PlayConversationVoice(LoadedCue.Get());
+					SM->PlayConversationVoice(LoadedCue.Get());
 				}
 			}
 		}

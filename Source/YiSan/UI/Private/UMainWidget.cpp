@@ -39,100 +39,50 @@
 
 
 UMainWidget::UMainWidget(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
-
 {
-
 	EndingWidgetClass = FComponentHelper::LoadClass<UEndingWidget>(ENDINGWIDGET_PATH);
-	
-
 }
 
-
-
 void UMainWidget::NativeConstruct()
-
 {
-
 	Super::NativeConstruct();
 
-
-
 	if ( APlayerController* PC = GetWorld()->GetFirstPlayerController() )
-
-	{
-
+{
 		FInputModeGameOnly InputMode;
-
 		InputMode.SetConsumeCaptureMouseDown(false);
-
-		
-
 		PC->SetInputMode(InputMode);
-
 		PC->bShowMouseCursor = false;
-
 	}
-
-	
 
 	BroadcastManager = UBroadcastManager::Get(GetWorld());
 
 	if (BroadcastManager)
-
 	{
-
 		BroadcastManager->OnNearBuilding.AddDynamic(this, &UMainWidget::OnNearBuilding);
-
 		BroadcastManager->OnMegaPopupClosed.AddDynamic(this, &UMainWidget::OnMegaPopupClosed);
-
 	}
 
-
-
 	// Popup 초기 상태 설정 (공간 차지하지 않게 collapsed 로 성정)
-
 	if (SmallPopupCtn)
-
 		SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
 
-	
-
 	if (MegaPopupCtn)
-
 		MegaPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
-
-
 
 	PlayBGM();
 
-
-
 	// 엔딩 위젯 클래스가 설정
-
 	if (EndingWidgetClass)
-
 	{
-
 		EndingWidgetInstance = CreateWidget<UEndingWidget>(this, EndingWidgetClass);
-
 		if (EndingWidgetInstance)
-
 		{
-
 			EndingWidgetInstance->AddToViewport();
-
 		}
-
 	}
 
-
-
 	// PlayerListWidget 생성 및 추가
-
-
-
-
-
 
 	if (PlayerWidgetClass)
 	{
@@ -141,12 +91,9 @@ void UMainWidget::NativeConstruct()
 		{
 			PlayerWidgetInstance->AddToViewport();
 		}
-
 	}
-
-	
-
 }
+
 void UMainWidget::PlayBGM()
 {
     if (!BGM_Sound)
@@ -185,6 +132,23 @@ bool UMainWidget::IsSmallPopupVisible() const
     return SmallPopupCtn->GetVisibility() == ESlateVisibility::Visible;
 }
 
+void UMainWidget::ShowMegaPopup(const EBuildingType InBuildingType)
+{
+    if (!MegaPopupCtn || !BroadcastManager)
+        return;
+
+    // MegaPopup 표시
+    MegaPopupCtn->SetVisibility(ESlateVisibility::Visible);
+
+    if (SmallPopupCtn)
+        SmallPopupCtn->SetVisibility(ESlateVisibility::Collapsed);
+
+    // 플레이어 컨트롤 상태 변경 (UI 모드로 전환)
+    BroadcastManager->SendPlayerControlState(false, MegaPopupCtn);
+
+    // 건물 정보 업데이트
+    MegaPopupCtn->UpdateBuildingInfo(InBuildingType);
+}
 
 void UMainWidget::OnMegaPopupClosed()
 {

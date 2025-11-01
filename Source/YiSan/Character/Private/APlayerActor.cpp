@@ -5,9 +5,10 @@
 
 #include "AQuestManagerActor.h"
 #include "AYiSanPlayerState.h"
-#include "Components/WidgetComponent.h"
 
 #include "FComponentHelper.h"
+#include "ABuilding.h"
+#include "UGameDataManager.h"
 #include "FGPTContext.h"
 #include "GameLogging.h"
 #include "UMainWidget.h"
@@ -18,13 +19,16 @@
 #include "UChatBoxWidget.h"
 #include "UHttpNetworkSystem.h"
 #include "TimerManager.h"
-#include "Kismet/GameplayStatics.h"
 #include "UBroadcastManager.h"
 #include "UPlayerHeadWidget.h"
+#include "YiSan/YiSan.h"
+
 #include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Camera/CameraComponent.h"
-#include "YiSan/YiSan.h"
+
 #include "Components/CapsuleComponent.h"
+#include "Components/WidgetComponent.h"
+
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/PlayerController.h"
@@ -285,8 +289,182 @@ void APlayerActor::Cmd_HideMouse_Implementation()
 
 void APlayerActor::OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester)
 {
-    PRINT_STRING(TEXT("%s from %s"), *FString( ENUM_TO_NAME(EVoiceCommandType, InType)),
+    PRINT_STRING(TEXT("%s from %s"),
+        *FString( ENUM_TO_NAME(EVoiceCommandType, InType)),
         Requester ? *Requester->GetName() : TEXT("Unknown"));
+
+    // 요청자가 플레이어인지 확인
+    APlayerActor* RequesterPlayer = Cast<APlayerActor>(Requester);
+    if (!RequesterPlayer)
+        return;
+
+    // Cmd_BuildingInfo는 로컬 클라이언트에서만 실행 (UI 표시용)
+    if (InType == EVoiceCommandType::Cmd_BuildingInfo)
+    {
+        // 요청자 본인만 실행
+        if (this != RequesterPlayer || !IsLocallyControlled())
+            return;
+
+        // 가장 가까운 건물 찾기
+        auto AllBuildings = FComponentHelper::GetAllOfClass<ABuilding>(GetWorld());
+        if (AllBuildings.Num() == 0)
+        {
+            PRINTLOG(TEXT("[VoiceCommand] 주변에 건물이 없습니다"));
+            return;
+        }
+
+        float MinDistance = TNumericLimits<float>::Max();
+        ABuilding* NearestBuilding = nullptr;
+
+        FVector MyLocation = GetActorLocation();
+        for (auto Building : AllBuildings)
+        {
+            float Distance = FVector::Dist(MyLocation, Building->GetActorLocation());
+            if (Distance < MinDistance)
+            {
+                MinDistance = Distance;
+                NearestBuilding = Building;
+            }
+        }
+
+        if (NearestBuilding && MainWidgetInst)
+        {
+            MainWidgetInst->ShowMegaPopup(NearestBuilding->BuildingType);
+
+            PRINTLOG(TEXT("[VoiceCommand] %s 정보 표시"),
+                *UGameDataManager::Get(GetWorld())->GetBuildingDataName(NearestBuilding->BuildingType));
+        }
+        return;
+    }
+
+    // 나머지 명령들은 서버에서만 실행
+    if (!HasAuthority())
+        return;
+
+    if (InType == EVoiceCommandType::Cmd_Call)
+    {
+        // 다른 모든 플레이어를 요청자에게 집결
+        // 요청자 본인은 제외
+        if (this == RequesterPlayer)
+            return;
+
+        FVector RequesterLocation = RequesterPlayer->GetActorLocation();
+        FRotator RequesterRotation = RequesterPlayer->GetActorRotation();
+
+        // 요청자의 앞쪽으로 200 유닛 떨어진 위치 계산
+        FVector TargetLocation = RequesterLocation + (RequesterRotation.Vector() * 200.f);
+
+        // 자신을 요청자 앞으로 텔레포트
+        TeleportTo(TargetLocation, GetActorRotation(), false, true);
+
+        PRINTLOG(TEXT("[VoiceCommand] %s가 %s에게 집결"), *GetPlayerDisplayName(), *RequesterPlayer->GetPlayerDisplayName());
+    }
+    else if (InType == EVoiceCommandType::Cmd_Friend)
+    {
+        // 요청자가 다른 플레이어(다음 번째 플레이어)에게로 이동
+        // 요청자만 실행
+        if (this != RequesterPlayer)
+            return;
+
+        // 모든 플레이어 가져오기
+        auto AllPlayers = FComponentHelper::GetAllOfClass<APlayerActor>(GetWorld());
+        if (AllPlayers.Num() <= 1)
+        {
+            PRINTLOG(TEXT("[VoiceCommand] 이동할 다른 플레이어가 없습니다"));
+            return;
+        }
+
+        // 자신의 PlayerIndex 가져오기
+        int32 MyIndex = GetPlayerIndex();
+
+        // 다음 플레이어 찾기 (순환)
+        APlayerActor* TargetPlayer = nullptr;
+        for (auto Player : AllPlayers)
+        {
+            int32 PlayerIdx = Player->GetPlayerIndex();
+            if (PlayerIdx > MyIndex)
+            {
+                TargetPlayer = Player;
+                break;
+            }
+        }
+
+        // 다음 플레이어가 없으면 첫 번째 플레이어로
+        if (!TargetPlayer)
+        {
+            for (auto Player : AllPlayers)
+            {
+                if (Player != this)
+                {
+                    TargetPlayer = Player;
+                    break;
+                }
+            }
+        }
+
+        if (TargetPlayer)
+        {
+            FVector TargetLocation = TargetPlayer->GetActorLocation();
+            FRotator TargetRotation = TargetPlayer->GetActorRotation();
+
+            // 대상 플레이어의 앞쪽으로 200 유닛 떨어진 위치 계산
+            FVector TeleportLocation = TargetLocation + (TargetRotation.Vector() * 200.f);
+
+            // 텔레포트
+            TeleportTo(TeleportLocation, GetActorRotation(), false, true);
+
+            PRINTLOG(TEXT("[VoiceCommand] %s가 %s에게로 이동"), *GetPlayerDisplayName(), *TargetPlayer->GetPlayerDisplayName());
+        }
+    }
+    else if (InType == EVoiceCommandType::Cmd_Target)
+    {
+        // 요청자가 현재 퀘스트 목표 위치로 이동
+        // 요청자만 실행
+        if (this != RequesterPlayer)
+            return;
+
+        // 퀘스트 매니저에서 현재 목표 가져오기
+        AQuestManagerActor* QuestManager = AQuestManagerActor::Get(this);
+        if (!QuestManager || !QuestManager->HasActiveQuest())
+        {
+            PRINTLOG(TEXT("[VoiceCommand] 활성화된 퀘스트가 없습니다"));
+            return;
+        }
+
+        EBuildingType TargetBuildingType = QuestManager->GetCurrentTarget();
+
+        // 목표 건물 찾기
+        auto AllBuildings = FComponentHelper::GetAllOfClass<ABuilding>(GetWorld());
+        ABuilding* TargetBuilding = nullptr;
+        for (auto Building : AllBuildings)
+        {
+            if (Building->BuildingType == TargetBuildingType)
+            {
+                TargetBuilding = Building;
+                break;
+            }
+        }
+
+        if (TargetBuilding)
+        {
+            FVector BuildingLocation = TargetBuilding->GetActorLocation();
+            FRotator BuildingRotation = TargetBuilding->GetActorRotation();
+
+            // 건물 앞쪽으로 200 유닛 떨어진 위치 계산
+            FVector TeleportLocation = BuildingLocation + (BuildingRotation.Vector() * 200.f);
+
+            // 텔레포트
+            TeleportTo(TeleportLocation, GetActorRotation(), false, true);
+
+            PRINTLOG(TEXT("[VoiceCommand] %s가 퀘스트 목표 %s로 이동"),
+                *GetPlayerDisplayName(),
+                *UGameDataManager::Get(GetWorld())->GetBuildingDataName(TargetBuildingType));
+        }
+        else
+        {
+            PRINTLOG(TEXT("[VoiceCommand] 퀘스트 목표 건물을 찾을 수 없습니다"));
+        }
+    }
 }
 
 FString APlayerActor::GetPlayerDisplayName() const

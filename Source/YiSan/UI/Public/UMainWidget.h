@@ -33,29 +33,33 @@ private:
 
     bool IsMegaPopupVisible() const;
     bool IsSmallPopupVisible() const;
+
+public:
+    /// @brief 지정된 건물의 MegaPopup을 표시합니다.
+    void ShowMegaPopup(const EBuildingType InBuildingType);
+
 public:
     
     /// @brief 메가 팝업이 배치되는 컨테이너 위젯입니다.
     UPROPERTY(meta = (BindWidget))
-    class UMegaPopup* MegaPopupCtn;
+    TObjectPtr<class UMegaPopup> MegaPopupCtn;
     
     /// @brief 스몰 팝업이 배치되는 컨테이너 위젯입니다.
     UPROPERTY(meta = (BindWidget))
-    class USmallPopup* SmallPopupCtn;
+    TObjectPtr<class USmallPopup> SmallPopupCtn;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="BGM")
-    class USoundBase* BGM_Sound;
-    UPROPERTY()
-    class UAudioComponent* BGM_AudioComp;
+    TObjectPtr<class USoundBase> BGM_Sound;
 
+	UPROPERTY()
+    TObjectPtr<class UAudioComponent> BGM_AudioComp;
 
     // 엔딩 위젯
     UPROPERTY(EditAnywhere, Category = "Widgets")
-    TSubclassOf<UEndingWidget> EndingWidgetClass;
-    
+    TSubclassOf<class UEndingWidget> EndingWidgetClass;
     // 생성된 엔딩 위젯의 인스턴스를 저장할 변수
     UPROPERTY()
-    UEndingWidget* EndingWidgetInstance;
+    TObjectPtr<class UEndingWidget> EndingWidgetInstance;
     
     UPROPERTY()
     TObjectPtr<class UBroadcastManager> BroadcastManager;
@@ -65,10 +69,10 @@ public:
 
 	// slide 애니메이션 위해서
 	UPROPERTY(Transient, meta = (BindWidgetAnim))
-	TObjectPtr<UWidgetAnimation> Slideani;
+	TObjectPtr<class UWidgetAnimation> Slideani;
 	
 	UPROPERTY(Transient, meta = (BindWidgetAnim))
-	TObjectPtr<UWidgetAnimation> disapperani;
+	TObjectPtr<class UWidgetAnimation> disapperani;
 
 	EBuildingType PendBuildingType;
 	
@@ -83,9 +87,8 @@ public:
 		
 	// 엔딩 위젯
 	UPROPERTY(EditAnywhere, Category = "Widgets")
-	TSubclassOf<UPlayerWidget> PlayerWidgetClass;
+	TSubclassOf<class UPlayerWidget> PlayerWidgetClass;
 	// 생성된 엔딩 위젯의 인스턴스를 저장할 변수
 	UPROPERTY()
-	UPlayerWidget* PlayerWidgetInstance;
+	TObjectPtr<class UPlayerWidget> PlayerWidgetInstance;
 };
-
