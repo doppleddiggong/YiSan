@@ -14,7 +14,7 @@ class YISAN_API UPlayerListItem : public UUserWidget
 
 public:
 	void SetPlayerName(const FString& InName);
-	void SetPlayerStatus(const int32 InPlayerIndex);
+	void SetPlayerStatus(bool bIsHost, bool bIsLocalPlayer, const int32 InPlayerIndex);
 
 protected:
 	UPROPERTY(meta = (BindWidgetOptional))

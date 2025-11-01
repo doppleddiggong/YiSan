@@ -12,6 +12,7 @@
 #include "UStartWidget.h"
 #include "UNetworkGameInstanceSubsystem.h" // Added include
 #include "Engine/GameInstance.h" // Added include for GameInstance
+#include "Kismet/GameplayStatics.h"
 
 AYiSanPlayerListManager::AYiSanPlayerListManager()
 {
@@ -45,40 +46,47 @@ void AYiSanPlayerListManager::BeginPlay()
 void AYiSanPlayerListManager::UpdatePlayerListAndBroadcast()
 {
     if (!HasAuthority()) return;
-    
+
     AGameStateBase* GameState = GetWorld()->GetGameState();
-    if (!GameState) return;
+    if (!GameState)
+        return;
+
+    // PlayerArray를 PlayerIndex 기준으로 정렬
+    GameState->PlayerArray.Sort([](const APlayerState& A, const APlayerState& B)
+    {
+        const AYiSanPlayerState* PSA = Cast<const AYiSanPlayerState>(&A);
+        const AYiSanPlayerState* PSB = Cast<const AYiSanPlayerState>(&B);
+
+        if (!PSA || !PSB)
+        {
+            // nullptr 대비 – 그냥 이름으로라도 안정 정렬
+            return A.GetPlayerName() < B.GetPlayerName();
+        }
+
+        return PSA->PlayerIndex < PSB->PlayerIndex;
+    });
     
     TArray<FString> CurrentPlayerInfo;
+    
     for (int32 i = 0; i < GameState->PlayerArray.Num(); ++i)
     {
         APlayerState* ps = GameState->PlayerArray[i];
         if (AYiSanPlayerState* YiSanPS = Cast<AYiSanPlayerState>(ps))
         {
-            if (!YiSanPS->Nickname.IsEmpty())
-            {
-                APlayerController* PC = Cast<APlayerController>(ps->GetOwner());
-                bool bIsHost = PC ? PC->HasAuthority() : false;
-                bool bIsReady = true; // Placeholder for ready status
-
-                FString PlayerInfoString = FString::Printf(TEXT("%s:%s:%s:%d"), *YiSanPS->Nickname, bIsHost ? TEXT("true") : TEXT("false"), bIsReady ? TEXT("true") : TEXT("false"), i);
-                CurrentPlayerInfo.Add(PlayerInfoString);
-            }
+            FString PlayerDisplayName = YiSanPS->Nickname;
+            bool bIsHost = false;
+            bool bIsReady = true;
+            int32 PlayerId = YiSanPS->PlayerIndex;
+            FString PlayerInfoString = FString::Printf(TEXT("%s:%s:%s:%d:%d"), *PlayerDisplayName, bIsHost ? TEXT("true") : TEXT("false"), bIsReady ? TEXT("true") : TEXT("false"), PlayerId, PlayerId);
+ 
+            CurrentPlayerInfo.Add(PlayerInfoString);
         }
     }
-    
-    // Sort arrays to compare them regardless of order
-    CurrentPlayerInfo.Sort();
-    TArray<FString> SortedPlayerList = PlayerList;
-    SortedPlayerList.Sort();
 
-    if (CurrentPlayerInfo != SortedPlayerList)
-    {
-        PlayerList = CurrentPlayerInfo;
-        PRINTLOG(TEXT("AYiSanPlayerListManager: PlayerList updated. Current players: %s"), *FString::Join(PlayerList, TEXT(", ")));
-        // On server, manually trigger the update if needed for host UI
-        OnRep_PlayerList(); 
-    }
+
+    PlayerList = CurrentPlayerInfo;
+    PRINTLOG(TEXT("AYiSanPlayerListManager: PlayerList updated. Current players: %s"), *FString::Join(PlayerList, TEXT(", ")));
+    OnRep_PlayerList();
 }
 
 void AYiSanPlayerListManager::OnRep_PlayerList()
@@ -101,5 +109,6 @@ void AYiSanPlayerListManager::RequestRefresh()
 
 void AYiSanPlayerListManager::ServerRPC_RequestRefresh_Implementation()
 {
-    UpdatePlayerListAndBroadcast();
+    FTimerHandle TimerHandle;
+    GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AYiSanPlayerListManager::UpdatePlayerListAndBroadcast, 0.2f, false);
 }

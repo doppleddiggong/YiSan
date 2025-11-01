@@ -68,6 +68,26 @@ void UNetworkGameInstanceSubsystem::RequestPlayerListRefresh()
     {
         PlayerListManager->RequestRefresh();
     }
+    else
+    {
+        PRINTLOG(TEXT("UNetworkGameInstanceSubsystem::RequestPlayerListRefresh - PlayerListManager is null! Retrying..."));
+        // Retry after a short delay to handle timing issues
+        if (UWorld* World = GetWorld())
+        {
+            FTimerHandle RetryTimerHandle;
+            World->GetTimerManager().SetTimer(RetryTimerHandle, [this]()
+            {
+                if (PlayerListManager)
+                {
+                    PlayerListManager->RequestRefresh();
+                }
+                else
+                {
+                    PRINTLOG(TEXT("UNetworkGameInstanceSubsystem::RequestPlayerListRefresh - PlayerListManager is still null after retry"));
+                }
+            }, 0.5f, false);
+        }
+    }
 }
 
 void UNetworkGameInstanceSubsystem::HandlePlayerListUpdated(const TArray<FString>& PlayerNames)

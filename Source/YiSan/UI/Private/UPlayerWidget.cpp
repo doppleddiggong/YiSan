@@ -57,17 +57,18 @@ void UPlayerWidget::UpdatePlayerList(const TArray<FString>& playerNames)
         TArray<FString> PlayerInfo;
         PlayerInfoString.ParseIntoArray(PlayerInfo, TEXT(":"), true);
 
-        if (PlayerInfo.Num() == 4)
+        if (PlayerInfo.Num() == 5)
         {
             FString PlayerName = PlayerInfo[0];
             bool bIsHost = PlayerInfo[1].ToBool();
             bool bIsReady = PlayerInfo[2].ToBool();
             int32 PlayerIndex = FCString::Atoi(*PlayerInfo[3]);
+            bool bIsLocalPlayer = PlayerInfo[4].ToBool();
 
             UPlayerListItem* PlayerListItem = CreatePlayerListItem(PlayerName);
             if (PlayerListItem)
             {
-                PlayerListItem->SetPlayerStatus(PlayerIndex);
+                PlayerListItem->SetPlayerStatus(bIsHost, bIsLocalPlayer, PlayerIndex);
                 PlayerListContainer->AddChild(PlayerListItem);
             }
         }

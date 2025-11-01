@@ -125,22 +125,36 @@ void UStartWidget::UpdatePlayerList(const TArray<FString>& playerNames)
 	playerList->ClearChildren(); // Clear existing entries
 	playerList->SetVisibility(ESlateVisibility::Visible);
 
+	// Get local player's PlayerId for comparison
+	int32 LocalPlayerId = -1;
+	if (APlayerController* PC = GetOwningPlayer())
+	{
+		if (APlayerState* PS = PC->PlayerState)
+		{
+			LocalPlayerId = PS->GetPlayerId();
+		}
+	}
+
 	for (const FString& PlayerInfoString : playerNames)
 	{
 		TArray<FString> PlayerInfo;
 		PlayerInfoString.ParseIntoArray(PlayerInfo, TEXT(":"), true);
 
-		if (PlayerInfo.Num() == 4)
+		if (PlayerInfo.Num() == 5)
 		{
 			FString PlayerName = PlayerInfo[0];
 			bool bIsHost = PlayerInfo[1].ToBool();
 			// bool bIsReady = PlayerInfo[2].ToBool();
 			int32 PlayerIndex = FCString::Atoi(*PlayerInfo[3]);
+			int32 PlayerId = FCString::Atoi(*PlayerInfo[4]);
+
+			// Determine if this is the local player by comparing PlayerId
+			bool bIsLocalPlayer = (PlayerId == LocalPlayerId);
 
 			UPlayerListItem* PlayerListItem = CreatePlayerListItem(PlayerName);
 			if (PlayerListItem)
 			{
-				PlayerListItem->SetPlayerStatus(PlayerIndex);
+				PlayerListItem->SetPlayerStatus(bIsHost, bIsLocalPlayer, PlayerIndex);
 				playerList->AddChild(PlayerListItem);
 			}
 		}
