@@ -22,7 +22,7 @@ public:
 	void UpdatePlayerList(const TArray<FString>& playerNames);
 
 	UFUNCTION()
-	UPlayerListItem* CreatePlayerListItem(const FString& playerName);
+	UPlayerListItem* CreatePlayerListItem(const int32 InPlayerIndex, const int32 LocalPlayerIndex, const FString& InPlayerName);
 
 	UFUNCTION()
 	void OnPlayerListUpdated(const TArray<FString>& NewPlayerList);

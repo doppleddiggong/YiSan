@@ -3,8 +3,6 @@
 #include "GameLogging.h"
 #include "Components/Button.h"
 #include "Components/Image.h"
-#include "MediaPlayer.h"
-#include "MediaTexture.h"
 #include "APlayerControl.h"
 #include "AYisanGameState.h"
 #include "Engine/Texture.h"
@@ -17,23 +15,6 @@ void UStartWidget::NativeConstruct()
 
 	// 버튼 클릭 이벤트 바인딩
 	StartButton->OnClicked.AddDynamic(this, &UStartWidget::OnStartButtonClicked);
-
-	// // 미디어 플레이어와 텍스처가 올바르게 설정되어 있다면 영상 재생 준비
-	// if (MediaPlayer && MediaTexture && BackgroundVideoImage)
-	// {
-	// 	// 미디어 텍스처에 미디어 플레이어 연결
-	// 	MediaTexture->SetMediaPlayer(MediaPlayer);
-	//
-	// 	// 이미지 위젯에 미디어 텍스처 적용
-	// 	BackgroundVideoImage->SetBrushFromMaterial(introMtl);
-	//
-	// 	// 자동 재생
-	// 	MediaPlayer->Play();
-	// }
-	// else
-	// {
-	// 	PRINTLOG(TEXT("MediaPlayer, MediaTexture, or BackgroundVideoImage not set in StartUI"));
-	// }
 
 	// 마우스 보여라
 	if (auto PC = GetOwningPlayer() )
@@ -58,7 +39,6 @@ void UStartWidget::NativeConstruct()
 		PRINTLOG(TEXT("UStartUI::playerList is NULL! Check WBP_StartUI binding."));
 	}
 	
-	// Get the Network Game Instance Subsystem
 	if (auto NetworkSubsystem = UNetworkGameInstanceSubsystem::Get(GetWorld()) )
 	{
 		NetworkSubsystem->OnPlayerListUpdated.AddUObject(this, &UStartWidget::OnPlayerListUpdated);
@@ -66,7 +46,7 @@ void UStartWidget::NativeConstruct()
 	}
 	else
 	{
-		PRINTLOG(TEXT("NetworkSubsystem is nullptr"));
+		PRINTLOG(TEXT("UStartWidget::NativeConstruct - NetworkSubsystem is nullptr!"));
 	}
 }
 
@@ -125,52 +105,46 @@ void UStartWidget::UpdatePlayerList(const TArray<FString>& playerNames)
 	playerList->ClearChildren(); // Clear existing entries
 	playerList->SetVisibility(ESlateVisibility::Visible);
 
-	// Get local player's PlayerId for comparison
-	int32 LocalPlayerId = -1;
-	if (APlayerController* PC = GetOwningPlayer())
+	// ✅ 내 PlayerIndex 구하기
+	int32 LocalPlayerIndex = -1;
+	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
 	{
-		if (APlayerState* PS = PC->PlayerState)
+		if (AYiSanPlayerState* LocalPS = PC->GetPlayerState<AYiSanPlayerState>())
 		{
-			LocalPlayerId = PS->GetPlayerId();
+			LocalPlayerIndex = LocalPS->PlayerIndex;
+			PRINTLOG(TEXT("LocalPlayerIndex = %d"), LocalPlayerIndex);
 		}
 	}
-
+	
 	for (const FString& PlayerInfoString : playerNames)
 	{
 		TArray<FString> PlayerInfo;
 		PlayerInfoString.ParseIntoArray(PlayerInfo, TEXT(":"), true);
 
-		if (PlayerInfo.Num() == 5)
+		if (PlayerInfo.Num() == 2)
 		{
-			FString PlayerName = PlayerInfo[0];
-			bool bIsHost = PlayerInfo[1].ToBool();
-			// bool bIsReady = PlayerInfo[2].ToBool();
-			int32 PlayerIndex = FCString::Atoi(*PlayerInfo[3]);
-			int32 PlayerId = FCString::Atoi(*PlayerInfo[4]);
+			int32 PlayerIndex = FCString::Atoi(*PlayerInfo[0]);
+			FString PlayerName = PlayerInfo[1];
 
-			// Determine if this is the local player by comparing PlayerId
-			bool bIsLocalPlayer = (PlayerId == LocalPlayerId);
-
-			UPlayerListItem* PlayerListItem = CreatePlayerListItem(PlayerName);
+			UPlayerListItem* PlayerListItem = CreatePlayerListItem(PlayerIndex, LocalPlayerIndex, PlayerName);
 			if (PlayerListItem)
 			{
-				PlayerListItem->SetPlayerStatus(bIsHost, bIsLocalPlayer, PlayerIndex);
 				playerList->AddChild(PlayerListItem);
 			}
 		}
 	}
 }
 
-UPlayerListItem* UStartWidget::CreatePlayerListItem(const FString& playerName)
+UPlayerListItem* UStartWidget::CreatePlayerListItem(const int32 InPlayerIndex, const int32 LocalPlayerIndex, const FString& InPlayerName)
 {
-    PRINTLOG(TEXT("UStartUI::CreatePlayerListItem creating item for: %s"), *playerName);
+    PRINTLOG(TEXT("UStartUI::CreatePlayerListItem creating item for: [%d](%s)"), InPlayerIndex, *InPlayerName);
 
     if (PlayerListItemClass)
     {
-        UPlayerListItem* NewItem = CreateWidget<UPlayerListItem>(this, PlayerListItemClass);
+	    UPlayerListItem* NewItem = CreateWidget<UPlayerListItem>(this, PlayerListItemClass);
         if (NewItem)
         {
-            NewItem->SetPlayerName(playerName);
+			NewItem->SetPlayerStatus(InPlayerIndex, LocalPlayerIndex, InPlayerName);
             return NewItem;
         }
     }
@@ -179,6 +153,11 @@ UPlayerListItem* UStartWidget::CreatePlayerListItem(const FString& playerName)
 
 void UStartWidget::OnPlayerListUpdated(const TArray<FString>& NewPlayerList)
 {
+    PRINTLOG(TEXT("UStartWidget::OnPlayerListUpdated - Received player list with %d players"), NewPlayerList.Num());
+    for (int32 i = 0; i < NewPlayerList.Num(); i++)
+    {
+        PRINTLOG(TEXT("UStartWidget::OnPlayerListUpdated - Player %d: %s"), i, *NewPlayerList[i]);
+    }
     UpdatePlayerList(NewPlayerList);
 }
 

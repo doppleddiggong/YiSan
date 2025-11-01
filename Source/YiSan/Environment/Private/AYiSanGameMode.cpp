@@ -10,6 +10,8 @@
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
 
+static int32 NextPlayerIndex = 0;
+
 void AYiSanGameMode::BeginPlay()
 {
 	Super::BeginPlay();
@@ -42,6 +44,12 @@ void AYiSanGameMode::PostLogin(APlayerController* NewPlayer)
 	PRINTLOG( TEXT("[GameMode] PostLogin - PC=%s Pawn=%s"),
 		*GetNameSafe(NewPlayer),
 		*GetNameSafe(NewPlayer->GetPawn()));
+
+	if (AYiSanPlayerState* PS = NewPlayer->GetPlayerState<AYiSanPlayerState>())
+	{
+		// 누적 인덱스 방식 (안 흔들림)
+		PS->PlayerIndex = NextPlayerIndex++;
+	}
 
 	if (NewPlayer && !NewPlayer->GetPawn())
 	{

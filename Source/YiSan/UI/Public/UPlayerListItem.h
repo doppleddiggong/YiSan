@@ -13,9 +13,8 @@ class YISAN_API UPlayerListItem : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	void SetPlayerName(const FString& InName);
-	void SetPlayerStatus(bool bIsHost, bool bIsLocalPlayer, const int32 InPlayerIndex);
-
+	void SetPlayerStatus(const int32 InPlayerIndex, const int32 LocalPlayerIndex, const FString& InName);
+	
 protected:
 	UPROPERTY(meta = (BindWidgetOptional))
 	TObjectPtr<class UImage> PlayerIcon;

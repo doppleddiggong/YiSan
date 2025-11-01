@@ -2,13 +2,13 @@
 
 
 #include "UPlayerWidget.h"
-#include "UNetworkGameInstanceSubsystem.h" // Added include
-#include "Engine/GameInstance.h" // Added include for GameInstance
-#include "Components/TextBlock.h" // Added include for UTextBlock
-#include "Components/VerticalBox.h" // Added include for UVerticalBox
-#include "Blueprint/WidgetTree.h" // Added include for WidgetTree
-#include "Engine/Font.h" // Added include for UFont
-#include "GameLogging.h" // Assuming this is for PRINTLOG
+
+#include "AYiSanPlayerState.h"
+#include "UNetworkGameInstanceSubsystem.h"
+#include "Engine/GameInstance.h"
+#include "Components/VerticalBox.h" 
+#include "Blueprint/WidgetTree.h"
+#include "GameLogging.h"
 
 void UPlayerWidget::NativeConstruct()
 {
@@ -47,44 +47,52 @@ void UPlayerWidget::NativeConstruct()
 void UPlayerWidget::UpdatePlayerList(const TArray<FString>& playerNames)
 {
     PRINTLOG(TEXT("UPlayerWidget::UpdatePlayerList called with %d player(s)."), playerNames.Num());
-    if (!PlayerListContainer) return;
+    if (!PlayerListContainer)
+        return;
 
     PlayerListContainer->ClearChildren(); // Clear existing entries
     PlayerListContainer->SetVisibility(ESlateVisibility::Visible);
 
+    // ✅ 내 PlayerIndex 구하기
+    int32 LocalPlayerIndex = -1;
+    if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+    {
+        if (AYiSanPlayerState* LocalPS = PC->GetPlayerState<AYiSanPlayerState>())
+        {
+            LocalPlayerIndex = LocalPS->PlayerIndex;
+            PRINTLOG(TEXT("LocalPlayerIndex = %d"), LocalPlayerIndex);
+        }
+    }
+    
     for (const FString& PlayerInfoString : playerNames)
     {
         TArray<FString> PlayerInfo;
         PlayerInfoString.ParseIntoArray(PlayerInfo, TEXT(":"), true);
 
-        if (PlayerInfo.Num() == 5)
+        if (PlayerInfo.Num() == 2)
         {
-            FString PlayerName = PlayerInfo[0];
-            bool bIsHost = PlayerInfo[1].ToBool();
-            bool bIsReady = PlayerInfo[2].ToBool();
-            int32 PlayerIndex = FCString::Atoi(*PlayerInfo[3]);
-            bool bIsLocalPlayer = PlayerInfo[4].ToBool();
+            int32 PlayerIndex = FCString::Atoi(*PlayerInfo[0]);
+            FString PlayerName = PlayerInfo[1];
 
-            UPlayerListItem* PlayerListItem = CreatePlayerListItem(PlayerName);
+            UPlayerListItem* PlayerListItem = CreatePlayerListItem(PlayerIndex, LocalPlayerIndex, PlayerName );
             if (PlayerListItem)
             {
-                PlayerListItem->SetPlayerStatus(bIsHost, bIsLocalPlayer, PlayerIndex);
                 PlayerListContainer->AddChild(PlayerListItem);
             }
         }
     }
 }
 
-UPlayerListItem* UPlayerWidget::CreatePlayerListItem(const FString& playerName)
+UPlayerListItem* UPlayerWidget::CreatePlayerListItem(const int32 InPlayerIndex, const int32 LocalPlayerIndex, const FString& InPlayerName)
 {
-    PRINTLOG(TEXT("UPlayerWidget::CreatePlayerListItem creating item for: %s"), *playerName);
+    PRINTLOG(TEXT("UPlayerWidget::CreatePlayerListItem creating item for: [%d](%s)"), InPlayerIndex, *InPlayerName);
 
     if (PlayerListItemClass)
     {
         UPlayerListItem* NewItem = CreateWidget<UPlayerListItem>(this, PlayerListItemClass);
         if (NewItem)
         {
-            NewItem->SetPlayerName(playerName);
+            NewItem->SetPlayerStatus(InPlayerIndex, LocalPlayerIndex, InPlayerName);
             return NewItem;
         }
     }
