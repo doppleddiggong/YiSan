@@ -190,16 +190,11 @@ void UMainWidget::OnGameMessage(FString Message)
 	}
 	else if (Message == GameMessage::IntroStart)
 	{
-		UGameSoundManager::Get(GetWorld())->PlayConversationVoice(IntroStart);
+		// UGameSoundManager::Get(GetWorld())->PlayConversationVoice(IntroStart);
 	}
 	else if (Message == GameMessage::OutroStart)
 	{
 		UGameSoundManager::Get(GetWorld())->PlayConversationVoice(OutroStart);
-	}
-	else if (Message == GameMessage::GameStart)
-	{
-		if ( EndingWidget)
-			EndingWidget->SetVisibility(ESlateVisibility::Visible);
 	}
 }
 
