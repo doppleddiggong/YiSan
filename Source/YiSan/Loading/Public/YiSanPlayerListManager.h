@@ -37,8 +37,4 @@ private:
 
 public:
     void UpdatePlayerListAndBroadcast();
-
-private:
-
-
 };

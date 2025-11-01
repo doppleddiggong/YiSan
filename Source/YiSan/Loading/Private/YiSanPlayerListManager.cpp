@@ -49,26 +49,32 @@ void AYiSanPlayerListManager::UpdatePlayerListAndBroadcast()
     AGameStateBase* GameState = GetWorld()->GetGameState();
     if (!GameState) return;
     
-    TArray<FString> CurrentPlayerNames;
-    for (APlayerState* ps : GameState->PlayerArray)
+    TArray<FString> CurrentPlayerInfo;
+    for (int32 i = 0; i < GameState->PlayerArray.Num(); ++i)
     {
+        APlayerState* ps = GameState->PlayerArray[i];
         if (AYiSanPlayerState* YiSanPS = Cast<AYiSanPlayerState>(ps))
         {
             if (!YiSanPS->Nickname.IsEmpty())
             {
-                CurrentPlayerNames.Add(YiSanPS->Nickname);
+                APlayerController* PC = Cast<APlayerController>(ps->GetOwner());
+                bool bIsHost = PC ? PC->HasAuthority() : false;
+                bool bIsReady = true; // Placeholder for ready status
+
+                FString PlayerInfoString = FString::Printf(TEXT("%s:%s:%s:%d"), *YiSanPS->Nickname, bIsHost ? TEXT("true") : TEXT("false"), bIsReady ? TEXT("true") : TEXT("false"), i);
+                CurrentPlayerInfo.Add(PlayerInfoString);
             }
         }
     }
     
     // Sort arrays to compare them regardless of order
-    CurrentPlayerNames.Sort();
+    CurrentPlayerInfo.Sort();
     TArray<FString> SortedPlayerList = PlayerList;
     SortedPlayerList.Sort();
 
-    if (CurrentPlayerNames != SortedPlayerList)
+    if (CurrentPlayerInfo != SortedPlayerList)
     {
-        PlayerList = CurrentPlayerNames;
+        PlayerList = CurrentPlayerInfo;
         PRINTLOG(TEXT("AYiSanPlayerListManager: PlayerList updated. Current players: %s"), *FString::Join(PlayerList, TEXT(", ")));
         // On server, manually trigger the update if needed for host UI
         OnRep_PlayerList(); 

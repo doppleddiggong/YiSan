@@ -1,16 +1,11 @@
-﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
-
-#pragma once
+﻿#pragma once
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/VerticalBox.h"
-#include "Components/TextBlock.h"
+#include "UPlayerListItem.h"
 #include "UPlayerWidget.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class YISAN_API UPlayerWidget : public UUserWidget
 {
@@ -27,9 +22,12 @@ public:
 	void UpdatePlayerList(const TArray<FString>& playerNames);
 
 	UFUNCTION()
-	UTextBlock* CreatePlayerText(const FString& playerName);
+	UPlayerListItem* CreatePlayerListItem(const FString& playerName);
 
 	UFUNCTION()
 	void OnPlayerListUpdated(const TArray<FString>& NewPlayerList);
 
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<UPlayerListItem> PlayerListItemClass;
 };
+

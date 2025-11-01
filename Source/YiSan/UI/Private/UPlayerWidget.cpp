@@ -30,7 +30,7 @@ void UPlayerWidget::NativeConstruct()
         {
             PRINTLOG(TEXT("UPlayerWidget found the NetworkSubsystem!"));
             NetworkSubsystem->OnPlayerListUpdated.AddUObject(this, &UPlayerWidget::OnPlayerListUpdated);
-            NetworkSubsystem->RequestPlayerListRefresh(); // Request refresh via subsystem
+            NetworkSubsystem->RequestPlayerListRefresh();
         }
     }
     else
@@ -52,37 +52,42 @@ void UPlayerWidget::UpdatePlayerList(const TArray<FString>& playerNames)
     PlayerListContainer->ClearChildren(); // Clear existing entries
     PlayerListContainer->SetVisibility(ESlateVisibility::Visible);
 
-    for (const FString& Name : playerNames)
+    for (const FString& PlayerInfoString : playerNames)
     {
-        UTextBlock* PlayerText = CreatePlayerText(Name);
-        if (PlayerText)
+        TArray<FString> PlayerInfo;
+        PlayerInfoString.ParseIntoArray(PlayerInfo, TEXT(":"), true);
+
+        if (PlayerInfo.Num() == 4)
         {
-            PlayerListContainer->AddChild(PlayerText);
+            FString PlayerName = PlayerInfo[0];
+            bool bIsHost = PlayerInfo[1].ToBool();
+            bool bIsReady = PlayerInfo[2].ToBool();
+            int32 PlayerIndex = FCString::Atoi(*PlayerInfo[3]);
+
+            UPlayerListItem* PlayerListItem = CreatePlayerListItem(PlayerName);
+            if (PlayerListItem)
+            {
+                PlayerListItem->SetPlayerStatus(PlayerIndex);
+                PlayerListContainer->AddChild(PlayerListItem);
+            }
         }
     }
 }
 
-UTextBlock* UPlayerWidget::CreatePlayerText(const FString& playerName)
+UPlayerListItem* UPlayerWidget::CreatePlayerListItem(const FString& playerName)
 {
-    PRINTLOG(TEXT("UPlayerWidget::CreatePlayerText creating text for: %s"), *playerName);
-    UTextBlock* newText = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass());
-    if (newText)
-    {
-        newText->SetText(FText::FromString(playerName));
-        newText->SetJustification(ETextJustify::Right);
-        newText->SetColorAndOpacity(FSlateColor(FLinearColor::White));
+    PRINTLOG(TEXT("UPlayerWidget::CreatePlayerListItem creating item for: %s"), *playerName);
 
-        // 폰트 적용 (Assuming the same font as StartUI)
-        UFont* fontObj = LoadObject<UFont>(nullptr, TEXT("/Game/CustomContents/UI/Fonts/NotoSerifKR-Regular_Font.NotoSerifKR-Regular_Font.NotoSerifKR-Regular_Font"));
-        if (fontObj)
+    if (PlayerListItemClass)
+    {
+        UPlayerListItem* NewItem = CreateWidget<UPlayerListItem>(this, PlayerListItemClass);
+        if (NewItem)
         {
-            FSlateFontInfo fontInfo;
-            fontInfo.FontObject = fontObj;
-            fontInfo.Size = 20; // 원하는 크기
-            newText->SetFont(fontInfo);
+            NewItem->SetPlayerName(playerName);
+            return NewItem;
         }
     }
-    return newText;
+    return nullptr;
 }
 
 void UPlayerWidget::OnPlayerListUpdated(const TArray<FString>& NewPlayerList)

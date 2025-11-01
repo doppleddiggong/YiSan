@@ -18,22 +18,22 @@ void UStartWidget::NativeConstruct()
 	// 버튼 클릭 이벤트 바인딩
 	StartButton->OnClicked.AddDynamic(this, &UStartWidget::OnStartButtonClicked);
 
-	// 미디어 플레이어와 텍스처가 올바르게 설정되어 있다면 영상 재생 준비
-	if (MediaPlayer && MediaTexture && BackgroundVideoImage)
-	{
-		// 미디어 텍스처에 미디어 플레이어 연결
-		MediaTexture->SetMediaPlayer(MediaPlayer);
-
-		// 이미지 위젯에 미디어 텍스처 적용
-		BackgroundVideoImage->SetBrushFromMaterial(introMtl);
-
-		// 자동 재생
-		MediaPlayer->Play();
-	}
-	else
-	{
-		PRINTLOG(TEXT("MediaPlayer, MediaTexture, or BackgroundVideoImage not set in StartUI"));
-	}
+	// // 미디어 플레이어와 텍스처가 올바르게 설정되어 있다면 영상 재생 준비
+	// if (MediaPlayer && MediaTexture && BackgroundVideoImage)
+	// {
+	// 	// 미디어 텍스처에 미디어 플레이어 연결
+	// 	MediaTexture->SetMediaPlayer(MediaPlayer);
+	//
+	// 	// 이미지 위젯에 미디어 텍스처 적용
+	// 	BackgroundVideoImage->SetBrushFromMaterial(introMtl);
+	//
+	// 	// 자동 재생
+	// 	MediaPlayer->Play();
+	// }
+	// else
+	// {
+	// 	PRINTLOG(TEXT("MediaPlayer, MediaTexture, or BackgroundVideoImage not set in StartUI"));
+	// }
 
 	// 마우스 보여라
 	if (auto PC = GetOwningPlayer() )
@@ -74,8 +74,8 @@ void UStartWidget::OnStartButtonClicked()
 {
 	PRINTLOG( TEXT("UStartUI::OnStartButtonClicked - Button Clicked!"));
 
-	if (MediaPlayer && MediaPlayer->IsPlaying())
-		MediaPlayer->Pause();
+	// if (MediaPlayer && MediaPlayer->IsPlaying())
+	// 	MediaPlayer->Pause();
 
 	APlayerControl* PC = nullptr;
 	if ( APlayerController* Ctrl = GetOwningPlayer() )
@@ -125,28 +125,42 @@ void UStartWidget::UpdatePlayerList(const TArray<FString>& playerNames)
 	playerList->ClearChildren(); // Clear existing entries
 	playerList->SetVisibility(ESlateVisibility::Visible);
 
-	for (const FString& Name : playerNames)
+	for (const FString& PlayerInfoString : playerNames)
 	{
-		UTextBlock* PlayerText = CreatePlayerText(Name);
-		if (PlayerText)
+		TArray<FString> PlayerInfo;
+		PlayerInfoString.ParseIntoArray(PlayerInfo, TEXT(":"), true);
+
+		if (PlayerInfo.Num() == 4)
 		{
-			playerList->AddChild(PlayerText);
+			FString PlayerName = PlayerInfo[0];
+			bool bIsHost = PlayerInfo[1].ToBool();
+			// bool bIsReady = PlayerInfo[2].ToBool();
+			int32 PlayerIndex = FCString::Atoi(*PlayerInfo[3]);
+
+			UPlayerListItem* PlayerListItem = CreatePlayerListItem(PlayerName);
+			if (PlayerListItem)
+			{
+				PlayerListItem->SetPlayerStatus(PlayerIndex);
+				playerList->AddChild(PlayerListItem);
+			}
 		}
 	}
 }
 
-UTextBlock* UStartWidget::CreatePlayerText(const FString& playerName)
+UPlayerListItem* UStartWidget::CreatePlayerListItem(const FString& playerName)
 {
-    PRINTLOG(TEXT("UStartUI::CreatePlayerText creating text for: %s"), *playerName);
-	
-    UTextBlock* newText = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass());
-	if (newText)
-	{
-		newText->SetText(FText::FromString(playerName));
-		newText->SetJustification(ETextJustify::Right);
-		newText->SetColorAndOpacity(FSlateColor(FLinearColor::White));
-	}
-	return newText;
+    PRINTLOG(TEXT("UStartUI::CreatePlayerListItem creating item for: %s"), *playerName);
+
+    if (PlayerListItemClass)
+    {
+        UPlayerListItem* NewItem = CreateWidget<UPlayerListItem>(this, PlayerListItemClass);
+        if (NewItem)
+        {
+            NewItem->SetPlayerName(playerName);
+            return NewItem;
+        }
+    }
+    return nullptr;
 }
 
 void UStartWidget::OnPlayerListUpdated(const TArray<FString>& NewPlayerList)
