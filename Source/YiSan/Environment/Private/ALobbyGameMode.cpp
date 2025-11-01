@@ -55,15 +55,6 @@ void ALobbyGameMode::PostLogin(APlayerController* NewPlayer)
 		}
 	}
 
-	AYiSanPlayerState* PS = Cast<AYiSanPlayerState>(NewPlayer->PlayerState);
-	if (!PS) return;
-
-	// 현재 방에 몇 명 있는지 확인 (0부터 시작)
-	int32 NewIndex = GameState.Get() ? GameState->PlayerArray.Num() - 1 : 0;
-
-	// 닉네임 설정은 클라이언트에서 Server RPC를 통해 처리됩니다.
-	// PS->SetPlayerInfo(PlayerNick, NewIndex); // 이 줄은 제거됩니다.
-
 	OnPlayerLoggedIn.Broadcast(NewPlayer);
 
 	if (UGameInstance* GameInstance = GetGameInstance())

@@ -210,8 +210,7 @@ void APlayerControl::ServerRPC_SetPlayerNickname_Implementation(const FString& N
         // GameState에서 플레이어 인덱스를 받아와서 함께 설정
         if (AGameStateBase* GS = GetWorld()->GetGameState())
         {
-            int32 NewIndex = GS->PlayerArray.Num() - 1;
-            YSPlayerState->SetPlayerInfo(Nickname, NewIndex);
+            YSPlayerState->SetPlayerInfo(Nickname);
             // 닉네임이 설정된 직후, PlayerListManager를 찾아 목록 업데이트를 요청합니다.
             if (AYiSanPlayerListManager* PlayerListManager = Cast<AYiSanPlayerListManager>(UGameplayStatics::GetActorOfClass(GetWorld(), AYiSanPlayerListManager::StaticClass())))
             {
@@ -413,7 +412,7 @@ void APlayerControl::ServerStartMapTravel(const FString& MapPath)
 		if (auto GI = UYiSanLoading::Get(GetWorld()))
 		{
 			FString TravelURL = MapPath + TEXT("?listen");
-			GI->InitSystem(TravelURL, true, true);
+			GI->InitSystem(TravelURL, false, true);
 		}
 	}, 0.1f, false);
 }

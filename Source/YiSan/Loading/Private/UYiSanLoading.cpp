@@ -144,6 +144,7 @@ void UYiSanLoading::PostLoadMapWithWorld(UWorld* InWorld)
 
     PRINTLOG(TEXT("[WP] 텍스처 스트리밍 강제 시작 완료"));
 
+    InWorld->GetTimerManager().ClearTimer(TimeHandlePool);
     InWorld->GetTimerManager().SetTimer(
         TimeHandlePool,
         this,

@@ -151,6 +151,16 @@ void UNetworkGameInstanceSubsystem::OnCreateSessionComplete(FName sessionName, b
 
         // Seamless Travel을 사용하여 클라이언트 연결 유지
         GetWorld()->ServerTravel(TEXT("/Game/CustomContents/Maps/StartLevel?listen"), true);
+        
+        // // 호스트만 StartLevel로 이동 (ClientTravel)
+        // // 게스트는 JoinSession을 통해서만 접속 가능
+        // if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+        // {
+        //     // TRAVEL_Relative = 현재 서버에서 맵만 변경 (세션 유지)
+        //     // ?listen = 리슨 서버로 계속 유지
+        //     PC->ClientTravel(TEXT("/Game/CustomContents/Maps/StartLevel?listen"), TRAVEL_Relative);
+        //     UE_LOG(LogTemp, Warning, TEXT("[CreateSession] 호스트만 StartLevel로 이동 (ClientTravel Relative)"));
+        // }
     }
     else
     {
@@ -237,14 +247,16 @@ void UNetworkGameInstanceSubsystem::OnJoinSessionComplete(FName sessionName, EOn
 
         if (auto Ctrl = GetWorld()->GetFirstPlayerController())
         {
-            if (auto PC = Cast<APlayerControl>(Ctrl))
-            {
-                PC->ClientTravelWithLoading(url, TRAVEL_Absolute);
-            }
-            else
-            {
-                Ctrl->ClientTravel(url, TRAVEL_Absolute);
-            }
+            Ctrl->ClientTravel(url, TRAVEL_Absolute);
+
+            // if (auto PC = Cast<APlayerControl>(Ctrl))
+            // {
+            //     PC->ClientTravelWithLoading(url, TRAVEL_Absolute);
+            // }
+            // else
+            // {
+            //     Ctrl->ClientTravel(url, TRAVEL_Absolute);
+            // }
         }
     }
 }
@@ -282,13 +294,13 @@ void UNetworkGameInstanceSubsystem::JoinSessionByIp(const FString& IpAddress)
 {
 	if (auto Ctrl = GetWorld()->GetFirstPlayerController())
 	{
-		if (auto PC = Cast<APlayerControl>(Ctrl))
-		{
-			PC->ClientTravelWithLoading(IpAddress, TRAVEL_Absolute);
-		}
-		else
-		{
+		// if (auto PC = Cast<APlayerControl>(Ctrl))
+		// {
+		// 	PC->ClientTravelWithLoading(IpAddress, TRAVEL_Absolute);
+		// }
+		// else
+		// {
 			Ctrl->ClientTravel(IpAddress, TRAVEL_Absolute);
-		}
+		// }
 	}
 }

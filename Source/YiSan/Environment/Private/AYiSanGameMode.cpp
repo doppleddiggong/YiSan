@@ -46,15 +46,14 @@ void AYiSanGameMode::PostLogin(APlayerController* NewPlayer)
 	PRINTLOG( TEXT("[GameMode] PostLogin - PC=%s Pawn=%s"),
 		*GetNameSafe(NewPlayer),
 		*GetNameSafe(NewPlayer->GetPawn()));
+	
+	AYiSanPlayerState* PS = Cast<AYiSanPlayerState>(NewPlayer->PlayerState);
+	if (!PS)
+		return;
 
-	if (AYiSanPlayerState* PS = NewPlayer->GetPlayerState<AYiSanPlayerState>())
-	{
-		if ( PS->PlayerIndex == -1)
-		{
-			// 누적 인덱스 방식 (안 흔들림)
-			PS->PlayerIndex = NextPlayerIndex++;
-		}
-	}
+	// 현재 방에 몇 명 있는지 확인 (0부터 시작)
+	// int32 NewIndex = GameState->PlayerArray.Num() - 1;
+	PS->SetPlayerIndex(NextPlayerIndex++);
 
 	if (NewPlayer && !NewPlayer->GetPawn())
 	{
