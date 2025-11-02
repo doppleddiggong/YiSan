@@ -7,7 +7,7 @@
 #include "AYisanGameState.h"
 #include "Engine/Texture.h"
 #include "Blueprint/WidgetTree.h"
-#include "UNetworkGameInstanceSubsystem.h" // Added include
+#include "UYisanOnlineSystem.h" // Added include
 
 void UStartWidget::NativeConstruct()
 {
@@ -39,10 +39,10 @@ void UStartWidget::NativeConstruct()
 		PRINTLOG(TEXT("UStartUI::playerList is NULL! Check WBP_StartUI binding."));
 	}
 	
-	if (auto NetworkSubsystem = UNetworkGameInstanceSubsystem::Get(GetWorld()) )
+	if (auto NetworkSubsystem = UYisanOnlineSystem::Get(GetWorld()) )
 	{
 		NetworkSubsystem->OnPlayerListUpdated.AddUObject(this, &UStartWidget::OnPlayerListUpdated);
-		NetworkSubsystem->RequestPlayerListRefresh();
+		NetworkSubsystem->RequestRefreshPlayerList();
 	}
 	else
 	{

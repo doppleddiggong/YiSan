@@ -6,24 +6,23 @@
 #include "Macro.h"
 #include "Interfaces/OnlineSessionInterface.h"
 #include "Subsystems/GameInstanceSubsystem.h"
-#include "UNetworkGameInstanceSubsystem.generated.h"
+#include "UYisanOnlineSystem.generated.h"
 
 DECLARE_DELEGATE_TwoParams(FFindComplete, int32, FString);
 DECLARE_MULTICAST_DELEGATE_OneParam(FOnPlayerListUpdated, const TArray<FString>& /* PlayerNames */);
 
 UCLASS()
-class YISAN_API UNetworkGameInstanceSubsystem : public UGameInstanceSubsystem
+class YISAN_API UYisanOnlineSystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
 
 public:
-
-	DEFINE_SUBSYSTEM_GETTER_INLINE(UNetworkGameInstanceSubsystem);
+	DEFINE_SUBSYSTEM_GETTER_INLINE(UYisanOnlineSystem);
 
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 	
 public:
-	FFindComplete onFindComplete;
+	FFindComplete OnFindComplete;
 
 	//세션의 모든 처리 진행 객체
 	IOnlineSessionPtr sessionInterface;
@@ -58,7 +57,7 @@ public:
 	//=============이름 저장 부분================
 public:
 	void SetPlayerNickname(const FString& InName);
-	FString GetPlayerNickname();
+	FString GetPlayerNickname() { return PlayerNickname; }
 
 private:
 	FString PlayerNickname;
@@ -69,14 +68,14 @@ public:
 	FOnPlayerListUpdated OnPlayerListUpdated;
 
 	UFUNCTION(BlueprintCallable)
-	void RequestPlayerListRefresh();
+	void RequestRefreshPlayerList();
 
-	void SetPlayerListManager(class AYiSanPlayerListManager* InManager);
-	class AYiSanPlayerListManager* GetPlayerListManager() const { return PlayerListManager; }
+	void HandlePlayerListUpdated(const TArray<FString>& PlayerNames);
+	
+	void SetGameState(class AYisanGameState* InGameState);
+	class AYisanGameState* GetGameState() const { return CachedGameState; }
 
 private:
 	UPROPERTY()
-	TObjectPtr<AYiSanPlayerListManager> PlayerListManager;
-
-	void HandlePlayerListUpdated(const TArray<FString>& PlayerNames);
+	TObjectPtr<class AYisanGameState> CachedGameState;
 };

@@ -22,14 +22,13 @@
 #include "Blueprint/UserWidget.h"
 #include "GameFramework/GameModeBase.h"
 #include "Kismet/GameplayStatics.h"
-#include "YiSanPlayerListManager.h"
 
 #include "UDialogManager.h"
 #include "APlayerActor.h"
 #include "AYisanGameState.h"
 #include "UAnswerStateSystem.h"
 #include "AYiSanPlayerState.h"
-#include "UNetworkGameInstanceSubsystem.h"
+#include "UYisanOnlineSystem.h"
 #include "UYiSanGameInstance.h"
 #include "ULoadingTransitionManager.h"
 #include "UYiSanLoading.h"
@@ -90,7 +89,7 @@ void APlayerControl::BeginPlay()
 		// 클라이언트에서 닉네임을 서버로 전송
 		if (UYiSanGameInstance* GI = GetGameInstance<UYiSanGameInstance>())
 		{
-			if (UNetworkGameInstanceSubsystem* NetworkSubsystem = GI->GetSubsystem<UNetworkGameInstanceSubsystem>())
+			if (UYisanOnlineSystem* NetworkSubsystem = GI->GetSubsystem<UYisanOnlineSystem>())
 			{
 				FString Nickname = NetworkSubsystem->GetPlayerNickname();
 				if (!Nickname.IsEmpty())
@@ -171,7 +170,7 @@ void APlayerControl::OnPossess(APawn* InPawn)
     {
         if (UYiSanGameInstance* GI = GetGameInstance<UYiSanGameInstance>())
         {
-            if (UNetworkGameInstanceSubsystem* NetworkSubsystem = GI->GetSubsystem<UNetworkGameInstanceSubsystem>())
+            if (UYisanOnlineSystem* NetworkSubsystem = GI->GetSubsystem<UYisanOnlineSystem>())
             {
                 const FString Nickname = NetworkSubsystem->GetPlayerNickname();
                 if (!Nickname.IsEmpty())
@@ -207,15 +206,12 @@ void APlayerControl::ServerRPC_SetPlayerNickname_Implementation(const FString& N
 {
     if (AYiSanPlayerState* YSPlayerState = GetPlayerState<AYiSanPlayerState>())
     {
-        // GameState에서 플레이어 인덱스를 받아와서 함께 설정
-        if (AGameStateBase* GS = GetWorld()->GetGameState())
+        // GameState를 통해 플레이어 목록 업데이트
+        if (AYisanGameState* GS = GetWorld()->GetGameState<AYisanGameState>())
         {
             YSPlayerState->SetPlayerInfo(Nickname);
-            // 닉네임이 설정된 직후, PlayerListManager를 찾아 목록 업데이트를 요청합니다.
-            if (AYiSanPlayerListManager* PlayerListManager = Cast<AYiSanPlayerListManager>(UGameplayStatics::GetActorOfClass(GetWorld(), AYiSanPlayerListManager::StaticClass())))
-            {
-                PlayerListManager->BroadcastPlayerList();
-            }
+            // 닉네임이 설정된 직후, GameState를 통해 목록 업데이트
+            GS->UpdatePlayerList();
         }
     }
 }

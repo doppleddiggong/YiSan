@@ -4,11 +4,12 @@
 
 #include "APlayerControl.h"
 #include "AYiSanPlayerState.h"
-#include "YiSanPlayerListManager.h"
+#include "AYisanGameState.h"
 
 #include "GameFramework/GameStateBase.h"
 #include "GameFramework/PlayerController.h"
-#include "Kismet/GameplayStatics.h"
+
+static int32 NextPlayerIndex = 0;
 
 ALobbyGameMode::ALobbyGameMode()
 {
@@ -20,11 +21,18 @@ ALobbyGameMode::ALobbyGameMode()
 void ALobbyGameMode::BeginPlay()
 {
 	Super::BeginPlay();
+	NextPlayerIndex = 0;
 }
 
 void ALobbyGameMode::PostLogin(APlayerController* NewPlayer)
 {
 	Super::PostLogin(NewPlayer);
+
+	// Set PlayerIndex for the new player
+	if (AYiSanPlayerState* PS = Cast<AYiSanPlayerState>(NewPlayer->PlayerState))
+	{
+		PS->SetPlayerIndex(NextPlayerIndex++);
+	}
 
 	// Pawn이 없으면 강제로 생성
 	if (NewPlayer && !NewPlayer->GetPawn())
@@ -40,9 +48,9 @@ void ALobbyGameMode::Logout(AController* Exiting)
 {
 	Super::Logout(Exiting);
 
-	// Manually update player list after logout
-	if (auto PM = Cast<AYiSanPlayerListManager>(UGameplayStatics::GetActorOfClass(GetWorld(), AYiSanPlayerListManager::StaticClass())))
+	// Update player list after logout via GameState
+	if (AYisanGameState* GS = GetWorld()->GetGameState<AYisanGameState>())
 	{
-		PM->BroadcastPlayerList();
+		GS->UpdatePlayerList();
 	}
 }

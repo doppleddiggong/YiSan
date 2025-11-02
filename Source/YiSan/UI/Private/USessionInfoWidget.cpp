@@ -2,7 +2,7 @@
 
 
 #include "USessionInfoWidget.h"
-#include "UNetworkGameInstanceSubsystem.h"
+#include "UYisanOnlineSystem.h"
 #include "Components/Button.h"
 #include "Components/TextBlock.h"
 
@@ -21,5 +21,5 @@ void USessionInfoWidget::SetSessionInfo(int32 index, FString sessionName)
 
 void USessionInfoWidget::OnClickJoin()
 {
-	UNetworkGameInstanceSubsystem::Get(GetWorld())->JoinOtherSession(sessionIndex);
+	UYisanOnlineSystem::Get(GetWorld())->JoinOtherSession(sessionIndex);
 }

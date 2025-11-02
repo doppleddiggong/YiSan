@@ -4,7 +4,7 @@
 #include "UPlayerWidget.h"
 
 #include "AYiSanPlayerState.h"
-#include "UNetworkGameInstanceSubsystem.h"
+#include "UYisanOnlineSystem.h"
 #include "Engine/GameInstance.h"
 #include "Components/VerticalBox.h" 
 #include "Blueprint/WidgetTree.h"
@@ -26,11 +26,11 @@ void UPlayerWidget::NativeConstruct()
     // Get the Network Game Instance Subsystem
     if (UGameInstance* GameInstance = GetGameInstance())
     {
-        if (UNetworkGameInstanceSubsystem* NetworkSubsystem = GameInstance->GetSubsystem<UNetworkGameInstanceSubsystem>())
+        if (UYisanOnlineSystem* NetworkSubsystem = GameInstance->GetSubsystem<UYisanOnlineSystem>())
         {
             PRINTLOG(TEXT("UPlayerWidget found the NetworkSubsystem!"));
             NetworkSubsystem->OnPlayerListUpdated.AddUObject(this, &UPlayerWidget::OnPlayerListUpdated);
-            NetworkSubsystem->RequestPlayerListRefresh();
+            NetworkSubsystem->RequestRefreshPlayerList();
         }
     }
     else
