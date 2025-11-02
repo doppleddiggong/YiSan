@@ -15,26 +15,29 @@ class YISAN_API AYiSanPlayerListManager : public AActor
 
 public:
     AYiSanPlayerListManager();
-    FOnPlayerListUpdated OnPlayerListUpdated;
-
-    UFUNCTION(BlueprintCallable)
-    void RequestRefresh(); // Client-side call to request refresh from server
-    UFUNCTION(Server, Reliable)
-    void ServerRPC_RequestRefresh(); // Server-side implementation
-
-    TArray<FString> GetPlayerList() const { return PlayerList; };
-
+    
 protected:
     virtual void BeginPlay() override;
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
+public:
+    void BroadcastPlayerList();
+
+    UFUNCTION(Server, Reliable)
+    void ServerRPC_UpdatePlayerList();
+
+    UFUNCTION(BlueprintCallable)
+    void RequestRefresh();
+
+    TArray<FString> GetPlayerList() const { return PlayerList; };
+
+public:
+    FOnPlayerListUpdated OnPlayerListUpdated;
+    
 private:
     UPROPERTY(ReplicatedUsing = OnRep_PlayerList)
     TArray<FString> PlayerList;
 
     UFUNCTION()
     void OnRep_PlayerList();
-
-public:
-    void UpdatePlayerListAndBroadcast();
 };

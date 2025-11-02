@@ -214,7 +214,7 @@ void APlayerControl::ServerRPC_SetPlayerNickname_Implementation(const FString& N
             // 닉네임이 설정된 직후, PlayerListManager를 찾아 목록 업데이트를 요청합니다.
             if (AYiSanPlayerListManager* PlayerListManager = Cast<AYiSanPlayerListManager>(UGameplayStatics::GetActorOfClass(GetWorld(), AYiSanPlayerListManager::StaticClass())))
             {
-                PlayerListManager->UpdatePlayerListAndBroadcast();
+                PlayerListManager->BroadcastPlayerList();
             }
         }
     }

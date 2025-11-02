@@ -20,7 +20,7 @@ class YISAN_API ALobbyGameMode : public AGameModeBase
 
 public:
 	ALobbyGameMode();
-	void BeginPlay();
+	virtual void BeginPlay() override;
 
 	// ========================================
 	// Overrides
@@ -33,41 +33,4 @@ public:
 	/// @brief 플레이어가 로그아웃할 때 호출됩니다.
 	/// @param Exiting 로그아웃하는 플레이어 컨트롤러
 	virtual void Logout(AController* Exiting) override;
-
-	// ========================================
-	// Lobby Settings
-	// ========================================
-
-	/// @brief 난입 허용 여부 (항상 true로 설정)
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Lobby")
-	bool bAllowJoinInProgress = true;
-
-	/// @brief 최대 플레이어 수
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Lobby")
-	int32 MaxPlayers = 4;
-
-	// ========================================
-	// Lobby State
-	// ========================================
-
-	FOnPlayerLoggedIn OnPlayerLoggedIn;
-	FOnPlayerLoggedOut OnPlayerLoggedOut;
-
-protected:
-	UPROPERTY()
-	class AYiSanPlayerListManager* PlayerListManager;
-
-	/// @brief 현재 로비에 있는 플레이어 수를 반환합니다.
-	/// @return 현재 플레이어 수
-	UFUNCTION(BlueprintPure, Category="Lobby")
-	int32 GetCurrentPlayerCount() const;
-
-	/// @brief 로비가 가득 찼는지 확인합니다.
-	/// @return 로비 풀 여부
-	UFUNCTION(BlueprintPure, Category="Lobby")
-	bool IsLobbyFull() const;
-
-private:
-	/// @brief 현재 로비에 있는 플레이어 수
-	int32 CurrentPlayerCount = 0;
 };

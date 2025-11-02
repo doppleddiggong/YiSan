@@ -150,7 +150,9 @@ void UNetworkGameInstanceSubsystem::OnCreateSessionComplete(FName sessionName, b
             DM->ShowToast(FString::Printf( TEXT("세션 : %s 성공"), *sessionName.ToString()));
 
         // Seamless Travel을 사용하여 클라이언트 연결 유지
+        PRINTLOG(TEXT("[CreateSession] ServerTravel to StartLevel - Current Map: %s"), *GetWorld()->GetMapName());
         GetWorld()->ServerTravel(TEXT("/Game/CustomContents/Maps/StartLevel?listen"), true);
+        PRINTLOG(TEXT("[CreateSession] ServerTravel called - Waiting for map transition..."));
         
         // // 호스트만 StartLevel로 이동 (ClientTravel)
         // // 게스트는 JoinSession을 통해서만 접속 가능
@@ -277,7 +279,7 @@ void UNetworkGameInstanceSubsystem::SetPlayerNickname(const FString& InName)
             {
                 if (PlayerListManager)
                 {
-                    PlayerListManager->UpdatePlayerListAndBroadcast();
+                    PlayerListManager->BroadcastPlayerList();
                 }
             }, 0.2f, false);
         }

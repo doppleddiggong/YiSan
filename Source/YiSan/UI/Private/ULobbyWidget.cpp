@@ -53,10 +53,19 @@ void ULobbyWidget::NativeConstruct()
 		Btn_JoinByIp->OnClicked.AddDynamic(this, &ULobbyWidget::OnClickJoinByIpButton);
 	}
 
-	
+
 	UNetworkGameInstanceSubsystem::Get(GetWorld())->onFindComplete.BindUObject(this, &ULobbyWidget::OnFindComplete);
 
-	PRINTLOG(TEXT("[LobbyWidget] NativeConstruct - Widget initialized"));
+	// 저장된 닉네임이 있으면 메인 화면으로 자동 이동
+	if (UNetworkGameInstanceSubsystem* NetSub = UNetworkGameInstanceSubsystem::Get(GetWorld()))
+	{
+		FString SavedNickname = NetSub->GetPlayerNickname();
+		if (!SavedNickname.IsEmpty() && widgetSwitcher)
+		{
+			// 닉네임이 저장되어 있으면 메인 메뉴(Host/Join 선택 화면)로 이동
+			widgetSwitcher->SetActiveWidgetIndex(1);
+		}
+	}
 }
 
 void ULobbyWidget::NativeDestruct()

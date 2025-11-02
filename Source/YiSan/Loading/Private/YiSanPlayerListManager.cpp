@@ -14,14 +14,16 @@
 AYiSanPlayerListManager::AYiSanPlayerListManager()
 {
     bReplicates = true;
-    bAlwaysRelevant = true; // 이 줄을 추가합니다.          
-    SetReplicatingMovement(false);
+    bAlwaysRelevant = true;
     PrimaryActorTick.bCanEverTick = false;
+
+    SetReplicatingMovement(false);
 }
 
 void AYiSanPlayerListManager::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+    
     DOREPLIFETIME(AYiSanPlayerListManager, PlayerList);
 }
 
@@ -29,29 +31,24 @@ void AYiSanPlayerListManager::BeginPlay()
 {
     Super::BeginPlay();
 
-    PRINTLOG(TEXT("AYiSanPlayerListManager::BeginPlay - HasAuthority: %s"), HasAuthority() ? TEXT("true") : TEXT("false"));
-
-    // Register this PlayerListManager with the GameInstance Subsystem
-    if (UGameInstance* GameInstance = GetGameInstance())
+    if (auto GI = GetGameInstance())
     {
-        if (UNetworkGameInstanceSubsystem* NetworkSubsystem = GameInstance->GetSubsystem<UNetworkGameInstanceSubsystem>())
+        if (auto NetworkSubsystem = GI->GetSubsystem<UNetworkGameInstanceSubsystem>())
         {
-            PRINTLOG(TEXT("AYiSanPlayerListManager::BeginPlay - Registering with NetworkSubsystem"));
             NetworkSubsystem->SetPlayerListManager(this);
         }
     }
-    // Do nothing on BeginPlay, wait for external trigger
 }
 
-void AYiSanPlayerListManager::UpdatePlayerListAndBroadcast()
+void AYiSanPlayerListManager::BroadcastPlayerList()
 {
-    if (!HasAuthority()) return;
+    if (!HasAuthority())
+        return;
 
     AGameStateBase* GameState = GetWorld()->GetGameState();
     if (!GameState)
         return;
 
-    // PlayerArray를 PlayerIndex 기준으로 정렬
     GameState->PlayerArray.Sort([](const APlayerState& A, const APlayerState& B)
     {
         const AYiSanPlayerState* PSA = Cast<const AYiSanPlayerState>(&A);
@@ -66,73 +63,54 @@ void AYiSanPlayerListManager::UpdatePlayerListAndBroadcast()
         return PSA->PlayerIndex < PSB->PlayerIndex;
     });
     
-    TArray<FString> CurrentPlayerInfo;
+    TArray<FString> PlayerInfoList;
     
     for (int32 i = 0; i < GameState->PlayerArray.Num(); ++i)
     {
-        APlayerState* ps = GameState->PlayerArray[i];
-        if (AYiSanPlayerState* YiSanPS = Cast<AYiSanPlayerState>(ps))
+        if (auto PS = Cast<AYiSanPlayerState>(GameState->PlayerArray[i]))
         {
-            APlayerController* PC = GetWorld()->GetFirstPlayerController(); 
-            AYiSanPlayerState* LocalPS = PC ? PC->GetPlayerState<AYiSanPlayerState>() : nullptr;
-            
-            FString ParseString = FString::Printf(TEXT("%d:%s"), YiSanPS->PlayerIndex, *YiSanPS->Nickname);
- 
-            CurrentPlayerInfo.Add(ParseString);
+            PlayerInfoList.Add(FString::Printf(TEXT("%d:%s"), PS->PlayerIndex, *PS->Nickname));
         }
     }
 
 
-    PlayerList = CurrentPlayerInfo;
-    PRINTLOG(TEXT("AYiSanPlayerListManager: PlayerList updated. Current players: %s"), *FString::Join(PlayerList, TEXT(", ")));
+    PlayerList = PlayerInfoList;
+    PRINTLOG(TEXT("AYiSanPlayerListManager: PlayerList updated. Current players: %s"),
+        *FString::Join(PlayerList, TEXT(", ")));
+
     OnRep_PlayerList();
 }
 
 void AYiSanPlayerListManager::OnRep_PlayerList()
 {
-    PRINTLOG(TEXT("AYiSanPlayerListManager::OnRep_PlayerList - PlayerList replicated with %d players"), PlayerList.Num());
-
-    // On clients, notify via NetworkSubsystem if available
     if (!HasAuthority())
     {
-        if (UGameInstance* GameInstance = GetGameInstance())
+        if (auto GI = GetGameInstance())
         {
-            if (UNetworkGameInstanceSubsystem* NetworkSubsystem = GameInstance->GetSubsystem<UNetworkGameInstanceSubsystem>())
+            if (auto NetworkSubsystem = GI->GetSubsystem<UNetworkGameInstanceSubsystem>())
             {
-                PRINTLOG(TEXT("AYiSanPlayerListManager::OnRep_PlayerList - Notifying NetworkSubsystem (Client)"));
                 NetworkSubsystem->OnPlayerListUpdated.Broadcast(this->PlayerList);
-            }
-            else
-            {
-                PRINTLOG(TEXT("AYiSanPlayerListManager::OnRep_PlayerList - NetworkSubsystem not available yet (Client)"));
             }
         }
     }
 
-    // Also broadcast directly for any local subscribers
-    PRINTLOG(TEXT("AYiSanPlayerListManager::OnRep_PlayerList - Broadcasting to direct delegates"));
     OnPlayerListUpdated.Broadcast(this->PlayerList);
 }
 
 void AYiSanPlayerListManager::RequestRefresh()
 {
-    PRINTLOG(TEXT("AYiSanPlayerListManager::RequestRefresh - HasAuthority: %s"), HasAuthority() ? TEXT("true") : TEXT("false"));
-
-    // If on client, send RPC to server to refresh
-    if (!HasAuthority())
+    if (HasAuthority())
     {
-        PRINTLOG(TEXT("AYiSanPlayerListManager::RequestRefresh - Client sending ServerRPC_RequestRefresh"));
-        ServerRPC_RequestRefresh();
+        BroadcastPlayerList();
     }
-    else // If on server, just update the list
+    else
     {
-        PRINTLOG(TEXT("AYiSanPlayerListManager::RequestRefresh - Server updating player list directly"));
-        UpdatePlayerListAndBroadcast();
+        ServerRPC_UpdatePlayerList();
     }
 }
 
-void AYiSanPlayerListManager::ServerRPC_RequestRefresh_Implementation()
+void AYiSanPlayerListManager::ServerRPC_UpdatePlayerList_Implementation()
 {
     FTimerHandle TimerHandle;
-    GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AYiSanPlayerListManager::UpdatePlayerListAndBroadcast, 0.2f, false);
+    GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AYiSanPlayerListManager::BroadcastPlayerList, 0.2f, false);
 }
