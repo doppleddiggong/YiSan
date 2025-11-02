@@ -27,22 +27,22 @@ bool UBuildingDetailData::LoadBackgroundImage(TSoftObjectPtr<UTexture2D>& OutTex
 	return true;
 }
 
-// bool UBuildingDetailData::LoadBackgroundVideoSource(TSoftObjectPtr<UMediaSource>& OutMediaSource) const
-// {
-// 	if (BackgroundVideoSource.IsNull())
-// 	{
-// 		PRINTLOG(TEXT("BackgroundVideoSource is not set"));
-// 		return false;
-// 	}
-//
-// 	OutMediaSource = BackgroundVideoSource.LoadSynchronous();
-// 	if (!OutMediaSource)
-// 	{
-// 		PRINTLOG(TEXT("Failed to LoadBackgroundVideoSource"));
-// 		return false;
-// 	}
-// 	return true;
-// }
+bool UBuildingDetailData::LoadBackgroundVideoSource(TSoftObjectPtr<UMediaSource>& OutMediaSource) const
+{
+	if (BackgroundVideoSource.IsNull())
+	{
+		PRINTLOG(TEXT("BackgroundVideoSource is not set"));
+		return false;
+	}
+
+	OutMediaSource = BackgroundVideoSource.LoadSynchronous();
+	if (!OutMediaSource)
+	{
+		PRINTLOG(TEXT("Failed to LoadBackgroundVideoSource"));
+		return false;
+	}
+	return true;
+}
 
 bool UBuildingDetailData::LoadSoundCue(TSoftObjectPtr<USoundCue>& OutSoundCue) const
 {
