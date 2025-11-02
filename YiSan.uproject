@@ -130,6 +130,10 @@
 		{
 			"Name": "OnlineSubsystemSteam",
 			"Enabled": true
+		},
+		{
+			"Name": "SubtitlesAndClosedCaptions",
+			"Enabled": true
 		}
 	],
 	"PreBuildSteps":
