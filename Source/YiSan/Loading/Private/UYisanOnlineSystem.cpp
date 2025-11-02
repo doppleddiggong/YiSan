@@ -228,6 +228,5 @@ void UYisanOnlineSystem::JoinSessionByIp(const FString& IpAddress)
 void UYisanOnlineSystem::SetPlayerNickname(const FString& InName)
 {
     PRINTLOG(TEXT("SetPlayerNickname(%s)"), *PlayerNickname);
-
     PlayerNickname = InName;
 }
