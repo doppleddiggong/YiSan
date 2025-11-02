@@ -113,6 +113,7 @@ private:
     TObjectPtr<class AQuestManagerActor> QuestManager;
 
     EBuildingType QuestDisplayType = EBuildingType::None;
+    EBuildingType LastQuestTarget = EBuildingType::None;
 
     FTimerHandle UpdateTimerHandle;
     float SpectrumDisplayValue = 0.f;

@@ -206,15 +206,21 @@ void UTourStateSystem::Enter_TourExplain()
 	ExplainLineTimer = 0.0f;
 	PostExplainWaitTimer = 0.0f;
 	bExplainCompleted = false;
+	bSkipExplainDialog = false;
 
 	// explain 시작하는거 알리기 위함
 	if (OwnerDasan)
-	{
 		OwnerDasan->StartExplainAnim();
-	}
-
+	
 	auto building = OwnerDasan->GetCurTargetBuilding();
 
+	if (building && building->BuildingType == EBuildingType::Byeolju)
+	{
+		bSkipExplainDialog = true;
+		PRINTLOG(TEXT("[TourState] Byeolju detected - skipping explain narration"));
+		return;
+	}
+	
 	// 건물 정보 데이터 가져오기
 	FBuildingData BuildingData;
 	if (UGameDataManager::Get(GetWorld())->GetBuildingData(building->BuildingType, BuildingData))
@@ -240,12 +246,12 @@ void UTourStateSystem::Enter_TourEnd()
 {
 	PRINTLOG( TEXT("[TourState] Tour End - All waypoints completed"));
 
-	// 모든 투어 웨이포인트 완료
-	// 필요 시 추가 처리 (예: 다시 처음부터 시작, 또는 대기 상태)
-	if (auto GS = GetWorld()->GetGameState<AYisanGameState>())
-	{
-		GS->MulticastRPC_ToastMessage(TEXT("모든 투어 일정이 종료되었습니다"));
-	}
+	// // 모든 투어 웨이포인트 완료
+	// // 필요 시 추가 처리 (예: 다시 처음부터 시작, 또는 대기 상태)
+	// if (auto GS = GetWorld()->GetGameState<AYisanGameState>())
+	// {
+	// 	GS->MulticastRPC_ToastMessage(TEXT("모든 투어 일정이 종료되었습니다"));
+	// }
 }
 
 // Tick 함수들
@@ -468,20 +474,23 @@ void UTourStateSystem::Tick_TourExplain(float DeltaTime)
 				// 라인 간격이 지났으면 다음 라인 출력
 				if (ExplainLineTimer >= ExplainLineInterval)
 				{
-					// 첫 번째 라인일 때만 음성 재생
-					if (ExplainLineIndex == 0)
+					if (!bSkipExplainDialog)
 					{
-						StartExplainVoice();
-					}
+						// 첫 번째 라인일 때만 음성 재생
+						if (ExplainLineIndex == 0)
+						{
+							StartExplainVoice();
+						}
 
-					// 현재 라인 출력
-					FString CurrentLine = UCommonFunctionLibrary::RemoveLineBreaks( ExplainLines[ExplainLineIndex]);
-					PRINTLOG(TEXT("[TourState] 설명 출력 [%d/%d]: %s"), ExplainLineIndex + 1, ExplainLines.Num(), *CurrentLine);
-					
-					// 채팅으로 메시지 전송
-					OwnerDasan->SendDasanChatMessage(CurrentLine);
-					// 머리 위에도 표시
-					OwnerDasan->ShowExplainDialog(CurrentLine);
+						// 현재 라인 출력
+						FString CurrentLine = UCommonFunctionLibrary::RemoveLineBreaks( ExplainLines[ExplainLineIndex]);
+						PRINTLOG(TEXT("[TourState] 설명 출력 [%d/%d]: %s"), ExplainLineIndex + 1, ExplainLines.Num(), *CurrentLine);
+
+						// 채팅으로 메시지 전송
+						OwnerDasan->SendDasanChatMessage(CurrentLine);
+						// 머리 위에도 표시
+						OwnerDasan->ShowExplainDialog(CurrentLine);
+					}
 
 					// 다음 라인으로 이동
 					ExplainLineIndex++;

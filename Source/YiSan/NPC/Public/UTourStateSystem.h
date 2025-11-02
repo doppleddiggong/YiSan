@@ -101,7 +101,9 @@ private:
 	int32 ExplainLineIndex = 0;				// 현재 출력 중인 라인 인덱스
 	float ExplainLineTimer = 0.0f;			// 라인별 타이머
 	float PostExplainWaitTimer = 0.0f;		// 설명 완료 후 대기 타이머
+
 	bool bExplainCompleted = false;			// 설명 완료 여부
+	bool bSkipExplainDialog = false;		// 설명 대사를 건너뛸지 여부
 
 	FTimerHandle DebugTimerHandle;
 };
