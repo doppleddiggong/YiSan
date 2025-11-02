@@ -5,6 +5,7 @@
 #include "Net/UnrealNetwork.h"
 
 AYiSanPlayerState::AYiSanPlayerState()
+	: PlayerIndex(-1)
 {
 }
 

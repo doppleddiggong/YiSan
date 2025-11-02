@@ -15,6 +15,10 @@ void AYiSanGameMode::BeginPlay()
 	Super::BeginPlay();
 	bUseSeamlessTravel = true;
 
+	// Reset PlayerIndex counter when host server starts
+	AYisanGameState::NextPlayerIndex = 0;
+	PRINTLOG(TEXT("[GameMode] BeginPlay - Reset NextPlayerIndex to 0"));
+
 	if (HasAuthority())
 	{
 		if (AYisanGameState* State = GetGameState<AYisanGameState>())
@@ -47,8 +51,19 @@ void AYiSanGameMode::PostLogin(APlayerController* NewPlayer)
 	if (!PS)
 		return;
 
-	// Set PlayerIndex using GameState's static counter
-	PS->SetPlayerIndex(AYisanGameState::NextPlayerIndex++);
+	// Set PlayerIndex using GameState's static counter (only if not already set)
+	if (PS->PlayerIndex < 0)
+	{
+		int32 AssignedIndex = AYisanGameState::NextPlayerIndex++;
+		PS->SetPlayerIndex(AssignedIndex);
+		PRINTLOG(TEXT("[GameMode] Assigned PlayerIndex %d to %s (NextPlayerIndex is now %d)"),
+			AssignedIndex, *GetNameSafe(NewPlayer), AYisanGameState::NextPlayerIndex);
+	}
+	else
+	{
+		PRINTLOG(TEXT("[GameMode] PlayerIndex already set to %d for %s - skipping assignment"),
+			PS->PlayerIndex, *GetNameSafe(NewPlayer));
+	}
 
 	if (NewPlayer && !NewPlayer->GetPawn())
 	{

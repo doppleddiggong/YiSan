@@ -5,6 +5,7 @@
 #include "APlayerControl.h"
 #include "AYiSanPlayerState.h"
 #include "AYisanGameState.h"
+#include "GameLogging.h"
 
 #include "GameFramework/GameStateBase.h"
 #include "GameFramework/PlayerController.h"
@@ -19,17 +20,18 @@ ALobbyGameMode::ALobbyGameMode()
 void ALobbyGameMode::BeginPlay()
 {
 	Super::BeginPlay();
+
+	AYisanGameState::NextPlayerIndex = 0;
+	PRINTLOG(TEXT("[LobbyGameMode] BeginPlay - Reset NextPlayerIndex to 0"));
 }
 
 void ALobbyGameMode::PostLogin(APlayerController* NewPlayer)
 {
 	Super::PostLogin(NewPlayer);
 
-	// Set PlayerIndex for the new player
-	if (AYiSanPlayerState* PS = Cast<AYiSanPlayerState>(NewPlayer->PlayerState))
-	{
-		PS->SetPlayerIndex(AYisanGameState::NextPlayerIndex++);
-	}
+	// Lobby is local-only, PlayerIndex will be assigned when joining host server
+	PRINTLOG(TEXT("[LobbyGameMode] PostLogin - %s (PlayerIndex assignment skipped in lobby)"),
+		*GetNameSafe(NewPlayer));
 
 	// Pawn이 없으면 강제로 생성
 	if (NewPlayer && !NewPlayer->GetPawn())
