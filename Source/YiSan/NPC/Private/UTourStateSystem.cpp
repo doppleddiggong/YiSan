@@ -240,12 +240,12 @@ void UTourStateSystem::Enter_TourEnd()
 {
 	PRINTLOG( TEXT("[TourState] Tour End - All waypoints completed"));
 
-	// 모든 투어 웨이포인트 완료
-	// 필요 시 추가 처리 (예: 다시 처음부터 시작, 또는 대기 상태)
-	if (auto GS = GetWorld()->GetGameState<AYisanGameState>())
-	{
-		GS->MulticastRPC_ToastMessage(TEXT("모든 투어 일정이 종료되었습니다"));
-	}
+	// // 모든 투어 웨이포인트 완료
+	// // 필요 시 추가 처리 (예: 다시 처음부터 시작, 또는 대기 상태)
+	// if (auto GS = GetWorld()->GetGameState<AYisanGameState>())
+	// {
+	// 	GS->MulticastRPC_ToastMessage(TEXT("모든 투어 일정이 종료되었습니다"));
+	// }
 }
 
 // Tick 함수들
