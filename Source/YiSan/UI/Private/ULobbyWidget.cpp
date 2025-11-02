@@ -2,7 +2,7 @@
 
 #include "ULobbyWidget.h"
 
-#include "UNetworkGameInstanceSubsystem.h"
+#include "UYisanOnlineSystem.h"
 #include "APlayerControl.h"
 #include "UBroadcastManager.h"
 #include "GameLogging.h"
@@ -53,10 +53,19 @@ void ULobbyWidget::NativeConstruct()
 		Btn_JoinByIp->OnClicked.AddDynamic(this, &ULobbyWidget::OnClickJoinByIpButton);
 	}
 
-	
-	UNetworkGameInstanceSubsystem::Get(GetWorld())->onFindComplete.BindUObject(this, &ULobbyWidget::OnFindComplete);
 
-	PRINTLOG(TEXT("[LobbyWidget] NativeConstruct - Widget initialized"));
+	UYisanOnlineSystem::Get(GetWorld())->OnFindComplete.BindUObject(this, &ULobbyWidget::OnFindComplete);
+
+	// 저장된 닉네임이 있으면 메인 화면으로 자동 이동
+	if (UYisanOnlineSystem* NetSub = UYisanOnlineSystem::Get(GetWorld()))
+	{
+		FString SavedNickname = NetSub->GetPlayerNickname();
+		if (!SavedNickname.IsEmpty() && widgetSwitcher)
+		{
+			// 닉네임이 저장되어 있으면 메인 메뉴(Host/Join 선택 화면)로 이동
+			widgetSwitcher->SetActiveWidgetIndex(1);
+		}
+	}
 }
 
 void ULobbyWidget::NativeDestruct()
@@ -87,12 +96,15 @@ void ULobbyWidget::OnHostButtonClicked()
 	
 	PRINTLOG(TEXT("[LobbyWidget] OnHostButtonClicked - Map=%s, SessionName=%s, MaxPlayers=%d"), *MapName, *sessionName, MaxPlayers);
 
-	UNetworkGameInstanceSubsystem::Get(GetWorld())->CreateMySession(sessionName, sessionSize);
+	UYisanOnlineSystem::Get(GetWorld())->CreateMySession(sessionName, sessionSize);
 }
 
 void ULobbyWidget::OnFindButtonClicked()
 {
-	UNetworkGameInstanceSubsystem::Get(GetWorld())->FindOtherSession();
+	if (scrollSessionList)
+		scrollSessionList->ClearChildren();
+
+	UYisanOnlineSystem::Get(GetWorld())->FindOtherSession();
 	SetFindingText(TEXT("방 찾는 중..."));
 
 	ULoadingCircleManager::Get(GetWorld())->Show();
@@ -164,7 +176,7 @@ void ULobbyWidget::OnClickName()
 		return;
 	}
 
-	UNetworkGameInstanceSubsystem::Get(GetWorld())->SetPlayerNickname(EnteredName);
+	UYisanOnlineSystem::Get(GetWorld())->SetPlayerNickname(EnteredName);
 	UE_LOG(LogTemp, Log, TEXT("닉네임 저장됨: %s"), *EnteredName);
 
 	widgetSwitcher->SetActiveWidgetIndex(1);
@@ -179,7 +191,7 @@ void ULobbyWidget::OnClickJoinByIpButton()
 		{
 			if (UGameInstance* GameInstance = GetGameInstance())
 			{
-				if (UNetworkGameInstanceSubsystem* NetworkSubsystem = GameInstance->GetSubsystem<UNetworkGameInstanceSubsystem>())
+				if (UYisanOnlineSystem* NetworkSubsystem = GameInstance->GetSubsystem<UYisanOnlineSystem>())
 				{
 					NetworkSubsystem->JoinSessionByIp(IpAddress);
 				}

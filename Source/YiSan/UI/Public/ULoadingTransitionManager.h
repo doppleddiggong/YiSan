@@ -16,7 +16,10 @@ public:
 	DEFINE_LOCALPLAYER_SUBSYSTEM_GETTER_INLINE(ULoadingTransitionManager);
 
 	ULoadingTransitionManager();
-
+	
+	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
+	virtual void Deinitialize() override;
+	
 	/// @brief 로딩 화면을 표시합니다.
 	UFUNCTION(BlueprintCallable, Category = "Loading")
 	void ShowLoadingScreen();
@@ -26,10 +29,13 @@ public:
 	void HideLoadingScreen();
 
 private:
-	/// @brief 현재 월드에 맞는 위젯이 없으면 생성하여 GameViewport에 추가합니다.
 	void EnsureWidgetForWorld(UWorld* World);
-	
+
 	void FinalizeHide();
+
+	void HandlePreLoadMap(const struct FWorldContext& WorldContext, const FString& MapName);
+	void HandlePostLoadMap(UWorld* LoadedWorld);
+	bool DoesWorldBelongToLocalPlayer(const UWorld* World) const;
 
 	/// @brief 로딩 화면 제거를 지연 처리하기 위한 최소 노출 시간(초)
 	static constexpr double MinVisibleDurationSeconds = 1.5;
@@ -49,4 +55,9 @@ private:
 	bool bHideRequested = false;
 
 	FTimerHandle HideTimerHandle;
+
+	FDelegateHandle PreLoadMapHandle;
+	FDelegateHandle PostLoadMapHandle;
+
+	bool bIsShowing = false;
 };

@@ -7,7 +7,7 @@
 #include "AYisanGameState.h"
 #include "Engine/Texture.h"
 #include "Blueprint/WidgetTree.h"
-#include "UNetworkGameInstanceSubsystem.h" // Added include
+#include "UYisanOnlineSystem.h" // Added include
 
 void UStartWidget::NativeConstruct()
 {
@@ -39,10 +39,10 @@ void UStartWidget::NativeConstruct()
 		PRINTLOG(TEXT("UStartUI::playerList is NULL! Check WBP_StartUI binding."));
 	}
 	
-	if (auto NetworkSubsystem = UNetworkGameInstanceSubsystem::Get(GetWorld()) )
+	if (auto NetworkSubsystem = UYisanOnlineSystem::Get(GetWorld()) )
 	{
 		NetworkSubsystem->OnPlayerListUpdated.AddUObject(this, &UStartWidget::OnPlayerListUpdated);
-		NetworkSubsystem->RequestPlayerListRefresh();
+		NetworkSubsystem->RequestRefreshPlayerList();
 	}
 	else
 	{
@@ -105,15 +105,38 @@ void UStartWidget::UpdatePlayerList(const TArray<FString>& playerNames)
 	playerList->ClearChildren(); // Clear existing entries
 	playerList->SetVisibility(ESlateVisibility::Visible);
 
-	// ✅ 내 PlayerIndex 구하기
-	int32 LocalPlayerIndex = -1;
-	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	// // 내 PlayerIndex 구하기
+	// int32 LocalPlayerIndex = -1;
+	// if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	// {
+	// 	if (AYiSanPlayerState* LocalPS = PC->GetPlayerState<AYiSanPlayerState>())
+	// 	{
+	// 		LocalPlayerIndex = LocalPS->PlayerIndex;
+	// 		PRINTLOG(TEXT("LocalPlayerIndex = %d"), LocalPlayerIndex);
+	// 	}
+	// }
+
+	
+	// 내 PlayerIndex 구하기 - 분할 화면/멀티플레이 모두 지원되도록 Owning Player 기준으로 조회한다.
+	int32 LocalPlayerIndex = INDEX_NONE;
+	const AYiSanPlayerState* LocalPlayerState = GetOwningPlayerState<AYiSanPlayerState>();
+
+	if (!LocalPlayerState)
 	{
-		if (AYiSanPlayerState* LocalPS = PC->GetPlayerState<AYiSanPlayerState>())
+		if (const APlayerController* PlayerController = GetOwningPlayer())
 		{
-			LocalPlayerIndex = LocalPS->PlayerIndex;
-			PRINTLOG(TEXT("LocalPlayerIndex = %d"), LocalPlayerIndex);
+			LocalPlayerState = PlayerController->GetPlayerState<AYiSanPlayerState>();
 		}
+	}
+
+	if (LocalPlayerState)
+	{
+		LocalPlayerIndex = LocalPlayerState->PlayerIndex;
+		PRINTLOG(TEXT("LocalPlayerIndex = %d"), LocalPlayerIndex);
+	}
+	else
+	{
+		PRINTLOG(TEXT("Failed to resolve LocalPlayerIndex. Using INDEX_NONE."));
 	}
 	
 	for (const FString& PlayerInfoString : playerNames)

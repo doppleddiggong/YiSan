@@ -8,6 +8,8 @@
 #include "GameFramework/GameStateBase.h"
 #include "AYisanGameState.generated.h"
 
+DECLARE_MULTICAST_DELEGATE_OneParam(FOnPlayerListUpdated, const TArray<FString>& /* PlayerNames */);
+
 UCLASS()
 class YISAN_API AYisanGameState : public AGameStateBase
 {
@@ -18,6 +20,7 @@ public:
 
 protected:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+	virtual void BeginPlay() override;
 
 public:
 	UFUNCTION(NetMulticast, Reliable)
@@ -45,10 +48,38 @@ public:
 	/** @brief 현재 퀘스트 매니저를 반환합니다. */
 	class AQuestManagerActor* GetQuestManager() const { return QuestManager; }
 
+	// ========================================
+	// Player List Management
+	// ========================================
+
+	/** @brief 다음 플레이어 인덱스 (전역적으로 증가) */
+	static int32 NextPlayerIndex;
+
+	/** @brief 플레이어 목록을 업데이트하고 브로드캐스트합니다. (서버 전용) */
+	UFUNCTION(BlueprintCallable, Category="PlayerList")
+	void UpdatePlayerList();
+
+	/** @brief 플레이어 목록 업데이트를 요청합니다. (클라이언트/서버 모두) */
+	UFUNCTION(BlueprintCallable, Category="PlayerList")
+	void RequestRefreshPlayerList();
+
+	/** @brief 현재 플레이어 목록을 반환합니다. */
+	UFUNCTION(BlueprintCallable, Category="PlayerList")
+	TArray<FString> GetPlayerList() const { return PlayerList; }
+
+	/** @brief 플레이어 목록이 업데이트될 때 호출되는 델리게이트 */
+	FOnPlayerListUpdated OnPlayerListUpdated;
+
 private:
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_UpdatePlayerList();
+	
 	UFUNCTION()
 	void OnRep_QuestManager();
-	
+
+	UFUNCTION()
+	void OnRep_PlayerList();
+
 public:
 	UPROPERTY(Replicated, BlueprintReadOnly, Category="Tour")
 	TObjectPtr<class ADasanActor> DasanNPC;
@@ -56,4 +87,7 @@ public:
 private:
 	UPROPERTY(ReplicatedUsing=OnRep_QuestManager)
 	TObjectPtr<class AQuestManagerActor> QuestManager;
+
+	UPROPERTY(ReplicatedUsing=OnRep_PlayerList)
+	TArray<FString> PlayerList;
 };

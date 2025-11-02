@@ -10,14 +10,17 @@
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
 
-static int32 NextPlayerIndex = 0;
+void AYiSanGameMode::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)
+{
+	Super::InitGame(MapName, Options, ErrorMessage);
+
+	AYisanGameState::NextPlayerIndex = 0;
+}
 
 void AYiSanGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 	bUseSeamlessTravel = true;
-
-	NextPlayerIndex = 0;
 
 	if (HasAuthority())
 	{
@@ -39,21 +42,37 @@ void AYiSanGameMode::BeginPlay()
 	}
 }
 
+void AYiSanGameMode::HandleSeamlessTravelPlayer(AController*& C)
+{
+	Super::HandleSeamlessTravelPlayer(C);
+
+	if (APlayerController* PC = Cast<APlayerController>(C))
+	{
+		if (AYiSanPlayerState* PS = Cast<AYiSanPlayerState>(PC->PlayerState))
+		{
+			if (PS->PlayerIndex < 0)
+			{
+				int32 AssignedIndex = AYisanGameState::NextPlayerIndex++;
+				PS->SetPlayerIndex(AssignedIndex);
+			}
+		}
+	}
+}
+
 void AYiSanGameMode::PostLogin(APlayerController* NewPlayer)
 {
 	Super::PostLogin(NewPlayer);
 
-	PRINTLOG( TEXT("[GameMode] PostLogin - PC=%s Pawn=%s"),
-		*GetNameSafe(NewPlayer),
-		*GetNameSafe(NewPlayer->GetPawn()));
-
-	if (AYiSanPlayerState* PS = NewPlayer->GetPlayerState<AYiSanPlayerState>())
+	AYiSanPlayerState* PS = Cast<AYiSanPlayerState>(NewPlayer->PlayerState);
+	if (!PS)
 	{
-		if ( PS->PlayerIndex == -1)
-		{
-			// 누적 인덱스 방식 (안 흔들림)
-			PS->PlayerIndex = NextPlayerIndex++;
-		}
+		return;
+	}
+
+	if (PS->PlayerIndex < 0)
+	{
+		int32 AssignedIndex = AYisanGameState::NextPlayerIndex++;
+		PS->SetPlayerIndex(AssignedIndex);
 	}
 
 	if (NewPlayer && !NewPlayer->GetPawn())
@@ -64,11 +83,6 @@ void AYiSanGameMode::PostLogin(APlayerController* NewPlayer)
 		if (NewPawn)
 		{
 			NewPlayer->Possess(NewPawn);
-			PRINTLOG( TEXT("[GameMode] Forced possess: %s"), *GetNameSafe(NewPawn));
-		}
-		else
-		{
-			PRINTLOG( TEXT("[GameMode] SpawnDefaultPawnFor failed!"));
 		}
 	}
 
@@ -97,10 +111,5 @@ void AYiSanGameMode::StartTour()
 	if (auto State = GetGameState<AYisanGameState>() )
 	{
 		State->StartGlobalTour();
-		PRINTLOG( TEXT("[GameMode] Tour started via State"));
-	}
-	else
-	{
-		PRINTLOG( TEXT("[GameMode] State not found!"));
 	}
 }

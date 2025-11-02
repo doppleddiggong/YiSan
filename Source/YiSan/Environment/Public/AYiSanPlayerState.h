@@ -19,7 +19,8 @@ public:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 	
 	/** 서버에서 닉네임/인덱스 세팅 */
-	void SetPlayerInfo(const FString& InName, int32 InIndex);
+	void SetPlayerInfo(const FString& InName);
+	void SetPlayerIndex(const int32 InPlayerIndex);
 
 	FString GetResourcePath()
 	{

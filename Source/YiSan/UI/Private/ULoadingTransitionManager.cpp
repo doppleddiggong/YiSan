@@ -12,6 +12,9 @@
 #include "Engine/LocalPlayer.h"
 #include "Engine/World.h"
 #include "GameFramework/PlayerController.h"
+
+#include "Engine/Engine.h"
+// #include "UObject/CoreUObjectDelegates.h"
 #include "YiSan/YiSan.h"
 
 #define LOADINGTRANSITIONWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_LoadingTransition.WBP_LoadingTransition_C")
@@ -21,25 +24,46 @@ ULoadingTransitionManager::ULoadingTransitionManager()
 	TransitionWidgetClass = FComponentHelper::LoadClass<ULoadingTransitionWidget>(LOADINGTRANSITIONWIDGET_PATH);
 }
 
+void ULoadingTransitionManager::Initialize(FSubsystemCollectionBase& Collection)
+{
+	Super::Initialize(Collection);
+
+	if (!PreLoadMapHandle.IsValid())
+	{
+		PreLoadMapHandle = FCoreUObjectDelegates::PreLoadMapWithContext.AddUObject(
+				this,
+				&ULoadingTransitionManager::HandlePreLoadMap);
+	}
+
+	if (!PostLoadMapHandle.IsValid())
+	{
+		PostLoadMapHandle = FCoreUObjectDelegates::PostLoadMapWithWorld.AddUObject(
+				this,
+				&ULoadingTransitionManager::HandlePostLoadMap);
+	}
+}
+
+void ULoadingTransitionManager::Deinitialize()
+{
+	if (PreLoadMapHandle.IsValid())
+	{
+		FCoreUObjectDelegates::PreLoadMapWithContext.Remove(PreLoadMapHandle);
+		PreLoadMapHandle.Reset();
+	}
+
+	if (PostLoadMapHandle.IsValid())
+	{
+		FCoreUObjectDelegates::PostLoadMapWithWorld.Remove(PostLoadMapHandle);
+		PostLoadMapHandle.Reset();
+	}
+
+	Super::Deinitialize();
+}
+
 void ULoadingTransitionManager::EnsureWidgetForWorld(UWorld* World)
 {
 	if (World == nullptr || !World->IsGameWorld())
 		return;
-
-	const bool bIsValidWidget = IsValid(TransitionWidget);
-	const bool bSameWorld = bIsValidWidget && TransitionWidget->GetWorld() == World;
-	const bool bInViewport = bIsValidWidget && TransitionWidget->IsInViewport();
-
-	if (bIsValidWidget && bSameWorld && bInViewport)
-		return;
-
-	if (bIsValidWidget)
-	{
-		if (TransitionWidget->IsInViewport())
-			TransitionWidget->RemoveFromParent();
-
-		TransitionWidget = nullptr;
-	}
 
 	ULocalPlayer* LocalPlayer = GetLocalPlayer();
 	if (LocalPlayer == nullptr)
@@ -56,20 +80,32 @@ void ULoadingTransitionManager::EnsureWidgetForWorld(UWorld* World)
 		}
 	}
 
-	APlayerController* PC = LocalPlayer->GetPlayerController(World);
-	if (PC == nullptr)
-		return;
-
 	if (!TransitionWidgetClass)
 	{
 		PRINTLOG(TEXT("[LoadingTransitionManager] TransitionWidgetClass is null"));
 		return;
 	}
+	
+	APlayerController* PC = LocalPlayer->GetPlayerController(World);
+	if (PC == nullptr)
+		return;
 
-	if (auto NewWidget = CreateWidget<ULoadingTransitionWidget>(PC, TransitionWidgetClass))
+	if (!IsValid(TransitionWidget))
 	{
-		NewWidget->AddToGameViewport(GameLayer::Loading);
-		TransitionWidget = NewWidget;
+		if (auto NewWidget = CreateWidget<ULoadingTransitionWidget>(PC, TransitionWidgetClass))
+		{
+			NewWidget->AddToGameViewport(GameLayer::Loading);
+			TransitionWidget = NewWidget;
+		}
+	}
+	else
+	{
+		TransitionWidget->SetOwningLocalPlayer(LocalPlayer);
+
+		if (!TransitionWidget->IsInViewport())
+		{
+			TransitionWidget->AddToGameViewport(GameLayer::Loading);
+		}
 	}
 }
 
@@ -84,6 +120,8 @@ void ULoadingTransitionManager::ShowLoadingScreen()
 			DialogManager->HideToastImmediately();
 		}
 
+		bIsShowing = true;
+		
 		if (TransitionWidget)
 		{
 			if (!TransitionWidget->IsInViewport())
@@ -94,10 +132,9 @@ void ULoadingTransitionManager::ShowLoadingScreen()
 			TransitionWidget->SetVisibility(ESlateVisibility::Visible);
 
 			LatestReportedProgress = 0.0f;
-			TransitionWidget->SetVisibility(ESlateVisibility::Visible);
 			TransitionWidget->RefreshLoadingTip();
 
-			if (HideTimerHandle.IsValid())
+			if (World)
 			{
 				World->GetTimerManager().ClearTimer(HideTimerHandle);
 			}
@@ -167,8 +204,61 @@ void ULoadingTransitionManager::FinalizeHide()
 			TransitionWidget->RemoveFromParent();
 		}
 
-		TransitionWidget = nullptr;
+		TransitionWidget->SetVisibility(ESlateVisibility::Collapsed);
 	}
 
 	bHideRequested = false;
+	bIsShowing = false;
+}
+
+void ULoadingTransitionManager::HandlePreLoadMap(const FWorldContext& WorldContext, const FString& MapName)
+{
+	if (!bIsShowing && !bHideRequested)
+		return;
+
+	UWorld* World = WorldContext.World();
+	if (!World)
+		return;
+
+	if (!DoesWorldBelongToLocalPlayer(World))
+		return;
+
+	EnsureWidgetForWorld(World);
+
+	if (TransitionWidget)
+	{
+		TransitionWidget->SetVisibility(ESlateVisibility::Visible);
+	}
+}
+
+void ULoadingTransitionManager::HandlePostLoadMap(UWorld* LoadedWorld)
+{
+	if (!LoadedWorld)
+		return;
+
+	if (!bIsShowing && !bHideRequested)
+		return;
+
+	if (!DoesWorldBelongToLocalPlayer(LoadedWorld))
+		return;
+
+	EnsureWidgetForWorld(LoadedWorld);
+
+	if (TransitionWidget)
+	{
+		TransitionWidget->SetVisibility(ESlateVisibility::Visible);
+	}
+}
+
+bool ULoadingTransitionManager::DoesWorldBelongToLocalPlayer(const UWorld* World) const
+{
+	if (!World)
+		return false;
+
+	if (const ULocalPlayer* LocalPlayer = GetLocalPlayer())
+	{
+		return LocalPlayer->GetGameInstance() == World->GetGameInstance();
+	}
+
+	return false;
 }

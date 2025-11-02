@@ -4,7 +4,7 @@
 #include "UPlayerWidget.h"
 
 #include "AYiSanPlayerState.h"
-#include "UNetworkGameInstanceSubsystem.h"
+#include "UYisanOnlineSystem.h"
 #include "Engine/GameInstance.h"
 #include "Components/VerticalBox.h" 
 #include "Blueprint/WidgetTree.h"
@@ -26,11 +26,11 @@ void UPlayerWidget::NativeConstruct()
     // Get the Network Game Instance Subsystem
     if (UGameInstance* GameInstance = GetGameInstance())
     {
-        if (UNetworkGameInstanceSubsystem* NetworkSubsystem = GameInstance->GetSubsystem<UNetworkGameInstanceSubsystem>())
+        if (UYisanOnlineSystem* NetworkSubsystem = GameInstance->GetSubsystem<UYisanOnlineSystem>())
         {
             PRINTLOG(TEXT("UPlayerWidget found the NetworkSubsystem!"));
             NetworkSubsystem->OnPlayerListUpdated.AddUObject(this, &UPlayerWidget::OnPlayerListUpdated);
-            NetworkSubsystem->RequestPlayerListRefresh();
+            NetworkSubsystem->RequestRefreshPlayerList();
         }
     }
     else
@@ -53,15 +53,37 @@ void UPlayerWidget::UpdatePlayerList(const TArray<FString>& playerNames)
     PlayerListContainer->ClearChildren(); // Clear existing entries
     PlayerListContainer->SetVisibility(ESlateVisibility::Visible);
 
-    // ✅ 내 PlayerIndex 구하기
-    int32 LocalPlayerIndex = -1;
-    if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+    // // 내 PlayerIndex 구하기
+    // int32 LocalPlayerIndex = -1;
+    // if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+    // {
+    //     if (AYiSanPlayerState* LocalPS = PC->GetPlayerState<AYiSanPlayerState>())
+    //     {
+    //         LocalPlayerIndex = LocalPS->PlayerIndex;
+    //         PRINTLOG(TEXT("LocalPlayerIndex = %d"), LocalPlayerIndex);
+    //     }
+    // }
+    
+    // 내 PlayerIndex 구하기 - 분할 화면/멀티플레이 모두 지원되도록 Owning Player 기준으로 조회한다.
+    int32 LocalPlayerIndex = INDEX_NONE;
+    const AYiSanPlayerState* LocalPlayerState = GetOwningPlayerState<AYiSanPlayerState>();
+
+    if (!LocalPlayerState)
     {
-        if (AYiSanPlayerState* LocalPS = PC->GetPlayerState<AYiSanPlayerState>())
+        if (const APlayerController* PlayerController = GetOwningPlayer())
         {
-            LocalPlayerIndex = LocalPS->PlayerIndex;
-            PRINTLOG(TEXT("LocalPlayerIndex = %d"), LocalPlayerIndex);
+            LocalPlayerState = PlayerController->GetPlayerState<AYiSanPlayerState>();
         }
+    }
+
+    if (LocalPlayerState)
+    {
+        LocalPlayerIndex = LocalPlayerState->PlayerIndex;
+        PRINTLOG(TEXT("LocalPlayerIndex = %d"), LocalPlayerIndex);
+    }
+    else
+    {
+        PRINTLOG(TEXT("Failed to resolve LocalPlayerIndex. Using INDEX_NONE."));
     }
     
     for (const FString& PlayerInfoString : playerNames)

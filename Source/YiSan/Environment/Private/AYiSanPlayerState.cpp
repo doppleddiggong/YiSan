@@ -5,22 +5,10 @@
 #include "Net/UnrealNetwork.h"
 
 AYiSanPlayerState::AYiSanPlayerState()
+	: PlayerIndex(-1)
 {
-	PlayerIndex = -1;
 }
 
-void AYiSanPlayerState::SetPlayerInfo(const FString& InName, int32 InIndex)
-{
-	if (HasAuthority())
-	{
-		Nickname = InName;
-		// PlayerIndex = InIndex;
-	}
-}
-
-void AYiSanPlayerState::OnRep_Nickname() {}
-
-void AYiSanPlayerState::OnRep_PlayerIndex() {}
 
 void AYiSanPlayerState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
@@ -28,3 +16,23 @@ void AYiSanPlayerState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 	DOREPLIFETIME(AYiSanPlayerState, Nickname);
 	DOREPLIFETIME(AYiSanPlayerState, PlayerIndex);
 }
+
+void AYiSanPlayerState::SetPlayerInfo(const FString& InName)
+{
+	if (HasAuthority())
+	{
+		Nickname = InName;
+	}
+}
+
+void AYiSanPlayerState::SetPlayerIndex(const int32 InPlayerIndex)
+{
+	if (HasAuthority())
+	{
+		PlayerIndex = InPlayerIndex;
+	}
+}
+
+void AYiSanPlayerState::OnRep_Nickname() {}
+
+void AYiSanPlayerState::OnRep_PlayerIndex() {}
