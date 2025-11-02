@@ -125,6 +125,7 @@ void UYisanOnlineSystem::OnCreateSessionComplete(FName sessionName, bool success
         if (auto DM = UDialogManager::Get(GetWorld()))
             DM->ShowToast(FString::Printf( TEXT("세션 : %s 성공"), *sessionName.ToString()));
 
+        // Absolute travel for new session (Lobby -> StartLevel)
         GetWorld()->ServerTravel(TEXT("/Game/CustomContents/Maps/StartLevel?listen"), true);
     }
     else

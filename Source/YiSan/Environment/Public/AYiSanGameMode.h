@@ -16,8 +16,10 @@ class AYiSanGameMode : public AGameModeBase
     GENERATED_BODY()
 
 public:
+    virtual void InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage) override;
     virtual void BeginPlay() override;
     virtual void PostLogin(APlayerController* NewPlayer) override;
+    virtual void HandleSeamlessTravelPlayer(AController*& C) override;
 
 public:
     // 투어 시작 (블루프린트에서도 호출 가능)
