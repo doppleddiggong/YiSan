@@ -13,6 +13,9 @@
 #include "Engine/GameInstance.h"
 #include "TimerManager.h"
 
+// Static variable definition
+int32 AYisanGameState::NextPlayerIndex = 0;
+
 AYisanGameState::AYisanGameState()
 {
 }

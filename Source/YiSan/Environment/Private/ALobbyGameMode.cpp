@@ -9,8 +9,6 @@
 #include "GameFramework/GameStateBase.h"
 #include "GameFramework/PlayerController.h"
 
-static int32 NextPlayerIndex = 0;
-
 ALobbyGameMode::ALobbyGameMode()
 {
 	// 난입 허용 설정
@@ -21,7 +19,6 @@ ALobbyGameMode::ALobbyGameMode()
 void ALobbyGameMode::BeginPlay()
 {
 	Super::BeginPlay();
-	NextPlayerIndex = 0;
 }
 
 void ALobbyGameMode::PostLogin(APlayerController* NewPlayer)
@@ -31,7 +28,7 @@ void ALobbyGameMode::PostLogin(APlayerController* NewPlayer)
 	// Set PlayerIndex for the new player
 	if (AYiSanPlayerState* PS = Cast<AYiSanPlayerState>(NewPlayer->PlayerState))
 	{
-		PS->SetPlayerIndex(NextPlayerIndex++);
+		PS->SetPlayerIndex(AYisanGameState::NextPlayerIndex++);
 	}
 
 	// Pawn이 없으면 강제로 생성

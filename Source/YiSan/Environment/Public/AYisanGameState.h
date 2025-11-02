@@ -52,6 +52,9 @@ public:
 	// Player List Management
 	// ========================================
 
+	/** @brief 다음 플레이어 인덱스 (전역적으로 증가) */
+	static int32 NextPlayerIndex;
+
 	/** @brief 플레이어 목록을 업데이트하고 브로드캐스트합니다. (서버 전용) */
 	UFUNCTION(BlueprintCallable, Category="PlayerList")
 	void UpdatePlayerList();

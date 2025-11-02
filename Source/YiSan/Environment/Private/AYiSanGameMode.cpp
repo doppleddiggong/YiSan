@@ -10,14 +10,10 @@
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
 
-static int32 NextPlayerIndex = 0;
-
 void AYiSanGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 	bUseSeamlessTravel = true;
-
-	NextPlayerIndex = 0;
 
 	if (HasAuthority())
 	{
@@ -51,9 +47,8 @@ void AYiSanGameMode::PostLogin(APlayerController* NewPlayer)
 	if (!PS)
 		return;
 
-	// 현재 방에 몇 명 있는지 확인 (0부터 시작)
-	// int32 NewIndex = GameState->PlayerArray.Num() - 1;
-	PS->SetPlayerIndex(NextPlayerIndex++);
+	// Set PlayerIndex using GameState's static counter
+	PS->SetPlayerIndex(AYisanGameState::NextPlayerIndex++);
 
 	if (NewPlayer && !NewPlayer->GetPawn())
 	{
