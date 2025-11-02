@@ -101,6 +101,9 @@ void ULobbyWidget::OnHostButtonClicked()
 
 void ULobbyWidget::OnFindButtonClicked()
 {
+	if (scrollSessionList)
+		scrollSessionList->ClearChildren();
+
 	UYisanOnlineSystem::Get(GetWorld())->FindOtherSession();
 	SetFindingText(TEXT("방 찾는 중..."));
 
