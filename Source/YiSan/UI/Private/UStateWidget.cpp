@@ -123,9 +123,18 @@ void UStateWidget::OnAudioSpectrum(float Spectrum)
 
 void UStateWidget::OnUpdateQuest(EBuildingType InBuildingType)
 {
-    QuestDisplayType = InBuildingType;
+    if (!QuestTargetText || !QuestTargetImage || !QuestArrowImage)
+        return;
 
-    if (InBuildingType == EBuildingType::None)
+    if (InBuildingType != EBuildingType::None)
+        LastQuestTarget = InBuildingType;
+
+    const bool bDisplayLastByeolju = (InBuildingType == EBuildingType::None && LastQuestTarget == EBuildingType::Byeolju);
+    const EBuildingType DisplayType = bDisplayLastByeolju ? LastQuestTarget : InBuildingType;
+
+    QuestDisplayType = DisplayType;
+
+    if (DisplayType == EBuildingType::None)
     {
         QuestTargetText->SetText(FText::GetEmpty());
         QuestTargetText->SetVisibility(ESlateVisibility::Hidden);
@@ -135,13 +144,14 @@ void UStateWidget::OnUpdateQuest(EBuildingType InBuildingType)
     }
 
     auto GameDataManager = UGameDataManager::Get(GetWorld());
-    auto BuildingName  = GameDataManager->GetBuildingDataName(InBuildingType);
+    auto BuildingName  = GameDataManager->GetBuildingDataName(DisplayType);
     QuestTargetText->SetText(FText::FromString(BuildingName));
     QuestTargetText->SetVisibility(ESlateVisibility::Visible);
     QuestArrowImage->SetVisibility(ESlateVisibility::Visible);
+    QuestArrowImage->SetVisibility(bDisplayLastByeolju ? ESlateVisibility::Hidden : ESlateVisibility::Visible);
 
     FBuildingAssetData AssetData;
-    if ( GameDataManager->GetBuildingAssetData(InBuildingType, AssetData) )
+    if ( GameDataManager->GetBuildingAssetData(DisplayType, AssetData) )
     {
         UBuildingDetailData* DetailAsset = AssetData.BuildingDetailDataAsset.LoadSynchronous();
         if ( DetailAsset )
