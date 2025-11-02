@@ -12,6 +12,7 @@ public class LatteLibrary : ModuleRules
 			"Core",
 			"CoreUObject",
 			"Engine",
+			"MediaAssets"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[]
@@ -22,6 +23,7 @@ public class LatteLibrary : ModuleRules
 			"UMG",
 
 			"CoffeeLibrary",
+			
 		});
 		
 		PublicIncludePaths.AddRange(new string[] {
