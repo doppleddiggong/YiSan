@@ -1,11 +1,9 @@
-﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved.
 
 #include "UBuildingDetailData.h"
 #include "GameLogging.h"
+#include "MediaSource.h"
 #include "Sound/SoundCue.h"
-
-
-
 
 bool UBuildingDetailData::LoadThumbnailImage(TSoftObjectPtr<UTexture2D>& OutTexture) const
 {
@@ -24,6 +22,23 @@ bool UBuildingDetailData::LoadBackgroundImage(TSoftObjectPtr<UTexture2D>& OutTex
 	if (!OutTexture)
 	{
 		PRINTLOG(TEXT("Failed to LoadBackgroundImage"));
+		return false;
+	}
+	return true;
+}
+
+bool UBuildingDetailData::LoadBackgroundVideoSource(TSoftObjectPtr<UMediaSource>& OutMediaSource) const
+{
+	if (BackgroundVideoSource.IsNull())
+	{
+		PRINTLOG(TEXT("BackgroundVideoSource is not set"));
+		return false;
+	}
+
+	OutMediaSource = BackgroundVideoSource.LoadSynchronous();
+	if (!OutMediaSource)
+	{
+		PRINTLOG(TEXT("Failed to LoadBackgroundVideoSource"));
 		return false;
 	}
 	return true;
