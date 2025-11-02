@@ -30,6 +30,8 @@ public:
 	 */
 	bool LoadBackgroundImage(TSoftObjectPtr<class UTexture2D>& OutTexture) const;
 
+
+	bool LoadBackgroundVideoSource(TSoftObjectPtr<class UMediaSource>& OutMediaSource) const;
 	/**
 	 * @brief 사운드 큐를 동기적으로 로드합니다.
 	 * @param OutSoundCue 로드된 사운드 큐 에셋
@@ -45,7 +47,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=UI)
 	TSoftObjectPtr<class UTexture2D> BackgroundImage;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=UI)
+	TSoftObjectPtr<class UMediaSource> BackgroundVideoSource;
+	
 	// 사운드큐 (SoundWave는 큐 안에서 관리)
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Sound)
 	TSoftObjectPtr<class USoundCue> SoundCueAsset;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=UI)
+	bool UseMedia;
 };
