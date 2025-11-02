@@ -23,7 +23,6 @@ protected:
 	UFUNCTION()
 	void OnCloseButtonClicked();
 
-
 public:
 	/**
 	 * @brief 빌딩 타입에 따라 팝업의 정보를 업데이트합니다.
@@ -33,6 +32,19 @@ public:
 
 	void OnClose();
 
+private:
+	bool PlayMedia(const class UBuildingDetailData& DetailAsset);
+	void StopMedia();
+	void ClearMediaDelegates();
+
+	UFUNCTION()
+	void OnMediaOpened(FString OpenedUrl);
+
+	UFUNCTION()
+	void OnMediaOpenFailed(FString FailedUrl);
+
+	void DisplayBackgroundImage(const class UBuildingDetailData& DetailAsset);
+	
 protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextBlock> DetailTitleText;
@@ -47,8 +59,18 @@ protected:
 	TObjectPtr<class UImage> BackgroundImage;
 
 	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UImage> BackgroundMedia;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Media)
+	TObjectPtr<class UMediaPlayer> MediaPlayer;
+
+	
+	UPROPERTY(meta = (BindWidget))	
 	TObjectPtr<class UButton> CloseButton;
 
 private:
+	TObjectPtr<const class UBuildingDetailData> BuildDetailAsset;
+	bool bPendingMedia = false;
+	
 	EBuildingType BuildingType;
 };
