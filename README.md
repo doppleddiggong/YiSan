@@ -14,7 +14,7 @@
 <div align="left">
   🎥 <a href="https://youtu.be/BpUWFCA6qvw">프로토 구현</a><br>
   🎥 <a href="https://youtu.be/NPsN4mELEWA">알파 구현</a><br>
-  🎥 <a href="https://youtu.be/NPsN4mELEWA">베타 구현</a>
+  🎥 <a href="https://youtu.be/9KfzKO5UqXw">베타 구현</a>
 </div>
 
 
