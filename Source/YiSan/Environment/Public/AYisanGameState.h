@@ -8,8 +8,16 @@
 #include "GameFramework/GameStateBase.h"
 #include "AYisanGameState.generated.h"
 
+/**
+ * @file AYisanGameState.h
+ * @brief AYisanGameState 클래스를 선언합니다.
+ */
+
 DECLARE_MULTICAST_DELEGATE_OneParam(FOnPlayerListUpdated, const TArray<FString>& /* PlayerNames */);
 
+/**
+ * @brief @c AGameStateBase를 확장하여 퀘스트 조율과 복제 UI 데이터를 제공합니다.
+ */
 UCLASS()
 class YISAN_API AYisanGameState : public AGameStateBase
 {
@@ -23,20 +31,25 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-	UFUNCTION(NetMulticast, Reliable)
-	void MulticastRPC_ToastMessage(const FString& Message);
+        /** @brief 모든 클라이언트에 토스트 알림을 송출합니다. */
+        UFUNCTION(NetMulticast, Reliable)
+        void MulticastRPC_ToastMessage(const FString& Message);
 
-	UFUNCTION(NetMulticast, Reliable)
-	void MulticastRPC_UpdateQuestTarget(const EBuildingType InBuildingType);
+        /** @brief 활성 퀘스트 대상을 클라이언트 간에 동기화합니다. */
+        UFUNCTION(NetMulticast, Reliable)
+        void MulticastRPC_UpdateQuestTarget(const EBuildingType InBuildingType);
 
-	UFUNCTION(NetMulticast, Reliable)
-	void MulticastRPC_LoadingComplete();
+        /** @brief 초기 로딩이 완료되었음을 클라이언트에 알립니다. */
+        UFUNCTION(NetMulticast, Reliable)
+        void MulticastRPC_LoadingComplete();
 
-	UFUNCTION(Server, Reliable)
-	void ServerRPC_PlaySound(EGameSoundType SoundType);
-	
-	UFUNCTION(NetMulticast, Reliable)
-	void MulticastRPC_PlaySound(EGameSoundType SoundType);
+        /** @brief 공유 사운드 큐 재생을 서버에 요청합니다. */
+        UFUNCTION(Server, Reliable)
+        void ServerRPC_PlaySound(EGameSoundType SoundType);
+
+        /** @brief 모든 클라이언트에서 사운드 재생 지시를 실행합니다. */
+        UFUNCTION(NetMulticast, Reliable)
+        void MulticastRPC_PlaySound(EGameSoundType SoundType);
 	
 	// 투어 시작
 	UFUNCTION(BlueprintCallable, Category="Tour")
@@ -71,14 +84,17 @@ public:
 	FOnPlayerListUpdated OnPlayerListUpdated;
 
 private:
-	UFUNCTION(Server, Reliable)
-	void ServerRPC_UpdatePlayerList();
-	
-	UFUNCTION()
-	void OnRep_QuestManager();
+        /** @brief 권한 서버에 플레이어 목록 재구성을 요청합니다. */
+        UFUNCTION(Server, Reliable)
+        void ServerRPC_UpdatePlayerList();
 
-	UFUNCTION()
-	void OnRep_PlayerList();
+        /** @brief 퀘스트 매니저 참조가 클라이언트에 복제될 때 호출됩니다. */
+        UFUNCTION()
+        void OnRep_QuestManager();
+
+        /** @brief 복제된 플레이어 목록 배열이 변할 때 호출됩니다. */
+        UFUNCTION()
+        void OnRep_PlayerList();
 
 public:
 	UPROPERTY(Replicated, BlueprintReadOnly, Category="Tour")

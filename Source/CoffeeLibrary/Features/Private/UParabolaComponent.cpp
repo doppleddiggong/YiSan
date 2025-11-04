@@ -1,6 +1,6 @@
-/**
+﻿/**
  * @file UParabolaComponent.cpp
- * @brief UParabolaComponent 구현에 대한 Doxygen 주석을 제공합니다.
+ * @brief UParabolaComponent의 동작을 구현합니다.
  */
 #include "UParabolaComponent.h"
 #include "DrawDebugHelpers.h"

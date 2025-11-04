@@ -1,6 +1,6 @@
-/**
+﻿/**
  * @file FEaseHelper.h
- * @brief FEaseHelper 선언에 대한 Doxygen 주석을 제공합니다.
+ * @brief EEaseType 클래스를 선언합니다.
  */
 #pragma once
 

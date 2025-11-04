@@ -8,7 +8,15 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UYiSanLoading.generated.h"
 
+/**
+ * @file UYiSanLoading.h
+ * @brief UYiSanLoading 클래스를 선언합니다.
+ */
 
+
+/**
+ * @brief 이동 준비, 로딩 UI, 스트리밍 진행 폴링을 관리하는 서브시스템입니다.
+ */
 UCLASS()
 class YISAN_API UYiSanLoading : public UGameInstanceSubsystem
 {
@@ -26,10 +34,13 @@ public:
         MAX         UMETA(Hidden)
     };
     
+    /** @brief 선택적 로딩 화면 오케스트레이션과 함께 서버 이동을 시작합니다. */
     void InitSystem(const FString& InURL, const bool bAbsolute, const bool bUseLoadingScreen = true);
+    /** @brief 서버가 트리거한 클라이언트 이동을 준비합니다. */
     void PrepareClientTravel(const FString& InURL, const ETravelType TravelType, const bool bSeamlessTravel);
 
     // 클라이언트 측 로딩 완료 여부 확인
+    /** @brief 추적 중인 모든 로딩 단계가 완료되었는지 여부를 반환합니다. */
     bool IsLoadingComplete() const;
 
 private:

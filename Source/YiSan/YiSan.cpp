@@ -1,5 +1,9 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+﻿// Copyright Epic Games, Inc. All Rights Reserved.
 
+/**
+ * @file YiSan.cpp
+ * @brief YiSan 게임 모듈의 기본 진입점을 구현합니다.
+ */
 #include "YiSan.h"
 #include "Modules/ModuleManager.h"
 

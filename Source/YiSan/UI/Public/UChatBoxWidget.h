@@ -2,6 +2,10 @@
 
 #pragma once
 
+/**
+ * @file UChatBoxWidget.h
+ * @brief UChatBoxWidget 클래스를 선언합니다.
+ */
 #include "CoreMinimal.h"
 #include "NetworkData.h"
 #include "Blueprint/UserWidget.h"

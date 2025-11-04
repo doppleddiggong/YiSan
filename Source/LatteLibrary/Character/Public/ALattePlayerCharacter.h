@@ -2,7 +2,7 @@
 
 /**
  * @file APlayerActor.h
- * @brief Declares the player-controlled character actor.
+ * @brief 플레이어가 조종하는 캐릭터 액터를 선언합니다.
  */
 
 #pragma once
@@ -13,7 +13,7 @@
 #include "ALattePlayerCharacter.generated.h"
 
 /**
- * @brief Main character driven directly by the player.
+ * @brief 플레이어가 직접 조종하는 주인공 캐릭터입니다.
  * @details Extends AGameCharacter with player-specific input and camera handling.
  * @ingroup Character
  */

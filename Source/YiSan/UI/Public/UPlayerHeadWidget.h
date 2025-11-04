@@ -2,6 +2,10 @@
 
 #pragma once
 
+/**
+ * @file UPlayerHeadWidget.h
+ * @brief UPlayerHeadWidget 클래스를 선언합니다.
+ */
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/Image.h"

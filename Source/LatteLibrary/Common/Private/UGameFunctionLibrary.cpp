@@ -1,6 +1,6 @@
-/**
+﻿/**
  * @file UGameFunctionLibrary.cpp
- * @brief UGameFunctionLibrary 구현에 대한 Doxygen 주석을 제공합니다.
+ * @brief UGameFunctionLibrary의 동작을 구현합니다.
  */
 #include "UGameFunctionLibrary.h"
 

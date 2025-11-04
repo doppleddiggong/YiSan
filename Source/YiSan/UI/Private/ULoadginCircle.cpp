@@ -1,6 +1,10 @@
 ﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 
+/**
+ * @file ULoadginCircle.cpp
+ * @brief ULoadginCircle의 동작을 구현합니다.
+ */
 #include "ULoadginCircle.h"
 
 #include "GameLogging.h"

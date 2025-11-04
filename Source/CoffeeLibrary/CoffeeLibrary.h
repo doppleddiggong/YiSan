@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 
 /**
@@ -11,5 +11,5 @@
 
 /**
  * @file CoffeeLibrary.h
- * @brief CoffeeLibrary 모듈의 기본 헤더입니다.
+ * @brief YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.
  */

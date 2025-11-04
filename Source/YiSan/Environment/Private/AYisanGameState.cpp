@@ -13,13 +13,20 @@
 #include "Engine/GameInstance.h"
 #include "TimerManager.h"
 
+/**
+ * @file AYisanGameState.cpp
+ * @brief AYisanGameState의 동작을 구현합니다.
+ */
+
 // Static variable definition
 int32 AYisanGameState::NextPlayerIndex = 0;
 
+/** @brief 게임 상태의 기본 생성자입니다. */
 AYisanGameState::AYisanGameState()
 {
 }
 
+/** @brief 플레이 시작 시 온라인 서브시스템에 게임 상태를 등록합니다. */
 void AYisanGameState::BeginPlay()
 {
 	Super::BeginPlay();
@@ -34,6 +41,7 @@ void AYisanGameState::BeginPlay()
 	}
 }
 
+/** @brief 엔진에 복제 상태 멤버를 선언합니다. */
 void AYisanGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
@@ -43,6 +51,7 @@ void AYisanGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 	DOREPLIFETIME(AYisanGameState, PlayerList);
 }
 
+/** @brief 연결된 모든 클라이언트에 토스트 메시지를 표시합니다. */
 void AYisanGameState::MulticastRPC_ToastMessage_Implementation(const FString& Message)
 {
 	// 각 클라이언트에서 실행됨                                                                                                                                         
@@ -52,6 +61,7 @@ void AYisanGameState::MulticastRPC_ToastMessage_Implementation(const FString& Me
 	}
 }
 
+/** @brief 퀘스트 목표 업데이트를 모든 클라이언트에 전파합니다. */
 void AYisanGameState::MulticastRPC_UpdateQuestTarget_Implementation(const EBuildingType InBuildingType)
 {
 	if (auto PC = Cast<APlayerControl>(GetWorld()->GetFirstPlayerController()))
@@ -60,6 +70,7 @@ void AYisanGameState::MulticastRPC_UpdateQuestTarget_Implementation(const EBuild
 	}
 }
 
+/** @brief 레벨 로딩 시퀀스가 완료되었음을 컨트롤러에 알립니다. */
 void AYisanGameState::MulticastRPC_LoadingComplete_Implementation()
 {
 	if (!ensureMsgf(GetWorld(), TEXT("MulticastRPC_NotifyLoadingComplete requires a valid world")))
@@ -76,6 +87,7 @@ void AYisanGameState::MulticastRPC_LoadingComplete_Implementation()
 	}
 }
 
+/** @brief 공유 오디오 큐 재생을 위한 서버 진입점입니다. */
 void AYisanGameState::ServerRPC_PlaySound_Implementation(EGameSoundType SoundType)
 {
 	if (HasAuthority())
@@ -84,6 +96,7 @@ void AYisanGameState::ServerRPC_PlaySound_Implementation(EGameSoundType SoundTyp
 	}
 }
 
+/** @brief 각 클라이언트에서 복제된 사운드 큐를 재생합니다. */
 void AYisanGameState::MulticastRPC_PlaySound_Implementation(EGameSoundType SoundType)
 {
 	if (UGameSoundManager* SoundManager = UGameSoundManager::Get(GetWorld()))
@@ -92,6 +105,7 @@ void AYisanGameState::MulticastRPC_PlaySound_Implementation(EGameSoundType Sound
 	}
 }
 
+/** @brief 공유 투어 시퀀스를 시작하고 퀘스트 진행을 전개합니다. */
 void AYisanGameState::StartGlobalTour()
 {
 	if (!HasAuthority())
@@ -112,6 +126,7 @@ void AYisanGameState::StartGlobalTour()
 	DasanNPC->StartTour();
 }
 
+/** @brief 권한 측에서 퀘스트 매니저 액터를 설정합니다. */
 void AYisanGameState::SetQuestManager(AQuestManagerActor* InQuestManager)
 {
 	if (!HasAuthority())
@@ -123,6 +138,7 @@ void AYisanGameState::SetQuestManager(AQuestManagerActor* InQuestManager)
 	OnRep_QuestManager();
 }
 
+/** @brief 퀘스트 매니저 참조가 변경되면 UI 리스너를 갱신합니다. */
 void AYisanGameState::OnRep_QuestManager()
 {
 	if (QuestManager)
@@ -131,6 +147,7 @@ void AYisanGameState::OnRep_QuestManager()
 	}
 }
 
+/** @brief 연결된 플레이어의 복제 목록을 재구성합니다. */
 void AYisanGameState::UpdatePlayerList()
 {
 	if (!HasAuthority())
@@ -167,6 +184,7 @@ void AYisanGameState::UpdatePlayerList()
 	OnRep_PlayerList();
 }
 
+/** @brief 플레이어 목록이 클라이언트에서 갱신될 때 서브시스템과 델리게이트에 알립니다. */
 void AYisanGameState::OnRep_PlayerList()
 {
 	// Notify NetworkSubsystem on clients
@@ -185,6 +203,7 @@ void AYisanGameState::OnRep_PlayerList()
 	OnPlayerListUpdated.Broadcast(PlayerList);
 }
 
+/** @brief 필요 시 서버로 위임하여 플레이어 목록 새로고침을 요청합니다. */
 void AYisanGameState::RequestRefreshPlayerList()
 {
 	if (HasAuthority())
@@ -197,6 +216,7 @@ void AYisanGameState::RequestRefreshPlayerList()
 	}
 }
 
+/** @brief 경쟁 상태를 방지하기 위해 서버 권한에서 플레이어 목록 재구성을 지연시킵니다. */
 void AYisanGameState::ServerRPC_UpdatePlayerList_Implementation()
 {
 	FTimerHandle TimerHandle;

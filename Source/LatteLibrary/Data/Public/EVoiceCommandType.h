@@ -2,6 +2,11 @@
 
 #pragma once
 
+/**
+ * @file EVoiceCommandType.h
+ * @brief EVoiceCommandType 클래스를 선언합니다.
+ */
+
 UENUM(BlueprintType)
 enum class EVoiceCommandType : uint8
 {

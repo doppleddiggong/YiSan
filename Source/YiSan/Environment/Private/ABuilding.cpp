@@ -10,6 +10,12 @@
 #include "Components/BoxComponent.h"
 #include "YiSan/YiSan.h"
 
+/**
+ * @file ABuilding.cpp
+ * @brief ABuilding의 동작을 구현합니다.
+ */
+
+/** @brief 건물용 충돌 볼륨과 표시 메시를 설정합니다. */
 ABuilding::ABuilding()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -37,6 +43,7 @@ ABuilding::ABuilding()
 	LightPillarMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
 
+/** @brief 겹침 델리게이트를 바인딩하고 퀘스트 알림을 등록합니다. */
 void ABuilding::BeginPlay()
 {
 	Super::BeginPlay();
@@ -51,6 +58,15 @@ void ABuilding::BeginPlay()
 	BroadcastManager->OnUpdateQuest.AddDynamic(this, &ABuilding::OnUpdateQuest);
 }
 
+/**
+ * @brief 액터 겹침을 처리하여 퀘스트 및 브로드캐스트 매니저에 알립니다.
+ * @param OverlappedComp 겹침을 발생시킨 컴포넌트입니다.
+ * @param OtherActor 볼륨에 진입한 액터입니다.
+ * @param OtherComp 상대 액터에 속한 컴포넌트입니다.
+ * @param OtherBodyIndex 다중 바디 겹침 시 추가 바디 인덱스입니다.
+ * @param bFromSweep 겹침이 스윕에서 시작되었는지 여부를 나타냅니다.
+ * @param SweepResult 겹침 이벤트 중 포착된 히트 정보입니다.
+ */
 void ABuilding::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	// 자기 자신이나, OtherActor가 유효하지 않으면 무시
@@ -65,6 +81,7 @@ void ABuilding::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Othe
 	}
 }
 
+/** @brief 건물이 현재 퀘스트 목표가 되면 안내 기둥을 토글합니다. */
 void ABuilding::OnUpdateQuest(EBuildingType InBuildingType)
 {
 	bIsNextTargetBuilding = BuildingType == InBuildingType;

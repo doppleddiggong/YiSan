@@ -1,4 +1,8 @@
-﻿#include "UPlayerListItem.h"
+﻿/**
+ * @file UPlayerListItem.cpp
+ * @brief UPlayerListItem의 동작을 구현합니다.
+ */
+#include "UPlayerListItem.h"
 
 #include "Components/Image.h"
 #include "Components/TextBlock.h"

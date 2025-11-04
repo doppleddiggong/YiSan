@@ -1,4 +1,8 @@
 ﻿#pragma once
+/**
+ * @file EBuildingType.h
+ * @brief EBuildingType 클래스를 선언합니다.
+ */
 
 UENUM(BlueprintType)
 enum class EBuildingType : uint8

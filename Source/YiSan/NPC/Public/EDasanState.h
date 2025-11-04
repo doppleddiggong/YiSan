@@ -2,6 +2,10 @@
 
 #pragma once
 
+/**
+ * @file EDasanState.h
+ * @brief EDasanState 클래스를 선언합니다.
+ */
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
 #include "EDasanState.generated.h"

@@ -1,5 +1,9 @@
 ﻿#pragma once
 
+/**
+ * @file UPlayerWidget.h
+ * @brief UPlayerWidget 클래스를 선언합니다.
+ */
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/VerticalBox.h"

@@ -1,6 +1,6 @@
-/**
+﻿/**
  * @file EMontageType.h
- * @brief EMontageType 열거형에 대한 Doxygen 주석을 제공합니다.
+ * @brief EMontageType 클래스를 선언합니다.
  */
 #pragma once
 

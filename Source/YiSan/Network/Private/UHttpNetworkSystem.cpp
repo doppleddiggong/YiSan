@@ -1,8 +1,8 @@
-// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 /**
  * @file UHttpNetworkSystem.cpp
- * @brief UHttpNetworkSystem 구현에 대한 Doxygen 주석을 제공합니다.
+ * @brief UHttpNetworkSystem의 동작을 구현합니다.
  */
 
 #include "UHttpNetworkSystem.h"

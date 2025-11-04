@@ -7,7 +7,12 @@
 #include "AYiSanPlayerState.generated.h"
 
 /**
- * 
+ * @file AYiSanPlayerState.h
+ * @brief AYiSanPlayerState 클래스를 선언합니다.
+ */
+
+/**
+ * @brief @c APlayerState를 확장해 닉네임과 플레이어 인덱스를 복제합니다.
  */
 UCLASS()
 class YISAN_API AYiSanPlayerState : public APlayerState
@@ -15,14 +20,16 @@ class YISAN_API AYiSanPlayerState : public APlayerState
 	GENERATED_BODY()
 
 public:
-	AYiSanPlayerState();
-	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-	
-	/** 서버에서 닉네임/인덱스 세팅 */
-	void SetPlayerInfo(const FString& InName);
-	void SetPlayerIndex(const int32 InPlayerIndex);
+        AYiSanPlayerState();
+        virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
-	FString GetResourcePath()
+        /** @brief 권한 닉네임 값을 갱신합니다. */
+        void SetPlayerInfo(const FString& InName);
+        /** @brief UI 정렬에 사용할 권한 플레이어 인덱스를 설정합니다. */
+        void SetPlayerIndex(const int32 InPlayerIndex);
+
+        /** @brief 플레이어 인덱스를 기반으로 아이콘 경로를 결정합니다. */
+        FString GetResourcePath()
 	{
 		switch (PlayerIndex)
 		{
@@ -42,11 +49,13 @@ public:
 	}	
 	
 protected:
-	UFUNCTION()
-	void OnRep_Nickname();
+        /** @brief 닉네임이 클라이언트에서 변경될 때 호출됩니다. */
+        UFUNCTION()
+        void OnRep_Nickname();
 
-	UFUNCTION()
-	void OnRep_PlayerIndex();
+        /** @brief 플레이어 인덱스가 클라이언트에서 갱신될 때 호출됩니다. */
+        UFUNCTION()
+        void OnRep_PlayerIndex();
 
 public:
 	/** 닉네임 (로비에서 입력한 이름) */
