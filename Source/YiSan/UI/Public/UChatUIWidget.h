@@ -2,6 +2,10 @@
 
 #pragma once
 
+/**
+ * @file UChatUIWidget.h
+ * @brief UChatUIWidget 클래스를 선언합니다.
+ */
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "UChatUIWidget.generated.h"

@@ -1,7 +1,7 @@
-// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 /**
  * @file FComponentHelper.h
- * @brief FComponentHelper 선언에 대한 Doxygen 주석을 제공합니다.
+ * @brief FComponentHelper 구조체를 선언합니다.
  */
 #pragma once
 

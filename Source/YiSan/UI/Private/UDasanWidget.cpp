@@ -1,5 +1,9 @@
 ﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
+/**
+ * @file UDasanWidget.cpp
+ * @brief UDasanWidget의 동작을 구현합니다.
+ */
 #include "UDasanWidget.h"
 #include "ADasanActor.h"
 #include "GameLogging.h"

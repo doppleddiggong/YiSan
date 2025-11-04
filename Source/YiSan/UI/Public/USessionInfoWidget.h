@@ -2,6 +2,10 @@
 
 #pragma once
 
+/**
+ * @file USessionInfoWidget.h
+ * @brief USessionInfoWidget 클래스를 선언합니다.
+ */
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/TextBlock.h"

@@ -1,5 +1,9 @@
 ﻿#pragma once
 
+/**
+ * @file ADasanActor.h
+ * @brief ADasanActor 클래스를 선언합니다.
+ */
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "GameFramework/Pawn.h"

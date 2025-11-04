@@ -2,6 +2,10 @@
 
 #pragma once
 
+/**
+ * @file ULoadginCircle.h
+ * @brief ULoadginCircle 클래스를 선언합니다.
+ */
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "ULoadginCircle.generated.h"

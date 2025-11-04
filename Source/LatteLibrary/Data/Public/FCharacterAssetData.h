@@ -1,6 +1,6 @@
-/**
+﻿/**
  * @file FCharacterAssetData.h
- * @brief FCharacterAssetData 구조체에 대한 Doxygen 주석을 제공합니다.
+ * @brief UCharacterData 클래스를 선언합니다.
  */
 #pragma once
 

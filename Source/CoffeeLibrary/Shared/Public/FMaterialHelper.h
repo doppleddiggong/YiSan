@@ -1,8 +1,8 @@
-#pragma once
+﻿#pragma once
 
 /**
  * @file FMaterialHelper.h
- * @brief 머티리얼 인스턴스와 안전하게 상호작용하기 위한 헬퍼를 제공합니다.
+ * @brief FMaterialHelper 구조체를 선언합니다.
  */
 struct FMaterialHelper
 {

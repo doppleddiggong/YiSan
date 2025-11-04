@@ -16,6 +16,12 @@
 #include "Kismet/GameplayStatics.h"
 #include "YiSan/YiSan.h"
 
+/**
+ * @file UGPTContextSystem.cpp
+ * @brief UGPTContextSystem의 동작을 구현합니다.
+ */
+
+/** @brief 시스템이 주기적으로 컨텍스트 데이터를 갱신할 수 있도록 Tick을 설정합니다. */
 UGPTContextSystem::UGPTContextSystem()
 {
 	PrimaryComponentTick.bCanEverTick = true;
@@ -23,6 +29,10 @@ UGPTContextSystem::UGPTContextSystem()
     TimeSinceLastCheck = 0.0f;       
 }
 
+/**
+ * @brief 소유 플레이어와 필요한 서브시스템으로 컴포넌트를 초기화합니다.
+ * @param InOwner GPT 컨텍스트 제공자를 보유한 플레이어 캐릭터입니다.
+ */
 void UGPTContextSystem::InitSystem(APlayerActor* InOwner)
 {
     this->Owner = InOwner;
@@ -30,6 +40,12 @@ void UGPTContextSystem::InitSystem(APlayerActor* InOwner)
     BroadcastManager = UBroadcastManager::Get(GetWorld());
 }
 
+/**
+ * @brief GPT 프롬프트를 위한 포커스 및 근접 데이터를 주기적으로 갱신합니다.
+ * @param DeltaTime 프레임 델타(초)입니다.
+ * @param TickType 컴포넌트 업데이트 시점을 설명하는 Tick 컨텍스트입니다.
+ * @param ThisTickFunction 엔진 Tick 관리를 위한 구조체입니다.
+ */
 void UGPTContextSystem::TickComponent(float DeltaTime, ELevelTick TickType,
                                       FActorComponentTickFunction* ThisTickFunction)
 {
@@ -58,6 +74,7 @@ void UGPTContextSystem::TickComponent(float DeltaTime, ELevelTick TickType,
     }
 }
 
+/** @brief 카메라가 현재 조준 중인 건물을 판별합니다. */
 void UGPTContextSystem::CheckBuildingInView()
 {
     const FVector Start = Owner->FollowCamera->GetComponentLocation();
@@ -106,6 +123,7 @@ void UGPTContextSystem::CheckBuildingInView()
 }
 
 
+/** @brief 가장 가까운 건물 캐시를 갱신하고 근접 변화 정보를 리스너에 알립니다. */
 void UGPTContextSystem::FindNearestBuilding()
 {
     auto FoundBuildings = FComponentHelper::GetAllOfClass<ABuilding>(GetWorld());
@@ -143,6 +161,10 @@ struct FBuildingSnapshot
     float DistanceMeters = 0.0f;
 };
  
+/**
+ * @brief 소유 플레이어용 최신 GPT 컨텍스트 스냅샷을 구성합니다.
+ * @return 현재 위치, 포커스, 인근 건물 정보를 포함한 GPT 컨텍스트를 반환합니다.
+ */
 FGPTContext UGPTContextSystem::GetGPTContext() const
 {
     FGPTContext Context;

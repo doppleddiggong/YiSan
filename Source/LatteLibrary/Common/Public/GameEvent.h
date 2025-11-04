@@ -1,6 +1,6 @@
-/**
+﻿/**
  * @file GameEvent.h
- * @brief GameEvent 네임스페이스에 대한 Doxygen 주석을 제공합니다.
+ * @brief YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.
  */
 #pragma once
 

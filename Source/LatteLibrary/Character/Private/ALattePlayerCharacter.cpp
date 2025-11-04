@@ -2,7 +2,7 @@
 
 /**
  * @file APlayerActor.cpp
- * @brief Provides Doxygen annotations for APlayerActor implementation.
+ * @brief APlayerActor 구현을 위한 Doxygen 주석을 제공합니다.
  */
 
 #include "ALattePlayerCharacter.h"

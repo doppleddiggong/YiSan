@@ -7,6 +7,11 @@
 #include "GameFramework/Actor.h"
 #include "AQuestManagerActor.generated.h"
 
+/**
+ * @file AQuestManagerActor.h
+ * @brief AQuestManagerActor 클래스를 선언합니다.
+ */
+
 
 /**
  * @brief 서버 주도형 퀘스트 진행 상태를 관리하는 액터입니다.

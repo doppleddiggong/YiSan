@@ -1,6 +1,6 @@
-/**
+﻿/**
  * @file FMathHelper.h
- * @brief CoffeeLibrary 전반에서 사용하는 수학 헬퍼를 선언합니다.
+ * @brief FMathHelper 구조체를 선언합니다.
  */
 #pragma once
 

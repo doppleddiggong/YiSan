@@ -21,6 +21,11 @@
 #include "ULoadingCircleManager.h"
 #include "Online/OnlineSessionNames.h"
 
+/**
+ * @file UYisanOnlineSystem.cpp
+ * @brief UYisanOnlineSystem의 동작을 구현합니다.
+ */
+
 // ==================== Network 관리 ====================
 void UYisanOnlineSystem::Initialize(FSubsystemCollectionBase& Collection)
 {
@@ -38,6 +43,7 @@ void UYisanOnlineSystem::Initialize(FSubsystemCollectionBase& Collection)
     }
 }
 
+/** @brief 플레이어 목록 업데이트를 위해 시스템을 복제된 게임 상태에 연결합니다. */
 void UYisanOnlineSystem::SetGameState(AYisanGameState* InGameState)
 {
     if (CachedGameState)
@@ -51,6 +57,7 @@ void UYisanOnlineSystem::SetGameState(AYisanGameState* InGameState)
     }
 }
 
+/** @brief 게임 상태가 준비되지 않았을 경우 재시도하며 최신 플레이어 목록을 요청합니다. */
 void UYisanOnlineSystem::RequestRefreshPlayerList()
 {
     if (CachedGameState)
@@ -87,11 +94,13 @@ void UYisanOnlineSystem::RequestRefreshPlayerList()
     }
 }
 
+/** @brief 플레이어 목록 업데이트를 로컬 리스너에 전달합니다. */
 void UYisanOnlineSystem::HandlePlayerListUpdated(const TArray<FString>& PlayerNames)
 {
     OnPlayerListUpdated.Broadcast(PlayerNames);
 }
 
+/** @brief 제공된 표시 이름과 수용 인원으로 로비 세션을 생성합니다. */
 void UYisanOnlineSystem::CreateMySession(FString displayName, int32 playerCount)
 {
     if (!sessionInterface.IsValid())
@@ -116,6 +125,7 @@ void UYisanOnlineSystem::CreateMySession(FString displayName, int32 playerCount)
     sessionInterface->CreateSession(0, FName(displayName), sessionSettings);
 }
 
+/** @brief 세션 생성 요청 완료를 처리합니다. */
 void UYisanOnlineSystem::OnCreateSessionComplete(FName sessionName, bool success)
 {
     PRINTLOG( TEXT("OnCreateSessionComplete(%s, %d)"), *sessionName.ToString(), success );
@@ -134,6 +144,7 @@ void UYisanOnlineSystem::OnCreateSessionComplete(FName sessionName, bool success
     }
 }
 
+/** @brief 사용 가능한 다른 세션 검색을 시작합니다. */
 void UYisanOnlineSystem::FindOtherSession()
 {
     PRINTLOG( TEXT("FindOtherSession()"));
@@ -150,6 +161,7 @@ void UYisanOnlineSystem::FindOtherSession()
     sessionInterface->FindSessions(0, sessionSearch.ToSharedRef());
 }
 
+/** @brief 세션 검색 결과를 처리합니다. */
 void UYisanOnlineSystem::OnFindSessionComplete(bool success)
 {
     PRINTLOG( TEXT("OnFindSessionComplete(%d)"), success );
@@ -177,6 +189,7 @@ void UYisanOnlineSystem::OnFindSessionComplete(bool success)
     OnFindComplete.ExecuteIfBound(-1, FString());
 }
 
+/** @brief 검색 결과 인덱스로 다른 세션 참가를 시도합니다. */
 void UYisanOnlineSystem::JoinOtherSession(int32 sessionIndex)
 {
     auto results = sessionSearch->SearchResults;
@@ -196,6 +209,7 @@ void UYisanOnlineSystem::JoinOtherSession(int32 sessionIndex)
     sessionInterface->JoinSession(0, FName(displayName), results[sessionIndex]);
 }
 
+/** @brief 세션 참가 작업에 응답하고 이동 또는 오류를 처리합니다. */
 void UYisanOnlineSystem::OnJoinSessionComplete(FName sessionName, EOnJoinSessionCompleteResult::Type result)
 {
     ULoadingCircleManager::Get(GetWorld())->Hide();

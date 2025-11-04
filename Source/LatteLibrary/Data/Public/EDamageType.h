@@ -1,6 +1,6 @@
-/**
+﻿/**
  * @file EDamageType.h
- * @brief EDamageType 열거형에 대한 Doxygen 주석을 제공합니다.
+ * @brief EDamageType 클래스를 선언합니다.
  */
 #pragma once
 

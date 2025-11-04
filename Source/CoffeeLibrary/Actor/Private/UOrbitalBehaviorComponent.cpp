@@ -1,8 +1,8 @@
-// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 /**
  * @file UOrbitalBehaviorComponent.cpp
- * @brief UOrbitalBehaviorComponent 구현에 대한 Doxygen 주석을 제공합니다.
+ * @brief UOrbitalBehaviorComponent의 동작을 구현합니다.
  */
 #include "UOrbitalBehaviorComponent.h"
 #include "GameFramework/Actor.h"

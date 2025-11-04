@@ -1,6 +1,6 @@
-/**
+﻿/**
  * @file GameColor.h
- * @brief CoffeeLibrary에서 공유하는 색상 상수를 정의합니다.
+ * @brief YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.
  */
 #pragma once
 

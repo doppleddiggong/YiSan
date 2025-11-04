@@ -31,6 +31,11 @@
 #include "UChatBoxWidget.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
+/**
+ * @file ADasanActor.cpp
+ * @brief ADasanActor의 동작을 구현합니다.
+ */
+
 #define DASANWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_DasanWidget.WBP_DasanWidget_C")
 
 ADasanActor::ADasanActor()

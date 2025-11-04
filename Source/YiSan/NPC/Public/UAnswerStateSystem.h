@@ -2,6 +2,10 @@
 
 #pragma once
 
+/**
+ * @file UAnswerStateSystem.h
+ * @brief UAnswerStateSystem 클래스를 선언합니다.
+ */
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "EDasanState.h"

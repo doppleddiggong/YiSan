@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "UChatPlayerSystem.h"
 #include "UChatBoxWidget.h"
@@ -8,12 +8,22 @@
 #include "YiSan/YiSan.h"
 #include "GameFramework/PlayerController.h"
 
+/**
+ * @file UChatPlayerSystem.cpp
+ * @brief UChatPlayerSystem의 동작을 구현합니다.
+ */
+
+/** @brief 복제를 활성화하고 Tick을 비활성화하는 기본 생성자입니다. */
 UChatPlayerSystem::UChatPlayerSystem()
 {
 	PrimaryComponentTick.bCanEverTick = false;
 	SetIsReplicatedByDefault(true);
 }
 
+/**
+ * @brief 소유 액터와 채팅 위젯 인스턴스로 채팅 시스템을 초기화합니다.
+ * @param InChatBox 채팅 기록을 표시하고 입력을 받는 위젯입니다.
+ */
 void UChatPlayerSystem::InitSystem(UChatBoxWidget* InChatBox)
 {
 	this->Owner = Cast<APlayerActor>(GetOwner());
@@ -25,6 +35,7 @@ void UChatPlayerSystem::InitSystem(UChatBoxWidget* InChatBox)
 	}
 }
 
+/** @brief 엔터 키 입력을 처리하여 채팅 박스에 포커스를 맞춥니다. */
 void UChatPlayerSystem::OnEnter()
 {
 	if (!IsValid(ChatBoxWidget))
@@ -33,6 +44,7 @@ void UChatPlayerSystem::OnEnter()
 	ChatBoxWidget->FocusChat();
 }
 
+/** @brief 채팅 UI에 위로 스크롤하도록 요청합니다. */
 void UChatPlayerSystem::OnScrollUp()
 {
 	if (!IsValid(ChatBoxWidget))
@@ -41,6 +53,7 @@ void UChatPlayerSystem::OnScrollUp()
 	ChatBoxWidget->Scroll(true);
 }
 
+/** @brief 채팅 UI에 아래로 스크롤하도록 요청합니다. */
 void UChatPlayerSystem::OnScrollDown()
 {
 	if (!IsValid(ChatBoxWidget))
@@ -49,6 +62,7 @@ void UChatPlayerSystem::OnScrollDown()
 	ChatBoxWidget->Scroll(false);
 }
 
+/** @brief 채팅 메시지를 검증하고 서버에서 모든 클라이언트로 전달합니다. */
 void UChatPlayerSystem::ServerRPC_SendChatMessage_Implementation(const FChatMessage& ChatMessage)
 {
 	if (ChatMessage.Message.IsEmpty())
@@ -57,6 +71,7 @@ void UChatPlayerSystem::ServerRPC_SendChatMessage_Implementation(const FChatMess
 	MulticastRPC_AddChatMessage(ChatMessage);
 }
 
+/** @brief 복제된 채팅 메시지를 수신해 로컬 UI에 반영합니다. */
 void UChatPlayerSystem::MulticastRPC_AddChatMessage_Implementation(const FChatMessage& ChatMessage)
 {
 	// 현재 클라이언트의 로컬 플레이어 컨트롤러를 가져옴 (멀티플레이 환경에서도 각 클라에 1개만 존재)
@@ -81,6 +96,7 @@ void UChatPlayerSystem::MulticastRPC_AddChatMessage_Implementation(const FChatMe
 	ChatBox->AddChatMessage(ChatMessage);
 }
 
+/** @brief 소유 플레이어 입장을 알리는 지역화 메시지를 브로드캐스트합니다. */
 void UChatPlayerSystem::AnnouncePlayerJoin()
 {
 	if (!IsValid(Owner) || !IsValid(ChatBoxWidget))

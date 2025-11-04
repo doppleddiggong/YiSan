@@ -1,8 +1,8 @@
-// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 /**
  * @file UCustomNetworkSettings.cpp
- * @brief UCustomNetworkSettings 구현에 대한 Doxygen 주석을 제공합니다.
+ * @brief UCustomNetworkSettings의 동작을 구현합니다.
  */
 #include "UCustomNetworkSettings.h"
 #include "Misc/CommandLine.h"
