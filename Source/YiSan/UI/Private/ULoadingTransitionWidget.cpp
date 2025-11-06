@@ -1,5 +1,9 @@
 ﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved.
 
+/**
+ * @file ULoadingTransitionWidget.cpp
+ * @brief ULoadingTransitionWidget의 동작을 구현합니다.
+ */
 #include "ULoadingTransitionWidget.h"
 
 #include "Components/TextBlock.h"

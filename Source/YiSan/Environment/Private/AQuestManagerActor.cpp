@@ -10,6 +10,16 @@
 #include "EngineUtils.h"
 #include "Net/UnrealNetwork.h"
 
+/**
+ * @file AQuestManagerActor.cpp
+ * @brief AQuestManagerActor의 동작을 구현합니다.
+ */
+
+/**
+ * @brief 주어진 월드 컨텍스트에서 퀘스트 매니저를 찾는 헬퍼입니다.
+ * @param WorldContextObject 대상 월드를 찾을 때 사용하는 객체입니다.
+ * @return 퀘스트 매니저 인스턴스를 반환하며 없으면 @c nullptr을 반환합니다.
+ */
 AQuestManagerActor* AQuestManagerActor::Get(const UObject* WorldContextObject)
 {
     if (!WorldContextObject)
@@ -25,6 +35,7 @@ AQuestManagerActor* AQuestManagerActor::Get(const UObject* WorldContextObject)
     return nullptr;
 }
 
+/** @brief 퀘스트 매니저의 복제 기본값을 설정합니다. */
 AQuestManagerActor::AQuestManagerActor()
 {
     PrimaryActorTick.bCanEverTick = false;
@@ -34,6 +45,7 @@ AQuestManagerActor::AQuestManagerActor()
     SetReplicateMovement(false);
 }
 
+/** @brief 퀘스트 진행을 초기화하고 초기 목표를 클라이언트에 전달합니다. */
 void AQuestManagerActor::StartQuest()
 {
     if (HasAuthority())
@@ -54,6 +66,7 @@ void AQuestManagerActor::StartQuest()
 }
 
 
+/** @brief 복제를 위한 퀘스트 속성을 선언합니다. */
 void AQuestManagerActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
@@ -62,22 +75,26 @@ void AQuestManagerActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
     DOREPLIFETIME(AQuestManagerActor, QuestTarget);
 }
     
+/** @brief 퀘스트 인덱스가 복제될 때 로그를 남깁니다. */
 void AQuestManagerActor::OnRep_CurQuestIndex()
 {
     PRINTLOG(TEXT("OnRep_CurQuestIndex : %d"), QuestIndex);
 }
 
+/** @brief 퀘스트 목표 복제를 처리하고 리스너에 통보합니다. */
 void AQuestManagerActor::OnRep_CurQuestTarget()
 {
     PRINTLOG(TEXT("OnRep_CurQuestTarget : %d"), QuestTarget);
     SendUpdateQuest();
 }
 
+/** @brief 건물 접촉 이벤트를 처리하는 서버 RPC입니다. */
 void AQuestManagerActor::ServerRPC_ContactBuilding_Implementation(EBuildingType InType)
 {
     ContactBuilding(InType);
 }
 
+/** @brief 클라이언트 또는 서버 권한에서 전달되는 접촉 이벤트 진입점입니다. */
 void AQuestManagerActor::OnContactBuilding(EBuildingType InType)
 {
     if (HasAuthority())
@@ -86,6 +103,7 @@ void AQuestManagerActor::OnContactBuilding(EBuildingType InType)
         ServerRPC_ContactBuilding(InType);
 }
 
+/** @brief 퀘스트 진행도를 갱신하고 클라이언트에 통지합니다. */
 void AQuestManagerActor::NextQuest()
 {
     if (!HasAuthority())
@@ -104,6 +122,7 @@ void AQuestManagerActor::NextQuest()
     SendUpdateQuest();
 }
 
+/** @brief 접촉한 건물이 활성 퀘스트 목표와 일치하는지 검증합니다. */
 void AQuestManagerActor::ContactBuilding(EBuildingType InType)
 {
     if (!HasAuthority())
@@ -126,6 +145,7 @@ void AQuestManagerActor::ContactBuilding(EBuildingType InType)
     NextQuest();
 }
 
+/** @brief 퀘스트 목표 변경 사항을 UI 계층에 브로드캐스트합니다. */
 void AQuestManagerActor::SendUpdateQuest()
 {
     if (auto BM =  UBroadcastManager::Get(this) )

@@ -48,9 +48,11 @@ private:
     void OnExecVoiceCommand(EVoiceCommandType InType, AActor* Requester);
 
 private:
-	FTimerHandle TimerHandle_InitNameTag;
-	void CheckAndInitNameTag();
-    
+        FTimerHandle TimerHandle_InitNameTag;
+        /// @brief 주기적으로 호출되어 이름표 위젯이 준비되었는지 확인합니다.
+        void CheckAndInitNameTag();
+
+    /// @brief 컨트롤러가 준비된 뒤 입력을 허용하고 UI를 초기화합니다.
     void OnReadyPawn();
     
 public:

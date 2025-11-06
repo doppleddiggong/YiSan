@@ -1,3 +1,7 @@
+﻿/**
+ * @file UStartWidget.cpp
+ * @brief UStartWidget의 동작을 구현합니다.
+ */
 #include "UStartWidget.h"
 
 #include "GameLogging.h"

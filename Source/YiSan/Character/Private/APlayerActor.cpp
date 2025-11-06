@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "APlayerActor.h"
 #include "APlayerControl.h"
@@ -22,6 +22,11 @@
 #include "UBroadcastManager.h"
 #include "UPlayerHeadWidget.h"
 #include "YiSan/YiSan.h"
+
+/**
+ * @file APlayerActor.cpp
+ * @brief APlayerActor의 동작을 구현합니다.
+ */
 
 #include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Camera/CameraComponent.h"

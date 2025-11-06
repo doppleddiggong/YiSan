@@ -1,6 +1,6 @@
-/**
+﻿/**
  * @file FKnockbackData.h
- * @brief FKnockbackData 구조체에 대한 Doxygen 주석을 제공합니다.
+ * @brief FKnockbackData 구조체를 선언합니다.
  */
 #pragma once
 

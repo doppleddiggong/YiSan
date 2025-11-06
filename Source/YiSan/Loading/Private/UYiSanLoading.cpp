@@ -2,6 +2,11 @@
 
 #include "UYiSanLoading.h"
 
+/**
+ * @file UYiSanLoading.cpp
+ * @brief UYiSanLoading의 동작을 구현합니다.
+ */
+
 #include "APlayerControl.h"
 #include "AYisanGameState.h"
 #include "FComponentHelper.h"
@@ -21,7 +26,18 @@
 #include "Engine/World.h"
 #include "Engine/Engine.h"
 
+/**
+ * @file UYiSanLoading.cpp
+ * @brief UYiSanLoading의 동작을 구현합니다.
+ */
 
+
+/**
+ * @brief 로딩 파이프라인을 초기화하고 이동 프로세스를 시작합니다.
+ * @param InURL 이동할 맵의 URL입니다.
+ * @param bAbsolute 이동이 절대 경로를 사용하는지 여부입니다.
+ * @param bUseLoadingScreen 시네마틱 로딩 플로우를 실행할지 여부입니다.
+ */
 void UYiSanLoading::InitSystem(const FString& InURL, const bool bAbsolute, const bool bUseLoadingScreen)
 {
     PRINTLOG(TEXT("InitSystem(%s, %d, UseLoadingScreen: %s)"), *InURL, bAbsolute, bUseLoadingScreen ? TEXT("true") : TEXT("false"));
@@ -49,6 +65,7 @@ void UYiSanLoading::InitSystem(const FString& InURL, const bool bAbsolute, const
     }
 }
 
+/** @brief 고급 로딩 화면 없이 로딩이 완료되었을 때 호출되는 콜백입니다. */
 void UYiSanLoading::HandlePostLoadMapSimple(UWorld* World)
 {
     const double LoadingTime = FPlatformTime::Seconds() - NonLoadingTravelStartTime;
@@ -58,6 +75,12 @@ void UYiSanLoading::HandlePostLoadMapSimple(UWorld* World)
     FCoreUObjectDelegates::PostLoadMapWithWorld.RemoveAll(this);
 }
 
+/**
+ * @brief 서버가 시작한 이동에 대비해 클라이언트를 준비합니다.
+ * @param InURL 이동 대상 맵입니다.
+ * @param TravelType 엔진이 설정한 이동 모드입니다.
+ * @param bSeamlessTravel 심리스 트래블이 요청되었는지 여부입니다.
+ */
 void UYiSanLoading::PrepareClientTravel(const FString& InURL, const ETravelType TravelType, const bool bSeamlessTravel)
 {
     PRINTLOG(TEXT("PrepareClientTravel(%s, %s, Seamless:%s)"),
@@ -69,6 +92,7 @@ void UYiSanLoading::PrepareClientTravel(const FString& InURL, const ETravelType 
     Broadcast_ShowLoading();
 }
 
+/** @brief 진행도 추적기를 초기화하고 로딩 화면을 표시합니다. */
 void UYiSanLoading::PrepareForTravel()
 {
     PRINTLOG(TEXT("[LOADING_FLOW] PrepareForTravel - Resetting all loading states"));
@@ -101,6 +125,10 @@ void UYiSanLoading::PrepareForTravel()
     FCoreUObjectDelegates::PostLoadMapWithWorld.AddUObject(this, &UYiSanLoading::PostLoadMapWithWorld);
 }
 
+/**
+ * @brief 맵 로드 완료를 처리하여 스트리밍 상태 폴링을 이어갑니다.
+ * @param InWorld 로드된 월드 인스턴스입니다.
+ */
 void UYiSanLoading::PostLoadMapWithWorld(UWorld* InWorld)
 {
     if (!InWorld)
@@ -155,6 +183,7 @@ void UYiSanLoading::PostLoadMapWithWorld(UWorld* InWorld)
     PRINTLOG(TEXT("[LOADING_FLOW] PostLoadMapWithWorld - UpdateTick timer started, CurState: %d"), static_cast<int32>(CurState));
 }
 
+/** @brief 스트리밍 진행도를 폴링하고 로딩 상태를 전환합니다. */
 void UYiSanLoading::UpdateTick()
 {
     UWorld* World = GetWorld();
@@ -267,10 +296,10 @@ void UYiSanLoading::CompleteProcess(const UWorld* InWorld)
         false);
 }
 
-// 텍스처 스트리밍 상태를 폴링하여 진행률을 추적한다.
-// - `GetNumWantingResources` 값이 감소하는 속도를 기반으로 선형 진행률을 계산한다.
-// - 엔진의 기본 스트리밍 스레드를 존중하기 위해 `StreamAllResources` 호출은 제거했다.
-// - 일정 시간 동안 완료되지 않을 경우, 타임아웃을 적용해 플레이어 진행을 보장한다.
+/**
+ * @brief 텍스처 스트리밍 통계를 폴링해 진행도를 갱신하고 필요 시 타임아웃을 적용합니다.
+ * @param InWorld 스트리밍 매니저를 보유한 월드 컨텍스트입니다.
+ */
 void UYiSanLoading::Loading_Textures(const UWorld* InWorld)
 {
     IStreamingManager& StreamingManager = IStreamingManager::Get();
@@ -332,6 +361,7 @@ void UYiSanLoading::Loading_Textures(const UWorld* InWorld)
     }
 }
 
+/** @brief 레벨 인스턴스 스트리밍 진행도를 모니터링하고 상태를 전환합니다. */
 void UYiSanLoading::Loading_LevelInstance(UWorld* InWorld)
 {
     if (auto LIS = InWorld->GetSubsystem<ULevelInstanceSubsystem>())

@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "ALobbyGameMode.h"
 
@@ -10,6 +10,12 @@
 #include "GameFramework/GameStateBase.h"
 #include "GameFramework/PlayerController.h"
 
+/**
+ * @file ALobbyGameMode.cpp
+ * @brief ALobbyGameMode의 동작을 구현합니다.
+ */
+
+/** @brief 로비 플레이 경험을 위한 컨트롤러 및 플레이어 상태 클래스를 구성합니다. */
 ALobbyGameMode::ALobbyGameMode()
 {
 	// 난입 허용 설정
@@ -17,6 +23,7 @@ ALobbyGameMode::ALobbyGameMode()
 	PlayerStateClass = AYiSanPlayerState::StaticClass();
 }
 
+/** @brief 레벨 시작 시 로비 상태를 초기화합니다. */
 void ALobbyGameMode::BeginPlay()
 {
 	Super::BeginPlay();
@@ -25,6 +32,10 @@ void ALobbyGameMode::BeginPlay()
 	PRINTLOG(TEXT("[LobbyGameMode] BeginPlay - Reset NextPlayerIndex to 0"));
 }
 
+/**
+ * @brief 참가 플레이어용 폰을 스폰하고 도착을 로그합니다.
+ * @param NewPlayer 새로 연결된 플레이어를 나타내는 컨트롤러입니다.
+ */
 void ALobbyGameMode::PostLogin(APlayerController* NewPlayer)
 {
 	Super::PostLogin(NewPlayer);
@@ -43,6 +54,7 @@ void ALobbyGameMode::PostLogin(APlayerController* NewPlayer)
 	}
 }
 
+/** @brief 컨트롤러가 로비를 떠날 때 플레이어 목록 데이터를 정리합니다. */
 void ALobbyGameMode::Logout(AController* Exiting)
 {
 	Super::Logout(Exiting);

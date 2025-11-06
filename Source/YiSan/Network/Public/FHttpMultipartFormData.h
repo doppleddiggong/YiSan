@@ -1,7 +1,11 @@
-// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #pragma once
 
+/**
+ * @file FHttpMultipartFormData.h
+ * @brief FHttpMultipartFormData 클래스를 선언합니다.
+ */
 #include "CoreMinimal.h"
 #include "Interfaces/IHttpRequest.h"
 

@@ -2,6 +2,10 @@
 
 #pragma once
 
+/**
+ * @file ULoadingTransitionWidget.h
+ * @brief ULoadingTransitionWidget 클래스를 선언합니다.
+ */
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "ULoadingTransitionWidget.generated.h"

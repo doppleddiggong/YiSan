@@ -2,6 +2,10 @@
 
 #pragma once
 
+/**
+ * @file ULoadingTransitionManager.h
+ * @brief ULoadingTransitionManager 클래스를 선언합니다.
+ */
 #include "CoreMinimal.h"
 #include "Macro.h"
 #include "Subsystems/LocalPlayerSubsystem.h"

@@ -1,6 +1,6 @@
-/**
+﻿/**
  * @file FLogWriter.cpp
- * @brief FLogWriter 구현에 대한 Doxygen 주석을 제공합니다.
+ * @brief FLogWriter의 동작을 구현합니다.
  */
 #include "FLogWriter.h"
 
