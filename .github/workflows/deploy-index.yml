@@ -1,0 +1,44 @@
+name: Deploy GitHub Pages Index
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/gh-pages-index.html'
+      - '.github/workflows/deploy-index.yml'
+
+  # 수동 실행 가능
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-index:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare index.html
+        run: |
+          mkdir -p gh-pages-root
+          cp .github/gh-pages-index.html gh-pages-root/index.html
+
+      - name: Deploy index to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./gh-pages-root
+          publish_branch: gh-pages
+          destination_dir: .
+          enable_jekyll: false
+          force_orphan: false
+          keep_files: true
+
+      - name: Summary
+        run: |
+          echo "✅ GitHub Pages index deployed!"
+          echo "🌐 URL: https://doppleddiggong.github.io/YiSan/"

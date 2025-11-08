@@ -59,7 +59,8 @@ jobs:
           publish_branch: gh-pages
           destination_dir: docs
           enable_jekyll: false
-          force_orphan: true
+          force_orphan: false
+          keep_files: true
 
       - name: Summary
         run: |

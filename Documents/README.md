@@ -23,7 +23,9 @@
 ## 관련 링크
 
 - **GitHub Repository**: [doppleddiggong/YiSan](https://github.com/doppleddiggong/YiSan)
-- **Doxygen 코드 문서**: [API Documentation](https://doppleddiggong.github.io/YiSan/doxygen/)
+- **문서 홈**: [https://doppleddiggong.github.io/YiSan/](https://doppleddiggong.github.io/YiSan/)
+  - **API 문서 (Doxygen)**: [https://doppleddiggong.github.io/YiSan/doxygen/](https://doppleddiggong.github.io/YiSan/doxygen/)
+  - **DevLog & Planning (HonKit)**: [https://doppleddiggong.github.io/YiSan/docs/](https://doppleddiggong.github.io/YiSan/docs/)
 
 ## 자동화 시스템
 
