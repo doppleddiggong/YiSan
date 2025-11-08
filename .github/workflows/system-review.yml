@@ -1,0 +1,139 @@
+name: System Review Generator
+
+on:
+  # 매월 1일 KST 오후 11시 (UTC 14:00) - 월간 리뷰
+  schedule:
+    - cron: '0 14 1 * *'
+
+  # 수동 실행 가능
+  workflow_dispatch:
+    inputs:
+      type:
+        description: '리뷰 타입 (weekly/monthly)'
+        required: true
+        type: choice
+        options:
+          - weekly
+          - monthly
+        default: 'monthly'
+      date:
+        description: '기준 날짜 (YYYY-MM-DD, 비워두면 오늘)'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  generate-review:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 전체 히스토리 가져오기
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: |
+          pip install jinja2 pyyaml
+
+      - name: Make scripts executable
+        run: |
+          chmod +x .github/scripts/devlog/generate_system_review.py
+          chmod +x .github/scripts/devlog/update_summary.py
+
+      - name: Determine review type
+        id: review_type
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            REVIEW_TYPE="${{ github.event.inputs.type }}"
+          else
+            REVIEW_TYPE="monthly"
+          fi
+          echo "type=$REVIEW_TYPE" >> $GITHUB_OUTPUT
+
+      - name: Generate System Review
+        id: review
+        run: |
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            DATE_ARG="--date ${{ github.event.inputs.date }}"
+          else
+            DATE_ARG=""
+          fi
+
+          # 기간 라벨 계산
+          REVIEW_TYPE="${{ steps.review_type.outputs.type }}"
+
+          if [ "$REVIEW_TYPE" == "weekly" ]; then
+            if [ -n "${{ github.event.inputs.date }}" ]; then
+              LABEL=$(python3 -c "import datetime; d=datetime.datetime.strptime('${{ github.event.inputs.date }}', '%Y-%m-%d').date(); m=d-datetime.timedelta(days=d.weekday()); print(f'{m.year}-W{m.isocalendar()[1]:02d}')")
+            else
+              LABEL=$(python3 -c "import datetime; d=datetime.date.today(); m=d-datetime.timedelta(days=d.weekday()); print(f'{m.year}-W{m.isocalendar()[1]:02d}')")
+            fi
+          else
+            if [ -n "${{ github.event.inputs.date }}" ]; then
+              LABEL=$(python3 -c "import datetime; d=datetime.datetime.strptime('${{ github.event.inputs.date }}', '%Y-%m-%d').date(); print(f'{d.year}-{d.month:02d}')")
+            else
+              LABEL=$(python3 -c "import datetime; d=datetime.date.today(); print(f'{d.year}-{d.month:02d}')")
+            fi
+          fi
+
+          echo "label=$LABEL" >> $GITHUB_OUTPUT
+
+          python .github/scripts/devlog/generate_system_review.py \
+            --type "$REVIEW_TYPE" \
+            $DATE_ARG \
+            --devlog-dir "Documents/DevLog" \
+            --out-dir "Documents/SystemReview"
+
+      - name: Create SystemReview directory in Documents
+        run: |
+          mkdir -p Documents/SystemReview
+
+      - name: Update SUMMARY.md to include SystemReview
+        run: |
+          # SUMMARY.md에 SystemReview 섹션이 없으면 추가
+          if ! grep -q "## System Review" Documents/SUMMARY.md; then
+            echo "" >> Documents/SUMMARY.md
+            echo "## System Review" >> Documents/SUMMARY.md
+            echo "" >> Documents/SUMMARY.md
+          fi
+
+          # 생성된 리뷰 파일을 SUMMARY.md에 추가
+          REVIEW_FILE="Documents/SystemReview/${{ steps.review.outputs.label }}-SystemReview.md"
+          if [ -f "$REVIEW_FILE" ]; then
+            RELATIVE_PATH="SystemReview/${{ steps.review.outputs.label }}-SystemReview.md"
+            if ! grep -q "$RELATIVE_PATH" Documents/SUMMARY.md; then
+              sed -i '/## System Review/a * [${{ steps.review.outputs.label }} System Review]('"$RELATIVE_PATH"')' Documents/SUMMARY.md
+            fi
+          fi
+
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Documents/SystemReview/*.md Documents/SUMMARY.md
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore(review): system review ${{ steps.review.outputs.label }}
+
+          🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+          Co-Authored-By: Claude <noreply@anthropic.com>"
+            git push
+          fi
+
+      - name: Summary
+        run: |
+          echo "✅ System Review has been generated!"
+          echo "📊 Type: ${{ steps.review_type.outputs.type }}"
+          echo "📅 Label: ${{ steps.review.outputs.label }}"
+          echo "📝 File: Documents/SystemReview/${{ steps.review.outputs.label }}-SystemReview.md"
+          echo "🔗 URL: https://doppleddiggong.github.io/YiSan/docs/SystemReview/${{ steps.review.outputs.label }}-SystemReview.html"

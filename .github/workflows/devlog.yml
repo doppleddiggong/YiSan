@@ -1,0 +1,323 @@
+name: Daily DevLog Generation
+
+on:
+  schedule:
+    # 매일 한국시간 오전 8:30 (UTC 23:30 전날)
+    - cron: '30 23 * * *'
+  workflow_dispatch:  # 수동 실행 가능
+    inputs:
+      target_date:
+        description: '생성할 DevLog 날짜 (YYYYMMDD, 비워두면 어제)'
+        required: false
+        type: string
+      force_generate:
+        description: '커밋이 없어도 강제 생성'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate-devlog:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 전체 히스토리 가져오기
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Python dependencies
+        run: |
+          pip install jinja2 pyyaml
+
+      - name: Get target date (KST)
+        id: date
+        run: |
+          # 수동 실행 시 입력된 날짜 사용, 아니면 어제 날짜
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ] && [ -n "${{ github.event.inputs.target_date }}" ]; then
+            TARGET_DATE="${{ github.event.inputs.target_date }}"
+            echo "📅 수동 실행: 지정된 날짜 $TARGET_DATE 사용"
+          else
+            TARGET_DATE=$(TZ=Asia/Seoul date -d '1 day ago' '+%Y%m%d')
+            echo "📅 자동 실행: 어제 날짜 $TARGET_DATE 사용"
+          fi
+
+          TODAY=$(TZ=Asia/Seoul date '+%Y%m%d')
+          echo "yesterday=$TARGET_DATE" >> $GITHUB_OUTPUT
+          echo "today=$TODAY" >> $GITHUB_OUTPUT
+          echo "✅ Target Date (KST): $TARGET_DATE"
+          echo "✅ Today (KST): $TODAY"
+
+      - name: Get commits from target date
+        id: commits
+        run: |
+          # 대상 날짜의 커밋만 가져오기 (KST 기준)
+          TARGET_DATE="${{ steps.date.outputs.yesterday }}"
+
+          # 00:00 ~ 23:59 (KST)
+          START_TIME=$(TZ=Asia/Seoul date -d "$TARGET_DATE" '+%Y-%m-%d 00:00:00' 2>/dev/null || echo "")
+          END_TIME=$(TZ=Asia/Seoul date -d "$TARGET_DATE" '+%Y-%m-%d 23:59:59' 2>/dev/null || echo "")
+
+          if [ -z "$START_TIME" ]; then
+            echo "❌ 날짜 형식 오류: $TARGET_DATE"
+            exit 1
+          fi
+
+          echo "🔍 Fetching commits between $START_TIME and $END_TIME (KST)"
+
+          # Git 사용자 정보
+          GIT_USER=$(git config user.name || echo "GitHub Actions")
+          GIT_EMAIL=$(git config user.email || echo "actions@github.com")
+
+          # 커밋 수집 (JSON 형식)
+          COMMITS=$(git log --all --since="$START_TIME" --until="$END_TIME" \
+            --pretty=format:'{"hash":"%H","author":"%an","email":"%ae","date":"%ai","message":"%s","body":"%b"}' \
+            | jq -s '.' || echo '[]')
+
+          COMMIT_COUNT=$(echo "$COMMITS" | jq 'length')
+
+          echo "✅ Found $COMMIT_COUNT commits for $TARGET_DATE"
+
+          # 커밋 목록 미리보기
+          if [ "$COMMIT_COUNT" -gt 0 ]; then
+            echo "📝 Commit summary:"
+            echo "$COMMITS" | jq -r '.[] | "  - [\(.hash[0:7])] \(.message)"' | head -10
+          fi
+
+          echo "commits=$COMMITS" >> $GITHUB_OUTPUT
+          echo "commit_count=$COMMIT_COUNT" >> $GITHUB_OUTPUT
+          echo "git_user=$GIT_USER" >> $GITHUB_OUTPUT
+          echo "target_date=$TARGET_DATE" >> $GITHUB_OUTPUT
+
+      - name: Generate DevLog with OpenAI
+        id: devlog
+        if: steps.commits.outputs.commit_count > 0 || github.event.inputs.force_generate == 'true'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          echo "🤖 Starting DevLog generation..."
+          echo "📊 Commits: ${{ steps.commits.outputs.commit_count }}"
+          echo "📅 Date: ${{ steps.date.outputs.yesterday }}"
+          echo "👤 User: ${{ steps.commits.outputs.git_user }}"
+
+          cd .github/scripts
+          node generate-devlog.js \
+            --commits='${{ steps.commits.outputs.commits }}' \
+            --date='${{ steps.date.outputs.yesterday }}' \
+            --user='${{ steps.commits.outputs.git_user }}'
+
+          if [ $? -eq 0 ]; then
+            echo "✅ DevLog generation completed"
+          else
+            echo "❌ DevLog generation failed"
+            exit 1
+          fi
+
+      - name: Create DevLog file
+        if: steps.commits.outputs.commit_count > 0 || github.event.inputs.force_generate == 'true'
+        run: |
+          TARGET_DATE="${{ steps.date.outputs.yesterday }}"
+          USER="${{ steps.commits.outputs.git_user }}"
+
+          echo "📁 Creating DevLog directory for user: $USER"
+
+          # DevLog 디렉토리 생성
+          mkdir -p "DevLog/$USER"
+
+          # 생성된 DevLog 파일 이동
+          if [ -f ".github/scripts/devlog_output.md" ]; then
+            mv ".github/scripts/devlog_output.md" "DevLog/$USER/$TARGET_DATE.md"
+            echo "✅ DevLog created: DevLog/$USER/$TARGET_DATE.md"
+
+            # 파일 미리보기
+            echo "📄 DevLog preview:"
+            head -20 "DevLog/$USER/$TARGET_DATE.md"
+          else
+            echo "❌ DevLog file not found!"
+            exit 1
+          fi
+
+      - name: Create Pull Request
+        if: steps.commits.outputs.commit_count > 0 || github.event.inputs.force_generate == 'true'
+        id: create_pr
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "docs: add devlog for ${{ steps.date.outputs.yesterday }}"
+          branch: devlog/${{ steps.date.outputs.yesterday }}
+          title: "📝 DevLog: ${{ steps.date.outputs.yesterday }}"
+          body: |
+            ## 📅 Daily Development Log
+
+            **Date**: ${{ steps.date.outputs.yesterday }}
+            **Author**: ${{ steps.commits.outputs.git_user }}
+            **Commits**: ${{ steps.commits.outputs.commit_count }}
+
+            ${{ github.event_name == 'workflow_dispatch' && '🔧 **Manual Trigger**' || '🤖 **Automated**' }}
+
+            Auto-generated DevLog by GitHub Actions with OpenAI GPT-4 Turbo.
+
+            ---
+
+            🔗 [View DevLog](./DevLog/${{ steps.commits.outputs.git_user }}/${{ steps.date.outputs.yesterday }}.md)
+
+            ---
+
+            ### 📊 Commit Summary
+            ${{ steps.commits.outputs.commit_count > 0 && 'See DevLog file for details.' || 'No commits (forced generation)' }}
+          labels: |
+            documentation
+            devlog
+            automated
+          assignees: ${{ github.repository_owner }}
+
+      - name: Output PR Info
+        if: steps.create_pr.outputs.pull-request-number
+        run: |
+          echo "✅ Pull Request created successfully!"
+          echo "🔗 PR Number: ${{ steps.create_pr.outputs.pull-request-number }}"
+          echo "🔗 PR URL: ${{ steps.create_pr.outputs.pull-request-url }}"
+
+      - name: Send Discord notification (No commits)
+        if: steps.commits.outputs.commit_count == 0 && github.event.inputs.force_generate != 'true'
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "⚠️ Discord webhook not configured"
+            exit 0
+          fi
+
+          TARGET_DATE="${{ steps.date.outputs.yesterday }}"
+          TIMESTAMP=$(date --iso-8601=seconds)
+          TRIGGER_TYPE="${{ github.event_name == 'workflow_dispatch' && 'Manual' || 'Scheduled' }}"
+
+          JSON=$(jq -n \
+            --arg username "DevLog Bot 📝" \
+            --arg title "📭 No Commits" \
+            --arg date "$TARGET_DATE" \
+            --arg trigger "$TRIGGER_TYPE" \
+            --arg repo "${{ github.repository }}" \
+            --arg timestamp "$TIMESTAMP" \
+            '{
+              username: $username,
+              embeds: [{
+                title: $title,
+                description: "No commits were made on this date.",
+                color: 10197915,
+                fields: [
+                  { name: "📅 Date", value: $date, inline: true },
+                  { name: "🔧 Trigger", value: $trigger, inline: true },
+                  { name: "📦 Repository", value: $repo, inline: false }
+                ],
+                footer: { text: "AgentRule DevLog System" },
+                timestamp: $timestamp
+              }]
+            }'
+          )
+
+          echo "📤 Sending Discord notification..."
+          curl -H "Content-Type: application/json" -X POST -d "$JSON" "$DISCORD_WEBHOOK_URL"
+          echo "✅ Discord notification sent: No commits"
+
+      - name: Send Discord notification (Success)
+        if: steps.commits.outputs.commit_count > 0 || github.event.inputs.force_generate == 'true'
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "⚠️ Discord webhook not configured"
+            exit 0
+          fi
+
+          TARGET_DATE="${{ steps.date.outputs.yesterday }}"
+          USER="${{ steps.commits.outputs.git_user }}"
+          COMMIT_COUNT="${{ steps.commits.outputs.commit_count }}"
+          PR_URL="${{ steps.create_pr.outputs.pull-request-url }}"
+          TIMESTAMP=$(date --iso-8601=seconds)
+          TRIGGER_TYPE="${{ github.event_name == 'workflow_dispatch' && 'Manual' || 'Scheduled' }}"
+
+          # DevLog 파일에서 주요 작업 추출
+          DEVLOG_FILE="DevLog/$USER/$TARGET_DATE.md"
+          MAIN_WORK=""
+          if [ -f "$DEVLOG_FILE" ]; then
+            # ## 🎯 주요 작업 내용 섹션 추출 (간략하게)
+            MAIN_WORK=$(awk '/## 🎯 주요 작업 내용/,/^##[^#]/ {print}' "$DEVLOG_FILE" | head -15 | tail -n +2)
+            if [ -z "$MAIN_WORK" ]; then
+              MAIN_WORK="DevLog 파일을 확인하세요."
+            fi
+          else
+            MAIN_WORK="DevLog 생성 완료"
+          fi
+
+          # JSON 생성 (jq 사용)
+          JSON=$(jq -n \
+            --arg username "DevLog Bot 📝" \
+            --arg title "📝 DevLog Generated: $TARGET_DATE" \
+            --arg url "$PR_URL" \
+            --arg description "$MAIN_WORK" \
+            --arg date "$TARGET_DATE" \
+            --arg user "$USER" \
+            --arg commits "$COMMIT_COUNT" \
+            --arg trigger "$TRIGGER_TYPE" \
+            --arg repo "${{ github.repository }}" \
+            --arg timestamp "$TIMESTAMP" \
+            '{
+              username: $username,
+              embeds: [{
+                title: $title,
+                url: $url,
+                description: $description,
+                color: 5814783,
+                fields: [
+                  { name: "📅 Date", value: $date, inline: true },
+                  { name: "👤 Author", value: $user, inline: true },
+                  { name: "📊 Commits", value: ($commits + "개"), inline: true },
+                  { name: "🔧 Trigger", value: $trigger, inline: true },
+                  { name: "📦 Repository", value: $repo, inline: false }
+                ],
+                footer: { text: "Generated by OpenAI GPT-4 via GitHub Actions" },
+                timestamp: $timestamp
+              }]
+            }'
+          )
+
+          echo "📤 Sending Discord notification..."
+          curl -H "Content-Type: application/json" -X POST -d "$JSON" "$DISCORD_WEBHOOK_URL"
+          echo "✅ Discord notification sent: DevLog created"
+
+      - name: Auto-merge PR (optional)
+        if: steps.commits.outputs.commit_count > 0 || github.event.inputs.force_generate == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TARGET_DATE="${{ steps.date.outputs.yesterday }}"
+
+          echo "🔍 Looking for PR with branch: devlog/$TARGET_DATE"
+
+          # PR 번호 찾기
+          PR_NUMBER=$(gh pr list --head devlog/$TARGET_DATE --json number --jq '.[0].number' 2>/dev/null || echo "")
+
+          if [ -n "$PR_NUMBER" ]; then
+            echo "✅ Found PR #$PR_NUMBER"
+
+            # 자동 머지 활성화 (선택사항 - 필요하면 주석 해제)
+            # gh pr merge $PR_NUMBER --auto --squash
+            # echo "🔄 Auto-merge enabled for PR #$PR_NUMBER"
+
+            echo "📝 PR created successfully. Manual merge required."
+            echo "🔗 Review and merge: ${{ steps.create_pr.outputs.pull-request-url }}"
+          else
+            echo "⚠️ PR not found. This may happen if the PR already exists or was not created."
+          fi

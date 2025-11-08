@@ -1,0 +1,72 @@
+name: HonKit Documentation
+
+on:
+  # DevLog 또는 Planning 폴더가 업데이트될 때 자동 실행
+  push:
+    branches:
+      - main
+      - dopple
+    paths:
+      - 'Documents/DevLog/**'
+      - 'Documents/Planning/**'
+      - 'Documents/book.json'
+      - 'Documents/SUMMARY.md'
+      - 'Documents/README.md'
+
+  # 수동 실행 가능
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install HonKit
+        run: |
+          npm install -g honkit
+          npm install -g gitbook-plugin-github
+          npm install -g gitbook-plugin-mermaid-gb3
+          npm install -g gitbook-plugin-collapsible-menu
+          npm install -g gitbook-plugin-back-to-top-button
+          npm install -g gitbook-plugin-search-plus
+          npm install -g gitbook-plugin-expandable-chapters-small
+
+      - name: Install HonKit plugins
+        working-directory: Documents
+        run: |
+          honkit install
+
+      - name: Build HonKit
+        working-directory: Documents
+        run: |
+          honkit build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./Documents/_book
+          publish_branch: gh-pages
+          destination_dir: docs
+          enable_jekyll: false
+          force_orphan: true
+
+      - name: Summary
+        run: |
+          echo "✅ HonKit documentation has been built and deployed!"
+          echo "📚 Documentation will be available at: https://doppleddiggong.github.io/YiSan/docs/"

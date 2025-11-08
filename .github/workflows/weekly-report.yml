@@ -1,0 +1,108 @@
+name: Weekly DevLog Report
+
+on:
+  # 매주 일요일 KST 오후 11시 (UTC 14:00)
+  schedule:
+    - cron: '0 14 * * 0'
+
+  # 수동 실행 가능
+  workflow_dispatch:
+    inputs:
+      date:
+        description: '기준 날짜 (YYYY-MM-DD, 비워두면 이번 주)'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  generate-weekly:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 전체 히스토리 가져오기
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: |
+          pip install jinja2 pyyaml
+
+      - name: Make scripts executable
+        run: |
+          chmod +x .github/scripts/devlog/generate_weekly.py
+          chmod +x .github/scripts/devlog/update_summary.py
+
+      - name: Generate Weekly Report
+        id: weekly
+        run: |
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            DATE_ARG="--date ${{ github.event.inputs.date }}"
+          else
+            DATE_ARG=""
+          fi
+
+          # 주차 계산
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            WEEK_LABEL=$(python3 -c "import datetime; d=datetime.datetime.strptime('${{ github.event.inputs.date }}', '%Y-%m-%d').date(); m=d-datetime.timedelta(days=d.weekday()); print(f'{m.year}-W{m.isocalendar()[1]:02d}')")
+          else
+            WEEK_LABEL=$(python3 -c "import datetime; d=datetime.date.today(); m=d-datetime.timedelta(days=d.weekday()); print(f'{m.year}-W{m.isocalendar()[1]:02d}')")
+          fi
+
+          echo "week_label=$WEEK_LABEL" >> $GITHUB_OUTPUT
+
+          python .github/scripts/devlog/generate_weekly.py \
+            $DATE_ARG \
+            --devlog-dir "Documents/DevLog" \
+            --out "Documents/DevLog/${WEEK_LABEL}-Summary.md"
+
+      - name: Update SUMMARY.md
+        run: |
+          python .github/scripts/devlog/update_summary.py Documents
+
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Documents/DevLog/*.md Documents/SUMMARY.md
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore(devlog): weekly report ${{ steps.weekly.outputs.week_label }}
+
+          🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+          Co-Authored-By: Claude <noreply@anthropic.com>"
+            git push
+          fi
+
+      - name: Send Discord Notification
+        if: success()
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "⚠️ DISCORD_WEBHOOK_URL secret이 설정되지 않았습니다. Discord 알림을 건너뜁니다."
+          else
+            chmod +x .github/scripts/devlog/send_discord.py
+            python .github/scripts/devlog/send_discord.py \
+              --webhook-url "$DISCORD_WEBHOOK_URL" \
+              --type "weekly" \
+              --devlog-file "Documents/DevLog/${{ steps.weekly.outputs.week_label }}-Summary.md" \
+              --date "${{ steps.weekly.outputs.week_label }}" \
+              --devlog-url "https://doppleddiggong.github.io/YiSan/docs/DevLog/${{ steps.weekly.outputs.week_label }}-Summary.html"
+          fi
+
+      - name: Summary
+        run: |
+          echo "✅ Weekly DevLog Report has been generated!"
+          echo "📅 Week: ${{ steps.weekly.outputs.week_label }}"
+          echo "📝 File: Documents/DevLog/${{ steps.weekly.outputs.week_label }}-Summary.md"
+          echo "🔗 URL: https://doppleddiggong.github.io/YiSan/docs/DevLog/${{ steps.weekly.outputs.week_label }}-Summary.html"
