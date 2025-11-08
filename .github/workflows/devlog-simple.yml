@@ -1,4 +1,4 @@
-name: Daily DevLog (Simple)
+name: Daily DevLog
 
 on:
   # 매일 KST 기준 오전 9시에 실행 (UTC 00:00)
@@ -12,6 +12,11 @@ on:
         description: '생성할 날짜 (YYYY-MM-DD, 비워두면 오늘)'
         required: false
         type: string
+      use_gpt:
+        description: 'GPT 피드백 사용 (개발자 성장 피드백 포함)'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -34,6 +39,9 @@ jobs:
       - name: Install Python dependencies
         run: |
           pip install jinja2 pyyaml
+          if [ "${{ github.event.inputs.use_gpt }}" == "true" ]; then
+            pip install openai
+          fi
 
       - name: Get current date
         id: date
@@ -57,6 +65,29 @@ jobs:
             --branch "${{ steps.date.outputs.branch }}" \
             --base "origin/main" \
             --out "Documents/DevLog/${{ steps.date.outputs.today }}.md"
+
+      - name: Generate GPT Feedback (Optional)
+        if: github.event.inputs.use_gpt == 'true'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python .github/scripts/devlog/generate_gpt_feedback.py \
+            --devlog-file "Documents/DevLog/${{ steps.date.outputs.today }}.md" \
+            --since "24 hours" \
+            --output "Documents/DevLog/${{ steps.date.outputs.today }}-feedback.md"
+
+      - name: Merge DevLog and Feedback
+        if: github.event.inputs.use_gpt == 'true'
+        run: |
+          BASE_FILE="Documents/DevLog/${{ steps.date.outputs.today }}.md"
+          FEEDBACK_FILE="Documents/DevLog/${{ steps.date.outputs.today }}-feedback.md"
+
+          if [ -f "$FEEDBACK_FILE" ]; then
+            # 기본 DevLog + GPT 피드백 병합
+            cat "$FEEDBACK_FILE" >> "$BASE_FILE"
+            rm "$FEEDBACK_FILE"
+            echo "✅ GPT feedback merged into DevLog"
+          fi
 
       - name: Create empty metrics file
         run: |

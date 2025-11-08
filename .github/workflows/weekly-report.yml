@@ -12,6 +12,11 @@ on:
         description: '기준 날짜 (YYYY-MM-DD, 비워두면 이번 주)'
         required: false
         type: string
+      use_gpt:
+        description: 'GPT 주간 성장 피드백 사용'
+        required: false
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -34,6 +39,10 @@ jobs:
       - name: Install Python dependencies
         run: |
           pip install jinja2 pyyaml
+          # 기본적으로 GPT 사용 (수동 실행 시 false로 설정 가능)
+          if [ "${{ github.event_name }}" == "schedule" ] || [ "${{ github.event.inputs.use_gpt }}" == "true" ]; then
+            pip install openai
+          fi
 
       - name: Make scripts executable
         run: |
@@ -62,6 +71,30 @@ jobs:
             $DATE_ARG \
             --devlog-dir "Documents/DevLog" \
             --out "Documents/DevLog/${WEEK_LABEL}-Summary.md"
+
+      - name: Generate GPT Weekly Feedback (Optional)
+        if: github.event_name == 'schedule' || github.event.inputs.use_gpt == 'true'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          chmod +x .github/scripts/devlog/generate_weekly_feedback.py
+          python .github/scripts/devlog/generate_weekly_feedback.py \
+            --weekly-file "Documents/DevLog/${{ steps.weekly.outputs.week_label }}-Summary.md" \
+            --devlog-dir "Documents/DevLog" \
+            --week-label "${{ steps.weekly.outputs.week_label }}" \
+            --output "Documents/DevLog/${{ steps.weekly.outputs.week_label }}-feedback.md"
+
+      - name: Merge Weekly Report and Feedback
+        if: github.event_name == 'schedule' || github.event.inputs.use_gpt == 'true'
+        run: |
+          BASE_FILE="Documents/DevLog/${{ steps.weekly.outputs.week_label }}-Summary.md"
+          FEEDBACK_FILE="Documents/DevLog/${{ steps.weekly.outputs.week_label }}-feedback.md"
+
+          if [ -f "$FEEDBACK_FILE" ]; then
+            cat "$FEEDBACK_FILE" >> "$BASE_FILE"
+            rm "$FEEDBACK_FILE"
+            echo "✅ GPT weekly feedback merged"
+          fi
 
       - name: Update SUMMARY.md
         run: |
