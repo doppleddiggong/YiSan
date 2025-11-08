@@ -1,0 +1,2139 @@
+
+<!DOCTYPE HTML>
+<html lang="ko" >
+    <head>
+        <meta charset="UTF-8">
+        <title>PlayerIndex 관리 - GameState 리팩토링 (2025-11-02) · YiSan Development Documentation</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.1.4">
+        <meta name="author" content="DoppledDiggong Team">
+        
+        
+    
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../styles/website.css">
+        
+    
+
+
+    
+        
+        
+        <link rel="stylesheet" href="../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.default.css" />
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="PlayerIndex_Issue_2025-11-02.html" />
+    
+    
+    <link rel="prev" href="../Weekly_Presentation_2025-11-02.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="검색어 입력" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/doppleddiggong/YiSan" target="_blank" class="custom-link">GitHub Repository</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://doppleddiggong.github.io/YiSan/doxygen/" target="_blank" class="custom-link">Doxygen API Docs</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">Introduction</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    시작하기
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">DevLog</li>
+        
+        
+    
+
+    
+        
+        <li class="header">Agent Logs</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../DevLog/AgentLog/dopple/251108.html">
+            
+                <a href="../../DevLog/AgentLog/dopple/251108.html">
+            
+                    
+                    dopple - 2025-11-08
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Daily Logs (2025-11)</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../DevLog/Daily/2025-11-02.html">
+            
+                <a href="../../DevLog/Daily/2025-11-02.html">
+            
+                    
+                    2025-11-02
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../../DevLog/Daily/2025-11-01.html">
+            
+                <a href="../../DevLog/Daily/2025-11-01.html">
+            
+                    
+                    2025-11-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Daily Logs (2025-10)</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../DevLog/Daily/2025-10-31.html">
+            
+                <a href="../../DevLog/Daily/2025-10-31.html">
+            
+                    
+                    2025-10-31
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../../DevLog/Daily/2025-10-30.html">
+            
+                <a href="../../DevLog/Daily/2025-10-30.html">
+            
+                    
+                    2025-10-30
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../../DevLog/Daily/2025-10-29.html">
+            
+                <a href="../../DevLog/Daily/2025-10-29.html">
+            
+                    
+                    2025-10-29
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../../DevLog/Daily/2025-10-28.html">
+            
+                <a href="../../DevLog/Daily/2025-10-28.html">
+            
+                    
+                    2025-10-28
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="../../DevLog/Daily/2025-10-27.html">
+            
+                <a href="../../DevLog/Daily/2025-10-27.html">
+            
+                    
+                    2025-10-27
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="../../DevLog/Daily/2025-10-26.html">
+            
+                <a href="../../DevLog/Daily/2025-10-26.html">
+            
+                    
+                    2025-10-26
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.7" data-path="../../DevLog/Daily/2025-10-25.html">
+            
+                <a href="../../DevLog/Daily/2025-10-25.html">
+            
+                    
+                    2025-10-25
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.8" data-path="../../DevLog/Daily/2025-10-24.html">
+            
+                <a href="../../DevLog/Daily/2025-10-24.html">
+            
+                    
+                    2025-10-24
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.9" data-path="../../DevLog/Daily/2025-10-23.html">
+            
+                <a href="../../DevLog/Daily/2025-10-23.html">
+            
+                    
+                    2025-10-23
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.10" data-path="../../DevLog/Daily/2025-10-22.html">
+            
+                <a href="../../DevLog/Daily/2025-10-22.html">
+            
+                    
+                    2025-10-22
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.11" data-path="../../DevLog/Daily/2025-10-21.html">
+            
+                <a href="../../DevLog/Daily/2025-10-21.html">
+            
+                    
+                    2025-10-21
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.12" data-path="../../DevLog/Daily/2025-10-20.html">
+            
+                <a href="../../DevLog/Daily/2025-10-20.html">
+            
+                    
+                    2025-10-20
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.13" data-path="../../DevLog/Daily/2025-10-19.html">
+            
+                <a href="../../DevLog/Daily/2025-10-19.html">
+            
+                    
+                    2025-10-19
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.14" data-path="../../DevLog/Daily/2025-10-18.html">
+            
+                <a href="../../DevLog/Daily/2025-10-18.html">
+            
+                    
+                    2025-10-18
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.15" data-path="../../DevLog/Daily/2025-10-17.html">
+            
+                <a href="../../DevLog/Daily/2025-10-17.html">
+            
+                    
+                    2025-10-17
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.16" data-path="../../DevLog/Daily/2025-10-16.html">
+            
+                <a href="../../DevLog/Daily/2025-10-16.html">
+            
+                    
+                    2025-10-16
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.17" data-path="../../DevLog/Daily/2025-10-15.html">
+            
+                <a href="../../DevLog/Daily/2025-10-15.html">
+            
+                    
+                    2025-10-15
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.18" data-path="../../DevLog/Daily/2025-10-14.html">
+            
+                <a href="../../DevLog/Daily/2025-10-14.html">
+            
+                    
+                    2025-10-14
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.19" data-path="../../DevLog/Daily/2025-10-13.html">
+            
+                <a href="../../DevLog/Daily/2025-10-13.html">
+            
+                    
+                    2025-10-13
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.20" data-path="../../DevLog/Daily/2025-10-12.html">
+            
+                <a href="../../DevLog/Daily/2025-10-12.html">
+            
+                    
+                    2025-10-12
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.21" data-path="../../DevLog/Daily/2025-10-11.html">
+            
+                <a href="../../DevLog/Daily/2025-10-11.html">
+            
+                    
+                    2025-10-11
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.22" data-path="../../DevLog/Daily/2025-10-09.html">
+            
+                <a href="../../DevLog/Daily/2025-10-09.html">
+            
+                    
+                    2025-10-09
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.23" data-path="../../DevLog/Daily/2025-10-08.html">
+            
+                <a href="../../DevLog/Daily/2025-10-08.html">
+            
+                    
+                    2025-10-08
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.24" data-path="../../DevLog/Daily/2025-10-07.html">
+            
+                <a href="../../DevLog/Daily/2025-10-07.html">
+            
+                    
+                    2025-10-07
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.25" data-path="../../DevLog/Daily/2025-10-06.html">
+            
+                <a href="../../DevLog/Daily/2025-10-06.html">
+            
+                    
+                    2025-10-06
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.26" data-path="../../DevLog/Daily/2025-10-05.html">
+            
+                <a href="../../DevLog/Daily/2025-10-05.html">
+            
+                    
+                    2025-10-05
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.27" data-path="../../DevLog/Daily/2025-10-04.html">
+            
+                <a href="../../DevLog/Daily/2025-10-04.html">
+            
+                    
+                    2025-10-04
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.28" data-path="../../DevLog/Daily/2025-10-03.html">
+            
+                <a href="../../DevLog/Daily/2025-10-03.html">
+            
+                    
+                    2025-10-03
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.29" data-path="../../DevLog/Daily/2025-10-02.html">
+            
+                <a href="../../DevLog/Daily/2025-10-02.html">
+            
+                    
+                    2025-10-02
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.30" data-path="../../DevLog/Daily/2025-10-01.html">
+            
+                <a href="../../DevLog/Daily/2025-10-01.html">
+            
+                    
+                    2025-10-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Daily Logs (2025-09)</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../DevLog/Daily/2025-09-30.html">
+            
+                <a href="../../DevLog/Daily/2025-09-30.html">
+            
+                    
+                    2025-09-30
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../../DevLog/Daily/2025-09-29.html">
+            
+                <a href="../../DevLog/Daily/2025-09-29.html">
+            
+                    
+                    2025-09-29
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="../../DevLog/Daily/2025-09-28.html">
+            
+                <a href="../../DevLog/Daily/2025-09-28.html">
+            
+                    
+                    2025-09-28
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="../../DevLog/Daily/2025-09-27.html">
+            
+                <a href="../../DevLog/Daily/2025-09-27.html">
+            
+                    
+                    2025-09-27
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="../../DevLog/Daily/2025-09-26.html">
+            
+                <a href="../../DevLog/Daily/2025-09-26.html">
+            
+                    
+                    2025-09-26
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" data-path="../../DevLog/Daily/2025-09-25.html">
+            
+                <a href="../../DevLog/Daily/2025-09-25.html">
+            
+                    
+                    2025-09-25
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" data-path="../../DevLog/Daily/2025-09-24.html">
+            
+                <a href="../../DevLog/Daily/2025-09-24.html">
+            
+                    
+                    2025-09-24
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.8" data-path="../../DevLog/Daily/2025-09-23.html">
+            
+                <a href="../../DevLog/Daily/2025-09-23.html">
+            
+                    
+                    2025-09-23
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.9" data-path="../../DevLog/Daily/2025-09-22.html">
+            
+                <a href="../../DevLog/Daily/2025-09-22.html">
+            
+                    
+                    2025-09-22
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.10" data-path="../../DevLog/Daily/2025-09-21.html">
+            
+                <a href="../../DevLog/Daily/2025-09-21.html">
+            
+                    
+                    2025-09-21
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.11" data-path="../../DevLog/Daily/2025-09-20.html">
+            
+                <a href="../../DevLog/Daily/2025-09-20.html">
+            
+                    
+                    2025-09-20
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.12" data-path="../../DevLog/Daily/2025-09-19.html">
+            
+                <a href="../../DevLog/Daily/2025-09-19.html">
+            
+                    
+                    2025-09-19
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.13" data-path="../../DevLog/Daily/2025-09-18.html">
+            
+                <a href="../../DevLog/Daily/2025-09-18.html">
+            
+                    
+                    2025-09-18
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.14" data-path="../../DevLog/Daily/2025-09-17.html">
+            
+                <a href="../../DevLog/Daily/2025-09-17.html">
+            
+                    
+                    2025-09-17
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.15" data-path="../../DevLog/Daily/2025-09-16.html">
+            
+                <a href="../../DevLog/Daily/2025-09-16.html">
+            
+                    
+                    2025-09-16
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.16" data-path="../../DevLog/Daily/2025-09-15.html">
+            
+                <a href="../../DevLog/Daily/2025-09-15.html">
+            
+                    
+                    2025-09-15
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.17" data-path="../../DevLog/Daily/2025-09-14.html">
+            
+                <a href="../../DevLog/Daily/2025-09-14.html">
+            
+                    
+                    2025-09-14
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.18" data-path="../../DevLog/Daily/2025-09-13.html">
+            
+                <a href="../../DevLog/Daily/2025-09-13.html">
+            
+                    
+                    2025-09-13
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.19" data-path="../../DevLog/Daily/2025-09-12.html">
+            
+                <a href="../../DevLog/Daily/2025-09-12.html">
+            
+                    
+                    2025-09-12
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.20" data-path="../../DevLog/Daily/2025-09-11.html">
+            
+                <a href="../../DevLog/Daily/2025-09-11.html">
+            
+                    
+                    2025-09-11
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.21" data-path="../../DevLog/Daily/2025-09-10.html">
+            
+                <a href="../../DevLog/Daily/2025-09-10.html">
+            
+                    
+                    2025-09-10
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.22" data-path="../../DevLog/Daily/2025-09-09.html">
+            
+                <a href="../../DevLog/Daily/2025-09-09.html">
+            
+                    
+                    2025-09-09
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Weekly Summary</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../DevLog/Weekly/2025-W43-Summary.html">
+            
+                <a href="../../DevLog/Weekly/2025-W43-Summary.html">
+            
+                    
+                    주간 개발 요약 (2025-10-20 ~ 2025-10-26)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../DevLog/Weekly/2025-W41-Summary.html">
+            
+                <a href="../../DevLog/Weekly/2025-W41-Summary.html">
+            
+                    
+                    주간 개발 요약 (2025-10-02 ~ 2025-10-08)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Monthly Summary</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../../DevLog/Monthly/2025-10.html">
+            
+                <a href="../../DevLog/Monthly/2025-10.html">
+            
+                    
+                    Monthly DevLog — 2025-10 (October)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Documentation</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../../DevLog/_Last30Summary.html">
+            
+                <a href="../../DevLog/_Last30Summary.html">
+            
+                    
+                    30-Day Briefing 2025-11-02
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="../../DevLog/IMPLEMENTATION_SUMMARY.html">
+            
+                <a href="../../DevLog/IMPLEMENTATION_SUMMARY.html">
+            
+                    
+                    HonKit DevLog 자동화 시스템 구현 완료
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="../../DevLog/WORKFLOW_GUIDE.html">
+            
+                <a href="../../DevLog/WORKFLOW_GUIDE.html">
+            
+                    
+                    DevLog 자동화 워크플로우 가이드
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Planning</li>
+        
+        
+    
+
+    
+        
+        <li class="header">System Design</li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" data-path="../GPT_VoiceCommand_System_Prompt.html">
+            
+                <a href="../GPT_VoiceCommand_System_Prompt.html">
+            
+                    
+                    GPT 음성 명령 파서 시스템 프롬프트
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="../LoadingSystem_Network_Optimization_Presentation.html">
+            
+                <a href="../LoadingSystem_Network_Optimization_Presentation.html">
+            
+                    
+                    YiSan 로딩 시스템: 네트워크 최적화 관점 발표
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="../Multiplayer_API_Reference.html">
+            
+                <a href="../Multiplayer_API_Reference.html">
+            
+                    
+                    YiSan 멀티플레이 API 레퍼런스
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="../Multiplayer_Implementation_Guide.html">
+            
+                <a href="../Multiplayer_Implementation_Guide.html">
+            
+                    
+                    YiSan 멀티플레이 구현 가이드
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.5" data-path="../Multiplayer_System_Design.html">
+            
+                <a href="../Multiplayer_System_Design.html">
+            
+                    
+                    YiSan 멀티플레이 로비 시스템 설계 문서
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.6" data-path="../UNREAL_INTEGRATION_PLAN.html">
+            
+                <a href="../UNREAL_INTEGRATION_PLAN.html">
+            
+                    
+                    언리얼 엔진 통합 작업 계획
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.7" data-path="../api_documentation.html">
+            
+                <a href="../api_documentation.html">
+            
+                    
+                    Voice Server API Documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.8" data-path="../server_api.html">
+            
+                <a href="../server_api.html">
+            
+                    
+                    Voice Server API 가이드 (for Unreal Engine)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Feature Plans</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" data-path="../2025-10-02-voice-prompt-plan.html">
+            
+                <a href="../2025-10-02-voice-prompt-plan.html">
+            
+                    
+                    음성 프롬프트 워크플로 계획 (2025-10-02)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="../2025-10-30_UYiSanLoading_Refactor.html">
+            
+                <a href="../2025-10-30_UYiSanLoading_Refactor.html">
+            
+                    
+                    UYiSanLoading 리팩터링 리뷰 (2025-10-30 KST)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="../yisan_dasan_voice_proto.html">
+            
+                <a href="../yisan_dasan_voice_proto.html">
+            
+                    
+                    분석 및 평가 보고서 (2025-09-30 ~ 2025-10-20)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="../yisan_proto.html">
+            
+                <a href="../yisan_proto.html">
+            
+                    
+                    프로토타입 기간 개발자 역량 및 성과 분석 (2025-09-30 ~ 2025-10-20)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">UI/UX Design</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" data-path="../Figma_Lobby_UI_Design_Guide.html">
+            
+                <a href="../Figma_Lobby_UI_Design_Guide.html">
+            
+                    
+                    YiSan 멀티플레이 로비 UI 디자인 가이드 (Figma)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Reports</li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" data-path="../AI_Pathfinding_Fix_Report.html">
+            
+                <a href="../AI_Pathfinding_Fix_Report.html">
+            
+                    
+                    AI 경로 탐색 문제 해결 리포트
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" data-path="../Alpha_Report_2025-10-20_to_2025-10-27.html">
+            
+                <a href="../Alpha_Report_2025-10-20_to_2025-10-27.html">
+            
+                    
+                    Alpha 단계 개발 보고서
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.3" data-path="../Comprehensive_Competency_Assessment_2025-11-04.html">
+            
+                <a href="../Comprehensive_Competency_Assessment_2025-11-04.html">
+            
+                    
+                    YiSan 프로젝트 종합 역량평가 리포트
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.4" data-path="PlayerIndex_Complete_Report_2025-11-02.html">
+            
+                <a href="PlayerIndex_Complete_Report_2025-11-02.html">
+            
+                    
+                    PlayerIndex 관리 시스템 완전 해결 보고서
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.5" data-path="PlayerIndex_Fix_Report.html">
+            
+                <a href="PlayerIndex_Fix_Report.html">
+            
+                    
+                    PlayerIndex 할당 및 UI 색상 표시 문제 해결 보고서
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.6" data-path="../Team_Evaluation_2025-11-02.html">
+            
+                <a href="../Team_Evaluation_2025-11-02.html">
+            
+                    
+                    주간 업무 및 역량 평가 보고서 (2025-10-27 ~ 2025-11-02)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.7" data-path="../YiSan_프로젝트_진행보고서.html">
+            
+                <a href="../YiSan_프로젝트_진행보고서.html">
+            
+                    
+                    YiSan 프로젝트 진행 보고서
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Presentations</li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" data-path="../Weekly_Presentation_2025-11-02.html">
+            
+                <a href="../Weekly_Presentation_2025-11-02.html">
+            
+                    
+                    주간 프로젝트 발표 (2025-10-27 ~ 2025-11-02)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Other Documents</li>
+        
+        
+    
+        <li class="chapter active" data-level="16.1" data-path="PlayerIndex_GameState_Refactoring_2025-11-02.html">
+            
+                <a href="PlayerIndex_GameState_Refactoring_2025-11-02.html">
+            
+                    
+                    PlayerIndex 관리 - GameState 리팩토링 (2025-11-02)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="16.2" data-path="PlayerIndex_Issue_2025-11-02.html">
+            
+                <a href="PlayerIndex_Issue_2025-11-02.html">
+            
+                    
+                    PlayerIndex 재초기화 문제 트러블슈팅 (2025-11-02)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">External Links</li>
+        
+        
+    
+        <li class="chapter " data-level="17.1" >
+            
+                <a target="_blank" href="https://github.com/doppleddiggong/YiSan">
+            
+                    
+                    GitHub Repository
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="17.2" >
+            
+                <a target="_blank" href="https://doppleddiggong.github.io/YiSan/doxygen/">
+            
+                    
+                    Doxygen Documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKit에 게시
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >PlayerIndex 관리 - GameState 리팩토링 (2025-11-02)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#playerindex-관리---gamestate-리팩토링-2025-11-02"><b></b>PlayerIndex 관리 - GameState 리팩토링 (2025-11-02)</a></li><ul><li><span class="title-icon "></span><a href="#목차"><b></b>목차</a></li><li><span class="title-icon "></span><a href="#문제-상황"><b></b>문제 상황</a></li><ul><li><span class="title-icon "></span><a href="#증상"><b></b>증상</a></li><li><span class="title-icon "></span><a href="#근본-원인"><b></b>근본 원인</a></li></ul><li><span class="title-icon "></span><a href="#원인-분석"><b></b>원인 분석</a></li><ul><li><span class="title-icon "></span><a href="#기존-구조의-문제점"><b></b>기존 구조의 문제점</a></li><li><span class="title-icon "></span><a href="#요구사항"><b></b>요구사항</a></li></ul><li><span class="title-icon "></span><a href="#해결-방안"><b></b>해결 방안</a></li><ul><li><span class="title-icon "></span><a href="#전형-패턴-적용"><b></b>전형 패턴 적용</a></li><li><span class="title-icon "></span><a href="#왜-gamestate인가"><b></b>왜 GameState인가?</a></li></ul><li><span class="title-icon "></span><a href="#최종-구현"><b></b>최종 구현</a></li><ul><li><span class="title-icon "></span><a href="#1-ayisangamestateh"><b></b>1. AYisanGameState.h</a></li><li><span class="title-icon "></span><a href="#2-ayisangamestatecpp"><b></b>2. AYisanGameState.cpp</a></li><li><span class="title-icon "></span><a href="#3-abasegamemodecpp"><b></b>3. ABaseGameMode.cpp</a></li><li><span class="title-icon "></span><a href="#4-alobbygamemodecpp"><b></b>4. ALobbyGameMode.cpp</a></li></ul><li><span class="title-icon "></span><a href="#아키텍처-다이어그램"><b></b>아키텍처 다이어그램</a></li><li><span class="title-icon "></span><a href="#동작-흐름"><b></b>동작 흐름</a></li><ul><li><span class="title-icon "></span><a href="#로비-입장-시"><b></b>로비 입장 시</a></li><li><span class="title-icon "></span><a href="#메인-맵-전환-시-seamless-travel"><b></b>메인 맵 전환 시 (Seamless Travel)</a></li><li><span class="title-icon "></span><a href="#난입-시"><b></b>난입 시</a></li></ul><li><span class="title-icon "></span><a href="#수정-파일-목록"><b></b>수정 파일 목록</a></li><ul><li><span class="title-icon "></span><a href="#수정된-파일"><b></b>수정된 파일</a></li><li><span class="title-icon "></span><a href="#삭제-가능한-코드-선택사항"><b></b>삭제 가능한 코드 (선택사항)</a></li></ul><li><span class="title-icon "></span><a href="#테스트-가이드"><b></b>테스트 가이드</a></li><ul><li><span class="title-icon "></span><a href="#시나리오-1-로비-정상-접속"><b></b>시나리오 1: 로비 정상 접속</a></li><li><span class="title-icon "></span><a href="#시나리오-2-메인-맵-전환"><b></b>시나리오 2: 메인 맵 전환</a></li><li><span class="title-icon "></span><a href="#시나리오-3-pie-재시작-테스트"><b></b>시나리오 3: PIE 재시작 테스트</a></li><li><span class="title-icon "></span><a href="#시나리오-4-난입-테스트"><b></b>시나리오 4: 난입 테스트</a></li></ul><li><span class="title-icon "></span><a href="#핵심-학습-사항"><b></b>핵심 학습 사항</a></li><ul><li><span class="title-icon "></span><a href="#1-gamestate의-활용"><b></b>1. GameState의 활용</a></li><li><span class="title-icon "></span><a href="#2-복제-구조-설계"><b></b>2. 복제 구조 설계</a></li><li><span class="title-icon "></span><a href="#3-gameinstance-vs-gamestate"><b></b>3. GameInstance vs GameState</a></li></ul><li><span class="title-icon "></span><a href="#향후-개선-사항"><b></b>향후 개선 사항</a></li><ul><li><span class="title-icon "></span><a href="#1-playerindex-재사용-선택사항"><b></b>1. PlayerIndex 재사용 (선택사항)</a></li><li><span class="title-icon "></span><a href="#2-최대-플레이어-수-제한"><b></b>2. 최대 플레이어 수 제한</a></li></ul><li><span class="title-icon "></span><a href="#참고-자료"><b></b>참고 자료</a></li><ul><li><span class="title-icon "></span><a href="#unreal-engine-공식-문서"><b></b>Unreal Engine 공식 문서</a></li><li><span class="title-icon "></span><a href="#관련-이슈"><b></b>관련 이슈</a></li></ul></ul></ul></div><a href="#playerindex-관리---gamestate-리팩토링-2025-11-02" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="playerindex-관리---gamestate-리팩토링-2025-11-02"><a name="playerindex-관리---gamestate-리팩토링-2025-11-02" class="anchor-navigation-ex-anchor" href="#playerindex-관리---gamestate-리팩토링-2025-11-02"><i class="fa fa-link" aria-hidden="true"></i></a>PlayerIndex 관리 - GameState 리팩토링 (2025-11-02)</h1>
+<p><strong>작성일:</strong> 2025-11-02
+<strong>상태:</strong> ✅ 완료</p>
+<hr></hr>
+<h2 id="목차"><a name="목차" class="anchor-navigation-ex-anchor" href="#목차"><i class="fa fa-link" aria-hidden="true"></i></a>목차</h2>
+<ol>
+<li><a href="#문제-상황">문제 상황</a></li>
+<li><a href="#원인-분석">원인 분석</a></li>
+<li><a href="#해결-방안">해결 방안</a></li>
+<li><a href="#최종-구현">최종 구현</a></li>
+<li><a href="#수정-파일-목록">수정 파일 목록</a></li>
+<li><a href="#테스트-가이드">테스트 가이드</a></li>
+</ol>
+<hr></hr>
+<h2 id="문제-상황"><a name="문제-상황" class="anchor-navigation-ex-anchor" href="#문제-상황"><i class="fa fa-link" aria-hidden="true"></i></a>문제 상황</h2>
+<h3 id="증상"><a name="증상" class="anchor-navigation-ex-anchor" href="#증상"><i class="fa fa-link" aria-hidden="true"></i></a>증상</h3>
+<pre><code>로그 분석 결과:
+  Player 0: 2:qqq
+  Player 1: 3:www
+  LocalPlayerIndex = 3
+
+예상: PlayerIndex 0, 1
+실제: PlayerIndex 2, 3
+</code></pre><p><strong>Guest(www) 유저의 정보가 UI에 잘못 표시되는 문제 발생</strong></p>
+<h3 id="근본-원인"><a name="근본-원인" class="anchor-navigation-ex-anchor" href="#근본-원인"><i class="fa fa-link" aria-hidden="true"></i></a>근본 원인</h3>
+<ol>
+<li><p><strong>GameInstance의 NextPlayerIndex가 PIE 세션 간에 유지됨</strong></p>
+<ul>
+<li>이전 세션에서 NextPlayerIndex = 2</li>
+<li>새 세션 시작 시 ResetPlayerIndex() 미호출</li>
+<li>결과: 0, 1 대신 2, 3이 할당됨</li>
+</ul>
+</li>
+<li><p><strong>ResetPlayerIndex() 호출 조건 문제</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">if</span> (GS-&gt;PlayerArray.<span class="hljs-built_in">Num</span>() == <span class="hljs-number">0</span>)  <span class="hljs-comment">// BeginPlay 타이밍에 이미 플레이어 존재</span>
+{
+    GI-&gt;<span class="hljs-built_in">ResetPlayerIndex</span>();  <span class="hljs-comment">// 호출되지 않음</span>
+}
+</code></pre>
+</li>
+<li><p><strong>복제(Replication) 구조 문제</strong></p>
+<ul>
+<li>GameInstance는 복제되지 않음</li>
+<li>서버의 NextPlayerIndex만 증가</li>
+<li>클라이언트는 이 값을 알 수 없음</li>
+<li>PlayerState의 PlayerIndex는 복제되지만, 할당 로직이 불안정</li>
+</ul>
+</li>
+</ol>
+<hr></hr>
+<h2 id="원인-분석"><a name="원인-분석" class="anchor-navigation-ex-anchor" href="#원인-분석"><i class="fa fa-link" aria-hidden="true"></i></a>원인 분석</h2>
+<h3 id="기존-구조의-문제점"><a name="기존-구조의-문제점" class="anchor-navigation-ex-anchor" href="#기존-구조의-문제점"><i class="fa fa-link" aria-hidden="true"></i></a>기존 구조의 문제점</h3>
+<pre><code>GameInstance (복제 안 됨)
+  └─ NextPlayerIndex (서버 전용, 클라 모름)
+      └─ BaseGameMode::PostLogin
+          └─ PlayerState-&gt;PlayerIndex 할당
+              └─ 복제됨 (하지만 소스가 불안정)
+</code></pre><p><strong>문제:</strong></p>
+<ul>
+<li>GameInstance는 맵 전환 시 유지되지만, PIE 세션 간에도 유지됨</li>
+<li>ResetPlayerIndex() 타이밍 이슈</li>
+<li>복제 안 되는 GameInstance에 의존</li>
+</ul>
+<h3 id="요구사항"><a name="요구사항" class="anchor-navigation-ex-anchor" href="#요구사항"><i class="fa fa-link" aria-hidden="true"></i></a>요구사항</h3>
+<pre><code>서버가 순번 매기고, 클라는 받아만 쓰는 구조
+
+- 서버 전용으로 NextPlayerIndex 관리
+- PlayerState가 서버에서 인덱스 배정 → Replicated
+- 클라이언트는 복제된 값만 사용
+- 맵 전환 시에도 순번 유지 (Seamless Travel 전제)
+</code></pre><hr></hr>
+<h2 id="해결-방안"><a name="해결-방안" class="anchor-navigation-ex-anchor" href="#해결-방안"><i class="fa fa-link" aria-hidden="true"></i></a>해결 방안</h2>
+<h3 id="전형-패턴-적용"><a name="전형-패턴-적용" class="anchor-navigation-ex-anchor" href="#전형-패턴-적용"><i class="fa fa-link" aria-hidden="true"></i></a>전형 패턴 적용</h3>
+<table>
+<thead>
+<tr>
+<th>역할</th>
+<th>클래스</th>
+<th>기능</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>순번 보관</td>
+<td><strong>AYisanGameState</strong></td>
+<td>NextPlayerIndex 증가, 서버만 변경</td>
+</tr>
+<tr>
+<td>순번 적용</td>
+<td><strong>AYiSanPlayerState</strong></td>
+<td>PlayerIndex 복제, OnRep로 UI 연결 가능</td>
+</tr>
+<tr>
+<td>순번 부여</td>
+<td><strong>ABaseGameMode</strong></td>
+<td>플레이어 로그인 시 인덱스 지정</td>
+</tr>
+</tbody>
+</table>
+<h3 id="왜-gamestate인가"><a name="왜-gamestate인가" class="anchor-navigation-ex-anchor" href="#왜-gamestate인가"><i class="fa fa-link" aria-hidden="true"></i></a>왜 GameState인가?</h3>
+<ol>
+<li><p><strong>GameState는 항상 복제됨</strong></p>
+<ul>
+<li>서버/클라 모두 존재</li>
+<li>Seamless Travel 시 유지됨</li>
+</ul>
+</li>
+<li><p><strong>GameMode는 서버 전용</strong></p>
+<ul>
+<li>PostLogin에서 GameState 접근 가능</li>
+<li>GameState-&gt;GetNextPlayerIndex() 호출</li>
+</ul>
+</li>
+<li><p><strong>GameInstance 대비 장점</strong></p>
+<ul>
+<li>PIE 세션 간 격리 (새 게임 = 새 GameState)</li>
+<li>복제 구조와 자연스럽게 통합</li>
+<li>맵 전환 시 자동 유지 (Seamless Travel)</li>
+</ul>
+</li>
+</ol>
+<hr></hr>
+<h2 id="최종-구현"><a name="최종-구현" class="anchor-navigation-ex-anchor" href="#최종-구현"><i class="fa fa-link" aria-hidden="true"></i></a>최종 구현</h2>
+<h3 id="1-ayisangamestateh"><a name="1-ayisangamestateh" class="anchor-navigation-ex-anchor" href="#1-ayisangamestateh"><i class="fa fa-link" aria-hidden="true"></i></a>1. AYisanGameState.h</h3>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">YISAN_API</span> AYisanGameState : <span class="hljs-keyword">public</span> AGameStateBase
+{
+    <span class="hljs-built_in">GENERATED_BODY</span>()
+
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-comment">/** @brief 다음 PlayerIndex를 반환하고 증가시킵니다. 서버 전용입니다. */</span>
+    <span class="hljs-function">int32 <span class="hljs-title">GetNextPlayerIndex</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/** @brief PlayerIndex 카운터를 초기화합니다. 서버 전용입니다. */</span>
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">ResetPlayerIndex</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-comment">/** @brief 다음에 할당할 PlayerIndex (서버에서만 증가, 복제 불필요) */</span>
+    int32 NextPlayerIndex = <span class="hljs-number">0</span>;
+};
+</code></pre>
+<h3 id="2-ayisangamestatecpp"><a name="2-ayisangamestatecpp" class="anchor-navigation-ex-anchor" href="#2-ayisangamestatecpp"><i class="fa fa-link" aria-hidden="true"></i></a>2. AYisanGameState.cpp</h3>
+<pre><code class="lang-cpp"><span class="hljs-function">int32 <span class="hljs-title">AYisanGameState::GetNextPlayerIndex</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">HasAuthority</span>())
+    {
+        <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[GameState] ERROR: GetNextPlayerIndex called on client!"</span>));
+        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    }
+
+    int32 CurrentIndex = NextPlayerIndex;
+    NextPlayerIndex++;
+
+    <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[GameState] GetNextPlayerIndex - Returning: %d, Next will be: %d"</span>),
+        CurrentIndex, NextPlayerIndex);
+
+    <span class="hljs-keyword">return</span> CurrentIndex;
+}
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">AYisanGameState::ResetPlayerIndex</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">HasAuthority</span>())
+    {
+        <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[GameState] ERROR: ResetPlayerIndex called on client!"</span>));
+        <span class="hljs-keyword">return</span>;
+    }
+
+    NextPlayerIndex = <span class="hljs-number">0</span>;
+    <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[GameState] ResetPlayerIndex - NextPlayerIndex reset to 0"</span>));
+}
+</code></pre>
+<h3 id="3-abasegamemodecpp"><a name="3-abasegamemodecpp" class="anchor-navigation-ex-anchor" href="#3-abasegamemodecpp"><i class="fa fa-link" aria-hidden="true"></i></a>3. ABaseGameMode.cpp</h3>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">ABaseGameMode::PostLogin</span><span class="hljs-params">(APlayerController* NewPlayer)</span>
+</span>{
+    Super::<span class="hljs-built_in">PostLogin</span>(NewPlayer);
+
+    <span class="hljs-keyword">if</span> (!NewPlayer) <span class="hljs-keyword">return</span>;
+
+    AYiSanPlayerState* PS = NewPlayer-&gt;<span class="hljs-built_in">GetPlayerState</span>&lt;AYiSanPlayerState&gt;();
+    <span class="hljs-keyword">if</span> (!PS) <span class="hljs-keyword">return</span>;
+
+    <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[BaseGameMode] PostLogin - PC=%s, PlayerState=%s, Current PlayerIndex=%d"</span>),
+        *<span class="hljs-built_in">GetNameSafe</span>(NewPlayer), *<span class="hljs-built_in">GetNameSafe</span>(PS), PS-&gt;PlayerIndex);
+
+    <span class="hljs-comment">// PlayerIndex가 아직 할당되지 않았으면 할당</span>
+    <span class="hljs-keyword">if</span> (PS-&gt;PlayerIndex == <span class="hljs-number">-1</span>)
+    {
+        <span class="hljs-keyword">if</span> (AYisanGameState* GS = <span class="hljs-built_in">GetGameState</span>&lt;AYisanGameState&gt;())
+        {
+            PS-&gt;PlayerIndex = GS-&gt;<span class="hljs-built_in">GetNextPlayerIndex</span>();
+            <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[BaseGameMode] Assigned NEW PlayerIndex %d to %s"</span>),
+                PS-&gt;PlayerIndex, *PS-&gt;<span class="hljs-built_in">GetPlayerName</span>());
+        }
+        <span class="hljs-keyword">else</span>
+        {
+            <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[BaseGameMode] ERROR: GameState not found! Cannot assign PlayerIndex"</span>));
+        }
+    }
+    <span class="hljs-keyword">else</span>
+    {
+        <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[BaseGameMode] PlayerIndex ALREADY SET: %d (Seamless Travel 성공)"</span>),
+            PS-&gt;PlayerIndex);
+    }
+}
+</code></pre>
+<h3 id="4-alobbygamemodecpp"><a name="4-alobbygamemodecpp" class="anchor-navigation-ex-anchor" href="#4-alobbygamemodecpp"><i class="fa fa-link" aria-hidden="true"></i></a>4. ALobbyGameMode.cpp</h3>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">ALobbyGameMode::BeginPlay</span><span class="hljs-params">()</span>
+</span>{
+    Super::<span class="hljs-built_in">BeginPlay</span>();
+
+    FString CurrentMapName = <span class="hljs-built_in">GetWorld</span>()-&gt;<span class="hljs-built_in">GetMapName</span>();
+    <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"============================================"</span>));
+    <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[LobbyGameMode] BeginPlay CALLED"</span>));
+    <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"  Current Map: %s"</span>), *CurrentMapName);
+
+    <span class="hljs-comment">// LobbyMap에서만 PlayerIndex 초기화</span>
+    <span class="hljs-type">bool</span> bIsLobbyMap = CurrentMapName.<span class="hljs-built_in">Contains</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"LobbyMap"</span>)) ||
+                       CurrentMapName.<span class="hljs-built_in">Contains</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"StartLevel"</span>)) ||
+                       CurrentMapName.<span class="hljs-built_in">Contains</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"Lobby"</span>));
+
+    <span class="hljs-keyword">if</span> (bIsLobbyMap)
+    {
+        <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"  This is Lobby Map - Resetting PlayerIndex"</span>));
+        <span class="hljs-keyword">if</span> (AYisanGameState* GS = <span class="hljs-built_in">GetGameState</span>&lt;AYisanGameState&gt;())
+        {
+            GS-&gt;<span class="hljs-built_in">ResetPlayerIndex</span>();
+            <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[LobbyGameMode] PlayerIndex counter reset to 0"</span>));
+        }
+        <span class="hljs-keyword">else</span>
+        {
+            <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[LobbyGameMode] ERROR: GameState not found!"</span>));
+        }
+    }
+    <span class="hljs-keyword">else</span>
+    {
+        <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"  WARNING: LobbyGameMode is running on non-lobby map!"</span>));
+        <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"  WARNING: NOT resetting PlayerIndex to preserve Seamless Travel"</span>));
+        <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"  Current Map: %s (expected: LobbyMap)"</span>), *CurrentMapName);
+    }
+    <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"============================================"</span>));
+}
+</code></pre>
+<hr></hr>
+<h2 id="아키텍처-다이어그램"><a name="아키텍처-다이어그램" class="anchor-navigation-ex-anchor" href="#아키텍처-다이어그램"><i class="fa fa-link" aria-hidden="true"></i></a>아키텍처 다이어그램</h2>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                   AYisanGameState                           │
+│  - NextPlayerIndex: int32 (서버 전용, 복제 불필요)           │
+│  + GetNextPlayerIndex(): int32                              │
+│  + ResetPlayerIndex(): void                                 │
+│                                                             │
+│  [Seamless Travel 시 자동 유지]                             │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              │ 사용
+                              ▼
+        ┌─────────────────────────────────────────┐
+        │                                         │
+        ▼                                         ▼
+┌──────────────────┐                   ┌──────────────────┐
+│ ALobbyGameMode   │                   │ AYiSanGameMode   │
+│  (서버 전용)     │  Seamless Travel  │  (서버 전용)     │
+│                  │──────────────────▶│                  │
+│ BeginPlay():     │                   │ BeginPlay():     │
+│   GS-&gt;Reset()    │                   │   (초기화 없음)  │
+│                  │                   │                  │
+│ PostLogin():     │                   │ PostLogin():     │
+│   Base 호출      │                   │   Base 호출      │
+└──────────────────┘                   └──────────────────┘
+        │                                         │
+        │ 모두 Base로 위임                         │
+        ▼                                         ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   ABaseGameMode                             │
+│  PostLogin():                                               │
+│    if (PS-&gt;PlayerIndex == -1)                               │
+│      PS-&gt;PlayerIndex = GS-&gt;GetNextPlayerIndex()             │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              │ 할당
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                  AYiSanPlayerState                          │
+│  UPROPERTY(Replicated)                                      │
+│  int32 PlayerIndex = -1                                     │
+│                                                             │
+│  [서버에서 할당 → 자동으로 클라이언트에 복제됨]              │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              │ 복제
+                              ▼
+                     클라이언트 UI 업데이트
+</code></pre><hr></hr>
+<h2 id="동작-흐름"><a name="동작-흐름" class="anchor-navigation-ex-anchor" href="#동작-흐름"><i class="fa fa-link" aria-hidden="true"></i></a>동작 흐름</h2>
+<h3 id="로비-입장-시"><a name="로비-입장-시" class="anchor-navigation-ex-anchor" href="#로비-입장-시"><i class="fa fa-link" aria-hidden="true"></i></a>로비 입장 시</h3>
+<pre><code>1. LobbyMap 로드
+   └─ ALobbyGameMode::BeginPlay()
+      └─ GS-&gt;ResetPlayerIndex()
+         └─ NextPlayerIndex = 0
+
+2. Host(qqq) 접속
+   └─ ABaseGameMode::PostLogin(Host)
+      └─ PS-&gt;PlayerIndex == -1 (초기값)
+      └─ PS-&gt;PlayerIndex = GS-&gt;GetNextPlayerIndex()
+         └─ NextPlayerIndex: 0 → 1
+         └─ Host.PlayerIndex = 0 ✅
+
+3. Guest(www) 접속
+   └─ ABaseGameMode::PostLogin(Guest)
+      └─ PS-&gt;PlayerIndex == -1 (초기값)
+      └─ PS-&gt;PlayerIndex = GS-&gt;GetNextPlayerIndex()
+         └─ NextPlayerIndex: 1 → 2
+         └─ Guest.PlayerIndex = 1 ✅
+</code></pre><h3 id="메인-맵-전환-시-seamless-travel"><a name="메인-맵-전환-시-seamless-travel" class="anchor-navigation-ex-anchor" href="#메인-맵-전환-시-seamless-travel"><i class="fa fa-link" aria-hidden="true"></i></a>메인 맵 전환 시 (Seamless Travel)</h3>
+<pre><code>1. StartLevel → MainLevel_WP
+   └─ Seamless Travel 실행
+      └─ GameState 유지 (NextPlayerIndex = 2)
+      └─ PlayerState 유지 (Host=0, Guest=1)
+
+2. AYiSanGameMode::BeginPlay()
+   └─ ResetPlayerIndex() 호출 안 함 ✅
+
+3. Host PostLogin
+   └─ PS-&gt;PlayerIndex == 0 (유지됨)
+   └─ "PlayerIndex ALREADY SET: 0" 로그
+   └─ 할당 스킵 ✅
+
+4. Guest PostLogin
+   └─ PS-&gt;PlayerIndex == 1 (유지됨)
+   └─ "PlayerIndex ALREADY SET: 1" 로그
+   └─ 할당 스킵 ✅
+</code></pre><h3 id="난입-시"><a name="난입-시" class="anchor-navigation-ex-anchor" href="#난입-시"><i class="fa fa-link" aria-hidden="true"></i></a>난입 시</h3>
+<pre><code>메인맵에서 새 플레이어(zzz) 조인:
+
+1. ABaseGameMode::PostLogin(zzz)
+   └─ PS-&gt;PlayerIndex == -1 (신규)
+   └─ PS-&gt;PlayerIndex = GS-&gt;GetNextPlayerIndex()
+      └─ NextPlayerIndex: 2 → 3
+      └─ zzz.PlayerIndex = 2 ✅
+
+결과:
+  Host: 0
+  Guest: 1
+  난입자: 2
+</code></pre><hr></hr>
+<h2 id="수정-파일-목록"><a name="수정-파일-목록" class="anchor-navigation-ex-anchor" href="#수정-파일-목록"><i class="fa fa-link" aria-hidden="true"></i></a>수정 파일 목록</h2>
+<h3 id="수정된-파일"><a name="수정된-파일" class="anchor-navigation-ex-anchor" href="#수정된-파일"><i class="fa fa-link" aria-hidden="true"></i></a>수정된 파일</h3>
+<ol>
+<li><p><strong>Source/YiSan/Environment/Public/AYisanGameState.h</strong></p>
+<ul>
+<li><code>GetNextPlayerIndex()</code> 함수 추가</li>
+<li><code>ResetPlayerIndex()</code> 함수 추가</li>
+<li><code>NextPlayerIndex</code> 멤버 변수 추가</li>
+</ul>
+</li>
+<li><p><strong>Source/YiSan/Environment/Private/AYisanGameState.cpp</strong></p>
+<ul>
+<li><code>GetNextPlayerIndex()</code> 구현</li>
+<li><code>ResetPlayerIndex()</code> 구현</li>
+</ul>
+</li>
+<li><p><strong>Source/YiSan/Environment/Private/ABaseGameMode.cpp</strong></p>
+<ul>
+<li>include: <code>UYiSanGameInstance.h</code> → <code>AYisanGameState.h</code></li>
+<li>PostLogin: <code>GI-&gt;GetNextPlayerIndex()</code> → <code>GS-&gt;GetNextPlayerIndex()</code></li>
+</ul>
+</li>
+<li><p><strong>Source/YiSan/Environment/Private/ALobbyGameMode.cpp</strong></p>
+<ul>
+<li>include: <code>UYiSanGameInstance.h</code> → <code>AYisanGameState.h</code></li>
+<li>BeginPlay: <code>GI-&gt;ResetPlayerIndex()</code> → <code>GS-&gt;ResetPlayerIndex()</code></li>
+<li>PlayerArray.Num() 조건 제거 (무조건 리셋)</li>
+</ul>
+</li>
+</ol>
+<h3 id="삭제-가능한-코드-선택사항"><a name="삭제-가능한-코드-선택사항" class="anchor-navigation-ex-anchor" href="#삭제-가능한-코드-선택사항"><i class="fa fa-link" aria-hidden="true"></i></a>삭제 가능한 코드 (선택사항)</h3>
+<p><strong>Source/YiSan/Environment/Public/UYiSanGameInstance.h</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// 더 이상 사용하지 않음 (삭제 가능)</span>
+<span class="hljs-function">int32 <span class="hljs-title">GetNextPlayerIndex</span><span class="hljs-params">()</span></span>;
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">ResetPlayerIndex</span><span class="hljs-params">()</span></span>;
+int32 NextPlayerIndex = <span class="hljs-number">0</span>;
+</code></pre>
+<p><strong>Source/YiSan/Environment/Private/UYiSanGameInstance.cpp</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// 더 이상 사용하지 않음 (삭제 가능)</span>
+<span class="hljs-function">int32 <span class="hljs-title">UYiSanGameInstance::GetNextPlayerIndex</span><span class="hljs-params">()</span> </span>{ ... }
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">UYiSanGameInstance::ResetPlayerIndex</span><span class="hljs-params">()</span> </span>{ ... }
+</code></pre>
+<p><strong>주의:</strong> GameInstance는 다른 용도로 사용 중일 수 있으므로, PlayerIndex 관련 코드만 제거하고 클래스 자체는 유지합니다.</p>
+<hr></hr>
+<h2 id="테스트-가이드"><a name="테스트-가이드" class="anchor-navigation-ex-anchor" href="#테스트-가이드"><i class="fa fa-link" aria-hidden="true"></i></a>테스트 가이드</h2>
+<h3 id="시나리오-1-로비-정상-접속"><a name="시나리오-1-로비-정상-접속" class="anchor-navigation-ex-anchor" href="#시나리오-1-로비-정상-접속"><i class="fa fa-link" aria-hidden="true"></i></a>시나리오 1: 로비 정상 접속</h3>
+<pre><code>1. PIE 또는 Standalone으로 LobbyMap 시작
+2. 로그 확인:
+   [LobbyGameMode] PlayerIndex counter reset to 0
+
+3. Host 접속 후 로그:
+   [GameState] GetNextPlayerIndex - Returning: 0, Next will be: 1
+   [BaseGameMode] Assigned NEW PlayerIndex 0 to qqq
+
+4. Guest 접속 후 로그:
+   [GameState] GetNextPlayerIndex - Returning: 1, Next will be: 2
+   [BaseGameMode] Assigned NEW PlayerIndex 1 to www
+
+5. UI 확인:
+   Host 화면: qqq(녹색), www(흰색)
+   Guest 화면: qqq(흰색), www(녹색)
+</code></pre><h3 id="시나리오-2-메인-맵-전환"><a name="시나리오-2-메인-맵-전환" class="anchor-navigation-ex-anchor" href="#시나리오-2-메인-맵-전환"><i class="fa fa-link" aria-hidden="true"></i></a>시나리오 2: 메인 맵 전환</h3>
+<pre><code>1. StartLevel → MainLevel_WP Seamless Travel
+2. 로그 확인:
+   [BaseGameMode] PlayerIndex ALREADY SET: 0 (Seamless Travel 성공)
+   [BaseGameMode] PlayerIndex ALREADY SET: 1 (Seamless Travel 성공)
+
+3. UI 확인:
+   Host 화면: qqq(녹색), www(흰색)
+   Guest 화면: qqq(흰색), www(녹색)
+</code></pre><h3 id="시나리오-3-pie-재시작-테스트"><a name="시나리오-3-pie-재시작-테스트" class="anchor-navigation-ex-anchor" href="#시나리오-3-pie-재시작-테스트"><i class="fa fa-link" aria-hidden="true"></i></a>시나리오 3: PIE 재시작 테스트</h3>
+<pre><code>1. 첫 번째 PIE 세션 실행
+   Host: PlayerIndex = 0
+   Guest: PlayerIndex = 1
+
+2. PIE 종료
+
+3. 두 번째 PIE 세션 실행
+   Host: PlayerIndex = 0 (다시 0부터 시작) ✅
+   Guest: PlayerIndex = 1 ✅
+
+검증: 이전 세션의 NextPlayerIndex=2가 유지되지 않음
+</code></pre><h3 id="시나리오-4-난입-테스트"><a name="시나리오-4-난입-테스트" class="anchor-navigation-ex-anchor" href="#시나리오-4-난입-테스트"><i class="fa fa-link" aria-hidden="true"></i></a>시나리오 4: 난입 테스트</h3>
+<pre><code>1. MainLevel_WP에서 3번째 플레이어 조인
+2. 로그 확인:
+   [GameState] GetNextPlayerIndex - Returning: 2, Next will be: 3
+   [BaseGameMode] Assigned NEW PlayerIndex 2 to zzz
+
+3. UI 확인:
+   zzz 화면: qqq(흰색), www(흰색), zzz(녹색)
+</code></pre><hr></hr>
+<h2 id="핵심-학습-사항"><a name="핵심-학습-사항" class="anchor-navigation-ex-anchor" href="#핵심-학습-사항"><i class="fa fa-link" aria-hidden="true"></i></a>핵심 학습 사항</h2>
+<h3 id="1-gamestate의-활용"><a name="1-gamestate의-활용" class="anchor-navigation-ex-anchor" href="#1-gamestate의-활용"><i class="fa fa-link" aria-hidden="true"></i></a>1. GameState의 활용</h3>
+<pre><code>GameState는 멀티플레이어에서 서버 권한 데이터의 중앙 저장소
+
+장점:
+- 항상 복제됨 (서버/클라 모두 존재)
+- Seamless Travel 시 자동 유지
+- PIE 세션마다 새로 생성 (격리)
+- GameMode에서 쉽게 접근 가능
+</code></pre><h3 id="2-복제-구조-설계"><a name="2-복제-구조-설계" class="anchor-navigation-ex-anchor" href="#2-복제-구조-설계"><i class="fa fa-link" aria-hidden="true"></i></a>2. 복제 구조 설계</h3>
+<pre><code>복제가 필요한 데이터: PlayerState.PlayerIndex (각 플레이어마다)
+복제 불필요한 데이터: GameState.NextPlayerIndex (서버 내부 카운터)
+
+원칙:
+- 서버에서만 증가하는 카운터는 복제 불필요
+- 클라이언트가 읽어야 하는 최종 값만 복제
+</code></pre><h3 id="3-gameinstance-vs-gamestate"><a name="3-gameinstance-vs-gamestate" class="anchor-navigation-ex-anchor" href="#3-gameinstance-vs-gamestate"><i class="fa fa-link" aria-hidden="true"></i></a>3. GameInstance vs GameState</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>GameInstance</th>
+<th>GameState</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>복제</td>
+<td>❌ 안 됨</td>
+<td>✅ 됨</td>
+</tr>
+<tr>
+<td>Seamless Travel</td>
+<td>✅ 유지</td>
+<td>✅ 유지</td>
+</tr>
+<tr>
+<td>PIE 세션 격리</td>
+<td>❌ (유지될 수 있음)</td>
+<td>✅ (항상 새로 생성)</td>
+</tr>
+<tr>
+<td>서버/클라 존재</td>
+<td>둘 다</td>
+<td>둘 다</td>
+</tr>
+<tr>
+<td>용도</td>
+<td>세션, 설정 관리</td>
+<td>게임 상태, 플레이어 관리</td>
+</tr>
+</tbody>
+</table>
+<p><strong>결론:</strong> PlayerIndex 같은 게임 내 순번 관리는 <strong>GameState가 적합</strong></p>
+<hr></hr>
+<h2 id="향후-개선-사항"><a name="향후-개선-사항" class="anchor-navigation-ex-anchor" href="#향후-개선-사항"><i class="fa fa-link" aria-hidden="true"></i></a>향후 개선 사항</h2>
+<h3 id="1-playerindex-재사용-선택사항"><a name="1-playerindex-재사용-선택사항" class="anchor-navigation-ex-anchor" href="#1-playerindex-재사용-선택사항"><i class="fa fa-link" aria-hidden="true"></i></a>1. PlayerIndex 재사용 (선택사항)</h3>
+<p>현재는 플레이어가 나가도 인덱스가 계속 증가합니다. 필요 시 재사용 로직 추가:</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">AYisanGameState</span>
+{
+    TArray&lt;int32&gt; AvailableIndices;
+
+    <span class="hljs-function">int32 <span class="hljs-title">GetNextPlayerIndex</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (AvailableIndices.<span class="hljs-built_in">Num</span>() &gt; <span class="hljs-number">0</span>)
+            <span class="hljs-keyword">return</span> AvailableIndices.<span class="hljs-built_in">Pop</span>();
+        <span class="hljs-keyword">return</span> NextPlayerIndex++;
+    }
+
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">ReleasePlayerIndex</span><span class="hljs-params">(int32 Index)</span>
+    </span>{
+        AvailableIndices.<span class="hljs-built_in">Add</span>(Index);
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ABaseGameMode</span>
+{
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Logout</span><span class="hljs-params">(AController* Exiting)</span> <span class="hljs-keyword">override</span>
+    </span>{
+        Super::<span class="hljs-built_in">Logout</span>(Exiting);
+
+        <span class="hljs-keyword">if</span> (AYiSanPlayerState* PS = Exiting-&gt;<span class="hljs-built_in">GetPlayerState</span>&lt;AYiSanPlayerState&gt;())
+        {
+            <span class="hljs-keyword">if</span> (AYisanGameState* GS = <span class="hljs-built_in">GetGameState</span>&lt;AYisanGameState&gt;())
+            {
+                GS-&gt;<span class="hljs-built_in">ReleasePlayerIndex</span>(PS-&gt;PlayerIndex);
+            }
+        }
+    }
+};
+</code></pre>
+<h3 id="2-최대-플레이어-수-제한"><a name="2-최대-플레이어-수-제한" class="anchor-navigation-ex-anchor" href="#2-최대-플레이어-수-제한"><i class="fa fa-link" aria-hidden="true"></i></a>2. 최대 플레이어 수 제한</h3>
+<pre><code class="lang-cpp"><span class="hljs-function">int32 <span class="hljs-title">AYisanGameState::GetNextPlayerIndex</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> (NextPlayerIndex &gt;= MaxPlayers)
+    {
+        <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[GameState] ERROR: Max player limit reached!"</span>));
+        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    }
+    <span class="hljs-keyword">return</span> NextPlayerIndex++;
+}
+</code></pre>
+<hr></hr>
+<h2 id="참고-자료"><a name="참고-자료" class="anchor-navigation-ex-anchor" href="#참고-자료"><i class="fa fa-link" aria-hidden="true"></i></a>참고 자료</h2>
+<h3 id="unreal-engine-공식-문서"><a name="unreal-engine-공식-문서" class="anchor-navigation-ex-anchor" href="#unreal-engine-공식-문서"><i class="fa fa-link" aria-hidden="true"></i></a>Unreal Engine 공식 문서</h3>
+<ul>
+<li><a href="https://docs.unrealengine.com/5.3/en-US/game-state-in-unreal-engine/" target="_blank">GameState</a></li>
+<li><a href="https://docs.unrealengine.com/5.3/en-US/game-mode-in-unreal-engine/" target="_blank">GameMode</a></li>
+<li><a href="https://docs.unrealengine.com/5.3/en-US/travelling-in-multiplayer-in-unreal-engine/" target="_blank">Seamless Travel</a></li>
+<li><a href="https://docs.unrealengine.com/5.3/en-US/replication-in-unreal-engine/" target="_blank">Replication</a></li>
+</ul>
+<h3 id="관련-이슈"><a name="관련-이슈" class="anchor-navigation-ex-anchor" href="#관련-이슈"><i class="fa fa-link" aria-hidden="true"></i></a>관련 이슈</h3>
+<ul>
+<li><code>Documents/DevLog/PlayerIndex_Fix_Report.md</code> - 초기 PlayerIndex 할당 문제 해결</li>
+<li><code>Documents/DevLog/PlayerIndex_Issue_2025-11-02.md</code> - PlayerIndex 2,3 문제 분석</li>
+</ul>
+<hr></hr>
+<p><strong>문서 버전:</strong> 1.0
+<strong>작성자:</strong> Claude Code
+<strong>최종 수정:</strong> 2025-11-02 02:00 KST</p>
+</body></html> <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../Weekly_Presentation_2025-11-02.html" class="navigation navigation-prev " aria-label="Previous page: 주간 프로젝트 발표 (2025-10-27 ~ 2025-11-02)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="PlayerIndex_Issue_2025-11-02.html" class="navigation navigation-next " aria-label="Next page: PlayerIndex 재초기화 문제 트러블슈팅 (2025-11-02)">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"PlayerIndex 관리 - GameState 리팩토링 (2025-11-02)","level":"16.1","depth":1,"next":{"title":"PlayerIndex 재초기화 문제 트러블슈팅 (2025-11-02)","level":"16.2","depth":1,"path":"Planning/PlayerIndexShooting/PlayerIndex_Issue_2025-11-02.md","ref":"Planning/PlayerIndexShooting/PlayerIndex_Issue_2025-11-02.md","articles":[]},"previous":{"title":"주간 프로젝트 발표 (2025-10-27 ~ 2025-11-02)","level":"15.1","depth":1,"path":"Planning/Weekly_Presentation_2025-11-02.md","ref":"Planning/Weekly_Presentation_2025-11-02.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","anchor-navigation-ex","code","splitter","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"splitter":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":false,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/PlayerIndexShooting/PlayerIndex_GameState_Refactoring_2025-11-02.md","mtime":"2025-11-08T15:01:59.243Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-08T15:02:24.274Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mermaid-gb3/book/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    <script src="../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.min.js"></script>
+
+    </body>
+</html>
+
