@@ -1,4 +1,4 @@
-name: Generate Doxygen Documentation
+name: Generate Doxygen
 
 on:
   push:
