@@ -1,4 +1,4 @@
-name: HonKit Documentation
+name: Generate HonKit
 
 on:
   # DevLog 또는 Planning 폴더가 업데이트될 때 자동 실행
