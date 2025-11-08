@@ -158,14 +158,14 @@ jobs:
       - name: Send Discord Notification
         if: success() && (steps.config.outputs.discord_enabled == 'true' || steps.config.outputs.discord_enabled == 'True')
         env:
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
-          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
-            echo "⚠️ DISCORD_WEBHOOK_URL secret이 설정되지 않았습니다. Discord 알림을 건너뜁니다."
+          if [ -z "$DISCORD_WEBHOOK" ]; then
+            echo "⚠️ DISCORD_WEBHOOK secret이 설정되지 않았습니다. Discord 알림을 건너뜁니다."
           else
             chmod +x .github/scripts/devlog/send_discord.py
             python .github/scripts/devlog/send_discord.py \
-              --webhook-url "$DISCORD_WEBHOOK_URL" \
+              --webhook-url "$DISCORD_WEBHOOK" \
               --type "weekly" \
               --devlog-file "Documents/DevLog/${{ steps.weekly.outputs.week_label }}-Summary.md" \
               --date "${{ steps.weekly.outputs.week_label }}" \
