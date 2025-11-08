@@ -1,0 +1,1346 @@
+
+<!DOCTYPE HTML>
+<html lang="ko" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Server API · YiSan Development Documentation</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.1.4">
+        <meta name="author" content="DoppledDiggong Team">
+        
+        
+    
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+    
+        
+        
+        <link rel="stylesheet" href="../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.default.css" />
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="GPT_VoiceCommand_System_Prompt.html" />
+    
+    
+    <link rel="prev" href="api_documentation.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="검색어 입력" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/doppleddiggong/YiSan" target="_blank" class="custom-link">GitHub Repository</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://doppleddiggong.github.io/YiSan/doxygen/" target="_blank" class="custom-link">Doxygen Documentation</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">Introduction</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    시작하기
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">DevLog</li>
+        
+        
+    
+
+    
+        
+        <li class="header">Daily Logs (2025-10)</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../DevLog/2025-10-01.html">
+            
+                <a href="../DevLog/2025-10-01.html">
+            
+                    
+                    2025-10-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../DevLog/2025-10-02.html">
+            
+                <a href="../DevLog/2025-10-02.html">
+            
+                    
+                    2025-10-02
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../DevLog/2025-10-03.html">
+            
+                <a href="../DevLog/2025-10-03.html">
+            
+                    
+                    2025-10-03
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../DevLog/2025-10-04.html">
+            
+                <a href="../DevLog/2025-10-04.html">
+            
+                    
+                    2025-10-04
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../DevLog/2025-10-06.html">
+            
+                <a href="../DevLog/2025-10-06.html">
+            
+                    
+                    2025-10-06
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../DevLog/2025-10-08.html">
+            
+                <a href="../DevLog/2025-10-08.html">
+            
+                    
+                    2025-10-08
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="../DevLog/2025-10-09.html">
+            
+                <a href="../DevLog/2025-10-09.html">
+            
+                    
+                    2025-10-09
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="../DevLog/2025-10-11.html">
+            
+                <a href="../DevLog/2025-10-11.html">
+            
+                    
+                    2025-10-11
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="../DevLog/2025-10-12.html">
+            
+                <a href="../DevLog/2025-10-12.html">
+            
+                    
+                    2025-10-12
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="../DevLog/2025-10-13.html">
+            
+                <a href="../DevLog/2025-10-13.html">
+            
+                    
+                    2025-10-13
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="../DevLog/2025-10-14.html">
+            
+                <a href="../DevLog/2025-10-14.html">
+            
+                    
+                    2025-10-14
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="../DevLog/2025-10-15.html">
+            
+                <a href="../DevLog/2025-10-15.html">
+            
+                    
+                    2025-10-15
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="../DevLog/2025-10-16.html">
+            
+                <a href="../DevLog/2025-10-16.html">
+            
+                    
+                    2025-10-16
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="../DevLog/2025-10-17.html">
+            
+                <a href="../DevLog/2025-10-17.html">
+            
+                    
+                    2025-10-17
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="../DevLog/2025-10-18.html">
+            
+                <a href="../DevLog/2025-10-18.html">
+            
+                    
+                    2025-10-18
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="../DevLog/2025-10-19.html">
+            
+                <a href="../DevLog/2025-10-19.html">
+            
+                    
+                    2025-10-19
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="../DevLog/2025-10-20.html">
+            
+                <a href="../DevLog/2025-10-20.html">
+            
+                    
+                    2025-10-20
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="../DevLog/2025-10-21.html">
+            
+                <a href="../DevLog/2025-10-21.html">
+            
+                    
+                    2025-10-21
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="../DevLog/2025-10-22.html">
+            
+                <a href="../DevLog/2025-10-22.html">
+            
+                    
+                    2025-10-22
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="../DevLog/2025-10-23.html">
+            
+                <a href="../DevLog/2025-10-23.html">
+            
+                    
+                    2025-10-23
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.21" data-path="../DevLog/2025-10-24.html">
+            
+                <a href="../DevLog/2025-10-24.html">
+            
+                    
+                    2025-10-24
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.22" data-path="../DevLog/2025-10-25.html">
+            
+                <a href="../DevLog/2025-10-25.html">
+            
+                    
+                    2025-10-25
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.23" data-path="../DevLog/2025-10-26.html">
+            
+                <a href="../DevLog/2025-10-26.html">
+            
+                    
+                    2025-10-26
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.24" data-path="../DevLog/2025-10-27.html">
+            
+                <a href="../DevLog/2025-10-27.html">
+            
+                    
+                    2025-10-27
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.25" data-path="../DevLog/2025-10-28.html">
+            
+                <a href="../DevLog/2025-10-28.html">
+            
+                    
+                    2025-10-28
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.26" data-path="../DevLog/2025-10-29.html">
+            
+                <a href="../DevLog/2025-10-29.html">
+            
+                    
+                    2025-10-29
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.27" data-path="../DevLog/2025-10-30.html">
+            
+                <a href="../DevLog/2025-10-30.html">
+            
+                    
+                    2025-10-30
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.28" data-path="../DevLog/2025-10-31.html">
+            
+                <a href="../DevLog/2025-10-31.html">
+            
+                    
+                    2025-10-31
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Daily Logs (2025-11)</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../DevLog/2025-11-01.html">
+            
+                <a href="../DevLog/2025-11-01.html">
+            
+                    
+                    2025-11-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../DevLog/2025-11-02.html">
+            
+                <a href="../DevLog/2025-11-02.html">
+            
+                    
+                    2025-11-02
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Weekly Summary</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../DevLog/2025-W41-Summary.html">
+            
+                <a href="../DevLog/2025-W41-Summary.html">
+            
+                    
+                    2025-W41 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../DevLog/2025-W43-Summary.html">
+            
+                <a href="../DevLog/2025-W43-Summary.html">
+            
+                    
+                    2025-W43 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../DevLog/_Last30Summary.html">
+            
+                <a href="../DevLog/_Last30Summary.html">
+            
+                    
+                    Last 30 Days Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Planning</li>
+        
+        
+    
+
+    
+        
+        <li class="header">System Design</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="Multiplayer_System_Design.html">
+            
+                <a href="Multiplayer_System_Design.html">
+            
+                    
+                    Multiplayer System Design
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="Multiplayer_Implementation_Guide.html">
+            
+                <a href="Multiplayer_Implementation_Guide.html">
+            
+                    
+                    Multiplayer Implementation Guide
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="Multiplayer_API_Reference.html">
+            
+                <a href="Multiplayer_API_Reference.html">
+            
+                    
+                    Multiplayer API Reference
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="UNREAL_INTEGRATION_PLAN.html">
+            
+                <a href="UNREAL_INTEGRATION_PLAN.html">
+            
+                    
+                    Unreal Integration Plan
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="api_documentation.html">
+            
+                <a href="api_documentation.html">
+            
+                    
+                    API Documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="7.6" data-path="server_api.html">
+            
+                <a href="server_api.html">
+            
+                    
+                    Server API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Feature Plans</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="GPT_VoiceCommand_System_Prompt.html">
+            
+                <a href="GPT_VoiceCommand_System_Prompt.html">
+            
+                    
+                    Voice Command System Prompt
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="2025-10-02-voice-prompt-plan.html">
+            
+                <a href="2025-10-02-voice-prompt-plan.html">
+            
+                    
+                    Voice Prompt Plan
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="2025-10-30_UYiSanLoading_Refactor.html">
+            
+                <a href="2025-10-30_UYiSanLoading_Refactor.html">
+            
+                    
+                    YiSan Loading Refactor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="yisan_proto.html">
+            
+                <a href="yisan_proto.html">
+            
+                    
+                    YiSan Proto Design
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="yisan_dasan_voice_proto.html">
+            
+                <a href="yisan_dasan_voice_proto.html">
+            
+                    
+                    YiSan Dasan Voice Proto
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">UI/UX Design</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="Figma_Lobby_UI_Design_Guide.html">
+            
+                <a href="Figma_Lobby_UI_Design_Guide.html">
+            
+                    
+                    Figma Lobby UI Design Guide
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Reports</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="AI_Pathfinding_Fix_Report.html">
+            
+                <a href="AI_Pathfinding_Fix_Report.html">
+            
+                    
+                    AI Pathfinding Fix Report
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="Alpha_Report_2025-10-20_to_2025-10-27.html">
+            
+                <a href="Alpha_Report_2025-10-20_to_2025-10-27.html">
+            
+                    
+                    Alpha Report (2025-10-20 ~ 2025-10-27)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="Team_Evaluation_2025-11-02.html">
+            
+                <a href="Team_Evaluation_2025-11-02.html">
+            
+                    
+                    Team Evaluation (2025-11-02)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="Weekly_Presentation_2025-11-02.html">
+            
+                <a href="Weekly_Presentation_2025-11-02.html">
+            
+                    
+                    Weekly Presentation (2025-11-02)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="Comprehensive_Competency_Assessment_2025-11-04.html">
+            
+                <a href="Comprehensive_Competency_Assessment_2025-11-04.html">
+            
+                    
+                    Comprehensive Competency Assessment (2025-11-04)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="YiSan_프로젝트_진행보고서.html">
+            
+                <a href="YiSan_프로젝트_진행보고서.html">
+            
+                    
+                    YiSan 프로젝트 진행보고서
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Presentations</li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" data-path="LoadingSystem_Network_Optimization_Presentation.html">
+            
+                <a href="LoadingSystem_Network_Optimization_Presentation.html">
+            
+                    
+                    Loading System Network Optimization
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">External Links</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" >
+            
+                <a target="_blank" href="https://github.com/doppleddiggong/YiSan">
+            
+                    
+                    GitHub Repository
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" >
+            
+                <a target="_blank" href="https://doppleddiggong.github.io/YiSan/doxygen/">
+            
+                    
+                    Doxygen Documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKit에 게시
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Server API</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="voice-server-api-가이드-for-unreal-engine">Voice Server API 가이드 (for Unreal Engine)</h1>
+<p>이 문서는 Unreal Engine 클라이언트에서 Voice Server의 API를 호출하는 방법을 안내합니다. 각 API는 표준 HTTP 요청을 따르며, 파일 전송이 필요한 경우 <code>multipart/form-data</code> 형식을 사용합니다.</p>
+<h2 id="1-서버-상태-확인-health-check">1. 서버 상태 확인 (Health Check)</h2>
+<p>서버가 정상적으로 실행 중인지 확인합니다.</p>
+<ul>
+<li><strong>Endpoint:</strong> <code>/health</code></li>
+<li><strong>Method:</strong> <code>GET</code></li>
+<li><strong>Request:</strong> 없음</li>
+<li><strong>Success Response (200 OK):</strong><ul>
+<li><strong>Content-Type:</strong> <code>application/json</code></li>
+<li><strong>Body:</strong><pre><code class="lang-json">{
+  <span class="hljs-string">"status"</span>: <span class="hljs-string">"ok"</span>
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<hr></hr>
+<h2 id="2-음성-인식-speech-to-text">2. 음성 인식 (Speech-to-Text)</h2>
+<p>사용자의 음성 파일(예: <code>.wav</code>)을 서버로 보내 텍스트로 변환합니다.</p>
+<ul>
+<li><strong>Endpoint:</strong> <code>/stt</code></li>
+<li><strong>Method:</strong> <code>POST</code></li>
+<li><strong>Request:</strong><ul>
+<li><strong>Content-Type:</strong> <code>multipart/form-data</code></li>
+<li><strong>Parameters:</strong></li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">필드명</th>
+<th style="text-align:left">타입</th>
+<th style="text-align:left">필수 여부</th>
+<th style="text-align:left">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>file</code></td>
+<td style="text-align:left">File</td>
+<td style="text-align:left"><strong>Yes</strong></td>
+<td style="text-align:left">텍스트로 변환할 음성 파일 (e.g., .wav)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Success Response (200 OK):</strong><ul>
+<li><strong>Content-Type:</strong> <code>application/json</code></li>
+<li><strong>Body:</strong><pre><code class="lang-json">{
+  <span class="hljs-string">"text"</span>: <span class="hljs-string">"음성 파일에서 변환된 텍스트입니다."</span>
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li><strong>Error Response (500 Internal Server Error):</strong><ul>
+<li><strong>Content-Type:</strong> <code>application/json</code></li>
+<li><strong>Body:</strong><pre><code class="lang-json">{
+  <span class="hljs-string">"detail"</span>: <span class="hljs-string">"STT processing failed: &lt;오류 상세 메시지&gt;"</span>
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<hr></hr>
+<h2 id="3-음성-합성-text-to-speech---참조-음성-사용">3. 음성 합성 (Text-to-Speech) - 참조 음성 사용</h2>
+<p>특정 목소리(참조 음성)를 기반으로 주어진 텍스트를 음성 파일로 생성합니다.</p>
+<ul>
+<li><strong>Endpoint:</strong> <code>/fish/tts</code></li>
+<li><strong>Method:</strong> <code>POST</code></li>
+<li><strong>Request:</strong><ul>
+<li><strong>Content-Type:</strong> <code>multipart/form-data</code></li>
+<li><strong>Parameters:</strong></li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">필드명</th>
+<th style="text-align:left">타입</th>
+<th style="text-align:left">필수 여부</th>
+<th style="text-align:left">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>text</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"><strong>Yes</strong></td>
+<td style="text-align:left">음성으로 합성할 텍스트</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>reference_audio</code></td>
+<td style="text-align:left">File</td>
+<td style="text-align:left"><strong>Yes</strong></td>
+<td style="text-align:left">목소리 톤의 기반이 될 참조 음성 파일 (.wav 권장)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>reference_text</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">참조 음성의 텍스트 내용 (선택 사항, 제공 시 합성 정확도 향상)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><strong>Success Response (200 OK):</strong></p>
+<ul>
+<li><strong>Content-Type:</strong> <code>application/json</code></li>
+<li><strong>Body:</strong><pre><code class="lang-json">{
+  <span class="hljs-string">"message"</span>: <span class="hljs-string">"Fish-Speech TTS V2 audio generated successfully."</span>,
+  <span class="hljs-string">"file_path"</span>: <span class="hljs-string">"./temp/fish_tts_v2_20231027_123456.wav"</span>,
+  <span class="hljs-string">"requested_text"</span>: <span class="hljs-string">"합성을 요청한 텍스트입니다."</span>,
+  <span class="hljs-string">"reference_audio_used"</span>: <span class="hljs-string">"ref_20231027_123456.wav"</span>,
+  <span class="hljs-string">"generation_time"</span>: <span class="hljs-number">4.58</span>,
+  <span class="hljs-string">"version"</span>: <span class="hljs-string">"v2-worker"</span>
+}
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> <code>file_path</code>는 서버 내부 경로입니다. 클라이언트에서는 이 경로를 직접 사용할 수 없으며, 별도의 파일 다운로드 API가 필요하다면 추가 구현이 필요합니다. (현재는 파일 경로만 반환)</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>Error Response (500 Internal Server Error):</strong></p>
+<ul>
+<li><strong>Content-Type:</strong> <code>application/json</code></li>
+<li><strong>Body:</strong><pre><code class="lang-json">{
+  <span class="hljs-string">"detail"</span>: <span class="hljs-string">"TTS processing failed: &lt;오류 상세 메시지&gt;"</span>
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<hr></hr>
+<h2 id="4-음성-합성-text-to-speech---기본-목소리-사용">4. 음성 합성 (Text-to-Speech) - 기본 목소리 사용</h2>
+<p>서버에 설정된 기본 목소리로 텍스트를 음성 파일로 생성합니다. (참조 음성 불필요)</p>
+<ul>
+<li><strong>Endpoint:</strong> <code>/fish/tts-simple</code></li>
+<li><strong>Method:</strong> <code>POST</code></li>
+<li><strong>Request:</strong><ul>
+<li><strong>Content-Type:</strong> <code>application/x-www-form-urlencoded</code> 또는 <code>application/json</code></li>
+<li><strong>Parameters:</strong></li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">필드명</th>
+<th style="text-align:left">타입</th>
+<th style="text-align:left">필수 여부</th>
+<th style="text-align:left">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>text</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"><strong>Yes</strong></td>
+<td style="text-align:left">음성으로 합성할 텍스트</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><strong>Success Response (200 OK):</strong></p>
+<ul>
+<li><strong>Content-Type:</strong> <code>application/json</code></li>
+<li><strong>Body:</strong><pre><code class="lang-json">{
+  <span class="hljs-string">"message"</span>: <span class="hljs-string">"Fish-Speech TTS V2 audio generated successfully (no reference audio)."</span>,
+  <span class="hljs-string">"file_path"</span>: <span class="hljs-string">"./temp/fish_tts_v2_simple_20231027_123457.wav"</span>,
+  <span class="hljs-string">"requested_text"</span>: <span class="hljs-string">"합성을 요청한 텍스트입니다."</span>,
+  <span class="hljs-string">"generation_time"</span>: <span class="hljs-number">3.12</span>,
+  <span class="hljs-string">"version"</span>: <span class="hljs-string">"v2-worker"</span>
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><strong>Error Response (500 Internal Server Error):</strong></p>
+<ul>
+<li><strong>Content-Type:</strong> <code>application/json</code></li>
+<li><strong>Body:</strong><pre><code class="lang-json">{
+  <span class="hljs-string">"detail"</span>: <span class="hljs-string">"Simple TTS processing failed: &lt;오류 상세 메시지&gt;"</span>
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-음성-합성-text-to-speech---ask라는-api를-추가할꺼다-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------│">4. 음성 합성 (Text-to-Speech) - ASK라는 API를 추가할꺼다                                                                                                                                                                                                                                                 │</h2>
+<p>│                                                                                                                                                                                                                                                                            │<br></br>/ask 는 언리얼쪽에서 녹음한 음성데이터를 서버로 넘긴다                                                                                                                                                                                                                    │<br></br>│                                                                                                                                                                                                                                                                            │<br></br>│   이때 서버는 넘어오면 Whisper를 통해서 String 화 하고                                                                                                                                                                                                                 │<br></br>│   언리얼쪽으로 메세지 값을 돌려주고,                                                                                                                                                                                                                                       │<br></br>│                                                                                                                                                                                                                                                                            │<br></br>│   자동으로 서버에서는 String화 한 데이터를 Fish-speech를 통해서 음성파일로 생성해서                                                                                                                                                                                        │<br></br>│   다시 소켓을 통해서 언리얼에 전송받아서 출력할꺼다.</p>
+<hr></hr>
+<h2 id="5-음성-질의-응답-voice-qa">5. 음성 질의 응답 (Voice Q&amp;A)</h2>
+<p>사용자의 음성 파일을 서버로 보내 텍스트로 변환하고, 변환된 텍스트를 클라이언트에 반환합니다. 이후 서버는 해당 텍스트를 기반으로 음성 파일을 생성하여 소켓을 통해 클라이언트에 전송합니다.</p>
+<ul>
+<li><strong>Endpoint:</strong> <code>/ask</code></li>
+<li><strong>Method:</strong> <code>POST</code></li>
+<li><strong>Request:</strong><ul>
+<li><strong>Content-Type:</strong> <code>multipart/form-data</code></li>
+<li><strong>Parameters:</strong></li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">필드명</th>
+<th style="text-align:left">타입</th>
+<th style="text-align:left">필수 여부</th>
+<th style="text-align:left">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>file</code></td>
+<td style="text-align:left">File</td>
+<td style="text-align:left"><strong>Yes</strong></td>
+<td style="text-align:left">텍스트로 변환할 음성 파일 (e.g., .wav)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Success Response (200 OK):</strong><ul>
+<li><strong>Content-Type:</strong> <code>application/json</code></li>
+<li><strong>Body:</strong><pre><code class="lang-json">{
+  <span class="hljs-string">"text"</span>: <span class="hljs-string">"음성 파일에서 변환된 텍스트입니다."</span>
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li><strong>Error Response (500 Internal Server Error):</strong><ul>
+<li><strong>Content-Type:</strong> <code>application/json</code></li>
+<li><strong>Body:</strong><pre><code class="lang-json">{
+  <span class="hljs-string">"detail"</span>: <span class="hljs-string">"Voice Q&amp;A processing failed: &lt;오류 상세 메시지&gt;"</span>
+}
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> 음성 파일 응답은 별도의 WebSocket 연결을 통해 비동기적으로 전송됩니다. 클라이언트는 <code>/ask</code> 요청 후 WebSocket을 통해 음성 파일을 수신할 준비가 되어 있어야 합니다.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<hr></hr>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="api_documentation.html" class="navigation navigation-prev " aria-label="Previous page: API Documentation">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="GPT_VoiceCommand_System_Prompt.html" class="navigation navigation-next " aria-label="Next page: Voice Command System Prompt">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Server API","level":"7.6","depth":1,"next":{"title":"Voice Command System Prompt","level":"8.1","depth":1,"path":"Planning/GPT_VoiceCommand_System_Prompt.md","ref":"Planning/GPT_VoiceCommand_System_Prompt.md","articles":[]},"previous":{"title":"API Documentation","level":"7.5","depth":1,"path":"Planning/api_documentation.md","ref":"Planning/api_documentation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","-lunr","-search"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"back-to-top-button":{},"expandable-chapters-small":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen Documentation":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/server_api.md","mtime":"2025-11-08T13:53:33.358Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-08T13:53:50.120Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-mermaid-gb3/book/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    <script src="../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.min.js"></script>
+
+    </body>
+</html>
+
