@@ -36,6 +36,10 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install Python dependencies first
+        run: |
+          pip install pyyaml
+
       - name: Load config
         id: config
         run: |
