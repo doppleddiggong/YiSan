@@ -18,7 +18,7 @@
     "search-plus",
     "expandable-chapters-small",
     "page-toc-button",
-    "anchor-navigation-ex",
+    "-anchor-navigation-ex",
     "code",
     "splitter",
     "alerts",

@@ -127,7 +127,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # ✅ 필수: 최신 원격 이력 가져와서 충돌 방지
+          git pull --rebase origin main
+
           git add Documents/DevLog/*.md Documents/SUMMARY.md
+
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
