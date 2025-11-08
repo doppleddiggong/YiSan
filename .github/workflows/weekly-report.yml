@@ -138,9 +138,6 @@ jobs:
           else
             cat <<'EOM' > commit_message.txt
 chore(devlog): weekly report ${{ steps.weekly.outputs.week_label }}
-
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
-
 Co-Authored-By: Claude <noreply@anthropic.com>
 EOM
 
