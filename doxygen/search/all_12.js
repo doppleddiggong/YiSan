@@ -126,5 +126,5 @@ var searchData=
   ['subtile_123',['subtile',['../structFBuildingData.html#ad32182f38d1a64c665eaa5ef06c8be8b',1,'FBuildingData']]],
   ['subtitle_124',['SubTitle',['../classUMegaPopup.html#aa88ff8992eeea6910c47a5efe9e9e43e',1,'UMegaPopup']]],
   ['system_125',['System',['../namespaceGameString.html#a72d9fc2a109886bb2513cb7bc7009d02',1,'GameString']]],
-  ['systems_126',['핵심 시스템 (Core Systems)',['../index.html#autotoc_md9',1,'']]]
+  ['systems_126',['핵심 시스템 (Core Systems)',['../index.html#autotoc_md8',1,'']]]
 ];
