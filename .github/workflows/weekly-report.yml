@@ -146,12 +146,6 @@ jobs:
                 break
               fi
 
-              if [ "$attempt" -eq 3 ]; then
-                echo "❌ Failed to push after $attempt attempts"
-                exit 1
-              fi
-
-              echo "⚠️ Push failed (attempt $attempt). Rebasing onto latest main before retrying."
               git pull --rebase origin main
             done
           fi
