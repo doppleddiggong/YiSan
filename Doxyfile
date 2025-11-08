@@ -354,7 +354,6 @@ WARN_LOGFILE           = doxygen_warnings.log
 # 입력 소스 경로 목록
 INPUT                  = Source \
                          GEMINI.md \
-                         AgentRule \
   					     Documents/DoxygenPage \
                          Documents/Reference \
 

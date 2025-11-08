@@ -11,7 +11,7 @@
   - 선택적 GPT 피드백: 개발자 성찰 질문, 대안 제시, 학습 포인트
 - **Weekly**: 주간 요약 - 한 주간의 개발 내용을 종합 분석
   - 기본 GPT 회고: 작업 패턴 분석, 성장 피드백, 다음 주 제안
-- **상세 가이드**: [워크플로우 사용 가이드](DevLog/WORKFLOW_GUIDE.md)
+- **상세 가이드**: [워크플로우 사용 가이드](../DevLog/WORKFLOW_GUIDE.md)
 
 ### 📋 Planning (기획 문서)
 - 시스템 설계 문서
@@ -45,7 +45,7 @@
 ### 3. Discord Integration
 - 일일/주간 리포트를 Discord Webhook으로 자동 전송 (선택 사항)
 
-**자세한 사용법**: [DevLog 워크플로우 가이드](DevLog/WORKFLOW_GUIDE.md)
+**자세한 사용법**: [DevLog 워크플로우 가이드](../DevLog/WORKFLOW_GUIDE.md)
 
 ---
 

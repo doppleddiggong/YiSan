@@ -9,9 +9,8 @@ on:
     paths:
       - 'Documents/DevLog/**'
       - 'Documents/Planning/**'
-      - 'Documents/book.json'
-      - 'Documents/SUMMARY.md'
-      - 'Documents/README.md'
+      - 'Documents/HonkitPage/**'
+      - '.github/scripts/generate_summary.py'
 
   # 수동 실행 가능
   workflow_dispatch:
@@ -31,6 +30,16 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate SUMMARY.md
+        run: |
+          python .github/scripts/generate_summary.py
+          echo "✅ SUMMARY.md has been generated"
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -39,15 +48,23 @@ jobs:
       - name: Install HonKit and plugins
         run: |
           npm install -g honkit
+          npm install -g gitbook-plugin-theme-comscore
           npm install -g gitbook-plugin-github
           npm install -g gitbook-plugin-mermaid-gb3
           npm install -g gitbook-plugin-collapsible-menu
           npm install -g gitbook-plugin-back-to-top-button
           npm install -g gitbook-plugin-search-plus
           npm install -g gitbook-plugin-expandable-chapters-small
+          npm install -g gitbook-plugin-page-toc-button
+          npm install -g gitbook-plugin-anchor-navigation-ex
+          npm install -g gitbook-plugin-code
+          npm install -g gitbook-plugin-splitter
+          npm install -g gitbook-plugin-alerts
+          npm install -g gitbook-plugin-emphasize
+          npm install -g gitbook-plugin-klipse
 
       - name: Build HonKit
-        working-directory: Documents
+        working-directory: Documents/HonkitPage
         run: |
           honkit build
 
@@ -55,7 +72,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./Documents/_book
+          publish_dir: ./Documents/HonkitPage/_book
           publish_branch: gh-pages
           destination_dir: docs
           enable_jekyll: false
