@@ -136,11 +136,8 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            cat <<'EOM' > commit_message.txt
-chore(devlog): weekly report ${{ steps.weekly.outputs.week_label }}
-Co-Authored-By: Claude <noreply@anthropic.com>
-EOM
-
+            echo "chore(devlog): weekly report ${{ steps.weekly.outputs.week_label }}" > commit_message.txt
+            echo "Co-Authored-By: Claude <noreply@anthropic.com>" >> commit_message.txt
             git commit -F commit_message.txt
             rm commit_message.txt
 
