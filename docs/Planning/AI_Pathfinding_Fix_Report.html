@@ -1,0 +1,1429 @@
+
+<!DOCTYPE HTML>
+<html lang="ko" >
+    <head>
+        <meta charset="UTF-8">
+        <title>AI Pathfinding Fix Report · YiSan Development Documentation</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.1.4">
+        <meta name="author" content="DoppledDiggong Team">
+        
+        
+    
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+    
+        
+        
+        <link rel="stylesheet" href="../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.default.css" />
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Alpha_Report_2025-10-20_to_2025-10-27.html" />
+    
+    
+    <link rel="prev" href="Figma_Lobby_UI_Design_Guide.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="검색어 입력" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/doppleddiggong/YiSan" target="_blank" class="custom-link">GitHub Repository</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://doppleddiggong.github.io/YiSan/doxygen/" target="_blank" class="custom-link">Doxygen Documentation</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">Introduction</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    시작하기
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">DevLog</li>
+        
+        
+    
+
+    
+        
+        <li class="header">Daily Logs (2025-10)</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../DevLog/2025-10-01.html">
+            
+                <a href="../DevLog/2025-10-01.html">
+            
+                    
+                    2025-10-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../DevLog/2025-10-02.html">
+            
+                <a href="../DevLog/2025-10-02.html">
+            
+                    
+                    2025-10-02
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../DevLog/2025-10-03.html">
+            
+                <a href="../DevLog/2025-10-03.html">
+            
+                    
+                    2025-10-03
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../DevLog/2025-10-04.html">
+            
+                <a href="../DevLog/2025-10-04.html">
+            
+                    
+                    2025-10-04
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../DevLog/2025-10-06.html">
+            
+                <a href="../DevLog/2025-10-06.html">
+            
+                    
+                    2025-10-06
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../DevLog/2025-10-08.html">
+            
+                <a href="../DevLog/2025-10-08.html">
+            
+                    
+                    2025-10-08
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="../DevLog/2025-10-09.html">
+            
+                <a href="../DevLog/2025-10-09.html">
+            
+                    
+                    2025-10-09
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="../DevLog/2025-10-11.html">
+            
+                <a href="../DevLog/2025-10-11.html">
+            
+                    
+                    2025-10-11
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="../DevLog/2025-10-12.html">
+            
+                <a href="../DevLog/2025-10-12.html">
+            
+                    
+                    2025-10-12
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="../DevLog/2025-10-13.html">
+            
+                <a href="../DevLog/2025-10-13.html">
+            
+                    
+                    2025-10-13
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="../DevLog/2025-10-14.html">
+            
+                <a href="../DevLog/2025-10-14.html">
+            
+                    
+                    2025-10-14
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="../DevLog/2025-10-15.html">
+            
+                <a href="../DevLog/2025-10-15.html">
+            
+                    
+                    2025-10-15
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="../DevLog/2025-10-16.html">
+            
+                <a href="../DevLog/2025-10-16.html">
+            
+                    
+                    2025-10-16
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="../DevLog/2025-10-17.html">
+            
+                <a href="../DevLog/2025-10-17.html">
+            
+                    
+                    2025-10-17
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="../DevLog/2025-10-18.html">
+            
+                <a href="../DevLog/2025-10-18.html">
+            
+                    
+                    2025-10-18
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="../DevLog/2025-10-19.html">
+            
+                <a href="../DevLog/2025-10-19.html">
+            
+                    
+                    2025-10-19
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="../DevLog/2025-10-20.html">
+            
+                <a href="../DevLog/2025-10-20.html">
+            
+                    
+                    2025-10-20
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="../DevLog/2025-10-21.html">
+            
+                <a href="../DevLog/2025-10-21.html">
+            
+                    
+                    2025-10-21
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="../DevLog/2025-10-22.html">
+            
+                <a href="../DevLog/2025-10-22.html">
+            
+                    
+                    2025-10-22
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="../DevLog/2025-10-23.html">
+            
+                <a href="../DevLog/2025-10-23.html">
+            
+                    
+                    2025-10-23
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.21" data-path="../DevLog/2025-10-24.html">
+            
+                <a href="../DevLog/2025-10-24.html">
+            
+                    
+                    2025-10-24
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.22" data-path="../DevLog/2025-10-25.html">
+            
+                <a href="../DevLog/2025-10-25.html">
+            
+                    
+                    2025-10-25
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.23" data-path="../DevLog/2025-10-26.html">
+            
+                <a href="../DevLog/2025-10-26.html">
+            
+                    
+                    2025-10-26
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.24" data-path="../DevLog/2025-10-27.html">
+            
+                <a href="../DevLog/2025-10-27.html">
+            
+                    
+                    2025-10-27
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.25" data-path="../DevLog/2025-10-28.html">
+            
+                <a href="../DevLog/2025-10-28.html">
+            
+                    
+                    2025-10-28
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.26" data-path="../DevLog/2025-10-29.html">
+            
+                <a href="../DevLog/2025-10-29.html">
+            
+                    
+                    2025-10-29
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.27" data-path="../DevLog/2025-10-30.html">
+            
+                <a href="../DevLog/2025-10-30.html">
+            
+                    
+                    2025-10-30
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.28" data-path="../DevLog/2025-10-31.html">
+            
+                <a href="../DevLog/2025-10-31.html">
+            
+                    
+                    2025-10-31
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Daily Logs (2025-11)</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../DevLog/2025-11-01.html">
+            
+                <a href="../DevLog/2025-11-01.html">
+            
+                    
+                    2025-11-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../DevLog/2025-11-02.html">
+            
+                <a href="../DevLog/2025-11-02.html">
+            
+                    
+                    2025-11-02
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Weekly Summary</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../DevLog/2025-W41-Summary.html">
+            
+                <a href="../DevLog/2025-W41-Summary.html">
+            
+                    
+                    2025-W41 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../DevLog/2025-W43-Summary.html">
+            
+                <a href="../DevLog/2025-W43-Summary.html">
+            
+                    
+                    2025-W43 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../DevLog/_Last30Summary.html">
+            
+                <a href="../DevLog/_Last30Summary.html">
+            
+                    
+                    Last 30 Days Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Planning</li>
+        
+        
+    
+
+    
+        
+        <li class="header">System Design</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="Multiplayer_System_Design.html">
+            
+                <a href="Multiplayer_System_Design.html">
+            
+                    
+                    Multiplayer System Design
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="Multiplayer_Implementation_Guide.html">
+            
+                <a href="Multiplayer_Implementation_Guide.html">
+            
+                    
+                    Multiplayer Implementation Guide
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="Multiplayer_API_Reference.html">
+            
+                <a href="Multiplayer_API_Reference.html">
+            
+                    
+                    Multiplayer API Reference
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="UNREAL_INTEGRATION_PLAN.html">
+            
+                <a href="UNREAL_INTEGRATION_PLAN.html">
+            
+                    
+                    Unreal Integration Plan
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="api_documentation.html">
+            
+                <a href="api_documentation.html">
+            
+                    
+                    API Documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="server_api.html">
+            
+                <a href="server_api.html">
+            
+                    
+                    Server API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Feature Plans</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="GPT_VoiceCommand_System_Prompt.html">
+            
+                <a href="GPT_VoiceCommand_System_Prompt.html">
+            
+                    
+                    Voice Command System Prompt
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="2025-10-02-voice-prompt-plan.html">
+            
+                <a href="2025-10-02-voice-prompt-plan.html">
+            
+                    
+                    Voice Prompt Plan
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="2025-10-30_UYiSanLoading_Refactor.html">
+            
+                <a href="2025-10-30_UYiSanLoading_Refactor.html">
+            
+                    
+                    YiSan Loading Refactor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="yisan_proto.html">
+            
+                <a href="yisan_proto.html">
+            
+                    
+                    YiSan Proto Design
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="yisan_dasan_voice_proto.html">
+            
+                <a href="yisan_dasan_voice_proto.html">
+            
+                    
+                    YiSan Dasan Voice Proto
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">UI/UX Design</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="Figma_Lobby_UI_Design_Guide.html">
+            
+                <a href="Figma_Lobby_UI_Design_Guide.html">
+            
+                    
+                    Figma Lobby UI Design Guide
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Reports</li>
+        
+        
+    
+        <li class="chapter active" data-level="10.1" data-path="AI_Pathfinding_Fix_Report.html">
+            
+                <a href="AI_Pathfinding_Fix_Report.html">
+            
+                    
+                    AI Pathfinding Fix Report
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="Alpha_Report_2025-10-20_to_2025-10-27.html">
+            
+                <a href="Alpha_Report_2025-10-20_to_2025-10-27.html">
+            
+                    
+                    Alpha Report (2025-10-20 ~ 2025-10-27)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="Team_Evaluation_2025-11-02.html">
+            
+                <a href="Team_Evaluation_2025-11-02.html">
+            
+                    
+                    Team Evaluation (2025-11-02)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="Weekly_Presentation_2025-11-02.html">
+            
+                <a href="Weekly_Presentation_2025-11-02.html">
+            
+                    
+                    Weekly Presentation (2025-11-02)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="Comprehensive_Competency_Assessment_2025-11-04.html">
+            
+                <a href="Comprehensive_Competency_Assessment_2025-11-04.html">
+            
+                    
+                    Comprehensive Competency Assessment (2025-11-04)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="YiSan_프로젝트_진행보고서.html">
+            
+                <a href="YiSan_프로젝트_진행보고서.html">
+            
+                    
+                    YiSan 프로젝트 진행보고서
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Presentations</li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" data-path="LoadingSystem_Network_Optimization_Presentation.html">
+            
+                <a href="LoadingSystem_Network_Optimization_Presentation.html">
+            
+                    
+                    Loading System Network Optimization
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">External Links</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" >
+            
+                <a target="_blank" href="https://github.com/doppleddiggong/YiSan">
+            
+                    
+                    GitHub Repository
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" >
+            
+                <a target="_blank" href="https://doppleddiggong.github.io/YiSan/doxygen/">
+            
+                    
+                    Doxygen Documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKit에 게시
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >AI Pathfinding Fix Report</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="ai-경로-탐색-문제-해결-리포트">AI 경로 탐색 문제 해결 리포트</h1>
+<h2 id="1-초기-문제-증상">1. 초기 문제 증상</h2>
+<pre><code>✓ 첫 번째 목적지(신풍루): 이동 성공
+✗ 두 번째 이후 목적지: "경로 없음" 에러 발생
+✓ NavMesh는 Show Navigation으로 확인 시 존재함
+? Z축이 반영되지 않는 것처럼 보임
+</code></pre><h3 id="환경">환경</h3>
+<ul>
+<li><strong>엔진</strong>: Unreal Engine 5.6</li>
+<li><strong>맵 시스템</strong>: World Partition</li>
+<li><strong>AI 시스템</strong>: AAIController + NavigationSystem</li>
+<li><strong>군중 시스템</strong>: Mass Crowd</li>
+</ul>
+<hr></hr>
+<h2 id="2-문제-분석-과정">2. 문제 분석 과정</h2>
+<h3 id="2-1-첫-번째-발견-매-프레임-moveto-재호출">2-1. 첫 번째 발견: 매 프레임 MoveTo 재호출</h3>
+<h4 id="문제-코드">문제 코드</h4>
+<p><strong>위치</strong>: <code>UTourStateSystem::Tick_TourMove()</code> (Line 171-176)</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">UTourStateSystem::Tick_TourMove</span><span class="hljs-params">(<span class="hljs-type">float</span> DeltaTime)</span>
+</span>{
+    <span class="hljs-comment">// 매 Tick마다 MoveTo 호출! ← 문제!</span>
+    FAIMoveRequest MoveRequest;
+    MoveRequest.<span class="hljs-built_in">SetGoalActor</span>(OwnerDasan-&gt;<span class="hljs-built_in">GetCurTargetBuilding</span>());
+    OwnerDasan-&gt;DasanAicontrol-&gt;<span class="hljs-built_in">MoveTo</span>(MoveRequest);
+
+    <span class="hljs-comment">// 도착 체크</span>
+    <span class="hljs-keyword">if</span> (OwnerDasan-&gt;<span class="hljs-built_in">IsNearTargetBuilding</span>()) {
+        CurState = ETourState::TourExplain;
+    }
+}
+</code></pre>
+<h4 id="왜-첫-번째는-성공했나">왜 첫 번째는 성공했나?</h4>
+<ol>
+<li><code>StartTour()</code>에서 <strong>한 번만</strong> MoveTo 호출</li>
+<li>경로를 찾고 이동을 완료</li>
+<li>두 번째부터는 <code>Tick_TourMove</code>가 매 프레임 MoveTo를 재호출</li>
+<li>이미 진행 중인 경로를 계속 중단하고 재계산 → 실패</li>
+</ol>
+<h4 id="조치">조치</h4>
+<p>Tick에서 MoveTo 호출 제거, Enter 함수에서만 호출하도록 변경</p>
+<hr></hr>
+<h3 id="2-2-두-번째-발견-setprojectgoallocation의-한계">2-2. 두 번째 발견: SetProjectGoalLocation의 한계</h3>
+<h4 id="시도">시도</h4>
+<pre><code class="lang-cpp">MoveRequest.<span class="hljs-built_in">SetGoalActor</span>(CurTargetBuilding);
+MoveRequest.<span class="hljs-built_in">SetProjectGoalLocation</span>(<span class="hljs-literal">true</span>); <span class="hljs-comment">// NavMesh로 자동 투영 시도</span>
+</code></pre>
+<h4 id="결과">결과</h4>
+<p>여전히 실패 - <code>SetProjectGoalLocation</code>이 작동하지 않음</p>
+<hr></hr>
+<h3 id="2-3-결정적-발견-z축-높이-차이-문제">2-3. 결정적 발견: Z축 높이 차이 문제</h3>
+<h4 id="로그-분석">로그 분석</h4>
+<pre><code>LogCoffee: Warning: [TourState] MoveTo 시작
+  From: (11884.9, 11083.1, 101.8)
+  To:   (3328.2, -179.2, 377.4)
+  Distance: 14146.8
+
+LogCoffee: Warning: [TourState] 시작 위치 NavMesh: OK
+LogCoffee: Warning: [TourState] 목표 위치 NavMesh: OK (투영 거리: 375.0) ← 주목!
+LogCoffee: Warning: [TourState] NavMesh 투영 위치: (3328.2, -179.2, 2.4) ← Z축 차이!
+LogCoffee: Warning: [TourState] 경로 찾기 성공! 경로 포인트: 12개
+LogCoffee: Warning: [TourState] MoveTo 결과: 0 (RequestSuccessful)
+LogCoffee: Warning: ADasanActor::OnMoveCompleted(221): AI MoveTo 실패 - 경로 없음 ← 모순!
+</code></pre><h4 id="핵심-발견">핵심 발견</h4>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>건물 실제 위치 Z</td>
+<td>377.4m</td>
+</tr>
+<tr>
+<td>NavMesh 위치 Z</td>
+<td>2.4m</td>
+</tr>
+<tr>
+<td><strong>높이 차이</strong></td>
+<td><strong>375m!</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>분석</strong>:</p>
+<ul>
+<li><code>FindPathToLocationSynchronously</code>로 NavMesh 위치(2.4)를 사용하면 <strong>경로 찾기 성공</strong></li>
+<li>하지만 <code>SetGoalActor</code>는 건물의 실제 위치(377.4)를 사용</li>
+<li><code>SetProjectGoalLocation(true)</code>가 <strong>작동하지 않음!</strong></li>
+</ul>
+<hr></hr>
+<h2 id="3-최종-해결-방법">3. 최종 해결 방법</h2>
+<h3 id="setgoalactor-→-setgoallocation-변경">SetGoalActor → SetGoalLocation 변경</h3>
+<h4 id="❌-이전-방식-실패">❌ 이전 방식 (실패)</h4>
+<pre><code class="lang-cpp">FAIMoveRequest MoveRequest;
+MoveRequest.<span class="hljs-built_in">SetGoalActor</span>(CurTargetBuilding);  <span class="hljs-comment">// Actor 중심점 사용</span>
+MoveRequest.<span class="hljs-built_in">SetProjectGoalLocation</span>(<span class="hljs-literal">true</span>);     <span class="hljs-comment">// 작동 안함!</span>
+DasanAicontrol-&gt;<span class="hljs-built_in">MoveTo</span>(MoveRequest);
+</code></pre>
+<h4 id="✅-새로운-방식-성공">✅ 새로운 방식 (성공)</h4>
+<pre><code class="lang-cpp">FVector TargetPos = CurTargetBuilding-&gt;<span class="hljs-built_in">GetActorLocation</span>();
+UNavigationSystemV1* NavSys = UNavigationSystemV1::<span class="hljs-built_in">GetCurrent</span>(<span class="hljs-built_in">GetWorld</span>());
+
+FNavLocation TargetNavLoc;
+NavSys-&gt;<span class="hljs-built_in">ProjectPointToNavigation</span>(
+    TargetPos,
+    TargetNavLoc,
+    <span class="hljs-built_in">FVector</span>(<span class="hljs-number">5000</span>, <span class="hljs-number">5000</span>, <span class="hljs-number">5000</span>)  <span class="hljs-comment">// 수직/수평 5000 유닛 범위에서 투영</span>
+);
+
+FAIMoveRequest MoveRequest;
+MoveRequest.<span class="hljs-built_in">SetGoalLocation</span>(TargetNavLoc.Location);  <span class="hljs-comment">// NavMesh 위치 직접 사용!</span>
+MoveRequest.<span class="hljs-built_in">SetAcceptanceRadius</span>(<span class="hljs-number">250.0f</span>);
+MoveRequest.<span class="hljs-built_in">SetUsePathfinding</span>(<span class="hljs-literal">true</span>);
+DasanAicontrol-&gt;<span class="hljs-built_in">MoveTo</span>(MoveRequest);
+</code></pre>
+<hr></hr>
+<h2 id="4-수정한-위치들">4. 수정한 위치들</h2>
+<h3 id="4-1-utourstatesystemcpp">4-1. UTourStateSystem.cpp</h3>
+<h4 id="entertourmove-line-113-162">Enter_TourMove() (Line 113-162)</h4>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">UTourStateSystem::Enter_TourMove</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[TourState] Enter TourMove"</span>));
+    WaitTimer = <span class="hljs-number">0.0f</span>;
+
+    <span class="hljs-keyword">if</span> (OwnerDasan &amp;&amp; OwnerDasan-&gt;DasanAicontrol &amp;&amp; OwnerDasan-&gt;<span class="hljs-built_in">GetCurTargetBuilding</span>())
+    {
+        FVector TargetPos = OwnerDasan-&gt;<span class="hljs-built_in">GetCurTargetBuilding</span>()-&gt;<span class="hljs-built_in">GetActorLocation</span>();
+        UNavigationSystemV1* NavSys = UNavigationSystemV1::<span class="hljs-built_in">GetCurrent</span>(<span class="hljs-built_in">GetWorld</span>());
+
+        <span class="hljs-keyword">if</span> (NavSys)
+        {
+            FNavLocation TargetNavLoc;
+            <span class="hljs-keyword">if</span> (NavSys-&gt;<span class="hljs-built_in">ProjectPointToNavigation</span>(TargetPos, TargetNavLoc, <span class="hljs-built_in">FVector</span>(<span class="hljs-number">5000</span>, <span class="hljs-number">5000</span>, <span class="hljs-number">5000</span>)))
+            {
+                FAIMoveRequest MoveRequest;
+                MoveRequest.<span class="hljs-built_in">SetGoalLocation</span>(TargetNavLoc.Location);
+                MoveRequest.<span class="hljs-built_in">SetAcceptanceRadius</span>(<span class="hljs-number">250.0f</span>);
+                MoveRequest.<span class="hljs-built_in">SetUsePathfinding</span>(<span class="hljs-literal">true</span>);
+
+                FPathFollowingRequestResult Result = OwnerDasan-&gt;DasanAicontrol-&gt;<span class="hljs-built_in">MoveTo</span>(MoveRequest);
+                <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[TourState] MoveTo 결과: %d (NavMesh 위치 사용)"</span>), (int32)Result.Code);
+            }
+        }
+    }
+}
+</code></pre>
+<h4 id="ticktourwait-line-281-299">Tick_TourWait() (Line 281-299)</h4>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">UTourStateSystem::Tick_TourWait</span><span class="hljs-params">(<span class="hljs-type">float</span> DeltaTime)</span>
+</span>{
+    <span class="hljs-comment">// ... (타이머 로직)</span>
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">IsAllPlayersNearby</span>())
+    {
+        CurState = ETourState::TourMove;
+
+        <span class="hljs-comment">// NavMesh 위치로 이동</span>
+        <span class="hljs-keyword">if</span> (OwnerDasan-&gt;DasanAicontrol &amp;&amp; OwnerDasan-&gt;<span class="hljs-built_in">GetCurTargetBuilding</span>())
+        {
+            FVector TargetPos = OwnerDasan-&gt;<span class="hljs-built_in">GetCurTargetBuilding</span>()-&gt;<span class="hljs-built_in">GetActorLocation</span>();
+            UNavigationSystemV1* NavSys = UNavigationSystemV1::<span class="hljs-built_in">GetCurrent</span>(<span class="hljs-built_in">GetWorld</span>());
+
+            <span class="hljs-keyword">if</span> (NavSys)
+            {
+                FNavLocation TargetNavLoc;
+                <span class="hljs-keyword">if</span> (NavSys-&gt;<span class="hljs-built_in">ProjectPointToNavigation</span>(TargetPos, TargetNavLoc, <span class="hljs-built_in">FVector</span>(<span class="hljs-number">5000</span>, <span class="hljs-number">5000</span>, <span class="hljs-number">5000</span>)))
+                {
+                    FAIMoveRequest MoveRequest;
+                    MoveRequest.<span class="hljs-built_in">SetGoalLocation</span>(TargetNavLoc.Location);
+                    MoveRequest.<span class="hljs-built_in">SetAcceptanceRadius</span>(<span class="hljs-number">250.0f</span>);
+                    MoveRequest.<span class="hljs-built_in">SetUsePathfinding</span>(<span class="hljs-literal">true</span>);
+                    OwnerDasan-&gt;DasanAicontrol-&gt;<span class="hljs-built_in">MoveTo</span>(MoveRequest);
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<h3 id="4-2-adasanactorcpp">4-2. ADasanActor.cpp</h3>
+<p>수정된 함수들:</p>
+<ul>
+<li><code>StartTour()</code> (Line 317-356)</li>
+<li><code>NextQuest()</code> (Line 535-554)</li>
+<li><code>TransitionToState()</code> (Line 452-476)</li>
+<li><code>OnMoveCompleted()</code> 재시도 로직 (Line 188-224)</li>
+</ul>
+<p>모두 동일한 패턴으로 수정:</p>
+<ol>
+<li>NavigationSystem 획득</li>
+<li>ProjectPointToNavigation으로 NavMesh 위치 계산</li>
+<li>SetGoalLocation 사용</li>
+</ol>
+<hr></hr>
+<h2 id="5-왜-setprojectgoallocation이-작동하지-않았나">5. 왜 SetProjectGoalLocation이 작동하지 않았나?</h2>
+<h3 id="추측">추측</h3>
+<h4 id="가능성-1-제한된-투영-범위">가능성 1: 제한된 투영 범위</h4>
+<pre><code class="lang-cpp"><span class="hljs-comment">// SetProjectGoalLocation 내부 구현 (추정)</span>
+<span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">FAIMoveRequest::ProjectGoalLocation</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-comment">// 수직 범위가 제한적 (예: 500 유닛)</span>
+    NavSys-&gt;<span class="hljs-built_in">ProjectPointToNavigation</span>(GoalLocation, ProjectedLocation, <span class="hljs-built_in">FVector</span>(<span class="hljs-number">500</span>, <span class="hljs-number">500</span>, <span class="hljs-number">500</span>));
+}
+</code></pre>
+<ul>
+<li>375m 높이 차이는 기본 범위를 초과</li>
+<li>투영 실패 → 원래 위치 사용 → 경로 탐색 실패</li>
+</ul>
+<h4 id="가능성-2-actor-bounds-기반-투영">가능성 2: Actor Bounds 기반 투영</h4>
+<ul>
+<li>Actor의 Bounds 중심점을 기준으로 투영</li>
+<li>건물이 너무 크거나 복잡한 구조여서 문제 발생</li>
+</ul>
+<h3 id="결론">결론</h3>
+<p>수동으로 <code>NavigationSystem::ProjectPointToNavigation</code>을 호출하고 <code>SetGoalLocation</code>을 사용하는 것이 <strong>확실한 방법</strong>!</p>
+<hr></hr>
+<h2 id="6-추가-발견-퀘스트-진행-문제">6. 추가 발견: 퀘스트 진행 문제</h2>
+<h3 id="보너스-문제">보너스 문제</h3>
+<p>여민각에서 별주로 진행되지 않는 이유</p>
+<h4 id="원인">원인</h4>
+<ul>
+<li>다산이 건물에 도착해도 <code>OnContactBuilding</code> 이벤트가 발생하지 않음</li>
+<li><code>ABuilding::OnOverlapBegin</code>이 모든 액터를 처리하지만 <strong>필터링이 없었음</strong></li>
+</ul>
+<h4 id="해결">해결</h4>
+<p><strong>ADasanActor.cpp</strong> - 생성자에 태그 추가:</p>
+<pre><code class="lang-cpp">ADasanActor::<span class="hljs-built_in">ADasanActor</span>()
+{
+    <span class="hljs-comment">// ...</span>
+    Tags.<span class="hljs-built_in">Add</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"Dasan"</span>)); <span class="hljs-comment">// 퀘스트 인식용 태그</span>
+}
+</code></pre>
+<p><strong>ABuilding.cpp</strong> - Overlap 필터링:</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">ABuilding::OnOverlapBegin</span><span class="hljs-params">(...)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (OtherActor &amp;&amp; (OtherActor != <span class="hljs-keyword">this</span>))
+    {
+        <span class="hljs-comment">// 플레이어나 다산만 퀘스트 진행</span>
+        <span class="hljs-type">bool</span> bIsPlayer = OtherActor-&gt;<span class="hljs-built_in">IsA</span>&lt;APlayerActor&gt;();
+        <span class="hljs-type">bool</span> bIsDasan = OtherActor-&gt;<span class="hljs-built_in">ActorHasTag</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"Dasan"</span>));
+
+        <span class="hljs-keyword">if</span> (bIsPlayer || bIsDasan)
+        {
+            <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[Building] %s entered %s (BuildingType: %s)"</span>),
+                *OtherActor-&gt;<span class="hljs-built_in">GetName</span>(),
+                *<span class="hljs-keyword">this</span>-&gt;<span class="hljs-built_in">GetName</span>(),
+                *<span class="hljs-built_in">ENUM_TO_NAME</span>(EBuildingType, BuildingType));
+
+            BroadcastManager-&gt;<span class="hljs-built_in">SendContactBuilding</span>(BuildingType);
+        }
+    }
+}
+</code></pre>
+<p><strong>UQuestManager.cpp</strong> - 디버그 로그 추가:</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">UQuestManager::OnContactBuilding</span><span class="hljs-params">(EBuildingType InType)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (InType == CurTarget)
+    {
+        <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[QuestManager] Quest Completed: %s (Index: %d)"</span>),
+            *TargetName, CurQuestIndex);
+
+        CurQuestIndex++;
+
+        <span class="hljs-keyword">if</span> (QuestList.<span class="hljs-built_in">IsValidIndex</span>(CurQuestIndex))
+        {
+            CurTarget = QuestList[CurQuestIndex];
+            <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[QuestManager] 다음 목표: %s"</span>),
+                *<span class="hljs-built_in">ENUM_TO_NAME</span>(EBuildingType, CurTarget));
+        }
+        <span class="hljs-keyword">else</span>
+        {
+            <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[QuestManager] 모든 퀘스트 완료!"</span>));
+            CurTarget = EBuildingType::None;
+        }
+    }
+}
+</code></pre>
+<hr></hr>
+<h2 id="7-요약">7. 요약</h2>
+<h3 id="문제">문제</h3>
+<p><code>SetGoalActor</code>가 건물의 실제 높이(377m)를 사용하는데, NavMesh는 지면(2m)에만 있어서 경로 탐색 실패</p>
+<h3 id="해결">해결</h3>
+<ol>
+<li>NavigationSystem으로 목표 위치를 NavMesh에 <strong>수동 투영</strong></li>
+<li><code>SetGoalLocation</code>으로 직접 NavMesh 위치 사용</li>
+<li>Tick에서 반복 MoveTo 호출 제거</li>
+</ol>
+<h3 id="교훈">교훈</h3>
+<p><strong>World Partition + 건물 높이 차이가 큰 환경</strong>에서는:</p>
+<ul>
+<li>❌ <code>SetGoalActor</code> + <code>SetProjectGoalLocation(true)</code></li>
+<li>✅ <code>ProjectPointToNavigation</code> + <code>SetGoalLocation</code></li>
+</ul>
+<h3 id="수정된-파일-목록">수정된 파일 목록</h3>
+<ol>
+<li><code>UTourStateSystem.cpp</code> - Enter/Tick 함수에서 NavMesh 투영 사용</li>
+<li><code>ADasanActor.cpp</code> - 모든 MoveTo 호출 지점에 NavMesh 투영 적용</li>
+<li><code>ABuilding.cpp</code> - 플레이어/다산 필터링 추가</li>
+<li><code>UQuestManager.cpp</code> - 퀘스트 진행 로그 추가</li>
+</ol>
+<hr></hr>
+<h2 id="8-참고-코드-패턴">8. 참고 코드 패턴</h2>
+<h3 id="표준-navmesh-기반-이동-패턴">표준 NavMesh 기반 이동 패턴</h3>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">MoveToNavMeshLocation</span><span class="hljs-params">(AAIController* AIController, <span class="hljs-type">const</span> FVector&amp; TargetLocation, <span class="hljs-type">float</span> AcceptanceRadius = <span class="hljs-number">250.0f</span>)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (!AIController)
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+
+    UNavigationSystemV1* NavSys = UNavigationSystemV1::<span class="hljs-built_in">GetCurrent</span>(AIController-&gt;<span class="hljs-built_in">GetWorld</span>());
+    <span class="hljs-keyword">if</span> (!NavSys)
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+
+    <span class="hljs-comment">// NavMesh로 투영 (수직/수평 5000 유닛 범위)</span>
+    FNavLocation NavLocation;
+    <span class="hljs-keyword">if</span> (!NavSys-&gt;<span class="hljs-built_in">ProjectPointToNavigation</span>(TargetLocation, NavLocation, <span class="hljs-built_in">FVector</span>(<span class="hljs-number">5000</span>, <span class="hljs-number">5000</span>, <span class="hljs-number">5000</span>)))
+    {
+        <span class="hljs-built_in">UE_LOG</span>(LogTemp, Warning, <span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"Failed to project location to NavMesh"</span>));
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+
+    <span class="hljs-comment">// 이동 요청 생성</span>
+    FAIMoveRequest MoveRequest;
+    MoveRequest.<span class="hljs-built_in">SetGoalLocation</span>(NavLocation.Location);
+    MoveRequest.<span class="hljs-built_in">SetAcceptanceRadius</span>(AcceptanceRadius);
+    MoveRequest.<span class="hljs-built_in">SetUsePathfinding</span>(<span class="hljs-literal">true</span>);
+
+    <span class="hljs-comment">// 이동 실행</span>
+    FPathFollowingRequestResult Result = AIController-&gt;<span class="hljs-built_in">MoveTo</span>(MoveRequest);
+    <span class="hljs-keyword">return</span> Result.Code == EPathFollowingRequestResult::RequestSuccessful;
+}
+</code></pre>
+<hr></hr>
+<p><em>작성일: 2025년 1월</em>
+<em>프로젝트: YiSan</em>
+<em>엔진: Unreal Engine 5.6</em></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Figma_Lobby_UI_Design_Guide.html" class="navigation navigation-prev " aria-label="Previous page: Figma Lobby UI Design Guide">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Alpha_Report_2025-10-20_to_2025-10-27.html" class="navigation navigation-next " aria-label="Next page: Alpha Report (2025-10-20 ~ 2025-10-27)">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"AI Pathfinding Fix Report","level":"10.1","depth":1,"next":{"title":"Alpha Report (2025-10-20 ~ 2025-10-27)","level":"10.2","depth":1,"path":"Planning/Alpha_Report_2025-10-20_to_2025-10-27.md","ref":"Planning/Alpha_Report_2025-10-20_to_2025-10-27.md","articles":[]},"previous":{"title":"Figma Lobby UI Design Guide","level":"9.1","depth":1,"path":"Planning/Figma_Lobby_UI_Design_Guide.md","ref":"Planning/Figma_Lobby_UI_Design_Guide.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","-lunr","-search"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"collapsible-menu":{},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"back-to-top-button":{},"expandable-chapters-small":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen Documentation":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/AI_Pathfinding_Fix_Report.md","mtime":"2025-11-08T14:03:20.318Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-08T14:03:37.551Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-mermaid-gb3/book/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    <script src="../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.min.js"></script>
+
+    </body>
+</html>
+
