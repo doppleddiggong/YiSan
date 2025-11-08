@@ -37,10 +37,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
                 
             
@@ -1432,13 +1428,13 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#ai-경로-탐색-문제-해결-리포트"><b></b>AI 경로 탐색 문제 해결 리포트</a></li><ul><li><span class="title-icon "></span><a href="#1-초기-문제-증상"><b></b>1. 초기 문제 증상</a></li><ul><li><span class="title-icon "></span><a href="#환경"><b></b>환경</a></li></ul><li><span class="title-icon "></span><a href="#2-문제-분석-과정"><b></b>2. 문제 분석 과정</a></li><ul><li><span class="title-icon "></span><a href="#2-1-첫-번째-발견-매-프레임-moveto-재호출"><b></b>2-1. 첫 번째 발견: 매 프레임 MoveTo 재호출</a></li><li><span class="title-icon "></span><a href="#2-2-두-번째-발견-setprojectgoallocation의-한계"><b></b>2-2. 두 번째 발견: SetProjectGoalLocation의 한계</a></li><li><span class="title-icon "></span><a href="#2-3-결정적-발견-z축-높이-차이-문제"><b></b>2-3. 결정적 발견: Z축 높이 차이 문제</a></li></ul><li><span class="title-icon "></span><a href="#3-최종-해결-방법"><b></b>3. 최종 해결 방법</a></li><ul><li><span class="title-icon "></span><a href="#setgoalactor-→-setgoallocation-변경"><b></b>SetGoalActor → SetGoalLocation 변경</a></li></ul><li><span class="title-icon "></span><a href="#4-수정한-위치들"><b></b>4. 수정한 위치들</a></li><ul><li><span class="title-icon "></span><a href="#4-1-utourstatesystemcpp"><b></b>4-1. UTourStateSystem.cpp</a></li><li><span class="title-icon "></span><a href="#4-2-adasanactorcpp"><b></b>4-2. ADasanActor.cpp</a></li></ul><li><span class="title-icon "></span><a href="#5-왜-setprojectgoallocation이-작동하지-않았나"><b></b>5. 왜 SetProjectGoalLocation이 작동하지 않았나?</a></li><ul><li><span class="title-icon "></span><a href="#추측"><b></b>추측</a></li><li><span class="title-icon "></span><a href="#결론"><b></b>결론</a></li></ul><li><span class="title-icon "></span><a href="#6-추가-발견-퀘스트-진행-문제"><b></b>6. 추가 발견: 퀘스트 진행 문제</a></li><ul><li><span class="title-icon "></span><a href="#보너스-문제"><b></b>보너스 문제</a></li></ul><li><span class="title-icon "></span><a href="#7-요약"><b></b>7. 요약</a></li><ul><li><span class="title-icon "></span><a href="#문제"><b></b>문제</a></li><li><span class="title-icon "></span><a href="#해결_1"><b></b>해결</a></li><li><span class="title-icon "></span><a href="#교훈"><b></b>교훈</a></li><li><span class="title-icon "></span><a href="#수정된-파일-목록"><b></b>수정된 파일 목록</a></li></ul><li><span class="title-icon "></span><a href="#8-참고-코드-패턴"><b></b>8. 참고 코드 패턴</a></li><ul><li><span class="title-icon "></span><a href="#표준-navmesh-기반-이동-패턴"><b></b>표준 NavMesh 기반 이동 패턴</a></li></ul></ul></ul></div><a href="#ai-경로-탐색-문제-해결-리포트" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="ai-경로-탐색-문제-해결-리포트"><a name="ai-경로-탐색-문제-해결-리포트" class="anchor-navigation-ex-anchor" href="#ai-경로-탐색-문제-해결-리포트"><i class="fa fa-link" aria-hidden="true"></i></a>AI 경로 탐색 문제 해결 리포트</h1>
-<h2 id="1-초기-문제-증상"><a name="1-초기-문제-증상" class="anchor-navigation-ex-anchor" href="#1-초기-문제-증상"><i class="fa fa-link" aria-hidden="true"></i></a>1. 초기 문제 증상</h2>
+                                <h1 id="ai-경로-탐색-문제-해결-리포트">AI 경로 탐색 문제 해결 리포트</h1>
+<h2 id="1-초기-문제-증상">1. 초기 문제 증상</h2>
 <pre><code>✓ 첫 번째 목적지(신풍루): 이동 성공
 ✗ 두 번째 이후 목적지: "경로 없음" 에러 발생
 ✓ NavMesh는 Show Navigation으로 확인 시 존재함
 ? Z축이 반영되지 않는 것처럼 보임
-</code></pre><h3 id="환경"><a name="환경" class="anchor-navigation-ex-anchor" href="#환경"><i class="fa fa-link" aria-hidden="true"></i></a>환경</h3>
+</code></pre><h3 id="환경">환경</h3>
 <ul>
 <li><strong>엔진</strong>: Unreal Engine 5.6</li>
 <li><strong>맵 시스템</strong>: World Partition</li>
@@ -1446,9 +1442,9 @@
 <li><strong>군중 시스템</strong>: Mass Crowd</li>
 </ul>
 <hr></hr>
-<h2 id="2-문제-분석-과정"><a name="2-문제-분석-과정" class="anchor-navigation-ex-anchor" href="#2-문제-분석-과정"><i class="fa fa-link" aria-hidden="true"></i></a>2. 문제 분석 과정</h2>
-<h3 id="2-1-첫-번째-발견-매-프레임-moveto-재호출"><a name="2-1-첫-번째-발견-매-프레임-moveto-재호출" class="anchor-navigation-ex-anchor" href="#2-1-첫-번째-발견-매-프레임-moveto-재호출"><i class="fa fa-link" aria-hidden="true"></i></a>2-1. 첫 번째 발견: 매 프레임 MoveTo 재호출</h3>
-<h4 id="문제-코드"><a name="문제-코드" class="anchor-navigation-ex-anchor" href="#문제-코드"><i class="fa fa-link" aria-hidden="true"></i></a>문제 코드</h4>
+<h2 id="2-문제-분석-과정">2. 문제 분석 과정</h2>
+<h3 id="2-1-첫-번째-발견-매-프레임-moveto-재호출">2-1. 첫 번째 발견: 매 프레임 MoveTo 재호출</h3>
+<h4 id="문제-코드">문제 코드</h4>
 <p><strong>위치</strong>: <code>UTourStateSystem::Tick_TourMove()</code> (Line 171-176)</p>
 <pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">UTourStateSystem::Tick_TourMove</span><span class="hljs-params">(<span class="hljs-type">float</span> DeltaTime)</span>
 </span>{
@@ -1463,26 +1459,26 @@
     }
 }
 </code></pre>
-<h4 id="왜-첫-번째는-성공했나"><a name="왜-첫-번째는-성공했나" class="anchor-navigation-ex-anchor" href="#왜-첫-번째는-성공했나"><i class="fa fa-link" aria-hidden="true"></i></a>왜 첫 번째는 성공했나?</h4>
+<h4 id="왜-첫-번째는-성공했나">왜 첫 번째는 성공했나?</h4>
 <ol>
 <li><code>StartTour()</code>에서 <strong>한 번만</strong> MoveTo 호출</li>
 <li>경로를 찾고 이동을 완료</li>
 <li>두 번째부터는 <code>Tick_TourMove</code>가 매 프레임 MoveTo를 재호출</li>
 <li>이미 진행 중인 경로를 계속 중단하고 재계산 → 실패</li>
 </ol>
-<h4 id="조치"><a name="조치" class="anchor-navigation-ex-anchor" href="#조치"><i class="fa fa-link" aria-hidden="true"></i></a>조치</h4>
+<h4 id="조치">조치</h4>
 <p>Tick에서 MoveTo 호출 제거, Enter 함수에서만 호출하도록 변경</p>
 <hr></hr>
-<h3 id="2-2-두-번째-발견-setprojectgoallocation의-한계"><a name="2-2-두-번째-발견-setprojectgoallocation의-한계" class="anchor-navigation-ex-anchor" href="#2-2-두-번째-발견-setprojectgoallocation의-한계"><i class="fa fa-link" aria-hidden="true"></i></a>2-2. 두 번째 발견: SetProjectGoalLocation의 한계</h3>
-<h4 id="시도"><a name="시도" class="anchor-navigation-ex-anchor" href="#시도"><i class="fa fa-link" aria-hidden="true"></i></a>시도</h4>
+<h3 id="2-2-두-번째-발견-setprojectgoallocation의-한계">2-2. 두 번째 발견: SetProjectGoalLocation의 한계</h3>
+<h4 id="시도">시도</h4>
 <pre><code class="lang-cpp">MoveRequest.<span class="hljs-built_in">SetGoalActor</span>(CurTargetBuilding);
 MoveRequest.<span class="hljs-built_in">SetProjectGoalLocation</span>(<span class="hljs-literal">true</span>); <span class="hljs-comment">// NavMesh로 자동 투영 시도</span>
 </code></pre>
-<h4 id="결과"><a name="결과" class="anchor-navigation-ex-anchor" href="#결과"><i class="fa fa-link" aria-hidden="true"></i></a>결과</h4>
+<h4 id="결과">결과</h4>
 <p>여전히 실패 - <code>SetProjectGoalLocation</code>이 작동하지 않음</p>
 <hr></hr>
-<h3 id="2-3-결정적-발견-z축-높이-차이-문제"><a name="2-3-결정적-발견-z축-높이-차이-문제" class="anchor-navigation-ex-anchor" href="#2-3-결정적-발견-z축-높이-차이-문제"><i class="fa fa-link" aria-hidden="true"></i></a>2-3. 결정적 발견: Z축 높이 차이 문제</h3>
-<h4 id="로그-분석"><a name="로그-분석" class="anchor-navigation-ex-anchor" href="#로그-분석"><i class="fa fa-link" aria-hidden="true"></i></a>로그 분석</h4>
+<h3 id="2-3-결정적-발견-z축-높이-차이-문제">2-3. 결정적 발견: Z축 높이 차이 문제</h3>
+<h4 id="로그-분석">로그 분석</h4>
 <pre><code>LogCoffee: Warning: [TourState] MoveTo 시작
   From: (11884.9, 11083.1, 101.8)
   To:   (3328.2, -179.2, 377.4)
@@ -1494,7 +1490,7 @@ LogCoffee: Warning: [TourState] NavMesh 투영 위치: (3328.2, -179.2, 2.4) ←
 LogCoffee: Warning: [TourState] 경로 찾기 성공! 경로 포인트: 12개
 LogCoffee: Warning: [TourState] MoveTo 결과: 0 (RequestSuccessful)
 LogCoffee: Warning: ADasanActor::OnMoveCompleted(221): AI MoveTo 실패 - 경로 없음 ← 모순!
-</code></pre><h4 id="핵심-발견"><a name="핵심-발견" class="anchor-navigation-ex-anchor" href="#핵심-발견"><i class="fa fa-link" aria-hidden="true"></i></a>핵심 발견</h4>
+</code></pre><h4 id="핵심-발견">핵심 발견</h4>
 <table>
 <thead>
 <tr>
@@ -1524,15 +1520,15 @@ LogCoffee: Warning: ADasanActor::OnMoveCompleted(221): AI MoveTo 실패 - 경로
 <li><code>SetProjectGoalLocation(true)</code>가 <strong>작동하지 않음!</strong></li>
 </ul>
 <hr></hr>
-<h2 id="3-최종-해결-방법"><a name="3-최종-해결-방법" class="anchor-navigation-ex-anchor" href="#3-최종-해결-방법"><i class="fa fa-link" aria-hidden="true"></i></a>3. 최종 해결 방법</h2>
-<h3 id="setgoalactor-→-setgoallocation-변경"><a name="setgoalactor-→-setgoallocation-변경" class="anchor-navigation-ex-anchor" href="#setgoalactor-→-setgoallocation-변경"><i class="fa fa-link" aria-hidden="true"></i></a>SetGoalActor → SetGoalLocation 변경</h3>
-<h4 id="❌-이전-방식-실패"><a name="❌-이전-방식-실패" class="anchor-navigation-ex-anchor" href="#❌-이전-방식-실패"><i class="fa fa-link" aria-hidden="true"></i></a>❌ 이전 방식 (실패)</h4>
+<h2 id="3-최종-해결-방법">3. 최종 해결 방법</h2>
+<h3 id="setgoalactor-→-setgoallocation-변경">SetGoalActor → SetGoalLocation 변경</h3>
+<h4 id="❌-이전-방식-실패">❌ 이전 방식 (실패)</h4>
 <pre><code class="lang-cpp">FAIMoveRequest MoveRequest;
 MoveRequest.<span class="hljs-built_in">SetGoalActor</span>(CurTargetBuilding);  <span class="hljs-comment">// Actor 중심점 사용</span>
 MoveRequest.<span class="hljs-built_in">SetProjectGoalLocation</span>(<span class="hljs-literal">true</span>);     <span class="hljs-comment">// 작동 안함!</span>
 DasanAicontrol-&gt;<span class="hljs-built_in">MoveTo</span>(MoveRequest);
 </code></pre>
-<h4 id="✅-새로운-방식-성공"><a name="✅-새로운-방식-성공" class="anchor-navigation-ex-anchor" href="#✅-새로운-방식-성공"><i class="fa fa-link" aria-hidden="true"></i></a>✅ 새로운 방식 (성공)</h4>
+<h4 id="✅-새로운-방식-성공">✅ 새로운 방식 (성공)</h4>
 <pre><code class="lang-cpp">FVector TargetPos = CurTargetBuilding-&gt;<span class="hljs-built_in">GetActorLocation</span>();
 UNavigationSystemV1* NavSys = UNavigationSystemV1::<span class="hljs-built_in">GetCurrent</span>(<span class="hljs-built_in">GetWorld</span>());
 
@@ -1550,9 +1546,9 @@ MoveRequest.<span class="hljs-built_in">SetUsePathfinding</span>(<span class="hl
 DasanAicontrol-&gt;<span class="hljs-built_in">MoveTo</span>(MoveRequest);
 </code></pre>
 <hr></hr>
-<h2 id="4-수정한-위치들"><a name="4-수정한-위치들" class="anchor-navigation-ex-anchor" href="#4-수정한-위치들"><i class="fa fa-link" aria-hidden="true"></i></a>4. 수정한 위치들</h2>
-<h3 id="4-1-utourstatesystemcpp"><a name="4-1-utourstatesystemcpp" class="anchor-navigation-ex-anchor" href="#4-1-utourstatesystemcpp"><i class="fa fa-link" aria-hidden="true"></i></a>4-1. UTourStateSystem.cpp</h3>
-<h4 id="entertourmove-line-113-162"><a name="entertourmove-line-113-162" class="anchor-navigation-ex-anchor" href="#entertourmove-line-113-162"><i class="fa fa-link" aria-hidden="true"></i></a>Enter_TourMove() (Line 113-162)</h4>
+<h2 id="4-수정한-위치들">4. 수정한 위치들</h2>
+<h3 id="4-1-utourstatesystemcpp">4-1. UTourStateSystem.cpp</h3>
+<h4 id="entertourmove-line-113-162">Enter_TourMove() (Line 113-162)</h4>
 <pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">UTourStateSystem::Enter_TourMove</span><span class="hljs-params">()</span>
 </span>{
     <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[TourState] Enter TourMove"</span>));
@@ -1580,7 +1576,7 @@ DasanAicontrol-&gt;<span class="hljs-built_in">MoveTo</span>(MoveRequest);
     }
 }
 </code></pre>
-<h4 id="ticktourwait-line-281-299"><a name="ticktourwait-line-281-299" class="anchor-navigation-ex-anchor" href="#ticktourwait-line-281-299"><i class="fa fa-link" aria-hidden="true"></i></a>Tick_TourWait() (Line 281-299)</h4>
+<h4 id="ticktourwait-line-281-299">Tick_TourWait() (Line 281-299)</h4>
 <pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">UTourStateSystem::Tick_TourWait</span><span class="hljs-params">(<span class="hljs-type">float</span> DeltaTime)</span>
 </span>{
     <span class="hljs-comment">// ... (타이머 로직)</span>
@@ -1611,7 +1607,7 @@ DasanAicontrol-&gt;<span class="hljs-built_in">MoveTo</span>(MoveRequest);
     }
 }
 </code></pre>
-<h3 id="4-2-adasanactorcpp"><a name="4-2-adasanactorcpp" class="anchor-navigation-ex-anchor" href="#4-2-adasanactorcpp"><i class="fa fa-link" aria-hidden="true"></i></a>4-2. ADasanActor.cpp</h3>
+<h3 id="4-2-adasanactorcpp">4-2. ADasanActor.cpp</h3>
 <p>수정된 함수들:</p>
 <ul>
 <li><code>StartTour()</code> (Line 317-356)</li>
@@ -1626,9 +1622,9 @@ DasanAicontrol-&gt;<span class="hljs-built_in">MoveTo</span>(MoveRequest);
 <li>SetGoalLocation 사용</li>
 </ol>
 <hr></hr>
-<h2 id="5-왜-setprojectgoallocation이-작동하지-않았나"><a name="5-왜-setprojectgoallocation이-작동하지-않았나" class="anchor-navigation-ex-anchor" href="#5-왜-setprojectgoallocation이-작동하지-않았나"><i class="fa fa-link" aria-hidden="true"></i></a>5. 왜 SetProjectGoalLocation이 작동하지 않았나?</h2>
-<h3 id="추측"><a name="추측" class="anchor-navigation-ex-anchor" href="#추측"><i class="fa fa-link" aria-hidden="true"></i></a>추측</h3>
-<h4 id="가능성-1-제한된-투영-범위"><a name="가능성-1-제한된-투영-범위" class="anchor-navigation-ex-anchor" href="#가능성-1-제한된-투영-범위"><i class="fa fa-link" aria-hidden="true"></i></a>가능성 1: 제한된 투영 범위</h4>
+<h2 id="5-왜-setprojectgoallocation이-작동하지-않았나">5. 왜 SetProjectGoalLocation이 작동하지 않았나?</h2>
+<h3 id="추측">추측</h3>
+<h4 id="가능성-1-제한된-투영-범위">가능성 1: 제한된 투영 범위</h4>
 <pre><code class="lang-cpp"><span class="hljs-comment">// SetProjectGoalLocation 내부 구현 (추정)</span>
 <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">FAIMoveRequest::ProjectGoalLocation</span><span class="hljs-params">()</span>
 </span>{
@@ -1640,23 +1636,23 @@ DasanAicontrol-&gt;<span class="hljs-built_in">MoveTo</span>(MoveRequest);
 <li>375m 높이 차이는 기본 범위를 초과</li>
 <li>투영 실패 → 원래 위치 사용 → 경로 탐색 실패</li>
 </ul>
-<h4 id="가능성-2-actor-bounds-기반-투영"><a name="가능성-2-actor-bounds-기반-투영" class="anchor-navigation-ex-anchor" href="#가능성-2-actor-bounds-기반-투영"><i class="fa fa-link" aria-hidden="true"></i></a>가능성 2: Actor Bounds 기반 투영</h4>
+<h4 id="가능성-2-actor-bounds-기반-투영">가능성 2: Actor Bounds 기반 투영</h4>
 <ul>
 <li>Actor의 Bounds 중심점을 기준으로 투영</li>
 <li>건물이 너무 크거나 복잡한 구조여서 문제 발생</li>
 </ul>
-<h3 id="결론"><a name="결론" class="anchor-navigation-ex-anchor" href="#결론"><i class="fa fa-link" aria-hidden="true"></i></a>결론</h3>
+<h3 id="결론">결론</h3>
 <p>수동으로 <code>NavigationSystem::ProjectPointToNavigation</code>을 호출하고 <code>SetGoalLocation</code>을 사용하는 것이 <strong>확실한 방법</strong>!</p>
 <hr></hr>
-<h2 id="6-추가-발견-퀘스트-진행-문제"><a name="6-추가-발견-퀘스트-진행-문제" class="anchor-navigation-ex-anchor" href="#6-추가-발견-퀘스트-진행-문제"><i class="fa fa-link" aria-hidden="true"></i></a>6. 추가 발견: 퀘스트 진행 문제</h2>
-<h3 id="보너스-문제"><a name="보너스-문제" class="anchor-navigation-ex-anchor" href="#보너스-문제"><i class="fa fa-link" aria-hidden="true"></i></a>보너스 문제</h3>
+<h2 id="6-추가-발견-퀘스트-진행-문제">6. 추가 발견: 퀘스트 진행 문제</h2>
+<h3 id="보너스-문제">보너스 문제</h3>
 <p>여민각에서 별주로 진행되지 않는 이유</p>
-<h4 id="원인"><a name="원인" class="anchor-navigation-ex-anchor" href="#원인"><i class="fa fa-link" aria-hidden="true"></i></a>원인</h4>
+<h4 id="원인">원인</h4>
 <ul>
 <li>다산이 건물에 도착해도 <code>OnContactBuilding</code> 이벤트가 발생하지 않음</li>
 <li><code>ABuilding::OnOverlapBegin</code>이 모든 액터를 처리하지만 <strong>필터링이 없었음</strong></li>
 </ul>
-<h4 id="해결"><a name="해결" class="anchor-navigation-ex-anchor" href="#해결"><i class="fa fa-link" aria-hidden="true"></i></a>해결</h4>
+<h4 id="해결">해결</h4>
 <p><strong>ADasanActor.cpp</strong> - 생성자에 태그 추가:</p>
 <pre><code class="lang-cpp">ADasanActor::<span class="hljs-built_in">ADasanActor</span>()
 {
@@ -1710,22 +1706,22 @@ DasanAicontrol-&gt;<span class="hljs-built_in">MoveTo</span>(MoveRequest);
 }
 </code></pre>
 <hr></hr>
-<h2 id="7-요약"><a name="7-요약" class="anchor-navigation-ex-anchor" href="#7-요약"><i class="fa fa-link" aria-hidden="true"></i></a>7. 요약</h2>
-<h3 id="문제"><a name="문제" class="anchor-navigation-ex-anchor" href="#문제"><i class="fa fa-link" aria-hidden="true"></i></a>문제</h3>
+<h2 id="7-요약">7. 요약</h2>
+<h3 id="문제">문제</h3>
 <p><code>SetGoalActor</code>가 건물의 실제 높이(377m)를 사용하는데, NavMesh는 지면(2m)에만 있어서 경로 탐색 실패</p>
-<h3 id="해결_1"><a name="해결_1" class="anchor-navigation-ex-anchor" href="#해결_1"><i class="fa fa-link" aria-hidden="true"></i></a>해결</h3>
+<h3 id="해결">해결</h3>
 <ol>
 <li>NavigationSystem으로 목표 위치를 NavMesh에 <strong>수동 투영</strong></li>
 <li><code>SetGoalLocation</code>으로 직접 NavMesh 위치 사용</li>
 <li>Tick에서 반복 MoveTo 호출 제거</li>
 </ol>
-<h3 id="교훈"><a name="교훈" class="anchor-navigation-ex-anchor" href="#교훈"><i class="fa fa-link" aria-hidden="true"></i></a>교훈</h3>
+<h3 id="교훈">교훈</h3>
 <p><strong>World Partition + 건물 높이 차이가 큰 환경</strong>에서는:</p>
 <ul>
 <li>❌ <code>SetGoalActor</code> + <code>SetProjectGoalLocation(true)</code></li>
 <li>✅ <code>ProjectPointToNavigation</code> + <code>SetGoalLocation</code></li>
 </ul>
-<h3 id="수정된-파일-목록"><a name="수정된-파일-목록" class="anchor-navigation-ex-anchor" href="#수정된-파일-목록"><i class="fa fa-link" aria-hidden="true"></i></a>수정된 파일 목록</h3>
+<h3 id="수정된-파일-목록">수정된 파일 목록</h3>
 <ol>
 <li><code>UTourStateSystem.cpp</code> - Enter/Tick 함수에서 NavMesh 투영 사용</li>
 <li><code>ADasanActor.cpp</code> - 모든 MoveTo 호출 지점에 NavMesh 투영 적용</li>
@@ -1733,8 +1729,8 @@ DasanAicontrol-&gt;<span class="hljs-built_in">MoveTo</span>(MoveRequest);
 <li><code>UQuestManager.cpp</code> - 퀘스트 진행 로그 추가</li>
 </ol>
 <hr></hr>
-<h2 id="8-참고-코드-패턴"><a name="8-참고-코드-패턴" class="anchor-navigation-ex-anchor" href="#8-참고-코드-패턴"><i class="fa fa-link" aria-hidden="true"></i></a>8. 참고 코드 패턴</h2>
-<h3 id="표준-navmesh-기반-이동-패턴"><a name="표준-navmesh-기반-이동-패턴" class="anchor-navigation-ex-anchor" href="#표준-navmesh-기반-이동-패턴"><i class="fa fa-link" aria-hidden="true"></i></a>표준 NavMesh 기반 이동 패턴</h3>
+<h2 id="8-참고-코드-패턴">8. 참고 코드 패턴</h2>
+<h3 id="표준-navmesh-기반-이동-패턴">표준 NavMesh 기반 이동 패턴</h3>
 <pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">MoveToNavMeshLocation</span><span class="hljs-params">(AAIController* AIController, <span class="hljs-type">const</span> FVector&amp; TargetLocation, <span class="hljs-type">float</span> AcceptanceRadius = <span class="hljs-number">250.0f</span>)</span>
 </span>{
     <span class="hljs-keyword">if</span> (!AIController)
@@ -1767,7 +1763,7 @@ DasanAicontrol-&gt;<span class="hljs-built_in">MoveTo</span>(MoveRequest);
 <p><em>작성일: 2025년 1월</em>
 <em>프로젝트: YiSan</em>
 <em>엔진: Unreal Engine 5.6</em></p>
-</body></html> <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
+ <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
                                 </section>
                             
@@ -1810,7 +1806,7 @@ DasanAicontrol-&gt;<span class="hljs-built_in">MoveTo</span>(MoveRequest);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"AI 경로 탐색 문제 해결 리포트","level":"14.1","depth":1,"next":{"title":"Alpha 단계 개발 보고서","level":"14.2","depth":1,"path":"Planning/Alpha_Report_2025-10-20_to_2025-10-27.md","ref":"Planning/Alpha_Report_2025-10-20_to_2025-10-27.md","articles":[]},"previous":{"title":"YiSan 멀티플레이 로비 UI 디자인 가이드 (Figma)","level":"13.1","depth":1,"path":"Planning/Figma_Lobby_UI_Design_Guide.md","ref":"Planning/Figma_Lobby_UI_Design_Guide.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","anchor-navigation-ex","code","splitter","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"splitter":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":false,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/AI_Pathfinding_Fix_Report.md","mtime":"2025-11-08T15:01:59.241Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-08T15:02:24.274Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"AI 경로 탐색 문제 해결 리포트","level":"14.1","depth":1,"next":{"title":"Alpha 단계 개발 보고서","level":"14.2","depth":1,"path":"Planning/Alpha_Report_2025-10-20_to_2025-10-27.md","ref":"Planning/Alpha_Report_2025-10-20_to_2025-10-27.md","articles":[]},"previous":{"title":"YiSan 멀티플레이 로비 UI 디자인 가이드 (Figma)","level":"13.1","depth":1,"path":"Planning/Figma_Lobby_UI_Design_Guide.md","ref":"Planning/Figma_Lobby_UI_Design_Guide.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","code","splitter","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"splitter":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/AI_Pathfinding_Fix_Report.md","mtime":"2025-11-08T15:14:52.116Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-08T15:15:19.047Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

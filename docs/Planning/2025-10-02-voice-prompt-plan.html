@@ -37,10 +37,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
                 
             
@@ -1432,14 +1428,14 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#음성-프롬프트-워크플로-계획-2025-10-02"><b></b>음성 프롬프트 워크플로 계획 (2025-10-02)</a></li><ul><li><span class="title-icon "></span><a href="#목표"><b></b>목표</a></li><li><span class="title-icon "></span><a href="#제안-흐름"><b></b>제안 흐름</a></li><li><span class="title-icon "></span><a href="#협업-및-반복-단계"><b></b>협업 및 반복 단계</a></li><li><span class="title-icon "></span><a href="#미해결-질문"><b></b>미해결 질문</a></li></ul></ul></div><a href="#음성-프롬프트-워크플로-계획-2025-10-02" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="음성-프롬프트-워크플로-계획-2025-10-02"><a name="음성-프롬프트-워크플로-계획-2025-10-02" class="anchor-navigation-ex-anchor" href="#음성-프롬프트-워크플로-계획-2025-10-02"><i class="fa fa-link" aria-hidden="true"></i></a>음성 프롬프트 워크플로 계획 (2025-10-02)</h1>
-<h2 id="목표"><a name="목표" class="anchor-navigation-ex-anchor" href="#목표"><i class="fa fa-link" aria-hidden="true"></i></a>목표</h2>
+                                <h1 id="음성-프롬프트-워크플로-계획-2025-10-02">음성 프롬프트 워크플로 계획 (2025-10-02)</h1>
+<h2 id="목표">목표</h2>
 <ul>
 <li>Push-to-talk 오디오를 캡처하고, Google STT를 통해 텍스트로 변환한 후, GPT/GPT 유사 파이프라인에 전달합니다.</li>
 <li>사용자가 직접 텍스트를 입력하고 Enter를 누를 때, 동일한 음성 서비스(TTS)를 재사용하는 텍스트 입력 UX를 제공합니다.</li>
 <li><code>UVoiceSystem</code>의 시도/결과 로깅을 통해 관찰 가능성을 유지합니다.</li>
 </ul>
-<h2 id="제안-흐름"><a name="제안-흐름" class="anchor-navigation-ex-anchor" href="#제안-흐름"><i class="fa fa-link" aria-hidden="true"></i></a>제안 흐름</h2>
+<h2 id="제안-흐름">제안 흐름</h2>
 <ol>
 <li><p><strong>플레이어 입력 레이어</strong></p>
 <ul>
@@ -1474,7 +1470,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="협업-및-반복-단계"><a name="협업-및-반복-단계" class="anchor-navigation-ex-anchor" href="#협업-및-반복-단계"><i class="fa fa-link" aria-hidden="true"></i></a>협업 및 반복 단계</h2>
+<h2 id="협업-및-반복-단계">협업 및 반복 단계</h2>
 <ol>
 <li>Google API 접근을 확인하고 <code>Project Settings &gt; Google Speech Service</code> (API 키, 언어, 음성)를 채웁니다.</li>
 <li><code>UMainWdget</code>의 블루프린트 서브클래스를 생성 또는 업데이트하여 UI 이벤트를 바인딩하고 HUD에 추가합니다.</li>
@@ -1482,13 +1478,13 @@
 <li>병합 전에 콘솔 명령어와 자동화된 테스트(스페이스바, TTS 시뮬레이션)를 통해 QA를 진행합니다.</li>
 <li>실패 분석을 위해 <code>PRINTLOG</code> 출력(<code>LogCoffee</code>)과 <code>NETWORK_LOG</code>에서 원격 측정 데이터를 수집합니다.</li>
 </ol>
-<h2 id="미해결-질문"><a name="미해결-질문" class="anchor-navigation-ex-anchor" href="#미해결-질문"><i class="fa fa-link" aria-hidden="true"></i></a>미해결 질문</h2>
+<h2 id="미해결-질문">미해결 질문</h2>
 <ul>
 <li>TTS 재생을 선택 사항(음소거)으로 만들고 위젯 토글로 제어해야 할까요?</li>
 <li>여러 TTS 응답이 빠르게 도착할 경우, 대기열 재생이 필요할까요?</li>
 <li>향후 과제: <code>SubmitTranscription</code> 성공 후 GPT 호출을 통합하고 <code>NotifyResponseReady</code>에 데이터를 제공합니다.</li>
 </ul>
-</body></html> <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
+ <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
                                 </section>
                             
@@ -1531,7 +1527,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"음성 프롬프트 워크플로 계획 (2025-10-02)","level":"12.1","depth":1,"next":{"title":"UYiSanLoading 리팩터링 리뷰 (2025-10-30 KST)","level":"12.2","depth":1,"path":"Planning/2025-10-30_UYiSanLoading_Refactor.md","ref":"Planning/2025-10-30_UYiSanLoading_Refactor.md","articles":[]},"previous":{"title":"Voice Server API 가이드 (for Unreal Engine)","level":"11.8","depth":1,"path":"Planning/server_api.md","ref":"Planning/server_api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","anchor-navigation-ex","code","splitter","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"splitter":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":false,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/2025-10-02-voice-prompt-plan.md","mtime":"2025-11-08T15:01:59.241Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-08T15:02:24.274Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"음성 프롬프트 워크플로 계획 (2025-10-02)","level":"12.1","depth":1,"next":{"title":"UYiSanLoading 리팩터링 리뷰 (2025-10-30 KST)","level":"12.2","depth":1,"path":"Planning/2025-10-30_UYiSanLoading_Refactor.md","ref":"Planning/2025-10-30_UYiSanLoading_Refactor.md","articles":[]},"previous":{"title":"Voice Server API 가이드 (for Unreal Engine)","level":"11.8","depth":1,"path":"Planning/server_api.md","ref":"Planning/server_api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","code","splitter","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"splitter":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/2025-10-02-voice-prompt-plan.md","mtime":"2025-11-08T15:14:52.116Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-08T15:15:19.047Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

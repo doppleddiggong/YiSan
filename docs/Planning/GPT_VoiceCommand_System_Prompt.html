@@ -37,10 +37,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
                 
             
@@ -1432,11 +1428,11 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#gpt-음성-명령-파서-시스템-프롬프트"><b></b>GPT 음성 명령 파서 시스템 프롬프트</a></li><ul><li><span class="title-icon "></span><a href="#목적"><b></b>목적</a></li><li><span class="title-icon "></span><a href="#명령-테이블"><b></b>명령 테이블</a></li><ul><li><span class="title-icon "></span><a href="#명령-설명"><b></b>명령 설명</a></li></ul><li><span class="title-icon "></span><a href="#파싱-규칙"><b></b>파싱 규칙</a></li><li><span class="title-icon "></span><a href="#예시"><b></b>예시</a></li><li><span class="title-icon "></span><a href="#구현-가이드"><b></b>구현 가이드</a></li><ul><li><span class="title-icon "></span><a href="#gpt-시스템-메시지-예시"><b></b>GPT 시스템 메시지 예시</a></li><li><span class="title-icon "></span><a href="#클라이언트-코드-c"><b></b>클라이언트 코드 (C++)</a></li></ul><li><span class="title-icon "></span><a href="#레거시-명령-하위-호환성"><b></b>레거시 명령 (하위 호환성)</a></li><li><span class="title-icon "></span><a href="#업데이트-이력"><b></b>업데이트 이력</a></li></ul></ul></div><a href="#gpt-음성-명령-파서-시스템-프롬프트" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="gpt-음성-명령-파서-시스템-프롬프트"><a name="gpt-음성-명령-파서-시스템-프롬프트" class="anchor-navigation-ex-anchor" href="#gpt-음성-명령-파서-시스템-프롬프트"><i class="fa fa-link" aria-hidden="true"></i></a>GPT 음성 명령 파서 시스템 프롬프트</h1>
-<h2 id="목적"><a name="목적" class="anchor-navigation-ex-anchor" href="#목적"><i class="fa fa-link" aria-hidden="true"></i></a>목적</h2>
+                                <h1 id="gpt-음성-명령-파서-시스템-프롬프트">GPT 음성 명령 파서 시스템 프롬프트</h1>
+<h2 id="목적">목적</h2>
 <p>사용자가 음성 또는 텍스트로 입력한 문장을 분석하여, 정의된 명령 테이블에 따라 특정 이벤트 이름을 반환합니다.</p>
 <hr></hr>
-<h2 id="명령-테이블"><a name="명령-테이블" class="anchor-navigation-ex-anchor" href="#명령-테이블"><i class="fa fa-link" aria-hidden="true"></i></a>명령 테이블</h2>
+<h2 id="명령-테이블">명령 테이블</h2>
 <p>다음 표에 정의된 명령들을 사용합니다:</p>
 <pre><code>main_phrase,aliases,event_name
 접근,다가가기;NPC에게로;내가갈게;가까이가기;대상에게접근,Cmd_Approach
@@ -1444,7 +1440,7 @@
 목표로이동,다음목적지;퀘스트위치;목표로출발;미션위치로,Cmd_Target
 친구에게로,동료위치로;파티쪽으로;팀원한테가;동료에게이동,Cmd_Friend
 이쪽으로와,근처로와;여기로와;따라와;여기집결;나한테와,Cmd_Call
-</code></pre><h3 id="명령-설명"><a name="명령-설명" class="anchor-navigation-ex-anchor" href="#명령-설명"><i class="fa fa-link" aria-hidden="true"></i></a>명령 설명</h3>
+</code></pre><h3 id="명령-설명">명령 설명</h3>
 <table>
 <thead>
 <tr>
@@ -1488,7 +1484,7 @@
 </tbody>
 </table>
 <hr></hr>
-<h2 id="파싱-규칙"><a name="파싱-규칙" class="anchor-navigation-ex-anchor" href="#파싱-규칙"><i class="fa fa-link" aria-hidden="true"></i></a>파싱 규칙</h2>
+<h2 id="파싱-규칙">파싱 규칙</h2>
 <ol>
 <li><p><strong>부분 일치 허용</strong></p>
 <ul>
@@ -1514,7 +1510,7 @@
 </li>
 </ol>
 <hr></hr>
-<h2 id="예시"><a name="예시" class="anchor-navigation-ex-anchor" href="#예시"><i class="fa fa-link" aria-hidden="true"></i></a>예시</h2>
+<h2 id="예시">예시</h2>
 <table>
 <thead>
 <tr>
@@ -1567,8 +1563,8 @@
 </tbody>
 </table>
 <hr></hr>
-<h2 id="구현-가이드"><a name="구현-가이드" class="anchor-navigation-ex-anchor" href="#구현-가이드"><i class="fa fa-link" aria-hidden="true"></i></a>구현 가이드</h2>
-<h3 id="gpt-시스템-메시지-예시"><a name="gpt-시스템-메시지-예시" class="anchor-navigation-ex-anchor" href="#gpt-시스템-메시지-예시"><i class="fa fa-link" aria-hidden="true"></i></a>GPT 시스템 메시지 예시</h3>
+<h2 id="구현-가이드">구현 가이드</h2>
+<h3 id="gpt-시스템-메시지-예시">GPT 시스템 메시지 예시</h3>
 <pre><code>당신은 사용자의 음성/텍스트 입력을 분석하여 게임 명령을 식별하는 파서입니다.
 
 다음 명령 테이블을 참조하여, 사용자 입력과 가장 일치하는 명령의 이벤트 이름만 반환하세요:
@@ -1584,7 +1580,7 @@
 - 조사/어미 변형을 허용합니다 (예: "가까이 와줘" → Cmd_Approach)
 - 매칭되는 명령이 없으면 빈 문자열을 반환합니다
 - 출력은 이벤트 이름만 반환합니다 (예: Cmd_Approach)
-</code></pre><h3 id="클라이언트-코드-c"><a name="클라이언트-코드-c" class="anchor-navigation-ex-anchor" href="#클라이언트-코드-c"><i class="fa fa-link" aria-hidden="true"></i></a>클라이언트 코드 (C++)</h3>
+</code></pre><h3 id="클라이언트-코드-c">클라이언트 코드 (C++)</h3>
 <p>클라이언트는 GPT로부터 받은 응답에서 이벤트 이름을 추출하고, 다음과 같이 처리합니다:</p>
 <pre><code class="lang-cpp"><span class="hljs-function">EVoiceCommandType <span class="hljs-title">UVoiceFunctionLibrary::GetVoiceCommand</span><span class="hljs-params">(<span class="hljs-type">const</span> FString&amp; CommandString)</span>
 </span>{
@@ -1603,7 +1599,7 @@
 }
 </code></pre>
 <hr></hr>
-<h2 id="레거시-명령-하위-호환성"><a name="레거시-명령-하위-호환성" class="anchor-navigation-ex-anchor" href="#레거시-명령-하위-호환성"><i class="fa fa-link" aria-hidden="true"></i></a>레거시 명령 (하위 호환성)</h2>
+<h2 id="레거시-명령-하위-호환성">레거시 명령 (하위 호환성)</h2>
 <p>다음 레거시 명령들은 하위 호환성을 위해 유지됩니다:</p>
 <table>
 <thead>
@@ -1632,7 +1628,7 @@
 </tbody>
 </table>
 <hr></hr>
-<h2 id="업데이트-이력"><a name="업데이트-이력" class="anchor-navigation-ex-anchor" href="#업데이트-이력"><i class="fa fa-link" aria-hidden="true"></i></a>업데이트 이력</h2>
+<h2 id="업데이트-이력">업데이트 이력</h2>
 <ul>
 <li><strong>2025-11-01</strong>: 초기 버전 작성<ul>
 <li>5개 신규 명령 체계 정의 (Approach, BuildingInfo, Target, Friend, Call)</li>
@@ -1641,7 +1637,7 @@
 </ul>
 </li>
 </ul>
-</body></html> <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
+ <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
                                 </section>
                             
@@ -1684,7 +1680,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"GPT 음성 명령 파서 시스템 프롬프트","level":"11.1","depth":1,"next":{"title":"YiSan 로딩 시스템: 네트워크 최적화 관점 발표","level":"11.2","depth":1,"path":"Planning/LoadingSystem_Network_Optimization_Presentation.md","ref":"Planning/LoadingSystem_Network_Optimization_Presentation.md","articles":[]},"previous":{"title":"DevLog 자동화 워크플로우 가이드","level":"9.3","depth":1,"path":"DevLog/WORKFLOW_GUIDE.md","ref":"DevLog/WORKFLOW_GUIDE.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","anchor-navigation-ex","code","splitter","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"splitter":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":false,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/GPT_VoiceCommand_System_Prompt.md","mtime":"2025-11-08T15:01:59.242Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-08T15:02:24.274Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"GPT 음성 명령 파서 시스템 프롬프트","level":"11.1","depth":1,"next":{"title":"YiSan 로딩 시스템: 네트워크 최적화 관점 발표","level":"11.2","depth":1,"path":"Planning/LoadingSystem_Network_Optimization_Presentation.md","ref":"Planning/LoadingSystem_Network_Optimization_Presentation.md","articles":[]},"previous":{"title":"DevLog 자동화 워크플로우 가이드","level":"9.3","depth":1,"path":"DevLog/WORKFLOW_GUIDE.md","ref":"DevLog/WORKFLOW_GUIDE.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","code","splitter","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"splitter":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/GPT_VoiceCommand_System_Prompt.md","mtime":"2025-11-08T15:14:52.116Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-08T15:15:19.047Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -37,10 +37,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
                 
             
@@ -1432,52 +1428,52 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#일일-개발-로그-2025-10-25-kst-0900-경계"><b></b>일일 개발 로그 2025-10-25 (KST 09:00 경계)</a></li><ul><li><span class="title-icon "></span><a href="#요약"><b></b>요약</a></li><li><span class="title-icon "></span><a href="#하이라이트"><b></b>하이라이트</a></li><li><span class="title-icon "></span><a href="#커밋-기반-작업-로그"><b></b>커밋 기반 작업 로그</a></li><ul><li><span class="title-icon "></span><a href="#완료"><b></b>완료</a></li><li><span class="title-icon "></span><a href="#진행"><b></b>진행</a></li><li><span class="title-icon "></span><a href="#기타"><b></b>기타</a></li><li><span class="title-icon "></span><a href="#주의-필요"><b></b>주의 필요</a></li><li><span class="title-icon "></span><a href="#커밋-기반-todo"><b></b>커밋 기반 TODO</a></li></ul><li><span class="title-icon "></span><a href="#오늘-계획"><b></b>오늘 계획</a></li><li><span class="title-icon "></span><a href="#메트릭"><b></b>메트릭</a></li></ul></ul></div><a href="#일일-개발-로그-2025-10-25-kst-0900-경계" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="일일-개발-로그-2025-10-25-kst-0900-경계"><a name="일일-개발-로그-2025-10-25-kst-0900-경계" class="anchor-navigation-ex-anchor" href="#일일-개발-로그-2025-10-25-kst-0900-경계"><i class="fa fa-link" aria-hidden="true"></i></a>일일 개발 로그 2025-10-25 (KST 09:00 경계)</h1>
-<h2 id="요약"><a name="요약" class="anchor-navigation-ex-anchor" href="#요약"><i class="fa fa-link" aria-hidden="true"></i></a>요약</h2>
+                                <h1 id="일일-개발-로그-2025-10-25-kst-0900-경계">일일 개발 로그 2025-10-25 (KST 09:00 경계)</h1>
+<h2 id="요약">요약</h2>
 <ul>
 <li>호스트와 합류한 클라이언트 간 위치 갱신 충돌을 막기 위해 GPT 컨텍스트 시스템을 로컬 컨트롤러 기준으로 제한했습니다. / Limited the GPT context tick to locally controlled pawns to stop host/client location desync.</li>
 <li>실험 중이던 로비 네트워크 UI 변경을 되돌려 안정적인 매치 흐름을 복구했습니다. / Reverted the WIP lobby network UI changes to restore the stable matchmaking flow.</li>
 <li>전날 개발일지 정리를 최신 상태로 유지했습니다. / Brought the previous daily DevLog back up to date.</li>
 </ul>
-<h2 id="하이라이트"><a name="하이라이트" class="anchor-navigation-ex-anchor" href="#하이라이트"><i class="fa fa-link" aria-hidden="true"></i></a>하이라이트</h2>
+<h2 id="하이라이트">하이라이트</h2>
 <ul>
 <li><strong>UGPTContextSystem 로컬 제어 전용화</strong>: 호스트가 합류한 플레이어의 위치까지 함께 처리하던 문제를 해결해 로컬 컨트롤 흐름을 명확히 했습니다. (03d2b4a2)</li>
 <li><strong>로비 네트워크 UI 롤백</strong>: 미완성 네트워크 대기실 작업을 되돌려 기존 세션 위젯 구조와 자산을 복구했습니다. (17bef94e)</li>
 </ul>
-<h2 id="커밋-기반-작업-로그"><a name="커밋-기반-작업-로그" class="anchor-navigation-ex-anchor" href="#커밋-기반-작업-로그"><i class="fa fa-link" aria-hidden="true"></i></a>커밋 기반 작업 로그</h2>
-<h3 id="완료"><a name="완료" class="anchor-navigation-ex-anchor" href="#완료"><i class="fa fa-link" aria-hidden="true"></i></a>완료</h3>
+<h2 id="커밋-기반-작업-로그">커밋 기반 작업 로그</h2>
+<h3 id="완료">완료</h3>
 <ul>
 <li>[Voice/GPT] UGPTContextSystem이 비로컬 소유자에 대해 Tick 되지 않도록 가드 추가 — 호스트 위치 덮어쓰기 방지. (03d2b4a2)</li>
 <li>[Lobby/UI] 실험적 로비 네트워크 개편을 전면 롤백하여 기존 위젯/텍스처 자산과 세션 정보 위젯 로직을 복구. (17bef94e)</li>
 </ul>
-<h3 id="진행"><a name="진행" class="anchor-navigation-ex-anchor" href="#진행"><i class="fa fa-link" aria-hidden="true"></i></a>진행</h3>
+<h3 id="진행">진행</h3>
 <ul>
 <li>(없음 / None)</li>
 </ul>
-<h3 id="기타"><a name="기타" class="anchor-navigation-ex-anchor" href="#기타"><i class="fa fa-link" aria-hidden="true"></i></a>기타</h3>
+<h3 id="기타">기타</h3>
 <ul>
 <li>[Docs] 2025-10-24 개발일지 내용을 최신 커밋 현황에 맞게 갱신. (f35b947b)</li>
 </ul>
-<h3 id="주의-필요"><a name="주의-필요" class="anchor-navigation-ex-anchor" href="#주의-필요"><i class="fa fa-link" aria-hidden="true"></i></a>주의 필요</h3>
+<h3 id="주의-필요">주의 필요</h3>
 <ul>
 <li>롤백 이후 로비 네트워크 개선안을 재설계할 때 기존 구조와 충돌하지 않도록 변경 범위를 단계적으로 확장해야 합니다.</li>
 </ul>
-<h3 id="커밋-기반-todo"><a name="커밋-기반-todo" class="anchor-navigation-ex-anchor" href="#커밋-기반-todo"><i class="fa fa-link" aria-hidden="true"></i></a>커밋 기반 TODO</h3>
+<h3 id="커밋-기반-todo">커밋 기반 TODO</h3>
 <ul>
 <li>[ ] 로비 네트워크 시스템 재설계 및 단계별 재도입 계획 수립 (출처: 17bef94e)</li>
 <li>[ ] 호스트-게스트 위치 동기화 QA 시나리오 점검 (출처: 03d2b4a2)</li>
 </ul>
-<h2 id="오늘-계획"><a name="오늘-계획" class="anchor-navigation-ex-anchor" href="#오늘-계획"><i class="fa fa-link" aria-hidden="true"></i></a>오늘 계획</h2>
+<h2 id="오늘-계획">오늘 계획</h2>
 <ul>
 <li>[ ] 롤백된 로비 UI 기준으로 신규 네트워크 기능 요구사항 재정의</li>
 <li>[ ] GPT 컨텍스트 로컬 제어 로직에 대한 멀티플레이 세션 테스트</li>
 <li>[ ] 최신 DevLog 자동화 파이프라인 점검 및 스크립트 오류 검토</li>
 </ul>
-<h2 id="메트릭"><a name="메트릭" class="anchor-navigation-ex-anchor" href="#메트릭"><i class="fa fa-link" aria-hidden="true"></i></a>메트릭</h2>
+<h2 id="메트릭">메트릭</h2>
 <ul>
 <li>총합: +150 / -163, 파일수: 10 (바이너리 자산 포함)</li>
 </ul>
-</body></html> <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
+ <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
                                 </section>
                             
@@ -1520,7 +1516,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2025-10-25","level":"5.7","depth":1,"next":{"title":"2025-10-24","level":"5.8","depth":1,"path":"DevLog/Daily/2025-10-24.md","ref":"DevLog/Daily/2025-10-24.md","articles":[]},"previous":{"title":"2025-10-26","level":"5.6","depth":1,"path":"DevLog/Daily/2025-10-26.md","ref":"DevLog/Daily/2025-10-26.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","anchor-navigation-ex","code","splitter","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"splitter":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":false,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"DevLog/Daily/2025-10-25.md","mtime":"2025-11-08T15:01:59.239Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-08T15:02:24.274Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2025-10-25","level":"5.7","depth":1,"next":{"title":"2025-10-24","level":"5.8","depth":1,"path":"DevLog/Daily/2025-10-24.md","ref":"DevLog/Daily/2025-10-24.md","articles":[]},"previous":{"title":"2025-10-26","level":"5.6","depth":1,"path":"DevLog/Daily/2025-10-26.md","ref":"DevLog/Daily/2025-10-26.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","code","splitter","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"splitter":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"DevLog/Daily/2025-10-25.md","mtime":"2025-11-08T15:14:52.114Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-08T15:15:19.047Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

@@ -37,10 +37,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
                 
             
@@ -1432,12 +1428,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#yisan-멀티플레이-api-레퍼런스"><b></b>YiSan 멀티플레이 API 레퍼런스</a></li><ul><li><span class="title-icon "></span><a href="#📑-목차"><b></b>📑 목차</a></li><li><span class="title-icon "></span><a href="#1-uyisangameinstance"><b></b>1. UYiSanGameInstance</a></li><ul><li><span class="title-icon "></span><a href="#11-public-functions"><b></b>1.1 Public Functions</a></li></ul><li><span class="title-icon "></span><a href="#2-alobbygamemode"><b></b>2. ALobbyGameMode</a></li><ul><li><span class="title-icon "></span><a href="#21-public-properties"><b></b>2.1 Public Properties</a></li><li><span class="title-icon "></span><a href="#22-public-functions"><b></b>2.2 Public Functions</a></li><li><span class="title-icon "></span><a href="#23-protected-functions-override"><b></b>2.3 Protected Functions (Override)</a></li></ul><li><span class="title-icon "></span><a href="#3-ayisangamemode"><b></b>3. AYiSanGameMode</a></li><ul><li><span class="title-icon "></span><a href="#31-public-functions"><b></b>3.1 Public Functions</a></li></ul><li><span class="title-icon "></span><a href="#4-aplayercontrol"><b></b>4. APlayerControl</a></li><ul><li><span class="title-icon "></span><a href="#41-multiplayer-session-functions"><b></b>4.1 Multiplayer Session Functions</a></li></ul><li><span class="title-icon "></span><a href="#5-ulobbywidget"><b></b>5. ULobbyWidget</a></li><ul><li><span class="title-icon "></span><a href="#51-ui-bindings-metabindwidget"><b></b>5.1 UI Bindings (meta=(BindWidget))</a></li><li><span class="title-icon "></span><a href="#52-settings"><b></b>5.2 Settings</a></li><li><span class="title-icon "></span><a href="#53-public-functions"><b></b>5.3 Public Functions</a></li><li><span class="title-icon "></span><a href="#54-event-handlers-자동-호출됨"><b></b>5.4 Event Handlers (자동 호출됨)</a></li></ul><li><span class="title-icon "></span><a href="#6-ubroadcastmanager"><b></b>6. UBroadcastManager</a></li><ul><li><span class="title-icon "></span><a href="#61-multiplayer-events"><b></b>6.1 Multiplayer Events</a></li></ul><li><span class="title-icon "></span><a href="#부록-매크로-및-유틸리티"><b></b>부록: 매크로 및 유틸리티</a></li><ul><li><span class="title-icon "></span><a href="#definesubsystemgetterinline"><b></b>DEFINE_SUBSYSTEM_GETTER_INLINE</a></li><li><span class="title-icon "></span><a href="#printlog"><b></b>PRINTLOG</a></li></ul><li><span class="title-icon "></span><a href="#부록-네트워크-권한-체크"><b></b>부록: 네트워크 권한 체크</a></li><ul><li><span class="title-icon "></span><a href="#hasauthority"><b></b>HasAuthority()</a></li><li><span class="title-icon "></span><a href="#getlocalrole--getremoterole"><b></b>GetLocalRole() / GetRemoteRole()</a></li></ul></ul></ul></div><a href="#yisan-멀티플레이-api-레퍼런스" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="yisan-멀티플레이-api-레퍼런스"><a name="yisan-멀티플레이-api-레퍼런스" class="anchor-navigation-ex-anchor" href="#yisan-멀티플레이-api-레퍼런스"><i class="fa fa-link" aria-hidden="true"></i></a>YiSan 멀티플레이 API 레퍼런스</h1>
+                                <h1 id="yisan-멀티플레이-api-레퍼런스">YiSan 멀티플레이 API 레퍼런스</h1>
 <p><strong>작성일:</strong> 2025-10-20
 <strong>버전:</strong> 1.0
 <strong>대상:</strong> C++ 개발자, Blueprint 스크립터</p>
 <hr></hr>
-<h2 id="📑-목차"><a name="📑-목차" class="anchor-navigation-ex-anchor" href="#📑-목차"><i class="fa fa-link" aria-hidden="true"></i></a>📑 목차</h2>
+<h2 id="📑-목차">📑 목차</h2>
 <ol>
 <li><a href="#1-uyisangameinstance">UYiSanGameInstance</a></li>
 <li><a href="#2-alobbygamemode">ALobbyGameMode</a></li>
@@ -1447,11 +1443,11 @@
 <li><a href="#6-ubroadcastmanager">UBroadcastManager</a></li>
 </ol>
 <hr></hr>
-<h2 id="1-uyisangameinstance"><a name="1-uyisangameinstance" class="anchor-navigation-ex-anchor" href="#1-uyisangameinstance"><i class="fa fa-link" aria-hidden="true"></i></a>1. UYiSanGameInstance</h2>
+<h2 id="1-uyisangameinstance">1. UYiSanGameInstance</h2>
 <p><strong>경로:</strong> <code>Source/YiSan/Loading/Public/YiSanGameInstance.h</code></p>
 <p>게임 인스턴스 클래스로, 세션 생명주기를 관리합니다.</p>
-<h3 id="11-public-functions"><a name="11-public-functions" class="anchor-navigation-ex-anchor" href="#11-public-functions"><i class="fa fa-link" aria-hidden="true"></i></a>1.1 Public Functions</h3>
-<h4 id="hostgame"><a name="hostgame" class="anchor-navigation-ex-anchor" href="#hostgame"><i class="fa fa-link" aria-hidden="true"></i></a><code>HostGame</code></h4>
+<h3 id="11-public-functions">1.1 Public Functions</h3>
+<h4 id="hostgame"><code>HostGame</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>(BlueprintCallable, Category=<span class="hljs-string">"Multiplayer|Session"</span>)
 <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">HostGame</span><span class="hljs-params">(<span class="hljs-type">const</span> FString&amp; MapName = TEXT(<span class="hljs-string">"MainMap_WP"</span>), int32 MaxPlayers = <span class="hljs-number">4</span>)</span></span>;
 </code></pre>
@@ -1501,7 +1497,7 @@
 <li>World가 null인 경우: <code>false</code> 반환, 로그 출력</li>
 </ul>
 <hr></hr>
-<h4 id="joingame"><a name="joingame" class="anchor-navigation-ex-anchor" href="#joingame"><i class="fa fa-link" aria-hidden="true"></i></a><code>JoinGame</code></h4>
+<h4 id="joingame"><code>JoinGame</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>(BlueprintCallable, Category=<span class="hljs-string">"Multiplayer|Session"</span>)
 <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">JoinGame</span><span class="hljs-params">(<span class="hljs-type">const</span> FString&amp; Address, int32 Port = <span class="hljs-number">7777</span>)</span></span>;
 </code></pre>
@@ -1552,7 +1548,7 @@
 <li>Address가 빈 문자열인 경우: <code>false</code> 반환</li>
 </ul>
 <hr></hr>
-<h4 id="disconnectfromsession"><a name="disconnectfromsession" class="anchor-navigation-ex-anchor" href="#disconnectfromsession"><i class="fa fa-link" aria-hidden="true"></i></a><code>DisconnectFromSession</code></h4>
+<h4 id="disconnectfromsession"><code>DisconnectFromSession</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>(BlueprintCallable, Category=<span class="hljs-string">"Multiplayer|Session"</span>)
 <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">DisconnectFromSession</span><span class="hljs-params">()</span></span>;
 </code></pre>
@@ -1577,7 +1573,7 @@
   → Cast to YiSanGameInstance
   → Disconnect From Session
 </code></pre><hr></hr>
-<h4 id="ishost"><a name="ishost" class="anchor-navigation-ex-anchor" href="#ishost"><i class="fa fa-link" aria-hidden="true"></i></a><code>IsHost</code></h4>
+<h4 id="ishost"><code>IsHost</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>(BlueprintPure, Category=<span class="hljs-string">"Multiplayer|Session"</span>)
 <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">IsHost</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>;
 </code></pre>
@@ -1602,7 +1598,7 @@
   → Is Host
   → Branch
 </code></pre><hr></hr>
-<h4 id="isinsession"><a name="isinsession" class="anchor-navigation-ex-anchor" href="#isinsession"><i class="fa fa-link" aria-hidden="true"></i></a><code>IsInSession</code></h4>
+<h4 id="isinsession"><code>IsInSession</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>(BlueprintPure, Category=<span class="hljs-string">"Multiplayer|Session"</span>)
 <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">IsInSession</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>;
 </code></pre>
@@ -1622,18 +1618,18 @@
 }
 </code></pre>
 <hr></hr>
-<h2 id="2-alobbygamemode"><a name="2-alobbygamemode" class="anchor-navigation-ex-anchor" href="#2-alobbygamemode"><i class="fa fa-link" aria-hidden="true"></i></a>2. ALobbyGameMode</h2>
+<h2 id="2-alobbygamemode">2. ALobbyGameMode</h2>
 <p><strong>경로:</strong> <code>Source/YiSan/Environment/Public/ALobbyGameMode.h</code></p>
 <p>로비 맵 전용 게임 모드입니다.</p>
-<h3 id="21-public-properties"><a name="21-public-properties" class="anchor-navigation-ex-anchor" href="#21-public-properties"><i class="fa fa-link" aria-hidden="true"></i></a>2.1 Public Properties</h3>
-<h4 id="ballowjoininprogress"><a name="ballowjoininprogress" class="anchor-navigation-ex-anchor" href="#ballowjoininprogress"><i class="fa fa-link" aria-hidden="true"></i></a><code>bAllowJoinInProgress</code></h4>
+<h3 id="21-public-properties">2.1 Public Properties</h3>
+<h4 id="ballowjoininprogress"><code>bAllowJoinInProgress</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UPROPERTY</span>(EditDefaultsOnly, BlueprintReadOnly, Category=<span class="hljs-string">"Lobby"</span>)
 <span class="hljs-type">bool</span> bAllowJoinInProgress = <span class="hljs-literal">true</span>;
 </code></pre>
 <p><strong>설명:</strong> 게임 진행 중 난입 허용 여부</p>
 <p><strong>기본값:</strong> <code>true</code> (항상 허용)</p>
 <hr></hr>
-<h4 id="maxplayers"><a name="maxplayers" class="anchor-navigation-ex-anchor" href="#maxplayers"><i class="fa fa-link" aria-hidden="true"></i></a><code>MaxPlayers</code></h4>
+<h4 id="maxplayers"><code>MaxPlayers</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UPROPERTY</span>(EditDefaultsOnly, BlueprintReadWrite, Category=<span class="hljs-string">"Lobby"</span>)
 int32 MaxPlayers = <span class="hljs-number">4</span>;
 </code></pre>
@@ -1641,8 +1637,8 @@ int32 MaxPlayers = <span class="hljs-number">4</span>;
 <p><strong>기본값:</strong> <code>4</code></p>
 <p><strong>Blueprint에서 수정 가능</strong></p>
 <hr></hr>
-<h3 id="22-public-functions"><a name="22-public-functions" class="anchor-navigation-ex-anchor" href="#22-public-functions"><i class="fa fa-link" aria-hidden="true"></i></a>2.2 Public Functions</h3>
-<h4 id="getcurrentplayercount"><a name="getcurrentplayercount" class="anchor-navigation-ex-anchor" href="#getcurrentplayercount"><i class="fa fa-link" aria-hidden="true"></i></a><code>GetCurrentPlayerCount</code></h4>
+<h3 id="22-public-functions">2.2 Public Functions</h3>
+<h4 id="getcurrentplayercount"><code>GetCurrentPlayerCount</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>(BlueprintPure, Category=<span class="hljs-string">"Lobby"</span>)
 <span class="hljs-function">int32 <span class="hljs-title">GetCurrentPlayerCount</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>;
 </code></pre>
@@ -1657,7 +1653,7 @@ int32 MaxPlayers = <span class="hljs-number">4</span>;
   → Get Current Player Count
   → Print String
 </code></pre><hr></hr>
-<h4 id="islobbyfull"><a name="islobbyfull" class="anchor-navigation-ex-anchor" href="#islobbyfull"><i class="fa fa-link" aria-hidden="true"></i></a><code>IsLobbyFull</code></h4>
+<h4 id="islobbyfull"><code>IsLobbyFull</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>(BlueprintPure, Category=<span class="hljs-string">"Lobby"</span>)
 <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">IsLobbyFull</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>;
 </code></pre>
@@ -1672,8 +1668,8 @@ int32 MaxPlayers = <span class="hljs-number">4</span>;
   → Is Lobby Full
   → Branch (If Full: Show "Lobby Full" Message)
 </code></pre><hr></hr>
-<h3 id="23-protected-functions-override"><a name="23-protected-functions-override" class="anchor-navigation-ex-anchor" href="#23-protected-functions-override"><i class="fa fa-link" aria-hidden="true"></i></a>2.3 Protected Functions (Override)</h3>
-<h4 id="postlogin"><a name="postlogin" class="anchor-navigation-ex-anchor" href="#postlogin"><i class="fa fa-link" aria-hidden="true"></i></a><code>PostLogin</code></h4>
+<h3 id="23-protected-functions-override">2.3 Protected Functions (Override)</h3>
+<h4 id="postlogin"><code>PostLogin</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">PostLogin</span><span class="hljs-params">(APlayerController* NewPlayer)</span> <span class="hljs-keyword">override</span></span>;
 </code></pre>
 <p><strong>설명:</strong> 플레이어가 로그인할 때 호출됩니다.</p>
@@ -1684,7 +1680,7 @@ int32 MaxPlayers = <span class="hljs-number">4</span>;
 <li>로그 출력</li>
 </ol>
 <hr></hr>
-<h4 id="logout"><a name="logout" class="anchor-navigation-ex-anchor" href="#logout"><i class="fa fa-link" aria-hidden="true"></i></a><code>Logout</code></h4>
+<h4 id="logout"><code>Logout</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">Logout</span><span class="hljs-params">(AController* Exiting)</span> <span class="hljs-keyword">override</span></span>;
 </code></pre>
 <p><strong>설명:</strong> 플레이어가 로그아웃할 때 호출됩니다.</p>
@@ -1694,11 +1690,11 @@ int32 MaxPlayers = <span class="hljs-number">4</span>;
 <li>로그 출력</li>
 </ol>
 <hr></hr>
-<h2 id="3-ayisangamemode"><a name="3-ayisangamemode" class="anchor-navigation-ex-anchor" href="#3-ayisangamemode"><i class="fa fa-link" aria-hidden="true"></i></a>3. AYiSanGameMode</h2>
+<h2 id="3-ayisangamemode">3. AYiSanGameMode</h2>
 <p><strong>경로:</strong> <code>Source/YiSan/Environment/Public/AYiSanGameMode.h</code></p>
 <p>메인 게임 로직을 담당하는 게임 모드입니다.</p>
-<h3 id="31-public-functions"><a name="31-public-functions" class="anchor-navigation-ex-anchor" href="#31-public-functions"><i class="fa fa-link" aria-hidden="true"></i></a>3.1 Public Functions</h3>
-<h4 id="starttour"><a name="starttour" class="anchor-navigation-ex-anchor" href="#starttour"><i class="fa fa-link" aria-hidden="true"></i></a><code>StartTour</code></h4>
+<h3 id="31-public-functions">3.1 Public Functions</h3>
+<h4 id="starttour"><code>StartTour</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>(BlueprintCallable, Category=<span class="hljs-string">"Tour"</span>)
 <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">StartTour</span><span class="hljs-params">()</span></span>;
 </code></pre>
@@ -1714,7 +1710,7 @@ int32 MaxPlayers = <span class="hljs-number">4</span>;
   → Cast to YiSanGameMode
   → Start Tour
 </code></pre><hr></hr>
-<h4 id="settourstate"><a name="settourstate" class="anchor-navigation-ex-anchor" href="#settourstate"><i class="fa fa-link" aria-hidden="true"></i></a><code>SetTourState</code></h4>
+<h4 id="settourstate"><code>SetTourState</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SetTourState</span><span class="hljs-params">(EDasanState InState)</span></span>;
 </code></pre>
 <p><strong>설명:</strong> 투어 상태를 변경합니다.</p>
@@ -1734,7 +1730,7 @@ int32 MaxPlayers = <span class="hljs-number">4</span>;
 <li>모든 클라이언트에 복제됨</li>
 </ol>
 <hr></hr>
-<h4 id="postlogin_1"><a name="postlogin_1" class="anchor-navigation-ex-anchor" href="#postlogin_1"><i class="fa fa-link" aria-hidden="true"></i></a><code>PostLogin</code></h4>
+<h4 id="postlogin"><code>PostLogin</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">PostLogin</span><span class="hljs-params">(APlayerController* NewPlayer)</span> <span class="hljs-keyword">override</span></span>;
 </code></pre>
 <p><strong>설명:</strong> 플레이어가 로그인할 때 호출됩니다 (난입 플레이어 포함).</p>
@@ -1745,11 +1741,11 @@ int32 MaxPlayers = <span class="hljs-number">4</span>;
 <li>복제된 상태를 난입 플레이어에게 전송</li>
 </ol>
 <hr></hr>
-<h2 id="4-aplayercontrol"><a name="4-aplayercontrol" class="anchor-navigation-ex-anchor" href="#4-aplayercontrol"><i class="fa fa-link" aria-hidden="true"></i></a>4. APlayerControl</h2>
+<h2 id="4-aplayercontrol">4. APlayerControl</h2>
 <p><strong>경로:</strong> <code>Source/LatteLibrary/Character/Public/APlayerControl.h</code></p>
 <p>플레이어 컨트롤러 클래스로, UI와 GameInstance를 연결합니다.</p>
-<h3 id="41-multiplayer-session-functions"><a name="41-multiplayer-session-functions" class="anchor-navigation-ex-anchor" href="#41-multiplayer-session-functions"><i class="fa fa-link" aria-hidden="true"></i></a>4.1 Multiplayer Session Functions</h3>
-<h4 id="hostsession"><a name="hostsession" class="anchor-navigation-ex-anchor" href="#hostsession"><i class="fa fa-link" aria-hidden="true"></i></a><code>HostSession</code></h4>
+<h3 id="41-multiplayer-session-functions">4.1 Multiplayer Session Functions</h3>
+<h4 id="hostsession"><code>HostSession</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>(BlueprintCallable, Category=<span class="hljs-string">"Multiplayer|Session"</span>)
 <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">HostSession</span><span class="hljs-params">(<span class="hljs-type">const</span> FString&amp; MapName = TEXT(<span class="hljs-string">"MainMap_WP"</span>), int32 MaxPlayers = <span class="hljs-number">4</span>)</span></span>;
 </code></pre>
@@ -1770,7 +1766,7 @@ int32 MaxPlayers = <span class="hljs-number">4</span>;
   → Cast to PlayerControl
   → Host Session (Map Name: "MainMap_WP", Max Players: 4)
 </code></pre><hr></hr>
-<h4 id="joinsession"><a name="joinsession" class="anchor-navigation-ex-anchor" href="#joinsession"><i class="fa fa-link" aria-hidden="true"></i></a><code>JoinSession</code></h4>
+<h4 id="joinsession"><code>JoinSession</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>(BlueprintCallable, Category=<span class="hljs-string">"Multiplayer|Session"</span>)
 <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">JoinSession</span><span class="hljs-params">(<span class="hljs-type">const</span> FString&amp; Address, int32 Port = <span class="hljs-number">7777</span>)</span></span>;
 </code></pre>
@@ -1792,7 +1788,7 @@ int32 MaxPlayers = <span class="hljs-number">4</span>;
   → Cast to PlayerControl
   → Join Session (Address: IP Text, Port: 7777)
 </code></pre><hr></hr>
-<h4 id="disconnectsession"><a name="disconnectsession" class="anchor-navigation-ex-anchor" href="#disconnectsession"><i class="fa fa-link" aria-hidden="true"></i></a><code>DisconnectSession</code></h4>
+<h4 id="disconnectsession"><code>DisconnectSession</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>(BlueprintCallable, Category=<span class="hljs-string">"Multiplayer|Session"</span>)
 <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">DisconnectSession</span><span class="hljs-params">()</span></span>;
 </code></pre>
@@ -1808,64 +1804,64 @@ int32 MaxPlayers = <span class="hljs-number">4</span>;
   → Cast to PlayerControl
   → Disconnect Session
 </code></pre><hr></hr>
-<h2 id="5-ulobbywidget"><a name="5-ulobbywidget" class="anchor-navigation-ex-anchor" href="#5-ulobbywidget"><i class="fa fa-link" aria-hidden="true"></i></a>5. ULobbyWidget</h2>
+<h2 id="5-ulobbywidget">5. ULobbyWidget</h2>
 <p><strong>경로:</strong> <code>Source/YiSan/UI/Public/ULobbyWidget.h</code></p>
 <p>로비 UI 위젯 클래스입니다.</p>
-<h3 id="51-ui-bindings-metabindwidget"><a name="51-ui-bindings-metabindwidget" class="anchor-navigation-ex-anchor" href="#51-ui-bindings-metabindwidget"><i class="fa fa-link" aria-hidden="true"></i></a>5.1 UI Bindings (meta=(BindWidget))</h3>
-<h4 id="btnhost"><a name="btnhost" class="anchor-navigation-ex-anchor" href="#btnhost"><i class="fa fa-link" aria-hidden="true"></i></a><code>Btn_Host</code></h4>
+<h3 id="51-ui-bindings-metabindwidget">5.1 UI Bindings (meta=(BindWidget))</h3>
+<h4 id="btnhost"><code>Btn_Host</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UPROPERTY</span>(meta=(BindWidget))
 TObjectPtr&lt;UButton&gt; Btn_Host;
 </code></pre>
 <p><strong>Blueprint에서 반드시 생성해야 하는 위젯:</strong> 이름이 정확히 <code>Btn_Host</code>여야 함</p>
 <hr></hr>
-<h4 id="btnjoin"><a name="btnjoin" class="anchor-navigation-ex-anchor" href="#btnjoin"><i class="fa fa-link" aria-hidden="true"></i></a><code>Btn_Join</code></h4>
+<h4 id="btnjoin"><code>Btn_Join</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UPROPERTY</span>(meta=(BindWidget))
 TObjectPtr&lt;UButton&gt; Btn_Join;
 </code></pre>
 <p><strong>Blueprint에서 반드시 생성해야 하는 위젯:</strong> 이름이 정확히 <code>Btn_Join</code>이어야 함</p>
 <hr></hr>
-<h4 id="btndisconnect"><a name="btndisconnect" class="anchor-navigation-ex-anchor" href="#btndisconnect"><i class="fa fa-link" aria-hidden="true"></i></a><code>Btn_Disconnect</code></h4>
+<h4 id="btndisconnect"><code>Btn_Disconnect</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UPROPERTY</span>(meta=(BindWidget))
 TObjectPtr&lt;UButton&gt; Btn_Disconnect;
 </code></pre>
 <p><strong>Blueprint에서 반드시 생성해야 하는 위젯:</strong> 이름이 정확히 <code>Btn_Disconnect</code>여야 함</p>
 <hr></hr>
-<h4 id="txtboxipaddress"><a name="txtboxipaddress" class="anchor-navigation-ex-anchor" href="#txtboxipaddress"><i class="fa fa-link" aria-hidden="true"></i></a><code>TxtBox_IPAddress</code></h4>
+<h4 id="txtboxipaddress"><code>TxtBox_IPAddress</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UPROPERTY</span>(meta=(BindWidget))
 TObjectPtr&lt;UEditableTextBox&gt; TxtBox_IPAddress;
 </code></pre>
 <p><strong>Blueprint에서 반드시 생성해야 하는 위젯:</strong> 이름이 정확히 <code>TxtBox_IPAddress</code>여야 함</p>
 <hr></hr>
-<h4 id="txtstatus"><a name="txtstatus" class="anchor-navigation-ex-anchor" href="#txtstatus"><i class="fa fa-link" aria-hidden="true"></i></a><code>Txt_Status</code></h4>
+<h4 id="txtstatus"><code>Txt_Status</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UPROPERTY</span>(meta=(BindWidget))
 TObjectPtr&lt;UTextBlock&gt; Txt_Status;
 </code></pre>
 <p><strong>Blueprint에서 반드시 생성해야 하는 위젯:</strong> 이름이 정확히 <code>Txt_Status</code>여야 함</p>
 <hr></hr>
-<h3 id="52-settings"><a name="52-settings" class="anchor-navigation-ex-anchor" href="#52-settings"><i class="fa fa-link" aria-hidden="true"></i></a>5.2 Settings</h3>
-<h4 id="mapname"><a name="mapname" class="anchor-navigation-ex-anchor" href="#mapname"><i class="fa fa-link" aria-hidden="true"></i></a><code>MapName</code></h4>
+<h3 id="52-settings">5.2 Settings</h3>
+<h4 id="mapname"><code>MapName</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UPROPERTY</span>(EditAnywhere, BlueprintReadWrite, Category=<span class="hljs-string">"Lobby|Settings"</span>)
 FString MapName = <span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"MainMap_WP"</span>);
 </code></pre>
 <p><strong>설명:</strong> 호스팅할 맵 이름</p>
 <p><strong>Blueprint에서 수정 가능</strong></p>
 <hr></hr>
-<h4 id="maxplayers_1"><a name="maxplayers_1" class="anchor-navigation-ex-anchor" href="#maxplayers_1"><i class="fa fa-link" aria-hidden="true"></i></a><code>MaxPlayers</code></h4>
+<h4 id="maxplayers"><code>MaxPlayers</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UPROPERTY</span>(EditAnywhere, BlueprintReadWrite, Category=<span class="hljs-string">"Lobby|Settings"</span>)
 int32 MaxPlayers = <span class="hljs-number">4</span>;
 </code></pre>
 <p><strong>설명:</strong> 최대 플레이어 수</p>
 <p><strong>Blueprint에서 수정 가능</strong></p>
 <hr></hr>
-<h4 id="port"><a name="port" class="anchor-navigation-ex-anchor" href="#port"><i class="fa fa-link" aria-hidden="true"></i></a><code>Port</code></h4>
+<h4 id="port"><code>Port</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UPROPERTY</span>(EditAnywhere, BlueprintReadWrite, Category=<span class="hljs-string">"Lobby|Settings"</span>)
 int32 Port = <span class="hljs-number">7777</span>;
 </code></pre>
 <p><strong>설명:</strong> 서버 포트</p>
 <p><strong>Blueprint에서 수정 가능</strong></p>
 <hr></hr>
-<h3 id="53-public-functions"><a name="53-public-functions" class="anchor-navigation-ex-anchor" href="#53-public-functions"><i class="fa fa-link" aria-hidden="true"></i></a>5.3 Public Functions</h3>
-<h4 id="updatestatustext"><a name="updatestatustext" class="anchor-navigation-ex-anchor" href="#updatestatustext"><i class="fa fa-link" aria-hidden="true"></i></a><code>UpdateStatusText</code></h4>
+<h3 id="53-public-functions">5.3 Public Functions</h3>
+<h4 id="updatestatustext"><code>UpdateStatusText</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>(BlueprintCallable, Category=<span class="hljs-string">"Lobby|UI"</span>)
 <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">UpdateStatusText</span><span class="hljs-params">(<span class="hljs-type">const</span> FString&amp; StatusText)</span></span>;
 </code></pre>
@@ -1877,9 +1873,9 @@ int32 Port = <span class="hljs-number">7777</span>;
 <p><strong>사용 예시 (Blueprint):</strong></p>
 <pre><code>Update Status Text (Status Text: "연결 중...")
 </code></pre><hr></hr>
-<h3 id="54-event-handlers-자동-호출됨"><a name="54-event-handlers-자동-호출됨" class="anchor-navigation-ex-anchor" href="#54-event-handlers-자동-호출됨"><i class="fa fa-link" aria-hidden="true"></i></a>5.4 Event Handlers (자동 호출됨)</h3>
+<h3 id="54-event-handlers-자동-호출됨">5.4 Event Handlers (자동 호출됨)</h3>
 <p>이 함수들은 UBroadcastManager의 이벤트에 자동으로 바인딩됩니다.</p>
-<h4 id="onsessionhost"><a name="onsessionhost" class="anchor-navigation-ex-anchor" href="#onsessionhost"><i class="fa fa-link" aria-hidden="true"></i></a><code>OnSessionHost</code></h4>
+<h4 id="onsessionhost"><code>OnSessionHost</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>()
 <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">OnSessionHost</span><span class="hljs-params">(<span class="hljs-type">const</span> FString&amp; InMapName)</span></span>;
 </code></pre>
@@ -1891,7 +1887,7 @@ int32 Port = <span class="hljs-number">7777</span>;
 <li>Disconnect 버튼 표시</li>
 </ol>
 <hr></hr>
-<h4 id="onsessionjoin"><a name="onsessionjoin" class="anchor-navigation-ex-anchor" href="#onsessionjoin"><i class="fa fa-link" aria-hidden="true"></i></a><code>OnSessionJoin</code></h4>
+<h4 id="onsessionjoin"><code>OnSessionJoin</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>()
 <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">OnSessionJoin</span><span class="hljs-params">(<span class="hljs-type">const</span> FString&amp; Address, int32 InPort)</span></span>;
 </code></pre>
@@ -1903,7 +1899,7 @@ int32 Port = <span class="hljs-number">7777</span>;
 <li>Disconnect 버튼 표시</li>
 </ol>
 <hr></hr>
-<h4 id="onsessiondisconnect"><a name="onsessiondisconnect" class="anchor-navigation-ex-anchor" href="#onsessiondisconnect"><i class="fa fa-link" aria-hidden="true"></i></a><code>OnSessionDisconnect</code></h4>
+<h4 id="onsessiondisconnect"><code>OnSessionDisconnect</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>()
 <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">OnSessionDisconnect</span><span class="hljs-params">()</span></span>;
 </code></pre>
@@ -1915,7 +1911,7 @@ int32 Port = <span class="hljs-number">7777</span>;
 <li>Host/Join 버튼 표시</li>
 </ol>
 <hr></hr>
-<h4 id="onsessionerror"><a name="onsessionerror" class="anchor-navigation-ex-anchor" href="#onsessionerror"><i class="fa fa-link" aria-hidden="true"></i></a><code>OnSessionError</code></h4>
+<h4 id="onsessionerror"><code>OnSessionError</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>()
 <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">OnSessionError</span><span class="hljs-params">(<span class="hljs-type">const</span> FString&amp; ErrorMessage)</span></span>;
 </code></pre>
@@ -1925,11 +1921,11 @@ int32 Port = <span class="hljs-number">7777</span>;
 <li>상태 텍스트 업데이트: "오류: {ErrorMessage}"</li>
 </ol>
 <hr></hr>
-<h2 id="6-ubroadcastmanager"><a name="6-ubroadcastmanager" class="anchor-navigation-ex-anchor" href="#6-ubroadcastmanager"><i class="fa fa-link" aria-hidden="true"></i></a>6. UBroadcastManager</h2>
+<h2 id="6-ubroadcastmanager">6. UBroadcastManager</h2>
 <p><strong>경로:</strong> <code>Source/LatteLibrary/Manager/Public/UBroadcastManager.h</code></p>
 <p>전역 이벤트 버스 역할을 하는 GameInstanceSubsystem입니다.</p>
-<h3 id="61-multiplayer-events"><a name="61-multiplayer-events" class="anchor-navigation-ex-anchor" href="#61-multiplayer-events"><i class="fa fa-link" aria-hidden="true"></i></a>6.1 Multiplayer Events</h3>
-<h4 id="onsessionhost_1"><a name="onsessionhost_1" class="anchor-navigation-ex-anchor" href="#onsessionhost_1"><i class="fa fa-link" aria-hidden="true"></i></a><code>OnSessionHost</code></h4>
+<h3 id="61-multiplayer-events">6.1 Multiplayer Events</h3>
+<h4 id="onsessionhost"><code>OnSessionHost</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</span>(FOnSessionHost, FString, MapName);
 <span class="hljs-built_in">UPROPERTY</span>(BlueprintAssignable, Category=<span class="hljs-string">"Events|Multiplayer"</span>)
 FOnSessionHost OnSessionHost;
@@ -1950,14 +1946,14 @@ FOnSessionHost OnSessionHost;
   → Get Broadcast Manager
   → Bind Event to OnSessionHost
 </code></pre><hr></hr>
-<h4 id="sendsessionhost"><a name="sendsessionhost" class="anchor-navigation-ex-anchor" href="#sendsessionhost"><i class="fa fa-link" aria-hidden="true"></i></a><code>SendSessionHost</code></h4>
+<h4 id="sendsessionhost"><code>SendSessionHost</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>(BlueprintCallable, Category=<span class="hljs-string">"Events|Multiplayer"</span>)
 <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SendSessionHost</span><span class="hljs-params">(<span class="hljs-type">const</span> FString&amp; MapName)</span></span>;
 </code></pre>
 <p><strong>설명:</strong> 세션 호스트 생성 이벤트를 브로드캐스트합니다.</p>
 <p><strong>호출 위치:</strong> <code>UYiSanGameInstance::HostGame()</code></p>
 <hr></hr>
-<h4 id="onsessionjoin_1"><a name="onsessionjoin_1" class="anchor-navigation-ex-anchor" href="#onsessionjoin_1"><i class="fa fa-link" aria-hidden="true"></i></a><code>OnSessionJoin</code></h4>
+<h4 id="onsessionjoin"><code>OnSessionJoin</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</span>(FOnSessionJoin, FString, Address, int32, Port);
 <span class="hljs-built_in">UPROPERTY</span>(BlueprintAssignable, Category=<span class="hljs-string">"Events|Multiplayer"</span>)
 FOnSessionJoin OnSessionJoin;
@@ -1969,28 +1965,28 @@ FOnSessionJoin OnSessionJoin;
 <li><code>Port</code> (int32): 서버 포트</li>
 </ul>
 <hr></hr>
-<h4 id="sendsessionjoin"><a name="sendsessionjoin" class="anchor-navigation-ex-anchor" href="#sendsessionjoin"><i class="fa fa-link" aria-hidden="true"></i></a><code>SendSessionJoin</code></h4>
+<h4 id="sendsessionjoin"><code>SendSessionJoin</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>(BlueprintCallable, Category=<span class="hljs-string">"Events|Multiplayer"</span>)
 <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SendSessionJoin</span><span class="hljs-params">(<span class="hljs-type">const</span> FString&amp; Address, int32 Port)</span></span>;
 </code></pre>
 <p><strong>설명:</strong> 세션 참가 이벤트를 브로드캐스트합니다.</p>
 <p><strong>호출 위치:</strong> <code>UYiSanGameInstance::JoinGame()</code></p>
 <hr></hr>
-<h4 id="onsessiondisconnect_1"><a name="onsessiondisconnect_1" class="anchor-navigation-ex-anchor" href="#onsessiondisconnect_1"><i class="fa fa-link" aria-hidden="true"></i></a><code>OnSessionDisconnect</code></h4>
+<h4 id="onsessiondisconnect"><code>OnSessionDisconnect</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">DECLARE_DYNAMIC_MULTICAST_DELEGATE</span>(FOnSessionDisconnect);
 <span class="hljs-built_in">UPROPERTY</span>(BlueprintAssignable, Category=<span class="hljs-string">"Events|Multiplayer"</span>)
 FOnSessionDisconnect OnSessionDisconnect;
 </code></pre>
 <p><strong>설명:</strong> 세션 연결 해제 이벤트</p>
 <hr></hr>
-<h4 id="sendsessiondisconnect"><a name="sendsessiondisconnect" class="anchor-navigation-ex-anchor" href="#sendsessiondisconnect"><i class="fa fa-link" aria-hidden="true"></i></a><code>SendSessionDisconnect</code></h4>
+<h4 id="sendsessiondisconnect"><code>SendSessionDisconnect</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>(BlueprintCallable, Category=<span class="hljs-string">"Events|Multiplayer"</span>)
 <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SendSessionDisconnect</span><span class="hljs-params">()</span></span>;
 </code></pre>
 <p><strong>설명:</strong> 세션 연결 해제 이벤트를 브로드캐스트합니다.</p>
 <p><strong>호출 위치:</strong> <code>UYiSanGameInstance::DisconnectFromSession()</code></p>
 <hr></hr>
-<h4 id="onsessionerror_1"><a name="onsessionerror_1" class="anchor-navigation-ex-anchor" href="#onsessionerror_1"><i class="fa fa-link" aria-hidden="true"></i></a><code>OnSessionError</code></h4>
+<h4 id="onsessionerror"><code>OnSessionError</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</span>(FOnSessionError, FString, ErrorMessage);
 <span class="hljs-built_in">UPROPERTY</span>(BlueprintAssignable, Category=<span class="hljs-string">"Events|Multiplayer"</span>)
 FOnSessionError OnSessionError;
@@ -2001,7 +1997,7 @@ FOnSessionError OnSessionError;
 <li><code>ErrorMessage</code> (FString): 오류 메시지</li>
 </ul>
 <hr></hr>
-<h4 id="sendsessionerror"><a name="sendsessionerror" class="anchor-navigation-ex-anchor" href="#sendsessionerror"><i class="fa fa-link" aria-hidden="true"></i></a><code>SendSessionError</code></h4>
+<h4 id="sendsessionerror"><code>SendSessionError</code></h4>
 <pre><code class="lang-cpp"><span class="hljs-built_in">UFUNCTION</span>(BlueprintCallable, Category=<span class="hljs-string">"Events|Multiplayer"</span>)
 <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SendSessionError</span><span class="hljs-params">(<span class="hljs-type">const</span> FString&amp; ErrorMessage)</span></span>;
 </code></pre>
@@ -2013,8 +2009,8 @@ FOnSessionError OnSessionError;
 }
 </code></pre>
 <hr></hr>
-<h2 id="부록-매크로-및-유틸리티"><a name="부록-매크로-및-유틸리티" class="anchor-navigation-ex-anchor" href="#부록-매크로-및-유틸리티"><i class="fa fa-link" aria-hidden="true"></i></a>부록: 매크로 및 유틸리티</h2>
-<h3 id="definesubsystemgetterinline"><a name="definesubsystemgetterinline" class="anchor-navigation-ex-anchor" href="#definesubsystemgetterinline"><i class="fa fa-link" aria-hidden="true"></i></a>DEFINE_SUBSYSTEM_GETTER_INLINE</h3>
+<h2 id="부록-매크로-및-유틸리티">부록: 매크로 및 유틸리티</h2>
+<h3 id="definesubsystemgetterinline">DEFINE_SUBSYSTEM_GETTER_INLINE</h3>
 <pre><code class="lang-cpp"><span class="hljs-comment">// UBroadcastManager에서 사용</span>
 <span class="hljs-built_in">DEFINE_SUBSYSTEM_GETTER_INLINE</span>(UBroadcastManager);
 </code></pre>
@@ -2027,15 +2023,15 @@ FOnSessionError OnSessionError;
 }
 </code></pre>
 <hr></hr>
-<h3 id="printlog"><a name="printlog" class="anchor-navigation-ex-anchor" href="#printlog"><i class="fa fa-link" aria-hidden="true"></i></a>PRINTLOG</h3>
+<h3 id="printlog">PRINTLOG</h3>
 <pre><code class="lang-cpp"><span class="hljs-comment">// GameLogging.h에 정의된 매크로</span>
 <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[MyClass] Message: %s"</span>), *MyString);
 </code></pre>
 <p><strong>기능:</strong> 포맷팅된 로그 출력</p>
 <p><strong>사용처:</strong> 모든 멀티플레이 함수에서 디버깅용으로 사용</p>
 <hr></hr>
-<h2 id="부록-네트워크-권한-체크"><a name="부록-네트워크-권한-체크" class="anchor-navigation-ex-anchor" href="#부록-네트워크-권한-체크"><i class="fa fa-link" aria-hidden="true"></i></a>부록: 네트워크 권한 체크</h2>
-<h3 id="hasauthority"><a name="hasauthority" class="anchor-navigation-ex-anchor" href="#hasauthority"><i class="fa fa-link" aria-hidden="true"></i></a>HasAuthority()</h3>
+<h2 id="부록-네트워크-권한-체크">부록: 네트워크 권한 체크</h2>
+<h3 id="hasauthority">HasAuthority()</h3>
 <pre><code class="lang-cpp"><span class="hljs-keyword">if</span> (!<span class="hljs-built_in">HasAuthority</span>())
     <span class="hljs-keyword">return</span>; <span class="hljs-comment">// 서버에서만 실행</span>
 </code></pre>
@@ -2046,7 +2042,7 @@ FOnSessionError OnSessionError;
 <li><code>AYiSanGameMode::SetTourState()</code></li>
 </ul>
 <hr></hr>
-<h3 id="getlocalrole--getremoterole"><a name="getlocalrole--getremoterole" class="anchor-navigation-ex-anchor" href="#getlocalrole--getremoterole"><i class="fa fa-link" aria-hidden="true"></i></a>GetLocalRole() / GetRemoteRole()</h3>
+<h3 id="getlocalrole--getremoterole">GetLocalRole() / GetRemoteRole()</h3>
 <pre><code class="lang-cpp">ENetRole Role = <span class="hljs-built_in">GetLocalRole</span>();
 <span class="hljs-keyword">if</span> (Role == ROLE_Authority)
 {
@@ -2066,7 +2062,7 @@ FOnSessionError OnSessionError;
 </ul>
 <hr></hr>
 <p><strong>문서 끝</strong></p>
-</body></html> <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
+ <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
                                 </section>
                             
@@ -2109,7 +2105,7 @@ FOnSessionError OnSessionError;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"YiSan 멀티플레이 API 레퍼런스","level":"11.3","depth":1,"next":{"title":"YiSan 멀티플레이 구현 가이드","level":"11.4","depth":1,"path":"Planning/Multiplayer_Implementation_Guide.md","ref":"Planning/Multiplayer_Implementation_Guide.md","articles":[]},"previous":{"title":"YiSan 로딩 시스템: 네트워크 최적화 관점 발표","level":"11.2","depth":1,"path":"Planning/LoadingSystem_Network_Optimization_Presentation.md","ref":"Planning/LoadingSystem_Network_Optimization_Presentation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","anchor-navigation-ex","code","splitter","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"splitter":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":false,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/Multiplayer_API_Reference.md","mtime":"2025-11-08T15:01:59.242Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-08T15:02:24.274Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"YiSan 멀티플레이 API 레퍼런스","level":"11.3","depth":1,"next":{"title":"YiSan 멀티플레이 구현 가이드","level":"11.4","depth":1,"path":"Planning/Multiplayer_Implementation_Guide.md","ref":"Planning/Multiplayer_Implementation_Guide.md","articles":[]},"previous":{"title":"YiSan 로딩 시스템: 네트워크 최적화 관점 발표","level":"11.2","depth":1,"path":"Planning/LoadingSystem_Network_Optimization_Presentation.md","ref":"Planning/LoadingSystem_Network_Optimization_Presentation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","code","splitter","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"splitter":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/Multiplayer_API_Reference.md","mtime":"2025-11-08T15:14:52.116Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-08T15:15:19.047Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

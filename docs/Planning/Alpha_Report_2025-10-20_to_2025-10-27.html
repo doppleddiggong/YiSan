@@ -37,10 +37,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
                 
             
@@ -1432,9 +1428,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#alpha-단계-개발-보고서"><b></b>Alpha 단계 개발 보고서</a></li><ul><li><span class="title-icon "></span><a href="#1-주요-변경-사항"><b></b>1. 주요 변경 사항</a></li><li><span class="title-icon "></span><a href="#2-세부-변경-사항"><b></b>2. 세부 변경 사항</a></li><ul><li><span class="title-icon "></span><a href="#uiux"><b></b>UI/UX</a></li><li><span class="title-icon "></span><a href="#네트워크"><b></b>네트워크</a></li><li><span class="title-icon "></span><a href="#npc-다산"><b></b>NPC (다산)</a></li><li><span class="title-icon "></span><a href="#음성-시스템"><b></b>음성 시스템</a></li></ul><li><span class="title-icon "></span><a href="#3-해결된-주요-문제"><b></b>3. 해결된 주요 문제</a></li><li><span class="title-icon "></span><a href="#4-알려진-문제-및-향후-과제-todo"><b></b>4. 알려진 문제 및 향후 과제 (TODO)</a></li><li><span class="title-icon "></span><a href="#5-개발-메트릭-요약"><b></b>5. 개발 메트릭 요약</a></li></ul></ul></div><a href="#alpha-단계-개발-보고서" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="alpha-단계-개발-보고서"><a name="alpha-단계-개발-보고서" class="anchor-navigation-ex-anchor" href="#alpha-단계-개발-보고서"><i class="fa fa-link" aria-hidden="true"></i></a>Alpha 단계 개발 보고서</h1>
+                                <h1 id="alpha-단계-개발-보고서">Alpha 단계 개발 보고서</h1>
 <p><strong>기간:</strong> 2025년 10월 20일 ~ 2025년 10월 27일</p>
-<h2 id="1-주요-변경-사항"><a name="1-주요-변경-사항" class="anchor-navigation-ex-anchor" href="#1-주요-변경-사항"><i class="fa fa-link" aria-hidden="true"></i></a>1. 주요 변경 사항</h2>
+<h2 id="1-주요-변경-사항">1. 주요 변경 사항</h2>
 <p>이번 보고 기간 동안 프로젝트의 핵심 기능인 <strong>네트워크, NPC 상호작용, 음성 시스템, UI/UX</strong> 전반에 걸쳐 큰 진전이 있었습니다. 주요 내용은 다음과 같습니다.</p>
 <ul>
 <li><strong>네트워크 및 멀티플레이어:</strong> 로비 시스템의 기본 골격을 완성하고, 플레이어 간 원활한 이동을 위한 심리스 트래블 기능을 구현했습니다. 또한 모듈형 채팅 시스템을 도입하여 향후 확장성을 확보했습니다.</li>
@@ -1443,40 +1439,40 @@
 <li><strong>UI/UX:</strong> 주요 UI(팝업, 로딩 화면, 채팅)를 C++ 코드로 리팩토링하여 성능을 최적화하고, 일관된 사용자 경험을 제공하기 위해 전역 로딩 및 다이얼로그 시스템을 도입했습니다.</li>
 <li><strong>코어 시스템:</strong> 비동기 로딩 로직을 Game Instance Subsystem으로 이전하고, 플러그인 설정 오류를 해결하는 등 코드 구조를 개선하여 안정성을 높였습니다.</li>
 </ul>
-<h2 id="2-세부-변경-사항"><a name="2-세부-변경-사항" class="anchor-navigation-ex-anchor" href="#2-세부-변경-사항"><i class="fa fa-link" aria-hidden="true"></i></a>2. 세부 변경 사항</h2>
-<h3 id="uiux"><a name="uiux" class="anchor-navigation-ex-anchor" href="#uiux"><i class="fa fa-link" aria-hidden="true"></i></a>UI/UX</h3>
+<h2 id="2-세부-변경-사항">2. 세부 변경 사항</h2>
+<h3 id="uiux">UI/UX</h3>
 <ul>
 <li><strong>팝업 시스템 리팩토링:</strong> 기존 블루프린트 기반의 Mega/Small 팝업을 C++ 클래스(UMegaPopup, USmallPopup)로 재작성하여 성능을 개선하고, 닫기 기능 및 데이터 연동 로직을 보강했습니다.</li>
 <li><strong>채팅 시스템 개선:</strong> 채팅 시스템을 별도 모듈로 구현하고, 메시지 데이터를 구조체(FChatMessage)로 관리하도록 변경하여 시스템 확장성을 높였습니다.</li>
 <li><strong>로딩 UI 통일:</strong> 여러 상황에서 일관된 로딩 경험을 제공하기 위해 전역 로딩 서클(Global Loading Circle)과 관리 시스템을 도입했습니다.</li>
 <li><strong>NPC 상호작용 UI:</strong> '다산' NPC의 상태를 표시하는 위젯과 질의응답(Q&amp;A) UI의 기본 구조를 구현했습니다.</li>
 </ul>
-<h3 id="네트워크"><a name="네트워크" class="anchor-navigation-ex-anchor" href="#네트워크"><i class="fa fa-link" aria-hidden="true"></i></a>네트워크</h3>
+<h3 id="네트워크">네트워크</h3>
 <ul>
 <li><strong>로비 시스템:</strong> 세션 생성(Host), 참여(Join), 연결 끊기 등 멀티플레이어 로비의 핵심 기능을 구현했습니다.</li>
 <li><strong>심리스 트래블:</strong> <code>ServerTravel</code>을 활용하여 맵과 맵 사이를 끊김 없이 이동할 수 있도록 전환 레벨(Transition Level)을 구현했습니다.</li>
 <li><strong>동기화 문제 해결:</strong> 호스트 플레이어가 다른 클라이언트의 위치를 덮어쓰던 문제를 해결하여 위치 동기화 정확도를 높였습니다.</li>
 </ul>
-<h3 id="npc-다산"><a name="npc-다산" class="anchor-navigation-ex-anchor" href="#npc-다산"><i class="fa fa-link" aria-hidden="true"></i></a>NPC (다산)</h3>
+<h3 id="npc-다산">NPC (다산)</h3>
 <ul>
 <li><strong>상태 머신 통합:</strong> 투어, 설명, 유휴 등 NPC의 여러 상태를 GameState 중심으로 통합하여 관리의 일관성을 확보했습니다.</li>
 <li><strong>음성 투어 기능:</strong> NPC가 특정 지점에서 음성 해설을 제공하는 투어 기능의 기반을 마련하고, 방송 매니저(BroadcastManager)와 연동했습니다.</li>
 <li><strong>음성 명령 연동:</strong> '소환' 음성 명령에 NPC가 반응하도록 관련 로직을 추가했습니다.</li>
 </ul>
-<h3 id="음성-시스템"><a name="음성-시스템" class="anchor-navigation-ex-anchor" href="#음성-시스템"><i class="fa fa-link" aria-hidden="true"></i></a>음성 시스템</h3>
+<h3 id="음성-시스템">음성 시스템</h3>
 <ul>
 <li><strong>파이프라인 재구성:</strong> 음성 처리 파이프라인을 16kHz 리샘플링 기반으로 재편하여 TTS 및 음성 인식 품질을 향상했습니다.</li>
 <li><strong>전역 다이얼로그 시스템:</strong> TTS 재생 로직을 LocalPlayerSubsystem 기반의 전역 서비스로 구현하여 어디서든 일관된 다이얼로그를 호출할 수 있도록 개선했습니다.</li>
 <li><strong>'소환' 명령 추가:</strong> '다산' NPC를 호출하는 '소환' 음성 명령을 추가하고 관련 오디오 리소스를 통합했습니다.</li>
 </ul>
-<h2 id="3-해결된-주요-문제"><a name="3-해결된-주요-문제" class="anchor-navigation-ex-anchor" href="#3-해결된-주요-문제"><i class="fa fa-link" aria-hidden="true"></i></a>3. 해결된 주요 문제</h2>
+<h2 id="3-해결된-주요-문제">3. 해결된 주요 문제</h2>
 <ul>
 <li><code>MegaPopup</code> 위젯이 닫힐 때 사운드 등 리소스가 정상적으로 해제되지 않던 문제를 해결했습니다. (2025-10-20)</li>
 <li><code>CoffeeToolbar</code> 플러그인 설정이 사용자(<code>.ini</code>)가 아닌 프로젝트 레벨에서 로드되지 않던 문제를 수정했습니다. (2025-10-23)</li>
 <li>채팅 입력 시 게임과 UI 간의 포커스가 올바르게 전환되지 않던 오류를 해결했습니다. (2025-10-23)</li>
 <li>멀티플레이 환경에서 호스트가 다른 클라이언트의 위치 정보를 덮어쓰던 동기화 문제를 수정했습니다. (2025-10-25)</li>
 </ul>
-<h2 id="4-알려진-문제-및-향후-과제-todo"><a name="4-알려진-문제-및-향후-과제-todo" class="anchor-navigation-ex-anchor" href="#4-알려진-문제-및-향후-과제-todo"><i class="fa fa-link" aria-hidden="true"></i></a>4. 알려진 문제 및 향후 과제 (TODO)</h2>
+<h2 id="4-알려진-문제-및-향후-과제-todo">4. 알려진 문제 및 향후 과제 (TODO)</h2>
 <ul>
 <li><strong>네트워크:</strong><ul>
 <li><strong>로비 UI 재설계:</strong> 안정성을 위해 임시 롤백된 로비 네트워크 UI의 개선안을 다시 설계하고 단계적으로 도입해야 합니다.</li>
@@ -1493,14 +1489,14 @@
 </ul>
 </li>
 </ul>
-<h2 id="5-개발-메트릭-요약"><a name="5-개발-메트릭-요약" class="anchor-navigation-ex-anchor" href="#5-개발-메트릭-요약"><i class="fa fa-link" aria-hidden="true"></i></a>5. 개발 메트릭 요약</h2>
+<h2 id="5-개발-메트릭-요약">5. 개발 메트릭 요약</h2>
 <ul>
 <li><strong>기간:</strong> 2025년 10월 20일 ~ 2025년 10월 27일</li>
 <li><strong>총 커밋:</strong> 약 50+ (일부 로그 집계 불가)</li>
 <li><strong>주요 기여자:</strong> dopple, Ju100, kbm</li>
 </ul>
 <p><em>참고: 일부 개발일지에서 git log 파싱 문제로 정확한 커밋 수와 코드 변경량 집계에 어려움이 있었습니다.</em></p>
-</body></html> <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
+ <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
                                 </section>
                             
@@ -1543,7 +1539,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Alpha 단계 개발 보고서","level":"14.2","depth":1,"next":{"title":"YiSan 프로젝트 종합 역량평가 리포트","level":"14.3","depth":1,"path":"Planning/Comprehensive_Competency_Assessment_2025-11-04.md","ref":"Planning/Comprehensive_Competency_Assessment_2025-11-04.md","articles":[]},"previous":{"title":"AI 경로 탐색 문제 해결 리포트","level":"14.1","depth":1,"path":"Planning/AI_Pathfinding_Fix_Report.md","ref":"Planning/AI_Pathfinding_Fix_Report.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","anchor-navigation-ex","code","splitter","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"splitter":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":false,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/Alpha_Report_2025-10-20_to_2025-10-27.md","mtime":"2025-11-08T15:01:59.241Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-08T15:02:24.274Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Alpha 단계 개발 보고서","level":"14.2","depth":1,"next":{"title":"YiSan 프로젝트 종합 역량평가 리포트","level":"14.3","depth":1,"path":"Planning/Comprehensive_Competency_Assessment_2025-11-04.md","ref":"Planning/Comprehensive_Competency_Assessment_2025-11-04.md","articles":[]},"previous":{"title":"AI 경로 탐색 문제 해결 리포트","level":"14.1","depth":1,"path":"Planning/AI_Pathfinding_Fix_Report.md","ref":"Planning/AI_Pathfinding_Fix_Report.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","code","splitter","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"splitter":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/Alpha_Report_2025-10-20_to_2025-10-27.md","mtime":"2025-11-08T15:14:52.116Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-08T15:15:19.047Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

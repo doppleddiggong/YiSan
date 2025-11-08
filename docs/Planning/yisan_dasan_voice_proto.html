@@ -37,10 +37,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
                 
             
@@ -1432,15 +1428,15 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><ul><li><span class="title-icon "></span><a href="#분석-및-평가-보고서-2025-09-30--2025-10-20"><b></b>분석 및 평가 보고서 (2025-09-30 ~ 2025-10-20)</a></li><li><span class="title-icon "></span><a href="#1-dasan-서버-프로젝트"><b></b>1. Dasan (서버) 프로젝트</a></li><li><span class="title-icon "></span><a href="#2-yisan-클라이언트-프로젝트"><b></b>2. YiSan (클라이언트) 프로젝트</a></li><li><span class="title-icon "></span><a href="#3-voice-ttsstt-프로젝트"><b></b>3. Voice (TTS/STT) 프로젝트</a></li></ul></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h3 id="분석-및-평가-보고서-2025-09-30--2025-10-20"><a name="분석-및-평가-보고서-2025-09-30--2025-10-20" class="anchor-navigation-ex-anchor" href="#분석-및-평가-보고서-2025-09-30--2025-10-20"><i class="fa fa-link" aria-hidden="true"></i></a>분석 및 평가 보고서 (2025-09-30 ~ 2025-10-20)</h3>
+                                <h3 id="분석-및-평가-보고서-2025-09-30--2025-10-20">분석 및 평가 보고서 (2025-09-30 ~ 2025-10-20)</h3>
 <p>이 보고서는 지정된 기간 동안 <code>dopple</code>, <code>ju100</code>, <code>은</code> 화자의 개발 활동을 기반으로 각 프로젝트의 진행 상황, 기술적 성과 및 잠재력을 평가합니다.</p>
 <hr></hr>
-<h3 id="1-dasan-서버-프로젝트"><a name="1-dasan-서버-프로젝트" class="anchor-navigation-ex-anchor" href="#1-dasan-서버-프로젝트"><i class="fa fa-link" aria-hidden="true"></i></a>1. Dasan (서버) 프로젝트</h3>
-<h4 id="11-프로토타입-기간-요약-보고서"><a name="11-프로토타입-기간-요약-보고서" class="anchor-navigation-ex-anchor" href="#11-프로토타입-기간-요약-보고서"><i class="fa fa-link" aria-hidden="true"></i></a>1.1. 프로토타입 기간 요약 보고서</h4>
+<h3 id="1-dasan-서버-프로젝트">1. Dasan (서버) 프로젝트</h3>
+<h4 id="11-프로토타입-기간-요약-보고서">1.1. 프로토타입 기간 요약 보고서</h4>
 <p>Dasan 서버 프로젝트는 FastAPI를 기반으로 한 AI 에이전트 서버의 핵심 기능을 구축하고 배포 자동화까지 완료하는 빠른 개발 속도를 보였습니다.</p>
 <p>초기에는 Docker와 기본 TTS/STT 모델(Bark, Whisper)을 연동하는 실험으로 시작하여, 빠르게 Google Cloud와 OpenAI의 GPT 모델을 통합하는 아키텍처로 발전했습니다. 특히 주목할 점은 <strong>STT/TTS 멀티 프로바이더 아키텍처</strong>를 도입하여 Google과 Naver Cloud Platform(NCP) 서비스를 동적으로 선택하고, 한 서비스에 장애가 발생했을 때 다른 서비스로 자동 전환되는 폴백(Fallback) 로직을 구현하여 서비스 안정성을 크게 향상시킨 것입니다.</p>
 <p>또한, 단순 API 제공을 넘어 WebSocket을 통한 실시간 음성 스트리밍 수신, AI 에이전트의 페르소나(다산 정약용) 설정, 클라이언트의 공간 정보를 이해하는 컨텍스트 시스템 등 고도화된 기능을 구현했습니다. 개발 후반부에는 Render.com, Fly.io와 같은 클라우드 플랫폼에 배포를 자동화하고, 환경 변수 및 인증서 관리를 개선하는 등 운영 및 유지보수성을 고려한 성숙도 높은 개발이 진행되었습니다.</p>
-<h4 id="12-일자별-수행-과업"><a name="12-일자별-수행-과업" class="anchor-navigation-ex-anchor" href="#12-일자별-수행-과업"><i class="fa fa-link" aria-hidden="true"></i></a>1.2. 일자별 수행 과업</h4>
+<h4 id="12-일자별-수행-과업">1.2. 일자별 수행 과업</h4>
 <ul>
 <li><strong>10월 16일</strong>: Fly.io 배포 설정 및 API 문서 업데이트.</li>
 <li><strong>10월 15일</strong>: 음성 커맨드 CSV 로드 경로 수정, <code>/ask</code> 엔드포인트 기능 확장 (텍스트/공간정보 입력).</li>
@@ -1452,7 +1448,7 @@
 <li><strong>10월 09일</strong>: Docker 설정, Bark TTS 연동 및 백업.</li>
 <li><strong>10월 08일</strong>: Dasan 서버 초기 세팅.</li>
 </ul>
-<h4 id="13-프로토타입-역량평가-및-프로젝트-평가"><a name="13-프로토타입-역량평가-및-프로젝트-평가" class="anchor-navigation-ex-anchor" href="#13-프로토타입-역량평가-및-프로젝트-평가"><i class="fa fa-link" aria-hidden="true"></i></a>1.3. 프로토타입 역량평가 및 프로젝트 평가</h4>
+<h4 id="13-프로토타입-역량평가-및-프로젝트-평가">1.3. 프로토타입 역량평가 및 프로젝트 평가</h4>
 <ul>
 <li><p><strong>기술적 역량</strong>: <strong>(최상)</strong></p>
 <ul>
@@ -1470,12 +1466,12 @@
 </li>
 </ul>
 <hr></hr>
-<h3 id="2-yisan-클라이언트-프로젝트"><a name="2-yisan-클라이언트-프로젝트" class="anchor-navigation-ex-anchor" href="#2-yisan-클라이언트-프로젝트"><i class="fa fa-link" aria-hidden="true"></i></a>2. YiSan (클라이언트) 프로젝트</h3>
-<h4 id="21-프로토타입-기간-요약-보고서"><a name="21-프로토타입-기간-요약-보고서" class="anchor-navigation-ex-anchor" href="#21-프로토타입-기간-요약-보고서"><i class="fa fa-link" aria-hidden="true"></i></a>2.1. 프로토타입 기간 요약 보고서</h4>
+<h3 id="2-yisan-클라이언트-프로젝트">2. YiSan (클라이언트) 프로젝트</h3>
+<h4 id="21-프로토타입-기간-요약-보고서">2.1. 프로토타입 기간 요약 보고서</h4>
 <p>YiSan 클라이언트 프로젝트는 언리얼 엔진 C++을 중심으로 한 견고한 아키텍처 구축에 집중했습니다. 초기에는 프로젝트 설정, 코딩 컨벤션, 문서 자동화(Doxygen) 등 장기적인 유지보수를 위한 기반을 다지는 데 주력했습니다.</p>
 <p>개발이 진행되면서 Dasan 서버와 통신하기 위한 네트워크 시스템(HTTP, WebSocket)을 구현하고, 이를 UI와 연동하는 작업이 핵심적으로 이루어졌습니다. 특히 <strong>이벤트 중심 아키텍처(BroadcastManager)</strong>를 도입하여 각 시스템(네트워크, UI, 플레이어, 음성) 간의 결합도를 낮추고 확장성을 확보한 점이 돋보입니다.</p>
 <p>음성 시스템은 FAudioCapture를 활용한 녹음 기능부터 시작하여, 서버와 연동한 실시간 스트리밍, 수신된 TTS 데이터의 동적 재생(<code>USoundWaveProcedural</code>)에 이르기까지 점진적으로 발전했습니다. 또한, 플레이어의 위치와 시야를 파악하여 서버에 '공간 컨텍스트'를 제공하는 기능을 구현하여 AI 에이전트가 더 몰입감 있는 응답을 하도록 만들었습니다. UI는 C++ 중심으로 리팩토링하여 블루프린트 의존성을 줄이고 성능을 최적화했습니다.</p>
-<h4 id="22-일자별-수행-과업"><a name="22-일자별-수행-과업" class="anchor-navigation-ex-anchor" href="#22-일자별-수행-과업"><i class="fa fa-link" aria-hidden="true"></i></a>2.2. 일자별 수행 과업</h4>
+<h4 id="22-일자별-수행-과업">2.2. 일자별 수행 과업</h4>
 <ul>
 <li><strong>10월 20일</strong>: 플레이어 입력 및 UI 상호작용 모델 리팩토링 (이벤트 중심).</li>
 <li><strong>10월 19일</strong>: UI 팝업(Mega/Small) C++ 기능 구현 및 리팩토링, 데이터 에셋 추가.</li>
@@ -1493,7 +1489,7 @@
 <li><strong>10월 01일</strong>: Doxygen 설정 및 GitHub Actions 워크플로우 추가.</li>
 <li><strong>09월 30일</strong>: 프로젝트 초기 설정.</li>
 </ul>
-<h4 id="13-프로토타입-역량평가-및-프로젝트-평가_1"><a name="13-프로토타입-역량평가-및-프로젝트-평가_1" class="anchor-navigation-ex-anchor" href="#13-프로토타입-역량평가-및-프로젝트-평가_1"><i class="fa fa-link" aria-hidden="true"></i></a>1.3. 프로토타입 역량평가 및 프로젝트 평가</h4>
+<h4 id="13-프로토타입-역량평가-및-프로젝트-평가">1.3. 프로토타입 역량평가 및 프로젝트 평가</h4>
 <ul>
 <li><p><strong>기술적 역량</strong>: <strong>(최상)</strong></p>
 <ul>
@@ -1511,19 +1507,19 @@
 </li>
 </ul>
 <hr></hr>
-<h3 id="3-voice-ttsstt-프로젝트"><a name="3-voice-ttsstt-프로젝트" class="anchor-navigation-ex-anchor" href="#3-voice-ttsstt-프로젝트"><i class="fa fa-link" aria-hidden="true"></i></a>3. Voice (TTS/STT) 프로젝트</h3>
+<h3 id="3-voice-ttsstt-프로젝트">3. Voice (TTS/STT) 프로젝트</h3>
 <p><em>이 프로젝트는 <code>SpeechGenerator</code>와 <code>SubtitleGenerator</code> 저장소를 통합하여 평가합니다.</em></p>
-<h4 id="31-프로토타입-기간-요약-보고서"><a name="31-프로토타입-기간-요약-보고서" class="anchor-navigation-ex-anchor" href="#31-프로토타입-기간-요약-보고서"><i class="fa fa-link" aria-hidden="true"></i></a>3.1. 프로토타입 기간 요약 보고서</h4>
+<h4 id="31-프로토타입-기간-요약-보고서">3.1. 프로토타입 기간 요약 보고서</h4>
 <p>Voice 프로젝트는 독립적인 TTS/STT 오픈소스 모델을 탐색하고 유틸리티를 개발하는 것을 목표로 진행되었습니다. <code>SpeechGenerator</code>에서는 모델 가이드 문서화 및 코드 정리가 이루어졌고, <code>SubtitleGenerator</code>에서는 음성 다운로드 및 자막 생성기능이 추가되었습니다.</p>
 <p>이 프로젝트는 Dasan 및 YiSan 프로젝트와 비교했을 때 커밋 수가 적고, 주로 기존 오픈소스의 활용 및 간단한 유틸리티 개발에 초점을 맞춘 것으로 보입니다. 핵심적인 AI 기능 개발은 Dasan 프로젝트에서 외부 클라우드 서비스(Google, NCP)를 활용하는 방향으로 집중되면서, 이 프로젝트는 보조적인 역할이나 기술 탐색의 성격이 강했던 것으로 분석됩니다.</p>
-<h4 id="32-일자별-수행-과업"><a name="32-일자별-수행-과업" class="anchor-navigation-ex-anchor" href="#32-일자별-수행-과업"><i class="fa fa-link" aria-hidden="true"></i></a>3.2. 일자별 수행 과업</h4>
+<h4 id="32-일자별-수행-과업">3.2. 일자별 수행 과업</h4>
 <ul>
 <li><strong>10월 18일</strong>: 제너레이터 코드 정리 (<code>SubtitleGenerator</code>).</li>
 <li><strong>10월 17일</strong>: 서버 코드 추가 (<code>SubtitleGenerator</code>), 코드 정리 (<code>SpeechGenerator</code>).</li>
 <li><strong>10월 16일</strong>: 가이드 문서 업데이트 및 셋업 (<code>SpeechGenerator</code>).</li>
 <li><strong>10월 15일</strong>: 음성 다운로드/자막 생성기 추가 (<code>SubtitleGenerator</code>).</li>
 </ul>
-<h4 id="33-프로토타입-역량평가-및-프로젝트-평가"><a name="33-프로토타입-역량평가-및-프로젝트-평가" class="anchor-navigation-ex-anchor" href="#33-프로토타입-역량평가-및-프로젝트-평가"><i class="fa fa-link" aria-hidden="true"></i></a>3.3. 프로토타입 역량평가 및 프로젝트 평가</h4>
+<h4 id="33-프로토타입-역량평가-및-프로젝트-평가">3.3. 프로토타입 역량평가 및 프로젝트 평가</h4>
 <ul>
 <li><p><strong>기술적 역량</strong>: <strong>(중)</strong></p>
 <ul>
@@ -1538,7 +1534,7 @@
 </ul>
 </li>
 </ul>
-</body></html> <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
+ <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
                                 </section>
                             
@@ -1581,7 +1577,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"분석 및 평가 보고서 (2025-09-30 ~ 2025-10-20)","level":"12.3","depth":1,"next":{"title":"프로토타입 기간 개발자 역량 및 성과 분석 (2025-09-30 ~ 2025-10-20)","level":"12.4","depth":1,"path":"Planning/yisan_proto.md","ref":"Planning/yisan_proto.md","articles":[]},"previous":{"title":"UYiSanLoading 리팩터링 리뷰 (2025-10-30 KST)","level":"12.2","depth":1,"path":"Planning/2025-10-30_UYiSanLoading_Refactor.md","ref":"Planning/2025-10-30_UYiSanLoading_Refactor.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","anchor-navigation-ex","code","splitter","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"splitter":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":false,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/yisan_dasan_voice_proto.md","mtime":"2025-11-08T15:01:59.313Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-08T15:02:24.274Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"분석 및 평가 보고서 (2025-09-30 ~ 2025-10-20)","level":"12.3","depth":1,"next":{"title":"프로토타입 기간 개발자 역량 및 성과 분석 (2025-09-30 ~ 2025-10-20)","level":"12.4","depth":1,"path":"Planning/yisan_proto.md","ref":"Planning/yisan_proto.md","articles":[]},"previous":{"title":"UYiSanLoading 리팩터링 리뷰 (2025-10-30 KST)","level":"12.2","depth":1,"path":"Planning/2025-10-30_UYiSanLoading_Refactor.md","ref":"Planning/2025-10-30_UYiSanLoading_Refactor.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","code","splitter","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"splitter":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/yisan_dasan_voice_proto.md","mtime":"2025-11-08T15:14:52.190Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-08T15:15:19.047Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
