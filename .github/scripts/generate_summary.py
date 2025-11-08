@@ -13,7 +13,7 @@ from typing import List, Dict, Tuple
 class SummaryGenerator:
     def __init__(self, base_dir: str = "Documents"):
         self.base_dir = Path(base_dir)
-        self.honkit_dir = self.base_dir / "HonkitPage"
+        self.honkit_dir = self.base_dir  # HonKit root는 Documents
         self.devlog_dir = self.base_dir / "DevLog"
         self.planning_dir = self.base_dir / "Planning"
 
@@ -105,10 +105,10 @@ class SummaryGenerator:
         return result
 
     def get_relative_path(self, file_path: Path) -> str:
-        """HonkitPage 기준 상대 경로 반환"""
+        """Documents 기준 상대 경로 반환"""
         try:
             rel_path = file_path.relative_to(self.base_dir)
-            return f"../{rel_path.as_posix()}"
+            return rel_path.as_posix()
         except ValueError:
             return file_path.as_posix()
 

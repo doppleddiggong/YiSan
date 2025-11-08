@@ -9,7 +9,8 @@ on:
     paths:
       - 'Documents/DevLog/**'
       - 'Documents/Planning/**'
-      - 'Documents/HonkitPage/**'
+      - 'Documents/*.md'
+      - 'Documents/book.json'
       - '.github/scripts/generate_summary.py'
 
   # 수동 실행 가능
@@ -64,7 +65,7 @@ jobs:
           npm install -g gitbook-plugin-klipse
 
       - name: Build HonKit
-        working-directory: Documents/HonkitPage
+        working-directory: Documents
         run: |
           honkit build
 
@@ -72,7 +73,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./Documents/HonkitPage/_book
+          publish_dir: ./Documents/_book
           publish_branch: gh-pages
           destination_dir: docs
           enable_jekyll: false

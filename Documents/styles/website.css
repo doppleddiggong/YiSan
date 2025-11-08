@@ -1,0 +1,330 @@
+/* YiSan Project Documentation - Custom Styles */
+
+/* ========================================
+   색상 테마
+   ======================================== */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --text-color: #333;
+  --bg-color: #f8f9fa;
+  --sidebar-bg: #2c3e50;
+  --code-bg: #282c34;
+}
+
+/* ========================================
+   전체 레이아웃
+   ======================================== */
+.book {
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+.book-summary {
+  background: var(--sidebar-bg);
+  font-size: 14px;
+}
+
+.book-summary ul.summary li a,
+.book-summary ul.summary li span {
+  color: #ecf0f1;
+  padding: 10px 15px;
+  transition: all 0.3s ease;
+}
+
+.book-summary ul.summary li a:hover {
+  background: rgba(52, 152, 219, 0.2);
+  color: #fff;
+  border-left: 3px solid var(--secondary-color);
+}
+
+.book-summary ul.summary li.active > a {
+  background: rgba(52, 152, 219, 0.3);
+  color: #fff;
+  border-left: 3px solid var(--accent-color);
+  font-weight: 600;
+}
+
+/* ========================================
+   본문 영역
+   ======================================== */
+.book-body {
+  background: var(--bg-color);
+}
+
+.page-wrapper {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ========================================
+   제목 스타일
+   ======================================== */
+.markdown-section h1 {
+  color: var(--primary-color);
+  border-bottom: 3px solid var(--secondary-color);
+  padding-bottom: 10px;
+  margin-top: 30px;
+  font-weight: 700;
+}
+
+.markdown-section h2 {
+  color: var(--primary-color);
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 8px;
+  margin-top: 25px;
+  font-weight: 600;
+}
+
+.markdown-section h3 {
+  color: var(--secondary-color);
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.markdown-section h4 {
+  color: #555;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+/* ========================================
+   코드 블록 스타일
+   ======================================== */
+.markdown-section pre {
+  background: var(--code-bg);
+  border: none;
+  border-radius: 6px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.markdown-section code {
+  background: #f4f4f4;
+  color: #e74c3c;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  font-size: 0.9em;
+}
+
+.markdown-section pre code {
+  background: transparent;
+  color: #abb2bf;
+  padding: 0;
+  font-size: 0.95em;
+}
+
+/* ========================================
+   테이블 스타일
+   ======================================== */
+.markdown-section table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.markdown-section table thead {
+  background: var(--primary-color);
+  color: white;
+}
+
+.markdown-section table th,
+.markdown-section table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: none;
+}
+
+.markdown-section table tbody tr {
+  border-bottom: 1px solid #ecf0f1;
+  transition: background 0.2s ease;
+}
+
+.markdown-section table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.markdown-section table tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* ========================================
+   링크 스타일
+   ======================================== */
+.markdown-section a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.markdown-section a:hover {
+  color: var(--accent-color);
+  border-bottom: 1px solid var(--accent-color);
+}
+
+/* ========================================
+   블록 인용 스타일
+   ======================================== */
+.markdown-section blockquote {
+  border-left: 4px solid var(--secondary-color);
+  background: #f8f9fa;
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+  color: #555;
+}
+
+/* ========================================
+   목록 스타일
+   ======================================== */
+.markdown-section ul,
+.markdown-section ol {
+  margin: 15px 0;
+  padding-left: 30px;
+}
+
+.markdown-section li {
+  margin: 8px 0;
+  line-height: 1.8;
+}
+
+/* ========================================
+   뱃지/레이블 스타일
+   ======================================== */
+.markdown-section .badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.85em;
+  font-weight: 600;
+  margin: 0 5px;
+}
+
+.badge-info { background: #3498db; color: white; }
+.badge-success { background: #27ae60; color: white; }
+.badge-warning { background: #f39c12; color: white; }
+.badge-danger { background: #e74c3c; color: white; }
+
+/* ========================================
+   알림 박스 스타일 (alerts plugin)
+   ======================================== */
+.alert {
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-radius: 6px;
+  border-left: 4px solid;
+}
+
+.alert-info {
+  background: #e3f2fd;
+  border-color: #2196f3;
+  color: #1565c0;
+}
+
+.alert-warning {
+  background: #fff3e0;
+  border-color: #ff9800;
+  color: #e65100;
+}
+
+.alert-danger {
+  background: #ffebee;
+  border-color: #f44336;
+  color: #c62828;
+}
+
+.alert-success {
+  background: #e8f5e9;
+  border-color: #4caf50;
+  color: #2e7d32;
+}
+
+/* ========================================
+   TOC (Table of Contents) 스타일
+   ======================================== */
+.page-toc-button {
+  background: var(--secondary-color);
+  color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.anchorjs-link {
+  color: var(--secondary-color) !important;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+h1:hover .anchorjs-link,
+h2:hover .anchorjs-link,
+h3:hover .anchorjs-link,
+h4:hover .anchorjs-link {
+  opacity: 1;
+}
+
+/* ========================================
+   반응형 디자인
+   ======================================== */
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding: 15px;
+  }
+
+  .markdown-section h1 {
+    font-size: 1.8em;
+  }
+
+  .markdown-section h2 {
+    font-size: 1.5em;
+  }
+}
+
+/* ========================================
+   프린트 스타일
+   ======================================== */
+@media print {
+  .book-summary,
+  .book-header,
+  .fa-print,
+  .page-toc-button {
+    display: none !important;
+  }
+
+  .book-body {
+    margin: 0 !important;
+  }
+}
+
+/* ========================================
+   사이드바 로고 스타일
+   ======================================== */
+.book-summary .summary .book-logo {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.book-summary .summary .book-logo img {
+  max-width: 120px;
+  height: auto;
+}
+
+/* ========================================
+   Footer 스타일
+   ======================================== */
+.markdown-section footer {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 2px solid #ecf0f1;
+  color: #7f8c8d;
+  font-size: 0.9em;
+  text-align: center;
+}
