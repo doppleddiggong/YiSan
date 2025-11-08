@@ -356,9 +356,7 @@ INPUT                  = Source \
                          GEMINI.md \
                          AgentRule \
   					     Documents/DoxygenPage \
-                         Documents/DevLog \
                          Documents/Reference \
-	      				 Documents/Planning \
 
 # 입력 파일 기본 인코딩
 INPUT_ENCODING         = UTF-8

@@ -1,0 +1,236 @@
+#!/bin/bash
+
+# prepare-commit-msg hook
+# AI를 사용하여 자동으로 커밋 메시지를 생성합니다.
+#
+# 지원 AI: claude, gemini
+# 설정: .agentrule.config.json
+#
+# Fallback: claude 실패 → gemini → template
+
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+SHA1=$3
+
+# 이미 커밋 메시지가 있으면 (amend, merge 등) 스킵
+if [ -n "$COMMIT_SOURCE" ]; then
+    exit 0
+fi
+
+# Git root 찾기
+GIT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null)
+if [ -z "$GIT_ROOT" ]; then
+    echo "Error: Not a git repository"
+    exit 1
+fi
+
+# Config 파일 경로
+CONFIG_FILE="$GIT_ROOT/.agentrule.config.json"
+
+# Config 파일 읽기
+if [ ! -f "$CONFIG_FILE" ]; then
+    # Config 파일 없으면 템플릿만 제공
+    cat > "$COMMIT_MSG_FILE" << 'EOF'
+# <type>: <subject>
+#
+# Type: feat, fix, docs, style, refactor, test, chore, perf, ci, build
+# Subject: 50자 이내, 소문자 시작, 명령형, 마침표 없음
+EOF
+    exit 0
+fi
+
+# jq가 있으면 사용, 없으면 grep으로 파싱
+if command -v jq &> /dev/null; then
+    ENABLED=$(jq -r '.commit_ai.enabled // true' "$CONFIG_FILE")
+    PROVIDER=$(jq -r '.commit_ai.provider // "claude"' "$CONFIG_FILE")
+    FALLBACK_PROVIDER=$(jq -r '.commit_ai.fallback_provider // "gemini"' "$CONFIG_FILE")
+    TIMEOUT=$(jq -r '.commit_ai.timeout_seconds // 30' "$CONFIG_FILE")
+else
+    # jq 없을 때 간단한 파싱
+    ENABLED=$(grep -o '"enabled"[[:space:]]*:[[:space:]]*[^,}]*' "$CONFIG_FILE" | grep -A 1 'commit_ai' | tail -1 | sed 's/.*:[[:space:]]*//' | tr -d ' ')
+    PROVIDER=$(grep -o '"provider"[[:space:]]*:[[:space:]]*"[^"]*"' "$CONFIG_FILE" | grep -A 1 'commit_ai' | head -1 | sed 's/.*"\([^"]*\)".*/\1/')
+    FALLBACK_PROVIDER=$(grep -o '"fallback_provider"[[:space:]]*:[[:space:]]*"[^"]*"' "$CONFIG_FILE" | head -1 | sed 's/.*"\([^"]*\)".*/\1/')
+    TIMEOUT=$(grep -o '"timeout_seconds"[[:space:]]*:[[:space:]]*[0-9]*' "$CONFIG_FILE" | head -1 | sed 's/.*:[[:space:]]*//')
+
+    # 기본값
+    ENABLED=${ENABLED:-true}
+    PROVIDER=${PROVIDER:-claude}
+    FALLBACK_PROVIDER=${FALLBACK_PROVIDER:-gemini}
+    TIMEOUT=${TIMEOUT:-30}
+fi
+
+# AI 생성이 비활성화되어 있으면 템플릿 제공
+if [ "$ENABLED" != "true" ]; then
+    cat > "$COMMIT_MSG_FILE" << 'EOF'
+# <type>: <subject>
+#
+# Type: feat, fix, docs, style, refactor, test, chore, perf, ci, build
+# Subject: 50자 이내, 소문자 시작, 명령형, 마침표 없음
+EOF
+    exit 0
+fi
+
+# Staged 파일 확인
+STAGED_FILES=$(git diff --cached --name-only)
+if [ -z "$STAGED_FILES" ]; then
+    # 변경사항 없으면 종료
+    exit 0
+fi
+
+# Diff 내용 가져오기 (처음 200줄만)
+DIFF_STAT=$(git diff --cached --stat)
+DIFF_CONTENT=$(git diff --cached | head -200)
+
+# 프롬프트 생성
+PROMPT="다음 Git 변경사항을 분석하여 커밋 메시지를 생성해주세요.
+
+## Staged 파일
+$STAGED_FILES
+
+## 변경 통계
+$DIFF_STAT
+
+## 변경 내용 (일부)
+$DIFF_CONTENT
+
+---
+
+## 요청사항
+
+커밋 메시지를 다음 형식으로 생성해주세요:
+
+<type>: <subject>
+
+<body>
+
+### 규칙
+- Type: feat/fix/docs/style/refactor/test/chore/perf/ci/build 중 선택
+- Subject: 50자 이내, 한글로 작성, 명령형, 마침표 없음
+- Body: 72자마다 줄바꿈, 왜 변경했는지 한글로 설명 (선택사항)
+
+### 중요
+- 커밋 메시지만 출력하고 다른 설명은 포함하지 마세요
+- 코드 블록 마커(\`\`\`)는 사용하지 마세요
+- 바로 커밋 메시지 형식으로 시작하세요
+- 반드시 한글로 작성하세요
+
+예시:
+feat: 사용자 인증 기능 추가
+
+JWT 기반 인증을 구현하고 로그인 및 회원가입 엔드포인트를 추가했습니다."
+
+# AI 호출 함수 (timeout 포함)
+call_ai() {
+    local ai_provider=$1
+    local output_file=$2
+
+    case "$ai_provider" in
+        "claude")
+            if command -v claude &> /dev/null; then
+                # Timeout 적용하여 Claude 실행
+                timeout ${TIMEOUT}s claude "$PROMPT" > "$output_file" 2>&1
+                return $?
+            else
+                return 127  # Command not found
+            fi
+            ;;
+        "gemini")
+            if command -v gemini &> /dev/null; then
+                # Timeout 적용하여 Gemini 실행
+                timeout ${TIMEOUT}s gemini "$PROMPT" > "$output_file" 2>&1
+                return $?
+            else
+                return 127  # Command not found
+            fi
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+}
+
+# AI로 커밋 메시지 생성 시도
+TEMP_FILE="$GIT_ROOT/temp_commit_message.txt"
+COMMIT_MESSAGE=""
+USED_PROVIDER=""
+
+# 1단계: Primary provider 시도
+call_ai "$PROVIDER" "$TEMP_FILE"
+RESULT=$?
+
+if [ $RESULT -eq 0 ] && [ -f "$TEMP_FILE" ] && [ -s "$TEMP_FILE" ]; then
+    # 성공: 파일 내용 읽기
+    COMMIT_MESSAGE=$(cat "$TEMP_FILE")
+    USED_PROVIDER="$PROVIDER"
+
+    # Rate limit 또는 에러 체크
+    if echo "$COMMIT_MESSAGE" | grep -q -i "rate limit\|usage limit\|too many requests\|quota"; then
+        echo "# Warning: $PROVIDER hit rate limit, trying fallback..." >&2
+        COMMIT_MESSAGE=""
+        USED_PROVIDER=""
+    fi
+fi
+
+# 2단계: Primary 실패 시 Fallback provider 시도
+if [ -z "$COMMIT_MESSAGE" ] && [ "$FALLBACK_PROVIDER" != "$PROVIDER" ]; then
+    echo "# Trying fallback provider: $FALLBACK_PROVIDER" >&2
+
+    call_ai "$FALLBACK_PROVIDER" "$TEMP_FILE"
+    RESULT=$?
+
+    if [ $RESULT -eq 0 ] && [ -f "$TEMP_FILE" ] && [ -s "$TEMP_FILE" ]; then
+        COMMIT_MESSAGE=$(cat "$TEMP_FILE")
+        USED_PROVIDER="$FALLBACK_PROVIDER (fallback)"
+
+        # Rate limit 체크
+        if echo "$COMMIT_MESSAGE" | grep -q -i "rate limit\|usage limit\|too many requests\|quota"; then
+            echo "# Warning: $FALLBACK_PROVIDER also hit rate limit" >&2
+            COMMIT_MESSAGE=""
+            USED_PROVIDER=""
+        fi
+    fi
+fi
+
+# 3단계: AI가 커밋 메시지를 생성했으면 파일에 쓰기
+if [ -n "$COMMIT_MESSAGE" ]; then
+    # 생성된 메시지에서 불필요한 부분 제거
+    COMMIT_MESSAGE=$(echo "$COMMIT_MESSAGE" | sed 's/^```.*$//' | sed '/^$/N;/^\n$/D' | grep -v '^#')
+
+    # 비어있지 않으면 사용
+    if [ -n "$(echo "$COMMIT_MESSAGE" | tr -d '[:space:]')" ]; then
+        echo "$COMMIT_MESSAGE" > "$COMMIT_MSG_FILE"
+        echo "" >> "$COMMIT_MSG_FILE"
+        echo "# Auto-generated by AgentRule ($USED_PROVIDER)" >> "$COMMIT_MSG_FILE"
+        echo "# Edit as needed, then save and close" >> "$COMMIT_MSG_FILE"
+
+        rm -f "$TEMP_FILE"
+        exit 0
+    fi
+fi
+
+# 4단계: 모든 AI 실패 시 템플릿 제공
+cat > "$COMMIT_MSG_FILE" << 'EOF'
+# <type>: <subject>
+#
+# AI commit message generation failed
+# Please write manually
+#
+# Type: feat, fix, docs, style, refactor, test, chore, perf, ci, build
+# Subject: 50자 이내, 소문자 시작, 명령형, 마침표 없음
+#
+# Staged files:
+EOF
+
+echo "$STAGED_FILES" | sed 's/^/# /' >> "$COMMIT_MSG_FILE"
+
+echo "" >> "$COMMIT_MSG_FILE"
+echo "# Note: Primary provider ($PROVIDER) failed" >> "$COMMIT_MSG_FILE"
+if [ "$FALLBACK_PROVIDER" != "$PROVIDER" ]; then
+    echo "# Fallback provider ($FALLBACK_PROVIDER) also failed" >> "$COMMIT_MSG_FILE"
+fi
+echo "# Possible reasons: rate limit, timeout (${TIMEOUT}s), or command not found" >> "$COMMIT_MSG_FILE"
+
+# 임시 파일 삭제
+rm -f "$TEMP_FILE"
+
+exit 0

@@ -1,0 +1,26 @@
+{
+  "description": "YiSan 프로젝트 Claude Code 설정",
+  "version": "1.0.0",
+
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": ".claude/hooks/on-session-start.sh"
+      }
+    ],
+    "SessionEnd": [
+      {
+        "type": "command",
+        "command": ".claude/hooks/on-session-end.sh"
+      }
+    ]
+  },
+
+  "customInstructions": "이 프로젝트는 Unreal Engine 5.6 C++ 프로젝트입니다. AgentRule의 기본 페르소나와 로그 시스템을 따릅니다.",
+
+  "extends": [
+    "AgentRule/PERSONA.md",
+    "AgentRule/CLAUDE.md"
+  ]
+}

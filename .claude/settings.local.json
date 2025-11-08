@@ -23,7 +23,17 @@
       "Bash(move \"E:\\UE\\YiSan\\Source\\YiSan\\Character\\Private\\UChatPlayerSystem.cpp\" \"E:\\UE\\YiSan\\Source\\LatteLibrary\\Character\\Private\\UChatPlayerSystem.cpp\")",
       "Bash(dir:*)",
       "Bash(\"C:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Build\\BatchFiles\\Build.bat\" YiSanEditor Win64 Development \"E:\\UE\\YiSan\\YiSan.uproject\" -WaitMutex)",
-      "Bash(\"C:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Build\\BatchFiles\\Build.bat\" YiSanEditor Win64 Development \"%CD%\\YiSan.uproject\" -WaitMutex)"
+      "Bash(\"C:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Build\\BatchFiles\\Build.bat\" YiSanEditor Win64 Development \"%CD%\\YiSan.uproject\" -WaitMutex)",
+      "Bash(git commit:*)",
+      "Bash(gh pr list:*)",
+      "Bash(awk:*)",
+      "Bash(mkdir:*)",
+      "Bash(chmod:*)",
+      "Bash(git config:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(python3:*)",
+      "WebFetch(domain:code.claude.com)",
+      "Bash(test:*)"
     ],
     "deny": [],
     "ask": []
