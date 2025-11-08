@@ -109,20 +109,98 @@ Tests/                     # PowerShell 기반 검증 스크립트
 
 ## 자동화 시스템
 
-### Daily DevLog 자동 생성
-- **스케줄**: 매일 KST 오전 9시 (GitHub Actions)
+프로젝트는 6개의 GitHub Actions 워크플로우로 자동화되어 있습니다.
+
+### 📊 CI/CD 워크플로우 개요
+
+| 워크플로우 | 트리거 | 주기 | 설명 |
+|-----------|--------|------|------|
+| **Doxygen** | 코드 푸시/PR | 실시간 | C++ API 문서 자동 생성 및 배포 |
+| **HonKit** | DevLog/Planning 변경 | 실시간 | 개발 문서 사이트 빌드 및 배포 |
+| **Daily DevLog** | Cron + Manual | 매일 오전 8:30 (KST) | 일일 개발 로그 자동 생성 (OpenAI) |
+| **Daily DevLog (Simple)** | Cron + Manual | 매일 오전 9:00 (KST) | 일일 개발 로그 자동 생성 (Python) |
+| **Weekly Report** | Cron + Manual | 매주 일요일 23:00 (KST) | 주간 개발 요약 리포트 생성 |
+| **System Review** | Cron + Manual | 매월 1일 23:00 (KST) | 월간 시스템 리뷰 생성 |
+
+### 1. Doxygen 문서화
+- **파일**: `.github/workflows/doxygen.yml`
+- **트리거**: `Source/`, `Plugins/`, `*.md`, `Doxyfile` 변경 시
+- **출력**: [API 문서](https://doppleddiggong.github.io/YiSan/doxygen/)
+- **기능**: Doxygen Awesome CSS 테마 적용, GraphViz 다이어그램 생성
+
+### 2. HonKit 문서 사이트
+- **파일**: `.github/workflows/honkit.yml`
+- **트리거**: `Documents/DevLog/`, `Documents/Planning/` 변경 시
+- **출력**: [개발 문서](https://doppleddiggong.github.io/YiSan/docs/)
+- **플러그인**:
+  - `mermaid-gb3`: 다이어그램 렌더링
+  - `collapsible-menu`: 접을 수 있는 메뉴
+  - `search-plus`: 향상된 검색
+  - `expandable-chapters-small`: 챕터 확장/축소
+
+### 3. Daily DevLog (OpenAI 기반)
+- **파일**: `.github/workflows/devlog.yml`
+- **스케줄**: 매일 오전 8:30 (KST) - `cron: '30 23 * * *'`
+- **기능**:
+  - OpenAI GPT-4 Turbo로 커밋 분석 및 DevLog 자동 생성
+  - Pull Request 자동 생성
+  - Discord 웹훅 알림
+- **수동 실행**: 날짜 지정 및 강제 생성 가능
+- **환경 변수**: `OPENAI_API_KEY`, `DISCORD_WEBHOOK_URL`
+
+### 4. Daily DevLog (Python 기반)
+- **파일**: `.github/workflows/devlog-simple.yml`
+- **스케줄**: 매일 오전 9:00 (KST) - `cron: '0 0 * * *'`
 - **생성 위치**: `Documents/DevLog/YYYY-MM-DD.md`
 - **수집 정보**:
   - Git 커밋 통계 (Conventional Commits 기반)
   - 빌드 및 테스트 결과
-  - 코드 Hotspot 분석
-  - Doxygen API 변화
+  - 코드 변경 분석
+- **자동 커밋**: GitHub Actions Bot이 직접 커밋
 - **템플릿**: `.github/scripts/devlog/daily_template.md`
 
-### HonKit 문서 자동 배포
-- **트리거**: DevLog 또는 Planning 폴더 업데이트 시
-- **빌드**: HonKit + Mermaid + Collapsible Menu 플러그인
-- **배포**: GitHub Pages (`gh-pages` 브랜치)
+### 5. Weekly Report
+- **파일**: `.github/workflows/weekly-report.yml`
+- **스케줄**: 매주 일요일 23:00 (KST) - `cron: '0 14 * * 0'`
+- **생성 위치**: `Documents/DevLog/YYYY-W##-Summary.md`
+- **기능**:
+  - 주간 커밋 통계 및 트렌드 분석
+  - 주요 작업 하이라이트
+  - Discord 알림 (선택)
+- **템플릿**: `.github/scripts/devlog/weekly_template.md`
+
+### 6. System Review
+- **파일**: `.github/workflows/system-review.yml`
+- **스케줄**: 매월 1일 23:00 (KST) - `cron: '0 14 1 * *'`
+- **생성 위치**: `Documents/SystemReview/YYYY-MM-SystemReview.md`
+- **기능**:
+  - 아키텍처 변화 분석
+  - 성능 메트릭 추적
+  - 코드 품질 리뷰
+  - 주간/월간 리뷰 타입 선택 가능
+- **템플릿**: `.github/scripts/devlog/system_review_template.md`
+
+### Discord 알림 설정 (선택)
+Discord 웹훅을 설정하면 DevLog 생성 시 자동으로 알림을 받을 수 있습니다:
+
+1. Discord 서버에서 웹훅 URL 생성
+2. GitHub Repository Settings → Secrets → Actions
+3. `DISCORD_WEBHOOK_URL` 시크릿 추가
+
+### 수동 실행 방법
+모든 워크플로우는 수동 실행(`workflow_dispatch`)을 지원합니다:
+
+```bash
+# GitHub CLI 사용
+gh workflow run devlog-simple.yml
+gh workflow run weekly-report.yml --field date=2025-01-15
+gh workflow run system-review.yml --field type=weekly
+```
+
+또는 GitHub 웹 UI:
+1. Actions 탭 이동
+2. 원하는 워크플로우 선택
+3. "Run workflow" 버튼 클릭
 
 ---
 
