@@ -1,6 +1,5 @@
 var NAVTREEINDEX4 =
 {
-"classAQuestManagerActor.html#a201f0310f82b41167282606bff44487d":[4,0,12,15],
 "classAQuestManagerActor.html#a2530aba081122c3b80876522ee3c52e5":[4,0,12,14],
 "classAQuestManagerActor.html#a47d4ab31a110b03ccd0fc9cbc8ceaba9":[4,0,12,3],
 "classAQuestManagerActor.html#a4a25235d736cdbab3588bac331f9aba3":[4,0,12,12],
@@ -249,5 +248,6 @@ var NAVTREEINDEX4 =
 "classUDelayTaskManager.html":[4,0,63],
 "classUDelayTaskManager.html#a304f3ab272356a43b0b5cdaf3b47251a":[4,0,63,3],
 "classUDelayTaskManager.html#a359e5ddf1d12b6042175f4765d000ed7":[4,0,63,1],
-"classUDelayTaskManager.html#a4e1ff6a0d1d04f8b069b57874d3fc245":[4,0,63,10]
+"classUDelayTaskManager.html#a4e1ff6a0d1d04f8b069b57874d3fc245":[4,0,63,10],
+"classUDelayTaskManager.html#a560ea4f7c70e08948b591b6615c5f666":[4,0,63,12]
 };
