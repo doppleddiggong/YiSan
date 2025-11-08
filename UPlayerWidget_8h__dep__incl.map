@@ -1,0 +1,11 @@
+<map id="Source/YiSan/UI/Public/UPlayerWidget.h" name="Source/YiSan/UI/Public/UPlayerWidget.h">
+<area shape="rect" id="Node000001" title="UPlayerWidget 클래스를 선언합니다." alt="" coords="107,5,273,45"/>
+<area shape="rect" id="Node000002" href="$UPlayerWidget_8cpp.html" title="UPlayerWidget의 동작을 구현합니다." alt="" coords="5,93,180,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,56,116,95,112,91,157,52"/>
+<area shape="rect" id="Node000003" href="$UMainWidget_8h.html" title="음성 상호작용과 건물 안내 UI를 제공하는 메인 위젯을 선언합니다." alt="" coords="204,93,371,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="223,52,268,91,264,95,220,56"/>
+<area shape="rect" id="Node000004" href="$APlayerActor_8cpp.html" title="APlayerActor 구현을 위한 Doxygen 주석을 제공합니다." alt="" coords="91,181,278,221"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="256,144,209,183,206,179,252,140"/>
+<area shape="rect" id="Node000005" href="$UMainWidget_8cpp.html" title="UMainWidget의 동작을 구현합니다." alt="" coords="303,181,477,221"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="322,140,369,179,366,183,319,144"/>
+</map>

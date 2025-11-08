@@ -1,0 +1,17 @@
+<map id="Source/YiSan/UI/Public/UDialogManager.h" name="Source/YiSan/UI/Public/UDialogManager.h">
+<area shape="rect" id="Node000001" title="UDialogManager 클래스를 선언합니다." alt="" coords="746,5,913,45"/>
+<area shape="rect" id="Node000002" href="$APlayerControl_8cpp.html" title="APlayerControl의 동작을 구현합니다." alt="" coords="5,101,205,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="732,36,497,58,357,75,218,96,181,103,180,98,217,91,357,70,497,53,732,31"/>
+<area shape="rect" id="Node000003" href="$UYisanOnlineSystem_8cpp.html" title="UYisanOnlineSystem의 동작을 구현합니다." alt="" coords="230,101,469,141"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="733,48,482,96,445,103,444,98,481,91,732,42"/>
+<area shape="rect" id="Node000004" href="$UAnswerStateSystem_8cpp.html" title="UAnswerStateSystem의 동작을 구현합니다." alt="" coords="493,101,688,141"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="769,53,640,103,638,98,767,48"/>
+<area shape="rect" id="Node000005" href="$UWebSocketSystem_8cpp.html" title="UWebSocketSystem의 동작을 구현합니다." alt="" coords="713,101,946,141"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="832,59,832,101,827,101,827,59"/>
+<area shape="rect" id="Node000006" href="$UDialogManager_8cpp.html" title="UDialogManager의 동작을 구현합니다." alt="" coords="970,101,1145,141"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="889,48,1012,98,1010,103,887,53"/>
+<area shape="rect" id="Node000007" href="$ULoadingTransitionManager_8cpp.html" title="ULoadingTransitionManager의 동작을 구현합니다." alt="" coords="1169,101,1402,141"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="927,44,1194,98,1193,103,926,49"/>
+<area shape="rect" id="Node000008" href="$UVoiceConversationSystem_8cpp.html" title="UVoiceConversationSystem의 동작을 구현합니다." alt="" coords="1426,93,1633,148"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="927,32,1151,54,1283,71,1415,91,1426,93,1425,98,1414,96,1282,76,1150,59,926,37"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="UStateWidget::RefreshTimeText" name="UStateWidget::RefreshTimeText">
+<area shape="rect" id="Node000001" title="현재 시간을 포맷팅해 텍스트로 출력합니다." alt="" coords="279,5,509,31"/>
+<area shape="rect" id="Node000002" href="$classUStateWidget.html#ac2b8a82ce5eaa9387625842737957c02" title="위젯 생성 시 초기화 작업을 수행합니다." alt="" coords="5,5,231,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="265,21,231,21,231,15,265,15"/>
+</map>

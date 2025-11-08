@@ -1,0 +1,5 @@
+<map id="AYisanGameState::UpdatePlayerList" name="AYisanGameState::UpdatePlayerList">
+<area shape="rect" id="Node000001" title="플레이어 목록을 업데이트하고 브로드캐스트합니다." alt="" coords="252,13,509,38"/>
+<area shape="rect" id="Node000002" href="$classAYisanGameState.html#a760721a6ef2c9acebb4a853f15535904" title="플레이어 목록 업데이트를 요청합니다." alt="" coords="5,5,204,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="238,28,204,28,204,23,238,23"/>
+</map>

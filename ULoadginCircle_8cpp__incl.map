@@ -1,0 +1,52 @@
+<map id="Source/YiSan/UI/Private/ULoadginCircle.cpp" name="Source/YiSan/UI/Private/ULoadginCircle.cpp">
+<area shape="rect" id="Node000001" title="ULoadginCircle의 동작을 구현합니다." alt="" coords="1738,5,1913,45"/>
+<area shape="rect" id="Node000002" href="$ULoadginCircle_8h.html" title="ULoadginCircle 클래스를 선언합니다." alt="" coords="741,101,873,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1738,35,1404,60,978,96,886,105,886,100,977,91,1404,55,1738,30"/>
+<area shape="rect" id="Node000006" href="$GameLogging_8h.html" title="YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다." alt="" coords="229,101,353,126"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1738,34,366,110,366,105,1738,29"/>
+<area shape="rect" id="Node000011" href="$UStateWidget_8h.html" title="시간·네트워크·오디오 상태를 표시하는 UI 위젯을 선언합니다." alt="" coords="989,101,1113,126"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="1738,33,1464,53,1295,71,1126,96,1105,100,1104,95,1125,91,1294,66,1463,48,1737,28"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="1137,101,1308,126"/>
+<area shape="poly" id="edge18_Node000001_Node000014" title=" " alt="" coords="1738,39,1546,63,1320,96,1293,101,1292,95,1320,91,1546,58,1738,34"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="1332,93,1532,133"/>
+<area shape="poly" id="edge19_Node000001_Node000015" title=" " alt="" coords="1740,48,1532,93,1531,88,1738,43"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="1555,101,1717,126"/>
+<area shape="poly" id="edge20_Node000001_Node000016" title=" " alt="" coords="1785,48,1675,98,1672,93,1783,43"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="1741,101,1910,126"/>
+<area shape="poly" id="edge21_Node000001_Node000017" title=" " alt="" coords="1828,46,1828,87,1823,87,1823,46"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="1934,101,2151,126"/>
+<area shape="poly" id="edge22_Node000001_Node000018" title=" " alt="" coords="1874,43,2002,93,2000,98,1872,48"/>
+<area shape="rect" id="Node000019" title=" " alt="" coords="2175,101,2294,126"/>
+<area shape="poly" id="edge23_Node000001_Node000019" title=" " alt="" coords="1914,40,2165,91,2181,95,2179,100,2163,96,1912,45"/>
+<area shape="rect" id="Node000020" title=" " alt="" coords="2318,101,2477,126"/>
+<area shape="poly" id="edge24_Node000001_Node000020" title=" " alt="" coords="1913,34,2095,58,2307,91,2332,95,2332,101,2306,96,2094,63,1913,40"/>
+<area shape="rect" id="Node000021" title=" " alt="" coords="2501,101,2633,126"/>
+<area shape="poly" id="edge25_Node000001_Node000021" title=" " alt="" coords="1913,29,2172,50,2331,67,2490,91,2511,95,2510,100,2489,96,2330,73,2172,55,1913,34"/>
+<area shape="rect" id="Node000022" title=" " alt="" coords="2657,101,2794,126"/>
+<area shape="poly" id="edge26_Node000001_Node000022" title=" " alt="" coords="1913,27,2237,45,2441,64,2646,91,2669,95,2668,100,2645,96,2440,69,2236,51,1913,32"/>
+<area shape="rect" id="Node000023" title=" " alt="" coords="2819,101,2947,126"/>
+<area shape="poly" id="edge27_Node000001_Node000023" title=" " alt="" coords="1913,25,2079,29,2302,40,2553,59,2807,91,2829,95,2828,100,2806,96,2553,65,2302,45,2079,35,1913,30"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="152,255,269,280"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="783,129,665,184,640,198,613,209,525,232,437,248,283,265,283,259,436,242,524,226,611,204,637,193,663,179,781,124"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="903,181,1076,207"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="834,124,951,173,949,178,832,128"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="676,181,879,207"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="805,127,789,169,784,167,800,125"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="229,124,168,132,104,145,50,162,30,172,17,183,9,198,11,211,20,223,37,232,85,248,139,257,138,262,83,253,35,237,17,227,6,214,4,198,13,180,27,167,48,157,103,139,167,127,228,118"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="291,181,450,207"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="304,124,351,169,347,173,301,128"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="474,181,601,207"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="327,123,489,175,488,180,326,129"/>
+<area shape="rect" id="Node000009" href="$FLogWriter_8h.html" title="FArchive 클래스를 선언합니다." alt="" coords="27,181,131,207"/>
+<area shape="poly" id="edge9_Node000006_Node000009" title=" " alt="" coords="261,129,123,179,121,174,259,124"/>
+<area shape="rect" id="Node000010" href="$NetworkLog_8h.html" title="YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다." alt="" coords="155,181,267,207"/>
+<area shape="poly" id="edge11_Node000006_Node000010" title=" " alt="" coords="281,128,234,173,231,169,277,124"/>
+<area shape="poly" id="edge10_Node000009_Node000003" title=" " alt="" coords="101,204,178,246,176,250,99,209"/>
+<area shape="poly" id="edge12_Node000010_Node000003" title=" " alt="" coords="213,207,213,241,208,241,208,207"/>
+<area shape="poly" id="edge14_Node000011_Node000003" title=" " alt="" coords="1064,125,1079,142,1093,164,1098,187,1096,198,1090,209,1073,219,1047,229,968,243,863,254,741,262,487,269,284,269,284,264,486,263,741,256,862,249,967,238,1045,223,1071,215,1086,205,1091,196,1093,187,1088,166,1075,145,1060,128"/>
+<area shape="poly" id="edge16_Node000011_Node000004" title=" " alt="" coords="1044,128,1009,172,1005,169,1040,125"/>
+<area shape="rect" id="Node000012" href="$EBuildingType_8h.html" title="EBuildingType 클래스를 선언합니다." alt="" coords="1151,181,1276,207"/>
+<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="1075,124,1179,173,1176,178,1073,128"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="1300,181,1495,207"/>
+<area shape="poly" id="edge17_Node000011_Node000013" title=" " alt="" coords="1096,123,1126,131,1331,176,1329,181,1125,136,1095,129"/>
+</map>

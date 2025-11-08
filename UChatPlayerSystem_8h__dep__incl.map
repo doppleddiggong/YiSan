@@ -1,0 +1,26 @@
+<map id="Source/YiSan/Character/Public/UChatPlayerSystem.h" name="Source/YiSan/Character/Public/UChatPlayerSystem.h">
+<area shape="rect" id="Node000001" title="EChatMessageType 클래스를 선언합니다." alt="" coords="515,5,725,45"/>
+<area shape="rect" id="Node000002" href="$APlayerActor_8cpp.html" title="APlayerActor 구현을 위한 Doxygen 주석을 제공합니다." alt="" coords="5,196,192,236"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="504,51,424,70,342,96,282,120,224,148,131,198,129,194,222,143,280,115,340,91,422,65,503,46"/>
+<area shape="rect" id="Node000003" href="$UChatPlayerSystem_8cpp.html" title="UChatPlayerSystem의 동작을 구현합니다." alt="" coords="217,196,450,236"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="502,39,437,59,406,75,379,95,361,118,349,146,337,196,332,195,344,144,356,116,375,91,403,70,435,54,500,34"/>
+<area shape="rect" id="Node000004" href="$ADasanActor_8cpp.html" title="ADasanActor의 동작을 구현합니다." alt="" coords="475,196,661,236"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="614,59,576,196,571,195,609,58"/>
+<area shape="rect" id="Node000005" href="$UChatBoxWidget_8cpp.html" title="UChatBoxWidget의 동작을 구현합니다." alt="" coords="686,196,861,236"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="630,57,646,102,673,146,702,173,734,194,732,198,699,177,669,150,641,104,625,59"/>
+<area shape="rect" id="Node000006" href="$UPlayerHeadWidget_8cpp.html" title="UPlayerHeadWidget의 동작을 구현합니다." alt="" coords="875,101,1059,141"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="704,46,897,98,896,103,703,51"/>
+<area shape="rect" id="Node000007" href="$UChatBoxWidget_8h.html" title="UChatBoxWidget 클래스를 선언합니다." alt="" coords="390,101,557,141"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="580,55,504,103,502,98,578,50"/>
+<area shape="rect" id="Node000008" href="$UChatEntryWidget_8h.html" title="UChatEntryWidget 클래스를 선언합니다." alt="" coords="683,101,850,141"/>
+<area shape="poly" id="edge11_Node000001_Node000008" title=" " alt="" coords="662,50,738,98,736,103,660,55"/>
+<area shape="rect" id="Node000010" href="$UVoiceConversationSystem_8cpp.html" title="UVoiceConversationSystem의 동작을 구현합니다." alt="" coords="1083,93,1290,148"/>
+<area shape="poly" id="edge14_Node000001_Node000010" title=" " alt="" coords="740,39,898,62,1071,91,1084,93,1083,98,1070,96,897,67,739,45"/>
+<area shape="poly" id="edge7_Node000007_Node000002" title=" " alt="" coords="385,147,175,199,174,193,384,141"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="435,151,363,198,360,194,432,146"/>
+<area shape="poly" id="edge9_Node000007_Node000004" title=" " alt="" coords="504,149,551,194,547,198,501,152"/>
+<area shape="poly" id="edge10_Node000007_Node000005" title=" " alt="" coords="548,142,714,193,712,198,546,147"/>
+<area shape="poly" id="edge12_Node000008_Node000005" title=" " alt="" coords="772,154,775,196,769,196,766,155"/>
+<area shape="rect" id="Node000009" href="$UChatEntryWidget_8cpp.html" title="UChatEntryWidget의 동작을 구현합니다." alt="" coords="885,196,1059,236"/>
+<area shape="poly" id="edge13_Node000008_Node000009" title=" " alt="" coords="822,144,932,194,929,198,819,149"/>
+</map>

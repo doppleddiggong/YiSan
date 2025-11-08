@@ -1,0 +1,5 @@
+<map id="FGPTContext::Reset" name="FGPTContext::Reset">
+<area shape="rect" id="Node000001" title="내부 데이터를 초기화합니다." alt="" coords="5,13,156,38"/>
+<area shape="rect" id="Node000002" href="$structFGPTContextLocation.html#a87bccf77dc61121ca107039f50d7a451" title="위치 정보를 초기화합니다." alt="" coords="204,5,365,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="156,23,190,23,190,28,156,28"/>
+</map>

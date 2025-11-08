@@ -1,0 +1,5 @@
+<map id="UPlayerHeadWidget::SetOwningActor" name="UPlayerHeadWidget::SetOwningActor">
+<area shape="rect" id="Node000001" title="이 위젯을 소유한 액터를 설정하고, 닉네임 확인 타이머를 시작합니다." alt="" coords="5,5,167,45"/>
+<area shape="rect" id="Node000002" href="$classUPlayerHeadWidget.html#a00c53b30197a8810480ed81be4a13660" title="닉네임 정보를 확인하는 함수입니다." alt="" coords="215,5,376,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,23,201,23,201,28,167,28"/>
+</map>

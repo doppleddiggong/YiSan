@@ -1,0 +1,337 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YiSan Project Documentation: Source/YiSan/Network/Public/NetworkData.h 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YiSan Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('NetworkData_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">NetworkData.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="NetworkData_8h.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="FGPTContext_8h.html">FGPTContext.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="UCustomNetworkSettings_8h.html">UCustomNetworkSettings.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Templates/SharedPointer.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;NetworkData.generated.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">// =================================================================================</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">// Network Configuration</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// 서버 주소와 포트를 설정합니다.</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// =================================================================================</span></div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="namespaceNetworkConfig.html">   17</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceNetworkConfig.html">NetworkConfig</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">   22</a></span>    <span class="keyword">static</span> FString <a class="code hl_function" href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">GetFullUrl</a>(<span class="keyword">const</span> FString&amp; Endpoint)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keyword">const</span> <a class="code hl_enumeration" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577">EServerMode</a> Mode = <a class="code hl_function" href="classUCustomNetworkSettings.html#aa089b67ac992ff3aee3dd62629c0df0a">UCustomNetworkSettings::GetCurrentServerMode</a>();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structFServerConfig.html">FServerConfig</a>&amp; Config = GetDefault&lt;UCustomNetworkSettings&gt;()-&gt;GetConfig(Mode);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordflow">return</span> Config.<a class="code hl_function" href="structFServerConfig.html#ab65e0b73b4679e5efb155dd6f98bac3d">GetFullUrl</a>(Endpoint);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    }</div>
+</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="}">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="namespaceNetworkConfig.html#a948647fad9ed84a91de549757a7a0e74">   31</a></span>    <span class="keyword">static</span> FString <a class="code hl_function" href="namespaceNetworkConfig.html#a948647fad9ed84a91de549757a7a0e74">GetSocketURL</a>()</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keyword">const</span> <a class="code hl_enumeration" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577">EServerMode</a> Mode = <a class="code hl_function" href="classUCustomNetworkSettings.html#aa089b67ac992ff3aee3dd62629c0df0a">UCustomNetworkSettings::GetCurrentServerMode</a>();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structFServerConfig.html">FServerConfig</a>&amp; Config = GetDefault&lt;UCustomNetworkSettings&gt;()-&gt;GetConfig(Mode);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordflow">return</span> Config.<a class="code hl_variable" href="structFServerConfig.html#a192542ce9a719e9f4a9dd468e1e69aea">WebSocketUrl</a>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    }</div>
+</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
+</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="namespaceRequestAPI.html">   39</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceRequestAPI.html">RequestAPI</a></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>{</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="namespaceRequestAPI.html#ae1061ff9836b3127b56024d0a0f6fd65">   42</a></span>    <span class="keyword">static</span> FString <a class="code hl_variable" href="namespaceRequestAPI.html#ae1061ff9836b3127b56024d0a0f6fd65">Health</a> = FString(<span class="stringliteral">&quot;/health&quot;</span>);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="namespaceRequestAPI.html#ae56660e3a00ae63d00aa203b797602e9">   45</a></span>    <span class="keyword">static</span> FString <a class="code hl_variable" href="namespaceRequestAPI.html#ae56660e3a00ae63d00aa203b797602e9">ASK</a> = FString(<span class="stringliteral">&quot;/ask&quot;</span>);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="namespaceRequestAPI.html#acf93ca60f02e80587391f915c3e58351">   48</a></span>    <span class="keyword">static</span> FString <a class="code hl_variable" href="namespaceRequestAPI.html#acf93ca60f02e80587391f915c3e58351">STT</a> = FString(<span class="stringliteral">&quot;/stt&quot;</span>);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="namespaceRequestAPI.html#a9229b4bd370de8c0a5d7d1a064c7179d">   51</a></span>    <span class="keyword">static</span> FString <a class="code hl_variable" href="namespaceRequestAPI.html#a9229b4bd370de8c0a5d7d1a064c7179d">TTS</a> = FString(<span class="stringliteral">&quot;/tts&quot;</span>);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="namespaceRequestAPI.html#a44fa8dc8bd4f977eb2377bf6d620dab5">   54</a></span>    <span class="keyword">static</span> FString <a class="code hl_variable" href="namespaceRequestAPI.html#a44fa8dc8bd4f977eb2377bf6d620dab5">GPT</a> = FString(<span class="stringliteral">&quot;/gpt&quot;</span>);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
+</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#a176f0d72d06ab65295baec529c15ad9f">   59</a></span><a class="code hl_function" href="NetworkData_8h.html#a176f0d72d06ab65295baec529c15ad9f">DECLARE_DELEGATE_TwoParams</a>(FResponseHealthDelegate, <a class="code hl_struct" href="structFResponseHealth.html">FResponseHealth</a>&amp;, <span class="keywordtype">bool</span>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen00061" data-start="{" data-end="};">
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="structFResponseHealth.html">   61</a></span>struct <a class="code hl_struct" href="structFResponseHealth.html">FResponseHealth</a></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>{</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    UPROPERTY(BlueprintReadWrite)</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="structFResponseHealth.html#a21bcca6ff52ce04957bebbde5e67174e">   66</a></span>    int32 status = 0;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;class IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">void</span> PrintData();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>};</div>
+</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">// --- Ask Endpoint (Integrated Pipeline: STT -&gt; GPT -&gt; TTS) ---</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen00077" data-start="{" data-end="};">
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="structFRequestASK.html">   77</a></span>struct <a class="code hl_struct" href="structFRequestASK.html">FRequestASK</a></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>{</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    UPROPERTY(BlueprintReadWrite)</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="structFRequestASK.html#a359ee975eaaf4300bac81db287a907d9">   82</a></span>    <a class="code hl_struct" href="structFGPTContext.html">FGPTContext</a> context;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">bool</span> ToJsonString(FString&amp; OutJson) const;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>};</div>
+</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen00090" data-start="{" data-end="};">
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="structFRequestGPT.html">   90</a></span>struct <a class="code hl_struct" href="structFRequestGPT.html">FRequestGPT</a></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>{</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    UPROPERTY(BlueprintReadWrite)</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="structFRequestGPT.html#a6d4d0b33873768b2a82d1f7e49b11a9a">   95</a></span>    FString user_query;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    UPROPERTY(BlueprintReadWrite)</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="structFRequestGPT.html#a0a530c2d1e94ba1c191898b9540fe740">   98</a></span>    <a class="code hl_struct" href="structFGPTContext.html">FGPTContext</a> context;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">bool</span> ToJsonString(FString&amp; OutJson) const;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>};</div>
+</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#a3d326251f89748b14e419765fd6bb82e">  105</a></span><a class="code hl_function" href="NetworkData_8h.html#a176f0d72d06ab65295baec529c15ad9f">DECLARE_DELEGATE_TwoParams</a>(FResponseAskDelegate, <a class="code hl_struct" href="structFResponseAsk.html">FResponseAsk</a>&amp;, <span class="keywordtype">bool</span>);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen00107" data-start="{" data-end="};">
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="structFResponseAsk.html">  107</a></span>struct <a class="code hl_struct" href="structFResponseAsk.html">FResponseAsk</a></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>{</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    UPROPERTY(BlueprintReadWrite)</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="structFResponseAsk.html#ae0e70c432ca12983c76da3bf69ce1062">  112</a></span>    FString transcribed_text;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    UPROPERTY(BlueprintReadWrite)</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="structFResponseAsk.html#a1b59a38199a9681f76def512a8aeb421">  115</a></span>    FString gpt_response_text;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    UPROPERTY(BlueprintReadWrite)</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="structFResponseAsk.html#a6938c08f53de18da2ecef2e1f29d8fb8">  118</a></span>    TArray&lt;uint8&gt; audio_data;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordtype">void</span> PrintData();</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>};</div>
+</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#a1d9e50325663f2954b9be5de4220f383">  127</a></span><a class="code hl_function" href="NetworkData_8h.html#a176f0d72d06ab65295baec529c15ad9f">DECLARE_DELEGATE_TwoParams</a>(FResponseSTTDelegate, <a class="code hl_struct" href="structFResponseTestSTT.html">FResponseTestSTT</a>&amp;, <span class="keywordtype">bool</span>);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen00129" data-start="{" data-end="};">
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="structFResponseTestSTT.html">  129</a></span>struct <a class="code hl_struct" href="structFResponseTestSTT.html">FResponseTestSTT</a></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>{</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    UPROPERTY(BlueprintReadWrite)</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="structFResponseTestSTT.html#ae27b6a4e40bce6e668ef8d4332b136ba">  134</a></span>    FString text;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordtype">void</span> PrintData();</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>};</div>
+</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="comment">// --- Test Endpoints ---</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen00145" data-start="{" data-end="};">
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="structFRequestTTS.html">  145</a></span>struct <a class="code hl_struct" href="structFRequestTTS.html">FRequestTTS</a></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>{</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    UPROPERTY(BlueprintReadWrite)</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="structFRequestTTS.html#a0d2b58efda898f300db2e8baa8c48b50">  150</a></span>    FString text;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    UPROPERTY(BlueprintReadWrite)</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="structFRequestTTS.html#a9060016513b6ae174a859ce3b8ec1b05">  153</a></span>    <span class="keywordtype">float</span> speaking_rate = 0.88f;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    UPROPERTY(BlueprintReadWrite)</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno"><a class="line" href="structFRequestTTS.html#ae0c4d13945e01977fd0c5d3e6e4c49bf">  156</a></span>    <span class="keywordtype">float</span> pitch = -3.0f;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    UPROPERTY(BlueprintReadWrite)</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="structFRequestTTS.html#a816644fc75843be2617e0b981a031c1c">  159</a></span>    FString voice_name = TEXT(&quot;ko-KR-Wavenet-D&quot;);</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>};</div>
+</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#af5f8de72155d4683dd4cc7a472408496">  163</a></span><a class="code hl_function" href="NetworkData_8h.html#a176f0d72d06ab65295baec529c15ad9f">DECLARE_DELEGATE_TwoParams</a>(FResponseTTSDelegate, <a class="code hl_struct" href="structFResponseTTS.html">FResponseTTS</a>&amp;, <span class="keywordtype">bool</span>);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen00165" data-start="{" data-end="};">
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="structFResponseTTS.html">  165</a></span>struct <a class="code hl_struct" href="structFResponseTTS.html">FResponseTTS</a></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>{</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    UPROPERTY(BlueprintReadWrite)</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="structFResponseTTS.html#a1bca715fb15f2a93ee803b444efcb52a">  170</a></span>    TArray&lt;uint8&gt; audio_data;</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="keywordtype">void</span> PrintData();</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>};</div>
+</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#a20c948d5f322bb21931e1e36a11ed38f">  181</a></span><a class="code hl_function" href="NetworkData_8h.html#a176f0d72d06ab65295baec529c15ad9f">DECLARE_DELEGATE_TwoParams</a>(FResponseGPTDelegate, <a class="code hl_struct" href="structFResponseGPT.html">FResponseGPT</a>&amp;, <span class="keywordtype">bool</span>);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen00183" data-start="{" data-end="};">
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno"><a class="line" href="structFResponseGPT.html">  183</a></span>struct <a class="code hl_struct" href="structFResponseGPT.html">FResponseGPT</a></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>{</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    UPROPERTY(BlueprintReadWrite)</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno"><a class="line" href="structFResponseGPT.html#a437ec40ad563e2367f1f570d737487d5">  188</a></span>    FString response;</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordtype">void</span> PrintData();</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>};</div>
+</div>
+<div class="ttc" id="aFGPTContext_8h_html"><div class="ttname"><a href="FGPTContext_8h.html">FGPTContext.h</a></div><div class="ttdoc">GPT 상호작용에 사용되는 공간 컨텍스트 구조체를 정의합니다.</div></div>
+<div class="ttc" id="aNetworkData_8h_html_a176f0d72d06ab65295baec529c15ad9f"><div class="ttname"><a href="NetworkData_8h.html#a176f0d72d06ab65295baec529c15ad9f">DECLARE_DELEGATE_TwoParams</a></div><div class="ttdeci">DECLARE_DELEGATE_TwoParams(FResponseHealthDelegate, FResponseHealth &amp;, bool)</div><div class="ttdoc">헬스 체크 응답을 전달하는 델리게이트입니다.</div></div>
+<div class="ttc" id="aUCustomNetworkSettings_8h_html"><div class="ttname"><a href="UCustomNetworkSettings_8h.html">UCustomNetworkSettings.h</a></div><div class="ttdoc">서버 환경별 네트워크 설정을 노출하는 DeveloperSettings를 선언합니다.</div></div>
+<div class="ttc" id="aUCustomNetworkSettings_8h_html_a79cfeb7c9f94018b98c2415dc06d4577"><div class="ttname"><a href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577">EServerMode</a></div><div class="ttdeci">EServerMode</div><div class="ttdoc">서버 환경(개발/스테이징/라이브)을 나타내는 열거형입니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00013">UCustomNetworkSettings.h:14</a></div></div>
+<div class="ttc" id="aclassUCustomNetworkSettings_html_aa089b67ac992ff3aee3dd62629c0df0a"><div class="ttname"><a href="classUCustomNetworkSettings.html#aa089b67ac992ff3aee3dd62629c0df0a">UCustomNetworkSettings::GetCurrentServerMode</a></div><div class="ttdeci">static EServerMode GetCurrentServerMode()</div><div class="ttdoc">명령줄 또는 설정으로 선택된 서버 모드를 반환합니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8cpp_source.html#l00010">UCustomNetworkSettings.cpp:10</a></div></div>
+<div class="ttc" id="anamespaceNetworkConfig_html"><div class="ttname"><a href="namespaceNetworkConfig.html">NetworkConfig</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00017">NetworkData.h:18</a></div></div>
+<div class="ttc" id="anamespaceNetworkConfig_html_a948647fad9ed84a91de549757a7a0e74"><div class="ttname"><a href="namespaceNetworkConfig.html#a948647fad9ed84a91de549757a7a0e74">NetworkConfig::GetSocketURL</a></div><div class="ttdeci">static FString GetSocketURL()</div><div class="ttdoc">현재 서버 모드에서 사용할 WebSocket 주소를 반환합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00031">NetworkData.h:31</a></div></div>
+<div class="ttc" id="anamespaceNetworkConfig_html_ab5ac57e8f51de6d1740c7a88534a7246"><div class="ttname"><a href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">NetworkConfig::GetFullUrl</a></div><div class="ttdeci">static FString GetFullUrl(const FString &amp;Endpoint)</div><div class="ttdoc">현재 서버 모드에 맞는 HTTP 엔드포인트 URL을 생성합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00022">NetworkData.h:22</a></div></div>
+<div class="ttc" id="anamespaceRequestAPI_html"><div class="ttname"><a href="namespaceRequestAPI.html">RequestAPI</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00039">NetworkData.h:40</a></div></div>
+<div class="ttc" id="anamespaceRequestAPI_html_a44fa8dc8bd4f977eb2377bf6d620dab5"><div class="ttname"><a href="namespaceRequestAPI.html#a44fa8dc8bd4f977eb2377bf6d620dab5">RequestAPI::GPT</a></div><div class="ttdeci">static FString GPT</div><div class="ttdoc">텍스트 기반 GPT 질의 엔드포인트입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00054">NetworkData.h:54</a></div></div>
+<div class="ttc" id="anamespaceRequestAPI_html_a9229b4bd370de8c0a5d7d1a064c7179d"><div class="ttname"><a href="namespaceRequestAPI.html#a9229b4bd370de8c0a5d7d1a064c7179d">RequestAPI::TTS</a></div><div class="ttdeci">static FString TTS</div><div class="ttdoc">텍스트 음성 합성 엔드포인트입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00051">NetworkData.h:51</a></div></div>
+<div class="ttc" id="anamespaceRequestAPI_html_acf93ca60f02e80587391f915c3e58351"><div class="ttname"><a href="namespaceRequestAPI.html#acf93ca60f02e80587391f915c3e58351">RequestAPI::STT</a></div><div class="ttdeci">static FString STT</div><div class="ttdoc">음성 인식 엔드포인트입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00048">NetworkData.h:48</a></div></div>
+<div class="ttc" id="anamespaceRequestAPI_html_ae1061ff9836b3127b56024d0a0f6fd65"><div class="ttname"><a href="namespaceRequestAPI.html#ae1061ff9836b3127b56024d0a0f6fd65">RequestAPI::Health</a></div><div class="ttdeci">static FString Health</div><div class="ttdoc">서버 상태 확인 엔드포인트입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00042">NetworkData.h:42</a></div></div>
+<div class="ttc" id="anamespaceRequestAPI_html_ae56660e3a00ae63d00aa203b797602e9"><div class="ttname"><a href="namespaceRequestAPI.html#ae56660e3a00ae63d00aa203b797602e9">RequestAPI::ASK</a></div><div class="ttdeci">static FString ASK</div><div class="ttdoc">음성-텍스트-음성을 통합 처리하는 ASK 엔드포인트입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00045">NetworkData.h:45</a></div></div>
+<div class="ttc" id="astructFGPTContext_html"><div class="ttname"><a href="structFGPTContext.html">FGPTContext</a></div><div class="ttdoc">플레이어 주변 맥락을 GPT에 전달하기 위한 전체 컨텍스트입니다.</div><div class="ttdef"><b>Definition</b> <a href="FGPTContext_8h_source.html#l00079">FGPTContext.h:80</a></div></div>
+<div class="ttc" id="astructFRequestASK_html"><div class="ttname"><a href="structFRequestASK.html">FRequestASK</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00077">NetworkData.h:78</a></div></div>
+<div class="ttc" id="astructFRequestGPT_html"><div class="ttname"><a href="structFRequestGPT.html">FRequestGPT</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00090">NetworkData.h:91</a></div></div>
+<div class="ttc" id="astructFRequestTTS_html"><div class="ttname"><a href="structFRequestTTS.html">FRequestTTS</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00145">NetworkData.h:146</a></div></div>
+<div class="ttc" id="astructFResponseAsk_html"><div class="ttname"><a href="structFResponseAsk.html">FResponseAsk</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00107">NetworkData.h:108</a></div></div>
+<div class="ttc" id="astructFResponseGPT_html"><div class="ttname"><a href="structFResponseGPT.html">FResponseGPT</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00183">NetworkData.h:184</a></div></div>
+<div class="ttc" id="astructFResponseHealth_html"><div class="ttname"><a href="structFResponseHealth.html">FResponseHealth</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00061">NetworkData.h:62</a></div></div>
+<div class="ttc" id="astructFResponseTTS_html"><div class="ttname"><a href="structFResponseTTS.html">FResponseTTS</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00165">NetworkData.h:166</a></div></div>
+<div class="ttc" id="astructFResponseTestSTT_html"><div class="ttname"><a href="structFResponseTestSTT.html">FResponseTestSTT</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00129">NetworkData.h:130</a></div></div>
+<div class="ttc" id="astructFServerConfig_html"><div class="ttname"><a href="structFServerConfig.html">FServerConfig</a></div><div class="ttdoc">서버 접속 정보를 담는 설정 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00022">UCustomNetworkSettings.h:23</a></div></div>
+<div class="ttc" id="astructFServerConfig_html_a192542ce9a719e9f4a9dd468e1e69aea"><div class="ttname"><a href="structFServerConfig.html#a192542ce9a719e9f4a9dd468e1e69aea">FServerConfig::WebSocketUrl</a></div><div class="ttdeci">FString WebSocketUrl</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00033">UCustomNetworkSettings.h:33</a></div></div>
+<div class="ttc" id="astructFServerConfig_html_ab65e0b73b4679e5efb155dd6f98bac3d"><div class="ttname"><a href="structFServerConfig.html#ab65e0b73b4679e5efb155dd6f98bac3d">FServerConfig::GetFullUrl</a></div><div class="ttdeci">FString GetFullUrl(const FString &amp;Endpoint) const</div><div class="ttdoc">엔드포인트를 결합한 전체 URL을 반환합니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00037">UCustomNetworkSettings.h:37</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_9a481a88fca7fb2428f2795f507e855b.html">YiSan</a></li><li class="navelem"><a class="el" href="dir_c2b02947111445946fd451d0a8a11573.html">Network</a></li><li class="navelem"><a class="el" href="dir_07a12a81c37ef165bc3928b2cbd96761.html">Public</a></li><li class="navelem"><a class="el" href="NetworkData_8h.html">NetworkData.h</a></li>
+    <li class="footer">생성시간 : 토 11월 8 2025 13:55:38, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

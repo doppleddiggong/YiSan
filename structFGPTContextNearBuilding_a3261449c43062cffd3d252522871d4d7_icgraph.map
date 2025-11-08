@@ -1,0 +1,7 @@
+<map id="FGPTContextNearBuilding::IsValid" name="FGPTContextNearBuilding::IsValid">
+<area shape="rect" id="Node000001" title="데이터가 유효한지 여부를 반환합니다." alt="" coords="292,27,483,67"/>
+<area shape="rect" id="Node000002" href="$structFGPTContext.html#aa0f24b4af499a6ef0ecc4778c9825ebd" title="주변 건물 목록에 항목을 추가합니다." alt="" coords="5,5,244,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="278,38,238,33,239,28,279,33"/>
+<area shape="rect" id="Node000003" href="$structFGPTContextNearBuilding.html#ac3c7f9ae98a3d4d0c637ee0fd9b900ee" title="JSON 직렬화를 위한 객체를 생성합니다." alt="" coords="29,55,220,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="278,62,221,68,220,63,278,56"/>
+</map>

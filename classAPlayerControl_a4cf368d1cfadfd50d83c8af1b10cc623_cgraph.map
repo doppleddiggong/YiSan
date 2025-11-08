@@ -1,0 +1,7 @@
+<map id="APlayerControl::BeginPlay" name="APlayerControl::BeginPlay">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,45,197,70"/>
+<area shape="rect" id="Node000002" href="$classAPlayerControl.html#ad3f9c13c3405864ad00fea51a6105ceb" title=" " alt="" coords="249,5,436,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,42,236,37,236,42,198,47"/>
+<area shape="rect" id="Node000003" href="$classAPlayerControl.html#a0387a78caf5c7b7ba507d37122dbbba4" title=" " alt="" coords="245,69,440,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="198,67,232,72,231,77,197,73"/>
+</map>

@@ -1,0 +1,21 @@
+<map id="UYiSanLoading::PrepareClientTravel" name="UYiSanLoading::PrepareClientTravel">
+<area shape="rect" id="Node000001" title="서버가 트리거한 클라이언트 이동을 준비합니다." alt="" coords="5,37,220,77"/>
+<area shape="rect" id="Node000002" href="$classUYiSanLoading.html#a2bbb8bf4c372ee83143e9b7f39ad82a6" title=" " alt="" coords="271,5,463,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,41,257,36,258,42,221,46"/>
+<area shape="rect" id="Node000003" href="$classUYiSanLoading.html#a5fbfe4432883e1736de50366f25ee5a2" title="진행도 추적기를 초기화하고 로딩 화면을 표시합니다." alt="" coords="268,69,465,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="221,68,255,73,254,78,220,74"/>
+<area shape="rect" id="Node000004" href="$classUYiSanLoading.html#a0441afb84f146c695636184c5e05d4c6" title="맵 로드 완료를 처리하여 스트리밍 상태 폴링을 이어갑니다." alt="" coords="513,69,728,109"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="466,87,500,87,500,92,466,92"/>
+<area shape="rect" id="Node000005" href="$classUYiSanLoading.html#ae7655dc1152f3200dbceecaf25b38002" title="스트리밍 진행도를 폴링하고 로딩 상태를 전환합니다." alt="" coords="776,77,977,102"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="728,87,762,87,762,92,728,92"/>
+<area shape="rect" id="Node000006" href="$classUYiSanLoading.html#ab48994aeea87093f36721bcf5760b9ca" title=" " alt="" coords="1025,19,1265,45"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="936,74,1025,55,1071,45,1072,50,1026,60,937,79"/>
+<area shape="rect" id="Node000008" href="$classUYiSanLoading.html#a3d20dc883b19413899b22d0e711d637f" title="레벨 인스턴스 스트리밍 진행도를 모니터링하고 상태를 전환합니다." alt="" coords="1056,69,1235,109"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="977,87,1042,87,1042,92,977,92"/>
+<area shape="rect" id="Node000010" href="$classUYiSanLoading.html#aa0db336d5a0332cd44740870635460b2" title="텍스처 스트리밍 통계를 폴링해 진행도를 갱신하고 필요 시 타임아웃을 적용합니다." alt="" coords="1056,133,1235,173"/>
+<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="932,100,1048,128,1047,133,931,105"/>
+<area shape="rect" id="Node000007" href="$classUYiSanLoading.html#abf0458032ae94f3d27b54388b21efb1d" title=" " alt="" coords="1329,12,1521,52"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1266,29,1315,29,1315,35,1266,35"/>
+<area shape="rect" id="Node000009" href="$structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66" title=" " alt="" coords="1313,77,1536,102"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="1235,87,1300,87,1300,92,1235,92"/>
+</map>

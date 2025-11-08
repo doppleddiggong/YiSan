@@ -1,0 +1,5 @@
+<map id="AQuestManagerActor::ServerRPC_ContactBuilding" name="AQuestManagerActor::ServerRPC_ContactBuilding">
+<area shape="rect" id="Node000001" title=" " alt="" coords="213,5,421,45"/>
+<area shape="rect" id="Node000002" href="$classAQuestManagerActor.html#aee9b9b6c0ff9e8ebeec96398f531f8bb" title="클라이언트 또는 서버 권한에서 전달되는 접촉 이벤트 진입점입니다." alt="" coords="5,5,165,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,28,166,28,166,23,200,23"/>
+</map>

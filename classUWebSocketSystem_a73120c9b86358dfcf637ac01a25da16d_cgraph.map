@@ -1,0 +1,7 @@
+<map id="UWebSocketSystem::SendStopRecordingMessage" name="UWebSocketSystem::SendStopRecordingMessage">
+<area shape="rect" id="Node000001" title="서버에 녹음 종료 신호를 전송합니다." alt="" coords="5,23,227,63"/>
+<area shape="rect" id="Node000002" href="$classUWebSocketSystem.html#a89bbc98f683cca370ea2e91fbd36ca7b" title="현재 WebSocket 연결 상태를 조회합니다." alt="" coords="275,5,515,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="227,31,261,27,261,33,227,36"/>
+<area shape="rect" id="Node000003" href="$classUWebSocketSystem.html#a864f4f7d23c89554fbe9a6ddad5aedf1" title="WebSocket 관련 공통 로그 메시지를 출력합니다." alt="" coords="275,55,514,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="227,50,262,53,261,59,227,56"/>
+</map>

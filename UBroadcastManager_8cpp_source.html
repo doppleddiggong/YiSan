@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YiSan Project Documentation: Source/LatteLibrary/Manager/Private/UBroadcastManager.cpp 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YiSan Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('UBroadcastManager_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">UBroadcastManager.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="UBroadcastManager_8cpp.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="UBroadcastManager_8h.html">UBroadcastManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a7dd77f4b9d69350f1a86fd1ec70301e1">   10</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#a7dd77f4b9d69350f1a86fd1ec70301e1">UBroadcastManager::SendMessage</a>(<span class="keyword">const</span> FString&amp; InMsg)</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a43a192f0157e3177589f7b09b11a1e84">OnMessage</a>.Broadcast(InMsg);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>}</div>
+</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a9c69490ebcf0947b36db2264b76a4167">   15</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#a9c69490ebcf0947b36db2264b76a4167">UBroadcastManager::SendNetworkWaitCount</a>(<span class="keywordtype">int</span> RequestCount )</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a2692fc3fbb06745f2cd20e9d5769abb8">OnNetworkWaitCount</a>.Broadcast(RequestCount);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
+</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a96140c8f3c51120625b22c402d6dbd58">   20</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#a96140c8f3c51120625b22c402d6dbd58">UBroadcastManager::SendAudioCapture</a>(<span class="keywordtype">bool</span> bRecording)</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a15ce56190730a87bbd9ea51210a08b14">OnAudioCapture</a>.Broadcast(bRecording);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
+</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">//</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">// void UBroadcastManager::SendAnswerReply()</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">// {</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">//  OnAnswerReply.Broadcast();</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">// }</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">//</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">// void UBroadcastManager::SendVoiceAudioFinished()</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">// {</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">//  OnVoiceTalkFinished.Broadcast();</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">// }</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">//</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">// void UBroadcastManager::SendAskListening(bool bListening, const FString&amp; PlayerName)</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">// {</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">//  OnAskListening.Broadcast(bListening, PlayerName);</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">// }</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="foldopen" id="foldopen00040" data-start="{" data-end="}">
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a534b62283e5385daa930eeea7ff52734">   40</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#a534b62283e5385daa930eeea7ff52734">UBroadcastManager::SendAudioSpectrum</a>(<span class="keywordtype">float</span> Spectrum)</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>{</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_variable" href="classUBroadcastManager.html#aa17cf7bbe9f0657ef94594ed525ddd88">OnAudioSpectrum</a>.Broadcast(Spectrum);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}</div>
+</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a5bd54b2d44fec5131ab6ccbbb2a9df66">   45</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#a5bd54b2d44fec5131ab6ccbbb2a9df66">UBroadcastManager::SendContactBuilding</a>(<a class="code hl_enumeration" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a> BuildingType)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a02c1f92c699cd11a85093ab95684a41e">OnContactBuilding</a>.Broadcast(BuildingType);  </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
+</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="}">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a4d7cb361d679f623c84959df7280240f">   50</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#a4d7cb361d679f623c84959df7280240f">UBroadcastManager::SendUpdateQuest</a>(<a class="code hl_enumeration" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a> BuildingType)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>{</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_variable" href="classUBroadcastManager.html#ad9f1e3ff63630e25df3d78c2f24312ed">OnUpdateQuest</a>.Broadcast(BuildingType);  </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
+</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#ab8cce977ad7eadf86de589d89630ab67">   55</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#ab8cce977ad7eadf86de589d89630ab67">UBroadcastManager::SendNearBuilding</a>(<a class="code hl_enumeration" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a> BuildingType)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>{</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_variable" href="classUBroadcastManager.html#aee3b40a79e4adc300ec0f32aaa207100">OnNearBuilding</a>.Broadcast(BuildingType);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
+</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="foldopen" id="foldopen00060" data-start="{" data-end="}">
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#aec5cf60ed301d2894bf78ddb63b19f2e">   60</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#aec5cf60ed301d2894bf78ddb63b19f2e">UBroadcastManager::SendFocusBuilding</a>(<a class="code hl_enumeration" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a> BuildingType)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>{</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <a class="code hl_variable" href="classUBroadcastManager.html#ab0328b4d2bb343d8f922de193df5b0a6">OnFocusBuilding</a>.Broadcast(BuildingType);    </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>
+</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="foldopen" id="foldopen00065" data-start="{" data-end="}">
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#abfa534d766eeef60e134b9e0ef0b7fc1">   65</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#abfa534d766eeef60e134b9e0ef0b7fc1">UBroadcastManager::SendDoorMessage</a>(<span class="keyword">const</span> int32 GateID, <span class="keyword">const</span> <span class="keywordtype">bool</span> Open)</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>{</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a1d306318cbe7d73bb1ab6d9f427658d9">OnDoorMessage</a>.Broadcast(GateID, Open);  </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
+</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="foldopen" id="foldopen00070" data-start="{" data-end="}">
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a37a30c264dba320c8d287cb54643d0f2">   70</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#a37a30c264dba320c8d287cb54643d0f2">UBroadcastManager::SendExecVoiceCommand</a>(<span class="keyword">const</span> <a class="code hl_enumeration" href="EVoiceCommandType_8h.html#a091eabb93b1ffd38fe61f35906526114">EVoiceCommandType</a> Type, AActor* Requester)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>{</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a78611143a47d38830ef99f8320600732">OnExecVoiceCommand</a>.Broadcast(Type, Requester);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}</div>
+</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="foldopen" id="foldopen00075" data-start="{" data-end="}">
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a38456c0846a5bc2474b4ecde62d91a88">   75</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#a38456c0846a5bc2474b4ecde62d91a88">UBroadcastManager::SendMegaPopupClosed</a>()</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>{</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a101fa1c430be232b37009c90b358640b">OnMegaPopupClosed</a>.Broadcast();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>}</div>
+</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="foldopen" id="foldopen00080" data-start="{" data-end="}">
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#af9bfc0f6250dde19eb48d6552d8f9365">   80</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#af9bfc0f6250dde19eb48d6552d8f9365">UBroadcastManager::SendPlayerControlState</a>(<span class="keywordtype">bool</span> bState, UUserWidget* FocusWidget)</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>{</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a2a27dd50618f5187771a822fe93c5e46">OnPlayerControlState</a>.Broadcast(bState, FocusWidget);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>}</div>
+</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="foldopen" id="foldopen00085" data-start="{" data-end="}">
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#ae3610c1df70d1445aefb14a8f92272bd">   85</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#ae3610c1df70d1445aefb14a8f92272bd">UBroadcastManager::SendHitStop</a>(AActor* Target, <span class="keyword">const</span> <a class="code hl_enumeration" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> Type)</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>{</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a2b5598be8f701c5292aaa639c1c7f5c6">OnHitStop</a>.Broadcast(Target, Type);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>}</div>
+</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="foldopen" id="foldopen00090" data-start="{" data-end="}">
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a09bff79efc2de58aaba8c031aeddf7f2">   90</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#a09bff79efc2de58aaba8c031aeddf7f2">UBroadcastManager::SendHitStopPair</a>(</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    AActor* Attacker, <span class="keyword">const</span> <a class="code hl_enumeration" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> AttackerType,</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    AActor* Target,   <span class="keyword">const</span> <a class="code hl_enumeration" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> TargetType)</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>{</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a2b5598be8f701c5292aaa639c1c7f5c6">OnHitStop</a>.Broadcast(Attacker, AttackerType);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a2b5598be8f701c5292aaa639c1c7f5c6">OnHitStop</a>.Broadcast(Target,   TargetType);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>}</div>
+</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="foldopen" id="foldopen00098" data-start="{" data-end="}">
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#ab8198f3d1ac2ef559e7b7213428603ff">   98</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#ab8198f3d1ac2ef559e7b7213428603ff">UBroadcastManager::SendCameraShake</a>(AActor* Target, <span class="keyword">const</span> <a class="code hl_enumeration" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> Type)</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>{</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a81aaf9a9590605f893227f2f0f374990">OnCameraShake</a>.Broadcast(Target, Type);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>}</div>
+</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="foldopen" id="foldopen00103" data-start="{" data-end="}">
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a2562e8e9260d9e28789f332a20fc2dd6">  103</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#a2562e8e9260d9e28789f332a20fc2dd6">UBroadcastManager::SendForceCameraShake</a>(<span class="keyword">const</span> <a class="code hl_enumeration" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> Type)</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>{</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <a class="code hl_variable" href="classUBroadcastManager.html#ad45350af2c417b02f31b664a3540e680">OnForceCameraShake</a>.Broadcast(Type);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}</div>
+</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="foldopen" id="foldopen00108" data-start="{" data-end="}">
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a5009c7e9e1252735b18e6b0752060895">  108</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#a5009c7e9e1252735b18e6b0752060895">UBroadcastManager::SendKnockback</a>(AActor* Target, AActor* Instigator, <a class="code hl_enumeration" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> Type, <span class="keywordtype">float</span> Resistance)</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>{</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a7b76f7a9be120cf9d2e22e4cff24778e">OnKnockback</a>.Broadcast(Target, Instigator, Type, Resistance);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>}</div>
+</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment">// ========================================</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment">// Multiplayer Session Events</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment">// ========================================</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="foldopen" id="foldopen00117" data-start="{" data-end="}">
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#af51d79fb4bc823bef207cacb5c56e2f6">  117</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#af51d79fb4bc823bef207cacb5c56e2f6">UBroadcastManager::SendSessionHost</a>(<span class="keyword">const</span> FString&amp; MapName)</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>{</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <a class="code hl_variable" href="classUBroadcastManager.html#afa48842a36dcc8f97dfa3691950a1cd6">OnSessionHost</a>.Broadcast(MapName);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>}</div>
+</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="foldopen" id="foldopen00122" data-start="{" data-end="}">
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#add4dbe72d7203082f7a59a0c73fd840d">  122</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#add4dbe72d7203082f7a59a0c73fd840d">UBroadcastManager::SendSessionJoin</a>(<span class="keyword">const</span> FString&amp; Address, int32 Port)</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>{</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a3a639119a69d9d30f5acb0241a6af2e3">OnSessionJoin</a>.Broadcast(Address, Port);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>}</div>
+</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="foldopen" id="foldopen00127" data-start="{" data-end="}">
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a867ec718fd1c6d149159eeb18806447a">  127</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#a867ec718fd1c6d149159eeb18806447a">UBroadcastManager::SendSessionDisconnect</a>()</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>{</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <a class="code hl_variable" href="classUBroadcastManager.html#acae250e7df292dd46e7b8320f5e4ee04">OnSessionDisconnect</a>.Broadcast();</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>}</div>
+</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="foldopen" id="foldopen00132" data-start="{" data-end="}">
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a71fed628db8358e87c18969bcb2efae5">  132</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBroadcastManager.html#a71fed628db8358e87c18969bcb2efae5">UBroadcastManager::SendSessionError</a>(<span class="keyword">const</span> FString&amp; ErrorMessage)</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>{</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <a class="code hl_variable" href="classUBroadcastManager.html#acba6e194bf8fd88614ae7e08d22bba97">OnSessionError</a>.Broadcast(ErrorMessage);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>}</div>
+</div>
+<div class="ttc" id="aEBuildingType_8h_html_abd7612dc4100b44f80890bb8ad417947"><div class="ttname"><a href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a></div><div class="ttdeci">EBuildingType</div><div class="ttdef"><b>Definition</b> <a href="EBuildingType_8h_source.html#l00008">EBuildingType.h:9</a></div></div>
+<div class="ttc" id="aEDamageType_8h_html_ab5bf7dde87ef933ba244eba8c39e7e9b"><div class="ttname"><a href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a></div><div class="ttdeci">EDamageType</div><div class="ttdef"><b>Definition</b> <a href="EDamageType_8h_source.html#l00008">EDamageType.h:9</a></div></div>
+<div class="ttc" id="aEVoiceCommandType_8h_html_a091eabb93b1ffd38fe61f35906526114"><div class="ttname"><a href="EVoiceCommandType_8h.html#a091eabb93b1ffd38fe61f35906526114">EVoiceCommandType</a></div><div class="ttdeci">EVoiceCommandType</div><div class="ttdef"><b>Definition</b> <a href="EVoiceCommandType_8h_source.html#l00011">EVoiceCommandType.h:12</a></div></div>
+<div class="ttc" id="aUBroadcastManager_8h_html"><div class="ttname"><a href="UBroadcastManager_8h.html">UBroadcastManager.h</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a02c1f92c699cd11a85093ab95684a41e"><div class="ttname"><a href="classUBroadcastManager.html#a02c1f92c699cd11a85093ab95684a41e">UBroadcastManager::OnContactBuilding</a></div><div class="ttdeci">FOnContactBuilding OnContactBuilding</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00083">UBroadcastManager.h:83</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a09bff79efc2de58aaba8c031aeddf7f2"><div class="ttname"><a href="classUBroadcastManager.html#a09bff79efc2de58aaba8c031aeddf7f2">UBroadcastManager::SendHitStopPair</a></div><div class="ttdeci">void SendHitStopPair(AActor *Attacker, const EDamageType AttackerType, AActor *Target, const EDamageType TargetType)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00090">UBroadcastManager.cpp:90</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a101fa1c430be232b37009c90b358640b"><div class="ttname"><a href="classUBroadcastManager.html#a101fa1c430be232b37009c90b358640b">UBroadcastManager::OnMegaPopupClosed</a></div><div class="ttdeci">FOnMegaPopupClosed OnMegaPopupClosed</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00127">UBroadcastManager.h:127</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a15ce56190730a87bbd9ea51210a08b14"><div class="ttname"><a href="classUBroadcastManager.html#a15ce56190730a87bbd9ea51210a08b14">UBroadcastManager::OnAudioCapture</a></div><div class="ttdeci">FOnAudioCapture OnAudioCapture</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00048">UBroadcastManager.h:48</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a1d306318cbe7d73bb1ab6d9f427658d9"><div class="ttname"><a href="classUBroadcastManager.html#a1d306318cbe7d73bb1ab6d9f427658d9">UBroadcastManager::OnDoorMessage</a></div><div class="ttdeci">FOnDoorMessage OnDoorMessage</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00111">UBroadcastManager.h:111</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a2562e8e9260d9e28789f332a20fc2dd6"><div class="ttname"><a href="classUBroadcastManager.html#a2562e8e9260d9e28789f332a20fc2dd6">UBroadcastManager::SendForceCameraShake</a></div><div class="ttdeci">void SendForceCameraShake(const EDamageType Type)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00103">UBroadcastManager.cpp:103</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a2692fc3fbb06745f2cd20e9d5769abb8"><div class="ttname"><a href="classUBroadcastManager.html#a2692fc3fbb06745f2cd20e9d5769abb8">UBroadcastManager::OnNetworkWaitCount</a></div><div class="ttdeci">FOnNetworkWaitCount OnNetworkWaitCount</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00041">UBroadcastManager.h:41</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a2a27dd50618f5187771a822fe93c5e46"><div class="ttname"><a href="classUBroadcastManager.html#a2a27dd50618f5187771a822fe93c5e46">UBroadcastManager::OnPlayerControlState</a></div><div class="ttdeci">FOnPlayerControlState OnPlayerControlState</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00134">UBroadcastManager.h:134</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a2b5598be8f701c5292aaa639c1c7f5c6"><div class="ttname"><a href="classUBroadcastManager.html#a2b5598be8f701c5292aaa639c1c7f5c6">UBroadcastManager::OnHitStop</a></div><div class="ttdeci">FOnHitStop OnHitStop</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00141">UBroadcastManager.h:141</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a37a30c264dba320c8d287cb54643d0f2"><div class="ttname"><a href="classUBroadcastManager.html#a37a30c264dba320c8d287cb54643d0f2">UBroadcastManager::SendExecVoiceCommand</a></div><div class="ttdeci">void SendExecVoiceCommand(const EVoiceCommandType Type, AActor *Requester)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00070">UBroadcastManager.cpp:70</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a38456c0846a5bc2474b4ecde62d91a88"><div class="ttname"><a href="classUBroadcastManager.html#a38456c0846a5bc2474b4ecde62d91a88">UBroadcastManager::SendMegaPopupClosed</a></div><div class="ttdeci">void SendMegaPopupClosed()</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00075">UBroadcastManager.cpp:75</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a3a639119a69d9d30f5acb0241a6af2e3"><div class="ttname"><a href="classUBroadcastManager.html#a3a639119a69d9d30f5acb0241a6af2e3">UBroadcastManager::OnSessionJoin</a></div><div class="ttdeci">FOnSessionJoin OnSessionJoin</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00192">UBroadcastManager.h:192</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a43a192f0157e3177589f7b09b11a1e84"><div class="ttname"><a href="classUBroadcastManager.html#a43a192f0157e3177589f7b09b11a1e84">UBroadcastManager::OnMessage</a></div><div class="ttdeci">FOnMessage OnMessage</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00027">UBroadcastManager.h:27</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a4d7cb361d679f623c84959df7280240f"><div class="ttname"><a href="classUBroadcastManager.html#a4d7cb361d679f623c84959df7280240f">UBroadcastManager::SendUpdateQuest</a></div><div class="ttdeci">void SendUpdateQuest(EBuildingType BuildingType)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00050">UBroadcastManager.cpp:50</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a5009c7e9e1252735b18e6b0752060895"><div class="ttname"><a href="classUBroadcastManager.html#a5009c7e9e1252735b18e6b0752060895">UBroadcastManager::SendKnockback</a></div><div class="ttdeci">void SendKnockback(AActor *Target, AActor *Instigator, EDamageType Type, float Resistance)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00108">UBroadcastManager.cpp:108</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a534b62283e5385daa930eeea7ff52734"><div class="ttname"><a href="classUBroadcastManager.html#a534b62283e5385daa930eeea7ff52734">UBroadcastManager::SendAudioSpectrum</a></div><div class="ttdeci">void SendAudioSpectrum(float Spectrum)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00040">UBroadcastManager.cpp:40</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a5bd54b2d44fec5131ab6ccbbb2a9df66"><div class="ttname"><a href="classUBroadcastManager.html#a5bd54b2d44fec5131ab6ccbbb2a9df66">UBroadcastManager::SendContactBuilding</a></div><div class="ttdeci">void SendContactBuilding(EBuildingType BuildingType)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00045">UBroadcastManager.cpp:45</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a71fed628db8358e87c18969bcb2efae5"><div class="ttname"><a href="classUBroadcastManager.html#a71fed628db8358e87c18969bcb2efae5">UBroadcastManager::SendSessionError</a></div><div class="ttdeci">void SendSessionError(const FString &amp;ErrorMessage)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00132">UBroadcastManager.cpp:132</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a78611143a47d38830ef99f8320600732"><div class="ttname"><a href="classUBroadcastManager.html#a78611143a47d38830ef99f8320600732">UBroadcastManager::OnExecVoiceCommand</a></div><div class="ttdeci">FOnExecVoiceCommand OnExecVoiceCommand</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00119">UBroadcastManager.h:119</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a7b76f7a9be120cf9d2e22e4cff24778e"><div class="ttname"><a href="classUBroadcastManager.html#a7b76f7a9be120cf9d2e22e4cff24778e">UBroadcastManager::OnKnockback</a></div><div class="ttdeci">FOnKnockback OnKnockback</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00172">UBroadcastManager.h:172</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a7dd77f4b9d69350f1a86fd1ec70301e1"><div class="ttname"><a href="classUBroadcastManager.html#a7dd77f4b9d69350f1a86fd1ec70301e1">UBroadcastManager::SendMessage</a></div><div class="ttdeci">void SendMessage(const FString &amp;InMsg)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00010">UBroadcastManager.cpp:10</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a81aaf9a9590605f893227f2f0f374990"><div class="ttname"><a href="classUBroadcastManager.html#a81aaf9a9590605f893227f2f0f374990">UBroadcastManager::OnCameraShake</a></div><div class="ttdeci">FOnCameraShake OnCameraShake</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00153">UBroadcastManager.h:153</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a867ec718fd1c6d149159eeb18806447a"><div class="ttname"><a href="classUBroadcastManager.html#a867ec718fd1c6d149159eeb18806447a">UBroadcastManager::SendSessionDisconnect</a></div><div class="ttdeci">void SendSessionDisconnect()</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00127">UBroadcastManager.cpp:127</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a96140c8f3c51120625b22c402d6dbd58"><div class="ttname"><a href="classUBroadcastManager.html#a96140c8f3c51120625b22c402d6dbd58">UBroadcastManager::SendAudioCapture</a></div><div class="ttdeci">void SendAudioCapture(bool bRecording)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00020">UBroadcastManager.cpp:20</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_a9c69490ebcf0947b36db2264b76a4167"><div class="ttname"><a href="classUBroadcastManager.html#a9c69490ebcf0947b36db2264b76a4167">UBroadcastManager::SendNetworkWaitCount</a></div><div class="ttdeci">void SendNetworkWaitCount(int RequestCount)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00015">UBroadcastManager.cpp:15</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_aa17cf7bbe9f0657ef94594ed525ddd88"><div class="ttname"><a href="classUBroadcastManager.html#aa17cf7bbe9f0657ef94594ed525ddd88">UBroadcastManager::OnAudioSpectrum</a></div><div class="ttdeci">FOnAudioSpectrum OnAudioSpectrum</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00076">UBroadcastManager.h:76</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_ab0328b4d2bb343d8f922de193df5b0a6"><div class="ttname"><a href="classUBroadcastManager.html#ab0328b4d2bb343d8f922de193df5b0a6">UBroadcastManager::OnFocusBuilding</a></div><div class="ttdeci">FOnFocusBuilding OnFocusBuilding</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00104">UBroadcastManager.h:104</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_ab8198f3d1ac2ef559e7b7213428603ff"><div class="ttname"><a href="classUBroadcastManager.html#ab8198f3d1ac2ef559e7b7213428603ff">UBroadcastManager::SendCameraShake</a></div><div class="ttdeci">void SendCameraShake(AActor *Target, const EDamageType Type)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00098">UBroadcastManager.cpp:98</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_ab8cce977ad7eadf86de589d89630ab67"><div class="ttname"><a href="classUBroadcastManager.html#ab8cce977ad7eadf86de589d89630ab67">UBroadcastManager::SendNearBuilding</a></div><div class="ttdeci">void SendNearBuilding(EBuildingType BuildingType)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00055">UBroadcastManager.cpp:55</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_abfa534d766eeef60e134b9e0ef0b7fc1"><div class="ttname"><a href="classUBroadcastManager.html#abfa534d766eeef60e134b9e0ef0b7fc1">UBroadcastManager::SendDoorMessage</a></div><div class="ttdeci">void SendDoorMessage(const int32 GateID, const bool Open)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00065">UBroadcastManager.cpp:65</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_acae250e7df292dd46e7b8320f5e4ee04"><div class="ttname"><a href="classUBroadcastManager.html#acae250e7df292dd46e7b8320f5e4ee04">UBroadcastManager::OnSessionDisconnect</a></div><div class="ttdeci">FOnSessionDisconnect OnSessionDisconnect</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00200">UBroadcastManager.h:200</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_acba6e194bf8fd88614ae7e08d22bba97"><div class="ttname"><a href="classUBroadcastManager.html#acba6e194bf8fd88614ae7e08d22bba97">UBroadcastManager::OnSessionError</a></div><div class="ttdeci">FOnSessionError OnSessionError</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00208">UBroadcastManager.h:208</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_ad45350af2c417b02f31b664a3540e680"><div class="ttname"><a href="classUBroadcastManager.html#ad45350af2c417b02f31b664a3540e680">UBroadcastManager::OnForceCameraShake</a></div><div class="ttdeci">FOnForceCameraShake OnForceCameraShake</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00160">UBroadcastManager.h:160</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_ad9f1e3ff63630e25df3d78c2f24312ed"><div class="ttname"><a href="classUBroadcastManager.html#ad9f1e3ff63630e25df3d78c2f24312ed">UBroadcastManager::OnUpdateQuest</a></div><div class="ttdeci">FOnUpdateQuest OnUpdateQuest</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00090">UBroadcastManager.h:90</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_add4dbe72d7203082f7a59a0c73fd840d"><div class="ttname"><a href="classUBroadcastManager.html#add4dbe72d7203082f7a59a0c73fd840d">UBroadcastManager::SendSessionJoin</a></div><div class="ttdeci">void SendSessionJoin(const FString &amp;Address, int32 Port)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00122">UBroadcastManager.cpp:122</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_ae3610c1df70d1445aefb14a8f92272bd"><div class="ttname"><a href="classUBroadcastManager.html#ae3610c1df70d1445aefb14a8f92272bd">UBroadcastManager::SendHitStop</a></div><div class="ttdeci">void SendHitStop(AActor *Target, const EDamageType Type)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00085">UBroadcastManager.cpp:85</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_aec5cf60ed301d2894bf78ddb63b19f2e"><div class="ttname"><a href="classUBroadcastManager.html#aec5cf60ed301d2894bf78ddb63b19f2e">UBroadcastManager::SendFocusBuilding</a></div><div class="ttdeci">void SendFocusBuilding(EBuildingType BuildingType)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00060">UBroadcastManager.cpp:60</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_aee3b40a79e4adc300ec0f32aaa207100"><div class="ttname"><a href="classUBroadcastManager.html#aee3b40a79e4adc300ec0f32aaa207100">UBroadcastManager::OnNearBuilding</a></div><div class="ttdeci">FOnNearBuilding OnNearBuilding</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00097">UBroadcastManager.h:97</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_af51d79fb4bc823bef207cacb5c56e2f6"><div class="ttname"><a href="classUBroadcastManager.html#af51d79fb4bc823bef207cacb5c56e2f6">UBroadcastManager::SendSessionHost</a></div><div class="ttdeci">void SendSessionHost(const FString &amp;MapName)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00117">UBroadcastManager.cpp:117</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_af9bfc0f6250dde19eb48d6552d8f9365"><div class="ttname"><a href="classUBroadcastManager.html#af9bfc0f6250dde19eb48d6552d8f9365">UBroadcastManager::SendPlayerControlState</a></div><div class="ttdeci">void SendPlayerControlState(bool bState, UUserWidget *FocusWidget)</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8cpp_source.html#l00080">UBroadcastManager.cpp:80</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html_afa48842a36dcc8f97dfa3691950a1cd6"><div class="ttname"><a href="classUBroadcastManager.html#afa48842a36dcc8f97dfa3691950a1cd6">UBroadcastManager::OnSessionHost</a></div><div class="ttdeci">FOnSessionHost OnSessionHost</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00184">UBroadcastManager.h:184</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_399370037b6f5ff6b0840148d18ec8d9.html">LatteLibrary</a></li><li class="navelem"><a class="el" href="dir_3895d977c26767e128462eaa7d00849f.html">Manager</a></li><li class="navelem"><a class="el" href="dir_cd5a37b525b446288dd6b9c7de7bfc6f.html">Private</a></li><li class="navelem"><a class="el" href="UBroadcastManager_8cpp.html">UBroadcastManager.cpp</a></li>
+    <li class="footer">생성시간 : 토 11월 8 2025 13:55:38, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

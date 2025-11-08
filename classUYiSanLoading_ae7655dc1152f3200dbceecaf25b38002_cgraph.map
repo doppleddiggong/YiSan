@@ -1,0 +1,13 @@
+<map id="UYiSanLoading::UpdateTick" name="UYiSanLoading::UpdateTick">
+<area shape="rect" id="Node000001" title="스트리밍 진행도를 폴링하고 로딩 상태를 전환합니다." alt="" coords="5,70,207,95"/>
+<area shape="rect" id="Node000002" href="$classUYiSanLoading.html#ab48994aeea87093f36721bcf5760b9ca" title=" " alt="" coords="255,13,495,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,67,254,48,300,38,301,43,255,53,166,73"/>
+<area shape="rect" id="Node000004" href="$classUYiSanLoading.html#a3d20dc883b19413899b22d0e711d637f" title="레벨 인스턴스 스트리밍 진행도를 모니터링하고 상태를 전환합니다." alt="" coords="285,63,464,103"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="207,80,271,80,271,85,207,85"/>
+<area shape="rect" id="Node000006" href="$classUYiSanLoading.html#aa0db336d5a0332cd44740870635460b2" title="텍스처 스트리밍 통계를 폴링해 진행도를 갱신하고 필요 시 타임아웃을 적용합니다." alt="" coords="285,127,464,167"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="161,93,277,121,276,126,160,98"/>
+<area shape="rect" id="Node000003" href="$classUYiSanLoading.html#abf0458032ae94f3d27b54388b21efb1d" title=" " alt="" coords="558,5,750,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="495,23,544,23,544,28,495,28"/>
+<area shape="rect" id="Node000005" href="$structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66" title=" " alt="" coords="543,70,765,95"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="464,80,529,80,529,85,464,85"/>
+</map>

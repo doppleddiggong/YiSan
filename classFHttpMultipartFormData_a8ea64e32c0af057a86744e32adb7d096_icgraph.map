@@ -1,0 +1,9 @@
+<map id="FHttpMultipartFormData::DetectMimeFromExtension" name="FHttpMultipartFormData::DetectMimeFromExtension">
+<area shape="rect" id="Node000001" title="파일 확장자를 기반으로 MIME 타입을 추론합니다." alt="" coords="447,37,653,77"/>
+<area shape="rect" id="Node000002" href="$classFHttpMultipartFormData.html#afcc209c61ee7449848e0f85c98752a74" title="파일 데이터를 multipart 본문에 추가합니다." alt="" coords="217,37,399,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="433,60,399,60,399,55,433,55"/>
+<area shape="rect" id="Node000003" href="$classUHttpNetworkSystem.html#a6a3c0a854e47613896fd9056ea767c2e" title="음성 파일과 공간 컨텍스트를 함께 업로드해 ASK 파이프라인을 실행합니다." alt="" coords="5,5,169,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="203,45,169,40,170,35,204,40"/>
+<area shape="rect" id="Node000004" href="$classUHttpNetworkSystem.html#a2fb8a0876cc52293f4cc8277755bbaf3" title="음성 인식을 위해 녹음 파일을 업로드합니다." alt="" coords="5,69,169,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="204,75,170,80,169,75,203,70"/>
+</map>

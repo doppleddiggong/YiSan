@@ -1,0 +1,5 @@
+<map id="UYisanOnlineSystem::SetGameState" name="UYisanOnlineSystem::SetGameState">
+<area shape="rect" id="Node000001" title="복제된 게임 상태 이벤트를 구독합니다." alt="" coords="5,5,164,45"/>
+<area shape="rect" id="Node000002" href="$classUYisanOnlineSystem.html#ab0f0310f773c71ebd602d020b28def60" title="게임 상태에서 전달된 플레이어 목록 업데이트를 처리합니다." alt="" coords="212,5,407,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,23,198,23,198,28,164,28"/>
+</map>

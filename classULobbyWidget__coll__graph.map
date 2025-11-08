@@ -1,0 +1,5 @@
+<map id="ULobbyWidget" name="ULobbyWidget">
+<area shape="rect" id="Node000001" title="멀티플레이 로비 화면 위젯입니다." alt="" coords="5,119,191,764"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="48,5,148,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,84,101,118,95,118,95,84"/>
+</map>

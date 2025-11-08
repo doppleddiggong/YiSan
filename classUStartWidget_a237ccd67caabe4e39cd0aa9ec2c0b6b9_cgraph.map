@@ -1,0 +1,7 @@
+<map id="UStartWidget::OnStartButtonClicked" name="UStartWidget::OnStartButtonClicked">
+<area shape="rect" id="Node000001" title="시작 버튼 클릭 시 호출됩니다." alt="" coords="5,37,215,77"/>
+<area shape="rect" id="Node000002" href="$classAPlayerControl.html#a9ae6629c1e2a566e39eb4816f8d0291c" title=" " alt="" coords="278,5,447,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="214,41,264,35,265,40,215,47"/>
+<area shape="rect" id="Node000003" href="$classAPlayerControl.html#a0c4baae5a16072e3e64eb6ec45ab6821" title=" " alt="" coords="263,69,463,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="215,68,249,72,249,78,214,73"/>
+</map>

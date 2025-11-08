@@ -1,0 +1,19 @@
+<map id="UCustomNetworkSettings::GetCurrentServerMode" name="UCustomNetworkSettings::GetCurrentServerMode">
+<area shape="rect" id="Node000001" title="명령줄 또는 설정으로 선택된 서버 모드를 반환합니다." alt="" coords="533,227,724,267"/>
+<area shape="rect" id="Node000002" href="$namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246" title="현재 서버 모드에 맞는 HTTP 엔드포인트 URL을 생성합니다." alt="" coords="281,173,471,198"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="532,226,428,201,430,195,533,221"/>
+<area shape="rect" id="Node000008" href="$namespaceNetworkConfig.html#a948647fad9ed84a91de549757a7a0e74" title="현재 서버 모드에서 사용할 WebSocket 주소를 반환합니다." alt="" coords="267,258,485,283"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="520,260,486,263,485,258,519,254"/>
+<area shape="rect" id="Node000003" href="$classUHttpNetworkSystem.html#a6a3c0a854e47613896fd9056ea767c2e" title="음성 파일과 공간 컨텍스트를 함께 업로드해 ASK 파이프라인을 실행합니다." alt="" coords="30,5,194,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="351,165,293,112,257,84,217,60,191,48,193,43,220,55,260,80,297,108,355,161"/>
+<area shape="rect" id="Node000004" href="$classUHttpNetworkSystem.html#a127dd656098d79e803829267290acdc9" title="텍스트 질의와 컨텍스트를 서버로 전송해 GPT 응답을 요청합니다." alt="" coords="30,69,194,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="332,170,218,124,182,112,184,107,220,119,334,165"/>
+<area shape="rect" id="Node000005" href="$classUHttpNetworkSystem.html#a5409712d1a8c7226e51c68335fcc3d48" title="서버 상태 확인을 위한 /health 요청을 전송합니다." alt="" coords="30,133,194,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="267,175,194,166,194,161,267,169"/>
+<area shape="rect" id="Node000006" href="$classUHttpNetworkSystem.html#a2fb8a0876cc52293f4cc8277755bbaf3" title="음성 인식을 위해 녹음 파일을 업로드합니다." alt="" coords="30,197,194,237"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="267,201,194,210,194,205,267,196"/>
+<area shape="rect" id="Node000007" href="$classUHttpNetworkSystem.html#a5fc276edb826fd86d8bb3c69466cf649" title="지정한 텍스트를 음성으로 변환하도록 요청합니다." alt="" coords="30,261,194,301"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="334,206,220,252,184,264,182,259,218,247,332,201"/>
+<area shape="rect" id="Node000009" href="$classUWebSocketSystem.html#ad8a09ae8c4734c4af887f138e3ccb751" title="WebSocket 서버와 연결을 수립합니다." alt="" coords="5,326,219,351"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="317,290,219,316,168,329,167,323,218,311,316,284"/>
+</map>

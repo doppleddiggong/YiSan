@@ -1,0 +1,13 @@
+<map id="AQuestManagerActor::OnContactBuilding" name="AQuestManagerActor::OnContactBuilding">
+<area shape="rect" id="Node000001" title="클라이언트 또는 서버 권한에서 전달되는 접촉 이벤트 진입점입니다." alt="" coords="5,69,165,109"/>
+<area shape="rect" id="Node000002" href="$classAQuestManagerActor.html#ab72d72d36b218a71364e941568c1b174" title="접촉한 건물이 활성 퀘스트 목표와 일치하는지 검증합니다." alt="" coords="237,37,397,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,76,224,68,224,73,166,81"/>
+<area shape="rect" id="Node000006" href="$classAQuestManagerActor.html#a7b28f816798a14f1874b8c2ba54491f1" title=" " alt="" coords="213,101,421,141"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="166,98,200,102,199,108,165,103"/>
+<area shape="rect" id="Node000003" href="$classAQuestManagerActor.html#ad7cc1de3e613a1a68f7f3bcca0b22789" title=" " alt="" coords="469,5,629,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="397,44,456,36,456,41,398,49"/>
+<area shape="rect" id="Node000004" href="$classAQuestManagerActor.html#a579b42b72172e4bfe4e461f70e52c187" title="퀘스트 진행도를 갱신하고 클라이언트에 통지합니다." alt="" coords="469,69,629,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="398,66,456,74,456,79,397,71"/>
+<area shape="rect" id="Node000005" href="$classAQuestManagerActor.html#a83693fe97f7b6375279f1446da6f969d" title="퀘스트 목표 변경 사항을 UI 계층에 브로드캐스트합니다." alt="" coords="677,69,837,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="629,87,663,87,663,92,629,92"/>
+</map>

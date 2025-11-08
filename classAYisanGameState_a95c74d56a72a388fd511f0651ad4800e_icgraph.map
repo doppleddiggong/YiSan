@@ -1,0 +1,7 @@
+<map id="AYisanGameState::OnRep_PlayerList" name="AYisanGameState::OnRep_PlayerList">
+<area shape="rect" id="Node000001" title="복제된 플레이어 목록 배열이 변할 때 호출됩니다." alt="" coords="557,5,747,45"/>
+<area shape="rect" id="Node000002" href="$classAYisanGameState.html#a99b1f96f16450bc5c7dc21abcb5503eb" title="플레이어 목록을 업데이트하고 브로드캐스트합니다." alt="" coords="252,13,509,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="544,28,510,28,510,23,544,23"/>
+<area shape="rect" id="Node000003" href="$classAYisanGameState.html#a760721a6ef2c9acebb4a853f15535904" title="플레이어 목록 업데이트를 요청합니다." alt="" coords="5,5,204,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="238,28,204,28,204,23,238,23"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="UStateWidget::OnNetworkWaitCount" name="UStateWidget::OnNetworkWaitCount">
+<area shape="rect" id="Node000001" title="네트워크 대기 카운트 변경 시 호출됩니다." alt="" coords="279,5,501,45"/>
+<area shape="rect" id="Node000002" href="$classUStateWidget.html#ac2b8a82ce5eaa9387625842737957c02" title="위젯 생성 시 초기화 작업을 수행합니다." alt="" coords="5,13,231,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="265,28,231,28,231,23,265,23"/>
+</map>

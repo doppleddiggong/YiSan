@@ -1,0 +1,5 @@
+<map id="AYiSanPlayerState::SetPlayerIndex" name="AYiSanPlayerState::SetPlayerIndex">
+<area shape="rect" id="Node000001" title="UI 정렬에 사용할 권한 플레이어 인덱스를 설정합니다." alt="" coords="265,5,415,45"/>
+<area shape="rect" id="Node000002" href="$classAYiSanGameMode.html#afc486f74d1a617926223f603d0f93749" title="플레이어 인덱스를 부여하고 폰 존재를 확인하며 다산 NPC 참조를 캐시합니다." alt="" coords="5,13,217,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="252,28,218,28,218,23,252,23"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Source/YiSan/Voice/Public/UVoiceConversationSystem.h" name="Source/YiSan/Voice/Public/UVoiceConversationSystem.h">
+<area shape="rect" id="Node000001" title="STT·GPT·TTS 파이프라인을 연결하는 음성 대화 컴포넌트를 선언합니다." alt="" coords="109,5,309,60"/>
+<area shape="rect" id="Node000002" href="$APlayerActor_8cpp.html" title="APlayerActor 구현을 위한 Doxygen 주석을 제공합니다." alt="" coords="5,115,192,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,72,121,117,118,113,168,68"/>
+<area shape="rect" id="Node000003" href="$UVoiceConversationSystem_8cpp.html" title="UVoiceConversationSystem의 동작을 구현합니다." alt="" coords="217,108,423,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="250,67,293,106,289,110,247,71"/>
+</map>

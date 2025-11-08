@@ -1,0 +1,5 @@
+<map id="AQuestManagerActor::ContactBuilding" name="AQuestManagerActor::ContactBuilding">
+<area shape="rect" id="Node000001" title="접촉한 건물이 활성 퀘스트 목표와 일치하는지 검증합니다." alt="" coords="213,5,373,45"/>
+<area shape="rect" id="Node000002" href="$classAQuestManagerActor.html#aee9b9b6c0ff9e8ebeec96398f531f8bb" title="클라이언트 또는 서버 권한에서 전달되는 접촉 이벤트 진입점입니다." alt="" coords="5,5,165,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,28,166,28,166,23,200,23"/>
+</map>

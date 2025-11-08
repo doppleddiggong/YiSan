@@ -1,0 +1,5 @@
+<map id="AYisanGameState" name="AYisanGameState">
+<area shape="rect" id="Node000001" title="AGameStateBase를 확장하여 퀘스트 조율과 복제 UI 데이터를 제공합니다." alt="" coords="5,119,251,599"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="64,5,192,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,84,131,119,125,119,125,84"/>
+</map>

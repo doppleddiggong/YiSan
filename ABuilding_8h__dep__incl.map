@@ -1,0 +1,19 @@
+<map id="Source/YiSan/Environment/Public/ABuilding.h" name="Source/YiSan/Environment/Public/ABuilding.h">
+<area shape="rect" id="Node000001" title="건물 방문 이벤트를 브로드캐스트하는 액터를 선언합니다." alt="" coords="829,5,1022,45"/>
+<area shape="rect" id="Node000002" href="$APlayerActor_8cpp.html" title="APlayerActor 구현을 위한 Doxygen 주석을 제공합니다." alt="" coords="5,93,192,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="815,37,537,59,204,96,193,98,192,92,204,91,537,54,815,31"/>
+<area shape="rect" id="Node000003" href="$UGPTContextSystem_8cpp.html" title="UGPTContextSystem의 동작을 구현합니다." alt="" coords="217,93,455,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="815,45,456,97,455,92,814,40"/>
+<area shape="rect" id="Node000004" href="$ABuilding_8cpp.html" title="ABuilding의 동작을 구현합니다." alt="" coords="479,93,673,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="836,51,653,96,652,91,835,46"/>
+<area shape="rect" id="Node000005" href="$ABuildingContainer_8cpp.html" title="ABuildingContainer의 동작을 구현합니다." alt="" coords="697,93,924,133"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="891,56,838,95,834,91,887,52"/>
+<area shape="rect" id="Node000006" href="$ADasanActor_8cpp.html" title="ADasanActor의 동작을 구현합니다." alt="" coords="948,93,1135,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="964,52,1017,91,1014,95,960,56"/>
+<area shape="rect" id="Node000007" href="$UTourStateSystem_8cpp.html" title="UTourStateSystem의 동작을 구현합니다." alt="" coords="1159,93,1345,133"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1011,46,1181,91,1180,96,1009,51"/>
+<area shape="rect" id="Node000008" href="$EndingWidget_8cpp.html" title="UEndingWidget의 동작을 구현합니다." alt="" coords="1370,93,1545,133"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1037,40,1358,91,1370,93,1369,98,1357,96,1036,45"/>
+<area shape="rect" id="Node000009" href="$UStateWidget_8cpp.html" title="UStateWidget의 동작을 구현합니다." alt="" coords="1569,93,1743,133"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1036,33,1276,56,1558,91,1569,92,1568,98,1557,96,1275,61,1035,38"/>
+</map>

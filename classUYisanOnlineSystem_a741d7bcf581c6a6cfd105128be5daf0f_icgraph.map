@@ -1,0 +1,5 @@
+<map id="UYisanOnlineSystem::OnCreateSessionComplete" name="UYisanOnlineSystem::OnCreateSessionComplete">
+<area shape="rect" id="Node000001" title="세션 생성 요청 완료를 처리합니다." alt="" coords="212,5,416,45"/>
+<area shape="rect" id="Node000002" href="$classUYisanOnlineSystem.html#af8e2ce9047b21bb0c5bcb531fbe4aabf" title="서브시스템 델리게이트를 초기화하고 세션 인터페이스를 캐시합니다." alt="" coords="5,5,164,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,28,164,28,164,23,198,23"/>
+</map>

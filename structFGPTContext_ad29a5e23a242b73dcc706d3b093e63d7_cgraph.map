@@ -1,0 +1,5 @@
+<map id="FGPTContext::HasAnyData" name="FGPTContext::HasAnyData">
+<area shape="rect" id="Node000001" title="어느 필드라도 유효한 정보를 포함하는지 확인합니다." alt="" coords="5,13,200,38"/>
+<area shape="rect" id="Node000002" href="$structFGPTContextLocation.html#a1cdc49a72a614fcd45f7ae01f19a2cb0" title="구조체가 유효한 데이터를 보유하고 있는지 확인합니다." alt="" coords="248,5,409,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,23,234,23,234,28,200,28"/>
+</map>

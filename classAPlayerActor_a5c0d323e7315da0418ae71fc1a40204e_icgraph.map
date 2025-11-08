@@ -1,0 +1,7 @@
+<map id="APlayerActor::OnReadyPawn" name="APlayerActor::OnReadyPawn">
+<area shape="rect" id="Node000001" title="컨트롤러가 준비된 뒤 입력을 허용하고 UI를 초기화합니다." alt="" coords="252,42,459,67"/>
+<area shape="rect" id="Node000002" href="$classAPlayerActor.html#a56fd76fe4979f537c112d32ebbc44f72" title=" " alt="" coords="26,5,183,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="238,44,183,37,184,32,239,38"/>
+<area shape="rect" id="Node000003" href="$classAPlayerActor.html#a35e67f9f2f0a0c5ee8589213b5a65b63" title=" " alt="" coords="5,70,204,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="239,70,204,74,204,69,238,65"/>
+</map>

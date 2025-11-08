@@ -1,0 +1,18 @@
+<map id="UWebSocketSystem::SendSpatialContext" name="UWebSocketSystem::SendSpatialContext">
+<area shape="rect" id="Node000001" title="플레이어 주변 공간 정보를 실시간으로 동기화합니다." alt="" coords="5,48,243,88"/>
+<area shape="rect" id="Node000002" href="$structFGPTContext.html#ad29a5e23a242b73dcc706d3b093e63d7" title="어느 필드라도 유효한 정보를 포함하는지 확인합니다." alt="" coords="579,49,773,74"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,45,230,28,290,15,358,6,411,3,464,6,531,15,583,26,631,41,629,46,582,31,530,20,463,11,411,8,358,11,291,20,232,33,177,50"/>
+<area shape="rect" id="Node000004" href="$classUWebSocketSystem.html#a89bbc98f683cca370ea2e91fbd36ca7b" title="현재 WebSocket 연결 상태를 조회합니다." alt="" coords="291,30,531,55"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="243,55,277,52,277,57,243,60"/>
+<area shape="rect" id="Node000005" href="$classUWebSocketSystem.html#a864f4f7d23c89554fbe9a6ddad5aedf1" title="WebSocket 관련 공통 로그 메시지를 출력합니다." alt="" coords="291,79,530,105"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="243,75,278,78,277,83,243,80"/>
+<area shape="rect" id="Node000006" href="$structFGPTContext.html#ad4ea3e7ddf2641cd609b799a013f7ef9" title="JSON 직렬화를 위한 객체를 생성합니다." alt="" coords="312,129,509,154"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="189,85,291,115,328,123,327,128,290,120,187,90"/>
+<area shape="rect" id="Node000003" href="$structFGPTContextLocation.html#a1cdc49a72a614fcd45f7ae01f19a2cb0" title="구조체가 유효한 데이터를 보유하고 있는지 확인합니다." alt="" coords="821,92,983,132"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="734,71,809,88,807,93,733,77"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="489,126,530,115,554,103,578,91,618,76,620,81,580,96,556,108,532,120,491,131"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="510,133,808,115,808,120,510,138"/>
+<area shape="rect" id="Node000007" href="$structFGPTContextLocation.html#aea075190c0e8f8f8c6ea85e042918864" title="JSON 직렬화를 위한 객체를 생성합니다." alt="" coords="595,149,757,189"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="510,149,582,157,581,162,509,154"/>
+<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="755,147,809,133,810,138,756,152"/>
+</map>

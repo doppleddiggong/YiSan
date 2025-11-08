@@ -1,0 +1,36 @@
+<map id="UWebSocketSystem::LogNetwork" name="UWebSocketSystem::LogNetwork">
+<area shape="rect" id="Node000001" title="WebSocket 관련 공통 로그 메시지를 출력합니다." alt="" coords="565,401,804,427"/>
+<area shape="rect" id="Node000002" href="$classUWebSocketSystem.html#ad8a09ae8c4734c4af887f138e3ccb751" title="WebSocket 서버와 연결을 수립합니다." alt="" coords="5,212,219,237"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="678,388,666,316,655,270,639,221,618,171,591,124,557,82,516,48,483,29,452,16,423,10,395,8,366,12,336,20,268,48,240,64,215,84,173,131,141,178,122,213,117,211,136,175,168,128,212,80,237,60,265,43,335,15,365,7,395,3,424,4,454,11,485,24,519,44,561,78,595,121,623,169,644,219,660,269,672,315,683,387"/>
+<area shape="rect" id="Node000003" href="$classUWebSocketSystem.html#a32fee960c1f1aae43fec2dc8ec030d45" title="활성화된 WebSocket 연결을 종료합니다." alt="" coords="276,59,508,84"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="675,389,658,328,627,249,606,207,581,167,551,130,516,99,494,86,497,82,519,94,554,126,585,164,611,204,632,246,663,326,680,387"/>
+<area shape="rect" id="Node000004" href="$classUWebSocketSystem.html#a02b52e67a7d5cb10d8990691e83316de" title="바이너리 메시지를 수신했을 때 호출됩니다." alt="" coords="282,109,502,149"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="671,389,650,341,617,279,572,216,545,187,516,163,496,151,498,146,519,158,549,183,576,212,622,276,655,338,676,387"/>
+<area shape="rect" id="Node000005" href="$classUWebSocketSystem.html#a7a88c6a90e78c24cb49759a99f461820" title="연결 종료 이벤트를 처리합니다." alt="" coords="281,173,503,213"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="667,391,642,354,608,309,565,265,516,227,492,215,495,210,519,222,569,261,612,306,646,351,671,388"/>
+<area shape="rect" id="Node000006" href="$classUWebSocketSystem.html#a7f1b915b47d4df8053b658927e948009" title="WebSocket 연결 완료 콜백입니다." alt="" coords="269,237,515,277"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="659,394,597,342,558,314,516,291,487,279,489,274,518,286,561,310,600,338,662,390"/>
+<area shape="rect" id="Node000007" href="$classUWebSocketSystem.html#a7417991ad9b907b214283443537f567a" title="연결 오류 발생 시 호출되는 콜백입니다." alt="" coords="267,301,517,341"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="638,399,517,355,475,343,476,338,518,350,640,394"/>
+<area shape="rect" id="Node000008" href="$classUWebSocketSystem.html#a193675a8b260eb5d79e535ef3f7f1192" title="텍스트 메시지를 수신했을 때 호출됩니다." alt="" coords="274,365,510,405"/>
+<area shape="poly" id="edge11_Node000001_Node000008" title=" " alt="" coords="551,403,510,399,511,394,552,398"/>
+<area shape="rect" id="Node000009" href="$classUWebSocketSystem.html#ab83e2357874260a0c502f34b4e29bf62" title="실시간 음성 합성을 요청하는 메시지를 전송합니다." alt="" coords="273,429,511,455"/>
+<area shape="poly" id="edge13_Node000001_Node000009" title=" " alt="" coords="552,429,511,433,511,428,551,424"/>
+<area shape="rect" id="Node000010" href="$classUWebSocketSystem.html#a57e7ed00b5a9a8fa7cecaeb895664d1c" title="실시간 음성 스트리밍 데이터를 서버로 전송합니다." alt="" coords="277,479,507,504"/>
+<area shape="poly" id="edge14_Node000001_Node000010" title=" " alt="" coords="634,434,518,468,462,481,461,476,517,463,632,428"/>
+<area shape="rect" id="Node000011" href="$classUWebSocketSystem.html#ab443bc5338aeebe6481ca3659f959208" title="연결 상태를 유지하기 위해 Ping 메시지를 보냅니다." alt="" coords="282,528,502,553"/>
+<area shape="poly" id="edge15_Node000001_Node000011" title=" " alt="" coords="657,437,596,478,558,500,518,518,477,530,475,525,516,513,555,495,593,474,654,433"/>
+<area shape="rect" id="Node000012" href="$classUWebSocketSystem.html#a0d943a89095ca2e3d22d7a348c54bc3c" title="플레이어 주변 공간 정보를 실시간으로 동기화합니다." alt="" coords="273,578,511,618"/>
+<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="666,439,605,503,564,537,519,567,488,580,486,575,516,562,561,533,601,499,662,435"/>
+<area shape="rect" id="Node000013" href="$classUWebSocketSystem.html#af4a7ee5b01e7fad3e2277d0f8c574431" title="서버에 녹음 시작 신호를 보냅니다." alt="" coords="281,642,503,682"/>
+<area shape="poly" id="edge17_Node000001_Node000013" title=" " alt="" coords="673,441,650,483,616,535,572,587,519,632,496,644,494,639,516,628,568,584,611,532,645,480,669,438"/>
+<area shape="rect" id="Node000014" href="$classUWebSocketSystem.html#a73120c9b86358dfcf637ac01a25da16d" title="서버에 녹음 종료 신호를 전송합니다." alt="" coords="281,706,503,746"/>
+<area shape="poly" id="edge18_Node000001_Node000014" title=" " alt="" coords="678,441,658,495,626,564,579,635,551,668,519,696,499,708,496,703,516,692,547,664,575,632,621,561,653,493,673,439"/>
+<area shape="rect" id="Node000015" href="$classUWebSocketSystem.html#a15eb1c5058edae18827d9a8a786d8db5" title="서버에 기본 음성 합성 파라미터를 업데이트합니다." alt="" coords="269,771,515,796"/>
+<area shape="poly" id="edge19_Node000001_Node000015" title=" " alt="" coords="681,440,666,506,636,593,615,639,588,684,556,725,519,760,497,773,494,768,516,756,553,721,584,681,610,637,631,591,661,504,676,439"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="294,155,268,163,199,189,142,214,140,209,197,184,266,158,292,150"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="267,209,219,215,218,210,267,204"/>
+<area shape="poly" id="edge8_Node000006_Node000002" title=" " alt="" coords="255,244,219,239,219,234,256,238"/>
+<area shape="poly" id="edge10_Node000007_Node000002" title=" " alt="" coords="292,299,266,291,197,265,140,240,142,235,199,260,268,286,294,294"/>
+<area shape="poly" id="edge12_Node000008_Node000002" title=" " alt="" coords="281,362,265,355,221,327,180,295,123,239,127,235,184,291,224,323,268,350,283,357"/>
+</map>

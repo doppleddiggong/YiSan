@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YiSan Project Documentation: Source/YiSan/Environment/Public/AYisanGameState.h 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YiSan Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('AYisanGameState_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">AYisanGameState.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="AYisanGameState_8h.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="AYiSanPlayerState_8h.html">AYiSanPlayerState.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="EBuildingType_8h.html">EBuildingType.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;GameFramework/GameStateBase.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;AYisanGameState.generated.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="AYisanGameState_8h.html#acedfcd86d3b523313e6b12dcf8e8bbb2">   16</a></span><a class="code hl_function" href="AYisanGameState_8h.html#acedfcd86d3b523313e6b12dcf8e8bbb2">DECLARE_MULTICAST_DELEGATE_OneParam</a>(FOnPlayerListUpdated, <span class="keyword">const</span> TArray&lt;FString&gt;&amp; <span class="comment">/* PlayerNames */</span>);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>UCLASS()</div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classAYisanGameState.html">   22</a></span>class YISAN_API <a class="code hl_class" href="classAYisanGameState.html">AYisanGameState</a> : public AGameStateBase</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_class" href="classAYisanGameState.html">AYisanGameState</a>();</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> GetLifetimeReplicatedProps(TArray&lt;FLifetimeProperty&gt;&amp; OutLifetimeProps) <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> BeginPlay() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        UFUNCTION(NetMulticast, Reliable)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classAYisanGameState.html#a73c8b1b00bac30c4f80d268d2ed81d04">   36</a></span>        void MulticastRPC_ToastMessage(const FString&amp; Message);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        UFUNCTION(NetMulticast, Reliable)</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classAYisanGameState.html#a3af1af418ae0c9c8223189b0229b66bf">   40</a></span>        <span class="keywordtype">void</span> MulticastRPC_UpdateQuestTarget(const <a class="code hl_enumeration" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a> InBuildingType);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        UFUNCTION(NetMulticast, Reliable)</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classAYisanGameState.html#adb49cc4557a180ddf764528c53f1a14f">   44</a></span>        <span class="keywordtype">void</span> MulticastRPC_LoadingComplete();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        UFUNCTION(Server, Reliable)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classAYisanGameState.html#a6e994106d56ee901cfa46b4243fe215e">   48</a></span>        <span class="keywordtype">void</span> ServerRPC_PlaySound(<a class="code hl_enumeration" href="EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80">EGameSoundType</a> SoundType);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        UFUNCTION(NetMulticast, Reliable)</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classAYisanGameState.html#afef36515dc291ea7c014a9ddf3607eb0">   52</a></span>        <span class="keywordtype">void</span> MulticastRPC_PlaySound(<a class="code hl_enumeration" href="EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80">EGameSoundType</a> SoundType);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">// 투어 시작</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    UFUNCTION(BlueprintCallable, Category=&quot;Tour&quot;)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> StartGlobalTour();</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">void</span> SetQuestManager(class <a class="code hl_class" href="classAQuestManagerActor.html">AQuestManagerActor</a>* InQuestManager);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classAYisanGameState.html#a42f74d8a7a964c799a5a41e9dc02e4d1">   62</a></span>    class <a class="code hl_class" href="classAQuestManagerActor.html">AQuestManagerActor</a>* GetQuestManager()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> QuestManager; }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">// ========================================</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment">// Player List Management</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment">// ========================================</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classAYisanGameState.html#aa7192cb11171b00da57d5d8427599b19">   69</a></span>    <span class="keyword">static</span> int32 <a class="code hl_variable" href="classAYisanGameState.html#aa7192cb11171b00da57d5d8427599b19">NextPlayerIndex</a>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    UFUNCTION(BlueprintCallable, Category=<span class="stringliteral">&quot;PlayerList&quot;</span>)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    void UpdatePlayerList();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    UFUNCTION(BlueprintCallable, Category=&quot;PlayerList&quot;)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordtype">void</span> RequestRefreshPlayerList();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    UFUNCTION(BlueprintCallable, Category=&quot;PlayerList&quot;)</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classAYisanGameState.html#ab51df4088a1eae4dfeb349a888926b1f">   81</a></span>    TArray&lt;FString&gt; GetPlayerList()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> PlayerList; }</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classAYisanGameState.html#a9916d558549e14c0b734098199e6ca3f">   84</a></span>    FOnPlayerListUpdated <a class="code hl_variable" href="classAYisanGameState.html#a9916d558549e14c0b734098199e6ca3f">OnPlayerListUpdated</a>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        UFUNCTION(Server, Reliable)</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classAYisanGameState.html#a67dd0e42e9dc3725d79c30b16a150fe8">   89</a></span>        void ServerRPC_UpdatePlayerList();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        UFUNCTION()</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordtype">void</span> OnRep_QuestManager();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        UFUNCTION()</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordtype">void</span> OnRep_PlayerList();</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>public:</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category=&quot;Tour&quot;)</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classAYisanGameState.html#a9644b6ba394d40bd9b5d6c72585bd17f">  101</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classADasanActor.html">ADasanActor</a>&gt; DasanNPC;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>private:</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    UPROPERTY(ReplicatedUsing=OnRep_QuestManager)</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="classAYisanGameState.html#a050daca622ea6c1f78a050a533e0110f">  105</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classAQuestManagerActor.html">AQuestManagerActor</a>&gt; QuestManager;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    UPROPERTY(ReplicatedUsing=OnRep_PlayerList)</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="classAYisanGameState.html#ae21a6ecb2c707ecdbef5c385a24da4f8">  108</a></span>    TArray&lt;FString&gt; PlayerList;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>};</div>
+</div>
+<div class="ttc" id="aAYiSanPlayerState_8h_html"><div class="ttname"><a href="AYiSanPlayerState_8h.html">AYiSanPlayerState.h</a></div><div class="ttdoc">AYiSanPlayerState 클래스를 선언합니다.</div></div>
+<div class="ttc" id="aAYisanGameState_8h_html_acedfcd86d3b523313e6b12dcf8e8bbb2"><div class="ttname"><a href="AYisanGameState_8h.html#acedfcd86d3b523313e6b12dcf8e8bbb2">DECLARE_MULTICAST_DELEGATE_OneParam</a></div><div class="ttdeci">DECLARE_MULTICAST_DELEGATE_OneParam(FOnPlayerListUpdated, const TArray&lt; FString &gt; &amp;)</div></div>
+<div class="ttc" id="aEBuildingType_8h_html"><div class="ttname"><a href="EBuildingType_8h.html">EBuildingType.h</a></div><div class="ttdoc">EBuildingType 클래스를 선언합니다.</div></div>
+<div class="ttc" id="aEBuildingType_8h_html_abd7612dc4100b44f80890bb8ad417947"><div class="ttname"><a href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a></div><div class="ttdeci">EBuildingType</div><div class="ttdef"><b>Definition</b> <a href="EBuildingType_8h_source.html#l00008">EBuildingType.h:9</a></div></div>
+<div class="ttc" id="aEGameSoundType_8h_html_af4a7536fe94049720d6e9d21c1b2ec80"><div class="ttname"><a href="EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80">EGameSoundType</a></div><div class="ttdeci">EGameSoundType</div><div class="ttdef"><b>Definition</b> <a href="EGameSoundType_8h_source.html#l00008">EGameSoundType.h:9</a></div></div>
+<div class="ttc" id="aclassADasanActor_html"><div class="ttname"><a href="classADasanActor.html">ADasanActor</a></div><div class="ttdef"><b>Definition</b> <a href="ADasanActor_8h_source.html#l00015">ADasanActor.h:16</a></div></div>
+<div class="ttc" id="aclassAQuestManagerActor_html"><div class="ttname"><a href="classAQuestManagerActor.html">AQuestManagerActor</a></div><div class="ttdoc">서버 주도형 퀘스트 진행 상태를 관리하는 액터입니다.</div><div class="ttdef"><b>Definition</b> <a href="AQuestManagerActor_8h_source.html#l00021">AQuestManagerActor.h:22</a></div></div>
+<div class="ttc" id="aclassAYisanGameState_html"><div class="ttname"><a href="classAYisanGameState.html">AYisanGameState</a></div><div class="ttdoc">AGameStateBase를 확장하여 퀘스트 조율과 복제 UI 데이터를 제공합니다.</div><div class="ttdef"><b>Definition</b> <a href="AYisanGameState_8h_source.html#l00022">AYisanGameState.h:23</a></div></div>
+<div class="ttc" id="aclassAYisanGameState_html_a9916d558549e14c0b734098199e6ca3f"><div class="ttname"><a href="classAYisanGameState.html#a9916d558549e14c0b734098199e6ca3f">AYisanGameState::OnPlayerListUpdated</a></div><div class="ttdeci">FOnPlayerListUpdated OnPlayerListUpdated</div><div class="ttdoc">플레이어 목록이 업데이트될 때 호출되는 델리게이트</div><div class="ttdef"><b>Definition</b> <a href="AYisanGameState_8h_source.html#l00084">AYisanGameState.h:84</a></div></div>
+<div class="ttc" id="aclassAYisanGameState_html_aa7192cb11171b00da57d5d8427599b19"><div class="ttname"><a href="classAYisanGameState.html#aa7192cb11171b00da57d5d8427599b19">AYisanGameState::NextPlayerIndex</a></div><div class="ttdeci">static int32 NextPlayerIndex</div><div class="ttdoc">다음 플레이어 인덱스 (전역적으로 증가)</div><div class="ttdef"><b>Definition</b> <a href="AYisanGameState_8h_source.html#l00069">AYisanGameState.h:69</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_9a481a88fca7fb2428f2795f507e855b.html">YiSan</a></li><li class="navelem"><a class="el" href="dir_33401b21ee94a88a4c3dcbc47e107729.html">Environment</a></li><li class="navelem"><a class="el" href="dir_a2886c9b9adb6fb89ba923e7f78b86f6.html">Public</a></li><li class="navelem"><a class="el" href="AYisanGameState_8h.html">AYisanGameState.h</a></li>
+    <li class="footer">생성시간 : 토 11월 8 2025 13:55:38, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

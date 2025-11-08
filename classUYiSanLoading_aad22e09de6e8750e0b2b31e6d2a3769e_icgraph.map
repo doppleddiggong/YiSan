@@ -1,0 +1,5 @@
+<map id="UYiSanLoading::HandlePostLoadMapSimple" name="UYiSanLoading::HandlePostLoadMapSimple">
+<area shape="rect" id="Node000001" title="고급 로딩 화면 없이 로딩이 완료되었을 때 호출되는 콜백입니다." alt="" coords="251,5,452,45"/>
+<area shape="rect" id="Node000002" href="$classUYiSanLoading.html#a783ebd42104f77c1a45156f889b19562" title="선택적 로딩 화면 오케스트레이션과 함께 서버 이동을 시작합니다." alt="" coords="5,13,203,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,28,203,28,203,23,237,23"/>
+</map>

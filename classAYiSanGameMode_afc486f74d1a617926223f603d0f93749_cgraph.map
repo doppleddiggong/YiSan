@@ -1,0 +1,7 @@
+<map id="AYiSanGameMode::PostLogin" name="AYiSanGameMode::PostLogin">
+<area shape="rect" id="Node000001" title="플레이어 인덱스를 부여하고 폰 존재를 확인하며 다산 NPC 참조를 캐시합니다." alt="" coords="5,35,217,60"/>
+<area shape="rect" id="Node000002" href="$structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66" title=" " alt="" coords="265,5,488,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="217,33,251,29,252,34,218,38"/>
+<area shape="rect" id="Node000003" href="$classAYiSanPlayerState.html#acaa6c1cc86c1c6d1d157a12b551a5abd" title="UI 정렬에 사용할 권한 플레이어 인덱스를 설정합니다." alt="" coords="302,55,451,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="218,56,288,63,288,69,217,61"/>
+</map>

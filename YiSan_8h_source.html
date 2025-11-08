@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YiSan Project Documentation: Source/YiSan/YiSan.h 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YiSan Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('YiSan_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">YiSan.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="YiSan_8h.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright Epic Games, Inc. All Rights Reserved.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="foldopen" id="foldopen00007" data-start="{" data-end="}">
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="namespaceGameLayer.html">    7</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceGameLayer.html">GameLayer</a></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="namespaceGameLayer.html#ae4c4bd33e56196bb1e54f458059d5345">    9</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> int32 <a class="code hl_variable" href="namespaceGameLayer.html#ae4c4bd33e56196bb1e54f458059d5345">Loading</a> = 400;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="namespaceGameLayer.html#a919c4166af88ffa5c2fd2d860c2c40a9">   10</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> int32 <a class="code hl_variable" href="namespaceGameLayer.html#a919c4166af88ffa5c2fd2d860c2c40a9">LoadingCircle</a> = 500;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="namespaceGameLayer.html#a07dfea414258bbc2a9e8f98ced349615">   11</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> int32 <a class="code hl_variable" href="namespaceGameLayer.html#a07dfea414258bbc2a9e8f98ced349615">ToastManager</a> = 600;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>}</div>
+</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="namespaceGameTags.html">   17</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceGameTags.html">GameTags</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="namespaceGameTags.html#a4a81eec617fe2a3746945eb6a5814d21">   20</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> FName <a class="code hl_variable" href="namespaceGameTags.html#a4a81eec617fe2a3746945eb6a5814d21">Player</a> = TEXT(<span class="stringliteral">&quot;Player&quot;</span>);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="namespaceGameTags.html#a3c08adb522f39311cbf10b2efec81a35">   23</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> FName <a class="code hl_variable" href="namespaceGameTags.html#a3c08adb522f39311cbf10b2efec81a35">Door</a> = TEXT(<span class="stringliteral">&quot;Door&quot;</span>);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="namespaceGameTags.html#abffb03d97d2c1ee92236896e77b31600">   26</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> FName <a class="code hl_variable" href="namespaceGameTags.html#abffb03d97d2c1ee92236896e77b31600">Building</a> = TEXT(<span class="stringliteral">&quot;Building&quot;</span>);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="namespaceGameTags.html#aac9fb532cbf84f5794fc55aaafba3609">   28</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> FName <a class="code hl_variable" href="namespaceGameTags.html#aac9fb532cbf84f5794fc55aaafba3609">Dasan</a> = TEXT(<span class="stringliteral">&quot;Dasan&quot;</span>);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
+</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="foldopen" id="foldopen00032" data-start="{" data-end="}">
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="namespaceGameLevel.html">   32</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceGameLevel.html">GameLevel</a></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="namespaceGameLevel.html#aa3bb7fe9afeeac60ed178ff2fa45257f">   34</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> FString <a class="code hl_variable" href="namespaceGameLevel.html#aa3bb7fe9afeeac60ed178ff2fa45257f">StartLevel</a> = TEXT(<span class="stringliteral">&quot;StartLevel&quot;</span>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="namespaceGameLevel.html#ac82f0d33f917bdbdf4e2d4bc14f2d85f">   35</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> FString <a class="code hl_variable" href="namespaceGameLevel.html#ac82f0d33f917bdbdf4e2d4bc14f2d85f">LobbyMap</a>   = TEXT(<span class="stringliteral">&quot;LobbyMap&quot;</span>);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="namespaceGameLevel.html#aef3e425c85f4a76e51eeac05b5ba1d30">   36</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> FString <a class="code hl_variable" href="namespaceGameLevel.html#aef3e425c85f4a76e51eeac05b5ba1d30">LoadingMap</a> = TEXT(<span class="stringliteral">&quot;LoadingMap&quot;</span>);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="namespaceGameLevel.html#ab196056456a239080c2d9b7310163107">   37</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> FString <a class="code hl_variable" href="namespaceGameLevel.html#ab196056456a239080c2d9b7310163107">MainMap_WP</a> = TEXT(<span class="stringliteral">&quot;MainMap_WP&quot;</span>);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
+</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="namespaceGameMessage.html">   42</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceGameMessage.html">GameMessage</a></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>{</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="namespaceGameMessage.html#a5dbedc9538ba6d1baa996c8c59666487">   44</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> FString <a class="code hl_variable" href="namespaceGameMessage.html#a5dbedc9538ba6d1baa996c8c59666487">GameStart</a> = TEXT(<span class="stringliteral">&quot;GameStart&quot;</span>);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="namespaceGameMessage.html#a2298f260adc739495b1a3938d2335243">   45</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> FString <a class="code hl_variable" href="namespaceGameMessage.html#a2298f260adc739495b1a3938d2335243">GameEnd</a> = TEXT(<span class="stringliteral">&quot;GameEnd&quot;</span>);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="namespaceGameMessage.html#aa9bd2204f84bf0f0e6a421b6c102dc60">   46</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> FString <a class="code hl_variable" href="namespaceGameMessage.html#aa9bd2204f84bf0f0e6a421b6c102dc60">IntroStart</a> = TEXT(<span class="stringliteral">&quot;IntroStart&quot;</span>);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="namespaceGameMessage.html#a7c9b2a73fcb8d4b1add212d7c16476c2">   47</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> FString <a class="code hl_variable" href="namespaceGameMessage.html#a7c9b2a73fcb8d4b1add212d7c16476c2">OutroStart</a> = TEXT(<span class="stringliteral">&quot;OutroStart&quot;</span>);    </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
+</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="foldopen" id="foldopen00053" data-start="{" data-end="}">
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="namespaceGameString.html">   53</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceGameString.html">GameString</a></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>{</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespaceGameString.html#aed12733688623cf7a5e90d88e21c048d">   55</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> FString <a class="code hl_variable" href="namespaceGameString.html#aed12733688623cf7a5e90d88e21c048d">NPC</a> = TEXT(<span class="stringliteral">&quot;정약용&quot;</span>);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="namespaceGameString.html#a72d9fc2a109886bb2513cb7bc7009d02">   56</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> FString <a class="code hl_variable" href="namespaceGameString.html#a72d9fc2a109886bb2513cb7bc7009d02">System</a> = TEXT(<span class="stringliteral">&quot;SYSTEM&quot;</span>);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="namespaceGameString.html#a648970d0f3f6ebf8cc20935a44303879">   57</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> FString <a class="code hl_variable" href="namespaceGameString.html#a648970d0f3f6ebf8cc20935a44303879">Default</a> = TEXT(<span class="stringliteral">&quot;이산&quot;</span>);    </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
+</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="ttc" id="anamespaceGameLayer_html"><div class="ttname"><a href="namespaceGameLayer.html">GameLayer</a></div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00007">YiSan.h:8</a></div></div>
+<div class="ttc" id="anamespaceGameLayer_html_a07dfea414258bbc2a9e8f98ced349615"><div class="ttname"><a href="namespaceGameLayer.html#a07dfea414258bbc2a9e8f98ced349615">GameLayer::ToastManager</a></div><div class="ttdeci">static const int32 ToastManager</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00011">YiSan.h:11</a></div></div>
+<div class="ttc" id="anamespaceGameLayer_html_a919c4166af88ffa5c2fd2d860c2c40a9"><div class="ttname"><a href="namespaceGameLayer.html#a919c4166af88ffa5c2fd2d860c2c40a9">GameLayer::LoadingCircle</a></div><div class="ttdeci">static const int32 LoadingCircle</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00010">YiSan.h:10</a></div></div>
+<div class="ttc" id="anamespaceGameLayer_html_ae4c4bd33e56196bb1e54f458059d5345"><div class="ttname"><a href="namespaceGameLayer.html#ae4c4bd33e56196bb1e54f458059d5345">GameLayer::Loading</a></div><div class="ttdeci">static const int32 Loading</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00009">YiSan.h:9</a></div></div>
+<div class="ttc" id="anamespaceGameLevel_html"><div class="ttname"><a href="namespaceGameLevel.html">GameLevel</a></div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00032">YiSan.h:33</a></div></div>
+<div class="ttc" id="anamespaceGameLevel_html_aa3bb7fe9afeeac60ed178ff2fa45257f"><div class="ttname"><a href="namespaceGameLevel.html#aa3bb7fe9afeeac60ed178ff2fa45257f">GameLevel::StartLevel</a></div><div class="ttdeci">static const FString StartLevel</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00034">YiSan.h:34</a></div></div>
+<div class="ttc" id="anamespaceGameLevel_html_ab196056456a239080c2d9b7310163107"><div class="ttname"><a href="namespaceGameLevel.html#ab196056456a239080c2d9b7310163107">GameLevel::MainMap_WP</a></div><div class="ttdeci">static const FString MainMap_WP</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00037">YiSan.h:37</a></div></div>
+<div class="ttc" id="anamespaceGameLevel_html_ac82f0d33f917bdbdf4e2d4bc14f2d85f"><div class="ttname"><a href="namespaceGameLevel.html#ac82f0d33f917bdbdf4e2d4bc14f2d85f">GameLevel::LobbyMap</a></div><div class="ttdeci">static const FString LobbyMap</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00035">YiSan.h:35</a></div></div>
+<div class="ttc" id="anamespaceGameLevel_html_aef3e425c85f4a76e51eeac05b5ba1d30"><div class="ttname"><a href="namespaceGameLevel.html#aef3e425c85f4a76e51eeac05b5ba1d30">GameLevel::LoadingMap</a></div><div class="ttdeci">static const FString LoadingMap</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00036">YiSan.h:36</a></div></div>
+<div class="ttc" id="anamespaceGameMessage_html"><div class="ttname"><a href="namespaceGameMessage.html">GameMessage</a></div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00042">YiSan.h:43</a></div></div>
+<div class="ttc" id="anamespaceGameMessage_html_a2298f260adc739495b1a3938d2335243"><div class="ttname"><a href="namespaceGameMessage.html#a2298f260adc739495b1a3938d2335243">GameMessage::GameEnd</a></div><div class="ttdeci">static const FString GameEnd</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00045">YiSan.h:45</a></div></div>
+<div class="ttc" id="anamespaceGameMessage_html_a5dbedc9538ba6d1baa996c8c59666487"><div class="ttname"><a href="namespaceGameMessage.html#a5dbedc9538ba6d1baa996c8c59666487">GameMessage::GameStart</a></div><div class="ttdeci">static const FString GameStart</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00044">YiSan.h:44</a></div></div>
+<div class="ttc" id="anamespaceGameMessage_html_a7c9b2a73fcb8d4b1add212d7c16476c2"><div class="ttname"><a href="namespaceGameMessage.html#a7c9b2a73fcb8d4b1add212d7c16476c2">GameMessage::OutroStart</a></div><div class="ttdeci">static const FString OutroStart</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00047">YiSan.h:47</a></div></div>
+<div class="ttc" id="anamespaceGameMessage_html_aa9bd2204f84bf0f0e6a421b6c102dc60"><div class="ttname"><a href="namespaceGameMessage.html#aa9bd2204f84bf0f0e6a421b6c102dc60">GameMessage::IntroStart</a></div><div class="ttdeci">static const FString IntroStart</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00046">YiSan.h:46</a></div></div>
+<div class="ttc" id="anamespaceGameString_html"><div class="ttname"><a href="namespaceGameString.html">GameString</a></div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00053">YiSan.h:54</a></div></div>
+<div class="ttc" id="anamespaceGameString_html_a648970d0f3f6ebf8cc20935a44303879"><div class="ttname"><a href="namespaceGameString.html#a648970d0f3f6ebf8cc20935a44303879">GameString::Default</a></div><div class="ttdeci">static const FString Default</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00057">YiSan.h:57</a></div></div>
+<div class="ttc" id="anamespaceGameString_html_a72d9fc2a109886bb2513cb7bc7009d02"><div class="ttname"><a href="namespaceGameString.html#a72d9fc2a109886bb2513cb7bc7009d02">GameString::System</a></div><div class="ttdeci">static const FString System</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00056">YiSan.h:56</a></div></div>
+<div class="ttc" id="anamespaceGameString_html_aed12733688623cf7a5e90d88e21c048d"><div class="ttname"><a href="namespaceGameString.html#aed12733688623cf7a5e90d88e21c048d">GameString::NPC</a></div><div class="ttdeci">static const FString NPC</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00055">YiSan.h:55</a></div></div>
+<div class="ttc" id="anamespaceGameTags_html"><div class="ttname"><a href="namespaceGameTags.html">GameTags</a></div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00017">YiSan.h:18</a></div></div>
+<div class="ttc" id="anamespaceGameTags_html_a3c08adb522f39311cbf10b2efec81a35"><div class="ttname"><a href="namespaceGameTags.html#a3c08adb522f39311cbf10b2efec81a35">GameTags::Door</a></div><div class="ttdeci">static const FName Door</div><div class="ttdoc">문 및 문짝과 관련된 액터에 부여되는 태그입니다.</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00023">YiSan.h:23</a></div></div>
+<div class="ttc" id="anamespaceGameTags_html_a4a81eec617fe2a3746945eb6a5814d21"><div class="ttname"><a href="namespaceGameTags.html#a4a81eec617fe2a3746945eb6a5814d21">GameTags::Player</a></div><div class="ttdeci">static const FName Player</div><div class="ttdoc">플레이어 액터를 식별하기 위한 태그입니다.</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00020">YiSan.h:20</a></div></div>
+<div class="ttc" id="anamespaceGameTags_html_aac9fb532cbf84f5794fc55aaafba3609"><div class="ttname"><a href="namespaceGameTags.html#aac9fb532cbf84f5794fc55aaafba3609">GameTags::Dasan</a></div><div class="ttdeci">static const FName Dasan</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00028">YiSan.h:28</a></div></div>
+<div class="ttc" id="anamespaceGameTags_html_abffb03d97d2c1ee92236896e77b31600"><div class="ttname"><a href="namespaceGameTags.html#abffb03d97d2c1ee92236896e77b31600">GameTags::Building</a></div><div class="ttdeci">static const FName Building</div><div class="ttdoc">건물 액터를 구분할 때 사용하는 태그입니다.</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00026">YiSan.h:26</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_9a481a88fca7fb2428f2795f507e855b.html">YiSan</a></li><li class="navelem"><a class="el" href="YiSan_8h.html">YiSan.h</a></li>
+    <li class="footer">생성시간 : 토 11월 8 2025 13:55:38, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

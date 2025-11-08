@@ -1,0 +1,7 @@
+<map id="UChatBoxWidget::Ask" name="UChatBoxWidget::Ask">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,171,38"/>
+<area shape="rect" id="Node000002" href="$classUChatBoxWidget.html#aee05c1630472631e9e41ed3f46387a68" title=" " alt="" coords="219,13,465,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,23,205,23,205,28,171,28"/>
+<area shape="rect" id="Node000003" href="$classUVoiceFunctionLibrary.html#aa4356fa18c13d3a7408ab5ad099023ce" title="문자열을 해석해 미리 정의된 음성 명령 유형으로 변환합니다." alt="" coords="513,5,680,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="466,23,500,23,500,28,466,28"/>
+</map>

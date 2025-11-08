@@ -1,0 +1,7 @@
+<map id="Source/YiSan/Network/Public/FGPTContext.h" name="Source/YiSan/Network/Public/FGPTContext.h">
+<area shape="rect" id="Node000001" title="GPT 상호작용에 사용되는 공간 컨텍스트 구조체를 정의합니다." alt="" coords="69,5,235,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,123,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,48,89,86,86,82,129,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="147,93,335,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="175,44,220,82,216,86,172,48"/>
+</map>

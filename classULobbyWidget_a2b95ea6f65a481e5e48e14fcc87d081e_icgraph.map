@@ -1,0 +1,13 @@
+<map id="ULobbyWidget::SetFindingText" name="ULobbyWidget::SetFindingText">
+<area shape="rect" id="Node000001" title=" " alt="" coords="827,45,1047,70"/>
+<area shape="rect" id="Node000002" href="$classULobbyWidget.html#af2869f4fb74dba322d7e3cd2cd4013ba" title=" " alt="" coords="565,8,779,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="813,46,779,43,779,37,813,41"/>
+<area shape="rect" id="Node000005" href="$classULobbyWidget.html#a000f1806ccfae80bea829ad0e3c424c1" title=" " alt="" coords="284,73,517,98"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="813,67,518,82,517,77,813,61"/>
+<area shape="rect" id="Node000003" href="$classULobbyWidget.html#a10378421a5314d3bd877994740a035d6" title=" " alt="" coords="5,23,236,49"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="551,16,517,13,401,8,284,13,188,26,188,21,284,8,401,3,517,8,552,11"/>
+<area shape="rect" id="Node000004" href="$classULobbyWidget.html#a2c28fbf0d7078cd357d35363126c2a03" title=" " alt="" coords="291,23,511,49"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="552,34,511,36,511,30,552,29"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="277,39,236,39,236,33,277,33"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="314,73,193,52,194,46,315,68"/>
+</map>

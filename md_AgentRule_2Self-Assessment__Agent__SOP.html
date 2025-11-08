@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YiSan Project Documentation: Self-Assessment_Agent_SOP.md</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YiSan Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('md_AgentRule_2Self-Assessment__Agent__SOP.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Self-Assessment_Agent_SOP.md</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md211"></a> </p>
+<h1><a class="anchor" id="autotoc_md212"></a>
+목적</h1>
+<p>Self-Assessment_Agent_SOP는 역량 평가 및 프로젝트 평가가 요청될 때 자동으로 호출되는 기준 문서이다. 시스템은 평가 요청 발생 시 본 SOP를 우선 참조하여 모든 평가 항목과 형식을 일관되게 유지한다. 언리얼 엔진 기반 프로젝트 및 개인 역량을 DevLog, Git Commit, PR 로그에 기초하여 체계적으로 평가하는 내부 표준 절차 문서. 포트폴리오, 역량 평가, 프로젝트 종합 리포트 생성을 위한 기반 프롬프트 사양.</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md214"></a>
+트리거 규칙</h1>
+<ul>
+<li>사용자가 다음 유형의 요청을 수행할 때 본 SOP가 즉시 실행된다:<ul>
+<li>"역량 평가"</li>
+<li>"프로젝트 평가"</li>
+<li>"UE 개발자 평가"</li>
+<li>"포트폴리오 분석"</li>
+<li>"CTO/리드/PD/PM 관점 리뷰"</li>
+<li>자기진단(Self‑assessment) 요청</li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md215"></a>
+입력 데이터 범위</h1>
+<ul>
+<li>DevLog 전체</li>
+<li>Git Commit 기록 및 PR 로그</li>
+<li>태그/릴리즈 기록</li>
+<li>기술 노트 및 설계 문서(존재 시)</li>
+</ul>
+<p>데이터는 반드시 <em>객관적 기록</em> 기반으로 해석하며 추측/과장 금지.</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md217"></a>
+산출물 종류</h1>
+<ul>
+<li>기간별 프로젝트 요약</li>
+<li>전체 역량 평가 보고서</li>
+<li>프로젝트 평가 보고서</li>
+<li>멀티뷰(리더/CTO/PD/PM) 관점 분석</li>
+<li>기술 선택 및 트레이드오프 분석</li>
+<li>실패 사례 및 개선 전략</li>
+<li>정량 지표 기반 증빙</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md219"></a>
+평가 구성 항목</h1>
+<h2><a class="anchor" id="autotoc_md220"></a>
+1) 기간별 프로젝트 요약</h2>
+<ul>
+<li>기간</li>
+<li>목표</li>
+<li>수행 작업</li>
+<li>기술적 성과</li>
+<li>해결 문제</li>
+<li>로그/커밋 근거</li>
+<li>다음 단계</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md221"></a>
+2) 개인 역량 평가</h2>
+<ul>
+<li>핵심 요약</li>
+<li>기술 심층 역량</li>
+<li>구조화/시스템 설계 능력</li>
+<li>디버깅 및 품질 관리 역량</li>
+<li>자동화/툴링/DevOps 역량</li>
+<li>문서화 및 공유</li>
+<li>개선 목표</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md222"></a>
+3) 조직 역할별 관점 평가</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">역할   </th><th class="markdownTableHeadNone">판단 포인트    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">시니어 UE 개발자   </td><td class="markdownTableBodyNone">기술 깊이, 문제 해결, 구조적 설계    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">클라이언트 리드   </td><td class="markdownTableBodyNone">일정·품질 안정화, 팀 생산성    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">CTO   </td><td class="markdownTableBodyNone">기술 전략, 비용/리스크 관점    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PD   </td><td class="markdownTableBodyNone">경험/기획 협업, UX 반응성    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PM   </td><td class="markdownTableBodyNone">일정, 리스크 관리, 커뮤니케이션   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md223"></a>
+4) 다면 평가(360°)</h2>
+<ul>
+<li>동료 협업 근거</li>
+<li>코드 리뷰/지식 공유 기록</li>
+<li>작업 방식 및 행동 패턴</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md224"></a>
+5) 실패 및 복기</h2>
+<ul>
+<li>주요 실패 사례</li>
+<li>원인 분석</li>
+<li>개선 접근</li>
+<li>향후 방어 전략</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md225"></a>
+6) 기술 선택 및 트레이드오프 분석</h2>
+<ul>
+<li>선택 배경</li>
+<li>대안 비교</li>
+<li>리스크 고려</li>
+<li>최종 판단 구조</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md226"></a>
+7) 정량 지표</h2>
+<ul>
+<li>커밋 밀도 및 패턴</li>
+<li>기능 단위 완료 이력</li>
+<li>리팩터링 비율</li>
+<li>프로토타입 → 안정화 속도</li>
+<li>성능/네트워크 개선 근거</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md228"></a>
+평가 프레임워크 적용</h1>
+<ul>
+<li>KPI / OKR / CFR</li>
+<li>역량 모델 / BSC / MBO</li>
+<li>Output vs Outcome</li>
+<li>Competency Matrix (주니어 ~ 리드)</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md230"></a>
+UE 클라이언트 역량 기준</h1>
+<ul>
+<li>GameInstance/GameMode/GameState/Subsystem 구조화 능력</li>
+<li>RPC/Replication/Seamless Travel/OSS</li>
+<li>UI/UMG/Slate/DPI/Streaming UI</li>
+<li>GC/Memory/Pooling/Asset/Profiling</li>
+<li>AI/BT/STT/TTS</li>
+<li>CI/CD/Build Scripts/Toolchain</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md232"></a>
+프로젝트 평가 기준</h1>
+<ul>
+<li>목표 적합성 및 범위 관리</li>
+<li>아키텍처 구조 안정성</li>
+<li>완성도/성능/안정성</li>
+<li>UX 일관성 및 상호작용 흐름</li>
+<li>운영/배포/빌드 파이프라인</li>
+<li>재사용성 및 전체 구조 확장성</li>
+<li>리스크 및 기술 부채 관리</li>
+<li>사용자 가치 및 제품화 가능성</li>
+</ul>
+<blockquote class="doxtable">
+<p>&zwj;개인 성과와 프로젝트 품질을 분리 평가하고, 상호 연관성 분석 포함. </p>
+</blockquote>
+<h1><a class="anchor" id="autotoc_md233"></a>
+&lt;/blockquote&gt;</h1>
+<h1><a class="anchor" id="autotoc_md234"></a>
+보고 형식 규칙</h1>
+<ul>
+<li>로그 기반 사실 중심</li>
+<li>커밋 단위 증거 인용</li>
+<li>과장·추측 금지</li>
+<li>구조적·전문 문체</li>
+<li>PDF 보고서 수준 구성</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md236"></a>
+결과물 기본 섹션 템플릿</h1>
+<div class="fragment"><div class="line">■ 기간 요약</div>
+<div class="line">■ 목표 및 실제 결과</div>
+<div class="line">■ 핵심 기술 기여</div>
+<div class="line">■ 문제 해결 사례</div>
+<div class="line">■ 정량 지표 근거</div>
+<div class="line">■ 시스템 설계 인사이트</div>
+<div class="line">■ 실패 및 학습</div>
+<div class="line">■ 확장 제언</div>
+</div><!-- fragment --><hr  />
+<h1><a class="anchor" id="autotoc_md238"></a>
+사용 위치</h1>
+<ul>
+<li>persona.md 내 평가 프로필 참조 항목</li>
+<li>포트폴리오 생성 에이전트 입력 규격</li>
+<li>자기평가 자동화 스크립트 기준</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md240"></a>
+유지 및 개선 주기</h1>
+<ul>
+<li>프로젝트 단위 업데이트</li>
+<li>월 단위 Log/Commit 반영</li>
+<li>기술 스택/평가 기준 최신화</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md242"></a>
+주석</h1>
+<ul>
+<li>본 파일은 평가 기준 문서이며 실행 프롬프트는 별도 유지</li>
+<li>output 재현성 및 품질 보증 목적 </li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">생성시간 : 토 11월 8 2025 13:55:38, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

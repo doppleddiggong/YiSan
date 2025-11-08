@@ -1,0 +1,36 @@
+<map id="Source/YiSan/UI/Private/EndingWidget.cpp" name="Source/YiSan/UI/Private/EndingWidget.cpp">
+<area shape="rect" id="Node000001" title="UEndingWidget의 동작을 구현합니다." alt="" coords="707,5,882,45"/>
+<area shape="rect" id="Node000002" href="$EndingWidget_8h.html" title="UEndingWidget 클래스를 선언합니다." alt="" coords="261,93,385,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="707,44,399,95,398,89,707,39"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="409,93,570,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="722,48,548,92,547,87,721,43"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="595,93,723,119"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="763,48,692,89,689,84,761,43"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="1363,167,1557,192"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="882,29,1065,48,1171,66,1275,91,1360,123,1429,158,1427,162,1358,128,1274,96,1170,71,1064,53,882,34"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="867,93,1079,119"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="839,43,936,85,934,90,836,48"/>
+<area shape="rect" id="Node000011" href="$ABuilding_8h.html" title="건물 방문 이벤트를 브로드캐스트하는 액터를 선언합니다." alt="" coords="747,93,843,119"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="797,46,797,79,792,79,792,46"/>
+<area shape="rect" id="Node000014" href="$FComponentHelper_8h.html" title="FComponentHelper 구조체를 선언합니다." alt="" coords="1103,93,1262,119"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="883,42,1113,88,1112,93,882,47"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="571,167,688,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="373,116,567,161,566,166,371,121"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,167,179,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="286,121,143,165,141,160,285,116"/>
+<area shape="rect" id="Node000005" href="$EBuildingType_8h.html" title="EBuildingType 클래스를 선언합니다." alt="" coords="421,167,547,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="350,116,446,159,444,163,348,121"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="203,167,397,192"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="321,120,310,154,305,153,316,118"/>
+<area shape="poly" id="edge11_Node000011_Node000003" title=" " alt="" coords="769,121,670,164,668,159,767,116"/>
+<area shape="poly" id="edge12_Node000011_Node000005" title=" " alt="" coords="747,121,548,166,547,161,746,116"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="902,167,1085,192"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="827,116,949,159,947,164,826,121"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="711,167,878,192"/>
+<area shape="poly" id="edge14_Node000011_Node000013" title=" " alt="" coords="797,119,797,153,792,153,792,119"/>
+<area shape="poly" id="edge16_Node000014_Node000003" title=" " alt="" coords="1103,120,1091,121,898,144,702,169,701,164,897,138,1090,116,1103,115"/>
+<area shape="poly" id="edge19_Node000014_Node000009" title=" " alt="" coords="1228,116,1402,161,1401,166,1227,121"/>
+<area shape="poly" id="edge17_Node000014_Node000012" title=" " alt="" coords="1153,121,1038,164,1036,159,1151,116"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="1109,167,1339,192"/>
+<area shape="poly" id="edge18_Node000014_Node000015" title=" " alt="" coords="1192,118,1213,153,1208,156,1187,120"/>
+</map>

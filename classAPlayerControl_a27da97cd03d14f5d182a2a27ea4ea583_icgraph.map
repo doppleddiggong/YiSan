@@ -1,0 +1,11 @@
+<map id="APlayerControl::CompleteLoading" name="APlayerControl::CompleteLoading">
+<area shape="rect" id="Node000001" title=" " alt="" coords="296,88,487,128"/>
+<area shape="rect" id="Node000002" href="$classAPlayerControl.html#a627b15e2b4a68b18330c0d7cbc0cf573" title=" " alt="" coords="15,5,239,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="323,86,247,60,206,48,208,43,249,55,325,81"/>
+<area shape="rect" id="Node000003" href="$classAPlayerControl.html#a5447005067fc0f0e1a91412f67400299" title=" " alt="" coords="5,70,248,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="282,100,248,97,249,92,283,95"/>
+<area shape="rect" id="Node000004" href="$classAPlayerControl.html#a9cb811bc0eee792288665d1af8f7f039" title=" " alt="" coords="17,119,237,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="282,121,237,125,237,119,282,115"/>
+<area shape="rect" id="Node000005" href="$classAPlayerControl.html#a2fbf2a25a6425bab48fef15d38c3c595" title=" " alt="" coords="28,169,225,194"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="324,135,249,159,196,171,194,166,247,153,322,130"/>
+</map>

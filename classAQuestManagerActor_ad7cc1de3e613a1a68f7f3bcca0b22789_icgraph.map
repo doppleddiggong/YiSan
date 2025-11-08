@@ -1,0 +1,11 @@
+<map id="AQuestManagerActor::HasActiveQuest" name="AQuestManagerActor::HasActiveQuest">
+<area shape="rect" id="Node000001" title=" " alt="" coords="477,37,637,77"/>
+<area shape="rect" id="Node000002" href="$classAQuestManagerActor.html#ab72d72d36b218a71364e941568c1b174" title="접촉한 건물이 활성 퀘스트 목표와 일치하는지 검증합니다." alt="" coords="251,5,411,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="463,47,411,39,411,34,464,42"/>
+<area shape="rect" id="Node000004" href="$classAPlayerActor.html#a63fb885eb5b6c3a2f2da33121e8d33b5" title="브로드캐스트 매니저에서 전달되는 음성 명령 실행 이벤트에 대응합니다." alt="" coords="232,69,429,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="464,73,430,78,429,73,463,68"/>
+<area shape="rect" id="Node000003" href="$classAQuestManagerActor.html#aee9b9b6c0ff9e8ebeec96398f531f8bb" title="클라이언트 또는 서버 권한에서 전달되는 접촉 이벤트 진입점입니다." alt="" coords="15,5,175,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="236,28,175,28,175,23,236,23"/>
+<area shape="rect" id="Node000005" href="$classAPlayerActor.html#afc3ace6de521cfc26c3a4395215e7ce9" title="게임 플레이가 시작될 때 호출되어 의존 시스템을 초기화합니다." alt="" coords="5,77,184,102"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="218,92,184,92,184,87,218,87"/>
+</map>

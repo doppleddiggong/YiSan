@@ -1,0 +1,19 @@
+<map id="Source/YiSan/UI/Public/UPlayerListItem.h" name="Source/YiSan/UI/Public/UPlayerListItem.h">
+<area shape="rect" id="Node000001" title="UPlayerListItem 클래스를 선언합니다." alt="" coords="204,5,371,45"/>
+<area shape="rect" id="Node000002" href="$UPlayerListItem_8cpp.html" title="UPlayerListItem의 동작을 구현합니다." alt="" coords="5,93,180,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="233,53,136,96,134,91,231,48"/>
+<area shape="rect" id="Node000003" href="$UPlayerWidget_8h.html" title="UPlayerWidget 클래스를 선언합니다." alt="" coords="204,93,371,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="290,59,290,93,285,93,285,59"/>
+<area shape="rect" id="Node000008" href="$UStartWidget_8h.html" title=" " alt="" coords="397,93,564,133"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="343,49,439,91,437,96,341,53"/>
+<area shape="rect" id="Node000004" href="$UPlayerWidget_8cpp.html" title="UPlayerWidget의 동작을 구현합니다." alt="" coords="5,181,180,221"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="233,141,136,184,134,179,231,136"/>
+<area shape="rect" id="Node000005" href="$UMainWidget_8h.html" title="음성 상호작용과 건물 안내 UI를 제공하는 메인 위젯을 선언합니다." alt="" coords="204,181,371,221"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="290,147,290,181,285,181,285,147"/>
+<area shape="rect" id="Node000006" href="$APlayerActor_8cpp.html" title="APlayerActor 구현을 위한 Doxygen 주석을 제공합니다." alt="" coords="91,269,278,309"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="256,232,209,271,206,267,252,228"/>
+<area shape="rect" id="Node000007" href="$UMainWidget_8cpp.html" title="UMainWidget의 동작을 구현합니다." alt="" coords="303,269,477,309"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="322,228,369,267,366,271,319,232"/>
+<area shape="rect" id="Node000009" href="$UStartWidget_8cpp.html" title="UStartWidget의 동작을 구현합니다." alt="" coords="395,181,569,221"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="484,147,484,181,479,181,479,147"/>
+</map>

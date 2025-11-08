@@ -1,0 +1,7 @@
+<map id="ALatteGameCharacter::EndPlay" name="ALatteGameCharacter::EndPlay">
+<area shape="rect" id="Node000001" title="플레이 종료 시 리소스를 해제합니다." alt="" coords="5,5,172,45"/>
+<area shape="rect" id="Node000002" href="$classALatteGameCharacter.html#a09792ae60c1ef81d3b6dab098b0ebec2" title="몽타주 알림 델리게이트 연결을 해제합니다." alt="" coords="220,5,419,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,23,206,23,206,28,172,28"/>
+<area shape="rect" id="Node000003" href="$classALatteGameCharacter.html#a66a03203587c2c41452cb3b64613fc5f" title="몽타주 노티파이 시작 시 호출되는 콜백입니다." alt="" coords="467,5,648,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="419,23,453,23,453,28,419,28"/>
+</map>

@@ -1,0 +1,1892 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YiSan Project Documentation: APlayerActor 클래스 참조</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YiSan Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classAPlayerActor.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 멤버 함수</a> &#124;
+<a href="#pub-attribs">Public 속성</a> &#124;
+<a href="#pro-methods">Protected 멤버 함수</a> &#124;
+<a href="#pri-methods">Private 멤버 함수</a> &#124;
+<a href="#pri-attribs">Private 속성</a> &#124;
+<a href="classAPlayerActor-members.html">모든 멤버 목록</a>  </div>
+  <div class="headertitle"><div class="title">APlayerActor 클래스 참조</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>이동, UI, 음성 하위 시스템을 통합하는 플레이어 조작 캐릭터입니다.  
+ <a href="classAPlayerActor.html#details">더 자세히 ...</a></p>
+
+<p><code>#include &lt;<a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> APlayerActor에 대한 상속 다이어그램 : </div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAPlayerActor__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> APlayerActor에 대한 협력 다이어그램:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAPlayerActor__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 멤버 함수</h2></td></tr>
+<tr class="memitem:addb91f2966d3e68a79699ba89be0a659" id="r_addb91f2966d3e68a79699ba89be0a659"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#addb91f2966d3e68a79699ba89be0a659">APlayerActor</a> ()</td></tr>
+<tr class="memdesc:addb91f2966d3e68a79699ba89be0a659"><td class="mdescLeft">&#160;</td><td class="mdescRight">핵심 컴포넌트와 게임플레이 태그를 설정하는 기본 생성자입니다.  <br /></td></tr>
+<tr class="separator:addb91f2966d3e68a79699ba89be0a659"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75f8ffaac61945a9d94aabc1c79915b4" id="r_a75f8ffaac61945a9d94aabc1c79915b4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIControllable.html#a75f8ffaac61945a9d94aabc1c79915b4">Cmd_AltitudeDown</a> ()</td></tr>
+<tr class="separator:a75f8ffaac61945a9d94aabc1c79915b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2259b9785864971795930f4b1a1883a7" id="r_a2259b9785864971795930f4b1a1883a7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIControllable.html#a2259b9785864971795930f4b1a1883a7">Cmd_AltitudeReleased</a> ()</td></tr>
+<tr class="separator:a2259b9785864971795930f4b1a1883a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd003c2223b06356d9a827055d939741" id="r_afd003c2223b06356d9a827055d939741"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIControllable.html#afd003c2223b06356d9a827055d939741">Cmd_AltitudeUp</a> ()</td></tr>
+<tr class="separator:afd003c2223b06356d9a827055d939741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0b919aba5f1ffd9685bf56a5b7341dc" id="r_af0b919aba5f1ffd9685bf56a5b7341dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#af0b919aba5f1ffd9685bf56a5b7341dc">Cmd_ChatEnter</a> () override</td></tr>
+<tr class="separator:af0b919aba5f1ffd9685bf56a5b7341dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57126d959c4b65006e7951eec5b4dea5" id="r_a57126d959c4b65006e7951eec5b4dea5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a57126d959c4b65006e7951eec5b4dea5">Cmd_ChatScrollDown</a> () override</td></tr>
+<tr class="separator:a57126d959c4b65006e7951eec5b4dea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7f4678e1ea18904237b891a514ba423" id="r_ad7f4678e1ea18904237b891a514ba423"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#ad7f4678e1ea18904237b891a514ba423">Cmd_ChatScrollUp</a> () override</td></tr>
+<tr class="separator:ad7f4678e1ea18904237b891a514ba423"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7031d01f5f10e6cb3b7b1c1007f19aa" id="r_af7031d01f5f10e6cb3b7b1c1007f19aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#af7031d01f5f10e6cb3b7b1c1007f19aa">Cmd_HideMouse</a> () override</td></tr>
+<tr class="separator:af7031d01f5f10e6cb3b7b1c1007f19aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cd9d111fd2ee4fb04e6f375992beb2c" id="r_a9cd9d111fd2ee4fb04e6f375992beb2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a9cd9d111fd2ee4fb04e6f375992beb2c">Cmd_HideVoiceGuide</a> () override</td></tr>
+<tr class="separator:a9cd9d111fd2ee4fb04e6f375992beb2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bbf9c7d111a15814b99b4e32a79cfda" id="r_a4bbf9c7d111a15814b99b4e32a79cfda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a4bbf9c7d111a15814b99b4e32a79cfda">Cmd_Jump</a> () override</td></tr>
+<tr class="memdesc:a4bbf9c7d111a15814b99b4e32a79cfda"><td class="mdescLeft">&#160;</td><td class="mdescRight">ACharacter 기본 점프 동작을 호출합니다.  <br /></td></tr>
+<tr class="separator:a4bbf9c7d111a15814b99b4e32a79cfda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32b1b7dfc4f7bea89132a901bab9bce1" id="r_a32b1b7dfc4f7bea89132a901bab9bce1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIControllable.html#a32b1b7dfc4f7bea89132a901bab9bce1">Cmd_Landing</a> ()</td></tr>
+<tr class="separator:a32b1b7dfc4f7bea89132a901bab9bce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21a14eaae23da75b919b848aa87cb535" id="r_a21a14eaae23da75b919b848aa87cb535"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a21a14eaae23da75b919b848aa87cb535">Cmd_Look</a> (const FVector2D &amp;Axis) override</td></tr>
+<tr class="memdesc:a21a14eaae23da75b919b848aa87cb535"><td class="mdescLeft">&#160;</td><td class="mdescRight">시야 입력을 플레이어 컨트롤러의 요와 피치에 반영합니다.  <br /></td></tr>
+<tr class="separator:a21a14eaae23da75b919b848aa87cb535"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0db8efea43cc28a694e55d72014642e1" id="r_a0db8efea43cc28a694e55d72014642e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a0db8efea43cc28a694e55d72014642e1">Cmd_Move</a> (const FVector2D &amp;Axis) override</td></tr>
+<tr class="memdesc:a0db8efea43cc28a694e55d72014642e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">입력 축 데이터를 처리해 월드 공간 이동을 수행합니다.  <br /></td></tr>
+<tr class="separator:a0db8efea43cc28a694e55d72014642e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a728c9b03094ece6b6313636335f4a6a1" id="r_a728c9b03094ece6b6313636335f4a6a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a728c9b03094ece6b6313636335f4a6a1">Cmd_RecordEnd</a> () override</td></tr>
+<tr class="separator:a728c9b03094ece6b6313636335f4a6a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab442f15c0b77fdd38f7a5b7280cf2398" id="r_ab442f15c0b77fdd38f7a5b7280cf2398"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#ab442f15c0b77fdd38f7a5b7280cf2398">Cmd_RecordStart</a> () override</td></tr>
+<tr class="memdesc:ab442f15c0b77fdd38f7a5b7280cf2398"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPT 상호작용을 위한 음성 캡처를 시작합니다.  <br /></td></tr>
+<tr class="separator:ab442f15c0b77fdd38f7a5b7280cf2398"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3a9549beda5b6ad19236586b769fa8b" id="r_af3a9549beda5b6ad19236586b769fa8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#af3a9549beda5b6ad19236586b769fa8b">Cmd_ShowDetail</a> () override</td></tr>
+<tr class="separator:af3a9549beda5b6ad19236586b769fa8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a988e1c6ac9eb3e305649c441d453d0a1" id="r_a988e1c6ac9eb3e305649c441d453d0a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a988e1c6ac9eb3e305649c441d453d0a1">Cmd_ShowMouse</a> () override</td></tr>
+<tr class="separator:a988e1c6ac9eb3e305649c441d453d0a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d82b1f5b8bb70f10347c327cb592348" id="r_a4d82b1f5b8bb70f10347c327cb592348"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a4d82b1f5b8bb70f10347c327cb592348">Cmd_ShowVoiceGuide</a> () override</td></tr>
+<tr class="separator:a4d82b1f5b8bb70f10347c327cb592348"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c63837c30ce2ec21fe5c111683cee99" id="r_a5c63837c30ce2ec21fe5c111683cee99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFGPTContext.html">FGPTContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a5c63837c30ce2ec21fe5c111683cee99">GetGPTContext</a> () const</td></tr>
+<tr class="memdesc:a5c63837c30ce2ec21fe5c111683cee99"><td class="mdescLeft">&#160;</td><td class="mdescRight">플레이어의 최신 GPT 컨텍스트 스냅샷을 수집합니다.  <br /></td></tr>
+<tr class="separator:a5c63837c30ce2ec21fe5c111683cee99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03fdfc7e648ab697f1a90e4c991041f9" id="r_a03fdfc7e648ab697f1a90e4c991041f9"><td class="memItemLeft" align="right" valign="top">FString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a03fdfc7e648ab697f1a90e4c991041f9">GetPlayerDisplayName</a> () const</td></tr>
+<tr class="separator:a03fdfc7e648ab697f1a90e4c991041f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7a2c722effc05a9263d257f39d1a842" id="r_af7a2c722effc05a9263d257f39d1a842"><td class="memItemLeft" align="right" valign="top">int32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#af7a2c722effc05a9263d257f39d1a842">GetPlayerIndex</a> () const</td></tr>
+<tr class="separator:af7a2c722effc05a9263d257f39d1a842"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb01d4a0bb1c938f419029317ccae1dd" id="r_adb01d4a0bb1c938f419029317ccae1dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#adb01d4a0bb1c938f419029317ccae1dd">PlayTTSAudio</a> (const TArray&lt; uint8 &gt; &amp;AudioData)</td></tr>
+<tr class="memdesc:adb01d4a0bb1c938f419029317ccae1dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">TTS 오디오를 재생합니다. VoiceConversationSystem으로 전달합니다.  <br /></td></tr>
+<tr class="separator:adb01d4a0bb1c938f419029317ccae1dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 속성</h2></td></tr>
+<tr class="memitem:afe2a6b6058bb0b4d8e7fd5598d08d17d" id="r_afe2a6b6058bb0b4d8e7fd5598d08d17d"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UAnimInstance &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#afe2a6b6058bb0b4d8e7fd5598d08d17d">AnimInstance</a></td></tr>
+<tr class="memdesc:afe2a6b6058bb0b4d8e7fd5598d08d17d"><td class="mdescLeft">&#160;</td><td class="mdescRight">게임플레이 기반 몽타주 조회에 사용하는 애님 인스턴스입니다.  <br /></td></tr>
+<tr class="separator:afe2a6b6058bb0b4d8e7fd5598d08d17d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1218eedca692d7dbac03a15334b03458" id="r_a1218eedca692d7dbac03a15334b03458"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class <a class="el" href="classUBroadcastManager.html">UBroadcastManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a1218eedca692d7dbac03a15334b03458">BroadcastManager</a></td></tr>
+<tr class="memdesc:a1218eedca692d7dbac03a15334b03458"><td class="mdescLeft">&#160;</td><td class="mdescRight">UI 알림에 사용하는 캐시된 브로드캐스트 매니저입니다.  <br /></td></tr>
+<tr class="separator:a1218eedca692d7dbac03a15334b03458"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac209b48b0f75baec849cdfc627505ee" id="r_aac209b48b0f75baec849cdfc627505ee"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class <a class="el" href="classUChatBoxWidget.html">UChatBoxWidget</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#aac209b48b0f75baec849cdfc627505ee">ChatBoxWidget</a></td></tr>
+<tr class="separator:aac209b48b0f75baec849cdfc627505ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b948ff4becc9541dbd773ab4a7cf307" id="r_a2b948ff4becc9541dbd773ab4a7cf307"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UChatPlayerSystem &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a2b948ff4becc9541dbd773ab4a7cf307">ChatPlayerSystem</a></td></tr>
+<tr class="memdesc:a2b948ff4becc9541dbd773ab4a7cf307"><td class="mdescLeft">&#160;</td><td class="mdescRight">채팅 시스템 컴포넌트입니다.  <br /></td></tr>
+<tr class="separator:a2b948ff4becc9541dbd773ab4a7cf307"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d6e3331395be2ad159535e19557cdbf" id="r_a1d6e3331395be2ad159535e19557cdbf"><td class="memItemLeft" align="right" valign="top">TSubclassOf&lt; class <a class="el" href="classUChatUIWidget.html">UChatUIWidget</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a1d6e3331395be2ad159535e19557cdbf">ChatUIWidgetClass</a></td></tr>
+<tr class="separator:a1d6e3331395be2ad159535e19557cdbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a856ef7f26d46648083f0fcacdc3c0b5d" id="r_a856ef7f26d46648083f0fcacdc3c0b5d"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UCameraComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a856ef7f26d46648083f0fcacdc3c0b5d">FollowCamera</a></td></tr>
+<tr class="memdesc:a856ef7f26d46648083f0fcacdc3c0b5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">플레이어 시점을 담당하는 팔로우 카메라입니다.  <br /></td></tr>
+<tr class="separator:a856ef7f26d46648083f0fcacdc3c0b5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae76da0198c6e9d28a4cc59319e472e8e" id="r_ae76da0198c6e9d28a4cc59319e472e8e"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UGPTContextSystem &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#ae76da0198c6e9d28a4cc59319e472e8e">GPTContextSystem</a></td></tr>
+<tr class="memdesc:ae76da0198c6e9d28a4cc59319e472e8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">시선 및 주변 건물을 추적하는 GPT 컨텍스트 제공자입니다.  <br /></td></tr>
+<tr class="separator:ae76da0198c6e9d28a4cc59319e472e8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dad1553f9372858902bdd65e2f77243" id="r_a7dad1553f9372858902bdd65e2f77243"><td class="memItemLeft" align="right" valign="top">TSubclassOf&lt; class <a class="el" href="classUMainWidget.html">UMainWidget</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a7dad1553f9372858902bdd65e2f77243">MainWidgetClass</a></td></tr>
+<tr class="memdesc:a7dad1553f9372858902bdd65e2f77243"><td class="mdescLeft">&#160;</td><td class="mdescRight">메인 HUD 위젯을 제공하는 블루프린트 클래스입니다.  <br /></td></tr>
+<tr class="separator:a7dad1553f9372858902bdd65e2f77243"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c74cbe0fb372864694358aed870bdf3" id="r_a3c74cbe0fb372864694358aed870bdf3"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class <a class="el" href="classUMainWidget.html">UMainWidget</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a3c74cbe0fb372864694358aed870bdf3">MainWidgetInst</a></td></tr>
+<tr class="memdesc:a3c74cbe0fb372864694358aed870bdf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">뷰포트에 배치되는 메인 위젯 인스턴스입니다.  <br /></td></tr>
+<tr class="separator:a3c74cbe0fb372864694358aed870bdf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89917bc4d5767e759d7b3066e8df2728" id="r_a89917bc4d5767e759d7b3066e8df2728"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class USkeletalMeshComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a89917bc4d5767e759d7b3066e8df2728">MeshComp</a></td></tr>
+<tr class="memdesc:a89917bc4d5767e759d7b3066e8df2728"><td class="mdescLeft">&#160;</td><td class="mdescRight">애니메이션 재생을 담당하는 메시 컴포넌트입니다.  <br /></td></tr>
+<tr class="separator:a89917bc4d5767e759d7b3066e8df2728"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fb4598e21a9c5af2d9b3007adab9496" id="r_a3fb4598e21a9c5af2d9b3007adab9496"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UCharacterMovementComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a3fb4598e21a9c5af2d9b3007adab9496">MoveComp</a></td></tr>
+<tr class="memdesc:a3fb4598e21a9c5af2d9b3007adab9496"><td class="mdescLeft">&#160;</td><td class="mdescRight">이동 보조 로직에서 사용하는 캐시된 무브먼트 컴포넌트입니다.  <br /></td></tr>
+<tr class="separator:a3fb4598e21a9c5af2d9b3007adab9496"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4930d45dc228555088538a50d92332d9" id="r_a4930d45dc228555088538a50d92332d9"><td class="memItemLeft" align="right" valign="top">UWidgetComponent *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a4930d45dc228555088538a50d92332d9">NameTagWidgetComponent</a></td></tr>
+<tr class="separator:a4930d45dc228555088538a50d92332d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6ce7fa6f2c0a29dc386147130c26802" id="r_ac6ce7fa6f2c0a29dc386147130c26802"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class USpringArmComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#ac6ce7fa6f2c0a29dc386147130c26802">SpringArmComp</a></td></tr>
+<tr class="memdesc:ac6ce7fa6f2c0a29dc386147130c26802"><td class="mdescLeft">&#160;</td><td class="mdescRight">3인칭 팔로우 카메라를 위한 스프링 암 컴포넌트입니다.  <br /></td></tr>
+<tr class="separator:ac6ce7fa6f2c0a29dc386147130c26802"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c1400db5f943254071089e512a2bb25" id="r_a0c1400db5f943254071089e512a2bb25"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UVoiceConversationSystem &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a0c1400db5f943254071089e512a2bb25">VoiceConversationSystem</a></td></tr>
+<tr class="memdesc:a0c1400db5f943254071089e512a2bb25"><td class="mdescLeft">&#160;</td><td class="mdescRight">플레이어가 소유한 음성 명령 파이프라인입니다.  <br /></td></tr>
+<tr class="separator:a0c1400db5f943254071089e512a2bb25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected 멤버 함수</h2></td></tr>
+<tr class="memitem:afc3ace6de521cfc26c3a4395215e7ce9" id="r_afc3ace6de521cfc26c3a4395215e7ce9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#afc3ace6de521cfc26c3a4395215e7ce9">BeginPlay</a> () override</td></tr>
+<tr class="memdesc:afc3ace6de521cfc26c3a4395215e7ce9"><td class="mdescLeft">&#160;</td><td class="mdescRight">게임 플레이가 시작될 때 호출되어 의존 시스템을 초기화합니다.  <br /></td></tr>
+<tr class="separator:afc3ace6de521cfc26c3a4395215e7ce9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56fd76fe4979f537c112d32ebbc44f72" id="r_a56fd76fe4979f537c112d32ebbc44f72"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a56fd76fe4979f537c112d32ebbc44f72">OnRep_Controller</a> () override</td></tr>
+<tr class="separator:a56fd76fe4979f537c112d32ebbc44f72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab031bd34fe5c7b907c2f8b8aa8aabddd" id="r_ab031bd34fe5c7b907c2f8b8aa8aabddd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#ab031bd34fe5c7b907c2f8b8aa8aabddd">OnRep_PlayerState</a> () override</td></tr>
+<tr class="separator:ab031bd34fe5c7b907c2f8b8aa8aabddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35e67f9f2f0a0c5ee8589213b5a65b63" id="r_a35e67f9f2f0a0c5ee8589213b5a65b63"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a35e67f9f2f0a0c5ee8589213b5a65b63">PossessedBy</a> (AController *NewController) override</td></tr>
+<tr class="separator:a35e67f9f2f0a0c5ee8589213b5a65b63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 멤버 함수</h2></td></tr>
+<tr class="memitem:ad982e1f258dcb3be792c58391e13956f" id="r_ad982e1f258dcb3be792c58391e13956f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#ad982e1f258dcb3be792c58391e13956f">CheckAndInitNameTag</a> ()</td></tr>
+<tr class="memdesc:ad982e1f258dcb3be792c58391e13956f"><td class="mdescLeft">&#160;</td><td class="mdescRight">주기적으로 호출되어 이름표 위젯이 준비되었는지 확인합니다.  <br /></td></tr>
+<tr class="separator:ad982e1f258dcb3be792c58391e13956f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63fb885eb5b6c3a2f2da33121e8d33b5" id="r_a63fb885eb5b6c3a2f2da33121e8d33b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a63fb885eb5b6c3a2f2da33121e8d33b5">OnExecVoiceCommand</a> (<a class="el" href="EVoiceCommandType_8h.html#a091eabb93b1ffd38fe61f35906526114">EVoiceCommandType</a> InType, AActor *Requester)</td></tr>
+<tr class="memdesc:a63fb885eb5b6c3a2f2da33121e8d33b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">브로드캐스트 매니저에서 전달되는 음성 명령 실행 이벤트에 대응합니다.  <br /></td></tr>
+<tr class="separator:a63fb885eb5b6c3a2f2da33121e8d33b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c0d323e7315da0418ae71fc1a40204e" id="r_a5c0d323e7315da0418ae71fc1a40204e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a5c0d323e7315da0418ae71fc1a40204e">OnReadyPawn</a> ()</td></tr>
+<tr class="memdesc:a5c0d323e7315da0418ae71fc1a40204e"><td class="mdescLeft">&#160;</td><td class="mdescRight">컨트롤러가 준비된 뒤 입력을 허용하고 UI를 초기화합니다.  <br /></td></tr>
+<tr class="separator:a5c0d323e7315da0418ae71fc1a40204e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 속성</h2></td></tr>
+<tr class="memitem:a392a5515bccfceea1356dee586a15097" id="r_a392a5515bccfceea1356dee586a15097"><td class="memItemLeft" align="right" valign="top">FTimerHandle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAPlayerActor.html#a392a5515bccfceea1356dee586a15097">TimerHandle_InitNameTag</a></td></tr>
+<tr class="separator:a392a5515bccfceea1356dee586a15097"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
+<div class="textblock"><p>이동, UI, 음성 하위 시스템을 통합하는 플레이어 조작 캐릭터입니다. </p>
+<p>이 액터는 입력 처리, 음성 명령, GPT 컨텍스트 조회, 주변 건물 탐지 로직을 묶어 인게임 플레이 경험을 주도합니다. <a class="el" href="classIControllable.html">IControllable</a> 인터페이스를 구현하여 게임플레이 코드와 UI 레이어가 동일한 방식으로 이동 및 상호작용 명령을 전달할 수 있습니다. </p>
+
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00022">22</a> 번째 라인에서 정의되었습니다.</p>
+</div><h2 class="groupheader">생성자 &amp; 소멸자 문서화</h2>
+<a id="addb91f2966d3e68a79699ba89be0a659" name="addb91f2966d3e68a79699ba89be0a659"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addb91f2966d3e68a79699ba89be0a659">&#9670;&#160;</a></span>APlayerActor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">APlayerActor::APlayerActor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>핵심 컴포넌트와 게임플레이 태그를 설정하는 기본 생성자입니다. </p>
+
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00045">45</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>{</div>
+<div class="line"><span class="lineno">   47</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>    <span class="comment">// 멀티플레이어 복제 활성화</span></div>
+<div class="line"><span class="lineno">   50</span>    bReplicates = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   51</span>    SetReplicateMovement(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>    Tags.Add(<a class="code hl_variable" href="namespaceGameTags.html#a4a81eec617fe2a3746945eb6a5814d21">GameTags::Player</a>);</div>
+<div class="line"><span class="lineno">   54</span> </div>
+<div class="line"><span class="lineno">   55</span>    <a class="code hl_variable" href="classAPlayerActor.html#a7dad1553f9372858902bdd65e2f77243">MainWidgetClass</a> = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadClass&lt;UMainWidget&gt;</a>(<a class="code hl_define" href="APlayerActor_8cpp.html#a8a594718303599604d201d83db618bae">MAINWIDGET_PATH</a>);</div>
+<div class="line"><span class="lineno">   56</span>    <a class="code hl_variable" href="classAPlayerActor.html#a1d6e3331395be2ad159535e19557cdbf">ChatUIWidgetClass</a> = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadClass&lt;UChatUIWidget&gt;</a>(<a class="code hl_define" href="APlayerActor_8cpp.html#a794ecc11efae6646e4c1c76cc5c9f10e">CHATUIWIDGET_PATH</a>);</div>
+<div class="line"><span class="lineno">   57</span>    </div>
+<div class="line"><span class="lineno">   58</span>    <a class="code hl_variable" href="classAPlayerActor.html#ac6ce7fa6f2c0a29dc386147130c26802">SpringArmComp</a> = CreateDefaultSubobject&lt;USpringArmComponent&gt;(TEXT(<span class="stringliteral">&quot;SpringArm&quot;</span>));</div>
+<div class="line"><span class="lineno">   59</span>    <a class="code hl_variable" href="classAPlayerActor.html#ac6ce7fa6f2c0a29dc386147130c26802">SpringArmComp</a>-&gt;SetupAttachment(GetCapsuleComponent());</div>
+<div class="line"><span class="lineno">   60</span>    <a class="code hl_variable" href="classAPlayerActor.html#ac6ce7fa6f2c0a29dc386147130c26802">SpringArmComp</a>-&gt;TargetArmLength = 400.f;</div>
+<div class="line"><span class="lineno">   61</span>    <a class="code hl_variable" href="classAPlayerActor.html#ac6ce7fa6f2c0a29dc386147130c26802">SpringArmComp</a>-&gt;bUsePawnControlRotation = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   62</span>    <a class="code hl_variable" href="classAPlayerActor.html#ac6ce7fa6f2c0a29dc386147130c26802">SpringArmComp</a>-&gt;bInheritPitch = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   63</span>    <a class="code hl_variable" href="classAPlayerActor.html#ac6ce7fa6f2c0a29dc386147130c26802">SpringArmComp</a>-&gt;bInheritRoll = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>    <a class="code hl_variable" href="classAPlayerActor.html#a856ef7f26d46648083f0fcacdc3c0b5d">FollowCamera</a> = CreateDefaultSubobject&lt;UCameraComponent&gt;(TEXT(<span class="stringliteral">&quot;FollowCamera&quot;</span>));</div>
+<div class="line"><span class="lineno">   66</span>    <a class="code hl_variable" href="classAPlayerActor.html#a856ef7f26d46648083f0fcacdc3c0b5d">FollowCamera</a>-&gt;SetupAttachment(<a class="code hl_variable" href="classAPlayerActor.html#ac6ce7fa6f2c0a29dc386147130c26802">SpringArmComp</a>, USpringArmComponent::SocketName);</div>
+<div class="line"><span class="lineno">   67</span>    <a class="code hl_variable" href="classAPlayerActor.html#a856ef7f26d46648083f0fcacdc3c0b5d">FollowCamera</a>-&gt;bUsePawnControlRotation = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>    GetCharacterMovement()-&gt;bOrientRotationToMovement = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   70</span>    GetCharacterMovement()-&gt;bUseControllerDesiredRotation = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   71</span>    </div>
+<div class="line"><span class="lineno">   72</span>    <a class="code hl_variable" href="classAPlayerActor.html#a0c1400db5f943254071089e512a2bb25">VoiceConversationSystem</a> = CreateDefaultSubobject&lt;UVoiceConversationSystem&gt;(TEXT(<span class="stringliteral">&quot;VoiceConversationSystem&quot;</span>));</div>
+<div class="line"><span class="lineno">   73</span>    <a class="code hl_variable" href="classAPlayerActor.html#ae76da0198c6e9d28a4cc59319e472e8e">GPTContextSystem</a> = CreateDefaultSubobject&lt;UGPTContextSystem&gt;(TEXT(<span class="stringliteral">&quot;GPTContextSystem&quot;</span>));</div>
+<div class="line"><span class="lineno">   74</span>    <a class="code hl_variable" href="classAPlayerActor.html#a2b948ff4becc9541dbd773ab4a7cf307">ChatPlayerSystem</a> = CreateDefaultSubobject&lt;UChatPlayerSystem&gt;(TEXT(<span class="stringliteral">&quot;ChatPlayerSystem&quot;</span>));</div>
+<div class="line"><span class="lineno">   75</span> </div>
+<div class="line"><span class="lineno">   76</span>    <a class="code hl_variable" href="classAPlayerActor.html#a4930d45dc228555088538a50d92332d9">NameTagWidgetComponent</a> = CreateDefaultSubobject&lt;UWidgetComponent&gt;(TEXT(<span class="stringliteral">&quot;NameTagWidget&quot;</span>));</div>
+<div class="line"><span class="lineno">   77</span>    <a class="code hl_variable" href="classAPlayerActor.html#a4930d45dc228555088538a50d92332d9">NameTagWidgetComponent</a>-&gt;SetupAttachment(RootComponent);</div>
+<div class="line"><span class="lineno">   78</span> </div>
+<div class="line"><span class="lineno">   79</span>    <a class="code hl_variable" href="classAPlayerActor.html#a4930d45dc228555088538a50d92332d9">NameTagWidgetComponent</a>-&gt;SetWidgetSpace(EWidgetSpace::Screen); <span class="comment">// 카메라 정면 고정</span></div>
+<div class="line"><span class="lineno">   80</span>    <a class="code hl_variable" href="classAPlayerActor.html#a4930d45dc228555088538a50d92332d9">NameTagWidgetComponent</a>-&gt;SetDrawSize(FVector2D(200.f, 50.f));</div>
+<div class="line"><span class="lineno">   81</span>    <a class="code hl_variable" href="classAPlayerActor.html#a4930d45dc228555088538a50d92332d9">NameTagWidgetComponent</a>-&gt;SetRelativeLocation(FVector(0.f, 0.f, 100.f)); <span class="comment">// 머리 위 위치</span></div>
+<div class="line"><span class="lineno">   82</span>}</div>
+<div class="ttc" id="aAPlayerActor_8cpp_html_a794ecc11efae6646e4c1c76cc5c9f10e"><div class="ttname"><a href="APlayerActor_8cpp.html#a794ecc11efae6646e4c1c76cc5c9f10e">CHATUIWIDGET_PATH</a></div><div class="ttdeci">#define CHATUIWIDGET_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00043">APlayerActor.cpp:43</a></div></div>
+<div class="ttc" id="aAPlayerActor_8cpp_html_a8a594718303599604d201d83db618bae"><div class="ttname"><a href="APlayerActor_8cpp.html#a8a594718303599604d201d83db618bae">MAINWIDGET_PATH</a></div><div class="ttdeci">#define MAINWIDGET_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00042">APlayerActor.cpp:42</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a0c1400db5f943254071089e512a2bb25"><div class="ttname"><a href="classAPlayerActor.html#a0c1400db5f943254071089e512a2bb25">APlayerActor::VoiceConversationSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UVoiceConversationSystem &gt; VoiceConversationSystem</div><div class="ttdoc">플레이어가 소유한 음성 명령 파이프라인입니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00087">APlayerActor.h:87</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a1d6e3331395be2ad159535e19557cdbf"><div class="ttname"><a href="classAPlayerActor.html#a1d6e3331395be2ad159535e19557cdbf">APlayerActor::ChatUIWidgetClass</a></div><div class="ttdeci">TSubclassOf&lt; class UChatUIWidget &gt; ChatUIWidgetClass</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00078">APlayerActor.h:78</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a2b948ff4becc9541dbd773ab4a7cf307"><div class="ttname"><a href="classAPlayerActor.html#a2b948ff4becc9541dbd773ab4a7cf307">APlayerActor::ChatPlayerSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UChatPlayerSystem &gt; ChatPlayerSystem</div><div class="ttdoc">채팅 시스템 컴포넌트입니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00093">APlayerActor.h:93</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a4930d45dc228555088538a50d92332d9"><div class="ttname"><a href="classAPlayerActor.html#a4930d45dc228555088538a50d92332d9">APlayerActor::NameTagWidgetComponent</a></div><div class="ttdeci">UWidgetComponent * NameTagWidgetComponent</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00084">APlayerActor.h:84</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a7dad1553f9372858902bdd65e2f77243"><div class="ttname"><a href="classAPlayerActor.html#a7dad1553f9372858902bdd65e2f77243">APlayerActor::MainWidgetClass</a></div><div class="ttdeci">TSubclassOf&lt; class UMainWidget &gt; MainWidgetClass</div><div class="ttdoc">메인 HUD 위젯을 제공하는 블루프린트 클래스입니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00072">APlayerActor.h:72</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a856ef7f26d46648083f0fcacdc3c0b5d"><div class="ttname"><a href="classAPlayerActor.html#a856ef7f26d46648083f0fcacdc3c0b5d">APlayerActor::FollowCamera</a></div><div class="ttdeci">TObjectPtr&lt; class UCameraComponent &gt; FollowCamera</div><div class="ttdoc">플레이어 시점을 담당하는 팔로우 카메라입니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00069">APlayerActor.h:69</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_ac6ce7fa6f2c0a29dc386147130c26802"><div class="ttname"><a href="classAPlayerActor.html#ac6ce7fa6f2c0a29dc386147130c26802">APlayerActor::SpringArmComp</a></div><div class="ttdeci">TObjectPtr&lt; class USpringArmComponent &gt; SpringArmComp</div><div class="ttdoc">3인칭 팔로우 카메라를 위한 스프링 암 컴포넌트입니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00067">APlayerActor.h:67</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_ae76da0198c6e9d28a4cc59319e472e8e"><div class="ttname"><a href="classAPlayerActor.html#ae76da0198c6e9d28a4cc59319e472e8e">APlayerActor::GPTContextSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UGPTContextSystem &gt; GPTContextSystem</div><div class="ttdoc">시선 및 주변 건물을 추적하는 GPT 컨텍스트 제공자입니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00090">APlayerActor.h:90</a></div></div>
+<div class="ttc" id="anamespaceGameTags_html_a4a81eec617fe2a3746945eb6a5814d21"><div class="ttname"><a href="namespaceGameTags.html#a4a81eec617fe2a3746945eb6a5814d21">GameTags::Player</a></div><div class="ttdeci">static const FName Player</div><div class="ttdoc">플레이어 액터를 식별하기 위한 태그입니다.</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00020">YiSan.h:20</a></div></div>
+<div class="ttc" id="astructFComponentHelper_html_ac37cef436e9aaef1f0c655d781a95e66"><div class="ttname"><a href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset</a></div><div class="ttdeci">static T * LoadAsset(const TCHAR *Path)</div><div class="ttdef"><b>Definition</b> <a href="FComponentHelper_8h_source.html#l00016">FComponentHelper.h:16</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00093">ChatPlayerSystem</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00043">CHATUIWIDGET_PATH</a>, <a class="el" href="APlayerActor_8h_source.html#l00078">ChatUIWidgetClass</a>, <a class="el" href="APlayerActor_8h_source.html#l00069">FollowCamera</a>, <a class="el" href="APlayerActor_8h_source.html#l00090">GPTContextSystem</a>, <a class="el" href="FComponentHelper_8h_source.html#l00016">FComponentHelper::LoadAsset()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00042">MAINWIDGET_PATH</a>, <a class="el" href="APlayerActor_8h_source.html#l00072">MainWidgetClass</a>, <a class="el" href="APlayerActor_8h_source.html#l00084">NameTagWidgetComponent</a>, <a class="el" href="YiSan_8h_source.html#l00020">GameTags::Player</a>, <a class="el" href="APlayerActor_8h_source.html#l00067">SpringArmComp</a>, <a class="el" href="APlayerActor_8h_source.html#l00087">VoiceConversationSystem</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAPlayerActor_addb91f2966d3e68a79699ba89be0a659_cgraph.svg" width="480" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">멤버 함수 문서화</h2>
+<a id="afc3ace6de521cfc26c3a4395215e7ce9" name="afc3ace6de521cfc26c3a4395215e7ce9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc3ace6de521cfc26c3a4395215e7ce9">&#9670;&#160;</a></span>BeginPlay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::BeginPlay </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>게임 플레이가 시작될 때 호출되어 의존 시스템을 초기화합니다. </p>
+
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00087">87</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   88</span>{</div>
+<div class="line"><span class="lineno">   89</span>    Super::BeginPlay();</div>
+<div class="line"><span class="lineno">   90</span> </div>
+<div class="line"><span class="lineno">   91</span>    <a class="code hl_variable" href="classAPlayerActor.html#a89917bc4d5767e759d7b3066e8df2728">MeshComp</a> = this-&gt;GetMesh();</div>
+<div class="line"><span class="lineno">   92</span>    <a class="code hl_variable" href="classAPlayerActor.html#a3fb4598e21a9c5af2d9b3007adab9496">MoveComp</a> = this-&gt;GetCharacterMovement();</div>
+<div class="line"><span class="lineno">   93</span>    <a class="code hl_variable" href="classAPlayerActor.html#afe2a6b6058bb0b4d8e7fd5598d08d17d">AnimInstance</a> = <a class="code hl_variable" href="classAPlayerActor.html#a89917bc4d5767e759d7b3066e8df2728">MeshComp</a>-&gt;GetAnimInstance();</div>
+<div class="line"><span class="lineno">   94</span> </div>
+<div class="line"><span class="lineno">   95</span>    <span class="comment">// LocalController만 UI 생성</span></div>
+<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">if</span> (APlayerController* PC = Cast&lt;APlayerController&gt;(GetController()))</div>
+<div class="line"><span class="lineno">   97</span>    {</div>
+<div class="line"><span class="lineno">   98</span>        <span class="keywordflow">if</span> (PC-&gt;IsLocalController())</div>
+<div class="line"><span class="lineno">   99</span>        {</div>
+<div class="line"><span class="lineno">  100</span>            <a class="code hl_variable" href="classAPlayerActor.html#a3c74cbe0fb372864694358aed870bdf3">MainWidgetInst</a> = CreateWidget&lt;UMainWidget&gt;(GetWorld(), <a class="code hl_variable" href="classAPlayerActor.html#a7dad1553f9372858902bdd65e2f77243">MainWidgetClass</a>);</div>
+<div class="line"><span class="lineno">  101</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#a3c74cbe0fb372864694358aed870bdf3">MainWidgetInst</a>)</div>
+<div class="line"><span class="lineno">  102</span>            {</div>
+<div class="line"><span class="lineno">  103</span>                <a class="code hl_variable" href="classAPlayerActor.html#a3c74cbe0fb372864694358aed870bdf3">MainWidgetInst</a>-&gt;AddToViewport(50);</div>
+<div class="line"><span class="lineno">  104</span>            }</div>
+<div class="line"><span class="lineno">  105</span> </div>
+<div class="line"><span class="lineno">  106</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#a1d6e3331395be2ad159535e19557cdbf">ChatUIWidgetClass</a>)</div>
+<div class="line"><span class="lineno">  107</span>            {</div>
+<div class="line"><span class="lineno">  108</span>                <span class="keyword">auto</span> ChatUIInst = CreateWidget&lt;UChatUIWidget&gt;(GetWorld(), <a class="code hl_variable" href="classAPlayerActor.html#a1d6e3331395be2ad159535e19557cdbf">ChatUIWidgetClass</a>);</div>
+<div class="line"><span class="lineno">  109</span>                <span class="keywordflow">if</span> (ChatUIInst &amp;&amp; ChatUIInst-&gt;WBP_ChatBox)</div>
+<div class="line"><span class="lineno">  110</span>                {</div>
+<div class="line"><span class="lineno">  111</span>                    ChatUIInst-&gt;AddToViewport(0);</div>
+<div class="line"><span class="lineno">  112</span>                    <a class="code hl_variable" href="classAPlayerActor.html#aac209b48b0f75baec849cdfc627505ee">ChatBoxWidget</a> = ChatUIInst-&gt;WBP_ChatBox;</div>
+<div class="line"><span class="lineno">  113</span>                    <a class="code hl_variable" href="classAPlayerActor.html#a2b948ff4becc9541dbd773ab4a7cf307">ChatPlayerSystem</a>-&gt;InitSystem(<a class="code hl_variable" href="classAPlayerActor.html#aac209b48b0f75baec849cdfc627505ee">ChatBoxWidget</a>.Get());</div>
+<div class="line"><span class="lineno">  114</span>                }</div>
+<div class="line"><span class="lineno">  115</span>            }</div>
+<div class="line"><span class="lineno">  116</span>        }</div>
+<div class="line"><span class="lineno">  117</span>    }</div>
+<div class="line"><span class="lineno">  118</span> </div>
+<div class="line"><span class="lineno">  119</span>    <a class="code hl_variable" href="classAPlayerActor.html#a0c1400db5f943254071089e512a2bb25">VoiceConversationSystem</a>-&gt;InitSystem(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  120</span>    <a class="code hl_variable" href="classAPlayerActor.html#ae76da0198c6e9d28a4cc59319e472e8e">GPTContextSystem</a>-&gt;InitSystem(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  121</span> </div>
+<div class="line"><span class="lineno">  122</span>    <a class="code hl_variable" href="classAPlayerActor.html#a1218eedca692d7dbac03a15334b03458">BroadcastManager</a> = UBroadcastManager::Get(GetWorld());</div>
+<div class="line"><span class="lineno">  123</span>    <a class="code hl_variable" href="classAPlayerActor.html#a1218eedca692d7dbac03a15334b03458">BroadcastManager</a>-&gt;OnExecVoiceCommand.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerActor.html#a63fb885eb5b6c3a2f2da33121e8d33b5">APlayerActor::OnExecVoiceCommand</a>);</div>
+<div class="line"><span class="lineno">  124</span> </div>
+<div class="line"><span class="lineno">  125</span>    <span class="comment">// // 퀘스트 초기화</span></div>
+<div class="line"><span class="lineno">  126</span>    <span class="comment">// UQuestManager::Get(GetWorld())-&gt;InitSystem();</span></div>
+<div class="line"><span class="lineno">  127</span> </div>
+<div class="line"><span class="lineno">  128</span>    <span class="comment">// 서버야 일어나라.</span></div>
+<div class="line"><span class="lineno">  129</span>    UHttpNetworkSystem::Get(GetWorld())-&gt;RequestHealth( FResponseHealthDelegate() );</div>
+<div class="line"><span class="lineno">  130</span> </div>
+<div class="line"><span class="lineno">  131</span>    <span class="keywordflow">if</span> ( HasAuthority() )</div>
+<div class="line"><span class="lineno">  132</span>    {</div>
+<div class="line"><span class="lineno">  133</span>        FTimerHandle TimerHandle;</div>
+<div class="line"><span class="lineno">  134</span>        GetWorld()-&gt;GetTimerManager().SetTimerForNextTick([<span class="keyword">this</span>]()</div>
+<div class="line"><span class="lineno">  135</span>        {</div>
+<div class="line"><span class="lineno">  136</span>            <span class="keywordflow">if</span> (<a class="code hl_class" href="classAQuestManagerActor.html">AQuestManagerActor</a>* QuestManager = <a class="code hl_function" href="classAQuestManagerActor.html#a64e0505f7337bb8f6bb6ca038a302bb9">AQuestManagerActor::Get</a>(<span class="keyword">this</span>))</div>
+<div class="line"><span class="lineno">  137</span>                <a class="code hl_variable" href="classAPlayerActor.html#a1218eedca692d7dbac03a15334b03458">BroadcastManager</a>-&gt;SendUpdateQuest(QuestManager-&gt;GetCurrentTarget());</div>
+<div class="line"><span class="lineno">  138</span>        });</div>
+<div class="line"><span class="lineno">  139</span>    }</div>
+<div class="line"><span class="lineno">  140</span>    </div>
+<div class="line"><span class="lineno">  141</span>    <span class="comment">// 이름표 위젯 초기화를 위한 타이머 시작</span></div>
+<div class="line"><span class="lineno">  142</span>    GetWorldTimerManager().SetTimer(<a class="code hl_variable" href="classAPlayerActor.html#a392a5515bccfceea1356dee586a15097">TimerHandle_InitNameTag</a>, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerActor.html#ad982e1f258dcb3be792c58391e13956f">APlayerActor::CheckAndInitNameTag</a>, 0.2f, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  143</span>}</div>
+<div class="ttc" id="aclassAPlayerActor_html_a1218eedca692d7dbac03a15334b03458"><div class="ttname"><a href="classAPlayerActor.html#a1218eedca692d7dbac03a15334b03458">APlayerActor::BroadcastManager</a></div><div class="ttdeci">TObjectPtr&lt; class UBroadcastManager &gt; BroadcastManager</div><div class="ttdoc">UI 알림에 사용하는 캐시된 브로드캐스트 매니저입니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00096">APlayerActor.h:96</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a392a5515bccfceea1356dee586a15097"><div class="ttname"><a href="classAPlayerActor.html#a392a5515bccfceea1356dee586a15097">APlayerActor::TimerHandle_InitNameTag</a></div><div class="ttdeci">FTimerHandle TimerHandle_InitNameTag</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00051">APlayerActor.h:51</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a3c74cbe0fb372864694358aed870bdf3"><div class="ttname"><a href="classAPlayerActor.html#a3c74cbe0fb372864694358aed870bdf3">APlayerActor::MainWidgetInst</a></div><div class="ttdeci">TObjectPtr&lt; class UMainWidget &gt; MainWidgetInst</div><div class="ttdoc">뷰포트에 배치되는 메인 위젯 인스턴스입니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00075">APlayerActor.h:75</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a3fb4598e21a9c5af2d9b3007adab9496"><div class="ttname"><a href="classAPlayerActor.html#a3fb4598e21a9c5af2d9b3007adab9496">APlayerActor::MoveComp</a></div><div class="ttdeci">TObjectPtr&lt; class UCharacterMovementComponent &gt; MoveComp</div><div class="ttdoc">이동 보조 로직에서 사용하는 캐시된 무브먼트 컴포넌트입니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00062">APlayerActor.h:62</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a63fb885eb5b6c3a2f2da33121e8d33b5"><div class="ttname"><a href="classAPlayerActor.html#a63fb885eb5b6c3a2f2da33121e8d33b5">APlayerActor::OnExecVoiceCommand</a></div><div class="ttdeci">void OnExecVoiceCommand(EVoiceCommandType InType, AActor *Requester)</div><div class="ttdoc">브로드캐스트 매니저에서 전달되는 음성 명령 실행 이벤트에 대응합니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00307">APlayerActor.cpp:307</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a89917bc4d5767e759d7b3066e8df2728"><div class="ttname"><a href="classAPlayerActor.html#a89917bc4d5767e759d7b3066e8df2728">APlayerActor::MeshComp</a></div><div class="ttdeci">TObjectPtr&lt; class USkeletalMeshComponent &gt; MeshComp</div><div class="ttdoc">애니메이션 재생을 담당하는 메시 컴포넌트입니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00060">APlayerActor.h:60</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_aac209b48b0f75baec849cdfc627505ee"><div class="ttname"><a href="classAPlayerActor.html#aac209b48b0f75baec849cdfc627505ee">APlayerActor::ChatBoxWidget</a></div><div class="ttdeci">TObjectPtr&lt; class UChatBoxWidget &gt; ChatBoxWidget</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00081">APlayerActor.h:81</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_ad982e1f258dcb3be792c58391e13956f"><div class="ttname"><a href="classAPlayerActor.html#ad982e1f258dcb3be792c58391e13956f">APlayerActor::CheckAndInitNameTag</a></div><div class="ttdeci">void CheckAndInitNameTag()</div><div class="ttdoc">주기적으로 호출되어 이름표 위젯이 준비되었는지 확인합니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00165">APlayerActor.cpp:165</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_afe2a6b6058bb0b4d8e7fd5598d08d17d"><div class="ttname"><a href="classAPlayerActor.html#afe2a6b6058bb0b4d8e7fd5598d08d17d">APlayerActor::AnimInstance</a></div><div class="ttdeci">TObjectPtr&lt; class UAnimInstance &gt; AnimInstance</div><div class="ttdoc">게임플레이 기반 몽타주 조회에 사용하는 애님 인스턴스입니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00064">APlayerActor.h:64</a></div></div>
+<div class="ttc" id="aclassAQuestManagerActor_html"><div class="ttname"><a href="classAQuestManagerActor.html">AQuestManagerActor</a></div><div class="ttdoc">서버 주도형 퀘스트 진행 상태를 관리하는 액터입니다.</div><div class="ttdef"><b>Definition</b> <a href="AQuestManagerActor_8h_source.html#l00021">AQuestManagerActor.h:22</a></div></div>
+<div class="ttc" id="aclassAQuestManagerActor_html_a64e0505f7337bb8f6bb6ca038a302bb9"><div class="ttname"><a href="classAQuestManagerActor.html#a64e0505f7337bb8f6bb6ca038a302bb9">AQuestManagerActor::Get</a></div><div class="ttdeci">static AQuestManagerActor * Get(const UObject *WorldContextObject)</div><div class="ttdoc">주어진 월드 컨텍스트에서 퀘스트 매니저를 찾는 헬퍼입니다.</div><div class="ttdef"><b>Definition</b> <a href="AQuestManagerActor_8cpp_source.html#l00023">AQuestManagerActor.cpp:23</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00064">AnimInstance</a>, <a class="el" href="APlayerActor_8h_source.html#l00096">BroadcastManager</a>, <a class="el" href="APlayerActor_8h_source.html#l00081">ChatBoxWidget</a>, <a class="el" href="APlayerActor_8h_source.html#l00093">ChatPlayerSystem</a>, <a class="el" href="APlayerActor_8h_source.html#l00078">ChatUIWidgetClass</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00165">CheckAndInitNameTag()</a>, <a class="el" href="AQuestManagerActor_8cpp_source.html#l00023">AQuestManagerActor::Get()</a>, <a class="el" href="APlayerActor_8h_source.html#l00090">GPTContextSystem</a>, <a class="el" href="APlayerActor_8h_source.html#l00072">MainWidgetClass</a>, <a class="el" href="APlayerActor_8h_source.html#l00075">MainWidgetInst</a>, <a class="el" href="APlayerActor_8h_source.html#l00060">MeshComp</a>, <a class="el" href="APlayerActor_8h_source.html#l00062">MoveComp</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00307">OnExecVoiceCommand()</a>, <a class="el" href="APlayerActor_8h_source.html#l00051">TimerHandle_InitNameTag</a>, <a class="el" href="APlayerActor_8h_source.html#l00087">VoiceConversationSystem</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAPlayerActor_afc3ace6de521cfc26c3a4395215e7ce9_cgraph.svg" width="100%" height="584"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="ad982e1f258dcb3be792c58391e13956f" name="ad982e1f258dcb3be792c58391e13956f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad982e1f258dcb3be792c58391e13956f">&#9670;&#160;</a></span>CheckAndInitNameTag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::CheckAndInitNameTag </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>주기적으로 호출되어 이름표 위젯이 준비되었는지 확인합니다. </p>
+
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00165">165</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  166</span>{</div>
+<div class="line"><span class="lineno">  167</span>    <span class="comment">// 이름이 아직 설정되지 않았을 수 있으므로, 유효한 이름이 될 때까지 대기합니다.</span></div>
+<div class="line"><span class="lineno">  168</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classAPlayerActor.html#a03fdfc7e648ab697f1a90e4c991041f9">GetPlayerDisplayName</a>() == <a class="code hl_variable" href="namespaceGameString.html#a648970d0f3f6ebf8cc20935a44303879">GameString::Default</a> )</div>
+<div class="line"><span class="lineno">  169</span>    {</div>
+<div class="line"><span class="lineno">  170</span>        <span class="keywordflow">return</span>; <span class="comment">// 아직 이름이 없으므로, 다음 타이머 틱에서 다시 시도합니다.</span></div>
+<div class="line"><span class="lineno">  171</span>    }</div>
+<div class="line"><span class="lineno">  172</span> </div>
+<div class="line"><span class="lineno">  173</span>    <span class="comment">// 위젯이 생성되었는지 확인합니다.</span></div>
+<div class="line"><span class="lineno">  174</span>    <a class="code hl_class" href="classUPlayerHeadWidget.html">UPlayerHeadWidget</a>* HeadWidget = Cast&lt;UPlayerHeadWidget&gt;(<a class="code hl_variable" href="classAPlayerActor.html#a4930d45dc228555088538a50d92332d9">NameTagWidgetComponent</a>-&gt;GetUserWidgetObject());</div>
+<div class="line"><span class="lineno">  175</span>    <span class="keywordflow">if</span> (HeadWidget)</div>
+<div class="line"><span class="lineno">  176</span>    {</div>
+<div class="line"><span class="lineno">  177</span>        <span class="comment">// 위젯이 준비되면, 위젯에게 소유자가 자신임을 알려주고 이 타이머는 역할을 다했으므로 중지합니다.</span></div>
+<div class="line"><span class="lineno">  178</span>        HeadWidget-&gt;<a class="code hl_function" href="classUPlayerHeadWidget.html#aa43f691a0dddd96651fa151d398a4ac2">SetOwningActor</a>(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  179</span>        GetWorldTimerManager().ClearTimer(<a class="code hl_variable" href="classAPlayerActor.html#a392a5515bccfceea1356dee586a15097">TimerHandle_InitNameTag</a>);</div>
+<div class="line"><span class="lineno">  180</span> </div>
+<div class="line"><span class="lineno">  181</span>        <span class="comment">// 컨트롤러에 이름이 준비되었음을 알립니다.</span></div>
+<div class="line"><span class="lineno">  182</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> PC = Cast&lt;APlayerControl&gt;(GetController()))</div>
+<div class="line"><span class="lineno">  183</span>        {</div>
+<div class="line"><span class="lineno">  184</span>            PC-&gt;OnPawnHasName();</div>
+<div class="line"><span class="lineno">  185</span>        }</div>
+<div class="line"><span class="lineno">  186</span>    }</div>
+<div class="line"><span class="lineno">  187</span>}</div>
+<div class="ttc" id="aclassAPlayerActor_html_a03fdfc7e648ab697f1a90e4c991041f9"><div class="ttname"><a href="classAPlayerActor.html#a03fdfc7e648ab697f1a90e4c991041f9">APlayerActor::GetPlayerDisplayName</a></div><div class="ttdeci">FString GetPlayerDisplayName() const</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00487">APlayerActor.cpp:487</a></div></div>
+<div class="ttc" id="aclassUPlayerHeadWidget_html"><div class="ttname"><a href="classUPlayerHeadWidget.html">UPlayerHeadWidget</a></div><div class="ttdef"><b>Definition</b> <a href="UPlayerHeadWidget_8h_source.html#l00018">UPlayerHeadWidget.h:19</a></div></div>
+<div class="ttc" id="aclassUPlayerHeadWidget_html_aa43f691a0dddd96651fa151d398a4ac2"><div class="ttname"><a href="classUPlayerHeadWidget.html#aa43f691a0dddd96651fa151d398a4ac2">UPlayerHeadWidget::SetOwningActor</a></div><div class="ttdeci">void SetOwningActor(class APlayerActor *Actor)</div><div class="ttdoc">이 위젯을 소유한 액터를 설정하고, 닉네임 확인 타이머를 시작합니다.</div><div class="ttdef"><b>Definition</b> <a href="UPlayerHeadWidget_8cpp_source.html#l00022">UPlayerHeadWidget.cpp:22</a></div></div>
+<div class="ttc" id="anamespaceGameString_html_a648970d0f3f6ebf8cc20935a44303879"><div class="ttname"><a href="namespaceGameString.html#a648970d0f3f6ebf8cc20935a44303879">GameString::Default</a></div><div class="ttdeci">static const FString Default</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00057">YiSan.h:57</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="YiSan_8h_source.html#l00057">GameString::Default</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00487">GetPlayerDisplayName()</a>, <a class="el" href="APlayerActor_8h_source.html#l00084">NameTagWidgetComponent</a>, <a class="el" href="UPlayerHeadWidget_8cpp_source.html#l00022">UPlayerHeadWidget::SetOwningActor()</a>, <a class="el" href="APlayerActor_8h_source.html#l00051">TimerHandle_InitNameTag</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00087">BeginPlay()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAPlayerActor_ad982e1f258dcb3be792c58391e13956f_cgraph.svg" width="100%" height="376"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAPlayerActor_ad982e1f258dcb3be792c58391e13956f_icgraph.svg" width="438" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a75f8ffaac61945a9d94aabc1c79915b4" name="a75f8ffaac61945a9d94aabc1c79915b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75f8ffaac61945a9d94aabc1c79915b4">&#9670;&#160;</a></span>Cmd_AltitudeDown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void IControllable::Cmd_AltitudeDown </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classALattePlayerCharacter.html#a02358a77043b651f96cf74ca9f36dd1e">ALattePlayerCharacter</a>에서 재구현되었습니다.</p>
+
+<p class="definition"><a class="el" href="IControllable_8h_source.html">IControllable.h</a> 파일의 <a class="el" href="IControllable_8h_source.html#l00031">31</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   31</span>{};                     <span class="comment">// 고도 하강</span></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2259b9785864971795930f4b1a1883a7" name="a2259b9785864971795930f4b1a1883a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2259b9785864971795930f4b1a1883a7">&#9670;&#160;</a></span>Cmd_AltitudeReleased()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void IControllable::Cmd_AltitudeReleased </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classALattePlayerCharacter.html#ad39035ab0cbff5be745f358fb08d0654">ALattePlayerCharacter</a>에서 재구현되었습니다.</p>
+
+<p class="definition"><a class="el" href="IControllable_8h_source.html">IControllable.h</a> 파일의 <a class="el" href="IControllable_8h_source.html#l00032">32</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>{};                 <span class="comment">// 고도 조절 해제</span></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="afd003c2223b06356d9a827055d939741" name="afd003c2223b06356d9a827055d939741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd003c2223b06356d9a827055d939741">&#9670;&#160;</a></span>Cmd_AltitudeUp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void IControllable::Cmd_AltitudeUp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classALattePlayerCharacter.html#a14937da7ff137289ca05cf9c1f4b8f2d">ALattePlayerCharacter</a>에서 재구현되었습니다.</p>
+
+<p class="definition"><a class="el" href="IControllable_8h_source.html">IControllable.h</a> 파일의 <a class="el" href="IControllable_8h_source.html#l00030">30</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   30</span>{};                     <span class="comment">// 고도 상승</span></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af0b919aba5f1ffd9685bf56a5b7341dc" name="af0b919aba5f1ffd9685bf56a5b7341dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0b919aba5f1ffd9685bf56a5b7341dc">&#9670;&#160;</a></span>Cmd_ChatEnter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::Cmd_ChatEnter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classIControllable.html#ac5c411d843838ba48a9704c456ad7758">IControllable</a>(으)로부터 재구현되었습니다.</p>
+
+</div>
+</div>
+<a id="a57126d959c4b65006e7951eec5b4dea5" name="a57126d959c4b65006e7951eec5b4dea5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57126d959c4b65006e7951eec5b4dea5">&#9670;&#160;</a></span>Cmd_ChatScrollDown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::Cmd_ChatScrollDown </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classIControllable.html#a78a0af98a00bac7341fcbb606031bbf1">IControllable</a>(으)로부터 재구현되었습니다.</p>
+
+</div>
+</div>
+<a id="ad7f4678e1ea18904237b891a514ba423" name="ad7f4678e1ea18904237b891a514ba423"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7f4678e1ea18904237b891a514ba423">&#9670;&#160;</a></span>Cmd_ChatScrollUp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::Cmd_ChatScrollUp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classIControllable.html#a2634d485d1ee696890a3474a8e4c6e60">IControllable</a>(으)로부터 재구현되었습니다.</p>
+
+</div>
+</div>
+<a id="af7031d01f5f10e6cb3b7b1c1007f19aa" name="af7031d01f5f10e6cb3b7b1c1007f19aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7031d01f5f10e6cb3b7b1c1007f19aa">&#9670;&#160;</a></span>Cmd_HideMouse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::Cmd_HideMouse </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classIControllable.html#a23a69dd1e4dfadcbc19e14bd9d1655bb">IControllable</a>(으)로부터 재구현되었습니다.</p>
+
+</div>
+</div>
+<a id="a9cd9d111fd2ee4fb04e6f375992beb2c" name="a9cd9d111fd2ee4fb04e6f375992beb2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cd9d111fd2ee4fb04e6f375992beb2c">&#9670;&#160;</a></span>Cmd_HideVoiceGuide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::Cmd_HideVoiceGuide </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classIControllable.html#a69c4cca1c51729514054863ab75b0ce7">IControllable</a>(으)로부터 재구현되었습니다.</p>
+
+</div>
+</div>
+<a id="a4bbf9c7d111a15814b99b4e32a79cfda" name="a4bbf9c7d111a15814b99b4e32a79cfda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bbf9c7d111a15814b99b4e32a79cfda">&#9670;&#160;</a></span>Cmd_Jump()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::Cmd_Jump </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ACharacter 기본 점프 동작을 호출합니다. </p>
+
+<p><a class="el" href="classIControllable.html#ac1d95ea53739c16a86f25e3bb2ee926b">IControllable</a>를 구현.</p>
+
+</div>
+</div>
+<a id="a32b1b7dfc4f7bea89132a901bab9bce1" name="a32b1b7dfc4f7bea89132a901bab9bce1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32b1b7dfc4f7bea89132a901bab9bce1">&#9670;&#160;</a></span>Cmd_Landing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void IControllable::Cmd_Landing </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classALattePlayerCharacter.html#a0162cbf158d77fd4b1597f5594e65826">ALattePlayerCharacter</a>에서 재구현되었습니다.</p>
+
+<p class="definition"><a class="el" href="IControllable_8h_source.html">IControllable.h</a> 파일의 <a class="el" href="IControllable_8h_source.html#l00028">28</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   28</span>{};                         <span class="comment">// 랜딩</span></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a21a14eaae23da75b919b848aa87cb535" name="a21a14eaae23da75b919b848aa87cb535"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21a14eaae23da75b919b848aa87cb535">&#9670;&#160;</a></span>Cmd_Look()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::Cmd_Look </td>
+          <td>(</td>
+          <td class="paramtype">const FVector2D &amp;&#160;</td>
+          <td class="paramname"><em>Axis</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>시야 입력을 플레이어 컨트롤러의 요와 피치에 반영합니다. </p>
+<dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Axis</td><td>[in] 마우스 또는 패드 입력 축 값입니다. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><a class="el" href="classIControllable.html#a45c2124ac1edc67a18538853d12d30bb">IControllable</a>를 구현.</p>
+
+</div>
+</div>
+<a id="a0db8efea43cc28a694e55d72014642e1" name="a0db8efea43cc28a694e55d72014642e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0db8efea43cc28a694e55d72014642e1">&#9670;&#160;</a></span>Cmd_Move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::Cmd_Move </td>
+          <td>(</td>
+          <td class="paramtype">const FVector2D &amp;&#160;</td>
+          <td class="paramname"><em>Axis</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>입력 축 데이터를 처리해 월드 공간 이동을 수행합니다. </p>
+<dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Axis</td><td>[in] X, Y 입력 값을 담은 2D 벡터입니다. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><a class="el" href="classIControllable.html#a19f4250db751284d9964c9a494512fa7">IControllable</a>를 구현.</p>
+
+</div>
+</div>
+<a id="a728c9b03094ece6b6313636335f4a6a1" name="a728c9b03094ece6b6313636335f4a6a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a728c9b03094ece6b6313636335f4a6a1">&#9670;&#160;</a></span>Cmd_RecordEnd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::Cmd_RecordEnd </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classIControllable.html#a8055f9515674a0628221640824ca409e">IControllable</a>(으)로부터 재구현되었습니다.</p>
+
+</div>
+</div>
+<a id="ab442f15c0b77fdd38f7a5b7280cf2398" name="ab442f15c0b77fdd38f7a5b7280cf2398"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab442f15c0b77fdd38f7a5b7280cf2398">&#9670;&#160;</a></span>Cmd_RecordStart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::Cmd_RecordStart </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>GPT 상호작용을 위한 음성 캡처를 시작합니다. </p>
+
+<p><a class="el" href="classIControllable.html#aae8b02c0a353df4a45b12d05a0bb14de">IControllable</a>(으)로부터 재구현되었습니다.</p>
+
+</div>
+</div>
+<a id="af3a9549beda5b6ad19236586b769fa8b" name="af3a9549beda5b6ad19236586b769fa8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3a9549beda5b6ad19236586b769fa8b">&#9670;&#160;</a></span>Cmd_ShowDetail()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::Cmd_ShowDetail </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classIControllable.html#af4039837f0066b6b5b3acada36cde020">IControllable</a>(으)로부터 재구현되었습니다.</p>
+
+</div>
+</div>
+<a id="a988e1c6ac9eb3e305649c441d453d0a1" name="a988e1c6ac9eb3e305649c441d453d0a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a988e1c6ac9eb3e305649c441d453d0a1">&#9670;&#160;</a></span>Cmd_ShowMouse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::Cmd_ShowMouse </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classIControllable.html#a872a28a3e38399a2da66c820333f55fc">IControllable</a>(으)로부터 재구현되었습니다.</p>
+
+</div>
+</div>
+<a id="a4d82b1f5b8bb70f10347c327cb592348" name="a4d82b1f5b8bb70f10347c327cb592348"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d82b1f5b8bb70f10347c327cb592348">&#9670;&#160;</a></span>Cmd_ShowVoiceGuide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::Cmd_ShowVoiceGuide </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classIControllable.html#a5c9438dd23bb8f01d724bc82d2c99970">IControllable</a>(으)로부터 재구현되었습니다.</p>
+
+</div>
+</div>
+<a id="a5c63837c30ce2ec21fe5c111683cee99" name="a5c63837c30ce2ec21fe5c111683cee99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c63837c30ce2ec21fe5c111683cee99">&#9670;&#160;</a></span>GetGPTContext()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structFGPTContext.html">FGPTContext</a> APlayerActor::GetGPTContext </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>플레이어의 최신 GPT 컨텍스트 스냅샷을 수집합니다. </p>
+<dl class="section return"><dt>반환값</dt><dd>플레이어 위치, 시선 대상, 주변 건물을 담은 FGPTContext입니다. </dd></dl>
+
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00200">200</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  201</span>{</div>
+<div class="line"><span class="lineno">  202</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classAPlayerActor.html#ae76da0198c6e9d28a4cc59319e472e8e">GPTContextSystem</a>-&gt;GetGPTContext();</div>
+<div class="line"><span class="lineno">  203</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00090">GPTContextSystem</a>.</p>
+
+</div>
+</div>
+<a id="a03fdfc7e648ab697f1a90e4c991041f9" name="a03fdfc7e648ab697f1a90e4c991041f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03fdfc7e648ab697f1a90e4c991041f9">&#9670;&#160;</a></span>GetPlayerDisplayName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FString APlayerActor::GetPlayerDisplayName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00487">487</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  488</span>{</div>
+<div class="line"><span class="lineno">  489</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> PS = GetPlayerState&lt;AYiSanPlayerState&gt;())</div>
+<div class="line"><span class="lineno">  490</span>    {</div>
+<div class="line"><span class="lineno">  491</span>        <span class="keywordflow">return</span> PS-&gt;Nickname;</div>
+<div class="line"><span class="lineno">  492</span>    }</div>
+<div class="line"><span class="lineno">  493</span>    </div>
+<div class="line"><span class="lineno">  494</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> PC = GetController())</div>
+<div class="line"><span class="lineno">  495</span>    {</div>
+<div class="line"><span class="lineno">  496</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> PS = Cast&lt;AYiSanPlayerState&gt;( PC-&gt;PlayerState))</div>
+<div class="line"><span class="lineno">  497</span>        {</div>
+<div class="line"><span class="lineno">  498</span>            <span class="keywordflow">return</span> PS-&gt;Nickname;</div>
+<div class="line"><span class="lineno">  499</span>        }</div>
+<div class="line"><span class="lineno">  500</span>    }</div>
+<div class="line"><span class="lineno">  501</span> </div>
+<div class="line"><span class="lineno">  502</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceGameString.html#a648970d0f3f6ebf8cc20935a44303879">GameString::Default</a>;</div>
+<div class="line"><span class="lineno">  503</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="YiSan_8h_source.html#l00057">GameString::Default</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00165">CheckAndInitNameTag()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00307">OnExecVoiceCommand()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAPlayerActor_a03fdfc7e648ab697f1a90e4c991041f9_icgraph.svg" width="100%" height="386"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="af7a2c722effc05a9263d257f39d1a842" name="af7a2c722effc05a9263d257f39d1a842"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7a2c722effc05a9263d257f39d1a842">&#9670;&#160;</a></span>GetPlayerIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32 APlayerActor::GetPlayerIndex </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00505">505</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  506</span>{</div>
+<div class="line"><span class="lineno">  507</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> PS = GetPlayerState&lt;AYiSanPlayerState&gt;())</div>
+<div class="line"><span class="lineno">  508</span>    {</div>
+<div class="line"><span class="lineno">  509</span>        <span class="keywordflow">return</span> PS-&gt;PlayerIndex;</div>
+<div class="line"><span class="lineno">  510</span>    }</div>
+<div class="line"><span class="lineno">  511</span>    </div>
+<div class="line"><span class="lineno">  512</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> PC = GetController())</div>
+<div class="line"><span class="lineno">  513</span>    {</div>
+<div class="line"><span class="lineno">  514</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> PS = Cast&lt;AYiSanPlayerState&gt;( PC-&gt;PlayerState))</div>
+<div class="line"><span class="lineno">  515</span>        {</div>
+<div class="line"><span class="lineno">  516</span>            <span class="keywordflow">return</span> PS-&gt;PlayerIndex;</div>
+<div class="line"><span class="lineno">  517</span>        }</div>
+<div class="line"><span class="lineno">  518</span>    }</div>
+<div class="line"><span class="lineno">  519</span> </div>
+<div class="line"><span class="lineno">  520</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  521</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00307">OnExecVoiceCommand()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAPlayerActor_af7a2c722effc05a9263d257f39d1a842_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a63fb885eb5b6c3a2f2da33121e8d33b5" name="a63fb885eb5b6c3a2f2da33121e8d33b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63fb885eb5b6c3a2f2da33121e8d33b5">&#9670;&#160;</a></span>OnExecVoiceCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::OnExecVoiceCommand </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="EVoiceCommandType_8h.html#a091eabb93b1ffd38fe61f35906526114">EVoiceCommandType</a>&#160;</td>
+          <td class="paramname"><em>InType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AActor *&#160;</td>
+          <td class="paramname"><em>Requester</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>브로드캐스트 매니저에서 전달되는 음성 명령 실행 이벤트에 대응합니다. </p>
+
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00307">307</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  308</span>{</div>
+<div class="line"><span class="lineno">  309</span>    <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;%s from %s&quot;</span>),</div>
+<div class="line"><span class="lineno">  310</span>        *FString( <a class="code hl_define" href="Macro_8h.html#af2ddd5315380cee79064cc40b337ab46">ENUM_TO_NAME</a>(<a class="code hl_enumeration" href="EVoiceCommandType_8h.html#a091eabb93b1ffd38fe61f35906526114">EVoiceCommandType</a>, InType)),</div>
+<div class="line"><span class="lineno">  311</span>        Requester ? *Requester-&gt;GetName() : TEXT(<span class="stringliteral">&quot;Unknown&quot;</span>));</div>
+<div class="line"><span class="lineno">  312</span> </div>
+<div class="line"><span class="lineno">  313</span>    <span class="comment">// 요청자가 플레이어인지 확인</span></div>
+<div class="line"><span class="lineno">  314</span>    <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* RequesterPlayer = Cast&lt;APlayerActor&gt;(Requester);</div>
+<div class="line"><span class="lineno">  315</span>    <span class="keywordflow">if</span> (!RequesterPlayer)</div>
+<div class="line"><span class="lineno">  316</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  317</span> </div>
+<div class="line"><span class="lineno">  318</span>    <span class="comment">// Cmd_BuildingInfo는 로컬 클라이언트에서만 실행 (UI 표시용)</span></div>
+<div class="line"><span class="lineno">  319</span>    <span class="keywordflow">if</span> (InType == EVoiceCommandType::Cmd_BuildingInfo)</div>
+<div class="line"><span class="lineno">  320</span>    {</div>
+<div class="line"><span class="lineno">  321</span>        <span class="comment">// 요청자 본인만 실행</span></div>
+<div class="line"><span class="lineno">  322</span>        <span class="keywordflow">if</span> (<span class="keyword">this</span> != RequesterPlayer || !IsLocallyControlled())</div>
+<div class="line"><span class="lineno">  323</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  324</span> </div>
+<div class="line"><span class="lineno">  325</span>        <span class="comment">// 가장 가까운 건물 찾기</span></div>
+<div class="line"><span class="lineno">  326</span>        <span class="keyword">auto</span> AllBuildings = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::GetAllOfClass&lt;ABuilding&gt;</a>(GetWorld());</div>
+<div class="line"><span class="lineno">  327</span>        <span class="keywordflow">if</span> (AllBuildings.Num() == 0)</div>
+<div class="line"><span class="lineno">  328</span>        {</div>
+<div class="line"><span class="lineno">  329</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[VoiceCommand] 주변에 건물이 없습니다&quot;</span>));</div>
+<div class="line"><span class="lineno">  330</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  331</span>        }</div>
+<div class="line"><span class="lineno">  332</span> </div>
+<div class="line"><span class="lineno">  333</span>        <span class="keywordtype">float</span> MinDistance = TNumericLimits&lt;float&gt;::Max();</div>
+<div class="line"><span class="lineno">  334</span>        <a class="code hl_class" href="classABuilding.html">ABuilding</a>* NearestBuilding = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  335</span> </div>
+<div class="line"><span class="lineno">  336</span>        FVector MyLocation = GetActorLocation();</div>
+<div class="line"><span class="lineno">  337</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> Building : AllBuildings)</div>
+<div class="line"><span class="lineno">  338</span>        {</div>
+<div class="line"><span class="lineno">  339</span>            <span class="keywordtype">float</span> Distance = FVector::Dist(MyLocation, Building-&gt;GetActorLocation());</div>
+<div class="line"><span class="lineno">  340</span>            <span class="keywordflow">if</span> (Distance &lt; MinDistance)</div>
+<div class="line"><span class="lineno">  341</span>            {</div>
+<div class="line"><span class="lineno">  342</span>                MinDistance = Distance;</div>
+<div class="line"><span class="lineno">  343</span>                NearestBuilding = Building;</div>
+<div class="line"><span class="lineno">  344</span>            }</div>
+<div class="line"><span class="lineno">  345</span>        }</div>
+<div class="line"><span class="lineno">  346</span> </div>
+<div class="line"><span class="lineno">  347</span>        <span class="keywordflow">if</span> (NearestBuilding &amp;&amp; <a class="code hl_variable" href="classAPlayerActor.html#a3c74cbe0fb372864694358aed870bdf3">MainWidgetInst</a>)</div>
+<div class="line"><span class="lineno">  348</span>        {</div>
+<div class="line"><span class="lineno">  349</span>            <a class="code hl_variable" href="classAPlayerActor.html#a3c74cbe0fb372864694358aed870bdf3">MainWidgetInst</a>-&gt;ShowMegaPopup(NearestBuilding-&gt;<a class="code hl_variable" href="classABuilding.html#a22c1e4abb3b2ab18a572c6a063408e8d">BuildingType</a>);</div>
+<div class="line"><span class="lineno">  350</span> </div>
+<div class="line"><span class="lineno">  351</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[VoiceCommand] %s 정보 표시&quot;</span>),</div>
+<div class="line"><span class="lineno">  352</span>                *UGameDataManager::Get(GetWorld())-&gt;GetBuildingDataName(NearestBuilding-&gt;<a class="code hl_variable" href="classABuilding.html#a22c1e4abb3b2ab18a572c6a063408e8d">BuildingType</a>));</div>
+<div class="line"><span class="lineno">  353</span>        }</div>
+<div class="line"><span class="lineno">  354</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  355</span>    }</div>
+<div class="line"><span class="lineno">  356</span> </div>
+<div class="line"><span class="lineno">  357</span>    <span class="comment">// 나머지 명령들은 서버에서만 실행</span></div>
+<div class="line"><span class="lineno">  358</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><span class="lineno">  359</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  360</span> </div>
+<div class="line"><span class="lineno">  361</span>    <span class="keywordflow">if</span> (InType == EVoiceCommandType::Cmd_Call)</div>
+<div class="line"><span class="lineno">  362</span>    {</div>
+<div class="line"><span class="lineno">  363</span>        <span class="comment">// 다른 모든 플레이어를 요청자에게 집결</span></div>
+<div class="line"><span class="lineno">  364</span>        <span class="comment">// 요청자 본인은 제외</span></div>
+<div class="line"><span class="lineno">  365</span>        <span class="keywordflow">if</span> (<span class="keyword">this</span> == RequesterPlayer)</div>
+<div class="line"><span class="lineno">  366</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  367</span> </div>
+<div class="line"><span class="lineno">  368</span>        FVector RequesterLocation = RequesterPlayer-&gt;GetActorLocation();</div>
+<div class="line"><span class="lineno">  369</span>        FRotator RequesterRotation = RequesterPlayer-&gt;GetActorRotation();</div>
+<div class="line"><span class="lineno">  370</span> </div>
+<div class="line"><span class="lineno">  371</span>        <span class="comment">// 요청자의 앞쪽으로 200 유닛 떨어진 위치 계산</span></div>
+<div class="line"><span class="lineno">  372</span>        FVector TargetLocation = RequesterLocation + (RequesterRotation.Vector() * 200.f);</div>
+<div class="line"><span class="lineno">  373</span> </div>
+<div class="line"><span class="lineno">  374</span>        <span class="comment">// 자신을 요청자 앞으로 텔레포트</span></div>
+<div class="line"><span class="lineno">  375</span>        TeleportTo(TargetLocation, GetActorRotation(), <span class="keyword">false</span>, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  376</span> </div>
+<div class="line"><span class="lineno">  377</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[VoiceCommand] %s가 %s에게 집결&quot;</span>), *<a class="code hl_function" href="classAPlayerActor.html#a03fdfc7e648ab697f1a90e4c991041f9">GetPlayerDisplayName</a>(), *RequesterPlayer-&gt;<a class="code hl_function" href="classAPlayerActor.html#a03fdfc7e648ab697f1a90e4c991041f9">GetPlayerDisplayName</a>());</div>
+<div class="line"><span class="lineno">  378</span>    }</div>
+<div class="line"><span class="lineno">  379</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (InType == EVoiceCommandType::Cmd_Friend)</div>
+<div class="line"><span class="lineno">  380</span>    {</div>
+<div class="line"><span class="lineno">  381</span>        <span class="comment">// 요청자가 다른 플레이어(다음 번째 플레이어)에게로 이동</span></div>
+<div class="line"><span class="lineno">  382</span>        <span class="comment">// 요청자만 실행</span></div>
+<div class="line"><span class="lineno">  383</span>        <span class="keywordflow">if</span> (<span class="keyword">this</span> != RequesterPlayer)</div>
+<div class="line"><span class="lineno">  384</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  385</span> </div>
+<div class="line"><span class="lineno">  386</span>        <span class="comment">// 모든 플레이어 가져오기</span></div>
+<div class="line"><span class="lineno">  387</span>        <span class="keyword">auto</span> AllPlayers = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::GetAllOfClass&lt;APlayerActor&gt;</a>(GetWorld());</div>
+<div class="line"><span class="lineno">  388</span>        <span class="keywordflow">if</span> (AllPlayers.Num() &lt;= 1)</div>
+<div class="line"><span class="lineno">  389</span>        {</div>
+<div class="line"><span class="lineno">  390</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[VoiceCommand] 이동할 다른 플레이어가 없습니다&quot;</span>));</div>
+<div class="line"><span class="lineno">  391</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  392</span>        }</div>
+<div class="line"><span class="lineno">  393</span> </div>
+<div class="line"><span class="lineno">  394</span>        <span class="comment">// 자신의 PlayerIndex 가져오기</span></div>
+<div class="line"><span class="lineno">  395</span>        int32 MyIndex = <a class="code hl_function" href="classAPlayerActor.html#af7a2c722effc05a9263d257f39d1a842">GetPlayerIndex</a>();</div>
+<div class="line"><span class="lineno">  396</span> </div>
+<div class="line"><span class="lineno">  397</span>        <span class="comment">// 다음 플레이어 찾기 (순환)</span></div>
+<div class="line"><span class="lineno">  398</span>        <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* TargetPlayer = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  399</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> Player : AllPlayers)</div>
+<div class="line"><span class="lineno">  400</span>        {</div>
+<div class="line"><span class="lineno">  401</span>            int32 PlayerIdx = Player-&gt;<a class="code hl_function" href="classAPlayerActor.html#af7a2c722effc05a9263d257f39d1a842">GetPlayerIndex</a>();</div>
+<div class="line"><span class="lineno">  402</span>            <span class="keywordflow">if</span> (PlayerIdx &gt; MyIndex)</div>
+<div class="line"><span class="lineno">  403</span>            {</div>
+<div class="line"><span class="lineno">  404</span>                TargetPlayer = Player;</div>
+<div class="line"><span class="lineno">  405</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  406</span>            }</div>
+<div class="line"><span class="lineno">  407</span>        }</div>
+<div class="line"><span class="lineno">  408</span> </div>
+<div class="line"><span class="lineno">  409</span>        <span class="comment">// 다음 플레이어가 없으면 첫 번째 플레이어로</span></div>
+<div class="line"><span class="lineno">  410</span>        <span class="keywordflow">if</span> (!TargetPlayer)</div>
+<div class="line"><span class="lineno">  411</span>        {</div>
+<div class="line"><span class="lineno">  412</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span> Player : AllPlayers)</div>
+<div class="line"><span class="lineno">  413</span>            {</div>
+<div class="line"><span class="lineno">  414</span>                <span class="keywordflow">if</span> (Player != <span class="keyword">this</span>)</div>
+<div class="line"><span class="lineno">  415</span>                {</div>
+<div class="line"><span class="lineno">  416</span>                    TargetPlayer = Player;</div>
+<div class="line"><span class="lineno">  417</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  418</span>                }</div>
+<div class="line"><span class="lineno">  419</span>            }</div>
+<div class="line"><span class="lineno">  420</span>        }</div>
+<div class="line"><span class="lineno">  421</span> </div>
+<div class="line"><span class="lineno">  422</span>        <span class="keywordflow">if</span> (TargetPlayer)</div>
+<div class="line"><span class="lineno">  423</span>        {</div>
+<div class="line"><span class="lineno">  424</span>            FVector TargetLocation = TargetPlayer-&gt;GetActorLocation();</div>
+<div class="line"><span class="lineno">  425</span>            FRotator TargetRotation = TargetPlayer-&gt;GetActorRotation();</div>
+<div class="line"><span class="lineno">  426</span> </div>
+<div class="line"><span class="lineno">  427</span>            <span class="comment">// 대상 플레이어의 앞쪽으로 200 유닛 떨어진 위치 계산</span></div>
+<div class="line"><span class="lineno">  428</span>            FVector TeleportLocation = TargetLocation + (TargetRotation.Vector() * 200.f);</div>
+<div class="line"><span class="lineno">  429</span> </div>
+<div class="line"><span class="lineno">  430</span>            <span class="comment">// 텔레포트</span></div>
+<div class="line"><span class="lineno">  431</span>            TeleportTo(TeleportLocation, GetActorRotation(), <span class="keyword">false</span>, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  432</span> </div>
+<div class="line"><span class="lineno">  433</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[VoiceCommand] %s가 %s에게로 이동&quot;</span>), *<a class="code hl_function" href="classAPlayerActor.html#a03fdfc7e648ab697f1a90e4c991041f9">GetPlayerDisplayName</a>(), *TargetPlayer-&gt;<a class="code hl_function" href="classAPlayerActor.html#a03fdfc7e648ab697f1a90e4c991041f9">GetPlayerDisplayName</a>());</div>
+<div class="line"><span class="lineno">  434</span>        }</div>
+<div class="line"><span class="lineno">  435</span>    }</div>
+<div class="line"><span class="lineno">  436</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (InType == EVoiceCommandType::Cmd_Target)</div>
+<div class="line"><span class="lineno">  437</span>    {</div>
+<div class="line"><span class="lineno">  438</span>        <span class="comment">// 요청자가 현재 퀘스트 목표 위치로 이동</span></div>
+<div class="line"><span class="lineno">  439</span>        <span class="comment">// 요청자만 실행</span></div>
+<div class="line"><span class="lineno">  440</span>        <span class="keywordflow">if</span> (<span class="keyword">this</span> != RequesterPlayer)</div>
+<div class="line"><span class="lineno">  441</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  442</span> </div>
+<div class="line"><span class="lineno">  443</span>        <span class="comment">// 퀘스트 매니저에서 현재 목표 가져오기</span></div>
+<div class="line"><span class="lineno">  444</span>        <a class="code hl_class" href="classAQuestManagerActor.html">AQuestManagerActor</a>* QuestManager = <a class="code hl_function" href="classAQuestManagerActor.html#a64e0505f7337bb8f6bb6ca038a302bb9">AQuestManagerActor::Get</a>(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  445</span>        <span class="keywordflow">if</span> (!QuestManager || !QuestManager-&gt;<a class="code hl_function" href="classAQuestManagerActor.html#ad7cc1de3e613a1a68f7f3bcca0b22789">HasActiveQuest</a>())</div>
+<div class="line"><span class="lineno">  446</span>        {</div>
+<div class="line"><span class="lineno">  447</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[VoiceCommand] 활성화된 퀘스트가 없습니다&quot;</span>));</div>
+<div class="line"><span class="lineno">  448</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  449</span>        }</div>
+<div class="line"><span class="lineno">  450</span> </div>
+<div class="line"><span class="lineno">  451</span>        <a class="code hl_enumeration" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a> TargetBuildingType = QuestManager-&gt;<a class="code hl_function" href="classAQuestManagerActor.html#a47d4ab31a110b03ccd0fc9cbc8ceaba9">GetCurrentTarget</a>();</div>
+<div class="line"><span class="lineno">  452</span> </div>
+<div class="line"><span class="lineno">  453</span>        <span class="comment">// 목표 건물 찾기</span></div>
+<div class="line"><span class="lineno">  454</span>        <span class="keyword">auto</span> AllBuildings = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::GetAllOfClass&lt;ABuilding&gt;</a>(GetWorld());</div>
+<div class="line"><span class="lineno">  455</span>        <a class="code hl_class" href="classABuilding.html">ABuilding</a>* TargetBuilding = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  456</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> Building : AllBuildings)</div>
+<div class="line"><span class="lineno">  457</span>        {</div>
+<div class="line"><span class="lineno">  458</span>            <span class="keywordflow">if</span> (Building-&gt;BuildingType == TargetBuildingType)</div>
+<div class="line"><span class="lineno">  459</span>            {</div>
+<div class="line"><span class="lineno">  460</span>                TargetBuilding = Building;</div>
+<div class="line"><span class="lineno">  461</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  462</span>            }</div>
+<div class="line"><span class="lineno">  463</span>        }</div>
+<div class="line"><span class="lineno">  464</span> </div>
+<div class="line"><span class="lineno">  465</span>        <span class="keywordflow">if</span> (TargetBuilding)</div>
+<div class="line"><span class="lineno">  466</span>        {</div>
+<div class="line"><span class="lineno">  467</span>            FVector BuildingLocation = TargetBuilding-&gt;GetActorLocation();</div>
+<div class="line"><span class="lineno">  468</span>            FRotator BuildingRotation = TargetBuilding-&gt;GetActorRotation();</div>
+<div class="line"><span class="lineno">  469</span> </div>
+<div class="line"><span class="lineno">  470</span>            <span class="comment">// 건물 앞쪽으로 200 유닛 떨어진 위치 계산</span></div>
+<div class="line"><span class="lineno">  471</span>            FVector TeleportLocation = BuildingLocation + (BuildingRotation.Vector() * 200.f);</div>
+<div class="line"><span class="lineno">  472</span> </div>
+<div class="line"><span class="lineno">  473</span>            <span class="comment">// 텔레포트</span></div>
+<div class="line"><span class="lineno">  474</span>            TeleportTo(TeleportLocation, GetActorRotation(), <span class="keyword">false</span>, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  475</span> </div>
+<div class="line"><span class="lineno">  476</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[VoiceCommand] %s가 퀘스트 목표 %s로 이동&quot;</span>),</div>
+<div class="line"><span class="lineno">  477</span>                *<a class="code hl_function" href="classAPlayerActor.html#a03fdfc7e648ab697f1a90e4c991041f9">GetPlayerDisplayName</a>(),</div>
+<div class="line"><span class="lineno">  478</span>                *UGameDataManager::Get(GetWorld())-&gt;GetBuildingDataName(TargetBuildingType));</div>
+<div class="line"><span class="lineno">  479</span>        }</div>
+<div class="line"><span class="lineno">  480</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  481</span>        {</div>
+<div class="line"><span class="lineno">  482</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[VoiceCommand] 퀘스트 목표 건물을 찾을 수 없습니다&quot;</span>));</div>
+<div class="line"><span class="lineno">  483</span>        }</div>
+<div class="line"><span class="lineno">  484</span>    }</div>
+<div class="line"><span class="lineno">  485</span>}</div>
+<div class="ttc" id="aEBuildingType_8h_html_abd7612dc4100b44f80890bb8ad417947"><div class="ttname"><a href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a></div><div class="ttdeci">EBuildingType</div><div class="ttdef"><b>Definition</b> <a href="EBuildingType_8h_source.html#l00008">EBuildingType.h:9</a></div></div>
+<div class="ttc" id="aEVoiceCommandType_8h_html_a091eabb93b1ffd38fe61f35906526114"><div class="ttname"><a href="EVoiceCommandType_8h.html#a091eabb93b1ffd38fe61f35906526114">EVoiceCommandType</a></div><div class="ttdeci">EVoiceCommandType</div><div class="ttdef"><b>Definition</b> <a href="EVoiceCommandType_8h_source.html#l00011">EVoiceCommandType.h:12</a></div></div>
+<div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
+<div class="ttc" id="aGameLogging_8h_html_ac50b407bb34c70a0be1fccc74730d143"><div class="ttname"><a href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a></div><div class="ttdeci">#define PRINT_STRING(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00045">GameLogging.h:45</a></div></div>
+<div class="ttc" id="aMacro_8h_html_af2ddd5315380cee79064cc40b337ab46"><div class="ttname"><a href="Macro_8h.html#af2ddd5315380cee79064cc40b337ab46">ENUM_TO_NAME</a></div><div class="ttdeci">#define ENUM_TO_NAME(EnumType, Value)</div><div class="ttdef"><b>Definition</b> <a href="Macro_8h_source.html#l00081">Macro.h:81</a></div></div>
+<div class="ttc" id="aclassABuilding_html"><div class="ttname"><a href="classABuilding.html">ABuilding</a></div><div class="ttdoc">플레이어 접촉을 감지하고 퀘스트 진행을 알리는 건물 액터입니다.</div><div class="ttdef"><b>Definition</b> <a href="ABuilding_8h_source.html#l00015">ABuilding.h:16</a></div></div>
+<div class="ttc" id="aclassABuilding_html_a22c1e4abb3b2ab18a572c6a063408e8d"><div class="ttname"><a href="classABuilding.html#a22c1e4abb3b2ab18a572c6a063408e8d">ABuilding::BuildingType</a></div><div class="ttdeci">EBuildingType BuildingType</div><div class="ttdef"><b>Definition</b> <a href="ABuilding_8h_source.html#l00044">ABuilding.h:44</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html"><div class="ttname"><a href="classAPlayerActor.html">APlayerActor</a></div><div class="ttdoc">이동, UI, 음성 하위 시스템을 통합하는 플레이어 조작 캐릭터입니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00022">APlayerActor.h:23</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_af7a2c722effc05a9263d257f39d1a842"><div class="ttname"><a href="classAPlayerActor.html#af7a2c722effc05a9263d257f39d1a842">APlayerActor::GetPlayerIndex</a></div><div class="ttdeci">int32 GetPlayerIndex() const</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00505">APlayerActor.cpp:505</a></div></div>
+<div class="ttc" id="aclassAQuestManagerActor_html_a47d4ab31a110b03ccd0fc9cbc8ceaba9"><div class="ttname"><a href="classAQuestManagerActor.html#a47d4ab31a110b03ccd0fc9cbc8ceaba9">AQuestManagerActor::GetCurrentTarget</a></div><div class="ttdeci">EBuildingType GetCurrentTarget() const</div><div class="ttdef"><b>Definition</b> <a href="AQuestManagerActor_8h_source.html#l00036">AQuestManagerActor.h:36</a></div></div>
+<div class="ttc" id="aclassAQuestManagerActor_html_ad7cc1de3e613a1a68f7f3bcca0b22789"><div class="ttname"><a href="classAQuestManagerActor.html#ad7cc1de3e613a1a68f7f3bcca0b22789">AQuestManagerActor::HasActiveQuest</a></div><div class="ttdeci">bool HasActiveQuest() const</div><div class="ttdef"><b>Definition</b> <a href="AQuestManagerActor_8h_source.html#l00039">AQuestManagerActor.h:39</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ABuilding_8h_source.html#l00044">ABuilding::BuildingType</a>, <a class="el" href="Macro_8h_source.html#l00081">ENUM_TO_NAME</a>, <a class="el" href="AQuestManagerActor_8cpp_source.html#l00023">AQuestManagerActor::Get()</a>, <a class="el" href="AQuestManagerActor_8h_source.html#l00036">AQuestManagerActor::GetCurrentTarget()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00487">GetPlayerDisplayName()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00505">GetPlayerIndex()</a>, <a class="el" href="AQuestManagerActor_8h_source.html#l00039">AQuestManagerActor::HasActiveQuest()</a>, <a class="el" href="FComponentHelper_8h_source.html#l00016">FComponentHelper::LoadAsset()</a>, <a class="el" href="APlayerActor_8h_source.html#l00075">MainWidgetInst</a>, <a class="el" href="GameLogging_8h_source.html#l00045">PRINT_STRING</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00087">BeginPlay()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAPlayerActor_a63fb885eb5b6c3a2f2da33121e8d33b5_cgraph.svg" width="523" height="315"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAPlayerActor_a63fb885eb5b6c3a2f2da33121e8d33b5_icgraph.svg" width="435" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a5c0d323e7315da0418ae71fc1a40204e" name="a5c0d323e7315da0418ae71fc1a40204e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c0d323e7315da0418ae71fc1a40204e">&#9670;&#160;</a></span>OnReadyPawn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::OnReadyPawn </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>컨트롤러가 준비된 뒤 입력을 허용하고 UI를 초기화합니다. </p>
+
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00188">188</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  189</span>{</div>
+<div class="line"><span class="lineno">  190</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> PlayerController = Cast&lt;APlayerController&gt;(GetController()))</div>
+<div class="line"><span class="lineno">  191</span>    {</div>
+<div class="line"><span class="lineno">  192</span>        <span class="keywordflow">if</span> (!PlayerController-&gt;IsLocalController())</div>
+<div class="line"><span class="lineno">  193</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  194</span> </div>
+<div class="line"><span class="lineno">  195</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> PC = Cast&lt;APlayerControl&gt;(PlayerController))</div>
+<div class="line"><span class="lineno">  196</span>            PC-&gt;OnPawnReady(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  197</span>    }</div>
+<div class="line"><span class="lineno">  198</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00150">OnRep_Controller()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00156">PossessedBy()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAPlayerActor_a5c0d323e7315da0418ae71fc1a40204e_icgraph.svg" width="464" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a56fd76fe4979f537c112d32ebbc44f72" name="a56fd76fe4979f537c112d32ebbc44f72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56fd76fe4979f537c112d32ebbc44f72">&#9670;&#160;</a></span>OnRep_Controller()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::OnRep_Controller </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00150">150</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  151</span>{</div>
+<div class="line"><span class="lineno">  152</span>    Super::OnRep_Controller();</div>
+<div class="line"><span class="lineno">  153</span>    <a class="code hl_function" href="classAPlayerActor.html#a5c0d323e7315da0418ae71fc1a40204e">OnReadyPawn</a>();</div>
+<div class="line"><span class="lineno">  154</span>}</div>
+<div class="ttc" id="aclassAPlayerActor_html_a5c0d323e7315da0418ae71fc1a40204e"><div class="ttname"><a href="classAPlayerActor.html#a5c0d323e7315da0418ae71fc1a40204e">APlayerActor::OnReadyPawn</a></div><div class="ttdeci">void OnReadyPawn()</div><div class="ttdoc">컨트롤러가 준비된 뒤 입력을 허용하고 UI를 초기화합니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00188">APlayerActor.cpp:188</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8cpp_source.html#l00188">OnReadyPawn()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAPlayerActor_a56fd76fe4979f537c112d32ebbc44f72_cgraph.svg" width="423" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ab031bd34fe5c7b907c2f8b8aa8aabddd" name="ab031bd34fe5c7b907c2f8b8aa8aabddd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab031bd34fe5c7b907c2f8b8aa8aabddd">&#9670;&#160;</a></span>OnRep_PlayerState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::OnRep_PlayerState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00145">145</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  146</span>{</div>
+<div class="line"><span class="lineno">  147</span>    Super::OnRep_PlayerState();</div>
+<div class="line"><span class="lineno">  148</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="adb01d4a0bb1c938f419029317ccae1dd" name="adb01d4a0bb1c938f419029317ccae1dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb01d4a0bb1c938f419029317ccae1dd">&#9670;&#160;</a></span>PlayTTSAudio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::PlayTTSAudio </td>
+          <td>(</td>
+          <td class="paramtype">const TArray&lt; uint8 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>AudioData</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>TTS 오디오를 재생합니다. VoiceConversationSystem으로 전달합니다. </p>
+<dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">AudioData</td><td>[in] TTS로 생성된 오디오 데이터 (WAV) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>반환값</dt><dd>재생 성공 여부 </dd></dl>
+
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00523">523</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  524</span>{</div>
+<div class="line"><span class="lineno">  525</span>    <a class="code hl_variable" href="classAPlayerActor.html#a0c1400db5f943254071089e512a2bb25">VoiceConversationSystem</a>-&gt;PlayVoiceAudio(AudioData);</div>
+<div class="line"><span class="lineno">  526</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00087">VoiceConversationSystem</a>.</p>
+
+</div>
+</div>
+<a id="a35e67f9f2f0a0c5ee8589213b5a65b63" name="a35e67f9f2f0a0c5ee8589213b5a65b63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35e67f9f2f0a0c5ee8589213b5a65b63">&#9670;&#160;</a></span>PossessedBy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APlayerActor::PossessedBy </td>
+          <td>(</td>
+          <td class="paramtype">AController *&#160;</td>
+          <td class="paramname"><em>NewController</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00156">156</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  157</span>{</div>
+<div class="line"><span class="lineno">  158</span>    Super::PossessedBy(NewController);</div>
+<div class="line"><span class="lineno">  159</span>    <span class="keywordflow">if</span> (IsLocallyControlled())</div>
+<div class="line"><span class="lineno">  160</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;Pawn possessed locally, player can move&quot;</span>));</div>
+<div class="line"><span class="lineno">  161</span> </div>
+<div class="line"><span class="lineno">  162</span>    <a class="code hl_function" href="classAPlayerActor.html#a5c0d323e7315da0418ae71fc1a40204e">OnReadyPawn</a>();</div>
+<div class="line"><span class="lineno">  163</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8cpp_source.html#l00188">OnReadyPawn()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAPlayerActor_a35e67f9f2f0a0c5ee8589213b5a65b63_cgraph.svg" width="464" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">멤버 데이터 문서화</h2>
+<a id="afe2a6b6058bb0b4d8e7fd5598d08d17d" name="afe2a6b6058bb0b4d8e7fd5598d08d17d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe2a6b6058bb0b4d8e7fd5598d08d17d">&#9670;&#160;</a></span>AnimInstance</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class UAnimInstance&gt; APlayerActor::AnimInstance</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>게임플레이 기반 몽타주 조회에 사용하는 애님 인스턴스입니다. </p>
+
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00064">64</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00087">BeginPlay()</a>.</p>
+
+</div>
+</div>
+<a id="a1218eedca692d7dbac03a15334b03458" name="a1218eedca692d7dbac03a15334b03458"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1218eedca692d7dbac03a15334b03458">&#9670;&#160;</a></span>BroadcastManager</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class <a class="el" href="classUBroadcastManager.html">UBroadcastManager</a>&gt; APlayerActor::BroadcastManager</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>UI 알림에 사용하는 캐시된 브로드캐스트 매니저입니다. </p>
+
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00096">96</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00087">BeginPlay()</a>.</p>
+
+</div>
+</div>
+<a id="aac209b48b0f75baec849cdfc627505ee" name="aac209b48b0f75baec849cdfc627505ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac209b48b0f75baec849cdfc627505ee">&#9670;&#160;</a></span>ChatBoxWidget</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class <a class="el" href="classUChatBoxWidget.html">UChatBoxWidget</a>&gt; APlayerActor::ChatBoxWidget</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00081">81</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00087">BeginPlay()</a>.</p>
+
+</div>
+</div>
+<a id="a2b948ff4becc9541dbd773ab4a7cf307" name="a2b948ff4becc9541dbd773ab4a7cf307"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b948ff4becc9541dbd773ab4a7cf307">&#9670;&#160;</a></span>ChatPlayerSystem</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class UChatPlayerSystem&gt; APlayerActor::ChatPlayerSystem</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>채팅 시스템 컴포넌트입니다. </p>
+
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00093">93</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00045">APlayerActor()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00087">BeginPlay()</a>, <a class="el" href="UPlayerHeadWidget_8cpp_source.html#l00030">UPlayerHeadWidget::CheckPlayerState()</a>, <a class="el" href="UChatBoxWidget_8cpp_source.html#l00035">UChatBoxWidget::InitSystem()</a>, <a class="el" href="ADasanActor_8cpp_source.html#l00699">ADasanActor::OnExecVoiceCommand()</a>.</p>
+
+</div>
+</div>
+<a id="a1d6e3331395be2ad159535e19557cdbf" name="a1d6e3331395be2ad159535e19557cdbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d6e3331395be2ad159535e19557cdbf">&#9670;&#160;</a></span>ChatUIWidgetClass</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TSubclassOf&lt;class <a class="el" href="classUChatUIWidget.html">UChatUIWidget</a>&gt; APlayerActor::ChatUIWidgetClass</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00078">78</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00045">APlayerActor()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00087">BeginPlay()</a>.</p>
+
+</div>
+</div>
+<a id="a856ef7f26d46648083f0fcacdc3c0b5d" name="a856ef7f26d46648083f0fcacdc3c0b5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a856ef7f26d46648083f0fcacdc3c0b5d">&#9670;&#160;</a></span>FollowCamera</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class UCameraComponent&gt; APlayerActor::FollowCamera</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>플레이어 시점을 담당하는 팔로우 카메라입니다. </p>
+
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00069">69</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00045">APlayerActor()</a>.</p>
+
+</div>
+</div>
+<a id="ae76da0198c6e9d28a4cc59319e472e8e" name="ae76da0198c6e9d28a4cc59319e472e8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae76da0198c6e9d28a4cc59319e472e8e">&#9670;&#160;</a></span>GPTContextSystem</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class UGPTContextSystem&gt; APlayerActor::GPTContextSystem</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>시선 및 주변 건물을 추적하는 GPT 컨텍스트 제공자입니다. </p>
+
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00090">90</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00045">APlayerActor()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00087">BeginPlay()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00200">GetGPTContext()</a>.</p>
+
+</div>
+</div>
+<a id="a7dad1553f9372858902bdd65e2f77243" name="a7dad1553f9372858902bdd65e2f77243"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dad1553f9372858902bdd65e2f77243">&#9670;&#160;</a></span>MainWidgetClass</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TSubclassOf&lt;class <a class="el" href="classUMainWidget.html">UMainWidget</a>&gt; APlayerActor::MainWidgetClass</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>메인 HUD 위젯을 제공하는 블루프린트 클래스입니다. </p>
+
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00072">72</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00045">APlayerActor()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00087">BeginPlay()</a>.</p>
+
+</div>
+</div>
+<a id="a3c74cbe0fb372864694358aed870bdf3" name="a3c74cbe0fb372864694358aed870bdf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c74cbe0fb372864694358aed870bdf3">&#9670;&#160;</a></span>MainWidgetInst</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class <a class="el" href="classUMainWidget.html">UMainWidget</a>&gt; APlayerActor::MainWidgetInst</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>뷰포트에 배치되는 메인 위젯 인스턴스입니다. </p>
+
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00075">75</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00087">BeginPlay()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00307">OnExecVoiceCommand()</a>.</p>
+
+</div>
+</div>
+<a id="a89917bc4d5767e759d7b3066e8df2728" name="a89917bc4d5767e759d7b3066e8df2728"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89917bc4d5767e759d7b3066e8df2728">&#9670;&#160;</a></span>MeshComp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class USkeletalMeshComponent&gt; APlayerActor::MeshComp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>애니메이션 재생을 담당하는 메시 컴포넌트입니다. </p>
+
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00060">60</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00087">BeginPlay()</a>.</p>
+
+</div>
+</div>
+<a id="a3fb4598e21a9c5af2d9b3007adab9496" name="a3fb4598e21a9c5af2d9b3007adab9496"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fb4598e21a9c5af2d9b3007adab9496">&#9670;&#160;</a></span>MoveComp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class UCharacterMovementComponent&gt; APlayerActor::MoveComp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>이동 보조 로직에서 사용하는 캐시된 무브먼트 컴포넌트입니다. </p>
+
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00062">62</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00087">BeginPlay()</a>.</p>
+
+</div>
+</div>
+<a id="a4930d45dc228555088538a50d92332d9" name="a4930d45dc228555088538a50d92332d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4930d45dc228555088538a50d92332d9">&#9670;&#160;</a></span>NameTagWidgetComponent</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UWidgetComponent* APlayerActor::NameTagWidgetComponent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00084">84</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00045">APlayerActor()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00165">CheckAndInitNameTag()</a>.</p>
+
+</div>
+</div>
+<a id="ac6ce7fa6f2c0a29dc386147130c26802" name="ac6ce7fa6f2c0a29dc386147130c26802"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6ce7fa6f2c0a29dc386147130c26802">&#9670;&#160;</a></span>SpringArmComp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class USpringArmComponent&gt; APlayerActor::SpringArmComp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>3인칭 팔로우 카메라를 위한 스프링 암 컴포넌트입니다. </p>
+
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00067">67</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00045">APlayerActor()</a>.</p>
+
+</div>
+</div>
+<a id="a392a5515bccfceea1356dee586a15097" name="a392a5515bccfceea1356dee586a15097"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a392a5515bccfceea1356dee586a15097">&#9670;&#160;</a></span>TimerHandle_InitNameTag</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FTimerHandle APlayerActor::TimerHandle_InitNameTag</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00051">51</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00087">BeginPlay()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00165">CheckAndInitNameTag()</a>.</p>
+
+</div>
+</div>
+<a id="a0c1400db5f943254071089e512a2bb25" name="a0c1400db5f943254071089e512a2bb25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c1400db5f943254071089e512a2bb25">&#9670;&#160;</a></span>VoiceConversationSystem</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class UVoiceConversationSystem&gt; APlayerActor::VoiceConversationSystem</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>플레이어가 소유한 음성 명령 파이프라인입니다. </p>
+
+<p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00087">87</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00045">APlayerActor()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00087">BeginPlay()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00523">PlayTTSAudio()</a>.</p>
+
+</div>
+</div>
+<hr/>이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.:<ul>
+<li>Source/YiSan/Character/Public/<a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a></li>
+<li>Source/YiSan/Character/Private/<a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classAPlayerActor.html">APlayerActor</a></li>
+    <li class="footer">생성시간 : 토 11월 8 2025 13:55:38, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

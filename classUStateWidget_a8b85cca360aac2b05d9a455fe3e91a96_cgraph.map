@@ -1,0 +1,9 @@
+<map id="UStateWidget::NativeTick" name="UStateWidget::NativeTick">
+<area shape="rect" id="Node000001" title="매 프레임 상태 표시를 갱신합니다." alt="" coords="5,77,196,102"/>
+<area shape="rect" id="Node000002" href="$classUStateWidget.html#a74711945c846ad993f53a49a8fc23a95" title="로딩 스피너 회전 애니메이션을 갱신합니다." alt="" coords="249,5,468,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,74,263,46,265,51,154,79"/>
+<area shape="rect" id="Node000003" href="$classUStateWidget.html#aad298ce3a3dfc672e4f926e93fc2e8cd" title="퀘스트 화살표 방향을 업데이트합니다." alt="" coords="256,69,461,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="196,87,242,87,242,92,196,92"/>
+<area shape="rect" id="Node000004" href="$classUStateWidget.html#afb72f9557bc61ed82d39c472096fc8ef" title="오디오 스펙트럼 표시 값을 업데이트합니다." alt="" coords="244,133,473,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="154,100,265,127,263,133,152,105"/>
+</map>

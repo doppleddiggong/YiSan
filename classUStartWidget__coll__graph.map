@@ -1,0 +1,5 @@
+<map id="UStartWidget" name="UStartWidget">
+<area shape="rect" id="Node000001" title="시작 버튼과 배경 영상을 제어하는 초기 진입 위젯입니다." alt="" coords="5,119,183,384"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="44,5,144,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,84,97,119,91,119,91,84"/>
+</map>
