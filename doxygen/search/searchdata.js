@@ -1,15 +1,15 @@
 var indexSectionsWithContent =
 {
-  0: "0123456789abcdefghijklmnopqrstuvwxyz~—가개검게결경계고과관교구권규기내네누다단대데동디로리맞매맵메멤명모목문미및반발방배범변보복본분빌빠사산삽상생서선설섹소속수스시식실아안않알언업에역연예오완요우운워원월위유응이일입자작저적전절정제조종주지진질차참처최추출커컨코클타탐태텔템트특팀파페평포프플필하한함핫항해핵헤형확환활효후",
+  0: "abcdefghijklmnopqrstuvwxyz~가개문빠소시에이지탐특프핵",
   1: "afiu",
   2: "gnr",
-  3: "acdefgilmnpsuy",
+  3: "acefgilmnuy",
   4: "abcdefghijlmnoprstuwy~",
   5: "abcdefghiklmnopqrstuvwxyz",
   6: "e",
   7: "cdeghilmnpstuwxyz",
   8: "bcdehiklmnpsv",
-  9: "acdeglmprsuy가개규문및배상생설에이컨코효"
+  9: "gpuy가개문에이"
 };
 
 var indexSectionNames =

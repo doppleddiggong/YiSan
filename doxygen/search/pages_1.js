@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['c_20코딩_20컨벤션_20가이드_20project_20yisan_0',['Unreal Engine C++ 코딩 컨벤션 가이드 (Project YiSan)',['../md_AgentRule_2conventions__agent.html',1,'']]],
-  ['code_5fgenerate_20md_1',['코드 생성 규칙 (code_generate.md)',['../md_AgentRule_2code__generate.html',1,'']]],
-  ['commit_20contributor_20analysis_20agent_2',['Commit Contributor Analysis Agent',['../md_AgentRule_2commit__contributor__analysis__agent.html',1,'']]],
-  ['commit_20message_20agent_3',['Commit Message Agent',['../md_AgentRule_2commit__agent.html',1,'']]],
-  ['contributor_20analysis_20agent_4',['Commit Contributor Analysis Agent',['../md_AgentRule_2commit__contributor__analysis__agent.html',1,'']]]
+  ['project_20yisan_20이산_20개발_20문서_0',['Project YiSan (이산) - 개발 문서',['../index.html',1,'']]]
 ];

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['9_20빌드_20실행_0',['9) 빌드 / 실행',['../md_AgentRule_2PERSONA.html#autotoc_md163',1,'']]],
-  ['9_20커밋_20메시지_20생성_20방식_20개선_20commit_20message_20generation_20improvement_1',['9. 커밋 메시지 생성 방식 개선 (Commit Message Generation Improvement)',['../md_AgentRule_2commit__agent.html#autotoc_md28',1,'']]],
-  ['9_20활용_20사례_20use_20cases_2',['9. 활용 사례 (Use Cases)',['../md_AgentRule_2commit__contributor__analysis__agent.html#autotoc_md86',1,'']]]
+  ['joinothersession_0',['JoinOtherSession',['../classUYisanOnlineSystem.html#ac4f34533a50d055bfb89a87d351bbc66',1,'UYisanOnlineSystem']]],
+  ['joinsessionbyip_1',['JoinSessionByIp',['../classUYisanOnlineSystem.html#a364292e38feba30c771764c617cad583',1,'UYisanOnlineSystem']]]
 ];
