@@ -36,7 +36,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install HonKit
+      - name: Install HonKit and plugins
         run: |
           npm install -g honkit
           npm install -g gitbook-plugin-github
@@ -45,11 +45,6 @@ jobs:
           npm install -g gitbook-plugin-back-to-top-button
           npm install -g gitbook-plugin-search-plus
           npm install -g gitbook-plugin-expandable-chapters-small
-
-      - name: Install HonKit plugins
-        working-directory: Documents
-        run: |
-          honkit install
 
       - name: Build HonKit
         working-directory: Documents
