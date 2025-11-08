@@ -1,0 +1,5 @@
+<map id="ABuilding::OnUpdateQuest" name="ABuilding::OnUpdateQuest">
+<area shape="rect" id="Node000001" title="퀘스트 목표가 갱신되었을 때 빛 기둥 표시를 조정합니다." alt="" coords="211,5,405,31"/>
+<area shape="rect" id="Node000002" href="$classABuilding.html#a46fda25d91dc96a7e8831dcdb5ddc9ad" title="브로드캐스트 구독을 설정합니다." alt="" coords="5,5,163,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,21,163,21,163,15,197,15"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="FHttpMultipartFormData::SetupHttpRequest" name="FHttpMultipartFormData::SetupHttpRequest">
+<area shape="rect" id="Node000001" title="HTTP 요청에 Content&#45;Type 헤더와 본문을 설정합니다." alt="" coords="217,69,399,109"/>
+<area shape="rect" id="Node000002" href="$classUHttpNetworkSystem.html#a6a3c0a854e47613896fd9056ea767c2e" title="음성 파일과 공간 컨텍스트를 함께 업로드해 ASK 파이프라인을 실행합니다." alt="" coords="5,5,169,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="224,68,156,48,158,43,226,63"/>
+<area shape="rect" id="Node000003" href="$classUHttpNetworkSystem.html#a127dd656098d79e803829267290acdc9" title="텍스트 질의와 컨텍스트를 서버로 전송해 GPT 응답을 요청합니다." alt="" coords="5,69,169,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,92,170,92,170,87,203,87"/>
+<area shape="rect" id="Node000004" href="$classUHttpNetworkSystem.html#a2fb8a0876cc52293f4cc8277755bbaf3" title="음성 인식을 위해 녹음 파일을 업로드합니다." alt="" coords="5,133,169,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="226,116,158,136,156,131,224,111"/>
+</map>

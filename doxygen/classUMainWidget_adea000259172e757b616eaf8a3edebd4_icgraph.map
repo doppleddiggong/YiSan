@@ -1,0 +1,12 @@
+<map id="UMainWidget::UpdatePopup" name="UMainWidget::UpdatePopup">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1023,31,1228,56"/>
+<area shape="rect" id="Node000002" href="$classUMainWidget.html#a1f007225d30ab19948dab60c2830e556" title=" " alt="" coords="768,5,975,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1009,34,975,31,975,26,1009,29"/>
+<area shape="rect" id="Node000004" href="$classUMainWidget.html#a2c01b5319894f12b655eb2625828dd07" title=" " alt="" coords="276,31,496,56"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="1009,46,496,46,496,41,1009,41"/>
+<area shape="rect" id="Node000003" href="$classUMainWidget.html#a65a1d339ad3d344e25958d66affb41cf" title=" " alt="" coords="544,5,720,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="754,21,720,21,720,15,754,15"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="531,31,497,35,496,29,530,26"/>
+<area shape="rect" id="Node000005" href="$classUMainWidget.html#ab5b82b602efb97c7b4cd7a3c2d99d6e8" title="위젯 초기화와 브로드캐스트 구독을 수행합니다." alt="" coords="5,31,228,56"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="262,46,228,46,228,41,262,41"/>
+</map>

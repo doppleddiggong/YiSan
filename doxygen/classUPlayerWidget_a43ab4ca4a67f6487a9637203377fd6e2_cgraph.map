@@ -1,0 +1,7 @@
+<map id="UPlayerWidget::UpdatePlayerList" name="UPlayerWidget::UpdatePlayerList">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,244,38"/>
+<area shape="rect" id="Node000002" href="$classUPlayerWidget.html#a55876fd00359d52bfe85a4bf8338a80c" title=" " alt="" coords="292,5,503,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="244,23,278,23,278,28,244,28"/>
+<area shape="rect" id="Node000003" href="$classUPlayerListItem.html#afe349ca48a722b37f6627af6e8ba077b" title=" " alt="" coords="551,5,747,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="503,23,537,23,537,28,503,28"/>
+</map>

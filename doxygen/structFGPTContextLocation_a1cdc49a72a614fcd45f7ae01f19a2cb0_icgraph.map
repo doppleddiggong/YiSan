@@ -1,0 +1,22 @@
+<map id="FGPTContextLocation::IsValid" name="FGPTContextLocation::IsValid">
+<area shape="rect" id="Node000001" title="구조체가 유효한 데이터를 보유하고 있는지 확인합니다." alt="" coords="991,59,1152,99"/>
+<area shape="rect" id="Node000002" href="$structFGPTContext.html#ad29a5e23a242b73dcc706d3b093e63d7" title="어느 필드라도 유효한 정보를 포함하는지 확인합니다." alt="" coords="748,15,943,41"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="977,60,902,43,903,38,978,55"/>
+<area shape="rect" id="Node000004" href="$structFGPTContext.html#ad4ea3e7ddf2641cd609b799a013f7ef9" title="JSON 직렬화를 위한 객체를 생성합니다." alt="" coords="503,67,700,93"/>
+<area shape="poly" id="edge11_Node000001_Node000004" title=" " alt="" coords="977,82,700,82,700,77,977,76"/>
+<area shape="rect" id="Node000009" href="$structFGPTContextLocation.html#aea075190c0e8f8f8c6ea85e042918864" title="JSON 직렬화를 위한 객체를 생성합니다." alt="" coords="765,116,926,156"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="980,105,925,119,924,113,978,99"/>
+<area shape="rect" id="Node000003" href="$classUWebSocketSystem.html#a0d943a89095ca2e3d22d7a348c54bc3c" title="플레이어 주변 공간 정보를 실시간으로 동기화합니다." alt="" coords="217,5,455,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="734,30,455,29,455,23,734,25"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="772,46,662,70,661,65,771,41"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="525,67,433,48,434,43,526,62"/>
+<area shape="rect" id="Node000005" href="$structFRequestASK.html#a6cef70258aea9319cced3f952ea44eaf" title="구조체를 JSON 문자열로 직렬화합니다." alt="" coords="238,70,434,95"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="489,84,434,84,434,79,489,78"/>
+<area shape="rect" id="Node000008" href="$structFRequestGPT.html#a8e5e03149cc8f9cb3472acdd456f37f6" title="구조체를 JSON 문자열로 변환합니다." alt="" coords="239,119,433,145"/>
+<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="523,98,402,122,401,117,522,93"/>
+<area shape="rect" id="Node000006" href="$classUHttpNetworkSystem.html#a6a3c0a854e47613896fd9056ea767c2e" title="음성 파일과 공간 컨텍스트를 함께 업로드해 ASK 파이프라인을 실행합니다." alt="" coords="5,31,169,71"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="224,71,169,64,170,59,225,66"/>
+<area shape="rect" id="Node000007" href="$classUHttpNetworkSystem.html#a127dd656098d79e803829267290acdc9" title="텍스트 질의와 컨텍스트를 서버로 전송해 GPT 응답을 요청합니다." alt="" coords="5,95,169,135"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="225,100,170,107,169,101,224,94"/>
+<area shape="poly" id="edge10_Node000009_Node000004" title=" " alt="" coords="751,117,657,95,658,90,752,112"/>
+</map>

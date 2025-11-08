@@ -1,0 +1,9 @@
+<map id="Source/YiSan/UI/Public/ULoadingTransitionManager.h" name="Source/YiSan/UI/Public/ULoadingTransitionManager.h">
+<area shape="rect" id="Node000001" title="ULoadingTransitionManager 클래스를 선언합니다." alt="" coords="220,5,439,45"/>
+<area shape="rect" id="Node000002" href="$APlayerControl_8cpp.html" title="APlayerControl의 동작을 구현합니다." alt="" coords="5,93,205,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="268,53,155,96,153,91,267,48"/>
+<area shape="rect" id="Node000003" href="$UYiSanLoading_8cpp.html" title="UYiSanLoading의 동작을 구현합니다." alt="" coords="229,93,429,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="332,59,332,93,327,93,327,59"/>
+<area shape="rect" id="Node000004" href="$ULoadingTransitionManager_8cpp.html" title="ULoadingTransitionManager의 동작을 구현합니다." alt="" coords="454,93,687,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="396,47,519,91,517,96,394,52"/>
+</map>

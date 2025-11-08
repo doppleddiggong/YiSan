@@ -1,0 +1,5 @@
+<map id="Source/YiSan/UI/Public/ULobbyWidget.h" name="Source/YiSan/UI/Public/ULobbyWidget.h">
+<area shape="rect" id="Node000001" title="멀티플레이 로비 UI 위젯을 선언합니다." alt="" coords="9,5,176,45"/>
+<area shape="rect" id="Node000002" href="$ULobbyWidget_8cpp.html" title="ULobbyWidget의 동작을 구현합니다." alt="" coords="5,93,180,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,59,95,93,90,93,90,59"/>
+</map>

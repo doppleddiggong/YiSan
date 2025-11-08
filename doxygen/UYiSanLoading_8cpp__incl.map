@@ -1,0 +1,86 @@
+<map id="Source/YiSan/Loading/Private/UYiSanLoading.cpp" name="Source/YiSan/Loading/Private/UYiSanLoading.cpp">
+<area shape="rect" id="Node000001" title="UYiSanLoading의 동작을 구현합니다." alt="" coords="3215,5,3415,45"/>
+<area shape="rect" id="Node000002" href="$UYiSanLoading_8h.html" title="UYiSanLoading 클래스를 선언합니다." alt="" coords="3250,101,3381,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="3318,46,3318,87,3313,87,3313,46"/>
+<area shape="rect" id="Node000008" href="$APlayerControl_8h.html" title="APlayerControl 클래스를 선언합니다." alt="" coords="1119,101,1250,126"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="3215,33,2523,57,1561,96,1264,110,1264,105,1561,91,2523,52,3215,27"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="1183,181,1437,207"/>
+<area shape="poly" id="edge45_Node000001_Node000010" title=" " alt="" coords="3215,31,2488,53,2074,72,1902,83,1772,96,1658,114,1545,137,1365,180,1364,175,1544,132,1657,109,1771,91,1902,78,2074,66,2487,47,3215,26"/>
+<area shape="rect" id="Node000012" href="$AYisanGameState_8h.html" title="AYisanGameState 클래스를 선언합니다." alt="" coords="587,101,737,126"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="3215,32,2349,56,1107,96,751,111,751,105,1107,91,2349,51,3215,27"/>
+<area shape="rect" id="Node000018" href="$FComponentHelper_8h.html" title="FComponentHelper 구조체를 선언합니다." alt="" coords="1784,101,1943,126"/>
+<area shape="poly" id="edge22_Node000001_Node000018" title=" " alt="" coords="3215,35,1957,109,1956,104,3215,30"/>
+<area shape="rect" id="Node000022" href="$GameLogging_8h.html" title="YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다." alt="" coords="2665,101,2789,126"/>
+<area shape="poly" id="edge27_Node000001_Node000022" title=" " alt="" coords="3216,44,2803,104,2803,98,3215,39"/>
+<area shape="rect" id="Node000024" title=" " alt="" coords="2909,181,3036,207"/>
+<area shape="poly" id="edge48_Node000001_Node000024" title=" " alt="" coords="3216,39,3088,60,3035,76,3000,95,2988,111,2981,130,2975,168,2969,167,2975,128,2983,108,2996,91,3033,71,3087,55,3215,34"/>
+<area shape="rect" id="Node000027" title=" " alt="" coords="3405,101,3533,126"/>
+<area shape="poly" id="edge35_Node000001_Node000027" title=" " alt="" coords="3350,43,3438,92,3435,96,3348,48"/>
+<area shape="rect" id="Node000028" title=" " alt="" coords="3557,101,3709,126"/>
+<area shape="poly" id="edge36_Node000001_Node000028" title=" " alt="" coords="3386,43,3578,95,3577,100,3384,48"/>
+<area shape="rect" id="Node000029" href="$ULoadingTransitionManager_8h.html" title="ULoadingTransitionManager 클래스를 선언합니다." alt="" coords="3011,101,3225,126"/>
+<area shape="poly" id="edge37_Node000001_Node000029" title=" " alt="" coords="3273,48,3158,98,3156,93,3271,43"/>
+<area shape="rect" id="Node000032" title=" " alt="" coords="3733,101,3895,126"/>
+<area shape="poly" id="edge42_Node000001_Node000032" title=" " alt="" coords="3416,40,3721,91,3746,95,3745,101,3720,96,3415,45"/>
+<area shape="rect" id="Node000033" title=" " alt="" coords="3920,93,4127,133"/>
+<area shape="poly" id="edge43_Node000001_Node000033" title=" " alt="" coords="3416,34,3636,57,3906,91,3906,96,3636,63,3415,39"/>
+<area shape="rect" id="Node000034" title=" " alt="" coords="4151,93,4357,133"/>
+<area shape="poly" id="edge44_Node000001_Node000034" title=" " alt="" coords="3416,30,3733,51,3933,69,4137,90,4136,96,3932,74,3733,57,3416,35"/>
+<area shape="rect" id="Node000035" title=" " alt="" coords="4382,93,4590,133"/>
+<area shape="poly" id="edge46_Node000001_Node000035" title=" " alt="" coords="3416,27,3827,46,4094,65,4368,91,4368,96,4094,70,3827,52,3415,32"/>
+<area shape="rect" id="Node000036" title=" " alt="" coords="4615,101,4733,126"/>
+<area shape="poly" id="edge47_Node000001_Node000036" title=" " alt="" coords="3416,27,4021,48,4357,67,4496,78,4602,91,4623,95,4622,100,4602,96,4496,83,4357,72,4021,53,3415,32"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="2190,255,2307,280"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="3359,123,3393,131,3502,140,3651,149,3719,156,3771,167,3789,175,3801,184,3803,196,3796,209,3773,219,3729,227,3584,241,3384,252,3150,259,2670,267,2321,269,2321,263,2670,261,3150,254,3384,246,3584,236,3728,222,3771,214,3792,205,3798,195,3796,187,3787,179,3770,172,3718,162,3650,154,3502,145,3392,136,3358,129"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="2329,181,2523,207"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="3274,129,3238,136,2537,187,2537,182,3238,131,3273,123"/>
+<area shape="rect" id="Node000005" href="$Macro_8h.html" title="YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다." alt="" coords="3707,181,3782,207"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="3360,123,3393,131,3542,155,3694,178,3693,184,3541,160,3392,136,3359,129"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="3857,181,4139,207"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="3358,123,3393,131,3595,155,3846,178,3846,183,3594,160,3392,136,3357,129"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="4164,181,4365,207"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="3357,123,3393,131,3506,146,3603,155,3768,163,3936,167,4150,179,4150,184,3936,172,3768,169,3602,161,3506,151,3392,136,3356,129"/>
+<area shape="poly" id="edge8_Node000008_Node000003" title=" " alt="" coords="1119,121,1047,130,979,146,954,158,938,171,935,186,946,205,963,212,999,219,1118,232,1283,242,1476,249,1877,259,2176,263,2176,268,1877,264,1476,255,1283,247,1117,237,999,225,962,217,943,209,930,187,934,168,951,153,977,141,1046,125,1119,116"/>
+<area shape="poly" id="edge10_Node000008_Node000004" title=" " alt="" coords="1251,115,1692,137,1999,156,2315,179,2315,184,1998,161,1692,142,1250,120"/>
+<area shape="rect" id="Node000009" href="$EBuildingType_8h.html" title="EBuildingType 클래스를 선언합니다." alt="" coords="757,181,882,207"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="1132,129,886,181,885,176,1131,123"/>
+<area shape="poly" id="edge11_Node000008_Node000010" title=" " alt="" coords="1205,124,1281,172,1278,176,1202,128"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="957,181,1159,207"/>
+<area shape="poly" id="edge12_Node000008_Node000011" title=" " alt="" coords="1167,128,1090,176,1087,172,1165,124"/>
+<area shape="poly" id="edge14_Node000012_Node000003" title=" " alt="" coords="670,125,699,166,721,188,746,204,780,215,832,224,984,239,1180,250,1403,257,1852,264,2176,264,2176,269,1852,269,1403,263,1180,255,983,245,832,229,778,220,744,209,717,192,695,169,666,128"/>
+<area shape="poly" id="edge19_Node000012_Node000009" title=" " alt="" coords="686,124,785,173,783,178,684,128"/>
+<area shape="rect" id="Node000013" href="$AYiSanPlayerState_8h.html" title="AYiSanPlayerState 클래스를 선언합니다." alt="" coords="528,181,681,207"/>
+<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="656,128,623,172,619,169,651,125"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="5,181,260,207"/>
+<area shape="poly" id="edge20_Node000012_Node000016" title=" " alt="" coords="587,128,223,182,223,177,586,123"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="284,181,504,207"/>
+<area shape="poly" id="edge21_Node000012_Node000017" title=" " alt="" coords="624,129,447,180,445,175,622,123"/>
+<area shape="poly" id="edge16_Node000013_Node000003" title=" " alt="" coords="682,202,701,204,1139,231,1568,249,1932,259,2176,263,2176,268,1932,264,1568,254,1139,237,700,209,681,208"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="616,255,841,280"/>
+<area shape="poly" id="edge17_Node000013_Node000014" title=" " alt="" coords="626,204,698,245,695,250,623,209"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="369,255,592,280"/>
+<area shape="poly" id="edge18_Node000013_Node000015" title=" " alt="" coords="586,209,514,250,511,245,583,204"/>
+<area shape="poly" id="edge23_Node000018_Node000003" title=" " alt="" coords="1784,120,1704,127,1620,138,1547,157,1520,169,1503,183,1498,194,1503,205,1515,213,1536,221,1601,234,1688,244,1789,251,2002,260,2177,263,2177,268,2002,265,1788,257,1687,249,1600,239,1535,226,1513,218,1499,208,1492,194,1499,180,1518,164,1545,152,1619,133,1704,121,1783,115"/>
+<area shape="rect" id="Node000019" title=" " alt="" coords="1985,181,2168,207"/>
+<area shape="poly" id="edge24_Node000018_Node000019" title=" " alt="" coords="1895,124,2034,174,2032,179,1893,129"/>
+<area shape="rect" id="Node000020" title=" " alt="" coords="1513,181,1742,207"/>
+<area shape="poly" id="edge25_Node000018_Node000020" title=" " alt="" coords="1830,129,1675,180,1674,175,1828,123"/>
+<area shape="rect" id="Node000021" title=" " alt="" coords="1766,181,1961,207"/>
+<area shape="poly" id="edge26_Node000018_Node000021" title=" " alt="" coords="1866,126,1866,167,1861,167,1861,126"/>
+<area shape="poly" id="edge28_Node000022_Node000003" title=" " alt="" coords="2704,128,2587,184,2562,197,2536,209,2424,240,2321,259,2320,254,2423,235,2534,204,2560,193,2585,179,2702,124"/>
+<area shape="rect" id="Node000023" title=" " alt="" coords="2727,181,2885,207"/>
+<area shape="poly" id="edge29_Node000022_Node000023" title=" " alt="" coords="2741,124,2786,170,2783,173,2737,128"/>
+<area shape="poly" id="edge30_Node000022_Node000024" title=" " alt="" coords="2764,123,2925,175,2923,180,2762,129"/>
+<area shape="rect" id="Node000025" href="$FLogWriter_8h.html" title="FArchive 클래스를 선언합니다." alt="" coords="2598,181,2702,207"/>
+<area shape="poly" id="edge31_Node000022_Node000025" title=" " alt="" coords="2718,128,2673,173,2669,170,2714,124"/>
+<area shape="rect" id="Node000026" href="$NetworkLog_8h.html" title="YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다." alt="" coords="2193,181,2305,207"/>
+<area shape="poly" id="edge33_Node000022_Node000026" title=" " alt="" coords="2665,127,2319,184,2318,178,2665,122"/>
+<area shape="poly" id="edge32_Node000025_Node000003" title=" " alt="" coords="2598,207,2322,256,2321,251,2597,202"/>
+<area shape="poly" id="edge34_Node000026_Node000003" title=" " alt="" coords="2251,207,2251,241,2246,241,2246,207"/>
+<area shape="poly" id="edge38_Node000029_Node000003" title=" " alt="" coords="3115,128,3091,169,3072,191,3049,209,3006,221,2934,232,2730,249,2504,260,2321,267,2321,261,2504,255,2730,243,2933,227,3005,216,3046,204,3069,187,3087,166,3111,125"/>
+<area shape="poly" id="edge39_Node000029_Node000005" title=" " alt="" coords="3187,123,3238,131,3365,144,3465,152,3566,160,3694,178,3693,184,3565,166,3465,157,3365,150,3238,136,3187,129"/>
+<area shape="rect" id="Node000030" title=" " alt="" coords="3111,181,3375,207"/>
+<area shape="poly" id="edge40_Node000029_Node000030" title=" " alt="" coords="3138,124,3215,172,3212,176,3135,128"/>
+<area shape="rect" id="Node000031" title=" " alt="" coords="3400,181,3684,207"/>
+<area shape="poly" id="edge41_Node000029_Node000031" title=" " alt="" coords="3180,123,3468,176,3467,182,3179,129"/>
+</map>

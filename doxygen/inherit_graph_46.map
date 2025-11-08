@@ -1,0 +1,25 @@
+<map id="그래픽컬한 클래스 계통도" name="그래픽컬한 클래스 계통도">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,252,204,277"/>
+<area shape="rect" id="Node000001" href="$classUBroadcastManager.html" title=" " alt="" coords="259,5,413,31"/>
+<area shape="poly" id="edge37_Node000000_Node000001" title=" " alt="" coords="113,238,133,195,162,141,201,87,225,62,250,40,271,28,274,33,254,44,228,66,205,90,167,144,137,197,118,240"/>
+<area shape="rect" id="Node000002" href="$classUDelayTaskManager.html" title=" " alt="" coords="258,55,414,80"/>
+<area shape="poly" id="edge38_Node000000_Node000002" title=" " alt="" coords="118,238,170,164,207,124,251,89,274,78,276,82,253,94,211,128,174,168,122,241"/>
+<area shape="rect" id="Node000003" href="$classUGameDataManager.html" title=" " alt="" coords="257,104,415,129"/>
+<area shape="poly" id="edge39_Node000000_Node000003" title=" " alt="" coords="125,240,179,189,213,162,251,138,278,127,280,132,253,143,217,166,182,193,129,244"/>
+<area shape="rect" id="Node000004" href="$classUGameSoundManager.html" title=" " alt="" coords="252,153,420,179"/>
+<area shape="poly" id="edge40_Node000000_Node000004" title=" " alt="" coords="138,243,191,215,251,188,284,176,286,181,253,192,193,220,141,248"/>
+<area shape="rect" id="Node000005" href="$classUGameVFXManager.html" title=" " alt="" coords="259,203,413,228"/>
+<area shape="poly" id="edge41_Node000000_Node000005" title=" " alt="" coords="177,247,275,225,276,231,179,252"/>
+<area shape="rect" id="Node000006" href="$classUHttpNetworkSystem.html" title=" " alt="" coords="254,252,418,277"/>
+<area shape="poly" id="edge42_Node000000_Node000006" title=" " alt="" coords="218,262,254,262,254,267,218,267"/>
+<area shape="rect" id="Node000007" href="$classUObjectPoolManager.html" title=" " alt="" coords="257,301,415,327"/>
+<area shape="poly" id="edge43_Node000000_Node000007" title=" " alt="" coords="179,278,276,299,275,304,177,283"/>
+<area shape="rect" id="Node000008" href="$classUSequenceManager.html" title=" " alt="" coords="260,351,412,376"/>
+<area shape="poly" id="edge44_Node000000_Node000008" title=" " alt="" coords="142,282,194,309,253,336,289,348,287,353,251,340,191,314,139,287"/>
+<area shape="rect" id="Node000009" href="$classUWebSocketSystem.html" title=" " alt="" coords="260,400,412,425"/>
+<area shape="poly" id="edge45_Node000000_Node000009" title=" " alt="" coords="129,285,183,335,217,362,253,385,283,397,281,402,251,390,214,366,179,339,125,289"/>
+<area shape="rect" id="Node000010" href="$classUYiSanLoading.html" title="이동 준비, 로딩 UI, 스트리밍 진행 폴링을 관리하는 서브시스템입니다." alt="" coords="277,449,395,475"/>
+<area shape="poly" id="edge46_Node000000_Node000010" title=" " alt="" coords="123,288,175,361,211,400,253,434,279,447,276,452,251,439,208,404,170,364,118,291"/>
+<area shape="rect" id="Node000011" href="$classUYisanOnlineSystem.html" title="온라인 서브시스템 기반의 세션 생성, 탐색, 복제 유틸리티를 제공합니다." alt="" coords="257,499,415,524"/>
+<area shape="poly" id="edge47_Node000000_Node000011" title=" " alt="" coords="118,289,138,331,167,384,206,438,229,462,254,484,276,496,274,501,250,488,225,466,202,441,162,387,133,334,113,291"/>
+</map>

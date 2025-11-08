@@ -1,0 +1,9 @@
+<map id="ABuilding::BeginPlay" name="ABuilding::BeginPlay">
+<area shape="rect" id="Node000001" title="브로드캐스트 구독을 설정합니다." alt="" coords="5,31,163,56"/>
+<area shape="rect" id="Node000002" href="$classABuilding.html#ab88d43186cb1b2b2379b656b09da2145" title="플레이어가 감지 범위에 진입했을 때 호출됩니다." alt="" coords="211,5,409,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,32,197,28,197,33,163,37"/>
+<area shape="rect" id="Node000004" href="$classABuilding.html#a164bf6a1a1552a60ce9a19373966dbd2" title="퀘스트 목표가 갱신되었을 때 빛 기둥 표시를 조정합니다." alt="" coords="213,55,407,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="163,49,199,53,199,58,163,54"/>
+<area shape="rect" id="Node000003" href="$classAQuestManagerActor.html#a64e0505f7337bb8f6bb6ca038a302bb9" title="주어진 월드 컨텍스트에서 퀘스트 매니저를 찾는 헬퍼입니다." alt="" coords="457,5,648,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="410,15,443,15,443,21,410,21"/>
+</map>

@@ -1,0 +1,2071 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YiSan Project Documentation: UBroadcastManager 클래스 참조</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YiSan Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classUBroadcastManager.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 멤버 함수</a> &#124;
+<a href="#pub-attribs">Public 속성</a> &#124;
+<a href="classUBroadcastManager-members.html">모든 멤버 목록</a>  </div>
+  <div class="headertitle"><div class="title">UBroadcastManager 클래스 참조</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> UBroadcastManager에 대한 상속 다이어그램 : </div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUBroadcastManager__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> UBroadcastManager에 대한 협력 다이어그램:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUBroadcastManager__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 멤버 함수</h2></td></tr>
+<tr class="memitem:a97797f88922cf0abf32e43d636bfa731" id="r_a97797f88922cf0abf32e43d636bfa731"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a97797f88922cf0abf32e43d636bfa731">DECLARE_DYNAMIC_MULTICAST_DELEGATE</a> (FOnMegaPopupClosed)</td></tr>
+<tr class="separator:a97797f88922cf0abf32e43d636bfa731"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a818733714c3642c5f2292d37249ab793" id="r_a818733714c3642c5f2292d37249ab793"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a818733714c3642c5f2292d37249ab793">DECLARE_DYNAMIC_MULTICAST_DELEGATE</a> (FOnSessionDisconnect)</td></tr>
+<tr class="memdesc:a818733714c3642c5f2292d37249ab793"><td class="mdescLeft">&#160;</td><td class="mdescRight">세션 연결 해제 이벤트  <br /></td></tr>
+<tr class="separator:a818733714c3642c5f2292d37249ab793"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbeb796bfe297d66af30ef64e7080fc5" id="r_afbeb796bfe297d66af30ef64e7080fc5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#afbeb796bfe297d66af30ef64e7080fc5">DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams</a> (FOnKnockback, AActor *, Target, AActor *, Instigator, <a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>, Type, float, Resistance)</td></tr>
+<tr class="separator:afbeb796bfe297d66af30ef64e7080fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4aa5ff0bdcea9a8321bce82f0472501b" id="r_a4aa5ff0bdcea9a8321bce82f0472501b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a4aa5ff0bdcea9a8321bce82f0472501b">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a> (FOnAudioCapture, bool, bRecording)</td></tr>
+<tr class="separator:a4aa5ff0bdcea9a8321bce82f0472501b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17e0c45851522502899d7d1865845a9f" id="r_a17e0c45851522502899d7d1865845a9f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a17e0c45851522502899d7d1865845a9f">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a> (FOnAudioSpectrum, float, Spectrum)</td></tr>
+<tr class="separator:a17e0c45851522502899d7d1865845a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a085a9ba55f7e6791cd50741f0f155ba0" id="r_a085a9ba55f7e6791cd50741f0f155ba0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a085a9ba55f7e6791cd50741f0f155ba0">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a> (FOnContactBuilding, <a class="el" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a>, BuildingType)</td></tr>
+<tr class="separator:a085a9ba55f7e6791cd50741f0f155ba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e7584d31ccc2f7081fa36397c63c0e9" id="r_a5e7584d31ccc2f7081fa36397c63c0e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a5e7584d31ccc2f7081fa36397c63c0e9">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a> (FOnFocusBuilding, <a class="el" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a>, BuildingType)</td></tr>
+<tr class="separator:a5e7584d31ccc2f7081fa36397c63c0e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adebe7907cbe8c0fe5c83ada495f39740" id="r_adebe7907cbe8c0fe5c83ada495f39740"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#adebe7907cbe8c0fe5c83ada495f39740">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a> (FOnForceCameraShake, <a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>, Type)</td></tr>
+<tr class="separator:adebe7907cbe8c0fe5c83ada495f39740"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2191d39f5816f0b0d07ea13e4754a160" id="r_a2191d39f5816f0b0d07ea13e4754a160"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a2191d39f5816f0b0d07ea13e4754a160">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a> (FOnMessage, FString, Msg)</td></tr>
+<tr class="separator:a2191d39f5816f0b0d07ea13e4754a160"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11a0236d292ec9b3e0ded4a72f463e46" id="r_a11a0236d292ec9b3e0ded4a72f463e46"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a11a0236d292ec9b3e0ded4a72f463e46">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a> (FOnNearBuilding, <a class="el" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a>, BuildingType)</td></tr>
+<tr class="separator:a11a0236d292ec9b3e0ded4a72f463e46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58c5a6f69feddebba2414865dbd885e3" id="r_a58c5a6f69feddebba2414865dbd885e3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a58c5a6f69feddebba2414865dbd885e3">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a> (FOnNetworkWaitCount, int, RequestCount)</td></tr>
+<tr class="separator:a58c5a6f69feddebba2414865dbd885e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad18c4e69bf997ce494be3423477906ec" id="r_ad18c4e69bf997ce494be3423477906ec"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#ad18c4e69bf997ce494be3423477906ec">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a> (FOnSessionError, FString, ErrorMessage)</td></tr>
+<tr class="memdesc:ad18c4e69bf997ce494be3423477906ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">세션 오류 이벤트  <br /></td></tr>
+<tr class="separator:ad18c4e69bf997ce494be3423477906ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65650926c0db2c9834e2ca669171fe97" id="r_a65650926c0db2c9834e2ca669171fe97"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a65650926c0db2c9834e2ca669171fe97">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a> (FOnSessionHost, FString, MapName)</td></tr>
+<tr class="memdesc:a65650926c0db2c9834e2ca669171fe97"><td class="mdescLeft">&#160;</td><td class="mdescRight">세션 호스트 생성 이벤트  <br /></td></tr>
+<tr class="separator:a65650926c0db2c9834e2ca669171fe97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af00aec518ecb0e374c6467582244b6e2" id="r_af00aec518ecb0e374c6467582244b6e2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#af00aec518ecb0e374c6467582244b6e2">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a> (FOnUpdateQuest, <a class="el" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a>, NewTarget)</td></tr>
+<tr class="separator:af00aec518ecb0e374c6467582244b6e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e47fb6e6603078de6bbc8d2e37697b9" id="r_a9e47fb6e6603078de6bbc8d2e37697b9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a9e47fb6e6603078de6bbc8d2e37697b9">DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</a> (FOnCameraShake, AActor *, Target, <a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>, Type)</td></tr>
+<tr class="separator:a9e47fb6e6603078de6bbc8d2e37697b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7444e82d7a44f2f2b86fafcc7f360a10" id="r_a7444e82d7a44f2f2b86fafcc7f360a10"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a7444e82d7a44f2f2b86fafcc7f360a10">DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</a> (FOnDoorMessage, int32, GateID, bool, Open)</td></tr>
+<tr class="separator:a7444e82d7a44f2f2b86fafcc7f360a10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e33dbc8bf50a67900556349f7cf98eb" id="r_a8e33dbc8bf50a67900556349f7cf98eb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a8e33dbc8bf50a67900556349f7cf98eb">DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</a> (FOnExecVoiceCommand, <a class="el" href="EVoiceCommandType_8h.html#a091eabb93b1ffd38fe61f35906526114">EVoiceCommandType</a>, Type, AActor *, Requester)</td></tr>
+<tr class="separator:a8e33dbc8bf50a67900556349f7cf98eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62476f45982ef48ebf95e126d61ab3ce" id="r_a62476f45982ef48ebf95e126d61ab3ce"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a62476f45982ef48ebf95e126d61ab3ce">DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</a> (FOnHitStop, AActor *, Target, <a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>, Type)</td></tr>
+<tr class="separator:a62476f45982ef48ebf95e126d61ab3ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c670f30fb79f54713be757592bcd112" id="r_a1c670f30fb79f54713be757592bcd112"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a1c670f30fb79f54713be757592bcd112">DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</a> (FOnPlayerControlState, bool, bState, UUserWidget *, FocusWidget)</td></tr>
+<tr class="separator:a1c670f30fb79f54713be757592bcd112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c6b105e000164bdf994d98e976c8434" id="r_a4c6b105e000164bdf994d98e976c8434"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a4c6b105e000164bdf994d98e976c8434">DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</a> (FOnSessionJoin, FString, Address, int32, Port)</td></tr>
+<tr class="memdesc:a4c6b105e000164bdf994d98e976c8434"><td class="mdescLeft">&#160;</td><td class="mdescRight">세션 참가 이벤트  <br /></td></tr>
+<tr class="separator:a4c6b105e000164bdf994d98e976c8434"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fd36368650ec2a8baa55708efd07b79" id="r_a6fd36368650ec2a8baa55708efd07b79"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a6fd36368650ec2a8baa55708efd07b79">DEFINE_SUBSYSTEM_GETTER_INLINE</a> (<a class="el" href="classUBroadcastManager.html">UBroadcastManager</a>)</td></tr>
+<tr class="separator:a6fd36368650ec2a8baa55708efd07b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96140c8f3c51120625b22c402d6dbd58" id="r_a96140c8f3c51120625b22c402d6dbd58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a96140c8f3c51120625b22c402d6dbd58">SendAudioCapture</a> (bool bRecording)</td></tr>
+<tr class="separator:a96140c8f3c51120625b22c402d6dbd58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a534b62283e5385daa930eeea7ff52734" id="r_a534b62283e5385daa930eeea7ff52734"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a534b62283e5385daa930eeea7ff52734">SendAudioSpectrum</a> (float Spectrum)</td></tr>
+<tr class="separator:a534b62283e5385daa930eeea7ff52734"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8198f3d1ac2ef559e7b7213428603ff" id="r_ab8198f3d1ac2ef559e7b7213428603ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#ab8198f3d1ac2ef559e7b7213428603ff">SendCameraShake</a> (AActor *Target, const <a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> Type)</td></tr>
+<tr class="separator:ab8198f3d1ac2ef559e7b7213428603ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bd54b2d44fec5131ab6ccbbb2a9df66" id="r_a5bd54b2d44fec5131ab6ccbbb2a9df66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a5bd54b2d44fec5131ab6ccbbb2a9df66">SendContactBuilding</a> (<a class="el" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a> BuildingType)</td></tr>
+<tr class="separator:a5bd54b2d44fec5131ab6ccbbb2a9df66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfa534d766eeef60e134b9e0ef0b7fc1" id="r_abfa534d766eeef60e134b9e0ef0b7fc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#abfa534d766eeef60e134b9e0ef0b7fc1">SendDoorMessage</a> (const int32 GateID, const bool Open)</td></tr>
+<tr class="separator:abfa534d766eeef60e134b9e0ef0b7fc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37a30c264dba320c8d287cb54643d0f2" id="r_a37a30c264dba320c8d287cb54643d0f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a37a30c264dba320c8d287cb54643d0f2">SendExecVoiceCommand</a> (const <a class="el" href="EVoiceCommandType_8h.html#a091eabb93b1ffd38fe61f35906526114">EVoiceCommandType</a> Type, AActor *Requester)</td></tr>
+<tr class="separator:a37a30c264dba320c8d287cb54643d0f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec5cf60ed301d2894bf78ddb63b19f2e" id="r_aec5cf60ed301d2894bf78ddb63b19f2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#aec5cf60ed301d2894bf78ddb63b19f2e">SendFocusBuilding</a> (<a class="el" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a> BuildingType)</td></tr>
+<tr class="separator:aec5cf60ed301d2894bf78ddb63b19f2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2562e8e9260d9e28789f332a20fc2dd6" id="r_a2562e8e9260d9e28789f332a20fc2dd6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a2562e8e9260d9e28789f332a20fc2dd6">SendForceCameraShake</a> (const <a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> Type)</td></tr>
+<tr class="separator:a2562e8e9260d9e28789f332a20fc2dd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3610c1df70d1445aefb14a8f92272bd" id="r_ae3610c1df70d1445aefb14a8f92272bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#ae3610c1df70d1445aefb14a8f92272bd">SendHitStop</a> (AActor *Target, const <a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> Type)</td></tr>
+<tr class="separator:ae3610c1df70d1445aefb14a8f92272bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09bff79efc2de58aaba8c031aeddf7f2" id="r_a09bff79efc2de58aaba8c031aeddf7f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a09bff79efc2de58aaba8c031aeddf7f2">SendHitStopPair</a> (AActor *Attacker, const <a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> AttackerType, AActor *Target, const <a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> TargetType)</td></tr>
+<tr class="separator:a09bff79efc2de58aaba8c031aeddf7f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5009c7e9e1252735b18e6b0752060895" id="r_a5009c7e9e1252735b18e6b0752060895"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a5009c7e9e1252735b18e6b0752060895">SendKnockback</a> (AActor *Target, AActor *Instigator, <a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> Type, float Resistance)</td></tr>
+<tr class="separator:a5009c7e9e1252735b18e6b0752060895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38456c0846a5bc2474b4ecde62d91a88" id="r_a38456c0846a5bc2474b4ecde62d91a88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a38456c0846a5bc2474b4ecde62d91a88">SendMegaPopupClosed</a> ()</td></tr>
+<tr class="separator:a38456c0846a5bc2474b4ecde62d91a88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dd77f4b9d69350f1a86fd1ec70301e1" id="r_a7dd77f4b9d69350f1a86fd1ec70301e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a7dd77f4b9d69350f1a86fd1ec70301e1">SendMessage</a> (const FString &amp;InMsg)</td></tr>
+<tr class="separator:a7dd77f4b9d69350f1a86fd1ec70301e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8cce977ad7eadf86de589d89630ab67" id="r_ab8cce977ad7eadf86de589d89630ab67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#ab8cce977ad7eadf86de589d89630ab67">SendNearBuilding</a> (<a class="el" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a> BuildingType)</td></tr>
+<tr class="separator:ab8cce977ad7eadf86de589d89630ab67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c69490ebcf0947b36db2264b76a4167" id="r_a9c69490ebcf0947b36db2264b76a4167"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a9c69490ebcf0947b36db2264b76a4167">SendNetworkWaitCount</a> (int RequestCount)</td></tr>
+<tr class="separator:a9c69490ebcf0947b36db2264b76a4167"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9bfc0f6250dde19eb48d6552d8f9365" id="r_af9bfc0f6250dde19eb48d6552d8f9365"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#af9bfc0f6250dde19eb48d6552d8f9365">SendPlayerControlState</a> (bool bState, UUserWidget *FocusWidget)</td></tr>
+<tr class="separator:af9bfc0f6250dde19eb48d6552d8f9365"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a867ec718fd1c6d149159eeb18806447a" id="r_a867ec718fd1c6d149159eeb18806447a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a867ec718fd1c6d149159eeb18806447a">SendSessionDisconnect</a> ()</td></tr>
+<tr class="separator:a867ec718fd1c6d149159eeb18806447a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71fed628db8358e87c18969bcb2efae5" id="r_a71fed628db8358e87c18969bcb2efae5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a71fed628db8358e87c18969bcb2efae5">SendSessionError</a> (const FString &amp;ErrorMessage)</td></tr>
+<tr class="separator:a71fed628db8358e87c18969bcb2efae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af51d79fb4bc823bef207cacb5c56e2f6" id="r_af51d79fb4bc823bef207cacb5c56e2f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#af51d79fb4bc823bef207cacb5c56e2f6">SendSessionHost</a> (const FString &amp;MapName)</td></tr>
+<tr class="separator:af51d79fb4bc823bef207cacb5c56e2f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add4dbe72d7203082f7a59a0c73fd840d" id="r_add4dbe72d7203082f7a59a0c73fd840d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#add4dbe72d7203082f7a59a0c73fd840d">SendSessionJoin</a> (const FString &amp;Address, int32 Port)</td></tr>
+<tr class="separator:add4dbe72d7203082f7a59a0c73fd840d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d7cb361d679f623c84959df7280240f" id="r_a4d7cb361d679f623c84959df7280240f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a4d7cb361d679f623c84959df7280240f">SendUpdateQuest</a> (<a class="el" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a> BuildingType)</td></tr>
+<tr class="separator:a4d7cb361d679f623c84959df7280240f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 속성</h2></td></tr>
+<tr class="memitem:a15ce56190730a87bbd9ea51210a08b14" id="r_a15ce56190730a87bbd9ea51210a08b14"><td class="memItemLeft" align="right" valign="top">FOnAudioCapture&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a15ce56190730a87bbd9ea51210a08b14">OnAudioCapture</a></td></tr>
+<tr class="separator:a15ce56190730a87bbd9ea51210a08b14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa17cf7bbe9f0657ef94594ed525ddd88" id="r_aa17cf7bbe9f0657ef94594ed525ddd88"><td class="memItemLeft" align="right" valign="top">FOnAudioSpectrum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#aa17cf7bbe9f0657ef94594ed525ddd88">OnAudioSpectrum</a></td></tr>
+<tr class="separator:aa17cf7bbe9f0657ef94594ed525ddd88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81aaf9a9590605f893227f2f0f374990" id="r_a81aaf9a9590605f893227f2f0f374990"><td class="memItemLeft" align="right" valign="top">FOnCameraShake&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a81aaf9a9590605f893227f2f0f374990">OnCameraShake</a></td></tr>
+<tr class="separator:a81aaf9a9590605f893227f2f0f374990"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02c1f92c699cd11a85093ab95684a41e" id="r_a02c1f92c699cd11a85093ab95684a41e"><td class="memItemLeft" align="right" valign="top">FOnContactBuilding&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a02c1f92c699cd11a85093ab95684a41e">OnContactBuilding</a></td></tr>
+<tr class="separator:a02c1f92c699cd11a85093ab95684a41e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d306318cbe7d73bb1ab6d9f427658d9" id="r_a1d306318cbe7d73bb1ab6d9f427658d9"><td class="memItemLeft" align="right" valign="top">FOnDoorMessage&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a1d306318cbe7d73bb1ab6d9f427658d9">OnDoorMessage</a></td></tr>
+<tr class="separator:a1d306318cbe7d73bb1ab6d9f427658d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78611143a47d38830ef99f8320600732" id="r_a78611143a47d38830ef99f8320600732"><td class="memItemLeft" align="right" valign="top">FOnExecVoiceCommand&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a78611143a47d38830ef99f8320600732">OnExecVoiceCommand</a></td></tr>
+<tr class="separator:a78611143a47d38830ef99f8320600732"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0328b4d2bb343d8f922de193df5b0a6" id="r_ab0328b4d2bb343d8f922de193df5b0a6"><td class="memItemLeft" align="right" valign="top">FOnFocusBuilding&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#ab0328b4d2bb343d8f922de193df5b0a6">OnFocusBuilding</a></td></tr>
+<tr class="separator:ab0328b4d2bb343d8f922de193df5b0a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad45350af2c417b02f31b664a3540e680" id="r_ad45350af2c417b02f31b664a3540e680"><td class="memItemLeft" align="right" valign="top">FOnForceCameraShake&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#ad45350af2c417b02f31b664a3540e680">OnForceCameraShake</a></td></tr>
+<tr class="separator:ad45350af2c417b02f31b664a3540e680"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b5598be8f701c5292aaa639c1c7f5c6" id="r_a2b5598be8f701c5292aaa639c1c7f5c6"><td class="memItemLeft" align="right" valign="top">FOnHitStop&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a2b5598be8f701c5292aaa639c1c7f5c6">OnHitStop</a></td></tr>
+<tr class="separator:a2b5598be8f701c5292aaa639c1c7f5c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b76f7a9be120cf9d2e22e4cff24778e" id="r_a7b76f7a9be120cf9d2e22e4cff24778e"><td class="memItemLeft" align="right" valign="top">FOnKnockback&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a7b76f7a9be120cf9d2e22e4cff24778e">OnKnockback</a></td></tr>
+<tr class="separator:a7b76f7a9be120cf9d2e22e4cff24778e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a101fa1c430be232b37009c90b358640b" id="r_a101fa1c430be232b37009c90b358640b"><td class="memItemLeft" align="right" valign="top">FOnMegaPopupClosed&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a101fa1c430be232b37009c90b358640b">OnMegaPopupClosed</a></td></tr>
+<tr class="separator:a101fa1c430be232b37009c90b358640b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43a192f0157e3177589f7b09b11a1e84" id="r_a43a192f0157e3177589f7b09b11a1e84"><td class="memItemLeft" align="right" valign="top">FOnMessage&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a43a192f0157e3177589f7b09b11a1e84">OnMessage</a></td></tr>
+<tr class="separator:a43a192f0157e3177589f7b09b11a1e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee3b40a79e4adc300ec0f32aaa207100" id="r_aee3b40a79e4adc300ec0f32aaa207100"><td class="memItemLeft" align="right" valign="top">FOnNearBuilding&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#aee3b40a79e4adc300ec0f32aaa207100">OnNearBuilding</a></td></tr>
+<tr class="separator:aee3b40a79e4adc300ec0f32aaa207100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2692fc3fbb06745f2cd20e9d5769abb8" id="r_a2692fc3fbb06745f2cd20e9d5769abb8"><td class="memItemLeft" align="right" valign="top">FOnNetworkWaitCount&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a2692fc3fbb06745f2cd20e9d5769abb8">OnNetworkWaitCount</a></td></tr>
+<tr class="separator:a2692fc3fbb06745f2cd20e9d5769abb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a27dd50618f5187771a822fe93c5e46" id="r_a2a27dd50618f5187771a822fe93c5e46"><td class="memItemLeft" align="right" valign="top">FOnPlayerControlState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a2a27dd50618f5187771a822fe93c5e46">OnPlayerControlState</a></td></tr>
+<tr class="separator:a2a27dd50618f5187771a822fe93c5e46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acae250e7df292dd46e7b8320f5e4ee04" id="r_acae250e7df292dd46e7b8320f5e4ee04"><td class="memItemLeft" align="right" valign="top">FOnSessionDisconnect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#acae250e7df292dd46e7b8320f5e4ee04">OnSessionDisconnect</a></td></tr>
+<tr class="separator:acae250e7df292dd46e7b8320f5e4ee04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acba6e194bf8fd88614ae7e08d22bba97" id="r_acba6e194bf8fd88614ae7e08d22bba97"><td class="memItemLeft" align="right" valign="top">FOnSessionError&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#acba6e194bf8fd88614ae7e08d22bba97">OnSessionError</a></td></tr>
+<tr class="separator:acba6e194bf8fd88614ae7e08d22bba97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa48842a36dcc8f97dfa3691950a1cd6" id="r_afa48842a36dcc8f97dfa3691950a1cd6"><td class="memItemLeft" align="right" valign="top">FOnSessionHost&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#afa48842a36dcc8f97dfa3691950a1cd6">OnSessionHost</a></td></tr>
+<tr class="separator:afa48842a36dcc8f97dfa3691950a1cd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a639119a69d9d30f5acb0241a6af2e3" id="r_a3a639119a69d9d30f5acb0241a6af2e3"><td class="memItemLeft" align="right" valign="top">FOnSessionJoin&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a3a639119a69d9d30f5acb0241a6af2e3">OnSessionJoin</a></td></tr>
+<tr class="separator:a3a639119a69d9d30f5acb0241a6af2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9f1e3ff63630e25df3d78c2f24312ed" id="r_ad9f1e3ff63630e25df3d78c2f24312ed"><td class="memItemLeft" align="right" valign="top">FOnUpdateQuest&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#ad9f1e3ff63630e25df3d78c2f24312ed">OnUpdateQuest</a></td></tr>
+<tr class="separator:ad9f1e3ff63630e25df3d78c2f24312ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
+<div class="textblock">
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00018">18</a> 번째 라인에서 정의되었습니다.</p>
+</div><h2 class="groupheader">멤버 함수 문서화</h2>
+<a id="a97797f88922cf0abf32e43d636bfa731" name="a97797f88922cf0abf32e43d636bfa731"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97797f88922cf0abf32e43d636bfa731">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE </td>
+          <td>(</td>
+          <td class="paramtype">FOnMegaPopupClosed&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a818733714c3642c5f2292d37249ab793" name="a818733714c3642c5f2292d37249ab793"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a818733714c3642c5f2292d37249ab793">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE </td>
+          <td>(</td>
+          <td class="paramtype">FOnSessionDisconnect&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>세션 연결 해제 이벤트 </p>
+
+</div>
+</div>
+<a id="afbeb796bfe297d66af30ef64e7080fc5" name="afbeb796bfe297d66af30ef64e7080fc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbeb796bfe297d66af30ef64e7080fc5">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams </td>
+          <td>(</td>
+          <td class="paramtype">FOnKnockback&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AActor *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Target&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AActor *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Instigator&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Type&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Resistance&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4aa5ff0bdcea9a8321bce82f0472501b" name="a4aa5ff0bdcea9a8321bce82f0472501b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4aa5ff0bdcea9a8321bce82f0472501b">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam() <span class="overload">[1/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam </td>
+          <td>(</td>
+          <td class="paramtype">FOnAudioCapture&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bRecording&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a17e0c45851522502899d7d1865845a9f" name="a17e0c45851522502899d7d1865845a9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17e0c45851522502899d7d1865845a9f">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam() <span class="overload">[2/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam </td>
+          <td>(</td>
+          <td class="paramtype">FOnAudioSpectrum&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Spectrum&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a085a9ba55f7e6791cd50741f0f155ba0" name="a085a9ba55f7e6791cd50741f0f155ba0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a085a9ba55f7e6791cd50741f0f155ba0">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam() <span class="overload">[3/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam </td>
+          <td>(</td>
+          <td class="paramtype">FOnContactBuilding&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">BuildingType&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5e7584d31ccc2f7081fa36397c63c0e9" name="a5e7584d31ccc2f7081fa36397c63c0e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e7584d31ccc2f7081fa36397c63c0e9">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam() <span class="overload">[4/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam </td>
+          <td>(</td>
+          <td class="paramtype">FOnFocusBuilding&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">BuildingType&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adebe7907cbe8c0fe5c83ada495f39740" name="adebe7907cbe8c0fe5c83ada495f39740"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adebe7907cbe8c0fe5c83ada495f39740">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam() <span class="overload">[5/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam </td>
+          <td>(</td>
+          <td class="paramtype">FOnForceCameraShake&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Type&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2191d39f5816f0b0d07ea13e4754a160" name="a2191d39f5816f0b0d07ea13e4754a160"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2191d39f5816f0b0d07ea13e4754a160">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam() <span class="overload">[6/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam </td>
+          <td>(</td>
+          <td class="paramtype">FOnMessage&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FString&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Msg&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a11a0236d292ec9b3e0ded4a72f463e46" name="a11a0236d292ec9b3e0ded4a72f463e46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11a0236d292ec9b3e0ded4a72f463e46">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam() <span class="overload">[7/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam </td>
+          <td>(</td>
+          <td class="paramtype">FOnNearBuilding&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">BuildingType&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a58c5a6f69feddebba2414865dbd885e3" name="a58c5a6f69feddebba2414865dbd885e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58c5a6f69feddebba2414865dbd885e3">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam() <span class="overload">[8/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam </td>
+          <td>(</td>
+          <td class="paramtype">FOnNetworkWaitCount&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RequestCount&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad18c4e69bf997ce494be3423477906ec" name="ad18c4e69bf997ce494be3423477906ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad18c4e69bf997ce494be3423477906ec">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam() <span class="overload">[9/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam </td>
+          <td>(</td>
+          <td class="paramtype">FOnSessionError&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FString&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ErrorMessage&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>세션 오류 이벤트 </p>
+
+</div>
+</div>
+<a id="a65650926c0db2c9834e2ca669171fe97" name="a65650926c0db2c9834e2ca669171fe97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65650926c0db2c9834e2ca669171fe97">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam() <span class="overload">[10/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam </td>
+          <td>(</td>
+          <td class="paramtype">FOnSessionHost&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FString&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">MapName&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>세션 호스트 생성 이벤트 </p>
+
+</div>
+</div>
+<a id="af00aec518ecb0e374c6467582244b6e2" name="af00aec518ecb0e374c6467582244b6e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af00aec518ecb0e374c6467582244b6e2">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam() <span class="overload">[11/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam </td>
+          <td>(</td>
+          <td class="paramtype">FOnUpdateQuest&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">NewTarget&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9e47fb6e6603078de6bbc8d2e37697b9" name="a9e47fb6e6603078de6bbc8d2e37697b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e47fb6e6603078de6bbc8d2e37697b9">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams() <span class="overload">[1/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams </td>
+          <td>(</td>
+          <td class="paramtype">FOnCameraShake&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AActor *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Target&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Type&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7444e82d7a44f2f2b86fafcc7f360a10" name="a7444e82d7a44f2f2b86fafcc7f360a10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7444e82d7a44f2f2b86fafcc7f360a10">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams() <span class="overload">[2/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams </td>
+          <td>(</td>
+          <td class="paramtype">FOnDoorMessage&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GateID&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Open&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8e33dbc8bf50a67900556349f7cf98eb" name="a8e33dbc8bf50a67900556349f7cf98eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e33dbc8bf50a67900556349f7cf98eb">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams() <span class="overload">[3/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams </td>
+          <td>(</td>
+          <td class="paramtype">FOnExecVoiceCommand&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="EVoiceCommandType_8h.html#a091eabb93b1ffd38fe61f35906526114">EVoiceCommandType</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Type&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AActor *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Requester&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a62476f45982ef48ebf95e126d61ab3ce" name="a62476f45982ef48ebf95e126d61ab3ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62476f45982ef48ebf95e126d61ab3ce">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams() <span class="overload">[4/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams </td>
+          <td>(</td>
+          <td class="paramtype">FOnHitStop&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AActor *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Target&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Type&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1c670f30fb79f54713be757592bcd112" name="a1c670f30fb79f54713be757592bcd112"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c670f30fb79f54713be757592bcd112">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams() <span class="overload">[5/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams </td>
+          <td>(</td>
+          <td class="paramtype">FOnPlayerControlState&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bState&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UUserWidget *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FocusWidget&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4c6b105e000164bdf994d98e976c8434" name="a4c6b105e000164bdf994d98e976c8434"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c6b105e000164bdf994d98e976c8434">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams() <span class="overload">[6/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams </td>
+          <td>(</td>
+          <td class="paramtype">FOnSessionJoin&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FString&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Address&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Port&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>세션 참가 이벤트 </p>
+
+</div>
+</div>
+<a id="a6fd36368650ec2a8baa55708efd07b79" name="a6fd36368650ec2a8baa55708efd07b79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fd36368650ec2a8baa55708efd07b79">&#9670;&#160;</a></span>DEFINE_SUBSYSTEM_GETTER_INLINE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DEFINE_SUBSYSTEM_GETTER_INLINE </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classUBroadcastManager.html">UBroadcastManager</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a96140c8f3c51120625b22c402d6dbd58" name="a96140c8f3c51120625b22c402d6dbd58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96140c8f3c51120625b22c402d6dbd58">&#9670;&#160;</a></span>SendAudioCapture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendAudioCapture </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bRecording</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00020">20</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   21</span>{</div>
+<div class="line"><span class="lineno">   22</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a15ce56190730a87bbd9ea51210a08b14">OnAudioCapture</a>.Broadcast(bRecording);</div>
+<div class="line"><span class="lineno">   23</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_a15ce56190730a87bbd9ea51210a08b14"><div class="ttname"><a href="classUBroadcastManager.html#a15ce56190730a87bbd9ea51210a08b14">UBroadcastManager::OnAudioCapture</a></div><div class="ttdeci">FOnAudioCapture OnAudioCapture</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00048">UBroadcastManager.h:48</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00048">OnAudioCapture</a>.</p>
+
+</div>
+</div>
+<a id="a534b62283e5385daa930eeea7ff52734" name="a534b62283e5385daa930eeea7ff52734"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a534b62283e5385daa930eeea7ff52734">&#9670;&#160;</a></span>SendAudioSpectrum()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendAudioSpectrum </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>Spectrum</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00040">40</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>{</div>
+<div class="line"><span class="lineno">   42</span>    <a class="code hl_variable" href="classUBroadcastManager.html#aa17cf7bbe9f0657ef94594ed525ddd88">OnAudioSpectrum</a>.Broadcast(Spectrum);</div>
+<div class="line"><span class="lineno">   43</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_aa17cf7bbe9f0657ef94594ed525ddd88"><div class="ttname"><a href="classUBroadcastManager.html#aa17cf7bbe9f0657ef94594ed525ddd88">UBroadcastManager::OnAudioSpectrum</a></div><div class="ttdeci">FOnAudioSpectrum OnAudioSpectrum</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00076">UBroadcastManager.h:76</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00076">OnAudioSpectrum</a>.</p>
+
+</div>
+</div>
+<a id="ab8198f3d1ac2ef559e7b7213428603ff" name="ab8198f3d1ac2ef559e7b7213428603ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8198f3d1ac2ef559e7b7213428603ff">&#9670;&#160;</a></span>SendCameraShake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendCameraShake </td>
+          <td>(</td>
+          <td class="paramtype">AActor *&#160;</td>
+          <td class="paramname"><em>Target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>&#160;</td>
+          <td class="paramname"><em>Type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00098">98</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   99</span>{</div>
+<div class="line"><span class="lineno">  100</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a81aaf9a9590605f893227f2f0f374990">OnCameraShake</a>.Broadcast(Target, Type);</div>
+<div class="line"><span class="lineno">  101</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_a81aaf9a9590605f893227f2f0f374990"><div class="ttname"><a href="classUBroadcastManager.html#a81aaf9a9590605f893227f2f0f374990">UBroadcastManager::OnCameraShake</a></div><div class="ttdeci">FOnCameraShake OnCameraShake</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00153">UBroadcastManager.h:153</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00153">OnCameraShake</a>.</p>
+
+</div>
+</div>
+<a id="a5bd54b2d44fec5131ab6ccbbb2a9df66" name="a5bd54b2d44fec5131ab6ccbbb2a9df66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bd54b2d44fec5131ab6ccbbb2a9df66">&#9670;&#160;</a></span>SendContactBuilding()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendContactBuilding </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a>&#160;</td>
+          <td class="paramname"><em>BuildingType</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00045">45</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>{</div>
+<div class="line"><span class="lineno">   47</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a02c1f92c699cd11a85093ab95684a41e">OnContactBuilding</a>.Broadcast(BuildingType);  </div>
+<div class="line"><span class="lineno">   48</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_a02c1f92c699cd11a85093ab95684a41e"><div class="ttname"><a href="classUBroadcastManager.html#a02c1f92c699cd11a85093ab95684a41e">UBroadcastManager::OnContactBuilding</a></div><div class="ttdeci">FOnContactBuilding OnContactBuilding</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00083">UBroadcastManager.h:83</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00083">OnContactBuilding</a>.</p>
+
+</div>
+</div>
+<a id="abfa534d766eeef60e134b9e0ef0b7fc1" name="abfa534d766eeef60e134b9e0ef0b7fc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfa534d766eeef60e134b9e0ef0b7fc1">&#9670;&#160;</a></span>SendDoorMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendDoorMessage </td>
+          <td>(</td>
+          <td class="paramtype">const int32&#160;</td>
+          <td class="paramname"><em>GateID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>Open</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00065">65</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   66</span>{</div>
+<div class="line"><span class="lineno">   67</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a1d306318cbe7d73bb1ab6d9f427658d9">OnDoorMessage</a>.Broadcast(GateID, Open);  </div>
+<div class="line"><span class="lineno">   68</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_a1d306318cbe7d73bb1ab6d9f427658d9"><div class="ttname"><a href="classUBroadcastManager.html#a1d306318cbe7d73bb1ab6d9f427658d9">UBroadcastManager::OnDoorMessage</a></div><div class="ttdeci">FOnDoorMessage OnDoorMessage</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00111">UBroadcastManager.h:111</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00111">OnDoorMessage</a>.</p>
+
+</div>
+</div>
+<a id="a37a30c264dba320c8d287cb54643d0f2" name="a37a30c264dba320c8d287cb54643d0f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37a30c264dba320c8d287cb54643d0f2">&#9670;&#160;</a></span>SendExecVoiceCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendExecVoiceCommand </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="EVoiceCommandType_8h.html#a091eabb93b1ffd38fe61f35906526114">EVoiceCommandType</a>&#160;</td>
+          <td class="paramname"><em>Type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AActor *&#160;</td>
+          <td class="paramname"><em>Requester</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00070">70</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>{</div>
+<div class="line"><span class="lineno">   72</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a78611143a47d38830ef99f8320600732">OnExecVoiceCommand</a>.Broadcast(Type, Requester);</div>
+<div class="line"><span class="lineno">   73</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_a78611143a47d38830ef99f8320600732"><div class="ttname"><a href="classUBroadcastManager.html#a78611143a47d38830ef99f8320600732">UBroadcastManager::OnExecVoiceCommand</a></div><div class="ttdeci">FOnExecVoiceCommand OnExecVoiceCommand</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00119">UBroadcastManager.h:119</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00119">OnExecVoiceCommand</a>.</p>
+
+</div>
+</div>
+<a id="aec5cf60ed301d2894bf78ddb63b19f2e" name="aec5cf60ed301d2894bf78ddb63b19f2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec5cf60ed301d2894bf78ddb63b19f2e">&#9670;&#160;</a></span>SendFocusBuilding()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendFocusBuilding </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a>&#160;</td>
+          <td class="paramname"><em>BuildingType</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00060">60</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   61</span>{</div>
+<div class="line"><span class="lineno">   62</span>    <a class="code hl_variable" href="classUBroadcastManager.html#ab0328b4d2bb343d8f922de193df5b0a6">OnFocusBuilding</a>.Broadcast(BuildingType);    </div>
+<div class="line"><span class="lineno">   63</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_ab0328b4d2bb343d8f922de193df5b0a6"><div class="ttname"><a href="classUBroadcastManager.html#ab0328b4d2bb343d8f922de193df5b0a6">UBroadcastManager::OnFocusBuilding</a></div><div class="ttdeci">FOnFocusBuilding OnFocusBuilding</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00104">UBroadcastManager.h:104</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00104">OnFocusBuilding</a>.</p>
+
+</div>
+</div>
+<a id="a2562e8e9260d9e28789f332a20fc2dd6" name="a2562e8e9260d9e28789f332a20fc2dd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2562e8e9260d9e28789f332a20fc2dd6">&#9670;&#160;</a></span>SendForceCameraShake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendForceCameraShake </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>&#160;</td>
+          <td class="paramname"><em>Type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00103">103</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  104</span>{</div>
+<div class="line"><span class="lineno">  105</span>    <a class="code hl_variable" href="classUBroadcastManager.html#ad45350af2c417b02f31b664a3540e680">OnForceCameraShake</a>.Broadcast(Type);</div>
+<div class="line"><span class="lineno">  106</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_ad45350af2c417b02f31b664a3540e680"><div class="ttname"><a href="classUBroadcastManager.html#ad45350af2c417b02f31b664a3540e680">UBroadcastManager::OnForceCameraShake</a></div><div class="ttdeci">FOnForceCameraShake OnForceCameraShake</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00160">UBroadcastManager.h:160</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00160">OnForceCameraShake</a>.</p>
+
+</div>
+</div>
+<a id="ae3610c1df70d1445aefb14a8f92272bd" name="ae3610c1df70d1445aefb14a8f92272bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3610c1df70d1445aefb14a8f92272bd">&#9670;&#160;</a></span>SendHitStop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendHitStop </td>
+          <td>(</td>
+          <td class="paramtype">AActor *&#160;</td>
+          <td class="paramname"><em>Target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>&#160;</td>
+          <td class="paramname"><em>Type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00085">85</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   86</span>{</div>
+<div class="line"><span class="lineno">   87</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a2b5598be8f701c5292aaa639c1c7f5c6">OnHitStop</a>.Broadcast(Target, Type);</div>
+<div class="line"><span class="lineno">   88</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_a2b5598be8f701c5292aaa639c1c7f5c6"><div class="ttname"><a href="classUBroadcastManager.html#a2b5598be8f701c5292aaa639c1c7f5c6">UBroadcastManager::OnHitStop</a></div><div class="ttdeci">FOnHitStop OnHitStop</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00141">UBroadcastManager.h:141</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00141">OnHitStop</a>.</p>
+
+</div>
+</div>
+<a id="a09bff79efc2de58aaba8c031aeddf7f2" name="a09bff79efc2de58aaba8c031aeddf7f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09bff79efc2de58aaba8c031aeddf7f2">&#9670;&#160;</a></span>SendHitStopPair()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendHitStopPair </td>
+          <td>(</td>
+          <td class="paramtype">AActor *&#160;</td>
+          <td class="paramname"><em>Attacker</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>&#160;</td>
+          <td class="paramname"><em>AttackerType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AActor *&#160;</td>
+          <td class="paramname"><em>Target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>&#160;</td>
+          <td class="paramname"><em>TargetType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00090">90</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   93</span>{</div>
+<div class="line"><span class="lineno">   94</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a2b5598be8f701c5292aaa639c1c7f5c6">OnHitStop</a>.Broadcast(Attacker, AttackerType);</div>
+<div class="line"><span class="lineno">   95</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a2b5598be8f701c5292aaa639c1c7f5c6">OnHitStop</a>.Broadcast(Target,   TargetType);</div>
+<div class="line"><span class="lineno">   96</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00141">OnHitStop</a>.</p>
+
+</div>
+</div>
+<a id="a5009c7e9e1252735b18e6b0752060895" name="a5009c7e9e1252735b18e6b0752060895"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5009c7e9e1252735b18e6b0752060895">&#9670;&#160;</a></span>SendKnockback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendKnockback </td>
+          <td>(</td>
+          <td class="paramtype">AActor *&#160;</td>
+          <td class="paramname"><em>Target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AActor *&#160;</td>
+          <td class="paramname"><em>Instigator</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>&#160;</td>
+          <td class="paramname"><em>Type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>Resistance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00108">108</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  109</span>{</div>
+<div class="line"><span class="lineno">  110</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a7b76f7a9be120cf9d2e22e4cff24778e">OnKnockback</a>.Broadcast(Target, Instigator, Type, Resistance);</div>
+<div class="line"><span class="lineno">  111</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_a7b76f7a9be120cf9d2e22e4cff24778e"><div class="ttname"><a href="classUBroadcastManager.html#a7b76f7a9be120cf9d2e22e4cff24778e">UBroadcastManager::OnKnockback</a></div><div class="ttdeci">FOnKnockback OnKnockback</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00172">UBroadcastManager.h:172</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00172">OnKnockback</a>.</p>
+
+</div>
+</div>
+<a id="a38456c0846a5bc2474b4ecde62d91a88" name="a38456c0846a5bc2474b4ecde62d91a88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38456c0846a5bc2474b4ecde62d91a88">&#9670;&#160;</a></span>SendMegaPopupClosed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendMegaPopupClosed </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00075">75</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   76</span>{</div>
+<div class="line"><span class="lineno">   77</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a101fa1c430be232b37009c90b358640b">OnMegaPopupClosed</a>.Broadcast();</div>
+<div class="line"><span class="lineno">   78</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_a101fa1c430be232b37009c90b358640b"><div class="ttname"><a href="classUBroadcastManager.html#a101fa1c430be232b37009c90b358640b">UBroadcastManager::OnMegaPopupClosed</a></div><div class="ttdeci">FOnMegaPopupClosed OnMegaPopupClosed</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00127">UBroadcastManager.h:127</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00127">OnMegaPopupClosed</a>.</p>
+
+</div>
+</div>
+<a id="a7dd77f4b9d69350f1a86fd1ec70301e1" name="a7dd77f4b9d69350f1a86fd1ec70301e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dd77f4b9d69350f1a86fd1ec70301e1">&#9670;&#160;</a></span>SendMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendMessage </td>
+          <td>(</td>
+          <td class="paramtype">const FString &amp;&#160;</td>
+          <td class="paramname"><em>InMsg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00010">10</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   11</span>{</div>
+<div class="line"><span class="lineno">   12</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a43a192f0157e3177589f7b09b11a1e84">OnMessage</a>.Broadcast(InMsg);</div>
+<div class="line"><span class="lineno">   13</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_a43a192f0157e3177589f7b09b11a1e84"><div class="ttname"><a href="classUBroadcastManager.html#a43a192f0157e3177589f7b09b11a1e84">UBroadcastManager::OnMessage</a></div><div class="ttdeci">FOnMessage OnMessage</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00027">UBroadcastManager.h:27</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00027">OnMessage</a>.</p>
+
+</div>
+</div>
+<a id="ab8cce977ad7eadf86de589d89630ab67" name="ab8cce977ad7eadf86de589d89630ab67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8cce977ad7eadf86de589d89630ab67">&#9670;&#160;</a></span>SendNearBuilding()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendNearBuilding </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a>&#160;</td>
+          <td class="paramname"><em>BuildingType</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00055">55</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>{</div>
+<div class="line"><span class="lineno">   57</span>    <a class="code hl_variable" href="classUBroadcastManager.html#aee3b40a79e4adc300ec0f32aaa207100">OnNearBuilding</a>.Broadcast(BuildingType);</div>
+<div class="line"><span class="lineno">   58</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_aee3b40a79e4adc300ec0f32aaa207100"><div class="ttname"><a href="classUBroadcastManager.html#aee3b40a79e4adc300ec0f32aaa207100">UBroadcastManager::OnNearBuilding</a></div><div class="ttdeci">FOnNearBuilding OnNearBuilding</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00097">UBroadcastManager.h:97</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00097">OnNearBuilding</a>.</p>
+
+</div>
+</div>
+<a id="a9c69490ebcf0947b36db2264b76a4167" name="a9c69490ebcf0947b36db2264b76a4167"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c69490ebcf0947b36db2264b76a4167">&#9670;&#160;</a></span>SendNetworkWaitCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendNetworkWaitCount </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>RequestCount</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00015">15</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   16</span>{</div>
+<div class="line"><span class="lineno">   17</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a2692fc3fbb06745f2cd20e9d5769abb8">OnNetworkWaitCount</a>.Broadcast(RequestCount);</div>
+<div class="line"><span class="lineno">   18</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_a2692fc3fbb06745f2cd20e9d5769abb8"><div class="ttname"><a href="classUBroadcastManager.html#a2692fc3fbb06745f2cd20e9d5769abb8">UBroadcastManager::OnNetworkWaitCount</a></div><div class="ttdeci">FOnNetworkWaitCount OnNetworkWaitCount</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00041">UBroadcastManager.h:41</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00041">OnNetworkWaitCount</a>.</p>
+
+</div>
+</div>
+<a id="af9bfc0f6250dde19eb48d6552d8f9365" name="af9bfc0f6250dde19eb48d6552d8f9365"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9bfc0f6250dde19eb48d6552d8f9365">&#9670;&#160;</a></span>SendPlayerControlState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendPlayerControlState </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bState</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UUserWidget *&#160;</td>
+          <td class="paramname"><em>FocusWidget</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00080">80</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   81</span>{</div>
+<div class="line"><span class="lineno">   82</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a2a27dd50618f5187771a822fe93c5e46">OnPlayerControlState</a>.Broadcast(bState, FocusWidget);</div>
+<div class="line"><span class="lineno">   83</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_a2a27dd50618f5187771a822fe93c5e46"><div class="ttname"><a href="classUBroadcastManager.html#a2a27dd50618f5187771a822fe93c5e46">UBroadcastManager::OnPlayerControlState</a></div><div class="ttdeci">FOnPlayerControlState OnPlayerControlState</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00134">UBroadcastManager.h:134</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00134">OnPlayerControlState</a>.</p>
+
+</div>
+</div>
+<a id="a867ec718fd1c6d149159eeb18806447a" name="a867ec718fd1c6d149159eeb18806447a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a867ec718fd1c6d149159eeb18806447a">&#9670;&#160;</a></span>SendSessionDisconnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendSessionDisconnect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00127">127</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  128</span>{</div>
+<div class="line"><span class="lineno">  129</span>    <a class="code hl_variable" href="classUBroadcastManager.html#acae250e7df292dd46e7b8320f5e4ee04">OnSessionDisconnect</a>.Broadcast();</div>
+<div class="line"><span class="lineno">  130</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_acae250e7df292dd46e7b8320f5e4ee04"><div class="ttname"><a href="classUBroadcastManager.html#acae250e7df292dd46e7b8320f5e4ee04">UBroadcastManager::OnSessionDisconnect</a></div><div class="ttdeci">FOnSessionDisconnect OnSessionDisconnect</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00200">UBroadcastManager.h:200</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00200">OnSessionDisconnect</a>.</p>
+
+</div>
+</div>
+<a id="a71fed628db8358e87c18969bcb2efae5" name="a71fed628db8358e87c18969bcb2efae5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71fed628db8358e87c18969bcb2efae5">&#9670;&#160;</a></span>SendSessionError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendSessionError </td>
+          <td>(</td>
+          <td class="paramtype">const FString &amp;&#160;</td>
+          <td class="paramname"><em>ErrorMessage</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00132">132</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  133</span>{</div>
+<div class="line"><span class="lineno">  134</span>    <a class="code hl_variable" href="classUBroadcastManager.html#acba6e194bf8fd88614ae7e08d22bba97">OnSessionError</a>.Broadcast(ErrorMessage);</div>
+<div class="line"><span class="lineno">  135</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_acba6e194bf8fd88614ae7e08d22bba97"><div class="ttname"><a href="classUBroadcastManager.html#acba6e194bf8fd88614ae7e08d22bba97">UBroadcastManager::OnSessionError</a></div><div class="ttdeci">FOnSessionError OnSessionError</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00208">UBroadcastManager.h:208</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00208">OnSessionError</a>.</p>
+
+</div>
+</div>
+<a id="af51d79fb4bc823bef207cacb5c56e2f6" name="af51d79fb4bc823bef207cacb5c56e2f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af51d79fb4bc823bef207cacb5c56e2f6">&#9670;&#160;</a></span>SendSessionHost()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendSessionHost </td>
+          <td>(</td>
+          <td class="paramtype">const FString &amp;&#160;</td>
+          <td class="paramname"><em>MapName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00117">117</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  118</span>{</div>
+<div class="line"><span class="lineno">  119</span>    <a class="code hl_variable" href="classUBroadcastManager.html#afa48842a36dcc8f97dfa3691950a1cd6">OnSessionHost</a>.Broadcast(MapName);</div>
+<div class="line"><span class="lineno">  120</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_afa48842a36dcc8f97dfa3691950a1cd6"><div class="ttname"><a href="classUBroadcastManager.html#afa48842a36dcc8f97dfa3691950a1cd6">UBroadcastManager::OnSessionHost</a></div><div class="ttdeci">FOnSessionHost OnSessionHost</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00184">UBroadcastManager.h:184</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00184">OnSessionHost</a>.</p>
+
+</div>
+</div>
+<a id="add4dbe72d7203082f7a59a0c73fd840d" name="add4dbe72d7203082f7a59a0c73fd840d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add4dbe72d7203082f7a59a0c73fd840d">&#9670;&#160;</a></span>SendSessionJoin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendSessionJoin </td>
+          <td>(</td>
+          <td class="paramtype">const FString &amp;&#160;</td>
+          <td class="paramname"><em>Address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32&#160;</td>
+          <td class="paramname"><em>Port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00122">122</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  123</span>{</div>
+<div class="line"><span class="lineno">  124</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a3a639119a69d9d30f5acb0241a6af2e3">OnSessionJoin</a>.Broadcast(Address, Port);</div>
+<div class="line"><span class="lineno">  125</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_a3a639119a69d9d30f5acb0241a6af2e3"><div class="ttname"><a href="classUBroadcastManager.html#a3a639119a69d9d30f5acb0241a6af2e3">UBroadcastManager::OnSessionJoin</a></div><div class="ttdeci">FOnSessionJoin OnSessionJoin</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00192">UBroadcastManager.h:192</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00192">OnSessionJoin</a>.</p>
+
+</div>
+</div>
+<a id="a4d7cb361d679f623c84959df7280240f" name="a4d7cb361d679f623c84959df7280240f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d7cb361d679f623c84959df7280240f">&#9670;&#160;</a></span>SendUpdateQuest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendUpdateQuest </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a>&#160;</td>
+          <td class="paramname"><em>BuildingType</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00050">50</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>{</div>
+<div class="line"><span class="lineno">   52</span>    <a class="code hl_variable" href="classUBroadcastManager.html#ad9f1e3ff63630e25df3d78c2f24312ed">OnUpdateQuest</a>.Broadcast(BuildingType);  </div>
+<div class="line"><span class="lineno">   53</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_ad9f1e3ff63630e25df3d78c2f24312ed"><div class="ttname"><a href="classUBroadcastManager.html#ad9f1e3ff63630e25df3d78c2f24312ed">UBroadcastManager::OnUpdateQuest</a></div><div class="ttdeci">FOnUpdateQuest OnUpdateQuest</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00090">UBroadcastManager.h:90</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00090">OnUpdateQuest</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">멤버 데이터 문서화</h2>
+<a id="a15ce56190730a87bbd9ea51210a08b14" name="a15ce56190730a87bbd9ea51210a08b14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15ce56190730a87bbd9ea51210a08b14">&#9670;&#160;</a></span>OnAudioCapture</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnAudioCapture UBroadcastManager::OnAudioCapture</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00048">48</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00020">SendAudioCapture()</a>.</p>
+
+</div>
+</div>
+<a id="aa17cf7bbe9f0657ef94594ed525ddd88" name="aa17cf7bbe9f0657ef94594ed525ddd88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa17cf7bbe9f0657ef94594ed525ddd88">&#9670;&#160;</a></span>OnAudioSpectrum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnAudioSpectrum UBroadcastManager::OnAudioSpectrum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00076">76</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00040">SendAudioSpectrum()</a>.</p>
+
+</div>
+</div>
+<a id="a81aaf9a9590605f893227f2f0f374990" name="a81aaf9a9590605f893227f2f0f374990"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81aaf9a9590605f893227f2f0f374990">&#9670;&#160;</a></span>OnCameraShake</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnCameraShake UBroadcastManager::OnCameraShake</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00153">153</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00098">SendCameraShake()</a>.</p>
+
+</div>
+</div>
+<a id="a02c1f92c699cd11a85093ab95684a41e" name="a02c1f92c699cd11a85093ab95684a41e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02c1f92c699cd11a85093ab95684a41e">&#9670;&#160;</a></span>OnContactBuilding</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnContactBuilding UBroadcastManager::OnContactBuilding</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00083">83</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00045">SendContactBuilding()</a>.</p>
+
+</div>
+</div>
+<a id="a1d306318cbe7d73bb1ab6d9f427658d9" name="a1d306318cbe7d73bb1ab6d9f427658d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d306318cbe7d73bb1ab6d9f427658d9">&#9670;&#160;</a></span>OnDoorMessage</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnDoorMessage UBroadcastManager::OnDoorMessage</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00111">111</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00065">SendDoorMessage()</a>.</p>
+
+</div>
+</div>
+<a id="a78611143a47d38830ef99f8320600732" name="a78611143a47d38830ef99f8320600732"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78611143a47d38830ef99f8320600732">&#9670;&#160;</a></span>OnExecVoiceCommand</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnExecVoiceCommand UBroadcastManager::OnExecVoiceCommand</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00119">119</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00070">SendExecVoiceCommand()</a>.</p>
+
+</div>
+</div>
+<a id="ab0328b4d2bb343d8f922de193df5b0a6" name="ab0328b4d2bb343d8f922de193df5b0a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0328b4d2bb343d8f922de193df5b0a6">&#9670;&#160;</a></span>OnFocusBuilding</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnFocusBuilding UBroadcastManager::OnFocusBuilding</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00104">104</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00060">SendFocusBuilding()</a>.</p>
+
+</div>
+</div>
+<a id="ad45350af2c417b02f31b664a3540e680" name="ad45350af2c417b02f31b664a3540e680"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad45350af2c417b02f31b664a3540e680">&#9670;&#160;</a></span>OnForceCameraShake</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnForceCameraShake UBroadcastManager::OnForceCameraShake</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00160">160</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00103">SendForceCameraShake()</a>.</p>
+
+</div>
+</div>
+<a id="a2b5598be8f701c5292aaa639c1c7f5c6" name="a2b5598be8f701c5292aaa639c1c7f5c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b5598be8f701c5292aaa639c1c7f5c6">&#9670;&#160;</a></span>OnHitStop</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnHitStop UBroadcastManager::OnHitStop</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00141">141</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00085">SendHitStop()</a>, <a class="el" href="UBroadcastManager_8cpp_source.html#l00090">SendHitStopPair()</a>.</p>
+
+</div>
+</div>
+<a id="a7b76f7a9be120cf9d2e22e4cff24778e" name="a7b76f7a9be120cf9d2e22e4cff24778e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b76f7a9be120cf9d2e22e4cff24778e">&#9670;&#160;</a></span>OnKnockback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnKnockback UBroadcastManager::OnKnockback</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00172">172</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00108">SendKnockback()</a>.</p>
+
+</div>
+</div>
+<a id="a101fa1c430be232b37009c90b358640b" name="a101fa1c430be232b37009c90b358640b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a101fa1c430be232b37009c90b358640b">&#9670;&#160;</a></span>OnMegaPopupClosed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnMegaPopupClosed UBroadcastManager::OnMegaPopupClosed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00127">127</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00075">SendMegaPopupClosed()</a>.</p>
+
+</div>
+</div>
+<a id="a43a192f0157e3177589f7b09b11a1e84" name="a43a192f0157e3177589f7b09b11a1e84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43a192f0157e3177589f7b09b11a1e84">&#9670;&#160;</a></span>OnMessage</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnMessage UBroadcastManager::OnMessage</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00027">27</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00010">SendMessage()</a>.</p>
+
+</div>
+</div>
+<a id="aee3b40a79e4adc300ec0f32aaa207100" name="aee3b40a79e4adc300ec0f32aaa207100"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee3b40a79e4adc300ec0f32aaa207100">&#9670;&#160;</a></span>OnNearBuilding</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnNearBuilding UBroadcastManager::OnNearBuilding</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00097">97</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00055">SendNearBuilding()</a>.</p>
+
+</div>
+</div>
+<a id="a2692fc3fbb06745f2cd20e9d5769abb8" name="a2692fc3fbb06745f2cd20e9d5769abb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2692fc3fbb06745f2cd20e9d5769abb8">&#9670;&#160;</a></span>OnNetworkWaitCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnNetworkWaitCount UBroadcastManager::OnNetworkWaitCount</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00041">41</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00015">SendNetworkWaitCount()</a>.</p>
+
+</div>
+</div>
+<a id="a2a27dd50618f5187771a822fe93c5e46" name="a2a27dd50618f5187771a822fe93c5e46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a27dd50618f5187771a822fe93c5e46">&#9670;&#160;</a></span>OnPlayerControlState</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnPlayerControlState UBroadcastManager::OnPlayerControlState</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00134">134</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00080">SendPlayerControlState()</a>.</p>
+
+</div>
+</div>
+<a id="acae250e7df292dd46e7b8320f5e4ee04" name="acae250e7df292dd46e7b8320f5e4ee04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acae250e7df292dd46e7b8320f5e4ee04">&#9670;&#160;</a></span>OnSessionDisconnect</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnSessionDisconnect UBroadcastManager::OnSessionDisconnect</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00200">200</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00127">SendSessionDisconnect()</a>.</p>
+
+</div>
+</div>
+<a id="acba6e194bf8fd88614ae7e08d22bba97" name="acba6e194bf8fd88614ae7e08d22bba97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acba6e194bf8fd88614ae7e08d22bba97">&#9670;&#160;</a></span>OnSessionError</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnSessionError UBroadcastManager::OnSessionError</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00208">208</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00132">SendSessionError()</a>.</p>
+
+</div>
+</div>
+<a id="afa48842a36dcc8f97dfa3691950a1cd6" name="afa48842a36dcc8f97dfa3691950a1cd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa48842a36dcc8f97dfa3691950a1cd6">&#9670;&#160;</a></span>OnSessionHost</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnSessionHost UBroadcastManager::OnSessionHost</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00184">184</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00117">SendSessionHost()</a>.</p>
+
+</div>
+</div>
+<a id="a3a639119a69d9d30f5acb0241a6af2e3" name="a3a639119a69d9d30f5acb0241a6af2e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a639119a69d9d30f5acb0241a6af2e3">&#9670;&#160;</a></span>OnSessionJoin</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnSessionJoin UBroadcastManager::OnSessionJoin</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00192">192</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00122">SendSessionJoin()</a>.</p>
+
+</div>
+</div>
+<a id="ad9f1e3ff63630e25df3d78c2f24312ed" name="ad9f1e3ff63630e25df3d78c2f24312ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9f1e3ff63630e25df3d78c2f24312ed">&#9670;&#160;</a></span>OnUpdateQuest</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnUpdateQuest UBroadcastManager::OnUpdateQuest</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00090">90</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00050">SendUpdateQuest()</a>.</p>
+
+</div>
+</div>
+<hr/>이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.:<ul>
+<li>Source/LatteLibrary/Manager/Public/<a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a></li>
+<li>Source/LatteLibrary/Manager/Private/<a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classUBroadcastManager.html">UBroadcastManager</a></li>
+    <li class="footer">생성시간 : 토 11월 8 2025 14:04:19, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

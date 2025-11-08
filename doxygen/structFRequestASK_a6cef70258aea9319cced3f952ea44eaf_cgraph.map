@@ -1,0 +1,13 @@
+<map id="FRequestASK::ToJsonString" name="FRequestASK::ToJsonString">
+<area shape="rect" id="Node000001" title="구조체를 JSON 문자열로 직렬화합니다." alt="" coords="5,56,201,81"/>
+<area shape="rect" id="Node000002" href="$structFGPTContext.html#ad4ea3e7ddf2641cd609b799a013f7ef9" title="JSON 직렬화를 위한 객체를 생성합니다." alt="" coords="249,56,447,81"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="201,66,236,66,236,71,201,71"/>
+<area shape="rect" id="Node000003" href="$structFGPTContext.html#ad29a5e23a242b73dcc706d3b093e63d7" title="어느 필드라도 유효한 정보를 포함하는지 확인합니다." alt="" coords="495,5,689,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="410,53,516,31,517,36,411,58"/>
+<area shape="rect" id="Node000004" href="$structFGPTContextLocation.html#a1cdc49a72a614fcd45f7ae01f19a2cb0" title="구조체가 유효한 데이터를 보유하고 있는지 확인합니다." alt="" coords="737,49,899,89"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="447,66,724,66,724,71,447,71"/>
+<area shape="rect" id="Node000005" href="$structFGPTContextLocation.html#aea075190c0e8f8f8c6ea85e042918864" title="JSON 직렬화를 위한 객체를 생성합니다." alt="" coords="511,106,673,146"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="404,79,499,101,497,107,402,84"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="650,28,725,45,723,50,649,33"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="671,103,725,89,726,95,672,109"/>
+</map>

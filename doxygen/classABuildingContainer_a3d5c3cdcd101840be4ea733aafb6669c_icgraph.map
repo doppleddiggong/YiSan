@@ -1,0 +1,7 @@
+<map id="ABuildingContainer::RefreshBuildingMap" name="ABuildingContainer::RefreshBuildingMap">
+<area shape="rect" id="Node000001" title="현재 자식 액터 상태를 기반으로 맵을 재구성합니다." alt="" coords="200,37,361,77"/>
+<area shape="rect" id="Node000002" href="$classABuildingContainer.html#ab69af2f7ed14e8d46d86d874d4499ca1" title="시작 시 건물 맵을 구성합니다." alt="" coords="5,5,152,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,45,152,40,153,34,187,40"/>
+<area shape="rect" id="Node000003" href="$classABuildingContainer.html#a0703c023196944659de288fc0205a016" title="에디터에서 하위 건물을 스캔해 맵을 갱신합니다." alt="" coords="5,69,152,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="187,75,153,80,152,75,186,70"/>
+</map>

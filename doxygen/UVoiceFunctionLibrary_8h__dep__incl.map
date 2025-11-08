@@ -1,0 +1,9 @@
+<map id="Source/YiSan/Voice/Public/UVoiceFunctionLibrary.h" name="Source/YiSan/Voice/Public/UVoiceFunctionLibrary.h">
+<area shape="rect" id="Node000001" title="음성 데이터 처리와 명령 파싱을 위한 블루프린트 함수 라이브러리를 선언합니다." alt="" coords="195,5,419,45"/>
+<area shape="rect" id="Node000002" href="$UChatBoxWidget_8cpp.html" title="UChatBoxWidget의 동작을 구현합니다." alt="" coords="5,101,180,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="253,53,137,103,135,98,251,48"/>
+<area shape="rect" id="Node000003" href="$UVoiceConversationSystem_8cpp.html" title="UVoiceConversationSystem의 동작을 구현합니다." alt="" coords="204,93,411,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="310,59,310,93,305,93,305,59"/>
+<area shape="rect" id="Node000004" href="$UVoiceFunctionLibrary_8cpp.html" title="UVoiceFunctionLibrary의 동작을 구현합니다." alt="" coords="435,101,681,141"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="372,48,508,98,506,103,370,53"/>
+</map>

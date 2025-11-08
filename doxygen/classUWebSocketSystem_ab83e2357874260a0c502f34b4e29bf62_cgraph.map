@@ -1,0 +1,7 @@
+<map id="UWebSocketSystem::RequestTTS" name="UWebSocketSystem::RequestTTS">
+<area shape="rect" id="Node000001" title="실시간 음성 합성을 요청하는 메시지를 전송합니다." alt="" coords="5,31,243,56"/>
+<area shape="rect" id="Node000002" href="$classUWebSocketSystem.html#a89bbc98f683cca370ea2e91fbd36ca7b" title="현재 WebSocket 연결 상태를 조회합니다." alt="" coords="291,5,531,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="243,30,277,27,277,32,243,36"/>
+<area shape="rect" id="Node000003" href="$classUWebSocketSystem.html#a864f4f7d23c89554fbe9a6ddad5aedf1" title="WebSocket 관련 공통 로그 메시지를 출력합니다." alt="" coords="291,55,530,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="243,51,278,54,277,59,243,56"/>
+</map>

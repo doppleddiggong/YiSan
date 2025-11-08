@@ -1,0 +1,978 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YiSan Project Documentation: AYisanGameState 클래스 참조</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YiSan Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classAYisanGameState.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 멤버 함수</a> &#124;
+<a href="#pub-attribs">Public 속성</a> &#124;
+<a href="#pub-static-attribs">정적 Public 속성</a> &#124;
+<a href="#pro-methods">Protected 멤버 함수</a> &#124;
+<a href="#pri-methods">Private 멤버 함수</a> &#124;
+<a href="#pri-attribs">Private 속성</a> &#124;
+<a href="classAYisanGameState-members.html">모든 멤버 목록</a>  </div>
+  <div class="headertitle"><div class="title">AYisanGameState 클래스 참조</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>AGameStateBase를</code> 확장하여 퀘스트 조율과 복제 UI 데이터를 제공합니다.  
+ <a href="classAYisanGameState.html#details">더 자세히 ...</a></p>
+
+<p><code>#include &lt;<a class="el" href="AYisanGameState_8h_source.html">AYisanGameState.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> AYisanGameState에 대한 상속 다이어그램 : </div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAYisanGameState__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> AYisanGameState에 대한 협력 다이어그램:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAYisanGameState__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 멤버 함수</h2></td></tr>
+<tr class="memitem:a51f5522fc746a6d90e85fb7bdc286081" id="r_a51f5522fc746a6d90e85fb7bdc286081"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#a51f5522fc746a6d90e85fb7bdc286081">AYisanGameState</a> ()</td></tr>
+<tr class="memdesc:a51f5522fc746a6d90e85fb7bdc286081"><td class="mdescLeft">&#160;</td><td class="mdescRight">게임 상태의 기본 생성자입니다.  <br /></td></tr>
+<tr class="separator:a51f5522fc746a6d90e85fb7bdc286081"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab51df4088a1eae4dfeb349a888926b1f" id="r_ab51df4088a1eae4dfeb349a888926b1f"><td class="memItemLeft" align="right" valign="top">TArray&lt; FString &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#ab51df4088a1eae4dfeb349a888926b1f">GetPlayerList</a> () const</td></tr>
+<tr class="memdesc:ab51df4088a1eae4dfeb349a888926b1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">현재 플레이어 목록을 반환합니다.  <br /></td></tr>
+<tr class="separator:ab51df4088a1eae4dfeb349a888926b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42f74d8a7a964c799a5a41e9dc02e4d1" id="r_a42f74d8a7a964c799a5a41e9dc02e4d1"><td class="memItemLeft" align="right" valign="top">class <a class="el" href="classAQuestManagerActor.html">AQuestManagerActor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#a42f74d8a7a964c799a5a41e9dc02e4d1">GetQuestManager</a> () const</td></tr>
+<tr class="memdesc:a42f74d8a7a964c799a5a41e9dc02e4d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">현재 퀘스트 매니저를 반환합니다.  <br /></td></tr>
+<tr class="separator:a42f74d8a7a964c799a5a41e9dc02e4d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb49cc4557a180ddf764528c53f1a14f" id="r_adb49cc4557a180ddf764528c53f1a14f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#adb49cc4557a180ddf764528c53f1a14f">MulticastRPC_LoadingComplete</a> ()</td></tr>
+<tr class="memdesc:adb49cc4557a180ddf764528c53f1a14f"><td class="mdescLeft">&#160;</td><td class="mdescRight">초기 로딩이 완료되었음을 클라이언트에 알립니다.  <br /></td></tr>
+<tr class="separator:adb49cc4557a180ddf764528c53f1a14f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afef36515dc291ea7c014a9ddf3607eb0" id="r_afef36515dc291ea7c014a9ddf3607eb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#afef36515dc291ea7c014a9ddf3607eb0">MulticastRPC_PlaySound</a> (<a class="el" href="EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80">EGameSoundType</a> SoundType)</td></tr>
+<tr class="memdesc:afef36515dc291ea7c014a9ddf3607eb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">모든 클라이언트에서 사운드 재생 지시를 실행합니다.  <br /></td></tr>
+<tr class="separator:afef36515dc291ea7c014a9ddf3607eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73c8b1b00bac30c4f80d268d2ed81d04" id="r_a73c8b1b00bac30c4f80d268d2ed81d04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#a73c8b1b00bac30c4f80d268d2ed81d04">MulticastRPC_ToastMessage</a> (const FString &amp;Message)</td></tr>
+<tr class="memdesc:a73c8b1b00bac30c4f80d268d2ed81d04"><td class="mdescLeft">&#160;</td><td class="mdescRight">모든 클라이언트에 토스트 알림을 송출합니다.  <br /></td></tr>
+<tr class="separator:a73c8b1b00bac30c4f80d268d2ed81d04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3af1af418ae0c9c8223189b0229b66bf" id="r_a3af1af418ae0c9c8223189b0229b66bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#a3af1af418ae0c9c8223189b0229b66bf">MulticastRPC_UpdateQuestTarget</a> (const <a class="el" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a> InBuildingType)</td></tr>
+<tr class="memdesc:a3af1af418ae0c9c8223189b0229b66bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">활성 퀘스트 대상을 클라이언트 간에 동기화합니다.  <br /></td></tr>
+<tr class="separator:a3af1af418ae0c9c8223189b0229b66bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a760721a6ef2c9acebb4a853f15535904" id="r_a760721a6ef2c9acebb4a853f15535904"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#a760721a6ef2c9acebb4a853f15535904">RequestRefreshPlayerList</a> ()</td></tr>
+<tr class="memdesc:a760721a6ef2c9acebb4a853f15535904"><td class="mdescLeft">&#160;</td><td class="mdescRight">플레이어 목록 업데이트를 요청합니다.  <br /></td></tr>
+<tr class="separator:a760721a6ef2c9acebb4a853f15535904"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e994106d56ee901cfa46b4243fe215e" id="r_a6e994106d56ee901cfa46b4243fe215e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#a6e994106d56ee901cfa46b4243fe215e">ServerRPC_PlaySound</a> (<a class="el" href="EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80">EGameSoundType</a> SoundType)</td></tr>
+<tr class="memdesc:a6e994106d56ee901cfa46b4243fe215e"><td class="mdescLeft">&#160;</td><td class="mdescRight">공유 사운드 큐 재생을 서버에 요청합니다.  <br /></td></tr>
+<tr class="separator:a6e994106d56ee901cfa46b4243fe215e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a503295f62762e7d11d0ba4c490f2ea70" id="r_a503295f62762e7d11d0ba4c490f2ea70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#a503295f62762e7d11d0ba4c490f2ea70">SetQuestManager</a> (class <a class="el" href="classAQuestManagerActor.html">AQuestManagerActor</a> *InQuestManager)</td></tr>
+<tr class="memdesc:a503295f62762e7d11d0ba4c490f2ea70"><td class="mdescLeft">&#160;</td><td class="mdescRight">퀘스트 매니저를 설정합니다.  <br /></td></tr>
+<tr class="separator:a503295f62762e7d11d0ba4c490f2ea70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91df17f69ee82de3ee5fda4a3a6ddff7" id="r_a91df17f69ee82de3ee5fda4a3a6ddff7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#a91df17f69ee82de3ee5fda4a3a6ddff7">StartGlobalTour</a> ()</td></tr>
+<tr class="memdesc:a91df17f69ee82de3ee5fda4a3a6ddff7"><td class="mdescLeft">&#160;</td><td class="mdescRight">공유 투어 시퀀스를 시작하고 퀘스트 진행을 전개합니다.  <br /></td></tr>
+<tr class="separator:a91df17f69ee82de3ee5fda4a3a6ddff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99b1f96f16450bc5c7dc21abcb5503eb" id="r_a99b1f96f16450bc5c7dc21abcb5503eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#a99b1f96f16450bc5c7dc21abcb5503eb">UpdatePlayerList</a> ()</td></tr>
+<tr class="memdesc:a99b1f96f16450bc5c7dc21abcb5503eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">플레이어 목록을 업데이트하고 브로드캐스트합니다.  <br /></td></tr>
+<tr class="separator:a99b1f96f16450bc5c7dc21abcb5503eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 속성</h2></td></tr>
+<tr class="memitem:a9644b6ba394d40bd9b5d6c72585bd17f" id="r_a9644b6ba394d40bd9b5d6c72585bd17f"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class <a class="el" href="classADasanActor.html">ADasanActor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#a9644b6ba394d40bd9b5d6c72585bd17f">DasanNPC</a></td></tr>
+<tr class="separator:a9644b6ba394d40bd9b5d6c72585bd17f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9916d558549e14c0b734098199e6ca3f" id="r_a9916d558549e14c0b734098199e6ca3f"><td class="memItemLeft" align="right" valign="top">FOnPlayerListUpdated&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#a9916d558549e14c0b734098199e6ca3f">OnPlayerListUpdated</a></td></tr>
+<tr class="memdesc:a9916d558549e14c0b734098199e6ca3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">플레이어 목록이 업데이트될 때 호출되는 델리게이트  <br /></td></tr>
+<tr class="separator:a9916d558549e14c0b734098199e6ca3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+정적 Public 속성</h2></td></tr>
+<tr class="memitem:aa7192cb11171b00da57d5d8427599b19" id="r_aa7192cb11171b00da57d5d8427599b19"><td class="memItemLeft" align="right" valign="top">static int32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#aa7192cb11171b00da57d5d8427599b19">NextPlayerIndex</a> = 0</td></tr>
+<tr class="memdesc:aa7192cb11171b00da57d5d8427599b19"><td class="mdescLeft">&#160;</td><td class="mdescRight">다음 플레이어 인덱스 (전역적으로 증가)  <br /></td></tr>
+<tr class="separator:aa7192cb11171b00da57d5d8427599b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected 멤버 함수</h2></td></tr>
+<tr class="memitem:a7a1766f488ee036dabe4d0d9e6e65c82" id="r_a7a1766f488ee036dabe4d0d9e6e65c82"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#a7a1766f488ee036dabe4d0d9e6e65c82">BeginPlay</a> () override</td></tr>
+<tr class="memdesc:a7a1766f488ee036dabe4d0d9e6e65c82"><td class="mdescLeft">&#160;</td><td class="mdescRight">플레이 시작 시 온라인 서브시스템에 게임 상태를 등록합니다.  <br /></td></tr>
+<tr class="separator:a7a1766f488ee036dabe4d0d9e6e65c82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a336e8e00716eef39e5649159c7f6eaae" id="r_a336e8e00716eef39e5649159c7f6eaae"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#a336e8e00716eef39e5649159c7f6eaae">GetLifetimeReplicatedProps</a> (TArray&lt; FLifetimeProperty &gt; &amp;OutLifetimeProps) const override</td></tr>
+<tr class="memdesc:a336e8e00716eef39e5649159c7f6eaae"><td class="mdescLeft">&#160;</td><td class="mdescRight">엔진에 복제 상태 멤버를 선언합니다.  <br /></td></tr>
+<tr class="separator:a336e8e00716eef39e5649159c7f6eaae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 멤버 함수</h2></td></tr>
+<tr class="memitem:a95c74d56a72a388fd511f0651ad4800e" id="r_a95c74d56a72a388fd511f0651ad4800e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#a95c74d56a72a388fd511f0651ad4800e">OnRep_PlayerList</a> ()</td></tr>
+<tr class="memdesc:a95c74d56a72a388fd511f0651ad4800e"><td class="mdescLeft">&#160;</td><td class="mdescRight">복제된 플레이어 목록 배열이 변할 때 호출됩니다.  <br /></td></tr>
+<tr class="separator:a95c74d56a72a388fd511f0651ad4800e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52517ddbbe3624a79f20e8b5c113fcc5" id="r_a52517ddbbe3624a79f20e8b5c113fcc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#a52517ddbbe3624a79f20e8b5c113fcc5">OnRep_QuestManager</a> ()</td></tr>
+<tr class="memdesc:a52517ddbbe3624a79f20e8b5c113fcc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">퀘스트 매니저 참조가 클라이언트에 복제될 때 호출됩니다.  <br /></td></tr>
+<tr class="separator:a52517ddbbe3624a79f20e8b5c113fcc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67dd0e42e9dc3725d79c30b16a150fe8" id="r_a67dd0e42e9dc3725d79c30b16a150fe8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#a67dd0e42e9dc3725d79c30b16a150fe8">ServerRPC_UpdatePlayerList</a> ()</td></tr>
+<tr class="memdesc:a67dd0e42e9dc3725d79c30b16a150fe8"><td class="mdescLeft">&#160;</td><td class="mdescRight">권한 서버에 플레이어 목록 재구성을 요청합니다.  <br /></td></tr>
+<tr class="separator:a67dd0e42e9dc3725d79c30b16a150fe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 속성</h2></td></tr>
+<tr class="memitem:ae21a6ecb2c707ecdbef5c385a24da4f8" id="r_ae21a6ecb2c707ecdbef5c385a24da4f8"><td class="memItemLeft" align="right" valign="top">TArray&lt; FString &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#ae21a6ecb2c707ecdbef5c385a24da4f8">PlayerList</a></td></tr>
+<tr class="separator:ae21a6ecb2c707ecdbef5c385a24da4f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a050daca622ea6c1f78a050a533e0110f" id="r_a050daca622ea6c1f78a050a533e0110f"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class <a class="el" href="classAQuestManagerActor.html">AQuestManagerActor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAYisanGameState.html#a050daca622ea6c1f78a050a533e0110f">QuestManager</a></td></tr>
+<tr class="separator:a050daca622ea6c1f78a050a533e0110f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
+<div class="textblock"><p><code>AGameStateBase를</code> 확장하여 퀘스트 조율과 복제 UI 데이터를 제공합니다. </p>
+
+<p class="definition"><a class="el" href="AYisanGameState_8h_source.html">AYisanGameState.h</a> 파일의 <a class="el" href="AYisanGameState_8h_source.html#l00022">22</a> 번째 라인에서 정의되었습니다.</p>
+</div><h2 class="groupheader">생성자 &amp; 소멸자 문서화</h2>
+<a id="a51f5522fc746a6d90e85fb7bdc286081" name="a51f5522fc746a6d90e85fb7bdc286081"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51f5522fc746a6d90e85fb7bdc286081">&#9670;&#160;</a></span>AYisanGameState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AYisanGameState::AYisanGameState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>게임 상태의 기본 생성자입니다. </p>
+
+<p class="definition"><a class="el" href="AYisanGameState_8cpp_source.html">AYisanGameState.cpp</a> 파일의 <a class="el" href="AYisanGameState_8cpp_source.html#l00025">25</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>{</div>
+<div class="line"><span class="lineno">   27</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">멤버 함수 문서화</h2>
+<a id="a7a1766f488ee036dabe4d0d9e6e65c82" name="a7a1766f488ee036dabe4d0d9e6e65c82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a1766f488ee036dabe4d0d9e6e65c82">&#9670;&#160;</a></span>BeginPlay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AYisanGameState::BeginPlay </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>플레이 시작 시 온라인 서브시스템에 게임 상태를 등록합니다. </p>
+
+<p class="definition"><a class="el" href="AYisanGameState_8cpp_source.html">AYisanGameState.cpp</a> 파일의 <a class="el" href="AYisanGameState_8cpp_source.html#l00030">30</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   31</span>{</div>
+<div class="line"><span class="lineno">   32</span>    Super::BeginPlay();</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>    <span class="comment">// Register this GameState with NetworkSubsystem</span></div>
+<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">if</span> (UGameInstance* GI = GetGameInstance())</div>
+<div class="line"><span class="lineno">   36</span>    {</div>
+<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classUYisanOnlineSystem.html">UYisanOnlineSystem</a>* NetworkSubsystem = GI-&gt;GetSubsystem&lt;<a class="code hl_class" href="classUYisanOnlineSystem.html">UYisanOnlineSystem</a>&gt;())</div>
+<div class="line"><span class="lineno">   38</span>        {</div>
+<div class="line"><span class="lineno">   39</span>            NetworkSubsystem-&gt;SetGameState(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   40</span>        }</div>
+<div class="line"><span class="lineno">   41</span>    }</div>
+<div class="line"><span class="lineno">   42</span>}</div>
+<div class="ttc" id="aclassUYisanOnlineSystem_html"><div class="ttname"><a href="classUYisanOnlineSystem.html">UYisanOnlineSystem</a></div><div class="ttdoc">온라인 서브시스템 기반의 세션 생성, 탐색, 복제 유틸리티를 제공합니다.</div><div class="ttdef"><b>Definition</b> <a href="UYisanOnlineSystem_8h_source.html#l00023">UYisanOnlineSystem.h:24</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a336e8e00716eef39e5649159c7f6eaae" name="a336e8e00716eef39e5649159c7f6eaae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a336e8e00716eef39e5649159c7f6eaae">&#9670;&#160;</a></span>GetLifetimeReplicatedProps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AYisanGameState::GetLifetimeReplicatedProps </td>
+          <td>(</td>
+          <td class="paramtype">TArray&lt; FLifetimeProperty &gt; &amp;&#160;</td>
+          <td class="paramname"><em>OutLifetimeProps</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>엔진에 복제 상태 멤버를 선언합니다. </p>
+
+<p class="definition"><a class="el" href="AYisanGameState_8cpp_source.html">AYisanGameState.cpp</a> 파일의 <a class="el" href="AYisanGameState_8cpp_source.html#l00045">45</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>{</div>
+<div class="line"><span class="lineno">   47</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>    DOREPLIFETIME(<a class="code hl_class" href="classAYisanGameState.html">AYisanGameState</a>, <a class="code hl_variable" href="classAYisanGameState.html#a9644b6ba394d40bd9b5d6c72585bd17f">DasanNPC</a>);</div>
+<div class="line"><span class="lineno">   50</span>    DOREPLIFETIME(<a class="code hl_class" href="classAYisanGameState.html">AYisanGameState</a>, <a class="code hl_variable" href="classAYisanGameState.html#a050daca622ea6c1f78a050a533e0110f">QuestManager</a>);</div>
+<div class="line"><span class="lineno">   51</span>    DOREPLIFETIME(<a class="code hl_class" href="classAYisanGameState.html">AYisanGameState</a>, <a class="code hl_variable" href="classAYisanGameState.html#ae21a6ecb2c707ecdbef5c385a24da4f8">PlayerList</a>);</div>
+<div class="line"><span class="lineno">   52</span>}</div>
+<div class="ttc" id="aclassAYisanGameState_html"><div class="ttname"><a href="classAYisanGameState.html">AYisanGameState</a></div><div class="ttdoc">AGameStateBase를 확장하여 퀘스트 조율과 복제 UI 데이터를 제공합니다.</div><div class="ttdef"><b>Definition</b> <a href="AYisanGameState_8h_source.html#l00022">AYisanGameState.h:23</a></div></div>
+<div class="ttc" id="aclassAYisanGameState_html_a050daca622ea6c1f78a050a533e0110f"><div class="ttname"><a href="classAYisanGameState.html#a050daca622ea6c1f78a050a533e0110f">AYisanGameState::QuestManager</a></div><div class="ttdeci">TObjectPtr&lt; class AQuestManagerActor &gt; QuestManager</div><div class="ttdef"><b>Definition</b> <a href="AYisanGameState_8h_source.html#l00105">AYisanGameState.h:105</a></div></div>
+<div class="ttc" id="aclassAYisanGameState_html_a9644b6ba394d40bd9b5d6c72585bd17f"><div class="ttname"><a href="classAYisanGameState.html#a9644b6ba394d40bd9b5d6c72585bd17f">AYisanGameState::DasanNPC</a></div><div class="ttdeci">TObjectPtr&lt; class ADasanActor &gt; DasanNPC</div><div class="ttdef"><b>Definition</b> <a href="AYisanGameState_8h_source.html#l00101">AYisanGameState.h:101</a></div></div>
+<div class="ttc" id="aclassAYisanGameState_html_ae21a6ecb2c707ecdbef5c385a24da4f8"><div class="ttname"><a href="classAYisanGameState.html#ae21a6ecb2c707ecdbef5c385a24da4f8">AYisanGameState::PlayerList</a></div><div class="ttdeci">TArray&lt; FString &gt; PlayerList</div><div class="ttdef"><b>Definition</b> <a href="AYisanGameState_8h_source.html#l00108">AYisanGameState.h:108</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="AYisanGameState_8h_source.html#l00101">DasanNPC</a>, <a class="el" href="AYisanGameState_8h_source.html#l00108">PlayerList</a>, <a class="el" href="AYisanGameState_8h_source.html#l00105">QuestManager</a>.</p>
+
+</div>
+</div>
+<a id="ab51df4088a1eae4dfeb349a888926b1f" name="ab51df4088a1eae4dfeb349a888926b1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab51df4088a1eae4dfeb349a888926b1f">&#9670;&#160;</a></span>GetPlayerList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TArray&lt; FString &gt; AYisanGameState::GetPlayerList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>현재 플레이어 목록을 반환합니다. </p>
+
+<p class="definition"><a class="el" href="AYisanGameState_8h_source.html">AYisanGameState.h</a> 파일의 <a class="el" href="AYisanGameState_8h_source.html#l00081">81</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   81</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classAYisanGameState.html#ae21a6ecb2c707ecdbef5c385a24da4f8">PlayerList</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a42f74d8a7a964c799a5a41e9dc02e4d1" name="a42f74d8a7a964c799a5a41e9dc02e4d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42f74d8a7a964c799a5a41e9dc02e4d1">&#9670;&#160;</a></span>GetQuestManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">class <a class="el" href="classAQuestManagerActor.html">AQuestManagerActor</a> * AYisanGameState::GetQuestManager </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>현재 퀘스트 매니저를 반환합니다. </p>
+
+<p class="definition"><a class="el" href="AYisanGameState_8h_source.html">AYisanGameState.h</a> 파일의 <a class="el" href="AYisanGameState_8h_source.html#l00062">62</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   62</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classAYisanGameState.html#a050daca622ea6c1f78a050a533e0110f">QuestManager</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="adb49cc4557a180ddf764528c53f1a14f" name="adb49cc4557a180ddf764528c53f1a14f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb49cc4557a180ddf764528c53f1a14f">&#9670;&#160;</a></span>MulticastRPC_LoadingComplete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AYisanGameState::MulticastRPC_LoadingComplete </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>초기 로딩이 완료되었음을 클라이언트에 알립니다. </p>
+
+</div>
+</div>
+<a id="afef36515dc291ea7c014a9ddf3607eb0" name="afef36515dc291ea7c014a9ddf3607eb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afef36515dc291ea7c014a9ddf3607eb0">&#9670;&#160;</a></span>MulticastRPC_PlaySound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AYisanGameState::MulticastRPC_PlaySound </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80">EGameSoundType</a>&#160;</td>
+          <td class="paramname"><em>SoundType</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>모든 클라이언트에서 사운드 재생 지시를 실행합니다. </p>
+
+</div>
+</div>
+<a id="a73c8b1b00bac30c4f80d268d2ed81d04" name="a73c8b1b00bac30c4f80d268d2ed81d04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73c8b1b00bac30c4f80d268d2ed81d04">&#9670;&#160;</a></span>MulticastRPC_ToastMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AYisanGameState::MulticastRPC_ToastMessage </td>
+          <td>(</td>
+          <td class="paramtype">const FString &amp;&#160;</td>
+          <td class="paramname"><em>Message</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>모든 클라이언트에 토스트 알림을 송출합니다. </p>
+
+</div>
+</div>
+<a id="a3af1af418ae0c9c8223189b0229b66bf" name="a3af1af418ae0c9c8223189b0229b66bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3af1af418ae0c9c8223189b0229b66bf">&#9670;&#160;</a></span>MulticastRPC_UpdateQuestTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AYisanGameState::MulticastRPC_UpdateQuestTarget </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="EBuildingType_8h.html#abd7612dc4100b44f80890bb8ad417947">EBuildingType</a>&#160;</td>
+          <td class="paramname"><em>InBuildingType</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>활성 퀘스트 대상을 클라이언트 간에 동기화합니다. </p>
+
+</div>
+</div>
+<a id="a95c74d56a72a388fd511f0651ad4800e" name="a95c74d56a72a388fd511f0651ad4800e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95c74d56a72a388fd511f0651ad4800e">&#9670;&#160;</a></span>OnRep_PlayerList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AYisanGameState::OnRep_PlayerList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>복제된 플레이어 목록 배열이 변할 때 호출됩니다. </p>
+<p>플레이어 목록이 클라이언트에서 갱신될 때 서브시스템과 델리게이트에 알립니다. </p>
+
+<p class="definition"><a class="el" href="AYisanGameState_8cpp_source.html">AYisanGameState.cpp</a> 파일의 <a class="el" href="AYisanGameState_8cpp_source.html#l00188">188</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  189</span>{</div>
+<div class="line"><span class="lineno">  190</span>    <span class="comment">// Notify NetworkSubsystem on clients</span></div>
+<div class="line"><span class="lineno">  191</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><span class="lineno">  192</span>    {</div>
+<div class="line"><span class="lineno">  193</span>        <span class="keywordflow">if</span> (UGameInstance* GI = GetGameInstance())</div>
+<div class="line"><span class="lineno">  194</span>        {</div>
+<div class="line"><span class="lineno">  195</span>            <span class="keywordflow">if</span> (<a class="code hl_class" href="classUYisanOnlineSystem.html">UYisanOnlineSystem</a>* NetworkSubsystem = GI-&gt;GetSubsystem&lt;<a class="code hl_class" href="classUYisanOnlineSystem.html">UYisanOnlineSystem</a>&gt;())</div>
+<div class="line"><span class="lineno">  196</span>            {</div>
+<div class="line"><span class="lineno">  197</span>                NetworkSubsystem-&gt;OnPlayerListUpdated.Broadcast(<a class="code hl_variable" href="classAYisanGameState.html#ae21a6ecb2c707ecdbef5c385a24da4f8">PlayerList</a>);</div>
+<div class="line"><span class="lineno">  198</span>            }</div>
+<div class="line"><span class="lineno">  199</span>        }</div>
+<div class="line"><span class="lineno">  200</span>    }</div>
+<div class="line"><span class="lineno">  201</span> </div>
+<div class="line"><span class="lineno">  202</span>    <span class="comment">// Broadcast to direct delegates</span></div>
+<div class="line"><span class="lineno">  203</span>    <a class="code hl_variable" href="classAYisanGameState.html#a9916d558549e14c0b734098199e6ca3f">OnPlayerListUpdated</a>.Broadcast(<a class="code hl_variable" href="classAYisanGameState.html#ae21a6ecb2c707ecdbef5c385a24da4f8">PlayerList</a>);</div>
+<div class="line"><span class="lineno">  204</span>}</div>
+<div class="ttc" id="aclassAYisanGameState_html_a9916d558549e14c0b734098199e6ca3f"><div class="ttname"><a href="classAYisanGameState.html#a9916d558549e14c0b734098199e6ca3f">AYisanGameState::OnPlayerListUpdated</a></div><div class="ttdeci">FOnPlayerListUpdated OnPlayerListUpdated</div><div class="ttdoc">플레이어 목록이 업데이트될 때 호출되는 델리게이트</div><div class="ttdef"><b>Definition</b> <a href="AYisanGameState_8h_source.html#l00084">AYisanGameState.h:84</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="AYisanGameState_8h_source.html#l00084">OnPlayerListUpdated</a>, <a class="el" href="AYisanGameState_8h_source.html#l00108">PlayerList</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AYisanGameState_8cpp_source.html#l00151">UpdatePlayerList()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAYisanGameState_a95c74d56a72a388fd511f0651ad4800e_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a52517ddbbe3624a79f20e8b5c113fcc5" name="a52517ddbbe3624a79f20e8b5c113fcc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52517ddbbe3624a79f20e8b5c113fcc5">&#9670;&#160;</a></span>OnRep_QuestManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AYisanGameState::OnRep_QuestManager </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>퀘스트 매니저 참조가 클라이언트에 복제될 때 호출됩니다. </p>
+<p>퀘스트 매니저 참조가 변경되면 UI 리스너를 갱신합니다. </p>
+
+<p class="definition"><a class="el" href="AYisanGameState_8cpp_source.html">AYisanGameState.cpp</a> 파일의 <a class="el" href="AYisanGameState_8cpp_source.html#l00142">142</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  143</span>{</div>
+<div class="line"><span class="lineno">  144</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAYisanGameState.html#a050daca622ea6c1f78a050a533e0110f">QuestManager</a>)</div>
+<div class="line"><span class="lineno">  145</span>    {</div>
+<div class="line"><span class="lineno">  146</span>        <a class="code hl_variable" href="classAYisanGameState.html#a050daca622ea6c1f78a050a533e0110f">QuestManager</a>-&gt;SendUpdateQuest();</div>
+<div class="line"><span class="lineno">  147</span>    }</div>
+<div class="line"><span class="lineno">  148</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="AYisanGameState_8h_source.html#l00105">QuestManager</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AYisanGameState_8cpp_source.html#l00130">SetQuestManager()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAYisanGameState_a52517ddbbe3624a79f20e8b5c113fcc5_icgraph.svg" width="454" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a760721a6ef2c9acebb4a853f15535904" name="a760721a6ef2c9acebb4a853f15535904"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a760721a6ef2c9acebb4a853f15535904">&#9670;&#160;</a></span>RequestRefreshPlayerList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AYisanGameState::RequestRefreshPlayerList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>플레이어 목록 업데이트를 요청합니다. </p>
+<p>필요 시 서버로 위임하여 플레이어 목록 새로고침을 요청합니다.</p>
+<p>(클라이언트/서버 모두) </p>
+
+<p class="definition"><a class="el" href="AYisanGameState_8cpp_source.html">AYisanGameState.cpp</a> 파일의 <a class="el" href="AYisanGameState_8cpp_source.html#l00207">207</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  208</span>{</div>
+<div class="line"><span class="lineno">  209</span>    <span class="keywordflow">if</span> (HasAuthority())</div>
+<div class="line"><span class="lineno">  210</span>    {</div>
+<div class="line"><span class="lineno">  211</span>        <a class="code hl_function" href="classAYisanGameState.html#a99b1f96f16450bc5c7dc21abcb5503eb">UpdatePlayerList</a>();</div>
+<div class="line"><span class="lineno">  212</span>    }</div>
+<div class="line"><span class="lineno">  213</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  214</span>    {</div>
+<div class="line"><span class="lineno">  215</span>        <a class="code hl_function" href="classAYisanGameState.html#a67dd0e42e9dc3725d79c30b16a150fe8">ServerRPC_UpdatePlayerList</a>();</div>
+<div class="line"><span class="lineno">  216</span>    }</div>
+<div class="line"><span class="lineno">  217</span>}</div>
+<div class="ttc" id="aclassAYisanGameState_html_a67dd0e42e9dc3725d79c30b16a150fe8"><div class="ttname"><a href="classAYisanGameState.html#a67dd0e42e9dc3725d79c30b16a150fe8">AYisanGameState::ServerRPC_UpdatePlayerList</a></div><div class="ttdeci">void ServerRPC_UpdatePlayerList()</div><div class="ttdoc">권한 서버에 플레이어 목록 재구성을 요청합니다.</div></div>
+<div class="ttc" id="aclassAYisanGameState_html_a99b1f96f16450bc5c7dc21abcb5503eb"><div class="ttname"><a href="classAYisanGameState.html#a99b1f96f16450bc5c7dc21abcb5503eb">AYisanGameState::UpdatePlayerList</a></div><div class="ttdeci">void UpdatePlayerList()</div><div class="ttdoc">플레이어 목록을 업데이트하고 브로드캐스트합니다.</div><div class="ttdef"><b>Definition</b> <a href="AYisanGameState_8cpp_source.html#l00151">AYisanGameState.cpp:151</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="classAYisanGameState.html#a67dd0e42e9dc3725d79c30b16a150fe8">ServerRPC_UpdatePlayerList()</a>, <a class="el" href="AYisanGameState_8cpp_source.html#l00151">UpdatePlayerList()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAYisanGameState_a760721a6ef2c9acebb4a853f15535904_cgraph.svg" width="100%" height="381"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a6e994106d56ee901cfa46b4243fe215e" name="a6e994106d56ee901cfa46b4243fe215e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e994106d56ee901cfa46b4243fe215e">&#9670;&#160;</a></span>ServerRPC_PlaySound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AYisanGameState::ServerRPC_PlaySound </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80">EGameSoundType</a>&#160;</td>
+          <td class="paramname"><em>SoundType</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>공유 사운드 큐 재생을 서버에 요청합니다. </p>
+
+</div>
+</div>
+<a id="a67dd0e42e9dc3725d79c30b16a150fe8" name="a67dd0e42e9dc3725d79c30b16a150fe8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67dd0e42e9dc3725d79c30b16a150fe8">&#9670;&#160;</a></span>ServerRPC_UpdatePlayerList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AYisanGameState::ServerRPC_UpdatePlayerList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>권한 서버에 플레이어 목록 재구성을 요청합니다. </p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AYisanGameState_8cpp_source.html#l00207">RequestRefreshPlayerList()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAYisanGameState_a67dd0e42e9dc3725d79c30b16a150fe8_icgraph.svg" width="472" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a503295f62762e7d11d0ba4c490f2ea70" name="a503295f62762e7d11d0ba4c490f2ea70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a503295f62762e7d11d0ba4c490f2ea70">&#9670;&#160;</a></span>SetQuestManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AYisanGameState::SetQuestManager </td>
+          <td>(</td>
+          <td class="paramtype">class <a class="el" href="classAQuestManagerActor.html">AQuestManagerActor</a> *&#160;</td>
+          <td class="paramname"><em>InQuestManager</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>퀘스트 매니저를 설정합니다. </p>
+<p>권한 측에서 퀘스트 매니저 액터를 설정합니다.</p>
+<p>서버 전용입니다. </p>
+
+<p class="definition"><a class="el" href="AYisanGameState_8cpp_source.html">AYisanGameState.cpp</a> 파일의 <a class="el" href="AYisanGameState_8cpp_source.html#l00130">130</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  131</span>{</div>
+<div class="line"><span class="lineno">  132</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><span class="lineno">  133</span>    {</div>
+<div class="line"><span class="lineno">  134</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  135</span>    }</div>
+<div class="line"><span class="lineno">  136</span> </div>
+<div class="line"><span class="lineno">  137</span>    <a class="code hl_variable" href="classAYisanGameState.html#a050daca622ea6c1f78a050a533e0110f">QuestManager</a> = InQuestManager;</div>
+<div class="line"><span class="lineno">  138</span>    <a class="code hl_function" href="classAYisanGameState.html#a52517ddbbe3624a79f20e8b5c113fcc5">OnRep_QuestManager</a>();</div>
+<div class="line"><span class="lineno">  139</span>}</div>
+<div class="ttc" id="aclassAYisanGameState_html_a52517ddbbe3624a79f20e8b5c113fcc5"><div class="ttname"><a href="classAYisanGameState.html#a52517ddbbe3624a79f20e8b5c113fcc5">AYisanGameState::OnRep_QuestManager</a></div><div class="ttdeci">void OnRep_QuestManager()</div><div class="ttdoc">퀘스트 매니저 참조가 클라이언트에 복제될 때 호출됩니다.</div><div class="ttdef"><b>Definition</b> <a href="AYisanGameState_8cpp_source.html#l00142">AYisanGameState.cpp:142</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="AYisanGameState_8cpp_source.html#l00142">OnRep_QuestManager()</a>, <a class="el" href="AYisanGameState_8h_source.html#l00105">QuestManager</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAYisanGameState_a503295f62762e7d11d0ba4c490f2ea70_cgraph.svg" width="454" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a91df17f69ee82de3ee5fda4a3a6ddff7" name="a91df17f69ee82de3ee5fda4a3a6ddff7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91df17f69ee82de3ee5fda4a3a6ddff7">&#9670;&#160;</a></span>StartGlobalTour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AYisanGameState::StartGlobalTour </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>공유 투어 시퀀스를 시작하고 퀘스트 진행을 전개합니다. </p>
+
+<p class="definition"><a class="el" href="AYisanGameState_8cpp_source.html">AYisanGameState.cpp</a> 파일의 <a class="el" href="AYisanGameState_8cpp_source.html#l00109">109</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  110</span>{</div>
+<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><span class="lineno">  112</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  113</span> </div>
+<div class="line"><span class="lineno">  114</span>    <span class="comment">// QuestManager 초기화</span></div>
+<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAYisanGameState.html#a050daca622ea6c1f78a050a533e0110f">QuestManager</a>)</div>
+<div class="line"><span class="lineno">  116</span>    {</div>
+<div class="line"><span class="lineno">  117</span>        <a class="code hl_variable" href="classAYisanGameState.html#a050daca622ea6c1f78a050a533e0110f">QuestManager</a> = <a class="code hl_function" href="classAQuestManagerActor.html#a64e0505f7337bb8f6bb6ca038a302bb9">AQuestManagerActor::Get</a>(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  118</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAYisanGameState.html#a050daca622ea6c1f78a050a533e0110f">QuestManager</a>)</div>
+<div class="line"><span class="lineno">  119</span>        {</div>
+<div class="line"><span class="lineno">  120</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;YisanGameState: QuestManager actor not found!&quot;</span>));</div>
+<div class="line"><span class="lineno">  121</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  122</span>        }</div>
+<div class="line"><span class="lineno">  123</span>    }</div>
+<div class="line"><span class="lineno">  124</span>    </div>
+<div class="line"><span class="lineno">  125</span>    <a class="code hl_variable" href="classAYisanGameState.html#a050daca622ea6c1f78a050a533e0110f">QuestManager</a>-&gt;StartQuest();</div>
+<div class="line"><span class="lineno">  126</span>    <a class="code hl_variable" href="classAYisanGameState.html#a9644b6ba394d40bd9b5d6c72585bd17f">DasanNPC</a>-&gt;StartTour();</div>
+<div class="line"><span class="lineno">  127</span>}</div>
+<div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
+<div class="ttc" id="aclassAQuestManagerActor_html_a64e0505f7337bb8f6bb6ca038a302bb9"><div class="ttname"><a href="classAQuestManagerActor.html#a64e0505f7337bb8f6bb6ca038a302bb9">AQuestManagerActor::Get</a></div><div class="ttdeci">static AQuestManagerActor * Get(const UObject *WorldContextObject)</div><div class="ttdoc">주어진 월드 컨텍스트에서 퀘스트 매니저를 찾는 헬퍼입니다.</div><div class="ttdef"><b>Definition</b> <a href="AQuestManagerActor_8cpp_source.html#l00023">AQuestManagerActor.cpp:23</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="AYisanGameState_8h_source.html#l00101">DasanNPC</a>, <a class="el" href="AQuestManagerActor_8cpp_source.html#l00023">AQuestManagerActor::Get()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="AYisanGameState_8h_source.html#l00105">QuestManager</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAYisanGameState_a91df17f69ee82de3ee5fda4a3a6ddff7_cgraph.svg" width="496" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a99b1f96f16450bc5c7dc21abcb5503eb" name="a99b1f96f16450bc5c7dc21abcb5503eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99b1f96f16450bc5c7dc21abcb5503eb">&#9670;&#160;</a></span>UpdatePlayerList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AYisanGameState::UpdatePlayerList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>플레이어 목록을 업데이트하고 브로드캐스트합니다. </p>
+<p>연결된 플레이어의 복제 목록을 재구성합니다.</p>
+<p>(서버 전용) </p>
+
+<p class="definition"><a class="el" href="AYisanGameState_8cpp_source.html">AYisanGameState.cpp</a> 파일의 <a class="el" href="AYisanGameState_8cpp_source.html#l00151">151</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  152</span>{</div>
+<div class="line"><span class="lineno">  153</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><span class="lineno">  154</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  155</span> </div>
+<div class="line"><span class="lineno">  156</span>    <span class="comment">// Sort PlayerArray by PlayerIndex</span></div>
+<div class="line"><span class="lineno">  157</span>    PlayerArray.Sort([](<span class="keyword">const</span> APlayerState&amp; A, <span class="keyword">const</span> APlayerState&amp; B)</div>
+<div class="line"><span class="lineno">  158</span>    {</div>
+<div class="line"><span class="lineno">  159</span>        <span class="keyword">const</span> <a class="code hl_class" href="classAYiSanPlayerState.html">AYiSanPlayerState</a>* PSA = Cast&lt;const AYiSanPlayerState&gt;(&amp;A);</div>
+<div class="line"><span class="lineno">  160</span>        <span class="keyword">const</span> <a class="code hl_class" href="classAYiSanPlayerState.html">AYiSanPlayerState</a>* PSB = Cast&lt;const AYiSanPlayerState&gt;(&amp;B);</div>
+<div class="line"><span class="lineno">  161</span> </div>
+<div class="line"><span class="lineno">  162</span>        <span class="keywordflow">if</span> (!PSA || !PSB)</div>
+<div class="line"><span class="lineno">  163</span>        {</div>
+<div class="line"><span class="lineno">  164</span>            <span class="keywordflow">return</span> A.GetPlayerName() &lt; B.GetPlayerName();</div>
+<div class="line"><span class="lineno">  165</span>        }</div>
+<div class="line"><span class="lineno">  166</span> </div>
+<div class="line"><span class="lineno">  167</span>        <span class="keywordflow">return</span> PSA-&gt;<a class="code hl_variable" href="classAYiSanPlayerState.html#a83a126a4ffcb60e62455ada9daea462e">PlayerIndex</a> &lt; PSB-&gt;<a class="code hl_variable" href="classAYiSanPlayerState.html#a83a126a4ffcb60e62455ada9daea462e">PlayerIndex</a>;</div>
+<div class="line"><span class="lineno">  168</span>    });</div>
+<div class="line"><span class="lineno">  169</span> </div>
+<div class="line"><span class="lineno">  170</span>    TArray&lt;FString&gt; PlayerInfoList;</div>
+<div class="line"><span class="lineno">  171</span> </div>
+<div class="line"><span class="lineno">  172</span>    <span class="keywordflow">for</span> (int32 i = 0; i &lt; PlayerArray.Num(); ++i)</div>
+<div class="line"><span class="lineno">  173</span>    {</div>
+<div class="line"><span class="lineno">  174</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> PS = Cast&lt;AYiSanPlayerState&gt;(PlayerArray[i]))</div>
+<div class="line"><span class="lineno">  175</span>        {</div>
+<div class="line"><span class="lineno">  176</span>            PlayerInfoList.Add(FString::Printf(TEXT(<span class="stringliteral">&quot;%d:%s&quot;</span>), PS-&gt;PlayerIndex, *PS-&gt;Nickname));</div>
+<div class="line"><span class="lineno">  177</span>        }</div>
+<div class="line"><span class="lineno">  178</span>    }</div>
+<div class="line"><span class="lineno">  179</span> </div>
+<div class="line"><span class="lineno">  180</span>    <a class="code hl_variable" href="classAYisanGameState.html#ae21a6ecb2c707ecdbef5c385a24da4f8">PlayerList</a> = PlayerInfoList;</div>
+<div class="line"><span class="lineno">  181</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;AYisanGameState: PlayerList updated. Current players: %s&quot;</span>),</div>
+<div class="line"><span class="lineno">  182</span>        *FString::Join(<a class="code hl_variable" href="classAYisanGameState.html#ae21a6ecb2c707ecdbef5c385a24da4f8">PlayerList</a>, TEXT(<span class="stringliteral">&quot;, &quot;</span>)));</div>
+<div class="line"><span class="lineno">  183</span> </div>
+<div class="line"><span class="lineno">  184</span>    <a class="code hl_function" href="classAYisanGameState.html#a95c74d56a72a388fd511f0651ad4800e">OnRep_PlayerList</a>();</div>
+<div class="line"><span class="lineno">  185</span>}</div>
+<div class="ttc" id="aclassAYiSanPlayerState_html"><div class="ttname"><a href="classAYiSanPlayerState.html">AYiSanPlayerState</a></div><div class="ttdoc">APlayerState를 확장해 닉네임과 플레이어 인덱스를 복제합니다.</div><div class="ttdef"><b>Definition</b> <a href="AYiSanPlayerState_8h_source.html#l00018">AYiSanPlayerState.h:19</a></div></div>
+<div class="ttc" id="aclassAYiSanPlayerState_html_a83a126a4ffcb60e62455ada9daea462e"><div class="ttname"><a href="classAYiSanPlayerState.html#a83a126a4ffcb60e62455ada9daea462e">AYiSanPlayerState::PlayerIndex</a></div><div class="ttdeci">int32 PlayerIndex</div><div class="ttdoc">입장 순서 인덱스 (0,1,2,3...)</div><div class="ttdef"><b>Definition</b> <a href="AYiSanPlayerState_8h_source.html#l00067">AYiSanPlayerState.h:67</a></div></div>
+<div class="ttc" id="aclassAYisanGameState_html_a95c74d56a72a388fd511f0651ad4800e"><div class="ttname"><a href="classAYisanGameState.html#a95c74d56a72a388fd511f0651ad4800e">AYisanGameState::OnRep_PlayerList</a></div><div class="ttdeci">void OnRep_PlayerList()</div><div class="ttdoc">복제된 플레이어 목록 배열이 변할 때 호출됩니다.</div><div class="ttdef"><b>Definition</b> <a href="AYisanGameState_8cpp_source.html#l00188">AYisanGameState.cpp:188</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="AYisanGameState_8cpp_source.html#l00188">OnRep_PlayerList()</a>, <a class="el" href="AYiSanPlayerState_8h_source.html#l00067">AYiSanPlayerState::PlayerIndex</a>, <a class="el" href="AYisanGameState_8h_source.html#l00108">PlayerList</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AYisanGameState_8cpp_source.html#l00207">RequestRefreshPlayerList()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAYisanGameState_a99b1f96f16450bc5c7dc21abcb5503eb_cgraph.svg" width="506" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAYisanGameState_a99b1f96f16450bc5c7dc21abcb5503eb_icgraph.svg" width="515" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">멤버 데이터 문서화</h2>
+<a id="a9644b6ba394d40bd9b5d6c72585bd17f" name="a9644b6ba394d40bd9b5d6c72585bd17f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9644b6ba394d40bd9b5d6c72585bd17f">&#9670;&#160;</a></span>DasanNPC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class <a class="el" href="classADasanActor.html">ADasanActor</a>&gt; AYisanGameState::DasanNPC</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="AYisanGameState_8h_source.html">AYisanGameState.h</a> 파일의 <a class="el" href="AYisanGameState_8h_source.html#l00101">101</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AYisanGameState_8cpp_source.html#l00045">GetLifetimeReplicatedProps()</a>, <a class="el" href="AYisanGameState_8cpp_source.html#l00109">StartGlobalTour()</a>.</p>
+
+</div>
+</div>
+<a id="aa7192cb11171b00da57d5d8427599b19" name="aa7192cb11171b00da57d5d8427599b19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7192cb11171b00da57d5d8427599b19">&#9670;&#160;</a></span>NextPlayerIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32 AYisanGameState::NextPlayerIndex = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>다음 플레이어 인덱스 (전역적으로 증가) </p>
+
+<p class="definition"><a class="el" href="AYisanGameState_8h_source.html">AYisanGameState.h</a> 파일의 <a class="el" href="AYisanGameState_8h_source.html#l00069">69</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALobbyGameMode_8cpp_source.html#l00027">ALobbyGameMode::BeginPlay()</a>, <a class="el" href="AYiSanGameMode_8cpp_source.html#l00056">AYiSanGameMode::HandleSeamlessTravelPlayer()</a>, <a class="el" href="AYiSanGameMode_8cpp_source.html#l00019">AYiSanGameMode::InitGame()</a>, <a class="el" href="AYiSanGameMode_8cpp_source.html#l00077">AYiSanGameMode::PostLogin()</a>.</p>
+
+</div>
+</div>
+<a id="a9916d558549e14c0b734098199e6ca3f" name="a9916d558549e14c0b734098199e6ca3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9916d558549e14c0b734098199e6ca3f">&#9670;&#160;</a></span>OnPlayerListUpdated</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FOnPlayerListUpdated AYisanGameState::OnPlayerListUpdated</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>플레이어 목록이 업데이트될 때 호출되는 델리게이트 </p>
+
+<p class="definition"><a class="el" href="AYisanGameState_8h_source.html">AYisanGameState.h</a> 파일의 <a class="el" href="AYisanGameState_8h_source.html#l00084">84</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AYisanGameState_8cpp_source.html#l00188">OnRep_PlayerList()</a>, <a class="el" href="UYisanOnlineSystem_8cpp_source.html#l00047">UYisanOnlineSystem::SetGameState()</a>.</p>
+
+</div>
+</div>
+<a id="ae21a6ecb2c707ecdbef5c385a24da4f8" name="ae21a6ecb2c707ecdbef5c385a24da4f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae21a6ecb2c707ecdbef5c385a24da4f8">&#9670;&#160;</a></span>PlayerList</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TArray&lt;FString&gt; AYisanGameState::PlayerList</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="AYisanGameState_8h_source.html">AYisanGameState.h</a> 파일의 <a class="el" href="AYisanGameState_8h_source.html#l00108">108</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AYisanGameState_8cpp_source.html#l00045">GetLifetimeReplicatedProps()</a>, <a class="el" href="AYisanGameState_8cpp_source.html#l00188">OnRep_PlayerList()</a>, <a class="el" href="AYisanGameState_8cpp_source.html#l00151">UpdatePlayerList()</a>.</p>
+
+</div>
+</div>
+<a id="a050daca622ea6c1f78a050a533e0110f" name="a050daca622ea6c1f78a050a533e0110f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a050daca622ea6c1f78a050a533e0110f">&#9670;&#160;</a></span>QuestManager</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class <a class="el" href="classAQuestManagerActor.html">AQuestManagerActor</a>&gt; AYisanGameState::QuestManager</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="AYisanGameState_8h_source.html">AYisanGameState.h</a> 파일의 <a class="el" href="AYisanGameState_8h_source.html#l00105">105</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AYisanGameState_8cpp_source.html#l00045">GetLifetimeReplicatedProps()</a>, <a class="el" href="AYisanGameState_8cpp_source.html#l00142">OnRep_QuestManager()</a>, <a class="el" href="AYisanGameState_8cpp_source.html#l00130">SetQuestManager()</a>, <a class="el" href="AYisanGameState_8cpp_source.html#l00109">StartGlobalTour()</a>.</p>
+
+</div>
+</div>
+<hr/>이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.:<ul>
+<li>Source/YiSan/Environment/Public/<a class="el" href="AYisanGameState_8h_source.html">AYisanGameState.h</a></li>
+<li>Source/YiSan/Environment/Private/<a class="el" href="AYisanGameState_8cpp_source.html">AYisanGameState.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classAYisanGameState.html">AYisanGameState</a></li>
+    <li class="footer">생성시간 : 토 11월 8 2025 14:04:19, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

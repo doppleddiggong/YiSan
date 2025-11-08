@@ -1,0 +1,19 @@
+<map id="UWebSocketSystem::IsConnected" name="UWebSocketSystem::IsConnected">
+<area shape="rect" id="Node000001" title="현재 WebSocket 연결 상태를 조회합니다." alt="" coords="300,183,540,208"/>
+<area shape="rect" id="Node000002" href="$classUWebSocketSystem.html#ad8a09ae8c4734c4af887f138e3ccb751" title="WebSocket 서버와 연결을 수립합니다." alt="" coords="22,5,235,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="398,173,338,108,296,73,251,44,222,33,224,28,253,40,300,69,341,104,402,170"/>
+<area shape="rect" id="Node000003" href="$classUWebSocketSystem.html#ab83e2357874260a0c502f34b4e29bf62" title="실시간 음성 합성을 요청하는 메시지를 전송합니다." alt="" coords="10,55,247,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="390,176,329,134,291,112,251,94,215,83,217,78,253,89,293,107,331,129,393,172"/>
+<area shape="rect" id="Node000004" href="$classUWebSocketSystem.html#a57e7ed00b5a9a8fa7cecaeb895664d1c" title="실시간 음성 스트리밍 데이터를 서버로 전송합니다." alt="" coords="14,104,243,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="370,181,251,143,202,132,203,127,253,138,372,175"/>
+<area shape="rect" id="Node000005" href="$classUWebSocketSystem.html#ab443bc5338aeebe6481ca3659f959208" title="연결 상태를 유지하기 위해 Ping 메시지를 보냅니다." alt="" coords="19,153,239,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="286,184,239,180,239,174,286,179"/>
+<area shape="rect" id="Node000006" href="$classUWebSocketSystem.html#a0d943a89095ca2e3d22d7a348c54bc3c" title="플레이어 주변 공간 정보를 실시간으로 동기화합니다." alt="" coords="10,203,247,243"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="286,211,248,215,247,209,286,206"/>
+<area shape="rect" id="Node000007" href="$classUWebSocketSystem.html#af4a7ee5b01e7fad3e2277d0f8c574431" title="서버에 녹음 시작 신호를 보냅니다." alt="" coords="17,267,240,307"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="374,215,253,258,212,270,210,265,251,253,372,210"/>
+<area shape="rect" id="Node000008" href="$classUWebSocketSystem.html#a73120c9b86358dfcf637ac01a25da16d" title="서버에 녹음 종료 신호를 전송합니다." alt="" coords="18,331,239,371"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="397,220,335,271,295,298,253,322,223,334,221,329,251,317,292,294,332,267,393,216"/>
+<area shape="rect" id="Node000009" href="$classUWebSocketSystem.html#a15eb1c5058edae18827d9a8a786d8db5" title="서버에 기본 음성 합성 파라미터를 업데이트합니다." alt="" coords="5,396,252,421"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="406,222,382,259,347,304,304,348,253,386,224,398,222,394,251,381,300,344,343,300,377,256,402,219"/>
+</map>

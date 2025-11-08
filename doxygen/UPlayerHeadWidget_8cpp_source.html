@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YiSan Project Documentation: Source/YiSan/UI/Private/UPlayerHeadWidget.cpp 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YiSan Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('UPlayerHeadWidget_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">UPlayerHeadWidget.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="UPlayerHeadWidget_8cpp.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="UPlayerHeadWidget_8h.html">UPlayerHeadWidget.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="APlayerActor_8h.html">APlayerActor.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;TimerManager.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="AYiSanPlayerState_8h.html">AYiSanPlayerState.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="UChatPlayerSystem_8h.html">UChatPlayerSystem.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;GameFramework/Pawn.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classUPlayerHeadWidget.html#a0c04b638cf6696bda326df0c4388b1f2">   17</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPlayerHeadWidget.html#a0c04b638cf6696bda326df0c4388b1f2">UPlayerHeadWidget::NativeConstruct</a>()</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    Super::NativeConstruct();</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
+</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classUPlayerHeadWidget.html#aa43f691a0dddd96651fa151d398a4ac2">   22</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPlayerHeadWidget.html#aa43f691a0dddd96651fa151d398a4ac2">UPlayerHeadWidget::SetOwningActor</a>(<a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* Actor)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_variable" href="classUPlayerHeadWidget.html#a3376f49d006bf035ef411a688ebc28f3">OwningActor</a> = Actor;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">// 주인이 설정되면, 닉네임 확인을 위한 타이머를 시작합니다.</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    GetWorld()-&gt;GetTimerManager().SetTimer(<a class="code hl_variable" href="classUPlayerHeadWidget.html#aaf23d653882ffe71a585aec727db3599">TimerHandle_CheckPlayerState</a>, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPlayerHeadWidget.html#a00c53b30197a8810480ed81be4a13660">UPlayerHeadWidget::CheckPlayerState</a>, 0.2f, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}</div>
+</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="foldopen" id="foldopen00030" data-start="{" data-end="}">
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classUPlayerHeadWidget.html#a00c53b30197a8810480ed81be4a13660">   30</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPlayerHeadWidget.html#a00c53b30197a8810480ed81be4a13660">UPlayerHeadWidget::CheckPlayerState</a>()</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment">// 유효한 텍스트 블록과 소유 액터가 있을 경우에만 로직 실행</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPlayerHeadWidget.html#a3376f49d006bf035ef411a688ebc28f3">OwningActor</a>.IsValid())</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="comment">// Pawn에서 PlayerState를 가져와 AYiSanPlayerState로 캐스팅합니다.</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> PS = <a class="code hl_variable" href="classUPlayerHeadWidget.html#a3376f49d006bf035ef411a688ebc28f3">OwningActor</a>-&gt;GetPlayerState&lt;<a class="code hl_class" href="classAYiSanPlayerState.html">AYiSanPlayerState</a>&gt;())</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <span class="comment">// 닉네임이 비어있지 않다면 텍스트를 설정합니다.</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="keywordflow">if</span> (!PS-&gt;Nickname.IsEmpty())</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                <span class="comment">// 이름이 설정되었으므로, 타이머를 정지시킵니다.</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                GetWorld()-&gt;GetTimerManager().ClearTimer(<a class="code hl_variable" href="classUPlayerHeadWidget.html#aaf23d653882ffe71a585aec727db3599">TimerHandle_CheckPlayerState</a>);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                <a class="code hl_variable" href="classUPlayerHeadWidget.html#a990125f427b09dd227b22ab55be90720">PlayerNameText</a>-&gt;SetText(FText::FromString(PS-&gt;Nickname));</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                <span class="comment">// 로컬 플레이어인 경우에만 녹색으로 설정</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPlayerHeadWidget.html#a3376f49d006bf035ef411a688ebc28f3">OwningActor</a>-&gt;IsLocallyControlled())</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                    <a class="code hl_variable" href="classUPlayerHeadWidget.html#a990125f427b09dd227b22ab55be90720">PlayerNameText</a>-&gt;SetColorAndOpacity(FLinearColor::Green);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                    <a class="code hl_variable" href="classUPlayerHeadWidget.html#a990125f427b09dd227b22ab55be90720">PlayerNameText</a>-&gt;SetColorAndOpacity(FLinearColor::White);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                <a class="code hl_variable" href="classUPlayerHeadWidget.html#a13f6c0f3033fb49ccea6ed9d43f1ac4c">image_Icon</a>-&gt;SetBrushFromTexture( LoadObject&lt;UTexture2D&gt;(<span class="keyword">nullptr</span>, *PS-&gt;GetResourcePath()));</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                <a class="code hl_variable" href="classUPlayerHeadWidget.html#a3376f49d006bf035ef411a688ebc28f3">OwningActor</a>-&gt;<a class="code hl_variable" href="classAPlayerActor.html#a2b948ff4becc9541dbd773ab4a7cf307">ChatPlayerSystem</a>-&gt;AnnouncePlayerJoin();</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>}</div>
+</div>
+<div class="ttc" id="aAPlayerActor_8h_html"><div class="ttname"><a href="APlayerActor_8h.html">APlayerActor.h</a></div><div class="ttdoc">플레이어가 조종하는 캐릭터 액터를 선언합니다.</div></div>
+<div class="ttc" id="aAYiSanPlayerState_8h_html"><div class="ttname"><a href="AYiSanPlayerState_8h.html">AYiSanPlayerState.h</a></div><div class="ttdoc">AYiSanPlayerState 클래스를 선언합니다.</div></div>
+<div class="ttc" id="aUChatPlayerSystem_8h_html"><div class="ttname"><a href="UChatPlayerSystem_8h.html">UChatPlayerSystem.h</a></div><div class="ttdoc">EChatMessageType 클래스를 선언합니다.</div></div>
+<div class="ttc" id="aUPlayerHeadWidget_8h_html"><div class="ttname"><a href="UPlayerHeadWidget_8h.html">UPlayerHeadWidget.h</a></div><div class="ttdoc">UPlayerHeadWidget 클래스를 선언합니다.</div></div>
+<div class="ttc" id="aclassAPlayerActor_html"><div class="ttname"><a href="classAPlayerActor.html">APlayerActor</a></div><div class="ttdoc">이동, UI, 음성 하위 시스템을 통합하는 플레이어 조작 캐릭터입니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00022">APlayerActor.h:23</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a2b948ff4becc9541dbd773ab4a7cf307"><div class="ttname"><a href="classAPlayerActor.html#a2b948ff4becc9541dbd773ab4a7cf307">APlayerActor::ChatPlayerSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UChatPlayerSystem &gt; ChatPlayerSystem</div><div class="ttdoc">채팅 시스템 컴포넌트입니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00093">APlayerActor.h:93</a></div></div>
+<div class="ttc" id="aclassAYiSanPlayerState_html"><div class="ttname"><a href="classAYiSanPlayerState.html">AYiSanPlayerState</a></div><div class="ttdoc">APlayerState를 확장해 닉네임과 플레이어 인덱스를 복제합니다.</div><div class="ttdef"><b>Definition</b> <a href="AYiSanPlayerState_8h_source.html#l00018">AYiSanPlayerState.h:19</a></div></div>
+<div class="ttc" id="aclassUPlayerHeadWidget_html_a00c53b30197a8810480ed81be4a13660"><div class="ttname"><a href="classUPlayerHeadWidget.html#a00c53b30197a8810480ed81be4a13660">UPlayerHeadWidget::CheckPlayerState</a></div><div class="ttdeci">void CheckPlayerState()</div><div class="ttdoc">닉네임 정보를 확인하는 함수입니다.</div><div class="ttdef"><b>Definition</b> <a href="UPlayerHeadWidget_8cpp_source.html#l00030">UPlayerHeadWidget.cpp:30</a></div></div>
+<div class="ttc" id="aclassUPlayerHeadWidget_html_a0c04b638cf6696bda326df0c4388b1f2"><div class="ttname"><a href="classUPlayerHeadWidget.html#a0c04b638cf6696bda326df0c4388b1f2">UPlayerHeadWidget::NativeConstruct</a></div><div class="ttdeci">virtual void NativeConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="UPlayerHeadWidget_8cpp_source.html#l00017">UPlayerHeadWidget.cpp:17</a></div></div>
+<div class="ttc" id="aclassUPlayerHeadWidget_html_a13f6c0f3033fb49ccea6ed9d43f1ac4c"><div class="ttname"><a href="classUPlayerHeadWidget.html#a13f6c0f3033fb49ccea6ed9d43f1ac4c">UPlayerHeadWidget::image_Icon</a></div><div class="ttdeci">TObjectPtr&lt; class UImage &gt; image_Icon</div><div class="ttdef"><b>Definition</b> <a href="UPlayerHeadWidget_8h_source.html#l00037">UPlayerHeadWidget.h:37</a></div></div>
+<div class="ttc" id="aclassUPlayerHeadWidget_html_a3376f49d006bf035ef411a688ebc28f3"><div class="ttname"><a href="classUPlayerHeadWidget.html#a3376f49d006bf035ef411a688ebc28f3">UPlayerHeadWidget::OwningActor</a></div><div class="ttdeci">TWeakObjectPtr&lt; class APlayerActor &gt; OwningActor</div><div class="ttdoc">위젯을 소유하고 있는 액터에 대한 약한 포인터입니다.</div><div class="ttdef"><b>Definition</b> <a href="UPlayerHeadWidget_8h_source.html#l00041">UPlayerHeadWidget.h:41</a></div></div>
+<div class="ttc" id="aclassUPlayerHeadWidget_html_a990125f427b09dd227b22ab55be90720"><div class="ttname"><a href="classUPlayerHeadWidget.html#a990125f427b09dd227b22ab55be90720">UPlayerHeadWidget::PlayerNameText</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; PlayerNameText</div><div class="ttdef"><b>Definition</b> <a href="UPlayerHeadWidget_8h_source.html#l00034">UPlayerHeadWidget.h:34</a></div></div>
+<div class="ttc" id="aclassUPlayerHeadWidget_html_aa43f691a0dddd96651fa151d398a4ac2"><div class="ttname"><a href="classUPlayerHeadWidget.html#aa43f691a0dddd96651fa151d398a4ac2">UPlayerHeadWidget::SetOwningActor</a></div><div class="ttdeci">void SetOwningActor(class APlayerActor *Actor)</div><div class="ttdoc">이 위젯을 소유한 액터를 설정하고, 닉네임 확인 타이머를 시작합니다.</div><div class="ttdef"><b>Definition</b> <a href="UPlayerHeadWidget_8cpp_source.html#l00022">UPlayerHeadWidget.cpp:22</a></div></div>
+<div class="ttc" id="aclassUPlayerHeadWidget_html_aaf23d653882ffe71a585aec727db3599"><div class="ttname"><a href="classUPlayerHeadWidget.html#aaf23d653882ffe71a585aec727db3599">UPlayerHeadWidget::TimerHandle_CheckPlayerState</a></div><div class="ttdeci">FTimerHandle TimerHandle_CheckPlayerState</div><div class="ttdoc">닉네임 정보를 주기적으로 확인할 타이머 핸들입니다.</div><div class="ttdef"><b>Definition</b> <a href="UPlayerHeadWidget_8h_source.html#l00044">UPlayerHeadWidget.h:44</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_9a481a88fca7fb2428f2795f507e855b.html">YiSan</a></li><li class="navelem"><a class="el" href="dir_082c221e7eea3847d25ff2604012feae.html">UI</a></li><li class="navelem"><a class="el" href="dir_0512921187fc95a41b812c47620b2d43.html">Private</a></li><li class="navelem"><a class="el" href="UPlayerHeadWidget_8cpp.html">UPlayerHeadWidget.cpp</a></li>
+    <li class="footer">생성시간 : 토 11월 8 2025 14:04:19, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

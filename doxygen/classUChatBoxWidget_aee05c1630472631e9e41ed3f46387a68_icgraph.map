@@ -1,0 +1,9 @@
+<map id="UChatBoxWidget::OnResponseAsk" name="UChatBoxWidget::OnResponseAsk">
+<area shape="rect" id="Node000001" title=" " alt="" coords="820,13,1067,38"/>
+<area shape="rect" id="Node000002" href="$classUChatBoxWidget.html#a0c8e82fee04bc90bbd81c73b9f13e633" title=" " alt="" coords="607,13,772,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="806,28,772,28,772,23,806,23"/>
+<area shape="rect" id="Node000003" href="$classUChatBoxWidget.html#ad0d3abe95b23040c37839948d98e97d7" title=" " alt="" coords="300,5,559,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="593,28,559,28,559,23,593,23"/>
+<area shape="rect" id="Node000004" href="$classUChatBoxWidget.html#ab6ed5c92eda53330fb0e8fedf749b4c2" title=" " alt="" coords="5,13,252,38"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="287,28,252,28,252,23,287,23"/>
+</map>

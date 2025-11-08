@@ -1,0 +1,21 @@
+<map id="Source/YiSan/Network/Public/NetworkData.h" name="Source/YiSan/Network/Public/NetworkData.h">
+<area shape="rect" id="Node000001" title="네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다." alt="" coords="355,5,521,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="218,167,335,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="396,48,360,68,327,95,304,125,289,155,284,153,300,122,323,91,357,64,393,43"/>
+<area shape="rect" id="Node000003" href="$FGPTContext_8h.html" title="GPT 상호작용에 사용되는 공간 컨텍스트 구조체를 정의합니다." alt="" coords="143,93,261,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="382,48,250,92,248,87,381,43"/>
+<area shape="rect" id="Node000005" href="$UCustomNetworkSettings_8h.html" title="서버 환경별 네트워크 설정을 노출하는 DeveloperSettings를 선언합니다." alt="" coords="337,93,539,119"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="441,46,441,79,435,79,435,46"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="563,93,758,119"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="492,43,616,86,614,91,490,48"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="783,93,973,119"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="522,39,801,88,800,93,521,44"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="216,117,256,155,253,159,212,121"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,167,193,192"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="187,121,129,161,126,156,184,116"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="413,121,317,163,314,159,411,116"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="359,167,562,192"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="444,118,455,153,450,154,439,120"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="586,167,858,192"/>
+<area shape="poly" id="edge8_Node000005_Node000007" title=" " alt="" coords="484,116,664,161,662,166,483,121"/>
+</map>

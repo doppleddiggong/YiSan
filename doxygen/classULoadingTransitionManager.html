@@ -1,0 +1,1132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YiSan Project Documentation: ULoadingTransitionManager 클래스 참조</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YiSan Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classULoadingTransitionManager.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 멤버 함수</a> &#124;
+<a href="#pri-methods">Private 멤버 함수</a> &#124;
+<a href="#pri-attribs">Private 속성</a> &#124;
+<a href="#pri-static-attribs">정적 Private 속성</a> &#124;
+<a href="classULoadingTransitionManager-members.html">모든 멤버 목록</a>  </div>
+  <div class="headertitle"><div class="title">ULoadingTransitionManager 클래스 참조</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> ULoadingTransitionManager에 대한 상속 다이어그램 : </div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULoadingTransitionManager__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> ULoadingTransitionManager에 대한 협력 다이어그램:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULoadingTransitionManager__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 멤버 함수</h2></td></tr>
+<tr class="memitem:a1e336c9c007bad8f6baf1877a420361c" id="r_a1e336c9c007bad8f6baf1877a420361c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#a1e336c9c007bad8f6baf1877a420361c">ULoadingTransitionManager</a> ()</td></tr>
+<tr class="separator:a1e336c9c007bad8f6baf1877a420361c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9127b7f633db4903a1aff4f68a36570" id="r_ac9127b7f633db4903a1aff4f68a36570"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#ac9127b7f633db4903a1aff4f68a36570">DEFINE_LOCALPLAYER_SUBSYSTEM_GETTER_INLINE</a> (<a class="el" href="classULoadingTransitionManager.html">ULoadingTransitionManager</a>)</td></tr>
+<tr class="separator:ac9127b7f633db4903a1aff4f68a36570"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05077e4b1327e13f345e02b495a67694" id="r_a05077e4b1327e13f345e02b495a67694"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#a05077e4b1327e13f345e02b495a67694">Deinitialize</a> () override</td></tr>
+<tr class="separator:a05077e4b1327e13f345e02b495a67694"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f1079c8dba8f07b0f7869f436975b9a" id="r_a6f1079c8dba8f07b0f7869f436975b9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#a6f1079c8dba8f07b0f7869f436975b9a">HideLoadingScreen</a> ()</td></tr>
+<tr class="memdesc:a6f1079c8dba8f07b0f7869f436975b9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">로딩 화면을 제거합니다.  <br /></td></tr>
+<tr class="separator:a6f1079c8dba8f07b0f7869f436975b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6f27ab54e6d0a5f38f0259383cfcce6" id="r_ac6f27ab54e6d0a5f38f0259383cfcce6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#ac6f27ab54e6d0a5f38f0259383cfcce6">Initialize</a> (FSubsystemCollectionBase &amp;Collection) override</td></tr>
+<tr class="separator:ac6f27ab54e6d0a5f38f0259383cfcce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac14249f22dbee95f85a0d15c740a2494" id="r_ac14249f22dbee95f85a0d15c740a2494"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#ac14249f22dbee95f85a0d15c740a2494">ShowLoadingScreen</a> ()</td></tr>
+<tr class="memdesc:ac14249f22dbee95f85a0d15c740a2494"><td class="mdescLeft">&#160;</td><td class="mdescRight">로딩 화면을 표시합니다.  <br /></td></tr>
+<tr class="separator:ac14249f22dbee95f85a0d15c740a2494"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 멤버 함수</h2></td></tr>
+<tr class="memitem:a3140a82516832c40d9dbc42417bb80f9" id="r_a3140a82516832c40d9dbc42417bb80f9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#a3140a82516832c40d9dbc42417bb80f9">DoesWorldBelongToLocalPlayer</a> (const UWorld *World) const</td></tr>
+<tr class="separator:a3140a82516832c40d9dbc42417bb80f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fe3714ec42a3c54c678855c4f47ae46" id="r_a8fe3714ec42a3c54c678855c4f47ae46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#a8fe3714ec42a3c54c678855c4f47ae46">EnsureWidgetForWorld</a> (UWorld *World)</td></tr>
+<tr class="separator:a8fe3714ec42a3c54c678855c4f47ae46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad72c49048dac1b81aa823d5a3d10fa3" id="r_aad72c49048dac1b81aa823d5a3d10fa3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#aad72c49048dac1b81aa823d5a3d10fa3">FinalizeHide</a> ()</td></tr>
+<tr class="separator:aad72c49048dac1b81aa823d5a3d10fa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf4ee0433d0e05c7e505c67afda16b8d" id="r_abf4ee0433d0e05c7e505c67afda16b8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#abf4ee0433d0e05c7e505c67afda16b8d">HandlePostLoadMap</a> (UWorld *LoadedWorld)</td></tr>
+<tr class="separator:abf4ee0433d0e05c7e505c67afda16b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44cbc486671c93224ccd7309c3be8027" id="r_a44cbc486671c93224ccd7309c3be8027"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#a44cbc486671c93224ccd7309c3be8027">HandlePreLoadMap</a> (const struct FWorldContext &amp;WorldContext, const FString &amp;MapName)</td></tr>
+<tr class="separator:a44cbc486671c93224ccd7309c3be8027"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 속성</h2></td></tr>
+<tr class="memitem:a9f45add20e8754e87f71db79e4a337ed" id="r_a9f45add20e8754e87f71db79e4a337ed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#a9f45add20e8754e87f71db79e4a337ed">bHideRequested</a> = false</td></tr>
+<tr class="separator:a9f45add20e8754e87f71db79e4a337ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8caeb5af6a2df2f1cac42c4d998f183e" id="r_a8caeb5af6a2df2f1cac42c4d998f183e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#a8caeb5af6a2df2f1cac42c4d998f183e">bIsShowing</a> = false</td></tr>
+<tr class="separator:a8caeb5af6a2df2f1cac42c4d998f183e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10168ac9a6e587fad27f438c6092f0d1" id="r_a10168ac9a6e587fad27f438c6092f0d1"><td class="memItemLeft" align="right" valign="top">FTimerHandle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#a10168ac9a6e587fad27f438c6092f0d1">HideTimerHandle</a></td></tr>
+<tr class="separator:a10168ac9a6e587fad27f438c6092f0d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cec657b262d8df1fa2ec6c87094fcf7" id="r_a0cec657b262d8df1fa2ec6c87094fcf7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#a0cec657b262d8df1fa2ec6c87094fcf7">LastShowTimestamp</a> = 0.0</td></tr>
+<tr class="separator:a0cec657b262d8df1fa2ec6c87094fcf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac57a7358f24721c76470f8c2c41876fc" id="r_ac57a7358f24721c76470f8c2c41876fc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#ac57a7358f24721c76470f8c2c41876fc">LatestReportedProgress</a> = 0.0f</td></tr>
+<tr class="separator:ac57a7358f24721c76470f8c2c41876fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade0ed97cde881fc3973ec31b73af0d64" id="r_ade0ed97cde881fc3973ec31b73af0d64"><td class="memItemLeft" align="right" valign="top">FDelegateHandle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#ade0ed97cde881fc3973ec31b73af0d64">PostLoadMapHandle</a></td></tr>
+<tr class="separator:ade0ed97cde881fc3973ec31b73af0d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05797174c2d7cdbc505e021c74927628" id="r_a05797174c2d7cdbc505e021c74927628"><td class="memItemLeft" align="right" valign="top">FDelegateHandle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#a05797174c2d7cdbc505e021c74927628">PreLoadMapHandle</a></td></tr>
+<tr class="separator:a05797174c2d7cdbc505e021c74927628"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ff196d090bc8489fb7be56aea0c2d4d" id="r_a5ff196d090bc8489fb7be56aea0c2d4d"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class <a class="el" href="classULoadingTransitionWidget.html">ULoadingTransitionWidget</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a></td></tr>
+<tr class="separator:a5ff196d090bc8489fb7be56aea0c2d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac82f2d891ac8e746f93c6562df6bfca3" id="r_ac82f2d891ac8e746f93c6562df6bfca3"><td class="memItemLeft" align="right" valign="top">TSubclassOf&lt; class <a class="el" href="classULoadingTransitionWidget.html">ULoadingTransitionWidget</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#ac82f2d891ac8e746f93c6562df6bfca3">TransitionWidgetClass</a></td></tr>
+<tr class="separator:ac82f2d891ac8e746f93c6562df6bfca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+정적 Private 속성</h2></td></tr>
+<tr class="memitem:a255c98757ff29f509df54884461c7c5b" id="r_a255c98757ff29f509df54884461c7c5b"><td class="memItemLeft" align="right" valign="top">static constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#a255c98757ff29f509df54884461c7c5b">HoldAfterCompletionSeconds</a> = 0.35</td></tr>
+<tr class="memdesc:a255c98757ff29f509df54884461c7c5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">완료 이후 페이드아웃 전 유지 시간(초)  <br /></td></tr>
+<tr class="separator:a255c98757ff29f509df54884461c7c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a139436881c59525cd319a2cd2e291a9e" id="r_a139436881c59525cd319a2cd2e291a9e"><td class="memItemLeft" align="right" valign="top">static constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULoadingTransitionManager.html#a139436881c59525cd319a2cd2e291a9e">MinVisibleDurationSeconds</a> = 1.5</td></tr>
+<tr class="memdesc:a139436881c59525cd319a2cd2e291a9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">로딩 화면 제거를 지연 처리하기 위한 최소 노출 시간(초)  <br /></td></tr>
+<tr class="separator:a139436881c59525cd319a2cd2e291a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
+<div class="textblock">
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00015">15</a> 번째 라인에서 정의되었습니다.</p>
+</div><h2 class="groupheader">생성자 &amp; 소멸자 문서화</h2>
+<a id="a1e336c9c007bad8f6baf1877a420361c" name="a1e336c9c007bad8f6baf1877a420361c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e336c9c007bad8f6baf1877a420361c">&#9670;&#160;</a></span>ULoadingTransitionManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ULoadingTransitionManager::ULoadingTransitionManager </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8cpp_source.html">ULoadingTransitionManager.cpp</a> 파일의 <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00026">26</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>{</div>
+<div class="line"><span class="lineno">   28</span>    <a class="code hl_variable" href="classULoadingTransitionManager.html#ac82f2d891ac8e746f93c6562df6bfca3">TransitionWidgetClass</a> = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadClass&lt;ULoadingTransitionWidget&gt;</a>(<a class="code hl_define" href="ULoadingTransitionManager_8cpp.html#aa6d812349e0928a7be7dfe1a22d6a1b4">LOADINGTRANSITIONWIDGET_PATH</a>);</div>
+<div class="line"><span class="lineno">   29</span>}</div>
+<div class="ttc" id="aULoadingTransitionManager_8cpp_html_aa6d812349e0928a7be7dfe1a22d6a1b4"><div class="ttname"><a href="ULoadingTransitionManager_8cpp.html#aa6d812349e0928a7be7dfe1a22d6a1b4">LOADINGTRANSITIONWIDGET_PATH</a></div><div class="ttdeci">#define LOADINGTRANSITIONWIDGET_PATH</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8cpp_source.html#l00024">ULoadingTransitionManager.cpp:24</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_ac82f2d891ac8e746f93c6562df6bfca3"><div class="ttname"><a href="classULoadingTransitionManager.html#ac82f2d891ac8e746f93c6562df6bfca3">ULoadingTransitionManager::TransitionWidgetClass</a></div><div class="ttdeci">TSubclassOf&lt; class ULoadingTransitionWidget &gt; TransitionWidgetClass</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00052">ULoadingTransitionManager.h:52</a></div></div>
+<div class="ttc" id="astructFComponentHelper_html_ac37cef436e9aaef1f0c655d781a95e66"><div class="ttname"><a href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset</a></div><div class="ttdeci">static T * LoadAsset(const TCHAR *Path)</div><div class="ttdef"><b>Definition</b> <a href="FComponentHelper_8h_source.html#l00016">FComponentHelper.h:16</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="FComponentHelper_8h_source.html#l00016">FComponentHelper::LoadAsset()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00024">LOADINGTRANSITIONWIDGET_PATH</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00052">TransitionWidgetClass</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classULoadingTransitionManager_a1e336c9c007bad8f6baf1877a420361c_cgraph.svg" width="492" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">멤버 함수 문서화</h2>
+<a id="ac9127b7f633db4903a1aff4f68a36570" name="ac9127b7f633db4903a1aff4f68a36570"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9127b7f633db4903a1aff4f68a36570">&#9670;&#160;</a></span>DEFINE_LOCALPLAYER_SUBSYSTEM_GETTER_INLINE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ULoadingTransitionManager::DEFINE_LOCALPLAYER_SUBSYSTEM_GETTER_INLINE </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classULoadingTransitionManager.html">ULoadingTransitionManager</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a05077e4b1327e13f345e02b495a67694" name="a05077e4b1327e13f345e02b495a67694"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05077e4b1327e13f345e02b495a67694">&#9670;&#160;</a></span>Deinitialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ULoadingTransitionManager::Deinitialize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8cpp_source.html">ULoadingTransitionManager.cpp</a> 파일의 <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00050">50</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>{</div>
+<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classULoadingTransitionManager.html#a05797174c2d7cdbc505e021c74927628">PreLoadMapHandle</a>.IsValid())</div>
+<div class="line"><span class="lineno">   53</span>    {</div>
+<div class="line"><span class="lineno">   54</span>        FCoreUObjectDelegates::PreLoadMapWithContext.Remove(<a class="code hl_variable" href="classULoadingTransitionManager.html#a05797174c2d7cdbc505e021c74927628">PreLoadMapHandle</a>);</div>
+<div class="line"><span class="lineno">   55</span>        <a class="code hl_variable" href="classULoadingTransitionManager.html#a05797174c2d7cdbc505e021c74927628">PreLoadMapHandle</a>.Reset();</div>
+<div class="line"><span class="lineno">   56</span>    }</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classULoadingTransitionManager.html#ade0ed97cde881fc3973ec31b73af0d64">PostLoadMapHandle</a>.IsValid())</div>
+<div class="line"><span class="lineno">   59</span>    {</div>
+<div class="line"><span class="lineno">   60</span>        FCoreUObjectDelegates::PostLoadMapWithWorld.Remove(<a class="code hl_variable" href="classULoadingTransitionManager.html#ade0ed97cde881fc3973ec31b73af0d64">PostLoadMapHandle</a>);</div>
+<div class="line"><span class="lineno">   61</span>        <a class="code hl_variable" href="classULoadingTransitionManager.html#ade0ed97cde881fc3973ec31b73af0d64">PostLoadMapHandle</a>.Reset();</div>
+<div class="line"><span class="lineno">   62</span>    }</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>    Super::Deinitialize();</div>
+<div class="line"><span class="lineno">   65</span>}</div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a05797174c2d7cdbc505e021c74927628"><div class="ttname"><a href="classULoadingTransitionManager.html#a05797174c2d7cdbc505e021c74927628">ULoadingTransitionManager::PreLoadMapHandle</a></div><div class="ttdeci">FDelegateHandle PreLoadMapHandle</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00063">ULoadingTransitionManager.h:63</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_ade0ed97cde881fc3973ec31b73af0d64"><div class="ttname"><a href="classULoadingTransitionManager.html#ade0ed97cde881fc3973ec31b73af0d64">ULoadingTransitionManager::PostLoadMapHandle</a></div><div class="ttdeci">FDelegateHandle PostLoadMapHandle</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00064">ULoadingTransitionManager.h:64</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8h_source.html#l00064">PostLoadMapHandle</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00063">PreLoadMapHandle</a>.</p>
+
+</div>
+</div>
+<a id="a3140a82516832c40d9dbc42417bb80f9" name="a3140a82516832c40d9dbc42417bb80f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3140a82516832c40d9dbc42417bb80f9">&#9670;&#160;</a></span>DoesWorldBelongToLocalPlayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ULoadingTransitionManager::DoesWorldBelongToLocalPlayer </td>
+          <td>(</td>
+          <td class="paramtype">const UWorld *&#160;</td>
+          <td class="paramname"><em>World</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8cpp_source.html">ULoadingTransitionManager.cpp</a> 파일의 <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00257">257</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  258</span>{</div>
+<div class="line"><span class="lineno">  259</span>    <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><span class="lineno">  260</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  261</span> </div>
+<div class="line"><span class="lineno">  262</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> ULocalPlayer* LocalPlayer = GetLocalPlayer())</div>
+<div class="line"><span class="lineno">  263</span>    {</div>
+<div class="line"><span class="lineno">  264</span>        <span class="keywordflow">return</span> LocalPlayer-&gt;GetGameInstance() == World-&gt;GetGameInstance();</div>
+<div class="line"><span class="lineno">  265</span>    }</div>
+<div class="line"><span class="lineno">  266</span> </div>
+<div class="line"><span class="lineno">  267</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  268</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00238">HandlePostLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00218">HandlePreLoadMap()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULoadingTransitionManager_a3140a82516832c40d9dbc42417bb80f9_icgraph.svg" width="100%" height="386"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a8fe3714ec42a3c54c678855c4f47ae46" name="a8fe3714ec42a3c54c678855c4f47ae46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fe3714ec42a3c54c678855c4f47ae46">&#9670;&#160;</a></span>EnsureWidgetForWorld()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ULoadingTransitionManager::EnsureWidgetForWorld </td>
+          <td>(</td>
+          <td class="paramtype">UWorld *&#160;</td>
+          <td class="paramname"><em>World</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8cpp_source.html">ULoadingTransitionManager.cpp</a> 파일의 <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00067">67</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   68</span>{</div>
+<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">if</span> (World == <span class="keyword">nullptr</span> || !World-&gt;IsGameWorld())</div>
+<div class="line"><span class="lineno">   70</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   71</span> </div>
+<div class="line"><span class="lineno">   72</span>    ULocalPlayer* LocalPlayer = GetLocalPlayer();</div>
+<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">if</span> (LocalPlayer == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   74</span>    {</div>
+<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">if</span> (UGameInstance* GameInstance = World-&gt;GetGameInstance())</div>
+<div class="line"><span class="lineno">   76</span>        {</div>
+<div class="line"><span class="lineno">   77</span>            LocalPlayer = GameInstance-&gt;GetFirstGamePlayer();</div>
+<div class="line"><span class="lineno">   78</span>        }</div>
+<div class="line"><span class="lineno">   79</span> </div>
+<div class="line"><span class="lineno">   80</span>        <span class="keywordflow">if</span> (LocalPlayer == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   81</span>        {</div>
+<div class="line"><span class="lineno">   82</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LoadingTransitionManager] LocalPlayer is null&quot;</span>));</div>
+<div class="line"><span class="lineno">   83</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   84</span>        }</div>
+<div class="line"><span class="lineno">   85</span>    }</div>
+<div class="line"><span class="lineno">   86</span> </div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classULoadingTransitionManager.html#ac82f2d891ac8e746f93c6562df6bfca3">TransitionWidgetClass</a>)</div>
+<div class="line"><span class="lineno">   88</span>    {</div>
+<div class="line"><span class="lineno">   89</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LoadingTransitionManager] TransitionWidgetClass is null&quot;</span>));</div>
+<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   91</span>    }</div>
+<div class="line"><span class="lineno">   92</span>    </div>
+<div class="line"><span class="lineno">   93</span>    APlayerController* PC = LocalPlayer-&gt;GetPlayerController(World);</div>
+<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">if</span> (PC == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   95</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   96</span> </div>
+<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">if</span> (!IsValid(<a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a>))</div>
+<div class="line"><span class="lineno">   98</span>    {</div>
+<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> NewWidget = CreateWidget&lt;ULoadingTransitionWidget&gt;(PC, <a class="code hl_variable" href="classULoadingTransitionManager.html#ac82f2d891ac8e746f93c6562df6bfca3">TransitionWidgetClass</a>))</div>
+<div class="line"><span class="lineno">  100</span>        {</div>
+<div class="line"><span class="lineno">  101</span>            NewWidget-&gt;AddToGameViewport(<a class="code hl_variable" href="namespaceGameLayer.html#ae4c4bd33e56196bb1e54f458059d5345">GameLayer::Loading</a>);</div>
+<div class="line"><span class="lineno">  102</span>            <a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a> = NewWidget;</div>
+<div class="line"><span class="lineno">  103</span>        }</div>
+<div class="line"><span class="lineno">  104</span>    }</div>
+<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  106</span>    {</div>
+<div class="line"><span class="lineno">  107</span>        <a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a>-&gt;SetOwningLocalPlayer(LocalPlayer);</div>
+<div class="line"><span class="lineno">  108</span> </div>
+<div class="line"><span class="lineno">  109</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a>-&gt;IsInViewport())</div>
+<div class="line"><span class="lineno">  110</span>        {</div>
+<div class="line"><span class="lineno">  111</span>            <a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a>-&gt;AddToGameViewport(<a class="code hl_variable" href="namespaceGameLayer.html#ae4c4bd33e56196bb1e54f458059d5345">GameLayer::Loading</a>);</div>
+<div class="line"><span class="lineno">  112</span>        }</div>
+<div class="line"><span class="lineno">  113</span>    }</div>
+<div class="line"><span class="lineno">  114</span>}</div>
+<div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a5ff196d090bc8489fb7be56aea0c2d4d"><div class="ttname"><a href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">ULoadingTransitionManager::TransitionWidget</a></div><div class="ttdeci">TObjectPtr&lt; class ULoadingTransitionWidget &gt; TransitionWidget</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00055">ULoadingTransitionManager.h:55</a></div></div>
+<div class="ttc" id="anamespaceGameLayer_html_ae4c4bd33e56196bb1e54f458059d5345"><div class="ttname"><a href="namespaceGameLayer.html#ae4c4bd33e56196bb1e54f458059d5345">GameLayer::Loading</a></div><div class="ttdeci">static const int32 Loading</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00009">YiSan.h:9</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="YiSan_8h_source.html#l00009">GameLayer::Loading</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00055">TransitionWidget</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00052">TransitionWidgetClass</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00238">HandlePostLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00218">HandlePreLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00116">ShowLoadingScreen()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULoadingTransitionManager_a8fe3714ec42a3c54c678855c4f47ae46_icgraph.svg" width="100%" height="434"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="aad72c49048dac1b81aa823d5a3d10fa3" name="aad72c49048dac1b81aa823d5a3d10fa3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad72c49048dac1b81aa823d5a3d10fa3">&#9670;&#160;</a></span>FinalizeHide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ULoadingTransitionManager::FinalizeHide </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8cpp_source.html">ULoadingTransitionManager.cpp</a> 파일의 <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00194">194</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  195</span>{</div>
+<div class="line"><span class="lineno">  196</span>    <span class="keywordflow">if</span> (UWorld* World = GetWorld())</div>
+<div class="line"><span class="lineno">  197</span>    {</div>
+<div class="line"><span class="lineno">  198</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classULoadingTransitionManager.html#a10168ac9a6e587fad27f438c6092f0d1">HideTimerHandle</a>.IsValid())</div>
+<div class="line"><span class="lineno">  199</span>        {</div>
+<div class="line"><span class="lineno">  200</span>            World-&gt;GetTimerManager().ClearTimer(<a class="code hl_variable" href="classULoadingTransitionManager.html#a10168ac9a6e587fad27f438c6092f0d1">HideTimerHandle</a>);</div>
+<div class="line"><span class="lineno">  201</span>        }</div>
+<div class="line"><span class="lineno">  202</span>    }</div>
+<div class="line"><span class="lineno">  203</span> </div>
+<div class="line"><span class="lineno">  204</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a>)</div>
+<div class="line"><span class="lineno">  205</span>    {</div>
+<div class="line"><span class="lineno">  206</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a>-&gt;IsInViewport())</div>
+<div class="line"><span class="lineno">  207</span>        {</div>
+<div class="line"><span class="lineno">  208</span>            <a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a>-&gt;RemoveFromParent();</div>
+<div class="line"><span class="lineno">  209</span>        }</div>
+<div class="line"><span class="lineno">  210</span> </div>
+<div class="line"><span class="lineno">  211</span>        <a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a>-&gt;SetVisibility(ESlateVisibility::Collapsed);</div>
+<div class="line"><span class="lineno">  212</span>    }</div>
+<div class="line"><span class="lineno">  213</span> </div>
+<div class="line"><span class="lineno">  214</span>    <a class="code hl_variable" href="classULoadingTransitionManager.html#a9f45add20e8754e87f71db79e4a337ed">bHideRequested</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  215</span>    <a class="code hl_variable" href="classULoadingTransitionManager.html#a8caeb5af6a2df2f1cac42c4d998f183e">bIsShowing</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  216</span>}</div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a10168ac9a6e587fad27f438c6092f0d1"><div class="ttname"><a href="classULoadingTransitionManager.html#a10168ac9a6e587fad27f438c6092f0d1">ULoadingTransitionManager::HideTimerHandle</a></div><div class="ttdeci">FTimerHandle HideTimerHandle</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00061">ULoadingTransitionManager.h:61</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a8caeb5af6a2df2f1cac42c4d998f183e"><div class="ttname"><a href="classULoadingTransitionManager.html#a8caeb5af6a2df2f1cac42c4d998f183e">ULoadingTransitionManager::bIsShowing</a></div><div class="ttdeci">bool bIsShowing</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00066">ULoadingTransitionManager.h:66</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a9f45add20e8754e87f71db79e4a337ed"><div class="ttname"><a href="classULoadingTransitionManager.html#a9f45add20e8754e87f71db79e4a337ed">ULoadingTransitionManager::bHideRequested</a></div><div class="ttdeci">bool bHideRequested</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00059">ULoadingTransitionManager.h:59</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">bHideRequested</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00066">bIsShowing</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00061">HideTimerHandle</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00055">TransitionWidget</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00152">HideLoadingScreen()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classULoadingTransitionManager_aad72c49048dac1b81aa823d5a3d10fa3_icgraph.svg" width="464" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="abf4ee0433d0e05c7e505c67afda16b8d" name="abf4ee0433d0e05c7e505c67afda16b8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf4ee0433d0e05c7e505c67afda16b8d">&#9670;&#160;</a></span>HandlePostLoadMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ULoadingTransitionManager::HandlePostLoadMap </td>
+          <td>(</td>
+          <td class="paramtype">UWorld *&#160;</td>
+          <td class="paramname"><em>LoadedWorld</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8cpp_source.html">ULoadingTransitionManager.cpp</a> 파일의 <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00238">238</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  239</span>{</div>
+<div class="line"><span class="lineno">  240</span>    <span class="keywordflow">if</span> (!LoadedWorld)</div>
+<div class="line"><span class="lineno">  241</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  242</span> </div>
+<div class="line"><span class="lineno">  243</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classULoadingTransitionManager.html#a8caeb5af6a2df2f1cac42c4d998f183e">bIsShowing</a> &amp;&amp; !<a class="code hl_variable" href="classULoadingTransitionManager.html#a9f45add20e8754e87f71db79e4a337ed">bHideRequested</a>)</div>
+<div class="line"><span class="lineno">  244</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  245</span> </div>
+<div class="line"><span class="lineno">  246</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classULoadingTransitionManager.html#a3140a82516832c40d9dbc42417bb80f9">DoesWorldBelongToLocalPlayer</a>(LoadedWorld))</div>
+<div class="line"><span class="lineno">  247</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  248</span> </div>
+<div class="line"><span class="lineno">  249</span>    <a class="code hl_function" href="classULoadingTransitionManager.html#a8fe3714ec42a3c54c678855c4f47ae46">EnsureWidgetForWorld</a>(LoadedWorld);</div>
+<div class="line"><span class="lineno">  250</span> </div>
+<div class="line"><span class="lineno">  251</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a>)</div>
+<div class="line"><span class="lineno">  252</span>    {</div>
+<div class="line"><span class="lineno">  253</span>        <a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a>-&gt;SetVisibility(ESlateVisibility::Visible);</div>
+<div class="line"><span class="lineno">  254</span>    }</div>
+<div class="line"><span class="lineno">  255</span>}</div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a3140a82516832c40d9dbc42417bb80f9"><div class="ttname"><a href="classULoadingTransitionManager.html#a3140a82516832c40d9dbc42417bb80f9">ULoadingTransitionManager::DoesWorldBelongToLocalPlayer</a></div><div class="ttdeci">bool DoesWorldBelongToLocalPlayer(const UWorld *World) const</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8cpp_source.html#l00257">ULoadingTransitionManager.cpp:257</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a8fe3714ec42a3c54c678855c4f47ae46"><div class="ttname"><a href="classULoadingTransitionManager.html#a8fe3714ec42a3c54c678855c4f47ae46">ULoadingTransitionManager::EnsureWidgetForWorld</a></div><div class="ttdeci">void EnsureWidgetForWorld(UWorld *World)</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8cpp_source.html#l00067">ULoadingTransitionManager.cpp:67</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">bHideRequested</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00066">bIsShowing</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00257">DoesWorldBelongToLocalPlayer()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00067">EnsureWidgetForWorld()</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00055">TransitionWidget</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00031">Initialize()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classULoadingTransitionManager_abf4ee0433d0e05c7e505c67afda16b8d_cgraph.svg" width="496" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classULoadingTransitionManager_abf4ee0433d0e05c7e505c67afda16b8d_icgraph.svg" width="464" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a44cbc486671c93224ccd7309c3be8027" name="a44cbc486671c93224ccd7309c3be8027"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44cbc486671c93224ccd7309c3be8027">&#9670;&#160;</a></span>HandlePreLoadMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ULoadingTransitionManager::HandlePreLoadMap </td>
+          <td>(</td>
+          <td class="paramtype">const struct FWorldContext &amp;&#160;</td>
+          <td class="paramname"><em>WorldContext</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const FString &amp;&#160;</td>
+          <td class="paramname"><em>MapName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8cpp_source.html">ULoadingTransitionManager.cpp</a> 파일의 <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00218">218</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  219</span>{</div>
+<div class="line"><span class="lineno">  220</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classULoadingTransitionManager.html#a8caeb5af6a2df2f1cac42c4d998f183e">bIsShowing</a> &amp;&amp; !<a class="code hl_variable" href="classULoadingTransitionManager.html#a9f45add20e8754e87f71db79e4a337ed">bHideRequested</a>)</div>
+<div class="line"><span class="lineno">  221</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  222</span> </div>
+<div class="line"><span class="lineno">  223</span>    UWorld* World = WorldContext.World();</div>
+<div class="line"><span class="lineno">  224</span>    <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><span class="lineno">  225</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  226</span> </div>
+<div class="line"><span class="lineno">  227</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classULoadingTransitionManager.html#a3140a82516832c40d9dbc42417bb80f9">DoesWorldBelongToLocalPlayer</a>(World))</div>
+<div class="line"><span class="lineno">  228</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  229</span> </div>
+<div class="line"><span class="lineno">  230</span>    <a class="code hl_function" href="classULoadingTransitionManager.html#a8fe3714ec42a3c54c678855c4f47ae46">EnsureWidgetForWorld</a>(World);</div>
+<div class="line"><span class="lineno">  231</span> </div>
+<div class="line"><span class="lineno">  232</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a>)</div>
+<div class="line"><span class="lineno">  233</span>    {</div>
+<div class="line"><span class="lineno">  234</span>        <a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a>-&gt;SetVisibility(ESlateVisibility::Visible);</div>
+<div class="line"><span class="lineno">  235</span>    }</div>
+<div class="line"><span class="lineno">  236</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">bHideRequested</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00066">bIsShowing</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00257">DoesWorldBelongToLocalPlayer()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00067">EnsureWidgetForWorld()</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00055">TransitionWidget</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00031">Initialize()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classULoadingTransitionManager_a44cbc486671c93224ccd7309c3be8027_cgraph.svg" width="496" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classULoadingTransitionManager_a44cbc486671c93224ccd7309c3be8027_icgraph.svg" width="464" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a6f1079c8dba8f07b0f7869f436975b9a" name="a6f1079c8dba8f07b0f7869f436975b9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f1079c8dba8f07b0f7869f436975b9a">&#9670;&#160;</a></span>HideLoadingScreen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ULoadingTransitionManager::HideLoadingScreen </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>로딩 화면을 제거합니다. </p>
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8cpp_source.html">ULoadingTransitionManager.cpp</a> 파일의 <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00152">152</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  153</span>{</div>
+<div class="line"><span class="lineno">  154</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a>)</div>
+<div class="line"><span class="lineno">  155</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  156</span>    </div>
+<div class="line"><span class="lineno">  157</span>    <a class="code hl_variable" href="classULoadingTransitionManager.html#ac57a7358f24721c76470f8c2c41876fc">LatestReportedProgress</a> = FMath::Clamp(<a class="code hl_variable" href="classULoadingTransitionManager.html#ac57a7358f24721c76470f8c2c41876fc">LatestReportedProgress</a>, 0.0f, 1.0f);</div>
+<div class="line"><span class="lineno">  158</span> </div>
+<div class="line"><span class="lineno">  159</span> </div>
+<div class="line"><span class="lineno">  160</span>    <span class="keywordflow">if</span> (UWorld* World = GetWorld())</div>
+<div class="line"><span class="lineno">  161</span>    {</div>
+<div class="line"><span class="lineno">  162</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classULoadingTransitionManager.html#a10168ac9a6e587fad27f438c6092f0d1">HideTimerHandle</a>.IsValid())</div>
+<div class="line"><span class="lineno">  163</span>        {</div>
+<div class="line"><span class="lineno">  164</span>            World-&gt;GetTimerManager().ClearTimer(<a class="code hl_variable" href="classULoadingTransitionManager.html#a10168ac9a6e587fad27f438c6092f0d1">HideTimerHandle</a>);</div>
+<div class="line"><span class="lineno">  165</span>        }</div>
+<div class="line"><span class="lineno">  166</span> </div>
+<div class="line"><span class="lineno">  167</span>        <span class="keyword">const</span> <span class="keywordtype">double</span> Elapsed = FPlatformTime::Seconds() - <a class="code hl_variable" href="classULoadingTransitionManager.html#a0cec657b262d8df1fa2ec6c87094fcf7">LastShowTimestamp</a>;</div>
+<div class="line"><span class="lineno">  168</span>        <span class="keywordtype">double</span> Delay = 0.0;</div>
+<div class="line"><span class="lineno">  169</span> </div>
+<div class="line"><span class="lineno">  170</span>        <span class="keywordflow">if</span> (Elapsed &lt; <a class="code hl_variable" href="classULoadingTransitionManager.html#a139436881c59525cd319a2cd2e291a9e">MinVisibleDurationSeconds</a>)</div>
+<div class="line"><span class="lineno">  171</span>        {</div>
+<div class="line"><span class="lineno">  172</span>            Delay = <a class="code hl_variable" href="classULoadingTransitionManager.html#a139436881c59525cd319a2cd2e291a9e">MinVisibleDurationSeconds</a> - Elapsed;</div>
+<div class="line"><span class="lineno">  173</span>        }</div>
+<div class="line"><span class="lineno">  174</span> </div>
+<div class="line"><span class="lineno">  175</span>        Delay = FMath::Max(Delay, <a class="code hl_variable" href="classULoadingTransitionManager.html#a255c98757ff29f509df54884461c7c5b">HoldAfterCompletionSeconds</a>);</div>
+<div class="line"><span class="lineno">  176</span> </div>
+<div class="line"><span class="lineno">  177</span>        <span class="keywordflow">if</span> (Delay &gt; KINDA_SMALL_NUMBER)</div>
+<div class="line"><span class="lineno">  178</span>        {</div>
+<div class="line"><span class="lineno">  179</span>            <a class="code hl_variable" href="classULoadingTransitionManager.html#a9f45add20e8754e87f71db79e4a337ed">bHideRequested</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  180</span>            World-&gt;GetTimerManager().SetTimer(</div>
+<div class="line"><span class="lineno">  181</span>                    <a class="code hl_variable" href="classULoadingTransitionManager.html#a10168ac9a6e587fad27f438c6092f0d1">HideTimerHandle</a>,</div>
+<div class="line"><span class="lineno">  182</span>                    <span class="keyword">this</span>,</div>
+<div class="line"><span class="lineno">  183</span>                    &amp;<a class="code hl_function" href="classULoadingTransitionManager.html#aad72c49048dac1b81aa823d5a3d10fa3">ULoadingTransitionManager::FinalizeHide</a>,</div>
+<div class="line"><span class="lineno">  184</span>                    Delay,</div>
+<div class="line"><span class="lineno">  185</span>                    <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  186</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  187</span>        }</div>
+<div class="line"><span class="lineno">  188</span>    }</div>
+<div class="line"><span class="lineno">  189</span> </div>
+<div class="line"><span class="lineno">  190</span>    <a class="code hl_function" href="classULoadingTransitionManager.html#aad72c49048dac1b81aa823d5a3d10fa3">FinalizeHide</a>();</div>
+<div class="line"><span class="lineno">  191</span>    </div>
+<div class="line"><span class="lineno">  192</span>}</div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a0cec657b262d8df1fa2ec6c87094fcf7"><div class="ttname"><a href="classULoadingTransitionManager.html#a0cec657b262d8df1fa2ec6c87094fcf7">ULoadingTransitionManager::LastShowTimestamp</a></div><div class="ttdeci">double LastShowTimestamp</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00057">ULoadingTransitionManager.h:57</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a139436881c59525cd319a2cd2e291a9e"><div class="ttname"><a href="classULoadingTransitionManager.html#a139436881c59525cd319a2cd2e291a9e">ULoadingTransitionManager::MinVisibleDurationSeconds</a></div><div class="ttdeci">static constexpr double MinVisibleDurationSeconds</div><div class="ttdoc">로딩 화면 제거를 지연 처리하기 위한 최소 노출 시간(초)</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00045">ULoadingTransitionManager.h:45</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a255c98757ff29f509df54884461c7c5b"><div class="ttname"><a href="classULoadingTransitionManager.html#a255c98757ff29f509df54884461c7c5b">ULoadingTransitionManager::HoldAfterCompletionSeconds</a></div><div class="ttdeci">static constexpr double HoldAfterCompletionSeconds</div><div class="ttdoc">완료 이후 페이드아웃 전 유지 시간(초)</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00048">ULoadingTransitionManager.h:48</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_aad72c49048dac1b81aa823d5a3d10fa3"><div class="ttname"><a href="classULoadingTransitionManager.html#aad72c49048dac1b81aa823d5a3d10fa3">ULoadingTransitionManager::FinalizeHide</a></div><div class="ttdeci">void FinalizeHide()</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8cpp_source.html#l00194">ULoadingTransitionManager.cpp:194</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_ac57a7358f24721c76470f8c2c41876fc"><div class="ttname"><a href="classULoadingTransitionManager.html#ac57a7358f24721c76470f8c2c41876fc">ULoadingTransitionManager::LatestReportedProgress</a></div><div class="ttdeci">float LatestReportedProgress</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00058">ULoadingTransitionManager.h:58</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">bHideRequested</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00194">FinalizeHide()</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00061">HideTimerHandle</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00048">HoldAfterCompletionSeconds</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00057">LastShowTimestamp</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00058">LatestReportedProgress</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00045">MinVisibleDurationSeconds</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00055">TransitionWidget</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classULoadingTransitionManager_a6f1079c8dba8f07b0f7869f436975b9a_cgraph.svg" width="464" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ac6f27ab54e6d0a5f38f0259383cfcce6" name="ac6f27ab54e6d0a5f38f0259383cfcce6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6f27ab54e6d0a5f38f0259383cfcce6">&#9670;&#160;</a></span>Initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ULoadingTransitionManager::Initialize </td>
+          <td>(</td>
+          <td class="paramtype">FSubsystemCollectionBase &amp;&#160;</td>
+          <td class="paramname"><em>Collection</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8cpp_source.html">ULoadingTransitionManager.cpp</a> 파일의 <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00031">31</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>{</div>
+<div class="line"><span class="lineno">   33</span>    Super::Initialize(Collection);</div>
+<div class="line"><span class="lineno">   34</span> </div>
+<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classULoadingTransitionManager.html#a05797174c2d7cdbc505e021c74927628">PreLoadMapHandle</a>.IsValid())</div>
+<div class="line"><span class="lineno">   36</span>    {</div>
+<div class="line"><span class="lineno">   37</span>        <a class="code hl_variable" href="classULoadingTransitionManager.html#a05797174c2d7cdbc505e021c74927628">PreLoadMapHandle</a> = FCoreUObjectDelegates::PreLoadMapWithContext.AddUObject(</div>
+<div class="line"><span class="lineno">   38</span>                <span class="keyword">this</span>,</div>
+<div class="line"><span class="lineno">   39</span>                &amp;<a class="code hl_function" href="classULoadingTransitionManager.html#a44cbc486671c93224ccd7309c3be8027">ULoadingTransitionManager::HandlePreLoadMap</a>);</div>
+<div class="line"><span class="lineno">   40</span>    }</div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classULoadingTransitionManager.html#ade0ed97cde881fc3973ec31b73af0d64">PostLoadMapHandle</a>.IsValid())</div>
+<div class="line"><span class="lineno">   43</span>    {</div>
+<div class="line"><span class="lineno">   44</span>        <a class="code hl_variable" href="classULoadingTransitionManager.html#ade0ed97cde881fc3973ec31b73af0d64">PostLoadMapHandle</a> = FCoreUObjectDelegates::PostLoadMapWithWorld.AddUObject(</div>
+<div class="line"><span class="lineno">   45</span>                <span class="keyword">this</span>,</div>
+<div class="line"><span class="lineno">   46</span>                &amp;<a class="code hl_function" href="classULoadingTransitionManager.html#abf4ee0433d0e05c7e505c67afda16b8d">ULoadingTransitionManager::HandlePostLoadMap</a>);</div>
+<div class="line"><span class="lineno">   47</span>    }</div>
+<div class="line"><span class="lineno">   48</span>}</div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a44cbc486671c93224ccd7309c3be8027"><div class="ttname"><a href="classULoadingTransitionManager.html#a44cbc486671c93224ccd7309c3be8027">ULoadingTransitionManager::HandlePreLoadMap</a></div><div class="ttdeci">void HandlePreLoadMap(const struct FWorldContext &amp;WorldContext, const FString &amp;MapName)</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8cpp_source.html#l00218">ULoadingTransitionManager.cpp:218</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_abf4ee0433d0e05c7e505c67afda16b8d"><div class="ttname"><a href="classULoadingTransitionManager.html#abf4ee0433d0e05c7e505c67afda16b8d">ULoadingTransitionManager::HandlePostLoadMap</a></div><div class="ttdeci">void HandlePostLoadMap(UWorld *LoadedWorld)</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8cpp_source.html#l00238">ULoadingTransitionManager.cpp:238</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00238">HandlePostLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00218">HandlePreLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00064">PostLoadMapHandle</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00063">PreLoadMapHandle</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULoadingTransitionManager_ac6f27ab54e6d0a5f38f0259383cfcce6_cgraph.svg" width="100%" height="386"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="ac14249f22dbee95f85a0d15c740a2494" name="ac14249f22dbee95f85a0d15c740a2494"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac14249f22dbee95f85a0d15c740a2494">&#9670;&#160;</a></span>ShowLoadingScreen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ULoadingTransitionManager::ShowLoadingScreen </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>로딩 화면을 표시합니다. </p>
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8cpp_source.html">ULoadingTransitionManager.cpp</a> 파일의 <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00116">116</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  117</span>{</div>
+<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">if</span> (UWorld* World = GetWorld())</div>
+<div class="line"><span class="lineno">  119</span>    {</div>
+<div class="line"><span class="lineno">  120</span>        <a class="code hl_function" href="classULoadingTransitionManager.html#a8fe3714ec42a3c54c678855c4f47ae46">EnsureWidgetForWorld</a>(World);</div>
+<div class="line"><span class="lineno">  121</span> </div>
+<div class="line"><span class="lineno">  122</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> DialogManager = UDialogManager::Get(<span class="keyword">this</span>))</div>
+<div class="line"><span class="lineno">  123</span>        {</div>
+<div class="line"><span class="lineno">  124</span>            DialogManager-&gt;HideToastImmediately();</div>
+<div class="line"><span class="lineno">  125</span>        }</div>
+<div class="line"><span class="lineno">  126</span> </div>
+<div class="line"><span class="lineno">  127</span>        <a class="code hl_variable" href="classULoadingTransitionManager.html#a8caeb5af6a2df2f1cac42c4d998f183e">bIsShowing</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  128</span>        </div>
+<div class="line"><span class="lineno">  129</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a>)</div>
+<div class="line"><span class="lineno">  130</span>        {</div>
+<div class="line"><span class="lineno">  131</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a>-&gt;IsInViewport())</div>
+<div class="line"><span class="lineno">  132</span>            {</div>
+<div class="line"><span class="lineno">  133</span>                <a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a>-&gt;AddToGameViewport(<a class="code hl_variable" href="namespaceGameLayer.html#ae4c4bd33e56196bb1e54f458059d5345">GameLayer::Loading</a>);</div>
+<div class="line"><span class="lineno">  134</span>            }</div>
+<div class="line"><span class="lineno">  135</span> </div>
+<div class="line"><span class="lineno">  136</span>            <a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a>-&gt;SetVisibility(ESlateVisibility::Visible);</div>
+<div class="line"><span class="lineno">  137</span> </div>
+<div class="line"><span class="lineno">  138</span>            <a class="code hl_variable" href="classULoadingTransitionManager.html#ac57a7358f24721c76470f8c2c41876fc">LatestReportedProgress</a> = 0.0f;</div>
+<div class="line"><span class="lineno">  139</span>            <a class="code hl_variable" href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">TransitionWidget</a>-&gt;RefreshLoadingTip();</div>
+<div class="line"><span class="lineno">  140</span> </div>
+<div class="line"><span class="lineno">  141</span>            <span class="keywordflow">if</span> (World)</div>
+<div class="line"><span class="lineno">  142</span>            {</div>
+<div class="line"><span class="lineno">  143</span>                World-&gt;GetTimerManager().ClearTimer(<a class="code hl_variable" href="classULoadingTransitionManager.html#a10168ac9a6e587fad27f438c6092f0d1">HideTimerHandle</a>);</div>
+<div class="line"><span class="lineno">  144</span>            }</div>
+<div class="line"><span class="lineno">  145</span> </div>
+<div class="line"><span class="lineno">  146</span>            <a class="code hl_variable" href="classULoadingTransitionManager.html#a0cec657b262d8df1fa2ec6c87094fcf7">LastShowTimestamp</a> = FPlatformTime::Seconds();</div>
+<div class="line"><span class="lineno">  147</span>            <a class="code hl_variable" href="classULoadingTransitionManager.html#a9f45add20e8754e87f71db79e4a337ed">bHideRequested</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  148</span>        }</div>
+<div class="line"><span class="lineno">  149</span>    }</div>
+<div class="line"><span class="lineno">  150</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">bHideRequested</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00066">bIsShowing</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00067">EnsureWidgetForWorld()</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00061">HideTimerHandle</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00057">LastShowTimestamp</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00058">LatestReportedProgress</a>, <a class="el" href="YiSan_8h_source.html#l00009">GameLayer::Loading</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00055">TransitionWidget</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classULoadingTransitionManager_ac14249f22dbee95f85a0d15c740a2494_cgraph.svg" width="464" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">멤버 데이터 문서화</h2>
+<a id="a9f45add20e8754e87f71db79e4a337ed" name="a9f45add20e8754e87f71db79e4a337ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f45add20e8754e87f71db79e4a337ed">&#9670;&#160;</a></span>bHideRequested</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ULoadingTransitionManager::bHideRequested = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">59</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00194">FinalizeHide()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00238">HandlePostLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00218">HandlePreLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00152">HideLoadingScreen()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00116">ShowLoadingScreen()</a>.</p>
+
+</div>
+</div>
+<a id="a8caeb5af6a2df2f1cac42c4d998f183e" name="a8caeb5af6a2df2f1cac42c4d998f183e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8caeb5af6a2df2f1cac42c4d998f183e">&#9670;&#160;</a></span>bIsShowing</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ULoadingTransitionManager::bIsShowing = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00066">66</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00194">FinalizeHide()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00238">HandlePostLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00218">HandlePreLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00116">ShowLoadingScreen()</a>.</p>
+
+</div>
+</div>
+<a id="a10168ac9a6e587fad27f438c6092f0d1" name="a10168ac9a6e587fad27f438c6092f0d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10168ac9a6e587fad27f438c6092f0d1">&#9670;&#160;</a></span>HideTimerHandle</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FTimerHandle ULoadingTransitionManager::HideTimerHandle</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00061">61</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00194">FinalizeHide()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00152">HideLoadingScreen()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00116">ShowLoadingScreen()</a>.</p>
+
+</div>
+</div>
+<a id="a255c98757ff29f509df54884461c7c5b" name="a255c98757ff29f509df54884461c7c5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a255c98757ff29f509df54884461c7c5b">&#9670;&#160;</a></span>HoldAfterCompletionSeconds</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr double ULoadingTransitionManager::HoldAfterCompletionSeconds = 0.35</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>완료 이후 페이드아웃 전 유지 시간(초) </p>
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00048">48</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00152">HideLoadingScreen()</a>.</p>
+
+</div>
+</div>
+<a id="a0cec657b262d8df1fa2ec6c87094fcf7" name="a0cec657b262d8df1fa2ec6c87094fcf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cec657b262d8df1fa2ec6c87094fcf7">&#9670;&#160;</a></span>LastShowTimestamp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ULoadingTransitionManager::LastShowTimestamp = 0.0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00057">57</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00152">HideLoadingScreen()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00116">ShowLoadingScreen()</a>.</p>
+
+</div>
+</div>
+<a id="ac57a7358f24721c76470f8c2c41876fc" name="ac57a7358f24721c76470f8c2c41876fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac57a7358f24721c76470f8c2c41876fc">&#9670;&#160;</a></span>LatestReportedProgress</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ULoadingTransitionManager::LatestReportedProgress = 0.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00058">58</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00152">HideLoadingScreen()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00116">ShowLoadingScreen()</a>.</p>
+
+</div>
+</div>
+<a id="a139436881c59525cd319a2cd2e291a9e" name="a139436881c59525cd319a2cd2e291a9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a139436881c59525cd319a2cd2e291a9e">&#9670;&#160;</a></span>MinVisibleDurationSeconds</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr double ULoadingTransitionManager::MinVisibleDurationSeconds = 1.5</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>로딩 화면 제거를 지연 처리하기 위한 최소 노출 시간(초) </p>
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00045">45</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00152">HideLoadingScreen()</a>.</p>
+
+</div>
+</div>
+<a id="ade0ed97cde881fc3973ec31b73af0d64" name="ade0ed97cde881fc3973ec31b73af0d64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade0ed97cde881fc3973ec31b73af0d64">&#9670;&#160;</a></span>PostLoadMapHandle</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FDelegateHandle ULoadingTransitionManager::PostLoadMapHandle</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00064">64</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00050">Deinitialize()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00031">Initialize()</a>.</p>
+
+</div>
+</div>
+<a id="a05797174c2d7cdbc505e021c74927628" name="a05797174c2d7cdbc505e021c74927628"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05797174c2d7cdbc505e021c74927628">&#9670;&#160;</a></span>PreLoadMapHandle</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FDelegateHandle ULoadingTransitionManager::PreLoadMapHandle</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00063">63</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00050">Deinitialize()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00031">Initialize()</a>.</p>
+
+</div>
+</div>
+<a id="a5ff196d090bc8489fb7be56aea0c2d4d" name="a5ff196d090bc8489fb7be56aea0c2d4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ff196d090bc8489fb7be56aea0c2d4d">&#9670;&#160;</a></span>TransitionWidget</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class <a class="el" href="classULoadingTransitionWidget.html">ULoadingTransitionWidget</a>&gt; ULoadingTransitionManager::TransitionWidget</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00055">55</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00067">EnsureWidgetForWorld()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00194">FinalizeHide()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00238">HandlePostLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00218">HandlePreLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00152">HideLoadingScreen()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00116">ShowLoadingScreen()</a>.</p>
+
+</div>
+</div>
+<a id="ac82f2d891ac8e746f93c6562df6bfca3" name="ac82f2d891ac8e746f93c6562df6bfca3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac82f2d891ac8e746f93c6562df6bfca3">&#9670;&#160;</a></span>TransitionWidgetClass</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TSubclassOf&lt;class <a class="el" href="classULoadingTransitionWidget.html">ULoadingTransitionWidget</a>&gt; ULoadingTransitionManager::TransitionWidgetClass</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00052">52</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00026">ULoadingTransitionManager()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00067">EnsureWidgetForWorld()</a>.</p>
+
+</div>
+</div>
+<hr/>이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.:<ul>
+<li>Source/YiSan/UI/Public/<a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a></li>
+<li>Source/YiSan/UI/Private/<a class="el" href="ULoadingTransitionManager_8cpp_source.html">ULoadingTransitionManager.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classULoadingTransitionManager.html">ULoadingTransitionManager</a></li>
+    <li class="footer">생성시간 : 토 11월 8 2025 14:04:19, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

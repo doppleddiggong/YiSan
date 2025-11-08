@@ -1,0 +1,9 @@
+<map id="AYisanGameState::RequestRefreshPlayerList" name="AYisanGameState::RequestRefreshPlayerList">
+<area shape="rect" id="Node000001" title="플레이어 목록 업데이트를 요청합니다." alt="" coords="5,35,204,75"/>
+<area shape="rect" id="Node000002" href="$classAYisanGameState.html#a67dd0e42e9dc3725d79c30b16a150fe8" title="권한 서버에 플레이어 목록 재구성을 요청합니다." alt="" coords="273,5,488,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,41,259,36,260,41,205,47"/>
+<area shape="rect" id="Node000003" href="$classAYisanGameState.html#a99b1f96f16450bc5c7dc21abcb5503eb" title="플레이어 목록을 업데이트하고 브로드캐스트합니다." alt="" coords="252,70,509,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,62,242,66,241,71,204,67"/>
+<area shape="rect" id="Node000004" href="$classAYisanGameState.html#a95c74d56a72a388fd511f0651ad4800e" title="복제된 플레이어 목록 배열이 변할 때 호출됩니다." alt="" coords="557,63,747,103"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="510,80,544,80,544,85,510,85"/>
+</map>

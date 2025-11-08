@@ -1,0 +1,5 @@
+<map id="FGPTContext::AddNearbyBuilding" name="FGPTContext::AddNearbyBuilding">
+<area shape="rect" id="Node000001" title="주변 건물 목록에 항목을 추가합니다." alt="" coords="5,13,244,38"/>
+<area shape="rect" id="Node000002" href="$structFGPTContextNearBuilding.html#a3261449c43062cffd3d252522871d4d7" title="데이터가 유효한지 여부를 반환합니다." alt="" coords="292,5,483,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="244,23,278,23,278,28,244,28"/>
+</map>

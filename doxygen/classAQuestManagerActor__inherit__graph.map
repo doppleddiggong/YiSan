@@ -1,0 +1,5 @@
+<map id="AQuestManagerActor" name="AQuestManagerActor">
+<area shape="rect" id="Node000001" title="서버 주도형 퀘스트 진행 상태를 관리하는 액터입니다." alt="" coords="5,119,227,464"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="87,5,145,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,85,119,118,113,118,113,85"/>
+</map>

@@ -1,0 +1,18 @@
+<map id="Source/YiSan/Network/Public/UWebSocketSystem.h" name="Source/YiSan/Network/Public/UWebSocketSystem.h">
+<area shape="rect" id="Node000001" title="실시간 음성·텍스트 상호작용을 위한 WebSocket 서브시스템을 선언합니다." alt="" coords="353,5,564,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="41,167,159,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="353,30,256,34,155,45,108,54,68,65,35,79,14,95,9,104,8,112,18,129,38,145,62,159,59,163,34,149,14,132,3,113,4,102,10,92,33,74,66,60,107,49,154,40,256,29,353,25"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="24,93,307,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="389,48,222,92,221,87,388,43"/>
+<area shape="rect" id="Node000004" href="$FGPTContext_8h.html" title="GPT 상호작용에 사용되는 공간 컨텍스트 구조체를 정의합니다." alt="" coords="330,93,449,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="444,47,411,84,407,81,440,44"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="473,93,583,119"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="477,44,510,81,506,84,473,47"/>
+<area shape="rect" id="Node000007" href="$Macro_8h.html" title="YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다." alt="" coords="607,93,681,119"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="504,43,605,85,603,90,502,48"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="705,93,940,119"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="546,43,757,88,756,93,545,48"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="343,121,161,166,159,161,342,116"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="295,167,483,192"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="392,119,392,153,387,153,387,119"/>
+</map>

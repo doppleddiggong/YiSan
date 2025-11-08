@@ -1,0 +1,15 @@
+<map id="UHttpNetworkSystem::GetLogPrefix" name="UHttpNetworkSystem::GetLogPrefix">
+<area shape="rect" id="Node000001" title="요청 타입에 맞는 로그 접두사를 반환합니다." alt="" coords="429,133,593,173"/>
+<area shape="rect" id="Node000002" href="$classUHttpNetworkSystem.html#a7e1c4594cecb3e83131e17106e654d07" title="공통 네트워크 로그 메시지를 출력합니다." alt="" coords="217,133,381,173"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="416,156,381,156,381,151,416,151"/>
+<area shape="rect" id="Node000003" href="$classUHttpNetworkSystem.html#a6a3c0a854e47613896fd9056ea767c2e" title="음성 파일과 공간 컨텍스트를 함께 업로드해 ASK 파이프라인을 실행합니다." alt="" coords="5,5,169,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="263,127,219,93,168,60,144,48,146,43,171,55,222,88,266,123"/>
+<area shape="rect" id="Node000004" href="$classUHttpNetworkSystem.html#a127dd656098d79e803829267290acdc9" title="텍스트 질의와 컨텍스트를 서버로 전송해 GPT 응답을 요청합니다." alt="" coords="5,69,169,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="218,132,153,112,155,107,220,127"/>
+<area shape="rect" id="Node000005" href="$classUHttpNetworkSystem.html#a5409712d1a8c7226e51c68335fcc3d48" title="서버 상태 확인을 위한 /health 요청을 전송합니다." alt="" coords="5,133,169,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="204,156,169,156,169,151,204,151"/>
+<area shape="rect" id="Node000006" href="$classUHttpNetworkSystem.html#a2fb8a0876cc52293f4cc8277755bbaf3" title="음성 인식을 위해 녹음 파일을 업로드합니다." alt="" coords="5,197,169,237"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="220,180,155,200,153,195,218,175"/>
+<area shape="rect" id="Node000007" href="$classUHttpNetworkSystem.html#a5fc276edb826fd86d8bb3c69466cf649" title="지정한 텍스트를 음성으로 변환하도록 요청합니다." alt="" coords="5,261,169,301"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="266,184,222,218,171,252,146,264,144,259,168,247,219,214,263,180"/>
+</map>

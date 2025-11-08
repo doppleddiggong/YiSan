@@ -1,0 +1,5 @@
+<map id="AYisanGameState::StartGlobalTour" name="AYisanGameState::StartGlobalTour">
+<area shape="rect" id="Node000001" title="공유 투어 시퀀스를 시작하고 퀘스트 진행을 전개합니다." alt="" coords="5,5,252,31"/>
+<area shape="rect" id="Node000002" href="$classAQuestManagerActor.html#a64e0505f7337bb8f6bb6ca038a302bb9" title="주어진 월드 컨텍스트에서 퀘스트 매니저를 찾는 헬퍼입니다." alt="" coords="300,5,491,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="252,15,286,15,286,21,252,21"/>
+</map>

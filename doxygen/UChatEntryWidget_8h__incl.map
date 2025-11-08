@@ -1,0 +1,35 @@
+<map id="Source/YiSan/UI/Public/UChatEntryWidget.h" name="Source/YiSan/UI/Public/UChatEntryWidget.h">
+<area shape="rect" id="Node000001" title="UChatEntryWidget 클래스를 선언합니다." alt="" coords="239,5,406,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,313,123,339"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="240,41,183,61,157,76,134,95,115,118,101,145,80,201,70,256,67,300,62,299,65,255,75,200,96,142,111,115,130,91,154,71,181,56,238,36"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="333,93,507,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="348,43,397,82,393,87,345,48"/>
+<area shape="rect" id="Node000004" href="$UChatPlayerSystem_8h.html" title="EChatMessageType 클래스를 선언합니다." alt="" coords="145,93,309,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="301,48,253,87,250,82,298,43"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="531,93,755,119"/>
+<area shape="poly" id="edge18_Node000001_Node000015" title=" " alt="" coords="400,43,583,87,582,93,399,48"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="211,121,184,142,157,168,131,202,109,239,77,302,72,299,104,236,127,199,153,165,180,138,208,117"/>
+<area shape="rect" id="Node000005" href="$NetworkData_8h.html" title="네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다." alt="" coords="167,167,287,192"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="229,119,229,153,224,153,224,119"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="311,167,540,192"/>
+<area shape="poly" id="edge16_Node000004_Node000013" title=" " alt="" coords="259,116,381,159,379,164,258,121"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="564,167,799,192"/>
+<area shape="poly" id="edge17_Node000004_Node000014" title=" " alt="" coords="300,116,595,162,594,167,299,121"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="214,194,156,242,88,305,84,301,153,238,210,190"/>
+<area shape="rect" id="Node000006" href="$FGPTContext_8h.html" title="GPT 상호작용에 사용되는 공간 컨텍스트 구조체를 정의합니다." alt="" coords="167,240,286,265"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="229,192,229,226,224,226,224,192"/>
+<area shape="rect" id="Node000008" href="$UCustomNetworkSettings_8h.html" title="서버 환경별 네트워크 설정을 노출하는 DeveloperSettings를 선언합니다." alt="" coords="311,240,513,265"/>
+<area shape="poly" id="edge10_Node000005_Node000008" title=" " alt="" coords="257,190,370,233,368,237,255,195"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="537,240,732,265"/>
+<area shape="poly" id="edge14_Node000005_Node000011" title=" " alt="" coords="287,188,556,235,555,240,286,194"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="757,240,947,265"/>
+<area shape="poly" id="edge15_Node000005_Node000012" title=" " alt="" coords="287,188,299,189,743,237,742,242,298,195,286,193"/>
+<area shape="poly" id="edge8_Node000006_Node000002" title=" " alt="" coords="202,268,104,310,102,305,199,263"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="147,313,335,339"/>
+<area shape="poly" id="edge9_Node000006_Node000007" title=" " alt="" coords="232,265,239,299,234,300,226,266"/>
+<area shape="poly" id="edge11_Node000008_Node000002" title=" " alt="" coords="357,268,134,313,133,308,356,263"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="360,313,563,339"/>
+<area shape="poly" id="edge12_Node000008_Node000009" title=" " alt="" coords="422,264,448,301,443,304,418,267"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="587,313,859,339"/>
+<area shape="poly" id="edge13_Node000008_Node000010" title=" " alt="" coords="463,263,660,308,659,313,461,268"/>
+</map>

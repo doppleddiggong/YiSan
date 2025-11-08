@@ -1,0 +1,76 @@
+<map id="Source/CoffeeLibrary/Shared/Public/NetworkLog.h" name="Source/CoffeeLibrary/Shared/Public/NetworkLog.h">
+<area shape="rect" id="Node000001" title="YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다." alt="" coords="4120,5,4328,45"/>
+<area shape="rect" id="Node000002" href="$NetworkLog_8cpp.html" title="FDateTime의 동작을 구현합니다." alt="" coords="3711,93,3942,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="4124,51,3914,96,3913,91,4123,46"/>
+<area shape="rect" id="Node000003" href="$GameLogging_8h.html" title="YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다." alt="" coords="3966,93,4186,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="4181,55,4110,96,4107,91,4178,50"/>
+<area shape="rect" id="Node000024" href="$UHttpNetworkSystem_8cpp.html" title="UHttpNetworkSystem의 동작을 구현합니다." alt="" coords="7267,189,7512,229"/>
+<area shape="poly" id="edge36_Node000001_Node000024" title=" " alt="" coords="4225,59,4230,98,4238,116,4251,131,4293,140,4394,147,4735,159,5207,167,5745,171,6759,175,7255,179,7305,186,7304,191,7254,184,6759,180,5745,176,5207,172,4735,164,4394,153,4293,145,4248,136,4234,119,4225,100,4219,59"/>
+<area shape="rect" id="Node000036" href="$NetworkData_8cpp.html" title="NetworkData 구조 구현에 대한 Doxygen 주석을 제공합니다." alt="" coords="4261,93,4451,133"/>
+<area shape="poly" id="edge35_Node000001_Node000036" title=" " alt="" coords="4266,51,4328,91,4325,95,4263,55"/>
+<area shape="rect" id="Node000037" href="$UWebSocketSystem_8cpp.html" title="UWebSocketSystem의 동작을 구현합니다." alt="" coords="4475,93,4709,133"/>
+<area shape="poly" id="edge37_Node000001_Node000037" title=" " alt="" coords="4319,46,4512,91,4511,96,4317,51"/>
+<area shape="rect" id="Node000004" href="$GameLogging_8cpp.html" title="YiSan 프로젝트를 위한 런타임 헬퍼를 제공합니다." alt="" coords="5,189,248,229"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="3952,136,3782,146,3586,154,3136,160,2629,158,2096,153,1564,149,1062,150,617,161,426,170,260,184,211,191,210,186,260,179,426,165,617,155,1061,145,1564,144,2096,148,2629,153,3136,154,3586,148,3781,141,3952,131"/>
+<area shape="rect" id="Node000005" href="$ALatteGameCharacter_8cpp.html" title=" " alt="" coords="272,181,496,236"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="3952,136,3793,146,3610,152,3189,158,2717,156,2220,152,1723,148,1255,150,841,160,663,170,508,184,496,185,496,180,508,179,663,165,841,155,1255,145,1723,143,2220,146,2717,151,3189,152,3610,147,3792,140,3952,131"/>
+<area shape="rect" id="Node000006" href="$UBuildingDetailData_8cpp.html" title="UBuildingDetailData의 동작을 구현합니다." alt="" coords="520,181,733,236"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="3953,136,3804,145,3634,151,3242,156,2339,151,1877,148,1441,150,1055,161,890,171,746,184,734,185,734,180,745,179,889,165,1055,156,1441,145,1877,143,2339,146,3242,151,3633,146,3803,140,3952,131"/>
+<area shape="rect" id="Node000007" href="$UCharacterData_8cpp.html" title="UCharacterData의 동작을 구현합니다." alt="" coords="757,189,1000,229"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="3952,136,3659,151,3300,157,2472,155,2049,153,1649,155,1296,165,1144,173,1012,184,963,191,962,186,1012,179,1144,168,1296,159,1649,150,2049,148,2472,149,3300,151,3659,145,3952,131"/>
+<area shape="rect" id="Node000008" href="$UGameDataManager_8cpp.html" title="UGameDataManager의 동작을 구현합니다." alt="" coords="1025,181,1242,236"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="3952,136,3683,149,3353,155,2593,153,2204,152,1838,154,1514,164,1375,173,1254,184,1243,185,1242,180,1253,179,1374,167,1514,159,1838,149,2204,146,2593,147,3353,149,3683,144,3952,131"/>
+<area shape="rect" id="Node000009" href="$UGameVFXManager_8cpp.html" title="UGameVFXManager의 동작을 구현합니다." alt="" coords="1266,189,1561,229"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="3952,136,3590,160,3283,168,3012,165,2760,158,2509,150,2239,149,1934,158,1574,184,1515,191,1514,186,1573,179,1933,153,2239,143,2509,145,2761,152,3012,160,3283,162,3590,154,3952,131"/>
+<area shape="rect" id="Node000010" href="$APlayerActor_8cpp.html" title="APlayerActor 구현을 위한 Doxygen 주석을 제공합니다." alt="" coords="1585,189,1772,229"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="3952,136,3735,147,3469,152,2858,152,2546,152,2252,156,1993,166,1784,184,1746,191,1745,186,1784,179,1992,160,2252,150,2546,147,2858,146,3469,146,3735,142,3952,131"/>
+<area shape="rect" id="Node000011" href="$APlayerControl_8cpp.html" title="APlayerControl의 동작을 구현합니다." alt="" coords="1796,189,1996,229"/>
+<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="3953,136,3656,155,3405,160,3183,155,2977,147,2771,141,2551,141,2301,154,2008,184,1967,191,1966,186,2008,179,2301,149,2550,136,2771,135,2977,142,3183,150,3405,154,3656,150,3952,131"/>
+<area shape="rect" id="Node000012" href="$ABuilding_8cpp.html" title="ABuilding의 동작을 구현합니다." alt="" coords="2021,189,2214,229"/>
+<area shape="poly" id="edge11_Node000003_Node000012" title=" " alt="" coords="3952,136,3689,153,3466,158,3269,154,3086,148,2903,143,2708,144,2487,156,2227,184,2187,191,2186,186,2226,179,2486,151,2708,139,2903,137,3086,143,3269,149,3466,152,3689,148,3952,131"/>
+<area shape="rect" id="Node000013" href="$ABuildingContainer_8cpp.html" title="ABuildingContainer의 동작을 구현합니다." alt="" coords="2239,189,2465,229"/>
+<area shape="poly" id="edge12_Node000003_Node000013" title=" " alt="" coords="3952,136,3727,152,3537,158,3368,157,3212,153,3056,150,2889,152,2700,162,2478,184,2432,191,2431,186,2477,179,2699,157,2889,147,3056,145,3212,148,3368,151,3536,152,3727,146,3952,131"/>
+<area shape="rect" id="Node000014" href="$ALobbyGameMode_8cpp.html" title="ALobbyGameMode의 동작을 구현합니다." alt="" coords="2489,189,2716,229"/>
+<area shape="poly" id="edge13_Node000003_Node000014" title=" " alt="" coords="3953,136,3766,150,3607,156,3337,154,3208,153,3069,156,2913,165,2728,184,2683,191,2682,186,2728,179,2912,160,3069,151,3208,148,3337,149,3607,150,3765,145,3952,131"/>
+<area shape="rect" id="Node000015" href="$AQuestManagerActor_8cpp.html" title="AQuestManagerActor의 동작을 구현합니다." alt="" coords="2740,189,2980,229"/>
+<area shape="poly" id="edge14_Node000003_Node000015" title=" " alt="" coords="3953,136,3806,148,3681,154,3470,156,3259,161,3137,169,2992,184,2946,191,2945,186,2992,179,3136,164,3259,155,3470,151,3681,149,3806,143,3952,131"/>
+<area shape="rect" id="Node000016" href="$AYiSanGameMode_8cpp.html" title="AYiSanGameMode의 동작을 구현합니다." alt="" coords="3005,189,3227,229"/>
+<area shape="poly" id="edge15_Node000003_Node000016" title=" " alt="" coords="3953,136,3751,152,3594,157,3438,163,3240,184,3198,191,3197,186,3240,179,3437,158,3594,151,3751,146,3952,131"/>
+<area shape="rect" id="Node000017" href="$AYisanGameState_8cpp.html" title="AYisanGameState의 동작을 구현합니다." alt="" coords="3252,189,3471,229"/>
+<area shape="poly" id="edge16_Node000003_Node000017" title=" " alt="" coords="3953,136,3819,150,3715,158,3613,167,3483,184,3443,191,3442,186,3482,179,3612,161,3715,152,3819,145,3952,131"/>
+<area shape="rect" id="Node000018" href="$UYiSanLoading_8cpp.html" title="UYiSanLoading의 동작을 구현합니다." alt="" coords="3495,189,3695,229"/>
+<area shape="poly" id="edge17_Node000003_Node000018" title=" " alt="" coords="3953,138,3707,184,3673,191,3672,186,3706,179,3952,133"/>
+<area shape="rect" id="Node000019" href="$UYisanOnlineSystem_8cpp.html" title="UYisanOnlineSystem의 동작을 구현합니다." alt="" coords="3719,189,3958,229"/>
+<area shape="poly" id="edge18_Node000003_Node000019" title=" " alt="" coords="4016,141,3888,191,3886,186,4014,136"/>
+<area shape="rect" id="Node000020" href="$ADasanActor_8cpp.html" title="ADasanActor의 동작을 구현합니다." alt="" coords="3983,189,4169,229"/>
+<area shape="poly" id="edge19_Node000003_Node000020" title=" " alt="" coords="4079,147,4079,189,4073,189,4073,147"/>
+<area shape="rect" id="Node000021" href="$UAnswerStateSystem_8cpp.html" title="UAnswerStateSystem의 동작을 구현합니다." alt="" coords="4193,189,4388,229"/>
+<area shape="poly" id="edge20_Node000003_Node000021" title=" " alt="" coords="4133,136,4248,186,4246,191,4131,141"/>
+<area shape="rect" id="Node000022" href="$UTourStateSystem_8cpp.html" title="UTourStateSystem의 동작을 구현합니다." alt="" coords="4412,189,4599,229"/>
+<area shape="poly" id="edge21_Node000003_Node000022" title=" " alt="" coords="4186,133,4401,179,4432,186,4431,191,4399,184,4185,139"/>
+<area shape="rect" id="Node000023" href="$ANetworkTesterActor_8cpp.html" title="ANetworkTesterActor의 동작을 구현합니다." alt="" coords="4623,189,4862,229"/>
+<area shape="poly" id="edge22_Node000003_Node000023" title=" " alt="" coords="4200,130,4206,131,4409,153,4497,163,4611,179,4653,186,4652,191,4610,184,4497,168,4408,158,4205,136,4199,135"/>
+<area shape="poly" id="edge23_Node000003_Node000024" title=" " alt="" coords="4200,130,4206,131,4503,145,4872,151,5731,149,6172,147,6589,149,6958,159,7117,167,7255,179,7305,186,7304,191,7254,184,7117,173,6958,164,6589,155,6172,152,5731,154,4872,156,4503,151,4205,136,4200,136"/>
+<area shape="rect" id="Node000025" href="$UChatBoxWidget_8cpp.html" title="UChatBoxWidget의 동작을 구현합니다." alt="" coords="4886,189,5061,229"/>
+<area shape="poly" id="edge24_Node000003_Node000025" title=" " alt="" coords="4200,130,4206,131,4394,145,4541,148,4688,155,4774,164,4875,179,4910,186,4909,191,4874,184,4773,169,4687,160,4541,154,4394,150,4205,136,4199,135"/>
+<area shape="rect" id="Node000026" href="$UDasanWidget_8cpp.html" title="UDasanWidget의 동작을 구현합니다." alt="" coords="5085,189,5259,229"/>
+<area shape="poly" id="edge25_Node000003_Node000026" title=" " alt="" coords="4200,130,4206,131,4338,141,4450,146,4640,146,4831,151,4943,161,5074,179,5109,186,5108,191,5073,184,4942,166,4831,156,4640,152,4449,151,4337,147,4205,136,4200,135"/>
+<area shape="rect" id="Node000027" href="$ULoadginCircle_8cpp.html" title="ULoadginCircle의 동작을 구현합니다." alt="" coords="5283,189,5458,229"/>
+<area shape="poly" id="edge26_Node000003_Node000027" title=" " alt="" coords="4200,130,4206,131,4368,143,4505,147,4740,145,4853,144,4974,147,5111,158,5272,179,5308,186,5307,191,5272,184,5111,163,4974,153,4853,149,4740,150,4505,152,4367,148,4205,136,4200,135"/>
+<area shape="rect" id="Node000028" href="$ULoadingCircleManager_8cpp.html" title="ULoadingCircleManager의 동작을 구현합니다." alt="" coords="5482,189,5689,229"/>
+<area shape="poly" id="edge27_Node000003_Node000028" title=" " alt="" coords="4200,130,4206,131,4398,144,4561,149,4839,146,4973,145,5116,147,5279,158,5471,179,5513,186,5512,191,5470,184,5279,163,5116,153,4973,150,4839,152,4561,155,4398,150,4205,136,4200,135"/>
+<area shape="rect" id="Node000029" href="$ULoadingTransitionManager_8cpp.html" title="ULoadingTransitionManager의 동작을 구현합니다." alt="" coords="5713,189,5946,229"/>
+<area shape="poly" id="edge28_Node000003_Node000029" title=" " alt="" coords="4200,130,4206,131,4433,146,4626,152,4796,151,4954,148,5112,145,5282,147,5475,157,5702,179,5748,186,5747,191,5701,184,5474,162,5282,152,5112,150,4954,153,4796,156,4626,157,4433,152,4205,136,4200,136"/>
+<area shape="rect" id="Node000030" href="$ULobbyWidget_8cpp.html" title="ULobbyWidget의 동작을 구현합니다." alt="" coords="5970,189,6145,229"/>
+<area shape="poly" id="edge29_Node000003_Node000030" title=" " alt="" coords="4200,130,4206,131,4472,147,4698,151,4898,146,5084,138,5270,132,5468,134,5694,148,5959,179,5996,186,5995,191,5958,184,5693,153,5468,139,5270,138,5084,143,4898,151,4698,156,4472,153,4205,136,4200,136"/>
+<area shape="rect" id="Node000031" href="$UMegaPopup_8cpp.html" title="UMegaPopup의 동작을 구현합니다." alt="" coords="6169,189,6343,229"/>
+<area shape="poly" id="edge30_Node000003_Node000031" title=" " alt="" coords="4200,130,4206,131,4396,141,4632,145,5182,145,5465,146,5732,151,5968,161,6158,179,6194,186,6193,191,6157,184,5968,166,5732,156,5465,152,5182,151,4632,150,4396,146,4205,136,4200,136"/>
+<area shape="rect" id="Node000032" href="$UPlayerWidget_8cpp.html" title="UPlayerWidget의 동작을 구현합니다." alt="" coords="6367,189,6542,229"/>
+<area shape="poly" id="edge31_Node000003_Node000032" title=" " alt="" coords="4200,130,4206,131,4415,141,4676,145,5282,144,5593,145,5887,149,6147,159,6259,168,6356,179,6393,186,6392,191,6356,184,6259,173,6147,164,5887,154,5593,150,5282,150,4676,151,4415,147,4205,136,4200,136"/>
+<area shape="rect" id="Node000033" href="$UStartWidget_8cpp.html" title="UStartWidget의 동작을 구현합니다." alt="" coords="6566,189,6741,229"/>
+<area shape="poly" id="edge32_Node000003_Node000033" title=" " alt="" coords="4200,130,4206,131,4435,142,4719,146,5381,144,5721,143,6043,147,6327,158,6449,167,6555,179,6592,186,6591,191,6554,184,6449,172,6326,163,6043,152,5721,148,5381,149,4719,151,4434,147,4205,136,4200,136"/>
+<area shape="rect" id="Node000034" href="$UVoiceConversationSystem_8cpp.html" title="UVoiceConversationSystem의 동작을 구현합니다." alt="" coords="6765,181,6971,236"/>
+<area shape="poly" id="edge33_Node000003_Node000034" title=" " alt="" coords="4200,130,4206,131,4454,143,4763,148,5480,146,5849,146,6197,149,6506,159,6638,167,6754,179,6765,180,6764,185,6753,184,6638,173,6505,164,6197,154,5849,151,5480,152,4763,153,4454,148,4205,136,4200,136"/>
+<area shape="rect" id="Node000035" href="$UVoiceFunctionLibrary_8cpp.html" title="UVoiceFunctionLibrary의 동작을 구현합니다." alt="" coords="6995,189,7242,229"/>
+<area shape="poly" id="edge34_Node000003_Node000035" title=" " alt="" coords="4200,130,4206,131,4476,144,4813,150,5595,149,5997,148,6377,151,6714,160,6859,168,6984,179,7034,186,7033,191,6984,184,6858,173,6713,166,6377,156,5997,154,5595,155,4813,155,4476,150,4205,136,4200,136"/>
+</map>

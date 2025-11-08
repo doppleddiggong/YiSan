@@ -1,0 +1,5 @@
+<map id="USmallPopup::UpdateBuildingInfo" name="USmallPopup::UpdateBuildingInfo">
+<area shape="rect" id="Node000001" title="빌딩 타입에 따라 팝업의 정보를 업데이트합니다." alt="" coords="5,13,248,38"/>
+<area shape="rect" id="Node000002" href="$classUBuildingDetailData.html#aad787c596cddce2706d51897bfa8e340" title="썸네일 이미지를 동기적으로 로드합니다." alt="" coords="296,5,467,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="248,23,282,23,282,28,248,28"/>
+</map>

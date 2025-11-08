@@ -1,0 +1,16 @@
+<map id="Source/YiSan/Character/Public/UGPTContextSystem.h" name="Source/YiSan/Character/Public/UGPTContextSystem.h">
+<area shape="rect" id="Node000001" title="환경 정보를 반영한 프롬프트를 구성하는 GPT 컨텍스트 컴포넌트를 선언합니다." alt="" coords="168,5,384,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,167,123,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,35,137,43,106,55,79,72,57,95,51,108,49,123,56,153,50,154,44,123,46,107,52,92,76,68,104,50,135,38,167,30"/>
+<area shape="rect" id="Node000003" href="$EBuildingType_8h.html" title="EBuildingType 클래스를 선언합니다." alt="" coords="67,93,192,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="242,48,164,89,162,84,240,43"/>
+<area shape="rect" id="Node000004" href="$FGPTContext_8h.html" title="GPT 상호작용에 사용되는 공간 컨텍스트 구조체를 정의합니다." alt="" coords="217,93,335,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="279,46,279,79,273,79,273,46"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="360,93,589,119"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="325,43,434,86,432,91,323,48"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="614,93,853,119"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="385,43,654,88,653,94,384,48"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="243,121,112,165,110,160,241,116"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="182,167,370,192"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="279,119,279,153,273,153,273,119"/>
+</map>

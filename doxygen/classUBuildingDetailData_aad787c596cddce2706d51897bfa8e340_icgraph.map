@@ -1,0 +1,12 @@
+<map id="UBuildingDetailData::LoadThumbnailImage" name="UBuildingDetailData::LoadThumbnailImage">
+<area shape="rect" id="Node000001" title="썸네일 이미지를 동기적으로 로드합니다." alt="" coords="569,47,740,87"/>
+<area shape="rect" id="Node000002" href="$classUStateWidget.html#a08494b3f029ceee931a6f4d70a444696" title="주변 건물 정보를 표시합니다." alt="" coords="289,5,511,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="555,51,466,33,467,28,556,46"/>
+<area shape="rect" id="Node000004" href="$classUStateWidget.html#a442e29a4ad01bb6a311edea22d015cb4" title="퀘스트 목표 변화를 표시합니다." alt="" coords="289,55,511,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="555,70,512,70,512,65,555,65"/>
+<area shape="rect" id="Node000005" href="$classUSmallPopup.html#aa442942d8183e31516603aac761de00c" title="빌딩 타입에 따라 팝업의 정보를 업데이트합니다." alt="" coords="279,104,521,129"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="556,89,467,107,466,101,555,84"/>
+<area shape="rect" id="Node000003" href="$classUStateWidget.html#ac2b8a82ce5eaa9387625842737957c02" title="위젯 생성 시 초기화 작업을 수행합니다." alt="" coords="5,31,231,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="275,32,231,36,231,31,275,27"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="275,59,231,56,231,50,275,54"/>
+</map>

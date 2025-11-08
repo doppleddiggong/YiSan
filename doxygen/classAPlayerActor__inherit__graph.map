@@ -1,0 +1,7 @@
+<map id="APlayerActor" name="APlayerActor">
+<area shape="rect" id="Node000001" title="이동, UI, 음성 하위 시스템을 통합하는 플레이어 조작 캐릭터입니다." alt="" coords="23,439,234,1264"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,165,92,231"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,244,81,438,75,439,52,245"/>
+<area shape="rect" id="Node000003" href="$classIControllable.html" title=" " alt="" coords="117,5,303,391"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="187,405,183,439,177,438,182,404"/>
+</map>

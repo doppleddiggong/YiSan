@@ -1,0 +1,23 @@
+<map id="ULobbyWidget::NativeConstruct" name="ULobbyWidget::NativeConstruct">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,164,236,189"/>
+<area shape="rect" id="Node000002" href="$classULobbyWidget.html#a2c28fbf0d7078cd357d35363126c2a03" title=" " alt="" coords="291,5,511,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,162,194,107,237,75,283,48,322,32,324,37,285,52,240,80,197,111,136,166"/>
+<area shape="rect" id="Node000003" href="$classULobbyWidget.html#af2869f4fb74dba322d7e3cd2cd4013ba" title=" " alt="" coords="565,49,779,89"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="140,162,201,126,241,107,283,93,351,78,421,69,551,62,551,68,422,74,352,83,285,98,243,112,204,131,142,166"/>
+<area shape="rect" id="Node000005" href="$classULobbyWidget.html#a0df8c1b9cccb9b9975b50977000722c4" title=" " alt="" coords="289,107,512,132"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="183,161,324,132,325,137,184,167"/>
+<area shape="rect" id="Node000006" href="$classULobbyWidget.html#aa25e0410d5a66954958e5bb76c940a02" title=" " alt="" coords="301,157,500,197"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="236,174,288,174,288,179,236,179"/>
+<area shape="rect" id="Node000007" href="$classULobbyWidget.html#a0a9dc5eb22c6dfe17f7dd9fc1c23330e" title=" " alt="" coords="293,221,508,247"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="184,187,325,216,324,221,183,192"/>
+<area shape="rect" id="Node000008" href="$classULobbyWidget.html#a000f1806ccfae80bea829ad0e3c424c1" title=" " alt="" coords="284,271,517,296"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="144,187,206,222,285,257,311,265,310,270,283,262,203,227,141,192"/>
+<area shape="rect" id="Node000010" href="$classULobbyWidget.html#acc2665cd08c644f7c4b71abf583841f4" title=" " alt="" coords="293,321,509,361"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="136,188,197,245,239,278,285,306,300,313,298,318,283,311,236,282,193,249,132,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="470,28,552,44,551,49,469,33"/>
+<area shape="rect" id="Node000004" href="$classULobbyWidget.html#a2b95ea6f65a481e5e48e14fcc87d081e" title=" " alt="" coords="827,109,1047,135"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="772,86,860,104,859,109,771,91"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="469,268,517,257,724,194,887,137,889,142,726,199,518,262,470,273"/>
+<area shape="rect" id="Node000009" href="$classUSessionInfoWidget.html#a619d674fcd85544669850de2db549649" title=" " alt="" coords="595,263,749,303"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="517,281,581,281,581,286,517,286"/>
+</map>

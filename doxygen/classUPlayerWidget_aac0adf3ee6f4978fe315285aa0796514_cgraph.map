@@ -1,0 +1,11 @@
+<map id="UPlayerWidget::NativeConstruct" name="UPlayerWidget::NativeConstruct">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,237,38"/>
+<area shape="rect" id="Node000002" href="$classUPlayerWidget.html#abc62c371ef90fcc9a2bb0cf363eabf1e" title=" " alt="" coords="285,5,495,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,23,272,23,272,28,237,28"/>
+<area shape="rect" id="Node000003" href="$classUPlayerWidget.html#a43ab4ca4a67f6487a9637203377fd6e2" title=" " alt="" coords="543,13,781,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="495,23,529,23,529,28,495,28"/>
+<area shape="rect" id="Node000004" href="$classUPlayerWidget.html#a55876fd00359d52bfe85a4bf8338a80c" title=" " alt="" coords="829,5,1040,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="781,23,815,23,815,28,781,28"/>
+<area shape="rect" id="Node000005" href="$classUPlayerListItem.html#afe349ca48a722b37f6627af6e8ba077b" title=" " alt="" coords="1088,5,1284,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1040,23,1074,23,1074,28,1040,28"/>
+</map>

@@ -1,0 +1,17 @@
+<map id="UMainWidget::OnNearBuilding" name="UMainWidget::OnNearBuilding">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,107,225,132"/>
+<area shape="rect" id="Node000002" href="$classUMainWidget.html#a65a1d339ad3d344e25958d66affb41cf" title=" " alt="" coords="289,5,465,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,104,272,48,317,32,319,37,274,52,144,109"/>
+<area shape="rect" id="Node000004" href="$classUMainWidget.html#adea000259172e757b616eaf8a3edebd4" title=" " alt="" coords="783,56,988,81"/>
+<area shape="poly" id="edge8_Node000001_Node000004" title=" " alt="" coords="214,104,273,98,539,80,769,70,769,75,540,85,274,103,215,109"/>
+<area shape="rect" id="Node000005" href="$classUMainWidget.html#ac5ce2bcec47490a9ffa373392220f615" title=" " alt="" coords="1036,81,1219,107"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="226,114,1022,94,1023,99,226,119"/>
+<area shape="rect" id="Node000006" href="$classUMainWidget.html#a886b19469cf17b095f617d761bcf7cf8" title=" " alt="" coords="274,157,479,197"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="175,129,273,151,271,156,173,135"/>
+<area shape="rect" id="Node000007" href="$classUMainWidget.html#a7766169a6c1dd34b0e2cebfb68a43808" title=" " alt="" coords="273,221,480,261"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="137,130,197,167,274,206,293,214,291,218,272,211,195,171,134,134"/>
+<area shape="rect" id="Node000003" href="$classUMainWidget.html#a1f007225d30ab19948dab60c2830e556" title=" " alt="" coords="528,5,735,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="465,15,515,15,515,21,465,21"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="697,28,808,51,807,56,696,33"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="988,77,1022,80,1022,86,988,82"/>
+</map>

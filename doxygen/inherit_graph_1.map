@@ -1,0 +1,16 @@
+<map id="그래픽컬한 클래스 계통도" name="그래픽컬한 클래스 계통도">
+<area shape="rect" id="Node000000" title=" " alt="" coords="11,80,105,105"/>
+<area shape="rect" id="Node000001" href="$classADasanActor.html" title=" " alt="" coords="189,5,295,31"/>
+<area shape="poly" id="edge7_Node000000_Node000001" title=" " alt="" coords="92,71,158,40,191,28,192,33,160,44,95,76"/>
+<area shape="rect" id="Node000002" href="$classALatteGameCharacter.html" title="전투, 능력치, 애니메이션 헬퍼를 연결하는 기반 캐릭터 구현입니다." alt="" coords="159,55,325,80"/>
+<area shape="poly" id="edge8_Node000000_Node000002" title=" " alt="" coords="119,82,158,76,159,81,119,87"/>
+<area shape="rect" id="Node000006" href="$classAMassActor.html" title="Mass 시스템과 상호작용하기 위한 테스트 캐릭터입니다." alt="" coords="193,104,291,129"/>
+<area shape="poly" id="edge10_Node000000_Node000006" title=" " alt="" coords="119,98,193,108,192,113,118,103"/>
+<area shape="rect" id="Node000005" href="$classAPlayerActor.html" title="이동, UI, 음성 하위 시스템을 통합하는 플레이어 조작 캐릭터입니다." alt="" coords="189,153,295,179"/>
+<area shape="poly" id="edge11_Node000000_Node000005" title=" " alt="" coords="96,109,160,138,196,151,194,156,158,143,94,114"/>
+<area shape="rect" id="Node000003" href="$classALattePlayerCharacter.html" title="플레이어가 직접 조종하는 주인공 캐릭터입니다." alt="" coords="373,129,541,155"/>
+<area shape="poly" id="edge9_Node000002_Node000003" title=" " alt="" coords="303,81,326,89,426,127,424,132,324,94,302,87"/>
+<area shape="rect" id="Node000004" href="$classIControllable.html" title=" " alt="" coords="5,179,111,204"/>
+<area shape="poly" id="edge12_Node000004_Node000003" title=" " alt="" coords="124,195,220,198,273,195,325,189,382,172,430,152,432,157,384,177,326,194,273,201,220,203,124,200"/>
+<area shape="poly" id="edge13_Node000004_Node000005" title=" " alt="" coords="124,180,188,171,189,176,125,185"/>
+</map>

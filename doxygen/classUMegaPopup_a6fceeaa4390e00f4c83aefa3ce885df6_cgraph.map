@@ -1,0 +1,12 @@
+<map id="UMegaPopup::OnMediaOpened" name="UMegaPopup::OnMediaOpened">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,7,229,33"/>
+<area shape="rect" id="Node000002" href="$classUMegaPopup.html#a690a436bf42717282baa718a70a28e9e" title=" " alt="" coords="801,35,1057,61"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="229,10,470,3,612,5,754,13,860,30,859,35,753,19,612,10,470,8,230,15"/>
+<area shape="rect" id="Node000003" href="$classUMegaPopup.html#a4db809be82c89b52cd507e1b49a6d28e" title=" " alt="" coords="277,28,520,68"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="230,28,264,32,264,37,229,34"/>
+<area shape="rect" id="Node000004" href="$classUBuildingDetailData.html#a1aa78f47fdf8ee0fee0cc5994beb93d6" title="배경 이미지를 동기적으로 로드합니다." alt="" coords="571,28,750,68"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="520,45,558,45,558,51,520,51"/>
+<area shape="rect" id="Node000005" href="$classUMegaPopup.html#acf1baf24c17ce8a1f57e95fa225602b0" title=" " alt="" coords="568,93,753,118"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="491,65,589,87,588,92,490,71"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="720,90,855,61,856,66,722,95"/>
+</map>

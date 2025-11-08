@@ -1,0 +1,30 @@
+<map id="Source/YiSan/Voice/Public/UVoiceConversationSystem.h" name="Source/YiSan/Voice/Public/UVoiceConversationSystem.h">
+<area shape="rect" id="Node000001" title="STT·GPT·TTS 파이프라인을 연결하는 음성 대화 컴포넌트를 선언합니다." alt="" coords="1004,5,1204,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="752,255,869,280"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1076,62,1033,110,1018,137,1011,161,1002,185,982,209,959,225,934,238,884,256,882,251,932,233,956,221,978,205,997,182,1006,159,1013,135,1028,106,1072,58"/>
+<area shape="rect" id="Node000003" href="$NetworkData_8h.html" title="네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다." alt="" coords="684,108,804,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1004,60,806,107,805,102,1003,55"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="1043,108,1165,133"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="1107,60,1107,94,1101,94,1101,60"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="1189,108,1419,133"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="1166,58,1266,100,1263,105,1164,63"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="1443,108,1727,133"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="1205,49,1508,103,1507,108,1204,54"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="756,132,786,180,807,240,802,242,782,183,751,135"/>
+<area shape="rect" id="Node000004" href="$FGPTContext_8h.html" title="GPT 상호작용에 사용되는 공간 컨텍스트 구조체를 정의합니다." alt="" coords="849,181,967,207"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="771,131,870,173,868,178,769,136"/>
+<area shape="rect" id="Node000006" href="$UCustomNetworkSettings_8h.html" title="서버 환경별 네트워크 설정을 노출하는 DeveloperSettings를 선언합니다." alt="" coords="136,181,339,207"/>
+<area shape="poly" id="edge7_Node000003_Node000006" title=" " alt="" coords="684,133,333,182,332,177,684,128"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="363,181,557,207"/>
+<area shape="poly" id="edge11_Node000003_Node000009" title=" " alt="" coords="699,136,520,181,518,175,698,131"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="582,181,773,207"/>
+<area shape="poly" id="edge12_Node000003_Node000010" title=" " alt="" coords="735,135,699,173,696,169,731,132"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="894,209,839,248,836,244,891,205"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="894,255,1082,280"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="923,205,967,244,963,248,919,209"/>
+<area shape="poly" id="edge8_Node000006_Node000002" title=" " alt="" coords="330,204,739,254,738,260,329,209"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="5,255,208,280"/>
+<area shape="poly" id="edge9_Node000006_Node000007" title=" " alt="" coords="218,209,141,250,139,246,215,204"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="232,255,504,280"/>
+<area shape="poly" id="edge10_Node000006_Node000008" title=" " alt="" coords="260,204,336,246,334,250,257,209"/>
+</map>

@@ -1,0 +1,366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>YiSan Project Documentation: Source/YiSan/UI/Private/UDasanWidget.cpp 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">YiSan Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('UDasanWidget_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">UDasanWidget.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="UDasanWidget_8cpp.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="UDasanWidget_8h.html">UDasanWidget.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="ADasanActor_8h.html">ADasanActor.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="GameLogging_8h.html">GameLogging.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="Macro_8h.html">Macro.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;Components/Image.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;Components/Border.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;Components/WidgetComponent.h&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;GameFramework/PlayerController.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;TimerManager.h&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classUDasanWidget.html#a8e0ffeeb482c60a5ba7465e84918c5b9">   18</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUDasanWidget.html#a8e0ffeeb482c60a5ba7465e84918c5b9">UDasanWidget::NativeConstruct</a>()</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    Super::NativeConstruct();</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="comment">// 초기에는 설명 다이얼로그 숨김</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUDasanWidget.html#a60fb5baef9272f7c298ffd04facc40cc">Border_Explain</a>)</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <a class="code hl_variable" href="classUDasanWidget.html#a60fb5baef9272f7c298ffd04facc40cc">Border_Explain</a>-&gt;SetVisibility(ESlateVisibility::Collapsed);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>}</div>
+</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="}">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classUDasanWidget.html#ada79bb3cab849daca231c21499663180">   29</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUDasanWidget.html#ada79bb3cab849daca231c21499663180">UDasanWidget::InitWidget</a>(<a class="code hl_class" href="classADasanActor.html">ADasanActor</a>* InDasanActor)</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_variable" href="classUDasanWidget.html#ad67646c221e939bd5a4aaa7846280c92">DasanActor</a> = InDasanActor;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
+</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="}">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classUDasanWidget.html#ae721b9276a1ee6a51391fb19d11b5d58">   34</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUDasanWidget.html#ae721b9276a1ee6a51391fb19d11b5d58">UDasanWidget::UpdateDasanState</a>(<a class="code hl_enumeration" href="EDasanState_8h.html#aee3352175451510afd8612b4034613a5">EDasanState</a> MainState, <a class="code hl_enumeration" href="EDasanState_8h.html#a2485a9c5e52655b7ceb1a11f3d6618bc">ETourState</a> TourState, <a class="code hl_enumeration" href="EDasanState_8h.html#aaeb46eecaaf9c84c19ca6c835fff944c">EAnswerState</a> AnswerState,</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keyword">const</span> FString&amp; BuildingName, <span class="keyword">const</span> FString&amp; PlayerName, int32 CurrentPlayers, int32 MaxPlayers)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUDasanWidget.html#a45cf9903ae6faa2c27c075d119c45c8c">Text_Msg</a>)</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[DasanWidget] UpdateDasanState - Text_Msg is nullptr!&quot;</span>));</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    FString StateMessage = <a class="code hl_function" href="classUDasanWidget.html#a055588e0824cef416ade7031dcef47cf">GetStateMessage</a>(MainState, TourState, AnswerState, BuildingName, PlayerName, CurrentPlayers, MaxPlayers);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    FString ResourcePath = <a class="code hl_function" href="classUDasanWidget.html#a47175d72d80f5a4ca7c9e935bfe7aba1">GetResourcePath</a>(MainState, TourState, AnswerState);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[DasanWidget] UpdateDasanState - MainState: %s, TourState: %s, AnswerState: %s, Message: %s&quot;</span>),</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        *<a class="code hl_define" href="Macro_8h.html#af2ddd5315380cee79064cc40b337ab46">ENUM_TO_NAME</a>(<a class="code hl_enumeration" href="EDasanState_8h.html#aee3352175451510afd8612b4034613a5">EDasanState</a>, MainState),</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        *<a class="code hl_define" href="Macro_8h.html#af2ddd5315380cee79064cc40b337ab46">ENUM_TO_NAME</a>(<a class="code hl_enumeration" href="EDasanState_8h.html#a2485a9c5e52655b7ceb1a11f3d6618bc">ETourState</a>, TourState),</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        *<a class="code hl_define" href="Macro_8h.html#af2ddd5315380cee79064cc40b337ab46">ENUM_TO_NAME</a>(<a class="code hl_enumeration" href="EDasanState_8h.html#aaeb46eecaaf9c84c19ca6c835fff944c">EAnswerState</a>, AnswerState),</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        *StateMessage);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_variable" href="classUDasanWidget.html#a45cf9903ae6faa2c27c075d119c45c8c">Text_Msg</a>-&gt;SetText(FText::FromString(StateMessage));</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">// 텍스처 로드 (올바른 경로 형식 사용)</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">if</span> (UTexture2D* Texture = LoadObject&lt;UTexture2D&gt;(<span class="keyword">nullptr</span>, *ResourcePath))</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <a class="code hl_variable" href="classUDasanWidget.html#ab10e38876cc827bfc95715b3759fbe74">Image_Icon</a>-&gt;SetBrushFromTexture(Texture);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[DasanWidget] 텍스처 로드 실패: %s&quot;</span>), *ResourcePath);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>
+</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="foldopen" id="foldopen00065" data-start="{" data-end="}">
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classUDasanWidget.html#ad36ed7eb6e1a254ec4fe633dd62758ce">   65</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUDasanWidget.html#ad36ed7eb6e1a254ec4fe633dd62758ce">UDasanWidget::ShowExplainDialog</a>(<span class="keyword">const</span> FString&amp; ExplainText)</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>{</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUDasanWidget.html#a181d23738893c64b14447eb4824d545a">Text_Explain</a> || !<a class="code hl_variable" href="classUDasanWidget.html#a60fb5baef9272f7c298ffd04facc40cc">Border_Explain</a>)</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[DasanWidget] ShowExplainDialog - Text_Explain or Border_Explain is nullptr!&quot;</span>));</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[DasanWidget] ShowExplainDialog - Showing: %s&quot;</span>), *ExplainText);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <a class="code hl_variable" href="classUDasanWidget.html#a181d23738893c64b14447eb4824d545a">Text_Explain</a>-&gt;SetText(FText::FromString(ExplainText));</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <a class="code hl_variable" href="classUDasanWidget.html#a60fb5baef9272f7c298ffd04facc40cc">Border_Explain</a>-&gt;SetVisibility(ESlateVisibility::Visible);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">// 기존 타이머 클리어</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordflow">if</span> (GetWorld() &amp;&amp; GetWorld()-&gt;GetTimerManager().IsTimerActive(<a class="code hl_variable" href="classUDasanWidget.html#ac74278aca50bc52c8c29d7d154992efa">ExplainDialogTimerHandle</a>))</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        GetWorld()-&gt;GetTimerManager().ClearTimer(<a class="code hl_variable" href="classUDasanWidget.html#ac74278aca50bc52c8c29d7d154992efa">ExplainDialogTimerHandle</a>);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="comment">// 3초 후 자동 숨김</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordflow">if</span> (GetWorld())</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        GetWorld()-&gt;GetTimerManager().SetTimer(</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <a class="code hl_variable" href="classUDasanWidget.html#ac74278aca50bc52c8c29d7d154992efa">ExplainDialogTimerHandle</a>,</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            <span class="keyword">this</span>,</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            &amp;<a class="code hl_function" href="classUDasanWidget.html#ac305a1f881db6df67664ce6b1a49a9df">UDasanWidget::HideExplainDialog</a>,</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            3.0f,</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            <span class="keyword">false</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        );</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    }</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}</div>
+</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="foldopen" id="foldopen00095" data-start="{" data-end="}">
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classUDasanWidget.html#ac305a1f881db6df67664ce6b1a49a9df">   95</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUDasanWidget.html#ac305a1f881db6df67664ce6b1a49a9df">UDasanWidget::HideExplainDialog</a>()</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>{</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUDasanWidget.html#a60fb5baef9272f7c298ffd04facc40cc">Border_Explain</a>)</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[DasanWidget] HideExplainDialog - Border_Explain is nullptr!&quot;</span>));</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    }</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[DasanWidget] HideExplainDialog - Hiding dialog&quot;</span>));</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="comment">// Border 숨김</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <a class="code hl_variable" href="classUDasanWidget.html#a60fb5baef9272f7c298ffd04facc40cc">Border_Explain</a>-&gt;SetVisibility(ESlateVisibility::Collapsed);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="comment">// 타이머 클리어</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordflow">if</span> (GetWorld() &amp;&amp; GetWorld()-&gt;GetTimerManager().IsTimerActive(<a class="code hl_variable" href="classUDasanWidget.html#ac74278aca50bc52c8c29d7d154992efa">ExplainDialogTimerHandle</a>))</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    {</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        GetWorld()-&gt;GetTimerManager().ClearTimer(<a class="code hl_variable" href="classUDasanWidget.html#ac74278aca50bc52c8c29d7d154992efa">ExplainDialogTimerHandle</a>);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>}</div>
+</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="foldopen" id="foldopen00115" data-start="{" data-end="}">
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="classUDasanWidget.html#a055588e0824cef416ade7031dcef47cf">  115</a></span>FString <a class="code hl_function" href="classUDasanWidget.html#a055588e0824cef416ade7031dcef47cf">UDasanWidget::GetStateMessage</a>(<a class="code hl_enumeration" href="EDasanState_8h.html#aee3352175451510afd8612b4034613a5">EDasanState</a> MainState, <a class="code hl_enumeration" href="EDasanState_8h.html#a2485a9c5e52655b7ceb1a11f3d6618bc">ETourState</a> TourState, <a class="code hl_enumeration" href="EDasanState_8h.html#aaeb46eecaaf9c84c19ca6c835fff944c">EAnswerState</a> AnswerState,</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keyword">const</span> FString&amp; BuildingName, <span class="keyword">const</span> FString&amp; PlayerName, int32 CurrentPlayers, int32 MaxPlayers)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">switch</span> (MainState)</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    {</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">case</span> EDasanState::Tour:</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        {</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>            <span class="keywordflow">switch</span> (TourState)</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            {</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            <span class="keywordflow">case</span> ETourState::TourMove:</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>                <span class="comment">// &quot;%s 를 향해 이동 중입니다&quot;</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                <span class="keywordflow">if</span> (!BuildingName.IsEmpty())</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                    <span class="keywordflow">return</span> FString::Printf(TEXT(<span class="stringliteral">&quot;%s 으로 이동하시죠&quot;</span>), *BuildingName);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;이동중&quot;</span>);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            <span class="keywordflow">case</span> ETourState::TourWait:</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;집결대기중&quot;</span>);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            <span class="keywordflow">case</span> ETourState::TourExplain:</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                <span class="comment">// &quot;%s 에 대한 설명을 진행합니다&quot;</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                <span class="keywordflow">if</span> (!BuildingName.IsEmpty())</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>                    <span class="keywordflow">return</span> FString::Printf(TEXT(<span class="stringliteral">&quot;%s&quot;</span>), *BuildingName);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;설명중&quot;</span>);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            <span class="keywordflow">case</span> ETourState::TourEnd:</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>                <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;&quot;</span>);  <span class="comment">// 숨김</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>            <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>                <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            }</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        }</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keywordflow">case</span> EDasanState::Answer:</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        {</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>            <span class="keywordflow">switch</span> (AnswerState)</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>            {</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>            <span class="keywordflow">case</span> EAnswerState::AnswerListen:</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>                <span class="comment">// &quot;%s 군주님의 질문을 듣고 있습니다&quot;</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>                <span class="keywordflow">if</span> (!PlayerName.IsEmpty())</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                    <span class="keywordflow">return</span> FString::Printf(TEXT(<span class="stringliteral">&quot;%s 군주님의 질문을 듣고 있습니다&quot;</span>), *PlayerName);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;경청중&quot;</span>);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            <span class="keywordflow">case</span> EAnswerState::AnswerReply:</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>                <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;답변중&quot;</span>);</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>            <span class="keywordflow">case</span> EAnswerState::AnswerEnd:</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>                <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;&quot;</span>);  <span class="comment">// 숨김</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>            <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>            }</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        }</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    }</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>}</div>
+</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="foldopen" id="foldopen00172" data-start="{" data-end="}">
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="classUDasanWidget.html#a47175d72d80f5a4ca7c9e935bfe7aba1">  172</a></span>FString <a class="code hl_function" href="classUDasanWidget.html#a47175d72d80f5a4ca7c9e935bfe7aba1">UDasanWidget::GetResourcePath</a>(<a class="code hl_enumeration" href="EDasanState_8h.html#aee3352175451510afd8612b4034613a5">EDasanState</a> MainState, <a class="code hl_enumeration" href="EDasanState_8h.html#a2485a9c5e52655b7ceb1a11f3d6618bc">ETourState</a> TourState, <a class="code hl_enumeration" href="EDasanState_8h.html#aaeb46eecaaf9c84c19ca6c835fff944c">EAnswerState</a> AnswerState)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="keywordflow">switch</span> (MainState)</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    {</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keywordflow">case</span> EDasanState::Tour:</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        {</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>            <span class="keywordflow">switch</span> (TourState)</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>            {</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>            <span class="keywordflow">case</span> ETourState::TourMove:</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;/Game/CustomContents/UI/Texture/Dasan/dasan_move&quot;</span>);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>            <span class="keywordflow">case</span> ETourState::TourWait:</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;/Game/CustomContents/UI/Texture/Dasan/dasan_wait&quot;</span>);</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>            <span class="keywordflow">case</span> ETourState::TourExplain:</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>                <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;/Game/CustomContents/UI/Texture/Dasan/dasan_ask&quot;</span>);</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>            <span class="keywordflow">case</span> ETourState::TourEnd:</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>                <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;/Game/CustomContents/UI/Texture/Dasan/dasan_wait&quot;</span>);</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>            <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;/Game/CustomContents/UI/Texture/Dasan/dasan_wait&quot;</span>);</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>            }</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        }</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordflow">case</span> EDasanState::Answer:</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        {</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>            <span class="keywordflow">switch</span> (AnswerState)</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>            {</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            <span class="keywordflow">case</span> EAnswerState::AnswerListen:</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;/Game/CustomContents/UI/Texture/Dasan/dasan_listen&quot;</span>);</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>            <span class="keywordflow">case</span> EAnswerState::AnswerReply:</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;/Game/CustomContents/UI/Texture/Dasan/dasan_ask&quot;</span>);</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>            <span class="keywordflow">case</span> EAnswerState::AnswerEnd:</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>                <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;/Game/CustomContents/UI/Texture/Dasan/dasan_wait&quot;</span>);</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>            <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>                <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;/Game/CustomContents/UI/Texture/Dasan/dasan_wait&quot;</span>);</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>            }</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        }</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;/Game/CustomContents/UI/Texture/Dasan/dasan_wait&quot;</span>);</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    }</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>}</div>
+</div>
+<div class="ttc" id="aADasanActor_8h_html"><div class="ttname"><a href="ADasanActor_8h.html">ADasanActor.h</a></div><div class="ttdoc">ADasanActor 클래스를 선언합니다.</div></div>
+<div class="ttc" id="aEDasanState_8h_html_a2485a9c5e52655b7ceb1a11f3d6618bc"><div class="ttname"><a href="EDasanState_8h.html#a2485a9c5e52655b7ceb1a11f3d6618bc">ETourState</a></div><div class="ttdeci">ETourState</div><div class="ttdef"><b>Definition</b> <a href="EDasanState_8h_source.html#l00022">EDasanState.h:23</a></div></div>
+<div class="ttc" id="aEDasanState_8h_html_aaeb46eecaaf9c84c19ca6c835fff944c"><div class="ttname"><a href="EDasanState_8h.html#aaeb46eecaaf9c84c19ca6c835fff944c">EAnswerState</a></div><div class="ttdeci">EAnswerState</div><div class="ttdef"><b>Definition</b> <a href="EDasanState_8h_source.html#l00033">EDasanState.h:34</a></div></div>
+<div class="ttc" id="aEDasanState_8h_html_aee3352175451510afd8612b4034613a5"><div class="ttname"><a href="EDasanState_8h.html#aee3352175451510afd8612b4034613a5">EDasanState</a></div><div class="ttdeci">EDasanState</div><div class="ttdef"><b>Definition</b> <a href="EDasanState_8h_source.html#l00014">EDasanState.h:15</a></div></div>
+<div class="ttc" id="aGameLogging_8h_html"><div class="ttname"><a href="GameLogging_8h.html">GameLogging.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
+<div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
+<div class="ttc" id="aMacro_8h_html"><div class="ttname"><a href="Macro_8h.html">Macro.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
+<div class="ttc" id="aMacro_8h_html_af2ddd5315380cee79064cc40b337ab46"><div class="ttname"><a href="Macro_8h.html#af2ddd5315380cee79064cc40b337ab46">ENUM_TO_NAME</a></div><div class="ttdeci">#define ENUM_TO_NAME(EnumType, Value)</div><div class="ttdef"><b>Definition</b> <a href="Macro_8h_source.html#l00081">Macro.h:81</a></div></div>
+<div class="ttc" id="aUDasanWidget_8h_html"><div class="ttname"><a href="UDasanWidget_8h.html">UDasanWidget.h</a></div><div class="ttdoc">UDasanWidget 클래스를 선언합니다.</div></div>
+<div class="ttc" id="aclassADasanActor_html"><div class="ttname"><a href="classADasanActor.html">ADasanActor</a></div><div class="ttdef"><b>Definition</b> <a href="ADasanActor_8h_source.html#l00015">ADasanActor.h:16</a></div></div>
+<div class="ttc" id="aclassUDasanWidget_html_a055588e0824cef416ade7031dcef47cf"><div class="ttname"><a href="classUDasanWidget.html#a055588e0824cef416ade7031dcef47cf">UDasanWidget::GetStateMessage</a></div><div class="ttdeci">FString GetStateMessage(EDasanState MainState, ETourState TourState, EAnswerState AnswerState, const FString &amp;BuildingName, const FString &amp;PlayerName, int32 CurrentPlayers, int32 MaxPlayers) const</div><div class="ttdef"><b>Definition</b> <a href="UDasanWidget_8cpp_source.html#l00115">UDasanWidget.cpp:115</a></div></div>
+<div class="ttc" id="aclassUDasanWidget_html_a181d23738893c64b14447eb4824d545a"><div class="ttname"><a href="classUDasanWidget.html#a181d23738893c64b14447eb4824d545a">UDasanWidget::Text_Explain</a></div><div class="ttdeci">class UTextBlock * Text_Explain</div><div class="ttdef"><b>Definition</b> <a href="UDasanWidget_8h_source.html#l00056">UDasanWidget.h:56</a></div></div>
+<div class="ttc" id="aclassUDasanWidget_html_a45cf9903ae6faa2c27c075d119c45c8c"><div class="ttname"><a href="classUDasanWidget.html#a45cf9903ae6faa2c27c075d119c45c8c">UDasanWidget::Text_Msg</a></div><div class="ttdeci">class UTextBlock * Text_Msg</div><div class="ttdef"><b>Definition</b> <a href="UDasanWidget_8h_source.html#l00053">UDasanWidget.h:53</a></div></div>
+<div class="ttc" id="aclassUDasanWidget_html_a47175d72d80f5a4ca7c9e935bfe7aba1"><div class="ttname"><a href="classUDasanWidget.html#a47175d72d80f5a4ca7c9e935bfe7aba1">UDasanWidget::GetResourcePath</a></div><div class="ttdeci">FString GetResourcePath(EDasanState MainState, ETourState TourState, EAnswerState AnswerState) const</div><div class="ttdef"><b>Definition</b> <a href="UDasanWidget_8cpp_source.html#l00172">UDasanWidget.cpp:172</a></div></div>
+<div class="ttc" id="aclassUDasanWidget_html_a60fb5baef9272f7c298ffd04facc40cc"><div class="ttname"><a href="classUDasanWidget.html#a60fb5baef9272f7c298ffd04facc40cc">UDasanWidget::Border_Explain</a></div><div class="ttdeci">class UBorder * Border_Explain</div><div class="ttdef"><b>Definition</b> <a href="UDasanWidget_8h_source.html#l00059">UDasanWidget.h:59</a></div></div>
+<div class="ttc" id="aclassUDasanWidget_html_a8e0ffeeb482c60a5ba7465e84918c5b9"><div class="ttname"><a href="classUDasanWidget.html#a8e0ffeeb482c60a5ba7465e84918c5b9">UDasanWidget::NativeConstruct</a></div><div class="ttdeci">virtual void NativeConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="UDasanWidget_8cpp_source.html#l00018">UDasanWidget.cpp:18</a></div></div>
+<div class="ttc" id="aclassUDasanWidget_html_ab10e38876cc827bfc95715b3759fbe74"><div class="ttname"><a href="classUDasanWidget.html#ab10e38876cc827bfc95715b3759fbe74">UDasanWidget::Image_Icon</a></div><div class="ttdeci">class UImage * Image_Icon</div><div class="ttdef"><b>Definition</b> <a href="UDasanWidget_8h_source.html#l00050">UDasanWidget.h:50</a></div></div>
+<div class="ttc" id="aclassUDasanWidget_html_ac305a1f881db6df67664ce6b1a49a9df"><div class="ttname"><a href="classUDasanWidget.html#ac305a1f881db6df67664ce6b1a49a9df">UDasanWidget::HideExplainDialog</a></div><div class="ttdeci">void HideExplainDialog()</div><div class="ttdef"><b>Definition</b> <a href="UDasanWidget_8cpp_source.html#l00095">UDasanWidget.cpp:95</a></div></div>
+<div class="ttc" id="aclassUDasanWidget_html_ac74278aca50bc52c8c29d7d154992efa"><div class="ttname"><a href="classUDasanWidget.html#ac74278aca50bc52c8c29d7d154992efa">UDasanWidget::ExplainDialogTimerHandle</a></div><div class="ttdeci">FTimerHandle ExplainDialogTimerHandle</div><div class="ttdef"><b>Definition</b> <a href="UDasanWidget_8h_source.html#l00066">UDasanWidget.h:66</a></div></div>
+<div class="ttc" id="aclassUDasanWidget_html_ad36ed7eb6e1a254ec4fe633dd62758ce"><div class="ttname"><a href="classUDasanWidget.html#ad36ed7eb6e1a254ec4fe633dd62758ce">UDasanWidget::ShowExplainDialog</a></div><div class="ttdeci">void ShowExplainDialog(const FString &amp;ExplainText)</div><div class="ttdef"><b>Definition</b> <a href="UDasanWidget_8cpp_source.html#l00065">UDasanWidget.cpp:65</a></div></div>
+<div class="ttc" id="aclassUDasanWidget_html_ad67646c221e939bd5a4aaa7846280c92"><div class="ttname"><a href="classUDasanWidget.html#ad67646c221e939bd5a4aaa7846280c92">UDasanWidget::DasanActor</a></div><div class="ttdeci">TObjectPtr&lt; class ADasanActor &gt; DasanActor</div><div class="ttdef"><b>Definition</b> <a href="UDasanWidget_8h_source.html#l00063">UDasanWidget.h:63</a></div></div>
+<div class="ttc" id="aclassUDasanWidget_html_ada79bb3cab849daca231c21499663180"><div class="ttname"><a href="classUDasanWidget.html#ada79bb3cab849daca231c21499663180">UDasanWidget::InitWidget</a></div><div class="ttdeci">void InitWidget(class ADasanActor *InDasanActor)</div><div class="ttdef"><b>Definition</b> <a href="UDasanWidget_8cpp_source.html#l00029">UDasanWidget.cpp:29</a></div></div>
+<div class="ttc" id="aclassUDasanWidget_html_ae721b9276a1ee6a51391fb19d11b5d58"><div class="ttname"><a href="classUDasanWidget.html#ae721b9276a1ee6a51391fb19d11b5d58">UDasanWidget::UpdateDasanState</a></div><div class="ttdeci">void UpdateDasanState(EDasanState MainState, ETourState TourState, EAnswerState AnswerState, const FString &amp;BuildingName=TEXT(&quot;&quot;), const FString &amp;PlayerName=TEXT(&quot;&quot;), int32 CurrentPlayers=0, int32 MaxPlayers=0)</div><div class="ttdef"><b>Definition</b> <a href="UDasanWidget_8cpp_source.html#l00034">UDasanWidget.cpp:34</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_9a481a88fca7fb2428f2795f507e855b.html">YiSan</a></li><li class="navelem"><a class="el" href="dir_082c221e7eea3847d25ff2604012feae.html">UI</a></li><li class="navelem"><a class="el" href="dir_0512921187fc95a41b812c47620b2d43.html">Private</a></li><li class="navelem"><a class="el" href="UDasanWidget_8cpp.html">UDasanWidget.cpp</a></li>
+    <li class="footer">생성시간 : 토 11월 8 2025 14:04:19, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

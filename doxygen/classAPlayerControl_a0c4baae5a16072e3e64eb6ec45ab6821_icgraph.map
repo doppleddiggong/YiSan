@@ -1,0 +1,7 @@
+<map id="APlayerControl::ServerStartMapTravel" name="APlayerControl::ServerStartMapTravel">
+<area shape="rect" id="Node000001" title=" " alt="" coords="533,5,733,45"/>
+<area shape="rect" id="Node000002" href="$classUStartWidget.html#a237ccd67caabe4e39cd0aa9ec2c0b6b9" title="시작 버튼 클릭 시 호출됩니다." alt="" coords="276,5,485,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="520,28,485,28,485,23,520,23"/>
+<area shape="rect" id="Node000003" href="$classUStartWidget.html#acd4b87b1eecd9e9960a43aba79fd333c" title="위젯이 생성될 때 미디어 재생 설정을 초기화합니다." alt="" coords="5,13,228,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="262,28,228,28,228,23,262,23"/>
+</map>

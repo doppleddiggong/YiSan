@@ -1,0 +1,28 @@
+<map id="Source/LatteLibrary/Data/Private/UBuildingDetailData.cpp" name="Source/LatteLibrary/Data/Private/UBuildingDetailData.cpp">
+<area shape="rect" id="Node000001" title="UBuildingDetailData의 동작을 구현합니다." alt="" coords="641,5,855,60"/>
+<area shape="rect" id="Node000002" href="$UBuildingDetailData_8h.html" title=" " alt="" coords="129,108,295,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="641,54,297,108,296,103,640,48"/>
+<area shape="rect" id="Node000006" href="$GameLogging_8h.html" title="YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다." alt="" coords="614,108,738,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="728,62,697,99,693,96,724,58"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="762,108,881,133"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="772,58,804,96,800,99,768,62"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="905,108,1047,133"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="819,58,934,101,932,106,817,63"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="629,255,747,280"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="129,134,77,144,33,159,18,169,10,179,9,191,18,205,29,212,47,219,104,231,269,248,458,258,616,262,616,268,458,263,269,254,103,236,46,224,26,217,14,209,4,192,5,177,14,165,30,154,75,139,128,128"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="28,181,177,207"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="196,136,134,176,131,171,193,131"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="201,181,439,207"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="231,131,292,171,289,176,228,136"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="614,132,566,142,523,157,508,167,499,178,497,190,503,205,526,228,554,244,585,254,616,260,615,266,584,259,552,248,523,232,499,208,491,191,494,176,504,163,520,153,564,137,613,127"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="514,181,673,207"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="664,135,619,174,616,170,661,131"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="697,181,823,207"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="691,131,737,170,734,174,688,135"/>
+<area shape="rect" id="Node000009" href="$FLogWriter_8h.html" title="FArchive 클래스를 선언합니다." alt="" coords="848,181,952,207"/>
+<area shape="poly" id="edge9_Node000006_Node000009" title=" " alt="" coords="713,131,852,175,850,180,711,136"/>
+<area shape="rect" id="Node000010" href="$NetworkLog_8h.html" title="YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다." alt="" coords="976,181,1088,207"/>
+<area shape="poly" id="edge11_Node000006_Node000010" title=" " alt="" coords="734,131,963,176,962,181,733,136"/>
+<area shape="poly" id="edge10_Node000009_Node000003" title=" " alt="" coords="867,209,736,253,734,248,865,204"/>
+<area shape="poly" id="edge12_Node000010_Node000003" title=" " alt="" coords="977,209,758,254,756,249,976,204"/>
+</map>

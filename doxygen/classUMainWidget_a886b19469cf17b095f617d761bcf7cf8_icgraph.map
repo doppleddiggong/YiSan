@@ -1,0 +1,10 @@
+<map id="UMainWidget::IsMegaPopupVisible" name="UMainWidget::IsMegaPopupVisible">
+<area shape="rect" id="Node000001" title=" " alt="" coords="544,35,749,75"/>
+<area shape="rect" id="Node000002" href="$classUMainWidget.html#a60337d9d9137ba32700d6a9acbbfe5a2" title=" " alt="" coords="280,5,492,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="530,44,492,40,493,35,530,39"/>
+<area shape="rect" id="Node000004" href="$classUMainWidget.html#a2c01b5319894f12b655eb2625828dd07" title=" " alt="" coords="276,70,496,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="531,70,496,74,496,68,530,64"/>
+<area shape="rect" id="Node000003" href="$classUMainWidget.html#ab5b82b602efb97c7b4cd7a3c2d99d6e8" title="위젯 초기화와 브로드캐스트 구독을 수행합니다." alt="" coords="5,42,228,67"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="266,41,228,45,228,40,266,36"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="262,72,228,69,229,64,263,67"/>
+</map>

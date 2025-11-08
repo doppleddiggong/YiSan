@@ -1,0 +1,10 @@
+<map id="APlayerActor::GetPlayerDisplayName" name="APlayerActor::GetPlayerDisplayName">
+<area shape="rect" id="Node000001" title=" " alt="" coords="480,45,747,70"/>
+<area shape="rect" id="Node000002" href="$classAPlayerActor.html#ad982e1f258dcb3be792c58391e13956f" title="주기적으로 호출되어 이름표 위젯이 준비되었는지 확인합니다." alt="" coords="232,5,432,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="488,46,432,39,433,34,488,40"/>
+<area shape="rect" id="Node000004" href="$classAPlayerActor.html#a63fb885eb5b6c3a2f2da33121e8d33b5" title="브로드캐스트 매니저에서 전달되는 음성 명령 실행 이벤트에 대응합니다." alt="" coords="233,69,431,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="488,74,431,81,431,75,487,69"/>
+<area shape="rect" id="Node000003" href="$classAPlayerActor.html#afc3ace6de521cfc26c3a4395215e7ce9" title="게임 플레이가 시작될 때 호출되어 의존 시스템을 초기화합니다." alt="" coords="5,45,184,70"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="219,43,185,48,184,43,218,38"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="219,77,184,72,185,67,220,72"/>
+</map>

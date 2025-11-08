@@ -1,0 +1,7 @@
+<map id="UPlayerHeadWidget::SetOwningActor" name="UPlayerHeadWidget::SetOwningActor">
+<area shape="rect" id="Node000001" title="이 위젯을 소유한 액터를 설정하고, 닉네임 확인 타이머를 시작합니다." alt="" coords="480,5,641,45"/>
+<area shape="rect" id="Node000002" href="$classAPlayerActor.html#ad982e1f258dcb3be792c58391e13956f" title="주기적으로 호출되어 이름표 위젯이 준비되었는지 확인합니다." alt="" coords="232,5,432,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="466,28,432,28,432,23,466,23"/>
+<area shape="rect" id="Node000003" href="$classAPlayerActor.html#afc3ace6de521cfc26c3a4395215e7ce9" title="게임 플레이가 시작될 때 호출되어 의존 시스템을 초기화합니다." alt="" coords="5,13,184,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="218,28,184,28,184,23,218,23"/>
+</map>

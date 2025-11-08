@@ -1,0 +1,13 @@
+<map id="Source/YiSan/Network/Public/UHttpNetworkSystem.h" name="Source/YiSan/Network/Public/UHttpNetworkSystem.h">
+<area shape="rect" id="Node000001" title="HTTP 기반 음성·GPT 파이프라인 요청을 담당하는 서브시스템을 선언합니다." alt="" coords="491,5,714,45"/>
+<area shape="rect" id="Node000002" href="$APlayerActor_8cpp.html" title="APlayerActor 구현을 위한 Doxygen 주석을 제공합니다." alt="" coords="5,101,192,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="478,48,346,69,205,96,172,103,171,98,203,91,345,64,477,42"/>
+<area shape="rect" id="Node000003" href="$ANetworkTesterActor_8cpp.html" title="ANetworkTesterActor의 동작을 구현합니다." alt="" coords="217,101,455,141"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="537,52,391,103,389,98,535,47"/>
+<area shape="rect" id="Node000004" href="$UHttpNetworkSystem_8cpp.html" title="UHttpNetworkSystem의 동작을 구현합니다." alt="" coords="480,101,725,141"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="605,59,605,101,600,101,600,59"/>
+<area shape="rect" id="Node000005" href="$UChatBoxWidget_8cpp.html" title="UChatBoxWidget의 동작을 구현합니다." alt="" coords="750,101,925,141"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="664,48,791,98,789,103,662,53"/>
+<area shape="rect" id="Node000006" href="$UVoiceConversationSystem_8cpp.html" title="UVoiceConversationSystem의 동작을 구현합니다." alt="" coords="949,93,1155,148"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="714,45,938,91,949,93,948,98,937,96,713,51"/>
+</map>

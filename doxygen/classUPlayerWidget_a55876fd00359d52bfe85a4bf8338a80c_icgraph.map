@@ -1,0 +1,9 @@
+<map id="UPlayerWidget::CreatePlayerListItem" name="UPlayerWidget::CreatePlayerListItem">
+<area shape="rect" id="Node000001" title=" " alt="" coords="829,5,1040,45"/>
+<area shape="rect" id="Node000002" href="$classUPlayerWidget.html#a43ab4ca4a67f6487a9637203377fd6e2" title=" " alt="" coords="543,13,781,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="816,28,782,28,782,23,816,23"/>
+<area shape="rect" id="Node000003" href="$classUPlayerWidget.html#abc62c371ef90fcc9a2bb0cf363eabf1e" title=" " alt="" coords="285,5,495,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="529,28,495,28,495,23,529,23"/>
+<area shape="rect" id="Node000004" href="$classUPlayerWidget.html#aac0adf3ee6f4978fe315285aa0796514" title=" " alt="" coords="5,13,237,38"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="271,28,237,28,237,23,271,23"/>
+</map>
