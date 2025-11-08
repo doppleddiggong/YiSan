@@ -10,10 +10,7 @@
 
 ### Weekly Summary
 * [ Last30Summary](DevLog/_Last30Summary.md)
-* [2025-W41-Summary](DevLog/Weekly/2025-W41-Summary.md)
-* [2025-W42-Summary](DevLog/Weekly/2025-W42-Summary.md)
-* [2025-W43-Summary](DevLog/Weekly/2025-W43-Summary.md)
-* [2025-W44-Summary](DevLog/Weekly/2025-W44-Summary.md)
+* [2025-W45-Summary](DevLog/2025-W45-Summary.md)
 
 ## Planning
 
