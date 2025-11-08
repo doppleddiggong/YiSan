@@ -36,11 +36,30 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Load config
+        id: config
+        run: |
+          # config.yml에서 설정 읽기
+          WEEKLY_GPT_ENABLED=$(python3 -c "import yaml; print(yaml.safe_load(open('.github/config.yml'))['gpt']['weekly_enabled'])")
+          DISCORD_ENABLED=$(python3 -c "import yaml; print(yaml.safe_load(open('.github/config.yml'))['discord']['enabled'])")
+
+          echo "weekly_gpt_enabled=$WEEKLY_GPT_ENABLED" >> $GITHUB_OUTPUT
+          echo "discord_enabled=$DISCORD_ENABLED" >> $GITHUB_OUTPUT
+
+          # 수동 실행 시 입력값이 우선, 그 외엔 config 값 사용
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ] && [ -n "${{ github.event.inputs.use_gpt }}" ]; then
+            USE_GPT="${{ github.event.inputs.use_gpt }}"
+          else
+            USE_GPT="$WEEKLY_GPT_ENABLED"
+          fi
+
+          echo "use_gpt=$USE_GPT" >> $GITHUB_OUTPUT
+          echo "📋 Config loaded: weekly_gpt=$WEEKLY_GPT_ENABLED, use_gpt=$USE_GPT"
+
       - name: Install Python dependencies
         run: |
           pip install jinja2 pyyaml
-          # 기본적으로 GPT 사용 (수동 실행 시 false로 설정 가능)
-          if [ "${{ github.event_name }}" == "schedule" ] || [ "${{ github.event.inputs.use_gpt }}" == "true" ]; then
+          if [ "${{ steps.config.outputs.use_gpt }}" == "true" ] || [ "${{ steps.config.outputs.use_gpt }}" == "True" ]; then
             pip install openai
           fi
 
@@ -73,7 +92,7 @@ jobs:
             --out "Documents/DevLog/${WEEK_LABEL}-Summary.md"
 
       - name: Generate GPT Weekly Feedback (Optional)
-        if: github.event_name == 'schedule' || github.event.inputs.use_gpt == 'true'
+        if: steps.config.outputs.use_gpt == 'true' || steps.config.outputs.use_gpt == 'True'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
@@ -85,7 +104,7 @@ jobs:
             --output "Documents/DevLog/${{ steps.weekly.outputs.week_label }}-feedback.md"
 
       - name: Merge Weekly Report and Feedback
-        if: github.event_name == 'schedule' || github.event.inputs.use_gpt == 'true'
+        if: steps.config.outputs.use_gpt == 'true' || steps.config.outputs.use_gpt == 'True'
         run: |
           BASE_FILE="Documents/DevLog/${{ steps.weekly.outputs.week_label }}-Summary.md"
           FEEDBACK_FILE="Documents/DevLog/${{ steps.weekly.outputs.week_label }}-feedback.md"
@@ -117,7 +136,7 @@ jobs:
           fi
 
       - name: Send Discord Notification
-        if: success()
+        if: success() && (steps.config.outputs.discord_enabled == 'true' || steps.config.outputs.discord_enabled == 'True')
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |

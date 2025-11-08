@@ -33,7 +33,13 @@
       "Bash(git rev-parse:*)",
       "Bash(python3:*)",
       "WebFetch(domain:code.claude.com)",
-      "Bash(test:*)"
+      "Bash(test:*)",
+      "Bash(git add:*)",
+      "Bash(del \".github\\workflows\\devlog.yml\")",
+      "Bash(del \".github\\workflows\\system-review.yml\")",
+      "Bash(del \".github\\scripts\\generate-devlog.js\")",
+      "Bash(del \".github\\scripts\\devlog\\generate_system_review.py\")",
+      "Bash(rm:*)"
     ],
     "deny": [],
     "ask": []

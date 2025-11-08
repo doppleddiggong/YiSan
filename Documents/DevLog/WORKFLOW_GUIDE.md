@@ -4,6 +4,8 @@
 
 YiSan 프로젝트의 개발 활동을 자동으로 기록하고 성장 피드백을 제공하는 GitHub Actions 워크플로우 시스템입니다.
 
+모든 설정은 `.github/config.yml` 파일에서 중앙 관리됩니다.
+
 ## 워크플로우 구조
 
 ### 1. Daily DevLog (`devlog-simple.yml`)
@@ -119,25 +121,67 @@ GPT 피드백 포함:
 
 ## 설정 방법
 
-### 1. GitHub Secrets 설정
+### 1. 중앙 설정 파일 (.github/config.yml)
 
-`.github/workflows/` 워크플로우를 사용하려면 다음 secrets이 필요합니다:
+모든 워크플로우 설정은 `.github/config.yml`에서 관리됩니다:
+
+```yaml
+# GPT 피드백 설정
+gpt:
+  daily_enabled: false    # Daily DevLog GPT 피드백 (기본: 꺼짐)
+  weekly_enabled: true    # Weekly Report GPT 회고 (기본: 켜짐)
+
+# Discord 알림 설정
+discord:
+  enabled: true           # Discord 알림 사용 여부
+
+# DevLog 생성 설정
+devlog:
+  daily_auto: true        # Daily 자동 생성
+  weekly_auto: true       # Weekly 자동 생성
+  output_dir: "Documents/DevLog"
+```
+
+**GPT 기능 켜기/끄기**:
+```yaml
+# 매일 GPT 피드백 받기 (비용 발생)
+gpt:
+  daily_enabled: true
+
+# 주간 회고만 GPT 사용 (권장, 비용 효율적)
+gpt:
+  daily_enabled: false
+  weekly_enabled: true
+
+# GPT 완전 비활성화
+gpt:
+  daily_enabled: false
+  weekly_enabled: false
+```
+
+### 2. GitHub Secrets 설정
+
+GPT 피드백이나 Discord 알림을 사용하려면 secrets 설정이 필요합니다:
 
 ```bash
-OPENAI_API_KEY        # GPT 피드백 생성용 (선택)
-DISCORD_WEBHOOK_URL   # Discord 알림용 (선택)
+OPENAI_API_KEY        # GPT 피드백 생성용 (gpt.enabled=true 시 필수)
+DISCORD_WEBHOOK_URL   # Discord 알림용 (discord.enabled=true 시 필수)
 ```
 
 **설정 경로**: Repository Settings > Secrets and variables > Actions
 
-### 2. 워크플로우 활성화
+### 3. 우선순위
 
-워크플로우는 기본적으로 활성화되어 있습니다. 비활성화하려면:
+설정 우선순위는 다음과 같습니다:
 
-```bash
-# .github/workflows/ 파일을 삭제하거나
-# GitHub Actions 설정에서 개별 워크플로우 비활성화
-```
+1. **수동 실행 입력값** (최우선)
+2. **config.yml 설정**
+3. **워크플로우 기본값**
+
+예시:
+- config.yml에서 `daily_enabled: false`
+- 수동 실행 시 `use_gpt: true` 선택
+- 결과: GPT 피드백 생성됨 (수동 입력 우선)
 
 ---
 
@@ -145,9 +189,11 @@ DISCORD_WEBHOOK_URL   # Discord 알림용 (선택)
 
 ### Scenario 1: 빠른 기록만 필요 (GPT 비용 절약)
 
-```bash
-# Daily: 자동 실행 (GPT 없음)
-# Weekly: 수동 실행 시 use_gpt=false
+**config.yml 설정**:
+```yaml
+gpt:
+  daily_enabled: false
+  weekly_enabled: false
 ```
 
 **결과**: 기본 커밋 로그만 생성, API 비용 없음
@@ -156,23 +202,51 @@ DISCORD_WEBHOOK_URL   # Discord 알림용 (선택)
 
 ### Scenario 2: 주간 성장 회고 (권장)
 
-```bash
-# Daily: 자동 실행 (GPT 없음)
-# Weekly: 자동 실행 (GPT 포함, 기본값)
+**config.yml 설정**:
+```yaml
+gpt:
+  daily_enabled: false
+  weekly_enabled: true   # 기본값
 ```
 
 **결과**: 평일엔 단순 기록, 주말에 GPT 피드백으로 한 주 회고
+
+**비용**: ~$0.20/월
 
 ---
 
 ### Scenario 3: 매일 즉각 피드백
 
-```bash
-# Daily: 수동 실행 (use_gpt=true)
-# Weekly: 자동 실행 (GPT 포함)
+**config.yml 설정**:
+```yaml
+gpt:
+  daily_enabled: true
+  weekly_enabled: true
 ```
 
 **결과**: 매일 성찰 질문 받고 주말에 통합 회고
+
+**비용**: ~$1.00/월
+
+---
+
+### Scenario 4: 선택적 피드백 (config는 끄고 필요할 때만)
+
+**config.yml 설정**:
+```yaml
+gpt:
+  daily_enabled: false
+  weekly_enabled: false
+```
+
+**사용법**:
+중요한 작업 후 수동으로 실행:
+```
+GitHub Actions > Daily DevLog > Run workflow
+✅ use_gpt: true
+```
+
+**결과**: 평소엔 비용 없음, 필요할 때만 피드백
 
 ---
 
@@ -241,29 +315,51 @@ Documents/
 
 ## FAQ
 
-### Q1. GPT 피드백은 언제 사용하나요?
+### Q1. GPT 피드백 설정을 바꾸려면?
 
-**권장**: 주간 회고만 GPT 사용 (비용 효율적, 통합 피드백)
+`.github/config.yml` 파일을 수정하고 커밋하면 됩니다:
 
-**옵션**: 중요한 작업 후 일일 GPT 피드백 활성화
+```yaml
+gpt:
+  daily_enabled: true   # false → true로 변경
+```
+
+커밋 후 다음 실행부터 자동 적용됩니다.
 
 ### Q2. GPT API 비용은?
 
 - Daily (GPT-4o): ~$0.03 / 회
 - Weekly (GPT-4o): ~$0.05 / 회
-- 월 예상 비용 (Weekly만): ~$0.20
+- 월 예상 비용:
+  - Weekly만 (권장): ~$0.20
+  - Daily + Weekly: ~$1.00
 
-### Q3. Discord 알림은 필수인가요?
+### Q3. config.yml과 수동 실행 중 뭐가 우선인가요?
 
-아니요. `DISCORD_WEBHOOK_URL` secret을 설정하지 않으면 알림이 건너뛰어집니다.
+**수동 실행이 우선**입니다.
 
-### Q4. 기존 DevLog 형식이 변경되나요?
+- config: `daily_enabled: false`
+- 수동 실행: `use_gpt: true`
+- 결과: GPT 피드백 생성됨
+
+config는 자동 실행 시 기본값으로 사용됩니다.
+
+### Q4. Discord 알림을 끄려면?
+
+```yaml
+discord:
+  enabled: false
+```
+
+또는 `DISCORD_WEBHOOK_URL` secret을 삭제하면 됩니다.
+
+### Q5. 기존 DevLog 형식이 변경되나요?
 
 아니요. 기본 DevLog는 동일합니다. GPT 피드백은 파일 하단에 추가됩니다.
 
-### Q5. 피드백이 마음에 들지 않으면?
+### Q6. 피드백이 마음에 들지 않으면?
 
-GPT 피드백은 참고용입니다. PR에서 해당 부분을 수정하거나 삭제할 수 있습니다.
+GPT 피드백은 참고용입니다. 커밋하기 전에 수정하거나 삭제할 수 있습니다.
 
 ---
 

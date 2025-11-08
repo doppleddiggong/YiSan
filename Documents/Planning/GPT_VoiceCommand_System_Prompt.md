@@ -8,9 +8,9 @@
 
 ## 명령 테이블
 
-다음 CSV 형식의 테이블에 정의된 명령들을 사용합니다:
+다음 표에 정의된 명령들을 사용합니다:
 
-```csv
+```
 main_phrase,aliases,event_name
 접근,다가가기;NPC에게로;내가갈게;가까이가기;대상에게접근,Cmd_Approach
 건물정보확인,주변정보;이곳정보;건물설명;현재구역안내;여긴뭐야,Cmd_BuildingInfo

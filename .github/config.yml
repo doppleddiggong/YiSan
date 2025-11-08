@@ -1,0 +1,45 @@
+# DevLog Automation Configuration
+# GitHub Actions 워크플로우 중앙 설정 파일
+
+# GPT 피드백 설정
+gpt:
+  # Daily DevLog GPT 피드백 사용 여부
+  # true: 매일 GPT 피드백 자동 생성 (비용 발생)
+  # false: 기본 커밋 로그만 생성 (수동 실행 시에만 GPT 사용 가능)
+  daily_enabled: false
+
+  # Weekly Report GPT 회고 사용 여부
+  # true: 주간 자동 실행 시 GPT 회고 포함 (권장)
+  # false: 기본 통계만 생성
+  weekly_enabled: true
+
+# Discord 알림 설정
+discord:
+  # Discord 알림 사용 여부
+  # secret.DISCORD_WEBHOOK_URL이 설정되어 있어야 함
+  enabled: true
+
+# DevLog 생성 설정
+devlog:
+  # Daily DevLog 자동 생성 여부
+  daily_auto: true
+
+  # Weekly Report 자동 생성 여부
+  weekly_auto: true
+
+  # DevLog 디렉토리
+  output_dir: "Documents/DevLog"
+
+# 성능 설정
+performance:
+  # Git log 조회 기간 (시간 단위)
+  git_log_hours: 24
+
+  # 주간 리포트 분석 대상 Daily DevLog 최대 개수
+  weekly_max_daily_logs: 7
+
+# 알림 메시지 커스터마이징
+messages:
+  daily_commit_prefix: "📝 DevLog:"
+  weekly_commit_prefix: "📊 Weekly:"
+  no_commits_message: "No commits today"
