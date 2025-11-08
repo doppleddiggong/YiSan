@@ -3,7 +3,8 @@
 [![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-5.6.0-blue.svg)](https://www.unrealengine.com/)
 [![Language](https://img.shields.io/badge/C%2B%2B-20-blue.svg)](https://isocpp.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Documentation](https://img.shields.io/badge/Docs-GitHub%20Pages-lightgrey.svg)](https://doppleddiggong.github.io/YiSan/)
+[![Documentation](https://img.shields.io/badge/Docs-Doxygen-lightgrey.svg)](https://doppleddiggong.github.io/YiSan/doxygen/)
+[![DevLog](https://img.shields.io/badge/DevLog-HonKit-orange.svg)](https://doppleddiggong.github.io/YiSan/docs/)
 
 차세대 언리얼 엔진 기반 역사 체험형 게임 **YiSan**의 핵심 코드와 툴링을 담은 레포지토리입니다.
 
@@ -33,6 +34,23 @@
 - `APlayerActor`에 SpringArm + FollowCamera 구성 적용, 3인칭 기본 뷰 정비
 - Dev/Test 스크립트 표준화: RowName 검증, Attempt/Outcome 구조 로그 강제
 
+## 문서화 시스템
+
+이 프로젝트는 **이중 문서화 시스템**을 사용합니다:
+
+### 📚 Doxygen - 코드 API 문서
+- **URL**: [https://doppleddiggong.github.io/YiSan/doxygen/](https://doppleddiggong.github.io/YiSan/doxygen/)
+- **내용**: C++ 클래스, 함수, 변수에 대한 자동 생성 API 문서
+- **업데이트**: 코드 커밋 시 자동으로 빌드 및 배포
+
+### 📝 HonKit - 개발 문서
+- **URL**: [https://doppleddiggong.github.io/YiSan/docs/](https://doppleddiggong.github.io/YiSan/docs/)
+- **내용**:
+  - **DevLog**: 일일/주간/월간 개발 로그 (자동 생성)
+  - **Planning**: 시스템 설계, 기능 명세, 발표 자료
+  - **System Review**: 아키텍처 변화 분석 및 성능 메트릭
+- **업데이트**: DevLog/Planning 폴더 변경 시 자동으로 빌드 및 배포
+
 ## 폴더 구조 스냅샷
 ```
 Source/
@@ -42,8 +60,17 @@ Source/
 Plugins/
  └─ CoffeeToolbar/        # 에디터 전용 툴바 플러그인
 Documents/
- └─ DevLog/               # 일일 DevLog 및 30일 요약 (자동 생성)
+ ├─ DevLog/               # 일일 DevLog 및 주간/월간 요약 (자동 생성)
+ ├─ Planning/             # 시스템 설계 및 기획 문서
+ ├─ book.json             # HonKit 설정
+ └─ SUMMARY.md            # HonKit 목차 (자동 생성)
 Tests/                     # PowerShell 기반 검증 스크립트
+.github/
+ ├─ workflows/
+ │  ├─ doxygen.yml        # Doxygen 자동 빌드
+ │  ├─ honkit.yml         # HonKit 자동 빌드
+ │  └─ devlog-simple.yml  # Daily DevLog 자동 생성
+ └─ scripts/devlog/       # DevLog 생성 스크립트
 ```
 
 ## 빌드 및 실행
@@ -80,5 +107,24 @@ Tests/                     # PowerShell 기반 검증 스크립트
 2. 구조적 로그 규칙(CorrelationId, Operation, Attempt, Outcome 등)을 위반하지 않습니다.
 3. 변경 사항을 DevLog에 반영하고, 필요한 경우 `_Last30Summary.md`를 갱신합니다.
 
+## 자동화 시스템
+
+### Daily DevLog 자동 생성
+- **스케줄**: 매일 KST 오전 9시 (GitHub Actions)
+- **생성 위치**: `Documents/DevLog/YYYY-MM-DD.md`
+- **수집 정보**:
+  - Git 커밋 통계 (Conventional Commits 기반)
+  - 빌드 및 테스트 결과
+  - 코드 Hotspot 분석
+  - Doxygen API 변화
+- **템플릿**: `.github/scripts/devlog/daily_template.md`
+
+### HonKit 문서 자동 배포
+- **트리거**: DevLog 또는 Planning 폴더 업데이트 시
+- **빌드**: HonKit + Mermaid + Collapsible Menu 플러그인
+- **배포**: GitHub Pages (`gh-pages` 브랜치)
+
 ---
-최신 개발 내용은 항상 `Documents/DevLog` 디렉터리의 최근 30일 기록을 참고해 주세요.
+
+**📚 최신 개발 내용**: [HonKit DevLog](https://doppleddiggong.github.io/YiSan/docs/)
+**🔍 API 문서**: [Doxygen Documentation](https://doppleddiggong.github.io/YiSan/doxygen/)
