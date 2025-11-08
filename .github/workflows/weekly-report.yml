@@ -136,12 +136,30 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore(devlog): weekly report ${{ steps.weekly.outputs.week_label }}
+            cat <<'EOM' > commit_message.txt
+chore(devlog): weekly report ${{ steps.weekly.outputs.week_label }}
 
-          🤖 Generated with [Claude Code](https://claude.com/claude-code)
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
-          Co-Authored-By: Claude <noreply@anthropic.com>"
-            git push
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOM
+
+            git commit -F commit_message.txt
+            rm commit_message.txt
+
+            for attempt in 1 2 3; do
+              if git push origin HEAD:main; then
+                break
+              fi
+
+              if [ "$attempt" -eq 3 ]; then
+                echo "❌ Failed to push after $attempt attempts"
+                exit 1
+              fi
+
+              echo "⚠️ Push failed (attempt $attempt). Rebasing onto latest main before retrying."
+              git pull --rebase origin main
+            done
           fi
 
       - name: Send Discord Notification
