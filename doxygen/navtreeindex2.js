@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"UObjectPoolManager_8cpp_source.html":[5,0,1,1,3,0,5],
 "UObjectPoolManager_8h.html":[5,0,1,1,3,1,6],
 "UObjectPoolManager_8h_source.html":[5,0,1,1,3,1,6],
 "UOrbitalBehaviorComponent_8cpp.html":[5,0,1,0,0,0,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "classALatteGameCharacter.html#a5e257151374a9fb8dbcb056477caa983":[4,0,4,4],
 "classALatteGameCharacter.html#a66a03203587c2c41452cb3b64613fc5f":[4,0,4,24],
 "classALatteGameCharacter.html#a6c6872fc99bcdb8c44d619cbca31c1da":[4,0,4,46],
-"classALatteGameCharacter.html#a6d8d39a0466409ebe8ca6c4029233d68":[4,0,4,60],
-"classALatteGameCharacter.html#a6de7568896e79c0d5108926c0306ab9f":[4,0,4,37]
+"classALatteGameCharacter.html#a6d8d39a0466409ebe8ca6c4029233d68":[4,0,4,60]
 };

@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"dir_d0782cf4152eb08d7ce49547cd9adebd.html":[5,0,1,0,0,0],
 "dir_dbcfec335b82e9995c56663fd2624812.html":[5,0,1,1,0,1],
 "dir_e5b5f607e774ee2f0b85d6df5f67b5f6.html":[5,0,1,2,5,1],
 "dir_e600c970f4359b669e2548a88996c9af.html":[5,0,1,0,2,1],
@@ -55,8 +56,8 @@ var NAVTREEINDEX7 =
 "functions_t.html":[4,3,0,19],
 "functions_u.html":[4,3,0,20],
 "functions_v.html":[4,3,0,21],
-"functions_vars.html":[4,3,2],
 "functions_vars.html":[4,3,2,0],
+"functions_vars.html":[4,3,2],
 "functions_vars_b.html":[4,3,2,1],
 "functions_vars_c.html":[4,3,2,2],
 "functions_vars_d.html":[4,3,2,3],
@@ -95,9 +96,9 @@ var NAVTREEINDEX7 =
 "index.html":[],
 "index.html":[0],
 "index.html#autotoc_md11":[0,3],
-"index.html#autotoc_md4":[0,0],
-"index.html#autotoc_md6":[0,1],
-"index.html#autotoc_md8":[0,2],
+"index.html#autotoc_md5":[0,0],
+"index.html#autotoc_md7":[0,1],
+"index.html#autotoc_md9":[0,2],
 "md_Documents_2DoxygenPage_2UVoiceSystem.html":[2],
 "md_GEMINI.html":[1],
 "md_GEMINI.html#autotoc_md2":[1,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "structFGPTContextNearBuilding.html#af860fb850528f72abf6acc688fa2891d":[4,0,30,6],
 "structFHitStopData.html":[4,0,31],
 "structFHitStopData.html#a1e465dea22d37e3ed21392f390b6c197":[4,0,31,1],
-"structFHitStopData.html#a43882ceb618dccd5a19f22dbe117cffd":[4,0,31,2],
-"structFHitStopData.html#a4d9b4cb1d5147ec2f4a660c80662fdca":[4,0,31,3]
+"structFHitStopData.html#a43882ceb618dccd5a19f22dbe117cffd":[4,0,31,2]
 };
