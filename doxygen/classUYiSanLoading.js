@@ -11,6 +11,7 @@ var classUYiSanLoading =
     [ "Broadcast_ShowLoading", "classUYiSanLoading.html#a2bbb8bf4c372ee83143e9b7f39ad82a6", null ],
     [ "CompleteProcess", "classUYiSanLoading.html#ab48994aeea87093f36721bcf5760b9ca", null ],
     [ "DEFINE_SUBSYSTEM_GETTER_INLINE", "classUYiSanLoading.html#a090787c671d9eaee89711b22e6e4625f", null ],
+    [ "ForceCompleteForGuest", "classUYiSanLoading.html#af292c25a2c3fe27a253c00f264d28a04", null ],
     [ "HandlePostLoadMapSimple", "classUYiSanLoading.html#aad22e09de6e8750e0b2b31e6d2a3769e", null ],
     [ "InitSystem", "classUYiSanLoading.html#a783ebd42104f77c1a45156f889b19562", null ],
     [ "IsLoadingComplete", "classUYiSanLoading.html#a4b154f3462b8e4e0ff88c0c91189611d", null ],

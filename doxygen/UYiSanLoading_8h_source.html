@@ -145,67 +145,69 @@ $(document).ready(function(){initNavTree('UYiSanLoading_8h_source.html',''); ini
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// 클라이언트 측 로딩 완료 여부 확인</span></div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">bool</span> IsLoadingComplete() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> PrepareForTravel();</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> PostLoadMapWithWorld(UWorld* InWorld);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> CompleteProcess(<span class="keyword">const</span> UWorld* InWorld);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> UpdateTick();</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> Loading_Textures(<span class="keyword">const</span> UWorld* InWorld);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> Loading_LevelInstance(UWorld* InWorld);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> HandlePostLoadMapSimple(UWorld* World);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#pragma region BROADCAST</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> Broadcast_ShowLoading() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">void</span> Broadcast_HideLoading() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#pragma endregion   </span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#a63b981d30e30e82518a6d3bd415bf78e">   62</a></span>    <span class="keywordtype">double</span> NonLoadingTravelStartTime = 0.0;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#a00fecd99a01732b8640e371be0f37f52">   63</a></span>    <span class="keyword">const</span> <span class="keywordtype">double</span> TextureStreaming_TimeOut = 60.0;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#ae1ea411a061e480ab3cd3f11fa9a3b1e">   64</a></span>    <span class="keyword">const</span> <span class="keywordtype">double</span> TextureProgress_LogInterval = 1.0;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#ac5228f8ed3b3b69847d45ec67fdaac06">   67</a></span>    <span class="keywordtype">double</span> TotalTime = 0.0;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="foldopen" id="foldopen00069" data-start="{" data-end="};">
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#a362f328a37b848b0feef2f808dbaeb8c">   69</a></span>    TMap&lt;EState, bool&gt; CompleteState</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    {</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        { EState::WP, <span class="keyword">false</span> },</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        { EState::TEXTURE, <span class="keyword">false</span> },</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        { EState::LI, <span class="keyword">false</span> },</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        { EState::COMPLETE, <span class="keyword">false</span> }</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    };</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> ForceCompleteForGuest();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> PrepareForTravel();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> PostLoadMapWithWorld(UWorld* InWorld);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> CompleteProcess(<span class="keyword">const</span> UWorld* InWorld);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> UpdateTick();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> Loading_Textures(<span class="keyword">const</span> UWorld* InWorld);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> Loading_LevelInstance(UWorld* InWorld);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> HandlePostLoadMapSimple(UWorld* World);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#pragma region BROADCAST</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">void</span> Broadcast_ShowLoading() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">void</span> Broadcast_HideLoading() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#pragma endregion   </span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#a63b981d30e30e82518a6d3bd415bf78e">   65</a></span>    <span class="keywordtype">double</span> NonLoadingTravelStartTime = 0.0;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#a00fecd99a01732b8640e371be0f37f52">   66</a></span>    <span class="keyword">const</span> <span class="keywordtype">double</span> TextureStreaming_TimeOut = 60.0;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#ae1ea411a061e480ab3cd3f11fa9a3b1e">   67</a></span>    <span class="keyword">const</span> <span class="keywordtype">double</span> TextureProgress_LogInterval = 1.0;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#ac5228f8ed3b3b69847d45ec67fdaac06">   70</a></span>    <span class="keywordtype">double</span> TotalTime = 0.0;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="foldopen" id="foldopen00072" data-start="{" data-end="};">
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#a362f328a37b848b0feef2f808dbaeb8c">   72</a></span>    TMap&lt;EState, bool&gt; CompleteState</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        { EState::WP, <span class="keyword">false</span> },</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        { EState::TEXTURE, <span class="keyword">false</span> },</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        { EState::LI, <span class="keyword">false</span> },</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        { EState::COMPLETE, <span class="keyword">false</span> }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    };</div>
 </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#a418a7d9f876cd6065aaf571fb4d346f6">   76</a></span>    <a class="code hl_enumeration" href="classUYiSanLoading.html#a2d4161ad9414e51b1730f788189cdf08">EState</a> CurState = EState::WP;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#af0f69917c869f4122c5756e697577e38">   78</a></span>    FTimerHandle <a class="code hl_variable" href="classUYiSanLoading.html#af0f69917c869f4122c5756e697577e38">TimeHandlePool</a>;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#a7f5c4a8d85eadd2dd29c307466855cbd">   79</a></span>    int32 LastPercent = -10;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>       </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#a089984faf6cbaa10dc204b599d2902b6">   81</a></span>    <span class="keywordtype">bool</span> bTextureStreamingComplete = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#a656a7b767ace80b41f79d5fb7c4e58be">   83</a></span>    <span class="keywordtype">float</span> Progress_Texture = 0.0f;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#a94c54692ca2e5e0e91a3287b7038daa6">   84</a></span>    <span class="keywordtype">float</span> Progress_LI = 0.0f;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#ae2d12b29f17c8a457a2faf7afdcceb5a">   86</a></span>    <span class="keywordtype">bool</span> bRequestTexture = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#ae9fb4521e07d5eeaa53d107f2cafa464">   87</a></span>    int32 TextureRequestCount = 0;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#a8bf1c2039cf66f5e30533055487bab75">   88</a></span>    <span class="keywordtype">double</span> LastTextureProgressTime = 0.0;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#ae1498b0f9de956f6ca734853ce2065be">   89</a></span>    <span class="keywordtype">float</span> LastTextureProgress = -1.0f;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>};</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#a418a7d9f876cd6065aaf571fb4d346f6">   79</a></span>    <a class="code hl_enumeration" href="classUYiSanLoading.html#a2d4161ad9414e51b1730f788189cdf08">EState</a> CurState = EState::WP;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#af0f69917c869f4122c5756e697577e38">   81</a></span>    FTimerHandle <a class="code hl_variable" href="classUYiSanLoading.html#af0f69917c869f4122c5756e697577e38">TimeHandlePool</a>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#a7f5c4a8d85eadd2dd29c307466855cbd">   82</a></span>    int32 LastPercent = -10;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>       </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#a089984faf6cbaa10dc204b599d2902b6">   84</a></span>    <span class="keywordtype">bool</span> bTextureStreamingComplete = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#a656a7b767ace80b41f79d5fb7c4e58be">   86</a></span>    <span class="keywordtype">float</span> Progress_Texture = 0.0f;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#a94c54692ca2e5e0e91a3287b7038daa6">   87</a></span>    <span class="keywordtype">float</span> Progress_LI = 0.0f;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#ae2d12b29f17c8a457a2faf7afdcceb5a">   89</a></span>    <span class="keywordtype">bool</span> bRequestTexture = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#ae9fb4521e07d5eeaa53d107f2cafa464">   90</a></span>    int32 TextureRequestCount = 0;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#a8bf1c2039cf66f5e30533055487bab75">   91</a></span>    <span class="keywordtype">double</span> LastTextureProgressTime = 0.0;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classUYiSanLoading.html#ae1498b0f9de956f6ca734853ce2065be">   92</a></span>    <span class="keywordtype">float</span> LastTextureProgress = -1.0f;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>};</div>
 </div>
 <div class="ttc" id="aMacro_8h_html"><div class="ttname"><a href="Macro_8h.html">Macro.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
 <div class="ttc" id="aUParabolaComponent_8h_html_acb24f37a1795b5e9dfdbb98be4898712aa3f80d8f0f1b4ffa8c475f5d60ea5635"><div class="ttname"><a href="UParabolaComponent_8h.html#acb24f37a1795b5e9dfdbb98be4898712aa3f80d8f0f1b4ffa8c475f5d60ea5635">EParabolaType::UMETA</a></div><div class="ttdeci">@ UMETA</div></div>
 <div class="ttc" id="aclassUYiSanLoading_html"><div class="ttname"><a href="classUYiSanLoading.html">UYiSanLoading</a></div><div class="ttdoc">이동 준비, 로딩 UI, 스트리밍 진행 폴링을 관리하는 서브시스템입니다.</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00021">UYiSanLoading.h:22</a></div></div>
 <div class="ttc" id="aclassUYiSanLoading_html_a090787c671d9eaee89711b22e6e4625f"><div class="ttname"><a href="classUYiSanLoading.html#a090787c671d9eaee89711b22e6e4625f">UYiSanLoading::DEFINE_SUBSYSTEM_GETTER_INLINE</a></div><div class="ttdeci">DEFINE_SUBSYSTEM_GETTER_INLINE(UYiSanLoading)</div></div>
 <div class="ttc" id="aclassUYiSanLoading_html_a2d4161ad9414e51b1730f788189cdf08"><div class="ttname"><a href="classUYiSanLoading.html#a2d4161ad9414e51b1730f788189cdf08">UYiSanLoading::EState</a></div><div class="ttdeci">EState</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00028">UYiSanLoading.h:29</a></div></div>
-<div class="ttc" id="aclassUYiSanLoading_html_af0f69917c869f4122c5756e697577e38"><div class="ttname"><a href="classUYiSanLoading.html#af0f69917c869f4122c5756e697577e38">UYiSanLoading::TimeHandlePool</a></div><div class="ttdeci">FTimerHandle TimeHandlePool</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00078">UYiSanLoading.h:78</a></div></div>
+<div class="ttc" id="aclassUYiSanLoading_html_af0f69917c869f4122c5756e697577e38"><div class="ttname"><a href="classUYiSanLoading.html#af0f69917c869f4122c5756e697577e38">UYiSanLoading::TimeHandlePool</a></div><div class="ttdeci">FTimerHandle TimeHandlePool</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00081">UYiSanLoading.h:81</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_9a481a88fca7fb2428f2795f507e855b.html">YiSan</a></li><li class="navelem"><a class="el" href="dir_9920d857cc3004aa5533228007991ccd.html">Loading</a></li><li class="navelem"><a class="el" href="dir_13e1e38045816480178ec719d7af1a8f.html">Public</a></li><li class="navelem"><a class="el" href="UYiSanLoading_8h.html">UYiSanLoading.h</a></li>
-    <li class="footer">생성시간 : 일 11월 9 2025 06:22:23, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 11월 9 2025 06:23:55, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

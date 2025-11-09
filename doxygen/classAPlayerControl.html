@@ -624,36 +624,36 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerControl_8cpp_source.html">APlayerControl.cpp</a> 파일의 <a class="el" href="APlayerControl_8cpp_source.html#l00468">468</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  469</span>{</div>
-<div class="line"><span class="lineno">  470</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] CompleteLoading called - waiting for rendering preparation&quot;</span>));</div>
-<div class="line"><span class="lineno">  471</span>    <a class="code hl_variable" href="classAPlayerControl.html#a102f28817458a21784b59ec6f207ae6a">bAwaitFinish</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  472</span> </div>
-<div class="line"><span class="lineno">  473</span>    <span class="comment">// 렌더링 준비(SkyLight capture, texture preparation)를 위해 추가 대기</span></div>
-<div class="line"><span class="lineno">  474</span>    FTimerHandle RenderWaitHandle;</div>
-<div class="line"><span class="lineno">  475</span>    GetWorld()-&gt;GetTimerManager().SetTimer(</div>
-<div class="line"><span class="lineno">  476</span>        RenderWaitHandle,</div>
-<div class="line"><span class="lineno">  477</span>        [<span class="keyword">this</span>]()</div>
-<div class="line"><span class="lineno">  478</span>        {</div>
-<div class="line"><span class="lineno">  479</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] Rendering preparation complete - hiding loading screen now&quot;</span>));</div>
-<div class="line"><span class="lineno">  480</span> </div>
-<div class="line"><span class="lineno">  481</span>            <span class="keywordflow">if</span> (<span class="keyword">auto</span> TM = ULoadingTransitionManager::Get(<span class="keyword">this</span>))</div>
-<div class="line"><span class="lineno">  482</span>            {</div>
-<div class="line"><span class="lineno">  483</span>                TM-&gt;HideLoadingScreen();</div>
-<div class="line"><span class="lineno">  484</span>            }</div>
-<div class="line"><span class="lineno">  485</span> </div>
-<div class="line"><span class="lineno">  486</span>            SetInputMode(FInputModeGameOnly());</div>
-<div class="line"><span class="lineno">  487</span>            bShowMouseCursor = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  488</span> </div>
-<div class="line"><span class="lineno">  489</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Travel] Loading transition completed for %s&quot;</span>), *GetName());</div>
-<div class="line"><span class="lineno">  490</span>        },</div>
-<div class="line"><span class="lineno">  491</span>        3.0f, <span class="comment">// 렌더링 준비 대기 시간</span></div>
-<div class="line"><span class="lineno">  492</span>        <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  493</span>}</div>
+<p class="definition"><a class="el" href="APlayerControl_8cpp_source.html">APlayerControl.cpp</a> 파일의 <a class="el" href="APlayerControl_8cpp_source.html#l00479">479</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  480</span>{</div>
+<div class="line"><span class="lineno">  481</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] CompleteLoading called - waiting for rendering preparation&quot;</span>));</div>
+<div class="line"><span class="lineno">  482</span>    <a class="code hl_variable" href="classAPlayerControl.html#a102f28817458a21784b59ec6f207ae6a">bAwaitFinish</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  483</span> </div>
+<div class="line"><span class="lineno">  484</span>    <span class="comment">// 렌더링 준비(SkyLight capture, texture preparation)를 위해 추가 대기</span></div>
+<div class="line"><span class="lineno">  485</span>    FTimerHandle RenderWaitHandle;</div>
+<div class="line"><span class="lineno">  486</span>    GetWorld()-&gt;GetTimerManager().SetTimer(</div>
+<div class="line"><span class="lineno">  487</span>        RenderWaitHandle,</div>
+<div class="line"><span class="lineno">  488</span>        [<span class="keyword">this</span>]()</div>
+<div class="line"><span class="lineno">  489</span>        {</div>
+<div class="line"><span class="lineno">  490</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] Rendering preparation complete - hiding loading screen now&quot;</span>));</div>
+<div class="line"><span class="lineno">  491</span> </div>
+<div class="line"><span class="lineno">  492</span>            <span class="keywordflow">if</span> (<span class="keyword">auto</span> TM = ULoadingTransitionManager::Get(<span class="keyword">this</span>))</div>
+<div class="line"><span class="lineno">  493</span>            {</div>
+<div class="line"><span class="lineno">  494</span>                TM-&gt;HideLoadingScreen();</div>
+<div class="line"><span class="lineno">  495</span>            }</div>
+<div class="line"><span class="lineno">  496</span> </div>
+<div class="line"><span class="lineno">  497</span>            SetInputMode(FInputModeGameOnly());</div>
+<div class="line"><span class="lineno">  498</span>            bShowMouseCursor = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  499</span> </div>
+<div class="line"><span class="lineno">  500</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Travel] Loading transition completed for %s&quot;</span>), *GetName());</div>
+<div class="line"><span class="lineno">  501</span>        },</div>
+<div class="line"><span class="lineno">  502</span>        3.0f, <span class="comment">// 렌더링 준비 대기 시간</span></div>
+<div class="line"><span class="lineno">  503</span>        <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  504</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="APlayerControl_8h_source.html#l00148">bAwaitFinish</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00435">HandleLoadingComplete()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00514">OnPawnHasName()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00495">OnPawnReady()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00163">OnPossess()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00435">HandleLoadingComplete()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00525">OnPawnHasName()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00506">OnPawnReady()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00163">OnPossess()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -734,27 +734,38 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  439</span>    <span class="keywordflow">if</span> (!IsLocalController())</div>
 <div class="line"><span class="lineno">  440</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  441</span> </div>
-<div class="line"><span class="lineno">  442</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classAPlayerControl.html#a4fd73a1aab67e5b96e5e1ea0b4d8960a">IsReadyToFinish</a>())</div>
-<div class="line"><span class="lineno">  443</span>    {</div>
-<div class="line"><span class="lineno">  444</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAPlayerControl.html#a102f28817458a21784b59ec6f207ae6a">bAwaitFinish</a>)</div>
-<div class="line"><span class="lineno">  445</span>        {</div>
-<div class="line"><span class="lineno">  446</span>            <span class="keywordflow">if</span> (<span class="keyword">auto</span> CtrlPawn = GetPawn())</div>
-<div class="line"><span class="lineno">  447</span>                <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] Pawn not fully initialized - deferring loading completion for %s&quot;</span>), *GetNameSafe(CtrlPawn));</div>
-<div class="line"><span class="lineno">  448</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  449</span>                <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] Pawn not ready - deferring loading completion for %s&quot;</span>), *GetName());</div>
+<div class="line"><span class="lineno">  442</span>    <span class="comment">// 게스트가 join한 경우 PostLoadMapWithWorld가 호출되지 않을 수 있음</span></div>
+<div class="line"><span class="lineno">  443</span>    <span class="comment">// 이 경우 로딩 상태를 강제로 완료 처리</span></div>
+<div class="line"><span class="lineno">  444</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> LoadingSubsystem = UYiSanLoading::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">  445</span>    {</div>
+<div class="line"><span class="lineno">  446</span>        <span class="keywordflow">if</span> (!LoadingSubsystem-&gt;IsLoadingComplete())</div>
+<div class="line"><span class="lineno">  447</span>        {</div>
+<div class="line"><span class="lineno">  448</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] Loading not complete - attempting to force complete for guest&quot;</span>));</div>
+<div class="line"><span class="lineno">  449</span>            LoadingSubsystem-&gt;ForceCompleteForGuest();</div>
 <div class="line"><span class="lineno">  450</span>        }</div>
-<div class="line"><span class="lineno">  451</span> </div>
-<div class="line"><span class="lineno">  452</span>        <a class="code hl_variable" href="classAPlayerControl.html#a102f28817458a21784b59ec6f207ae6a">bAwaitFinish</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  453</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  454</span>    }</div>
-<div class="line"><span class="lineno">  455</span> </div>
-<div class="line"><span class="lineno">  456</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] All conditions met - proceeding to CompleteLoading&quot;</span>));</div>
-<div class="line"><span class="lineno">  457</span>    <a class="code hl_function" href="classAPlayerControl.html#a27da97cd03d14f5d182a2a27ea4ea583">CompleteLoading</a>();</div>
-<div class="line"><span class="lineno">  458</span>}</div>
-<div class="ttc" id="aclassAPlayerControl_html_a27da97cd03d14f5d182a2a27ea4ea583"><div class="ttname"><a href="classAPlayerControl.html#a27da97cd03d14f5d182a2a27ea4ea583">APlayerControl::CompleteLoading</a></div><div class="ttdeci">void CompleteLoading()</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00468">APlayerControl.cpp:468</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_a4fd73a1aab67e5b96e5e1ea0b4d8960a"><div class="ttname"><a href="classAPlayerControl.html#a4fd73a1aab67e5b96e5e1ea0b4d8960a">APlayerControl::IsReadyToFinish</a></div><div class="ttdeci">bool IsReadyToFinish() const</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00529">APlayerControl.cpp:529</a></div></div>
+<div class="line"><span class="lineno">  451</span>    }</div>
+<div class="line"><span class="lineno">  452</span> </div>
+<div class="line"><span class="lineno">  453</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classAPlayerControl.html#a4fd73a1aab67e5b96e5e1ea0b4d8960a">IsReadyToFinish</a>())</div>
+<div class="line"><span class="lineno">  454</span>    {</div>
+<div class="line"><span class="lineno">  455</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAPlayerControl.html#a102f28817458a21784b59ec6f207ae6a">bAwaitFinish</a>)</div>
+<div class="line"><span class="lineno">  456</span>        {</div>
+<div class="line"><span class="lineno">  457</span>            <span class="keywordflow">if</span> (<span class="keyword">auto</span> CtrlPawn = GetPawn())</div>
+<div class="line"><span class="lineno">  458</span>                <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] Pawn not fully initialized - deferring loading completion for %s&quot;</span>), *GetNameSafe(CtrlPawn));</div>
+<div class="line"><span class="lineno">  459</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  460</span>                <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] Pawn not ready - deferring loading completion for %s&quot;</span>), *GetName());</div>
+<div class="line"><span class="lineno">  461</span>        }</div>
+<div class="line"><span class="lineno">  462</span> </div>
+<div class="line"><span class="lineno">  463</span>        <a class="code hl_variable" href="classAPlayerControl.html#a102f28817458a21784b59ec6f207ae6a">bAwaitFinish</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  464</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  465</span>    }</div>
+<div class="line"><span class="lineno">  466</span> </div>
+<div class="line"><span class="lineno">  467</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] All conditions met - proceeding to CompleteLoading&quot;</span>));</div>
+<div class="line"><span class="lineno">  468</span>    <a class="code hl_function" href="classAPlayerControl.html#a27da97cd03d14f5d182a2a27ea4ea583">CompleteLoading</a>();</div>
+<div class="line"><span class="lineno">  469</span>}</div>
+<div class="ttc" id="aclassAPlayerControl_html_a27da97cd03d14f5d182a2a27ea4ea583"><div class="ttname"><a href="classAPlayerControl.html#a27da97cd03d14f5d182a2a27ea4ea583">APlayerControl::CompleteLoading</a></div><div class="ttdeci">void CompleteLoading()</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00479">APlayerControl.cpp:479</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a4fd73a1aab67e5b96e5e1ea0b4d8960a"><div class="ttname"><a href="classAPlayerControl.html#a4fd73a1aab67e5b96e5e1ea0b4d8960a">APlayerControl::IsReadyToFinish</a></div><div class="ttdeci">bool IsReadyToFinish() const</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00540">APlayerControl.cpp:540</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="APlayerControl_8h_source.html#l00148">bAwaitFinish</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00468">CompleteLoading()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00529">IsReadyToFinish()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerControl_8h_source.html#l00148">bAwaitFinish</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00479">CompleteLoading()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00540">IsReadyToFinish()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -788,52 +799,52 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerControl_8cpp_source.html">APlayerControl.cpp</a> 파일의 <a class="el" href="APlayerControl_8cpp_source.html#l00529">529</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  530</span>{</div>
-<div class="line"><span class="lineno">  531</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] IsReadyToFinish check - Pawn: %s, bPawnReady: %s, bPawnHasName: %s&quot;</span>),</div>
-<div class="line"><span class="lineno">  532</span>        GetPawn() ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>),</div>
-<div class="line"><span class="lineno">  533</span>        <a class="code hl_variable" href="classAPlayerControl.html#a4f3ebd31cf82813b8c3c97232f54b305">bPawnReady</a> ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>),</div>
-<div class="line"><span class="lineno">  534</span>        <a class="code hl_variable" href="classAPlayerControl.html#a9368fcdf1afd437c3c8485f3af617920">bPawnHasName</a> ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>));</div>
-<div class="line"><span class="lineno">  535</span> </div>
-<div class="line"><span class="lineno">  536</span>    <span class="comment">// Pawn과 Name 준비 체크</span></div>
-<div class="line"><span class="lineno">  537</span>    <span class="keywordflow">if</span> (GetPawn() == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  538</span>    {</div>
-<div class="line"><span class="lineno">  539</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] NOT READY: Pawn is null&quot;</span>));</div>
-<div class="line"><span class="lineno">  540</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  541</span>    }</div>
-<div class="line"><span class="lineno">  542</span> </div>
-<div class="line"><span class="lineno">  543</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAPlayerControl.html#a4f3ebd31cf82813b8c3c97232f54b305">bPawnReady</a>)</div>
-<div class="line"><span class="lineno">  544</span>    {</div>
-<div class="line"><span class="lineno">  545</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] NOT READY: bPawnReady is false&quot;</span>));</div>
-<div class="line"><span class="lineno">  546</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  547</span>    }</div>
-<div class="line"><span class="lineno">  548</span> </div>
-<div class="line"><span class="lineno">  549</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAPlayerControl.html#a9368fcdf1afd437c3c8485f3af617920">bPawnHasName</a>)</div>
-<div class="line"><span class="lineno">  550</span>    {</div>
-<div class="line"><span class="lineno">  551</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] NOT READY: bPawnHasName is false&quot;</span>));</div>
-<div class="line"><span class="lineno">  552</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  553</span>    }</div>
-<div class="line"><span class="lineno">  554</span> </div>
-<div class="line"><span class="lineno">  555</span>    <span class="comment">// 클라이언트 측 로딩 완료 체크 (WorldPartition, Texture, LevelInstance)</span></div>
-<div class="line"><span class="lineno">  556</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> LoadingSubsystem = UYiSanLoading::Get(GetWorld()))</div>
-<div class="line"><span class="lineno">  557</span>    {</div>
-<div class="line"><span class="lineno">  558</span>        <span class="keywordtype">bool</span> bLoadingComplete = LoadingSubsystem-&gt;IsLoadingComplete();</div>
-<div class="line"><span class="lineno">  559</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] Client-side loading complete: %s&quot;</span>), bLoadingComplete ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>));</div>
-<div class="line"><span class="lineno">  560</span> </div>
-<div class="line"><span class="lineno">  561</span>        <span class="keywordflow">if</span> (!bLoadingComplete)</div>
-<div class="line"><span class="lineno">  562</span>        {</div>
-<div class="line"><span class="lineno">  563</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] NOT READY: Client-side loading not complete yet - deferring&quot;</span>));</div>
-<div class="line"><span class="lineno">  564</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  565</span>        }</div>
-<div class="line"><span class="lineno">  566</span>    }</div>
-<div class="line"><span class="lineno">  567</span>    <span class="keywordflow">else</span></div>
+<p class="definition"><a class="el" href="APlayerControl_8cpp_source.html">APlayerControl.cpp</a> 파일의 <a class="el" href="APlayerControl_8cpp_source.html#l00540">540</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  541</span>{</div>
+<div class="line"><span class="lineno">  542</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] IsReadyToFinish check - Pawn: %s, bPawnReady: %s, bPawnHasName: %s&quot;</span>),</div>
+<div class="line"><span class="lineno">  543</span>        GetPawn() ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>),</div>
+<div class="line"><span class="lineno">  544</span>        <a class="code hl_variable" href="classAPlayerControl.html#a4f3ebd31cf82813b8c3c97232f54b305">bPawnReady</a> ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>),</div>
+<div class="line"><span class="lineno">  545</span>        <a class="code hl_variable" href="classAPlayerControl.html#a9368fcdf1afd437c3c8485f3af617920">bPawnHasName</a> ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>));</div>
+<div class="line"><span class="lineno">  546</span> </div>
+<div class="line"><span class="lineno">  547</span>    <span class="comment">// Pawn과 Name 준비 체크</span></div>
+<div class="line"><span class="lineno">  548</span>    <span class="keywordflow">if</span> (GetPawn() == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  549</span>    {</div>
+<div class="line"><span class="lineno">  550</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] NOT READY: Pawn is null&quot;</span>));</div>
+<div class="line"><span class="lineno">  551</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  552</span>    }</div>
+<div class="line"><span class="lineno">  553</span> </div>
+<div class="line"><span class="lineno">  554</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAPlayerControl.html#a4f3ebd31cf82813b8c3c97232f54b305">bPawnReady</a>)</div>
+<div class="line"><span class="lineno">  555</span>    {</div>
+<div class="line"><span class="lineno">  556</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] NOT READY: bPawnReady is false&quot;</span>));</div>
+<div class="line"><span class="lineno">  557</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  558</span>    }</div>
+<div class="line"><span class="lineno">  559</span> </div>
+<div class="line"><span class="lineno">  560</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAPlayerControl.html#a9368fcdf1afd437c3c8485f3af617920">bPawnHasName</a>)</div>
+<div class="line"><span class="lineno">  561</span>    {</div>
+<div class="line"><span class="lineno">  562</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] NOT READY: bPawnHasName is false&quot;</span>));</div>
+<div class="line"><span class="lineno">  563</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  564</span>    }</div>
+<div class="line"><span class="lineno">  565</span> </div>
+<div class="line"><span class="lineno">  566</span>    <span class="comment">// 클라이언트 측 로딩 완료 체크 (WorldPartition, Texture, LevelInstance)</span></div>
+<div class="line"><span class="lineno">  567</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> LoadingSubsystem = UYiSanLoading::Get(GetWorld()))</div>
 <div class="line"><span class="lineno">  568</span>    {</div>
-<div class="line"><span class="lineno">  569</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] WARNING: LoadingSubsystem not found!&quot;</span>));</div>
-<div class="line"><span class="lineno">  570</span>    }</div>
+<div class="line"><span class="lineno">  569</span>        <span class="keywordtype">bool</span> bLoadingComplete = LoadingSubsystem-&gt;IsLoadingComplete();</div>
+<div class="line"><span class="lineno">  570</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] Client-side loading complete: %s&quot;</span>), bLoadingComplete ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>));</div>
 <div class="line"><span class="lineno">  571</span> </div>
-<div class="line"><span class="lineno">  572</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] READY: All conditions satisfied!&quot;</span>));</div>
-<div class="line"><span class="lineno">  573</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  574</span>}</div>
+<div class="line"><span class="lineno">  572</span>        <span class="keywordflow">if</span> (!bLoadingComplete)</div>
+<div class="line"><span class="lineno">  573</span>        {</div>
+<div class="line"><span class="lineno">  574</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] NOT READY: Client-side loading not complete yet - deferring&quot;</span>));</div>
+<div class="line"><span class="lineno">  575</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  576</span>        }</div>
+<div class="line"><span class="lineno">  577</span>    }</div>
+<div class="line"><span class="lineno">  578</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  579</span>    {</div>
+<div class="line"><span class="lineno">  580</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] WARNING: LoadingSubsystem not found!&quot;</span>));</div>
+<div class="line"><span class="lineno">  581</span>    }</div>
+<div class="line"><span class="lineno">  582</span> </div>
+<div class="line"><span class="lineno">  583</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] READY: All conditions satisfied!&quot;</span>));</div>
+<div class="line"><span class="lineno">  584</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  585</span>}</div>
 <div class="ttc" id="aclassAPlayerControl_html_a9368fcdf1afd437c3c8485f3af617920"><div class="ttname"><a href="classAPlayerControl.html#a9368fcdf1afd437c3c8485f3af617920">APlayerControl::bPawnHasName</a></div><div class="ttdeci">bool bPawnHasName</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00150">APlayerControl.h:150</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="APlayerControl_8h_source.html#l00150">bPawnHasName</a>, <a class="el" href="APlayerControl_8h_source.html#l00149">bPawnReady</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
@@ -1465,22 +1476,22 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerControl_8cpp_source.html">APlayerControl.cpp</a> 파일의 <a class="el" href="APlayerControl_8cpp_source.html#l00514">514</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  515</span>{</div>
-<div class="line"><span class="lineno">  516</span>    <span class="keywordflow">if</span> (!IsLocalController())</div>
-<div class="line"><span class="lineno">  517</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  518</span> </div>
-<div class="line"><span class="lineno">  519</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerControl.html#a9368fcdf1afd437c3c8485f3af617920">bPawnHasName</a>)</div>
-<div class="line"><span class="lineno">  520</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  521</span> </div>
-<div class="line"><span class="lineno">  522</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] OnPawnHasName called&quot;</span>));</div>
-<div class="line"><span class="lineno">  523</span>    <a class="code hl_variable" href="classAPlayerControl.html#a9368fcdf1afd437c3c8485f3af617920">bPawnHasName</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  524</span> </div>
-<div class="line"><span class="lineno">  525</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerControl.html#a102f28817458a21784b59ec6f207ae6a">bAwaitFinish</a>)</div>
-<div class="line"><span class="lineno">  526</span>        <a class="code hl_function" href="classAPlayerControl.html#a27da97cd03d14f5d182a2a27ea4ea583">CompleteLoading</a>();</div>
-<div class="line"><span class="lineno">  527</span>}</div>
+<p class="definition"><a class="el" href="APlayerControl_8cpp_source.html">APlayerControl.cpp</a> 파일의 <a class="el" href="APlayerControl_8cpp_source.html#l00525">525</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  526</span>{</div>
+<div class="line"><span class="lineno">  527</span>    <span class="keywordflow">if</span> (!IsLocalController())</div>
+<div class="line"><span class="lineno">  528</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  529</span> </div>
+<div class="line"><span class="lineno">  530</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerControl.html#a9368fcdf1afd437c3c8485f3af617920">bPawnHasName</a>)</div>
+<div class="line"><span class="lineno">  531</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  532</span> </div>
+<div class="line"><span class="lineno">  533</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] OnPawnHasName called&quot;</span>));</div>
+<div class="line"><span class="lineno">  534</span>    <a class="code hl_variable" href="classAPlayerControl.html#a9368fcdf1afd437c3c8485f3af617920">bPawnHasName</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  535</span> </div>
+<div class="line"><span class="lineno">  536</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerControl.html#a102f28817458a21784b59ec6f207ae6a">bAwaitFinish</a>)</div>
+<div class="line"><span class="lineno">  537</span>        <a class="code hl_function" href="classAPlayerControl.html#a27da97cd03d14f5d182a2a27ea4ea583">CompleteLoading</a>();</div>
+<div class="line"><span class="lineno">  538</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="APlayerControl_8h_source.html#l00148">bAwaitFinish</a>, <a class="el" href="APlayerControl_8h_source.html#l00150">bPawnHasName</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00468">CompleteLoading()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerControl_8h_source.html#l00148">bAwaitFinish</a>, <a class="el" href="APlayerControl_8h_source.html#l00150">bPawnHasName</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00479">CompleteLoading()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 <div id="dynsection-32" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-32-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-32-summary" class="dynsummary" style="display:block;">
@@ -1507,26 +1518,26 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerControl_8cpp_source.html">APlayerControl.cpp</a> 파일의 <a class="el" href="APlayerControl_8cpp_source.html#l00495">495</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  496</span>{</div>
-<div class="line"><span class="lineno">  497</span>    <span class="keywordflow">if</span> (!IsLocalController())</div>
-<div class="line"><span class="lineno">  498</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  499</span> </div>
-<div class="line"><span class="lineno">  500</span>    <span class="keywordflow">if</span> (&amp;InPawn != GetPawn())</div>
-<div class="line"><span class="lineno">  501</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  502</span> </div>
-<div class="line"><span class="lineno">  503</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerControl.html#a4f3ebd31cf82813b8c3c97232f54b305">bPawnReady</a>)</div>
-<div class="line"><span class="lineno">  504</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  505</span> </div>
-<div class="line"><span class="lineno">  506</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] OnPawnReady called for %s&quot;</span>), *GetNameSafe(&amp;InPawn));</div>
-<div class="line"><span class="lineno">  507</span> </div>
-<div class="line"><span class="lineno">  508</span>    <a class="code hl_variable" href="classAPlayerControl.html#a4f3ebd31cf82813b8c3c97232f54b305">bPawnReady</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  509</span> </div>
-<div class="line"><span class="lineno">  510</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerControl.html#a102f28817458a21784b59ec6f207ae6a">bAwaitFinish</a>)</div>
-<div class="line"><span class="lineno">  511</span>        <a class="code hl_function" href="classAPlayerControl.html#a27da97cd03d14f5d182a2a27ea4ea583">CompleteLoading</a>();</div>
-<div class="line"><span class="lineno">  512</span>}</div>
+<p class="definition"><a class="el" href="APlayerControl_8cpp_source.html">APlayerControl.cpp</a> 파일의 <a class="el" href="APlayerControl_8cpp_source.html#l00506">506</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  507</span>{</div>
+<div class="line"><span class="lineno">  508</span>    <span class="keywordflow">if</span> (!IsLocalController())</div>
+<div class="line"><span class="lineno">  509</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  510</span> </div>
+<div class="line"><span class="lineno">  511</span>    <span class="keywordflow">if</span> (&amp;InPawn != GetPawn())</div>
+<div class="line"><span class="lineno">  512</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  513</span> </div>
+<div class="line"><span class="lineno">  514</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerControl.html#a4f3ebd31cf82813b8c3c97232f54b305">bPawnReady</a>)</div>
+<div class="line"><span class="lineno">  515</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  516</span> </div>
+<div class="line"><span class="lineno">  517</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LOADING_FLOW] OnPawnReady called for %s&quot;</span>), *GetNameSafe(&amp;InPawn));</div>
+<div class="line"><span class="lineno">  518</span> </div>
+<div class="line"><span class="lineno">  519</span>    <a class="code hl_variable" href="classAPlayerControl.html#a4f3ebd31cf82813b8c3c97232f54b305">bPawnReady</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  520</span> </div>
+<div class="line"><span class="lineno">  521</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerControl.html#a102f28817458a21784b59ec6f207ae6a">bAwaitFinish</a>)</div>
+<div class="line"><span class="lineno">  522</span>        <a class="code hl_function" href="classAPlayerControl.html#a27da97cd03d14f5d182a2a27ea4ea583">CompleteLoading</a>();</div>
+<div class="line"><span class="lineno">  523</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="APlayerControl_8h_source.html#l00148">bAwaitFinish</a>, <a class="el" href="APlayerControl_8h_source.html#l00149">bPawnReady</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00468">CompleteLoading()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerControl_8h_source.html#l00148">bAwaitFinish</a>, <a class="el" href="APlayerControl_8h_source.html#l00149">bPawnReady</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00479">CompleteLoading()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 <div id="dynsection-33" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-33-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-33-summary" class="dynsummary" style="display:block;">
@@ -1657,7 +1668,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  185</span>    }</div>
 <div class="line"><span class="lineno">  186</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="APlayerControl_8h_source.html#l00148">bAwaitFinish</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00468">CompleteLoading()</a>, <a class="el" href="classAPlayerControl.html#a0387a78caf5c7b7ba507d37122dbbba4">ServerRPC_SetPlayerNickname()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerControl_8h_source.html#l00148">bAwaitFinish</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00479">CompleteLoading()</a>, <a class="el" href="classAPlayerControl.html#a0387a78caf5c7b7ba507d37122dbbba4">ServerRPC_SetPlayerNickname()</a>.</p>
 <div id="dynsection-35" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-35-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-35-summary" class="dynsummary" style="display:block;">
@@ -2255,13 +2266,13 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerControl_8cpp_source.html">APlayerControl.cpp</a> 파일의 <a class="el" href="APlayerControl_8cpp_source.html#l00460">460</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  461</span>{</div>
-<div class="line"><span class="lineno">  462</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> TM = ULoadingTransitionManager::Get(<span class="keyword">this</span>))</div>
-<div class="line"><span class="lineno">  463</span>    {</div>
-<div class="line"><span class="lineno">  464</span>        TM-&gt;ShowLoadingScreen();</div>
-<div class="line"><span class="lineno">  465</span>    }</div>
-<div class="line"><span class="lineno">  466</span>}</div>
+<p class="definition"><a class="el" href="APlayerControl_8cpp_source.html">APlayerControl.cpp</a> 파일의 <a class="el" href="APlayerControl_8cpp_source.html#l00471">471</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  472</span>{</div>
+<div class="line"><span class="lineno">  473</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> TM = ULoadingTransitionManager::Get(<span class="keyword">this</span>))</div>
+<div class="line"><span class="lineno">  474</span>    {</div>
+<div class="line"><span class="lineno">  475</span>        TM-&gt;ShowLoadingScreen();</div>
+<div class="line"><span class="lineno">  476</span>    }</div>
+<div class="line"><span class="lineno">  477</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2756,7 +2767,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="APlayerControl_8h_source.html">APlayerControl.h</a> 파일의 <a class="el" href="APlayerControl_8h_source.html#l00148">148</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00188">ClientTravelWithLoading()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00468">CompleteLoading()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00435">HandleLoadingComplete()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00514">OnPawnHasName()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00495">OnPawnReady()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00163">OnPossess()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00188">ClientTravelWithLoading()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00479">CompleteLoading()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00435">HandleLoadingComplete()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00525">OnPawnHasName()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00506">OnPawnReady()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00163">OnPossess()</a>.</p>
 
 </div>
 </div>
@@ -2782,7 +2793,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="APlayerControl_8h_source.html">APlayerControl.h</a> 파일의 <a class="el" href="APlayerControl_8h_source.html#l00150">150</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00529">IsReadyToFinish()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00514">OnPawnHasName()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00540">IsReadyToFinish()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00525">OnPawnHasName()</a>.</p>
 
 </div>
 </div>
@@ -2808,7 +2819,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="APlayerControl_8h_source.html">APlayerControl.h</a> 파일의 <a class="el" href="APlayerControl_8h_source.html#l00149">149</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00188">ClientTravelWithLoading()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00529">IsReadyToFinish()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00495">OnPawnReady()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00188">ClientTravelWithLoading()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00540">IsReadyToFinish()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00506">OnPawnReady()</a>.</p>
 
 </div>
 </div>
@@ -2896,7 +2907,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAPlayerControl.html">APlayerControl</a></li>
-    <li class="footer">생성시간 : 일 11월 9 2025 06:22:24, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 11월 9 2025 06:23:56, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
