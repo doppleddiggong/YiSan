@@ -21,7 +21,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="액터를 재활용하여 런타임에 액터 스폰 비용을 최소화하는 오브젝트 풀링(Object Pooling) 관리 서브시스템입니다.">
 <polygon fill="#999999" stroke="transparent" points="167,-135 0,-135 0,0 167,0 167,-135"/>
 <text text-anchor="start" x="32.5" y="-122.5" font-family="Malgun Gothic" font-size="10.00">UObjectPoolManager</text>
 <text text-anchor="start" x="7" y="-107.5" font-family="Malgun Gothic" font-size="10.00">&#45;</text>

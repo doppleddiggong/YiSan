@@ -109,6 +109,9 @@ $(document).ready(function(){initNavTree('classUSessionInfoWidget.html',''); ini
 </div><!--header-->
 <div class="contents">
 
+<p>검색된 멀티플레이어 세션 정보를 표시하고 참여 버튼을 제공하는 UI 위젯입니다.  
+ <a href="classUSessionInfoWidget.html#details">더 자세히 ...</a></p>
+
 <p><code>#include &lt;<a class="el" href="USessionInfoWidget_8h_source.html">USessionInfoWidget.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> USessionInfoWidget에 대한 상속 다이어그램 : </div>
@@ -144,8 +147,10 @@ Public 속성</h2></td></tr>
 <tr class="separator:a02a4d46e82c97c7ee5641e5366e0d5d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
-<div class="textblock">
-<p class="definition"><a class="el" href="USessionInfoWidget_8h_source.html">USessionInfoWidget.h</a> 파일의 <a class="el" href="USessionInfoWidget_8h_source.html#l00018">18</a> 번째 라인에서 정의되었습니다.</p>
+<div class="textblock"><p>검색된 멀티플레이어 세션 정보를 표시하고 참여 버튼을 제공하는 UI 위젯입니다. </p>
+<p>로비에서 세션 목록의 각 항목을 나타냅니다. </p>
+
+<p class="definition"><a class="el" href="USessionInfoWidget_8h_source.html">USessionInfoWidget.h</a> 파일의 <a class="el" href="USessionInfoWidget_8h_source.html#l00019">19</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="af7f908a299b306fe470c54c65da8b61d" name="af7f908a299b306fe470c54c65da8b61d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af7f908a299b306fe470c54c65da8b61d">&#9670;&#160;</a></span>NativeConstruct()</h2>
@@ -176,10 +181,10 @@ Public 속성</h2></td></tr>
 <div class="line"><span class="lineno">   16</span> </div>
 <div class="line"><span class="lineno">   17</span>    <a class="code hl_variable" href="classUSessionInfoWidget.html#a0886019e9059b1718f0235d5496d7355">btn_Join</a>-&gt;OnClicked.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUSessionInfoWidget.html#a1f92c0fccae94c61e9daa8a9fda4f523">USessionInfoWidget::OnClickJoin</a>);</div>
 <div class="line"><span class="lineno">   18</span>}</div>
-<div class="ttc" id="aclassUSessionInfoWidget_html_a0886019e9059b1718f0235d5496d7355"><div class="ttname"><a href="classUSessionInfoWidget.html#a0886019e9059b1718f0235d5496d7355">USessionInfoWidget::btn_Join</a></div><div class="ttdeci">class UButton * btn_Join</div><div class="ttdef"><b>Definition</b> <a href="USessionInfoWidget_8h_source.html#l00028">USessionInfoWidget.h:28</a></div></div>
+<div class="ttc" id="aclassUSessionInfoWidget_html_a0886019e9059b1718f0235d5496d7355"><div class="ttname"><a href="classUSessionInfoWidget.html#a0886019e9059b1718f0235d5496d7355">USessionInfoWidget::btn_Join</a></div><div class="ttdeci">class UButton * btn_Join</div><div class="ttdef"><b>Definition</b> <a href="USessionInfoWidget_8h_source.html#l00029">USessionInfoWidget.h:29</a></div></div>
 <div class="ttc" id="aclassUSessionInfoWidget_html_a1f92c0fccae94c61e9daa8a9fda4f523"><div class="ttname"><a href="classUSessionInfoWidget.html#a1f92c0fccae94c61e9daa8a9fda4f523">USessionInfoWidget::OnClickJoin</a></div><div class="ttdeci">void OnClickJoin()</div><div class="ttdef"><b>Definition</b> <a href="USessionInfoWidget_8cpp_source.html#l00026">USessionInfoWidget.cpp:26</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="USessionInfoWidget_8h_source.html#l00028">btn_Join</a>, <a class="el" href="USessionInfoWidget_8cpp_source.html#l00026">OnClickJoin()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="USessionInfoWidget_8h_source.html#l00029">btn_Join</a>, <a class="el" href="USessionInfoWidget_8cpp_source.html#l00026">OnClickJoin()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -209,9 +214,9 @@ Public 속성</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   27</span>{</div>
 <div class="line"><span class="lineno">   28</span>    UYisanOnlineSystem::Get(GetWorld())-&gt;JoinOtherSession(<a class="code hl_variable" href="classUSessionInfoWidget.html#ae0a8b9dd444cee48c0278ae29389220d">sessionIndex</a>);</div>
 <div class="line"><span class="lineno">   29</span>}</div>
-<div class="ttc" id="aclassUSessionInfoWidget_html_ae0a8b9dd444cee48c0278ae29389220d"><div class="ttname"><a href="classUSessionInfoWidget.html#ae0a8b9dd444cee48c0278ae29389220d">USessionInfoWidget::sessionIndex</a></div><div class="ttdeci">int32 sessionIndex</div><div class="ttdef"><b>Definition</b> <a href="USessionInfoWidget_8h_source.html#l00029">USessionInfoWidget.h:29</a></div></div>
+<div class="ttc" id="aclassUSessionInfoWidget_html_ae0a8b9dd444cee48c0278ae29389220d"><div class="ttname"><a href="classUSessionInfoWidget.html#ae0a8b9dd444cee48c0278ae29389220d">USessionInfoWidget::sessionIndex</a></div><div class="ttdeci">int32 sessionIndex</div><div class="ttdef"><b>Definition</b> <a href="USessionInfoWidget_8h_source.html#l00030">USessionInfoWidget.h:30</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="USessionInfoWidget_8h_source.html#l00029">sessionIndex</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="USessionInfoWidget_8h_source.html#l00030">sessionIndex</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="USessionInfoWidget_8cpp_source.html#l00013">NativeConstruct()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -255,9 +260,9 @@ Public 속성</h2></td></tr>
 <div class="line"><span class="lineno">   22</span>    <a class="code hl_variable" href="classUSessionInfoWidget.html#ae0a8b9dd444cee48c0278ae29389220d">sessionIndex</a> = index;</div>
 <div class="line"><span class="lineno">   23</span>    <a class="code hl_variable" href="classUSessionInfoWidget.html#a02a4d46e82c97c7ee5641e5366e0d5d6">textSessionName</a>-&gt;SetText(FText::FromString(sessionName));</div>
 <div class="line"><span class="lineno">   24</span>}</div>
-<div class="ttc" id="aclassUSessionInfoWidget_html_a02a4d46e82c97c7ee5641e5366e0d5d6"><div class="ttname"><a href="classUSessionInfoWidget.html#a02a4d46e82c97c7ee5641e5366e0d5d6">USessionInfoWidget::textSessionName</a></div><div class="ttdeci">class UTextBlock * textSessionName</div><div class="ttdef"><b>Definition</b> <a href="USessionInfoWidget_8h_source.html#l00026">USessionInfoWidget.h:26</a></div></div>
+<div class="ttc" id="aclassUSessionInfoWidget_html_a02a4d46e82c97c7ee5641e5366e0d5d6"><div class="ttname"><a href="classUSessionInfoWidget.html#a02a4d46e82c97c7ee5641e5366e0d5d6">USessionInfoWidget::textSessionName</a></div><div class="ttdeci">class UTextBlock * textSessionName</div><div class="ttdef"><b>Definition</b> <a href="USessionInfoWidget_8h_source.html#l00027">USessionInfoWidget.h:27</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="USessionInfoWidget_8h_source.html#l00029">sessionIndex</a>, <a class="el" href="USessionInfoWidget_8h_source.html#l00026">textSessionName</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="USessionInfoWidget_8h_source.html#l00030">sessionIndex</a>, <a class="el" href="USessionInfoWidget_8h_source.html#l00027">textSessionName</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULobbyWidget_8cpp_source.html#l00117">ULobbyWidget::OnFindComplete()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -283,7 +288,7 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="USessionInfoWidget_8h_source.html">USessionInfoWidget.h</a> 파일의 <a class="el" href="USessionInfoWidget_8h_source.html#l00028">28</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="USessionInfoWidget_8h_source.html">USessionInfoWidget.h</a> 파일의 <a class="el" href="USessionInfoWidget_8h_source.html#l00029">29</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="USessionInfoWidget_8cpp_source.html#l00013">NativeConstruct()</a>.</p>
 
@@ -301,7 +306,7 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="USessionInfoWidget_8h_source.html">USessionInfoWidget.h</a> 파일의 <a class="el" href="USessionInfoWidget_8h_source.html#l00029">29</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="USessionInfoWidget_8h_source.html">USessionInfoWidget.h</a> 파일의 <a class="el" href="USessionInfoWidget_8h_source.html#l00030">30</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="USessionInfoWidget_8cpp_source.html#l00026">OnClickJoin()</a>, <a class="el" href="USessionInfoWidget_8cpp_source.html#l00020">SetSessionInfo()</a>.</p>
 
@@ -319,7 +324,7 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="USessionInfoWidget_8h_source.html">USessionInfoWidget.h</a> 파일의 <a class="el" href="USessionInfoWidget_8h_source.html#l00026">26</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="USessionInfoWidget_8h_source.html">USessionInfoWidget.h</a> 파일의 <a class="el" href="USessionInfoWidget_8h_source.html#l00027">27</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="USessionInfoWidget_8cpp_source.html#l00020">SetSessionInfo()</a>.</p>
 
@@ -335,7 +340,7 @@ Public 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUSessionInfoWidget.html">USessionInfoWidget</a></li>
-    <li class="footer">생성시간 : 일 11월 9 2025 07:14:32, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 11월 9 2025 07:46:10, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

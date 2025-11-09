@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="토스트 메시지와 같은 간단한 다이얼로그 위젯의 표시를 관리하는 LocalPlayer 서브시스템입니다.">
 <polygon fill="#999999" stroke="transparent" points="175,-135 0,-135 0,0 175,0 175,-135"/>
 <text text-anchor="start" x="47" y="-122.5" font-family="Malgun Gothic" font-size="10.00">UDialogManager</text>
 <text text-anchor="start" x="4.5" y="-107.5" font-family="Malgun Gothic" font-size="10.00">#</text>

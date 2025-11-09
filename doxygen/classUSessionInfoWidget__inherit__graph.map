@@ -1,5 +1,5 @@
 <map id="USessionInfoWidget" name="USessionInfoWidget">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,119,151,264"/>
+<area shape="rect" id="Node000001" title="검색된 멀티플레이어 세션 정보를 표시하고 참여 버튼을 제공하는 UI 위젯입니다." alt="" coords="5,119,151,264"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="28,5,128,71"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,84,81,118,75,118,75,84"/>
 </map>

@@ -110,6 +110,9 @@ $(document).ready(function(){initNavTree('classUPlayerWidget.html',''); initResi
 </div><!--header-->
 <div class="contents">
 
+<p>현재 세션에 참여한 플레이어 목록을 표시하는 UI 위젯입니다.  
+ <a href="classUPlayerWidget.html#details">더 자세히 ...</a></p>
+
 <p><code>#include &lt;<a class="el" href="UPlayerWidget_8h_source.html">UPlayerWidget.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> UPlayerWidget에 대한 상속 다이어그램 : </div>
@@ -148,8 +151,10 @@ Protected 멤버 함수</h2></td></tr>
 <tr class="separator:aac0adf3ee6f4978fe315285aa0796514"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
-<div class="textblock">
-<p class="definition"><a class="el" href="UPlayerWidget_8h_source.html">UPlayerWidget.h</a> 파일의 <a class="el" href="UPlayerWidget_8h_source.html#l00014">14</a> 번째 라인에서 정의되었습니다.</p>
+<div class="textblock"><p>현재 세션에 참여한 플레이어 목록을 표시하는 UI 위젯입니다. </p>
+<p><a class="el" href="classUPlayerListItem.html" title="플레이어 목록에 표시되는 개별 플레이어 정보 항목 UI 위젯입니다.">UPlayerListItem</a> 위젯을 사용하여 각 플레이어의 정보를 목록 형태로 보여줍니다. </p>
+
+<p class="definition"><a class="el" href="UPlayerWidget_8h_source.html">UPlayerWidget.h</a> 파일의 <a class="el" href="UPlayerWidget_8h_source.html#l00018">18</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="a55876fd00359d52bfe85a4bf8338a80c" name="a55876fd00359d52bfe85a4bf8338a80c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a55876fd00359d52bfe85a4bf8338a80c">&#9670;&#160;</a></span>CreatePlayerListItem()</h2>
@@ -199,11 +204,11 @@ Protected 멤버 함수</h2></td></tr>
 <div class="line"><span class="lineno">  125</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
 <div class="line"><span class="lineno">  126</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
-<div class="ttc" id="aclassUPlayerListItem_html"><div class="ttname"><a href="classUPlayerListItem.html">UPlayerListItem</a></div><div class="ttdef"><b>Definition</b> <a href="UPlayerListItem_8h_source.html#l00015">UPlayerListItem.h:16</a></div></div>
+<div class="ttc" id="aclassUPlayerListItem_html"><div class="ttname"><a href="classUPlayerListItem.html">UPlayerListItem</a></div><div class="ttdoc">플레이어 목록에 표시되는 개별 플레이어 정보 항목 UI 위젯입니다.</div><div class="ttdef"><b>Definition</b> <a href="UPlayerListItem_8h_source.html#l00019">UPlayerListItem.h:20</a></div></div>
 <div class="ttc" id="aclassUPlayerListItem_html_afe349ca48a722b37f6627af6e8ba077b"><div class="ttname"><a href="classUPlayerListItem.html#afe349ca48a722b37f6627af6e8ba077b">UPlayerListItem::SetPlayerStatus</a></div><div class="ttdeci">void SetPlayerStatus(const int32 InPlayerIndex, const int32 LocalPlayerIndex, const FString &amp;InName)</div><div class="ttdef"><b>Definition</b> <a href="UPlayerListItem_8cpp_source.html#l00011">UPlayerListItem.cpp:11</a></div></div>
-<div class="ttc" id="aclassUPlayerWidget_html_aa51c873b88b6eebb26ba0c60cd49fa4f"><div class="ttname"><a href="classUPlayerWidget.html#aa51c873b88b6eebb26ba0c60cd49fa4f">UPlayerWidget::PlayerListItemClass</a></div><div class="ttdeci">TSubclassOf&lt; UPlayerListItem &gt; PlayerListItemClass</div><div class="ttdef"><b>Definition</b> <a href="UPlayerWidget_8h_source.html#l00035">UPlayerWidget.h:35</a></div></div>
+<div class="ttc" id="aclassUPlayerWidget_html_aa51c873b88b6eebb26ba0c60cd49fa4f"><div class="ttname"><a href="classUPlayerWidget.html#aa51c873b88b6eebb26ba0c60cd49fa4f">UPlayerWidget::PlayerListItemClass</a></div><div class="ttdeci">TSubclassOf&lt; UPlayerListItem &gt; PlayerListItemClass</div><div class="ttdef"><b>Definition</b> <a href="UPlayerWidget_8h_source.html#l00039">UPlayerWidget.h:39</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UPlayerWidget_8h_source.html#l00035">PlayerListItemClass</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="UPlayerListItem_8cpp_source.html#l00011">UPlayerListItem::SetPlayerStatus()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UPlayerWidget_8h_source.html#l00039">PlayerListItemClass</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="UPlayerListItem_8cpp_source.html#l00011">UPlayerListItem::SetPlayerStatus()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPlayerWidget_8cpp_source.html#l00051">UpdatePlayerList()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -279,11 +284,11 @@ Protected 멤버 함수</h2></td></tr>
 <div class="line"><span class="lineno">   47</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UPlayerWidget::PlayerListContainer is NULL! Check WBP_PlayerWidget binding.&quot;</span>));</div>
 <div class="line"><span class="lineno">   48</span>    }</div>
 <div class="line"><span class="lineno">   49</span>}</div>
-<div class="ttc" id="aclassUPlayerWidget_html_a7957791b07a38e3f25819604434f786b"><div class="ttname"><a href="classUPlayerWidget.html#a7957791b07a38e3f25819604434f786b">UPlayerWidget::PlayerListContainer</a></div><div class="ttdeci">TObjectPtr&lt; UVerticalBox &gt; PlayerListContainer</div><div class="ttdef"><b>Definition</b> <a href="UPlayerWidget_8h_source.html#l00023">UPlayerWidget.h:23</a></div></div>
+<div class="ttc" id="aclassUPlayerWidget_html_a7957791b07a38e3f25819604434f786b"><div class="ttname"><a href="classUPlayerWidget.html#a7957791b07a38e3f25819604434f786b">UPlayerWidget::PlayerListContainer</a></div><div class="ttdeci">TObjectPtr&lt; UVerticalBox &gt; PlayerListContainer</div><div class="ttdef"><b>Definition</b> <a href="UPlayerWidget_8h_source.html#l00027">UPlayerWidget.h:27</a></div></div>
 <div class="ttc" id="aclassUPlayerWidget_html_abc62c371ef90fcc9a2bb0cf363eabf1e"><div class="ttname"><a href="classUPlayerWidget.html#abc62c371ef90fcc9a2bb0cf363eabf1e">UPlayerWidget::OnPlayerListUpdated</a></div><div class="ttdeci">void OnPlayerListUpdated(const TArray&lt; FString &gt; &amp;NewPlayerList)</div><div class="ttdef"><b>Definition</b> <a href="UPlayerWidget_8cpp_source.html#l00128">UPlayerWidget.cpp:128</a></div></div>
-<div class="ttc" id="aclassUYisanOnlineSystem_html"><div class="ttname"><a href="classUYisanOnlineSystem.html">UYisanOnlineSystem</a></div><div class="ttdoc">온라인 서브시스템 기반의 세션 생성, 탐색, 복제 유틸리티를 제공합니다.</div><div class="ttdef"><b>Definition</b> <a href="UYisanOnlineSystem_8h_source.html#l00023">UYisanOnlineSystem.h:24</a></div></div>
+<div class="ttc" id="aclassUYisanOnlineSystem_html"><div class="ttname"><a href="classUYisanOnlineSystem.html">UYisanOnlineSystem</a></div><div class="ttdoc">언리얼 온라인 서브시스템(Online Subsystem)을 기반으로 세션 생성, 검색, 참여 등 멀티플레이어 세션 관리를 담당하는 서브시스템입니다.</div><div class="ttdef"><b>Definition</b> <a href="UYisanOnlineSystem_8h_source.html#l00024">UYisanOnlineSystem.h:25</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UPlayerWidget_8cpp_source.html#l00128">OnPlayerListUpdated()</a>, <a class="el" href="UPlayerWidget_8h_source.html#l00023">PlayerListContainer</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UPlayerWidget_8cpp_source.html#l00128">OnPlayerListUpdated()</a>, <a class="el" href="UPlayerWidget_8h_source.html#l00027">PlayerListContainer</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -416,7 +421,7 @@ Protected 멤버 함수</h2></td></tr>
 <div class="ttc" id="aclassAYiSanPlayerState_html_a83a126a4ffcb60e62455ada9daea462e"><div class="ttname"><a href="classAYiSanPlayerState.html#a83a126a4ffcb60e62455ada9daea462e">AYiSanPlayerState::PlayerIndex</a></div><div class="ttdeci">int32 PlayerIndex</div><div class="ttdoc">입장 순서 인덱스 (0,1,2,3...)</div><div class="ttdef"><b>Definition</b> <a href="AYiSanPlayerState_8h_source.html#l00067">AYiSanPlayerState.h:67</a></div></div>
 <div class="ttc" id="aclassUPlayerWidget_html_a55876fd00359d52bfe85a4bf8338a80c"><div class="ttname"><a href="classUPlayerWidget.html#a55876fd00359d52bfe85a4bf8338a80c">UPlayerWidget::CreatePlayerListItem</a></div><div class="ttdeci">UPlayerListItem * CreatePlayerListItem(const int32 InPlayerIndex, const int32 LocalPlayerIndex, const FString &amp;InPlayerName)</div><div class="ttdef"><b>Definition</b> <a href="UPlayerWidget_8cpp_source.html#l00112">UPlayerWidget.cpp:112</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UPlayerWidget_8cpp_source.html#l00112">CreatePlayerListItem()</a>, <a class="el" href="AYiSanPlayerState_8h_source.html#l00067">AYiSanPlayerState::PlayerIndex</a>, <a class="el" href="UPlayerWidget_8h_source.html#l00023">PlayerListContainer</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UPlayerWidget_8cpp_source.html#l00112">CreatePlayerListItem()</a>, <a class="el" href="AYiSanPlayerState_8h_source.html#l00067">AYiSanPlayerState::PlayerIndex</a>, <a class="el" href="UPlayerWidget_8h_source.html#l00027">PlayerListContainer</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPlayerWidget_8cpp_source.html#l00128">OnPlayerListUpdated()</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -449,7 +454,7 @@ Protected 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UPlayerWidget_8h_source.html">UPlayerWidget.h</a> 파일의 <a class="el" href="UPlayerWidget_8h_source.html#l00023">23</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UPlayerWidget_8h_source.html">UPlayerWidget.h</a> 파일의 <a class="el" href="UPlayerWidget_8h_source.html#l00027">27</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPlayerWidget_8cpp_source.html#l00017">NativeConstruct()</a>, <a class="el" href="UPlayerWidget_8cpp_source.html#l00051">UpdatePlayerList()</a>.</p>
 
@@ -467,7 +472,7 @@ Protected 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UPlayerWidget_8h_source.html">UPlayerWidget.h</a> 파일의 <a class="el" href="UPlayerWidget_8h_source.html#l00035">35</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UPlayerWidget_8h_source.html">UPlayerWidget.h</a> 파일의 <a class="el" href="UPlayerWidget_8h_source.html#l00039">39</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPlayerWidget_8cpp_source.html#l00112">CreatePlayerListItem()</a>.</p>
 
@@ -483,7 +488,7 @@ Protected 멤버 함수</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUPlayerWidget.html">UPlayerWidget</a></li>
-    <li class="footer">생성시간 : 일 11월 9 2025 07:14:32, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 11월 9 2025 07:46:10, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

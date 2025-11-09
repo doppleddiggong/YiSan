@@ -20,7 +20,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:href="classUControllable.html" target="_top" xlink:title=" ">
+<g id="a_Node000001"><a xlink:href="classUControllable.html" target="_top" xlink:title="플레이어 입력을 받아 처리하는 객체를 위한 인터페이스입니다.">
 <polygon fill="white" stroke="#666666" points="209,-56 126,-56 126,-37 209,-37 209,-56"/>
 <text text-anchor="middle" x="167.5" y="-44" font-family="Malgun Gothic" font-size="10.00">UControllable</text>
 </a>
@@ -38,7 +38,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classUSequenceActivatable.html" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="classUSequenceActivatable.html" target="_top" xlink:title="시퀀스 매니저에 의해 순차적으로 활성화/비활성화될 수 있는 액터 또는 컴포넌트를 위한 인터페이스입니다.">
 <polygon fill="white" stroke="#666666" points="231,-19 104,-19 104,0 231,0 231,-19"/>
 <text text-anchor="middle" x="167.5" y="-7" font-family="Malgun Gothic" font-size="10.00">USequenceActivatable</text>
 </a>

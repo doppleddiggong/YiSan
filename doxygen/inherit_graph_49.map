@@ -1,20 +1,20 @@
 <map id="그래픽컬한 클래스 계통도" name="그래픽컬한 클래스 계통도">
 <area shape="rect" id="Node000000" title=" " alt="" coords="5,449,113,475"/>
-<area shape="rect" id="Node000001" href="$classUChatBoxWidget.html" title=" " alt="" coords="191,5,324,31"/>
+<area shape="rect" id="Node000001" href="$classUChatBoxWidget.html" title="채팅 메시지 목록과 입력창을 포함하는 UI 위젯입니다." alt="" coords="191,5,324,31"/>
 <area shape="poly" id="edge53_Node000000_Node000001" title=" " alt="" coords="61,435,72,347,92,228,121,115,139,71,159,40,173,29,189,22,192,27,176,34,163,44,144,73,126,117,97,229,77,347,66,436"/>
-<area shape="rect" id="Node000002" href="$classUChatEntryWidget.html" title=" " alt="" coords="186,55,329,80"/>
+<area shape="rect" id="Node000002" href="$classUChatEntryWidget.html" title="채팅 목록에 표시되는 개별 채팅 메시지 항목 UI 위젯입니다." alt="" coords="186,55,329,80"/>
 <area shape="poly" id="edge54_Node000000_Node000002" title=" " alt="" coords="62,435,75,356,96,253,124,154,141,116,159,89,184,74,187,78,163,93,146,118,129,156,101,254,80,357,67,436"/>
-<area shape="rect" id="Node000003" href="$classUChatUIWidget.html" title=" " alt="" coords="196,104,319,129"/>
+<area shape="rect" id="Node000003" href="$classUChatUIWidget.html" title="UChatBoxWidget을 포함하는 컨테이너 위젯입니다." alt="" coords="196,104,319,129"/>
 <area shape="poly" id="edge55_Node000000_Node000003" title=" " alt="" coords="58,436,63,375,77,295,90,253,107,211,130,173,160,139,176,127,195,120,197,125,179,132,163,143,135,176,112,214,95,255,82,296,68,376,63,436"/>
-<area shape="rect" id="Node000004" href="$classUDasanWidget.html" title="다산 NPC 머리 위에 표시되는 상태 표시 위젯" alt="" coords="198,153,317,179"/>
+<area shape="rect" id="Node000004" href="$classUDasanWidget.html" title="다산(Dasan) NPC의 머리 위에 표시되어 현재 상태를 알려주는 UI 위젯입니다." alt="" coords="198,153,317,179"/>
 <area shape="poly" id="edge56_Node000000_Node000004" title=" " alt="" coords="60,435,67,383,84,316,97,281,113,247,134,216,160,188,177,176,197,169,199,174,180,181,163,192,138,219,118,250,102,283,89,318,72,384,65,436"/>
-<area shape="rect" id="Node000005" href="$classUDialogWidget.html" title=" " alt="" coords="197,203,317,228"/>
+<area shape="rect" id="Node000005" href="$classUDialogWidget.html" title="음성 및 텍스트 응답을 출력하는 다이얼로그 위젯입니다." alt="" coords="197,203,317,228"/>
 <area shape="poly" id="edge57_Node000000_Node000005" title=" " alt="" coords="62,435,73,392,91,338,119,284,138,259,160,237,177,226,196,219,198,224,179,231,163,241,142,262,124,287,96,341,78,393,68,436"/>
-<area shape="rect" id="Node000006" href="$classUEndingWidget.html" title=" " alt="" coords="196,252,319,277"/>
+<area shape="rect" id="Node000006" href="$classUEndingWidget.html" title="게임의 엔딩 시퀀스를 담당하는 UI 위젯입니다." alt="" coords="196,252,319,277"/>
 <area shape="poly" id="edge58_Node000000_Node000006" title=" " alt="" coords="66,435,79,401,98,361,125,321,160,286,195,270,197,275,163,291,129,324,103,364,84,404,71,437"/>
 <area shape="rect" id="Node000007" href="$classULoadginCircle.html" title="네트워크 대기 상태를 표시하는 로딩 서클 위젯입니다." alt="" coords="197,301,317,327"/>
 <area shape="poly" id="edge59_Node000000_Node000007" title=" " alt="" coords="72,436,107,385,132,358,160,336,196,320,198,325,163,340,135,362,111,388,76,439"/>
-<area shape="rect" id="Node000008" href="$classULoadingTransitionWidget.html" title="로딩 화면 위젯 &#45; 각 컴포넌트별 진행률을 시각화합니다." alt="" coords="161,351,353,376"/>
+<area shape="rect" id="Node000008" href="$classULoadingTransitionWidget.html" title="레벨 전환 시 표시되는 전체 화면 로딩 위젯입니다." alt="" coords="161,351,353,376"/>
 <area shape="poly" id="edge60_Node000000_Node000008" title=" " alt="" coords="83,438,118,410,160,385,191,374,193,379,162,390,121,415,86,442"/>
 <area shape="rect" id="Node000009" href="$classULobbyWidget.html" title="멀티플레이 로비 화면 위젯입니다." alt="" coords="199,400,316,425"/>
 <area shape="poly" id="edge61_Node000000_Node000009" title=" " alt="" coords="123,443,205,423,206,428,125,449"/>
@@ -22,13 +22,13 @@
 <area shape="poly" id="edge62_Node000000_Node000010" title=" " alt="" coords="127,459,202,459,202,465,127,465"/>
 <area shape="rect" id="Node000011" href="$classUMegaPopup.html" title=" " alt="" coords="203,499,311,524"/>
 <area shape="poly" id="edge63_Node000000_Node000011" title=" " alt="" coords="125,475,206,496,205,501,123,481"/>
-<area shape="rect" id="Node000012" href="$classUPlayerHeadWidget.html" title=" " alt="" coords="181,548,334,573"/>
+<area shape="rect" id="Node000012" href="$classUPlayerHeadWidget.html" title="플레이어 캐릭터의 머리 위에 표시되어 플레이어 이름과 아이콘을 보여주는 UI 위젯입니다." alt="" coords="181,548,334,573"/>
 <area shape="poly" id="edge64_Node000000_Node000012" title=" " alt="" coords="87,482,121,508,162,533,196,545,194,550,160,538,118,513,83,486"/>
-<area shape="rect" id="Node000013" href="$classUPlayerListItem.html" title=" " alt="" coords="194,597,321,623"/>
+<area shape="rect" id="Node000013" href="$classUPlayerListItem.html" title="플레이어 목록에 표시되는 개별 플레이어 정보 항목 UI 위젯입니다." alt="" coords="194,597,321,623"/>
 <area shape="poly" id="edge65_Node000000_Node000013" title=" " alt="" coords="77,485,112,535,136,561,163,582,195,597,192,602,160,587,132,565,108,539,72,488"/>
-<area shape="rect" id="Node000014" href="$classUPlayerWidget.html" title=" " alt="" coords="198,647,317,672"/>
+<area shape="rect" id="Node000014" href="$classUPlayerWidget.html" title="현재 세션에 참여한 플레이어 목록을 표시하는 UI 위젯입니다." alt="" coords="198,647,317,672"/>
 <area shape="poly" id="edge66_Node000000_Node000014" title=" " alt="" coords="71,487,84,520,104,560,130,599,163,632,180,642,199,649,197,654,177,647,160,636,126,602,99,562,79,522,66,489"/>
-<area shape="rect" id="Node000015" href="$classUSessionInfoWidget.html" title=" " alt="" coords="181,696,334,721"/>
+<area shape="rect" id="Node000015" href="$classUSessionInfoWidget.html" title="검색된 멀티플레이어 세션 정보를 표시하고 참여 버튼을 제공하는 UI 위젯입니다." alt="" coords="181,696,334,721"/>
 <area shape="poly" id="edge67_Node000000_Node000015" title=" " alt="" coords="68,487,78,530,96,582,124,636,142,660,163,681,183,694,181,698,160,685,138,664,119,639,91,585,73,531,62,489"/>
 <area shape="rect" id="Node000016" href="$classUSmallPopup.html" title=" " alt="" coords="203,745,312,771"/>
 <area shape="poly" id="edge68_Node000000_Node000016" title=" " alt="" coords="65,488,73,539,89,605,102,639,118,673,138,704,163,731,182,743,203,750,202,755,179,748,160,735,134,707,114,675,97,642,84,607,68,540,60,489"/>
@@ -36,6 +36,6 @@
 <area shape="poly" id="edge69_Node000000_Node000017" title=" " alt="" coords="64,489,68,549,83,627,95,669,113,709,135,747,163,780,182,793,204,800,202,805,179,797,160,784,131,750,108,712,90,671,78,629,63,549,58,489"/>
 <area shape="rect" id="Node000018" href="$classUStateWidget.html" title=" " alt="" coords="201,844,313,869"/>
 <area shape="poly" id="edge70_Node000000_Node000018" title=" " alt="" coords="62,489,64,557,76,649,89,698,107,746,131,790,163,829,181,842,202,849,200,854,178,847,160,833,127,793,102,748,84,699,71,650,59,557,57,489"/>
-<area shape="rect" id="Node000019" href="$classUVoiceGuidePanel.html" title=" " alt="" coords="187,893,327,919"/>
+<area shape="rect" id="Node000019" href="$classUVoiceGuidePanel.html" title="사용 가능한 음성 명령 예시를 보여주는 안내 UI 패널 위젯입니다." alt="" coords="187,893,327,919"/>
 <area shape="poly" id="edge71_Node000000_Node000019" title=" " alt="" coords="66,488,78,576,98,694,126,806,144,850,163,879,188,895,186,899,159,883,139,852,121,808,92,695,72,577,61,489"/>
 </map>

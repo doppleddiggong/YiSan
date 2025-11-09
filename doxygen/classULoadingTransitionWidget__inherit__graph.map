@@ -1,5 +1,5 @@
 <map id="ULoadingTransitionWidget" name="ULoadingTransitionWidget">
-<area shape="rect" id="Node000001" title="로딩 화면 위젯 &#45; 각 컴포넌트별 진행률을 시각화합니다." alt="" coords="5,119,189,224"/>
+<area shape="rect" id="Node000001" title="레벨 전환 시 표시되는 전체 화면 로딩 위젯입니다." alt="" coords="5,119,189,224"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="47,5,147,71"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,85,100,118,95,118,95,85"/>
 </map>

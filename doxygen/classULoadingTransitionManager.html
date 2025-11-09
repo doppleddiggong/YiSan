@@ -111,6 +111,9 @@ $(document).ready(function(){initNavTree('classULoadingTransitionManager.html','
 </div><!--header-->
 <div class="contents">
 
+<p>레벨 전환 시 전체 화면 로딩 위젯의 표시와 숨김을 관리하는 LocalPlayer 서브시스템입니다.  
+ <a href="classULoadingTransitionManager.html#details">더 자세히 ...</a></p>
+
 <p><code>#include &lt;<a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> ULoadingTransitionManager에 대한 상속 다이어그램 : </div>
@@ -188,8 +191,10 @@ Private 속성</h2></td></tr>
 <tr class="separator:a139436881c59525cd319a2cd2e291a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
-<div class="textblock">
-<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00015">15</a> 번째 라인에서 정의되었습니다.</p>
+<div class="textblock"><p>레벨 전환 시 전체 화면 로딩 위젯의 표시와 숨김을 관리하는 LocalPlayer 서브시스템입니다. </p>
+<p>맵 로드 시작 및 완료 이벤트를 감지하여 로딩 위젯을 자동으로 표시하고, 최소 노출 시간을 보장한 후 부드럽게 숨기는 역할을 합니다. </p>
+
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00019">19</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">생성자 &amp; 소멸자 문서화</h2>
 <a id="a1e336c9c007bad8f6baf1877a420361c" name="a1e336c9c007bad8f6baf1877a420361c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1e336c9c007bad8f6baf1877a420361c">&#9670;&#160;</a></span>ULoadingTransitionManager()</h2>
@@ -211,10 +216,10 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   28</span>    <a class="code hl_variable" href="classULoadingTransitionManager.html#ac82f2d891ac8e746f93c6562df6bfca3">TransitionWidgetClass</a> = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadClass&lt;ULoadingTransitionWidget&gt;</a>(<a class="code hl_define" href="ULoadingTransitionManager_8cpp.html#aa6d812349e0928a7be7dfe1a22d6a1b4">LOADINGTRANSITIONWIDGET_PATH</a>);</div>
 <div class="line"><span class="lineno">   29</span>}</div>
 <div class="ttc" id="aULoadingTransitionManager_8cpp_html_aa6d812349e0928a7be7dfe1a22d6a1b4"><div class="ttname"><a href="ULoadingTransitionManager_8cpp.html#aa6d812349e0928a7be7dfe1a22d6a1b4">LOADINGTRANSITIONWIDGET_PATH</a></div><div class="ttdeci">#define LOADINGTRANSITIONWIDGET_PATH</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8cpp_source.html#l00024">ULoadingTransitionManager.cpp:24</a></div></div>
-<div class="ttc" id="aclassULoadingTransitionManager_html_ac82f2d891ac8e746f93c6562df6bfca3"><div class="ttname"><a href="classULoadingTransitionManager.html#ac82f2d891ac8e746f93c6562df6bfca3">ULoadingTransitionManager::TransitionWidgetClass</a></div><div class="ttdeci">TSubclassOf&lt; class ULoadingTransitionWidget &gt; TransitionWidgetClass</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00052">ULoadingTransitionManager.h:52</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_ac82f2d891ac8e746f93c6562df6bfca3"><div class="ttname"><a href="classULoadingTransitionManager.html#ac82f2d891ac8e746f93c6562df6bfca3">ULoadingTransitionManager::TransitionWidgetClass</a></div><div class="ttdeci">TSubclassOf&lt; class ULoadingTransitionWidget &gt; TransitionWidgetClass</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00056">ULoadingTransitionManager.h:56</a></div></div>
 <div class="ttc" id="astructFComponentHelper_html_ac37cef436e9aaef1f0c655d781a95e66"><div class="ttname"><a href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset</a></div><div class="ttdeci">static T * LoadAsset(const TCHAR *Path)</div><div class="ttdef"><b>Definition</b> <a href="FComponentHelper_8h_source.html#l00016">FComponentHelper.h:16</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="FComponentHelper_8h_source.html#l00016">FComponentHelper::LoadAsset()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00024">LOADINGTRANSITIONWIDGET_PATH</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00052">TransitionWidgetClass</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="FComponentHelper_8h_source.html#l00016">FComponentHelper::LoadAsset()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00024">LOADINGTRANSITIONWIDGET_PATH</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00056">TransitionWidgetClass</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -283,10 +288,10 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   63</span> </div>
 <div class="line"><span class="lineno">   64</span>    Super::Deinitialize();</div>
 <div class="line"><span class="lineno">   65</span>}</div>
-<div class="ttc" id="aclassULoadingTransitionManager_html_a05797174c2d7cdbc505e021c74927628"><div class="ttname"><a href="classULoadingTransitionManager.html#a05797174c2d7cdbc505e021c74927628">ULoadingTransitionManager::PreLoadMapHandle</a></div><div class="ttdeci">FDelegateHandle PreLoadMapHandle</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00063">ULoadingTransitionManager.h:63</a></div></div>
-<div class="ttc" id="aclassULoadingTransitionManager_html_ade0ed97cde881fc3973ec31b73af0d64"><div class="ttname"><a href="classULoadingTransitionManager.html#ade0ed97cde881fc3973ec31b73af0d64">ULoadingTransitionManager::PostLoadMapHandle</a></div><div class="ttdeci">FDelegateHandle PostLoadMapHandle</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00064">ULoadingTransitionManager.h:64</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a05797174c2d7cdbc505e021c74927628"><div class="ttname"><a href="classULoadingTransitionManager.html#a05797174c2d7cdbc505e021c74927628">ULoadingTransitionManager::PreLoadMapHandle</a></div><div class="ttdeci">FDelegateHandle PreLoadMapHandle</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00067">ULoadingTransitionManager.h:67</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_ade0ed97cde881fc3973ec31b73af0d64"><div class="ttname"><a href="classULoadingTransitionManager.html#ade0ed97cde881fc3973ec31b73af0d64">ULoadingTransitionManager::PostLoadMapHandle</a></div><div class="ttdeci">FDelegateHandle PostLoadMapHandle</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00068">ULoadingTransitionManager.h:68</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8h_source.html#l00064">PostLoadMapHandle</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00063">PreLoadMapHandle</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8h_source.html#l00068">PostLoadMapHandle</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00067">PreLoadMapHandle</a>.</p>
 
 </div>
 </div>
@@ -411,10 +416,10 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  113</span>    }</div>
 <div class="line"><span class="lineno">  114</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
-<div class="ttc" id="aclassULoadingTransitionManager_html_a5ff196d090bc8489fb7be56aea0c2d4d"><div class="ttname"><a href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">ULoadingTransitionManager::TransitionWidget</a></div><div class="ttdeci">TObjectPtr&lt; class ULoadingTransitionWidget &gt; TransitionWidget</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00055">ULoadingTransitionManager.h:55</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a5ff196d090bc8489fb7be56aea0c2d4d"><div class="ttname"><a href="classULoadingTransitionManager.html#a5ff196d090bc8489fb7be56aea0c2d4d">ULoadingTransitionManager::TransitionWidget</a></div><div class="ttdeci">TObjectPtr&lt; class ULoadingTransitionWidget &gt; TransitionWidget</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00059">ULoadingTransitionManager.h:59</a></div></div>
 <div class="ttc" id="anamespaceGameLayer_html_ae4c4bd33e56196bb1e54f458059d5345"><div class="ttname"><a href="namespaceGameLayer.html#ae4c4bd33e56196bb1e54f458059d5345">GameLayer::Loading</a></div><div class="ttdeci">static const int32 Loading</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00009">YiSan.h:9</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="YiSan_8h_source.html#l00009">GameLayer::Loading</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00055">TransitionWidget</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00052">TransitionWidgetClass</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="YiSan_8h_source.html#l00009">GameLayer::Loading</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">TransitionWidget</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00056">TransitionWidgetClass</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00238">HandlePostLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00218">HandlePreLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00116">ShowLoadingScreen()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -473,11 +478,11 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  214</span>    <a class="code hl_variable" href="classULoadingTransitionManager.html#a9f45add20e8754e87f71db79e4a337ed">bHideRequested</a> = <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  215</span>    <a class="code hl_variable" href="classULoadingTransitionManager.html#a8caeb5af6a2df2f1cac42c4d998f183e">bIsShowing</a> = <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  216</span>}</div>
-<div class="ttc" id="aclassULoadingTransitionManager_html_a10168ac9a6e587fad27f438c6092f0d1"><div class="ttname"><a href="classULoadingTransitionManager.html#a10168ac9a6e587fad27f438c6092f0d1">ULoadingTransitionManager::HideTimerHandle</a></div><div class="ttdeci">FTimerHandle HideTimerHandle</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00061">ULoadingTransitionManager.h:61</a></div></div>
-<div class="ttc" id="aclassULoadingTransitionManager_html_a8caeb5af6a2df2f1cac42c4d998f183e"><div class="ttname"><a href="classULoadingTransitionManager.html#a8caeb5af6a2df2f1cac42c4d998f183e">ULoadingTransitionManager::bIsShowing</a></div><div class="ttdeci">bool bIsShowing</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00066">ULoadingTransitionManager.h:66</a></div></div>
-<div class="ttc" id="aclassULoadingTransitionManager_html_a9f45add20e8754e87f71db79e4a337ed"><div class="ttname"><a href="classULoadingTransitionManager.html#a9f45add20e8754e87f71db79e4a337ed">ULoadingTransitionManager::bHideRequested</a></div><div class="ttdeci">bool bHideRequested</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00059">ULoadingTransitionManager.h:59</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a10168ac9a6e587fad27f438c6092f0d1"><div class="ttname"><a href="classULoadingTransitionManager.html#a10168ac9a6e587fad27f438c6092f0d1">ULoadingTransitionManager::HideTimerHandle</a></div><div class="ttdeci">FTimerHandle HideTimerHandle</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00065">ULoadingTransitionManager.h:65</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a8caeb5af6a2df2f1cac42c4d998f183e"><div class="ttname"><a href="classULoadingTransitionManager.html#a8caeb5af6a2df2f1cac42c4d998f183e">ULoadingTransitionManager::bIsShowing</a></div><div class="ttdeci">bool bIsShowing</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00070">ULoadingTransitionManager.h:70</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a9f45add20e8754e87f71db79e4a337ed"><div class="ttname"><a href="classULoadingTransitionManager.html#a9f45add20e8754e87f71db79e4a337ed">ULoadingTransitionManager::bHideRequested</a></div><div class="ttdeci">bool bHideRequested</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00063">ULoadingTransitionManager.h:63</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">bHideRequested</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00066">bIsShowing</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00061">HideTimerHandle</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00055">TransitionWidget</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8h_source.html#l00063">bHideRequested</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00070">bIsShowing</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00065">HideTimerHandle</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">TransitionWidget</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00152">HideLoadingScreen()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -535,7 +540,7 @@ Private 속성</h2></td></tr>
 <div class="ttc" id="aclassULoadingTransitionManager_html_a3140a82516832c40d9dbc42417bb80f9"><div class="ttname"><a href="classULoadingTransitionManager.html#a3140a82516832c40d9dbc42417bb80f9">ULoadingTransitionManager::DoesWorldBelongToLocalPlayer</a></div><div class="ttdeci">bool DoesWorldBelongToLocalPlayer(const UWorld *World) const</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8cpp_source.html#l00257">ULoadingTransitionManager.cpp:257</a></div></div>
 <div class="ttc" id="aclassULoadingTransitionManager_html_a8fe3714ec42a3c54c678855c4f47ae46"><div class="ttname"><a href="classULoadingTransitionManager.html#a8fe3714ec42a3c54c678855c4f47ae46">ULoadingTransitionManager::EnsureWidgetForWorld</a></div><div class="ttdeci">void EnsureWidgetForWorld(UWorld *World)</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8cpp_source.html#l00067">ULoadingTransitionManager.cpp:67</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">bHideRequested</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00066">bIsShowing</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00257">DoesWorldBelongToLocalPlayer()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00067">EnsureWidgetForWorld()</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00055">TransitionWidget</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8h_source.html#l00063">bHideRequested</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00070">bIsShowing</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00257">DoesWorldBelongToLocalPlayer()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00067">EnsureWidgetForWorld()</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">TransitionWidget</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00031">Initialize()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -609,7 +614,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  235</span>    }</div>
 <div class="line"><span class="lineno">  236</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">bHideRequested</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00066">bIsShowing</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00257">DoesWorldBelongToLocalPlayer()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00067">EnsureWidgetForWorld()</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00055">TransitionWidget</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8h_source.html#l00063">bHideRequested</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00070">bIsShowing</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00257">DoesWorldBelongToLocalPlayer()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00067">EnsureWidgetForWorld()</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">TransitionWidget</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00031">Initialize()</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -687,13 +692,13 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  190</span>    <a class="code hl_function" href="classULoadingTransitionManager.html#aad72c49048dac1b81aa823d5a3d10fa3">FinalizeHide</a>();</div>
 <div class="line"><span class="lineno">  191</span>    </div>
 <div class="line"><span class="lineno">  192</span>}</div>
-<div class="ttc" id="aclassULoadingTransitionManager_html_a0cec657b262d8df1fa2ec6c87094fcf7"><div class="ttname"><a href="classULoadingTransitionManager.html#a0cec657b262d8df1fa2ec6c87094fcf7">ULoadingTransitionManager::LastShowTimestamp</a></div><div class="ttdeci">double LastShowTimestamp</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00057">ULoadingTransitionManager.h:57</a></div></div>
-<div class="ttc" id="aclassULoadingTransitionManager_html_a139436881c59525cd319a2cd2e291a9e"><div class="ttname"><a href="classULoadingTransitionManager.html#a139436881c59525cd319a2cd2e291a9e">ULoadingTransitionManager::MinVisibleDurationSeconds</a></div><div class="ttdeci">static constexpr double MinVisibleDurationSeconds</div><div class="ttdoc">로딩 화면 제거를 지연 처리하기 위한 최소 노출 시간(초)</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00045">ULoadingTransitionManager.h:45</a></div></div>
-<div class="ttc" id="aclassULoadingTransitionManager_html_a255c98757ff29f509df54884461c7c5b"><div class="ttname"><a href="classULoadingTransitionManager.html#a255c98757ff29f509df54884461c7c5b">ULoadingTransitionManager::HoldAfterCompletionSeconds</a></div><div class="ttdeci">static constexpr double HoldAfterCompletionSeconds</div><div class="ttdoc">완료 이후 페이드아웃 전 유지 시간(초)</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00048">ULoadingTransitionManager.h:48</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a0cec657b262d8df1fa2ec6c87094fcf7"><div class="ttname"><a href="classULoadingTransitionManager.html#a0cec657b262d8df1fa2ec6c87094fcf7">ULoadingTransitionManager::LastShowTimestamp</a></div><div class="ttdeci">double LastShowTimestamp</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00061">ULoadingTransitionManager.h:61</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a139436881c59525cd319a2cd2e291a9e"><div class="ttname"><a href="classULoadingTransitionManager.html#a139436881c59525cd319a2cd2e291a9e">ULoadingTransitionManager::MinVisibleDurationSeconds</a></div><div class="ttdeci">static constexpr double MinVisibleDurationSeconds</div><div class="ttdoc">로딩 화면 제거를 지연 처리하기 위한 최소 노출 시간(초)</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00049">ULoadingTransitionManager.h:49</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_a255c98757ff29f509df54884461c7c5b"><div class="ttname"><a href="classULoadingTransitionManager.html#a255c98757ff29f509df54884461c7c5b">ULoadingTransitionManager::HoldAfterCompletionSeconds</a></div><div class="ttdeci">static constexpr double HoldAfterCompletionSeconds</div><div class="ttdoc">완료 이후 페이드아웃 전 유지 시간(초)</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00052">ULoadingTransitionManager.h:52</a></div></div>
 <div class="ttc" id="aclassULoadingTransitionManager_html_aad72c49048dac1b81aa823d5a3d10fa3"><div class="ttname"><a href="classULoadingTransitionManager.html#aad72c49048dac1b81aa823d5a3d10fa3">ULoadingTransitionManager::FinalizeHide</a></div><div class="ttdeci">void FinalizeHide()</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8cpp_source.html#l00194">ULoadingTransitionManager.cpp:194</a></div></div>
-<div class="ttc" id="aclassULoadingTransitionManager_html_ac57a7358f24721c76470f8c2c41876fc"><div class="ttname"><a href="classULoadingTransitionManager.html#ac57a7358f24721c76470f8c2c41876fc">ULoadingTransitionManager::LatestReportedProgress</a></div><div class="ttdeci">float LatestReportedProgress</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00058">ULoadingTransitionManager.h:58</a></div></div>
+<div class="ttc" id="aclassULoadingTransitionManager_html_ac57a7358f24721c76470f8c2c41876fc"><div class="ttname"><a href="classULoadingTransitionManager.html#ac57a7358f24721c76470f8c2c41876fc">ULoadingTransitionManager::LatestReportedProgress</a></div><div class="ttdeci">float LatestReportedProgress</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8h_source.html#l00062">ULoadingTransitionManager.h:62</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">bHideRequested</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00194">FinalizeHide()</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00061">HideTimerHandle</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00048">HoldAfterCompletionSeconds</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00057">LastShowTimestamp</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00058">LatestReportedProgress</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00045">MinVisibleDurationSeconds</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00055">TransitionWidget</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8h_source.html#l00063">bHideRequested</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00194">FinalizeHide()</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00065">HideTimerHandle</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00052">HoldAfterCompletionSeconds</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00061">LastShowTimestamp</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00062">LatestReportedProgress</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00049">MinVisibleDurationSeconds</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">TransitionWidget</a>.</p>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-10-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
@@ -749,7 +754,7 @@ Private 속성</h2></td></tr>
 <div class="ttc" id="aclassULoadingTransitionManager_html_a44cbc486671c93224ccd7309c3be8027"><div class="ttname"><a href="classULoadingTransitionManager.html#a44cbc486671c93224ccd7309c3be8027">ULoadingTransitionManager::HandlePreLoadMap</a></div><div class="ttdeci">void HandlePreLoadMap(const struct FWorldContext &amp;WorldContext, const FString &amp;MapName)</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8cpp_source.html#l00218">ULoadingTransitionManager.cpp:218</a></div></div>
 <div class="ttc" id="aclassULoadingTransitionManager_html_abf4ee0433d0e05c7e505c67afda16b8d"><div class="ttname"><a href="classULoadingTransitionManager.html#abf4ee0433d0e05c7e505c67afda16b8d">ULoadingTransitionManager::HandlePostLoadMap</a></div><div class="ttdeci">void HandlePostLoadMap(UWorld *LoadedWorld)</div><div class="ttdef"><b>Definition</b> <a href="ULoadingTransitionManager_8cpp_source.html#l00238">ULoadingTransitionManager.cpp:238</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00238">HandlePostLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00218">HandlePreLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00064">PostLoadMapHandle</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00063">PreLoadMapHandle</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00238">HandlePostLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00218">HandlePreLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00068">PostLoadMapHandle</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00067">PreLoadMapHandle</a>.</p>
 <div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-11-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
@@ -813,7 +818,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  149</span>    }</div>
 <div class="line"><span class="lineno">  150</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">bHideRequested</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00066">bIsShowing</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00067">EnsureWidgetForWorld()</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00061">HideTimerHandle</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00057">LastShowTimestamp</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00058">LatestReportedProgress</a>, <a class="el" href="YiSan_8h_source.html#l00009">GameLayer::Loading</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00055">TransitionWidget</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULoadingTransitionManager_8h_source.html#l00063">bHideRequested</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00070">bIsShowing</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00067">EnsureWidgetForWorld()</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00065">HideTimerHandle</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00061">LastShowTimestamp</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00062">LatestReportedProgress</a>, <a class="el" href="YiSan_8h_source.html#l00009">GameLayer::Loading</a>, <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">TransitionWidget</a>.</p>
 <div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-12-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
@@ -845,7 +850,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">59</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00063">63</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00194">FinalizeHide()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00238">HandlePostLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00218">HandlePreLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00152">HideLoadingScreen()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00116">ShowLoadingScreen()</a>.</p>
 
@@ -871,7 +876,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00066">66</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00070">70</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00194">FinalizeHide()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00238">HandlePostLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00218">HandlePreLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00116">ShowLoadingScreen()</a>.</p>
 
@@ -897,7 +902,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00061">61</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00065">65</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00194">FinalizeHide()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00152">HideLoadingScreen()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00116">ShowLoadingScreen()</a>.</p>
 
@@ -925,7 +930,7 @@ Private 속성</h2></td></tr>
 
 <p>완료 이후 페이드아웃 전 유지 시간(초) </p>
 
-<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00048">48</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00052">52</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00152">HideLoadingScreen()</a>.</p>
 
@@ -951,7 +956,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00057">57</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00061">61</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00152">HideLoadingScreen()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00116">ShowLoadingScreen()</a>.</p>
 
@@ -977,7 +982,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00058">58</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00062">62</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00152">HideLoadingScreen()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00116">ShowLoadingScreen()</a>.</p>
 
@@ -1005,7 +1010,7 @@ Private 속성</h2></td></tr>
 
 <p>로딩 화면 제거를 지연 처리하기 위한 최소 노출 시간(초) </p>
 
-<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00045">45</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00049">49</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00152">HideLoadingScreen()</a>.</p>
 
@@ -1031,7 +1036,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00064">64</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00068">68</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00050">Deinitialize()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00031">Initialize()</a>.</p>
 
@@ -1057,7 +1062,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00063">63</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00067">67</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00050">Deinitialize()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00031">Initialize()</a>.</p>
 
@@ -1083,7 +1088,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00055">55</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00059">59</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00067">EnsureWidgetForWorld()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00194">FinalizeHide()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00238">HandlePostLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00218">HandlePreLoadMap()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00152">HideLoadingScreen()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00116">ShowLoadingScreen()</a>.</p>
 
@@ -1109,7 +1114,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00052">52</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ULoadingTransitionManager_8h_source.html">ULoadingTransitionManager.h</a> 파일의 <a class="el" href="ULoadingTransitionManager_8h_source.html#l00056">56</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00026">ULoadingTransitionManager()</a>, <a class="el" href="ULoadingTransitionManager_8cpp_source.html#l00067">EnsureWidgetForWorld()</a>.</p>
 
@@ -1125,7 +1130,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classULoadingTransitionManager.html">ULoadingTransitionManager</a></li>
-    <li class="footer">생성시간 : 일 11월 9 2025 07:14:32, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 11월 9 2025 07:46:10, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

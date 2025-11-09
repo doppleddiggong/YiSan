@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="온라인 서브시스템 기반의 세션 생성, 탐색, 복제 유틸리티를 제공합니다.">
+<g id="a_Node000001"><a xlink:title="언리얼 온라인 서브시스템(Online Subsystem)을 기반으로 세션 생성, 검색, 참여 등 멀티플레이어 세션 관리를 담당하는 서브시스템입니다.">
 <polygon fill="#999999" stroke="transparent" points="166,-345 0,-345 0,0 166,0 166,-345"/>
 <text text-anchor="start" x="31.5" y="-332.5" font-family="Malgun Gothic" font-size="10.00">UYisanOnlineSystem</text>
 <text text-anchor="start" x="4" y="-317.5" font-family="Malgun Gothic" font-size="10.00">+</text>

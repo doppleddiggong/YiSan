@@ -110,6 +110,9 @@ $(document).ready(function(){initNavTree('classUSequenceManager.html',''); initR
 </div><!--header-->
 <div class="contents">
 
+<p>여러 액터를 지정된 간격으로 순차적으로 활성화 또는 비활성화하는 시퀀스 관리 서브시스템입니다.  
+ <a href="classUSequenceManager.html#details">더 자세히 ...</a></p>
+
 <p><code>#include &lt;<a class="el" href="USequenceManager_8h_source.html">USequenceManager.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> USequenceManager에 대한 상속 다이어그램 : </div>
@@ -151,8 +154,10 @@ Private 속성</h2></td></tr>
 <tr class="separator:a8eb73739b36d010f3ed073bb28ab0d3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
-<div class="textblock">
-<p class="definition"><a class="el" href="USequenceManager_8h_source.html">USequenceManager.h</a> 파일의 <a class="el" href="USequenceManager_8h_source.html#l00029">29</a> 번째 라인에서 정의되었습니다.</p>
+<div class="textblock"><p>여러 액터를 지정된 간격으로 순차적으로 활성화 또는 비활성화하는 시퀀스 관리 서브시스템입니다. </p>
+<p><a class="el" href="classISequenceActivatable.html">ISequenceActivatable</a> 인터페이스를 구현한 액터들을 대상으로, 정해진 순서에 따라 연출을 트리거하는 데 사용됩니다. </p>
+
+<p class="definition"><a class="el" href="USequenceManager_8h_source.html">USequenceManager.h</a> 파일의 <a class="el" href="USequenceManager_8h_source.html#l00037">37</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="a97df9aa97a5aa290313c9504b998738e" name="a97df9aa97a5aa290313c9504b998738e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a97df9aa97a5aa290313c9504b998738e">&#9670;&#160;</a></span>CancelAll()</h2>
@@ -178,11 +183,11 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   99</span>    <a class="code hl_variable" href="classUSequenceManager.html#a572cbcf477ac9f6e6b855d49b6b9ca8a">Queue</a>.Reset();</div>
 <div class="line"><span class="lineno">  100</span>    <a class="code hl_variable" href="classUSequenceManager.html#aee42f1166a70db3a833074512dc72637">Index</a> = 0;</div>
 <div class="line"><span class="lineno">  101</span>}</div>
-<div class="ttc" id="aclassUSequenceManager_html_a572cbcf477ac9f6e6b855d49b6b9ca8a"><div class="ttname"><a href="classUSequenceManager.html#a572cbcf477ac9f6e6b855d49b6b9ca8a">USequenceManager::Queue</a></div><div class="ttdeci">TArray&lt; FSequenceCommand &gt; Queue</div><div class="ttdef"><b>Definition</b> <a href="USequenceManager_8h_source.html#l00053">USequenceManager.h:53</a></div></div>
-<div class="ttc" id="aclassUSequenceManager_html_a7f66bdfd184631eacd6f536b135a08b1"><div class="ttname"><a href="classUSequenceManager.html#a7f66bdfd184631eacd6f536b135a08b1">USequenceManager::MainHandle</a></div><div class="ttdeci">FTimerHandle MainHandle</div><div class="ttdef"><b>Definition</b> <a href="USequenceManager_8h_source.html#l00052">USequenceManager.h:52</a></div></div>
-<div class="ttc" id="aclassUSequenceManager_html_aee42f1166a70db3a833074512dc72637"><div class="ttname"><a href="classUSequenceManager.html#aee42f1166a70db3a833074512dc72637">USequenceManager::Index</a></div><div class="ttdeci">int32 Index</div><div class="ttdef"><b>Definition</b> <a href="USequenceManager_8h_source.html#l00054">USequenceManager.h:54</a></div></div>
+<div class="ttc" id="aclassUSequenceManager_html_a572cbcf477ac9f6e6b855d49b6b9ca8a"><div class="ttname"><a href="classUSequenceManager.html#a572cbcf477ac9f6e6b855d49b6b9ca8a">USequenceManager::Queue</a></div><div class="ttdeci">TArray&lt; FSequenceCommand &gt; Queue</div><div class="ttdef"><b>Definition</b> <a href="USequenceManager_8h_source.html#l00061">USequenceManager.h:61</a></div></div>
+<div class="ttc" id="aclassUSequenceManager_html_a7f66bdfd184631eacd6f536b135a08b1"><div class="ttname"><a href="classUSequenceManager.html#a7f66bdfd184631eacd6f536b135a08b1">USequenceManager::MainHandle</a></div><div class="ttdeci">FTimerHandle MainHandle</div><div class="ttdef"><b>Definition</b> <a href="USequenceManager_8h_source.html#l00060">USequenceManager.h:60</a></div></div>
+<div class="ttc" id="aclassUSequenceManager_html_aee42f1166a70db3a833074512dc72637"><div class="ttname"><a href="classUSequenceManager.html#aee42f1166a70db3a833074512dc72637">USequenceManager::Index</a></div><div class="ttdeci">int32 Index</div><div class="ttdef"><b>Definition</b> <a href="USequenceManager_8h_source.html#l00062">USequenceManager.h:62</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="USequenceManager_8h_source.html#l00054">Index</a>, <a class="el" href="USequenceManager_8h_source.html#l00052">MainHandle</a>, <a class="el" href="USequenceManager_8h_source.html#l00053">Queue</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="USequenceManager_8h_source.html#l00062">Index</a>, <a class="el" href="USequenceManager_8h_source.html#l00060">MainHandle</a>, <a class="el" href="USequenceManager_8h_source.html#l00061">Queue</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="USequenceManager_8cpp_source.html#l00013">RequestSequential()</a>, <a class="el" href="USequenceManager_8cpp_source.html#l00055">TickStep()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -279,15 +284,15 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   52</span>        <a class="code hl_function" href="classUSequenceManager.html#ae4c67cffa8cb11aaf21f0106dc801521">TickStep</a>();</div>
 <div class="line"><span class="lineno">   53</span>}</div>
 <div class="ttc" id="aEBodyPartType_8h_html_a69a09297e20131de3e863c109dd59454a6a061313d22e51e0f25b7cd4dc065233"><div class="ttname"><a href="EBodyPartType_8h.html#a69a09297e20131de3e863c109dd59454a6a061313d22e51e0f25b7cd4dc065233">EBodyPartType::Max</a></div><div class="ttdeci">@ Max</div></div>
-<div class="ttc" id="aclassUSequenceManager_html_a8eb73739b36d010f3ed073bb28ab0d3e"><div class="ttname"><a href="classUSequenceManager.html#a8eb73739b36d010f3ed073bb28ab0d3e">USequenceManager::StepInterval</a></div><div class="ttdeci">float StepInterval</div><div class="ttdef"><b>Definition</b> <a href="USequenceManager_8h_source.html#l00055">USequenceManager.h:55</a></div></div>
+<div class="ttc" id="aclassUSequenceManager_html_a8eb73739b36d010f3ed073bb28ab0d3e"><div class="ttname"><a href="classUSequenceManager.html#a8eb73739b36d010f3ed073bb28ab0d3e">USequenceManager::StepInterval</a></div><div class="ttdeci">float StepInterval</div><div class="ttdef"><b>Definition</b> <a href="USequenceManager_8h_source.html#l00063">USequenceManager.h:63</a></div></div>
 <div class="ttc" id="aclassUSequenceManager_html_a97df9aa97a5aa290313c9504b998738e"><div class="ttname"><a href="classUSequenceManager.html#a97df9aa97a5aa290313c9504b998738e">USequenceManager::CancelAll</a></div><div class="ttdeci">void CancelAll()</div><div class="ttdef"><b>Definition</b> <a href="USequenceManager_8cpp_source.html#l00093">USequenceManager.cpp:93</a></div></div>
 <div class="ttc" id="aclassUSequenceManager_html_ae4c67cffa8cb11aaf21f0106dc801521"><div class="ttname"><a href="classUSequenceManager.html#ae4c67cffa8cb11aaf21f0106dc801521">USequenceManager::TickStep</a></div><div class="ttdeci">void TickStep()</div><div class="ttdef"><b>Definition</b> <a href="USequenceManager_8cpp_source.html#l00055">USequenceManager.cpp:55</a></div></div>
-<div class="ttc" id="astructFSequenceCommand_html"><div class="ttname"><a href="structFSequenceCommand.html">FSequenceCommand</a></div><div class="ttdef"><b>Definition</b> <a href="USequenceManager_8h_source.html#l00014">USequenceManager.h:15</a></div></div>
-<div class="ttc" id="astructFSequenceCommand_html_a6180c56cf5a536855f4c4d586a91cbe1"><div class="ttname"><a href="structFSequenceCommand.html#a6180c56cf5a536855f4c4d586a91cbe1">FSequenceCommand::bActivate</a></div><div class="ttdeci">bool bActivate</div><div class="ttdef"><b>Definition</b> <a href="USequenceManager_8h_source.html#l00022">USequenceManager.h:22</a></div></div>
-<div class="ttc" id="astructFSequenceCommand_html_aa93b55656b1db478843925f298a6ec25"><div class="ttname"><a href="structFSequenceCommand.html#aa93b55656b1db478843925f298a6ec25">FSequenceCommand::Duration</a></div><div class="ttdeci">float Duration</div><div class="ttdef"><b>Definition</b> <a href="USequenceManager_8h_source.html#l00025">USequenceManager.h:25</a></div></div>
-<div class="ttc" id="astructFSequenceCommand_html_ad318dca78e6cdc2fb3a5616df5e9eb64"><div class="ttname"><a href="structFSequenceCommand.html#ad318dca78e6cdc2fb3a5616df5e9eb64">FSequenceCommand::Target</a></div><div class="ttdeci">TWeakObjectPtr&lt; AActor &gt; Target</div><div class="ttdef"><b>Definition</b> <a href="USequenceManager_8h_source.html#l00019">USequenceManager.h:19</a></div></div>
+<div class="ttc" id="astructFSequenceCommand_html"><div class="ttname"><a href="structFSequenceCommand.html">FSequenceCommand</a></div><div class="ttdoc">USequenceManager에서 처리할 개별 시퀀스 명령을 정의하는 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="USequenceManager_8h_source.html#l00018">USequenceManager.h:19</a></div></div>
+<div class="ttc" id="astructFSequenceCommand_html_a6180c56cf5a536855f4c4d586a91cbe1"><div class="ttname"><a href="structFSequenceCommand.html#a6180c56cf5a536855f4c4d586a91cbe1">FSequenceCommand::bActivate</a></div><div class="ttdeci">bool bActivate</div><div class="ttdef"><b>Definition</b> <a href="USequenceManager_8h_source.html#l00026">USequenceManager.h:26</a></div></div>
+<div class="ttc" id="astructFSequenceCommand_html_aa93b55656b1db478843925f298a6ec25"><div class="ttname"><a href="structFSequenceCommand.html#aa93b55656b1db478843925f298a6ec25">FSequenceCommand::Duration</a></div><div class="ttdeci">float Duration</div><div class="ttdef"><b>Definition</b> <a href="USequenceManager_8h_source.html#l00029">USequenceManager.h:29</a></div></div>
+<div class="ttc" id="astructFSequenceCommand_html_ad318dca78e6cdc2fb3a5616df5e9eb64"><div class="ttname"><a href="structFSequenceCommand.html#ad318dca78e6cdc2fb3a5616df5e9eb64">FSequenceCommand::Target</a></div><div class="ttdeci">TWeakObjectPtr&lt; AActor &gt; Target</div><div class="ttdef"><b>Definition</b> <a href="USequenceManager_8h_source.html#l00023">USequenceManager.h:23</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="USequenceManager_8h_source.html#l00022">FSequenceCommand::bActivate</a>, <a class="el" href="USequenceManager_8cpp_source.html#l00093">CancelAll()</a>, <a class="el" href="USequenceManager_8h_source.html#l00025">FSequenceCommand::Duration</a>, <a class="el" href="USequenceManager_8h_source.html#l00054">Index</a>, <a class="el" href="USequenceManager_8h_source.html#l00052">MainHandle</a>, <a class="el" href="USequenceManager_8h_source.html#l00053">Queue</a>, <a class="el" href="USequenceManager_8h_source.html#l00055">StepInterval</a>, <a class="el" href="USequenceManager_8h_source.html#l00019">FSequenceCommand::Target</a>, <a class="el" href="USequenceManager_8cpp_source.html#l00055">TickStep()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="USequenceManager_8h_source.html#l00026">FSequenceCommand::bActivate</a>, <a class="el" href="USequenceManager_8cpp_source.html#l00093">CancelAll()</a>, <a class="el" href="USequenceManager_8h_source.html#l00029">FSequenceCommand::Duration</a>, <a class="el" href="USequenceManager_8h_source.html#l00062">Index</a>, <a class="el" href="USequenceManager_8h_source.html#l00060">MainHandle</a>, <a class="el" href="USequenceManager_8h_source.html#l00061">Queue</a>, <a class="el" href="USequenceManager_8h_source.html#l00063">StepInterval</a>, <a class="el" href="USequenceManager_8h_source.html#l00023">FSequenceCommand::Target</a>, <a class="el" href="USequenceManager_8cpp_source.html#l00055">TickStep()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -359,7 +364,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   90</span>    }</div>
 <div class="line"><span class="lineno">   91</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="USequenceManager_8h_source.html#l00022">FSequenceCommand::bActivate</a>, <a class="el" href="USequenceManager_8cpp_source.html#l00093">CancelAll()</a>, <a class="el" href="USequenceManager_8h_source.html#l00025">FSequenceCommand::Duration</a>, <a class="el" href="USequenceManager_8h_source.html#l00054">Index</a>, <a class="el" href="USequenceManager_8h_source.html#l00053">Queue</a>, <a class="el" href="USequenceManager_8h_source.html#l00055">StepInterval</a>, <a class="el" href="USequenceManager_8h_source.html#l00019">FSequenceCommand::Target</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="USequenceManager_8h_source.html#l00026">FSequenceCommand::bActivate</a>, <a class="el" href="USequenceManager_8cpp_source.html#l00093">CancelAll()</a>, <a class="el" href="USequenceManager_8h_source.html#l00029">FSequenceCommand::Duration</a>, <a class="el" href="USequenceManager_8h_source.html#l00062">Index</a>, <a class="el" href="USequenceManager_8h_source.html#l00061">Queue</a>, <a class="el" href="USequenceManager_8h_source.html#l00063">StepInterval</a>, <a class="el" href="USequenceManager_8h_source.html#l00023">FSequenceCommand::Target</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="USequenceManager_8cpp_source.html#l00013">RequestSequential()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -400,7 +405,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="USequenceManager_8h_source.html">USequenceManager.h</a> 파일의 <a class="el" href="USequenceManager_8h_source.html#l00054">54</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="USequenceManager_8h_source.html">USequenceManager.h</a> 파일의 <a class="el" href="USequenceManager_8h_source.html#l00062">62</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="USequenceManager_8cpp_source.html#l00093">CancelAll()</a>, <a class="el" href="USequenceManager_8cpp_source.html#l00013">RequestSequential()</a>, <a class="el" href="USequenceManager_8cpp_source.html#l00055">TickStep()</a>.</p>
 
@@ -426,7 +431,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="USequenceManager_8h_source.html">USequenceManager.h</a> 파일의 <a class="el" href="USequenceManager_8h_source.html#l00052">52</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="USequenceManager_8h_source.html">USequenceManager.h</a> 파일의 <a class="el" href="USequenceManager_8h_source.html#l00060">60</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="USequenceManager_8cpp_source.html#l00093">CancelAll()</a>, <a class="el" href="USequenceManager_8cpp_source.html#l00013">RequestSequential()</a>.</p>
 
@@ -452,7 +457,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="USequenceManager_8h_source.html">USequenceManager.h</a> 파일의 <a class="el" href="USequenceManager_8h_source.html#l00053">53</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="USequenceManager_8h_source.html">USequenceManager.h</a> 파일의 <a class="el" href="USequenceManager_8h_source.html#l00061">61</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="USequenceManager_8cpp_source.html#l00093">CancelAll()</a>, <a class="el" href="USequenceManager_8cpp_source.html#l00013">RequestSequential()</a>, <a class="el" href="USequenceManager_8cpp_source.html#l00055">TickStep()</a>.</p>
 
@@ -478,7 +483,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="USequenceManager_8h_source.html">USequenceManager.h</a> 파일의 <a class="el" href="USequenceManager_8h_source.html#l00055">55</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="USequenceManager_8h_source.html">USequenceManager.h</a> 파일의 <a class="el" href="USequenceManager_8h_source.html#l00063">63</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="USequenceManager_8cpp_source.html#l00013">RequestSequential()</a>, <a class="el" href="USequenceManager_8cpp_source.html#l00055">TickStep()</a>.</p>
 
@@ -494,7 +499,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUSequenceManager.html">USequenceManager</a></li>
-    <li class="footer">생성시간 : 일 11월 9 2025 07:14:32, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 11월 9 2025 07:46:10, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

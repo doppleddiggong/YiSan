@@ -111,6 +111,9 @@ $(document).ready(function(){initNavTree('classUDelayTaskManager.html',''); init
 </div><!--header-->
 <div class="contents">
 
+<p>지정된 시간 후에 함수(콜백)를 실행하는 지연 작업 관리 서브시스템입니다.  
+ <a href="classUDelayTaskManager.html#details">더 자세히 ...</a></p>
+
 <p><code>#include &lt;<a class="el" href="UDelayTaskManager_8h_source.html">UDelayTaskManager.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> UDelayTaskManager에 대한 상속 다이어그램 : </div>
@@ -168,8 +171,10 @@ Private 속성</h2></td></tr>
 <tr class="separator:a871566c190df1aee76947f4a8a443c80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
-<div class="textblock">
-<p class="definition"><a class="el" href="UDelayTaskManager_8h_source.html">UDelayTaskManager.h</a> 파일의 <a class="el" href="UDelayTaskManager_8h_source.html#l00031">31</a> 번째 라인에서 정의되었습니다.</p>
+<div class="textblock"><p>지정된 시간 후에 함수(콜백)를 실행하는 지연 작업 관리 서브시스템입니다. </p>
+<p>C++ 람다 및 블루프린트 델리게이트를 모두 지원하며, 생성된 작업을 핸들로 제어하거나 특정 오너와 관련된 모든 작업을 한 번에 취소할 수 있습니다. </p>
+
+<p class="definition"><a class="el" href="UDelayTaskManager_8h_source.html">UDelayTaskManager.h</a> 파일의 <a class="el" href="UDelayTaskManager_8h_source.html#l00039">39</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="a359e5ddf1d12b6042175f4765d000ed7" name="a359e5ddf1d12b6042175f4765d000ed7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a359e5ddf1d12b6042175f4765d000ed7">&#9670;&#160;</a></span>Cancel()</h2>
@@ -203,12 +208,12 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  114</span> </div>
 <div class="line"><span class="lineno">  115</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  116</span>}</div>
-<div class="ttc" id="aclassUDelayTaskManager_html_a871566c190df1aee76947f4a8a443c80"><div class="ttname"><a href="classUDelayTaskManager.html#a871566c190df1aee76947f4a8a443c80">UDelayTaskManager::OwnerIndex</a></div><div class="ttdeci">TMultiMap&lt; TWeakObjectPtr&lt; UObject &gt;, uint64 &gt; OwnerIndex</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8h_source.html#l00076">UDelayTaskManager.h:76</a></div></div>
-<div class="ttc" id="aclassUDelayTaskManager_html_afc5800d645cb2888723bee5042181c5b"><div class="ttname"><a href="classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b">UDelayTaskManager::Entries</a></div><div class="ttdeci">TMap&lt; uint64, FEntry &gt; Entries</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8h_source.html#l00073">UDelayTaskManager.h:73</a></div></div>
-<div class="ttc" id="astructFDelayHandle_html_a65b5c7cb5e60128f014d7b80122c2a36"><div class="ttname"><a href="structFDelayHandle.html#a65b5c7cb5e60128f014d7b80122c2a36">FDelayHandle::IsValid</a></div><div class="ttdeci">bool IsValid() const</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8h_source.html#l00022">UDelayTaskManager.h:22</a></div></div>
-<div class="ttc" id="astructFDelayHandle_html_a8867e58391e5eb6a8b7567cecba6881b"><div class="ttname"><a href="structFDelayHandle.html#a8867e58391e5eb6a8b7567cecba6881b">FDelayHandle::SeqIndex</a></div><div class="ttdeci">uint64 SeqIndex</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8h_source.html#l00020">UDelayTaskManager.h:20</a></div></div>
+<div class="ttc" id="aclassUDelayTaskManager_html_a871566c190df1aee76947f4a8a443c80"><div class="ttname"><a href="classUDelayTaskManager.html#a871566c190df1aee76947f4a8a443c80">UDelayTaskManager::OwnerIndex</a></div><div class="ttdeci">TMultiMap&lt; TWeakObjectPtr&lt; UObject &gt;, uint64 &gt; OwnerIndex</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8h_source.html#l00084">UDelayTaskManager.h:84</a></div></div>
+<div class="ttc" id="aclassUDelayTaskManager_html_afc5800d645cb2888723bee5042181c5b"><div class="ttname"><a href="classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b">UDelayTaskManager::Entries</a></div><div class="ttdeci">TMap&lt; uint64, FEntry &gt; Entries</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8h_source.html#l00081">UDelayTaskManager.h:81</a></div></div>
+<div class="ttc" id="astructFDelayHandle_html_a65b5c7cb5e60128f014d7b80122c2a36"><div class="ttname"><a href="structFDelayHandle.html#a65b5c7cb5e60128f014d7b80122c2a36">FDelayHandle::IsValid</a></div><div class="ttdeci">bool IsValid() const</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8h_source.html#l00026">UDelayTaskManager.h:26</a></div></div>
+<div class="ttc" id="astructFDelayHandle_html_a8867e58391e5eb6a8b7567cecba6881b"><div class="ttname"><a href="structFDelayHandle.html#a8867e58391e5eb6a8b7567cecba6881b">FDelayHandle::SeqIndex</a></div><div class="ttdeci">uint64 SeqIndex</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8h_source.html#l00024">UDelayTaskManager.h:24</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00073">Entries</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00022">FDelayHandle::IsValid()</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00065">UDelayTaskManager::FEntry::Owner</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00076">OwnerIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00020">FDelayHandle::SeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00069">UDelayTaskManager::FEntry::TimerHandle</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00081">Entries</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00026">FDelayHandle::IsValid()</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00073">UDelayTaskManager::FEntry::Owner</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00084">OwnerIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00024">FDelayHandle::SeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00077">UDelayTaskManager::FEntry::TimerHandle</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -258,7 +263,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  138</span>    }</div>
 <div class="line"><span class="lineno">  139</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00073">Entries</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00065">UDelayTaskManager::FEntry::Owner</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00076">OwnerIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00069">UDelayTaskManager::FEntry::TimerHandle</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00081">Entries</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00073">UDelayTaskManager::FEntry::Owner</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00084">OwnerIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00077">UDelayTaskManager::FEntry::TimerHandle</a>.</p>
 
 </div>
 </div>
@@ -321,7 +326,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   31</span>    Super::Deinitialize();</div>
 <div class="line"><span class="lineno">   32</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00073">Entries</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00076">OwnerIndex</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00081">Entries</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00084">OwnerIndex</a>.</p>
 
 </div>
 </div>
@@ -385,11 +390,11 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   67</span>    Out.<a class="code hl_variable" href="structFDelayHandle.html#a8867e58391e5eb6a8b7567cecba6881b">SeqIndex</a> = SeqIndex;</div>
 <div class="line"><span class="lineno">   68</span>    <span class="keywordflow">return</span> Out;</div>
 <div class="line"><span class="lineno">   69</span>}</div>
-<div class="ttc" id="aclassUDelayTaskManager_html_a560ea4f7c70e08948b591b6615c5f666"><div class="ttname"><a href="classUDelayTaskManager.html#a560ea4f7c70e08948b591b6615c5f666">UDelayTaskManager::NextSeqIndex</a></div><div class="ttdeci">uint64 NextSeqIndex</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8h_source.html#l00079">UDelayTaskManager.h:79</a></div></div>
+<div class="ttc" id="aclassUDelayTaskManager_html_a560ea4f7c70e08948b591b6615c5f666"><div class="ttname"><a href="classUDelayTaskManager.html#a560ea4f7c70e08948b591b6615c5f666">UDelayTaskManager::NextSeqIndex</a></div><div class="ttdeci">uint64 NextSeqIndex</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8h_source.html#l00087">UDelayTaskManager.h:87</a></div></div>
 <div class="ttc" id="aclassUDelayTaskManager_html_a607f1cd9f8baf963d1c08038e116e2f7"><div class="ttname"><a href="classUDelayTaskManager.html#a607f1cd9f8baf963d1c08038e116e2f7">UDelayTaskManager::ExecuteById</a></div><div class="ttdeci">void ExecuteById(uint64 SeqIndex)</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8cpp_source.html#l00141">UDelayTaskManager.cpp:141</a></div></div>
-<div class="ttc" id="astructFDelayHandle_html"><div class="ttname"><a href="structFDelayHandle.html">FDelayHandle</a></div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8h_source.html#l00016">UDelayTaskManager.h:17</a></div></div>
+<div class="ttc" id="astructFDelayHandle_html"><div class="ttname"><a href="structFDelayHandle.html">FDelayHandle</a></div><div class="ttdoc">UDelayTaskManager에 의해 생성된 지연 작업을 식별하고 제어하기 위한 핸들입니다.</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8h_source.html#l00020">UDelayTaskManager.h:21</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00066">UDelayTaskManager::FEntry::Action</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00073">Entries</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00141">ExecuteById()</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00079">NextSeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00065">UDelayTaskManager::FEntry::Owner</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00076">OwnerIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00020">FDelayHandle::SeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00067">UDelayTaskManager::FEntry::SeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00069">UDelayTaskManager::FEntry::TimerHandle</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00074">UDelayTaskManager::FEntry::Action</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00081">Entries</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00141">ExecuteById()</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00087">NextSeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00073">UDelayTaskManager::FEntry::Owner</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00084">OwnerIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00024">FDelayHandle::SeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00075">UDelayTaskManager::FEntry::SeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00077">UDelayTaskManager::FEntry::TimerHandle</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDelayTaskManager_8cpp_source.html#l00034">DelayCallBack()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -502,7 +507,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  155</span>    <a class="code hl_variable" href="classUDelayTaskManager.html#a871566c190df1aee76947f4a8a443c80">OwnerIndex</a>.RemoveSingle(Entry.Owner, SeqIndex);</div>
 <div class="line"><span class="lineno">  156</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00066">UDelayTaskManager::FEntry::Action</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00073">Entries</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00065">UDelayTaskManager::FEntry::Owner</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00076">OwnerIndex</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00074">UDelayTaskManager::FEntry::Action</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00081">Entries</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00073">UDelayTaskManager::FEntry::Owner</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00084">OwnerIndex</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDelayTaskManager_8cpp_source.html#l00042">Delay()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00071">NextTick()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -602,7 +607,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   98</span>    <span class="keywordflow">return</span> Out;</div>
 <div class="line"><span class="lineno">   99</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00066">UDelayTaskManager::FEntry::Action</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00073">Entries</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00141">ExecuteById()</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00079">NextSeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00065">UDelayTaskManager::FEntry::Owner</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00076">OwnerIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00020">FDelayHandle::SeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00067">UDelayTaskManager::FEntry::SeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00069">UDelayTaskManager::FEntry::TimerHandle</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00074">UDelayTaskManager::FEntry::Action</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00081">Entries</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00141">ExecuteById()</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00087">NextSeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00073">UDelayTaskManager::FEntry::Owner</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00084">OwnerIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00024">FDelayHandle::SeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00075">UDelayTaskManager::FEntry::SeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00077">UDelayTaskManager::FEntry::TimerHandle</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
@@ -646,7 +651,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  164</span>    }</div>
 <div class="line"><span class="lineno">  165</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00073">Entries</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00076">OwnerIndex</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00081">Entries</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00084">OwnerIndex</a>.</p>
 
 </div>
 </div>
@@ -671,7 +676,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UDelayTaskManager_8h_source.html">UDelayTaskManager.h</a> 파일의 <a class="el" href="UDelayTaskManager_8h_source.html#l00073">73</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UDelayTaskManager_8h_source.html">UDelayTaskManager.h</a> 파일의 <a class="el" href="UDelayTaskManager_8h_source.html#l00081">81</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDelayTaskManager_8cpp_source.html#l00101">Cancel()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00118">CancelAll()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00016">Deinitialize()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00042">Delay()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00141">ExecuteById()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00071">NextTick()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00158">RemoveEntryById()</a>.</p>
 
@@ -697,7 +702,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UDelayTaskManager_8h_source.html">UDelayTaskManager.h</a> 파일의 <a class="el" href="UDelayTaskManager_8h_source.html#l00079">79</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UDelayTaskManager_8h_source.html">UDelayTaskManager.h</a> 파일의 <a class="el" href="UDelayTaskManager_8h_source.html#l00087">87</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDelayTaskManager_8cpp_source.html#l00042">Delay()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00071">NextTick()</a>.</p>
 
@@ -723,7 +728,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UDelayTaskManager_8h_source.html">UDelayTaskManager.h</a> 파일의 <a class="el" href="UDelayTaskManager_8h_source.html#l00076">76</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UDelayTaskManager_8h_source.html">UDelayTaskManager.h</a> 파일의 <a class="el" href="UDelayTaskManager_8h_source.html#l00084">84</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDelayTaskManager_8cpp_source.html#l00101">Cancel()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00118">CancelAll()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00016">Deinitialize()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00042">Delay()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00141">ExecuteById()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00071">NextTick()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00158">RemoveEntryById()</a>.</p>
 
@@ -739,7 +744,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUDelayTaskManager.html">UDelayTaskManager</a></li>
-    <li class="footer">생성시간 : 일 11월 9 2025 07:14:32, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 11월 9 2025 07:46:10, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

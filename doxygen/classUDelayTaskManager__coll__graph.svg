@@ -21,7 +21,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="지정된 시간 후에 함수(콜백)를 실행하는 지연 작업 관리 서브시스템입니다.">
 <polygon fill="#999999" stroke="transparent" points="166,-225 0,-225 0,0 166,0 166,-225"/>
 <text text-anchor="start" x="32.5" y="-212.5" font-family="Malgun Gothic" font-size="10.00">UDelayTaskManager</text>
 <text text-anchor="start" x="6.5" y="-197.5" font-family="Malgun Gothic" font-size="10.00">&#45;</text>

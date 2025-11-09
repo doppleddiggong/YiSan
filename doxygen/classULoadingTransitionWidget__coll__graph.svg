@@ -21,7 +21,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="로딩 화면 위젯 &#45; 각 컴포넌트별 진행률을 시각화합니다.">
+<g id="a_Node000001"><a xlink:title="레벨 전환 시 표시되는 전체 화면 로딩 위젯입니다.">
 <polygon fill="#999999" stroke="transparent" points="138,-79 0,-79 0,0 138,0 138,-79"/>
 <text text-anchor="start" x="5" y="-66.5" font-family="Malgun Gothic" font-size="10.00">ULoadingTransitionWidget</text>
 <text text-anchor="start" x="5.5" y="-51.5" font-family="Malgun Gothic" font-size="10.00">#</text>

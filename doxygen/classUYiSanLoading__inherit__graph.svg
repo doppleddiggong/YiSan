@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="이동 준비, 로딩 UI, 스트리밍 진행 폴링을 관리하는 서브시스템입니다.">
+<g id="a_Node000001"><a xlink:title="월드 파티션, 텍스처 스트리밍 등 레벨 전환 시 로딩 과정을 관리하고 UI를 조율하는 서브시스템입니다.">
 <polygon fill="#999999" stroke="transparent" points="166,-465 0,-465 0,0 166,0 166,-465"/>
 <text text-anchor="start" x="46.5" y="-452.5" font-family="Malgun Gothic" font-size="10.00">UYiSanLoading</text>
 <text text-anchor="start" x="6.5" y="-437.5" font-family="Malgun Gothic" font-size="10.00">&#45;</text>

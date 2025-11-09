@@ -21,7 +21,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="검색된 멀티플레이어 세션 정보를 표시하고 참여 버튼을 제공하는 UI 위젯입니다.">
 <polygon fill="#999999" stroke="transparent" points="109,-109 0,-109 0,0 109,0 109,-109"/>
 <text text-anchor="start" x="5.5" y="-96.5" font-family="Malgun Gothic" font-size="10.00">USessionInfoWidget</text>
 <text text-anchor="start" x="4.5" y="-81.5" font-family="Malgun Gothic" font-size="10.00">+</text>

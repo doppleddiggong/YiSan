@@ -110,6 +110,9 @@ $(document).ready(function(){initNavTree('classUDialogManager.html',''); initRes
 </div><!--header-->
 <div class="contents">
 
+<p>토스트 메시지와 같은 간단한 다이얼로그 위젯의 표시를 관리하는 LocalPlayer 서브시스템입니다.  
+ <a href="classUDialogManager.html#details">더 자세히 ...</a></p>
+
 <p><code>#include &lt;<a class="el" href="UDialogManager_8h_source.html">UDialogManager.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> UDialogManager에 대한 상속 다이어그램 : </div>
@@ -152,8 +155,10 @@ Protected 속성</h2></td></tr>
 <tr class="separator:a18d8ac2320f10bd90b106d3258dea465"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
-<div class="textblock">
-<p class="definition"><a class="el" href="UDialogManager_8h_source.html">UDialogManager.h</a> 파일의 <a class="el" href="UDialogManager_8h_source.html#l00014">14</a> 번째 라인에서 정의되었습니다.</p>
+<div class="textblock"><p>토스트 메시지와 같은 간단한 다이얼로그 위젯의 표시를 관리하는 LocalPlayer 서브시스템입니다. </p>
+<p>게임 내 여러 곳에서 일관된 방식으로 다이얼로그를 요청하고 표시할 수 있는 중앙 관리 지점을 제공합니다. </p>
+
+<p class="definition"><a class="el" href="UDialogManager_8h_source.html">UDialogManager.h</a> 파일의 <a class="el" href="UDialogManager_8h_source.html#l00018">18</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">생성자 &amp; 소멸자 문서화</h2>
 <a id="ab685e1a5674a4621f9d18574551e19d9" name="ab685e1a5674a4621f9d18574551e19d9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab685e1a5674a4621f9d18574551e19d9">&#9670;&#160;</a></span>UDialogManager()</h2>
@@ -175,10 +180,10 @@ Protected 속성</h2></td></tr>
 <div class="line"><span class="lineno">   24</span>    <a class="code hl_variable" href="classUDialogManager.html#a18d8ac2320f10bd90b106d3258dea465">DialogWidgetClass</a> = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadClass&lt;UDialogWidget&gt;</a>(<a class="code hl_define" href="UDialogManager_8cpp.html#aa7879dc7ba7c875b95eb1ff744d09d58">DIALOGWIDGET_PATH</a>);</div>
 <div class="line"><span class="lineno">   25</span>}</div>
 <div class="ttc" id="aUDialogManager_8cpp_html_aa7879dc7ba7c875b95eb1ff744d09d58"><div class="ttname"><a href="UDialogManager_8cpp.html#aa7879dc7ba7c875b95eb1ff744d09d58">DIALOGWIDGET_PATH</a></div><div class="ttdeci">#define DIALOGWIDGET_PATH</div><div class="ttdef"><b>Definition</b> <a href="UDialogManager_8cpp_source.html#l00020">UDialogManager.cpp:20</a></div></div>
-<div class="ttc" id="aclassUDialogManager_html_a18d8ac2320f10bd90b106d3258dea465"><div class="ttname"><a href="classUDialogManager.html#a18d8ac2320f10bd90b106d3258dea465">UDialogManager::DialogWidgetClass</a></div><div class="ttdeci">TSubclassOf&lt; class UDialogWidget &gt; DialogWidgetClass</div><div class="ttdef"><b>Definition</b> <a href="UDialogManager_8h_source.html#l00036">UDialogManager.h:36</a></div></div>
+<div class="ttc" id="aclassUDialogManager_html_a18d8ac2320f10bd90b106d3258dea465"><div class="ttname"><a href="classUDialogManager.html#a18d8ac2320f10bd90b106d3258dea465">UDialogManager::DialogWidgetClass</a></div><div class="ttdeci">TSubclassOf&lt; class UDialogWidget &gt; DialogWidgetClass</div><div class="ttdef"><b>Definition</b> <a href="UDialogManager_8h_source.html#l00040">UDialogManager.h:40</a></div></div>
 <div class="ttc" id="astructFComponentHelper_html_ac37cef436e9aaef1f0c655d781a95e66"><div class="ttname"><a href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset</a></div><div class="ttdeci">static T * LoadAsset(const TCHAR *Path)</div><div class="ttdef"><b>Definition</b> <a href="FComponentHelper_8h_source.html#l00016">FComponentHelper.h:16</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UDialogManager_8cpp_source.html#l00020">DIALOGWIDGET_PATH</a>, <a class="el" href="UDialogManager_8h_source.html#l00036">DialogWidgetClass</a>, <a class="el" href="FComponentHelper_8h_source.html#l00016">FComponentHelper::LoadAsset()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UDialogManager_8cpp_source.html#l00020">DIALOGWIDGET_PATH</a>, <a class="el" href="UDialogManager_8h_source.html#l00040">DialogWidgetClass</a>, <a class="el" href="FComponentHelper_8h_source.html#l00016">FComponentHelper::LoadAsset()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -274,11 +279,11 @@ Protected 속성</h2></td></tr>
 <div class="line"><span class="lineno">   64</span>    NewWidget-&gt;AddToViewport(<a class="code hl_variable" href="namespaceGameLayer.html#a07dfea414258bbc2a9e8f98ced349615">GameLayer::ToastManager</a>);</div>
 <div class="line"><span class="lineno">   65</span>    <a class="code hl_variable" href="classUDialogManager.html#aa414919472d576306a7fca2340c39500">DialogWidget</a> = NewWidget;</div>
 <div class="line"><span class="lineno">   66</span>}</div>
-<div class="ttc" id="aclassUDialogManager_html_aa414919472d576306a7fca2340c39500"><div class="ttname"><a href="classUDialogManager.html#aa414919472d576306a7fca2340c39500">UDialogManager::DialogWidget</a></div><div class="ttdeci">TObjectPtr&lt; class UDialogWidget &gt; DialogWidget</div><div class="ttdef"><b>Definition</b> <a href="UDialogManager_8h_source.html#l00039">UDialogManager.h:39</a></div></div>
-<div class="ttc" id="aclassUDialogWidget_html"><div class="ttname"><a href="classUDialogWidget.html">UDialogWidget</a></div><div class="ttdef"><b>Definition</b> <a href="UDialogWidget_8h_source.html#l00014">UDialogWidget.h:15</a></div></div>
+<div class="ttc" id="aclassUDialogManager_html_aa414919472d576306a7fca2340c39500"><div class="ttname"><a href="classUDialogManager.html#aa414919472d576306a7fca2340c39500">UDialogManager::DialogWidget</a></div><div class="ttdeci">TObjectPtr&lt; class UDialogWidget &gt; DialogWidget</div><div class="ttdef"><b>Definition</b> <a href="UDialogManager_8h_source.html#l00043">UDialogManager.h:43</a></div></div>
+<div class="ttc" id="aclassUDialogWidget_html"><div class="ttname"><a href="classUDialogWidget.html">UDialogWidget</a></div><div class="ttdoc">음성 및 텍스트 응답을 출력하는 다이얼로그 위젯입니다.</div><div class="ttdef"><b>Definition</b> <a href="UDialogWidget_8h_source.html#l00016">UDialogWidget.h:17</a></div></div>
 <div class="ttc" id="anamespaceGameLayer_html_a07dfea414258bbc2a9e8f98ced349615"><div class="ttname"><a href="namespaceGameLayer.html#a07dfea414258bbc2a9e8f98ced349615">GameLayer::ToastManager</a></div><div class="ttdeci">static const int32 ToastManager</div><div class="ttdef"><b>Definition</b> <a href="YiSan_8h_source.html#l00011">YiSan.h:11</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UDialogManager_8h_source.html#l00039">DialogWidget</a>, <a class="el" href="UDialogManager_8h_source.html#l00036">DialogWidgetClass</a>, <a class="el" href="YiSan_8h_source.html#l00011">GameLayer::ToastManager</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UDialogManager_8h_source.html#l00043">DialogWidget</a>, <a class="el" href="UDialogManager_8h_source.html#l00040">DialogWidgetClass</a>, <a class="el" href="YiSan_8h_source.html#l00011">GameLayer::ToastManager</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDialogManager_8cpp_source.html#l00068">ShowToast()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -323,7 +328,7 @@ Protected 속성</h2></td></tr>
 <div class="line"><span class="lineno">   95</span>    <a class="code hl_variable" href="classUDialogManager.html#aa414919472d576306a7fca2340c39500">DialogWidget</a>-&gt;HideDialogImmediately();</div>
 <div class="line"><span class="lineno">   96</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UDialogManager_8h_source.html#l00039">DialogWidget</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UDialogManager_8h_source.html#l00043">DialogWidget</a>.</p>
 
 </div>
 </div>
@@ -359,7 +364,7 @@ Protected 속성</h2></td></tr>
 <div class="line"><span class="lineno">   81</span>}</div>
 <div class="ttc" id="aclassUDialogManager_html_a08d300b0bd2a0a85ef3faf74d68242a4"><div class="ttname"><a href="classUDialogManager.html#a08d300b0bd2a0a85ef3faf74d68242a4">UDialogManager::EnsureWidgetForWorld</a></div><div class="ttdeci">void EnsureWidgetForWorld(UWorld *World)</div><div class="ttdoc">현재 월드에 위젯이 없으면 생성하고 뷰포트에 부착합니다.</div><div class="ttdef"><b>Definition</b> <a href="UDialogManager_8cpp_source.html#l00027">UDialogManager.cpp:27</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UDialogManager_8h_source.html#l00039">DialogWidget</a>, <a class="el" href="UDialogManager_8cpp_source.html#l00027">EnsureWidgetForWorld()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UDialogManager_8h_source.html#l00043">DialogWidget</a>, <a class="el" href="UDialogManager_8cpp_source.html#l00027">EnsureWidgetForWorld()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -391,7 +396,7 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UDialogManager_8h_source.html">UDialogManager.h</a> 파일의 <a class="el" href="UDialogManager_8h_source.html#l00039">39</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UDialogManager_8h_source.html">UDialogManager.h</a> 파일의 <a class="el" href="UDialogManager_8h_source.html#l00043">43</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDialogManager_8cpp_source.html#l00027">EnsureWidgetForWorld()</a>, <a class="el" href="UDialogManager_8cpp_source.html#l00083">HideToastImmediately()</a>, <a class="el" href="UDialogManager_8cpp_source.html#l00068">ShowToast()</a>.</p>
 
@@ -417,7 +422,7 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UDialogManager_8h_source.html">UDialogManager.h</a> 파일의 <a class="el" href="UDialogManager_8h_source.html#l00036">36</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UDialogManager_8h_source.html">UDialogManager.h</a> 파일의 <a class="el" href="UDialogManager_8h_source.html#l00040">40</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDialogManager_8cpp_source.html#l00022">UDialogManager()</a>, <a class="el" href="UDialogManager_8cpp_source.html#l00027">EnsureWidgetForWorld()</a>.</p>
 
@@ -433,7 +438,7 @@ Protected 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUDialogManager.html">UDialogManager</a></li>
-    <li class="footer">생성시간 : 일 11월 9 2025 07:14:32, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 11월 9 2025 07:46:10, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

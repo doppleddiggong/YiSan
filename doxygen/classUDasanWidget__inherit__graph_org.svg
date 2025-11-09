@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="다산 NPC 머리 위에 표시되는 상태 표시 위젯">
+<g id="a_Node000001"><a xlink:title="다산(Dasan) NPC의 머리 위에 표시되어 현재 상태를 알려주는 UI 위젯입니다.">
 <polygon fill="#999999" stroke="transparent" points="152,-214 0,-214 0,0 152,0 152,-214"/>
 <text text-anchor="start" x="39.5" y="-202" font-family="Malgun Gothic" font-size="10.00">UDasanWidget</text>
 <text text-anchor="start" x="4" y="-187" font-family="Malgun Gothic" font-size="10.00">+</text>

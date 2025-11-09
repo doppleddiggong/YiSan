@@ -20,7 +20,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:href="classUDialogManager.html" target="_top" xlink:title=" ">
+<g id="a_Node000001"><a xlink:href="classUDialogManager.html" target="_top" xlink:title="토스트 메시지와 같은 간단한 다이얼로그 위젯의 표시를 관리하는 LocalPlayer 서브시스템입니다.">
 <polygon fill="white" stroke="#666666" points="295,-93 197,-93 197,-74 295,-74 295,-93"/>
 <text text-anchor="middle" x="246" y="-81" font-family="Malgun Gothic" font-size="10.00">UDialogManager</text>
 </a>
@@ -38,7 +38,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classULoadingCircleManager.html" target="_top" xlink:title="전역 로딩 서클 관리자 LocalPlayerSubsystem으로 구현되어 레벨 전환 시에도 유지됩니다.">
+<g id="a_Node000002"><a xlink:href="classULoadingCircleManager.html" target="_top" xlink:title="전역 로딩 서클의 표시 여부를 관리하는 LocalPlayerSubsystem입니다.">
 <polygon fill="white" stroke="#666666" points="312.5,-56 179.5,-56 179.5,-37 312.5,-37 312.5,-56"/>
 <text text-anchor="middle" x="246" y="-44" font-family="Malgun Gothic" font-size="10.00">ULoadingCircleManager</text>
 </a>
@@ -56,7 +56,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classULoadingTransitionManager.html" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="classULoadingTransitionManager.html" target="_top" xlink:title="레벨 전환 시 전체 화면 로딩 위젯의 표시와 숨김을 관리하는 LocalPlayer 서브시스템입니다.">
 <polygon fill="white" stroke="#666666" points="322,-19 170,-19 170,0 322,0 322,-19"/>
 <text text-anchor="middle" x="246" y="-7" font-family="Malgun Gothic" font-size="10.00">ULoadingTransitionManager</text>
 </a>

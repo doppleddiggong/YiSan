@@ -1,5 +1,5 @@
 <map id="ULoadingTransitionManager" name="ULoadingTransitionManager">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,119,248,599"/>
+<area shape="rect" id="Node000001" title="레벨 전환 시 전체 화면 로딩 위젯의 표시와 숨김을 관리하는 LocalPlayer 서브시스템입니다." alt="" coords="5,119,248,599"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="41,5,212,71"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,84,129,119,124,119,124,84"/>
 </map>

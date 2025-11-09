@@ -112,6 +112,9 @@ $(document).ready(function(){initNavTree('classUDialogWidget.html',''); initResi
 </div><!--header-->
 <div class="contents">
 
+<p>음성 및 텍스트 응답을 출력하는 다이얼로그 위젯입니다.  
+ <a href="classUDialogWidget.html#details">더 자세히 ...</a></p>
+
 <p><code>#include &lt;<a class="el" href="UDialogWidget_8h_source.html">UDialogWidget.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> UDialogWidget에 대한 상속 다이어그램 : </div>
@@ -167,8 +170,10 @@ Private 속성</h2></td></tr>
 <tr class="separator:a0ecea9a42f95585624450175e1e30b09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
-<div class="textblock">
-<p class="definition"><a class="el" href="UDialogWidget_8h_source.html">UDialogWidget.h</a> 파일의 <a class="el" href="UDialogWidget_8h_source.html#l00014">14</a> 번째 라인에서 정의되었습니다.</p>
+<div class="textblock"><p>음성 및 텍스트 응답을 출력하는 다이얼로그 위젯입니다. </p>
+<p>화면에 잠시 나타났다가 사라지는 토스트 메시지나 간단한 알림을 표시하는 데 사용됩니다. </p>
+
+<p class="definition"><a class="el" href="UDialogWidget_8h_source.html">UDialogWidget.h</a> 파일의 <a class="el" href="UDialogWidget_8h_source.html#l00016">16</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="a478f23603ae645b6908c23221e5f5445" name="a478f23603ae645b6908c23221e5f5445"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a478f23603ae645b6908c23221e5f5445">&#9670;&#160;</a></span>HandleHideTimerExpired()</h2>
@@ -204,12 +209,12 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   42</span>    <a class="code hl_variable" href="classUDialogWidget.html#ad34ce916e1168a64999a2e9dc6cccf62">DialogBorder</a>-&gt;SetBrushColor(<a class="code hl_variable" href="classUDialogWidget.html#a9dea57c9299c6bb44ee565275366dc8d">DeactivateColor</a>);</div>
 <div class="line"><span class="lineno">   43</span>    <a class="code hl_variable" href="classUDialogWidget.html#ad34ce916e1168a64999a2e9dc6cccf62">DialogBorder</a>-&gt;SetVisibility(ESlateVisibility::Hidden);</div>
 <div class="line"><span class="lineno">   44</span>}</div>
-<div class="ttc" id="aclassUDialogWidget_html_a0ecea9a42f95585624450175e1e30b09"><div class="ttname"><a href="classUDialogWidget.html#a0ecea9a42f95585624450175e1e30b09">UDialogWidget::HideTimerHandle</a></div><div class="ttdeci">FTimerHandle HideTimerHandle</div><div class="ttdoc">Delay 태스크 핸들 (이전 태스크 취소용)</div><div class="ttdef"><b>Definition</b> <a href="UDialogWidget_8h_source.html#l00049">UDialogWidget.h:49</a></div></div>
-<div class="ttc" id="aclassUDialogWidget_html_a2571c0fb4f561cfaade086680ab757f4"><div class="ttname"><a href="classUDialogWidget.html#a2571c0fb4f561cfaade086680ab757f4">UDialogWidget::DialogText</a></div><div class="ttdeci">class UTextBlock * DialogText</div><div class="ttdef"><b>Definition</b> <a href="UDialogWidget_8h_source.html#l00038">UDialogWidget.h:38</a></div></div>
-<div class="ttc" id="aclassUDialogWidget_html_a9dea57c9299c6bb44ee565275366dc8d"><div class="ttname"><a href="classUDialogWidget.html#a9dea57c9299c6bb44ee565275366dc8d">UDialogWidget::DeactivateColor</a></div><div class="ttdeci">FLinearColor DeactivateColor</div><div class="ttdef"><b>Definition</b> <a href="UDialogWidget_8h_source.html#l00045">UDialogWidget.h:45</a></div></div>
-<div class="ttc" id="aclassUDialogWidget_html_ad34ce916e1168a64999a2e9dc6cccf62"><div class="ttname"><a href="classUDialogWidget.html#ad34ce916e1168a64999a2e9dc6cccf62">UDialogWidget::DialogBorder</a></div><div class="ttdeci">class UBorder * DialogBorder</div><div class="ttdef"><b>Definition</b> <a href="UDialogWidget_8h_source.html#l00035">UDialogWidget.h:35</a></div></div>
+<div class="ttc" id="aclassUDialogWidget_html_a0ecea9a42f95585624450175e1e30b09"><div class="ttname"><a href="classUDialogWidget.html#a0ecea9a42f95585624450175e1e30b09">UDialogWidget::HideTimerHandle</a></div><div class="ttdeci">FTimerHandle HideTimerHandle</div><div class="ttdoc">Delay 태스크 핸들 (이전 태스크 취소용)</div><div class="ttdef"><b>Definition</b> <a href="UDialogWidget_8h_source.html#l00051">UDialogWidget.h:51</a></div></div>
+<div class="ttc" id="aclassUDialogWidget_html_a2571c0fb4f561cfaade086680ab757f4"><div class="ttname"><a href="classUDialogWidget.html#a2571c0fb4f561cfaade086680ab757f4">UDialogWidget::DialogText</a></div><div class="ttdeci">class UTextBlock * DialogText</div><div class="ttdef"><b>Definition</b> <a href="UDialogWidget_8h_source.html#l00040">UDialogWidget.h:40</a></div></div>
+<div class="ttc" id="aclassUDialogWidget_html_a9dea57c9299c6bb44ee565275366dc8d"><div class="ttname"><a href="classUDialogWidget.html#a9dea57c9299c6bb44ee565275366dc8d">UDialogWidget::DeactivateColor</a></div><div class="ttdeci">FLinearColor DeactivateColor</div><div class="ttdef"><b>Definition</b> <a href="UDialogWidget_8h_source.html#l00047">UDialogWidget.h:47</a></div></div>
+<div class="ttc" id="aclassUDialogWidget_html_ad34ce916e1168a64999a2e9dc6cccf62"><div class="ttname"><a href="classUDialogWidget.html#ad34ce916e1168a64999a2e9dc6cccf62">UDialogWidget::DialogBorder</a></div><div class="ttdeci">class UBorder * DialogBorder</div><div class="ttdef"><b>Definition</b> <a href="UDialogWidget_8h_source.html#l00037">UDialogWidget.h:37</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UDialogWidget_8h_source.html#l00045">DeactivateColor</a>, <a class="el" href="UDialogWidget_8h_source.html#l00035">DialogBorder</a>, <a class="el" href="UDialogWidget_8h_source.html#l00038">DialogText</a>, <a class="el" href="UDialogWidget_8h_source.html#l00049">HideTimerHandle</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UDialogWidget_8h_source.html#l00047">DeactivateColor</a>, <a class="el" href="UDialogWidget_8h_source.html#l00037">DialogBorder</a>, <a class="el" href="UDialogWidget_8h_source.html#l00040">DialogText</a>, <a class="el" href="UDialogWidget_8h_source.html#l00051">HideTimerHandle</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDialogWidget_8cpp_source.html#l00075">HideDialogImmediately()</a>, <a class="el" href="UDialogWidget_8cpp_source.html#l00046">ShowDialog()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -252,7 +257,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   87</span>}</div>
 <div class="ttc" id="aclassUDialogWidget_html_a478f23603ae645b6908c23221e5f5445"><div class="ttname"><a href="classUDialogWidget.html#a478f23603ae645b6908c23221e5f5445">UDialogWidget::HandleHideTimerExpired</a></div><div class="ttdeci">void HandleHideTimerExpired()</div><div class="ttdef"><b>Definition</b> <a href="UDialogWidget_8cpp_source.html#l00034">UDialogWidget.cpp:34</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UDialogWidget_8h_source.html#l00035">DialogBorder</a>, <a class="el" href="UDialogWidget_8h_source.html#l00038">DialogText</a>, <a class="el" href="UDialogWidget_8cpp_source.html#l00034">HandleHideTimerExpired()</a>, <a class="el" href="UDialogWidget_8h_source.html#l00049">HideTimerHandle</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UDialogWidget_8h_source.html#l00037">DialogBorder</a>, <a class="el" href="UDialogWidget_8h_source.html#l00040">DialogText</a>, <a class="el" href="UDialogWidget_8cpp_source.html#l00034">HandleHideTimerExpired()</a>, <a class="el" href="UDialogWidget_8h_source.html#l00051">HideTimerHandle</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -298,7 +303,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   19</span>    }</div>
 <div class="line"><span class="lineno">   20</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UDialogWidget_8h_source.html#l00035">DialogBorder</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UDialogWidget_8h_source.html#l00037">DialogBorder</a>.</p>
 
 </div>
 </div>
@@ -338,7 +343,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   31</span>    Super::NativeDestruct();</div>
 <div class="line"><span class="lineno">   32</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UDialogWidget_8h_source.html#l00049">HideTimerHandle</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UDialogWidget_8h_source.html#l00051">HideTimerHandle</a>.</p>
 
 </div>
 </div>
@@ -394,9 +399,9 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   71</span>        );</div>
 <div class="line"><span class="lineno">   72</span>    }</div>
 <div class="line"><span class="lineno">   73</span>}</div>
-<div class="ttc" id="aclassUDialogWidget_html_a5a0540d62c26adcc049d9528399a78a9"><div class="ttname"><a href="classUDialogWidget.html#a5a0540d62c26adcc049d9528399a78a9">UDialogWidget::ActivateColor</a></div><div class="ttdeci">FLinearColor ActivateColor</div><div class="ttdef"><b>Definition</b> <a href="UDialogWidget_8h_source.html#l00042">UDialogWidget.h:42</a></div></div>
+<div class="ttc" id="aclassUDialogWidget_html_a5a0540d62c26adcc049d9528399a78a9"><div class="ttname"><a href="classUDialogWidget.html#a5a0540d62c26adcc049d9528399a78a9">UDialogWidget::ActivateColor</a></div><div class="ttdeci">FLinearColor ActivateColor</div><div class="ttdef"><b>Definition</b> <a href="UDialogWidget_8h_source.html#l00044">UDialogWidget.h:44</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UDialogWidget_8h_source.html#l00042">ActivateColor</a>, <a class="el" href="UDialogWidget_8h_source.html#l00035">DialogBorder</a>, <a class="el" href="UDialogWidget_8h_source.html#l00038">DialogText</a>, <a class="el" href="UDialogWidget_8cpp_source.html#l00034">HandleHideTimerExpired()</a>, <a class="el" href="UDialogWidget_8h_source.html#l00049">HideTimerHandle</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UDialogWidget_8h_source.html#l00044">ActivateColor</a>, <a class="el" href="UDialogWidget_8h_source.html#l00037">DialogBorder</a>, <a class="el" href="UDialogWidget_8h_source.html#l00040">DialogText</a>, <a class="el" href="UDialogWidget_8cpp_source.html#l00034">HandleHideTimerExpired()</a>, <a class="el" href="UDialogWidget_8h_source.html#l00051">HideTimerHandle</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -428,7 +433,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UDialogWidget_8h_source.html">UDialogWidget.h</a> 파일의 <a class="el" href="UDialogWidget_8h_source.html#l00042">42</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UDialogWidget_8h_source.html">UDialogWidget.h</a> 파일의 <a class="el" href="UDialogWidget_8h_source.html#l00044">44</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDialogWidget_8cpp_source.html#l00046">ShowDialog()</a>.</p>
 
@@ -454,7 +459,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UDialogWidget_8h_source.html">UDialogWidget.h</a> 파일의 <a class="el" href="UDialogWidget_8h_source.html#l00045">45</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UDialogWidget_8h_source.html">UDialogWidget.h</a> 파일의 <a class="el" href="UDialogWidget_8h_source.html#l00047">47</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDialogWidget_8cpp_source.html#l00034">HandleHideTimerExpired()</a>.</p>
 
@@ -472,7 +477,7 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UDialogWidget_8h_source.html">UDialogWidget.h</a> 파일의 <a class="el" href="UDialogWidget_8h_source.html#l00035">35</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UDialogWidget_8h_source.html">UDialogWidget.h</a> 파일의 <a class="el" href="UDialogWidget_8h_source.html#l00037">37</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDialogWidget_8cpp_source.html#l00034">HandleHideTimerExpired()</a>, <a class="el" href="UDialogWidget_8cpp_source.html#l00075">HideDialogImmediately()</a>, <a class="el" href="UDialogWidget_8cpp_source.html#l00012">NativeConstruct()</a>, <a class="el" href="UDialogWidget_8cpp_source.html#l00046">ShowDialog()</a>.</p>
 
@@ -490,7 +495,7 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UDialogWidget_8h_source.html">UDialogWidget.h</a> 파일의 <a class="el" href="UDialogWidget_8h_source.html#l00038">38</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UDialogWidget_8h_source.html">UDialogWidget.h</a> 파일의 <a class="el" href="UDialogWidget_8h_source.html#l00040">40</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDialogWidget_8cpp_source.html#l00034">HandleHideTimerExpired()</a>, <a class="el" href="UDialogWidget_8cpp_source.html#l00075">HideDialogImmediately()</a>, <a class="el" href="UDialogWidget_8cpp_source.html#l00046">ShowDialog()</a>.</p>
 
@@ -518,7 +523,7 @@ Private 속성</h2></td></tr>
 
 <p>Delay 태스크 핸들 (이전 태스크 취소용) </p>
 
-<p class="definition"><a class="el" href="UDialogWidget_8h_source.html">UDialogWidget.h</a> 파일의 <a class="el" href="UDialogWidget_8h_source.html#l00049">49</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UDialogWidget_8h_source.html">UDialogWidget.h</a> 파일의 <a class="el" href="UDialogWidget_8h_source.html#l00051">51</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDialogWidget_8cpp_source.html#l00034">HandleHideTimerExpired()</a>, <a class="el" href="UDialogWidget_8cpp_source.html#l00075">HideDialogImmediately()</a>, <a class="el" href="UDialogWidget_8cpp_source.html#l00021">NativeDestruct()</a>, <a class="el" href="UDialogWidget_8cpp_source.html#l00046">ShowDialog()</a>.</p>
 
@@ -534,7 +539,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUDialogWidget.html">UDialogWidget</a></li>
-    <li class="footer">생성시간 : 일 11월 9 2025 07:14:32, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 11월 9 2025 07:46:10, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

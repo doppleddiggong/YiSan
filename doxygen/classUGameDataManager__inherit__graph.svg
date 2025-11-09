@@ -57,7 +57,7 @@ var sectionId = 'dynsection-0';
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="데이터 테이블(.csv)에서 게임 데이터를 로드하고 캐시하여 런타임에 빠르게 접근할 수 있도록 제공하는 데이터 관리 서브시스템입니다.">
 <polygon fill="#999999" stroke="transparent" points="178,-675 0,-675 0,0 178,0 178,-675"/>
 <text text-anchor="start" x="37.5" y="-662.5" font-family="Malgun Gothic" font-size="10.00">UGameDataManager</text>
 <text text-anchor="start" x="4" y="-647.5" font-family="Malgun Gothic" font-size="10.00">+</text>

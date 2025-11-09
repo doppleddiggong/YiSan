@@ -111,7 +111,7 @@ $(document).ready(function(){initNavTree('classUYiSanLoading.html',''); initResi
 </div><!--header-->
 <div class="contents">
 
-<p>이동 준비, 로딩 UI, 스트리밍 진행 폴링을 관리하는 서브시스템입니다.  
+<p>월드 파티션, 텍스처 스트리밍 등 레벨 전환 시 로딩 과정을 관리하고 UI를 조율하는 서브시스템입니다.  
  <a href="classUYiSanLoading.html#details">더 자세히 ...</a></p>
 
 <p><code>#include &lt;<a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a>&gt;</code></p>
@@ -224,9 +224,10 @@ Private 속성</h2></td></tr>
 <tr class="separator:ac5228f8ed3b3b69847d45ec67fdaac06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
-<div class="textblock"><p>이동 준비, 로딩 UI, 스트리밍 진행 폴링을 관리하는 서브시스템입니다. </p>
+<div class="textblock"><p>월드 파티션, 텍스처 스트리밍 등 레벨 전환 시 로딩 과정을 관리하고 UI를 조율하는 서브시스템입니다. </p>
+<p>서버 이동을 준비하고, 로딩 과정을 단계별로 추적하며, 모든 스트리밍이 완료될 때까지 폴링하여 로딩 완료 시점을 결정합니다. </p>
 
-<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00021">21</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00022">22</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 열거형 문서화</h2>
 <a id="a2d4161ad9414e51b1730f788189cdf08" name="a2d4161ad9414e51b1730f788189cdf08"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2d4161ad9414e51b1730f788189cdf08">&#9670;&#160;</a></span>EState</h2>
@@ -255,14 +256,14 @@ Private 속성</h2></td></tr>
 <tr><td class="fieldname"><a id="a2d4161ad9414e51b1730f788189cdf08aa3f80d8f0f1b4ffa8c475f5d60ea5635" name="a2d4161ad9414e51b1730f788189cdf08aa3f80d8f0f1b4ffa8c475f5d60ea5635"></a>UMETA&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00028">28</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>    {</div>
-<div class="line"><span class="lineno">   30</span>        WP          <a class="code hl_enumvalue" href="classUYiSanLoading.html#a2d4161ad9414e51b1730f788189cdf08aa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;월드 파티션&quot;</span>),</div>
-<div class="line"><span class="lineno">   31</span>        TEXTURE     <a class="code hl_enumvalue" href="classUYiSanLoading.html#a2d4161ad9414e51b1730f788189cdf08aa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;텍스쳐&quot;</span>),</div>
-<div class="line"><span class="lineno">   32</span>        LI          <a class="code hl_enumvalue" href="classUYiSanLoading.html#a2d4161ad9414e51b1730f788189cdf08aa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;레벨 인스턴스&quot;</span>),</div>
-<div class="line"><span class="lineno">   33</span>        COMPLETE    <a class="code hl_enumvalue" href="classUYiSanLoading.html#a2d4161ad9414e51b1730f788189cdf08aa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;완료&quot;</span>),</div>
-<div class="line"><span class="lineno">   34</span>        MAX         <a class="code hl_enumvalue" href="classUYiSanLoading.html#a2d4161ad9414e51b1730f788189cdf08aa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(Hidden)</div>
-<div class="line"><span class="lineno">   35</span>    };</div>
+<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00029">29</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   30</span>    {</div>
+<div class="line"><span class="lineno">   31</span>        WP          <a class="code hl_enumvalue" href="classUYiSanLoading.html#a2d4161ad9414e51b1730f788189cdf08aa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;월드 파티션&quot;</span>),</div>
+<div class="line"><span class="lineno">   32</span>        TEXTURE     <a class="code hl_enumvalue" href="classUYiSanLoading.html#a2d4161ad9414e51b1730f788189cdf08aa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;텍스쳐&quot;</span>),</div>
+<div class="line"><span class="lineno">   33</span>        LI          <a class="code hl_enumvalue" href="classUYiSanLoading.html#a2d4161ad9414e51b1730f788189cdf08aa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;레벨 인스턴스&quot;</span>),</div>
+<div class="line"><span class="lineno">   34</span>        COMPLETE    <a class="code hl_enumvalue" href="classUYiSanLoading.html#a2d4161ad9414e51b1730f788189cdf08aa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;완료&quot;</span>),</div>
+<div class="line"><span class="lineno">   35</span>        MAX         <a class="code hl_enumvalue" href="classUYiSanLoading.html#a2d4161ad9414e51b1730f788189cdf08aa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(Hidden)</div>
+<div class="line"><span class="lineno">   36</span>    };</div>
 <div class="ttc" id="aclassUYiSanLoading_html_a2d4161ad9414e51b1730f788189cdf08aa3f80d8f0f1b4ffa8c475f5d60ea5635"><div class="ttname"><a href="classUYiSanLoading.html#a2d4161ad9414e51b1730f788189cdf08aa3f80d8f0f1b4ffa8c475f5d60ea5635">UYiSanLoading::EState::UMETA</a></div><div class="ttdeci">@ UMETA</div></div>
 </div><!-- fragment -->
 </div>
@@ -450,9 +451,9 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  323</span>}</div>
 <div class="ttc" id="aclassAYisanGameState_html"><div class="ttname"><a href="classAYisanGameState.html">AYisanGameState</a></div><div class="ttdoc">AGameStateBase를 확장하여 퀘스트 조율과 복제 UI 데이터를 제공합니다.</div><div class="ttdef"><b>Definition</b> <a href="AYisanGameState_8h_source.html#l00022">AYisanGameState.h:23</a></div></div>
 <div class="ttc" id="aclassUYiSanLoading_html_abf0458032ae94f3d27b54388b21efb1d"><div class="ttname"><a href="classUYiSanLoading.html#abf0458032ae94f3d27b54388b21efb1d">UYiSanLoading::Broadcast_HideLoading</a></div><div class="ttdeci">void Broadcast_HideLoading() const</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8cpp_source.html#l00446">UYiSanLoading.cpp:446</a></div></div>
-<div class="ttc" id="aclassUYiSanLoading_html_af0f69917c869f4122c5756e697577e38"><div class="ttname"><a href="classUYiSanLoading.html#af0f69917c869f4122c5756e697577e38">UYiSanLoading::TimeHandlePool</a></div><div class="ttdeci">FTimerHandle TimeHandlePool</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00081">UYiSanLoading.h:81</a></div></div>
+<div class="ttc" id="aclassUYiSanLoading_html_af0f69917c869f4122c5756e697577e38"><div class="ttname"><a href="classUYiSanLoading.html#af0f69917c869f4122c5756e697577e38">UYiSanLoading::TimeHandlePool</a></div><div class="ttdeci">FTimerHandle TimeHandlePool</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00082">UYiSanLoading.h:82</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00446">Broadcast_HideLoading()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00081">TimeHandlePool</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00446">Broadcast_HideLoading()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00082">TimeHandlePool</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00213">UpdateTick()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -547,13 +548,13 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  518</span>            World-&gt;GetNetMode() == NM_Client ? TEXT(<span class="stringliteral">&quot;Client&quot;</span>) : TEXT(<span class="stringliteral">&quot;Server/Standalone&quot;</span>));</div>
 <div class="line"><span class="lineno">  519</span>    }</div>
 <div class="line"><span class="lineno">  520</span>}</div>
-<div class="ttc" id="aclassUYiSanLoading_html_a362f328a37b848b0feef2f808dbaeb8c"><div class="ttname"><a href="classUYiSanLoading.html#a362f328a37b848b0feef2f808dbaeb8c">UYiSanLoading::CompleteState</a></div><div class="ttdeci">TMap&lt; EState, bool &gt; CompleteState</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00072">UYiSanLoading.h:73</a></div></div>
-<div class="ttc" id="aclassUYiSanLoading_html_a418a7d9f876cd6065aaf571fb4d346f6"><div class="ttname"><a href="classUYiSanLoading.html#a418a7d9f876cd6065aaf571fb4d346f6">UYiSanLoading::CurState</a></div><div class="ttdeci">EState CurState</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00079">UYiSanLoading.h:79</a></div></div>
-<div class="ttc" id="aclassUYiSanLoading_html_a656a7b767ace80b41f79d5fb7c4e58be"><div class="ttname"><a href="classUYiSanLoading.html#a656a7b767ace80b41f79d5fb7c4e58be">UYiSanLoading::Progress_Texture</a></div><div class="ttdeci">float Progress_Texture</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00086">UYiSanLoading.h:86</a></div></div>
-<div class="ttc" id="aclassUYiSanLoading_html_a94c54692ca2e5e0e91a3287b7038daa6"><div class="ttname"><a href="classUYiSanLoading.html#a94c54692ca2e5e0e91a3287b7038daa6">UYiSanLoading::Progress_LI</a></div><div class="ttdeci">float Progress_LI</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00087">UYiSanLoading.h:87</a></div></div>
-<div class="ttc" id="aclassUYiSanLoading_html_ac5228f8ed3b3b69847d45ec67fdaac06"><div class="ttname"><a href="classUYiSanLoading.html#ac5228f8ed3b3b69847d45ec67fdaac06">UYiSanLoading::TotalTime</a></div><div class="ttdeci">double TotalTime</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00070">UYiSanLoading.h:70</a></div></div>
+<div class="ttc" id="aclassUYiSanLoading_html_a362f328a37b848b0feef2f808dbaeb8c"><div class="ttname"><a href="classUYiSanLoading.html#a362f328a37b848b0feef2f808dbaeb8c">UYiSanLoading::CompleteState</a></div><div class="ttdeci">TMap&lt; EState, bool &gt; CompleteState</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00073">UYiSanLoading.h:74</a></div></div>
+<div class="ttc" id="aclassUYiSanLoading_html_a418a7d9f876cd6065aaf571fb4d346f6"><div class="ttname"><a href="classUYiSanLoading.html#a418a7d9f876cd6065aaf571fb4d346f6">UYiSanLoading::CurState</a></div><div class="ttdeci">EState CurState</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00080">UYiSanLoading.h:80</a></div></div>
+<div class="ttc" id="aclassUYiSanLoading_html_a656a7b767ace80b41f79d5fb7c4e58be"><div class="ttname"><a href="classUYiSanLoading.html#a656a7b767ace80b41f79d5fb7c4e58be">UYiSanLoading::Progress_Texture</a></div><div class="ttdeci">float Progress_Texture</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00087">UYiSanLoading.h:87</a></div></div>
+<div class="ttc" id="aclassUYiSanLoading_html_a94c54692ca2e5e0e91a3287b7038daa6"><div class="ttname"><a href="classUYiSanLoading.html#a94c54692ca2e5e0e91a3287b7038daa6">UYiSanLoading::Progress_LI</a></div><div class="ttdeci">float Progress_LI</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00088">UYiSanLoading.h:88</a></div></div>
+<div class="ttc" id="aclassUYiSanLoading_html_ac5228f8ed3b3b69847d45ec67fdaac06"><div class="ttname"><a href="classUYiSanLoading.html#ac5228f8ed3b3b69847d45ec67fdaac06">UYiSanLoading::TotalTime</a></div><div class="ttdeci">double TotalTime</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00071">UYiSanLoading.h:71</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8h_source.html#l00073">CompleteState</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00079">CurState</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00087">Progress_LI</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00086">Progress_Texture</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00070">TotalTime</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8h_source.html#l00074">CompleteState</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00080">CurState</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00088">Progress_LI</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00087">Progress_Texture</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00071">TotalTime</a>.</p>
 
 </div>
 </div>
@@ -591,9 +592,9 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   74</span> </div>
 <div class="line"><span class="lineno">   75</span>    FCoreUObjectDelegates::PostLoadMapWithWorld.RemoveAll(<span class="keyword">this</span>);</div>
 <div class="line"><span class="lineno">   76</span>}</div>
-<div class="ttc" id="aclassUYiSanLoading_html_a63b981d30e30e82518a6d3bd415bf78e"><div class="ttname"><a href="classUYiSanLoading.html#a63b981d30e30e82518a6d3bd415bf78e">UYiSanLoading::NonLoadingTravelStartTime</a></div><div class="ttdeci">double NonLoadingTravelStartTime</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00065">UYiSanLoading.h:65</a></div></div>
+<div class="ttc" id="aclassUYiSanLoading_html_a63b981d30e30e82518a6d3bd415bf78e"><div class="ttname"><a href="classUYiSanLoading.html#a63b981d30e30e82518a6d3bd415bf78e">UYiSanLoading::NonLoadingTravelStartTime</a></div><div class="ttdeci">double NonLoadingTravelStartTime</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00066">UYiSanLoading.h:66</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8h_source.html#l00065">NonLoadingTravelStartTime</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8h_source.html#l00066">NonLoadingTravelStartTime</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00041">InitSystem()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -679,7 +680,7 @@ Private 속성</h2></td></tr>
 <div class="ttc" id="aclassUYiSanLoading_html_a5fbfe4432883e1736de50366f25ee5a2"><div class="ttname"><a href="classUYiSanLoading.html#a5fbfe4432883e1736de50366f25ee5a2">UYiSanLoading::PrepareForTravel</a></div><div class="ttdeci">void PrepareForTravel()</div><div class="ttdoc">진행도 추적기를 초기화하고 로딩 화면을 표시합니다.</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8cpp_source.html#l00096">UYiSanLoading.cpp:96</a></div></div>
 <div class="ttc" id="aclassUYiSanLoading_html_aad22e09de6e8750e0b2b31e6d2a3769e"><div class="ttname"><a href="classUYiSanLoading.html#aad22e09de6e8750e0b2b31e6d2a3769e">UYiSanLoading::HandlePostLoadMapSimple</a></div><div class="ttdeci">void HandlePostLoadMapSimple(UWorld *World)</div><div class="ttdoc">고급 로딩 화면 없이 로딩이 완료되었을 때 호출되는 콜백입니다.</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8cpp_source.html#l00069">UYiSanLoading.cpp:69</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00422">Broadcast_ShowLoading()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00069">HandlePostLoadMapSimple()</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00065">NonLoadingTravelStartTime</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00096">PrepareForTravel()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00422">Broadcast_ShowLoading()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00069">HandlePostLoadMapSimple()</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00066">NonLoadingTravelStartTime</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00096">PrepareForTravel()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
@@ -712,7 +713,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  478</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classUYiSanLoading.html#a362f328a37b848b0feef2f808dbaeb8c">CompleteState</a>[EState::COMPLETE];</div>
 <div class="line"><span class="lineno">  479</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8h_source.html#l00073">CompleteState</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8h_source.html#l00074">CompleteState</a>.</p>
 
 </div>
 </div>
@@ -773,7 +774,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  419</span>}</div>
 <div class="ttc" id="astructFComponentHelper_html_ac37cef436e9aaef1f0c655d781a95e66"><div class="ttname"><a href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset</a></div><div class="ttdeci">static T * LoadAsset(const TCHAR *Path)</div><div class="ttdef"><b>Definition</b> <a href="FComponentHelper_8h_source.html#l00016">FComponentHelper.h:16</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8h_source.html#l00073">CompleteState</a>, <a class="el" href="FComponentHelper_8h_source.html#l00016">FComponentHelper::LoadAsset()</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00087">Progress_LI</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8h_source.html#l00074">CompleteState</a>, <a class="el" href="FComponentHelper_8h_source.html#l00016">FComponentHelper::LoadAsset()</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00088">Progress_LI</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00213">UpdateTick()</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -885,15 +886,15 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  386</span>        <a class="code hl_variable" href="classUYiSanLoading.html#a362f328a37b848b0feef2f808dbaeb8c">CompleteState</a>[EState::TEXTURE] = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  387</span>    }</div>
 <div class="line"><span class="lineno">  388</span>}</div>
-<div class="ttc" id="aclassUYiSanLoading_html_a00fecd99a01732b8640e371be0f37f52"><div class="ttname"><a href="classUYiSanLoading.html#a00fecd99a01732b8640e371be0f37f52">UYiSanLoading::TextureStreaming_TimeOut</a></div><div class="ttdeci">const double TextureStreaming_TimeOut</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00066">UYiSanLoading.h:66</a></div></div>
-<div class="ttc" id="aclassUYiSanLoading_html_a089984faf6cbaa10dc204b599d2902b6"><div class="ttname"><a href="classUYiSanLoading.html#a089984faf6cbaa10dc204b599d2902b6">UYiSanLoading::bTextureStreamingComplete</a></div><div class="ttdeci">bool bTextureStreamingComplete</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00084">UYiSanLoading.h:84</a></div></div>
-<div class="ttc" id="aclassUYiSanLoading_html_a8bf1c2039cf66f5e30533055487bab75"><div class="ttname"><a href="classUYiSanLoading.html#a8bf1c2039cf66f5e30533055487bab75">UYiSanLoading::LastTextureProgressTime</a></div><div class="ttdeci">double LastTextureProgressTime</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00091">UYiSanLoading.h:91</a></div></div>
-<div class="ttc" id="aclassUYiSanLoading_html_ae1498b0f9de956f6ca734853ce2065be"><div class="ttname"><a href="classUYiSanLoading.html#ae1498b0f9de956f6ca734853ce2065be">UYiSanLoading::LastTextureProgress</a></div><div class="ttdeci">float LastTextureProgress</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00092">UYiSanLoading.h:92</a></div></div>
-<div class="ttc" id="aclassUYiSanLoading_html_ae1ea411a061e480ab3cd3f11fa9a3b1e"><div class="ttname"><a href="classUYiSanLoading.html#ae1ea411a061e480ab3cd3f11fa9a3b1e">UYiSanLoading::TextureProgress_LogInterval</a></div><div class="ttdeci">const double TextureProgress_LogInterval</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00067">UYiSanLoading.h:67</a></div></div>
-<div class="ttc" id="aclassUYiSanLoading_html_ae2d12b29f17c8a457a2faf7afdcceb5a"><div class="ttname"><a href="classUYiSanLoading.html#ae2d12b29f17c8a457a2faf7afdcceb5a">UYiSanLoading::bRequestTexture</a></div><div class="ttdeci">bool bRequestTexture</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00089">UYiSanLoading.h:89</a></div></div>
-<div class="ttc" id="aclassUYiSanLoading_html_ae9fb4521e07d5eeaa53d107f2cafa464"><div class="ttname"><a href="classUYiSanLoading.html#ae9fb4521e07d5eeaa53d107f2cafa464">UYiSanLoading::TextureRequestCount</a></div><div class="ttdeci">int32 TextureRequestCount</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00090">UYiSanLoading.h:90</a></div></div>
+<div class="ttc" id="aclassUYiSanLoading_html_a00fecd99a01732b8640e371be0f37f52"><div class="ttname"><a href="classUYiSanLoading.html#a00fecd99a01732b8640e371be0f37f52">UYiSanLoading::TextureStreaming_TimeOut</a></div><div class="ttdeci">const double TextureStreaming_TimeOut</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00067">UYiSanLoading.h:67</a></div></div>
+<div class="ttc" id="aclassUYiSanLoading_html_a089984faf6cbaa10dc204b599d2902b6"><div class="ttname"><a href="classUYiSanLoading.html#a089984faf6cbaa10dc204b599d2902b6">UYiSanLoading::bTextureStreamingComplete</a></div><div class="ttdeci">bool bTextureStreamingComplete</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00085">UYiSanLoading.h:85</a></div></div>
+<div class="ttc" id="aclassUYiSanLoading_html_a8bf1c2039cf66f5e30533055487bab75"><div class="ttname"><a href="classUYiSanLoading.html#a8bf1c2039cf66f5e30533055487bab75">UYiSanLoading::LastTextureProgressTime</a></div><div class="ttdeci">double LastTextureProgressTime</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00092">UYiSanLoading.h:92</a></div></div>
+<div class="ttc" id="aclassUYiSanLoading_html_ae1498b0f9de956f6ca734853ce2065be"><div class="ttname"><a href="classUYiSanLoading.html#ae1498b0f9de956f6ca734853ce2065be">UYiSanLoading::LastTextureProgress</a></div><div class="ttdeci">float LastTextureProgress</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00093">UYiSanLoading.h:93</a></div></div>
+<div class="ttc" id="aclassUYiSanLoading_html_ae1ea411a061e480ab3cd3f11fa9a3b1e"><div class="ttname"><a href="classUYiSanLoading.html#ae1ea411a061e480ab3cd3f11fa9a3b1e">UYiSanLoading::TextureProgress_LogInterval</a></div><div class="ttdeci">const double TextureProgress_LogInterval</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00068">UYiSanLoading.h:68</a></div></div>
+<div class="ttc" id="aclassUYiSanLoading_html_ae2d12b29f17c8a457a2faf7afdcceb5a"><div class="ttname"><a href="classUYiSanLoading.html#ae2d12b29f17c8a457a2faf7afdcceb5a">UYiSanLoading::bRequestTexture</a></div><div class="ttdeci">bool bRequestTexture</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00090">UYiSanLoading.h:90</a></div></div>
+<div class="ttc" id="aclassUYiSanLoading_html_ae9fb4521e07d5eeaa53d107f2cafa464"><div class="ttname"><a href="classUYiSanLoading.html#ae9fb4521e07d5eeaa53d107f2cafa464">UYiSanLoading::TextureRequestCount</a></div><div class="ttdeci">int32 TextureRequestCount</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00091">UYiSanLoading.h:91</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8h_source.html#l00089">bRequestTexture</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00084">bTextureStreamingComplete</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00073">CompleteState</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00092">LastTextureProgress</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00091">LastTextureProgressTime</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00086">Progress_Texture</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00067">TextureProgress_LogInterval</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00090">TextureRequestCount</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00066">TextureStreaming_TimeOut</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00070">TotalTime</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8h_source.html#l00090">bRequestTexture</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00085">bTextureStreamingComplete</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00074">CompleteState</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00093">LastTextureProgress</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00092">LastTextureProgressTime</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00087">Progress_Texture</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00068">TextureProgress_LogInterval</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00091">TextureRequestCount</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00067">TextureStreaming_TimeOut</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00071">TotalTime</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00213">UpdateTick()</a>.</p>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -1019,7 +1020,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  210</span>}</div>
 <div class="ttc" id="aclassUYiSanLoading_html_ae7655dc1152f3200dbceecaf25b38002"><div class="ttname"><a href="classUYiSanLoading.html#ae7655dc1152f3200dbceecaf25b38002">UYiSanLoading::UpdateTick</a></div><div class="ttdeci">void UpdateTick()</div><div class="ttdoc">스트리밍 진행도를 폴링하고 로딩 상태를 전환합니다.</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8cpp_source.html#l00213">UYiSanLoading.cpp:213</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8h_source.html#l00089">bRequestTexture</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00446">Broadcast_HideLoading()</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00084">bTextureStreamingComplete</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00073">CompleteState</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00079">CurState</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00092">LastTextureProgress</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00091">LastTextureProgressTime</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00087">Progress_LI</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00086">Progress_Texture</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00090">TextureRequestCount</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00081">TimeHandlePool</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00070">TotalTime</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00213">UpdateTick()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8h_source.html#l00090">bRequestTexture</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00446">Broadcast_HideLoading()</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00085">bTextureStreamingComplete</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00074">CompleteState</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00080">CurState</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00093">LastTextureProgress</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00092">LastTextureProgressTime</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00088">Progress_LI</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00087">Progress_Texture</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00091">TextureRequestCount</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00082">TimeHandlePool</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00071">TotalTime</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00213">UpdateTick()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00096">PrepareForTravel()</a>.</p>
 <div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -1162,9 +1163,9 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  125</span>    FCoreUObjectDelegates::PostLoadMapWithWorld.AddUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUYiSanLoading.html#a0441afb84f146c695636184c5e05d4c6">UYiSanLoading::PostLoadMapWithWorld</a>);</div>
 <div class="line"><span class="lineno">  126</span>}</div>
 <div class="ttc" id="aclassUYiSanLoading_html_a0441afb84f146c695636184c5e05d4c6"><div class="ttname"><a href="classUYiSanLoading.html#a0441afb84f146c695636184c5e05d4c6">UYiSanLoading::PostLoadMapWithWorld</a></div><div class="ttdeci">void PostLoadMapWithWorld(UWorld *InWorld)</div><div class="ttdoc">맵 로드 완료를 처리하여 스트리밍 상태 폴링을 이어갑니다.</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8cpp_source.html#l00132">UYiSanLoading.cpp:132</a></div></div>
-<div class="ttc" id="aclassUYiSanLoading_html_a7f5c4a8d85eadd2dd29c307466855cbd"><div class="ttname"><a href="classUYiSanLoading.html#a7f5c4a8d85eadd2dd29c307466855cbd">UYiSanLoading::LastPercent</a></div><div class="ttdeci">int32 LastPercent</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00082">UYiSanLoading.h:82</a></div></div>
+<div class="ttc" id="aclassUYiSanLoading_html_a7f5c4a8d85eadd2dd29c307466855cbd"><div class="ttname"><a href="classUYiSanLoading.html#a7f5c4a8d85eadd2dd29c307466855cbd">UYiSanLoading::LastPercent</a></div><div class="ttdeci">int32 LastPercent</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8h_source.html#l00083">UYiSanLoading.h:83</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8h_source.html#l00089">bRequestTexture</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00084">bTextureStreamingComplete</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00073">CompleteState</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00079">CurState</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00082">LastPercent</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00092">LastTextureProgress</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00091">LastTextureProgressTime</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00132">PostLoadMapWithWorld()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00087">Progress_LI</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00086">Progress_Texture</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00090">TextureRequestCount</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00070">TotalTime</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8h_source.html#l00090">bRequestTexture</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00085">bTextureStreamingComplete</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00074">CompleteState</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00080">CurState</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00083">LastPercent</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00093">LastTextureProgress</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00092">LastTextureProgressTime</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00132">PostLoadMapWithWorld()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00088">Progress_LI</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00087">Progress_Texture</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00091">TextureRequestCount</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00071">TotalTime</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00041">InitSystem()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00084">PrepareClientTravel()</a>.</p>
 <div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -1294,7 +1295,7 @@ Private 속성</h2></td></tr>
 <div class="ttc" id="aclassUYiSanLoading_html_aa0db336d5a0332cd44740870635460b2"><div class="ttname"><a href="classUYiSanLoading.html#aa0db336d5a0332cd44740870635460b2">UYiSanLoading::Loading_Textures</a></div><div class="ttdeci">void Loading_Textures(const UWorld *InWorld)</div><div class="ttdoc">텍스처 스트리밍 통계를 폴링해 진행도를 갱신하고 필요 시 타임아웃을 적용합니다.</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8cpp_source.html#l00329">UYiSanLoading.cpp:329</a></div></div>
 <div class="ttc" id="aclassUYiSanLoading_html_ab48994aeea87093f36721bcf5760b9ca"><div class="ttname"><a href="classUYiSanLoading.html#ab48994aeea87093f36721bcf5760b9ca">UYiSanLoading::CompleteProcess</a></div><div class="ttdeci">void CompleteProcess(const UWorld *InWorld)</div><div class="ttdef"><b>Definition</b> <a href="UYiSanLoading_8cpp_source.html#l00295">UYiSanLoading.cpp:295</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8h_source.html#l00089">bRequestTexture</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00295">CompleteProcess()</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00073">CompleteState</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00079">CurState</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00092">LastTextureProgress</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00091">LastTextureProgressTime</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00391">Loading_LevelInstance()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00329">Loading_Textures()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00087">Progress_LI</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00086">Progress_Texture</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00090">TextureRequestCount</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00070">TotalTime</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UYiSanLoading_8h_source.html#l00090">bRequestTexture</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00295">CompleteProcess()</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00074">CompleteState</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00080">CurState</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00093">LastTextureProgress</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00092">LastTextureProgressTime</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00391">Loading_LevelInstance()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00329">Loading_Textures()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00088">Progress_LI</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00087">Progress_Texture</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00091">TextureRequestCount</a>, <a class="el" href="UYiSanLoading_8h_source.html#l00071">TotalTime</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00132">PostLoadMapWithWorld()</a>.</p>
 <div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -1335,7 +1336,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00089">89</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00090">90</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00329">Loading_Textures()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00132">PostLoadMapWithWorld()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00096">PrepareForTravel()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00213">UpdateTick()</a>.</p>
 
@@ -1361,7 +1362,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00084">84</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00085">85</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00329">Loading_Textures()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00132">PostLoadMapWithWorld()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00096">PrepareForTravel()</a>.</p>
 
@@ -1393,13 +1394,13 @@ Private 속성</h2></td></tr>
 <div class="line">        { EState::COMPLETE, <span class="keyword">false</span> }</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00072">72</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   73</span>    {</div>
-<div class="line"><span class="lineno">   74</span>        { EState::WP, <span class="keyword">false</span> },</div>
-<div class="line"><span class="lineno">   75</span>        { EState::TEXTURE, <span class="keyword">false</span> },</div>
-<div class="line"><span class="lineno">   76</span>        { EState::LI, <span class="keyword">false</span> },</div>
-<div class="line"><span class="lineno">   77</span>        { EState::COMPLETE, <span class="keyword">false</span> }</div>
-<div class="line"><span class="lineno">   78</span>    };</div>
+<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00073">73</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   74</span>    {</div>
+<div class="line"><span class="lineno">   75</span>        { EState::WP, <span class="keyword">false</span> },</div>
+<div class="line"><span class="lineno">   76</span>        { EState::TEXTURE, <span class="keyword">false</span> },</div>
+<div class="line"><span class="lineno">   77</span>        { EState::LI, <span class="keyword">false</span> },</div>
+<div class="line"><span class="lineno">   78</span>        { EState::COMPLETE, <span class="keyword">false</span> }</div>
+<div class="line"><span class="lineno">   79</span>    };</div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00481">ForceCompleteForGuest()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00476">IsLoadingComplete()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00391">Loading_LevelInstance()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00329">Loading_Textures()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00132">PostLoadMapWithWorld()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00096">PrepareForTravel()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00213">UpdateTick()</a>.</p>
 
@@ -1425,7 +1426,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00079">79</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00080">80</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00481">ForceCompleteForGuest()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00132">PostLoadMapWithWorld()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00096">PrepareForTravel()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00213">UpdateTick()</a>.</p>
 
@@ -1451,7 +1452,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00082">82</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00083">83</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00096">PrepareForTravel()</a>.</p>
 
@@ -1477,7 +1478,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00092">92</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00093">93</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00329">Loading_Textures()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00132">PostLoadMapWithWorld()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00096">PrepareForTravel()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00213">UpdateTick()</a>.</p>
 
@@ -1503,7 +1504,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00091">91</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00092">92</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00329">Loading_Textures()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00132">PostLoadMapWithWorld()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00096">PrepareForTravel()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00213">UpdateTick()</a>.</p>
 
@@ -1529,7 +1530,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00065">65</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00066">66</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00069">HandlePostLoadMapSimple()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00041">InitSystem()</a>.</p>
 
@@ -1555,7 +1556,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00087">87</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00088">88</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00481">ForceCompleteForGuest()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00391">Loading_LevelInstance()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00132">PostLoadMapWithWorld()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00096">PrepareForTravel()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00213">UpdateTick()</a>.</p>
 
@@ -1581,7 +1582,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00086">86</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00087">87</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00481">ForceCompleteForGuest()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00329">Loading_Textures()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00132">PostLoadMapWithWorld()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00096">PrepareForTravel()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00213">UpdateTick()</a>.</p>
 
@@ -1607,7 +1608,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00067">67</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00068">68</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00329">Loading_Textures()</a>.</p>
 
@@ -1633,7 +1634,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00090">90</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00091">91</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00329">Loading_Textures()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00132">PostLoadMapWithWorld()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00096">PrepareForTravel()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00213">UpdateTick()</a>.</p>
 
@@ -1659,7 +1660,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00066">66</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00067">67</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00329">Loading_Textures()</a>.</p>
 
@@ -1685,7 +1686,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00081">81</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00082">82</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00295">CompleteProcess()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00132">PostLoadMapWithWorld()</a>.</p>
 
@@ -1711,7 +1712,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00070">70</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UYiSanLoading_8h_source.html">UYiSanLoading.h</a> 파일의 <a class="el" href="UYiSanLoading_8h_source.html#l00071">71</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UYiSanLoading_8cpp_source.html#l00481">ForceCompleteForGuest()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00329">Loading_Textures()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00132">PostLoadMapWithWorld()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00096">PrepareForTravel()</a>, <a class="el" href="UYiSanLoading_8cpp_source.html#l00213">UpdateTick()</a>.</p>
 
@@ -1727,7 +1728,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUYiSanLoading.html">UYiSanLoading</a></li>
-    <li class="footer">생성시간 : 일 11월 9 2025 07:14:32, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 11월 9 2025 07:46:10, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

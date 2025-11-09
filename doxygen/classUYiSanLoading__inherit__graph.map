@@ -1,5 +1,5 @@
 <map id="UYiSanLoading" name="UYiSanLoading">
-<area shape="rect" id="Node000001" title="이동 준비, 로딩 UI, 스트리밍 진행 폴링을 관리하는 서브시스템입니다." alt="" coords="5,119,227,739"/>
+<area shape="rect" id="Node000001" title="월드 파티션, 텍스처 스트리밍 등 레벨 전환 시 로딩 과정을 관리하고 UI를 조율하는 서브시스템입니다." alt="" coords="5,119,227,739"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="21,5,211,71"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,85,119,118,113,118,113,85"/>
 </map>

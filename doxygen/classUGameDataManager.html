@@ -111,6 +111,9 @@ $(document).ready(function(){initNavTree('classUGameDataManager.html',''); initR
 </div><!--header-->
 <div class="contents">
 
+<p>데이터 테이블(.csv)에서 게임 데이터를 로드하고 캐시하여 런타임에 빠르게 접근할 수 있도록 제공하는 데이터 관리 서브시스템입니다.  
+ <a href="classUGameDataManager.html#details">더 자세히 ...</a></p>
+
 <p><code>#include &lt;<a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> UGameDataManager에 대한 상속 다이어그램 : </div>
@@ -226,8 +229,10 @@ Private 속성</h2></td></tr>
 <tr class="separator:a49d5db070298ec55d4b65af85aa40ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
-<div class="textblock">
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00023">23</a> 번째 라인에서 정의되었습니다.</p>
+<div class="textblock"><p>데이터 테이블(.csv)에서 게임 데이터를 로드하고 캐시하여 런타임에 빠르게 접근할 수 있도록 제공하는 데이터 관리 서브시스템입니다. </p>
+<p>캐릭터 정보, 건물 데이터, 히트스톱, 넉백 등 다양한 마스터 데이터를 관리하며, 필요 시 데이터를 리로드하는 기능을 제공합니다. </p>
+
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00027">27</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">생성자 &amp; 소멸자 문서화</h2>
 <a id="a5d0c96aebf3e41ce7bfa468a101fffa2" name="a5d0c96aebf3e41ce7bfa468a101fffa2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5d0c96aebf3e41ce7bfa468a101fffa2">&#9670;&#160;</a></span>UGameDataManager()</h2>
@@ -255,11 +260,11 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   28</span>}</div>
 <div class="ttc" id="aUGameDataManager_8cpp_html_a1fe9839880dba7829fe4cac5d9f192ed"><div class="ttname"><a href="UGameDataManager_8cpp.html#a1fe9839880dba7829fe4cac5d9f192ed">BUILDINGDATA_PATH</a></div><div class="ttdeci">#define BUILDINGDATA_PATH</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8cpp_source.html#l00015">UGameDataManager.cpp:15</a></div></div>
 <div class="ttc" id="aUGameDataManager_8cpp_html_aa8c8d740bcac939ef58a20f6d83404ab"><div class="ttname"><a href="UGameDataManager_8cpp.html#aa8c8d740bcac939ef58a20f6d83404ab">BUILDINGASSET_PATH</a></div><div class="ttdeci">#define BUILDINGASSET_PATH</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8cpp_source.html#l00016">UGameDataManager.cpp:16</a></div></div>
-<div class="ttc" id="aclassUGameDataManager_html_a274404d921dc7e26ce9e41971cb88ebd"><div class="ttname"><a href="classUGameDataManager.html#a274404d921dc7e26ce9e41971cb88ebd">UGameDataManager::BuildingDataTable</a></div><div class="ttdeci">TSoftObjectPtr&lt; UDataTable &gt; BuildingDataTable</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00041">UGameDataManager.h:41</a></div></div>
-<div class="ttc" id="aclassUGameDataManager_html_aee68072e6307a1e2186e61dc1e02aa7d"><div class="ttname"><a href="classUGameDataManager.html#aee68072e6307a1e2186e61dc1e02aa7d">UGameDataManager::BuildingAssetTable</a></div><div class="ttdeci">TSoftObjectPtr&lt; UDataTable &gt; BuildingAssetTable</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00060">UGameDataManager.h:60</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_a274404d921dc7e26ce9e41971cb88ebd"><div class="ttname"><a href="classUGameDataManager.html#a274404d921dc7e26ce9e41971cb88ebd">UGameDataManager::BuildingDataTable</a></div><div class="ttdeci">TSoftObjectPtr&lt; UDataTable &gt; BuildingDataTable</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00045">UGameDataManager.h:45</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_aee68072e6307a1e2186e61dc1e02aa7d"><div class="ttname"><a href="classUGameDataManager.html#aee68072e6307a1e2186e61dc1e02aa7d">UGameDataManager::BuildingAssetTable</a></div><div class="ttdeci">TSoftObjectPtr&lt; UDataTable &gt; BuildingAssetTable</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00064">UGameDataManager.h:64</a></div></div>
 <div class="ttc" id="astructFComponentHelper_html_ac37cef436e9aaef1f0c655d781a95e66"><div class="ttname"><a href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset</a></div><div class="ttdeci">static T * LoadAsset(const TCHAR *Path)</div><div class="ttdef"><b>Definition</b> <a href="FComponentHelper_8h_source.html#l00016">FComponentHelper.h:16</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00016">BUILDINGASSET_PATH</a>, <a class="el" href="UGameDataManager_8h_source.html#l00060">BuildingAssetTable</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00015">BUILDINGDATA_PATH</a>, <a class="el" href="UGameDataManager_8h_source.html#l00041">BuildingDataTable</a>, <a class="el" href="FComponentHelper_8h_source.html#l00016">FComponentHelper::LoadAsset()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00016">BUILDINGASSET_PATH</a>, <a class="el" href="UGameDataManager_8h_source.html#l00064">BuildingAssetTable</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00015">BUILDINGDATA_PATH</a>, <a class="el" href="UGameDataManager_8h_source.html#l00045">BuildingDataTable</a>, <a class="el" href="FComponentHelper_8h_source.html#l00016">FComponentHelper::LoadAsset()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -299,10 +304,10 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  123</span>    <a class="code hl_variable" href="classUGameDataManager.html#ac0531ed8931bda96c50358b592bc7ef4">BuildingAssetCache</a>.Reset();</div>
 <div class="line"><span class="lineno">  124</span>    <a class="code hl_variable" href="classUGameDataManager.html#a01fc4e4dbc2fe4348247e49debf87945">bLoadBuildingAsset</a> = <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  125</span>}</div>
-<div class="ttc" id="aclassUGameDataManager_html_a01fc4e4dbc2fe4348247e49debf87945"><div class="ttname"><a href="classUGameDataManager.html#a01fc4e4dbc2fe4348247e49debf87945">UGameDataManager::bLoadBuildingAsset</a></div><div class="ttdeci">bool bLoadBuildingAsset</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00068">UGameDataManager.h:68</a></div></div>
-<div class="ttc" id="aclassUGameDataManager_html_ac0531ed8931bda96c50358b592bc7ef4"><div class="ttname"><a href="classUGameDataManager.html#ac0531ed8931bda96c50358b592bc7ef4">UGameDataManager::BuildingAssetCache</a></div><div class="ttdeci">TMap&lt; EBuildingType, FBuildingAssetData &gt; BuildingAssetCache</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00071">UGameDataManager.h:71</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_a01fc4e4dbc2fe4348247e49debf87945"><div class="ttname"><a href="classUGameDataManager.html#a01fc4e4dbc2fe4348247e49debf87945">UGameDataManager::bLoadBuildingAsset</a></div><div class="ttdeci">bool bLoadBuildingAsset</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00072">UGameDataManager.h:72</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_ac0531ed8931bda96c50358b592bc7ef4"><div class="ttname"><a href="classUGameDataManager.html#ac0531ed8931bda96c50358b592bc7ef4">UGameDataManager::BuildingAssetCache</a></div><div class="ttdeci">TMap&lt; EBuildingType, FBuildingAssetData &gt; BuildingAssetCache</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00075">UGameDataManager.h:75</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00068">bLoadBuildingAsset</a>, <a class="el" href="UGameDataManager_8h_source.html#l00071">BuildingAssetCache</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00072">bLoadBuildingAsset</a>, <a class="el" href="UGameDataManager_8h_source.html#l00075">BuildingAssetCache</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00037">Deinitialize()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -343,10 +348,10 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   64</span>    <a class="code hl_variable" href="classUGameDataManager.html#a40bc2fb97c78af12794b3b44cbbff999">BuildingDataCache</a>.Reset();</div>
 <div class="line"><span class="lineno">   65</span>    <a class="code hl_variable" href="classUGameDataManager.html#a6a7cee32dfee9213b514da2672940fc2">bLoadBuildingData</a>  = <span class="keyword">false</span>;   </div>
 <div class="line"><span class="lineno">   66</span>}</div>
-<div class="ttc" id="aclassUGameDataManager_html_a40bc2fb97c78af12794b3b44cbbff999"><div class="ttname"><a href="classUGameDataManager.html#a40bc2fb97c78af12794b3b44cbbff999">UGameDataManager::BuildingDataCache</a></div><div class="ttdeci">TMap&lt; EBuildingType, FBuildingData &gt; BuildingDataCache</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00054">UGameDataManager.h:54</a></div></div>
-<div class="ttc" id="aclassUGameDataManager_html_a6a7cee32dfee9213b514da2672940fc2"><div class="ttname"><a href="classUGameDataManager.html#a6a7cee32dfee9213b514da2672940fc2">UGameDataManager::bLoadBuildingData</a></div><div class="ttdeci">bool bLoadBuildingData</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00051">UGameDataManager.h:51</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_a40bc2fb97c78af12794b3b44cbbff999"><div class="ttname"><a href="classUGameDataManager.html#a40bc2fb97c78af12794b3b44cbbff999">UGameDataManager::BuildingDataCache</a></div><div class="ttdeci">TMap&lt; EBuildingType, FBuildingData &gt; BuildingDataCache</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00058">UGameDataManager.h:58</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_a6a7cee32dfee9213b514da2672940fc2"><div class="ttname"><a href="classUGameDataManager.html#a6a7cee32dfee9213b514da2672940fc2">UGameDataManager::bLoadBuildingData</a></div><div class="ttdeci">bool bLoadBuildingData</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00055">UGameDataManager.h:55</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00051">bLoadBuildingData</a>, <a class="el" href="UGameDataManager_8h_source.html#l00054">BuildingDataCache</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00055">bLoadBuildingData</a>, <a class="el" href="UGameDataManager_8h_source.html#l00058">BuildingDataCache</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00037">Deinitialize()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -387,10 +392,10 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  326</span>    <a class="code hl_variable" href="classUGameDataManager.html#a06126e08dc91b9b5ec64805f5c3774bf">CharacterAssetCache</a>.Reset();</div>
 <div class="line"><span class="lineno">  327</span>    <a class="code hl_variable" href="classUGameDataManager.html#a1ec0dc6c78fc238ae1e13376ada078c3">bLoadCharacterAsset</a> = <span class="keyword">false</span>;   </div>
 <div class="line"><span class="lineno">  328</span>}</div>
-<div class="ttc" id="aclassUGameDataManager_html_a06126e08dc91b9b5ec64805f5c3774bf"><div class="ttname"><a href="classUGameDataManager.html#a06126e08dc91b9b5ec64805f5c3774bf">UGameDataManager::CharacterAssetCache</a></div><div class="ttdeci">TMap&lt; ECharacterType, FCharacterAssetData &gt; CharacterAssetCache</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00141">UGameDataManager.h:141</a></div></div>
-<div class="ttc" id="aclassUGameDataManager_html_a1ec0dc6c78fc238ae1e13376ada078c3"><div class="ttname"><a href="classUGameDataManager.html#a1ec0dc6c78fc238ae1e13376ada078c3">UGameDataManager::bLoadCharacterAsset</a></div><div class="ttdeci">bool bLoadCharacterAsset</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00138">UGameDataManager.h:138</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_a06126e08dc91b9b5ec64805f5c3774bf"><div class="ttname"><a href="classUGameDataManager.html#a06126e08dc91b9b5ec64805f5c3774bf">UGameDataManager::CharacterAssetCache</a></div><div class="ttdeci">TMap&lt; ECharacterType, FCharacterAssetData &gt; CharacterAssetCache</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00145">UGameDataManager.h:145</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_a1ec0dc6c78fc238ae1e13376ada078c3"><div class="ttname"><a href="classUGameDataManager.html#a1ec0dc6c78fc238ae1e13376ada078c3">UGameDataManager::bLoadCharacterAsset</a></div><div class="ttdeci">bool bLoadCharacterAsset</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00142">UGameDataManager.h:142</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00138">bLoadCharacterAsset</a>, <a class="el" href="UGameDataManager_8h_source.html#l00141">CharacterAssetCache</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00142">bLoadCharacterAsset</a>, <a class="el" href="UGameDataManager_8h_source.html#l00145">CharacterAssetCache</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00037">Deinitialize()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -431,10 +436,10 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  279</span>    <a class="code hl_variable" href="classUGameDataManager.html#ac072e508a8482203271383317a87189f">CharacterInfoCache</a>.Reset();</div>
 <div class="line"><span class="lineno">  280</span>    <a class="code hl_variable" href="classUGameDataManager.html#af754622372c01421abd03ade37082afa">bLoadCharacterInfo</a> = <span class="keyword">false</span>;   </div>
 <div class="line"><span class="lineno">  281</span>}</div>
-<div class="ttc" id="aclassUGameDataManager_html_ac072e508a8482203271383317a87189f"><div class="ttname"><a href="classUGameDataManager.html#ac072e508a8482203271383317a87189f">UGameDataManager::CharacterInfoCache</a></div><div class="ttdeci">TMap&lt; ECharacterType, FCharacterInfoData &gt; CharacterInfoCache</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00124">UGameDataManager.h:124</a></div></div>
-<div class="ttc" id="aclassUGameDataManager_html_af754622372c01421abd03ade37082afa"><div class="ttname"><a href="classUGameDataManager.html#af754622372c01421abd03ade37082afa">UGameDataManager::bLoadCharacterInfo</a></div><div class="ttdeci">bool bLoadCharacterInfo</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00121">UGameDataManager.h:121</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_ac072e508a8482203271383317a87189f"><div class="ttname"><a href="classUGameDataManager.html#ac072e508a8482203271383317a87189f">UGameDataManager::CharacterInfoCache</a></div><div class="ttdeci">TMap&lt; ECharacterType, FCharacterInfoData &gt; CharacterInfoCache</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00128">UGameDataManager.h:128</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_af754622372c01421abd03ade37082afa"><div class="ttname"><a href="classUGameDataManager.html#af754622372c01421abd03ade37082afa">UGameDataManager::bLoadCharacterInfo</a></div><div class="ttdeci">bool bLoadCharacterInfo</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00125">UGameDataManager.h:125</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00121">bLoadCharacterInfo</a>, <a class="el" href="UGameDataManager_8h_source.html#l00124">CharacterInfoCache</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00125">bLoadCharacterInfo</a>, <a class="el" href="UGameDataManager_8h_source.html#l00128">CharacterInfoCache</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00037">Deinitialize()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -475,10 +480,10 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  173</span>    <a class="code hl_variable" href="classUGameDataManager.html#ad418eb713320dab67b86e69ba43db077">HitStopCache</a>.Reset();</div>
 <div class="line"><span class="lineno">  174</span>    <a class="code hl_variable" href="classUGameDataManager.html#a0afdc5d050bc45ed28b51fd8df0e40d7">bLoadHitStop</a> = <span class="keyword">false</span>;   </div>
 <div class="line"><span class="lineno">  175</span>}</div>
-<div class="ttc" id="aclassUGameDataManager_html_a0afdc5d050bc45ed28b51fd8df0e40d7"><div class="ttname"><a href="classUGameDataManager.html#a0afdc5d050bc45ed28b51fd8df0e40d7">UGameDataManager::bLoadHitStop</a></div><div class="ttdeci">bool bLoadHitStop</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00087">UGameDataManager.h:87</a></div></div>
-<div class="ttc" id="aclassUGameDataManager_html_ad418eb713320dab67b86e69ba43db077"><div class="ttname"><a href="classUGameDataManager.html#ad418eb713320dab67b86e69ba43db077">UGameDataManager::HitStopCache</a></div><div class="ttdeci">TMap&lt; EDamageType, FHitStopData &gt; HitStopCache</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00090">UGameDataManager.h:90</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_a0afdc5d050bc45ed28b51fd8df0e40d7"><div class="ttname"><a href="classUGameDataManager.html#a0afdc5d050bc45ed28b51fd8df0e40d7">UGameDataManager::bLoadHitStop</a></div><div class="ttdeci">bool bLoadHitStop</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00091">UGameDataManager.h:91</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_ad418eb713320dab67b86e69ba43db077"><div class="ttname"><a href="classUGameDataManager.html#ad418eb713320dab67b86e69ba43db077">UGameDataManager::HitStopCache</a></div><div class="ttdeci">TMap&lt; EDamageType, FHitStopData &gt; HitStopCache</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00094">UGameDataManager.h:94</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00087">bLoadHitStop</a>, <a class="el" href="UGameDataManager_8h_source.html#l00090">HitStopCache</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00091">bLoadHitStop</a>, <a class="el" href="UGameDataManager_8h_source.html#l00094">HitStopCache</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00037">Deinitialize()</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -519,10 +524,10 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  232</span>    <a class="code hl_variable" href="classUGameDataManager.html#a49d5db070298ec55d4b65af85aa40ae9">KnockbackCache</a>.Reset();</div>
 <div class="line"><span class="lineno">  233</span>    <a class="code hl_variable" href="classUGameDataManager.html#aadbfbcb1f8c50ba7799087a97c0965f0">bLoadKnockback</a> = <span class="keyword">false</span>;   </div>
 <div class="line"><span class="lineno">  234</span>}</div>
-<div class="ttc" id="aclassUGameDataManager_html_a49d5db070298ec55d4b65af85aa40ae9"><div class="ttname"><a href="classUGameDataManager.html#a49d5db070298ec55d4b65af85aa40ae9">UGameDataManager::KnockbackCache</a></div><div class="ttdeci">TMap&lt; EDamageType, FKnockbackData &gt; KnockbackCache</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00107">UGameDataManager.h:107</a></div></div>
-<div class="ttc" id="aclassUGameDataManager_html_aadbfbcb1f8c50ba7799087a97c0965f0"><div class="ttname"><a href="classUGameDataManager.html#aadbfbcb1f8c50ba7799087a97c0965f0">UGameDataManager::bLoadKnockback</a></div><div class="ttdeci">bool bLoadKnockback</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00104">UGameDataManager.h:104</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_a49d5db070298ec55d4b65af85aa40ae9"><div class="ttname"><a href="classUGameDataManager.html#a49d5db070298ec55d4b65af85aa40ae9">UGameDataManager::KnockbackCache</a></div><div class="ttdeci">TMap&lt; EDamageType, FKnockbackData &gt; KnockbackCache</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00111">UGameDataManager.h:111</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_aadbfbcb1f8c50ba7799087a97c0965f0"><div class="ttname"><a href="classUGameDataManager.html#aadbfbcb1f8c50ba7799087a97c0965f0">UGameDataManager::bLoadKnockback</a></div><div class="ttdeci">bool bLoadKnockback</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00108">UGameDataManager.h:108</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00104">bLoadKnockback</a>, <a class="el" href="UGameDataManager_8h_source.html#l00107">KnockbackCache</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00108">bLoadKnockback</a>, <a class="el" href="UGameDataManager_8h_source.html#l00111">KnockbackCache</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00037">Deinitialize()</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -649,7 +654,7 @@ Private 속성</h2></td></tr>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
 <div class="ttc" id="astructFBuildingAssetData_html"><div class="ttname"><a href="structFBuildingAssetData.html">FBuildingAssetData</a></div><div class="ttdef"><b>Definition</b> <a href="FBuildingAssetData_8h_source.html#l00016">FBuildingAssetData.h:17</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00068">bLoadBuildingAsset</a>, <a class="el" href="UGameDataManager_8h_source.html#l00071">BuildingAssetCache</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00072">bLoadBuildingAsset</a>, <a class="el" href="UGameDataManager_8h_source.html#l00075">BuildingAssetCache</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 </div>
 </div>
@@ -695,7 +700,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  105</span>}</div>
 <div class="ttc" id="astructFBuildingData_html"><div class="ttname"><a href="structFBuildingData.html">FBuildingData</a></div><div class="ttdef"><b>Definition</b> <a href="FBuildingData_8h_source.html#l00015">FBuildingData.h:16</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00051">bLoadBuildingData</a>, <a class="el" href="UGameDataManager_8h_source.html#l00054">BuildingDataCache</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00055">bLoadBuildingData</a>, <a class="el" href="UGameDataManager_8h_source.html#l00058">BuildingDataCache</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 </div>
 </div>
@@ -726,7 +731,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  115</span>    <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><span class="lineno">  116</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00051">bLoadBuildingData</a>, <a class="el" href="UGameDataManager_8h_source.html#l00054">BuildingDataCache</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00055">bLoadBuildingData</a>, <a class="el" href="UGameDataManager_8h_source.html#l00058">BuildingDataCache</a>.</p>
 
 </div>
 </div>
@@ -772,7 +777,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  367</span>}</div>
 <div class="ttc" id="astructFCharacterAssetData_html"><div class="ttname"><a href="structFCharacterAssetData.html">FCharacterAssetData</a></div><div class="ttdef"><b>Definition</b> <a href="FCharacterAssetData_8h_source.html#l00013">FCharacterAssetData.h:14</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00138">bLoadCharacterAsset</a>, <a class="el" href="UGameDataManager_8h_source.html#l00141">CharacterAssetCache</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00142">bLoadCharacterAsset</a>, <a class="el" href="UGameDataManager_8h_source.html#l00145">CharacterAssetCache</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 </div>
 </div>
@@ -818,7 +823,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  320</span>}</div>
 <div class="ttc" id="astructFCharacterInfoData_html"><div class="ttname"><a href="structFCharacterInfoData.html">FCharacterInfoData</a></div><div class="ttdef"><b>Definition</b> <a href="FCharacterInfoData_8h_source.html#l00013">FCharacterInfoData.h:14</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00121">bLoadCharacterInfo</a>, <a class="el" href="UGameDataManager_8h_source.html#l00124">CharacterInfoCache</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00125">bLoadCharacterInfo</a>, <a class="el" href="UGameDataManager_8h_source.html#l00128">CharacterInfoCache</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 </div>
 </div>
@@ -864,7 +869,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  214</span>}</div>
 <div class="ttc" id="astructFHitStopData_html"><div class="ttname"><a href="structFHitStopData.html">FHitStopData</a></div><div class="ttdef"><b>Definition</b> <a href="FHitStopData_8h_source.html#l00015">FHitStopData.h:16</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00087">bLoadHitStop</a>, <a class="el" href="UGameDataManager_8h_source.html#l00090">HitStopCache</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00091">bLoadHitStop</a>, <a class="el" href="UGameDataManager_8h_source.html#l00094">HitStopCache</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 </div>
 </div>
@@ -895,7 +900,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  224</span>    <span class="keywordflow">return</span> 0.0f;</div>
 <div class="line"><span class="lineno">  225</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00087">bLoadHitStop</a>, <a class="el" href="UGameDataManager_8h_source.html#l00090">HitStopCache</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00091">bLoadHitStop</a>, <a class="el" href="UGameDataManager_8h_source.html#l00094">HitStopCache</a>.</p>
 
 </div>
 </div>
@@ -941,7 +946,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  273</span>}</div>
 <div class="ttc" id="astructFKnockbackData_html"><div class="ttname"><a href="structFKnockbackData.html">FKnockbackData</a></div><div class="ttdef"><b>Definition</b> <a href="FKnockbackData_8h_source.html#l00013">FKnockbackData.h:14</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00104">bLoadKnockback</a>, <a class="el" href="UGameDataManager_8h_source.html#l00107">KnockbackCache</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00108">bLoadKnockback</a>, <a class="el" href="UGameDataManager_8h_source.html#l00111">KnockbackCache</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 </div>
 </div>
@@ -1035,7 +1040,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  148</span>    <a class="code hl_variable" href="classUGameDataManager.html#a01fc4e4dbc2fe4348247e49debf87945">bLoadBuildingAsset</a> = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  149</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00068">bLoadBuildingAsset</a>, <a class="el" href="UGameDataManager_8h_source.html#l00071">BuildingAssetCache</a>, <a class="el" href="UGameDataManager_8h_source.html#l00060">BuildingAssetTable</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00072">bLoadBuildingAsset</a>, <a class="el" href="UGameDataManager_8h_source.html#l00075">BuildingAssetCache</a>, <a class="el" href="UGameDataManager_8h_source.html#l00064">BuildingAssetTable</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00050">ReloadMasterData()</a>.</p>
 <div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -1095,7 +1100,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   89</span>    <a class="code hl_variable" href="classUGameDataManager.html#a6a7cee32dfee9213b514da2672940fc2">bLoadBuildingData</a>  = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">   90</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00051">bLoadBuildingData</a>, <a class="el" href="UGameDataManager_8h_source.html#l00054">BuildingDataCache</a>, <a class="el" href="UGameDataManager_8h_source.html#l00041">BuildingDataTable</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00055">bLoadBuildingData</a>, <a class="el" href="UGameDataManager_8h_source.html#l00058">BuildingDataCache</a>, <a class="el" href="UGameDataManager_8h_source.html#l00045">BuildingDataTable</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00050">ReloadMasterData()</a>.</p>
 <div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -1154,9 +1159,9 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  350</span> </div>
 <div class="line"><span class="lineno">  351</span>    <a class="code hl_variable" href="classUGameDataManager.html#a1ec0dc6c78fc238ae1e13376ada078c3">bLoadCharacterAsset</a> = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  352</span>}</div>
-<div class="ttc" id="aclassUGameDataManager_html_a7d5f4b7321bc2405f3ff9f696b7ddd75"><div class="ttname"><a href="classUGameDataManager.html#a7d5f4b7321bc2405f3ff9f696b7ddd75">UGameDataManager::CharacterAssetTable</a></div><div class="ttdeci">TSoftObjectPtr&lt; UDataTable &gt; CharacterAssetTable</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00130">UGameDataManager.h:130</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_a7d5f4b7321bc2405f3ff9f696b7ddd75"><div class="ttname"><a href="classUGameDataManager.html#a7d5f4b7321bc2405f3ff9f696b7ddd75">UGameDataManager::CharacterAssetTable</a></div><div class="ttdeci">TSoftObjectPtr&lt; UDataTable &gt; CharacterAssetTable</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00134">UGameDataManager.h:134</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00138">bLoadCharacterAsset</a>, <a class="el" href="UGameDataManager_8h_source.html#l00141">CharacterAssetCache</a>, <a class="el" href="UGameDataManager_8h_source.html#l00130">CharacterAssetTable</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00142">bLoadCharacterAsset</a>, <a class="el" href="UGameDataManager_8h_source.html#l00145">CharacterAssetCache</a>, <a class="el" href="UGameDataManager_8h_source.html#l00134">CharacterAssetTable</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 </div>
 </div>
@@ -1206,9 +1211,9 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  303</span> </div>
 <div class="line"><span class="lineno">  304</span>    <a class="code hl_variable" href="classUGameDataManager.html#af754622372c01421abd03ade37082afa">bLoadCharacterInfo</a> = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  305</span>}</div>
-<div class="ttc" id="aclassUGameDataManager_html_a52a1a40b1f8d3c2e4595cc124eb0ab33"><div class="ttname"><a href="classUGameDataManager.html#a52a1a40b1f8d3c2e4595cc124eb0ab33">UGameDataManager::CharacterInfoTable</a></div><div class="ttdeci">TSoftObjectPtr&lt; UDataTable &gt; CharacterInfoTable</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00113">UGameDataManager.h:113</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_a52a1a40b1f8d3c2e4595cc124eb0ab33"><div class="ttname"><a href="classUGameDataManager.html#a52a1a40b1f8d3c2e4595cc124eb0ab33">UGameDataManager::CharacterInfoTable</a></div><div class="ttdeci">TSoftObjectPtr&lt; UDataTable &gt; CharacterInfoTable</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00117">UGameDataManager.h:117</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00121">bLoadCharacterInfo</a>, <a class="el" href="UGameDataManager_8h_source.html#l00124">CharacterInfoCache</a>, <a class="el" href="UGameDataManager_8h_source.html#l00113">CharacterInfoTable</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00125">bLoadCharacterInfo</a>, <a class="el" href="UGameDataManager_8h_source.html#l00128">CharacterInfoCache</a>, <a class="el" href="UGameDataManager_8h_source.html#l00117">CharacterInfoTable</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 </div>
 </div>
@@ -1258,9 +1263,9 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  197</span> </div>
 <div class="line"><span class="lineno">  198</span>    <a class="code hl_variable" href="classUGameDataManager.html#a0afdc5d050bc45ed28b51fd8df0e40d7">bLoadHitStop</a> = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  199</span>}</div>
-<div class="ttc" id="aclassUGameDataManager_html_aa934e5d7830bd86c2a8cad2df2e70596"><div class="ttname"><a href="classUGameDataManager.html#aa934e5d7830bd86c2a8cad2df2e70596">UGameDataManager::HitStopTable</a></div><div class="ttdeci">TSoftObjectPtr&lt; UDataTable &gt; HitStopTable</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00077">UGameDataManager.h:77</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_aa934e5d7830bd86c2a8cad2df2e70596"><div class="ttname"><a href="classUGameDataManager.html#aa934e5d7830bd86c2a8cad2df2e70596">UGameDataManager::HitStopTable</a></div><div class="ttdeci">TSoftObjectPtr&lt; UDataTable &gt; HitStopTable</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00081">UGameDataManager.h:81</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00087">bLoadHitStop</a>, <a class="el" href="UGameDataManager_8h_source.html#l00090">HitStopCache</a>, <a class="el" href="UGameDataManager_8h_source.html#l00077">HitStopTable</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00091">bLoadHitStop</a>, <a class="el" href="UGameDataManager_8h_source.html#l00094">HitStopCache</a>, <a class="el" href="UGameDataManager_8h_source.html#l00081">HitStopTable</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 </div>
 </div>
@@ -1310,9 +1315,9 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  256</span> </div>
 <div class="line"><span class="lineno">  257</span>    <a class="code hl_variable" href="classUGameDataManager.html#aadbfbcb1f8c50ba7799087a97c0965f0">bLoadKnockback</a> = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  258</span>}</div>
-<div class="ttc" id="aclassUGameDataManager_html_acd8b13957d84c801426442eb8bd70e78"><div class="ttname"><a href="classUGameDataManager.html#acd8b13957d84c801426442eb8bd70e78">UGameDataManager::KnockbackTable</a></div><div class="ttdeci">TSoftObjectPtr&lt; UDataTable &gt; KnockbackTable</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00096">UGameDataManager.h:96</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_acd8b13957d84c801426442eb8bd70e78"><div class="ttname"><a href="classUGameDataManager.html#acd8b13957d84c801426442eb8bd70e78">UGameDataManager::KnockbackTable</a></div><div class="ttdeci">TSoftObjectPtr&lt; UDataTable &gt; KnockbackTable</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00100">UGameDataManager.h:100</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00104">bLoadKnockback</a>, <a class="el" href="UGameDataManager_8h_source.html#l00107">KnockbackCache</a>, <a class="el" href="UGameDataManager_8h_source.html#l00096">KnockbackTable</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00108">bLoadKnockback</a>, <a class="el" href="UGameDataManager_8h_source.html#l00111">KnockbackCache</a>, <a class="el" href="UGameDataManager_8h_source.html#l00100">KnockbackTable</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 </div>
 </div>
@@ -1385,7 +1390,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00068">68</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00072">72</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00121">Clear_BuildingAssetData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00151">GetBuildingAssetData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00127">LoadData_BuildingAssetData()</a>.</p>
 
@@ -1411,7 +1416,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00051">51</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00055">55</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00062">Clear_BuildingDataTable()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00092">GetBuildingData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00107">GetBuildingDataName()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00068">LoadData_BuildingDataTable()</a>.</p>
 
@@ -1437,7 +1442,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00138">138</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00142">142</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00324">Clear_CharacterAssetData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00354">GetCharacterAssetData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00330">LoadData_CharacterAssetData()</a>.</p>
 
@@ -1463,7 +1468,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00121">121</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00125">125</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00277">Clear_CharacterInfoData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00307">GetCharacterInfoData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00283">LoadData_CharacterInfoData()</a>.</p>
 
@@ -1489,7 +1494,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00087">87</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00091">91</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00171">Clear_HitStopTable()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00201">GetHitStopData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00216">GetHitStopDelayTime()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00177">LoadData_HitStopTable()</a>.</p>
 
@@ -1515,7 +1520,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00104">104</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00108">108</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00230">Clear_KnockbackTable()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00260">GetKnockbackData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00236">LoadData_KnockbackTable()</a>.</p>
 
@@ -1541,7 +1546,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00071">71</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00075">75</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00121">Clear_BuildingAssetData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00151">GetBuildingAssetData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00127">LoadData_BuildingAssetData()</a>.</p>
 
@@ -1559,7 +1564,7 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00060">60</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00064">64</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00020">UGameDataManager()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00127">LoadData_BuildingAssetData()</a>.</p>
 
@@ -1585,7 +1590,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00054">54</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00058">58</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00062">Clear_BuildingDataTable()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00092">GetBuildingData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00107">GetBuildingDataName()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00068">LoadData_BuildingDataTable()</a>.</p>
 
@@ -1603,7 +1608,7 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00041">41</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00045">45</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00020">UGameDataManager()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00068">LoadData_BuildingDataTable()</a>.</p>
 
@@ -1629,7 +1634,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00141">141</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00145">145</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00324">Clear_CharacterAssetData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00354">GetCharacterAssetData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00330">LoadData_CharacterAssetData()</a>.</p>
 
@@ -1647,7 +1652,7 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00130">130</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00134">134</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00330">LoadData_CharacterAssetData()</a>.</p>
 
@@ -1673,7 +1678,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00124">124</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00128">128</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00277">Clear_CharacterInfoData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00307">GetCharacterInfoData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00283">LoadData_CharacterInfoData()</a>.</p>
 
@@ -1691,7 +1696,7 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00113">113</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00117">117</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00283">LoadData_CharacterInfoData()</a>.</p>
 
@@ -1717,7 +1722,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00090">90</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00094">94</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00171">Clear_HitStopTable()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00201">GetHitStopData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00216">GetHitStopDelayTime()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00177">LoadData_HitStopTable()</a>.</p>
 
@@ -1735,7 +1740,7 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00077">77</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00081">81</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00177">LoadData_HitStopTable()</a>.</p>
 
@@ -1761,7 +1766,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00107">107</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00111">111</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00230">Clear_KnockbackTable()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00260">GetKnockbackData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00236">LoadData_KnockbackTable()</a>.</p>
 
@@ -1779,7 +1784,7 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00096">96</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00100">100</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00236">LoadData_KnockbackTable()</a>.</p>
 
@@ -1795,7 +1800,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUGameDataManager.html">UGameDataManager</a></li>
-    <li class="footer">생성시간 : 일 11월 9 2025 07:14:32, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 11월 9 2025 07:46:10, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

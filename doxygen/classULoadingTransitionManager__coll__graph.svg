@@ -57,7 +57,7 @@ var sectionId = 'dynsection-1';
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="레벨 전환 시 전체 화면 로딩 위젯의 표시와 숨김을 관리하는 LocalPlayer 서브시스템입니다.">
 <polygon fill="#999999" stroke="transparent" points="182,-360 0,-360 0,0 182,0 182,-360"/>
 <text text-anchor="start" x="23" y="-348" font-family="Malgun Gothic" font-size="10.00">ULoadingTransitionManager</text>
 <text text-anchor="start" x="6.5" y="-333" font-family="Malgun Gothic" font-size="10.00">&#45;</text>

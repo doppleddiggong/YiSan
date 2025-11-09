@@ -109,6 +109,9 @@ $(document).ready(function(){initNavTree('classUGameSoundManager.html',''); init
 </div><!--header-->
 <div class="contents">
 
+<p>게임 내 모든 사운드 재생을 관리하는 중앙 사운드 관리 서브시스템입니다.  
+ <a href="classUGameSoundManager.html#details">더 자세히 ...</a></p>
+
 <p><code>#include &lt;<a class="el" href="UGameSoundManager_8h_source.html">UGameSoundManager.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> UGameSoundManager에 대한 상속 다이어그램 : </div>
@@ -158,8 +161,10 @@ Private 속성</h2></td></tr>
 <tr class="separator:a0b791c1a35e60cb66a969d5a5939928c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
-<div class="textblock">
-<p class="definition"><a class="el" href="UGameSoundManager_8h_source.html">UGameSoundManager.h</a> 파일의 <a class="el" href="UGameSoundManager_8h_source.html#l00016">16</a> 번째 라인에서 정의되었습니다.</p>
+<div class="textblock"><p>게임 내 모든 사운드 재생을 관리하는 중앙 사운드 관리 서브시스템입니다. </p>
+<p>2D 및 3D 사운드 재생, 중지 기능을 제공하며, 특히 대화 음성과 같이 단일 인스턴스만 허용되어야 하는 사운드를 별도로 제어합니다. </p>
+
+<p class="definition"><a class="el" href="UGameSoundManager_8h_source.html">UGameSoundManager.h</a> 파일의 <a class="el" href="UGameSoundManager_8h_source.html#l00020">20</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">생성자 &amp; 소멸자 문서화</h2>
 <a id="aab6849192a6de76b26e716e21038f83c" name="aab6849192a6de76b26e716e21038f83c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aab6849192a6de76b26e716e21038f83c">&#9670;&#160;</a></span>UGameSoundManager()</h2>
@@ -199,11 +204,11 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   35</span>    }</div>
 <div class="line"><span class="lineno">   36</span>}</div>
 <div class="ttc" id="aUGameSoundManager_8cpp_html_a8de4cccde467748c9d1ad2c2d9508528"><div class="ttname"><a href="UGameSoundManager_8cpp.html#a8de4cccde467748c9d1ad2c2d9508528">SOUND_DATA_PATH</a></div><div class="ttdeci">#define SOUND_DATA_PATH</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8cpp_source.html#l00013">UGameSoundManager.cpp:13</a></div></div>
-<div class="ttc" id="aclassUGameSoundManager_html_a0b791c1a35e60cb66a969d5a5939928c"><div class="ttname"><a href="classUGameSoundManager.html#a0b791c1a35e60cb66a969d5a5939928c">UGameSoundManager::SoundData</a></div><div class="ttdeci">TMap&lt; EGameSoundType, TObjectPtr&lt; class USoundBase &gt; &gt; SoundData</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8h_source.html#l00053">UGameSoundManager.h:53</a></div></div>
-<div class="ttc" id="aclassUGameSoundManager_html_a5521b1278e08cc4c580b8f5ee38a4d72"><div class="ttname"><a href="classUGameSoundManager.html#a5521b1278e08cc4c580b8f5ee38a4d72">UGameSoundManager::SoundAsset</a></div><div class="ttdeci">TObjectPtr&lt; class USoundData &gt; SoundAsset</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8h_source.html#l00050">UGameSoundManager.h:50</a></div></div>
+<div class="ttc" id="aclassUGameSoundManager_html_a0b791c1a35e60cb66a969d5a5939928c"><div class="ttname"><a href="classUGameSoundManager.html#a0b791c1a35e60cb66a969d5a5939928c">UGameSoundManager::SoundData</a></div><div class="ttdeci">TMap&lt; EGameSoundType, TObjectPtr&lt; class USoundBase &gt; &gt; SoundData</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8h_source.html#l00057">UGameSoundManager.h:57</a></div></div>
+<div class="ttc" id="aclassUGameSoundManager_html_a5521b1278e08cc4c580b8f5ee38a4d72"><div class="ttname"><a href="classUGameSoundManager.html#a5521b1278e08cc4c580b8f5ee38a4d72">UGameSoundManager::SoundAsset</a></div><div class="ttdeci">TObjectPtr&lt; class USoundData &gt; SoundAsset</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8h_source.html#l00054">UGameSoundManager.h:54</a></div></div>
 <div class="ttc" id="astructFComponentHelper_html_ac37cef436e9aaef1f0c655d781a95e66"><div class="ttname"><a href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset</a></div><div class="ttdeci">static T * LoadAsset(const TCHAR *Path)</div><div class="ttdef"><b>Definition</b> <a href="FComponentHelper_8h_source.html#l00016">FComponentHelper.h:16</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="FComponentHelper_8h_source.html#l00016">FComponentHelper::LoadAsset()</a>, <a class="el" href="UGameSoundManager_8cpp_source.html#l00013">SOUND_DATA_PATH</a>, <a class="el" href="UGameSoundManager_8h_source.html#l00050">SoundAsset</a>, <a class="el" href="UGameSoundManager_8h_source.html#l00053">SoundData</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="FComponentHelper_8h_source.html#l00016">FComponentHelper::LoadAsset()</a>, <a class="el" href="UGameSoundManager_8cpp_source.html#l00013">SOUND_DATA_PATH</a>, <a class="el" href="UGameSoundManager_8h_source.html#l00054">SoundAsset</a>, <a class="el" href="UGameSoundManager_8h_source.html#l00057">SoundData</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -285,7 +290,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   63</span>    }</div>
 <div class="line"><span class="lineno">   64</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameSoundManager_8h_source.html#l00050">SoundAsset</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameSoundManager_8h_source.html#l00054">SoundAsset</a>.</p>
 
 </div>
 </div>
@@ -308,9 +313,9 @@ Private 속성</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  132</span>{</div>
 <div class="line"><span class="lineno">  133</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classUGameSoundManager.html#ab01f0437cce0f942aa4d89445ba1fe8f">ConversationVoice</a> &amp;&amp; <a class="code hl_variable" href="classUGameSoundManager.html#ab01f0437cce0f942aa4d89445ba1fe8f">ConversationVoice</a>-&gt;IsPlaying();</div>
 <div class="line"><span class="lineno">  134</span>}</div>
-<div class="ttc" id="aclassUGameSoundManager_html_ab01f0437cce0f942aa4d89445ba1fe8f"><div class="ttname"><a href="classUGameSoundManager.html#ab01f0437cce0f942aa4d89445ba1fe8f">UGameSoundManager::ConversationVoice</a></div><div class="ttdeci">TObjectPtr&lt; UAudioComponent &gt; ConversationVoice</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8h_source.html#l00060">UGameSoundManager.h:60</a></div></div>
+<div class="ttc" id="aclassUGameSoundManager_html_ab01f0437cce0f942aa4d89445ba1fe8f"><div class="ttname"><a href="classUGameSoundManager.html#ab01f0437cce0f942aa4d89445ba1fe8f">UGameSoundManager::ConversationVoice</a></div><div class="ttdeci">TObjectPtr&lt; UAudioComponent &gt; ConversationVoice</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8h_source.html#l00064">UGameSoundManager.h:64</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameSoundManager_8h_source.html#l00060">ConversationVoice</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameSoundManager_8h_source.html#l00064">ConversationVoice</a>.</p>
 
 </div>
 </div>
@@ -344,7 +349,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  120</span>}</div>
 <div class="ttc" id="aclassUGameSoundManager_html_a2e6af49b820e18a84cb3739d42c781c6"><div class="ttname"><a href="classUGameSoundManager.html#a2e6af49b820e18a84cb3739d42c781c6">UGameSoundManager::StopConversationVoice</a></div><div class="ttdeci">void StopConversationVoice()</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8cpp_source.html#l00122">UGameSoundManager.cpp:122</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameSoundManager_8h_source.html#l00060">ConversationVoice</a>, <a class="el" href="UGameSoundManager_8cpp_source.html#l00122">StopConversationVoice()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameSoundManager_8h_source.html#l00064">ConversationVoice</a>, <a class="el" href="UGameSoundManager_8cpp_source.html#l00122">StopConversationVoice()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -392,7 +397,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   74</span>    }</div>
 <div class="line"><span class="lineno">   75</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameSoundManager_8h_source.html#l00053">SoundData</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameSoundManager_8h_source.html#l00057">SoundData</a>.</p>
 
 </div>
 </div>
@@ -433,9 +438,9 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   96</span>        }</div>
 <div class="line"><span class="lineno">   97</span>    }</div>
 <div class="line"><span class="lineno">   98</span>}</div>
-<div class="ttc" id="aclassUGameSoundManager_html_a014ed49d2c5bdea3e3c8584c959cbbc7"><div class="ttname"><a href="classUGameSoundManager.html#a014ed49d2c5bdea3e3c8584c959cbbc7">UGameSoundManager::ActiveSounds</a></div><div class="ttdeci">TMap&lt; EGameSoundType, UAudioComponent * &gt; ActiveSounds</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8h_source.html#l00056">UGameSoundManager.h:56</a></div></div>
+<div class="ttc" id="aclassUGameSoundManager_html_a014ed49d2c5bdea3e3c8584c959cbbc7"><div class="ttname"><a href="classUGameSoundManager.html#a014ed49d2c5bdea3e3c8584c959cbbc7">UGameSoundManager::ActiveSounds</a></div><div class="ttdeci">TMap&lt; EGameSoundType, UAudioComponent * &gt; ActiveSounds</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8h_source.html#l00060">UGameSoundManager.h:60</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameSoundManager_8h_source.html#l00056">ActiveSounds</a>, <a class="el" href="UGameSoundManager_8h_source.html#l00053">SoundData</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameSoundManager_8h_source.html#l00060">ActiveSounds</a>, <a class="el" href="UGameSoundManager_8h_source.html#l00057">SoundData</a>.</p>
 
 </div>
 </div>
@@ -463,7 +468,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  128</span>    <a class="code hl_variable" href="classUGameSoundManager.html#ab01f0437cce0f942aa4d89445ba1fe8f">ConversationVoice</a> = <span class="keyword">nullptr</span>;</div>
 <div class="line"><span class="lineno">  129</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameSoundManager_8h_source.html#l00060">ConversationVoice</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameSoundManager_8h_source.html#l00064">ConversationVoice</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameSoundManager_8cpp_source.html#l00109">PlayConversationVoice()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -501,7 +506,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  106</span>    }</div>
 <div class="line"><span class="lineno">  107</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UGameSoundManager_8h_source.html#l00056">ActiveSounds</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameSoundManager_8h_source.html#l00060">ActiveSounds</a>.</p>
 
 </div>
 </div>
@@ -526,7 +531,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameSoundManager_8h_source.html">UGameSoundManager.h</a> 파일의 <a class="el" href="UGameSoundManager_8h_source.html#l00056">56</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameSoundManager_8h_source.html">UGameSoundManager.h</a> 파일의 <a class="el" href="UGameSoundManager_8h_source.html#l00060">60</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameSoundManager_8cpp_source.html#l00078">PlaySound2D()</a>, <a class="el" href="UGameSoundManager_8cpp_source.html#l00100">StopSound2D()</a>.</p>
 
@@ -552,7 +557,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameSoundManager_8h_source.html">UGameSoundManager.h</a> 파일의 <a class="el" href="UGameSoundManager_8h_source.html#l00060">60</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameSoundManager_8h_source.html">UGameSoundManager.h</a> 파일의 <a class="el" href="UGameSoundManager_8h_source.html#l00064">64</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameSoundManager_8cpp_source.html#l00131">IsConversationVoicePlaying()</a>, <a class="el" href="UGameSoundManager_8cpp_source.html#l00109">PlayConversationVoice()</a>, <a class="el" href="UGameSoundManager_8cpp_source.html#l00122">StopConversationVoice()</a>.</p>
 
@@ -578,7 +583,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameSoundManager_8h_source.html">UGameSoundManager.h</a> 파일의 <a class="el" href="UGameSoundManager_8h_source.html#l00050">50</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameSoundManager_8h_source.html">UGameSoundManager.h</a> 파일의 <a class="el" href="UGameSoundManager_8h_source.html#l00054">54</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameSoundManager_8cpp_source.html#l00015">UGameSoundManager()</a>, <a class="el" href="UGameSoundManager_8cpp_source.html#l00038">Initialize()</a>.</p>
 
@@ -604,7 +609,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UGameSoundManager_8h_source.html">UGameSoundManager.h</a> 파일의 <a class="el" href="UGameSoundManager_8h_source.html#l00053">53</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UGameSoundManager_8h_source.html">UGameSoundManager.h</a> 파일의 <a class="el" href="UGameSoundManager_8h_source.html#l00057">57</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameSoundManager_8cpp_source.html#l00015">UGameSoundManager()</a>, <a class="el" href="UGameSoundManager_8cpp_source.html#l00066">PlaySound()</a>, <a class="el" href="UGameSoundManager_8cpp_source.html#l00078">PlaySound2D()</a>.</p>
 
@@ -620,7 +625,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUGameSoundManager.html">UGameSoundManager</a></li>
-    <li class="footer">생성시간 : 일 11월 9 2025 07:14:32, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 11월 9 2025 07:46:10, 프로젝트명 : YiSan Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

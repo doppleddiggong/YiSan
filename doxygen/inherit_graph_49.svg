@@ -20,7 +20,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:href="classUChatBoxWidget.html" target="_top" xlink:title=" ">
+<g id="a_Node000001"><a xlink:href="classUChatBoxWidget.html" target="_top" xlink:title="채팅 메시지 목록과 입력창을 포함하는 UI 위젯입니다.">
 <polygon fill="white" stroke="#666666" points="239,-685 139,-685 139,-666 239,-666 239,-685"/>
 <text text-anchor="middle" x="189" y="-673" font-family="Malgun Gothic" font-size="10.00">UChatBoxWidget</text>
 </a>
@@ -38,7 +38,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classUChatEntryWidget.html" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="classUChatEntryWidget.html" target="_top" xlink:title="채팅 목록에 표시되는 개별 채팅 메시지 항목 UI 위젯입니다.">
 <polygon fill="white" stroke="#666666" points="242.5,-648 135.5,-648 135.5,-629 242.5,-629 242.5,-648"/>
 <text text-anchor="middle" x="189" y="-636" font-family="Malgun Gothic" font-size="10.00">UChatEntryWidget</text>
 </a>
@@ -56,7 +56,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classUChatUIWidget.html" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="classUChatUIWidget.html" target="_top" xlink:title="UChatBoxWidget을 포함하는 컨테이너 위젯입니다.">
 <polygon fill="white" stroke="#666666" points="235,-611 143,-611 143,-592 235,-592 235,-611"/>
 <text text-anchor="middle" x="189" y="-599" font-family="Malgun Gothic" font-size="10.00">UChatUIWidget</text>
 </a>
@@ -74,7 +74,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="classUDasanWidget.html" target="_top" xlink:title="다산 NPC 머리 위에 표시되는 상태 표시 위젯">
+<g id="a_Node000004"><a xlink:href="classUDasanWidget.html" target="_top" xlink:title="다산(Dasan) NPC의 머리 위에 표시되어 현재 상태를 알려주는 UI 위젯입니다.">
 <polygon fill="white" stroke="#666666" points="233.5,-574 144.5,-574 144.5,-555 233.5,-555 233.5,-574"/>
 <text text-anchor="middle" x="189" y="-562" font-family="Malgun Gothic" font-size="10.00">UDasanWidget</text>
 </a>
@@ -92,7 +92,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="classUDialogWidget.html" target="_top" xlink:title=" ">
+<g id="a_Node000005"><a xlink:href="classUDialogWidget.html" target="_top" xlink:title="음성 및 텍스트 응답을 출력하는 다이얼로그 위젯입니다.">
 <polygon fill="white" stroke="#666666" points="234,-537 144,-537 144,-518 234,-518 234,-537"/>
 <text text-anchor="middle" x="189" y="-525" font-family="Malgun Gothic" font-size="10.00">UDialogWidget</text>
 </a>
@@ -110,7 +110,7 @@
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="classUEndingWidget.html" target="_top" xlink:title=" ">
+<g id="a_Node000006"><a xlink:href="classUEndingWidget.html" target="_top" xlink:title="게임의 엔딩 시퀀스를 담당하는 UI 위젯입니다.">
 <polygon fill="white" stroke="#666666" points="235,-500 143,-500 143,-481 235,-481 235,-500"/>
 <text text-anchor="middle" x="189" y="-488" font-family="Malgun Gothic" font-size="10.00">UEndingWidget</text>
 </a>
@@ -146,7 +146,7 @@
 <!-- Node8 -->
 <g id="Node000008" class="node">
 <title>Node8</title>
-<g id="a_Node000008"><a xlink:href="classULoadingTransitionWidget.html" target="_top" xlink:title="로딩 화면 위젯 &#45; 각 컴포넌트별 진행률을 시각화합니다.">
+<g id="a_Node000008"><a xlink:href="classULoadingTransitionWidget.html" target="_top" xlink:title="레벨 전환 시 표시되는 전체 화면 로딩 위젯입니다.">
 <polygon fill="white" stroke="#666666" points="261,-426 117,-426 117,-407 261,-407 261,-426"/>
 <text text-anchor="middle" x="189" y="-414" font-family="Malgun Gothic" font-size="10.00">ULoadingTransitionWidget</text>
 </a>
@@ -218,7 +218,7 @@
 <!-- Node12 -->
 <g id="Node000012" class="node">
 <title>Node12</title>
-<g id="a_Node000012"><a xlink:href="classUPlayerHeadWidget.html" target="_top" xlink:title=" ">
+<g id="a_Node000012"><a xlink:href="classUPlayerHeadWidget.html" target="_top" xlink:title="플레이어 캐릭터의 머리 위에 표시되어 플레이어 이름과 아이콘을 보여주는 UI 위젯입니다.">
 <polygon fill="white" stroke="#666666" points="246.5,-278 131.5,-278 131.5,-259 246.5,-259 246.5,-278"/>
 <text text-anchor="middle" x="189" y="-266" font-family="Malgun Gothic" font-size="10.00">UPlayerHeadWidget</text>
 </a>
@@ -236,7 +236,7 @@
 <!-- Node13 -->
 <g id="Node000013" class="node">
 <title>Node13</title>
-<g id="a_Node000013"><a xlink:href="classUPlayerListItem.html" target="_top" xlink:title=" ">
+<g id="a_Node000013"><a xlink:href="classUPlayerListItem.html" target="_top" xlink:title="플레이어 목록에 표시되는 개별 플레이어 정보 항목 UI 위젯입니다.">
 <polygon fill="white" stroke="#666666" points="236.5,-241 141.5,-241 141.5,-222 236.5,-222 236.5,-241"/>
 <text text-anchor="middle" x="189" y="-229" font-family="Malgun Gothic" font-size="10.00">UPlayerListItem</text>
 </a>
@@ -254,7 +254,7 @@
 <!-- Node14 -->
 <g id="Node000014" class="node">
 <title>Node14</title>
-<g id="a_Node000014"><a xlink:href="classUPlayerWidget.html" target="_top" xlink:title=" ">
+<g id="a_Node000014"><a xlink:href="classUPlayerWidget.html" target="_top" xlink:title="현재 세션에 참여한 플레이어 목록을 표시하는 UI 위젯입니다.">
 <polygon fill="white" stroke="#666666" points="233.5,-204 144.5,-204 144.5,-185 233.5,-185 233.5,-204"/>
 <text text-anchor="middle" x="189" y="-192" font-family="Malgun Gothic" font-size="10.00">UPlayerWidget</text>
 </a>
@@ -272,7 +272,7 @@
 <!-- Node15 -->
 <g id="Node000015" class="node">
 <title>Node15</title>
-<g id="a_Node000015"><a xlink:href="classUSessionInfoWidget.html" target="_top" xlink:title=" ">
+<g id="a_Node000015"><a xlink:href="classUSessionInfoWidget.html" target="_top" xlink:title="검색된 멀티플레이어 세션 정보를 표시하고 참여 버튼을 제공하는 UI 위젯입니다.">
 <polygon fill="white" stroke="#666666" points="246.5,-167 131.5,-167 131.5,-148 246.5,-148 246.5,-167"/>
 <text text-anchor="middle" x="189" y="-155" font-family="Malgun Gothic" font-size="10.00">USessionInfoWidget</text>
 </a>
@@ -344,7 +344,7 @@
 <!-- Node19 -->
 <g id="Node000019" class="node">
 <title>Node19</title>
-<g id="a_Node000019"><a xlink:href="classUVoiceGuidePanel.html" target="_top" xlink:title=" ">
+<g id="a_Node000019"><a xlink:href="classUVoiceGuidePanel.html" target="_top" xlink:title="사용 가능한 음성 명령 예시를 보여주는 안내 UI 패널 위젯입니다.">
 <polygon fill="white" stroke="#666666" points="241.5,-19 136.5,-19 136.5,0 241.5,0 241.5,-19"/>
 <text text-anchor="middle" x="189" y="-7" font-family="Malgun Gothic" font-size="10.00">UVoiceGuidePanel</text>
 </a>
