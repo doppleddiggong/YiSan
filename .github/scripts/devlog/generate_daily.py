@@ -20,9 +20,13 @@ def sh(cmd):
     except subprocess.CalledProcessError:
         return ""
 
-def git_range_since(since):
-    """특정 시간 이후의 커밋 해시 목록 반환"""
-    result = sh(f'git log --since="{since}" --pretty=format:"%H"')
+def git_range_since(since, until=None):
+    """특정 시간 범위의 커밋 해시 목록 반환"""
+    cmd = f'git log --since="{since}"'
+    if until:
+        cmd += f' --until="{until}"'
+    cmd += ' --pretty=format:"%H"'
+    result = sh(cmd)
     return result.splitlines() if result else []
 
 def git_stats(commits):
@@ -215,6 +219,7 @@ def render(context, template_path, out_path):
 def main():
     ap = argparse.ArgumentParser(description="Daily DevLog Generator")
     ap.add_argument("--since", default="24 hours", help="Git log 시작 시간")
+    ap.add_argument("--until", default=None, help="Git log 종료 시간 (선택)")
     ap.add_argument("--branch", required=True, help="현재 브랜치")
     ap.add_argument("--base", default="origin/main", help="베이스 브랜치")
     ap.add_argument("--out", required=True, help="출력 파일 경로")
@@ -232,7 +237,7 @@ def main():
         args.template = script_dir / "daily_template.md"
 
     # 데이터 수집
-    commits = git_range_since(args.since)
+    commits = git_range_since(args.since, args.until)
     gstats = git_stats(commits)
     ubt = parse_ubt_summary(args.ubt_log) if args.ubt_log else {}
     cook = parse_cook_summary(args.cook_log) if args.cook_log else {}
