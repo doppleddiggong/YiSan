@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"classALatteGameCharacter.html#a6d8d39a0466409ebe8ca6c4029233d68":[4,0,4,60],
 "classALatteGameCharacter.html#a6de7568896e79c0d5108926c0306ab9f":[4,0,4,37],
 "classALatteGameCharacter.html#a74611b9329afcca5a7399cf1740cbaa5":[4,0,4,56],
 "classALatteGameCharacter.html#a7a51994ad06ce660fdf5e1736de08fab":[4,0,4,12],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "classAPlayerControl.html#af6d76c8a6c19c167fada99f2043fbd36":[4,0,11,54],
 "classAPlayerControl.html#af8425558108277d10a994f61be0455b7":[4,0,11,12],
 "classAPlayerControl.html#afb5a7979f52fbc43b228e42d8b32300e":[4,0,11,13],
-"classAQuestManagerActor.html":[4,0,12],
-"classAQuestManagerActor.html#a075a4f1b1eb6faf699a840e09c6b64b8":[4,0,12,4]
+"classAQuestManagerActor.html":[4,0,12]
 };
