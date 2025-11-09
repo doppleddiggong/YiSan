@@ -97,8 +97,8 @@ jobs:
 
           python .github/scripts/devlog/generate_weekly.py \
             $DATE_ARG \
-            --devlog-dir "Documents/DevLog" \
-            --out "Documents/DevLog/${WEEK_LABEL}-Summary.md"
+            --devlog-dir "Documents/DevLog/Daily" \
+            --out "Documents/DevLog/Weekly/${WEEK_LABEL}-Summary.md"
 
       - name: Generate GPT Weekly Feedback (Optional)
         if: steps.config.outputs.use_gpt == 'true' || steps.config.outputs.use_gpt == 'True'
@@ -107,16 +107,16 @@ jobs:
         run: |
           chmod +x .github/scripts/devlog/generate_weekly_feedback.py
           python .github/scripts/devlog/generate_weekly_feedback.py \
-            --weekly-file "Documents/DevLog/${{ steps.weekly.outputs.week_label }}-Summary.md" \
-            --devlog-dir "Documents/DevLog" \
+            --weekly-file "Documents/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.md" \
+            --devlog-dir "Documents/DevLog/Daily" \
             --week-label "${{ steps.weekly.outputs.week_label }}" \
-            --output "Documents/DevLog/${{ steps.weekly.outputs.week_label }}-feedback.md"
+            --output "Documents/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-feedback.md"
 
       - name: Merge Weekly Report and Feedback
         if: steps.config.outputs.use_gpt == 'true' || steps.config.outputs.use_gpt == 'True'
         run: |
-          BASE_FILE="Documents/DevLog/${{ steps.weekly.outputs.week_label }}-Summary.md"
-          FEEDBACK_FILE="Documents/DevLog/${{ steps.weekly.outputs.week_label }}-feedback.md"
+          BASE_FILE="Documents/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.md"
+          FEEDBACK_FILE="Documents/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-feedback.md"
 
           if [ -f "$FEEDBACK_FILE" ]; then
             cat "$FEEDBACK_FILE" >> "$BASE_FILE"
@@ -135,10 +135,10 @@ jobs:
           git checkout -B docs origin/docs || git checkout -b docs
 
           # 기존 파일 삭제 후 재생성
-          rm -f "Documents/DevLog/${{ steps.weekly.outputs.week_label }}-Summary.md"
+          rm -f "Documents/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.md"
 
           # 재생성된 파일 추가
-          git add -f Documents/DevLog/*.md Documents/SUMMARY.md
+          git add -f Documents/DevLog/Weekly/*.md Documents/SUMMARY.md
 
           if git diff --staged --quiet; then
             echo "No changes to commit"
@@ -166,14 +166,14 @@ jobs:
             python .github/scripts/devlog/send_discord.py \
               --webhook-url "$DISCORD_WEBHOOK" \
               --type "weekly" \
-              --devlog-file "Documents/DevLog/${{ steps.weekly.outputs.week_label }}-Summary.md" \
+              --devlog-file "Documents/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.md" \
               --date "${{ steps.weekly.outputs.week_label }}" \
-              --devlog-url "https://doppleddiggong.github.io/YiSan/docs/DevLog/${{ steps.weekly.outputs.week_label }}-Summary.html"
+              --devlog-url "https://doppleddiggong.github.io/YiSan/docs/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.html"
           fi
 
       - name: Summary
         run: |
           echo "✅ Weekly DevLog Report has been generated!"
           echo "📅 Week: ${{ steps.weekly.outputs.week_label }}"
-          echo "📝 File: Documents/DevLog/${{ steps.weekly.outputs.week_label }}-Summary.md"
-          echo "🔗 URL: https://doppleddiggong.github.io/YiSan/docs/DevLog/${{ steps.weekly.outputs.week_label }}-Summary.html"
+          echo "📝 File: Documents/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.md"
+          echo "🔗 URL: https://doppleddiggong.github.io/YiSan/docs/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.html"

@@ -88,7 +88,7 @@ jobs:
             --since "24 hours" \
             --branch "${{ steps.date.outputs.branch }}" \
             --base "origin/main" \
-            --out "Documents/DevLog/${{ steps.date.outputs.today }}.md"
+            --out "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md"
 
       - name: Generate GPT Feedback (Optional)
         if: steps.config.outputs.use_gpt == 'true' || steps.config.outputs.use_gpt == 'True'
@@ -96,15 +96,15 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           python .github/scripts/devlog/generate_gpt_feedback.py \
-            --devlog-file "Documents/DevLog/${{ steps.date.outputs.today }}.md" \
+            --devlog-file "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md" \
             --since "24 hours" \
-            --output "Documents/DevLog/${{ steps.date.outputs.today }}-feedback.md"
+            --output "Documents/DevLog/Daily/${{ steps.date.outputs.today }}-feedback.md"
 
       - name: Merge DevLog and Feedback
         if: steps.config.outputs.use_gpt == 'true' || steps.config.outputs.use_gpt == 'True'
         run: |
-          BASE_FILE="Documents/DevLog/${{ steps.date.outputs.today }}.md"
-          FEEDBACK_FILE="Documents/DevLog/${{ steps.date.outputs.today }}-feedback.md"
+          BASE_FILE="Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md"
+          FEEDBACK_FILE="Documents/DevLog/Daily/${{ steps.date.outputs.today }}-feedback.md"
 
           if [ -f "$FEEDBACK_FILE" ]; then
             # 기본 DevLog + GPT 피드백 병합
@@ -115,8 +115,8 @@ jobs:
 
       - name: Create empty metrics file
         run: |
-          if [ ! -f "Documents/DevLog/${{ steps.date.outputs.today }}.metrics.json" ]; then
-            echo '{}' > "Documents/DevLog/${{ steps.date.outputs.today }}.metrics.json"
+          if [ ! -f "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.metrics.json" ]; then
+            echo '{}' > "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.metrics.json"
           fi
 
       - name: Update SUMMARY.md
@@ -133,11 +133,11 @@ jobs:
           git checkout -B docs origin/docs || git checkout -b docs
 
           # 기존 파일 삭제 후 재생성
-          rm -f "Documents/DevLog/${{ steps.date.outputs.today }}.md"
-          rm -f "Documents/DevLog/${{ steps.date.outputs.today }}.metrics.json"
+          rm -f "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md"
+          rm -f "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.metrics.json"
 
           # 재생성된 파일 추가
-          git add -f Documents/DevLog/*.md Documents/DevLog/*.json Documents/SUMMARY.md
+          git add -f Documents/DevLog/Daily/*.md Documents/DevLog/Daily/*.json Documents/SUMMARY.md
 
           if git diff --staged --quiet; then
             echo "No changes to commit"
@@ -165,14 +165,14 @@ jobs:
             python .github/scripts/devlog/send_discord.py \
               --webhook-url "$DISCORD_WEBHOOK" \
               --type "daily" \
-              --devlog-file "Documents/DevLog/${{ steps.date.outputs.today }}.md" \
+              --devlog-file "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md" \
               --date "${{ steps.date.outputs.today }}" \
-              --devlog-url "https://doppleddiggong.github.io/YiSan/docs/DevLog/${{ steps.date.outputs.today }}.html"
+              --devlog-url "https://doppleddiggong.github.io/YiSan/docs/DevLog/Daily/${{ steps.date.outputs.today }}.html"
           fi
 
       - name: Summary
         run: |
           echo "✅ Daily DevLog has been generated!"
           echo "📅 Date: ${{ steps.date.outputs.today }}"
-          echo "📝 File: Documents/DevLog/${{ steps.date.outputs.today }}.md"
-          echo "🔗 URL: https://doppleddiggong.github.io/YiSan/docs/DevLog/${{ steps.date.outputs.today }}.html"
+          echo "📝 File: Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md"
+          echo "🔗 URL: https://doppleddiggong.github.io/YiSan/docs/DevLog/Daily/${{ steps.date.outputs.today }}.html"

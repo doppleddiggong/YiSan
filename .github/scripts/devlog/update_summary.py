@@ -11,7 +11,7 @@ from collections import defaultdict
 from datetime import datetime
 
 def scan_devlog(devlog_dir):
-    """DevLog 폴더 스캔"""
+    """DevLog 폴더 스캔 (Daily, Weekly, Monthly 하위 폴더 지원)"""
     devlog_path = Path(devlog_dir)
     if not devlog_path.exists():
         return {}
@@ -21,22 +21,35 @@ def scan_devlog(devlog_dir):
     weekly_logs = []
     monthly_logs = []
 
+    # Daily 폴더 스캔
+    daily_dir = devlog_path / "Daily"
+    if daily_dir.exists():
+        for md_file in sorted(daily_dir.glob("*.md"), reverse=True):
+            filename = md_file.stem
+            # 일일 로그 (YYYY-MM-DD 형식)
+            if re.match(r"\d{4}-\d{2}-\d{2}", filename):
+                year_month = filename[:7]  # YYYY-MM
+                daily_logs[year_month].append((filename, f"Daily/{md_file.name}"))
+
+    # Weekly 폴더 스캔
+    weekly_dir = devlog_path / "Weekly"
+    if weekly_dir.exists():
+        for md_file in sorted(weekly_dir.glob("*.md"), reverse=True):
+            filename = md_file.stem
+            if "W" in filename and "Summary" in filename:
+                weekly_logs.append((filename, f"Weekly/{md_file.name}"))
+
+    # Monthly 폴더 스캔
+    monthly_dir = devlog_path / "Monthly"
+    if monthly_dir.exists():
+        for md_file in sorted(monthly_dir.glob("*.md"), reverse=True):
+            filename = md_file.stem
+            monthly_logs.append((filename, f"Monthly/{md_file.name}"))
+
+    # 루트의 특수 Summary 파일들 (_Last30Summary.md 등)
     for md_file in sorted(devlog_path.glob("*.md"), reverse=True):
         filename = md_file.stem
-
-        # 주간 요약
-        if "W" in filename and "Summary" in filename:
-            weekly_logs.append((filename, md_file.name))
-        # 월간 요약
-        elif "Monthly" in filename:
-            monthly_logs.append((filename, md_file.name))
-        # 일일 로그 (YYYY-MM-DD 형식)
-        elif re.match(r"\d{4}-\d{2}-\d{2}", filename):
-            # 연도-월 추출
-            year_month = filename[:7]  # YYYY-MM
-            daily_logs[year_month].append((filename, md_file.name))
-        # Last30Summary 등 특수 요약
-        elif "Summary" in filename:
+        if "Summary" in filename:
             weekly_logs.append((filename, md_file.name))
 
     return {
