@@ -72,7 +72,7 @@
 * [2025-09-09](DevLog/Daily/2025-09-09.md)
 
 ### Weekly Summary
-* [Weekly DevLog — 2025-W45 (2025-11-03 ~ 2025-11-09)](DevLog/Weekly/2025-W45-Summary.md)
+* [주간 개발 요약 (2025-11-03 ~ 2025-11-09)](DevLog/Weekly/2025-W45-Summary.md)
 * [주간 개발 요약 (2025-10-27 ~ 2025-11-02)](DevLog/Weekly/2025-W44-Summary.md)
 * [주간 개발 요약 (2025-10-20 ~ 2025-10-26)](DevLog/Weekly/2025-W43-Summary.md)
 * [주간 개발 요약 (2025-10-13 ~ 2025-10-19)](DevLog/Weekly/2025-W42-Summary.md)
