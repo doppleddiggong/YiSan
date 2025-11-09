@@ -17,11 +17,11 @@ CURRENT_DATE=$(python3 -c "from datetime import datetime, timedelta, timezone; k
 CURRENT_TIME=$(python3 -c "from datetime import datetime, timedelta, timezone; kst = timezone(timedelta(hours=9)); now = datetime.now(kst); print(now.strftime('%Y%m%d %H:%M'))" 2>/dev/null || date '+%Y%m%d %H:%M')
 
 # 4. AgentLog 디렉토리 생성
-AGENT_LOG_DIR="${GIT_ROOT}/AgentLog/${GIT_USER}"
+AGENT_LOG_DIR="${GIT_ROOT}/Documents/AgentLog/${GIT_USER}"
 mkdir -p "${AGENT_LOG_DIR}"
 
 # 5. 로그 파일 경로
-LOG_FILE="${AGENT_LOG_DIR}/${CURRENT_DATE}.md"
+LOG_FILE="${AGENT_LOG_DIR}/${GIT_USER}_${CURRENT_DATE}.md"
 
 # 6. Start Log 작성
 if [ -f "${LOG_FILE}" ]; then
@@ -38,7 +38,7 @@ if [ -f "${LOG_FILE}" ]; then
 else
     # 파일이 없으면 새로 생성
     cat > "${LOG_FILE}" <<EOF
-# ${GIT_USER} ${CURRENT_DATE}
+# ${GIT_USER} (${CURRENT_DATE})
 
 # Start Log
 - ${CURRENT_TIME}
@@ -61,7 +61,7 @@ fi
 cat <<EOF
 {
   "success": true,
-  "message": "✅ Start Log가 자동으로 생성되었습니다.\n📝 파일: AgentLog/${GIT_USER}/${CURRENT_DATE}.md",
+  "message": "✅ Start Log가 자동으로 생성되었습니다.\n📝 파일: Documents/AgentLog/${GIT_USER}/${GIT_USER}_${CURRENT_DATE}.md",
   "logFile": "${LOG_FILE}"
 }
 EOF

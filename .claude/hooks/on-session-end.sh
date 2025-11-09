@@ -15,7 +15,7 @@ CURRENT_DATE=$(python3 -c "from datetime import datetime, timedelta, timezone; k
 CURRENT_TIME=$(python3 -c "from datetime import datetime, timedelta, timezone; kst = timezone(timedelta(hours=9)); now = datetime.now(kst); print(now.strftime('%Y%m%d %H:%M'))" 2>/dev/null || date '+%Y%m%d %H:%M')
 
 # 4. 로그 파일 경로
-LOG_FILE="${GIT_ROOT}/AgentLog/${GIT_USER}/${CURRENT_DATE}.md"
+LOG_FILE="${GIT_ROOT}/Documents/AgentLog/${GIT_USER}/${GIT_USER}_${CURRENT_DATE}.md"
 
 # 5. 로그 파일이 없으면 종료 (Start Log가 없는 경우)
 if [ ! -f "${LOG_FILE}" ]; then
@@ -56,7 +56,7 @@ EOF
 cat <<EOF
 {
   "success": true,
-  "message": "✅ End Log가 자동으로 생성되었습니다.\n📝 파일: AgentLog/${GIT_USER}/${CURRENT_DATE}.md\n\n수고하셨습니다!",
+  "message": "✅ End Log가 자동으로 생성되었습니다.\n📝 파일: Documents/AgentLog/${GIT_USER}/${GIT_USER}_${CURRENT_DATE}.md\n\n수고하셨습니다!",
   "logFile": "${LOG_FILE}"
 }
 EOF
