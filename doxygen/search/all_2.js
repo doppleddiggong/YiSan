@@ -79,7 +79,7 @@ var searchData=
   ['context_76',['context',['../structFRequestASK.html#a359ee975eaaf4300bac81db287a907d9',1,'FRequestASK::context'],['../structFRequestGPT.html#a0a530c2d1e94ba1c191898b9540fe740',1,'FRequestGPT::context']]],
   ['conversationvoice_77',['ConversationVoice',['../classUGameSoundManager.html#ab01f0437cce0f942aa4d89445ba1fe8f',1,'UGameSoundManager']]],
   ['convertpcm2wav_78',['ConvertPCM2WAV',['../classUVoiceFunctionLibrary.html#aefbf705777114a8667edc76347e70cda',1,'UVoiceFunctionLibrary']]],
-  ['core_20systems_79',['핵심 시스템 (Core Systems)',['../index.html#autotoc_md8',1,'']]],
+  ['core_20systems_79',['핵심 시스템 (Core Systems)',['../index.html#autotoc_md9',1,'']]],
   ['createmysession_80',['CreateMySession',['../classUYisanOnlineSystem.html#aeb32037aaee5ec5cb4a888b1215e427e',1,'UYisanOnlineSystem']]],
   ['createplayerlistitem_81',['createplayerlistitem',['../classUStartWidget.html#a222d7ad34bc3d10890916cd6e3d61b23',1,'UStartWidget::CreatePlayerListItem()'],['../classUPlayerWidget.html#a55876fd00359d52bfe85a4bf8338a80c',1,'UPlayerWidget::CreatePlayerListItem()']]],
   ['createproceduralsoundwavefromwavdata_82',['CreateProceduralSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#adf741678fa5eeadc6dbe30624ef6888b',1,'UVoiceFunctionLibrary']]],
