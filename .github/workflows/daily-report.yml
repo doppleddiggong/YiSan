@@ -123,11 +123,22 @@ jobs:
         run: |
           python .github/scripts/devlog/update_summary.py Documents
 
-      - name: Commit and Push
+      - name: Commit and Push to docs branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add Documents/DevLog/*.md Documents/DevLog/*.json Documents/SUMMARY.md
+
+          # docs 브랜치로 전환 (없으면 생성)
+          git fetch origin
+          git checkout -B docs origin/docs || git checkout -b docs
+
+          # 기존 파일 삭제 후 재생성
+          rm -f "Documents/DevLog/${{ steps.date.outputs.today }}.md"
+          rm -f "Documents/DevLog/${{ steps.date.outputs.today }}.metrics.json"
+
+          # 재생성된 파일 추가
+          git add -f Documents/DevLog/*.md Documents/DevLog/*.json Documents/SUMMARY.md
+
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
@@ -136,7 +147,10 @@ jobs:
           🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
           Co-Authored-By: Claude <noreply@anthropic.com>"
-            git push
+
+            # rebase 후 push (충돌 방지)
+            git pull --rebase origin docs || true
+            git push origin docs --force-with-lease
           fi
 
       - name: Send Discord Notification

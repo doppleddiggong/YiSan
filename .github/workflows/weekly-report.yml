@@ -31,11 +31,10 @@ jobs:
         with:
           fetch-depth: 0  # 전체 히스토리 가져오기
 
-      - name: Sync with remote (prevent rebase conflicts)
+      - name: Setup Git Config
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -129,30 +128,30 @@ jobs:
         run: |
           python .github/scripts/devlog/update_summary.py Documents
 
-      - name: Commit and Push
+      - name: Commit and Push to docs branch
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # docs 브랜치로 전환 (없으면 생성)
+          git fetch origin
+          git checkout -B docs origin/docs || git checkout -b docs
 
-          git add Documents/DevLog/*.md Documents/SUMMARY.md
+          # 기존 파일 삭제 후 재생성
+          rm -f "Documents/DevLog/${{ steps.weekly.outputs.week_label }}-Summary.md"
+
+          # 재생성된 파일 추가
+          git add -f Documents/DevLog/*.md Documents/SUMMARY.md
 
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            echo "chore(devlog): weekly report ${{ steps.weekly.outputs.week_label }}" > commit_message.txt
-            echo "Co-Authored-By: Claude <noreply@anthropic.com>" >> commit_message.txt
-            
-            git commit -F commit_message.txt
-            rm commit_message.txt
+            git commit -m "chore(devlog): weekly report ${{ steps.weekly.outputs.week_label }}
 
-            for attempt in 1 2 3; do
-              if git push origin HEAD:main; then
-                break
-              fi
+          🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
-              echo "⚠️ Push failed (attempt $attempt). Retrying..."
-              git pull --rebase origin main || true
-            done
+          Co-Authored-By: Claude <noreply@anthropic.com>"
+
+            # rebase 후 push (충돌 방지)
+            git pull --rebase origin docs || true
+            git push origin docs --force-with-lease
           fi
 
       - name: Send Discord Notification
