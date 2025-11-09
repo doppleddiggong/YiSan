@@ -439,6 +439,17 @@ void APlayerControl::HandleLoadingComplete()
 	if (!IsLocalController())
 		return;
 
+	// 게스트가 join한 경우 PostLoadMapWithWorld가 호출되지 않을 수 있음
+	// 이 경우 로딩 상태를 강제로 완료 처리
+	if (auto LoadingSubsystem = UYiSanLoading::Get(GetWorld()))
+	{
+		if (!LoadingSubsystem->IsLoadingComplete())
+		{
+			PRINTLOG(TEXT("[LOADING_FLOW] Loading not complete - attempting to force complete for guest"));
+			LoadingSubsystem->ForceCompleteForGuest();
+		}
+	}
+
 	if (!IsReadyToFinish())
 	{
 		if (!bAwaitFinish)

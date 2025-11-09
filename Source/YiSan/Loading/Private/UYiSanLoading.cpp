@@ -477,4 +477,45 @@ bool UYiSanLoading::IsLoadingComplete() const
 {
     return CompleteState[EState::COMPLETE];
 }
+
+void UYiSanLoading::ForceCompleteForGuest()
+{
+    // 이미 완료 상태면 리턴
+    if (CompleteState[EState::COMPLETE])
+    {
+        PRINTLOG(TEXT("[LOADING_FLOW] ForceCompleteForGuest - Already complete, skipping"));
+        return;
+    }
+
+    // TotalTime이 0이고 클라이언트면 게스트로 판단
+    UWorld* World = GetWorld();
+    if (!World)
+    {
+        PRINTLOG(TEXT("[LOADING_FLOW] ForceCompleteForGuest - World is null"));
+        return;
+    }
+
+    if (TotalTime < KINDA_SMALL_NUMBER && World->GetNetMode() == NM_Client)
+    {
+        PRINTLOG(TEXT("[LOADING_FLOW] ForceCompleteForGuest - Guest detected (TotalTime=%.3f, NetMode=Client), forcing completion"), TotalTime);
+
+        CompleteState[EState::WP] = true;
+        CompleteState[EState::TEXTURE] = true;
+        CompleteState[EState::LI] = true;
+        CompleteState[EState::COMPLETE] = true;
+
+        Progress_Texture = 1.0f;
+        Progress_LI = 1.0f;
+
+        CurState = EState::COMPLETE;
+
+        PRINTLOG(TEXT("[LOADING_FLOW] ForceCompleteForGuest - Loading state forced to complete"));
+    }
+    else
+    {
+        PRINTLOG(TEXT("[LOADING_FLOW] ForceCompleteForGuest - Not a guest (TotalTime=%.3f, NetMode=%s)"),
+            TotalTime,
+            World->GetNetMode() == NM_Client ? TEXT("Client") : TEXT("Server/Standalone"));
+    }
+}
 #pragma endregion

@@ -43,6 +43,9 @@ public:
     /** @brief 추적 중인 모든 로딩 단계가 완료되었는지 여부를 반환합니다. */
     bool IsLoadingComplete() const;
 
+    /** @brief 게스트 클라이언트의 경우 강제로 로딩 완료 처리합니다. */
+    void ForceCompleteForGuest();
+
 private:
     void PrepareForTravel();
     void PostLoadMapWithWorld(UWorld* InWorld);

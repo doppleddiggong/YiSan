@@ -3,8 +3,11 @@
 #include "UChatPlayerSystem.h"
 #include "UChatBoxWidget.h"
 #include "APlayerActor.h"
+#include "APlayerControl.h"
 #include "AYisanGameState.h"
 #include "UGameSoundManager.h"
+#include "ULoadingTransitionManager.h"
+#include "GameLogging.h"
 #include "YiSan/YiSan.h"
 #include "GameFramework/PlayerController.h"
 
@@ -109,5 +112,21 @@ void UChatPlayerSystem::AnnouncePlayerJoin()
 	if (auto GS = GetWorld()->GetGameState<AYisanGameState>())
 	{
 		GS->ServerRPC_PlaySound(EGameSoundType::Enter_Game);
+	}
+
+	// 플레이어 입장 메시지 표시 시점에 로딩 화면 숨김 (게스트 join 시점 처리)
+	PRINTLOG(TEXT("[LOADING_FLOW] AnnouncePlayerJoin - Player entered game, hiding loading screen"));
+	if (Owner)
+	{
+		if (auto PC = Cast<APlayerControl>(Owner->GetController()))
+		{
+			if (PC->IsLocalController())
+			{
+				if (auto TM = ULoadingTransitionManager::Get(PC))
+				{
+					TM->HideLoadingScreen();
+				}
+			}
+		}
 	}
 }
