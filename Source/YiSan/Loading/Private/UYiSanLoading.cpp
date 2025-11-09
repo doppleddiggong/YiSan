@@ -142,10 +142,33 @@ void UYiSanLoading::PostLoadMapWithWorld(UWorld* InWorld)
         InWorld->GetNetMode() == NM_Client ? TEXT("Client") : TEXT("Server/Standalone"));
     PRINTLOG(TEXT("[WP] 맵 로드 완료: %s"), *InWorld->GetName());
 
+    // 게스트 클라이언트가 이미 로드된 맵에 join하는 경우 감지
+    // PrepareForTravel이 호출되지 않았다면 TotalTime이 0이거나 매우 작음
+    const bool bIsFreshJoin = (TotalTime < KINDA_SMALL_NUMBER);
+
+    if (bIsFreshJoin && InWorld->GetNetMode() == NM_Client)
+    {
+        PRINTLOG(TEXT("[LOADING_FLOW] Guest client joining already loaded map - skipping loading process"));
+
+        // 게스트 클라이언트는 이미 로드된 맵에 join하므로 즉시 완료 처리
+        CompleteState[EState::WP] = true;
+        CompleteState[EState::TEXTURE] = true;
+        CompleteState[EState::LI] = true;
+        CompleteState[EState::COMPLETE] = true;
+
+        Progress_Texture = 1.0f;
+        Progress_LI = 1.0f;
+
+        CurState = EState::COMPLETE;
+
+        return; // UpdateTick 시작하지 않음
+    }
+
     // 클라이언트가 자동 travel될 때 (PrepareForTravel 없이), 로딩 상태 초기화
+    // 예: 서버 측에서 맵 전환이 발생한 경우
     if (CurState == EState::COMPLETE || CompleteState[EState::COMPLETE])
     {
-        PRINTLOG(TEXT("[LOADING_FLOW] PostLoadMapWithWorld - Resetting loading state for auto-traveled client"));
+        PRINTLOG(TEXT("[LOADING_FLOW] PostLoadMapWithWorld - Resetting loading state for new map load"));
 
         TotalTime = FPlatformTime::Seconds();
 
