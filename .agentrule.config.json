@@ -1,0 +1,79 @@
+{
+  "commit_ai": {
+    "enabled": true,
+    "provider": "claude",
+    "fallback_provider": "gemini",
+    "fallback_to_template": true,
+    "timeout_seconds": 30,
+    "supported_providers": ["claude", "gemini"]
+  },
+  "commit_convention": {
+    "types": [
+      {
+        "type": "feat",
+        "description": "새로운 기능 추가",
+        "emoji": "✨"
+      },
+      {
+        "type": "fix",
+        "description": "버그 수정",
+        "emoji": "🐛"
+      },
+      {
+        "type": "docs",
+        "description": "문서 변경",
+        "emoji": "📝"
+      },
+      {
+        "type": "style",
+        "description": "코드 포맷팅, 세미콜론 누락 등",
+        "emoji": "💎"
+      },
+      {
+        "type": "refactor",
+        "description": "코드 리팩토링",
+        "emoji": "♻️"
+      },
+      {
+        "type": "test",
+        "description": "테스트 코드 추가/수정",
+        "emoji": "✅"
+      },
+      {
+        "type": "chore",
+        "description": "빌드 프로세스, 보조 도구 변경 등",
+        "emoji": "🔧"
+      },
+      {
+        "type": "perf",
+        "description": "성능 개선",
+        "emoji": "⚡"
+      },
+      {
+        "type": "ci",
+        "description": "CI 설정 변경",
+        "emoji": "👷"
+      },
+      {
+        "type": "build",
+        "description": "빌드 시스템 변경",
+        "emoji": "🏗️"
+      }
+    ],
+    "default_type": "feat",
+    "subject_max_length": 50,
+    "body_wrap_length": 72,
+    "include_emoji": false
+  },
+  "log_system": {
+    "enabled": true,
+    "auto_start": true,
+    "auto_end": true
+  },
+  "devlog": {
+    "enabled": true,
+    "schedule": "daily",
+    "use_api": true,
+    "notify_discord_on_no_commits": true
+  }
+}
