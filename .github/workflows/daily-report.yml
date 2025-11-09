@@ -81,7 +81,7 @@ jobs:
       - name: Make scripts executable
         run: |
           chmod +x .github/scripts/devlog/generate_daily.py
-          chmod +x .github/scripts/devlog/update_summary.py
+          chmod +x .github/scripts/generate_summary.py
 
       - name: Generate Daily DevLog
         run: |
@@ -122,7 +122,7 @@ jobs:
 
       - name: Update SUMMARY.md
         run: |
-          python .github/scripts/devlog/update_summary.py Documents
+          python .github/scripts/generate_summary.py
 
       - name: Commit and Push
         run: |
@@ -130,7 +130,11 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           # 생성된 파일 추가
-          git add -f Documents/DevLog/Daily/*.md Documents/DevLog/Daily/*.json Documents/SUMMARY.md
+          git add -f \
+            Documents/DevLog/Daily/*.md \
+            Documents/DevLog/Daily/*.json \
+            Documents/SUMMARY.md \
+            Documents/HonkitPage/SUMMARY.md
 
           if git diff --staged --quiet; then
             echo "No changes to commit"

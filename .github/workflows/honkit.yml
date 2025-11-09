@@ -6,6 +6,7 @@ on:
     branches:
       - main
       - dopple
+      - docs
     paths:
       - 'Documents/DevLog/**'
       - 'Documents/Planning/**'
@@ -30,6 +31,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Sync docs branch content
+        run: |
+          git fetch origin docs
+          git checkout docs
 
       - name: Setup Python
         uses: actions/setup-python@v5
