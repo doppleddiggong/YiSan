@@ -19,6 +19,10 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UGameDataManager.generated.h"
 
+/**
+ * @brief 데이터 테이블(.csv)에서 게임 데이터를 로드하고 캐시하여 런타임에 빠르게 접근할 수 있도록 제공하는 데이터 관리 서브시스템입니다.
+ * @details 캐릭터 정보, 건물 데이터, 히트스톱, 넉백 등 다양한 마스터 데이터를 관리하며, 필요 시 데이터를 리로드하는 기능을 제공합니다.
+ */
 UCLASS()
 class LATTELIBRARY_API UGameDataManager : public UGameInstanceSubsystem
 {

@@ -17,7 +17,8 @@ DECLARE_DELEGATE_TwoParams(FFindComplete, int32, FString);
 DECLARE_MULTICAST_DELEGATE_OneParam(FOnPlayerListUpdated, const TArray<FString>& /* PlayerNames */);
 
 /**
- * @brief 온라인 서브시스템 기반의 세션 생성, 탐색, 복제 유틸리티를 제공합니다.
+ * @brief 언리얼 온라인 서브시스템(Online Subsystem)을 기반으로 세션 생성, 검색, 참여 등 멀티플레이어 세션 관리를 담당하는 서브시스템입니다.
+ * @details 플레이어 목록을 관리하고, 세션 관련 UI와 상호작용하며, 네트워크 연결의 핵심 로직을 처리합니다.
  */
 UCLASS()
 class YISAN_API UYisanOnlineSystem : public UGameInstanceSubsystem

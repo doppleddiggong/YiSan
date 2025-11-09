@@ -10,6 +10,10 @@
 #include "UObject/Object.h"
 #include "USequenceManager.generated.h"
 
+/**
+ * @brief USequenceManager에서 처리할 개별 시퀀스 명령을 정의하는 구조체입니다.
+ * @details 타겟 액터, 활성화/비활성화 여부, 그리고 연출 지속 시간을 포함합니다.
+ */
 USTRUCT()
 struct LATTELIBRARY_API FSequenceCommand
 {
@@ -25,6 +29,10 @@ struct LATTELIBRARY_API FSequenceCommand
 	float Duration = 0.f;
 };
 
+/**
+ * @brief 여러 액터를 지정된 간격으로 순차적으로 활성화 또는 비활성화하는 시퀀스 관리 서브시스템입니다.
+ * @details ISequenceActivatable 인터페이스를 구현한 액터들을 대상으로, 정해진 순서에 따라 연출을 트리거하는 데 사용됩니다.
+ */
 UCLASS()
 class LATTELIBRARY_API USequenceManager : public UGameInstanceSubsystem
 {

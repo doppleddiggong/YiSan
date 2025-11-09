@@ -14,6 +14,12 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UBroadcastManager.generated.h"
 
+/**
+ * @brief 게임 내 전역 이벤트를 중계하는 중앙 이벤트 버스(Event Bus) 서브시스템입니다.
+ * @details 이 매니저는 델리게이트를 사용하여 시스템 간의 직접적인 종속성을 제거하고,
+ *          느슨한 결합(Loose Coupling)을 통해 유연하고 확장 가능한 아키텍처를 지원합니다.
+ *          각 서브시스템은 이 매니저를 통해 이벤트를 보내거나(Send) 구독(Bind)할 수 있습니다.
+ */
 UCLASS()
 class LATTELIBRARY_API UBroadcastManager : public UGameInstanceSubsystem
 {

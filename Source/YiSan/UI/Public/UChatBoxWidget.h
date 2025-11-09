@@ -12,6 +12,10 @@
 #include "UChatPlayerSystem.h"
 #include "UChatBoxWidget.generated.h"
 
+/**
+ * @brief 채팅 메시지 목록과 입력창을 포함하는 UI 위젯입니다.
+ * @details 사용자의 텍스트 입력을 처리하고, UChatPlayerSystem과 연동하여 메시지를 서버로 전송하며, 수신된 메시지를 화면에 표시합니다.
+ */
 UCLASS()
 class YISAN_API UChatBoxWidget : public UUserWidget
 {

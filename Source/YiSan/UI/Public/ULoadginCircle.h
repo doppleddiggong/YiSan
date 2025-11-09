@@ -11,8 +11,8 @@
 #include "ULoadginCircle.generated.h"
 
 /**
- * 네트워크 대기 상태를 표시하는 로딩 서클 위젯입니다.
- * 단순히 표시/숨김만 처리하며, 카운트는 ULoadingCircleManager가 관리합니다.
+ * @brief 네트워크 대기 상태를 표시하는 로딩 서클 위젯입니다.
+ * @details 단순히 표시/숨김만 처리하며, 실제 표시 여부는 ULoadingCircleManager가 카운트를 통해 관리합니다.
  */
 UCLASS()
 class YISAN_API ULoadginCircle : public UUserWidget

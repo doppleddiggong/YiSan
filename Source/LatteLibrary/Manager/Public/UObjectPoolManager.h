@@ -11,6 +11,10 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UObjectPoolManager.generated.h"
 
+/**
+ * @brief 액터를 재활용하여 런타임에 액터 스폰 비용을 최소화하는 오브젝트 풀링(Object Pooling) 관리 서브시스템입니다.
+ * @details 비활성화된 액터를 풀에 저장했다가 필요 시 재활성화하여 제공함으로써, 동적 액터 생성 및 소멸로 인한 성능 저하를 방지합니다.
+ */
 UCLASS()
 class LATTELIBRARY_API UObjectPoolManager : public UGameInstanceSubsystem
 {

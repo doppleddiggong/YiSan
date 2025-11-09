@@ -1,52 +1,34 @@
-# YiSan Development Documentation
+# YiSan 프로젝트 개발 문서
 
-환영합니다! YiSan 프로젝트의 개발 문서 사이트입니다.
-
-## 문서 구조
-
-이 사이트는 YiSan 프로젝트의 개발 과정을 투명하게 기록하고 공유하기 위한 공간입니다.
-
-### 📅 DevLog (개발 일지)
-- **Daily**: 일별 개발 로그 - 커밋, 빌드, 테스트 결과를 자동으로 수집하여 매일 생성
-  - 선택적 GPT 피드백: 개발자 성찰 질문, 대안 제시, 학습 포인트
-- **Weekly**: 주간 요약 - 한 주간의 개발 내용을 종합 분석
-  - 기본 GPT 회고: 작업 패턴 분석, 성장 피드백, 다음 주 제안
-- **상세 가이드**: [워크플로우 사용 가이드](DevLog/WORKFLOW_GUIDE.md)
-
-### 📋 Planning (기획 문서)
-- 시스템 설계 문서
-- API 문서
-- 기능 명세서
-- 발표 자료
-
-
-## 관련 링크
-
-- **GitHub Repository**: [doppleddiggong/YiSan](https://github.com/doppleddiggong/YiSan)
-- **문서 홈**: [https://doppleddiggong.github.io/YiSan/](https://doppleddiggong.github.io/YiSan/)
-  - **API 문서 (Doxygen)**: [https://doppleddiggong.github.io/YiSan/doxygen/](https://doppleddiggong.github.io/YiSan/doxygen/)
-  - **DevLog & Planning (HonKit)**: [https://doppleddiggong.github.io/YiSan/docs/](https://doppleddiggong.github.io/YiSan/docs/)
-
-## 자동화 시스템
-
-이 문서는 다음과 같은 GitHub Actions 워크플로우로 자동 관리됩니다:
-
-### 1. Daily DevLog
-- **실행**: 매일 KST 오전 9시
-- **기능**: Git 커밋, 변경 파일 자동 수집 및 문서화
-- **옵션**: GPT-4 성장 피드백 (수동 실행 시 선택 가능)
-- **출력**: `Documents/DevLog/YYYY-MM-DD.md`
-
-### 2. Weekly Report
-- **실행**: 매주 일요일 KST 오후 11시
-- **기능**: 주간 작업 통합 분석 + GPT-4 회고 피드백 (기본 포함)
-- **출력**: `Documents/DevLog/YYYY-WXX-Summary.md`
-
-### 3. Discord Integration
-- 일일/주간 리포트를 Discord Webhook으로 자동 전송 (선택 사항)
-
-**자세한 사용법**: [DevLog 워크플로우 가이드](DevLog/WORKFLOW_GUIDE.md)
+이 사이트는 언리얼 엔진 5와 C++로 개발 중인 **YiSan 프로젝트**의 모든 기술 문서, 기획 자료, 개발 로그를 통합 관리하는 공간입니다.
 
 ---
 
-**마지막 업데이트**: 2025-11-08
+## 📂 문서 구조
+
+### 1. 📚 API 문서 (Doxygen)
+C++ 소스 코드의 주석을 기반으로 자동 생성되는 API 레퍼런스입니다. 클래스, 함수, 변수 등 코드 레벨의 상세한 정보를 확인할 수 있습니다.
+
+- **[API 문서 바로가기 &raquo;](https://doppleddiggong.github.io/YiSan/doxygen/)**
+
+### 2. 📝 시스템 설계 및 기획 (Planning)
+주요 시스템의 아키텍처 설계, 기능 명세, 기술 연구(R&D) 등 프로젝트의 기획 및 설계와 관련된 모든 문서를 포함합니다.
+
+- **주요 문서:**
+  - `Multiplayer_System_Design.md`: 멀티플레이 시스템 설계
+  - `GPT_VoiceCommand_System_Prompt.md`: AI 음성 상호작용 시스템 프롬프트 설계
+
+### 3. 📅 개발 로그 (DevLog)
+GitHub Actions를 통해 매일 자동으로 생성되는 개발 일지입니다. 커밋 내역, 코드 변경 사항 등 일일 개발 활동이 투명하게 기록됩니다.
+
+- **주요 기능:**
+  - **Daily Log:** 매일 오전 9시(KST)에 자동으로 생성되는 일일 개발 로그.
+  - **Weekly Summary:** 매주 일요일 밤에 생성되는 주간 요약 리포트.
+  - **[자동화 가이드 &raquo;](DevLog/WORKFLOW_GUIDE.md)**: 개발 로그를 포함한 전체 자동화 워크플로우 상세 가이드.
+
+---
+
+## 🔗 관련 링크
+
+- **GitHub Repository**: [doppleddiggong/YiSan](https://github.com/doppleddiggong/YiSan)
+- **프로젝트 홈페이지 (README)**: [GitHub README.md](https://github.com/doppleddiggong/YiSan/blob/main/README.md)

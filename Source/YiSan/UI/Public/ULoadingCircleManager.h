@@ -11,8 +11,8 @@
 #include "ULoadingCircleManager.generated.h"
 
 /**
- * 전역 로딩 서클 관리자
- * LocalPlayerSubsystem으로 구현되어 레벨 전환 시에도 유지됩니다.
+ * @brief 전역 로딩 서클의 표시 여부를 관리하는 LocalPlayerSubsystem입니다.
+ * @details 여러 시스템에서 동시에 로딩을 요청할 경우를 대비해 로딩 요청 카운트를 관리하며, 카운트가 1 이상일 때 로딩 서클을 표시합니다.
  */
 UCLASS()
 class YISAN_API ULoadingCircleManager : public ULocalPlayerSubsystem

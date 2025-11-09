@@ -10,6 +10,10 @@
 #include "UObject/Interface.h"
 #include "IControllable.generated.h"
 
+/**
+ * @brief 플레이어 입력을 받아 처리하는 객체를 위한 인터페이스입니다.
+ * @details 이 인터페이스를 구현하는 클래스는 이동, 점프, 카메라 회전 등 플레이어 컨트롤러로부터 전달되는 다양한 명령을 처리할 수 있습니다.
+ */
 UINTERFACE(MinimalAPI)
 class UControllable : public UInterface
 {

@@ -12,7 +12,8 @@
 #include "EndingWidget.generated.h"
 
 /**
- * 
+ * @brief 게임의 엔딩 시퀀스를 담당하는 UI 위젯입니다.
+ * @details 특정 조건이 충족되었을 때 엔딩 크레딧이나 이미지를 표시하는 역할을 합니다.
  */
 UCLASS()
 class YISAN_API UEndingWidget : public UUserWidget

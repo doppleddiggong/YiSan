@@ -11,7 +11,8 @@
 #include "ULoadingTransitionWidget.generated.h"
 
 /**
- * 로딩 화면 위젯 - 각 컴포넌트별 진행률을 시각화합니다.
+ * @brief 레벨 전환 시 표시되는 전체 화면 로딩 위젯입니다.
+ * @details 로딩 중 플레이어에게 유용한 팁을 무작위로 표시하는 기능을 포함합니다.
  */
 UCLASS()
 class YISAN_API ULoadingTransitionWidget : public UUserWidget

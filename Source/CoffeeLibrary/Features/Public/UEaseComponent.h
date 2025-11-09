@@ -11,7 +11,9 @@
 #include "Components/ActorComponent.h"
 #include "UEaseComponent.generated.h"
 
-/** @brief 단일 float 값을 시간에 따라 Ease 처리하는 트랙 데이터. */
+/**
+ * @brief 단일 float 값을 시간에 따라 Ease 처리하는 트랙 데이터입니다.
+ */
 USTRUCT(BlueprintType)
 struct FEaseFloatTrack
 {
@@ -48,7 +50,9 @@ struct FEaseFloatTrack
     }
 };
 
-/** @brief FVector 값을 Ease 처리하는 트랙 데이터. */
+/**
+ * @brief FVector 값을 시간에 따라 Ease 처리하는 트랙 데이터입니다.
+ */
 USTRUCT(BlueprintType)
 struct FEaseVectorTrack
 {
@@ -86,7 +90,9 @@ struct FEaseVectorTrack
     }
 };
 
-/** @brief FRotator 값을 Ease 처리하는 트랙 데이터. */
+/**
+ * @brief FRotator 값을 시간에 따라 Ease 처리하는 트랙 데이터입니다.
+ */
 USTRUCT(BlueprintType)
 struct FEaseRotatorTrack
 {

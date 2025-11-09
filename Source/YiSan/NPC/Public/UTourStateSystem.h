@@ -11,6 +11,10 @@
 #include "EDasanState.h"
 #include "UTourStateSystem.generated.h"
 
+/**
+ * @brief 다산(Dasan) NPC의 투어 가이드 상태를 관리하는 상태 머신(State Machine) 컴포넌트입니다.
+ * @details 다음 목적지로 이동, 플레이어 대기, 건물 설명, 투어 종료 등 투어의 각 단계를 제어하고 상태에 따른 동작을 수행합니다.
+ */
 UCLASS(ClassGroup=(NPC), meta=(BlueprintSpawnableComponent))
 class YISAN_API UTourStateSystem : public UActorComponent
 {

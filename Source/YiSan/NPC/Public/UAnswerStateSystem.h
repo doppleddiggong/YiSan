@@ -11,6 +11,10 @@
 #include "EDasanState.h"
 #include "UAnswerStateSystem.generated.h"
 
+/**
+ * @brief 다산(Dasan) NPC의 질의응답(Answer) 상태를 관리하는 상태 머신(State Machine) 컴포넌트입니다.
+ * @details 플레이어의 질문 가능 여부를 확인하고, 질문 상태에 진입하며, 타임아웃을 관리하는 등 질의응답 세션의 전체 생명주기를 제어합니다.
+ */
 UCLASS(ClassGroup=(NPC), meta=(BlueprintSpawnableComponent))
 class YISAN_API UAnswerStateSystem : public UActorComponent
 {

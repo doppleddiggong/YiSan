@@ -12,6 +12,10 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UGameSoundManager.generated.h"
 
+/**
+ * @brief 게임 내 모든 사운드 재생을 관리하는 중앙 사운드 관리 서브시스템입니다.
+ * @details 2D 및 3D 사운드 재생, 중지 기능을 제공하며, 특히 대화 음성과 같이 단일 인스턴스만 허용되어야 하는 사운드를 별도로 제어합니다.
+ */
 UCLASS()
 class LATTELIBRARY_API UGameSoundManager : public UGameInstanceSubsystem
 {

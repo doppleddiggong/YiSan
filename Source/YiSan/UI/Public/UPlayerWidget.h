@@ -10,6 +10,10 @@
 #include "UPlayerListItem.h"
 #include "UPlayerWidget.generated.h"
 
+/**
+ * @brief 현재 세션에 참여한 플레이어 목록을 표시하는 UI 위젯입니다.
+ * @details UPlayerListItem 위젯을 사용하여 각 플레이어의 정보를 목록 형태로 보여줍니다.
+ */
 UCLASS()
 class YISAN_API UPlayerWidget : public UUserWidget
 {

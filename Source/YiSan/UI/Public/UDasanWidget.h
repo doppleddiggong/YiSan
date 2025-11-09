@@ -12,7 +12,8 @@
 #include "UDasanWidget.generated.h"
 
 /**
- * 다산 NPC 머리 위에 표시되는 상태 표시 위젯
+ * @brief 다산(Dasan) NPC의 머리 위에 표시되어 현재 상태를 알려주는 UI 위젯입니다.
+ * @details 투어, 질의응답 등 NPC의 주 상태와 서브 상태에 따라 다른 아이콘과 메시지를 표시하여 플레이어에게 시각적인 피드백을 제공합니다.
  */
 UCLASS()
 class YISAN_API UDasanWidget : public UUserWidget

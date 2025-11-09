@@ -12,6 +12,10 @@
 #include "Delegates/Delegate.h"
 #include "UDelayTaskManager.generated.h"
 
+/**
+ * @brief UDelayTaskManager에 의해 생성된 지연 작업을 식별하고 제어하기 위한 핸들입니다.
+ * @details 이 핸들을 사용하여 특정 지연 작업을 취소할 수 있습니다.
+ */
 USTRUCT(BlueprintType)
 struct FDelayHandle
 {
@@ -27,6 +31,10 @@ struct FDelayHandle
 
 DECLARE_DYNAMIC_DELEGATE(FDelayCallback);
 
+/**
+ * @brief 지정된 시간 후에 함수(콜백)를 실행하는 지연 작업 관리 서브시스템입니다.
+ * @details C++ 람다 및 블루프린트 델리게이트를 모두 지원하며, 생성된 작업을 핸들로 제어하거나 특정 오너와 관련된 모든 작업을 한 번에 취소할 수 있습니다.
+ */
 UCLASS()
 class LATTELIBRARY_API UDelayTaskManager : public UGameInstanceSubsystem
 {

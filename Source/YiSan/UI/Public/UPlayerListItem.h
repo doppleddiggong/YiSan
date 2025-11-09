@@ -11,6 +11,10 @@
 #include "UPlayerListItem.generated.h"
 
 
+/**
+ * @brief 플레이어 목록에 표시되는 개별 플레이어 정보 항목 UI 위젯입니다.
+ * @details 플레이어의 이름과 아이콘을 표시하며, 로컬 플레이어 여부에 따라 다르게 보일 수 있습니다.
+ */
 UCLASS()
 class YISAN_API UPlayerListItem : public UUserWidget
 {

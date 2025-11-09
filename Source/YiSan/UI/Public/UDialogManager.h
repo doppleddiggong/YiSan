@@ -10,6 +10,10 @@
 #include "Subsystems/LocalPlayerSubsystem.h"
 #include "UDialogManager.generated.h"
 
+/**
+ * @brief 토스트 메시지와 같은 간단한 다이얼로그 위젯의 표시를 관리하는 LocalPlayer 서브시스템입니다.
+ * @details 게임 내 여러 곳에서 일관된 방식으로 다이얼로그를 요청하고 표시할 수 있는 중앙 관리 지점을 제공합니다.
+ */
 UCLASS()
 class YISAN_API UDialogManager : public ULocalPlayerSubsystem
 {

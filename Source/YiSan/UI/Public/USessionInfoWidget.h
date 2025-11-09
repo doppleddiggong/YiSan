@@ -12,7 +12,8 @@
 #include "USessionInfoWidget.generated.h"
 
 /**
- * 
+ * @brief 검색된 멀티플레이어 세션 정보를 표시하고 참여 버튼을 제공하는 UI 위젯입니다.
+ * @details 로비에서 세션 목록의 각 항목을 나타냅니다.
  */
 UCLASS()
 class YISAN_API USessionInfoWidget : public UUserWidget

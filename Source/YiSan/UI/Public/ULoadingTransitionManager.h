@@ -11,6 +11,10 @@
 #include "Subsystems/LocalPlayerSubsystem.h"
 #include "ULoadingTransitionManager.generated.h"
 
+/**
+ * @brief 레벨 전환 시 전체 화면 로딩 위젯의 표시와 숨김을 관리하는 LocalPlayer 서브시스템입니다.
+ * @details 맵 로드 시작 및 완료 이벤트를 감지하여 로딩 위젯을 자동으로 표시하고, 최소 노출 시간을 보장한 후 부드럽게 숨기는 역할을 합니다.
+ */
 UCLASS()
 class YISAN_API ULoadingTransitionManager : public ULocalPlayerSubsystem
 {

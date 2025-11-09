@@ -58,7 +58,8 @@ struct FChatMessage
 };
 
 /**
- * @brief 플레이어의 채팅 메시지 구성, UI 연동, 네트워크 복제를 처리합니다.
+ * @brief 플레이어의 채팅 메시지 구성, UI 연동, 네트워크 복제를 처리하는 시스템입니다.
+ * @details 플레이어 입력을 받아 서버로 채팅 메시지를 RPC로 전송하고, 서버로부터 받은 메시지를 모든 클라이언트에 멀티캐스트하여 채팅 UI를 업데이트합니다.
  */
 UCLASS(ClassGroup=(Chat), meta=(BlueprintSpawnableComponent))
 class YISAN_API UChatPlayerSystem : public UActorComponent

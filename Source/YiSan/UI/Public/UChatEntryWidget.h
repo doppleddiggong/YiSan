@@ -11,6 +11,10 @@
 #include "UChatPlayerSystem.h"
 #include "UChatEntryWidget.generated.h"
 
+/**
+ * @brief 채팅 목록에 표시되는 개별 채팅 메시지 항목 UI 위젯입니다.
+ * @details 발신자 유형(NPC, 유저, 시스템)에 따라 다른 스타일을 적용하여 메시지를 시각적으로 구분합니다.
+ */
 UCLASS()
 class YISAN_API UChatEntryWidget : public UUserWidget
 {

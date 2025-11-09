@@ -8,8 +8,10 @@
 
 /// @file UDialogWidget.h
 /// @brief 음성 및 텍스트 응답을 출력하는 다이얼로그 위젯을 선언합니다.
-/// @brief 다이얼로그 텍스트와 강조 효과를 제공하는 UI 위젯입니다.
-
+/**
+ * @brief 음성 및 텍스트 응답을 출력하는 다이얼로그 위젯입니다.
+ * @details 화면에 잠시 나타났다가 사라지는 토스트 메시지나 간단한 알림을 표시하는 데 사용됩니다.
+ */
 UCLASS()
 class YISAN_API UDialogWidget : public UUserWidget
 {

@@ -12,7 +12,8 @@
 #include "UPlayerHeadWidget.generated.h"
 
 /**
- * 
+ * @brief 플레이어 캐릭터의 머리 위에 표시되어 플레이어 이름과 아이콘을 보여주는 UI 위젯입니다.
+ * @details 멀티플레이어 환경에서 다른 플레이어를 쉽게 식별할 수 있도록 돕습니다.
  */
 UCLASS()
 class YISAN_API UPlayerHeadWidget : public UUserWidget

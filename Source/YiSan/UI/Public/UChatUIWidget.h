@@ -10,6 +10,10 @@
 #include "Blueprint/UserWidget.h"
 #include "UChatUIWidget.generated.h"
 
+/**
+ * @brief UChatBoxWidget을 포함하는 컨테이너 위젯입니다.
+ * @details 전체 채팅 UI의 레이아웃을 구성하는 역할을 합니다.
+ */
 UCLASS()
 class YISAN_API UChatUIWidget : public UUserWidget
 {

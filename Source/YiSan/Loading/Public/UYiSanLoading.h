@@ -15,7 +15,8 @@
 
 
 /**
- * @brief 이동 준비, 로딩 UI, 스트리밍 진행 폴링을 관리하는 서브시스템입니다.
+ * @brief 월드 파티션, 텍스처 스트리밍 등 레벨 전환 시 로딩 과정을 관리하고 UI를 조율하는 서브시스템입니다.
+ * @details 서버 이동을 준비하고, 로딩 과정을 단계별로 추적하며, 모든 스트리밍이 완료될 때까지 폴링하여 로딩 완료 시점을 결정합니다.
  */
 UCLASS()
 class YISAN_API UYiSanLoading : public UGameInstanceSubsystem
