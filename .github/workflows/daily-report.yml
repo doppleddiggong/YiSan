@@ -29,6 +29,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          ref: docs  # docs 브랜치에서 직접 실행
           fetch-depth: 0  # 전체 히스토리 가져오기
 
       - name: Setup Python
@@ -123,20 +124,12 @@ jobs:
         run: |
           python .github/scripts/devlog/update_summary.py Documents
 
-      - name: Commit and Push to docs branch
+      - name: Commit and Push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # docs 브랜치로 전환 (없으면 생성)
-          git fetch origin
-          git checkout -B docs origin/docs || git checkout -b docs
-
-          # 기존 파일 삭제 후 재생성
-          rm -f "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md"
-          rm -f "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.metrics.json"
-
-          # 재생성된 파일 추가
+          # 생성된 파일 추가
           git add -f Documents/DevLog/Daily/*.md Documents/DevLog/Daily/*.json Documents/SUMMARY.md
 
           if git diff --staged --quiet; then
