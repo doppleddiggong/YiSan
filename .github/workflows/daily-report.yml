@@ -167,6 +167,13 @@ jobs:
               --devlog-url "https://doppleddiggong.github.io/YiSan/docs/DevLog/Daily/${{ steps.date.outputs.today }}.html"
           fi
 
+      - name: Trigger HonKit Build
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: honkit-build
+          client-payload: '{"ref": "docs", "trigger": "daily-report"}'
+
       - name: Summary
         run: |
           echo "✅ Daily DevLog has been generated!"
