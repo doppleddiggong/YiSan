@@ -73,8 +73,23 @@ void UVoiceConversationSystem::StartRecording()
 	if (!AudioCapture)
 		AudioCapture = MakeUnique<Audio::FAudioCapture>();
 
+	// 사용 가능한 오디오 디바이스 목록 확인
+	TArray<Audio::FCaptureDeviceInfo> DeviceInfos;
+	AudioCapture->GetCaptureDevicesAvailable(DeviceInfos);
+
+	PRINTLOG(TEXT("[VoiceConversation] Available Audio Devices:"));
+	for (int32 i = 0; i < DeviceInfos.Num(); ++i)
+	{
+		PRINTLOG(TEXT("  [%d] %s (Channels: %d, SampleRate: %d, bSupportsHardwareAEC: %d)"),
+			i,
+			*DeviceInfos[i].DeviceName,
+			DeviceInfos[i].InputChannels,
+			DeviceInfos[i].PreferredSampleRate,
+			DeviceInfos[i].bSupportsHardwareAEC ? 1 : 0);
+	}
+
 	Audio::FAudioCaptureDeviceParams Params;
-	Params.DeviceIndex = 0;
+	Params.DeviceIndex = 0;  // TODO: 사용자가 선택할 수 있도록 개선 필요
 	Params.NumInputChannels = 1;
 
 	const bool bStreamOpened = AudioCapture->OpenAudioCaptureStream(
