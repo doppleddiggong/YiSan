@@ -7,36 +7,40 @@ DevLog를 Discord로 전송하고 피드백을 유도합니다.
 import argparse
 import json
 import re
+import subprocess
 from pathlib import Path
-import urllib.request
-import urllib.error
 from datetime import datetime
 
 def send_webhook(webhook_url, payload):
-    """Discord Webhook으로 메시지 전송"""
+    """Discord Webhook으로 메시지 전송 (curl 사용)"""
     if not webhook_url:
         print("⚠️ Discord webhook URL이 설정되지 않았습니다.")
         return False
 
     try:
-        data = json.dumps(payload).encode('utf-8')
-        req = urllib.request.Request(
-            webhook_url,
-            data=data,
-            headers={'Content-Type': 'application/json'}
+        # curl을 사용하여 전송 (GitHub Actions에서 안정적)
+        result = subprocess.run(
+            [
+                'curl',
+                '-H', 'Content-Type: application/json',
+                '-X', 'POST',
+                '-d', json.dumps(payload),
+                webhook_url
+            ],
+            capture_output=True,
+            text=True,
+            check=True
         )
 
-        with urllib.request.urlopen(req) as response:
-            if response.status == 204:
-                print("✅ Discord 메시지 전송 성공")
-                return True
-            else:
-                print(f"⚠️ 예상치 못한 응답: {response.status}")
-                return False
+        print("✅ Discord 메시지 전송 성공")
+        return True
 
-    except urllib.error.HTTPError as e:
-        print(f"❌ HTTP Error: {e.code} - {e.reason}")
-        print(f"   Response: {e.read().decode('utf-8')}")
+    except subprocess.CalledProcessError as e:
+        print(f"❌ HTTP Error: curl failed with exit code {e.returncode}")
+        if e.stderr:
+            print(f"   Error: {e.stderr}")
+        if e.stdout:
+            print(f"   Response: {e.stdout}")
         return False
     except Exception as e:
         print(f"❌ Error: {e}")
