@@ -26,7 +26,7 @@ git config user.name
 이 값을 `[작업자GitID]`로 사용합니다. 값이 없으면 "작업자"를 사용합니다.
 
 ### 2. 현재 시간 계산 (UTC+09:00, 한국 시간)
-- 파일명 형식: `YYMMDD.md` (예: `251107.md`)
+- 파일명 형식: `[작업자GitID]_YYMMDD.md` (예: `dopple_251107.md`)
 - 시간 형식: `YYYYMMDD hh:mm` (예: `20251107 19:30`)
 
 ### 3. Git Root 확인
@@ -41,7 +41,8 @@ git rev-parse --show-toplevel
 
 ### 5. Start Log 파일 작성
 
-**파일 경로**: `[GitRoot]/AgentLog/[작업자GitID]/YYMMDD.md`
+**파일 경로**: `[GitRoot]/AgentLog/[작업자GitID]/[작업자GitID]_YYMMDD.md`
+**예시**: `AgentLog/dopple/dopple_251109.md`
 
 **파일이 이미 존재하는 경우**: 맨 아래에 추가
 **파일이 없는 경우**: 새로 생성

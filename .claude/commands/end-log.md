@@ -47,7 +47,8 @@ git config user.name
 ### 4. 로그 파일 경로 찾기
 
 **중요**: Start Log가 작성된 파일에 추가합니다.
-- 예: `AgentLog/[작업자GitID]/251107.md`
+- 예: `AgentLog/[작업자GitID]/[작업자GitID]_251107.md`
+- 예시: `AgentLog/dopple/dopple_251109.md`
 - 날짜가 바뀌어도 현재 Start Log가 있는 파일에 계속 기록
 
 ### 5. End Log 작성
@@ -84,7 +85,7 @@ End Log가 작성되었음을 알리고, 세션 종료를 추천합니다.
 ```
 End Log가 작성되었습니다.
 
-파일 위치: AgentLog/[작업자GitID]/YYMMDD.md
+파일 위치: AgentLog/[작업자GitID]/[작업자GitID]_YYMMDD.md
 
 세션을 종료하시려면 Claude를 종료하시면 됩니다.
 ```

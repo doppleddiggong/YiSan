@@ -43,7 +43,8 @@ git config user.name
 ### 4. 로그 파일 경로 찾기
 
 **중요**: Start Log가 작성된 파일에 추가합니다.
-- 예: `AgentLog/[작업자GitID]/251107.md`
+- 예: `AgentLog/[작업자GitID]/[작업자GitID]_251107.md`
+- 예시: `AgentLog/dopple/dopple_251109.md`
 - 날짜가 바뀌어도 현재 Start Log가 있는 파일에 계속 기록
 
 ### 5. Compact Log 작성
