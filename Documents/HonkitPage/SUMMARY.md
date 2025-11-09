@@ -6,10 +6,12 @@
 ## DevLog
 
 ### Agent Logs
-* [dopple - 2025-11-08](DevLog/AgentLog/dopple/251108.md)
+* [dopple - dopple_251109](DevLog/AgentLog/dopple/dopple_251109.md)
+* [dopple - dopple_251108](DevLog/AgentLog/dopple/dopple_251108.md)
 
 ### Daily Logs (2025-11)
 * [2025-11-09](DevLog/Daily/2025-11-09.md)
+* [2025-11-08](DevLog/Daily/2025-11-08.md)
 * [2025-11-02](DevLog/Daily/2025-11-02.md)
 * [2025-11-01](DevLog/Daily/2025-11-01.md)
 
@@ -70,7 +72,7 @@
 * [2025-09-09](DevLog/Daily/2025-09-09.md)
 
 ### Weekly Summary
-* [Weekly DevLog — 2025-W45 (2025-11-03 ~ 2025-11-09)](DevLog/Weekly/2025-W45-Summary.md)
+* [주간 개발 요약 (2025-11-03 ~ 2025-11-09)](DevLog/Weekly/2025-W45-Summary.md)
 * [주간 개발 요약 (2025-10-27 ~ 2025-11-02)](DevLog/Weekly/2025-W44-Summary.md)
 * [주간 개발 요약 (2025-10-20 ~ 2025-10-26)](DevLog/Weekly/2025-W43-Summary.md)
 * [주간 개발 요약 (2025-10-13 ~ 2025-10-19)](DevLog/Weekly/2025-W42-Summary.md)
@@ -82,7 +84,7 @@
 ### Documentation
 * [30-Day Briefing 2025-11-02](DevLog/_Last30Summary.md)
 * [HonKit DevLog 자동화 시스템 구현 완료](DevLog/IMPLEMENTATION_SUMMARY.md)
-* [DevLog 자동화 워크플로우 가이드](DevLog/WORKFLOW_GUIDE.md)
+* [프로젝트 자동화 워크플로우 가이드](DevLog/WORKFLOW_GUIDE.md)
 
 ## Planning
 
@@ -119,6 +121,7 @@
 * [주간 프로젝트 발표 (2025-10-27 ~ 2025-11-02)](Planning/Weekly_Presentation_2025-11-02.md)
 
 ### Other Documents
+* [YiSan DevOps 개요 문서](Planning/DevOps_Inventory.md)
 * [PlayerIndex 관리 - GameState 리팩토링 (2025-11-02)](Planning/PlayerIndexShooting/PlayerIndex_GameState_Refactoring_2025-11-02.md)
 * [PlayerIndex 재초기화 문제 트러블슈팅 (2025-11-02)](Planning/PlayerIndexShooting/PlayerIndex_Issue_2025-11-02.md)
 * [AI 경로 탐색 문제 해결 리포트](Planning/Report/2025-10-27_AI경로찾기_수정리포트.md)
@@ -126,6 +129,7 @@
 * [YiSan 로딩 시스템: 네트워크 최적화 관점 발표](Planning/Report/2025-11-02_로딩시스템_네트워크_최적화.md)
 * [YiSan 프로젝트 종합 역량평가 리포트](Planning/Report/2025-11-04_종합역량평가.md)
 * [게스트 플레이어 로딩 위젯 미제거 문제 분석 리포트](Planning/Report/2025-11-09_로딩시스템_게스트플레이어_이슈리포트.md)
+* [GitHub Pages DevLog 404 문제 해결 보고서](Planning/Report/2025-11-09_일일 일지 링크 404 이슈.md)
 
 ## External Links
 * [GitHub Repository](https://github.com/doppleddiggong/YiSan)
