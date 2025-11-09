@@ -1,11 +1,12 @@
 <map id="UYiSanLoading::Broadcast_HideLoading" name="UYiSanLoading::Broadcast_HideLoading">
 <area shape="rect" id="Node000001" title=" " alt="" coords="1313,27,1505,67"/>
-<area shape="rect" id="Node000002" href="$classUYiSanLoading.html#ab48994aeea87093f36721bcf5760b9ca" title=" " alt="" coords="1025,35,1265,60"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1300,50,1266,50,1266,45,1300,45"/>
-<area shape="rect" id="Node000003" href="$classUYiSanLoading.html#ae7655dc1152f3200dbceecaf25b38002" title="스트리밍 진행도를 폴링하고 로딩 상태를 전환합니다." alt="" coords="776,35,977,60"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1012,50,977,50,977,45,1012,45"/>
+<area shape="rect" id="Node000002" href="$classUYiSanLoading.html#ab48994aeea87093f36721bcf5760b9ca" title=" " alt="" coords="1025,9,1265,35"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1299,39,1265,36,1266,31,1300,34"/>
 <area shape="rect" id="Node000004" href="$classUYiSanLoading.html#a0441afb84f146c695636184c5e05d4c6" title="맵 로드 완료를 처리하여 스트리밍 상태 폴링을 이어갑니다." alt="" coords="513,27,728,67"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="762,50,728,50,728,45,762,45"/>
+<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="1299,50,728,50,728,45,1299,45"/>
+<area shape="rect" id="Node000003" href="$classUYiSanLoading.html#ae7655dc1152f3200dbceecaf25b38002" title="스트리밍 진행도를 폴링하고 로딩 상태를 전환합니다." alt="" coords="776,9,977,35"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1012,25,977,25,977,19,1012,19"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="763,36,728,39,728,34,762,31"/>
 <area shape="rect" id="Node000005" href="$classUYiSanLoading.html#a5fbfe4432883e1736de50366f25ee5a2" title="진행도 추적기를 초기화하고 로딩 화면을 표시합니다." alt="" coords="268,27,465,67"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="500,50,465,50,465,45,500,45"/>
 <area shape="rect" id="Node000006" href="$classUYiSanLoading.html#a783ebd42104f77c1a45156f889b19562" title="선택적 로딩 화면 오케스트레이션과 함께 서버 이동을 시작합니다." alt="" coords="14,5,211,31"/>

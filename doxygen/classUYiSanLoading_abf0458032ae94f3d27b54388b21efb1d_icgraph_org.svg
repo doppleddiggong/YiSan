@@ -22,8 +22,8 @@
 <g id="Node000002" class="node">
 <title>Node2</title>
 <g id="a_Node000002"><a xlink:href="classUYiSanLoading.html#ab48994aeea87093f36721bcf5760b9ca" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="945,-45.5 765,-45.5 765,-26.5 945,-26.5 945,-45.5"/>
-<text text-anchor="middle" x="855" y="-33.5" font-family="Malgun Gothic" font-size="10.00">UYiSanLoading::CompleteProcess</text>
+<polygon fill="white" stroke="#666666" points="945,-64.5 765,-64.5 765,-45.5 945,-45.5 945,-64.5"/>
+<text text-anchor="middle" x="855" y="-52.5" font-family="Malgun Gothic" font-size="10.00">UYiSanLoading::CompleteProcess</text>
 </a>
 </g>
 </g>
@@ -31,26 +31,8 @@
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node1&#45;&gt;Node2</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M970.77,-36C962.33,-36 953.73,-36 945.21,-36"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="970.96,-39.5 980.96,-36 970.96,-32.5 970.96,-39.5"/>
-</a>
-</g>
-</g>
-<!-- Node3 -->
-<g id="Node000003" class="node">
-<title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classUYiSanLoading.html#ae7655dc1152f3200dbceecaf25b38002" target="_top" xlink:title="스트리밍 진행도를 폴링하고 로딩 상태를 전환합니다.">
-<polygon fill="white" stroke="#666666" points="729,-45.5 578,-45.5 578,-26.5 729,-26.5 729,-45.5"/>
-<text text-anchor="middle" x="653.5" y="-33.5" font-family="Malgun Gothic" font-size="10.00">UYiSanLoading::UpdateTick</text>
-</a>
-</g>
-</g>
-<!-- Node2&#45;&gt;Node3 -->
-<g id="edge2_Node000002_Node000003" class="edge">
-<title>Node2&#45;&gt;Node3</title>
-<g id="a_edge2_Node000002_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M754.65,-36C746.04,-36 737.41,-36 729.05,-36"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="754.75,-39.5 764.75,-36 754.75,-32.5 754.75,-39.5"/>
+<path fill="none" stroke="#63b8ff" d="M970.77,-43.87C962.33,-44.69 953.73,-45.53 945.21,-46.35"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="971.35,-47.33 980.96,-42.89 970.67,-40.37 971.35,-47.33"/>
 </a>
 </g>
 </g>
@@ -64,12 +46,39 @@
 </a>
 </g>
 </g>
+<!-- Node1&#45;&gt;Node4 -->
+<g id="edge7_Node000001_Node000004" class="edge">
+<title>Node1&#45;&gt;Node4</title>
+<g id="a_edge7_Node000001_Node000004"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M970.58,-36C857.57,-36 654.47,-36 542.33,-36"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="970.89,-39.5 980.89,-36 970.89,-32.5 970.89,-39.5"/>
+</a>
+</g>
+</g>
+<!-- Node3 -->
+<g id="Node000003" class="node">
+<title>Node3</title>
+<g id="a_Node000003"><a xlink:href="classUYiSanLoading.html#ae7655dc1152f3200dbceecaf25b38002" target="_top" xlink:title="스트리밍 진행도를 폴링하고 로딩 상태를 전환합니다.">
+<polygon fill="white" stroke="#666666" points="729,-64.5 578,-64.5 578,-45.5 729,-45.5 729,-64.5"/>
+<text text-anchor="middle" x="653.5" y="-52.5" font-family="Malgun Gothic" font-size="10.00">UYiSanLoading::UpdateTick</text>
+</a>
+</g>
+</g>
+<!-- Node2&#45;&gt;Node3 -->
+<g id="edge2_Node000002_Node000003" class="edge">
+<title>Node2&#45;&gt;Node3</title>
+<g id="a_edge2_Node000002_Node000003"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M754.65,-55C746.04,-55 737.41,-55 729.05,-55"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="754.75,-58.5 764.75,-55 754.75,-51.5 754.75,-58.5"/>
+</a>
+</g>
+</g>
 <!-- Node3&#45;&gt;Node4 -->
 <g id="edge3_Node000003_Node000004" class="edge">
 <title>Node3&#45;&gt;Node4</title>
 <g id="a_edge3_Node000003_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M567.67,-36C559.19,-36 550.59,-36 542.16,-36"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="567.95,-39.5 577.95,-36 567.95,-32.5 567.95,-39.5"/>
+<path fill="none" stroke="#63b8ff" d="M567.95,-46.55C559.38,-45.69 550.68,-44.82 542.16,-43.97"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="567.65,-50.03 577.95,-47.55 568.35,-43.07 567.65,-50.03"/>
 </a>
 </g>
 </g>
