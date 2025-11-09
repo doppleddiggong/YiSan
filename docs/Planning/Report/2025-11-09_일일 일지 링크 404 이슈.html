@@ -3,7 +3,7 @@
 <html lang="ko" >
     <head>
         <meta charset="UTF-8">
-        <title>UYiSanLoading 리팩터링 리뷰 (2025-10-30 KST) · YiSan Development Documentation</title>
+        <title>GitHub Pages DevLog 404 문제 해결 보고서 · YiSan Development Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 6.1.4">
@@ -88,10 +88,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../yisan_dasan_voice_proto.html" />
     
-    
-    <link rel="prev" href="../2025-10-30_UYiSanLoading_Refactor.html" />
+    <link rel="prev" href="2025-11-09_로딩시스템_게스트플레이어_이슈리포트.html" />
     
 
     </head>
@@ -1227,7 +1225,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="12.3" data-path="2025-10-30_UYiSanLoading_리팩토링.html">
+        <li class="chapter " data-level="12.3" data-path="2025-10-30_UYiSanLoading_리팩토링.html">
             
                 <a href="2025-10-30_UYiSanLoading_리팩토링.html">
             
@@ -1515,7 +1513,7 @@
             
         </li>
     
-        <li class="chapter " data-level="16.9" data-path="2025-11-09_일일 일지 링크 404 이슈.html">
+        <li class="chapter active" data-level="16.9" data-path="2025-11-09_일일 일지 링크 404 이슈.html">
             
                 <a href="2025-11-09_일일 일지 링크 404 이슈.html">
             
@@ -1591,7 +1589,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >UYiSanLoading 리팩터링 리뷰 (2025-10-30 KST)</a>
+        <a href="../.." >GitHub Pages DevLog 404 문제 해결 보고서</a>
     </h1>
 </div>
 
@@ -1606,66 +1604,387 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="uyisanloading-리팩터링-리뷰-2025-10-30-kst">UYiSanLoading 리팩터링 리뷰 (2025-10-30 KST)</h1>
-<h2 id="한-줄-요약">한 줄 요약</h2>
-<p>UYiSanLoading 서브시스템을 단계형 시퀀스로 재조직해 기존 함수명은 유지하면서 CPU 점유를 낮추고 진행률 계산을 안정화했다.</p>
-<h2 id="변경-전-주요-문제">변경 전 주요 문제</h2>
-<ul>
-<li>텍스처 스트리밍 진행률 계산을 위해 <code>StreamAllResources</code>를 0.1초 주기로 호출하면서 메인/렌더 스레드를 지속적으로 깨워 CPU 점유율이 높았다.</li>
-<li>네 가지 별도 로직(대기 건수, 강제 처리, 타임아웃, 정체 보정)을 중첩 적용해 코드 흐름이 복잡하고 진행률이 예측 불가능했다.</li>
-<li>진행률 로그가 중복으로 출력되고, 함수/멤버 명명 규칙이 프로젝트 컨벤션과 달라 가독성이 떨어졌다.</li>
-</ul>
-<h2 id="적용한-개선-사항">적용한 개선 사항</h2>
+                                <h1 id="github-pages-devlog-404-문제-해결-보고서">GitHub Pages DevLog 404 문제 해결 보고서</h1>
+<p><strong>작성일</strong>: 2025-11-09
+<strong>작성자</strong>: dopple
+<strong>문제 유형</strong>: DevOps / CI/CD
+<strong>우선순위</strong>: High
+<strong>상태</strong>: ✅ 해결 완료</p>
+<hr></hr>
+<h2 id="📋-목차">📋 목차</h2>
 <ol>
-<li><p><strong>단계형 폴링 아키텍처</strong></p>
+<li><a href="#문제-개요">문제 개요</a></li>
+<li><a href="#문제-발견-과정">문제 발견 과정</a></li>
+<li><a href="#근본-원인-분석">근본 원인 분석</a></li>
+<li><a href="#해결-방법">해결 방법</a></li>
+<li><a href="#구현-과정">구현 과정</a></li>
+<li><a href="#검증-방법">검증 방법</a></li>
+<li><a href="#기술적-성과">기술적 성과</a></li>
+<li><a href="#향후-개선-사항">향후 개선 사항</a></li>
+</ol>
+<hr></hr>
+<h2 id="문제-개요">문제 개요</h2>
+<h3 id="현상">현상</h3>
 <ul>
-<li>0.1초 간격 타이머는 유지하되 <code>WorldPartition → Texture → LevelInstance</code> 순으로 진행되는 단계형 시퀀스를 구성해 각 단계가 완료된 뒤에만 다음 로직을 실행하도록 했다.</li>
-<li>기존 퍼블릭 인터페이스를 유지하기 위해 <code>Poll_StreamingAndInstancesReady</code>, <code>Loading_Textures</code>, <code>Loading_LevelInstance</code> 등 함수명을 원본과 동일하게 복원했다.</li>
+<li>Daily Report가 생성되고 Discord에 알림이 전송됨</li>
+<li>Discord 링크 클릭 시 GitHub Pages에서 <strong>404 Not Found</strong> 에러 발생</li>
+<li>사용자가 최신 DevLog 문서를 확인할 수 없는 상황</li>
+</ul>
+<h3 id="영향-범위">영향 범위</h3>
+<ul>
+<li>2025-11-08, 2025-11-09 Daily Report 문서 접근 불가</li>
+<li>GitHub Pages (<a href="https://doppleddiggong.github.io/YiSan/docs/" target="_blank">https://doppleddiggong.github.io/YiSan/docs/</a>) 최신 문서 미반영</li>
+<li>Discord 알림의 신뢰성 저하</li>
+</ul>
+<h3 id="기대-동작">기대 동작</h3>
+<ol>
+<li>Daily Report 자동 생성 → docs 브랜치에 커밋</li>
+<li>HonKit 자동 빌드 → gh-pages 브랜치에 배포</li>
+<li>GitHub Pages에서 최신 문서 즉시 확인 가능</li>
+<li>Discord 링크 정상 작동</li>
+</ol>
+<hr></hr>
+<h2 id="문제-발견-과정">문제 발견 과정</h2>
+<h3 id="1단계-사용자-피드백-분석">1단계: 사용자 피드백 분석</h3>
+<p><strong>사용자 보고</strong>:</p>
+<blockquote>
+<p>"daily report로 생성된 11-08.md 라는 리포트 문서가 있다고해. 그래서 디스코드 센더까지 잘 돌았는데, 정작 main쪽에는 그 문서가 없어서, 링크를 누르고 오면 못 보는 상황이야."</p>
+</blockquote>
+<p><strong>초기 가설</strong>:</p>
+<ul>
+<li>docs 브랜치에만 파일이 있고 main 브랜치에는 없어서 발생하는 문제로 추정</li>
+</ul>
+<h3 id="2단계-브랜치-구조-확인">2단계: 브랜치 구조 확인</h3>
+<pre><code class="lang-bash"><span class="hljs-comment"># docs 브랜치에 파일 존재 확인</span>
+git ls-tree remotes/origin/docs Documents/DevLog/Daily/ | grep <span class="hljs-string">"2025-11-0[89]"</span>
+<span class="hljs-comment"># 결과: ✅ 2025-11-08.md, 2025-11-09.md 존재</span>
+
+<span class="hljs-comment"># SUMMARY.md에도 포함 확인</span>
+git show remotes/origin/docs:Documents/SUMMARY.md | grep <span class="hljs-string">"2025-11-0[89]"</span>
+<span class="hljs-comment"># 결과: ✅ 정상적으로 포함됨</span>
+</code></pre>
+<h3 id="3단계-github-pages-배포-상태-확인">3단계: GitHub Pages 배포 상태 확인</h3>
+<pre><code class="lang-bash"><span class="hljs-comment"># gh-pages 브랜치 최근 배포 확인</span>
+git <span class="hljs-built_in">log</span> remotes/origin/gh-pages --oneline --since=<span class="hljs-string">"2025-11-08"</span>
+<span class="hljs-comment"># 결과: ❌ 2025-11-08/09 이후 배포 없음</span>
+
+<span class="hljs-comment"># gh-pages의 Daily 폴더 확인</span>
+git ls-tree remotes/origin/gh-pages -r --name-only | grep <span class="hljs-string">"DevLog/Daily"</span>
+<span class="hljs-comment"># 결과: ❌ 최신 파일 없음 (2025-10-XX까지만 존재)</span>
+</code></pre>
+<p><strong>결론</strong>: docs 브랜치에는 파일이 있지만, gh-pages로 배포되지 않음</p>
+<hr></hr>
+<h2 id="근본-원인-분석">근본 원인 분석</h2>
+<h3 id="문제의-핵심">문제의 핵심</h3>
+<p><strong>HonKit 워크플로우가 docs 브랜치 커밋 후 자동으로 실행되지 않음</strong></p>
+<h3 id="브랜치-구조-분석">브랜치 구조 분석</h3>
+<h4 id="현재-설정">현재 설정</h4>
+<pre><code>main 브랜치: 워크플로우 정의 관리
+docs 브랜치: 문서 자동 생성 및 보관 (Actions 전용)
+gh-pages 브랜치: HonKit 빌드 결과 배포
+</code></pre><h4 id="워크플로우-실행-흐름">워크플로우 실행 흐름</h4>
+<pre><code>1. daily-report.yml (main 브랜치에서 실행)
+   ↓
+2. checkout with ref: docs (docs 브랜치로 전환)
+   ↓
+3. DevLog 파일 생성 (Documents/DevLog/Daily/)
+   ↓
+4. docs 브랜치에 커밋
+   ↓
+5. ❌ HonKit 실행 안됨 (트리거 없음)
+   ↓
+6. ❌ gh-pages 업데이트 안됨
+</code></pre><h3 id="honkityml-트리거-설정-분석">honkit.yml 트리거 설정 분석</h3>
+<pre><code class="lang-yaml"><span class="hljs-attr">on:</span>
+  <span class="hljs-attr">push:</span>
+    <span class="hljs-attr">branches:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">main</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">dopple</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">docs</span>  <span class="hljs-comment"># ← docs 브랜치 push 시 트리거 설정됨</span>
+    <span class="hljs-attr">paths:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">'Documents/DevLog/**'</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">'Documents/Planning/**'</span>
+</code></pre>
+<p><strong>문제점</strong>:</p>
+<ul>
+<li>daily-report는 main 브랜치에서 실행되어 docs 브랜치에 커밋함</li>
+<li>하지만 <strong>GitHub Actions는 Actions로 만든 커밋에 대해 push 이벤트를 트리거하지 않음</strong> (무한 루프 방지)</li>
+<li>결과적으로 honkit.yml이 실행되지 않음</li>
+</ul>
+<h3 id="github-actions-제약-사항">GitHub Actions 제약 사항</h3>
+<p>공식 문서에 따르면:</p>
+<blockquote>
+<p>"An action in a workflow run can't trigger a new workflow run. For example, if an action pushes code using the repository's GITHUB_TOKEN, a new workflow will not run even when the repository contains a workflow configured to run when push events occur."</p>
+</blockquote>
+<p><strong>결론</strong>: push 이벤트로는 트리거할 수 없음. 다른 메커니즘 필요.</p>
+<hr></hr>
+<h2 id="해결-방법">해결 방법</h2>
+<h3 id="선택한-솔루션-repositorydispatch-이벤트">선택한 솔루션: <code>repository_dispatch</code> 이벤트</h3>
+<h4 id="repositorydispatch란">repository_dispatch란?</h4>
+<ul>
+<li>GitHub Actions에서 제공하는 수동 워크플로우 트리거 메커니즘</li>
+<li>API 호출 또는 다른 워크플로우에서 이벤트를 발생시켜 워크플로우 실행</li>
+<li>Actions 간 체이닝(chaining)에 사용</li>
+</ul>
+<h4 id="구현-전략">구현 전략</h4>
+<pre><code>daily-report.yml (생성자)
+  ↓ repository_dispatch 발생
+  ↓ event-type: honkit-build
+  ↓
+honkit.yml (수신자)
+  ↓ repository_dispatch 트리거
+  ↓ types: [honkit-build]
+  ↓
+  실행
+</code></pre><h4 id="장점">장점</h4>
+<ol>
+<li>✅ Actions 제약 우회 (push 이벤트 불필요)</li>
+<li>✅ 명시적인 워크플로우 체이닝</li>
+<li>✅ 이벤트 타입으로 트리거 소스 구분 가능</li>
+<li>✅ payload로 추가 정보 전달 가능</li>
+</ol>
+<hr></hr>
+<h2 id="구현-과정">구현 과정</h2>
+<h3 id="1단계-honkityml-트리거-추가">1단계: honkit.yml 트리거 추가</h3>
+<p><strong>파일</strong>: <code>.github/workflows/honkit.yml</code></p>
+<p><strong>변경 내용</strong>:</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">on:</span>
+  <span class="hljs-comment"># 기존 push 트리거 유지</span>
+  <span class="hljs-attr">push:</span>
+    <span class="hljs-attr">branches:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">main</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">dopple</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">docs</span>
+    <span class="hljs-attr">paths:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">'Documents/DevLog/**'</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">'Documents/Planning/**'</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">'Documents/*.md'</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">'Documents/book.json'</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">'.github/scripts/generate_summary.py'</span>
+
+  <span class="hljs-comment"># ✨ 추가: repository_dispatch 트리거</span>
+  <span class="hljs-attr">repository_dispatch:</span>
+    <span class="hljs-attr">types:</span> [<span class="hljs-string">honkit-build</span>]
+
+  <span class="hljs-comment"># 수동 실행 가능</span>
+  <span class="hljs-attr">workflow_dispatch:</span>
+</code></pre>
+<p><strong>설명</strong>:</p>
+<ul>
+<li><code>repository_dispatch</code>: 외부에서 이벤트를 받아 실행</li>
+<li><code>types: [honkit-build]</code>: 'honkit-build' 타입의 이벤트만 수신</li>
+</ul>
+<h3 id="2단계-daily-reportyml-트리거-추가">2단계: daily-report.yml 트리거 추가</h3>
+<p><strong>파일</strong>: <code>.github/workflows/daily-report.yml</code></p>
+<p><strong>변경 내용</strong>:</p>
+<pre><code class="lang-yaml">      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Commit</span> <span class="hljs-string">and</span> <span class="hljs-string">Push</span>
+        <span class="hljs-attr">run:</span> <span class="hljs-string">|
+          # ... (기존 커밋 로직)
+</span>
+      <span class="hljs-comment"># ✨ 추가: HonKit 빌드 트리거</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Trigger</span> <span class="hljs-string">HonKit</span> <span class="hljs-string">Build</span>
+        <span class="hljs-attr">uses:</span> <span class="hljs-string">peter-evans/repository-dispatch@v2</span>
+        <span class="hljs-attr">with:</span>
+          <span class="hljs-attr">token:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.GITHUB_TOKEN</span> <span class="hljs-string">}}</span>
+          <span class="hljs-attr">event-type:</span> <span class="hljs-string">honkit-build</span>
+          <span class="hljs-attr">client-payload:</span> <span class="hljs-string">'{"ref": "docs", "trigger": "daily-report"}'</span>
+
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Summary</span>
+        <span class="hljs-attr">run:</span> <span class="hljs-string">|
+          # ... (기존 Summary)
+</span></code></pre>
+<p><strong>사용한 액션</strong>:</p>
+<ul>
+<li><code>peter-evans/repository-dispatch@v2</code>: 안정적인 repository_dispatch 구현</li>
+<li><code>token</code>: GitHub API 인증</li>
+<li><code>event-type</code>: 'honkit-build' 이벤트 발생</li>
+<li><code>client-payload</code>: 트리거 소스 정보 전달 (추적용)</li>
+</ul>
+<h3 id="3단계-weekly-reportyml-트리거-추가">3단계: weekly-report.yml 트리거 추가</h3>
+<p><strong>파일</strong>: <code>.github/workflows/weekly-report.yml</code></p>
+<p><strong>변경 내용</strong>: daily-report.yml과 동일</p>
+<pre><code class="lang-yaml">      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Trigger</span> <span class="hljs-string">HonKit</span> <span class="hljs-string">Build</span>
+        <span class="hljs-attr">uses:</span> <span class="hljs-string">peter-evans/repository-dispatch@v2</span>
+        <span class="hljs-attr">with:</span>
+          <span class="hljs-attr">token:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.GITHUB_TOKEN</span> <span class="hljs-string">}}</span>
+          <span class="hljs-attr">event-type:</span> <span class="hljs-string">honkit-build</span>
+          <span class="hljs-attr">client-payload:</span> <span class="hljs-string">'{"ref": "docs", "trigger": "weekly-report"}'</span>
+</code></pre>
+<h3 id="4단계-브랜치-동기화">4단계: 브랜치 동기화</h3>
+<h4 id="main-브랜치-커밋">main 브랜치 커밋</h4>
+<pre><code class="lang-bash">git add .github/workflows/daily-report.yml \
+        .github/workflows/weekly-report.yml \
+        .github/workflows/honkit.yml
+
+git commit -m <span class="hljs-string">"fix(workflows): trigger HonKit build after DevLog generation"</span>
+git push origin main
+</code></pre>
+<p><strong>커밋 해시</strong>: <code>516f35dd0</code></p>
+<h4 id="docs-브랜치-동기화">docs 브랜치 동기화</h4>
+<pre><code class="lang-bash">git checkout docs
+git cherry-pick 516f35dd0
+git push origin docs
+</code></pre>
+<p><strong>커밋 해시</strong>: <code>d975414c3</code></p>
+<hr></hr>
+<h2 id="검증-방법">검증 방법</h2>
+<h3 id="자동-검증-다음-실행-시">자동 검증 (다음 실행 시)</h3>
+<ol>
+<li><p><strong>Daily Report 실행 대기</strong> (매일 오전 9시 KST)</p>
+<ul>
+<li>daily-report.yml 실행 확인</li>
+<li>repository_dispatch 이벤트 발생 확인</li>
+<li>honkit.yml 자동 트리거 확인</li>
+<li>gh-pages 배포 확인</li>
 </ul>
 </li>
-<li><p><strong>텍스처 스트리밍 진행률 정리</strong></p>
+<li><p><strong>GitHub Pages 확인</strong></p>
 <ul>
-<li>최초 대기 건수 대비 잔여 대기 건수 비율로 진행률을 계산하고, 엔진 기본 스트리밍 스레드가 자연스럽게 작업하도록 <code>StreamAllResources</code> 강제 호출을 제거했다.</li>
-<li>진행률 변화가 일정 수준 이상일 때만 5초 주기로 로그를 출력해 스팸을 방지했다.</li>
-<li>60초 타임아웃 조건은 유지하되, 완료 시점에 상태 변수를 명확히 리셋하도록 정리했다.</li>
+<li><a href="https://doppleddiggong.github.io/YiSan/docs/DevLog/Daily/2025-11-XX.html" target="_blank">https://doppleddiggong.github.io/YiSan/docs/DevLog/Daily/2025-11-XX.html</a></li>
+<li>최신 문서 정상 표시 확인</li>
 </ul>
 </li>
-<li><p><strong>상태 초기화 및 진행률 계산 정돈</strong></p>
+<li><p><strong>Discord 링크 확인</strong></p>
 <ul>
-<li>단계 진입 시마다 필요한 변수를 리셋하는 <code>ResetLoadingState</code>와 <code>AdvanceToStage</code>를 추가해 진행률 계산이 안정적으로 초기화되도록 했다.</li>
-<li>10% 단위 브로드캐스트와 텍스처 진행 로그 스로틀링을 유지해 로그 스팸을 방지했다.</li>
-</ul>
-</li>
-<li><p><strong>Legacy 대비 시간 추적 로그 추가</strong></p>
-<ul>
-<li>각 단계 진입/완료 시 <code>[타이밍] (Legacy 비교)</code> 로그를 남겨 이전 로딩 파이프라인과 동일한 타임라인 구간을 KST 기준으로 기록한다.</li>
-<li>최종 완료 시 <code>WorldPartition</code>, <code>TextureStreaming</code>, <code>LevelInstance</code> 단계별 시작/종료/구간 소요 시간을 요약 출력해 개선 전후 로딩 시간을 정량적으로 비교할 수 있도록 했다.</li>
-<li>구 버전과 비교하려면 개선 적용 전 브랜치를 checkout 한 뒤 동일한 로깅 지표(<code>[타이밍]</code> 태그)를 캡처하고, 개선 버전 로그와 비교한다.</li>
+<li>Discord에서 링크 클릭</li>
+<li>404 에러 없이 정상 접근 확인</li>
 </ul>
 </li>
 </ol>
-<h2 id="기대-효과-및-영향-범위">기대 효과 및 영향 범위</h2>
-<ul>
-<li>불필요한 스트리밍 강제 호출이 사라져 로딩 구간의 CPU 점유율이 안정화되며, 스트리밍 스레드가 과도하게 깨지지 않는다.</li>
-<li>진행률 계산식이 단일 경로로 관리돼 후속 유지보수(가중치 변경, 타임아웃 조정)가 용이하다.</li>
-<li>UI 측에서는 기존 브로드캐스트 인터페이스를 유지하므로 추가 수정 없이 동작한다.</li>
-</ul>
-<h2 id="legacy-vs-개선-버전-비교-절차-가이드">Legacy vs 개선 버전 비교 절차 (가이드)</h2>
+<h3 id="수동-검증-즉시-확인">수동 검증 (즉시 확인)</h3>
+<pre><code class="lang-bash"><span class="hljs-comment"># GitHub에서 수동 실행</span>
+<span class="hljs-comment"># Actions → Daily Report → Run workflow (docs 브랜치)</span>
+<span class="hljs-comment"># Actions → Generate HonKit → 자동 실행 확인</span>
+</code></pre>
+<hr></hr>
+<h2 id="기술적-성과">기술적 성과</h2>
+<h3 id="워크플로우-자동화-완성">워크플로우 자동화 완성</h3>
+<h4 id="이전-구조">이전 구조</h4>
+<pre><code>daily-report 실행
+  ↓
+docs 브랜치 커밋
+  ↓
+❌ HonKit 실행 안됨 (push 이벤트 트리거 안됨)
+  ↓
+❌ gh-pages 업데이트 안됨
+  ↓
+❌ 404 에러
+</code></pre><h4 id="개선된-구조">개선된 구조</h4>
+<pre><code>daily-report 실행
+  ↓
+docs 브랜치 커밋
+  ↓
+repository_dispatch 이벤트 발생
+  ↓
+✅ HonKit 자동 실행
+  ↓
+✅ gh-pages 자동 업데이트
+  ↓
+✅ GitHub Pages 정상 접근
+</code></pre><h3 id="github-actions-이벤트-시스템-활용">GitHub Actions 이벤트 시스템 활용</h3>
+<p><strong>학습한 개념</strong>:</p>
 <ol>
-<li><strong>Baseline 수집</strong>: 개선 적용 전 커밋을 checkout 한 뒤 동일한 테스트 시나리오에서 로딩을 수행하고 <code>[타이밍] (Legacy 비교)</code> 로그를 수집한다.</li>
-<li><strong>개선 버전 측정</strong>: 본 커밋을 적용한 상태에서 동일 시나리오를 재실행해 <code>[타이밍] (Legacy 비교)</code> 로그와 요약을 획득한다.</li>
-<li><strong>비교 지표</strong>: 단계별 <code>단계 소요</code> 값과 최종 <code>총 소요 시간</code>을 비교해 CPU 점유율 및 체감 개선 폭을 평가한다.</li>
-<li><strong>보고</strong>: 차이는 <code>Documents/DevLog</code> 또는 별도 성능 리포트에 누적 기록하고, 추가 최적화 후보(Streaming Pool, DDC 사전 빌드 등)를 검토한다.</li>
+<li><strong>repository_dispatch</strong>: 워크플로우 간 이벤트 전달</li>
+<li><strong>event-type</strong>: 명확한 이벤트 타입 정의</li>
+<li><strong>client-payload</strong>: 추가 정보 전달 (트리거 소스 추적)</li>
+<li><strong>peter-evans/repository-dispatch</strong>: 안정적인 구현</li>
 </ol>
-<h2 id="테스트-및-확인-사항">테스트 및 확인 사항</h2>
+<p><strong>적용 범위</strong>:</p>
 <ul>
-<li>코드 변경은 C++ 빌드 대상이며, 테스트는 프로젝트 정책에 따라 수동 확인 단계에서 진행 예정이다.</li>
-<li>로딩 구간 로그는 5초 주기로만 출력되며, 총 진행률은 10% 단위로 브로드캐스트된다.</li>
+<li>daily-report → honkit 체이닝</li>
+<li>weekly-report → honkit 체이닝</li>
+<li>향후 다른 워크플로우 체이닝에도 활용 가능</li>
 </ul>
-<h2 id="후속-권장-사항">후속 권장 사항</h2>
+<h3 id="문서-자동화-시스템-완성도">문서 자동화 시스템 완성도</h3>
+<p><strong>달성한 목표</strong>:</p>
 <ul>
-<li>필요 시 <code>InitialTextureRequestCount</code>를 PersistentLevel 단위가 아닌 <code>StreamingManager</code> 전체로 캡처하도록 확장해 대형 맵 로딩 시 정확도를 높일 수 있다.</li>
-<li>Texture Streaming Pool 크기 조정 등 엔진 레벨 튜닝은 별도 작업으로 진행 권장.</li>
+<li>✅ DevLog 자동 생성 (daily-report, weekly-report)</li>
+<li>✅ SUMMARY.md 자동 업데이트 (generate_summary.py)</li>
+<li>✅ HonKit 자동 빌드 (repository_dispatch)</li>
+<li>✅ GitHub Pages 자동 배포 (gh-pages)</li>
+<li>✅ Discord 자동 알림 (send_discord.py)</li>
+</ul>
+<p><strong>결과</strong>:</p>
+<ul>
+<li><strong>완전 자동화</strong>: 개발자 수동 개입 불필요</li>
+<li><strong>일관성 보장</strong>: 모든 문서가 자동으로 동기화</li>
+<li><strong>신뢰성 향상</strong>: Discord 링크가 항상 작동</li>
+</ul>
+<hr></hr>
+<h2 id="향후-개선-사항">향후 개선 사항</h2>
+<h3 id="단기-개선-high-priority">단기 개선 (High Priority)</h3>
+<h4 id="1-honkit-빌드-실패-알림">1. HonKit 빌드 실패 알림</h4>
+<p><strong>현재</strong>: 빌드 실패 시 조용히 실패
+<strong>개선</strong>: Discord로 실패 알림 전송</p>
+<pre><code class="lang-yaml"><span class="hljs-comment"># honkit.yml에 추가</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Notify</span> <span class="hljs-string">Build</span> <span class="hljs-string">Failure</span>
+        <span class="hljs-attr">if:</span> <span class="hljs-string">failure()</span>
+        <span class="hljs-attr">run:</span> <span class="hljs-string">|
+          # Discord webhook으로 실패 알림
+</span></code></pre>
+<h4 id="2-배포-완료-알림">2. 배포 완료 알림</h4>
+<p><strong>현재</strong>: DevLog 생성 완료만 알림
+<strong>개선</strong>: gh-pages 배포 완료 후 알림</p>
+<pre><code class="lang-yaml"><span class="hljs-comment"># honkit.yml에 추가</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Notify</span> <span class="hljs-string">Deployment</span> <span class="hljs-string">Success</span>
+        <span class="hljs-attr">if:</span> <span class="hljs-string">success()</span>
+        <span class="hljs-attr">run:</span> <span class="hljs-string">|
+          # Discord webhook으로 배포 완료 알림
+</span></code></pre>
+<h4 id="3-워크플로우-실행-시간-모니터링">3. 워크플로우 실행 시간 모니터링</h4>
+<p><strong>목적</strong>: 빌드 시간 최적화
+<strong>방법</strong>: GitHub Actions 실행 시간 추적</p>
+<h3 id="중기-개선-medium-priority">중기 개선 (Medium Priority)</h3>
+<h4 id="4-캐싱-최적화">4. 캐싱 최적화</h4>
+<p><strong>현재</strong>: 매번 HonKit 플러그인 재설치
+<strong>개선</strong>: npm 캐싱 추가</p>
+<pre><code class="lang-yaml">      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Cache</span> <span class="hljs-string">node</span> <span class="hljs-string">modules</span>
+        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/cache@v3</span>
+        <span class="hljs-attr">with:</span>
+          <span class="hljs-attr">path:</span> <span class="hljs-string">~/.npm</span>
+          <span class="hljs-attr">key:</span> <span class="hljs-string">${{</span> <span class="hljs-string">runner.os</span> <span class="hljs-string">}}-node-${{</span> <span class="hljs-string">hashFiles('**/package-lock.json')</span> <span class="hljs-string">}}</span>
+</code></pre>
+<h4 id="5-증분-빌드">5. 증분 빌드</h4>
+<p><strong>현재</strong>: 전체 문서 재빌드
+<strong>개선</strong>: 변경된 파일만 빌드 (가능한 경우)</p>
+<h4 id="6-배포-버전-관리">6. 배포 버전 관리</h4>
+<p><strong>목적</strong>: 배포 히스토리 추적
+<strong>방법</strong>: 배포 시 태그 추가</p>
+<h3 id="장기-개선-low-priority">장기 개선 (Low Priority)</h3>
+<h4 id="7-preview-환경">7. Preview 환경</h4>
+<p><strong>목적</strong>: 배포 전 미리보기
+<strong>방법</strong>: PR에서 임시 환경 생성</p>
+<h4 id="8-성능-메트릭-수집">8. 성능 메트릭 수집</h4>
+<p><strong>목적</strong>: 문서 사이트 성능 모니터링
+<strong>방법</strong>: Google Analytics 또는 Plausible 연동</p>
+<hr></hr>
+<h2 id="결론">결론</h2>
+<h3 id="해결-요약">해결 요약</h3>
+<ul>
+<li><strong>문제</strong>: GitHub Pages에서 최신 DevLog 404 에러</li>
+<li><strong>원인</strong>: HonKit 워크플로우가 자동 실행되지 않음</li>
+<li><strong>해결</strong>: repository_dispatch 이벤트 체이닝 구현</li>
+<li><strong>결과</strong>: DevLog 생성부터 배포까지 완전 자동화</li>
+</ul>
+<h3 id="기술적-교훈">기술적 교훈</h3>
+<ol>
+<li>GitHub Actions는 Actions로 만든 커밋에 대해 push 이벤트를 트리거하지 않음</li>
+<li>repository_dispatch는 워크플로우 체이닝에 효과적</li>
+<li>문서 자동화는 여러 워크플로우의 조화가 필요</li>
+</ol>
+<h3 id="향후-방향">향후 방향</h3>
+<ul>
+<li>알림 시스템 강화</li>
+<li>빌드 성능 최적화</li>
+<li>모니터링 체계 구축</li>
+</ul>
+<hr></hr>
+<p><strong>작성자</strong>: dopple
+<strong>최종 수정일</strong>: 2025-11-09
+<strong>관련 커밋</strong>:</p>
+<ul>
+<li>main: <code>516f35dd0</code></li>
+<li>docs: <code>d975414c3</code></li>
 </ul>
  <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
@@ -1694,14 +2013,10 @@
 
             
                 
-                <a href="../2025-10-30_UYiSanLoading_Refactor.html" class="navigation navigation-prev " aria-label="Previous page: UYiSanLoading 리팩터링 리뷰 (2025-10-30 KST)">
+                <a href="2025-11-09_로딩시스템_게스트플레이어_이슈리포트.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 게스트 플레이어 로딩 위젯 미제거 문제 분석 리포트">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="../yisan_dasan_voice_proto.html" class="navigation navigation-next " aria-label="Next page: 분석 및 평가 보고서 (2025-09-30 ~ 2025-10-20)">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1710,7 +2025,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"UYiSanLoading 리팩터링 리뷰 (2025-10-30 KST)","level":"12.3","depth":1,"next":{"title":"분석 및 평가 보고서 (2025-09-30 ~ 2025-10-20)","level":"12.4","depth":1,"path":"Planning/yisan_dasan_voice_proto.md","ref":"Planning/yisan_dasan_voice_proto.md","articles":[]},"previous":{"title":"UYiSanLoading 리팩터링 리뷰 (2025-10-30 KST)","level":"12.2","depth":1,"path":"Planning/2025-10-30_UYiSanLoading_Refactor.md","ref":"Planning/2025-10-30_UYiSanLoading_Refactor.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/Report/2025-10-30_UYiSanLoading_리팩토링.md","mtime":"2025-11-09T09:37:32.037Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-09T09:37:57.622Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"GitHub Pages DevLog 404 문제 해결 보고서","level":"16.9","depth":1,"next":{"title":"GitHub Repository","level":"17.1","depth":1,"url":"https://github.com/doppleddiggong/YiSan","ref":"https://github.com/doppleddiggong/YiSan","articles":[]},"previous":{"title":"게스트 플레이어 로딩 위젯 미제거 문제 분석 리포트","level":"16.8","depth":1,"path":"Planning/Report/2025-11-09_로딩시스템_게스트플레이어_이슈리포트.md","ref":"Planning/Report/2025-11-09_로딩시스템_게스트플레이어_이슈리포트.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/Report/2025-11-09_일일 일지 링크 404 이슈.md","mtime":"2025-11-09T09:37:32.037Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-09T09:37:57.622Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

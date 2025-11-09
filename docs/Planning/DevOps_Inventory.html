@@ -3,7 +3,7 @@
 <html lang="ko" >
     <head>
         <meta charset="UTF-8">
-        <title>YiSan 멀티플레이 로비 UI 디자인 가이드 (Figma) · YiSan Development Documentation</title>
+        <title>YiSan DevOps 개요 문서 · YiSan Development Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 6.1.4">
@@ -88,10 +88,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="AI_Pathfinding_Fix_Report.html" />
+    <link rel="next" href="PlayerIndexShooting/PlayerIndex_GameState_Refactoring_2025-11-02.html" />
     
     
-    <link rel="prev" href="yisan_proto.html" />
+    <link rel="prev" href="Weekly_Presentation_2025-11-02.html" />
     
 
     </head>
@@ -1273,7 +1273,7 @@
         
         
     
-        <li class="chapter active" data-level="13.1" data-path="Figma_Lobby_UI_Design_Guide.html">
+        <li class="chapter " data-level="13.1" data-path="Figma_Lobby_UI_Design_Guide.html">
             
                 <a href="Figma_Lobby_UI_Design_Guide.html">
             
@@ -1411,7 +1411,7 @@
         
         
     
-        <li class="chapter " data-level="16.1" data-path="DevOps_Inventory.html">
+        <li class="chapter active" data-level="16.1" data-path="DevOps_Inventory.html">
             
                 <a href="DevOps_Inventory.html">
             
@@ -1591,7 +1591,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >YiSan 멀티플레이 로비 UI 디자인 가이드 (Figma)</a>
+        <a href=".." >YiSan DevOps 개요 문서</a>
     </h1>
 </div>
 
@@ -1606,860 +1606,162 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="yisan-멀티플레이-로비-ui-디자인-가이드-figma">YiSan 멀티플레이 로비 UI 디자인 가이드 (Figma)</h1>
-<p><strong>작성일:</strong> 2025-10-20
-<strong>버전:</strong> 1.0
-<strong>대상:</strong> UI/UX 디자이너, Figma 사용자</p>
-<hr></hr>
-<h2 id="📑-목차">📑 목차</h2>
-<ol>
-<li><a href="#1-개요">개요</a></li>
-<li><a href="#2-디자인-스펙">디자인 스펙</a></li>
-<li><a href="#3-컴포넌트-구조">컴포넌트 구조</a></li>
-<li><a href="#4-ui-요소-상세">UI 요소 상세</a></li>
-<li><a href="#5-색상-팔레트">색상 팔레트</a></li>
-<li><a href="#6-타이포그래피">타이포그래피</a></li>
-<li><a href="#7-레이아웃-가이드">레이아웃 가이드</a></li>
-<li><a href="#8-인터랙션-상태">인터랙션 상태</a></li>
-<li><a href="#9-반응형-디자인">반응형 디자인</a></li>
-<li><a href="#10-에셋-내보내기">에셋 내보내기</a></li>
-</ol>
-<hr></hr>
-<h2 id="1-개요">1. 개요</h2>
-<h3 id="11-디자인-목표">1.1 디자인 목표</h3>
+                                <h1 id="yisan-devops-개요-문서">YiSan DevOps 개요 문서</h1>
+<p>작성일: 2025-11-09</p>
+<p>본 문서는 YiSan 저장소에 구성된 DevOps(자동화/문서화/훅) 기능을 한눈에 파악하고 운영·유지보수 시 참고할 수 있도록 정리합니다.</p>
+<h2 id="1-전체-구조-요약">1) 전체 구조 요약</h2>
 <ul>
-<li><strong>명확성</strong>: 사용자가 Host/Join 선택을 쉽게 이해</li>
-<li><strong>접근성</strong>: 큰 버튼, 명확한 텍스트, 고대비</li>
-<li><strong>한국 문화 테마</strong>: YiSan 프로젝트의 문화유산 콘셉트 반영</li>
-<li><strong>반응형</strong>: 다양한 화면 비율 지원 (16:9, 21:9, 4:3)</li>
+<li>DevLog 자동화: 매일/매주 커밋 기반 개발 로그 생성 → <code>docs</code> 브랜치에 커밋 → HonKit 빌드 트리거 → GitHub Pages 배포</li>
+<li>HonKit 문서: <code>Documents</code> 폴더를 원본으로 빌드하여 GitHub Pages(<code>/docs</code>)에 배포</li>
+<li>Doxygen 문서: C++ 소스에 대해 Doxygen 생성 후 GitHub Pages(<code>/doxygen</code>) 배포</li>
+<li>커밋 메시지 자동화: <code>prepare-commit-msg</code> 훅으로 Conventional Commit 스타일 제목/요약 자동 생성</li>
+<li>인덱스 페이지: GitHub Pages 루트 인덱스(<code>/.</code>) 배포</li>
+<li>AI 코드 리뷰 워크플로: 존재하지만 비활성(수동 활성화 가능)</li>
 </ul>
-<h3 id="12-기술-제약사항">1.2 기술 제약사항</h3>
+<h2 id="2-github-actions-워크플로">2) GitHub Actions 워크플로</h2>
+<h3 id="21-daily-report-일간-devlog">2.1 Daily Report (일간 DevLog)</h3>
 <ul>
-<li><strong>엔진</strong>: Unreal Engine 5 (UMG 위젯)</li>
-<li><strong>해상도</strong>: 1920x1080 기준 (Full HD)</li>
-<li><strong>스케일 모드</strong>: Scale to Fit</li>
-<li><strong>폰트</strong>: 한글 지원 필수 (Noto Sans KR 권장)</li>
-</ul>
-<hr></hr>
-<h2 id="2-디자인-스펙">2. 디자인 스펙</h2>
-<h3 id="21-캔버스-설정">2.1 캔버스 설정</h3>
-<pre><code>Figma Frame 생성:
-  - Name: "Lobby UI - Desktop"
-  - Width: 1920px
-  - Height: 1080px
-  - Background: #1A1A2E (어두운 네이비)
-</code></pre><h3 id="22-그리드-시스템">2.2 그리드 시스템</h3>
-<pre><code>Layout Grid:
-  - Type: Rows
-  - Count: 12
-  - Gutter: 20px
-  - Margin: 100px (좌우)
-
-Center Guide:
-  - Vertical: X = 960px
-  - Horizontal: Y = 540px
-</code></pre><hr></hr>
-<h2 id="3-컴포넌트-구조">3. 컴포넌트 구조</h2>
-<h3 id="31-hierarchy-계층-구조">3.1 Hierarchy (계층 구조)</h3>
-<pre><code>🖼️ Frame: Lobby UI - Desktop (1920x1080)
-│
-├─ 🌌 Background
-│   ├─ Image: 한국 전통 건축물 (블러 처리)
-│   └─ Overlay: Gradient (Top: #1A1A2E 80%, Bottom: #0F0F1E 100%)
-│
-├─ 🎭 Logo Section (상단 중앙)
-│   ├─ Logo: "YiSan" (이미지 또는 텍스트)
-│   └─ Subtitle: "문화유산 탐험 멀티플레이"
-│
-├─ 📦 Main Container (중앙)
-│   ├─ 🏷️ Title
-│   │   └─ Text: "멀티플레이 로비"
-│   │
-│   ├─ 📊 Status Display
-│   │   ├─ Icon: 🔄 (상태에 따라 변경)
-│   │   └─ Text: "대기 중..." (동적 변경)
-│   │
-│   ├─ 📝 IP Input Section
-│   │   ├─ Label: "서버 주소"
-│   │   └─ TextBox: "192.168.0.10 입력"
-│   │
-│   └─ 🎮 Button Group
-│       ├─ Button: Host Game
-│       ├─ Button: Join Game
-│       └─ Button: Disconnect (초기 숨김)
-│
-└─ ℹ️ Footer Section (하단)
-    ├─ Text: "도움말"
-    └─ Text: "버전 정보"
-</code></pre><hr></hr>
-<h2 id="4-ui-요소-상세">4. UI 요소 상세</h2>
-<h3 id="41-logo-section">4.1 Logo Section</h3>
-<h4 id="위치-및-크기">위치 및 크기</h4>
-<pre><code>Position:
-  - X: 960px (중앙)
-  - Y: 120px (상단에서)
-
-Logo:
-  - Width: 300px
-  - Height: 80px
-  - Format: SVG 또는 PNG (투명 배경)
-
-Subtitle:
-  - Font: Noto Sans KR Medium
-  - Size: 20px
-  - Color: #B0B3C5 (연한 회색)
-  - Letter Spacing: 2%
-</code></pre><h4 id="figma에서-만들기">Figma에서 만들기</h4>
-<ol>
-<li><strong>Text 툴</strong> (T) 선택</li>
-<li>텍스트 입력: <code>YiSan</code></li>
-<li>스타일 적용:<pre><code>Font Family: Noto Sans KR (또는 맞춤 폰트)
-Weight: Bold
-Size: 64px
-Color: #FFD700 (금색)
-Effects:
-  - Drop Shadow: Y=4px, Blur=8px, Color=#000000 50%
-</code></pre></li>
-<li>Subtitle 추가:<pre><code>Text: "문화유산 탐험 멀티플레이"
-Font: Noto Sans KR Medium
-Size: 20px
-Color: #B0B3C5
-</code></pre></li>
-</ol>
-<hr></hr>
-<h3 id="42-main-container">4.2 Main Container</h3>
-<h4 id="위치-및-크기">위치 및 크기</h4>
-<pre><code>Container:
-  - X: 960px (중앙 정렬)
-  - Y: 540px (수직 중앙)
-  - Width: 600px
-  - Height: Auto (내용에 따라)
-  - Background: #16213E (어두운 블루)
-  - Border Radius: 20px
-  - Padding: 40px (내부 여백)
-  - Shadow: 0px 20px 60px rgba(0,0,0,0.5)
-</code></pre><h4 id="figma에서-만들기">Figma에서 만들기</h4>
-<ol>
-<li><strong>Rectangle 툴</strong> (R) 선택</li>
-<li>크기: <code>600px × Auto</code></li>
-<li><strong>Auto Layout</strong> 적용:<pre><code>Direction: Vertical
-Spacing: 24px
-Padding: 40px (모든 방향)
-Alignment: Center
-</code></pre></li>
-<li><strong>Fill</strong> 설정:<pre><code>Color: #16213E
-</code></pre></li>
-<li><strong>Stroke</strong> 설정:<pre><code>Width: 2px
-Color: #FFD700 (금색 테두리)
-</code></pre></li>
-<li><strong>Effects</strong> 추가:<pre><code>Drop Shadow:
-  - X: 0px
-  - Y: 20px
-  - Blur: 60px
-  - Color: #000000 (Opacity: 50%)
-</code></pre></li>
-</ol>
-<hr></hr>
-<h3 id="43-title-제목">4.3 Title (제목)</h3>
-<h4 id="스펙">스펙</h4>
-<pre><code>Text: "멀티플레이 로비"
-Font: Noto Sans KR Bold
-Size: 36px
-Color: #FFFFFF
-Letter Spacing: 0%
-Line Height: 44px
-Alignment: Center
-</code></pre><h4 id="figma에서-만들기">Figma에서 만들기</h4>
-<ol>
-<li>Text 툴 (T) 선택</li>
-<li>Main Container 내부에 배치</li>
-<li>스타일 적용 (위 스펙 참조)</li>
-</ol>
-<hr></hr>
-<h3 id="44-status-display-상태-표시">4.4 Status Display (상태 표시)</h3>
-<h4 id="스펙">스펙</h4>
-<pre><code>Container:
-  - Width: 100% (부모 컨테이너 기준)
-  - Height: 60px
-  - Background: rgba(255, 255, 255, 0.05) (반투명 흰색)
-  - Border Radius: 12px
-  - Padding: 16px
-
-Icon:
-  - Size: 28px × 28px
-  - Color: #FFD700 (금색)
-  - 상태에 따라 변경:
-    - 대기: 🔄 (회전 애니메이션)
-    - 연결 중: ⏳
-    - 성공: ✅
-    - 오류: ❌
-
-Text:
-  - Font: Noto Sans KR Medium
-  - Size: 20px
-  - Color: #FFFFFF
-  - 동적 텍스트:
-    - "대기 중..."
-    - "호스트 생성 중..."
-    - "서버 접속 중..."
-    - "연결 성공!"
-    - "오류: 서버 연결 실패"
-</code></pre><h4 id="figma에서-만들기">Figma에서 만들기</h4>
-<ol>
-<li>Rectangle 생성 → Auto Layout 적용<pre><code>Direction: Horizontal
-Spacing: 12px
-Padding: 16px
-Alignment: Left, Center
-</code></pre></li>
-<li>Icon 추가 (Text 또는 이미지)</li>
-<li>Status Text 추가</li>
-</ol>
-<hr></hr>
-<h3 id="45-ip-input-section">4.5 IP Input Section</h3>
-<h4 id="스펙">스펙</h4>
-<pre><code>Label:
-  - Text: "서버 주소"
-  - Font: Noto Sans KR Medium
-  - Size: 16px
-  - Color: #B0B3C5
-  - Margin Bottom: 8px
-
-TextBox:
-  - Width: 100%
-  - Height: 50px
-  - Background: rgba(255, 255, 255, 0.08)
-  - Border: 2px solid rgba(255, 255, 255, 0.2)
-  - Border Radius: 8px
-  - Padding: 12px 16px
-
-  Placeholder:
-    - Text: "예: 192.168.0.10"
-    - Font: Noto Sans KR Regular
-    - Size: 16px
-    - Color: rgba(255, 255, 255, 0.4)
-
-  Focus State:
-    - Border: 2px solid #FFD700
-    - Background: rgba(255, 255, 255, 0.12)
-
-  Input Text:
-    - Font: Noto Sans KR Medium
-    - Size: 18px
-    - Color: #FFFFFF
-</code></pre><h4 id="figma에서-만들기">Figma에서 만들기</h4>
-<ol>
-<li><p><strong>Label 생성</strong>:</p>
-<ul>
-<li>Text: "서버 주소"</li>
-<li>스타일 적용 (위 스펙 참조)</li>
+<li>파일: <code>.github/workflows/daily-report.yml</code></li>
+<li>트리거: 매일 09:00 KST(UTC 00:00), 수동 실행 지원</li>
+<li>동작:<ul>
+<li><code>docs</code> 브랜치 체크아웃 → Python 환경 설정 → 커밋 로그 기준 일간 DevLog 생성</li>
+<li>선택: GPT 피드백 생성/병합(<code>.github/config.yml</code>의 <code>gpt.daily_enabled</code> 및 워크플로 입력)</li>
+<li><code>Documents/DevLog/Daily/YYYY-MM-DD.md</code> 및 메트릭 JSON 생성</li>
+<li><code>Documents/SUMMARY.md</code> 갱신 → <code>docs</code> 브랜치에 커밋/푸시</li>
+<li>Discord 알림(선택, <code>DISCORD_WEBHOOK</code> 설정 필요)</li>
+<li>HonKit 빌드 트리거(repository_dispatch: <code>honkit-build</code>)</li>
 </ul>
 </li>
-<li><p><strong>TextBox 생성</strong>:</p>
+</ul>
+<h3 id="22-weekly-report-주간-요약gpt-회고">2.2 Weekly Report (주간 요약/GPT 회고)</h3>
 <ul>
-<li>Rectangle 생성 (520px × 50px)</li>
-<li>Auto Layout 적용:<pre><code>Direction: Horizontal
-Padding: 12px 16px
-Alignment: Left, Center
-</code></pre></li>
-<li>Fill: <code>rgba(255, 255, 255, 0.08)</code></li>
-<li>Stroke: <code>2px, rgba(255, 255, 255, 0.2)</code></li>
-<li>Corner Radius: <code>8px</code></li>
+<li>파일: <code>.github/workflows/weekly-report.yml</code></li>
+<li>트리거: 매주 일요일 23:00 KST(UTC 14:00), 수동 실행 지원</li>
+<li>동작:<ul>
+<li><code>docs</code> 브랜치 체크아웃 → Python 설정 → 주간 요약 생성(<code>WYY</code> 레이블)</li>
+<li>선택: GPT 기반 주간 피드백 생성/병합(<code>.github/config.yml</code>의 <code>gpt.weekly_enabled</code>)</li>
+<li><code>Documents/SUMMARY.md</code> 갱신 → <code>docs</code> 브랜치 커밋/푸시 → Discord(선택) → HonKit 트리거</li>
 </ul>
 </li>
-<li><p><strong>Placeholder Text 추가</strong>:</p>
+</ul>
+<h3 id="23-honkit-빌드배포">2.3 HonKit 빌드/배포</h3>
 <ul>
-<li>Text: "예: 192.168.0.10"</li>
-<li>Font: Noto Sans KR Regular</li>
-<li>Size: 16px</li>
-<li>Color: <code>rgba(255, 255, 255, 0.4)</code></li>
+<li>파일: <code>.github/workflows/honkit.yml</code></li>
+<li>트리거:<ul>
+<li><code>main/dopple/docs</code> 브랜치의 <code>Documents/**</code> 및 <code>generate_summary.py</code> 변경 시</li>
+<li><code>repository_dispatch: honkit-build</code>, 수동 실행</li>
 </ul>
 </li>
-<li><p><strong>Component Variant 생성</strong> (선택 사항):</p>
-<ul>
-<li>Default State</li>
-<li>Focus State</li>
-<li>Error State</li>
+<li>동작:<ul>
+<li><code>Documents</code> 루트 기준으로 SUMMARY 생성 → HonKit 설치/빌드 → Pages <code>gh-pages/docs</code>에 배포</li>
 </ul>
 </li>
-</ol>
-<hr></hr>
-<h3 id="46-button-group">4.6 Button Group</h3>
-<h4 id="공통-스펙">공통 스펙</h4>
-<pre><code>Button Container:
-  - Width: 100%
-  - Auto Layout: Vertical
-  - Spacing: 12px
-  - Alignment: Center
-</code></pre><hr></hr>
-<h4 id="461-host-button">4.6.1 Host Button</h4>
-<pre><code>Button:
-  - Width: 100%
-  - Height: 60px
-  - Background: Linear Gradient
-    - Start: #4CAF50 (밝은 녹색)
-    - End: #2E7D32 (어두운 녹색)
-  - Border Radius: 12px
-  - Shadow: 0px 4px 12px rgba(76, 175, 80, 0.4)
-
-Text:
-  - Content: "🎮 Host Game"
-  - Font: Noto Sans KR Bold
-  - Size: 22px
-  - Color: #FFFFFF
-  - Letter Spacing: 1%
-
-Hover State:
-  - Background: Linear Gradient
-    - Start: #66BB6A
-    - End: #388E3C
-  - Transform: Scale(1.02)
-  - Shadow: 0px 6px 16px rgba(76, 175, 80, 0.6)
-
-Active (Pressed) State:
-  - Background: Linear Gradient
-    - Start: #388E3C
-    - End: #1B5E20
-  - Transform: Scale(0.98)
-  - Shadow: 0px 2px 8px rgba(76, 175, 80, 0.3)
-
-Disabled State:
-  - Background: #424242 (회색)
-  - Text Color: rgba(255, 255, 255, 0.3)
-  - Shadow: None
-</code></pre><h4 id="figma에서-만들기">Figma에서 만들기</h4>
-<ol>
-<li><strong>Rectangle 생성</strong> (520px × 60px)</li>
-<li><strong>Auto Layout 적용</strong>:<pre><code>Direction: Horizontal
-Padding: 16px
-Alignment: Center, Center
-</code></pre></li>
-<li><strong>Fill 설정</strong> (Gradient):<ul>
-<li>Type: Linear</li>
-<li>Angle: 90°</li>
-<li>Stop 1: #4CAF50 (0%)</li>
-<li>Stop 2: #2E7D32 (100%)</li>
+</ul>
+<h3 id="24-doxygen-생성배포">2.4 Doxygen 생성/배포</h3>
+<ul>
+<li>파일: <code>.github/workflows/doxygen.yml</code></li>
+<li>트리거: <code>main</code> 브랜치의 <code>Source/**</code>, <code>Plugins/**</code>, <code>**/*.md</code>, <code>Doxyfile</code> 변경 및 PR</li>
+<li>동작: Doxygen/Graphviz 설치 → 문서 생성 → Pages <code>gh-pages/doxygen</code>에 배포</li>
+</ul>
+<h3 id="25-github-pages-인덱스-배포">2.5 GitHub Pages 인덱스 배포</h3>
+<ul>
+<li>파일: <code>.github/workflows/deploy-index.yml</code></li>
+<li>트리거: <code>main</code>의 인덱스 관련 파일 변경, 수동 실행</li>
+<li>동작: <code>.github/gh-pages-index.html</code>을 Pages 루트(<code>/.</code>)로 배포</li>
+</ul>
+<h3 id="26-ai-코드-리뷰비활성">2.6 AI 코드 리뷰(비활성)</h3>
+<ul>
+<li>파일: <code>.github/workflows/ai-review.disabled</code></li>
+<li>개요: 변경된 C++/C# diff를 OpenAI API로 리뷰, PR 코멘트/Discord 전송</li>
+<li>비고: 기본 비활성. 활성화 시 OpenAI API Key 필요</li>
+</ul>
+<h2 id="3-로컬-스크립트도구">3) 로컬 스크립트/도구</h2>
+<h3 id="31-devlog-관련">3.1 DevLog 관련</h3>
+<ul>
+<li>실행 래퍼: <code>Tools/DevLog/run_devlog.sh</code>, <code>Tools/RunDevLogPy.cmd</code></li>
+<li>1회 생성/백필: <code>Tools/DevLog/run_generate_daily_devlog_once.py</code>, <code>Tools/run_generate_daily_devlog_once.ps1</code></li>
+<li>기타: <code>Tools/DevLog/generate_daily_devlog_bi.py</code></li>
+<li>테스트: <code>Tools/Tests/Test-DevLog.ps1</code></li>
+</ul>
+<h3 id="32-커밋-메시지-자동화">3.2 커밋 메시지 자동화</h3>
+<ul>
+<li>메시지 생성: <code>Tools/CommitMessage/gen_commit_msg.py</code></li>
+<li>훅 설치: <code>Tools/CommitMessage/install_commit_hook.py</code> → <code>.git/hooks/prepare-commit-msg</code> 생성</li>
+<li>템플릿/래퍼: <code>Tools/CommitMessage/commit_template.md</code>, <code>Tools/CommitMessage/run_gen_commit_msg.sh</code>, <code>Tools/RunGenCommitMsgPy.cmd</code></li>
+<li>초기화: <code>Tools/SetupProject.cmd</code> (Python 확인 → 훅 설치 → DevLog 1회 실행)</li>
+<li>환경변수: <code>SKIP_AUTO_COMMIT_MSG=1</code> 설정 시 자동 생성 비활성</li>
+</ul>
+<h3 id="33-doxygen-로컬-실행">3.3 Doxygen 로컬 실행</h3>
+<ul>
+<li>실행: <code>pwsh -File Tools/Doxygen/RunDoxygen.ps1 [-Clean] [-ConfigPath &lt;Doxyfile&gt;]</code></li>
+<li>산출물: <code>Documents/Doxygen</code> (로컬 기준)</li>
+</ul>
+<h3 id="34-기타">3.4 기타</h3>
+<ul>
+<li>Agent Q&amp;A 저장: <code>Tools/SaveAgentQA/save_agent_qa.py</code>, 테스트 <code>Tools/Tests/Test-AgentQA.ps1</code></li>
+</ul>
+<h2 id="4-구성-파일-요약">4) 구성 파일 요약</h2>
+<ul>
+<li>DevLog/알림 중앙 설정: <code>.github/config.yml</code><ul>
+<li><code>gpt.daily_enabled</code>, <code>gpt.weekly_enabled</code> (GPT 사용 여부)</li>
+<li><code>discord.enabled</code> (Webhook 사용)</li>
+<li><code>devlog.daily_auto</code>, <code>devlog.weekly_auto</code>, <code>output_dir</code></li>
 </ul>
 </li>
-<li><strong>Corner Radius</strong>: <code>12px</code></li>
-<li><strong>Effects</strong> (Shadow):<ul>
-<li>Type: Drop Shadow</li>
-<li>Y: 4px</li>
-<li>Blur: 12px</li>
-<li>Color: rgba(76, 175, 80, 0.4)</li>
+<li>HonKit 설정: <code>Documents/book.json</code>, <code>Documents/HonkitPage/book.json</code></li>
+<li>Doxygen 설정: <code>Doxyfile</code></li>
+</ul>
+<h2 id="5-배포-대상경로">5) 배포 대상/경로</h2>
+<ul>
+<li>GitHub Pages 브랜치: <code>gh-pages</code><ul>
+<li>HonKit: <code>/docs</code></li>
+<li>Doxygen: <code>/doxygen</code></li>
+<li>인덱스: <code>/</code></li>
 </ul>
 </li>
-<li><p><strong>Text 추가</strong>:</p>
+</ul>
+<h2 id="6-필요한-시크릿권한">6) 필요한 시크릿/권한</h2>
 <ul>
-<li>Content: "🎮 Host Game"</li>
-<li>스타일 적용 (위 스펙 참조)</li>
+<li><code>secrets.GITHUB_TOKEN</code>: Pages 배포/푸시용(기본 제공)</li>
+<li><code>secrets.OPENAI_API_KEY</code>: GPT 기반 일간/주간 피드백, AI 코드 리뷰(선택)</li>
+<li><code>secrets.DISCORD_WEBHOOK</code>: Discord 알림 활성화 시 필수</li>
+</ul>
+<h2 id="7-부재비활성-항목현황">7) 부재/비활성 항목(현황)</h2>
+<ul>
+<li>Pre-commit 프레임워크 설정 없음: <code>.pre-commit-config.*</code> 미존재</li>
+<li><code>commitlint</code>/<code>husky</code> 미사용</li>
+<li>코드 포매터/린터 표준 파일 미검출: <code>.clang-format</code>, <code>.editorconfig</code>, <code>.gitattributes</code> 등</li>
+<li>Git 훅 커버리지는 <code>prepare-commit-msg</code>만 자동 설치(기타 훅 없음)</li>
+<li>Dockerfile/Makefile/CMake 등 빌드 시스템 정의 미검출</li>
+</ul>
+<h2 id="8-운영-가이드요약">8) 운영 가이드(요약)</h2>
+<ul>
+<li>커밋 메시지 훅 설치: <ul>
+<li><code>python Tools/CommitMessage/install_commit_hook.py</code></li>
+<li>또는 <code>Tools/SetupProject.cmd</code> 실행(권장)</li>
 </ul>
 </li>
-<li><p><strong>Component 생성</strong> → <strong>Add Variant</strong>:</p>
-<ul>
-<li>Default</li>
-<li>Hover</li>
-<li>Pressed</li>
-<li>Disabled</li>
+<li>DevLog 수동 실행:<ul>
+<li>Windows: <code>Tools/RunDevLogPy.cmd</code></li>
+<li>Bash: <code>./Tools/DevLog/run_devlog.sh</code></li>
 </ul>
 </li>
-</ol>
-<hr></hr>
-<h4 id="462-join-button">4.6.2 Join Button</h4>
-<pre><code>Button:
-  - Width: 100%
-  - Height: 60px
-  - Background: Linear Gradient
-    - Start: #2196F3 (밝은 블루)
-    - End: #1565C0 (어두운 블루)
-  - Border Radius: 12px
-  - Shadow: 0px 4px 12px rgba(33, 150, 243, 0.4)
-
-Text:
-  - Content: "🔗 Join Game"
-  - Font: Noto Sans KR Bold
-  - Size: 22px
-  - Color: #FFFFFF
-  - Letter Spacing: 1%
-
-Hover State:
-  - Background: Linear Gradient
-    - Start: #42A5F5
-    - End: #1976D2
-  - Transform: Scale(1.02)
-  - Shadow: 0px 6px 16px rgba(33, 150, 243, 0.6)
-
-Active (Pressed) State:
-  - Background: Linear Gradient
-    - Start: #1976D2
-    - End: #0D47A1
-  - Transform: Scale(0.98)
-  - Shadow: 0px 2px 8px rgba(33, 150, 243, 0.3)
-
-Disabled State:
-  - Background: #424242
-  - Text Color: rgba(255, 255, 255, 0.3)
-  - Shadow: None
-</code></pre><p><strong>Figma에서 만들기:</strong> Host Button과 동일한 방법, Gradient 색상만 변경</p>
-<hr></hr>
-<h4 id="463-disconnect-button">4.6.3 Disconnect Button</h4>
-<pre><code>Button:
-  - Width: 100%
-  - Height: 60px
-  - Background: Linear Gradient
-    - Start: #F44336 (밝은 빨강)
-    - End: #C62828 (어두운 빨강)
-  - Border Radius: 12px
-  - Shadow: 0px 4px 12px rgba(244, 67, 54, 0.4)
-
-Text:
-  - Content: "❌ Disconnect"
-  - Font: Noto Sans KR Bold
-  - Size: 22px
-  - Color: #FFFFFF
-  - Letter Spacing: 1%
-
-⚠️ 초기 상태: Visibility = Hidden (숨김)
-
-Hover State:
-  - Background: Linear Gradient
-    - Start: #EF5350
-    - End: #D32F2F
-  - Transform: Scale(1.02)
-  - Shadow: 0px 6px 16px rgba(244, 67, 54, 0.6)
-
-Active (Pressed) State:
-  - Background: Linear Gradient
-    - Start: #D32F2F
-    - End: #B71C1C
-  - Transform: Scale(0.98)
-  - Shadow: 0px 2px 8px rgba(244, 67, 54, 0.3)
-</code></pre><p><strong>Figma에서 만들기:</strong> 위 버튼과 동일, Gradient는 빨강 계열</p>
-<hr></hr>
-<h3 id="47-footer-section">4.7 Footer Section</h3>
-<h4 id="스펙">스펙</h4>
-<pre><code>Container:
-  - Position: Fixed Bottom
-  - Y: 1020px (하단에서 60px)
-  - Width: 100%
-  - Height: 40px
-  - Background: Transparent
-
-Help Text:
-  - Text: "도움말: Host = 서버 생성, Join = 서버 접속"
-  - Font: Noto Sans KR Regular
-  - Size: 14px
-  - Color: rgba(255, 255, 255, 0.6)
-  - Alignment: Center
-
-Version Text:
-  - Text: "v1.0.0 | YiSan Multiplayer"
-  - Font: Noto Sans KR Light
-  - Size: 12px
-  - Color: rgba(255, 255, 255, 0.4)
-  - Alignment: Right
-  - X: 1820px (우측 정렬)
-</code></pre><hr></hr>
-<h2 id="5-색상-팔레트">5. 색상 팔레트</h2>
-<h3 id="51-primary-colors-주-색상">5.1 Primary Colors (주 색상)</h3>
-<pre><code>Brand Gold (브랜드 골드):
-  - HEX: #FFD700
-  - RGB: 255, 215, 0
-  - 용도: 로고, 강조, 테두리
-
-Dark Navy (어두운 네이비):
-  - HEX: #1A1A2E
-  - RGB: 26, 26, 46
-  - 용도: 배경
-
-Deep Blue (깊은 블루):
-  - HEX: #16213E
-  - RGB: 22, 33, 62
-  - 용도: 컨테이너 배경
-</code></pre><h3 id="52-semantic-colors-의미론적-색상">5.2 Semantic Colors (의미론적 색상)</h3>
-<pre><code>Success Green (성공 녹색):
-  - Primary: #4CAF50
-  - Dark: #2E7D32
-  - Light: #66BB6A
-  - 용도: Host 버튼, 성공 메시지
-
-Info Blue (정보 블루):
-  - Primary: #2196F3
-  - Dark: #1565C0
-  - Light: #42A5F5
-  - 용도: Join 버튼, 정보 메시지
-
-Danger Red (위험 빨강):
-  - Primary: #F44336
-  - Dark: #C62828
-  - Light: #EF5350
-  - 용도: Disconnect 버튼, 오류 메시지
-
-Warning Yellow (경고 노랑):
-  - Primary: #FFC107
-  - Dark: #F57C00
-  - Light: #FFD54F
-  - 용도: 경고 메시지
-</code></pre><h3 id="53-neutral-colors-중립-색상">5.3 Neutral Colors (중립 색상)</h3>
-<pre><code>White (흰색):
-  - HEX: #FFFFFF
-  - RGB: 255, 255, 255
-  - 용도: 텍스트 (주요)
-
-Light Gray (연한 회색):
-  - HEX: #B0B3C5
-  - RGB: 176, 179, 197
-  - 용도: 텍스트 (보조)
-
-Dark Gray (어두운 회색):
-  - HEX: #424242
-  - RGB: 66, 66, 66
-  - 용도: 비활성화 상태
-</code></pre><hr></hr>
-<h2 id="6-타이포그래피">6. 타이포그래피</h2>
-<h3 id="61-폰트-패밀리">6.1 폰트 패밀리</h3>
-<pre><code>Primary Font: Noto Sans KR
-  - Source: Google Fonts
-  - Weights: Regular (400), Medium (500), Bold (700)
-  - Language: 한국어, English
-  - License: SIL Open Font License
-
-Fallback Font: Malgun Gothic (맑은 고딕)
-  - System Font (Windows)
-</code></pre><h3 id="62-text-styles">6.2 Text Styles</h3>
-<h4 id="heading-1-제목-1">Heading 1 (제목 1)</h4>
-<pre><code>Font: Noto Sans KR Bold
-Size: 64px
-Line Height: 80px
-Letter Spacing: 0%
-Color: #FFD700
-Use Case: 로고 텍스트
-</code></pre><h4 id="heading-2-제목-2">Heading 2 (제목 2)</h4>
-<pre><code>Font: Noto Sans KR Bold
-Size: 36px
-Line Height: 44px
-Letter Spacing: 0%
-Color: #FFFFFF
-Use Case: 메인 제목 ("멀티플레이 로비")
-</code></pre><h4 id="heading-3-제목-3">Heading 3 (제목 3)</h4>
-<pre><code>Font: Noto Sans KR Bold
-Size: 22px
-Line Height: 28px
-Letter Spacing: 1%
-Color: #FFFFFF
-Use Case: 버튼 텍스트
-</code></pre><h4 id="body-1-본문-1">Body 1 (본문 1)</h4>
-<pre><code>Font: Noto Sans KR Medium
-Size: 20px
-Line Height: 28px
-Letter Spacing: 0%
-Color: #FFFFFF
-Use Case: 상태 메시지
-</code></pre><h4 id="body-2-본문-2">Body 2 (본문 2)</h4>
-<pre><code>Font: Noto Sans KR Regular
-Size: 16px
-Line Height: 24px
-Letter Spacing: 0%
-Color: #B0B3C5
-Use Case: Label, Placeholder
-</code></pre><h4 id="caption-캡션">Caption (캡션)</h4>
-<pre><code>Font: Noto Sans KR Regular
-Size: 14px
-Line Height: 20px
-Letter Spacing: 0%
-Color: rgba(255, 255, 255, 0.6)
-Use Case: 도움말, 부가 정보
-</code></pre><hr></hr>
-<h2 id="7-레이아웃-가이드">7. 레이아웃 가이드</h2>
-<h3 id="71-spacing-system-간격-시스템">7.1 Spacing System (간격 시스템)</h3>
-<pre><code>Spacing Scale (8pt Grid):
-  - 4px   (0.5 unit) → 아주 작은 여백
-  - 8px   (1 unit)   → 작은 여백
-  - 12px  (1.5 unit) → 버튼 내부 여백
-  - 16px  (2 units)  → 기본 여백
-  - 24px  (3 units)  → 컴포넌트 간 여백
-  - 32px  (4 units)  → 섹션 간 여백
-  - 40px  (5 units)  → 컨테이너 패딩
-  - 48px  (6 units)  → 큰 여백
-  - 64px  (8 units)  → 섹션 구분
-</code></pre><h3 id="72-component-sizes">7.2 Component Sizes</h3>
-<pre><code>Button Heights:
-  - Small: 40px
-  - Medium: 50px
-  - Large: 60px ← 로비 UI 사용
-
-Input Heights:
-  - Text Input: 50px
-
-Container Widths:
-  - Narrow: 400px
-  - Medium: 600px ← 로비 UI 사용
-  - Wide: 800px
-</code></pre><hr></hr>
-<h2 id="8-인터랙션-상태">8. 인터랙션 상태</h2>
-<h3 id="81-버튼-상태-정의">8.1 버튼 상태 정의</h3>
-<h4 id="default-기본">Default (기본)</h4>
-<pre><code>Opacity: 100%
-Transform: Scale(1)
-Cursor: Pointer
-</code></pre><h4 id="hover-마우스-오버">Hover (마우스 오버)</h4>
-<pre><code>Transition: 0.2s ease-out
-Transform: Scale(1.02)
-Shadow: Increased (더 큰 그림자)
-Brightness: +10%
-Cursor: Pointer
-</code></pre><h4 id="activepressed-클릭">Active/Pressed (클릭)</h4>
-<pre><code>Transition: 0.1s ease-in
-Transform: Scale(0.98)
-Shadow: Decreased (작은 그림자)
-Brightness: -10%
-</code></pre><h4 id="disabled-비활성화">Disabled (비활성화)</h4>
-<pre><code>Opacity: 50%
-Background: Grayscale
-Cursor: Not-Allowed
-Pointer Events: None
-</code></pre><hr></hr>
-<h3 id="82-input-상태-정의">8.2 Input 상태 정의</h3>
-<h4 id="default">Default</h4>
-<pre><code>Border: 2px solid rgba(255, 255, 255, 0.2)
-Background: rgba(255, 255, 255, 0.08)
-</code></pre><h4 id="focus-포커스">Focus (포커스)</h4>
-<pre><code>Border: 2px solid #FFD700
-Background: rgba(255, 255, 255, 0.12)
-Glow: 0px 0px 8px rgba(255, 215, 0, 0.4)
-</code></pre><h4 id="error-오류">Error (오류)</h4>
-<pre><code>Border: 2px solid #F44336
-Background: rgba(244, 67, 54, 0.1)
-</code></pre><hr></hr>
-<h2 id="9-반응형-디자인">9. 반응형 디자인</h2>
-<h3 id="91-브레이크포인트">9.1 브레이크포인트</h3>
-<pre><code>Desktop (데스크톱):
-  - Min Width: 1920px
-  - Container Width: 600px
-
-Laptop (노트북):
-  - Min Width: 1366px
-  - Container Width: 500px
-
-Tablet (태블릿):
-  - Min Width: 1024px
-  - Container Width: 400px
-  - Font Scale: 90%
-
-Mobile (모바일):
-  - Min Width: 768px
-  - Container Width: 340px
-  - Font Scale: 85%
-</code></pre><h3 id="92-figma에서-반응형-설정">9.2 Figma에서 반응형 설정</h3>
-<ol>
-<li><p><strong>Container에 Constraints 설정</strong>:</p>
-<pre><code>Horizontal: Center
-Vertical: Center
-</code></pre></li>
-<li><p><strong>Auto Layout 사용</strong>:</p>
-<ul>
-<li>Main Container에 적용</li>
-<li>Direction: Vertical</li>
-<li>Resizing: Hug Contents</li>
+<li>HonKit 강제 빌드:<ul>
+<li>GitHub Actions에서 <code>Generate HonKit</code> 워크플로 <code>workflow_dispatch</code> 실행</li>
+<li>또는 Daily/Weekly 리포트 완료 시 자동 트리거</li>
 </ul>
 </li>
-<li><p><strong>Component Variants 생성</strong>:</p>
-<ul>
-<li>Desktop Variant</li>
-<li>Laptop Variant</li>
-<li>Tablet Variant</li>
-<li>Mobile Variant</li>
+<li>Doxygen 로컬 생성:<ul>
+<li><code>pwsh -File Tools/Doxygen/RunDoxygen.ps1 -Clean</code></li>
 </ul>
 </li>
-</ol>
-<hr></hr>
-<h2 id="10-에셋-내보내기">10. 에셋 내보내기</h2>
-<h3 id="101-이미지-에셋">10.1 이미지 에셋</h3>
-<h4 id="로고">로고</h4>
-<pre><code>Format: PNG
-Size: 300px × 80px
-DPI: 300 (고해상도)
-Background: Transparent
-Naming: logo_yisan.png
-
-Export Settings (Figma):
-  - 1x: PNG (기본)
-  - 2x: PNG (레티나 디스플레이)
-  - SVG: Vector (확대/축소)
-</code></pre><h4 id="아이콘">아이콘</h4>
-<pre><code>Format: SVG (벡터)
-Size: 24px × 24px, 32px × 32px, 48px × 48px
-Naming: icon_[name].svg
-
-Export Settings:
-  - SVG
-  - Outline Stroke (선을 패스로 변환)
-</code></pre><h4 id="배경-이미지">배경 이미지</h4>
-<pre><code>Format: JPEG
-Size: 1920px × 1080px
-Quality: 90%
-Blur: Gaussian Blur 20px (적용 후 내보내기)
-Naming: bg_lobby.jpg
-</code></pre><hr></hr>
-<h3 id="102-ui-컴포넌트-내보내기">10.2 UI 컴포넌트 내보내기</h3>
-<h4 id="figma-→-unreal-engine">Figma → Unreal Engine</h4>
-<p><strong>방법 1: PNG 스프라이트 시트</strong></p>
-<pre><code>1. 모든 버튼 상태를 나란히 배치
-   (Default, Hover, Pressed, Disabled)
-
-2. Figma에서 선택 → Export
-
-3. 설정:
-   - Format: PNG
-   - Scale: 2x (고해상도)
-   - Naming: btn_host_spritesheet.png
-
-4. Unreal Engine에서:
-   - Import PNG
-   - Paper2D Sprite 생성
-   - 상태별로 분할
-</code></pre><p><strong>방법 2: 개별 PNG</strong></p>
-<pre><code>각 버튼 상태를 개별 파일로 내보내기:
-  - btn_host_default.png
-  - btn_host_hover.png
-  - btn_host_pressed.png
-  - btn_host_disabled.png
-
-Unreal Engine에서:
-  - 각 이미지를 Texture2D로 Import
-  - UMG Button Style에 적용
-</code></pre><hr></hr>
-<h3 id="103-내보내기-체크리스트">10.3 내보내기 체크리스트</h3>
-<pre><code>✅ 로고 (PNG, SVG)
-✅ 배경 이미지 (JPEG, 블러 처리)
-✅ 버튼 상태별 이미지 (PNG × 4 states × 3 buttons = 12개)
-✅ 아이콘 (SVG)
-✅ 텍스트 스타일 문서 (폰트, 크기, 색상)
-✅ 색상 팔레트 문서 (HEX, RGB)
-</code></pre><hr></hr>
-<h2 id="11-figma-플러그인-추천">11. Figma 플러그인 추천</h2>
-<h3 id="111-color-palette-generator">11.1 Color Palette Generator</h3>
-<ul>
-<li><strong>Coolors</strong>: 자동 색상 팔레트 생성</li>
-<li><strong>Stark</strong>: 접근성 체크 (대비 확인)</li>
 </ul>
-<h3 id="112-icon-libraries">11.2 Icon Libraries</h3>
+<h2 id="9-링크">9) 링크</h2>
 <ul>
-<li><strong>Iconify</strong>: 무료 아이콘 라이브러리</li>
-<li><strong>Material Design Icons</strong>: Google Material 아이콘</li>
+<li>저장소: <a href="https://github.com/doppleddiggong/YiSan" target="_blank">https://github.com/doppleddiggong/YiSan</a></li>
+<li>문서 사이트(HonKit): <a href="https://doppleddiggong.github.io/YiSan/docs/" target="_blank">https://doppleddiggong.github.io/YiSan/docs/</a></li>
+<li>API 문서(Doxygen): <a href="https://doppleddiggong.github.io/YiSan/doxygen/" target="_blank">https://doppleddiggong.github.io/YiSan/doxygen/</a></li>
 </ul>
-<h3 id="113-export-tools">11.3 Export Tools</h3>
-<ul>
-<li><strong>Figma to HTML</strong>: 웹 코드 생성 (참고용)</li>
-<li><strong>Image Optimizer</strong>: 이미지 압축</li>
-</ul>
-<hr></hr>
-<h2 id="12-figma-파일-구조-예시">12. Figma 파일 구조 예시</h2>
-<pre><code>📁 YiSan Multiplayer Lobby UI
-│
-├─ 📄 Cover (커버 페이지)
-│   └─ 프로젝트 소개, 버전 정보
-│
-├─ 📄 Design System (디자인 시스템)
-│   ├─ Color Palette (색상 팔레트)
-│   ├─ Typography (타이포그래피)
-│   ├─ Spacing (간격)
-│   └─ Icons (아이콘)
-│
-├─ 📄 Components (컴포넌트)
-│   ├─ 🔘 Buttons (버튼)
-│   │   ├─ Host Button (4 states)
-│   │   ├─ Join Button (4 states)
-│   │   └─ Disconnect Button (4 states)
-│   ├─ 📝 Input (입력)
-│   │   └─ IP TextBox (3 states)
-│   ├─ 📊 Status Display (상태 표시)
-│   └─ 🏷️ Labels (레이블)
-│
-├─ 📄 Screens (화면)
-│   ├─ Lobby UI - Desktop (1920x1080)
-│   ├─ Lobby UI - Laptop (1366x768)
-│   ├─ Lobby UI - Tablet (1024x768)
-│   └─ Lobby UI - Mobile (768x1024)
-│
-└─ 📄 Prototypes (프로토타입)
-    ├─ Flow: Host 선택
-    ├─ Flow: Join 선택
-    └─ Flow: Disconnect
-</code></pre><hr></hr>
-<h2 id="13-프로토타입-인터랙션">13. 프로토타입 인터랙션</h2>
-<h3 id="131-figma-prototype-설정">13.1 Figma Prototype 설정</h3>
-<h4 id="host-버튼-클릭">Host 버튼 클릭</h4>
-<pre><code>Trigger: On Click
-Action: Navigate to
-Destination: Frame "MainGame Screen" (메인 게임 화면)
-Animation: Smart Animate
-Duration: 300ms
-Easing: Ease Out
-</code></pre><h4 id="join-버튼-클릭">Join 버튼 클릭</h4>
-<pre><code>Trigger: On Click
-Action: Navigate to
-Destination: Frame "MainGame Screen"
-Animation: Smart Animate
-Duration: 300ms
-Easing: Ease Out
-</code></pre><h4 id="disconnect-버튼-클릭">Disconnect 버튼 클릭</h4>
-<pre><code>Trigger: On Click
-Action: Navigate to
-Destination: Frame "Lobby UI" (로비 화면)
-Animation: Smart Animate
-Duration: 300ms
-Easing: Ease In
-</code></pre><hr></hr>
-<h2 id="14-접근성-accessibility">14. 접근성 (Accessibility)</h2>
-<h3 id="141-색상-대비">14.1 색상 대비</h3>
-<pre><code>WCAG 2.1 Level AA 준수:
-  - 텍스트 대비: 4.5:1 이상
-  - 큰 텍스트 대비: 3:1 이상
-
-체크 도구:
-  - Figma Plugin: Stark
-  - Web: WebAIM Contrast Checker
-</code></pre><h3 id="142-폰트-크기">14.2 폰트 크기</h3>
-<pre><code>최소 폰트 크기: 14px
-권장 본문 크기: 16px 이상
-버튼 텍스트: 22px (충분히 큼)
-</code></pre><h3 id="143-터치-타겟">14.3 터치 타겟</h3>
-<pre><code>최소 터치 타겟 크기: 44px × 44px (Apple HIG)
-로비 UI 버튼: 520px × 60px ✅ (충분히 큼)
-</code></pre><hr></hr>
-<h2 id="15-참고-자료">15. 참고 자료</h2>
-<h3 id="151-figma-튜토리얼">15.1 Figma 튜토리얼</h3>
-<ul>
-<li><a href="https://help.figma.com/" target="_blank">Figma 공식 문서</a></li>
-<li><a href="https://www.figma.com/best-practices/everything-you-need-to-know-about-layout-grids/" target="_blank">Auto Layout Guide</a></li>
-<li><a href="https://help.figma.com/hc/en-us/articles/360056440594-Create-and-use-variants" target="_blank">Component Variants</a></li>
-</ul>
-<h3 id="152-디자인-영감">15.2 디자인 영감</h3>
-<ul>
-<li><a href="https://dribbble.com/tags/game-ui" target="_blank">Dribbble - Game UI</a></li>
-<li><a href="https://www.behance.net/search/projects?search=game%20lobby%20ui" target="_blank">Behance - UI Design</a></li>
-</ul>
-<h3 id="153-한국-문화-디자인-참고">15.3 한국 문화 디자인 참고</h3>
-<ul>
-<li>전통 문양: 구름 문양, 당초 문양</li>
-<li>전통 색상: 오방색 (청, 적, 황, 백, 흑)</li>
-<li>전통 건축: 한옥 처마, 기와 패턴</li>
-</ul>
-<hr></hr>
-<h2 id="부록-figma-단축키">부록: Figma 단축키</h2>
-<pre><code>필수 단축키:
-  - Frame 생성: F
-  - Rectangle: R
-  - Text: T
-  - Select: V (또는 Esc)
-  - Hand Tool: H (또는 Space + 드래그)
-  - Zoom In/Out: Ctrl + Plus/Minus
-  - Auto Layout: Shift + A
-  - Component 생성: Ctrl + Alt + K
-  - Export: Ctrl + Shift + E
-</code></pre><hr></hr>
-<p><strong>Figma 디자인 가이드 끝</strong></p>
-<p>이 가이드를 따라 YiSan 멀티플레이 로비 UI를 디자인하세요! 🎨</p>
  <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
                                 </section>
@@ -2487,12 +1789,12 @@ Easing: Ease In
 
             
                 
-                <a href="yisan_proto.html" class="navigation navigation-prev " aria-label="Previous page: 프로토타입 기간 개발자 역량 및 성과 분석 (2025-09-30 ~ 2025-10-20)">
+                <a href="Weekly_Presentation_2025-11-02.html" class="navigation navigation-prev " aria-label="Previous page: 주간 프로젝트 발표 (2025-10-27 ~ 2025-11-02)">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="AI_Pathfinding_Fix_Report.html" class="navigation navigation-next " aria-label="Next page: AI 경로 탐색 문제 해결 리포트">
+                <a href="PlayerIndexShooting/PlayerIndex_GameState_Refactoring_2025-11-02.html" class="navigation navigation-next " aria-label="Next page: PlayerIndex 관리 - GameState 리팩토링 (2025-11-02)">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2503,7 +1805,7 @@ Easing: Ease In
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"YiSan 멀티플레이 로비 UI 디자인 가이드 (Figma)","level":"13.1","depth":1,"next":{"title":"AI 경로 탐색 문제 해결 리포트","level":"14.1","depth":1,"path":"Planning/AI_Pathfinding_Fix_Report.md","ref":"Planning/AI_Pathfinding_Fix_Report.md","articles":[]},"previous":{"title":"프로토타입 기간 개발자 역량 및 성과 분석 (2025-09-30 ~ 2025-10-20)","level":"12.5","depth":1,"path":"Planning/yisan_proto.md","ref":"Planning/yisan_proto.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/Figma_Lobby_UI_Design_Guide.md","mtime":"2025-11-09T09:37:31.960Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-09T09:37:57.622Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"YiSan DevOps 개요 문서","level":"16.1","depth":1,"next":{"title":"PlayerIndex 관리 - GameState 리팩토링 (2025-11-02)","level":"16.2","depth":1,"path":"Planning/PlayerIndexShooting/PlayerIndex_GameState_Refactoring_2025-11-02.md","ref":"Planning/PlayerIndexShooting/PlayerIndex_GameState_Refactoring_2025-11-02.md","articles":[]},"previous":{"title":"주간 프로젝트 발표 (2025-10-27 ~ 2025-11-02)","level":"15.1","depth":1,"path":"Planning/Weekly_Presentation_2025-11-02.md","ref":"Planning/Weekly_Presentation_2025-11-02.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/DevOps_Inventory.md","mtime":"2025-11-09T09:37:31.960Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-09T09:37:57.622Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
