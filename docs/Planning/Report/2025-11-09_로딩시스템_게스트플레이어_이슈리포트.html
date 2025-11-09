@@ -1,0 +1,2557 @@
+
+<!DOCTYPE HTML>
+<html lang="ko" >
+    <head>
+        <meta charset="UTF-8">
+        <title>게스트 플레이어 로딩 위젯 미제거 문제 분석 리포트 · YiSan Development Documentation</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.1.4">
+        <meta name="author" content="DoppledDiggong Team">
+        
+        
+    
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../styles/website.css">
+        
+    
+
+
+    
+        
+        
+        <link rel="stylesheet" href="../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.default.css" />
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="2025-11-04_종합역량평가.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="검색어 입력" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/doppleddiggong/YiSan" target="_blank" class="custom-link">GitHub Repository</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://doppleddiggong.github.io/YiSan/doxygen/" target="_blank" class="custom-link">Doxygen API Docs</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">Introduction</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    시작하기
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">DevLog</li>
+        
+        
+    
+
+    
+        
+        <li class="header">Agent Logs</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../DevLog/AgentLog/dopple/251108.html">
+            
+                <a href="../../DevLog/AgentLog/dopple/251108.html">
+            
+                    
+                    dopple - 2025-11-08
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Daily Logs (2025-11)</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../DevLog/Daily/2025-11-02.html">
+            
+                <a href="../../DevLog/Daily/2025-11-02.html">
+            
+                    
+                    2025-11-02
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../../DevLog/Daily/2025-11-01.html">
+            
+                <a href="../../DevLog/Daily/2025-11-01.html">
+            
+                    
+                    2025-11-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Daily Logs (2025-10)</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../DevLog/Daily/2025-10-31.html">
+            
+                <a href="../../DevLog/Daily/2025-10-31.html">
+            
+                    
+                    2025-10-31
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../../DevLog/Daily/2025-10-30.html">
+            
+                <a href="../../DevLog/Daily/2025-10-30.html">
+            
+                    
+                    2025-10-30
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../../DevLog/Daily/2025-10-29.html">
+            
+                <a href="../../DevLog/Daily/2025-10-29.html">
+            
+                    
+                    2025-10-29
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../../DevLog/Daily/2025-10-28.html">
+            
+                <a href="../../DevLog/Daily/2025-10-28.html">
+            
+                    
+                    2025-10-28
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="../../DevLog/Daily/2025-10-27.html">
+            
+                <a href="../../DevLog/Daily/2025-10-27.html">
+            
+                    
+                    2025-10-27
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="../../DevLog/Daily/2025-10-26.html">
+            
+                <a href="../../DevLog/Daily/2025-10-26.html">
+            
+                    
+                    2025-10-26
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.7" data-path="../../DevLog/Daily/2025-10-25.html">
+            
+                <a href="../../DevLog/Daily/2025-10-25.html">
+            
+                    
+                    2025-10-25
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.8" data-path="../../DevLog/Daily/2025-10-24.html">
+            
+                <a href="../../DevLog/Daily/2025-10-24.html">
+            
+                    
+                    2025-10-24
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.9" data-path="../../DevLog/Daily/2025-10-23.html">
+            
+                <a href="../../DevLog/Daily/2025-10-23.html">
+            
+                    
+                    2025-10-23
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.10" data-path="../../DevLog/Daily/2025-10-22.html">
+            
+                <a href="../../DevLog/Daily/2025-10-22.html">
+            
+                    
+                    2025-10-22
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.11" data-path="../../DevLog/Daily/2025-10-21.html">
+            
+                <a href="../../DevLog/Daily/2025-10-21.html">
+            
+                    
+                    2025-10-21
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.12" data-path="../../DevLog/Daily/2025-10-20.html">
+            
+                <a href="../../DevLog/Daily/2025-10-20.html">
+            
+                    
+                    2025-10-20
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.13" data-path="../../DevLog/Daily/2025-10-19.html">
+            
+                <a href="../../DevLog/Daily/2025-10-19.html">
+            
+                    
+                    2025-10-19
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.14" data-path="../../DevLog/Daily/2025-10-18.html">
+            
+                <a href="../../DevLog/Daily/2025-10-18.html">
+            
+                    
+                    2025-10-18
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.15" data-path="../../DevLog/Daily/2025-10-17.html">
+            
+                <a href="../../DevLog/Daily/2025-10-17.html">
+            
+                    
+                    2025-10-17
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.16" data-path="../../DevLog/Daily/2025-10-16.html">
+            
+                <a href="../../DevLog/Daily/2025-10-16.html">
+            
+                    
+                    2025-10-16
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.17" data-path="../../DevLog/Daily/2025-10-15.html">
+            
+                <a href="../../DevLog/Daily/2025-10-15.html">
+            
+                    
+                    2025-10-15
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.18" data-path="../../DevLog/Daily/2025-10-14.html">
+            
+                <a href="../../DevLog/Daily/2025-10-14.html">
+            
+                    
+                    2025-10-14
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.19" data-path="../../DevLog/Daily/2025-10-13.html">
+            
+                <a href="../../DevLog/Daily/2025-10-13.html">
+            
+                    
+                    2025-10-13
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.20" data-path="../../DevLog/Daily/2025-10-12.html">
+            
+                <a href="../../DevLog/Daily/2025-10-12.html">
+            
+                    
+                    2025-10-12
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.21" data-path="../../DevLog/Daily/2025-10-11.html">
+            
+                <a href="../../DevLog/Daily/2025-10-11.html">
+            
+                    
+                    2025-10-11
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.22" data-path="../../DevLog/Daily/2025-10-09.html">
+            
+                <a href="../../DevLog/Daily/2025-10-09.html">
+            
+                    
+                    2025-10-09
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.23" data-path="../../DevLog/Daily/2025-10-08.html">
+            
+                <a href="../../DevLog/Daily/2025-10-08.html">
+            
+                    
+                    2025-10-08
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.24" data-path="../../DevLog/Daily/2025-10-07.html">
+            
+                <a href="../../DevLog/Daily/2025-10-07.html">
+            
+                    
+                    2025-10-07
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.25" data-path="../../DevLog/Daily/2025-10-06.html">
+            
+                <a href="../../DevLog/Daily/2025-10-06.html">
+            
+                    
+                    2025-10-06
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.26" data-path="../../DevLog/Daily/2025-10-05.html">
+            
+                <a href="../../DevLog/Daily/2025-10-05.html">
+            
+                    
+                    2025-10-05
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.27" data-path="../../DevLog/Daily/2025-10-04.html">
+            
+                <a href="../../DevLog/Daily/2025-10-04.html">
+            
+                    
+                    2025-10-04
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.28" data-path="../../DevLog/Daily/2025-10-03.html">
+            
+                <a href="../../DevLog/Daily/2025-10-03.html">
+            
+                    
+                    2025-10-03
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.29" data-path="../../DevLog/Daily/2025-10-02.html">
+            
+                <a href="../../DevLog/Daily/2025-10-02.html">
+            
+                    
+                    2025-10-02
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.30" data-path="../../DevLog/Daily/2025-10-01.html">
+            
+                <a href="../../DevLog/Daily/2025-10-01.html">
+            
+                    
+                    2025-10-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Daily Logs (2025-09)</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../DevLog/Daily/2025-09-30.html">
+            
+                <a href="../../DevLog/Daily/2025-09-30.html">
+            
+                    
+                    2025-09-30
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../../DevLog/Daily/2025-09-29.html">
+            
+                <a href="../../DevLog/Daily/2025-09-29.html">
+            
+                    
+                    2025-09-29
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="../../DevLog/Daily/2025-09-28.html">
+            
+                <a href="../../DevLog/Daily/2025-09-28.html">
+            
+                    
+                    2025-09-28
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="../../DevLog/Daily/2025-09-27.html">
+            
+                <a href="../../DevLog/Daily/2025-09-27.html">
+            
+                    
+                    2025-09-27
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="../../DevLog/Daily/2025-09-26.html">
+            
+                <a href="../../DevLog/Daily/2025-09-26.html">
+            
+                    
+                    2025-09-26
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" data-path="../../DevLog/Daily/2025-09-25.html">
+            
+                <a href="../../DevLog/Daily/2025-09-25.html">
+            
+                    
+                    2025-09-25
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" data-path="../../DevLog/Daily/2025-09-24.html">
+            
+                <a href="../../DevLog/Daily/2025-09-24.html">
+            
+                    
+                    2025-09-24
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.8" data-path="../../DevLog/Daily/2025-09-23.html">
+            
+                <a href="../../DevLog/Daily/2025-09-23.html">
+            
+                    
+                    2025-09-23
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.9" data-path="../../DevLog/Daily/2025-09-22.html">
+            
+                <a href="../../DevLog/Daily/2025-09-22.html">
+            
+                    
+                    2025-09-22
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.10" data-path="../../DevLog/Daily/2025-09-21.html">
+            
+                <a href="../../DevLog/Daily/2025-09-21.html">
+            
+                    
+                    2025-09-21
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.11" data-path="../../DevLog/Daily/2025-09-20.html">
+            
+                <a href="../../DevLog/Daily/2025-09-20.html">
+            
+                    
+                    2025-09-20
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.12" data-path="../../DevLog/Daily/2025-09-19.html">
+            
+                <a href="../../DevLog/Daily/2025-09-19.html">
+            
+                    
+                    2025-09-19
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.13" data-path="../../DevLog/Daily/2025-09-18.html">
+            
+                <a href="../../DevLog/Daily/2025-09-18.html">
+            
+                    
+                    2025-09-18
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.14" data-path="../../DevLog/Daily/2025-09-17.html">
+            
+                <a href="../../DevLog/Daily/2025-09-17.html">
+            
+                    
+                    2025-09-17
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.15" data-path="../../DevLog/Daily/2025-09-16.html">
+            
+                <a href="../../DevLog/Daily/2025-09-16.html">
+            
+                    
+                    2025-09-16
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.16" data-path="../../DevLog/Daily/2025-09-15.html">
+            
+                <a href="../../DevLog/Daily/2025-09-15.html">
+            
+                    
+                    2025-09-15
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.17" data-path="../../DevLog/Daily/2025-09-14.html">
+            
+                <a href="../../DevLog/Daily/2025-09-14.html">
+            
+                    
+                    2025-09-14
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.18" data-path="../../DevLog/Daily/2025-09-13.html">
+            
+                <a href="../../DevLog/Daily/2025-09-13.html">
+            
+                    
+                    2025-09-13
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.19" data-path="../../DevLog/Daily/2025-09-12.html">
+            
+                <a href="../../DevLog/Daily/2025-09-12.html">
+            
+                    
+                    2025-09-12
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.20" data-path="../../DevLog/Daily/2025-09-11.html">
+            
+                <a href="../../DevLog/Daily/2025-09-11.html">
+            
+                    
+                    2025-09-11
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.21" data-path="../../DevLog/Daily/2025-09-10.html">
+            
+                <a href="../../DevLog/Daily/2025-09-10.html">
+            
+                    
+                    2025-09-10
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.22" data-path="../../DevLog/Daily/2025-09-09.html">
+            
+                <a href="../../DevLog/Daily/2025-09-09.html">
+            
+                    
+                    2025-09-09
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Weekly Summary</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../DevLog/Weekly/2025-W45-Summary.html">
+            
+                <a href="../../DevLog/Weekly/2025-W45-Summary.html">
+            
+                    
+                    Weekly DevLog — 2025-W45 (2025-11-03 ~ 2025-11-09)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../DevLog/Weekly/2025-W44-Summary.html">
+            
+                <a href="../../DevLog/Weekly/2025-W44-Summary.html">
+            
+                    
+                    주간 개발 요약 (2025-10-27 ~ 2025-11-02)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../../DevLog/Weekly/2025-W43-Summary.html">
+            
+                <a href="../../DevLog/Weekly/2025-W43-Summary.html">
+            
+                    
+                    주간 개발 요약 (2025-10-20 ~ 2025-10-26)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="../../DevLog/Weekly/2025-W42-Summary.html">
+            
+                <a href="../../DevLog/Weekly/2025-W42-Summary.html">
+            
+                    
+                    주간 개발 요약 (2025-10-13 ~ 2025-10-19)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="../../DevLog/Weekly/2025-W41-Summary.html">
+            
+                <a href="../../DevLog/Weekly/2025-W41-Summary.html">
+            
+                    
+                    주간 개발 요약 (2025-10-02 ~ 2025-10-08)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Monthly Summary</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../../DevLog/Monthly/2025-10.html">
+            
+                <a href="../../DevLog/Monthly/2025-10.html">
+            
+                    
+                    Monthly DevLog — 2025-10 (October)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Documentation</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../../DevLog/_Last30Summary.html">
+            
+                <a href="../../DevLog/_Last30Summary.html">
+            
+                    
+                    30-Day Briefing 2025-11-02
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="../../DevLog/IMPLEMENTATION_SUMMARY.html">
+            
+                <a href="../../DevLog/IMPLEMENTATION_SUMMARY.html">
+            
+                    
+                    HonKit DevLog 자동화 시스템 구현 완료
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="../../DevLog/WORKFLOW_GUIDE.html">
+            
+                <a href="../../DevLog/WORKFLOW_GUIDE.html">
+            
+                    
+                    DevLog 자동화 워크플로우 가이드
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Planning</li>
+        
+        
+    
+
+    
+        
+        <li class="header">System Design</li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" data-path="../GPT_VoiceCommand_System_Prompt.html">
+            
+                <a href="../GPT_VoiceCommand_System_Prompt.html">
+            
+                    
+                    GPT 음성 명령 파서 시스템 프롬프트
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="../LoadingSystem_Network_Optimization_Presentation.html">
+            
+                <a href="../LoadingSystem_Network_Optimization_Presentation.html">
+            
+                    
+                    YiSan 로딩 시스템: 네트워크 최적화 관점 발표
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="../Multiplayer_API_Reference.html">
+            
+                <a href="../Multiplayer_API_Reference.html">
+            
+                    
+                    YiSan 멀티플레이 API 레퍼런스
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="../Multiplayer_Implementation_Guide.html">
+            
+                <a href="../Multiplayer_Implementation_Guide.html">
+            
+                    
+                    YiSan 멀티플레이 구현 가이드
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.5" data-path="../Multiplayer_System_Design.html">
+            
+                <a href="../Multiplayer_System_Design.html">
+            
+                    
+                    YiSan 멀티플레이 로비 시스템 설계 문서
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.6" data-path="../UNREAL_INTEGRATION_PLAN.html">
+            
+                <a href="../UNREAL_INTEGRATION_PLAN.html">
+            
+                    
+                    언리얼 엔진 통합 작업 계획
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.7" data-path="../api_documentation.html">
+            
+                <a href="../api_documentation.html">
+            
+                    
+                    Voice Server API Documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.8" data-path="../server_api.html">
+            
+                <a href="../server_api.html">
+            
+                    
+                    Voice Server API 가이드 (for Unreal Engine)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Feature Plans</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" data-path="../2025-10-02-voice-prompt-plan.html">
+            
+                <a href="../2025-10-02-voice-prompt-plan.html">
+            
+                    
+                    음성 프롬프트 워크플로 계획 (2025-10-02)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="../2025-10-30_UYiSanLoading_Refactor.html">
+            
+                <a href="../2025-10-30_UYiSanLoading_Refactor.html">
+            
+                    
+                    UYiSanLoading 리팩터링 리뷰 (2025-10-30 KST)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="2025-10-30_UYiSanLoading_리팩토링.html">
+            
+                <a href="2025-10-30_UYiSanLoading_리팩토링.html">
+            
+                    
+                    UYiSanLoading 리팩터링 리뷰 (2025-10-30 KST)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="../yisan_dasan_voice_proto.html">
+            
+                <a href="../yisan_dasan_voice_proto.html">
+            
+                    
+                    분석 및 평가 보고서 (2025-09-30 ~ 2025-10-20)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5" data-path="../yisan_proto.html">
+            
+                <a href="../yisan_proto.html">
+            
+                    
+                    프로토타입 기간 개발자 역량 및 성과 분석 (2025-09-30 ~ 2025-10-20)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">UI/UX Design</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" data-path="../Figma_Lobby_UI_Design_Guide.html">
+            
+                <a href="../Figma_Lobby_UI_Design_Guide.html">
+            
+                    
+                    YiSan 멀티플레이 로비 UI 디자인 가이드 (Figma)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Reports</li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" data-path="../AI_Pathfinding_Fix_Report.html">
+            
+                <a href="../AI_Pathfinding_Fix_Report.html">
+            
+                    
+                    AI 경로 탐색 문제 해결 리포트
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" data-path="../Alpha_Report_2025-10-20_to_2025-10-27.html">
+            
+                <a href="../Alpha_Report_2025-10-20_to_2025-10-27.html">
+            
+                    
+                    Alpha 단계 개발 보고서
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.3" data-path="../Comprehensive_Competency_Assessment_2025-11-04.html">
+            
+                <a href="../Comprehensive_Competency_Assessment_2025-11-04.html">
+            
+                    
+                    YiSan 프로젝트 종합 역량평가 리포트
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.4" data-path="../PlayerIndexShooting/PlayerIndex_Complete_Report_2025-11-02.html">
+            
+                <a href="../PlayerIndexShooting/PlayerIndex_Complete_Report_2025-11-02.html">
+            
+                    
+                    PlayerIndex 관리 시스템 완전 해결 보고서
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.5" data-path="../PlayerIndexShooting/PlayerIndex_Fix_Report.html">
+            
+                <a href="../PlayerIndexShooting/PlayerIndex_Fix_Report.html">
+            
+                    
+                    PlayerIndex 할당 및 UI 색상 표시 문제 해결 보고서
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.6" data-path="../Team_Evaluation_2025-11-02.html">
+            
+                <a href="../Team_Evaluation_2025-11-02.html">
+            
+                    
+                    주간 업무 및 역량 평가 보고서 (2025-10-27 ~ 2025-11-02)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.7" data-path="../YiSan_프로젝트_진행보고서.html">
+            
+                <a href="../YiSan_프로젝트_진행보고서.html">
+            
+                    
+                    YiSan 프로젝트 진행 보고서
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Presentations</li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" data-path="../Weekly_Presentation_2025-11-02.html">
+            
+                <a href="../Weekly_Presentation_2025-11-02.html">
+            
+                    
+                    주간 프로젝트 발표 (2025-10-27 ~ 2025-11-02)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Other Documents</li>
+        
+        
+    
+        <li class="chapter " data-level="16.1" data-path="../PlayerIndexShooting/PlayerIndex_GameState_Refactoring_2025-11-02.html">
+            
+                <a href="../PlayerIndexShooting/PlayerIndex_GameState_Refactoring_2025-11-02.html">
+            
+                    
+                    PlayerIndex 관리 - GameState 리팩토링 (2025-11-02)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="16.2" data-path="../PlayerIndexShooting/PlayerIndex_Issue_2025-11-02.html">
+            
+                <a href="../PlayerIndexShooting/PlayerIndex_Issue_2025-11-02.html">
+            
+                    
+                    PlayerIndex 재초기화 문제 트러블슈팅 (2025-11-02)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="16.3" data-path="2025-10-27_AI경로찾기_수정리포트.html">
+            
+                <a href="2025-10-27_AI경로찾기_수정리포트.html">
+            
+                    
+                    AI 경로 탐색 문제 해결 리포트
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="16.4" data-path="2025-10-27_알파_리포트.html">
+            
+                <a href="2025-10-27_알파_리포트.html">
+            
+                    
+                    Alpha 단계 개발 보고서
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="16.5" data-path="2025-11-02_로딩시스템_네트워크_최적화.html">
+            
+                <a href="2025-11-02_로딩시스템_네트워크_최적화.html">
+            
+                    
+                    YiSan 로딩 시스템: 네트워크 최적화 관점 발표
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="16.6" data-path="2025-11-04_종합역량평가.html">
+            
+                <a href="2025-11-04_종합역량평가.html">
+            
+                    
+                    YiSan 프로젝트 종합 역량평가 리포트
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="16.7" data-path="2025-11-09_로딩시스템_게스트플레이어_이슈리포트.html">
+            
+                <a href="2025-11-09_로딩시스템_게스트플레이어_이슈리포트.html">
+            
+                    
+                    게스트 플레이어 로딩 위젯 미제거 문제 분석 리포트
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">External Links</li>
+        
+        
+    
+        <li class="chapter " data-level="17.1" >
+            
+                <a target="_blank" href="https://github.com/doppleddiggong/YiSan">
+            
+                    
+                    GitHub Repository
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="17.2" >
+            
+                <a target="_blank" href="https://doppleddiggong.github.io/YiSan/doxygen/">
+            
+                    
+                    Doxygen Documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKit에 게시
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >게스트 플레이어 로딩 위젯 미제거 문제 분석 리포트</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="게스트-플레이어-로딩-위젯-미제거-문제-분석-리포트">게스트 플레이어 로딩 위젯 미제거 문제 분석 리포트</h1>
+<p><strong>작성일</strong>: 2025-11-09
+<strong>작성자</strong>: Claude AI Assistant
+<strong>카테고리</strong>: Network Loading System
+<strong>심각도</strong>: High</p>
+<hr></hr>
+<h2 id="📋-목차">📋 목차</h2>
+<ol>
+<li><a href="#1-문제-개요">문제 개요</a></li>
+<li><a href="#2-시스템-아키텍처">시스템 아키텍처</a></li>
+<li><a href="#3-문제-원인-분석">문제 원인 분석</a></li>
+<li><a href="#4-호스트-vs-게스트-플로우-비교">호스트 vs 게스트 플로우 비교</a></li>
+<li><a href="#5-해결-방안">해결 방안</a></li>
+<li><a href="#6-코드-수정-내역">코드 수정 내역</a></li>
+<li><a href="#7-테스트-가이드">테스트 가이드</a></li>
+<li><a href="#8-학습-포인트">학습 포인트</a></li>
+</ol>
+<hr></hr>
+<h2 id="1-문제-개요">1. 문제 개요</h2>
+<h3 id="11-증상">1.1 증상</h3>
+<ul>
+<li><strong>현상</strong>: 게스트 플레이어가 이미 로드된 맵에 join할 때 로딩 위젯이 사라지지 않음</li>
+<li><strong>재현</strong>: 호스트가 맵을 로드한 후, 게스트가 접속하면 로딩 화면이 무한정 표시됨</li>
+<li><strong>영향</strong>: 게스트 플레이어의 게임 진입 불가</li>
+</ul>
+<h3 id="12-관련-시스템">1.2 관련 시스템</h3>
+<ul>
+<li><code>UYiSanLoading</code> (GameInstanceSubsystem)</li>
+<li><code>ULoadingTransitionManager</code> (LocalPlayerSubsystem)</li>
+<li><code>APlayerControl</code> (PlayerController)</li>
+<li><code>AYisanGameState</code> (GameState)</li>
+</ul>
+<hr></hr>
+<h2 id="2-시스템-아키텍처">2. 시스템 아키텍처</h2>
+<h3 id="21-로딩-시스템-구조">2.1 로딩 시스템 구조</h3>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                    UYiSanLoading                             │
+│                (GameInstanceSubsystem)                       │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  역할: 맵 로딩 상태 추적 및 스트리밍 관리            │  │
+│  │  - WorldPartition 스트리밍 체크                      │  │
+│  │  - Texture 스트리밍 체크                             │  │
+│  │  - LevelInstance 로딩 체크                           │  │
+│  └──────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+                            ↓ RPC
+┌─────────────────────────────────────────────────────────────┐
+│                   APlayerControl                             │
+│                 (PlayerController)                           │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  ClientRPC_ShowLoadingTransition()                    │  │
+│  │  ClientRPC_HideLoadingTransition()                    │  │
+│  │  HandleLoadingComplete()                              │  │
+│  │  IsReadyToFinish() - 로딩 완료 조건 체크             │  │
+│  └──────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+                            ↓
+┌─────────────────────────────────────────────────────────────┐
+│            ULoadingTransitionManager                         │
+│              (LocalPlayerSubsystem)                          │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  역할: UI 위젯 표시/제거                             │  │
+│  │  ShowLoadingScreen()                                  │  │
+│  │  HideLoadingScreen()                                  │  │
+│  └──────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+</code></pre><h3 id="22-로딩-상태-머신">2.2 로딩 상태 머신</h3>
+<p><code>UYiSanLoading</code>은 다음 상태를 순차적으로 진행합니다:</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">enum struct</span> <span class="hljs-title class_">EState</span> : uint8
+{
+    WP,         <span class="hljs-comment">// WorldPartition 스트리밍</span>
+    TEXTURE,    <span class="hljs-comment">// Texture 스트리밍</span>
+    LI,         <span class="hljs-comment">// LevelInstance 로딩</span>
+    COMPLETE    <span class="hljs-comment">// 완료</span>
+};
+</code></pre>
+<p><strong>상태 전환:</strong></p>
+<pre><code>WP → TEXTURE → LI → COMPLETE
+</code></pre><p>각 상태는 <code>CompleteState[EState]</code> 맵에 완료 여부가 저장됩니다.</p>
+<hr></hr>
+<h2 id="3-문제-원인-분석">3. 문제 원인 분석</h2>
+<h3 id="31-핵심-문제">3.1 핵심 문제</h3>
+<p>게스트 플레이어가 join할 때 <code>UYiSanLoading</code>의 로딩 상태가 <strong>초기화되지 않은 상태</strong>로 남아있습니다.</p>
+<h3 id="32-상세-분석">3.2 상세 분석</h3>
+<h4 id="321-preparefortravel-호출-누락">3.2.1 <code>PrepareForTravel()</code> 호출 누락</h4>
+<p><strong>정상적인 맵 전환 시퀀스:</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// UYiSanLoading.cpp:96</span>
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">UYiSanLoading::PrepareForTravel</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[LOADING_FLOW] PrepareForTravel - Resetting all loading states"</span>));
+    TotalTime = FPlatformTime::<span class="hljs-built_in">Seconds</span>();  <span class="hljs-comment">// ← 중요: 현재 시간 기록</span>
+
+    <span class="hljs-comment">// 모든 상태 초기화</span>
+    CompleteState[EState::WP] = <span class="hljs-literal">false</span>;
+    CompleteState[EState::TEXTURE] = <span class="hljs-literal">false</span>;
+    CompleteState[EState::LI] = <span class="hljs-literal">false</span>;
+    CompleteState[EState::COMPLETE] = <span class="hljs-literal">false</span>;
+
+    CurState = EState::WP;
+    <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<p><strong>문제점:</strong></p>
+<ul>
+<li>호스트가 맵 전환: <code>PrepareForTravel()</code> 호출됨 ✓</li>
+<li>게스트가 join: <code>PrepareForTravel()</code> 호출 안됨 ✗</li>
+</ul>
+<h4 id="322-postloadmapwithworld-분기-실패">3.2.2 <code>PostLoadMapWithWorld()</code> 분기 실패</h4>
+<p><strong>기존 코드 (수정 전):</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// UYiSanLoading.cpp:145</span>
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">UYiSanLoading::PostLoadMapWithWorld</span><span class="hljs-params">(UWorld* InWorld)</span>
+</span>{
+    <span class="hljs-comment">// 클라이언트가 자동 travel될 때, 로딩 상태 초기화</span>
+    <span class="hljs-keyword">if</span> (CurState == EState::COMPLETE || CompleteState[EState::COMPLETE])
+    {
+        <span class="hljs-comment">// 상태 초기화...</span>
+    }
+
+    <span class="hljs-comment">// UpdateTick 타이머 시작</span>
+    InWorld-&gt;<span class="hljs-built_in">GetTimerManager</span>().<span class="hljs-built_in">SetTimer</span>(..., UpdateTick, ...);
+}
+</code></pre>
+<p><strong>게스트의 경우:</strong></p>
+<pre><code>CurState = EState::WP (초기값)
+CompleteState[COMPLETE] = false (초기값)
+
+→ if 조건 false
+→ 상태 초기화 안됨
+→ UpdateTick 시작됨 (불필요한 스트리밍 체크 수행)
+</code></pre><h4 id="323-isreadytofinish-실패">3.2.3 <code>IsReadyToFinish()</code> 실패</h4>
+<p><strong>APlayerControl.cpp:529</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">APlayerControl::IsReadyToFinish</span><span class="hljs-params">()</span> <span class="hljs-type">const</span>
+</span>{
+    <span class="hljs-comment">// 1. Pawn 체크</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">GetPawn</span>() == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+
+    <span class="hljs-comment">// 2. bPawnReady 체크</span>
+    <span class="hljs-keyword">if</span> (!bPawnReady) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+
+    <span class="hljs-comment">// 3. bPawnHasName 체크</span>
+    <span class="hljs-keyword">if</span> (!bPawnHasName) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+
+    <span class="hljs-comment">// 4. 로딩 완료 체크 ← 여기서 실패!</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">auto</span> LoadingSubsystem = UYiSanLoading::<span class="hljs-built_in">Get</span>(<span class="hljs-built_in">GetWorld</span>()))
+    {
+        <span class="hljs-type">bool</span> bLoadingComplete = LoadingSubsystem-&gt;<span class="hljs-built_in">IsLoadingComplete</span>();
+        <span class="hljs-keyword">if</span> (!bLoadingComplete)
+        {
+            <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"NOT READY: Client-side loading not complete"</span>));
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;  <span class="hljs-comment">// ← 게스트는 여기서 반환</span>
+        }
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+}
+</code></pre>
+<p><strong>게스트의 경우:</strong></p>
+<pre><code>LoadingSubsystem-&gt;IsLoadingComplete()
+  = CompleteState[EState::COMPLETE]
+  = false (초기값 그대로)
+
+→ IsReadyToFinish() = false
+→ bAwaitFinish = true로 설정하고 대기
+→ 로딩 위젯이 사라지지 않음
+</code></pre><hr></hr>
+<h2 id="4-호스트-vs-게스트-플로우-비교">4. 호스트 vs 게스트 플로우 비교</h2>
+<h3 id="41-호스트-플레이어-정상-동작">4.1 호스트 플레이어 (정상 동작)</h3>
+<div class="mermaid">
+sequenceDiagram
+    participant Host as 호스트 클라이언트
+    participant Loading as UYiSanLoading
+    participant PC as APlayerControl
+    participant UI as LoadingTransitionManager
+
+    Host-&gt;&gt;Loading: InitSystem("/Game/Maps/NewMap")
+    Loading-&gt;&gt;Loading: PrepareForTravel()
+    Note over Loading: TotalTime = 100.5초<br></br>모든 상태 초기화
+    Loading-&gt;&gt;UI: ShowLoadingScreen()
+    Loading-&gt;&gt;Host: ServerTravel()
+
+    Note over Host: 맵 로딩 중...
+
+    Host-&gt;&gt;Loading: PostLoadMapWithWorld()
+    Note over Loading: TotalTime &gt; 0<br></br>UpdateTick 시작
+
+    loop UpdateTick (0.1초마다)
+        Loading-&gt;&gt;Loading: WP 체크
+        Loading-&gt;&gt;Loading: TEXTURE 체크
+        Loading-&gt;&gt;Loading: LI 체크
+    end
+
+    Loading-&gt;&gt;Loading: CompleteState[COMPLETE] = true
+    Loading-&gt;&gt;PC: ClientRPC_HideLoadingTransition()
+    PC-&gt;&gt;PC: IsReadyToFinish()
+    Note over PC: Pawn ✓<br></br>bPawnReady ✓<br></br>bPawnHasName ✓<br></br>IsLoadingComplete() ✓
+    PC-&gt;&gt;UI: HideLoadingScreen()
+</div>
+
+<h3 id="42-게스트-플레이어-문제-발생">4.2 게스트 플레이어 (문제 발생)</h3>
+<div class="mermaid">
+sequenceDiagram
+    participant Guest as 게스트 클라이언트
+    participant Loading as UYiSanLoading
+    participant PC as APlayerControl
+    participant UI as LoadingTransitionManager
+    participant Server as 서버
+
+    Guest-&gt;&gt;Server: 접속 요청
+    Server-&gt;&gt;Guest: 현재 맵에 스폰
+
+    Note over Loading: ❌ PrepareForTravel() 호출 안됨<br></br>TotalTime = 0 (초기값)
+
+    Guest-&gt;&gt;Loading: PostLoadMapWithWorld()
+    Note over Loading: CurState = WP (초기값)<br></br>CompleteState[COMPLETE] = false
+
+    Loading-&gt;&gt;Loading: if (CurState == COMPLETE) ← false
+    Note over Loading: ❌ 상태 초기화 안됨<br></br>UpdateTick 시작됨
+
+    loop UpdateTick (불필요)
+        Loading-&gt;&gt;Loading: WP 체크 (이미 완료됨)
+        Loading-&gt;&gt;Loading: TEXTURE 체크 (느림...)
+        Loading-&gt;&gt;Loading: LI 체크
+    end
+
+    Server-&gt;&gt;PC: ClientRPC_HideLoadingTransition()
+    PC-&gt;&gt;PC: IsReadyToFinish()
+    PC-&gt;&gt;Loading: IsLoadingComplete()?
+    Loading--&gt;&gt;PC: false ❌
+    Note over PC: ❌ bAwaitFinish = true<br></br>대기 상태 진입
+
+    Note over Guest,UI: ⏰ Texture 스트리밍 완료까지<br></br>최대 60초 대기...
+    Note over UI: 로딩 위젯 계속 표시됨 ❌
+</div>
+
+<h3 id="43-주요-차이점-비교표">4.3 주요 차이점 비교표</h3>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>호스트</th>
+<th>게스트</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PrepareForTravel 호출</strong></td>
+<td>✓ 호출됨</td>
+<td>✗ 호출 안됨</td>
+<td>게스트는 이미 로드된 맵에 join</td>
+</tr>
+<tr>
+<td><strong>TotalTime 값</strong></td>
+<td>100.5초 (예시)</td>
+<td>0.0초 (초기값)</td>
+<td>핵심 차이점</td>
+</tr>
+<tr>
+<td><strong>CompleteState 초기화</strong></td>
+<td>✓ false로 초기화</td>
+<td>✗ 초기값 그대로</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CurState</strong></td>
+<td>WP</td>
+<td>WP</td>
+<td>동일하지만 의미 다름</td>
+</tr>
+<tr>
+<td><strong>PostLoadMapWithWorld 분기</strong></td>
+<td>정상 처리</td>
+<td>잘못된 분기</td>
+<td>if 조건 실패</td>
+</tr>
+<tr>
+<td><strong>UpdateTick 필요성</strong></td>
+<td>필요 (실제 로딩)</td>
+<td>불필요 (이미 로드됨)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>IsLoadingComplete()</strong></td>
+<td>스트리밍 후 true</td>
+<td>false 유지</td>
+<td>게스트는 대기</td>
+</tr>
+<tr>
+<td><strong>로딩 위젯 제거</strong></td>
+<td>✓ 정상 제거</td>
+<td>✗ 제거 안됨</td>
+<td><strong>문제 발생</strong></td>
+</tr>
+</tbody>
+</table>
+<hr></hr>
+<h2 id="5-해결-방안">5. 해결 방안</h2>
+<h3 id="51-해결-전략">5.1 해결 전략</h3>
+<p>게스트 클라이언트를 감지하여 <strong>즉시 완료 상태</strong>로 설정합니다.</p>
+<p><strong>감지 방법:</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// TotalTime이 0이면 PrepareForTravel()이 호출되지 않은 것</span>
+<span class="hljs-type">const</span> <span class="hljs-type">bool</span> bIsFreshJoin = (TotalTime &lt; KINDA_SMALL_NUMBER);
+
+<span class="hljs-comment">// NetMode가 Client이고, Fresh Join이면 게스트</span>
+<span class="hljs-keyword">if</span> (bIsFreshJoin &amp;&amp; InWorld-&gt;<span class="hljs-built_in">GetNetMode</span>() == NM_Client)
+{
+    <span class="hljs-comment">// 게스트로 판단</span>
+}
+</code></pre>
+<p><strong>왜 이 방법이 작동하는가?</strong></p>
+<table>
+<thead>
+<tr>
+<th>시나리오</th>
+<th>TotalTime</th>
+<th>NetMode</th>
+<th>bIsFreshJoin</th>
+<th>판단</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>호스트가 맵 전환</td>
+<td>&gt; 0</td>
+<td>ListenServer</td>
+<td>false</td>
+<td>정상 로딩</td>
+</tr>
+<tr>
+<td>호스트가 처음 시작</td>
+<td>&gt; 0</td>
+<td>ListenServer</td>
+<td>false</td>
+<td>정상 로딩</td>
+</tr>
+<tr>
+<td>게스트가 join</td>
+<td>0</td>
+<td>Client</td>
+<td><strong>true</strong></td>
+<td><strong>게스트!</strong></td>
+</tr>
+<tr>
+<td>게스트가 맵 전환</td>
+<td>&gt; 0</td>
+<td>Client</td>
+<td>false</td>
+<td>정상 로딩</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-해결-로직">5.2 해결 로직</h3>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">UYiSanLoading::PostLoadMapWithWorld</span><span class="hljs-params">(UWorld* InWorld)</span>
+</span>{
+    <span class="hljs-comment">// Step 1: 게스트 감지</span>
+    <span class="hljs-type">const</span> <span class="hljs-type">bool</span> bIsFreshJoin = (TotalTime &lt; KINDA_SMALL_NUMBER);
+
+    <span class="hljs-keyword">if</span> (bIsFreshJoin &amp;&amp; InWorld-&gt;<span class="hljs-built_in">GetNetMode</span>() == NM_Client)
+    {
+        <span class="hljs-comment">// Step 2: 즉시 완료 상태로 설정</span>
+        CompleteState[EState::WP] = <span class="hljs-literal">true</span>;
+        CompleteState[EState::TEXTURE] = <span class="hljs-literal">true</span>;
+        CompleteState[EState::LI] = <span class="hljs-literal">true</span>;
+        CompleteState[EState::COMPLETE] = <span class="hljs-literal">true</span>;
+
+        Progress_Texture = <span class="hljs-number">1.0f</span>;
+        Progress_LI = <span class="hljs-number">1.0f</span>;
+        CurState = EState::COMPLETE;
+
+        <span class="hljs-comment">// Step 3: UpdateTick 시작하지 않고 리턴</span>
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-comment">// 정상적인 로딩 프로세스...</span>
+}
+</code></pre>
+<h3 id="53-해결-후-게스트-플로우">5.3 해결 후 게스트 플로우</h3>
+<div class="mermaid">
+sequenceDiagram
+    participant Guest as 게스트 클라이언트
+    participant Loading as UYiSanLoading
+    participant PC as APlayerControl
+    participant UI as LoadingTransitionManager
+    participant Server as 서버
+
+    Guest-&gt;&gt;Server: 접속 요청
+    Server-&gt;&gt;Guest: 현재 맵에 스폰
+
+    Guest-&gt;&gt;Loading: PostLoadMapWithWorld()
+    Note over Loading: TotalTime = 0<br></br>bIsFreshJoin = true ✓<br></br>NetMode = Client ✓
+
+    Loading-&gt;&gt;Loading: 즉시 완료 처리
+    Note over Loading: CompleteState[COMPLETE] = true ✓<br></br>UpdateTick 시작 안함
+
+    Server-&gt;&gt;PC: ClientRPC_HideLoadingTransition()
+    PC-&gt;&gt;PC: IsReadyToFinish()
+    PC-&gt;&gt;Loading: IsLoadingComplete()?
+    Loading--&gt;&gt;PC: true ✓
+    Note over PC: Pawn ✓<br></br>bPawnReady ✓<br></br>bPawnHasName ✓<br></br>IsLoadingComplete() ✓
+
+    PC-&gt;&gt;UI: HideLoadingScreen()
+    Note over UI: 3초 후 위젯 제거 ✓
+</div>
+
+<hr></hr>
+<h2 id="6-코드-수정-내역">6. 코드 수정 내역</h2>
+<h3 id="61-수정-파일">6.1 수정 파일</h3>
+<ul>
+<li><code>Source/YiSan/Loading/Private/UYiSanLoading.cpp</code></li>
+</ul>
+<h3 id="62-수정-위치">6.2 수정 위치</h3>
+<ul>
+<li>함수: <code>UYiSanLoading::PostLoadMapWithWorld()</code> (Line 132)</li>
+</ul>
+<h3 id="63-수정-전-코드">6.3 수정 전 코드</h3>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">UYiSanLoading::PostLoadMapWithWorld</span><span class="hljs-params">(UWorld* InWorld)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (!InWorld)
+    {
+        <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[WP] LoadedWorld가 null임."</span>));
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[LOADING_FLOW] PostLoadMapWithWorld - Map loaded: %s, NetMode: %s"</span>),
+        *InWorld-&gt;<span class="hljs-built_in">GetName</span>(),
+        InWorld-&gt;<span class="hljs-built_in">GetNetMode</span>() == NM_Client ? <span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"Client"</span>) : <span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"Server/Standalone"</span>));
+
+    <span class="hljs-comment">// 클라이언트가 자동 travel될 때 (PrepareForTravel 없이), 로딩 상태 초기화</span>
+    <span class="hljs-keyword">if</span> (CurState == EState::COMPLETE || CompleteState[EState::COMPLETE])
+    {
+        <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[LOADING_FLOW] PostLoadMapWithWorld - Resetting loading state"</span>));
+
+        TotalTime = FPlatformTime::<span class="hljs-built_in">Seconds</span>();
+        CompleteState[EState::WP] = <span class="hljs-literal">false</span>;
+        CompleteState[EState::TEXTURE] = <span class="hljs-literal">false</span>;
+        CompleteState[EState::LI] = <span class="hljs-literal">false</span>;
+        CompleteState[EState::COMPLETE] = <span class="hljs-literal">false</span>;
+        <span class="hljs-comment">// ... (생략)</span>
+        CurState = EState::WP;
+    }
+
+    bTextureStreamingComplete = <span class="hljs-literal">false</span>;
+    IStreamingManager::<span class="hljs-built_in">Get</span>().<span class="hljs-built_in">AddLevel</span>(InWorld-&gt;PersistentLevel);
+    IStreamingManager::<span class="hljs-built_in">Get</span>().<span class="hljs-built_in">NotifyLevelChange</span>();
+
+    InWorld-&gt;<span class="hljs-built_in">GetTimerManager</span>().<span class="hljs-built_in">ClearTimer</span>(TimeHandlePool);
+    InWorld-&gt;<span class="hljs-built_in">GetTimerManager</span>().<span class="hljs-built_in">SetTimer</span>(
+        TimeHandlePool,
+        <span class="hljs-keyword">this</span>,
+        &amp;UYiSanLoading::UpdateTick,
+        <span class="hljs-number">0.1f</span>,
+        <span class="hljs-literal">true</span>);
+}
+</code></pre>
+<h3 id="64-수정-후-코드">6.4 수정 후 코드</h3>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">UYiSanLoading::PostLoadMapWithWorld</span><span class="hljs-params">(UWorld* InWorld)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (!InWorld)
+    {
+        <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[WP] LoadedWorld가 null임."</span>));
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[LOADING_FLOW] PostLoadMapWithWorld - Map loaded: %s, NetMode: %s"</span>),
+        *InWorld-&gt;<span class="hljs-built_in">GetName</span>(),
+        InWorld-&gt;<span class="hljs-built_in">GetNetMode</span>() == NM_Client ? <span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"Client"</span>) : <span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"Server/Standalone"</span>));
+    <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[WP] 맵 로드 완료: %s"</span>), *InWorld-&gt;<span class="hljs-built_in">GetName</span>());
+
+    <span class="hljs-comment">// ═══════════════════════════════════════════════════════════</span>
+    <span class="hljs-comment">// 🆕 게스트 클라이언트 감지 및 즉시 완료 처리</span>
+    <span class="hljs-comment">// ═══════════════════════════════════════════════════════════</span>
+
+    <span class="hljs-comment">// PrepareForTravel이 호출되지 않았다면 TotalTime이 0이거나 매우 작음</span>
+    <span class="hljs-type">const</span> <span class="hljs-type">bool</span> bIsFreshJoin = (TotalTime &lt; KINDA_SMALL_NUMBER);
+
+    <span class="hljs-keyword">if</span> (bIsFreshJoin &amp;&amp; InWorld-&gt;<span class="hljs-built_in">GetNetMode</span>() == NM_Client)
+    {
+        <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[LOADING_FLOW] Guest client joining already loaded map - skipping loading process"</span>));
+
+        <span class="hljs-comment">// 게스트 클라이언트는 이미 로드된 맵에 join하므로 즉시 완료 처리</span>
+        CompleteState[EState::WP] = <span class="hljs-literal">true</span>;
+        CompleteState[EState::TEXTURE] = <span class="hljs-literal">true</span>;
+        CompleteState[EState::LI] = <span class="hljs-literal">true</span>;
+        CompleteState[EState::COMPLETE] = <span class="hljs-literal">true</span>;
+
+        Progress_Texture = <span class="hljs-number">1.0f</span>;
+        Progress_LI = <span class="hljs-number">1.0f</span>;
+
+        CurState = EState::COMPLETE;
+
+        <span class="hljs-comment">// UpdateTick 시작하지 않고 즉시 리턴</span>
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-comment">// ═══════════════════════════════════════════════════════════</span>
+
+    <span class="hljs-comment">// 클라이언트가 자동 travel될 때 (PrepareForTravel 없이), 로딩 상태 초기화</span>
+    <span class="hljs-comment">// 예: 서버 측에서 맵 전환이 발생한 경우</span>
+    <span class="hljs-keyword">if</span> (CurState == EState::COMPLETE || CompleteState[EState::COMPLETE])
+    {
+        <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[LOADING_FLOW] PostLoadMapWithWorld - Resetting loading state for new map load"</span>));
+
+        TotalTime = FPlatformTime::<span class="hljs-built_in">Seconds</span>();
+        CompleteState[EState::WP] = <span class="hljs-literal">false</span>;
+        CompleteState[EState::TEXTURE] = <span class="hljs-literal">false</span>;
+        CompleteState[EState::LI] = <span class="hljs-literal">false</span>;
+        CompleteState[EState::COMPLETE] = <span class="hljs-literal">false</span>;
+        <span class="hljs-comment">// ... (생략)</span>
+        CurState = EState::WP;
+    }
+
+    bTextureStreamingComplete = <span class="hljs-literal">false</span>;
+    IStreamingManager::<span class="hljs-built_in">Get</span>().<span class="hljs-built_in">AddLevel</span>(InWorld-&gt;PersistentLevel);
+    IStreamingManager::<span class="hljs-built_in">Get</span>().<span class="hljs-built_in">NotifyLevelChange</span>();
+
+    InWorld-&gt;<span class="hljs-built_in">GetTimerManager</span>().<span class="hljs-built_in">ClearTimer</span>(TimeHandlePool);
+    InWorld-&gt;<span class="hljs-built_in">GetTimerManager</span>().<span class="hljs-built_in">SetTimer</span>(
+        TimeHandlePool,
+        <span class="hljs-keyword">this</span>,
+        &amp;UYiSanLoading::UpdateTick,
+        <span class="hljs-number">0.1f</span>,
+        <span class="hljs-literal">true</span>);
+
+    <span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[LOADING_FLOW] PostLoadMapWithWorld - UpdateTick timer started, CurState: %d"</span>),
+        <span class="hljs-built_in">static_cast</span>&lt;int32&gt;(CurState));
+}
+</code></pre>
+<h3 id="65-핵심-변경-사항">6.5 핵심 변경 사항</h3>
+<ol>
+<li><p><strong>게스트 감지 로직 추가</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-type">const</span> <span class="hljs-type">bool</span> bIsFreshJoin = (TotalTime &lt; KINDA_SMALL_NUMBER);
+</code></pre>
+</li>
+<li><p><strong>즉시 완료 처리 분기</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">if</span> (bIsFreshJoin &amp;&amp; InWorld-&gt;<span class="hljs-built_in">GetNetMode</span>() == NM_Client)
+{
+    <span class="hljs-comment">// 모든 상태를 완료로 설정</span>
+    CompleteState[EState::COMPLETE] = <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">return</span>; <span class="hljs-comment">// UpdateTick 시작 안함</span>
+}
+</code></pre>
+</li>
+<li><p><strong>기존 로직 유지</strong></p>
+<ul>
+<li>호스트의 정상적인 맵 전환은 영향 없음</li>
+<li>게스트의 맵 전환(PrepareForTravel 호출된 경우)도 정상 동작</li>
+</ul>
+</li>
+</ol>
+<hr></hr>
+<h2 id="7-테스트-가이드">7. 테스트 가이드</h2>
+<h3 id="71-테스트-시나리오">7.1 테스트 시나리오</h3>
+<h4 id="시나리오-1-게스트-플레이어-join-수정-전-문제-재현">시나리오 1: 게스트 플레이어 Join (수정 전 문제 재현)</h4>
+<ol>
+<li>호스트가 게임 시작</li>
+<li>호스트가 맵 전환 (예: <code>/Game/Maps/TestMap</code>)</li>
+<li>게스트가 접속</li>
+<li><strong>기대 결과</strong>: 로딩 위젯이 사라지지 않음 ❌</li>
+</ol>
+<h4 id="시나리오-2-게스트-플레이어-join-수정-후">시나리오 2: 게스트 플레이어 Join (수정 후)</h4>
+<ol>
+<li>코드 수정 후 빌드</li>
+<li>호스트가 게임 시작</li>
+<li>호스트가 맵 전환</li>
+<li>게스트가 접속</li>
+<li><strong>기대 결과</strong>: 로딩 위젯이 3초 후 제거됨 ✓</li>
+</ol>
+<h4 id="시나리오-3-호스트-맵-전환-정상-동작-확인">시나리오 3: 호스트 맵 전환 (정상 동작 확인)</h4>
+<ol>
+<li>호스트가 게임 시작</li>
+<li>호스트가 맵 전환</li>
+<li><strong>기대 결과</strong>:<ul>
+<li>로딩 화면 표시</li>
+<li>스트리밍 진행 로그 출력</li>
+<li>완료 후 로딩 위젯 제거 ✓</li>
+</ul>
+</li>
+</ol>
+<h4 id="시나리오-4-게스트-맵-전환-정상-동작-확인">시나리오 4: 게스트 맵 전환 (정상 동작 확인)</h4>
+<ol>
+<li>게스트가 접속</li>
+<li>호스트가 맵 전환 (게스트도 함께 이동)</li>
+<li><strong>기대 결과</strong>:<ul>
+<li>게스트도 로딩 화면 표시</li>
+<li>스트리밍 진행</li>
+<li>완료 후 로딩 위젯 제거 ✓</li>
+</ul>
+</li>
+</ol>
+<h3 id="72-디버깅-로그-체크리스트">7.2 디버깅 로그 체크리스트</h3>
+<h4 id="✅-정상-동작-시-게스트-로그">✅ 정상 동작 시 게스트 로그</h4>
+<pre><code>[LOADING_FLOW] PostLoadMapWithWorld - Map loaded: YourMapName, NetMode: Client
+[LOADING_FLOW] Guest client joining already loaded map - skipping loading process
+[LOADING_FLOW] ClientRPC_HideLoadingTransition received - checking if ready to hide
+[LOADING_FLOW] HandleLoadingComplete called - IsLocal: true
+[LOADING_FLOW] IsReadyToFinish check - Pawn: true, bPawnReady: true, bPawnHasName: true
+[LOADING_FLOW] Client-side loading complete: true
+[LOADING_FLOW] READY: All conditions satisfied!
+[LOADING_FLOW] CompleteLoading called - waiting for rendering preparation
+[LOADING_FLOW] Rendering preparation complete - hiding loading screen now
+</code></pre><h4 id="❌-문제-발생-시-로그">❌ 문제 발생 시 로그</h4>
+<pre><code>[LOADING_FLOW] PostLoadMapWithWorld - Map loaded: YourMapName, NetMode: Client
+[LOADING_FLOW] PostLoadMapWithWorld - UpdateTick timer started, CurState: 0
+[LOADING_FLOW] UpdateTick - Current State: 0, NetMode: Client
+[LOADING_FLOW] ClientRPC_HideLoadingTransition received
+[LOADING_FLOW] IsReadyToFinish check - Pawn: true, bPawnReady: true, bPawnHasName: true
+[LOADING_FLOW] Client-side loading complete: false  ← ❌ 문제!
+[LOADING_FLOW] NOT READY: Client-side loading not complete yet - deferring
+</code></pre><h3 id="73-output-log-필터링">7.3 Output Log 필터링</h3>
+<p>로그가 많을 경우, 다음 키워드로 필터링하세요:</p>
+<pre><code>[LOADING_FLOW]
+Guest client
+IsReadyToFinish
+Client-side loading complete
+</code></pre><hr></hr>
+<h2 id="8-학습-포인트">8. 학습 포인트</h2>
+<h3 id="81-언리얼-네트워크-서브시스템-이해">8.1 언리얼 네트워크 서브시스템 이해</h3>
+<h4 id="gameinstancesubsystem-vs-localplayersubsystem">GameInstanceSubsystem vs LocalPlayerSubsystem</h4>
+<table>
+<thead>
+<tr>
+<th>특성</th>
+<th>GameInstanceSubsystem</th>
+<th>LocalPlayerSubsystem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>인스턴스 개수</strong></td>
+<td>GameInstance당 1개</td>
+<td>LocalPlayer당 1개</td>
+</tr>
+<tr>
+<td><strong>네트워크 환경</strong></td>
+<td>클라이언트별 독립</td>
+<td>클라이언트별 독립</td>
+</tr>
+<tr>
+<td><strong>생명주기</strong></td>
+<td>게임 시작~종료</td>
+<td>플레이어 생성~제거</td>
+</tr>
+<tr>
+<td><strong>사용 예시</strong></td>
+<td>로딩 시스템, 세이브 시스템</td>
+<td>UI 관리, 입력 처리</td>
+</tr>
+</tbody>
+</table>
+<p><strong>UYiSanLoading이 GameInstanceSubsystem인 이유:</strong></p>
+<ul>
+<li>맵 로딩은 게임 전체의 상태이므로</li>
+<li>LocalPlayer와 독립적으로 동작해야 함</li>
+</ul>
+<h3 id="82-클라이언트-서버-맵-로딩-차이">8.2 클라이언트-서버 맵 로딩 차이</h3>
+<h4 id="서버-주도-맵-전환-servertravel">서버 주도 맵 전환 (ServerTravel)</h4>
+<pre><code class="lang-cpp"><span class="hljs-comment">// 서버에서 호출</span>
+<span class="hljs-built_in">GetWorld</span>()-&gt;<span class="hljs-built_in">ServerTravel</span>(<span class="hljs-string">"/Game/Maps/NewMap"</span>);
+</code></pre>
+<p><strong>동작 순서:</strong></p>
+<ol>
+<li><p><strong>서버</strong>:</p>
+<ul>
+<li>현재 맵 언로드</li>
+<li>새 맵 로드</li>
+<li>모든 클라이언트에게 ClientTravel RPC 전송</li>
+</ul>
+</li>
+<li><p><strong>기존 클라이언트</strong> (호스트 포함):</p>
+<ul>
+<li>ClientTravel RPC 수신</li>
+<li><code>PrepareClientTravel()</code> 호출</li>
+<li>맵 로드</li>
+<li><code>PostLoadMapWithWorld()</code> 호출</li>
+</ul>
+</li>
+<li><p><strong>신규 게스트</strong>:</p>
+<ul>
+<li>서버가 이미 새 맵에 있음</li>
+<li>ClientTravel 없이 직접 스폰</li>
+<li><code>PostLoadMapWithWorld()</code> 호출</li>
+<li>❌ <code>PrepareClientTravel()</code> 호출 안됨 ← <strong>문제 발생 지점</strong></li>
+</ul>
+</li>
+</ol>
+<h3 id="83-상태-초기화의-중요성">8.3 상태 초기화의 중요성</h3>
+<h4 id="왜-totaltime으로-감지하는가">왜 TotalTime으로 감지하는가?</h4>
+<p><strong>대안 1: 플래그 변수 사용</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-type">bool</span> bHasPrepared = <span class="hljs-literal">false</span>;
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">PrepareForTravel</span><span class="hljs-params">()</span> </span>{
+    bHasPrepared = <span class="hljs-literal">true</span>;
+}
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">PostLoadMapWithWorld</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">if</span> (!bHasPrepared) {
+        <span class="hljs-comment">// 게스트 처리</span>
+    }
+}
+</code></pre>
+<p><strong>문제</strong>: 맵 전환 후에도 플래그가 남아있어 다음 join에 영향</p>
+<p><strong>대안 2: 델리게이트 사용</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">DECLARE_MULTICAST_DELEGATE</span>(FOnPrepareTravel);
+FOnPrepareTravel OnPrepareTravel;
+</code></pre>
+<p><strong>문제</strong>: 복잡도 증가, 메모리 오버헤드</p>
+<p><strong>선택한 방법: TotalTime</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-type">const</span> <span class="hljs-type">bool</span> bIsFreshJoin = (TotalTime &lt; KINDA_SMALL_NUMBER);
+</code></pre>
+<p><strong>장점</strong>:</p>
+<ul>
+<li>✓ 추가 변수 불필요</li>
+<li>✓ 자동 초기화 (PrepareForTravel에서 설정)</li>
+<li>✓ 명확한 의미 (시간이 0이면 준비 안된 것)</li>
+</ul>
+<h3 id="84-멀티플레이어-로딩-패턴">8.4 멀티플레이어 로딩 패턴</h3>
+<h4 id="패턴-1-각-클라이언트-독립-로딩">패턴 1: 각 클라이언트 독립 로딩</h4>
+<pre><code class="lang-cpp"><span class="hljs-comment">// 각 클라이언트가 자체적으로 로딩 상태 관리</span>
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">PostLoadMapWithWorld</span><span class="hljs-params">(UWorld* InWorld)</span>
+</span>{
+    <span class="hljs-built_in">StartLoadingProcess</span>();
+    <span class="hljs-built_in">WaitUntilComplete</span>();
+    <span class="hljs-built_in">NotifyServer</span>();
+}
+</code></pre>
+<p><strong>장점</strong>: 클라이언트별 최적화 가능
+<strong>단점</strong>: 동기화 복잡</p>
+<h4 id="패턴-2-서버-중심-로딩">패턴 2: 서버 중심 로딩</h4>
+<pre><code class="lang-cpp"><span class="hljs-comment">// 서버가 모든 클라이언트의 로딩 완료를 대기</span>
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">OnAllClientsReady</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-built_in">MulticastRPC_HideLoading</span>();
+}
+</code></pre>
+<p><strong>장점</strong>: 동기화 간단
+<strong>단점</strong>: 느린 클라이언트가 전체 지연</p>
+<h4 id="패턴-3-하이브리드-yisan-프로젝트">패턴 3: 하이브리드 (YiSan 프로젝트)</h4>
+<pre><code class="lang-cpp"><span class="hljs-comment">// 서버는 자체 로딩 완료 후 즉시 브로드캐스트</span>
+<span class="hljs-comment">// 각 클라이언트는 자신의 로딩 완료 후 UI 제거</span>
+<span class="hljs-built_in">CompleteProcess</span>() {
+    <span class="hljs-built_in">Broadcast_HideLoading</span>();  <span class="hljs-comment">// 서버 → 모든 클라이언트</span>
+}
+
+<span class="hljs-built_in">HandleLoadingComplete</span>() {
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">IsReadyToFinish</span>())  <span class="hljs-comment">// 클라이언트 자체 체크</span>
+        <span class="hljs-built_in">HideLoadingScreen</span>();
+}
+</code></pre>
+<p><strong>장점</strong>: ✓ 빠른 클라이언트는 먼저 진입 가능
+<strong>단점</strong>: 복잡한 상태 관리 필요</p>
+<h3 id="85-디버깅-기법">8.5 디버깅 기법</h3>
+<h4 id="네트워크-로그-패턴">네트워크 로그 패턴</h4>
+<pre><code class="lang-cpp"><span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[LOADING_FLOW] %s - NetMode: %s"</span>),
+    <span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"함수명"</span>),
+    NetMode == NM_Client ? <span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"Client"</span>) : <span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"Server"</span>));
+</code></pre>
+<p><strong>효과</strong>:</p>
+<ul>
+<li>클라이언트/서버 구분 용이</li>
+<li>실행 순서 추적 가능</li>
+</ul>
+<h4 id="상태-로그-패턴">상태 로그 패턴</h4>
+<pre><code class="lang-cpp"><span class="hljs-built_in">PRINTLOG</span>(<span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"[LOADING_FLOW] IsReadyToFinish check - Pawn: %s, bPawnReady: %s"</span>),
+    <span class="hljs-built_in">GetPawn</span>() ? <span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"true"</span>) : <span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"false"</span>),
+    bPawnReady ? <span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"true"</span>) : <span class="hljs-built_in">TEXT</span>(<span class="hljs-string">"false"</span>));
+</code></pre>
+<p><strong>효과</strong>:</p>
+<ul>
+<li>어느 조건에서 실패했는지 명확히 파악</li>
+<li>불필요한 중단점 제거</li>
+</ul>
+<hr></hr>
+<h2 id="9-추가-고려사항">9. 추가 고려사항</h2>
+<h3 id="91-엣지-케이스">9.1 엣지 케이스</h3>
+<h4 id="케이스-1-게스트가-join-중-호스트가-맵-전환">케이스 1: 게스트가 join 중 호스트가 맵 전환</h4>
+<pre><code>시간순서:
+1. 게스트 join 시작 (PostLoadMapWithWorld 호출 직전)
+2. 호스트 맵 전환 시작
+3. 게스트 PostLoadMapWithWorld 호출
+
+처리:
+- TotalTime &gt; 0 (호스트가 PrepareForTravel 호출함)
+- 게스트는 정상 로딩 프로세스 진행
+</code></pre><h4 id="케이스-2-여러-게스트가-동시에-join">케이스 2: 여러 게스트가 동시에 join</h4>
+<pre><code>처리:
+- 각 게스트는 독립적인 GameInstance 보유
+- 각자의 UYiSanLoading 인스턴스 존재
+- 서로 영향 없음
+</code></pre><h3 id="92-성능-영향">9.2 성능 영향</h3>
+<h4 id="수정-전">수정 전</h4>
+<ul>
+<li>게스트도 UpdateTick 실행 (0.1초마다)</li>
+<li>불필요한 스트리밍 체크 수행</li>
+<li>최대 60초 타임아웃까지 대기</li>
+</ul>
+<h4 id="수정-후">수정 후</h4>
+<ul>
+<li>게스트는 UpdateTick 실행 안함</li>
+<li>CPU 사용량 감소</li>
+<li>즉시 게임 진입 가능</li>
+</ul>
+<h3 id="93-향후-개선-방향">9.3 향후 개선 방향</h3>
+<ol>
+<li><p><strong>로딩 상태 동기화</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// 서버가 게스트에게 현재 로딩 상태 전송</span>
+<span class="hljs-built_in">UFUNCTION</span>(Client, Reliable)
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">ClientRPC_SyncLoadingState</span><span class="hljs-params">(<span class="hljs-type">const</span> FLoadingState&amp; State)</span></span>;
+</code></pre>
+</li>
+<li><p><strong>게스트 전용 간소화 로딩</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// 게스트는 필수 에셋만 체크</span>
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">GuestQuickCheck</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">IsPawnReady</span>() &amp;&amp; <span class="hljs-built_in">IsMinimalAssetsLoaded</span>())
+        <span class="hljs-built_in">CompleteLoading</span>();
+}
+</code></pre>
+</li>
+<li><p><strong>동적 타임아웃 조정</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// 네트워크 환경에 따라 타임아웃 조정</span>
+<span class="hljs-type">const</span> <span class="hljs-type">double</span> TimeOut = bIsLowBandwidth ? <span class="hljs-number">90.0</span> : <span class="hljs-number">60.0</span>;
+</code></pre>
+</li>
+</ol>
+<hr></hr>
+<h2 id="10-결론">10. 결론</h2>
+<h3 id="101-요약">10.1 요약</h3>
+<ul>
+<li><strong>문제</strong>: 게스트가 join할 때 <code>PrepareForTravel()</code>이 호출되지 않아 로딩 상태가 초기화되지 않음</li>
+<li><strong>원인</strong>: <code>PostLoadMapWithWorld()</code>에서 게스트를 감지하지 못함</li>
+<li><strong>해결</strong>: <code>TotalTime == 0</code>으로 게스트를 감지하고 즉시 완료 처리</li>
+<li><strong>효과</strong>: 게스트도 정상적으로 게임 진입 가능</li>
+</ul>
+<h3 id="102-핵심-교훈">10.2 핵심 교훈</h3>
+<ol>
+<li><p><strong>네트워크 환경에서 상태 관리는 신중하게</strong></p>
+<ul>
+<li>호스트와 게스트의 진입 경로가 다름</li>
+<li>각 경로에 대한 처리 필요</li>
+</ul>
+</li>
+<li><p><strong>초기화는 명시적으로</strong></p>
+<ul>
+<li>초기값에 의존하지 말고 명시적으로 초기화</li>
+<li>게스트는 초기값 그대로 시작함을 기억</li>
+</ul>
+</li>
+<li><p><strong>로그는 네트워크 컨텍스트 포함</strong></p>
+<ul>
+<li>NetMode 표시</li>
+<li>클라이언트/서버 구분</li>
+</ul>
+</li>
+</ol>
+<h3 id="103-체크리스트">10.3 체크리스트</h3>
+<p>수정 후 다음을 확인하세요:</p>
+<ul>
+<li>[ ] 코드 빌드 성공</li>
+<li>[ ] 호스트 맵 전환 정상 동작</li>
+<li>[ ] 게스트 join 시 로딩 위젯 제거 확인</li>
+<li>[ ] 게스트 맵 전환 정상 동작</li>
+<li>[ ] Output Log에 "Guest client joining" 메시지 확인</li>
+<li>[ ] 성능 저하 없음 확인</li>
+</ul>
+<hr></hr>
+<p><strong>문서 버전</strong>: 1.0
+<strong>최종 수정일</strong>: 2025-11-09
+<strong>관련 이슈</strong>: #게스트<em>로딩</em>위젯_미제거</p>
+<p><strong>참조 파일</strong>:</p>
+<ul>
+<li><code>Source/YiSan/Loading/Private/UYiSanLoading.cpp</code></li>
+<li><code>Source/YiSan/Character/Private/APlayerControl.cpp</code></li>
+<li><code>Source/YiSan/UI/Private/ULoadingTransitionManager.cpp</code></li>
+</ul>
+ <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="2025-11-04_종합역량평가.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: YiSan 프로젝트 종합 역량평가 리포트">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"게스트 플레이어 로딩 위젯 미제거 문제 분석 리포트","level":"16.7","depth":1,"next":{"title":"GitHub Repository","level":"17.1","depth":1,"url":"https://github.com/doppleddiggong/YiSan","ref":"https://github.com/doppleddiggong/YiSan","articles":[]},"previous":{"title":"YiSan 프로젝트 종합 역량평가 리포트","level":"16.6","depth":1,"path":"Planning/Report/2025-11-04_종합역량평가.md","ref":"Planning/Report/2025-11-04_종합역량평가.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Planning/Report/2025-11-09_로딩시스템_게스트플레이어_이슈리포트.md","mtime":"2025-11-09T04:32:04.386Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-09T04:32:24.874Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mermaid-gb3/book/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    <script src="../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.min.js"></script>
+
+    </body>
+</html>
+
