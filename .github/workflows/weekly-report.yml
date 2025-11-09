@@ -70,11 +70,13 @@ jobs:
 
       - name: Make scripts executable
         run: |
-          chmod +x .github/scripts/devlog/generate_weekly.py
+          chmod +x .github/scripts/devlog/generate_weekly_gpt.py
           chmod +x .github/scripts/generate_summary.py
 
-      - name: Generate Weekly Report
+      - name: Generate Weekly Report (GPT)
         id: weekly
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           if [ -n "${{ github.event.inputs.date }}" ]; then
             DATE_ARG="--date ${{ github.event.inputs.date }}"
@@ -91,7 +93,8 @@ jobs:
 
           echo "week_label=$WEEK_LABEL" >> $GITHUB_OUTPUT
 
-          python .github/scripts/devlog/generate_weekly.py \
+          # GPT 기반 주간 개발 요약 생성 (기존 W42, W44 형식)
+          python .github/scripts/devlog/generate_weekly_gpt.py \
             $DATE_ARG \
             --devlog-dir "Documents/DevLog/Daily" \
             --out "Documents/DevLog/Weekly/${WEEK_LABEL}-Summary.md"
@@ -165,6 +168,13 @@ jobs:
               --date "${{ steps.weekly.outputs.week_label }}" \
               --devlog-url "https://doppleddiggong.github.io/YiSan/docs/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.html"
           fi
+
+      - name: Trigger HonKit Build
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: honkit-build
+          client-payload: '{"ref": "docs", "trigger": "weekly-report"}'
 
       - name: Summary
         run: |

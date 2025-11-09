@@ -85,8 +85,10 @@ jobs:
 
       - name: Generate Daily DevLog
         run: |
+          # 해당 날짜의 00:00 ~ 23:59 커밋만 수집
           python .github/scripts/devlog/generate_daily.py \
-            --since "24 hours" \
+            --since "${{ steps.date.outputs.today }} 00:00" \
+            --until "${{ steps.date.outputs.today }} 23:59" \
             --branch "${{ steps.date.outputs.branch }}" \
             --base "origin/main" \
             --out "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md"
@@ -98,7 +100,8 @@ jobs:
         run: |
           python .github/scripts/devlog/generate_gpt_feedback.py \
             --devlog-file "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md" \
-            --since "24 hours" \
+            --since "${{ steps.date.outputs.today }} 00:00" \
+            --until "${{ steps.date.outputs.today }} 23:59" \
             --output "Documents/DevLog/Daily/${{ steps.date.outputs.today }}-feedback.md"
 
       - name: Merge DevLog and Feedback
@@ -166,6 +169,13 @@ jobs:
               --date "${{ steps.date.outputs.today }}" \
               --devlog-url "https://doppleddiggong.github.io/YiSan/docs/DevLog/Daily/${{ steps.date.outputs.today }}.html"
           fi
+
+      - name: Trigger HonKit Build
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: honkit-build
+          client-payload: '{"ref": "docs", "trigger": "daily-report"}'
 
       - name: Summary
         run: |
