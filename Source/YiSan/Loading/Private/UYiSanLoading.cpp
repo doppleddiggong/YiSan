@@ -161,6 +161,9 @@ void UYiSanLoading::PostLoadMapWithWorld(UWorld* InWorld)
 
         CurState = EState::COMPLETE;
 
+        // 게스트는 서버로부터 RPC를 받지 못하므로 직접 로딩 완료 처리
+        Broadcast_HideLoading();
+
         return; // UpdateTick 시작하지 않음
     }
 
