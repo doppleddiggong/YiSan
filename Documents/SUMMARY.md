@@ -35,12 +35,16 @@
 ### Reports
 * [YiSan 프로젝트 진행보고서](Planning/YiSan_프로젝트_진행보고서.md)
 * [Team Evaluation 2025-11-02](Planning/Team_Evaluation_2025-11-02.md)
-* [Comprehensive Competency Assessment 2025-11-04](Planning/Comprehensive_Competency_Assessment_2025-11-04.md)
-* [Alpha Report 2025-10-20 to 2025-10-27](Planning/Alpha_Report_2025-10-20_to_2025-10-27.md)
-* [AI Pathfinding Fix Report](Planning/AI_Pathfinding_Fix_Report.md)
+
+#### Technical Reports
+* [2025-11-09 로딩 시스템 게스트 플레이어 이슈](Planning/Report/2025-11-09_로딩시스템_게스트플레이어_이슈리포트.md)
+* [2025-11-04 종합 역량 평가](Planning/Report/2025-11-04_종합역량평가.md)
+* [2025-11-02 로딩 시스템 네트워크 최적화](Planning/Report/2025-11-02_로딩시스템_네트워크_최적화.md)
+* [2025-10-30 UYiSanLoading 리팩토링](Planning/Report/2025-10-30_UYiSanLoading_리팩토링.md)
+* [2025-10-27 알파 리포트](Planning/Report/2025-10-27_알파_리포트.md)
+* [2025-10-27 AI 경로찾기 수정](Planning/Report/2025-10-27_AI경로찾기_수정리포트.md)
 
 ### Presentations
-* [LoadingSystem Network Optimization Presentation](Planning/LoadingSystem_Network_Optimization_Presentation.md)
 * [Weekly Presentation 2025-11-02](Planning/Weekly_Presentation_2025-11-02.md)
 
 ## External Links
