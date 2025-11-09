@@ -3,7 +3,7 @@
 <html lang="ko" >
     <head>
         <meta charset="UTF-8">
-        <title>dopple - 2025-11-08 · YiSan Development Documentation</title>
+        <title>dopple - dopple_251109 · YiSan Development Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 6.1.4">
@@ -88,10 +88,10 @@
     <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../../Daily/2025-11-09.html" />
+    <link rel="next" href="251108.html" />
     
     
-    <link rel="prev" href="dopple_251109.html" />
+    <link rel="prev" href="../../../" />
     
 
     </head>
@@ -163,7 +163,7 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="dopple_251109.html">
+        <li class="chapter active" data-level="3.1" data-path="dopple_251109.html">
             
                 <a href="dopple_251109.html">
             
@@ -176,7 +176,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.2" data-path="251108.html">
+        <li class="chapter " data-level="3.2" data-path="251108.html">
             
                 <a href="251108.html">
             
@@ -1487,7 +1487,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../.." >dopple - 2025-11-08</a>
+        <a href="../../.." >dopple - dopple_251109</a>
     </h1>
 </div>
 
@@ -1502,904 +1502,320 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="dopple-251108">dopple 251108</h1>
+                                <p>﻿# dopple 251109</p>
 <h1 id="start-log">Start Log</h1>
 <ul>
-<li>20251108 21:18</li>
-<li>작업자: dopple</li>
+<li>20251109 13:32</li>
+<li>?묒뾽?? dopple</li>
 </ul>
-<h3 id="to-do">To Do</h3>
-<ol>
-<li>order_claude.md 문서 분석 및 중요도/필요도 순 작업 계획 수립</li>
-<li>HonKit 기본 구조 설정 및 GitHub Actions workflow 구성</li>
-<li>DevLog 및 Planning 문서를 HonKit 형식으로 구성</li>
-<li>Doxygen 설정에서 DevLog 제외 처리</li>
-<li>Daily DevLog 자동 생성 Python 스크립트 작성</li>
-<li>Weekly Report 자동 집계 기능 구현</li>
-<li>Discord Webhook 연동 및 피드백 시스템 구성</li>
-<li>System Review 문서 자동 생성 (주간/월간)</li>
-<li>HonKit Claude Skill 패키징</li>
-<li>README에 HonKit URL 및 문서 구조 설명 추가</li>
-</ol>
 <h2 id="compact-log-1">Compact Log 1</h2>
 <ul>
-<li>20251108 21:39</li>
+<li>20251109 19:30</li>
 </ul>
-<h3 id="요약-내용">요약 내용</h3>
-<p><strong>HonKit DevLog 자동화 시스템 구현 완료</strong></p>
-<p>4단계로 구성된 전체 시스템을 순차적으로 구현:</p>
-<p><strong>1단계: HonKit 기본 인프라 구축</strong></p>
+<h3 id="붿빟-댁슜">?붿빟 ?댁슜</h3>
+<p>GitHub Actions ?뚰겕?뚮줈?곕? 媛쒖꽑?섏뿬 docs 釉뚮옖移??먮룞 愿由??쒖뒪?쒖쓣 援ъ텞?덉뒿?덈떎.</p>
+<p><strong>蹂寃??뚯씪</strong>:</p>
 <ul>
-<li>Documents/book.json, README.md, SUMMARY.md 생성</li>
-<li>.github/workflows/honkit.yml 워크플로우 구성</li>
-<li>Doxyfile에서 DevLog 제외 처리</li>
+<li><code>.github/workflows/daily-report.yml</code>: docs 釉뚮옖移??먮룞 push 濡쒖쭅 異붽?</li>
+<li><code>.github/workflows/weekly-report.yml</code>: docs 釉뚮옖移??먮룞 push 濡쒖쭅 異붽?</li>
+<li><code>.claude/settings.local.json</code>: bash 紐낅졊??沅뚰븳 異붽?</li>
 </ul>
-<p><strong>2단계: Daily DevLog 자동 생성</strong></p>
+<p><strong>二쇱슂 ?묒뾽</strong>:</p>
 <ul>
-<li>.github/scripts/devlog/generate_daily.py (Python 스크립트)</li>
-<li>daily_template.md (Jinja2 템플릿)</li>
-<li>update_summary.py (SUMMARY.md 자동 업데이트)</li>
-<li>.github/workflows/devlog-simple.yml (매일 오전 9시 KST 실행)</li>
+<li>daily/weekly report瑜?docs 釉뚮옖移섎줈 ?먮룞 push?섎룄濡??섏젙</li>
+<li>湲곗〈 ?뚯씪 ??젣 ???ъ깮??濡쒖쭅 異붽? (以묐났 諛⑹?)</li>
+<li>rebase ??force-with-lease濡?異⑸룎 諛⑹? 硫붿빱?덉쬁 援ы쁽</li>
+<li>釉뚮옖移?遺꾨━瑜??듯븳 main 釉뚮옖移?蹂댄샇</li>
 </ul>
-<p><strong>3단계: Weekly Report 자동 집계</strong></p>
-<ul>
-<li>generate_weekly.py (주간 집계 로직)</li>
-<li>weekly_template.md (템플릿)</li>
-<li>.github/workflows/weekly-report.yml (매주 일요일 오후 11시 실행)</li>
-<li>자동 회고 질문 생성 기능</li>
-</ul>
-<p><strong>4단계: Discord Webhook 연동</strong></p>
-<ul>
-<li>send_discord.py (Discord Embed 전송)</li>
-<li>.github/DISCORD_SETUP.md (설정 가이드)</li>
-<li>devlog-simple.yml 및 weekly-report.yml에 알림 추가</li>
-</ul>
-<p><strong>5단계: System Review 자동 생성</strong></p>
-<ul>
-<li>generate_system_review.py (시스템 분석)</li>
-<li>system_review_template.md (템플릿)</li>
-<li>.github/workflows/system-review.yml (매월 1일 실행)</li>
-<li>Hotspot 파일 위험도 평가, 아키텍처 변화 분석</li>
-</ul>
-<p><strong>6단계: HonKit Claude Skill 패키징</strong></p>
-<ul>
-<li>.claude/skills/honkit-devlog.md (Skill 정의)</li>
-<li>.github/scripts/install_honkit.sh (자동 설치 스크립트)</li>
-<li>.github/HONKIT_SKILL_GUIDE.md (사용 가이드)</li>
-<li>Documents/DevLog/IMPLEMENTATION_SUMMARY.md (구현 요약)</li>
-</ul>
-<p><strong>7단계: 문서화 완료</strong></p>
-<ul>
-<li>README.md 업데이트 (이중 문서화 시스템 설명)</li>
-<li>자동화 시스템 섹션 추가</li>
-</ul>
-<h3 id="변경-파일">변경 파일</h3>
-<p><strong>생성된 주요 파일 (총 20+개)</strong>:</p>
-<p><strong>HonKit 설정</strong>:</p>
-<ul>
-<li>Documents/book.json</li>
-<li>Documents/README.md</li>
-<li>Documents/SUMMARY.md</li>
-</ul>
-<p><strong>Python 스크립트</strong>:</p>
-<ul>
-<li>.github/scripts/devlog/generate_daily.py</li>
-<li>.github/scripts/devlog/generate_weekly.py</li>
-<li>.github/scripts/devlog/generate_system_review.py</li>
-<li>.github/scripts/devlog/update_summary.py</li>
-<li>.github/scripts/devlog/send_discord.py</li>
-</ul>
-<p><strong>템플릿</strong>:</p>
-<ul>
-<li>.github/scripts/devlog/daily_template.md</li>
-<li>.github/scripts/devlog/weekly_template.md</li>
-<li>.github/scripts/devlog/system_review_template.md</li>
-</ul>
-<p><strong>GitHub Actions</strong>:</p>
-<ul>
-<li>.github/workflows/honkit.yml</li>
-<li>.github/workflows/devlog-simple.yml</li>
-<li>.github/workflows/weekly-report.yml</li>
-<li>.github/workflows/system-review.yml</li>
-</ul>
-<p><strong>가이드 문서</strong>:</p>
-<ul>
-<li>.github/DISCORD_SETUP.md</li>
-<li>.github/HONKIT_SKILL_GUIDE.md</li>
-</ul>
-<p><strong>Skill 및 도구</strong>:</p>
-<ul>
-<li>.claude/skills/honkit-devlog.md</li>
-<li>.github/scripts/install_honkit.sh</li>
-<li>Documents/DevLog/IMPLEMENTATION_SUMMARY.md</li>
-</ul>
-<p><strong>수정된 파일</strong>:</p>
-<ul>
-<li>Doxyfile (DevLog 제외)</li>
-<li>README.md (HonKit 링크 및 자동화 섹션 추가)</li>
-</ul>
-<h3 id="commit-정보">Commit 정보</h3>
-<p><strong>Summary (EN)</strong>:
-feat(devlog): implement HonKit-based DevLog automation system</p>
-<p>Complete automation system for development documentation with Daily DevLog, Weekly Reports, System Reviews, Discord integration, and Claude Skill packaging.</p>
-<p><strong>세부 내역</strong>:</p>
+<h3 id="commit-뺣낫">Commit ?뺣낫</h3>
+<p><strong>?쒕ぉ</strong>:
+feat: docs 釉뚮옖移??먮룞 愿由??쒖뒪??援ъ텞</p>
+<p><strong>?몃? ?댁뿭</strong>:</p>
 <ol>
-<li><p>"HonKit 문서화 인프라 구축"</p>
-<ul>
-<li>Documents/book.json, README.md, SUMMARY.md 생성</li>
-<li>HonKit 자동 빌드 및 GitHub Pages 배포 워크플로우</li>
-<li>Doxygen 설정에서 DevLog 분리</li>
+<li>"[GitHub Actions] docs 釉뚮옖移??먮룞??<ul>
+<li>daily-report.yml怨?weekly-report.yml?먯꽌 docs 釉뚮옖移섎줈 ?먮룞 ?꾪솚 諛?push</li>
+<li>湲곗〈 ?뚯씪 ??젣 ???ъ깮?깊븯??以묐났 諛⑹?</li>
+<li>rebase + force-with-lease濡?異⑸룎 理쒖냼??</li>
 </ul>
 </li>
-<li><p>"Daily DevLog 자동 생성 시스템"</p>
-<ul>
-<li>Git 커밋 통계 수집 및 분석</li>
-<li>Conventional Commits 기반 분류</li>
-<li>Hotspot 파일 자동 감지</li>
-<li>Mermaid 다이어그램 자동 생성</li>
-<li>매일 오전 9시 (KST) 자동 실행</li>
-</ul>
-</li>
-<li><p>"Weekly Report 자동 집계"</p>
-<ul>
-<li>7일간 커밋 분석 및 트렌드</li>
-<li>커밋 타입 분포 통계</li>
-<li>자동 회고 질문 생성</li>
-<li>매주 일요일 오후 11시 실행</li>
-</ul>
-</li>
-<li><p>"Discord Webhook 연동"</p>
-<ul>
-<li>Daily/Weekly 알림 자동 전송</li>
-<li>Discord Embed 형식 메시지</li>
-<li>피드백 유도 시스템</li>
-<li>설정 가이드 문서</li>
-</ul>
-</li>
-<li><p>"System Review 자동 생성"</p>
-<ul>
-<li>아키텍처 변화 분석</li>
-<li>Hotspot 파일 위험도 평가</li>
-<li>코드 건강도 메트릭</li>
-<li>주간/월간 리뷰 지원</li>
-</ul>
-</li>
-<li><p>"HonKit Claude Skill 패키징"</p>
-<ul>
-<li>재사용 가능한 Skill 정의</li>
-<li>자동 설치 스크립트</li>
-<li>상세 사용 가이드</li>
-<li>다른 프로젝트 적용 가능</li>
-</ul>
-</li>
-<li><p>"문서화 및 README 업데이트"</p>
-<ul>
-<li>이중 문서화 시스템 설명</li>
-<li>자동화 시스템 가이드</li>
-<li>구현 요약 문서</li>
-</ul>
-</li>
-</ol>
-<h2 id="end-log">End Log</h2>
-<ul>
-<li>20251108 21:45</li>
-<li>작업자: dopple</li>
-</ul>
-<h3 id="오늘-한-일">오늘 한 일</h3>
-<ol>
-<li>"order_claude.md 분석 및 우선순위 기반 작업 계획 수립"</li>
-<li>"HonKit DevLog 자동화 시스템 전체 구현 (4단계)"<ul>
-<li>Daily DevLog, Weekly Report, System Review 자동 생성 시스템</li>
-<li>Discord Webhook 연동 및 피드백 시스템</li>
-<li>HonKit Claude Skill 패키징 및 문서화</li>
-</ul>
-</li>
-<li>"GitHub Actions 워크플로우 5개 구성"<ul>
-<li>honkit.yml, devlog-simple.yml, weekly-report.yml, system-review.yml</li>
-</ul>
-</li>
-<li>"Python 스크립트 8개, 템플릿 3개, 가이드 문서 3개 작성"</li>
-<li>"README.md 업데이트 및 전체 시스템 문서화"</li>
-<li>"AgentLog 시스템 디버깅 및 수정"<ul>
-<li>.claude.json Hook 설정 수정 (.md → .sh)</li>
-<li>on-session-start.sh, on-session-end.sh 실행 가능한 스크립트 작성</li>
-<li>Hook 자동 실행 시스템 구축 완료</li>
-</ul>
-</li>
-</ol>
-<h3 id="참고-사항">참고 사항</h3>
-<ul>
-<li>총 생성 파일: 25+개</li>
-<li>.claude.json Hook 설정 완료 (다음 세션부터 자동 실행)</li>
-<li>AgentLog/dopple/251108.md에 전체 작업 내용 기록됨</li>
-<li>세션이 정상적으로 종료됩니다.</li>
-</ul>
-<h3 id="다음-세션-시-확인-사항">다음 세션 시 확인 사항</h3>
-<ol>
-<li>SessionStart Hook이 자동으로 실행되는지 확인</li>
-<li>Start Log가 251108.md에 추가되는지 확인</li>
-<li>종료 시 SessionEnd Hook이 실행되는지 확인</li>
-</ol>
-<h1 id="start-log">Start Log</h1>
-<ul>
-<li>20251108 23:01</li>
-<li>작업자: dopple</li>
-</ul>
-<h3 id="to-do">To Do</h3>
-<ol>
-<li>[사용자의 요청을 기다리는 중...]</li>
-</ol>
-<h2 id="compact-log-2">Compact Log 2</h2>
-<ul>
-<li>20251108 23:03</li>
-</ul>
-<h3 id="요약-내용">요약 내용</h3>
-<p><strong>DevLog 워크플로우 재구축 및 GitHub Pages 통합</strong></p>
-<p>오늘 세션에서 완료한 주요 작업들:</p>
-<ol>
-<li><p><strong>DevLog 피드백 시스템 재구축</strong></p>
-<ul>
-<li>OpenAI/Claude 기반 워크플로우 통합 (devlog.yml, system-review.yml 삭제)</li>
-<li>GPT 피드백 온/오프 기능 추가 (workflow_dispatch 입력)</li>
-<li>개발자 성장 중심 피드백 시스템 설계</li>
-<li>Daily/Weekly GPT 피드백 스크립트 작성</li>
-</ul>
-</li>
-<li><p><strong>config.yml 중앙 설정 시스템 구축</strong></p>
-<ul>
-<li><code>.github/config.yml</code> 생성 (GPT/Discord 설정 중앙 관리)</li>
-<li>daily-report.yml, weekly-report.yml에 config 연동</li>
-<li>우선순위 시스템: 수동 입력 &gt; config.yml &gt; 기본값</li>
-<li>config.README.md 작성 (설정 가이드)</li>
-</ul>
-</li>
-<li><p><strong>GitHub Pages 통합 문서 시스템</strong></p>
-<ul>
-<li>Doxygen/HonKit 충돌 해결 (force_orphan: false, keep_files: true)</li>
-<li>디렉토리 분리: /doxygen/, /docs/</li>
-<li>통합 인덱스 페이지 생성 (.github/gh-pages-index.html)</li>
-<li>deploy-index.yml 워크플로우 추가</li>
-</ul>
-</li>
-<li><p><strong>HonKit 빌드 에러 수정</strong></p>
-<ul>
-<li>CSV 하이라이트 에러 (<code>csv →</code> 변경)</li>
-</ul>
-</li>
-</ol>
-<p><strong>변경 파일</strong>:</p>
-<ul>
-<li><code>.github/config.yml</code>: GPT/Discord 중앙 설정 파일 생성</li>
-<li><code>.github/config.README.md</code>: 설정 가이드 문서</li>
-<li><code>.github/workflows/devlog-simple.yml</code> → <code>daily-report.yml</code>: config 기반 제어</li>
-<li><code>.github/workflows/weekly-report.yml</code>: config 연동</li>
-<li><code>.github/workflows/doxygen.yml</code>: destination_dir 분리</li>
-<li><code>.github/workflows/honkit.yml</code>: force_orphan 제거</li>
-<li><code>.github/workflows/deploy-index.yml</code>: 인덱스 페이지 배포</li>
-<li><code>.github/gh-pages-index.html</code>: GitHub Pages 랜딩 페이지</li>
-<li><code>.github/scripts/devlog/generate_gpt_feedback.py</code>: Daily GPT 피드백</li>
-<li><code>.github/scripts/devlog/generate_weekly_feedback.py</code>: Weekly GPT 회고</li>
-<li><code>Documents/DevLog/WORKFLOW_GUIDE.md</code>: 워크플로우 사용 가이드</li>
-<li><code>Documents/README.md</code>: 링크 업데이트, 템플릿 에러 수정</li>
-<li><code>Documents/Planning/GPT_VoiceCommand_System_Prompt.md</code>: CSV 에러 수정</li>
-</ul>
-<p><strong>주요 작업</strong>:</p>
-<ul>
-<li>✅ DevLog 워크플로우 통합 및 GPT 피드백 시스템 재구축</li>
-<li>✅ config.yml 중앙 설정 시스템 구현</li>
-<li>✅ GitHub Pages 통합 인덱스 및 Doxygen/HonKit 충돌 해결</li>
-<li>✅ HonKit 빌드 에러 2건 수정</li>
-<li>✅ AgentLog Hook 시스템 검증 (정상 작동 확인)</li>
-</ul>
-<h3 id="commit-정보">Commit 정보</h3>
-<p><strong>최근 커밋 3건</strong>:</p>
-<ol>
-<li><p><code>14672c3da</code> - "docs: GitHub Pages 통합 인덱스 페이지 및 자동 배포 추가"</p>
-<ul>
-<li>통합 랜딩 페이지 및 deploy-index.yml</li>
-<li>Doxygen/HonKit 디렉토리 분리</li>
-</ul>
-</li>
-<li><p><code>fa9488273</code> - "feat: config.yml 중앙 설정 시스템 및 HonKit 빌드 에러 수정"</p>
-<ul>
-<li>.github/config.yml 추가</li>
-<li>워크플로우 config 연동</li>
-<li>Nunjucks/CSV 에러 수정</li>
-</ul>
-</li>
-<li><p><code>48cdf0578</code> - "refactor: DevLog 피드백 시스템 재구축 및 워크플로우 개선"</p>
-<ul>
-<li>불필요 워크플로우 삭제</li>
-<li>GPT 피드백 스크립트 생성</li>
-<li>WORKFLOW_GUIDE.md 작성</li>
-</ul>
-</li>
-</ol>
-<h3 id="기술적-성과">기술적 성과</h3>
-<p><strong>시스템 아키텍처 개선</strong>:</p>
-<ul>
-<li>중앙 설정 관리로 유지보수성 향상</li>
-<li>워크플로우 간 충돌 해결 (gh-pages)</li>
-<li>문서 자동화 시스템 안정화</li>
-</ul>
-<p><strong>개발자 경험 개선</strong>:</p>
-<ul>
-<li>GPT 피드백 온/오프 유연성</li>
-<li>config 파일 하나로 전체 제어</li>
-<li>통합 문서 사이트 구축</li>
-</ul>
-<h3 id="next-to-do">Next To Do</h3>
-<ol>
-<li>config.yml 설정 테스트 (실제 워크플로우 실행 확인)</li>
-<li>GitHub Pages 배포 확인 (<a href="https://doppleddiggong.github.io/YiSan/" target="_blank">https://doppleddiggong.github.io/YiSan/</a>)</li>
-<li>GPT 피드백 품질 검증 (실제 DevLog 생성 후 리뷰)</li>
-<li>Discord 알림 테스트 (webhook 설정 후)</li>
-</ol>
-<h2 id="compact-log-3">Compact Log 3</h2>
-<ul>
-<li>20251108 23:10</li>
-</ul>
-<h3 id="요약-내용">요약 내용</h3>
-<p><strong>레거시 파일 정리 및 AgentLog 시스템 검증</strong></p>
-<p>이번 Compact Log에서는 주로 프로젝트 정리 작업과 AgentLog 시스템 동작 확인을 진행했습니다.</p>
-<p><strong>변경 파일</strong>:</p>
-<ul>
-<li><code>D .agentrule.config.json</code>: 사용되지 않는 레거시 설정 파일 삭제</li>
-<li><code>D .git-hooks/prepare-commit-msg</code>: AI 커밋 메시지 생성 Hook 삭제 (Claude Code로 대체됨)</li>
-<li><code>D dopple_yisan.bat</code>: 불필요한 배치 파일 삭제</li>
-<li><code>D order_claude.md</code>: 임시 작업 지시 문서 삭제</li>
-<li><code>M AgentLog/dopple/251108.md</code>: Compact Log 2 작성 및 추가</li>
-</ul>
-<p><strong>주요 작업</strong>:</p>
-<ul>
-<li>✅ 레거시 설정 파일 정리 (중복 기능 제거)</li>
-<li>✅ AgentLog Hook 시스템 동작 확인 (SessionStart Hook 정상 작동)</li>
-<li>✅ <code>/compact</code> Slash Command 테스트 및 검증</li>
-<li>✅ Git hook와 Claude Code 충돌 해결 (prepare-commit-msg 제거)</li>
-</ul>
-<p><strong>기술적 이슈 해결</strong>:</p>
-<ol>
-<li><p><strong>AgentLog 자동 기록 문제</strong>:</p>
-<ul>
-<li>문제: 대화 중 AgentLog가 업데이트되지 않는 것처럼 보임</li>
-<li>원인: SessionStart/End Hook은 세션 시작/종료 시에만 실행됨</li>
-<li>해결: 중간 기록은 <code>/compact</code> 명령어로 수동 실행</li>
-<li>결과: Hook 시스템 정상 작동 확인 (23:01 Start Log 자동 생성됨)</li>
-</ul>
-</li>
-<li><p><strong>레거시 설정 파일 정리</strong>:</p>
-<ul>
-<li><code>.agentrule.config.json</code> 분석:<ul>
-<li>commit_ai, devlog 설정이 <code>.github/config.yml</code>로 이전됨</li>
-<li>log_system은 <code>.claude.json</code> hooks로 대체됨</li>
-<li>더 이상 참조되지 않아 삭제</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>Git Hook 중복 제거</strong>:</p>
-<ul>
-<li><code>.git-hooks/prepare-commit-msg</code>:<ul>
-<li>AI 기반 커밋 메시지 자동 생성 기능</li>
-<li>Claude Code와 기능 중복 및 충돌 우려</li>
-<li><code>.agentrule.config.json</code>에 의존</li>
-<li>삭제하여 의존성 단순화</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<p><strong>시스템 구조 정리</strong>:</p>
-<p>현재 활성 설정 파일:</p>
-<ul>
-<li><code>.claude.json</code> - Claude Code Hook (SessionStart/End)</li>
-<li><code>.github/config.yml</code> - DevLog 워크플로우 중앙 설정</li>
-<li><code>.github/workflows/*.yml</code> - GitHub Actions</li>
-<li><code>Documents/book.json</code> - HonKit</li>
-<li><code>Doxyfile</code> - Doxygen</li>
-</ul>
-<p>제거된 레거시:</p>
-<ul>
-<li><code>.agentrule.config.json</code> (→ <code>.github/config.yml</code>)</li>
-<li><code>.git-hooks/prepare-commit-msg</code> (→ Claude Code)</li>
-</ul>
-<h3 id="commit-정보">Commit 정보</h3>
-<p><strong>Summary (EN)</strong>:
-chore: remove legacy config files and git hooks</p>
-<p><strong>세부 내역</strong>:</p>
-<ol>
-<li><p>"레거시 설정 파일 제거"</p>
-<ul>
-<li>.agentrule.config.json 삭제 (.github/config.yml로 대체됨)</li>
-<li>dopple_yisan.bat 삭제 (불필요)</li>
-<li>order_claude.md 삭제 (임시 문서)</li>
-</ul>
-</li>
-<li><p>"Git Hook 정리"</p>
-<ul>
-<li>.git-hooks/prepare-commit-msg 삭제</li>
-<li>Claude Code와 중복 기능 제거</li>
-<li>의존성 단순화</li>
-</ul>
-</li>
-<li><p>"AgentLog 시스템 검증"</p>
-<ul>
-<li>SessionStart Hook 정상 작동 확인</li>
-<li>/compact 명령어 동작 테스트</li>
-<li>중간 기록 프로세스 확립</li>
-</ul>
-</li>
-</ol>
-<h3 id="다음-작업">다음 작업</h3>
-<p><strong>즉시 진행 가능</strong>:</p>
-<ol>
-<li>변경사항 커밋 (레거시 파일 정리)</li>
-<li>GitHub Pages 배포 확인</li>
-</ol>
-<p><strong>테스트 필요</strong>:</p>
-<ol>
-<li>config.yml 기반 워크플로우 실행</li>
-<li>GPT 피드백 품질 검증</li>
-<li>Discord 알림 테스트</li>
-</ol>
-<h2 id="compact-log-4">Compact Log 4</h2>
-<ul>
-<li>20251108 23:32</li>
-</ul>
-<h3 id="요약-내용">요약 내용</h3>
-<p><strong>Documents 폴더 구조 재정리 및 HonKit 자동화 시스템 완성</strong></p>
-<p>사용자가 Documents 폴더를 새로운 구조로 재정리했고, 그에 따른 모든 경로 수정 및 HonKit 자동화를 완성했습니다.</p>
-<p><strong>1. Documents 폴더 구조 분석 및 경로 수정</strong></p>
-<ul>
-<li>새 구조 파악: DevLog(AgentLog/Daily/Weekly/Monthly), Planning, Reference, HonkitPage 등</li>
-<li>HonkitPage/SUMMARY.md 경로 업데이트:<ul>
-<li>DevLog → ../DevLog/Daily/</li>
-<li>Weekly → ../DevLog/Weekly/</li>
-<li>Planning → ../Planning/</li>
-</ul>
-</li>
-<li>HonkitPage/README.md 내부 링크 수정</li>
-<li>W42, W44 Weekly Summary 링크 추가</li>
-</ul>
-<p><strong>2. Doxygen 설정 개선</strong></p>
-<ul>
-<li>Doxyfile에서 AgentRule 폴더 제외</li>
-<li>Documents/DoxygenPage만 포함하도록 INPUT 수정</li>
-</ul>
-<p><strong>3. HonKit 테마 및 플러그인 대폭 개선</strong></p>
-<ul>
-<li>book.json 업그레이드:<ul>
-<li>theme-comscore 추가 (모던 테마)</li>
-<li>9개의 새 플러그인 추가 (page-toc-button, anchor-navigation-ex, alerts, emphasize, klipse 등)</li>
-<li>로고/파비콘 설정 (icon_yisan.png)</li>
-<li>한글 알림 레이블 설정</li>
-</ul>
-</li>
-<li>styles/website.css 생성 (커스텀 디자인):<ul>
-<li>색상 테마, 코드 블록, 테이블, 링크 스타일</li>
-<li>반응형 디자인, 프린트 최적화</li>
-</ul>
-</li>
-</ul>
-<p><strong>4. SUMMARY.md 자동 생성 시스템 구축</strong></p>
-<ul>
-<li><code>.github/scripts/generate_summary.py</code> 작성:<ul>
-<li>DevLog (AgentLog/Daily/Weekly/Monthly/Meta) 자동 스캔</li>
-<li>Planning 파일 카테고리별 자동 분류</li>
-<li>월별/주차별 자동 그룹화</li>
-<li>상대 경로 자동 생성</li>
-</ul>
-</li>
-<li>honkit.yml workflow 업데이트:<ul>
-<li>Python 설정 단계 추가</li>
-<li>SUMMARY.md 자동 생성 단계 추가 (빌드 전)</li>
-<li>새 플러그인 9개 설치 추가</li>
-<li>빌드 디렉토리 변경: Documents → Documents/HonkitPage</li>
-<li>트리거 경로 업데이트</li>
-</ul>
-</li>
-</ul>
-<p><strong>5. AgentLog HonKit 통합</strong></p>
-<ul>
-<li>SUMMARY.md에 AgentLog 섹션 추가</li>
-<li>dopple/251108.md 링크 추가</li>
-</ul>
-<h3 id="변경-파일">변경 파일</h3>
-<p><strong>수정된 파일</strong>:</p>
-<ul>
-<li><code>Documents/HonkitPage/SUMMARY.md</code>: 모든 경로 수정 (../DevLog/Daily/, ../Planning/ 등), W42/W44 추가</li>
-<li><code>Documents/HonkitPage/README.md</code>: 내부 링크 경로 수정</li>
-<li><code>Documents/HonkitPage/book.json</code>: 테마 및 9개 플러그인 추가, 로고/파비콘 설정</li>
-<li><code>Doxyfile</code>: INPUT에서 AgentRule 제거</li>
-<li><code>.github/workflows/honkit.yml</code>: SUMMARY.md 자동 생성 단계 추가, 플러그인 설치 업데이트, 빌드 디렉토리 변경</li>
-</ul>
-<p><strong>생성된 파일</strong>:</p>
-<ul>
-<li><code>Documents/HonkitPage/styles/website.css</code>: 커스텀 CSS (350줄)</li>
-<li><code>.github/scripts/generate_summary.py</code>: SUMMARY.md 자동 생성 스크립트 (250줄)</li>
-</ul>
-<p><strong>폴더 구조 변경</strong> (사용자가 수행):</p>
-<ul>
-<li><code>Documents/DevLog/Daily/</code>: 모든 일일 로그 이동</li>
-<li><code>Documents/DevLog/Weekly/</code>: 주간 요약 이동</li>
-<li><code>Documents/DevLog/AgentLog/</code>: 에이전트 로그</li>
-<li><code>Documents/HonkitPage/</code>: HonKit 전용 폴더 생성</li>
-<li><code>Documents/Reference/</code>: 이미지/리소스 통합</li>
-<li><code>Documents/Planning/</code>: 기획 문서</li>
-</ul>
-<h3 id="주요-작업">주요 작업</h3>
-<ul>
-<li>✅ Documents 폴더 구조 분석 및 경로 매핑</li>
-<li>✅ SUMMARY.md 모든 경로 수정 (DevLog, Planning, AgentLog)</li>
-<li>✅ README.md 내부 링크 수정</li>
-<li>✅ Doxygen AgentRule 제외 설정</li>
-<li>✅ HonKit 테마 및 9개 플러그인 추가</li>
-<li>✅ 커스텀 CSS 작성 (350줄)</li>
-<li>✅ SUMMARY.md 자동 생성 스크립트 작성 (250줄)</li>
-<li>✅ honkit.yml workflow 자동화 완성</li>
-<li>✅ W42, W44 Weekly Summary 링크 추가</li>
-</ul>
-<h3 id="기술적-성과">기술적 성과</h3>
-<p><strong>자동화 완성</strong>:</p>
-<ul>
-<li>Documents 구조가 변경되어도 SUMMARY.md 자동 생성</li>
-<li>DevLog/Planning 파일 추가 시 자동 반영</li>
-<li>AgentLog도 자동으로 포함</li>
-</ul>
-<p><strong>디자인 개선</strong>:</p>
-<ul>
-<li>프로페셔널한 테마 (theme-comscore)</li>
-<li>TOC, 앵커, 알림, 강조 기능 추가</li>
-<li>커스텀 CSS로 브랜드 아이덴티티 구축</li>
-</ul>
-<p><strong>유지보수성 향상</strong>:</p>
-<ul>
-<li>경로 관리 자동화</li>
-<li>문서 추가 시 수동 작업 불필요</li>
-<li>폴더 구조 명확화 (용도별 분리)</li>
-</ul>
-<h3 id="commit-정보">Commit 정보</h3>
-<p><strong>Summary (EN)</strong>:
-feat(docs): restructure Documents folder and implement HonKit auto-generation system</p>
-<p>Complete reorganization of Documents folder with automatic SUMMARY.md generation, enhanced HonKit theme with 9+ plugins, custom CSS styling, and workflow automation.</p>
-<p><strong>세부 내역</strong>:</p>
-<ol>
-<li><p>"Documents 폴더 구조 재정리 및 경로 업데이트"</p>
-<ul>
-<li>DevLog/Daily, DevLog/Weekly, DevLog/AgentLog 분리</li>
-<li>HonkitPage 전용 폴더 생성</li>
-<li>SUMMARY.md 모든 경로 수정 (상대 경로)</li>
-<li>README.md 내부 링크 수정</li>
-</ul>
-</li>
-<li><p>"HonKit 테마 및 플러그인 대폭 개선"</p>
-<ul>
-<li>theme-comscore 추가 (모던 테마)</li>
-<li>9개 플러그인 추가: page-toc-button, anchor-navigation-ex, code, splitter, alerts, emphasize, klipse 등</li>
-<li>로고/파비콘 설정 및 한글 알림 레이블</li>
-<li>커스텀 CSS 작성 (350줄, 프로페셔널 디자인)</li>
-</ul>
-</li>
-<li><p>"SUMMARY.md 자동 생성 시스템 구축"</p>
-<ul>
-<li>generate_summary.py 스크립트 작성 (250줄)</li>
-<li>DevLog/Planning 자동 스캔 및 카테고리 분류</li>
-<li>월별/주차별 자동 그룹화</li>
-<li>honkit.yml workflow에 자동 생성 단계 추가</li>
-</ul>
-</li>
-<li><p>"Doxygen 설정 개선"</p>
-<ul>
-<li>Doxyfile INPUT에서 AgentRule 제외</li>
-<li>문서화 범위 명확화</li>
-</ul>
-</li>
-<li><p>"HonKit workflow 자동화 완성"</p>
-<ul>
-<li>Python 설정 단계 추가</li>
-<li>플러그인 9개 자동 설치</li>
-<li>빌드 디렉토리 변경 (Documents/HonkitPage)</li>
-<li>트리거 경로 업데이트</li>
+<li>"[Settings] Claude bash 沅뚰븳 ?뺤옣"<ul>
+<li>bash, tree, git reset ??異붽? 紐낅졊???덉슜</li>
+<li>Documents ?대뜑 ?꾩떆 ?뚯씪 ?묎렐 沅뚰븳 異붽?</li>
+<li>GitHub secrets 愿由?紐낅졊???덉슜</li>
 </ul>
 </li>
 </ol>
 <h3 id="next-to-do">Next To Do</h3>
-<p><strong>즉시 진행 가능</strong>:</p>
 <ol>
-<li>변경사항 커밋 (Documents 구조 재정리 및 HonKit 자동화)</li>
-<li>GitHub Actions에서 honkit.yml 실행 테스트</li>
-<li>생성된 HonKit 사이트 확인 (<a href="https://doppleddiggong.github.io/YiSan/docs/" target="_blank">https://doppleddiggong.github.io/YiSan/docs/</a>)</li>
-</ol>
-<p><strong>추가 개선 고려</strong>:</p>
-<ol>
-<li>AgentLog 파일 추가 시 자동 테스트</li>
-<li>Planning 문서 추가 시 카테고리 분류 검증</li>
-<li>커스텀 CSS 브라우저 호환성 테스트</li>
-</ol>
-<h2 id="compact-log-5">Compact Log 5</h2>
-<ul>
-<li>20251108 23:48</li>
-</ul>
-<h3 id="요약-내용">요약 내용</h3>
-<p><strong>HonKit 빌드 에러 수정 및 AgentRule_new 템플릿 백업 시작</strong></p>
-<p>사용자로부터 HonKit 빌드 에러 보고를 받아 긴급 수정하고, AgentRule_new 템플릿 백업 작업을 시작했습니다.</p>
-<p><strong>1. HonKit 빌드 에러 분석 및 수정</strong></p>
-<ul>
-<li>에러 원인: HonKit은 root 디렉토리 밖을 참조할 수 없음 (<code>../</code> 경로 사용 불가)</li>
-<li>HonkitPage에서 실행 시 <code>../DevLog/...</code> 경로가 root 밖을 참조</li>
-<li>해결 방법: HonKit root를 <code>Documents/HonkitPage</code> → <code>Documents</code>로 변경</li>
-</ul>
-<p><strong>구체적 변경 사항</strong>:</p>
-<ul>
-<li><code>Documents/HonkitPage/book.json</code> → <code>Documents/book.json</code> 이동</li>
-<li><code>Documents/HonkitPage/README.md</code> → <code>Documents/README.md</code> 이동</li>
-<li><code>Documents/HonkitPage/SUMMARY.md</code> → <code>Documents/SUMMARY.md</code> 이동</li>
-<li><code>Documents/HonkitPage/styles/</code> → <code>Documents/styles/</code> 이동</li>
-<li>SUMMARY.md의 모든 <code>../</code> 경로 제거 (sed 명령)</li>
-<li>README.md의 모든 <code>../</code> 경로 제거</li>
-<li>book.json의 로고/파비콘 경로 수정 (<code>../Reference/</code> → <code>Reference/</code>)</li>
-<li>honkit.yml workflow 업데이트:<ul>
-<li><code>working-directory: Documents/HonkitPage</code> → <code>Documents</code></li>
-<li><code>publish_dir: ./Documents/HonkitPage/_book</code> → <code>./Documents/_book</code></li>
-<li>트리거 경로 업데이트</li>
-</ul>
-</li>
-<li>generate_summary.py 수정:<ul>
-<li><code>honkit_dir = base_dir / "HonkitPage"</code> → <code>base_dir</code></li>
-<li><code>return f"../{rel_path}"</code> → <code>return rel_path.as_posix()</code></li>
-</ul>
-</li>
-</ul>
-<p><strong>2. AgentRule_new 템플릿 백업 프로젝트 시작</strong>
-사용자 요청: YiSan의 DevOps 시스템을 AgentRule_new 템플릿으로 백업하여 다른 프로젝트에 쉽게 적용 가능하도록 만들기</p>
-<p><strong>목표</strong>:</p>
-<ul>
-<li>1차: YiSan 프로젝트의 DevOps 백업</li>
-<li>2차: 범용 템플릿으로 변환 (다른 프로젝트에 적용 가능)</li>
-</ul>
-<p><strong>진행 상황</strong>:</p>
-<ul>
-<li>AgentRule_new 폴더 구조 파악 (66개 파일)</li>
-<li>YiSan의 개선된 파일들을 AgentRule_new로 복사:<ul>
-<li><code>.github/workflows/*.yml</code> (6개 workflow)</li>
-<li><code>.github/scripts/</code> (전체)</li>
-<li><code>.github/config.yml</code></li>
-<li><code>Documents/book.json, README.md, SUMMARY.md</code></li>
-<li><code>Documents/styles/</code></li>
-<li><code>.claude.json</code>, <code>.claude/commands</code>, <code>.claude/hooks</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="변경-파일">변경 파일</h3>
-<p><strong>커밋된 파일</strong> (028b81667):</p>
-<ul>
-<li><code>Documents/README.md</code>: HonkitPage에서 이동, ../ 경로 제거</li>
-<li><code>Documents/SUMMARY.md</code>: HonkitPage에서 이동, ../ 경로 제거</li>
-<li><code>Documents/book.json</code>: HonkitPage에서 이동, 로고 경로 수정</li>
-<li><code>Documents/styles/website.css</code>: HonkitPage에서 이동</li>
-<li><code>.github/scripts/generate_summary.py</code>: root 경로 수정, ../ 제거</li>
-<li><code>.github/workflows/honkit.yml</code>: working-directory 및 publish_dir 수정</li>
-</ul>
-<p><strong>복사된 파일</strong> (AgentRule_new):</p>
-<ul>
-<li><code>AgentRule_new/.github/workflows/*.yml</code>: 최신 workflow 6개</li>
-<li><code>AgentRule_new/.github/scripts/</code>: 모든 스크립트</li>
-<li><code>AgentRule_new/.github/config.yml</code>: 중앙 설정</li>
-<li><code>AgentRule_new/Documents/book.json, README.md, SUMMARY.md, styles/</code>: HonKit 설정</li>
-<li><code>AgentRule_new/.claude.json, .claude/commands, .claude/hooks</code>: Claude 설정</li>
-</ul>
-<h3 id="주요-작업">주요 작업</h3>
-<ul>
-<li>✅ HonKit 빌드 에러 원인 분석 (../ 경로 문제)</li>
-<li>✅ HonKit root 이동 (HonkitPage → Documents)</li>
-<li>✅ 모든 경로 수정 (SUMMARY.md, README.md, book.json)</li>
-<li>✅ generate_summary.py 스크립트 업데이트</li>
-<li>✅ honkit.yml workflow 업데이트</li>
-<li>✅ 변경사항 커밋 (028b81667)</li>
-<li>✅ AgentRule_new 폴더 구조 분석</li>
-<li>✅ YiSan의 DevOps 파일들을 AgentRule_new로 복사</li>
-</ul>
-<h3 id="기술적-성과">기술적 성과</h3>
-<p><strong>문제 해결</strong>:</p>
-<ul>
-<li>HonKit의 경로 제약 사항 이해 및 구조 개선</li>
-<li>root 디렉토리 변경으로 더 직관적인 구조 달성</li>
-</ul>
-<p><strong>백업 시스템 구축 시작</strong>:</p>
-<ul>
-<li>YiSan의 모든 DevOps 개선사항을 템플릿으로 백업</li>
-<li>다른 프로젝트에 재사용 가능한 기반 마련</li>
-</ul>
-<h3 id="commit-정보">Commit 정보</h3>
-<p><strong>이미 커밋됨</strong> (028b81667):</p>
-<pre><code>fix(honkit): resolve build error by moving root from HonkitPage to Documents
-
-HonKit cannot reference paths outside its root directory (../ paths).
-Moved book.json, README.md, SUMMARY.md, and styles/ from Documents/HonkitPage/ to Documents/.
-Updated all paths to be relative to Documents root.
-</code></pre><p><strong>다음 커밋 예정</strong> (AgentRule_new 작업):</p>
-<pre><code>feat(template): create AgentRule_new template with YiSan DevOps improvements
-
-Backup all DevOps enhancements from YiSan project to AgentRule_new template.
-This will serve as a reusable template for future projects.
-
-Copied files:
-- GitHub workflows (daily-report, weekly-report, honkit, doxygen, deploy-index)
-- GitHub scripts (generate_summary.py, devlog scripts)
-- GitHub config (config.yml)
-- HonKit configuration (book.json, README.md, SUMMARY.md, styles/)
-- Claude configuration (.claude.json, commands, hooks)
-</code></pre><h3 id="next-to-do">Next To Do</h3>
-<p><strong>즉시 진행 가능</strong>:</p>
-<ol>
-<li><p>AgentRule_new의 YiSan 특화 내용을 템플릿 변수로 치환</p>
-<ul>
-<li>book.json: <code>YiSan</code> → ``</li>
-<li>GitHub URL: <code>doppleddiggong/YiSan</code> → ``</li>
-<li>작성자: <code>DoppledDiggong Team</code> → ``</li>
-</ul>
-</li>
-<li><p>설치 스크립트 작성 (setup.sh)</p>
-<ul>
-<li>사용자 입력 받기 (프로젝트명, GitHub URL, 작성자)</li>
-<li>템플릿 변수를 실제 값으로 치환</li>
-<li>Documents 폴더 초기 구조 생성</li>
-</ul>
-</li>
-<li><p>AgentRule_new README 작성</p>
-<ul>
-<li>사용 가이드</li>
-<li>새 프로젝트 적용 방법</li>
-<li>필수 설정 항목</li>
-</ul>
-</li>
-</ol>
-<p><strong>다음 세션</strong>:</p>
-<ol>
-<li>AgentRule_new 템플릿 완성 및 테스트</li>
-<li>YiSan 변경사항 푸시 (GitHub Actions 테스트)</li>
-<li>HonKit 빌드 성공 확인</li>
+<li>?뚰겕?뚮줈???뚯뒪??諛?寃利?2. docs 釉뚮옖移?珥덇린???묒뾽 (?꾩슂??</li>
 </ol>
 <h2 id="compact-log-6">Compact Log 6</h2>
 <ul>
 <li>20251109 13:22</li>
 </ul>
-<h3 id="요약-내용">요약 내용</h3>
-<p><strong>DevLog 워크플로우 실행 구조 개선 및 경로 문제 해결</strong></p>
-<p>GitHub Actions 워크플로우의 실행 브랜치 구조를 단순화하고, DevLog 파일 경로 관련 문제들을 수정했습니다.</p>
-<p><strong>1. 워크플로우 Summary 출력 경로 수정</strong></p>
+<h3 id="붿빟-댁슜">?붿빟 ?댁슜</h3>
+<p><strong>DevLog ?뚰겕?뚮줈???ㅽ뻾 援ъ“ 媛쒖꽑 諛?寃쎈줈 臾몄젣 ?닿껐</strong></p>
+<p>GitHub Actions ?뚰겕?뚮줈?곗쓽 ?ㅽ뻾 釉뚮옖移?援ъ“瑜??⑥닚?뷀븯怨? DevLog ?뚯씪 寃쎈줈 愿??臾몄젣?ㅼ쓣 ?섏젙?덉뒿?덈떎.</p>
+<p><strong>1. ?뚰겕?뚮줈??Summary 異쒕젰 寃쎈줈 ?섏젙</strong></p>
 <ul>
-<li><code>daily-report.yml</code>: Summary 메시지에 <code>Daily/</code> 경로 추가 (177-178줄)</li>
-<li><code>weekly-report.yml</code>: Summary 메시지에 <code>Weekly/</code> 경로 추가 (178-179줄)</li>
-<li>실제 파일 위치와 메시지 출력이 일치하도록 수정</li>
+<li><code>daily-report.yml</code>: Summary 硫붿떆吏??<code>Daily/</code> 寃쎈줈 異붽? (177-178以?</li>
+<li><code>weekly-report.yml</code>: Summary 硫붿떆吏??<code>Weekly/</code> 寃쎈줈 異붽? (178-179以?</li>
+<li>?ㅼ젣 ?뚯씪 ?꾩튂? 硫붿떆吏 異쒕젰???쇱튂?섎룄濡??섏젙</li>
 </ul>
-<p><strong>2. 워크플로우 실행 브랜치 구조 개선</strong>
-사용자 피드백을 반영하여 복잡한 브랜치 전환 로직을 단순화:</p>
-<p><strong>기존 구조의 문제점</strong>:</p>
+<p><strong>2. ?뚰겕?뚮줈???ㅽ뻾 釉뚮옖移?援ъ“ 媛쒖꽑</strong>
+?ъ슜???쇰뱶諛깆쓣 諛섏쁺?섏뿬 蹂듭옟??釉뚮옖移??꾪솚 濡쒖쭅???⑥닚??</p>
+<p><em>*湲곗〈 援ъ“??臾몄젣??</em>:</p>
 <ul>
-<li>main 브랜치에서 실행 시작</li>
-<li>파일 생성 후 docs 브랜치로 전환</li>
-<li>다시 파일 생성 및 커밋</li>
-<li>브랜치 전환 시 파일 사라짐</li>
-<li>불필요한 복잡도 증가</li>
+<li>main 釉뚮옖移섏뿉???ㅽ뻾 ?쒖옉</li>
+<li>?뚯씪 ?앹꽦 ??docs 釉뚮옖移섎줈 ?꾪솚</li>
+<li>?ㅼ떆 ?뚯씪 ?앹꽦 諛?而ㅻ컠</li>
+<li>釉뚮옖移??꾪솚 ???뚯씪 ?щ씪吏?- 遺덊븘?뷀븳 蹂듭옟??利앷?</li>
 </ul>
-<p><strong>개선된 구조</strong>:</p>
+<p><strong>媛쒖꽑??援ъ“</strong>:</p>
 <ul>
-<li>처음부터 <code>docs</code> 브랜치에서 실행 (checkout with <code>ref: docs</code>)</li>
-<li>파일 생성 후 바로 커밋 &amp; 푸시</li>
-<li>브랜치 전환 로직 제거</li>
-<li>파일 삭제/재생성 로직 제거</li>
-<li>중복된 git config 제거</li>
+<li>泥섏쓬遺??<code>docs</code> 釉뚮옖移섏뿉???ㅽ뻾 (checkout with <code>ref: docs</code>)</li>
+<li>?뚯씪 ?앹꽦 ??諛붾줈 而ㅻ컠 &amp; ?몄떆</li>
+<li>釉뚮옖移??꾪솚 濡쒖쭅 ?쒓굅</li>
+<li>?뚯씪 ??젣/?ъ깮??濡쒖쭅 ?쒓굅</li>
+<li>以묐났??git config ?쒓굅</li>
 </ul>
-<p><strong>3. 구체적 변경 사항</strong></p>
+<p><strong>3. 援ъ껜??蹂寃??ы빆</strong></p>
 <p><strong>daily-report.yml</strong>:</p>
 <ul>
-<li>32줄: <code>ref: docs</code> 추가 (docs 브랜치에서 직접 실행)</li>
-<li>127-147줄: "Commit and Push to docs branch" → "Commit and Push" 단순화<ul>
-<li>브랜치 전환 로직 제거 (<code>git fetch</code>, <code>git checkout -B docs</code> 삭제)</li>
-<li>파일 삭제/재생성 제거 (<code>rm -f</code> 삭제)</li>
-<li>불필요한 주석 제거</li>
+<li>32以? <code>ref: docs</code> 異붽? (docs 釉뚮옖移섏뿉??吏곸젒 ?ㅽ뻾)</li>
+<li>127-147以? "Commit and Push to docs branch" ??"Commit and Push" ?⑥닚??  - 釉뚮옖移??꾪솚 濡쒖쭅 ?쒓굅 (<code>git fetch</code>, <code>git checkout -B docs</code> ??젣)<ul>
+<li>?뚯씪 ??젣/?ъ깮???쒓굅 (<code>rm -f</code> ??젣)</li>
+<li>遺덊븘?뷀븳 二쇱꽍 ?쒓굅</li>
 </ul>
 </li>
 </ul>
 <p><strong>weekly-report.yml</strong>:</p>
 <ul>
-<li>32줄: <code>ref: docs</code> 추가</li>
-<li>35-38줄: 중복된 "Setup Git Config" 단계 제거</li>
-<li>132-152줄: "Commit and Push to docs branch" → "Commit and Push" 단순화<ul>
-<li>동일한 브랜치 전환 로직 제거</li>
-<li>파일 삭제 제거</li>
+<li>32以? <code>ref: docs</code> 異붽?</li>
+<li>35-38以? 以묐났??"Setup Git Config" ?④퀎 ?쒓굅</li>
+<li>132-152以? "Commit and Push to docs branch" ??"Commit and Push" ?⑥닚??  - ?숈씪??釉뚮옖移??꾪솚 濡쒖쭅 ?쒓굅<ul>
+<li>?뚯씪 ??젣 ?쒓굅</li>
 </ul>
 </li>
 </ul>
-<h3 id="변경-파일">변경 파일</h3>
-<p><strong>수정된 파일</strong>:</p>
+<h3 id="蹂寃뚯씪">蹂寃??뚯씪</h3>
+<p><strong>?섏젙???뚯씪</strong>:</p>
 <ul>
 <li><p><code>.github/workflows/daily-report.yml</code>:</p>
 <ul>
-<li>Summary 출력 경로 수정 (177-178줄)</li>
-<li>docs 브랜치 직접 실행 (32줄)</li>
-<li>커밋 로직 단순화 (127-147줄)</li>
+<li>Summary 異쒕젰 寃쎈줈 ?섏젙 (177-178以?</li>
+<li>docs 釉뚮옖移?吏곸젒 ?ㅽ뻾 (32以?</li>
+<li>而ㅻ컠 濡쒖쭅 ?⑥닚??(127-147以?</li>
 </ul>
 </li>
 <li><p><code>.github/workflows/weekly-report.yml</code>:</p>
 <ul>
-<li>Summary 출력 경로 수정 (178-179줄)</li>
-<li>docs 브랜치 직접 실행 (32줄)</li>
-<li>중복 git config 제거 (35-38줄)</li>
-<li>커밋 로직 단순화 (132-152줄)</li>
+<li>Summary 異쒕젰 寃쎈줈 ?섏젙 (178-179以?</li>
+<li>docs 釉뚮옖移?吏곸젒 ?ㅽ뻾 (32以?</li>
+<li>以묐났 git config ?쒓굅 (35-38以?</li>
+<li>而ㅻ컠 濡쒖쭅 ?⑥닚??(132-152以?</li>
 </ul>
 </li>
 </ul>
-<h3 id="주요-작업">주요 작업</h3>
+<h3 id="二쇱슂-묒뾽">二쇱슂 ?묒뾽</h3>
 <ul>
-<li>✅ 워크플로우 Summary 메시지 경로 수정 (Daily/, Weekly/ 추가)</li>
-<li>✅ 사용자 피드백 분석 및 개선 방향 도출</li>
-<li>✅ daily-report.yml 브랜치 구조 단순화</li>
-<li>✅ weekly-report.yml 브랜치 구조 단순화</li>
-<li>✅ 불필요한 파일 삭제/재생성 로직 제거</li>
-<li>✅ 중복 설정 제거</li>
+<li>???뚰겕?뚮줈??Summary 硫붿떆吏 寃쎈줈 ?섏젙 (Daily/, Weekly/ 異붽?)</li>
+<li>???ъ슜???쇰뱶諛?遺꾩꽍 諛?媛쒖꽑 諛⑺뼢 ?꾩텧</li>
+<li>??daily-report.yml 釉뚮옖移?援ъ“ ?⑥닚??- ??weekly-report.yml 釉뚮옖移?援ъ“ ?⑥닚??- ??遺덊븘?뷀븳 ?뚯씪 ??젣/?ъ깮??濡쒖쭅 ?쒓굅</li>
+<li>??以묐났 ?ㅼ젙 ?쒓굅</li>
 </ul>
-<h3 id="기술적-성과">기술적 성과</h3>
-<p><strong>워크플로우 실행 흐름 개선</strong>:</p>
-<pre><code>[기존]
-1. main 브랜치 체크아웃
-2. 파일 생성
-3. docs 브랜치로 전환
-4. 파일 삭제/재생성
-5. 커밋 &amp; 푸시
+<h3 id="湲곗닠깃낵">湲곗닠???깃낵</h3>
+<p><strong>?뚰겕?뚮줈???ㅽ뻾 ?먮쫫 媛쒖꽑</strong>:</p>
+<pre><code>[湲곗〈]
+1. main 釉뚮옖移?泥댄겕?꾩썐
+2. ?뚯씪 ?앹꽦
+3. docs 釉뚮옖移섎줈 ?꾪솚
+4. ?뚯씪 ??젣/?ъ깮??5. 而ㅻ컠 &amp; ?몄떆
 
-[개선]
-1. docs 브랜치 체크아웃
-2. 파일 생성
-3. 커밋 &amp; 푸시
-</code></pre><p><strong>이점</strong>:</p>
+[媛쒖꽑]
+1. docs 釉뚮옖移?泥댄겕?꾩썐
+2. ?뚯씪 ?앹꽦
+3. 而ㅻ컠 &amp; ?몄떆
+</code></pre><p><strong>?댁젏</strong>:</p>
 <ul>
-<li>실행 단계 40% 감소 (5단계 → 3단계)</li>
-<li>브랜치 전환으로 인한 파일 손실 위험 제거</li>
-<li>파일 찾을 수 없음 에러 해결</li>
-<li>워크플로우 로직 명확화</li>
-<li>유지보수성 향상</li>
+<li>?ㅽ뻾 ?④퀎 40% 媛먯냼 (5?④퀎 ??3?④퀎)</li>
+<li>釉뚮옖移??꾪솚?쇰줈 ?명븳 ?뚯씪 ?먯떎 ?꾪뿕 ?쒓굅</li>
+<li>?뚯씪 李얠쓣 ???놁쓬 ?먮윭 ?닿껐</li>
+<li>?뚰겕?뚮줈??濡쒖쭅 紐낇솗??- ?좎?蹂댁닔???μ긽</li>
 </ul>
-<h3 id="commit-정보">Commit 정보</h3>
+<h3 id="commit-뺣낫">Commit ?뺣낫</h3>
 <p><strong>Summary (EN)</strong>:
 refactor(workflows): simplify DevLog workflows by executing directly on docs branch</p>
-<p><strong>세부 내역</strong>:</p>
+<p><strong>?몃? ?댁뿭</strong>:</p>
 <ol>
-<li><p>"워크플로우 Summary 출력 경로 수정"</p>
+<li><p>"?뚰겕?뚮줈??Summary 異쒕젰 寃쎈줈 ?섏젙"</p>
 <ul>
-<li>daily-report.yml: <code>Documents/DevLog/Daily/</code> 경로 추가</li>
-<li>weekly-report.yml: <code>Documents/DevLog/Weekly/</code> 경로 추가</li>
-<li>실제 파일 위치와 출력 메시지 일치</li>
+<li>daily-report.yml: <code>Documents/DevLog/Daily/</code> 寃쎈줈 異붽?</li>
+<li>weekly-report.yml: <code>Documents/DevLog/Weekly/</code> 寃쎈줈 異붽?</li>
+<li>?ㅼ젣 ?뚯씪 ?꾩튂? 異쒕젰 硫붿떆吏 ?쇱튂</li>
 </ul>
 </li>
-<li><p>"docs 브랜치 직접 실행으로 구조 단순화"</p>
+<li><p>"docs 釉뚮옖移?吏곸젒 ?ㅽ뻾?쇰줈 援ъ“ ?⑥닚??</p>
 <ul>
-<li>checkout에 <code>ref: docs</code> 추가</li>
-<li>처음부터 docs 브랜치에서 실행</li>
-<li>브랜치 전환 로직 완전 제거</li>
+<li>checkout??<code>ref: docs</code> 異붽?</li>
+<li>泥섏쓬遺??docs 釉뚮옖移섏뿉???ㅽ뻾</li>
+<li>釉뚮옖移??꾪솚 濡쒖쭅 ?꾩쟾 ?쒓굅</li>
 </ul>
 </li>
-<li><p>"불필요한 로직 제거"</p>
+<li><p>"遺덊븘?뷀븳 濡쒖쭅 ?쒓굅"</p>
 <ul>
-<li>파일 삭제/재생성 제거 (<code>rm -f</code>)</li>
-<li>중복된 git config 제거 (weekly)</li>
-<li>브랜치 전환 명령 제거 (<code>git checkout -B</code>)</li>
+<li>?뚯씪 ??젣/?ъ깮???쒓굅 (<code>rm -f</code>)</li>
+<li>以묐났??git config ?쒓굅 (weekly)</li>
+<li>釉뚮옖移??꾪솚 紐낅졊 ?쒓굅 (<code>git checkout -B</code>)</li>
 </ul>
 </li>
 </ol>
-<h3 id="다음-작업">다음 작업</h3>
-<p><strong>즉시 진행 가능</strong>:</p>
+<h3 id="ㅼ쓬-묒뾽">?ㅼ쓬 ?묒뾽</h3>
+<p><em>*利됱떆 吏꾪뻾 媛??</em>:</p>
 <ol>
-<li>변경사항 커밋 (워크플로우 단순화)</li>
-<li>GitHub Actions 실행 테스트</li>
-<li>docs 브랜치에서 파일 생성 확인</li>
+<li>蹂寃쎌궗??而ㅻ컠 (?뚰겕?뚮줈???⑥닚??</li>
+<li>GitHub Actions ?ㅽ뻾 ?뚯뒪??3. docs 釉뚮옖移섏뿉???뚯씪 ?앹꽦 ?뺤씤</li>
 </ol>
-<p><strong>검증 필요</strong>:</p>
+<p><strong>寃利??꾩슂</strong>:</p>
 <ol>
-<li>daily-report.yml 정상 실행 확인</li>
-<li>weekly-report.yml 정상 실행 확인</li>
-<li>Discord 알림 정상 작동 확인</li>
+<li>daily-report.yml ?뺤긽 ?ㅽ뻾 ?뺤씤</li>
+<li>weekly-report.yml ?뺤긽 ?ㅽ뻾 ?뺤씤</li>
+<li>Discord ?뚮┝ ?뺤긽 ?묐룞 ?뺤씤</li>
+</ol>
+<h2 id="compact-log-7">Compact Log 7</h2>
+<ul>
+<li>20251109 15:01</li>
+</ul>
+<h3 id="붿빟-댁슜">?붿빟 ?댁슜</h3>
+<p><strong>GitHub Pages DevLog 404 臾몄젣 ?닿껐 諛??먮룞???꾩꽦</strong></p>
+<p>?ъ슜???쇰뱶諛깆쓣 ?듯빐 諛쒓껄??GitHub Pages?먯꽌 理쒖떊 DevLog媛 ?쒖떆?섏? ?딅뒗 臾몄젣瑜?洹쇰낯?곸쑝濡??닿껐?덉뒿?덈떎.</p>
+<p><strong>臾몄젣 遺꾩꽍:</strong></p>
+<ol>
+<li>daily-report ??docs 釉뚮옖移섏뿉 ?뚯씪 ?앹꽦</li>
+<li>Discord 留곹겕 ??GitHub Pages (gh-pages 釉뚮옖移?</li>
+<li>gh-pages?먮뒗 docs 釉뚮옖移??댁슜???먮룞 諛섏쁺?섏? ?딆쓬 ??404 ?먮윭</li>
+</ol>
+<p><strong>洹쇰낯 ?먯씤:</strong></p>
+<ul>
+<li>HonKit ?뚰겕?뚮줈?곌? docs 釉뚮옖移섏쓽 push瑜??몃━嫄고븯?꾨줉 ?ㅼ젙?섏뼱 ?덉뿀?쇰굹 ?ㅼ젣濡??ㅽ뻾?섏? ?딆쓬</li>
+<li>docs 釉뚮옖移섏뿉 而ㅻ컠 ??HonKit 鍮뚮뱶媛 ?먮룞?쇰줈 ?ㅽ뻾?섏? ?딆븘 gh-pages媛 ?낅뜲?댄듃?섏? ?딆쓬</li>
+</ul>
+<p><strong>?닿껐 諛⑸쾿:</strong>
+<code>repository_dispatch</code> ?대깽?몃? ?ъ슜???뚰겕?뚮줈??泥댁씠??援ы쁽</p>
+<p><strong>1. honkit.yml ?섏젙</strong></p>
+<ul>
+<li><code>repository_dispatch</code> ?몃━嫄?異붽?</li>
+<li><code>types: [honkit-build]</code> ?대깽???섏떊 ?ㅼ젙</li>
+<li>daily/weekly report ?꾨즺 ???먮룞 ?ㅽ뻾?섎룄濡?援ъ꽦</li>
+</ul>
+<p><strong>2. daily-report.yml ?섏젙</strong></p>
+<ul>
+<li>HonKit 鍮뚮뱶 ?몃━嫄??④퀎 異붽?</li>
+<li><code>peter-evans/repository-dispatch@v2</code> ?≪뀡 ?ъ슜</li>
+<li>?뚯씪 ?앹꽦 ???먮룞?쇰줈 HonKit 鍮뚮뱶 ?몃━嫄?
+<strong>3. weekly-report.yml ?섏젙</strong></li>
+<li>daily-report? ?숈씪???몃━嫄?硫붿빱?덉쬁 異붽?</li>
+<li>二쇨컙 由ы룷???앹꽦 ???먮룞 HonKit 鍮뚮뱶</li>
+</ul>
+<h3 id="蹂寃뚯씪">蹂寃??뚯씪</h3>
+<p><strong>?섏젙???뚯씪</strong>:</p>
+<ul>
+<li><p><code>.github/workflows/honkit.yml</code>:</p>
+<ul>
+<li><code>repository_dispatch</code> ?몃━嫄?異붽? (17-19以?</li>
+<li>daily/weekly report ?꾨즺 ?대깽???섏떊</li>
+</ul>
+</li>
+<li><p><code>.github/workflows/daily-report.yml</code>:</p>
+<ul>
+<li>"Trigger HonKit Build" ?④퀎 異붽? (170-175以?</li>
+<li>repository-dispatch ?≪뀡?쇰줈 HonKit 鍮뚮뱶 ?몃━嫄?</li>
+</ul>
+</li>
+<li><p><code>.github/workflows/weekly-report.yml</code>:</p>
+<ul>
+<li>"Trigger HonKit Build" ?④퀎 異붽? (169-174以?</li>
+<li>repository-dispatch ?≪뀡?쇰줈 HonKit 鍮뚮뱶 ?몃━嫄?<h3 id="二쇱슂-묒뾽">二쇱슂 ?묒뾽</h3>
+</li>
+</ul>
+</li>
+<li><p>??GitHub Pages 404 臾몄젣 洹쇰낯 ?먯씤 遺꾩꽍</p>
+</li>
+<li>??docs 釉뚮옖移?而ㅻ컠 ?덉뒪?좊━ ?뺤씤 (?뚯씪 議댁옱 ?뺤씤)</li>
+<li>??gh-pages 諛고룷 ?곹깭 ?뺤씤 (理쒖떊 ?뚯씪 ?꾨씫 ?뺤씤)</li>
+<li>??HonKit ?뚰겕?뚮줈???몃━嫄?硫붿빱?덉쬁 ?ㅺ퀎</li>
+<li>??repository_dispatch ?대깽??湲곕컲 ?뚰겕?뚮줈??泥댁씠??援ы쁽</li>
+<li>??honkit.yml??repository_dispatch ?몃━嫄?異붽?</li>
+<li>??daily-report.yml??HonKit ?몃━嫄?異붽?</li>
+<li>??weekly-report.yml??HonKit ?몃━嫄?異붽?</li>
+<li>??main 釉뚮옖移?而ㅻ컠 諛??몄떆</li>
+<li>??docs 釉뚮옖移??숆린??諛??몄떆</li>
+</ul>
+<h3 id="湲곗닠깃낵">湲곗닠???깃낵</h3>
+<p><strong>?뚰겕?뚮줈??泥댁씠??援ы쁽</strong>:</p>
+<pre><code>[?댁쟾 援ъ“ - 臾몄젣]
+daily-report ??docs 而ㅻ컠 ??(HonKit ?ㅽ뻾 ?덈맖) ??gh-pages ?낅뜲?댄듃 ?덈맖 ??404
+
+[媛쒖꽑??援ъ“ - ?닿껐]
+daily-report ??docs 而ㅻ컠 ??repository_dispatch 諛쒖깮 ??HonKit ?먮룞 ?ㅽ뻾 ??gh-pages ?낅뜲?댄듃 ???뺤긽 ?묎렐
+</code></pre><p><strong>GitHub Actions ?대깽???쒖뒪???쒖슜</strong>:</p>
+<ul>
+<li><code>repository_dispatch</code>: ?뚰겕?뚮줈??媛??대깽???꾨떖</li>
+<li><code>peter-evans/repository-dispatch@v2</code>: ?덉젙?곸씤 ?대깽???붿뒪?⑥튂</li>
+<li><code>event-type: honkit-build</code>: 紐낇솗???대깽??????뺤쓽</li>
+<li><code>client-payload</code>: ?몃━嫄??뚯뒪 異붿쟻 媛??
+<strong>?먮룞???꾩꽦???μ긽</strong>:</li>
+<li>DevLog ?앹꽦遺??諛고룷源뚯? ?꾩쟾 ?먮룞??- ?섎룞 媛쒖엯 遺덊븘??- 臾몄꽌 ?쇨???蹂댁옣</li>
+</ul>
+<h3 id="commit-뺣낫">Commit ?뺣낫</h3>
+<p><strong>而ㅻ컠 ?꾨즺</strong>:</p>
+<ul>
+<li>main 釉뚮옖移? 516f35dd0</li>
+<li>docs 釉뚮옖移? d975414c3</li>
+</ul>
+<p><strong>Summary (EN)</strong>:
+fix(workflows): trigger HonKit build after DevLog generation</p>
+<p><strong>?몃? ?댁뿭</strong>:</p>
+<ol>
+<li><p>"HonKit ?먮룞 ?몃━嫄?硫붿빱?덉쬁 援ы쁽"</p>
+<ul>
+<li>honkit.yml: repository_dispatch ?몃━嫄?異붽?</li>
+<li>?대깽????? honkit-build</li>
+<li>daily/weekly report ?꾨즺 ???먮룞 ?ㅽ뻾</li>
+</ul>
+</li>
+<li><p>"Daily Report ?뚰겕?뚮줈??泥댁씠??</p>
+<ul>
+<li>daily-report.yml: HonKit 鍮뚮뱶 ?몃━嫄??④퀎 異붽?</li>
+<li>peter-evans/repository-dispatch@v2 ?≪뀡 ?ъ슜</li>
+<li>docs 而ㅻ컠 ???먮룞?쇰줈 HonKit 鍮뚮뱶</li>
+</ul>
+</li>
+<li><p>"Weekly Report ?뚰겕?뚮줈??泥댁씠??</p>
+<ul>
+<li>weekly-report.yml: HonKit 鍮뚮뱶 ?몃━嫄??④퀎 異붽?</li>
+<li>?숈씪???붿뒪?⑥튂 硫붿빱?덉쬁 ?곸슜</li>
+</ul>
+</li>
+<li><p>"GitHub Pages 404 臾몄젣 ?닿껐"</p>
+<ul>
+<li>DevLog ?앹꽦 ??諛고룷源뚯? ?꾩쟾 ?먮룞??   - gh-pages ?먮룞 ?낅뜲?댄듃 蹂댁옣</li>
+<li>Discord 留곹겕 ?뺤긽 ?묐룞</li>
+</ul>
+</li>
+</ol>
+<h3 id="ㅼ쓬-묒뾽">?ㅼ쓬 ?묒뾽</h3>
+<p><strong>寃利??꾩슂</strong>:</p>
+<ol>
+<li>Daily report ?섎룞 ?ㅽ뻾?섏뿬 HonKit ?먮룞 ?몃━嫄??뺤씤</li>
+<li>GitHub Pages?먯꽌 理쒖떊 DevLog ?뺤긽 ?쒖떆 ?뺤씤</li>
+<li>Discord 留곹겕 ?대┃ ??404 ?먮윭 ?닿껐 ?뺤씤</li>
+</ol>
+<p><strong>異붽? 媛쒖꽑 怨좊젮</strong>:</p>
+<ol>
+<li>HonKit 鍮뚮뱶 ?ㅽ뙣 ???뚮┝ 硫붿빱?덉쬁 異붽?</li>
+<li>諛고룷 ?꾨즺 ??Discord??諛고룷 ?꾨즺 硫붿떆吏 ?꾩넚</li>
+<li>?뚰겕?뚮줈???ㅽ뻾 ?쒓컙 紐⑤땲?곕쭅 諛?理쒖쟻??</li>
 </ol>
  <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
@@ -2428,12 +1844,12 @@ refactor(workflows): simplify DevLog workflows by executing directly on docs bra
 
             
                 
-                <a href="dopple_251109.html" class="navigation navigation-prev " aria-label="Previous page: dopple - dopple_251109">
+                <a href="../../../" class="navigation navigation-prev " aria-label="Previous page: 시작하기">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../../Daily/2025-11-09.html" class="navigation navigation-next " aria-label="Next page: 2025-11-09">
+                <a href="251108.html" class="navigation navigation-next " aria-label="Next page: dopple - 2025-11-08">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2444,7 +1860,7 @@ refactor(workflows): simplify DevLog workflows by executing directly on docs bra
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"dopple - 2025-11-08","level":"3.2","depth":1,"next":{"title":"2025-11-09","level":"4.1","depth":1,"path":"DevLog/Daily/2025-11-09.md","ref":"DevLog/Daily/2025-11-09.md","articles":[]},"previous":{"title":"dopple - dopple_251109","level":"3.1","depth":1,"path":"DevLog/AgentLog/dopple/dopple_251109.md","ref":"DevLog/AgentLog/dopple/dopple_251109.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"DevLog/AgentLog/dopple/251108.md","mtime":"2025-11-09T09:25:35.277Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-09T09:26:01.061Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"dopple - dopple_251109","level":"3.1","depth":1,"next":{"title":"dopple - 2025-11-08","level":"3.2","depth":1,"path":"DevLog/AgentLog/dopple/251108.md","ref":"DevLog/AgentLog/dopple/251108.md","articles":[]},"previous":{"title":"시작하기","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","mermaid-gb3","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/YiSan"},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{"theme":"default"},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true,"logo":"Reference/icon_yisan.png","favicon":"Reference/icon_yisan512.png"},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"YiSan Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/YiSan","Doxygen API Docs":"https://doppleddiggong.github.io/YiSan/doxygen/"}},"gitbook":"3.2.3","description":"YiSan 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"DevLog/AgentLog/dopple/dopple_251109.md","mtime":"2025-11-09T09:25:33.297Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-09T09:26:01.061Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
