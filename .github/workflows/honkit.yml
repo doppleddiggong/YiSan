@@ -13,6 +13,10 @@ on:
       - 'Documents/book.json'
       - '.github/scripts/generate_summary.py'
 
+  # Daily/Weekly report 완료 후 트리거
+  repository_dispatch:
+    types: [honkit-build]
+
   # 수동 실행 가능
   workflow_dispatch:
 

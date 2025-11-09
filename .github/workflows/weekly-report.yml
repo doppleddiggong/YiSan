@@ -163,6 +163,13 @@ jobs:
               --devlog-url "https://doppleddiggong.github.io/YiSan/docs/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.html"
           fi
 
+      - name: Trigger HonKit Build
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: honkit-build
+          client-payload: '{"ref": "docs", "trigger": "weekly-report"}'
+
       - name: Summary
         run: |
           echo "✅ Weekly DevLog Report has been generated!"
