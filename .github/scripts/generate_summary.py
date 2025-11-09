@@ -261,6 +261,15 @@ class SummaryGenerator:
         print(f"✅ SUMMARY.md generated successfully at {summary_path}")
         print(f"📊 Total sections created")
 
+        # 레거시 호환: Documents/HonkitPage/SUMMARY.md 동기화
+        legacy_dir = self.base_dir / "HonkitPage"
+        legacy_summary_path = legacy_dir / "SUMMARY.md"
+        if legacy_summary_path.exists() or legacy_dir.exists():
+            legacy_dir.mkdir(parents=True, exist_ok=True)
+            with open(legacy_summary_path, 'w', encoding='utf-8') as legacy_file:
+                legacy_file.write(content)
+            print(f"🔁 Legacy SUMMARY.md synchronized at {legacy_summary_path}")
+
 def main():
     generator = SummaryGenerator()
     generator.write_summary()
